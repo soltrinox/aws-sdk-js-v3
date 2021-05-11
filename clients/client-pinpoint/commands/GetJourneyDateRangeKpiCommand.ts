@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetJourneyDateRangeKpiCommandInput = GetJourneyDateRangeKpiRequest;
-export type GetJourneyDateRangeKpiCommandOutput = GetJourneyDateRangeKpiResponse & __MetadataBearer;
+export interface GetJourneyDateRangeKpiCommandInput extends GetJourneyDateRangeKpiRequest {}
+export interface GetJourneyDateRangeKpiCommandOutput extends GetJourneyDateRangeKpiResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, GetJourneyDateRangeKpiCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, GetJourneyDateRangeKpiCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new GetJourneyDateRangeKpiCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetJourneyDateRangeKpiCommandInput} for command's `input` shape.
+ * @see {@link GetJourneyDateRangeKpiCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetJourneyDateRangeKpiCommand extends $Command<
   GetJourneyDateRangeKpiCommandInput,

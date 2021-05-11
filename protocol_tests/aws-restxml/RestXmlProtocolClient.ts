@@ -39,6 +39,10 @@ import {
   HttpPayloadTraitsWithMediaTypeCommandOutput,
 } from "./commands/HttpPayloadTraitsWithMediaTypeCommand";
 import {
+  HttpPayloadWithMemberXmlNameCommandInput,
+  HttpPayloadWithMemberXmlNameCommandOutput,
+} from "./commands/HttpPayloadWithMemberXmlNameCommand";
+import {
   HttpPayloadWithStructureCommandInput,
   HttpPayloadWithStructureCommandOutput,
 } from "./commands/HttpPayloadWithStructureCommand";
@@ -76,6 +80,7 @@ import {
   InputAndOutputWithHeadersCommandInput,
   InputAndOutputWithHeadersCommandOutput,
 } from "./commands/InputAndOutputWithHeadersCommand";
+import { NestedXmlMapsCommandInput, NestedXmlMapsCommandOutput } from "./commands/NestedXmlMapsCommand";
 import { NoInputAndNoOutputCommandInput, NoInputAndNoOutputCommandOutput } from "./commands/NoInputAndNoOutputCommand";
 import { NoInputAndOutputCommandInput, NoInputAndOutputCommandOutput } from "./commands/NoInputAndOutputCommand";
 import {
@@ -94,6 +99,11 @@ import {
   QueryIdempotencyTokenAutoFillCommandInput,
   QueryIdempotencyTokenAutoFillCommandOutput,
 } from "./commands/QueryIdempotencyTokenAutoFillCommand";
+import {
+  QueryParamsAsStringListMapCommandInput,
+  QueryParamsAsStringListMapCommandOutput,
+} from "./commands/QueryParamsAsStringListMapCommand";
+import { QueryPrecedenceCommandInput, QueryPrecedenceCommandOutput } from "./commands/QueryPrecedenceCommand";
 import { RecursiveShapesCommandInput, RecursiveShapesCommandOutput } from "./commands/RecursiveShapesCommand";
 import {
   SimpleScalarPropertiesCommandInput,
@@ -139,12 +149,6 @@ import {
 import { getLoggerPlugin } from "@aws-sdk/middleware-logger";
 import { RetryInputConfig, RetryResolvedConfig, getRetryPlugin, resolveRetryConfig } from "@aws-sdk/middleware-retry";
 import {
-  AwsAuthInputConfig,
-  AwsAuthResolvedConfig,
-  getAwsAuthPlugin,
-  resolveAwsAuthConfig,
-} from "@aws-sdk/middleware-signing";
-import {
   UserAgentInputConfig,
   UserAgentResolvedConfig,
   getUserAgentPlugin,
@@ -159,7 +163,6 @@ import {
 import {
   Provider,
   RegionInfoProvider,
-  Credentials as __Credentials,
   Decoder as __Decoder,
   Encoder as __Encoder,
   HashConstructor as __HashConstructor,
@@ -185,6 +188,7 @@ export type ServiceInputTypes =
   | GreetingWithErrorsCommandInput
   | HttpPayloadTraitsCommandInput
   | HttpPayloadTraitsWithMediaTypeCommandInput
+  | HttpPayloadWithMemberXmlNameCommandInput
   | HttpPayloadWithStructureCommandInput
   | HttpPayloadWithXmlNameCommandInput
   | HttpPayloadWithXmlNamespaceAndPrefixCommandInput
@@ -196,12 +200,15 @@ export type ServiceInputTypes =
   | HttpResponseCodeCommandInput
   | IgnoreQueryParamsInResponseCommandInput
   | InputAndOutputWithHeadersCommandInput
+  | NestedXmlMapsCommandInput
   | NoInputAndNoOutputCommandInput
   | NoInputAndOutputCommandInput
   | NullAndEmptyHeadersClientCommandInput
   | NullAndEmptyHeadersServerCommandInput
   | OmitsNullSerializesEmptyStringCommandInput
   | QueryIdempotencyTokenAutoFillCommandInput
+  | QueryParamsAsStringListMapCommandInput
+  | QueryPrecedenceCommandInput
   | RecursiveShapesCommandInput
   | SimpleScalarPropertiesCommandInput
   | TimestampFormatHeadersCommandInput
@@ -234,6 +241,7 @@ export type ServiceOutputTypes =
   | GreetingWithErrorsCommandOutput
   | HttpPayloadTraitsCommandOutput
   | HttpPayloadTraitsWithMediaTypeCommandOutput
+  | HttpPayloadWithMemberXmlNameCommandOutput
   | HttpPayloadWithStructureCommandOutput
   | HttpPayloadWithXmlNameCommandOutput
   | HttpPayloadWithXmlNamespaceAndPrefixCommandOutput
@@ -245,12 +253,15 @@ export type ServiceOutputTypes =
   | HttpResponseCodeCommandOutput
   | IgnoreQueryParamsInResponseCommandOutput
   | InputAndOutputWithHeadersCommandOutput
+  | NestedXmlMapsCommandOutput
   | NoInputAndNoOutputCommandOutput
   | NoInputAndOutputCommandOutput
   | NullAndEmptyHeadersClientCommandOutput
   | NullAndEmptyHeadersServerCommandOutput
   | OmitsNullSerializesEmptyStringCommandOutput
   | QueryIdempotencyTokenAutoFillCommandOutput
+  | QueryParamsAsStringListMapCommandOutput
+  | QueryPrecedenceCommandOutput
   | RecursiveShapesCommandOutput
   | SimpleScalarPropertiesCommandOutput
   | TimestampFormatHeadersCommandOutput
@@ -334,11 +345,6 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
-   */
-  region?: string | __Provider<string>;
-
-  /**
    * Value for how many times a request will be made at most in case of retry.
    */
   maxAttempts?: number | __Provider<number>;
@@ -347,11 +353,6 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
    * Optional logger for logging debug/info/warn/error.
    */
   logger?: __Logger;
-
-  /**
-   * Default credentials provider; Not available in browser runtime.
-   */
-  credentialDefaultProvider?: (input: any) => __Provider<__Credentials>;
 
   /**
    * Fetch related hostname, signing name or signing region with given region.
@@ -365,23 +366,29 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type RestXmlProtocolClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type RestXmlProtocolClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
   RetryInputConfig &
   HostHeaderInputConfig &
-  AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of RestXmlProtocolClient class constructor that set the region, credentials and other options.
+ */
+export interface RestXmlProtocolClientConfig extends RestXmlProtocolClientConfigType {}
 
-export type RestXmlProtocolClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type RestXmlProtocolClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
   RetryResolvedConfig &
   HostHeaderResolvedConfig &
-  AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of RestXmlProtocolClient class. This is resolved and normalized from the {@link RestXmlProtocolClientConfig | constructor configuration interface}.
+ */
+export interface RestXmlProtocolClientResolvedConfig extends RestXmlProtocolClientResolvedConfigType {}
 
 /**
  * A REST XML service that sends XML requests and responses.
@@ -392,6 +399,9 @@ export class RestXmlProtocolClient extends __Client<
   ServiceOutputTypes,
   RestXmlProtocolClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of RestXmlProtocolClient class. This is resolved and normalized from the {@link RestXmlProtocolClientConfig | constructor configuration interface}.
+   */
   readonly config: RestXmlProtocolClientResolvedConfig;
 
   constructor(configuration: RestXmlProtocolClientConfig) {
@@ -403,15 +413,13 @@ export class RestXmlProtocolClient extends __Client<
     let _config_2 = resolveEndpointsConfig(_config_1);
     let _config_3 = resolveRetryConfig(_config_2);
     let _config_4 = resolveHostHeaderConfig(_config_3);
-    let _config_5 = resolveAwsAuthConfig(_config_4);
-    let _config_6 = resolveUserAgentConfig(_config_5);
-    super(_config_6);
-    this.config = _config_6;
+    let _config_5 = resolveUserAgentConfig(_config_4);
+    super(_config_5);
+    this.config = _config_5;
     this.middlewareStack.use(getRetryPlugin(this.config));
     this.middlewareStack.use(getContentLengthPlugin(this.config));
     this.middlewareStack.use(getHostHeaderPlugin(this.config));
     this.middlewareStack.use(getLoggerPlugin(this.config));
-    this.middlewareStack.use(getAwsAuthPlugin(this.config));
     this.middlewareStack.use(getUserAgentPlugin(this.config));
   }
 

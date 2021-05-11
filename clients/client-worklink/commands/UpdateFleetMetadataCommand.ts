@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateFleetMetadataCommandInput = UpdateFleetMetadataRequest;
-export type UpdateFleetMetadataCommandOutput = UpdateFleetMetadataResponse & __MetadataBearer;
+export interface UpdateFleetMetadataCommandInput extends UpdateFleetMetadataRequest {}
+export interface UpdateFleetMetadataCommandOutput extends UpdateFleetMetadataResponse, __MetadataBearer {}
 
 /**
  * <p>Updates fleet metadata, such as DisplayName.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkLinkClient, UpdateFleetMetadataCommand } from "@aws-sdk/client-worklink"; // ES Modules import
+ * // const { WorkLinkClient, UpdateFleetMetadataCommand } = require("@aws-sdk/client-worklink"); // CommonJS import
+ * const client = new WorkLinkClient(config);
+ * const command = new UpdateFleetMetadataCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateFleetMetadataCommandInput} for command's `input` shape.
+ * @see {@link UpdateFleetMetadataCommandOutput} for command's `response` shape.
+ * @see {@link WorkLinkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateFleetMetadataCommand extends $Command<
   UpdateFleetMetadataCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateContinuousBackupsCommandInput = UpdateContinuousBackupsInput;
-export type UpdateContinuousBackupsCommandOutput = UpdateContinuousBackupsOutput & __MetadataBearer;
+export interface UpdateContinuousBackupsCommandInput extends UpdateContinuousBackupsInput {}
+export interface UpdateContinuousBackupsCommandOutput extends UpdateContinuousBackupsOutput, __MetadataBearer {}
 
 /**
  * <p>
@@ -33,6 +33,20 @@ export type UpdateContinuousBackupsCommandOutput = UpdateContinuousBackupsOutput
  *          <p>
  *             <code>LatestRestorableDateTime</code> is typically 5 minutes before the current time.
  *             You can restore your table to any point in time during the last 35 days. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, UpdateContinuousBackupsCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, UpdateContinuousBackupsCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new UpdateContinuousBackupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateContinuousBackupsCommandInput} for command's `input` shape.
+ * @see {@link UpdateContinuousBackupsCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateContinuousBackupsCommand extends $Command<
   UpdateContinuousBackupsCommandInput,

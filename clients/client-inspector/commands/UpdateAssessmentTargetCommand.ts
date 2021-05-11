@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateAssessmentTargetCommandInput = UpdateAssessmentTargetRequest;
-export type UpdateAssessmentTargetCommandOutput = __MetadataBearer;
+export interface UpdateAssessmentTargetCommandInput extends UpdateAssessmentTargetRequest {}
+export interface UpdateAssessmentTargetCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Updates the assessment target that is specified by the ARN of the assessment
  *          target.</p>
  *          <p>If resourceGroupArn is not specified, all EC2 instances in the current AWS account
  *          and region are included in the assessment target.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { InspectorClient, UpdateAssessmentTargetCommand } from "@aws-sdk/client-inspector"; // ES Modules import
+ * // const { InspectorClient, UpdateAssessmentTargetCommand } = require("@aws-sdk/client-inspector"); // CommonJS import
+ * const client = new InspectorClient(config);
+ * const command = new UpdateAssessmentTargetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateAssessmentTargetCommandInput} for command's `input` shape.
+ * @see {@link UpdateAssessmentTargetCommandOutput} for command's `response` shape.
+ * @see {@link InspectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateAssessmentTargetCommand extends $Command<
   UpdateAssessmentTargetCommandInput,

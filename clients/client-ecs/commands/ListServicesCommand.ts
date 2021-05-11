@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListServicesCommandInput = ListServicesRequest;
-export type ListServicesCommandOutput = ListServicesResponse & __MetadataBearer;
+export interface ListServicesCommandInput extends ListServicesRequest {}
+export interface ListServicesCommandOutput extends ListServicesResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the services that are running in a specified cluster.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, ListServicesCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, ListServicesCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new ListServicesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListServicesCommandInput} for command's `input` shape.
+ * @see {@link ListServicesCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListServicesCommand extends $Command<
   ListServicesCommandInput,

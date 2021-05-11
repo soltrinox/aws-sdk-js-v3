@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UntagResourceCommandInput = UntagResourceRequest;
-export type UntagResourceCommandOutput = __MetadataBearer;
+export interface UntagResourceCommandInput extends UntagResourceRequest {}
+export interface UntagResourceCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Removes any tags with the specified keys from the specified resource.</p>
@@ -38,6 +38,20 @@ export type UntagResourceCommandOutput = __MetadataBearer;
  *             </li>
  *          </ul>
  *         <p>This operation can be called only from the organization's management account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, UntagResourceCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, UntagResourceCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new UntagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UntagResourceCommandInput} for command's `input` shape.
+ * @see {@link UntagResourceCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UntagResourceCommand extends $Command<
   UntagResourceCommandInput,

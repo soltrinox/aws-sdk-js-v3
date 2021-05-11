@@ -17,12 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListLexBotsCommandInput = ListLexBotsRequest;
-export type ListLexBotsCommandOutput = ListLexBotsResponse & __MetadataBearer;
+export interface ListLexBotsCommandInput extends ListLexBotsRequest {}
+export interface ListLexBotsCommandOutput extends ListLexBotsResponse, __MetadataBearer {}
 
 /**
- * <p>Returns a paginated list of all the Amazon Lex bots currently associated with the
+ * <p>This API is in preview release for Amazon Connect and is subject to change.</p>
+ *          <p>Returns a paginated list of all the Amazon Lex bots currently associated with the
  *    instance.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, ListLexBotsCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, ListLexBotsCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new ListLexBotsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListLexBotsCommandInput} for command's `input` shape.
+ * @see {@link ListLexBotsCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListLexBotsCommand extends $Command<
   ListLexBotsCommandInput,

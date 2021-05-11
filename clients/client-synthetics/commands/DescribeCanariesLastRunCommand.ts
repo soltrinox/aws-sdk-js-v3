@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCanariesLastRunCommandInput = DescribeCanariesLastRunRequest;
-export type DescribeCanariesLastRunCommandOutput = DescribeCanariesLastRunResponse & __MetadataBearer;
+export interface DescribeCanariesLastRunCommandInput extends DescribeCanariesLastRunRequest {}
+export interface DescribeCanariesLastRunCommandOutput extends DescribeCanariesLastRunResponse, __MetadataBearer {}
 
 /**
  * <p>Use this operation to see information from the most recent run of each canary that you have created.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SyntheticsClient, DescribeCanariesLastRunCommand } from "@aws-sdk/client-synthetics"; // ES Modules import
+ * // const { SyntheticsClient, DescribeCanariesLastRunCommand } = require("@aws-sdk/client-synthetics"); // CommonJS import
+ * const client = new SyntheticsClient(config);
+ * const command = new DescribeCanariesLastRunCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCanariesLastRunCommandInput} for command's `input` shape.
+ * @see {@link DescribeCanariesLastRunCommandOutput} for command's `response` shape.
+ * @see {@link SyntheticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCanariesLastRunCommand extends $Command<
   DescribeCanariesLastRunCommandInput,

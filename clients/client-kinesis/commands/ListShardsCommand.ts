@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListShardsCommandInput = ListShardsInput;
-export type ListShardsCommandOutput = ListShardsOutput & __MetadataBearer;
+export interface ListShardsCommandInput extends ListShardsInput {}
+export interface ListShardsCommandOutput extends ListShardsOutput, __MetadataBearer {}
 
 /**
  * <p>Lists the shards in a stream and provides information about each shard. This
@@ -30,6 +30,20 @@ export type ListShardsCommandOutput = ListShardsOutput & __MetadataBearer;
  *                     <a href="https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html">Controlling Access to Amazon Kinesis Data Streams Resources Using
  *                 IAM</a>.</p>
  *         </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisClient, ListShardsCommand } from "@aws-sdk/client-kinesis"; // ES Modules import
+ * // const { KinesisClient, ListShardsCommand } = require("@aws-sdk/client-kinesis"); // CommonJS import
+ * const client = new KinesisClient(config);
+ * const command = new ListShardsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListShardsCommandInput} for command's `input` shape.
+ * @see {@link ListShardsCommandOutput} for command's `response` shape.
+ * @see {@link KinesisClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListShardsCommand extends $Command<
   ListShardsCommandInput,

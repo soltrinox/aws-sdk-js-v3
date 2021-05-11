@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyTransitGatewayPrefixListReferenceCommandInput = ModifyTransitGatewayPrefixListReferenceRequest;
-export type ModifyTransitGatewayPrefixListReferenceCommandOutput = ModifyTransitGatewayPrefixListReferenceResult &
-  __MetadataBearer;
+export interface ModifyTransitGatewayPrefixListReferenceCommandInput
+  extends ModifyTransitGatewayPrefixListReferenceRequest {}
+export interface ModifyTransitGatewayPrefixListReferenceCommandOutput
+  extends ModifyTransitGatewayPrefixListReferenceResult,
+    __MetadataBearer {}
 
 /**
  * <p>Modifies a reference (route) to a prefix list in a specified transit gateway route table.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, ModifyTransitGatewayPrefixListReferenceCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, ModifyTransitGatewayPrefixListReferenceCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new ModifyTransitGatewayPrefixListReferenceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyTransitGatewayPrefixListReferenceCommandInput} for command's `input` shape.
+ * @see {@link ModifyTransitGatewayPrefixListReferenceCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyTransitGatewayPrefixListReferenceCommand extends $Command<
   ModifyTransitGatewayPrefixListReferenceCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSessionEmbedUrlCommandInput = GetSessionEmbedUrlRequest;
-export type GetSessionEmbedUrlCommandOutput = GetSessionEmbedUrlResponse & __MetadataBearer;
+export interface GetSessionEmbedUrlCommandInput extends GetSessionEmbedUrlRequest {}
+export interface GetSessionEmbedUrlCommandOutput extends GetSessionEmbedUrlResponse, __MetadataBearer {}
 
 /**
  * <p>Generates a session URL and authorization code that you can use to embed the Amazon
@@ -46,6 +46,20 @@ export type GetSessionEmbedUrlCommandOutput = GetSessionEmbedUrlResponse & __Met
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, GetSessionEmbedUrlCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, GetSessionEmbedUrlCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new GetSessionEmbedUrlCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSessionEmbedUrlCommandInput} for command's `input` shape.
+ * @see {@link GetSessionEmbedUrlCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSessionEmbedUrlCommand extends $Command<
   GetSessionEmbedUrlCommandInput,

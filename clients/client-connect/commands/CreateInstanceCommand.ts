@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateInstanceCommandInput = CreateInstanceRequest;
-export type CreateInstanceCommandOutput = CreateInstanceResponse & __MetadataBearer;
+export interface CreateInstanceCommandInput extends CreateInstanceRequest {}
+export interface CreateInstanceCommandOutput extends CreateInstanceResponse, __MetadataBearer {}
 
 /**
  * <p>This API is in preview release for Amazon Connect and is subject to change.</p>
  *          <p>Initiates an Amazon Connect instance with all the supported channels enabled. It does not attach any
- *    storage (such as Amazon S3, or Kinesis) or allow for any configurations on features such as
- *    Contact Lens for Amazon Connect. </p>
+ *    storage, such as Amazon Simple Storage Service (Amazon S3) or Amazon Kinesis. It also does not
+ *    allow for any configurations on features, such as Contact Lens for Amazon Connect. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, CreateInstanceCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, CreateInstanceCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new CreateInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateInstanceCommandInput} for command's `input` shape.
+ * @see {@link CreateInstanceCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateInstanceCommand extends $Command<
   CreateInstanceCommandInput,

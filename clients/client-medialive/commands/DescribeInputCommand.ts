@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeInputCommandInput = DescribeInputRequest;
-export type DescribeInputCommandOutput = DescribeInputResponse & __MetadataBearer;
+export interface DescribeInputCommandInput extends DescribeInputRequest {}
+export interface DescribeInputCommandOutput extends DescribeInputResponse, __MetadataBearer {}
 
 /**
  * Produces details about an input
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, DescribeInputCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, DescribeInputCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new DescribeInputCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeInputCommandInput} for command's `input` shape.
+ * @see {@link DescribeInputCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeInputCommand extends $Command<
   DescribeInputCommandInput,

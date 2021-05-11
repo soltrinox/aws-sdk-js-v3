@@ -21,9 +21,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetOpenIdTokenForDeveloperIdentityCommandInput = GetOpenIdTokenForDeveloperIdentityInput;
-export type GetOpenIdTokenForDeveloperIdentityCommandOutput = GetOpenIdTokenForDeveloperIdentityResponse &
-  __MetadataBearer;
+export interface GetOpenIdTokenForDeveloperIdentityCommandInput extends GetOpenIdTokenForDeveloperIdentityInput {}
+export interface GetOpenIdTokenForDeveloperIdentityCommandOutput
+  extends GetOpenIdTokenForDeveloperIdentityResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Registers (or retrieves) a Cognito <code>IdentityId</code> and an OpenID Connect
@@ -39,6 +40,20 @@ export type GetOpenIdTokenForDeveloperIdentityCommandOutput = GetOpenIdTokenForD
  *             <code>IdentityId</code>. This API will create the identity in the specified
  *             <code>IdentityPoolId</code>.</p>
  *          <p>You must use AWS Developer credentials to call this API.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityClient, GetOpenIdTokenForDeveloperIdentityCommand } from "@aws-sdk/client-cognito-identity"; // ES Modules import
+ * // const { CognitoIdentityClient, GetOpenIdTokenForDeveloperIdentityCommand } = require("@aws-sdk/client-cognito-identity"); // CommonJS import
+ * const client = new CognitoIdentityClient(config);
+ * const command = new GetOpenIdTokenForDeveloperIdentityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetOpenIdTokenForDeveloperIdentityCommandInput} for command's `input` shape.
+ * @see {@link GetOpenIdTokenForDeveloperIdentityCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetOpenIdTokenForDeveloperIdentityCommand extends $Command<
   GetOpenIdTokenForDeveloperIdentityCommandInput,

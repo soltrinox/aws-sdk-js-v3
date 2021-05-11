@@ -14,12 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutEventsCommandInput = PutEventsRequest;
-export type PutEventsCommandOutput = PutEventsResponse & __MetadataBearer;
+export interface PutEventsCommandInput extends PutEventsRequest {}
+export interface PutEventsCommandOutput extends PutEventsResponse, __MetadataBearer {}
 
 /**
- * <p>Sends custom events to Amazon EventBridge so that they can be matched to
- *             rules.</p>
+ * <p>Sends custom events to Amazon EventBridge so that they can be matched to rules.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EventBridgeClient, PutEventsCommand } from "@aws-sdk/client-eventbridge"; // ES Modules import
+ * // const { EventBridgeClient, PutEventsCommand } = require("@aws-sdk/client-eventbridge"); // CommonJS import
+ * const client = new EventBridgeClient(config);
+ * const command = new PutEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutEventsCommandInput} for command's `input` shape.
+ * @see {@link PutEventsCommandOutput} for command's `response` shape.
+ * @see {@link EventBridgeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutEventsCommand extends $Command<
   PutEventsCommandInput,

@@ -21,12 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SetIpAddressTypeCommandInput = SetIpAddressTypeInput;
-export type SetIpAddressTypeCommandOutput = SetIpAddressTypeOutput & __MetadataBearer;
+export interface SetIpAddressTypeCommandInput extends SetIpAddressTypeInput {}
+export interface SetIpAddressTypeCommandOutput extends SetIpAddressTypeOutput, __MetadataBearer {}
 
 /**
  * <p>Sets the type of IP addresses used by the subnets of the specified Application Load
  *       Balancer or Network Load Balancer.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingV2Client, SetIpAddressTypeCommand } from "@aws-sdk/client-elastic-load-balancing-v2"; // ES Modules import
+ * // const { ElasticLoadBalancingV2Client, SetIpAddressTypeCommand } = require("@aws-sdk/client-elastic-load-balancing-v2"); // CommonJS import
+ * const client = new ElasticLoadBalancingV2Client(config);
+ * const command = new SetIpAddressTypeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SetIpAddressTypeCommandInput} for command's `input` shape.
+ * @see {@link SetIpAddressTypeCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SetIpAddressTypeCommand extends $Command<
   SetIpAddressTypeCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateSystemTemplateCommandInput = UpdateSystemTemplateRequest;
-export type UpdateSystemTemplateCommandOutput = UpdateSystemTemplateResponse & __MetadataBearer;
+export interface UpdateSystemTemplateCommandInput extends UpdateSystemTemplateRequest {}
+export interface UpdateSystemTemplateCommandOutput extends UpdateSystemTemplateResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the specified system. You don't need to run this action after updating a workflow. Any deployment that uses the system will see the changes in the system when it is redeployed.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTThingsGraphClient, UpdateSystemTemplateCommand } from "@aws-sdk/client-iotthingsgraph"; // ES Modules import
+ * // const { IoTThingsGraphClient, UpdateSystemTemplateCommand } = require("@aws-sdk/client-iotthingsgraph"); // CommonJS import
+ * const client = new IoTThingsGraphClient(config);
+ * const command = new UpdateSystemTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateSystemTemplateCommandInput} for command's `input` shape.
+ * @see {@link UpdateSystemTemplateCommandOutput} for command's `response` shape.
+ * @see {@link IoTThingsGraphClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateSystemTemplateCommand extends $Command<
   UpdateSystemTemplateCommandInput,

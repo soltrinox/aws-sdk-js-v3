@@ -14,12 +14,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateGroupCommandInput = CreateGroupRequest;
-export type CreateGroupCommandOutput = CreateGroupResponse & __MetadataBearer;
+export interface CreateGroupCommandInput extends CreateGroupRequest {}
+export interface CreateGroupCommandOutput extends CreateGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new group.</p>
- *          <p>The number and size of IAM resources in an AWS account are limited. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html">IAM and STS Quotas</a> in the <i>IAM User Guide</i>.</p>
+ *         <p> For information about the number of groups you can create, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html">IAM and STS
+ *                 quotas</a> in the <i>IAM User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, CreateGroupCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, CreateGroupCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new CreateGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateGroupCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateGroupCommand extends $Command<
   CreateGroupCommandInput,

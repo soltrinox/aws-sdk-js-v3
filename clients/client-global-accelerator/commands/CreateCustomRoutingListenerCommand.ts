@@ -21,12 +21,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCustomRoutingListenerCommandInput = CreateCustomRoutingListenerRequest;
-export type CreateCustomRoutingListenerCommandOutput = CreateCustomRoutingListenerResponse & __MetadataBearer;
+export interface CreateCustomRoutingListenerCommandInput extends CreateCustomRoutingListenerRequest {}
+export interface CreateCustomRoutingListenerCommandOutput
+  extends CreateCustomRoutingListenerResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Create a listener to process inbound connections from clients to a custom routing accelerator.
  * 			Connections arrive to assigned static IP addresses on the port range that you specify. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, CreateCustomRoutingListenerCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, CreateCustomRoutingListenerCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new CreateCustomRoutingListenerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCustomRoutingListenerCommandInput} for command's `input` shape.
+ * @see {@link CreateCustomRoutingListenerCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCustomRoutingListenerCommand extends $Command<
   CreateCustomRoutingListenerCommandInput,

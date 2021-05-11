@@ -21,11 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateElasticsearchDomainConfigCommandInput = UpdateElasticsearchDomainConfigRequest;
-export type UpdateElasticsearchDomainConfigCommandOutput = UpdateElasticsearchDomainConfigResponse & __MetadataBearer;
+export interface UpdateElasticsearchDomainConfigCommandInput extends UpdateElasticsearchDomainConfigRequest {}
+export interface UpdateElasticsearchDomainConfigCommandOutput
+  extends UpdateElasticsearchDomainConfigResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance type and the number of instances. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticsearchServiceClient, UpdateElasticsearchDomainConfigCommand } from "@aws-sdk/client-elasticsearch-service"; // ES Modules import
+ * // const { ElasticsearchServiceClient, UpdateElasticsearchDomainConfigCommand } = require("@aws-sdk/client-elasticsearch-service"); // CommonJS import
+ * const client = new ElasticsearchServiceClient(config);
+ * const command = new UpdateElasticsearchDomainConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateElasticsearchDomainConfigCommandInput} for command's `input` shape.
+ * @see {@link UpdateElasticsearchDomainConfigCommandOutput} for command's `response` shape.
+ * @see {@link ElasticsearchServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateElasticsearchDomainConfigCommand extends $Command<
   UpdateElasticsearchDomainConfigCommandInput,

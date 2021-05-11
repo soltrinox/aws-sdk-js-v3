@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutThirdPartyJobFailureResultCommandInput = PutThirdPartyJobFailureResultInput;
-export type PutThirdPartyJobFailureResultCommandOutput = __MetadataBearer;
+export interface PutThirdPartyJobFailureResultCommandInput extends PutThirdPartyJobFailureResultInput {}
+export interface PutThirdPartyJobFailureResultCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Represents the failure of a third party job as returned to the pipeline by a job
  *             worker. Used for partner actions only.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodePipelineClient, PutThirdPartyJobFailureResultCommand } from "@aws-sdk/client-codepipeline"; // ES Modules import
+ * // const { CodePipelineClient, PutThirdPartyJobFailureResultCommand } = require("@aws-sdk/client-codepipeline"); // CommonJS import
+ * const client = new CodePipelineClient(config);
+ * const command = new PutThirdPartyJobFailureResultCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutThirdPartyJobFailureResultCommandInput} for command's `input` shape.
+ * @see {@link PutThirdPartyJobFailureResultCommandOutput} for command's `response` shape.
+ * @see {@link CodePipelineClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutThirdPartyJobFailureResultCommand extends $Command<
   PutThirdPartyJobFailureResultCommandInput,

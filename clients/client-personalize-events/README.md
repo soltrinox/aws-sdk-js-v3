@@ -8,7 +8,8 @@
 AWS SDK for JavaScript PersonalizeEvents Client for Node.js, Browser and React Native.
 
 <p>Amazon Personalize can consume real-time user event data, such as <i>stream</i> or <i>click</i> data, and use
-it for model training either alone or combined with historical data. For more information see <a>recording-events</a>.</p>
+it for model training either alone or combined with historical data. For more information see
+<a href="https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html">Recording Events</a>.</p>
 
 ## Installing
 
@@ -47,7 +48,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new PersonalizeEventsClient({ region: "REGION" });
 
 const params = {
@@ -132,7 +133,7 @@ const client = new AWS.PersonalizeEvents({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.putEvents(params);
+  const data = await client.putEvents(params);
   // process data.
 } catch (error) {
   // error handling.

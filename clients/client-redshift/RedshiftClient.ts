@@ -2,10 +2,15 @@ import {
   AcceptReservedNodeExchangeCommandInput,
   AcceptReservedNodeExchangeCommandOutput,
 } from "./commands/AcceptReservedNodeExchangeCommand";
+import { AddPartnerCommandInput, AddPartnerCommandOutput } from "./commands/AddPartnerCommand";
 import {
   AuthorizeClusterSecurityGroupIngressCommandInput,
   AuthorizeClusterSecurityGroupIngressCommandOutput,
 } from "./commands/AuthorizeClusterSecurityGroupIngressCommand";
+import {
+  AuthorizeEndpointAccessCommandInput,
+  AuthorizeEndpointAccessCommandOutput,
+} from "./commands/AuthorizeEndpointAccessCommand";
 import {
   AuthorizeSnapshotAccessCommandInput,
   AuthorizeSnapshotAccessCommandOutput,
@@ -40,6 +45,10 @@ import {
   CreateClusterSubnetGroupCommandInput,
   CreateClusterSubnetGroupCommandOutput,
 } from "./commands/CreateClusterSubnetGroupCommand";
+import {
+  CreateEndpointAccessCommandInput,
+  CreateEndpointAccessCommandOutput,
+} from "./commands/CreateEndpointAccessCommand";
 import {
   CreateEventSubscriptionCommandInput,
   CreateEventSubscriptionCommandOutput,
@@ -84,6 +93,10 @@ import {
   DeleteClusterSubnetGroupCommandOutput,
 } from "./commands/DeleteClusterSubnetGroupCommand";
 import {
+  DeleteEndpointAccessCommandInput,
+  DeleteEndpointAccessCommandOutput,
+} from "./commands/DeleteEndpointAccessCommand";
+import {
   DeleteEventSubscriptionCommandInput,
   DeleteEventSubscriptionCommandOutput,
 } from "./commands/DeleteEventSubscriptionCommand";
@@ -95,6 +108,7 @@ import {
   DeleteHsmConfigurationCommandInput,
   DeleteHsmConfigurationCommandOutput,
 } from "./commands/DeleteHsmConfigurationCommand";
+import { DeletePartnerCommandInput, DeletePartnerCommandOutput } from "./commands/DeletePartnerCommand";
 import {
   DeleteScheduledActionCommandInput,
   DeleteScheduledActionCommandOutput,
@@ -151,6 +165,14 @@ import {
   DescribeDefaultClusterParametersCommandOutput,
 } from "./commands/DescribeDefaultClusterParametersCommand";
 import {
+  DescribeEndpointAccessCommandInput,
+  DescribeEndpointAccessCommandOutput,
+} from "./commands/DescribeEndpointAccessCommand";
+import {
+  DescribeEndpointAuthorizationCommandInput,
+  DescribeEndpointAuthorizationCommandOutput,
+} from "./commands/DescribeEndpointAuthorizationCommand";
+import {
   DescribeEventCategoriesCommandInput,
   DescribeEventCategoriesCommandOutput,
 } from "./commands/DescribeEventCategoriesCommand";
@@ -179,6 +201,7 @@ import {
   DescribeOrderableClusterOptionsCommandInput,
   DescribeOrderableClusterOptionsCommandOutput,
 } from "./commands/DescribeOrderableClusterOptionsCommand";
+import { DescribePartnersCommandInput, DescribePartnersCommandOutput } from "./commands/DescribePartnersCommand";
 import {
   DescribeReservedNodeOfferingsCommandInput,
   DescribeReservedNodeOfferingsCommandOutput,
@@ -225,6 +248,10 @@ import {
   GetReservedNodeExchangeOfferingsCommandInput,
   GetReservedNodeExchangeOfferingsCommandOutput,
 } from "./commands/GetReservedNodeExchangeOfferingsCommand";
+import {
+  ModifyAquaConfigurationCommandInput,
+  ModifyAquaConfigurationCommandOutput,
+} from "./commands/ModifyAquaConfigurationCommand";
 import { ModifyClusterCommandInput, ModifyClusterCommandOutput } from "./commands/ModifyClusterCommand";
 import {
   ModifyClusterDbRevisionCommandInput,
@@ -254,6 +281,10 @@ import {
   ModifyClusterSubnetGroupCommandInput,
   ModifyClusterSubnetGroupCommandOutput,
 } from "./commands/ModifyClusterSubnetGroupCommand";
+import {
+  ModifyEndpointAccessCommandInput,
+  ModifyEndpointAccessCommandOutput,
+} from "./commands/ModifyEndpointAccessCommand";
 import {
   ModifyEventSubscriptionCommandInput,
   ModifyEventSubscriptionCommandOutput,
@@ -296,6 +327,10 @@ import {
   RevokeClusterSecurityGroupIngressCommandOutput,
 } from "./commands/RevokeClusterSecurityGroupIngressCommand";
 import {
+  RevokeEndpointAccessCommandInput,
+  RevokeEndpointAccessCommandOutput,
+} from "./commands/RevokeEndpointAccessCommand";
+import {
   RevokeSnapshotAccessCommandInput,
   RevokeSnapshotAccessCommandOutput,
 } from "./commands/RevokeSnapshotAccessCommand";
@@ -303,6 +338,10 @@ import {
   RotateEncryptionKeyCommandInput,
   RotateEncryptionKeyCommandOutput,
 } from "./commands/RotateEncryptionKeyCommand";
+import {
+  UpdatePartnerStatusCommandInput,
+  UpdatePartnerStatusCommandOutput,
+} from "./commands/UpdatePartnerStatusCommand";
 import { ClientDefaultValues as __ClientDefaultValues } from "./runtimeConfig";
 import {
   EndpointsInputConfig,
@@ -356,7 +395,9 @@ import {
 
 export type ServiceInputTypes =
   | AcceptReservedNodeExchangeCommandInput
+  | AddPartnerCommandInput
   | AuthorizeClusterSecurityGroupIngressCommandInput
+  | AuthorizeEndpointAccessCommandInput
   | AuthorizeSnapshotAccessCommandInput
   | BatchDeleteClusterSnapshotsCommandInput
   | BatchModifyClusterSnapshotsCommandInput
@@ -367,6 +408,7 @@ export type ServiceInputTypes =
   | CreateClusterSecurityGroupCommandInput
   | CreateClusterSnapshotCommandInput
   | CreateClusterSubnetGroupCommandInput
+  | CreateEndpointAccessCommandInput
   | CreateEventSubscriptionCommandInput
   | CreateHsmClientCertificateCommandInput
   | CreateHsmConfigurationCommandInput
@@ -380,9 +422,11 @@ export type ServiceInputTypes =
   | DeleteClusterSecurityGroupCommandInput
   | DeleteClusterSnapshotCommandInput
   | DeleteClusterSubnetGroupCommandInput
+  | DeleteEndpointAccessCommandInput
   | DeleteEventSubscriptionCommandInput
   | DeleteHsmClientCertificateCommandInput
   | DeleteHsmConfigurationCommandInput
+  | DeletePartnerCommandInput
   | DeleteScheduledActionCommandInput
   | DeleteSnapshotCopyGrantCommandInput
   | DeleteSnapshotScheduleCommandInput
@@ -399,6 +443,8 @@ export type ServiceInputTypes =
   | DescribeClusterVersionsCommandInput
   | DescribeClustersCommandInput
   | DescribeDefaultClusterParametersCommandInput
+  | DescribeEndpointAccessCommandInput
+  | DescribeEndpointAuthorizationCommandInput
   | DescribeEventCategoriesCommandInput
   | DescribeEventSubscriptionsCommandInput
   | DescribeEventsCommandInput
@@ -407,6 +453,7 @@ export type ServiceInputTypes =
   | DescribeLoggingStatusCommandInput
   | DescribeNodeConfigurationOptionsCommandInput
   | DescribeOrderableClusterOptionsCommandInput
+  | DescribePartnersCommandInput
   | DescribeReservedNodeOfferingsCommandInput
   | DescribeReservedNodesCommandInput
   | DescribeResizeCommandInput
@@ -423,6 +470,7 @@ export type ServiceInputTypes =
   | EnableSnapshotCopyCommandInput
   | GetClusterCredentialsCommandInput
   | GetReservedNodeExchangeOfferingsCommandInput
+  | ModifyAquaConfigurationCommandInput
   | ModifyClusterCommandInput
   | ModifyClusterDbRevisionCommandInput
   | ModifyClusterIamRolesCommandInput
@@ -431,6 +479,7 @@ export type ServiceInputTypes =
   | ModifyClusterSnapshotCommandInput
   | ModifyClusterSnapshotScheduleCommandInput
   | ModifyClusterSubnetGroupCommandInput
+  | ModifyEndpointAccessCommandInput
   | ModifyEventSubscriptionCommandInput
   | ModifyScheduledActionCommandInput
   | ModifySnapshotCopyRetentionPeriodCommandInput
@@ -445,12 +494,16 @@ export type ServiceInputTypes =
   | RestoreTableFromClusterSnapshotCommandInput
   | ResumeClusterCommandInput
   | RevokeClusterSecurityGroupIngressCommandInput
+  | RevokeEndpointAccessCommandInput
   | RevokeSnapshotAccessCommandInput
-  | RotateEncryptionKeyCommandInput;
+  | RotateEncryptionKeyCommandInput
+  | UpdatePartnerStatusCommandInput;
 
 export type ServiceOutputTypes =
   | AcceptReservedNodeExchangeCommandOutput
+  | AddPartnerCommandOutput
   | AuthorizeClusterSecurityGroupIngressCommandOutput
+  | AuthorizeEndpointAccessCommandOutput
   | AuthorizeSnapshotAccessCommandOutput
   | BatchDeleteClusterSnapshotsCommandOutput
   | BatchModifyClusterSnapshotsCommandOutput
@@ -461,6 +514,7 @@ export type ServiceOutputTypes =
   | CreateClusterSecurityGroupCommandOutput
   | CreateClusterSnapshotCommandOutput
   | CreateClusterSubnetGroupCommandOutput
+  | CreateEndpointAccessCommandOutput
   | CreateEventSubscriptionCommandOutput
   | CreateHsmClientCertificateCommandOutput
   | CreateHsmConfigurationCommandOutput
@@ -474,9 +528,11 @@ export type ServiceOutputTypes =
   | DeleteClusterSecurityGroupCommandOutput
   | DeleteClusterSnapshotCommandOutput
   | DeleteClusterSubnetGroupCommandOutput
+  | DeleteEndpointAccessCommandOutput
   | DeleteEventSubscriptionCommandOutput
   | DeleteHsmClientCertificateCommandOutput
   | DeleteHsmConfigurationCommandOutput
+  | DeletePartnerCommandOutput
   | DeleteScheduledActionCommandOutput
   | DeleteSnapshotCopyGrantCommandOutput
   | DeleteSnapshotScheduleCommandOutput
@@ -493,6 +549,8 @@ export type ServiceOutputTypes =
   | DescribeClusterVersionsCommandOutput
   | DescribeClustersCommandOutput
   | DescribeDefaultClusterParametersCommandOutput
+  | DescribeEndpointAccessCommandOutput
+  | DescribeEndpointAuthorizationCommandOutput
   | DescribeEventCategoriesCommandOutput
   | DescribeEventSubscriptionsCommandOutput
   | DescribeEventsCommandOutput
@@ -501,6 +559,7 @@ export type ServiceOutputTypes =
   | DescribeLoggingStatusCommandOutput
   | DescribeNodeConfigurationOptionsCommandOutput
   | DescribeOrderableClusterOptionsCommandOutput
+  | DescribePartnersCommandOutput
   | DescribeReservedNodeOfferingsCommandOutput
   | DescribeReservedNodesCommandOutput
   | DescribeResizeCommandOutput
@@ -517,6 +576,7 @@ export type ServiceOutputTypes =
   | EnableSnapshotCopyCommandOutput
   | GetClusterCredentialsCommandOutput
   | GetReservedNodeExchangeOfferingsCommandOutput
+  | ModifyAquaConfigurationCommandOutput
   | ModifyClusterCommandOutput
   | ModifyClusterDbRevisionCommandOutput
   | ModifyClusterIamRolesCommandOutput
@@ -525,6 +585,7 @@ export type ServiceOutputTypes =
   | ModifyClusterSnapshotCommandOutput
   | ModifyClusterSnapshotScheduleCommandOutput
   | ModifyClusterSubnetGroupCommandOutput
+  | ModifyEndpointAccessCommandOutput
   | ModifyEventSubscriptionCommandOutput
   | ModifyScheduledActionCommandOutput
   | ModifySnapshotCopyRetentionPeriodCommandOutput
@@ -539,8 +600,10 @@ export type ServiceOutputTypes =
   | RestoreTableFromClusterSnapshotCommandOutput
   | ResumeClusterCommandOutput
   | RevokeClusterSecurityGroupIngressCommandOutput
+  | RevokeEndpointAccessCommandOutput
   | RevokeSnapshotAccessCommandOutput
-  | RotateEncryptionKeyCommandOutput;
+  | RotateEncryptionKeyCommandOutput
+  | UpdatePartnerStatusCommandOutput;
 
 export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__HttpHandlerOptions>> {
   /**
@@ -607,7 +670,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -638,7 +701,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type RedshiftClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type RedshiftClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -646,8 +709,12 @@ export type RedshiftClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOp
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of RedshiftClient class constructor that set the region, credentials and other options.
+ */
+export interface RedshiftClientConfig extends RedshiftClientConfigType {}
 
-export type RedshiftClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type RedshiftClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -655,6 +722,10 @@ export type RedshiftClientResolvedConfig = __SmithyResolvedConfiguration<__HttpH
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of RedshiftClient class. This is resolved and normalized from the {@link RedshiftClientConfig | constructor configuration interface}.
+ */
+export interface RedshiftClientResolvedConfig extends RedshiftClientResolvedConfigType {}
 
 /**
  * <fullname>Amazon Redshift</fullname>
@@ -686,6 +757,9 @@ export class RedshiftClient extends __Client<
   ServiceOutputTypes,
   RedshiftClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of RedshiftClient class. This is resolved and normalized from the {@link RedshiftClientConfig | constructor configuration interface}.
+   */
   readonly config: RedshiftClientResolvedConfig;
 
   constructor(configuration: RedshiftClientConfig) {

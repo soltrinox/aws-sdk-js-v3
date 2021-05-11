@@ -22,8 +22,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AdminDisableProviderForUserCommandInput = AdminDisableProviderForUserRequest;
-export type AdminDisableProviderForUserCommandOutput = AdminDisableProviderForUserResponse & __MetadataBearer;
+export interface AdminDisableProviderForUserCommandInput extends AdminDisableProviderForUserRequest {}
+export interface AdminDisableProviderForUserCommandOutput
+  extends AdminDisableProviderForUserResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Disables the user from signing in with the specified external (SAML or social)
@@ -32,7 +34,7 @@ export type AdminDisableProviderForUserCommandOutput = AdminDisableProviderForUs
  *             disable is a linked external IdP user, any link between that user and an existing user
  *             is removed. The next time the external user (no longer attached to the previously linked
  *                 <code>DestinationUser</code>) signs in, they must create a new user account. See
- *             <a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html">AdminLinkProviderForUser</a>.</p>
+ *                 <a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html">AdminLinkProviderForUser</a>.</p>
  *         <p>This action is enabled only for admin access and requires developer
  *             credentials.</p>
  *         <p>The <code>ProviderName</code> must match the value specified when creating an IdP for
@@ -47,13 +49,27 @@ export type AdminDisableProviderForUserCommandOutput = AdminDisableProviderForUs
  *         <p>For de-linking a SAML identity, there are two scenarios. If the linked identity has
  *             not yet been used to sign-in, the <code>ProviderAttributeName</code> and
  *                 <code>ProviderAttributeValue</code> must be the same values that were used for the
- *                 <code>SourceUser</code> when the identities were originally linked using  <code>
+ *                 <code>SourceUser</code> when the identities were originally linked using <code>
  *                 AdminLinkProviderForUser</code> call. (If the linking was done with
  *                 <code>ProviderAttributeName</code> set to <code>Cognito_Subject</code>, the same
  *             applies here). However, if the user has already signed in, the
  *                 <code>ProviderAttributeName</code> must be <code>Cognito_Subject</code> and
  *                 <code>ProviderAttributeValue</code> must be the subject of the SAML
  *             assertion.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, AdminDisableProviderForUserCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, AdminDisableProviderForUserCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new AdminDisableProviderForUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AdminDisableProviderForUserCommandInput} for command's `input` shape.
+ * @see {@link AdminDisableProviderForUserCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AdminDisableProviderForUserCommand extends $Command<
   AdminDisableProviderForUserCommandInput,

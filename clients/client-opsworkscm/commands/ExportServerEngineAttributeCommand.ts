@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ExportServerEngineAttributeCommandInput = ExportServerEngineAttributeRequest;
-export type ExportServerEngineAttributeCommandOutput = ExportServerEngineAttributeResponse & __MetadataBearer;
+export interface ExportServerEngineAttributeCommandInput extends ExportServerEngineAttributeRequest {}
+export interface ExportServerEngineAttributeCommandOutput
+  extends ExportServerEngineAttributeResponse,
+    __MetadataBearer {}
 
 /**
  * <p>
@@ -33,6 +35,20 @@ export type ExportServerEngineAttributeCommandOutput = ExportServerEngineAttribu
  *       An <code>InvalidStateException</code> is thrown when the server is in any of the following states: CREATING, TERMINATED,
  *       FAILED or DELETING.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksCMClient, ExportServerEngineAttributeCommand } from "@aws-sdk/client-opsworkscm"; // ES Modules import
+ * // const { OpsWorksCMClient, ExportServerEngineAttributeCommand } = require("@aws-sdk/client-opsworkscm"); // CommonJS import
+ * const client = new OpsWorksCMClient(config);
+ * const command = new ExportServerEngineAttributeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ExportServerEngineAttributeCommandInput} for command's `input` shape.
+ * @see {@link ExportServerEngineAttributeCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksCMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ExportServerEngineAttributeCommand extends $Command<
   ExportServerEngineAttributeCommandInput,

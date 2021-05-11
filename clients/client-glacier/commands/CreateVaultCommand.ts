@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateVaultCommandInput = CreateVaultInput;
-export type CreateVaultCommandOutput = CreateVaultOutput & __MetadataBearer;
+export interface CreateVaultCommandInput extends CreateVaultInput {}
+export interface CreateVaultCommandOutput extends CreateVaultOutput, __MetadataBearer {}
 
 /**
  * <p>This operation creates a new vault with the specified name. The name of the vault
@@ -45,6 +45,20 @@ export type CreateVaultCommandOutput = CreateVaultOutput & __MetadataBearer;
  *          <p> For conceptual information and underlying REST API, see <a href="https://docs.aws.amazon.com/amazonglacier/latest/dev/creating-vaults.html">Creating a Vault in Amazon
  *             Glacier</a> and <a href="https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.html">Create Vault </a> in the
  *             <i>Amazon Glacier Developer Guide</i>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlacierClient, CreateVaultCommand } from "@aws-sdk/client-glacier"; // ES Modules import
+ * // const { GlacierClient, CreateVaultCommand } = require("@aws-sdk/client-glacier"); // CommonJS import
+ * const client = new GlacierClient(config);
+ * const command = new CreateVaultCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateVaultCommandInput} for command's `input` shape.
+ * @see {@link CreateVaultCommandOutput} for command's `response` shape.
+ * @see {@link GlacierClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateVaultCommand extends $Command<
   CreateVaultCommandInput,

@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListUsersCommandInput = ListUsersRequest;
-export type ListUsersCommandOutput = ListUsersResponse & __MetadataBearer;
+export interface ListUsersCommandInput extends ListUsersRequest {}
+export interface ListUsersCommandOutput extends ListUsersResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the attribute name and value of the user that you specified in the search. We only support <code>UserName</code> as a valid filter attribute path currently, and filter is required. This API returns minimum attributes, including <code>UserId</code> and <code>UserName</code> in the response.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IdentitystoreClient, ListUsersCommand } from "@aws-sdk/client-identitystore"; // ES Modules import
+ * // const { IdentitystoreClient, ListUsersCommand } = require("@aws-sdk/client-identitystore"); // CommonJS import
+ * const client = new IdentitystoreClient(config);
+ * const command = new ListUsersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListUsersCommandInput} for command's `input` shape.
+ * @see {@link ListUsersCommandOutput} for command's `response` shape.
+ * @see {@link IdentitystoreClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListUsersCommand extends $Command<
   ListUsersCommandInput,

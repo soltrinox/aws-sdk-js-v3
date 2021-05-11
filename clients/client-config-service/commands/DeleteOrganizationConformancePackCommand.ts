@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteOrganizationConformancePackCommandInput = DeleteOrganizationConformancePackRequest;
-export type DeleteOrganizationConformancePackCommandOutput = __MetadataBearer;
+export interface DeleteOrganizationConformancePackCommandInput extends DeleteOrganizationConformancePackRequest {}
+export interface DeleteOrganizationConformancePackCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified organization conformance pack and all of the config rules and remediation actions from
@@ -28,6 +28,20 @@ export type DeleteOrganizationConformancePackCommandOutput = __MetadataBearer;
  * 		<code>ListDelegatedAdministrator</code> permissions are added.</p>
  * 			      <p>AWS Config sets the state of a conformance pack to DELETE_IN_PROGRESS until the deletion is complete.
  * 				You cannot update a conformance pack while it is in this state. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DeleteOrganizationConformancePackCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DeleteOrganizationConformancePackCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DeleteOrganizationConformancePackCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteOrganizationConformancePackCommandInput} for command's `input` shape.
+ * @see {@link DeleteOrganizationConformancePackCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteOrganizationConformancePackCommand extends $Command<
   DeleteOrganizationConformancePackCommandInput,

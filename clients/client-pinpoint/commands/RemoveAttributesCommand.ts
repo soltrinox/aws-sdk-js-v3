@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveAttributesCommandInput = RemoveAttributesRequest;
-export type RemoveAttributesCommandOutput = RemoveAttributesResponse & __MetadataBearer;
+export interface RemoveAttributesCommandInput extends RemoveAttributesRequest {}
+export interface RemoveAttributesCommandOutput extends RemoveAttributesResponse, __MetadataBearer {}
 
 /**
  * <p>Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, RemoveAttributesCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, RemoveAttributesCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new RemoveAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveAttributesCommandInput} for command's `input` shape.
+ * @see {@link RemoveAttributesCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveAttributesCommand extends $Command<
   RemoveAttributesCommandInput,

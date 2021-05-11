@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UntagStreamCommandInput = UntagStreamInput;
-export type UntagStreamCommandOutput = UntagStreamOutput & __MetadataBearer;
+export interface UntagStreamCommandInput extends UntagStreamInput {}
+export interface UntagStreamCommandOutput extends UntagStreamOutput, __MetadataBearer {}
 
 /**
  * <p>Removes one or more tags from a stream. In the request, specify only a tag key or
@@ -26,6 +26,20 @@ export type UntagStreamCommandOutput = UntagStreamOutput & __MetadataBearer;
  *             ignored.</p>
  *         <p>In the request, you must provide the <code>StreamName</code> or
  *                 <code>StreamARN</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisVideoClient, UntagStreamCommand } from "@aws-sdk/client-kinesis-video"; // ES Modules import
+ * // const { KinesisVideoClient, UntagStreamCommand } = require("@aws-sdk/client-kinesis-video"); // CommonJS import
+ * const client = new KinesisVideoClient(config);
+ * const command = new UntagStreamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UntagStreamCommandInput} for command's `input` shape.
+ * @see {@link UntagStreamCommandOutput} for command's `response` shape.
+ * @see {@link KinesisVideoClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UntagStreamCommand extends $Command<
   UntagStreamCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateNodeCommandInput = AssociateNodeRequest;
-export type AssociateNodeCommandOutput = AssociateNodeResponse & __MetadataBearer;
+export interface AssociateNodeCommandInput extends AssociateNodeRequest {}
+export interface AssociateNodeCommandOutput extends AssociateNodeResponse, __MetadataBearer {}
 
 /**
  * <p> Associates a new node with the server. For more information about how to disassociate a node, see <a>DisassociateNode</a>.</p>
@@ -38,6 +38,20 @@ export type AssociateNodeCommandOutput = AssociateNodeResponse & __MetadataBeare
  *       A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid.
  *       The AssociateNode API call can be integrated into Auto Scaling configurations, AWS Cloudformation templates, or the user data of a server's instance.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksCMClient, AssociateNodeCommand } from "@aws-sdk/client-opsworkscm"; // ES Modules import
+ * // const { OpsWorksCMClient, AssociateNodeCommand } = require("@aws-sdk/client-opsworkscm"); // CommonJS import
+ * const client = new OpsWorksCMClient(config);
+ * const command = new AssociateNodeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateNodeCommandInput} for command's `input` shape.
+ * @see {@link AssociateNodeCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksCMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateNodeCommand extends $Command<
   AssociateNodeCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateProcessingJobCommandInput = CreateProcessingJobRequest;
-export type CreateProcessingJobCommandOutput = CreateProcessingJobResponse & __MetadataBearer;
+export interface CreateProcessingJobCommandInput extends CreateProcessingJobRequest {}
+export interface CreateProcessingJobCommandOutput extends CreateProcessingJobResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a processing job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, CreateProcessingJobCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, CreateProcessingJobCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new CreateProcessingJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateProcessingJobCommandInput} for command's `input` shape.
+ * @see {@link CreateProcessingJobCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateProcessingJobCommand extends $Command<
   CreateProcessingJobCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAutoScalingGroupCommandInput = DeleteAutoScalingGroupType;
-export type DeleteAutoScalingGroupCommandOutput = __MetadataBearer;
+export interface DeleteAutoScalingGroupCommandInput extends DeleteAutoScalingGroupType {}
+export interface DeleteAutoScalingGroupCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified Auto Scaling group.</p>
@@ -31,6 +31,20 @@ export type DeleteAutoScalingGroupCommandOutput = __MetadataBearer;
  *             instances.</p>
  *         <p>To terminate all instances before deleting the Auto Scaling group, call the <a>UpdateAutoScalingGroup</a> API and set the minimum size and desired capacity
  *             of the Auto Scaling group to zero.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AutoScalingClient, DeleteAutoScalingGroupCommand } from "@aws-sdk/client-auto-scaling"; // ES Modules import
+ * // const { AutoScalingClient, DeleteAutoScalingGroupCommand } = require("@aws-sdk/client-auto-scaling"); // CommonJS import
+ * const client = new AutoScalingClient(config);
+ * const command = new DeleteAutoScalingGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAutoScalingGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteAutoScalingGroupCommandOutput} for command's `response` shape.
+ * @see {@link AutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAutoScalingGroupCommand extends $Command<
   DeleteAutoScalingGroupCommandInput,

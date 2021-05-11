@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociatePhoneNumbersWithVoiceConnectorGroupCommandInput = AssociatePhoneNumbersWithVoiceConnectorGroupRequest;
-export type AssociatePhoneNumbersWithVoiceConnectorGroupCommandOutput = AssociatePhoneNumbersWithVoiceConnectorGroupResponse &
-  __MetadataBearer;
+export interface AssociatePhoneNumbersWithVoiceConnectorGroupCommandInput
+  extends AssociatePhoneNumbersWithVoiceConnectorGroupRequest {}
+export interface AssociatePhoneNumbersWithVoiceConnectorGroupCommandOutput
+  extends AssociatePhoneNumbersWithVoiceConnectorGroupResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Associates phone numbers with the specified Amazon Chime Voice Connector group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, AssociatePhoneNumbersWithVoiceConnectorGroupCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, AssociatePhoneNumbersWithVoiceConnectorGroupCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new AssociatePhoneNumbersWithVoiceConnectorGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociatePhoneNumbersWithVoiceConnectorGroupCommandInput} for command's `input` shape.
+ * @see {@link AssociatePhoneNumbersWithVoiceConnectorGroupCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociatePhoneNumbersWithVoiceConnectorGroupCommand extends $Command<
   AssociatePhoneNumbersWithVoiceConnectorGroupCommandInput,

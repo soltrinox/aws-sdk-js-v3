@@ -17,16 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteUserPermissionsBoundaryCommandInput = DeleteUserPermissionsBoundaryRequest;
-export type DeleteUserPermissionsBoundaryCommandOutput = __MetadataBearer;
+export interface DeleteUserPermissionsBoundaryCommandInput extends DeleteUserPermissionsBoundaryRequest {}
+export interface DeleteUserPermissionsBoundaryCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the permissions boundary for the specified IAM user.</p>
- *          <important>
+ *         <important>
  *             <p>Deleting the permissions boundary for a user might increase its permissions by
- *             allowing the user to perform all the actions granted in its permissions policies.
- *          </p>
- *          </important>
+ *                 allowing the user to perform all the actions granted in its permissions policies.
+ *             </p>
+ *         </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, DeleteUserPermissionsBoundaryCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, DeleteUserPermissionsBoundaryCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new DeleteUserPermissionsBoundaryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteUserPermissionsBoundaryCommandInput} for command's `input` shape.
+ * @see {@link DeleteUserPermissionsBoundaryCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteUserPermissionsBoundaryCommand extends $Command<
   DeleteUserPermissionsBoundaryCommandInput,

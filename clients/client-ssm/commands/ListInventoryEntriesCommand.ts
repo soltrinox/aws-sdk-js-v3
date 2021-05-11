@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListInventoryEntriesCommandInput = ListInventoryEntriesRequest;
-export type ListInventoryEntriesCommandOutput = ListInventoryEntriesResult & __MetadataBearer;
+export interface ListInventoryEntriesCommandInput extends ListInventoryEntriesRequest {}
+export interface ListInventoryEntriesCommandOutput extends ListInventoryEntriesResult, __MetadataBearer {}
 
 /**
  * <p>A list of inventory items returned by the request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, ListInventoryEntriesCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, ListInventoryEntriesCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new ListInventoryEntriesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListInventoryEntriesCommandInput} for command's `input` shape.
+ * @see {@link ListInventoryEntriesCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListInventoryEntriesCommand extends $Command<
   ListInventoryEntriesCommandInput,

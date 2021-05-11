@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListChannelsCommandInput = ListChannelsRequest;
-export type ListChannelsCommandOutput = ListChannelsResponse & __MetadataBearer;
+export interface ListChannelsCommandInput extends ListChannelsRequest {}
+export interface ListChannelsCommandOutput extends ListChannelsResponse, __MetadataBearer {}
 
 /**
  * Returns a collection of Channels.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaPackageClient, ListChannelsCommand } from "@aws-sdk/client-mediapackage"; // ES Modules import
+ * // const { MediaPackageClient, ListChannelsCommand } = require("@aws-sdk/client-mediapackage"); // CommonJS import
+ * const client = new MediaPackageClient(config);
+ * const command = new ListChannelsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListChannelsCommandInput} for command's `input` shape.
+ * @see {@link ListChannelsCommandOutput} for command's `response` shape.
+ * @see {@link MediaPackageClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListChannelsCommand extends $Command<
   ListChannelsCommandInput,

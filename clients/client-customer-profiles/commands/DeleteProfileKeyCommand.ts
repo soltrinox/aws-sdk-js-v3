@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteProfileKeyCommandInput = DeleteProfileKeyRequest;
-export type DeleteProfileKeyCommandOutput = DeleteProfileKeyResponse & __MetadataBearer;
+export interface DeleteProfileKeyCommandInput extends DeleteProfileKeyRequest {}
+export interface DeleteProfileKeyCommandOutput extends DeleteProfileKeyResponse, __MetadataBearer {}
 
 /**
  * <p>Removes a searchable key from a customer profile.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CustomerProfilesClient, DeleteProfileKeyCommand } from "@aws-sdk/client-customer-profiles"; // ES Modules import
+ * // const { CustomerProfilesClient, DeleteProfileKeyCommand } = require("@aws-sdk/client-customer-profiles"); // CommonJS import
+ * const client = new CustomerProfilesClient(config);
+ * const command = new DeleteProfileKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteProfileKeyCommandInput} for command's `input` shape.
+ * @see {@link DeleteProfileKeyCommandOutput} for command's `response` shape.
+ * @see {@link CustomerProfilesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteProfileKeyCommand extends $Command<
   DeleteProfileKeyCommandInput,

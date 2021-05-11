@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDataSetCommandInput = DeleteDataSetRequest;
-export type DeleteDataSetCommandOutput = DeleteDataSetResponse & __MetadataBearer;
+export interface DeleteDataSetCommandInput extends DeleteDataSetRequest {}
+export interface DeleteDataSetCommandOutput extends DeleteDataSetResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a dataset.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, DeleteDataSetCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, DeleteDataSetCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new DeleteDataSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDataSetCommandInput} for command's `input` shape.
+ * @see {@link DeleteDataSetCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDataSetCommand extends $Command<
   DeleteDataSetCommandInput,

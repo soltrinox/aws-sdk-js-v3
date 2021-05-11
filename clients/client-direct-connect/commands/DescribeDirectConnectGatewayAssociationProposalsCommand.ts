@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDirectConnectGatewayAssociationProposalsCommandInput = DescribeDirectConnectGatewayAssociationProposalsRequest;
-export type DescribeDirectConnectGatewayAssociationProposalsCommandOutput = DescribeDirectConnectGatewayAssociationProposalsResult &
-  __MetadataBearer;
+export interface DescribeDirectConnectGatewayAssociationProposalsCommandInput
+  extends DescribeDirectConnectGatewayAssociationProposalsRequest {}
+export interface DescribeDirectConnectGatewayAssociationProposalsCommandOutput
+  extends DescribeDirectConnectGatewayAssociationProposalsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Describes one or more association proposals for connection between a virtual private gateway or transit gateway and a Direct Connect gateway. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectConnectClient, DescribeDirectConnectGatewayAssociationProposalsCommand } from "@aws-sdk/client-direct-connect"; // ES Modules import
+ * // const { DirectConnectClient, DescribeDirectConnectGatewayAssociationProposalsCommand } = require("@aws-sdk/client-direct-connect"); // CommonJS import
+ * const client = new DirectConnectClient(config);
+ * const command = new DescribeDirectConnectGatewayAssociationProposalsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDirectConnectGatewayAssociationProposalsCommandInput} for command's `input` shape.
+ * @see {@link DescribeDirectConnectGatewayAssociationProposalsCommandOutput} for command's `response` shape.
+ * @see {@link DirectConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDirectConnectGatewayAssociationProposalsCommand extends $Command<
   DescribeDirectConnectGatewayAssociationProposalsCommandInput,

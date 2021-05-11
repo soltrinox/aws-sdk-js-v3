@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDiskSnapshotCommandInput = GetDiskSnapshotRequest;
-export type GetDiskSnapshotCommandOutput = GetDiskSnapshotResult & __MetadataBearer;
+export interface GetDiskSnapshotCommandInput extends GetDiskSnapshotRequest {}
+export interface GetDiskSnapshotCommandOutput extends GetDiskSnapshotResult, __MetadataBearer {}
 
 /**
  * <p>Returns information about a specific block storage disk snapshot.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetDiskSnapshotCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetDiskSnapshotCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetDiskSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDiskSnapshotCommandInput} for command's `input` shape.
+ * @see {@link GetDiskSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDiskSnapshotCommand extends $Command<
   GetDiskSnapshotCommandInput,

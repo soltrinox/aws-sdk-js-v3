@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateGlobalTableCommandInput = UpdateGlobalTableInput;
-export type UpdateGlobalTableCommandOutput = UpdateGlobalTableOutput & __MetadataBearer;
+export interface UpdateGlobalTableCommandInput extends UpdateGlobalTableInput {}
+export interface UpdateGlobalTableCommandOutput extends UpdateGlobalTableOutput, __MetadataBearer {}
 
 /**
  * <p>Adds or removes replicas in the specified global table. The global table must already
@@ -50,6 +50,20 @@ export type UpdateGlobalTableCommandOutput = UpdateGlobalTableOutput & __Metadat
  *             </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, UpdateGlobalTableCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, UpdateGlobalTableCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new UpdateGlobalTableCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateGlobalTableCommandInput} for command's `input` shape.
+ * @see {@link UpdateGlobalTableCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateGlobalTableCommand extends $Command<
   UpdateGlobalTableCommandInput,

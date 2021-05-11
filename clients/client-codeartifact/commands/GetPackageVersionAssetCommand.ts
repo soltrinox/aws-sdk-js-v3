@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetPackageVersionAssetCommandInput = GetPackageVersionAssetRequest;
-export type GetPackageVersionAssetCommandOutput = GetPackageVersionAssetResult & __MetadataBearer;
+export interface GetPackageVersionAssetCommandInput extends GetPackageVersionAssetRequest {}
+export interface GetPackageVersionAssetCommandOutput extends GetPackageVersionAssetResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -26,6 +26,20 @@ export type GetPackageVersionAssetCommandOutput = GetPackageVersionAssetResult &
  *       <code>GetPackageVersionAsset</code> to download a <code>JAR</code> file, a <code>POM</code> file,
  *       or any other assets in the package version.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeartifactClient, GetPackageVersionAssetCommand } from "@aws-sdk/client-codeartifact"; // ES Modules import
+ * // const { CodeartifactClient, GetPackageVersionAssetCommand } = require("@aws-sdk/client-codeartifact"); // CommonJS import
+ * const client = new CodeartifactClient(config);
+ * const command = new GetPackageVersionAssetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetPackageVersionAssetCommandInput} for command's `input` shape.
+ * @see {@link GetPackageVersionAssetCommandOutput} for command's `response` shape.
+ * @see {@link CodeartifactClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetPackageVersionAssetCommand extends $Command<
   GetPackageVersionAssetCommandInput,

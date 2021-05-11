@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDocumentPathCommandInput = GetDocumentPathRequest;
-export type GetDocumentPathCommandOutput = GetDocumentPathResponse & __MetadataBearer;
+export interface GetDocumentPathCommandInput extends GetDocumentPathRequest {}
+export interface GetDocumentPathCommandOutput extends GetDocumentPathResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the path information (the hierarchy from the root folder) for the
@@ -27,6 +27,20 @@ export type GetDocumentPathCommandOutput = GetDocumentPathResponse & __MetadataB
  *             requested document and only includes the IDs of the parent folders in the path. You can
  *             limit the maximum number of levels. You can also request the names of the parent
  *             folders.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkDocsClient, GetDocumentPathCommand } from "@aws-sdk/client-workdocs"; // ES Modules import
+ * // const { WorkDocsClient, GetDocumentPathCommand } = require("@aws-sdk/client-workdocs"); // CommonJS import
+ * const client = new WorkDocsClient(config);
+ * const command = new GetDocumentPathCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDocumentPathCommandInput} for command's `input` shape.
+ * @see {@link GetDocumentPathCommandOutput} for command's `response` shape.
+ * @see {@link WorkDocsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDocumentPathCommand extends $Command<
   GetDocumentPathCommandInput,

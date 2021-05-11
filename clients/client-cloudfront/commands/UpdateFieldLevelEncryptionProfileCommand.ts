@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateFieldLevelEncryptionProfileCommandInput = UpdateFieldLevelEncryptionProfileRequest;
-export type UpdateFieldLevelEncryptionProfileCommandOutput = UpdateFieldLevelEncryptionProfileResult & __MetadataBearer;
+export interface UpdateFieldLevelEncryptionProfileCommandInput extends UpdateFieldLevelEncryptionProfileRequest {}
+export interface UpdateFieldLevelEncryptionProfileCommandOutput
+  extends UpdateFieldLevelEncryptionProfileResult,
+    __MetadataBearer {}
 
 /**
  * <p>Update a field-level encryption profile. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, UpdateFieldLevelEncryptionProfileCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, UpdateFieldLevelEncryptionProfileCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new UpdateFieldLevelEncryptionProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateFieldLevelEncryptionProfileCommandInput} for command's `input` shape.
+ * @see {@link UpdateFieldLevelEncryptionProfileCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateFieldLevelEncryptionProfileCommand extends $Command<
   UpdateFieldLevelEncryptionProfileCommandInput,

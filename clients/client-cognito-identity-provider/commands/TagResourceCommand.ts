@@ -22,8 +22,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceRequest;
-export type TagResourceCommandOutput = TagResourceResponse & __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceRequest {}
+export interface TagResourceCommandOutput extends TagResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Assigns a set of tags to an Amazon Cognito user pool. A tag is a label that you can
@@ -40,6 +40,20 @@ export type TagResourceCommandOutput = TagResourceResponse & __MetadataBearer;
  *             for user pools based on specific tags or tag values.</p>
  *         <p>You can use this action up to 5 times per second, per account. A user pool can have as
  *             many as 50 tags.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, TagResourceCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, TagResourceCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

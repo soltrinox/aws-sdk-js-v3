@@ -2,7 +2,7 @@ import { RDSClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "
 import {
   DescribeEngineDefaultClusterParametersMessage,
   DescribeEngineDefaultClusterParametersResult,
-} from "../models/models_0";
+} from "../models/models_1";
 import {
   deserializeAws_queryDescribeEngineDefaultClusterParametersCommand,
   serializeAws_queryDescribeEngineDefaultClusterParametersCommand,
@@ -20,9 +20,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEngineDefaultClusterParametersCommandInput = DescribeEngineDefaultClusterParametersMessage;
-export type DescribeEngineDefaultClusterParametersCommandOutput = DescribeEngineDefaultClusterParametersResult &
-  __MetadataBearer;
+export interface DescribeEngineDefaultClusterParametersCommandInput
+  extends DescribeEngineDefaultClusterParametersMessage {}
+export interface DescribeEngineDefaultClusterParametersCommandOutput
+  extends DescribeEngineDefaultClusterParametersResult,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the default engine and system parameter information for the cluster database engine.</p>
@@ -30,6 +32,20 @@ export type DescribeEngineDefaultClusterParametersCommandOutput = DescribeEngine
  *           <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html">
  *               What Is Amazon Aurora?</a> in the <i>Amazon Aurora User Guide.</i>
  *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, DescribeEngineDefaultClusterParametersCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, DescribeEngineDefaultClusterParametersCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new DescribeEngineDefaultClusterParametersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEngineDefaultClusterParametersCommandInput} for command's `input` shape.
+ * @see {@link DescribeEngineDefaultClusterParametersCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEngineDefaultClusterParametersCommand extends $Command<
   DescribeEngineDefaultClusterParametersCommandInput,

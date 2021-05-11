@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetIntentVersionsCommandInput = GetIntentVersionsRequest;
-export type GetIntentVersionsCommandOutput = GetIntentVersionsResponse & __MetadataBearer;
+export interface GetIntentVersionsCommandInput extends GetIntentVersionsRequest {}
+export interface GetIntentVersionsCommandOutput extends GetIntentVersionsResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about all of the versions of an intent.</p>
@@ -36,6 +36,20 @@ export type GetIntentVersionsCommandOutput = GetIntentVersionsResponse & __Metad
  *       least one version, the <code>$LATEST</code> version.</p>
  *          <p>This operation requires permissions for the
  *         <code>lex:GetIntentVersions</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, GetIntentVersionsCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, GetIntentVersionsCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new GetIntentVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetIntentVersionsCommandInput} for command's `input` shape.
+ * @see {@link GetIntentVersionsCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetIntentVersionsCommand extends $Command<
   GetIntentVersionsCommandInput,

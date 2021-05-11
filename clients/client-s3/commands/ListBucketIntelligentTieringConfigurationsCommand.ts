@@ -21,9 +21,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListBucketIntelligentTieringConfigurationsCommandInput = ListBucketIntelligentTieringConfigurationsRequest;
-export type ListBucketIntelligentTieringConfigurationsCommandOutput = ListBucketIntelligentTieringConfigurationsOutput &
-  __MetadataBearer;
+export interface ListBucketIntelligentTieringConfigurationsCommandInput
+  extends ListBucketIntelligentTieringConfigurationsRequest {}
+export interface ListBucketIntelligentTieringConfigurationsCommandOutput
+  extends ListBucketIntelligentTieringConfigurationsOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Lists the S3 Intelligent-Tiering configuration from the specified bucket.</p>
@@ -49,6 +51,20 @@ export type ListBucketIntelligentTieringConfigurationsCommandOutput = ListBucket
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, ListBucketIntelligentTieringConfigurationsCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, ListBucketIntelligentTieringConfigurationsCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new ListBucketIntelligentTieringConfigurationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListBucketIntelligentTieringConfigurationsCommandInput} for command's `input` shape.
+ * @see {@link ListBucketIntelligentTieringConfigurationsCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListBucketIntelligentTieringConfigurationsCommand extends $Command<
   ListBucketIntelligentTieringConfigurationsCommandInput,

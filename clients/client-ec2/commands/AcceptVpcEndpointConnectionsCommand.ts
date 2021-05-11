@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AcceptVpcEndpointConnectionsCommandInput = AcceptVpcEndpointConnectionsRequest;
-export type AcceptVpcEndpointConnectionsCommandOutput = AcceptVpcEndpointConnectionsResult & __MetadataBearer;
+export interface AcceptVpcEndpointConnectionsCommandInput extends AcceptVpcEndpointConnectionsRequest {}
+export interface AcceptVpcEndpointConnectionsCommandOutput
+  extends AcceptVpcEndpointConnectionsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Accepts one or more interface VPC endpoint connection requests to your VPC endpoint
  *             service.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, AcceptVpcEndpointConnectionsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, AcceptVpcEndpointConnectionsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new AcceptVpcEndpointConnectionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AcceptVpcEndpointConnectionsCommandInput} for command's `input` shape.
+ * @see {@link AcceptVpcEndpointConnectionsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AcceptVpcEndpointConnectionsCommand extends $Command<
   AcceptVpcEndpointConnectionsCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SynthesizeSpeechCommandInput = SynthesizeSpeechInput;
-export type SynthesizeSpeechCommandOutput = SynthesizeSpeechOutput & __MetadataBearer;
+export interface SynthesizeSpeechCommandInput extends SynthesizeSpeechInput {}
+export interface SynthesizeSpeechCommandOutput extends SynthesizeSpeechOutput, __MetadataBearer {}
 
 /**
  * <p>Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML input must be
@@ -26,6 +26,20 @@ export type SynthesizeSpeechCommandOutput = SynthesizeSpeechOutput & __MetadataB
  *       example, Cyrillic might not be read at all by English voices) unless phoneme mapping is used.
  *       For more information, see <a href="https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html">How it
  *         Works</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PollyClient, SynthesizeSpeechCommand } from "@aws-sdk/client-polly"; // ES Modules import
+ * // const { PollyClient, SynthesizeSpeechCommand } = require("@aws-sdk/client-polly"); // CommonJS import
+ * const client = new PollyClient(config);
+ * const command = new SynthesizeSpeechCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SynthesizeSpeechCommandInput} for command's `input` shape.
+ * @see {@link SynthesizeSpeechCommandOutput} for command's `response` shape.
+ * @see {@link PollyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SynthesizeSpeechCommand extends $Command<
   SynthesizeSpeechCommandInput,

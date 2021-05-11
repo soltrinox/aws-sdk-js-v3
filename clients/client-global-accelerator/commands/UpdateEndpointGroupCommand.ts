@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateEndpointGroupCommandInput = UpdateEndpointGroupRequest;
-export type UpdateEndpointGroupCommandOutput = UpdateEndpointGroupResponse & __MetadataBearer;
+export interface UpdateEndpointGroupCommandInput extends UpdateEndpointGroupRequest {}
+export interface UpdateEndpointGroupCommandOutput extends UpdateEndpointGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Update an endpoint group. A resource must be valid and active when you add it as an endpoint.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, UpdateEndpointGroupCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, UpdateEndpointGroupCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new UpdateEndpointGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateEndpointGroupCommandInput} for command's `input` shape.
+ * @see {@link UpdateEndpointGroupCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateEndpointGroupCommand extends $Command<
   UpdateEndpointGroupCommandInput,

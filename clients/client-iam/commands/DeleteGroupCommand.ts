@@ -14,12 +14,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteGroupCommandInput = DeleteGroupRequest;
-export type DeleteGroupCommandOutput = __MetadataBearer;
+export interface DeleteGroupCommandInput extends DeleteGroupRequest {}
+export interface DeleteGroupCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified IAM group. The group must not contain any users or have any
- *          attached policies.</p>
+ *             attached policies.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, DeleteGroupCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, DeleteGroupCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new DeleteGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteGroupCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteGroupCommand extends $Command<
   DeleteGroupCommandInput,

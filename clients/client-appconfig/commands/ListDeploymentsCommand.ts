@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDeploymentsCommandInput = ListDeploymentsRequest;
-export type ListDeploymentsCommandOutput = Deployments & __MetadataBearer;
+export interface ListDeploymentsCommandInput extends ListDeploymentsRequest {}
+export interface ListDeploymentsCommandOutput extends Deployments, __MetadataBearer {}
 
 /**
  * <p>Lists the deployments for an environment.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppConfigClient, ListDeploymentsCommand } from "@aws-sdk/client-appconfig"; // ES Modules import
+ * // const { AppConfigClient, ListDeploymentsCommand } = require("@aws-sdk/client-appconfig"); // CommonJS import
+ * const client = new AppConfigClient(config);
+ * const command = new ListDeploymentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDeploymentsCommandInput} for command's `input` shape.
+ * @see {@link ListDeploymentsCommandOutput} for command's `response` shape.
+ * @see {@link AppConfigClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDeploymentsCommand extends $Command<
   ListDeploymentsCommandInput,

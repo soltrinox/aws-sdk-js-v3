@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListRoomsCommandInput = ListRoomsRequest;
-export type ListRoomsCommandOutput = ListRoomsResponse & __MetadataBearer;
+export interface ListRoomsCommandInput extends ListRoomsRequest {}
+export interface ListRoomsCommandOutput extends ListRoomsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the room details for the specified Amazon Chime Enterprise account. Optionally, filter the results by a member ID (user ID or bot ID) to see a list of rooms that the member belongs to.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, ListRoomsCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, ListRoomsCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new ListRoomsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListRoomsCommandInput} for command's `input` shape.
+ * @see {@link ListRoomsCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListRoomsCommand extends $Command<
   ListRoomsCommandInput,

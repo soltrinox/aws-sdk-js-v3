@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteGatewayRouteCommandInput = DeleteGatewayRouteInput;
-export type DeleteGatewayRouteCommandOutput = DeleteGatewayRouteOutput & __MetadataBearer;
+export interface DeleteGatewayRouteCommandInput extends DeleteGatewayRouteInput {}
+export interface DeleteGatewayRouteCommandOutput extends DeleteGatewayRouteOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes an existing gateway route.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppMeshClient, DeleteGatewayRouteCommand } from "@aws-sdk/client-app-mesh"; // ES Modules import
+ * // const { AppMeshClient, DeleteGatewayRouteCommand } = require("@aws-sdk/client-app-mesh"); // CommonJS import
+ * const client = new AppMeshClient(config);
+ * const command = new DeleteGatewayRouteCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteGatewayRouteCommandInput} for command's `input` shape.
+ * @see {@link DeleteGatewayRouteCommandOutput} for command's `response` shape.
+ * @see {@link AppMeshClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteGatewayRouteCommand extends $Command<
   DeleteGatewayRouteCommandInput,

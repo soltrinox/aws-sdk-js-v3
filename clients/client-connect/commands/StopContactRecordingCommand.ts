@@ -17,17 +17,31 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopContactRecordingCommandInput = StopContactRecordingRequest;
-export type StopContactRecordingCommandOutput = StopContactRecordingResponse & __MetadataBearer;
+export interface StopContactRecordingCommandInput extends StopContactRecordingRequest {}
+export interface StopContactRecordingCommandOutput extends StopContactRecordingResponse, __MetadataBearer {}
 
 /**
- * <p>When a contact is being recorded, this API stops recording the call. StopContactRecording is
- *    a one-time action. If you use StopContactRecording to stop recording an ongoing call, you can't
- *    use StartContactRecording to restart it. For scenarios where the recording has started and you
- *    want to suspend it for sensitive information (for example, to collect a credit card number), and
- *    then restart it, use SuspendContactRecording and ResumeContactRecording.</p>
+ * <p>Stops recording a call when a contact is being recorded. StopContactRecording is a one-time
+ *    action. If you use StopContactRecording to stop recording an ongoing call, you can't use
+ *    StartContactRecording to restart it. For scenarios where the recording has started and you want
+ *    to suspend it for sensitive information (for example, to collect a credit card number), and then
+ *    restart it, use SuspendContactRecording and ResumeContactRecording.</p>
  *
  *          <p>Only voice recordings are supported at this time.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, StopContactRecordingCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, StopContactRecordingCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new StopContactRecordingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopContactRecordingCommandInput} for command's `input` shape.
+ * @see {@link StopContactRecordingCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopContactRecordingCommand extends $Command<
   StopContactRecordingCommandInput,

@@ -21,11 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteReplicationSubnetGroupCommandInput = DeleteReplicationSubnetGroupMessage;
-export type DeleteReplicationSubnetGroupCommandOutput = DeleteReplicationSubnetGroupResponse & __MetadataBearer;
+export interface DeleteReplicationSubnetGroupCommandInput extends DeleteReplicationSubnetGroupMessage {}
+export interface DeleteReplicationSubnetGroupCommandOutput
+  extends DeleteReplicationSubnetGroupResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Deletes a subnet group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, DeleteReplicationSubnetGroupCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, DeleteReplicationSubnetGroupCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new DeleteReplicationSubnetGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteReplicationSubnetGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteReplicationSubnetGroupCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteReplicationSubnetGroupCommand extends $Command<
   DeleteReplicationSubnetGroupCommandInput,

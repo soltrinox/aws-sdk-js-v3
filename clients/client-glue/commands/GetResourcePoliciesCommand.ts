@@ -17,13 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetResourcePoliciesCommandInput = GetResourcePoliciesRequest;
-export type GetResourcePoliciesCommandOutput = GetResourcePoliciesResponse & __MetadataBearer;
+export interface GetResourcePoliciesCommandInput extends GetResourcePoliciesRequest {}
+export interface GetResourcePoliciesCommandOutput extends GetResourcePoliciesResponse, __MetadataBearer {}
 
 /**
- * <p>Retrieves the security configurations for the resource policies set on individual resources, and also the account-level policy.</p>
+ * <p>Retrieves the resource policies set on individual resources by AWS Resource Access Manager
+ *       during cross-account permission grants. Also retrieves the Data Catalog resource
+ *       policy.</p>
+ *          <p>If you enabled metadata encryption in Data Catalog settings, and you do not have
+ *       permission on the AWS KMS key, the operation can't return the Data Catalog resource
+ *       policy.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetResourcePoliciesCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetResourcePoliciesCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetResourcePoliciesCommand(input);
+ * const response = await client.send(command);
+ * ```
  *
- * 	        <p>This operation also returns the Data Catalog resource policy. However, if you enabled metadata encryption in Data Catalog settings, and you do not have permission on the AWS KMS key, the operation can't return the Data Catalog resource policy.</p>
+ * @see {@link GetResourcePoliciesCommandInput} for command's `input` shape.
+ * @see {@link GetResourcePoliciesCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetResourcePoliciesCommand extends $Command<
   GetResourcePoliciesCommandInput,

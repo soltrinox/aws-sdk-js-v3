@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelPipelineReprocessingCommandInput = CancelPipelineReprocessingRequest;
-export type CancelPipelineReprocessingCommandOutput = CancelPipelineReprocessingResponse & __MetadataBearer;
+export interface CancelPipelineReprocessingCommandInput extends CancelPipelineReprocessingRequest {}
+export interface CancelPipelineReprocessingCommandOutput extends CancelPipelineReprocessingResponse, __MetadataBearer {}
 
 /**
  * <p>Cancels the reprocessing of data through the pipeline.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTAnalyticsClient, CancelPipelineReprocessingCommand } from "@aws-sdk/client-iotanalytics"; // ES Modules import
+ * // const { IoTAnalyticsClient, CancelPipelineReprocessingCommand } = require("@aws-sdk/client-iotanalytics"); // CommonJS import
+ * const client = new IoTAnalyticsClient(config);
+ * const command = new CancelPipelineReprocessingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelPipelineReprocessingCommandInput} for command's `input` shape.
+ * @see {@link CancelPipelineReprocessingCommandOutput} for command's `response` shape.
+ * @see {@link IoTAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelPipelineReprocessingCommand extends $Command<
   CancelPipelineReprocessingCommandInput,

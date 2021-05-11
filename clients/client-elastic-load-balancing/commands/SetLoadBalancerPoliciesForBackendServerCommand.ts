@@ -24,9 +24,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SetLoadBalancerPoliciesForBackendServerCommandInput = SetLoadBalancerPoliciesForBackendServerInput;
-export type SetLoadBalancerPoliciesForBackendServerCommandOutput = SetLoadBalancerPoliciesForBackendServerOutput &
-  __MetadataBearer;
+export interface SetLoadBalancerPoliciesForBackendServerCommandInput
+  extends SetLoadBalancerPoliciesForBackendServerInput {}
+export interface SetLoadBalancerPoliciesForBackendServerCommandOutput
+  extends SetLoadBalancerPoliciesForBackendServerOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Replaces the set of policies associated with the specified port on which the EC2 instance is listening with a new set of policies.
@@ -40,6 +42,20 @@ export type SetLoadBalancerPoliciesForBackendServerCommandOutput = SetLoadBalanc
  *             in the <i>Classic Load Balancers Guide</i>. For more information about Proxy Protocol, see
  *             <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html">Configure Proxy Protocol Support</a>
  *             in the <i>Classic Load Balancers Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingClient, SetLoadBalancerPoliciesForBackendServerCommand } from "@aws-sdk/client-elastic-load-balancing"; // ES Modules import
+ * // const { ElasticLoadBalancingClient, SetLoadBalancerPoliciesForBackendServerCommand } = require("@aws-sdk/client-elastic-load-balancing"); // CommonJS import
+ * const client = new ElasticLoadBalancingClient(config);
+ * const command = new SetLoadBalancerPoliciesForBackendServerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SetLoadBalancerPoliciesForBackendServerCommandInput} for command's `input` shape.
+ * @see {@link SetLoadBalancerPoliciesForBackendServerCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SetLoadBalancerPoliciesForBackendServerCommand extends $Command<
   SetLoadBalancerPoliciesForBackendServerCommandInput,

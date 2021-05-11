@@ -187,7 +187,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -218,7 +218,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type CodeGuruReviewerClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type CodeGuruReviewerClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -226,8 +226,12 @@ export type CodeGuruReviewerClientConfig = Partial<__SmithyConfiguration<__HttpH
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of CodeGuruReviewerClient class constructor that set the region, credentials and other options.
+ */
+export interface CodeGuruReviewerClientConfig extends CodeGuruReviewerClientConfigType {}
 
-export type CodeGuruReviewerClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type CodeGuruReviewerClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -235,11 +239,15 @@ export type CodeGuruReviewerClientResolvedConfig = __SmithyResolvedConfiguration
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of CodeGuruReviewerClient class. This is resolved and normalized from the {@link CodeGuruReviewerClientConfig | constructor configuration interface}.
+ */
+export interface CodeGuruReviewerClientResolvedConfig extends CodeGuruReviewerClientResolvedConfigType {}
 
 /**
  * <p>This section provides documentation for the Amazon CodeGuru Reviewer API operations. CodeGuru Reviewer is a service
- *          that uses program analysis and machine learning to detect potential defects that are difficult for developers to find and recommends
- *          fixes in your Java code.</p>
+ *          that uses program analysis and machine learning to detect potential defects that are difficult for developers to find and recommendations to
+ *          address them in your Java and Python code.</p>
  *
  *          <p>By proactively detecting and providing recommendations for addressing code defects and implementing best practices, CodeGuru Reviewer
  *             improves the overall quality and maintainability of your code base during the code review stage. For more information about CodeGuru Reviewer, see the
@@ -260,6 +268,9 @@ export class CodeGuruReviewerClient extends __Client<
   ServiceOutputTypes,
   CodeGuruReviewerClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of CodeGuruReviewerClient class. This is resolved and normalized from the {@link CodeGuruReviewerClientConfig | constructor configuration interface}.
+   */
   readonly config: CodeGuruReviewerClientResolvedConfig;
 
   constructor(configuration: CodeGuruReviewerClientConfig) {

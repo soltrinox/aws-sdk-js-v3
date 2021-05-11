@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetJobOutputCommandInput = GetJobOutputInput;
-export type GetJobOutputCommandOutput = GetJobOutputOutput & __MetadataBearer;
+export interface GetJobOutputCommandInput extends GetJobOutputInput {}
+export interface GetJobOutputCommandOutput extends GetJobOutputOutput, __MetadataBearer {}
 
 /**
  * <p>This operation downloads the output of the job you initiated using <a>InitiateJob</a>. Depending on the job type you specified when you initiated the
@@ -58,6 +58,20 @@ export type GetJobOutputCommandOutput = GetJobOutputOutput & __MetadataBearer;
  *             Vault Inventory</a>, <a href="https://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive.html">Downloading an
  *             Archive</a>, and <a href="https://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-get.html">Get Job Output </a>
  *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlacierClient, GetJobOutputCommand } from "@aws-sdk/client-glacier"; // ES Modules import
+ * // const { GlacierClient, GetJobOutputCommand } = require("@aws-sdk/client-glacier"); // CommonJS import
+ * const client = new GlacierClient(config);
+ * const command = new GetJobOutputCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetJobOutputCommandInput} for command's `input` shape.
+ * @see {@link GetJobOutputCommandOutput} for command's `response` shape.
+ * @see {@link GlacierClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetJobOutputCommand extends $Command<
   GetJobOutputCommandInput,

@@ -39,6 +39,10 @@ import {
   HttpPayloadTraitsWithMediaTypeCommandOutput,
 } from "../commands/HttpPayloadTraitsWithMediaTypeCommand";
 import {
+  HttpPayloadWithMemberXmlNameCommandInput,
+  HttpPayloadWithMemberXmlNameCommandOutput,
+} from "../commands/HttpPayloadWithMemberXmlNameCommand";
+import {
   HttpPayloadWithStructureCommandInput,
   HttpPayloadWithStructureCommandOutput,
 } from "../commands/HttpPayloadWithStructureCommand";
@@ -76,6 +80,7 @@ import {
   InputAndOutputWithHeadersCommandInput,
   InputAndOutputWithHeadersCommandOutput,
 } from "../commands/InputAndOutputWithHeadersCommand";
+import { NestedXmlMapsCommandInput, NestedXmlMapsCommandOutput } from "../commands/NestedXmlMapsCommand";
 import { NoInputAndNoOutputCommandInput, NoInputAndNoOutputCommandOutput } from "../commands/NoInputAndNoOutputCommand";
 import { NoInputAndOutputCommandInput, NoInputAndOutputCommandOutput } from "../commands/NoInputAndOutputCommand";
 import {
@@ -94,6 +99,11 @@ import {
   QueryIdempotencyTokenAutoFillCommandInput,
   QueryIdempotencyTokenAutoFillCommandOutput,
 } from "../commands/QueryIdempotencyTokenAutoFillCommand";
+import {
+  QueryParamsAsStringListMapCommandInput,
+  QueryParamsAsStringListMapCommandOutput,
+} from "../commands/QueryParamsAsStringListMapCommand";
+import { QueryPrecedenceCommandInput, QueryPrecedenceCommandOutput } from "../commands/QueryPrecedenceCommand";
 import { RecursiveShapesCommandInput, RecursiveShapesCommandOutput } from "../commands/RecursiveShapesCommand";
 import {
   SimpleScalarPropertiesCommandInput,
@@ -168,6 +178,7 @@ export const serializeAws_restXmlAllQueryStringTypesCommand = async (
   const headers: any = {};
   let resolvedPath = "/AllQueryStringTypesInput";
   const query: any = {
+    ...(input.queryParamsMapOfStrings !== undefined && input.queryParamsMapOfStrings),
     ...(input.queryString !== undefined && { String: input.queryString }),
     ...(input.queryStringList !== undefined && { StringList: (input.queryStringList || []).map((_entry) => _entry) }),
     ...(input.queryStringSet !== undefined && {
@@ -547,6 +558,33 @@ export const serializeAws_restXmlHttpPayloadTraitsWithMediaTypeCommand = async (
     hostname,
     port,
     method: "POST",
+    headers,
+    path: resolvedPath,
+    body,
+  });
+};
+
+export const serializeAws_restXmlHttpPayloadWithMemberXmlNameCommand = async (
+  input: HttpPayloadWithMemberXmlNameCommandInput,
+  context: __SerdeContext
+): Promise<__HttpRequest> => {
+  const headers: any = {
+    "content-type": "application/xml",
+  };
+  let resolvedPath = "/HttpPayloadWithMemberXmlName";
+  let body: any;
+  let contents: any;
+  if (input.nested !== undefined) {
+    contents = serializeAws_restXmlPayloadWithXmlName(input.nested, context);
+    body = '<?xml version="1.0" encoding="UTF-8"?>';
+    body += contents.toString();
+  }
+  const { hostname, protocol = "https", port } = await context.endpoint();
+  return new __HttpRequest({
+    protocol,
+    hostname,
+    port,
+    method: "PUT",
     headers,
     path: resolvedPath,
     body,
@@ -1003,6 +1041,45 @@ export const serializeAws_restXmlInputAndOutputWithHeadersCommand = async (
   });
 };
 
+export const serializeAws_restXmlNestedXmlMapsCommand = async (
+  input: NestedXmlMapsCommandInput,
+  context: __SerdeContext
+): Promise<__HttpRequest> => {
+  const headers: any = {
+    "content-type": "application/xml",
+  };
+  let resolvedPath = "/NestedXmlMaps";
+  let body: any;
+  body = '<?xml version="1.0" encoding="UTF-8"?>';
+  const bodyNode = new __XmlNode("NestedXmlMapsInputOutput");
+  if (input.flatNestedMap !== undefined) {
+    const nodes = serializeAws_restXmlNestedMap(input.flatNestedMap, context);
+    nodes.map((node: any) => {
+      node = node.withName("flatNestedMap");
+      bodyNode.addChildNode(node);
+    });
+  }
+  if (input.nestedMap !== undefined) {
+    const nodes = serializeAws_restXmlNestedMap(input.nestedMap, context);
+    const containerNode = new __XmlNode("nestedMap");
+    nodes.map((node: any) => {
+      containerNode.addChildNode(node);
+    });
+    bodyNode.addChildNode(containerNode);
+  }
+  body += bodyNode.toString();
+  const { hostname, protocol = "https", port } = await context.endpoint();
+  return new __HttpRequest({
+    protocol,
+    hostname,
+    port,
+    method: "POST",
+    headers,
+    path: resolvedPath,
+    body,
+  });
+};
+
 export const serializeAws_restXmlNoInputAndNoOutputCommand = async (
   input: NoInputAndNoOutputCommandInput,
   context: __SerdeContext
@@ -1121,6 +1198,54 @@ export const serializeAws_restXmlQueryIdempotencyTokenAutoFillCommand = async (
   let resolvedPath = "/QueryIdempotencyTokenAutoFill";
   const query: any = {
     ...(input.token !== undefined && { token: input.token }),
+  };
+  let body: any;
+  const { hostname, protocol = "https", port } = await context.endpoint();
+  return new __HttpRequest({
+    protocol,
+    hostname,
+    port,
+    method: "POST",
+    headers,
+    path: resolvedPath,
+    query,
+    body,
+  });
+};
+
+export const serializeAws_restXmlQueryParamsAsStringListMapCommand = async (
+  input: QueryParamsAsStringListMapCommandInput,
+  context: __SerdeContext
+): Promise<__HttpRequest> => {
+  const headers: any = {};
+  let resolvedPath = "/StringListMap";
+  const query: any = {
+    ...(input.foo !== undefined && input.foo),
+    ...(input.qux !== undefined && { corge: input.qux }),
+  };
+  let body: any;
+  const { hostname, protocol = "https", port } = await context.endpoint();
+  return new __HttpRequest({
+    protocol,
+    hostname,
+    port,
+    method: "POST",
+    headers,
+    path: resolvedPath,
+    query,
+    body,
+  });
+};
+
+export const serializeAws_restXmlQueryPrecedenceCommand = async (
+  input: QueryPrecedenceCommandInput,
+  context: __SerdeContext
+): Promise<__HttpRequest> => {
+  const headers: any = {};
+  let resolvedPath = "/Precedence";
+  const query: any = {
+    ...(input.baz !== undefined && input.baz),
+    ...(input.foo !== undefined && { bar: input.foo }),
   };
   let body: any;
   const { hostname, protocol = "https", port } = await context.endpoint();
@@ -2543,6 +2668,51 @@ const deserializeAws_restXmlHttpPayloadTraitsWithMediaTypeCommandError = async (
   return Promise.reject(Object.assign(new Error(message), response));
 };
 
+export const deserializeAws_restXmlHttpPayloadWithMemberXmlNameCommand = async (
+  output: __HttpResponse,
+  context: __SerdeContext
+): Promise<HttpPayloadWithMemberXmlNameCommandOutput> => {
+  if (output.statusCode !== 200 && output.statusCode >= 300) {
+    return deserializeAws_restXmlHttpPayloadWithMemberXmlNameCommandError(output, context);
+  }
+  const contents: HttpPayloadWithMemberXmlNameCommandOutput = {
+    $metadata: deserializeMetadata(output),
+    nested: undefined,
+  };
+  const data: any = await parseBody(output.body, context);
+  contents.nested = deserializeAws_restXmlPayloadWithXmlName(data, context);
+  return Promise.resolve(contents);
+};
+
+const deserializeAws_restXmlHttpPayloadWithMemberXmlNameCommandError = async (
+  output: __HttpResponse,
+  context: __SerdeContext
+): Promise<HttpPayloadWithMemberXmlNameCommandOutput> => {
+  const parsedOutput: any = {
+    ...output,
+    body: await parseBody(output.body, context),
+  };
+  let response: __SmithyException & __MetadataBearer & { [key: string]: any };
+  let errorCode: string = "UnknownError";
+  errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+  switch (errorCode) {
+    default:
+      const parsedBody = parsedOutput.body;
+      errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
+      response = {
+        ...parsedBody.Error,
+        name: `${errorCode}`,
+        message: parsedBody.Error.message || parsedBody.Error.Message || errorCode,
+        $fault: "client",
+        $metadata: deserializeMetadata(output),
+      } as any;
+  }
+  const message = response.message || response.Message || errorCode;
+  response.message = message;
+  delete response.Message;
+  return Promise.reject(Object.assign(new Error(message), response));
+};
+
 export const deserializeAws_restXmlHttpPayloadWithStructureCommand = async (
   output: __HttpResponse,
   context: __SerdeContext
@@ -3115,6 +3285,63 @@ const deserializeAws_restXmlInputAndOutputWithHeadersCommandError = async (
   return Promise.reject(Object.assign(new Error(message), response));
 };
 
+export const deserializeAws_restXmlNestedXmlMapsCommand = async (
+  output: __HttpResponse,
+  context: __SerdeContext
+): Promise<NestedXmlMapsCommandOutput> => {
+  if (output.statusCode !== 200 && output.statusCode >= 300) {
+    return deserializeAws_restXmlNestedXmlMapsCommandError(output, context);
+  }
+  const contents: NestedXmlMapsCommandOutput = {
+    $metadata: deserializeMetadata(output),
+    flatNestedMap: undefined,
+    nestedMap: undefined,
+  };
+  const data: any = await parseBody(output.body, context);
+  if (data.flatNestedMap === "") {
+    contents.flatNestedMap = {};
+  }
+  if (data["flatNestedMap"] !== undefined) {
+    contents.flatNestedMap = deserializeAws_restXmlNestedMap(__getArrayIfSingleItem(data["flatNestedMap"]), context);
+  }
+  if (data.nestedMap === "") {
+    contents.nestedMap = {};
+  }
+  if (data["nestedMap"] !== undefined && data["nestedMap"]["entry"] !== undefined) {
+    contents.nestedMap = deserializeAws_restXmlNestedMap(__getArrayIfSingleItem(data["nestedMap"]["entry"]), context);
+  }
+  return Promise.resolve(contents);
+};
+
+const deserializeAws_restXmlNestedXmlMapsCommandError = async (
+  output: __HttpResponse,
+  context: __SerdeContext
+): Promise<NestedXmlMapsCommandOutput> => {
+  const parsedOutput: any = {
+    ...output,
+    body: await parseBody(output.body, context),
+  };
+  let response: __SmithyException & __MetadataBearer & { [key: string]: any };
+  let errorCode: string = "UnknownError";
+  errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+  switch (errorCode) {
+    default:
+      const parsedBody = parsedOutput.body;
+      errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
+      response = {
+        ...parsedBody.Error,
+        name: `${errorCode}`,
+        message: parsedBody.Error.message || parsedBody.Error.Message || errorCode,
+        $fault: "client",
+        $metadata: deserializeMetadata(output),
+      } as any;
+  }
+  const message = response.message || response.Message || errorCode;
+  response.message = message;
+  delete response.Message;
+  return Promise.reject(Object.assign(new Error(message), response));
+};
+
 export const deserializeAws_restXmlNoInputAndNoOutputCommand = async (
   output: __HttpResponse,
   context: __SerdeContext
@@ -3372,6 +3599,92 @@ const deserializeAws_restXmlQueryIdempotencyTokenAutoFillCommandError = async (
   output: __HttpResponse,
   context: __SerdeContext
 ): Promise<QueryIdempotencyTokenAutoFillCommandOutput> => {
+  const parsedOutput: any = {
+    ...output,
+    body: await parseBody(output.body, context),
+  };
+  let response: __SmithyException & __MetadataBearer & { [key: string]: any };
+  let errorCode: string = "UnknownError";
+  errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+  switch (errorCode) {
+    default:
+      const parsedBody = parsedOutput.body;
+      errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
+      response = {
+        ...parsedBody.Error,
+        name: `${errorCode}`,
+        message: parsedBody.Error.message || parsedBody.Error.Message || errorCode,
+        $fault: "client",
+        $metadata: deserializeMetadata(output),
+      } as any;
+  }
+  const message = response.message || response.Message || errorCode;
+  response.message = message;
+  delete response.Message;
+  return Promise.reject(Object.assign(new Error(message), response));
+};
+
+export const deserializeAws_restXmlQueryParamsAsStringListMapCommand = async (
+  output: __HttpResponse,
+  context: __SerdeContext
+): Promise<QueryParamsAsStringListMapCommandOutput> => {
+  if (output.statusCode !== 200 && output.statusCode >= 300) {
+    return deserializeAws_restXmlQueryParamsAsStringListMapCommandError(output, context);
+  }
+  const contents: QueryParamsAsStringListMapCommandOutput = {
+    $metadata: deserializeMetadata(output),
+  };
+  await collectBody(output.body, context);
+  return Promise.resolve(contents);
+};
+
+const deserializeAws_restXmlQueryParamsAsStringListMapCommandError = async (
+  output: __HttpResponse,
+  context: __SerdeContext
+): Promise<QueryParamsAsStringListMapCommandOutput> => {
+  const parsedOutput: any = {
+    ...output,
+    body: await parseBody(output.body, context),
+  };
+  let response: __SmithyException & __MetadataBearer & { [key: string]: any };
+  let errorCode: string = "UnknownError";
+  errorCode = loadRestXmlErrorCode(output, parsedOutput.body);
+  switch (errorCode) {
+    default:
+      const parsedBody = parsedOutput.body;
+      errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
+      response = {
+        ...parsedBody.Error,
+        name: `${errorCode}`,
+        message: parsedBody.Error.message || parsedBody.Error.Message || errorCode,
+        $fault: "client",
+        $metadata: deserializeMetadata(output),
+      } as any;
+  }
+  const message = response.message || response.Message || errorCode;
+  response.message = message;
+  delete response.Message;
+  return Promise.reject(Object.assign(new Error(message), response));
+};
+
+export const deserializeAws_restXmlQueryPrecedenceCommand = async (
+  output: __HttpResponse,
+  context: __SerdeContext
+): Promise<QueryPrecedenceCommandOutput> => {
+  if (output.statusCode !== 200 && output.statusCode >= 300) {
+    return deserializeAws_restXmlQueryPrecedenceCommandError(output, context);
+  }
+  const contents: QueryPrecedenceCommandOutput = {
+    $metadata: deserializeMetadata(output),
+  };
+  await collectBody(output.body, context);
+  return Promise.resolve(contents);
+};
+
+const deserializeAws_restXmlQueryPrecedenceCommandError = async (
+  output: __HttpResponse,
+  context: __SerdeContext
+): Promise<QueryPrecedenceCommandOutput> => {
   const parsedOutput: any = {
     ...output,
     body: await parseBody(output.body, context),
@@ -4650,6 +4963,27 @@ const serializeAws_restXmlListWithNamespace = (input: string[], context: __Serde
     });
 };
 
+const serializeAws_restXmlNestedMap = (
+  input: { [key: string]: { [key: string]: FooEnum | string } },
+  context: __SerdeContext
+): any => {
+  return Object.keys(input)
+    .filter((key) => input[key] != null)
+    .map((key) => {
+      const entryNode = new __XmlNode("entry");
+      const keyNode = new __XmlNode("String").addChildNode(new __XmlText(key)).withName("key");
+      entryNode.addChildNode(keyNode);
+      var node;
+      node = serializeAws_restXmlFooEnumMap(input[key], context);
+      entryNode.addChildNode(
+        node.reduce((acc: __XmlNode, workingNode: any) => {
+          return acc.addChildNode(workingNode);
+        }, new __XmlNode("value"))
+      );
+      return entryNode;
+    });
+};
+
 const serializeAws_restXmlNestedPayload = (input: NestedPayload, context: __SerdeContext): any => {
   const bodyNode = new __XmlNode("NestedPayload");
   if (input.greeting !== undefined && input.greeting !== null) {
@@ -5120,6 +5454,21 @@ const deserializeAws_restXmlListWithNamespace = (output: any, context: __SerdeCo
       }
       return entry;
     });
+};
+
+const deserializeAws_restXmlNestedMap = (
+  output: any,
+  context: __SerdeContext
+): { [key: string]: { [key: string]: FooEnum | string } } => {
+  return output.reduce((acc: any, pair: any) => {
+    if (__getArrayIfSingleItem(pair["value"]["entry"]) === null) {
+      return acc;
+    }
+    return {
+      ...acc,
+      [pair["key"]]: deserializeAws_restXmlFooEnumMap(__getArrayIfSingleItem(pair["value"]["entry"]), context),
+    };
+  }, {});
 };
 
 const deserializeAws_restXmlNestedPayload = (output: any, context: __SerdeContext): NestedPayload => {

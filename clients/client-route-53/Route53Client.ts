@@ -1,4 +1,8 @@
 import {
+  ActivateKeySigningKeyCommandInput,
+  ActivateKeySigningKeyCommandOutput,
+} from "./commands/ActivateKeySigningKeyCommand";
+import {
   AssociateVPCWithHostedZoneCommandInput,
   AssociateVPCWithHostedZoneCommandOutput,
 } from "./commands/AssociateVPCWithHostedZoneCommand";
@@ -12,6 +16,10 @@ import {
 } from "./commands/ChangeTagsForResourceCommand";
 import { CreateHealthCheckCommandInput, CreateHealthCheckCommandOutput } from "./commands/CreateHealthCheckCommand";
 import { CreateHostedZoneCommandInput, CreateHostedZoneCommandOutput } from "./commands/CreateHostedZoneCommand";
+import {
+  CreateKeySigningKeyCommandInput,
+  CreateKeySigningKeyCommandOutput,
+} from "./commands/CreateKeySigningKeyCommand";
 import {
   CreateQueryLoggingConfigCommandInput,
   CreateQueryLoggingConfigCommandOutput,
@@ -36,8 +44,16 @@ import {
   CreateVPCAssociationAuthorizationCommandInput,
   CreateVPCAssociationAuthorizationCommandOutput,
 } from "./commands/CreateVPCAssociationAuthorizationCommand";
+import {
+  DeactivateKeySigningKeyCommandInput,
+  DeactivateKeySigningKeyCommandOutput,
+} from "./commands/DeactivateKeySigningKeyCommand";
 import { DeleteHealthCheckCommandInput, DeleteHealthCheckCommandOutput } from "./commands/DeleteHealthCheckCommand";
 import { DeleteHostedZoneCommandInput, DeleteHostedZoneCommandOutput } from "./commands/DeleteHostedZoneCommand";
+import {
+  DeleteKeySigningKeyCommandInput,
+  DeleteKeySigningKeyCommandOutput,
+} from "./commands/DeleteKeySigningKeyCommand";
 import {
   DeleteQueryLoggingConfigCommandInput,
   DeleteQueryLoggingConfigCommandOutput,
@@ -59,12 +75,21 @@ import {
   DeleteVPCAssociationAuthorizationCommandOutput,
 } from "./commands/DeleteVPCAssociationAuthorizationCommand";
 import {
+  DisableHostedZoneDNSSECCommandInput,
+  DisableHostedZoneDNSSECCommandOutput,
+} from "./commands/DisableHostedZoneDNSSECCommand";
+import {
   DisassociateVPCFromHostedZoneCommandInput,
   DisassociateVPCFromHostedZoneCommandOutput,
 } from "./commands/DisassociateVPCFromHostedZoneCommand";
+import {
+  EnableHostedZoneDNSSECCommandInput,
+  EnableHostedZoneDNSSECCommandOutput,
+} from "./commands/EnableHostedZoneDNSSECCommand";
 import { GetAccountLimitCommandInput, GetAccountLimitCommandOutput } from "./commands/GetAccountLimitCommand";
 import { GetChangeCommandInput, GetChangeCommandOutput } from "./commands/GetChangeCommand";
 import { GetCheckerIpRangesCommandInput, GetCheckerIpRangesCommandOutput } from "./commands/GetCheckerIpRangesCommand";
+import { GetDNSSECCommandInput, GetDNSSECCommandOutput } from "./commands/GetDNSSECCommand";
 import { GetGeoLocationCommandInput, GetGeoLocationCommandOutput } from "./commands/GetGeoLocationCommand";
 import { GetHealthCheckCommandInput, GetHealthCheckCommandOutput } from "./commands/GetHealthCheckCommand";
 import {
@@ -224,28 +249,35 @@ import {
 } from "@aws-sdk/types";
 
 export type ServiceInputTypes =
+  | ActivateKeySigningKeyCommandInput
   | AssociateVPCWithHostedZoneCommandInput
   | ChangeResourceRecordSetsCommandInput
   | ChangeTagsForResourceCommandInput
   | CreateHealthCheckCommandInput
   | CreateHostedZoneCommandInput
+  | CreateKeySigningKeyCommandInput
   | CreateQueryLoggingConfigCommandInput
   | CreateReusableDelegationSetCommandInput
   | CreateTrafficPolicyCommandInput
   | CreateTrafficPolicyInstanceCommandInput
   | CreateTrafficPolicyVersionCommandInput
   | CreateVPCAssociationAuthorizationCommandInput
+  | DeactivateKeySigningKeyCommandInput
   | DeleteHealthCheckCommandInput
   | DeleteHostedZoneCommandInput
+  | DeleteKeySigningKeyCommandInput
   | DeleteQueryLoggingConfigCommandInput
   | DeleteReusableDelegationSetCommandInput
   | DeleteTrafficPolicyCommandInput
   | DeleteTrafficPolicyInstanceCommandInput
   | DeleteVPCAssociationAuthorizationCommandInput
+  | DisableHostedZoneDNSSECCommandInput
   | DisassociateVPCFromHostedZoneCommandInput
+  | EnableHostedZoneDNSSECCommandInput
   | GetAccountLimitCommandInput
   | GetChangeCommandInput
   | GetCheckerIpRangesCommandInput
+  | GetDNSSECCommandInput
   | GetGeoLocationCommandInput
   | GetHealthCheckCommandInput
   | GetHealthCheckCountCommandInput
@@ -283,28 +315,35 @@ export type ServiceInputTypes =
   | UpdateTrafficPolicyInstanceCommandInput;
 
 export type ServiceOutputTypes =
+  | ActivateKeySigningKeyCommandOutput
   | AssociateVPCWithHostedZoneCommandOutput
   | ChangeResourceRecordSetsCommandOutput
   | ChangeTagsForResourceCommandOutput
   | CreateHealthCheckCommandOutput
   | CreateHostedZoneCommandOutput
+  | CreateKeySigningKeyCommandOutput
   | CreateQueryLoggingConfigCommandOutput
   | CreateReusableDelegationSetCommandOutput
   | CreateTrafficPolicyCommandOutput
   | CreateTrafficPolicyInstanceCommandOutput
   | CreateTrafficPolicyVersionCommandOutput
   | CreateVPCAssociationAuthorizationCommandOutput
+  | DeactivateKeySigningKeyCommandOutput
   | DeleteHealthCheckCommandOutput
   | DeleteHostedZoneCommandOutput
+  | DeleteKeySigningKeyCommandOutput
   | DeleteQueryLoggingConfigCommandOutput
   | DeleteReusableDelegationSetCommandOutput
   | DeleteTrafficPolicyCommandOutput
   | DeleteTrafficPolicyInstanceCommandOutput
   | DeleteVPCAssociationAuthorizationCommandOutput
+  | DisableHostedZoneDNSSECCommandOutput
   | DisassociateVPCFromHostedZoneCommandOutput
+  | EnableHostedZoneDNSSECCommandOutput
   | GetAccountLimitCommandOutput
   | GetChangeCommandOutput
   | GetCheckerIpRangesCommandOutput
+  | GetDNSSECCommandOutput
   | GetGeoLocationCommandOutput
   | GetHealthCheckCommandOutput
   | GetHealthCheckCountCommandOutput
@@ -406,7 +445,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -437,7 +476,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type Route53ClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type Route53ClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -445,8 +484,12 @@ export type Route53ClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOpt
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of Route53Client class constructor that set the region, credentials and other options.
+ */
+export interface Route53ClientConfig extends Route53ClientConfigType {}
 
-export type Route53ClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type Route53ClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -454,6 +497,10 @@ export type Route53ClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHa
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of Route53Client class. This is resolved and normalized from the {@link Route53ClientConfig | constructor configuration interface}.
+ */
+export interface Route53ClientResolvedConfig extends Route53ClientResolvedConfigType {}
 
 /**
  * <p>Amazon Route 53 is a highly available and scalable Domain Name System (DNS) web service.</p>
@@ -464,6 +511,9 @@ export class Route53Client extends __Client<
   ServiceOutputTypes,
   Route53ClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of Route53Client class. This is resolved and normalized from the {@link Route53ClientConfig | constructor configuration interface}.
+   */
   readonly config: Route53ClientResolvedConfig;
 
   constructor(configuration: Route53ClientConfig) {

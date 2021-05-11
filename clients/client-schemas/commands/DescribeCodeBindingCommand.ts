@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCodeBindingCommandInput = DescribeCodeBindingRequest;
-export type DescribeCodeBindingCommandOutput = DescribeCodeBindingResponse & __MetadataBearer;
+export interface DescribeCodeBindingCommandInput extends DescribeCodeBindingRequest {}
+export interface DescribeCodeBindingCommandOutput extends DescribeCodeBindingResponse, __MetadataBearer {}
 
 /**
  * <p>Describe the code binding URI.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SchemasClient, DescribeCodeBindingCommand } from "@aws-sdk/client-schemas"; // ES Modules import
+ * // const { SchemasClient, DescribeCodeBindingCommand } = require("@aws-sdk/client-schemas"); // CommonJS import
+ * const client = new SchemasClient(config);
+ * const command = new DescribeCodeBindingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCodeBindingCommandInput} for command's `input` shape.
+ * @see {@link DescribeCodeBindingCommandOutput} for command's `response` shape.
+ * @see {@link SchemasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCodeBindingCommand extends $Command<
   DescribeCodeBindingCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCardinalityCommandInput = GetCardinalityRequest;
-export type GetCardinalityCommandOutput = GetCardinalityResponse & __MetadataBearer;
+export interface GetCardinalityCommandInput extends GetCardinalityRequest {}
+export interface GetCardinalityCommandOutput extends GetCardinalityResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the approximate count of unique values that match the query.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, GetCardinalityCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, GetCardinalityCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new GetCardinalityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCardinalityCommandInput} for command's `input` shape.
+ * @see {@link GetCardinalityCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCardinalityCommand extends $Command<
   GetCardinalityCommandInput,

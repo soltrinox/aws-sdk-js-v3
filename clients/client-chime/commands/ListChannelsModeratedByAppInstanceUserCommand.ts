@@ -20,12 +20,33 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListChannelsModeratedByAppInstanceUserCommandInput = ListChannelsModeratedByAppInstanceUserRequest;
-export type ListChannelsModeratedByAppInstanceUserCommandOutput = ListChannelsModeratedByAppInstanceUserResponse &
-  __MetadataBearer;
+export interface ListChannelsModeratedByAppInstanceUserCommandInput
+  extends ListChannelsModeratedByAppInstanceUserRequest {}
+export interface ListChannelsModeratedByAppInstanceUserCommandOutput
+  extends ListChannelsModeratedByAppInstanceUserResponse,
+    __MetadataBearer {}
 
 /**
- * <p>A list of the channels moderated by an app instance user.</p>
+ * <p>A list of the channels moderated by an <code>AppInstanceUser</code>.</p>
+ *
+ *          <note>
+ *             <p>The <code>x-amz-chime-bearer</code> request header is mandatory. Use the <code>AppInstanceUserArn</code> of the user that makes
+ *         the API call as the value in the header.</p>
+ *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, ListChannelsModeratedByAppInstanceUserCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, ListChannelsModeratedByAppInstanceUserCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new ListChannelsModeratedByAppInstanceUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListChannelsModeratedByAppInstanceUserCommandInput} for command's `input` shape.
+ * @see {@link ListChannelsModeratedByAppInstanceUserCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListChannelsModeratedByAppInstanceUserCommand extends $Command<
   ListChannelsModeratedByAppInstanceUserCommandInput,

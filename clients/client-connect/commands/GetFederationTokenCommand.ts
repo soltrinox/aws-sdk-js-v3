@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetFederationTokenCommandInput = GetFederationTokenRequest;
-export type GetFederationTokenCommandOutput = GetFederationTokenResponse & __MetadataBearer;
+export interface GetFederationTokenCommandInput extends GetFederationTokenRequest {}
+export interface GetFederationTokenCommandOutput extends GetFederationTokenResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a token for federation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, GetFederationTokenCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, GetFederationTokenCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new GetFederationTokenCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetFederationTokenCommandInput} for command's `input` shape.
+ * @see {@link GetFederationTokenCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetFederationTokenCommand extends $Command<
   GetFederationTokenCommandInput,

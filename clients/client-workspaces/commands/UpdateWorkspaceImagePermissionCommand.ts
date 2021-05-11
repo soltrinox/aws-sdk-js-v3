@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateWorkspaceImagePermissionCommandInput = UpdateWorkspaceImagePermissionRequest;
-export type UpdateWorkspaceImagePermissionCommandOutput = UpdateWorkspaceImagePermissionResult & __MetadataBearer;
+export interface UpdateWorkspaceImagePermissionCommandInput extends UpdateWorkspaceImagePermissionRequest {}
+export interface UpdateWorkspaceImagePermissionCommandOutput
+  extends UpdateWorkspaceImagePermissionResult,
+    __MetadataBearer {}
 
 /**
  * <p>Shares or unshares an image with one account in the same AWS Region by specifying whether that account has
@@ -50,6 +52,20 @@ export type UpdateWorkspaceImagePermissionCommandOutput = UpdateWorkspaceImagePe
  *                </li>
  *             </ul>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, UpdateWorkspaceImagePermissionCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, UpdateWorkspaceImagePermissionCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new UpdateWorkspaceImagePermissionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateWorkspaceImagePermissionCommandInput} for command's `input` shape.
+ * @see {@link UpdateWorkspaceImagePermissionCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateWorkspaceImagePermissionCommand extends $Command<
   UpdateWorkspaceImagePermissionCommandInput,

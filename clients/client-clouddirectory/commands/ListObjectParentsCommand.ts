@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListObjectParentsCommandInput = ListObjectParentsRequest;
-export type ListObjectParentsCommandOutput = ListObjectParentsResponse & __MetadataBearer;
+export interface ListObjectParentsCommandInput extends ListObjectParentsRequest {}
+export interface ListObjectParentsCommandOutput extends ListObjectParentsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists parent objects that are associated with a given object in pagination
  *       fashion.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, ListObjectParentsCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, ListObjectParentsCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new ListObjectParentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListObjectParentsCommandInput} for command's `input` shape.
+ * @see {@link ListObjectParentsCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListObjectParentsCommand extends $Command<
   ListObjectParentsCommandInput,

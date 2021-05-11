@@ -22,11 +22,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartUserImportJobCommandInput = StartUserImportJobRequest;
-export type StartUserImportJobCommandOutput = StartUserImportJobResponse & __MetadataBearer;
+export interface StartUserImportJobCommandInput extends StartUserImportJobRequest {}
+export interface StartUserImportJobCommandOutput extends StartUserImportJobResponse, __MetadataBearer {}
 
 /**
  * <p>Starts the user import.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, StartUserImportJobCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, StartUserImportJobCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new StartUserImportJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartUserImportJobCommandInput} for command's `input` shape.
+ * @see {@link StartUserImportJobCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartUserImportJobCommand extends $Command<
   StartUserImportJobCommandInput,

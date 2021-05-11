@@ -53,7 +53,187 @@ export interface AccountLimit {
 }
 
 export namespace AccountLimit {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccountLimit): any => ({
+    ...obj,
+  });
+}
+
+export interface ActivateKeySigningKeyRequest {
+  /**
+   * <p>A unique string used to identify a hosted zone.</p>
+   */
+  HostedZoneId: string | undefined;
+
+  /**
+   * <p>A string used to identify a key-signing key (KSK). <code>Name</code> can include numbers, letters,  and underscores (_). <code>Name</code> must be unique for each key-signing key in the same
+   * 			hosted zone.</p>
+   */
+  Name: string | undefined;
+}
+
+export namespace ActivateKeySigningKeyRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ActivateKeySigningKeyRequest): any => ({
+    ...obj,
+  });
+}
+
+export type ChangeStatus = "INSYNC" | "PENDING";
+
+/**
+ * <p>A complex type that describes change information about changes made to your hosted
+ * 			zone.</p>
+ */
+export interface ChangeInfo {
+  /**
+   * <p>The ID of the request.</p>
+   */
+  Id: string | undefined;
+
+  /**
+   * <p>The current state of the request. <code>PENDING</code> indicates that this request has
+   * 			not yet been applied to all Amazon Route 53 DNS servers.</p>
+   */
+  Status: ChangeStatus | string | undefined;
+
+  /**
+   * <p>The date and time that the change request was submitted in
+   * 			<a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 format</a> and Coordinated Universal Time (UTC).
+   * 			For example, the value <code>2017-03-27T17:48:16.751Z</code> represents March 27, 2017 at 17:48:16.751 UTC.</p>
+   */
+  SubmittedAt: Date | undefined;
+
+  /**
+   * <p>A complex type that describes change information about changes made to your hosted
+   * 			zone.</p>
+   * 		       <p>This element contains an ID that you use when performing a
+   * 			<a href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html">GetChange</a>
+   * 			action to get detailed information about the change.</p>
+   */
+  Comment?: string;
+}
+
+export namespace ChangeInfo {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ChangeInfo): any => ({
+    ...obj,
+  });
+}
+
+export interface ActivateKeySigningKeyResponse {
+  /**
+   * <p>A complex type that describes change information about changes made to your hosted
+   * 			zone.</p>
+   */
+  ChangeInfo: ChangeInfo | undefined;
+}
+
+export namespace ActivateKeySigningKeyResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ActivateKeySigningKeyResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Another user submitted a request to create, update, or delete the object at the same time that you did. Retry the request. </p>
+ */
+export interface ConcurrentModification extends __SmithyException, $MetadataBearer {
+  name: "ConcurrentModification";
+  $fault: "client";
+  /**
+   * <p></p>
+   */
+  message?: string;
+}
+
+export namespace ConcurrentModification {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ConcurrentModification): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The key-signing key (KSK) status isn't valid or another KSK has the status <code>INTERNAL_FAILURE</code>.</p>
+ */
+export interface InvalidKeySigningKeyStatus extends __SmithyException, $MetadataBearer {
+  name: "InvalidKeySigningKeyStatus";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace InvalidKeySigningKeyStatus {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidKeySigningKeyStatus): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The KeyManagementServiceArn that you specified isn't valid to use with DNSSEC signing.</p>
+ */
+export interface InvalidKMSArn extends __SmithyException, $MetadataBearer {
+  name: "InvalidKMSArn";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace InvalidKMSArn {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidKMSArn): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Your hosted zone status isn't valid for this operation. In the hosted zone, change the status to enable <code>DNSSEC</code>
+ * 			or disable <code>DNSSEC</code>.</p>
+ */
+export interface InvalidSigningStatus extends __SmithyException, $MetadataBearer {
+  name: "InvalidSigningStatus";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace InvalidSigningStatus {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidSigningStatus): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The specified key-signing key (KSK) doesn't exist.</p>
+ */
+export interface NoSuchKeySigningKey extends __SmithyException, $MetadataBearer {
+  name: "NoSuchKeySigningKey";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace NoSuchKeySigningKey {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: NoSuchKeySigningKey): any => ({
     ...obj,
   });
 }
@@ -95,8 +275,8 @@ export interface AlarmIdentifier {
   /**
    * <p>For the CloudWatch alarm that you want Route 53 health checkers to use to determine whether this health check is healthy,
    * 			the region that the alarm was created in.</p>
-   * 		       <p>For the current list of CloudWatch regions, see <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region">Amazon CloudWatch</a> in
-   * 			the <i>AWS Service Endpoints</i> chapter of the <i>Amazon Web Services General Reference</i>.</p>
+   * 	        <p>For the current list of CloudWatch regions, see <a href="https://docs.aws.amazon.com/general/latest/gr/cw_region.html">Amazon CloudWatch endpoints and quotas</a> in
+   * 			the <i>Amazon Web Services General Reference</i>.</p>
    */
   Region: CloudWatchRegion | string | undefined;
 
@@ -120,6 +300,9 @@ export interface AlarmIdentifier {
 }
 
 export namespace AlarmIdentifier {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlarmIdentifier): any => ({
     ...obj,
   });
@@ -176,8 +359,8 @@ export interface AliasTarget {
    *             <dd>
    * 					          <p>Specify the hosted zone ID for the region that you created the environment in. The environment
    * 						must have a regionalized subdomain. For a list of regions and the corresponding hosted zone IDs, see
-   * 						<a href="https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region">AWS Elastic Beanstalk</a> in the
-   * 						"AWS Service Endpoints" chapter of the <i>Amazon Web Services General Reference</i>.</p>
+   * 					    <a href="https://docs.aws.amazon.com/general/latest/gr/elasticbeanstalk.html">AWS Elastic Beanstalk endpoints and quotas</a> in the
+   * 						 the <i>Amazon Web Services General Reference</i>.</p>
    * 				        </dd>
    *             <dt>ELB load balancer</dt>
    *             <dd>
@@ -186,8 +369,7 @@ export interface AliasTarget {
    * 					          <ul>
    *                   <li>
    *                      <p>
-   *                         <a href="https://docs.aws.amazon.com/general/latest/gr/elb.html">Service Endpoints</a> table
-   * 							in the "Elastic Load Balancing Endpoints and Quotas" topic in the <i>Amazon Web Services General Reference</i>:
+   *                         <a href="https://docs.aws.amazon.com/general/latest/gr/elb.html">Elastic Load Balancing endpoints and quotas</a> topic in the <i>Amazon Web Services General Reference</i>:
    * 							Use the value that corresponds with the region that you created your load balancer in. Note that there are
    * 							separate columns for Application and Classic Load Balancers and for Network Load Balancers.</p>
    *                   </li>
@@ -500,6 +682,9 @@ export interface AliasTarget {
 }
 
 export namespace AliasTarget {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AliasTarget): any => ({
     ...obj,
   });
@@ -549,6 +734,9 @@ export interface VPC {
 }
 
 export namespace VPC {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VPC): any => ({
     ...obj,
   });
@@ -577,48 +765,10 @@ export interface AssociateVPCWithHostedZoneRequest {
 }
 
 export namespace AssociateVPCWithHostedZoneRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateVPCWithHostedZoneRequest): any => ({
-    ...obj,
-  });
-}
-
-export type ChangeStatus = "INSYNC" | "PENDING";
-
-/**
- * <p>A complex type that describes change information about changes made to your hosted
- * 			zone.</p>
- */
-export interface ChangeInfo {
-  /**
-   * <p>The ID of the request.</p>
-   */
-  Id: string | undefined;
-
-  /**
-   * <p>The current state of the request. <code>PENDING</code> indicates that this request has
-   * 			not yet been applied to all Amazon Route 53 DNS servers.</p>
-   */
-  Status: ChangeStatus | string | undefined;
-
-  /**
-   * <p>The date and time that the change request was submitted in
-   * 			<a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 format</a> and Coordinated Universal Time (UTC).
-   * 			For example, the value <code>2017-03-27T17:48:16.751Z</code> represents March 27, 2017 at 17:48:16.751 UTC.</p>
-   */
-  SubmittedAt: Date | undefined;
-
-  /**
-   * <p>A complex type that describes change information about changes made to your hosted
-   * 			zone.</p>
-   * 		       <p>This element contains an ID that you use when performing a
-   * 			<a href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html">GetChange</a>
-   * 			action to get detailed information about the change.</p>
-   */
-  Comment?: string;
-}
-
-export namespace ChangeInfo {
-  export const filterSensitiveLog = (obj: ChangeInfo): any => ({
     ...obj,
   });
 }
@@ -634,6 +784,9 @@ export interface AssociateVPCWithHostedZoneResponse {
 }
 
 export namespace AssociateVPCWithHostedZoneResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateVPCWithHostedZoneResponse): any => ({
     ...obj,
   });
@@ -669,6 +822,9 @@ export interface ConflictingDomainExists extends __SmithyException, $MetadataBea
 }
 
 export namespace ConflictingDomainExists {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictingDomainExists): any => ({
     ...obj,
   });
@@ -681,12 +837,15 @@ export interface InvalidInput extends __SmithyException, $MetadataBearer {
   name: "InvalidInput";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace InvalidInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidInput): any => ({
     ...obj,
   });
@@ -699,12 +858,15 @@ export interface InvalidVPCId extends __SmithyException, $MetadataBearer {
   name: "InvalidVPCId";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace InvalidVPCId {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidVPCId): any => ({
     ...obj,
   });
@@ -723,12 +885,15 @@ export interface LimitsExceeded extends __SmithyException, $MetadataBearer {
   name: "LimitsExceeded";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace LimitsExceeded {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitsExceeded): any => ({
     ...obj,
   });
@@ -741,12 +906,15 @@ export interface NoSuchHostedZone extends __SmithyException, $MetadataBearer {
   name: "NoSuchHostedZone";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace NoSuchHostedZone {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchHostedZone): any => ({
     ...obj,
   });
@@ -759,12 +927,15 @@ export interface NotAuthorizedException extends __SmithyException, $MetadataBear
   name: "NotAuthorizedException";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace NotAuthorizedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotAuthorizedException): any => ({
     ...obj,
   });
@@ -784,6 +955,9 @@ export interface PriorRequestNotComplete extends __SmithyException, $MetadataBea
 }
 
 export namespace PriorRequestNotComplete {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PriorRequestNotComplete): any => ({
     ...obj,
   });
@@ -797,12 +971,15 @@ export interface PublicZoneVPCAssociation extends __SmithyException, $MetadataBe
   name: "PublicZoneVPCAssociation";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace PublicZoneVPCAssociation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PublicZoneVPCAssociation): any => ({
     ...obj,
   });
@@ -872,6 +1049,9 @@ export interface GeoLocation {
 }
 
 export namespace GeoLocation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GeoLocation): any => ({
     ...obj,
   });
@@ -924,12 +1104,28 @@ export interface ResourceRecord {
 }
 
 export namespace ResourceRecord {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceRecord): any => ({
     ...obj,
   });
 }
 
-export type RRType = "A" | "AAAA" | "CAA" | "CNAME" | "MX" | "NAPTR" | "NS" | "PTR" | "SOA" | "SPF" | "SRV" | "TXT";
+export type RRType =
+  | "A"
+  | "AAAA"
+  | "CAA"
+  | "CNAME"
+  | "DS"
+  | "MX"
+  | "NAPTR"
+  | "NS"
+  | "PTR"
+  | "SOA"
+  | "SPF"
+  | "SRV"
+  | "TXT";
 
 /**
  * <p>Information about the resource record set to create or delete.</p>
@@ -974,8 +1170,9 @@ export interface ResourceRecordSet {
 
   /**
    * <p>The DNS record type. For information about different record types and how data is encoded for them, see
-   * 			<a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html">Supported DNS Resource Record Types</a> in the <i>Amazon Route 53 Developer Guide</i>.</p>
-   * 		       <p>Valid values for basic resource record sets: <code>A</code> | <code>AAAA</code> | <code>CAA</code> | <code>CNAME</code> | <code>MX</code> |
+   * 			<a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html">Supported DNS Resource Record Types</a>
+   * 			in the <i>Amazon Route 53 Developer Guide</i>.</p>
+   * 		       <p>Valid values for basic resource record sets: <code>A</code> | <code>AAAA</code> | <code>CAA</code> | <code>CNAME</code> | <code>DS</code> |<code>MX</code> |
    * 			<code>NAPTR</code> | <code>NS</code> | <code>PTR</code> | <code>SOA</code> | <code>SPF</code> | <code>SRV</code> | <code>TXT</code>
    *          </p>
    * 		       <p>Values for weighted, latency, geolocation, and failover resource record sets: <code>A</code> | <code>AAAA</code> | <code>CAA</code> |
@@ -1431,6 +1628,9 @@ export interface ResourceRecordSet {
 }
 
 export namespace ResourceRecordSet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceRecordSet): any => ({
     ...obj,
   });
@@ -1474,6 +1674,9 @@ export interface Change {
 }
 
 export namespace Change {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Change): any => ({
     ...obj,
   });
@@ -1497,6 +1700,9 @@ export interface ChangeBatch {
 }
 
 export namespace ChangeBatch {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChangeBatch): any => ({
     ...obj,
   });
@@ -1518,6 +1724,9 @@ export interface ChangeResourceRecordSetsRequest {
 }
 
 export namespace ChangeResourceRecordSetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChangeResourceRecordSetsRequest): any => ({
     ...obj,
   });
@@ -1537,6 +1746,9 @@ export interface ChangeResourceRecordSetsResponse {
 }
 
 export namespace ChangeResourceRecordSetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChangeResourceRecordSetsResponse): any => ({
     ...obj,
   });
@@ -1550,7 +1762,7 @@ export interface InvalidChangeBatch extends __SmithyException, $MetadataBearer {
   name: "InvalidChangeBatch";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   messages?: string[];
 
@@ -1558,6 +1770,9 @@ export interface InvalidChangeBatch extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidChangeBatch {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidChangeBatch): any => ({
     ...obj,
   });
@@ -1570,12 +1785,15 @@ export interface NoSuchHealthCheck extends __SmithyException, $MetadataBearer {
   name: "NoSuchHealthCheck";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace NoSuchHealthCheck {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchHealthCheck): any => ({
     ...obj,
   });
@@ -1628,6 +1846,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -1672,6 +1893,9 @@ export interface ChangeTagsForResourceRequest {
 }
 
 export namespace ChangeTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChangeTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -1683,6 +1907,9 @@ export namespace ChangeTagsForResourceRequest {
 export interface ChangeTagsForResourceResponse {}
 
 export namespace ChangeTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChangeTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -1698,6 +1925,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -2052,6 +2282,9 @@ export interface HealthCheckConfig {
 }
 
 export namespace HealthCheckConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HealthCheckConfig): any => ({
     ...obj,
   });
@@ -2093,6 +2326,9 @@ export interface CreateHealthCheckRequest {
 }
 
 export namespace CreateHealthCheckRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateHealthCheckRequest): any => ({
     ...obj,
   });
@@ -2120,6 +2356,9 @@ export interface Dimension {
 }
 
 export namespace Dimension {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Dimension): any => ({
     ...obj,
   });
@@ -2178,6 +2417,9 @@ export interface CloudWatchAlarmConfiguration {
 }
 
 export namespace CloudWatchAlarmConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudWatchAlarmConfiguration): any => ({
     ...obj,
   });
@@ -2202,6 +2444,9 @@ export interface LinkedService {
 }
 
 export namespace LinkedService {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LinkedService): any => ({
     ...obj,
   });
@@ -2212,7 +2457,7 @@ export namespace LinkedService {
  */
 export interface HealthCheck {
   /**
-   * <p>The identifier that Amazon Route 53assigned to the health check when you created it. When you add or update a resource record set, you use
+   * <p>The identifier that Amazon Route 53 assigned to the health check when you created it. When you add or update a resource record set, you use
    * 			this value to specify which health check to use. The value can be up to 64 characters long. </p>
    */
   Id: string | undefined;
@@ -2246,6 +2491,9 @@ export interface HealthCheck {
 }
 
 export namespace HealthCheck {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HealthCheck): any => ({
     ...obj,
   });
@@ -2267,6 +2515,9 @@ export interface CreateHealthCheckResponse {
 }
 
 export namespace CreateHealthCheckResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateHealthCheckResponse): any => ({
     ...obj,
   });
@@ -2290,12 +2541,15 @@ export interface HealthCheckAlreadyExists extends __SmithyException, $MetadataBe
   name: "HealthCheckAlreadyExists";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace HealthCheckAlreadyExists {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HealthCheckAlreadyExists): any => ({
     ...obj,
   });
@@ -2319,6 +2573,9 @@ export interface TooManyHealthChecks extends __SmithyException, $MetadataBearer 
 }
 
 export namespace TooManyHealthChecks {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyHealthChecks): any => ({
     ...obj,
   });
@@ -2342,6 +2599,9 @@ export interface HostedZoneConfig {
 }
 
 export namespace HostedZoneConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HostedZoneConfig): any => ({
     ...obj,
   });
@@ -2400,6 +2660,9 @@ export interface CreateHostedZoneRequest {
 }
 
 export namespace CreateHostedZoneRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateHostedZoneRequest): any => ({
     ...obj,
   });
@@ -2427,6 +2690,9 @@ export interface DelegationSet {
 }
 
 export namespace DelegationSet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DelegationSet): any => ({
     ...obj,
   });
@@ -2477,6 +2743,9 @@ export interface HostedZone {
 }
 
 export namespace HostedZone {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HostedZone): any => ({
     ...obj,
   });
@@ -2513,6 +2782,9 @@ export interface CreateHostedZoneResponse {
 }
 
 export namespace CreateHostedZoneResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateHostedZoneResponse): any => ({
     ...obj,
   });
@@ -2527,12 +2799,15 @@ export interface DelegationSetNotAvailable extends __SmithyException, $MetadataB
   name: "DelegationSetNotAvailable";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace DelegationSetNotAvailable {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DelegationSetNotAvailable): any => ({
     ...obj,
   });
@@ -2545,12 +2820,15 @@ export interface DelegationSetNotReusable extends __SmithyException, $MetadataBe
   name: "DelegationSetNotReusable";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace DelegationSetNotReusable {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DelegationSetNotReusable): any => ({
     ...obj,
   });
@@ -2564,12 +2842,15 @@ export interface HostedZoneAlreadyExists extends __SmithyException, $MetadataBea
   name: "HostedZoneAlreadyExists";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace HostedZoneAlreadyExists {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HostedZoneAlreadyExists): any => ({
     ...obj,
   });
@@ -2582,12 +2863,15 @@ export interface InvalidDomainName extends __SmithyException, $MetadataBearer {
   name: "InvalidDomainName";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace InvalidDomainName {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidDomainName): any => ({
     ...obj,
   });
@@ -2600,12 +2884,15 @@ export interface NoSuchDelegationSet extends __SmithyException, $MetadataBearer 
   name: "NoSuchDelegationSet";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace NoSuchDelegationSet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchDelegationSet): any => ({
     ...obj,
   });
@@ -2626,31 +2913,377 @@ export interface TooManyHostedZones extends __SmithyException, $MetadataBearer {
   name: "TooManyHostedZones";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace TooManyHostedZones {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyHostedZones): any => ({
     ...obj,
   });
 }
 
+export interface CreateKeySigningKeyRequest {
+  /**
+   * <p>A unique string that identifies the request.</p>
+   */
+  CallerReference: string | undefined;
+
+  /**
+   * <p>The unique string (ID) used to identify a hosted zone.</p>
+   */
+  HostedZoneId: string | undefined;
+
+  /**
+   * <p>The Amazon resource name (ARN) for a customer managed customer master key (CMK) in AWS Key Management Service (AWS KMS).
+   * 			The <code>KeyManagementServiceArn</code> must be unique for each key-signing key (KSK) in a single hosted zone.
+   * 			To see an example of <code>KeyManagementServiceArn</code> that grants the correct permissions for DNSSEC,
+   * 			scroll down to <b>Example</b>. </p>
+   * 		       <p>You must configure the customer managed CMK as follows:</p>
+   * 		       <dl>
+   *             <dt>Status</dt>
+   *             <dd>
+   *                <p>Enabled</p>
+   *             </dd>
+   *             <dt>Key spec</dt>
+   *             <dd>
+   *                <p>ECC_NIST_P256</p>
+   *             </dd>
+   *             <dt>Key usage</dt>
+   *             <dd>
+   *                <p>Sign and verify</p>
+   *             </dd>
+   *             <dt>Key policy</dt>
+   *             <dd>
+   *                <p>The key policy must give permission for the following actions:</p>
+   * 					          <ul>
+   *                   <li>
+   *                      <p>DescribeKey</p>
+   *                   </li>
+   *                   <li>
+   *                      <p>GetPublicKey</p>
+   *                   </li>
+   *                   <li>
+   *                      <p>Sign</p>
+   *                   </li>
+   *                </ul>
+   * 					          <p>The key policy must also include the Amazon Route 53 service in the principal for your account.
+   * 						Specify the following:</p>
+   * 					          <ul>
+   *                   <li>
+   *                      <p>
+   *                         <code>"Service": "dnssec.route53.aws.amazonaws.com"</code>
+   *                      </p>
+   *                   </li>
+   *                </ul>
+   * 				        </dd>
+   *          </dl>
+   * 		       <p>For more information about working with a customer managed CMK in AWS KMS, see
+   * 			<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS Key Management Service concepts</a>.</p>
+   */
+  KeyManagementServiceArn: string | undefined;
+
+  /**
+   * <p>A string used to identify a key-signing key (KSK). <code>Name</code> can include numbers, letters,  and underscores (_). <code>Name</code> must be unique for each key-signing key in the same
+   * 			hosted zone.</p>
+   */
+  Name: string | undefined;
+
+  /**
+   * <p>A string specifying the initial status of the key-signing key (KSK). You can set the value to <code>ACTIVE</code> or <code>INACTIVE</code>.</p>
+   */
+  Status: string | undefined;
+}
+
+export namespace CreateKeySigningKeyRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateKeySigningKeyRequest): any => ({
+    ...obj,
+  });
+}
+
 /**
- * <p>Another user submitted a request to create, update, or delete the object at the same time that you did. Retry the request. </p>
+ * <p>A key-signing key (KSK) is a complex type that represents a public/private key pair. The private key is used to generate
+ * 		a digital signature for the zone signing key (ZSK). The public key is stored in the DNS and is used to authenticate the ZSK.
+ * 		A KSK is always associated with a hosted zone; it cannot exist by itself.</p>
  */
-export interface ConcurrentModification extends __SmithyException, $MetadataBearer {
-  name: "ConcurrentModification";
+export interface KeySigningKey {
+  /**
+   * <p>A string used to identify a key-signing key (KSK). <code>Name</code> can include numbers, letters,  and underscores (_). <code>Name</code> must be unique for each key-signing key in the same
+   * 			hosted zone.</p>
+   */
+  Name?: string;
+
+  /**
+   * <p>The Amazon resource name (ARN) used to identify the customer managed customer master key (CMK) in AWS Key Management Service (AWS KMS).
+   * 			The <code>KmsArn</code> must be unique for each key-signing key (KSK) in a single hosted zone.</p>
+   * 		       <p>You must configure the CMK as follows:</p>
+   * 		       <dl>
+   *             <dt>Status</dt>
+   *             <dd>
+   *                <p>Enabled</p>
+   *             </dd>
+   *             <dt>Key spec</dt>
+   *             <dd>
+   *                <p>ECC_NIST_P256</p>
+   *             </dd>
+   *             <dt>Key usage</dt>
+   *             <dd>
+   *                <p>Sign and verify</p>
+   *             </dd>
+   *             <dt>Key policy</dt>
+   *             <dd>
+   *                <p>The key policy must give permission for the following actions:</p>
+   * 				           <ul>
+   *                   <li>
+   *                      <p>DescribeKey</p>
+   *                   </li>
+   *                   <li>
+   *                      <p>GetPublicKey</p>
+   *                   </li>
+   *                   <li>
+   *                      <p>Sign</p>
+   *                   </li>
+   *                </ul>
+   * 					          <p>The key policy must also include the Amazon Route 53 service in the principal for your account.
+   * 						Specify the following:</p>
+   * 					          <ul>
+   *                   <li>
+   *                      <p>
+   *                         <code>"Service": "api-service.dnssec.route53.aws.internal"</code>
+   *                      </p>
+   *                   </li>
+   *                </ul>
+   * 				        </dd>
+   *          </dl>
+   * 		       <p>For more information about working with the customer managed CMK in AWS KMS, see
+   * 			<a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html">AWS Key Management Service concepts</a>.</p>
+   */
+  KmsArn?: string;
+
+  /**
+   * <p>An integer that specifies how the key is used. For key-signing key (KSK), this value is always 257.</p>
+   */
+  Flag?: number;
+
+  /**
+   * <p>A string used to represent the signing algorithm. This value must follow the guidelines provided by
+   * 			<a href="https://tools.ietf.org/html/rfc8624#section-3.1">RFC-8624 Section 3.1</a>.
+   * 		</p>
+   */
+  SigningAlgorithmMnemonic?: string;
+
+  /**
+   * <p>An integer used to represent the signing algorithm. This value must follow the guidelines provided by
+   * 			<a href="https://tools.ietf.org/html/rfc8624#section-3.1">RFC-8624 Section 3.1</a>.
+   * 		</p>
+   */
+  SigningAlgorithmType?: number;
+
+  /**
+   * <p>A string used to represent the delegation signer digest algorithm. This value must follow the guidelines provided by
+   * 			<a href="https://tools.ietf.org/html/rfc8624#section-3.3">RFC-8624 Section 3.3</a>.
+   * 		</p>
+   */
+  DigestAlgorithmMnemonic?: string;
+
+  /**
+   * <p>An integer used to represent the delegation signer digest algorithm. This value must follow the guidelines provided by
+   * 			<a href="https://tools.ietf.org/html/rfc8624#section-3.3">RFC-8624 Section 3.3</a>.</p>
+   */
+  DigestAlgorithmType?: number;
+
+  /**
+   * <p>An integer used to identify the DNSSEC record for the domain name. The process used to calculate the value is described in
+   * 			<a href="https://tools.ietf.org/rfc/rfc4034.txt">RFC-4034 Appendix B</a>.</p>
+   */
+  KeyTag?: number;
+
+  /**
+   * <p>A cryptographic digest of a DNSKEY resource record (RR). DNSKEY records are used to publish the public key that resolvers
+   * 			can use to verify DNSSEC signatures that are used to secure certain kinds of information provided by the DNS system.</p>
+   */
+  DigestValue?: string;
+
+  /**
+   * <p>The public key, represented as a Base64 encoding, as required by <a href="https://tools.ietf.org/rfc/rfc4034.txt">
+   * 			RFC-4034 Page 5</a>.</p>
+   */
+  PublicKey?: string;
+
+  /**
+   * <p>A string that represents a delegation signer (DS) record.</p>
+   */
+  DSRecord?: string;
+
+  /**
+   * <p>A string that represents a DNSKEY record.</p>
+   */
+  DNSKEYRecord?: string;
+
+  /**
+   * <p>A string that represents the current key-signing key (KSK) status.</p>
+   * 		       <p>Status can have one of the following values:</p>
+   * 		       <dl>
+   *             <dt>ACTIVE</dt>
+   *             <dd>
+   *                <p>The KSK is being used for signing.</p>
+   *             </dd>
+   *             <dt>INACTIVE</dt>
+   *             <dd>
+   *                <p>The KSK is not being used for signing.</p>
+   *             </dd>
+   *             <dt>DELETING</dt>
+   *             <dd>
+   *                <p>The KSK is in the process of being deleted.</p>
+   *             </dd>
+   *             <dt>ACTION_NEEDED</dt>
+   *             <dd>
+   *                <p>There is a problem with the KSK that requires you to take action to resolve.
+   * 				For example, the customer managed customer master key (CMK) might have been deleted, or the
+   * 				permissions for the customer managed CMK might have been changed.</p>
+   *             </dd>
+   *             <dt>INTERNAL_FAILURE</dt>
+   *             <dd>
+   *                <p>There was an error during a request. Before you can continue to work with DNSSEC
+   * 					signing, including actions that involve this KSK, you must correct the problem. For example,
+   * 					you may need to activate or deactivate the KSK.</p>
+   *             </dd>
+   *          </dl>
+   */
+  Status?: string;
+
+  /**
+   * <p>The status message provided for the following key-signing key (KSK) statuses: <code>ACTION_NEEDED</code> or
+   * 			<code>INTERNAL_FAILURE</code>. The status message includes information about what the problem might be and steps
+   * 			that you can take to correct the issue.</p>
+   */
+  StatusMessage?: string;
+
+  /**
+   * <p>The date when the key-signing key (KSK) was created.</p>
+   */
+  CreatedDate?: Date;
+
+  /**
+   * <p>The last time that the key-signing key (KSK) was changed.</p>
+   */
+  LastModifiedDate?: Date;
+}
+
+export namespace KeySigningKey {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: KeySigningKey): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateKeySigningKeyResponse {
+  /**
+   * <p>A complex type that describes change information about changes made to your hosted
+   * 			zone.</p>
+   */
+  ChangeInfo: ChangeInfo | undefined;
+
+  /**
+   * <p>The key-signing key (KSK) that the request creates.</p>
+   */
+  KeySigningKey: KeySigningKey | undefined;
+
+  /**
+   * <p>The unique URL representing the new key-signing key (KSK).</p>
+   */
+  Location: string | undefined;
+}
+
+export namespace CreateKeySigningKeyResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateKeySigningKeyResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Parameter name is not valid.</p>
+ */
+export interface InvalidArgument extends __SmithyException, $MetadataBearer {
+  name: "InvalidArgument";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
-export namespace ConcurrentModification {
-  export const filterSensitiveLog = (obj: ConcurrentModification): any => ({
+export namespace InvalidArgument {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidArgument): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The key-signing key (KSK) name that you specified isn't a valid name.</p>
+ */
+export interface InvalidKeySigningKeyName extends __SmithyException, $MetadataBearer {
+  name: "InvalidKeySigningKeyName";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace InvalidKeySigningKeyName {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidKeySigningKeyName): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>You've already created a key-signing key (KSK) with this name or with the same customer managed customer master key (CMK) ARN.</p>
+ */
+export interface KeySigningKeyAlreadyExists extends __SmithyException, $MetadataBearer {
+  name: "KeySigningKeyAlreadyExists";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace KeySigningKeyAlreadyExists {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: KeySigningKeyAlreadyExists): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>You've reached the limit for the number of key-signing keys (KSKs). Remove at least one KSK, and then try again.</p>
+ */
+export interface TooManyKeySigningKeys extends __SmithyException, $MetadataBearer {
+  name: "TooManyKeySigningKeys";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace TooManyKeySigningKeys {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TooManyKeySigningKeys): any => ({
     ...obj,
   });
 }
@@ -2677,6 +3310,9 @@ export interface CreateQueryLoggingConfigRequest {
 }
 
 export namespace CreateQueryLoggingConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateQueryLoggingConfigRequest): any => ({
     ...obj,
   });
@@ -2703,6 +3339,9 @@ export interface QueryLoggingConfig {
 }
 
 export namespace QueryLoggingConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QueryLoggingConfig): any => ({
     ...obj,
   });
@@ -2722,6 +3361,9 @@ export interface CreateQueryLoggingConfigResponse {
 }
 
 export namespace CreateQueryLoggingConfigResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateQueryLoggingConfigResponse): any => ({
     ...obj,
   });
@@ -2750,6 +3392,9 @@ export interface InsufficientCloudWatchLogsResourcePolicy extends __SmithyExcept
 }
 
 export namespace InsufficientCloudWatchLogsResourcePolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsufficientCloudWatchLogsResourcePolicy): any => ({
     ...obj,
   });
@@ -2765,6 +3410,9 @@ export interface NoSuchCloudWatchLogsLogGroup extends __SmithyException, $Metada
 }
 
 export namespace NoSuchCloudWatchLogsLogGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchCloudWatchLogsLogGroup): any => ({
     ...obj,
   });
@@ -2781,6 +3429,9 @@ export interface QueryLoggingConfigAlreadyExists extends __SmithyException, $Met
 }
 
 export namespace QueryLoggingConfigAlreadyExists {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QueryLoggingConfigAlreadyExists): any => ({
     ...obj,
   });
@@ -2804,6 +3455,9 @@ export interface CreateReusableDelegationSetRequest {
 }
 
 export namespace CreateReusableDelegationSetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateReusableDelegationSetRequest): any => ({
     ...obj,
   });
@@ -2822,6 +3476,9 @@ export interface CreateReusableDelegationSetResponse {
 }
 
 export namespace CreateReusableDelegationSetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateReusableDelegationSetResponse): any => ({
     ...obj,
   });
@@ -2834,12 +3491,15 @@ export interface DelegationSetAlreadyCreated extends __SmithyException, $Metadat
   name: "DelegationSetAlreadyCreated";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace DelegationSetAlreadyCreated {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DelegationSetAlreadyCreated): any => ({
     ...obj,
   });
@@ -2852,12 +3512,15 @@ export interface DelegationSetAlreadyReusable extends __SmithyException, $Metada
   name: "DelegationSetAlreadyReusable";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace DelegationSetAlreadyReusable {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DelegationSetAlreadyReusable): any => ({
     ...obj,
   });
@@ -2870,31 +3533,16 @@ export interface HostedZoneNotFound extends __SmithyException, $MetadataBearer {
   name: "HostedZoneNotFound";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace HostedZoneNotFound {
-  export const filterSensitiveLog = (obj: HostedZoneNotFound): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Parameter name is invalid.</p>
- */
-export interface InvalidArgument extends __SmithyException, $MetadataBearer {
-  name: "InvalidArgument";
-  $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * @internal
    */
-  message?: string;
-}
-
-export namespace InvalidArgument {
-  export const filterSensitiveLog = (obj: InvalidArgument): any => ({
+  export const filterSensitiveLog = (obj: HostedZoneNotFound): any => ({
     ...obj,
   });
 }
@@ -2921,6 +3569,9 @@ export interface CreateTrafficPolicyRequest {
 }
 
 export namespace CreateTrafficPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateTrafficPolicyRequest): any => ({
     ...obj,
   });
@@ -2966,6 +3617,9 @@ export interface TrafficPolicy {
 }
 
 export namespace TrafficPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrafficPolicy): any => ({
     ...obj,
   });
@@ -2987,24 +3641,30 @@ export interface CreateTrafficPolicyResponse {
 }
 
 export namespace CreateTrafficPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateTrafficPolicyResponse): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The format of the traffic policy document that you specified in the <code>Document</code> element is invalid.</p>
+ * <p>The format of the traffic policy document that you specified in the <code>Document</code> element is not valid.</p>
  */
 export interface InvalidTrafficPolicyDocument extends __SmithyException, $MetadataBearer {
   name: "InvalidTrafficPolicyDocument";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace InvalidTrafficPolicyDocument {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTrafficPolicyDocument): any => ({
     ...obj,
   });
@@ -3023,12 +3683,15 @@ export interface TooManyTrafficPolicies extends __SmithyException, $MetadataBear
   name: "TooManyTrafficPolicies";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace TooManyTrafficPolicies {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyTrafficPolicies): any => ({
     ...obj,
   });
@@ -3041,12 +3704,15 @@ export interface TrafficPolicyAlreadyExists extends __SmithyException, $Metadata
   name: "TrafficPolicyAlreadyExists";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace TrafficPolicyAlreadyExists {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrafficPolicyAlreadyExists): any => ({
     ...obj,
   });
@@ -3084,6 +3750,9 @@ export interface CreateTrafficPolicyInstanceRequest {
 }
 
 export namespace CreateTrafficPolicyInstanceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateTrafficPolicyInstanceRequest): any => ({
     ...obj,
   });
@@ -3158,6 +3827,9 @@ export interface TrafficPolicyInstance {
 }
 
 export namespace TrafficPolicyInstance {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrafficPolicyInstance): any => ({
     ...obj,
   });
@@ -3179,6 +3851,9 @@ export interface CreateTrafficPolicyInstanceResponse {
 }
 
 export namespace CreateTrafficPolicyInstanceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateTrafficPolicyInstanceResponse): any => ({
     ...obj,
   });
@@ -3191,12 +3866,15 @@ export interface NoSuchTrafficPolicy extends __SmithyException, $MetadataBearer 
   name: "NoSuchTrafficPolicy";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace NoSuchTrafficPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchTrafficPolicy): any => ({
     ...obj,
   });
@@ -3216,12 +3894,15 @@ export interface TooManyTrafficPolicyInstances extends __SmithyException, $Metad
   name: "TooManyTrafficPolicyInstances";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace TooManyTrafficPolicyInstances {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyTrafficPolicyInstances): any => ({
     ...obj,
   });
@@ -3234,12 +3915,15 @@ export interface TrafficPolicyInstanceAlreadyExists extends __SmithyException, $
   name: "TrafficPolicyInstanceAlreadyExists";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace TrafficPolicyInstanceAlreadyExists {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrafficPolicyInstanceAlreadyExists): any => ({
     ...obj,
   });
@@ -3268,6 +3952,9 @@ export interface CreateTrafficPolicyVersionRequest {
 }
 
 export namespace CreateTrafficPolicyVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateTrafficPolicyVersionRequest): any => ({
     ...obj,
   });
@@ -3289,6 +3976,9 @@ export interface CreateTrafficPolicyVersionResponse {
 }
 
 export namespace CreateTrafficPolicyVersionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateTrafficPolicyVersionResponse): any => ({
     ...obj,
   });
@@ -3307,12 +3997,15 @@ export interface TooManyTrafficPolicyVersionsForCurrentPolicy extends __SmithyEx
   name: "TooManyTrafficPolicyVersionsForCurrentPolicy";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace TooManyTrafficPolicyVersionsForCurrentPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyTrafficPolicyVersionsForCurrentPolicy): any => ({
     ...obj,
   });
@@ -3336,6 +4029,9 @@ export interface CreateVPCAssociationAuthorizationRequest {
 }
 
 export namespace CreateVPCAssociationAuthorizationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateVPCAssociationAuthorizationRequest): any => ({
     ...obj,
   });
@@ -3357,6 +4053,9 @@ export interface CreateVPCAssociationAuthorizationResponse {
 }
 
 export namespace CreateVPCAssociationAuthorizationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateVPCAssociationAuthorizationResponse): any => ({
     ...obj,
   });
@@ -3372,13 +4071,91 @@ export interface TooManyVPCAssociationAuthorizations extends __SmithyException, 
   name: "TooManyVPCAssociationAuthorizations";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace TooManyVPCAssociationAuthorizations {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyVPCAssociationAuthorizations): any => ({
+    ...obj,
+  });
+}
+
+export interface DeactivateKeySigningKeyRequest {
+  /**
+   * <p>A unique string used to identify a hosted zone.</p>
+   */
+  HostedZoneId: string | undefined;
+
+  /**
+   * <p>A string used to identify a key-signing key (KSK).</p>
+   */
+  Name: string | undefined;
+}
+
+export namespace DeactivateKeySigningKeyRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeactivateKeySigningKeyRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DeactivateKeySigningKeyResponse {
+  /**
+   * <p>A complex type that describes change information about changes made to your hosted
+   * 			zone.</p>
+   */
+  ChangeInfo: ChangeInfo | undefined;
+}
+
+export namespace DeactivateKeySigningKeyResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeactivateKeySigningKeyResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The key-signing key (KSK) is specified in a parent DS record.</p>
+ */
+export interface KeySigningKeyInParentDSRecord extends __SmithyException, $MetadataBearer {
+  name: "KeySigningKeyInParentDSRecord";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace KeySigningKeyInParentDSRecord {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: KeySigningKeyInParentDSRecord): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The key-signing key (KSK) that you specified can't be deactivated because it's the only KSK for a
+ * 		currently-enabled DNSSEC. Disable DNSSEC signing, or add or enable another KSK.</p>
+ */
+export interface KeySigningKeyInUse extends __SmithyException, $MetadataBearer {
+  name: "KeySigningKeyInUse";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace KeySigningKeyInUse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: KeySigningKeyInUse): any => ({
     ...obj,
   });
 }
@@ -3394,6 +4171,9 @@ export interface DeleteHealthCheckRequest {
 }
 
 export namespace DeleteHealthCheckRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteHealthCheckRequest): any => ({
     ...obj,
   });
@@ -3405,6 +4185,9 @@ export namespace DeleteHealthCheckRequest {
 export interface DeleteHealthCheckResponse {}
 
 export namespace DeleteHealthCheckResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteHealthCheckResponse): any => ({
     ...obj,
   });
@@ -3419,12 +4202,15 @@ export interface HealthCheckInUse extends __SmithyException, $MetadataBearer {
   name: "HealthCheckInUse";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace HealthCheckInUse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HealthCheckInUse): any => ({
     ...obj,
   });
@@ -3441,6 +4227,9 @@ export interface DeleteHostedZoneRequest {
 }
 
 export namespace DeleteHostedZoneRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteHostedZoneRequest): any => ({
     ...obj,
   });
@@ -3457,6 +4246,9 @@ export interface DeleteHostedZoneResponse {
 }
 
 export namespace DeleteHostedZoneResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteHostedZoneResponse): any => ({
     ...obj,
   });
@@ -3469,13 +4261,54 @@ export interface HostedZoneNotEmpty extends __SmithyException, $MetadataBearer {
   name: "HostedZoneNotEmpty";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace HostedZoneNotEmpty {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HostedZoneNotEmpty): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteKeySigningKeyRequest {
+  /**
+   * <p>A unique string used to identify a hosted zone.</p>
+   */
+  HostedZoneId: string | undefined;
+
+  /**
+   * <p>A string used to identify a key-signing key (KSK).</p>
+   */
+  Name: string | undefined;
+}
+
+export namespace DeleteKeySigningKeyRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteKeySigningKeyRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteKeySigningKeyResponse {
+  /**
+   * <p>A complex type that describes change information about changes made to your hosted
+   * 			zone.</p>
+   */
+  ChangeInfo: ChangeInfo | undefined;
+}
+
+export namespace DeleteKeySigningKeyResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteKeySigningKeyResponse): any => ({
     ...obj,
   });
 }
@@ -3488,6 +4321,9 @@ export interface DeleteQueryLoggingConfigRequest {
 }
 
 export namespace DeleteQueryLoggingConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteQueryLoggingConfigRequest): any => ({
     ...obj,
   });
@@ -3496,6 +4332,9 @@ export namespace DeleteQueryLoggingConfigRequest {
 export interface DeleteQueryLoggingConfigResponse {}
 
 export namespace DeleteQueryLoggingConfigResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteQueryLoggingConfigResponse): any => ({
     ...obj,
   });
@@ -3511,6 +4350,9 @@ export interface NoSuchQueryLoggingConfig extends __SmithyException, $MetadataBe
 }
 
 export namespace NoSuchQueryLoggingConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchQueryLoggingConfig): any => ({
     ...obj,
   });
@@ -3524,12 +4366,15 @@ export interface DelegationSetInUse extends __SmithyException, $MetadataBearer {
   name: "DelegationSetInUse";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace DelegationSetInUse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DelegationSetInUse): any => ({
     ...obj,
   });
@@ -3546,6 +4391,9 @@ export interface DeleteReusableDelegationSetRequest {
 }
 
 export namespace DeleteReusableDelegationSetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReusableDelegationSetRequest): any => ({
     ...obj,
   });
@@ -3557,6 +4405,9 @@ export namespace DeleteReusableDelegationSetRequest {
 export interface DeleteReusableDelegationSetResponse {}
 
 export namespace DeleteReusableDelegationSetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReusableDelegationSetResponse): any => ({
     ...obj,
   });
@@ -3578,6 +4429,9 @@ export interface DeleteTrafficPolicyRequest {
 }
 
 export namespace DeleteTrafficPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteTrafficPolicyRequest): any => ({
     ...obj,
   });
@@ -3589,6 +4443,9 @@ export namespace DeleteTrafficPolicyRequest {
 export interface DeleteTrafficPolicyResponse {}
 
 export namespace DeleteTrafficPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteTrafficPolicyResponse): any => ({
     ...obj,
   });
@@ -3601,12 +4458,15 @@ export interface TrafficPolicyInUse extends __SmithyException, $MetadataBearer {
   name: "TrafficPolicyInUse";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace TrafficPolicyInUse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrafficPolicyInUse): any => ({
     ...obj,
   });
@@ -3627,6 +4487,9 @@ export interface DeleteTrafficPolicyInstanceRequest {
 }
 
 export namespace DeleteTrafficPolicyInstanceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteTrafficPolicyInstanceRequest): any => ({
     ...obj,
   });
@@ -3638,6 +4501,9 @@ export namespace DeleteTrafficPolicyInstanceRequest {
 export interface DeleteTrafficPolicyInstanceResponse {}
 
 export namespace DeleteTrafficPolicyInstanceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteTrafficPolicyInstanceResponse): any => ({
     ...obj,
   });
@@ -3650,12 +4516,15 @@ export interface NoSuchTrafficPolicyInstance extends __SmithyException, $Metadat
   name: "NoSuchTrafficPolicyInstance";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace NoSuchTrafficPolicyInstance {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchTrafficPolicyInstance): any => ({
     ...obj,
   });
@@ -3680,6 +4549,9 @@ export interface DeleteVPCAssociationAuthorizationRequest {
 }
 
 export namespace DeleteVPCAssociationAuthorizationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteVPCAssociationAuthorizationRequest): any => ({
     ...obj,
   });
@@ -3691,6 +4563,9 @@ export namespace DeleteVPCAssociationAuthorizationRequest {
 export interface DeleteVPCAssociationAuthorizationResponse {}
 
 export namespace DeleteVPCAssociationAuthorizationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteVPCAssociationAuthorizationResponse): any => ({
     ...obj,
   });
@@ -3703,13 +4578,67 @@ export interface VPCAssociationAuthorizationNotFound extends __SmithyException, 
   name: "VPCAssociationAuthorizationNotFound";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace VPCAssociationAuthorizationNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VPCAssociationAuthorizationNotFound): any => ({
+    ...obj,
+  });
+}
+
+export interface DisableHostedZoneDNSSECRequest {
+  /**
+   * <p>A unique string used to identify a hosted zone.</p>
+   */
+  HostedZoneId: string | undefined;
+}
+
+export namespace DisableHostedZoneDNSSECRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DisableHostedZoneDNSSECRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DisableHostedZoneDNSSECResponse {
+  /**
+   * <p>A complex type that describes change information about changes made to your hosted
+   * 			zone.</p>
+   */
+  ChangeInfo: ChangeInfo | undefined;
+}
+
+export namespace DisableHostedZoneDNSSECResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DisableHostedZoneDNSSECResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The hosted zone doesn't have any DNSSEC resources.</p>
+ */
+export interface DNSSECNotFound extends __SmithyException, $MetadataBearer {
+  name: "DNSSECNotFound";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace DNSSECNotFound {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DNSSECNotFound): any => ({
     ...obj,
   });
 }
@@ -3738,6 +4667,9 @@ export interface DisassociateVPCFromHostedZoneRequest {
 }
 
 export namespace DisassociateVPCFromHostedZoneRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateVPCFromHostedZoneRequest): any => ({
     ...obj,
   });
@@ -3754,6 +4686,9 @@ export interface DisassociateVPCFromHostedZoneResponse {
 }
 
 export namespace DisassociateVPCFromHostedZoneResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateVPCFromHostedZoneResponse): any => ({
     ...obj,
   });
@@ -3767,12 +4702,15 @@ export interface LastVPCAssociation extends __SmithyException, $MetadataBearer {
   name: "LastVPCAssociation";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace LastVPCAssociation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LastVPCAssociation): any => ({
     ...obj,
   });
@@ -3785,13 +4723,85 @@ export interface VPCAssociationNotFound extends __SmithyException, $MetadataBear
   name: "VPCAssociationNotFound";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p>The specified VPC or hosted zone weren't found.</p>
    */
   message?: string;
 }
 
 export namespace VPCAssociationNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VPCAssociationNotFound): any => ({
+    ...obj,
+  });
+}
+
+export interface EnableHostedZoneDNSSECRequest {
+  /**
+   * <p>A unique string used to identify a hosted zone.</p>
+   */
+  HostedZoneId: string | undefined;
+}
+
+export namespace EnableHostedZoneDNSSECRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: EnableHostedZoneDNSSECRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface EnableHostedZoneDNSSECResponse {
+  /**
+   * <p>A complex type that describes change information about changes made to your hosted
+   * 			zone.</p>
+   */
+  ChangeInfo: ChangeInfo | undefined;
+}
+
+export namespace EnableHostedZoneDNSSECResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: EnableHostedZoneDNSSECResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The hosted zone nameservers don't match the parent nameservers. The hosted zone and parent must have the same nameservers.</p>
+ */
+export interface HostedZonePartiallyDelegated extends __SmithyException, $MetadataBearer {
+  name: "HostedZonePartiallyDelegated";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace HostedZonePartiallyDelegated {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: HostedZonePartiallyDelegated): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>A key-signing key (KSK) with <code>ACTIVE</code> status wasn't found.</p>
+ */
+export interface KeySigningKeyWithActiveStatusNotFound extends __SmithyException, $MetadataBearer {
+  name: "KeySigningKeyWithActiveStatusNotFound";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace KeySigningKeyWithActiveStatusNotFound {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: KeySigningKeyWithActiveStatusNotFound): any => ({
     ...obj,
   });
 }
@@ -3835,6 +4845,9 @@ export interface GetAccountLimitRequest {
 }
 
 export namespace GetAccountLimitRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccountLimitRequest): any => ({
     ...obj,
   });
@@ -3860,6 +4873,9 @@ export interface GetAccountLimitResponse {
 }
 
 export namespace GetAccountLimitResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccountLimitResponse): any => ({
     ...obj,
   });
@@ -3877,6 +4893,9 @@ export interface GetChangeRequest {
 }
 
 export namespace GetChangeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetChangeRequest): any => ({
     ...obj,
   });
@@ -3893,6 +4912,9 @@ export interface GetChangeResponse {
 }
 
 export namespace GetChangeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetChangeResponse): any => ({
     ...obj,
   });
@@ -3908,6 +4930,9 @@ export interface NoSuchChange extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NoSuchChange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchChange): any => ({
     ...obj,
   });
@@ -3919,6 +4944,9 @@ export namespace NoSuchChange {
 export interface GetCheckerIpRangesRequest {}
 
 export namespace GetCheckerIpRangesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCheckerIpRangesRequest): any => ({
     ...obj,
   });
@@ -3936,7 +4964,99 @@ export interface GetCheckerIpRangesResponse {
 }
 
 export namespace GetCheckerIpRangesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCheckerIpRangesResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface GetDNSSECRequest {
+  /**
+   * <p>A unique string used to identify a hosted zone.</p>
+   */
+  HostedZoneId: string | undefined;
+}
+
+export namespace GetDNSSECRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetDNSSECRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>A string repesenting the status of DNSSEC signing.</p>
+ */
+export interface DNSSECStatus {
+  /**
+   * <p>A string that represents the current hosted zone signing status.</p>
+   * 		       <p>Status can have one of the following values:</p>
+   * 		       <dl>
+   *             <dt>SIGNING</dt>
+   *             <dd>
+   *                <p>DNSSEC signing is enabled for the hosted zone.</p>
+   *             </dd>
+   *             <dt>NOT_SIGNING</dt>
+   *             <dd>
+   *                <p>DNSSEC signing is not enabled for the hosted zone.</p>
+   *             </dd>
+   *             <dt>DELETING</dt>
+   *             <dd>
+   *                <p>DNSSEC signing is in the process of being removed for the hosted zone.</p>
+   *             </dd>
+   *             <dt>ACTION_NEEDED</dt>
+   *             <dd>
+   *                <p>There is a problem with signing in the hosted zone that requires you to take action to resolve.
+   * 					For example, the customer managed customer master key (CMK) might have been deleted, or the
+   * 					permissions for the customer managed CMK might have been changed.</p>
+   *             </dd>
+   *             <dt>INTERNAL_FAILURE</dt>
+   *             <dd>
+   *                <p>There was an error during a request. Before you can continue to work with DNSSEC
+   * 					signing, including with key-signing keys (KSKs), you must correct the problem by enabling or
+   * 					disabling DNSSEC signing for the hosted zone.</p>
+   *             </dd>
+   *          </dl>
+   */
+  ServeSignature?: string;
+
+  /**
+   * <p>The status message provided for the following DNSSEC signing status: <code>INTERNAL_FAILURE</code>. The status message
+   * 			includes information about what the problem might be and steps that you can take to correct the issue.</p>
+   */
+  StatusMessage?: string;
+}
+
+export namespace DNSSECStatus {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DNSSECStatus): any => ({
+    ...obj,
+  });
+}
+
+export interface GetDNSSECResponse {
+  /**
+   * <p>A string repesenting the status of DNSSEC.</p>
+   */
+  Status: DNSSECStatus | undefined;
+
+  /**
+   * <p>The key-signing keys (KSKs) in your account.</p>
+   */
+  KeySigningKeys: KeySigningKey[] | undefined;
+}
+
+export namespace GetDNSSECResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetDNSSECResponse): any => ({
     ...obj,
   });
 }
@@ -3987,15 +5107,15 @@ export interface GetGeoLocationRequest {
   CountryCode?: string;
 
   /**
-   * <p>For <code>SubdivisionCode</code>, Amazon Route 53 supports only states of the United States. For a list of state abbreviations, see
-   * 			<a href="https://pe.usps.com/text/pub28/28apb.htm">Appendix B: Two–Letter State and Possession Abbreviations</a>
-   * 			on the United States Postal Service website. </p>
-   * 		       <p>If you specify <code>subdivisioncode</code>, you must also specify <code>US</code> for <code>CountryCode</code>. </p>
+   * <p>The code for the subdivision, such as a particular state within the United States. For a list of US state abbreviations, see <a href="https://pe.usps.com/text/pub28/28apb.htm">Appendix B: Two–Letter State and Possession Abbreviations</a>  on the United States Postal Service website. For a list of all supported subdivision codes, use the <a href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListGeoLocations.html">ListGeoLocations</a> API.</p>
    */
   SubdivisionCode?: string;
 }
 
 export namespace GetGeoLocationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetGeoLocationRequest): any => ({
     ...obj,
   });
@@ -4026,7 +5146,7 @@ export interface GeoLocationDetails {
   CountryName?: string;
 
   /**
-   * <p>The code for the subdivision. Route 53 currently supports only states in the United States.</p>
+   * <p>The code for the subdivision, such as a particular state within the United States. For a list of US state abbreviations, see <a href="https://pe.usps.com/text/pub28/28apb.htm">Appendix B: Two–Letter State and Possession Abbreviations</a>  on the United States Postal Service website. For a list of all supported subdivision codes, use the <a href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListGeoLocations.html">ListGeoLocations</a> API.</p>
    */
   SubdivisionCode?: string;
 
@@ -4037,6 +5157,9 @@ export interface GeoLocationDetails {
 }
 
 export namespace GeoLocationDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GeoLocationDetails): any => ({
     ...obj,
   });
@@ -4053,6 +5176,9 @@ export interface GetGeoLocationResponse {
 }
 
 export namespace GetGeoLocationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetGeoLocationResponse): any => ({
     ...obj,
   });
@@ -4066,12 +5192,15 @@ export interface NoSuchGeoLocation extends __SmithyException, $MetadataBearer {
   name: "NoSuchGeoLocation";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace NoSuchGeoLocation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchGeoLocation): any => ({
     ...obj,
   });
@@ -4089,6 +5218,9 @@ export interface GetHealthCheckRequest {
 }
 
 export namespace GetHealthCheckRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHealthCheckRequest): any => ({
     ...obj,
   });
@@ -4106,6 +5238,9 @@ export interface GetHealthCheckResponse {
 }
 
 export namespace GetHealthCheckResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHealthCheckResponse): any => ({
     ...obj,
   });
@@ -4121,6 +5256,9 @@ export interface IncompatibleVersion extends __SmithyException, $MetadataBearer 
 }
 
 export namespace IncompatibleVersion {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IncompatibleVersion): any => ({
     ...obj,
   });
@@ -4132,6 +5270,9 @@ export namespace IncompatibleVersion {
 export interface GetHealthCheckCountRequest {}
 
 export namespace GetHealthCheckCountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHealthCheckCountRequest): any => ({
     ...obj,
   });
@@ -4148,6 +5289,9 @@ export interface GetHealthCheckCountResponse {
 }
 
 export namespace GetHealthCheckCountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHealthCheckCountResponse): any => ({
     ...obj,
   });
@@ -4169,6 +5313,9 @@ export interface GetHealthCheckLastFailureReasonRequest {
 }
 
 export namespace GetHealthCheckLastFailureReasonRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHealthCheckLastFailureReasonRequest): any => ({
     ...obj,
   });
@@ -4192,6 +5339,9 @@ export interface StatusReport {
 }
 
 export namespace StatusReport {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StatusReport): any => ({
     ...obj,
   });
@@ -4218,6 +5368,9 @@ export interface HealthCheckObservation {
 }
 
 export namespace HealthCheckObservation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HealthCheckObservation): any => ({
     ...obj,
   });
@@ -4234,6 +5387,9 @@ export interface GetHealthCheckLastFailureReasonResponse {
 }
 
 export namespace GetHealthCheckLastFailureReasonResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHealthCheckLastFailureReasonResponse): any => ({
     ...obj,
   });
@@ -4255,6 +5411,9 @@ export interface GetHealthCheckStatusRequest {
 }
 
 export namespace GetHealthCheckStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHealthCheckStatusRequest): any => ({
     ...obj,
   });
@@ -4273,6 +5432,9 @@ export interface GetHealthCheckStatusResponse {
 }
 
 export namespace GetHealthCheckStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHealthCheckStatusResponse): any => ({
     ...obj,
   });
@@ -4289,6 +5451,9 @@ export interface GetHostedZoneRequest {
 }
 
 export namespace GetHostedZoneRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHostedZoneRequest): any => ({
     ...obj,
   });
@@ -4315,6 +5480,9 @@ export interface GetHostedZoneResponse {
 }
 
 export namespace GetHostedZoneResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHostedZoneResponse): any => ({
     ...obj,
   });
@@ -4326,6 +5494,9 @@ export namespace GetHostedZoneResponse {
 export interface GetHostedZoneCountRequest {}
 
 export namespace GetHostedZoneCountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHostedZoneCountRequest): any => ({
     ...obj,
   });
@@ -4342,6 +5513,9 @@ export interface GetHostedZoneCountResponse {
 }
 
 export namespace GetHostedZoneCountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHostedZoneCountResponse): any => ({
     ...obj,
   });
@@ -4377,6 +5551,9 @@ export interface GetHostedZoneLimitRequest {
 }
 
 export namespace GetHostedZoneLimitRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHostedZoneLimitRequest): any => ({
     ...obj,
   });
@@ -4410,6 +5587,9 @@ export interface HostedZoneLimit {
 }
 
 export namespace HostedZoneLimit {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HostedZoneLimit): any => ({
     ...obj,
   });
@@ -4435,6 +5615,9 @@ export interface GetHostedZoneLimitResponse {
 }
 
 export namespace GetHostedZoneLimitResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetHostedZoneLimitResponse): any => ({
     ...obj,
   });
@@ -4447,12 +5630,15 @@ export interface HostedZoneNotPrivate extends __SmithyException, $MetadataBearer
   name: "HostedZoneNotPrivate";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace HostedZoneNotPrivate {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HostedZoneNotPrivate): any => ({
     ...obj,
   });
@@ -4466,6 +5652,9 @@ export interface GetQueryLoggingConfigRequest {
 }
 
 export namespace GetQueryLoggingConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetQueryLoggingConfigRequest): any => ({
     ...obj,
   });
@@ -4480,6 +5669,9 @@ export interface GetQueryLoggingConfigResponse {
 }
 
 export namespace GetQueryLoggingConfigResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetQueryLoggingConfigResponse): any => ({
     ...obj,
   });
@@ -4496,6 +5688,9 @@ export interface GetReusableDelegationSetRequest {
 }
 
 export namespace GetReusableDelegationSetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetReusableDelegationSetRequest): any => ({
     ...obj,
   });
@@ -4512,6 +5707,9 @@ export interface GetReusableDelegationSetResponse {
 }
 
 export namespace GetReusableDelegationSetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetReusableDelegationSetResponse): any => ({
     ...obj,
   });
@@ -4536,6 +5734,9 @@ export interface GetReusableDelegationSetLimitRequest {
 }
 
 export namespace GetReusableDelegationSetLimitRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetReusableDelegationSetLimitRequest): any => ({
     ...obj,
   });
@@ -4558,6 +5759,9 @@ export interface ReusableDelegationSetLimit {
 }
 
 export namespace ReusableDelegationSetLimit {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReusableDelegationSetLimit): any => ({
     ...obj,
   });
@@ -4579,6 +5783,9 @@ export interface GetReusableDelegationSetLimitResponse {
 }
 
 export namespace GetReusableDelegationSetLimitResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetReusableDelegationSetLimitResponse): any => ({
     ...obj,
   });
@@ -4600,6 +5807,9 @@ export interface GetTrafficPolicyRequest {
 }
 
 export namespace GetTrafficPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetTrafficPolicyRequest): any => ({
     ...obj,
   });
@@ -4616,6 +5826,9 @@ export interface GetTrafficPolicyResponse {
 }
 
 export namespace GetTrafficPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetTrafficPolicyResponse): any => ({
     ...obj,
   });
@@ -4632,6 +5845,9 @@ export interface GetTrafficPolicyInstanceRequest {
 }
 
 export namespace GetTrafficPolicyInstanceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetTrafficPolicyInstanceRequest): any => ({
     ...obj,
   });
@@ -4648,6 +5864,9 @@ export interface GetTrafficPolicyInstanceResponse {
 }
 
 export namespace GetTrafficPolicyInstanceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetTrafficPolicyInstanceResponse): any => ({
     ...obj,
   });
@@ -4659,6 +5878,9 @@ export namespace GetTrafficPolicyInstanceResponse {
 export interface GetTrafficPolicyInstanceCountRequest {}
 
 export namespace GetTrafficPolicyInstanceCountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetTrafficPolicyInstanceCountRequest): any => ({
     ...obj,
   });
@@ -4675,6 +5897,9 @@ export interface GetTrafficPolicyInstanceCountResponse {
 }
 
 export namespace GetTrafficPolicyInstanceCountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetTrafficPolicyInstanceCountResponse): any => ({
     ...obj,
   });
@@ -4717,6 +5942,9 @@ export interface ListGeoLocationsRequest {
 }
 
 export namespace ListGeoLocationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGeoLocationsRequest): any => ({
     ...obj,
   });
@@ -4764,6 +5992,9 @@ export interface ListGeoLocationsResponse {
 }
 
 export namespace ListGeoLocationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGeoLocationsResponse): any => ({
     ...obj,
   });
@@ -4790,6 +6021,9 @@ export interface ListHealthChecksRequest {
 }
 
 export namespace ListHealthChecksRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListHealthChecksRequest): any => ({
     ...obj,
   });
@@ -4833,6 +6067,9 @@ export interface ListHealthChecksResponse {
 }
 
 export namespace ListHealthChecksResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListHealthChecksResponse): any => ({
     ...obj,
   });
@@ -4866,6 +6103,9 @@ export interface ListHostedZonesRequest {
 }
 
 export namespace ListHostedZonesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListHostedZonesRequest): any => ({
     ...obj,
   });
@@ -4906,6 +6146,9 @@ export interface ListHostedZonesResponse {
 }
 
 export namespace ListHostedZonesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListHostedZonesResponse): any => ({
     ...obj,
   });
@@ -4942,6 +6185,9 @@ export interface ListHostedZonesByNameRequest {
 }
 
 export namespace ListHostedZonesByNameRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListHostedZonesByNameRequest): any => ({
     ...obj,
   });
@@ -4998,6 +6244,9 @@ export interface ListHostedZonesByNameResponse {
 }
 
 export namespace ListHostedZonesByNameResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListHostedZonesByNameResponse): any => ({
     ...obj,
   });
@@ -5013,6 +6262,9 @@ export interface InvalidPaginationToken extends __SmithyException, $MetadataBear
 }
 
 export namespace InvalidPaginationToken {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidPaginationToken): any => ({
     ...obj,
   });
@@ -5049,6 +6301,9 @@ export interface ListHostedZonesByVPCRequest {
 }
 
 export namespace ListHostedZonesByVPCRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListHostedZonesByVPCRequest): any => ({
     ...obj,
   });
@@ -5075,6 +6330,9 @@ export interface HostedZoneOwner {
 }
 
 export namespace HostedZoneOwner {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HostedZoneOwner): any => ({
     ...obj,
   });
@@ -5104,6 +6362,9 @@ export interface HostedZoneSummary {
 }
 
 export namespace HostedZoneSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HostedZoneSummary): any => ({
     ...obj,
   });
@@ -5128,6 +6389,9 @@ export interface ListHostedZonesByVPCResponse {
 }
 
 export namespace ListHostedZonesByVPCResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListHostedZonesByVPCResponse): any => ({
     ...obj,
   });
@@ -5162,6 +6426,9 @@ export interface ListQueryLoggingConfigsRequest {
 }
 
 export namespace ListQueryLoggingConfigsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListQueryLoggingConfigsRequest): any => ({
     ...obj,
   });
@@ -5187,6 +6454,9 @@ export interface ListQueryLoggingConfigsResponse {
 }
 
 export namespace ListQueryLoggingConfigsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListQueryLoggingConfigsResponse): any => ({
     ...obj,
   });
@@ -5270,6 +6540,9 @@ export interface ListResourceRecordSetsRequest {
 }
 
 export namespace ListResourceRecordSetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListResourceRecordSetsRequest): any => ({
     ...obj,
   });
@@ -5319,6 +6592,9 @@ export interface ListResourceRecordSetsResponse {
 }
 
 export namespace ListResourceRecordSetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListResourceRecordSetsResponse): any => ({
     ...obj,
   });
@@ -5345,6 +6621,9 @@ export interface ListReusableDelegationSetsRequest {
 }
 
 export namespace ListReusableDelegationSetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListReusableDelegationSetsRequest): any => ({
     ...obj,
   });
@@ -5386,6 +6665,9 @@ export interface ListReusableDelegationSetsResponse {
 }
 
 export namespace ListReusableDelegationSetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListReusableDelegationSetsResponse): any => ({
     ...obj,
   });
@@ -5415,6 +6697,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -5449,6 +6734,9 @@ export interface ResourceTagSet {
 }
 
 export namespace ResourceTagSet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceTagSet): any => ({
     ...obj,
   });
@@ -5465,6 +6753,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -5494,6 +6785,9 @@ export interface ListTagsForResourcesRequest {
 }
 
 export namespace ListTagsForResourcesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourcesRequest): any => ({
     ...obj,
   });
@@ -5510,6 +6804,9 @@ export interface ListTagsForResourcesResponse {
 }
 
 export namespace ListTagsForResourcesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourcesResponse): any => ({
     ...obj,
   });
@@ -5539,6 +6836,9 @@ export interface ListTrafficPoliciesRequest {
 }
 
 export namespace ListTrafficPoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTrafficPoliciesRequest): any => ({
     ...obj,
   });
@@ -5577,6 +6877,9 @@ export interface TrafficPolicySummary {
 }
 
 export namespace TrafficPolicySummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrafficPolicySummary): any => ({
     ...obj,
   });
@@ -5612,6 +6915,9 @@ export interface ListTrafficPoliciesResponse {
 }
 
 export namespace ListTrafficPoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTrafficPoliciesResponse): any => ({
     ...obj,
   });
@@ -5659,6 +6965,9 @@ export interface ListTrafficPolicyInstancesRequest {
 }
 
 export namespace ListTrafficPolicyInstancesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTrafficPolicyInstancesRequest): any => ({
     ...obj,
   });
@@ -5708,6 +7017,9 @@ export interface ListTrafficPolicyInstancesResponse {
 }
 
 export namespace ListTrafficPolicyInstancesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTrafficPolicyInstancesResponse): any => ({
     ...obj,
   });
@@ -5750,6 +7062,9 @@ export interface ListTrafficPolicyInstancesByHostedZoneRequest {
 }
 
 export namespace ListTrafficPolicyInstancesByHostedZoneRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTrafficPolicyInstancesByHostedZoneRequest): any => ({
     ...obj,
   });
@@ -5792,6 +7107,9 @@ export interface ListTrafficPolicyInstancesByHostedZoneResponse {
 }
 
 export namespace ListTrafficPolicyInstancesByHostedZoneResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTrafficPolicyInstancesByHostedZoneResponse): any => ({
     ...obj,
   });
@@ -5849,6 +7167,9 @@ export interface ListTrafficPolicyInstancesByPolicyRequest {
 }
 
 export namespace ListTrafficPolicyInstancesByPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTrafficPolicyInstancesByPolicyRequest): any => ({
     ...obj,
   });
@@ -5896,6 +7217,9 @@ export interface ListTrafficPolicyInstancesByPolicyResponse {
 }
 
 export namespace ListTrafficPolicyInstancesByPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTrafficPolicyInstancesByPolicyResponse): any => ({
     ...obj,
   });
@@ -5930,6 +7254,9 @@ export interface ListTrafficPolicyVersionsRequest {
 }
 
 export namespace ListTrafficPolicyVersionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTrafficPolicyVersionsRequest): any => ({
     ...obj,
   });
@@ -5968,6 +7295,9 @@ export interface ListTrafficPolicyVersionsResponse {
 }
 
 export namespace ListTrafficPolicyVersionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTrafficPolicyVersionsResponse): any => ({
     ...obj,
   });
@@ -6000,6 +7330,9 @@ export interface ListVPCAssociationAuthorizationsRequest {
 }
 
 export namespace ListVPCAssociationAuthorizationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListVPCAssociationAuthorizationsRequest): any => ({
     ...obj,
   });
@@ -6028,6 +7361,9 @@ export interface ListVPCAssociationAuthorizationsResponse {
 }
 
 export namespace ListVPCAssociationAuthorizationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListVPCAssociationAuthorizationsResponse): any => ({
     ...obj,
   });
@@ -6087,6 +7423,9 @@ export interface TestDNSAnswerRequest {
 }
 
 export namespace TestDNSAnswerRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestDNSAnswerRequest): any => ({
     ...obj,
   });
@@ -6131,6 +7470,9 @@ export interface TestDNSAnswerResponse {
 }
 
 export namespace TestDNSAnswerResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestDNSAnswerResponse): any => ({
     ...obj,
   });
@@ -6147,6 +7489,9 @@ export interface HealthCheckVersionMismatch extends __SmithyException, $Metadata
 }
 
 export namespace HealthCheckVersionMismatch {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HealthCheckVersionMismatch): any => ({
     ...obj,
   });
@@ -6480,6 +7825,9 @@ export interface UpdateHealthCheckRequest {
 }
 
 export namespace UpdateHealthCheckRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateHealthCheckRequest): any => ({
     ...obj,
   });
@@ -6496,6 +7844,9 @@ export interface UpdateHealthCheckResponse {
 }
 
 export namespace UpdateHealthCheckResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateHealthCheckResponse): any => ({
     ...obj,
   });
@@ -6518,6 +7869,9 @@ export interface UpdateHostedZoneCommentRequest {
 }
 
 export namespace UpdateHostedZoneCommentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateHostedZoneCommentRequest): any => ({
     ...obj,
   });
@@ -6534,6 +7888,9 @@ export interface UpdateHostedZoneCommentResponse {
 }
 
 export namespace UpdateHostedZoneCommentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateHostedZoneCommentResponse): any => ({
     ...obj,
   });
@@ -6560,6 +7917,9 @@ export interface UpdateTrafficPolicyCommentRequest {
 }
 
 export namespace UpdateTrafficPolicyCommentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTrafficPolicyCommentRequest): any => ({
     ...obj,
   });
@@ -6576,6 +7936,9 @@ export interface UpdateTrafficPolicyCommentResponse {
 }
 
 export namespace UpdateTrafficPolicyCommentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTrafficPolicyCommentResponse): any => ({
     ...obj,
   });
@@ -6590,12 +7953,15 @@ export interface ConflictingTypes extends __SmithyException, $MetadataBearer {
   name: "ConflictingTypes";
   $fault: "client";
   /**
-   * <p>Descriptive message for the error response.</p>
+   * <p></p>
    */
   message?: string;
 }
 
 export namespace ConflictingTypes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictingTypes): any => ({
     ...obj,
   });
@@ -6627,6 +7993,9 @@ export interface UpdateTrafficPolicyInstanceRequest {
 }
 
 export namespace UpdateTrafficPolicyInstanceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTrafficPolicyInstanceRequest): any => ({
     ...obj,
   });
@@ -6644,6 +8013,9 @@ export interface UpdateTrafficPolicyInstanceResponse {
 }
 
 export namespace UpdateTrafficPolicyInstanceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTrafficPolicyInstanceResponse): any => ({
     ...obj,
   });

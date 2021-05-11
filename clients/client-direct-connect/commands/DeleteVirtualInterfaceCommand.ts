@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteVirtualInterfaceCommandInput = DeleteVirtualInterfaceRequest;
-export type DeleteVirtualInterfaceCommandOutput = DeleteVirtualInterfaceResponse & __MetadataBearer;
+export interface DeleteVirtualInterfaceCommandInput extends DeleteVirtualInterfaceRequest {}
+export interface DeleteVirtualInterfaceCommandOutput extends DeleteVirtualInterfaceResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a virtual interface.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectConnectClient, DeleteVirtualInterfaceCommand } from "@aws-sdk/client-direct-connect"; // ES Modules import
+ * // const { DirectConnectClient, DeleteVirtualInterfaceCommand } = require("@aws-sdk/client-direct-connect"); // CommonJS import
+ * const client = new DirectConnectClient(config);
+ * const command = new DeleteVirtualInterfaceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteVirtualInterfaceCommandInput} for command's `input` shape.
+ * @see {@link DeleteVirtualInterfaceCommandOutput} for command's `response` shape.
+ * @see {@link DirectConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteVirtualInterfaceCommand extends $Command<
   DeleteVirtualInterfaceCommandInput,

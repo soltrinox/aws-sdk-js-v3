@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateHsmCommandInput = CreateHsmRequest;
-export type CreateHsmCommandOutput = CreateHsmResponse & __MetadataBearer;
+export interface CreateHsmCommandInput extends CreateHsmRequest {}
+export interface CreateHsmCommandOutput extends CreateHsmResponse, __MetadataBearer {}
 
 /**
  * <p>This is documentation for <b>AWS CloudHSM Classic</b>. For
@@ -38,6 +38,20 @@ export type CreateHsmCommandOutput = CreateHsmResponse & __MetadataBearer;
  *         status of the HSM with the <a>DescribeHsm</a> operation. The HSM is ready to be
  *         initialized when the status changes to <code>RUNNING</code>.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudHSMClient, CreateHsmCommand } from "@aws-sdk/client-cloudhsm"; // ES Modules import
+ * // const { CloudHSMClient, CreateHsmCommand } = require("@aws-sdk/client-cloudhsm"); // CommonJS import
+ * const client = new CloudHSMClient(config);
+ * const command = new CreateHsmCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateHsmCommandInput} for command's `input` shape.
+ * @see {@link CreateHsmCommandOutput} for command's `response` shape.
+ * @see {@link CloudHSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateHsmCommand extends $Command<
   CreateHsmCommandInput,

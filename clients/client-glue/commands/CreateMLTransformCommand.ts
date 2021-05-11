@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateMLTransformCommandInput = CreateMLTransformRequest;
-export type CreateMLTransformCommandOutput = CreateMLTransformResponse & __MetadataBearer;
+export interface CreateMLTransformCommandInput extends CreateMLTransformRequest {}
+export interface CreateMLTransformCommandOutput extends CreateMLTransformResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an AWS Glue machine learning transform. This operation creates the transform and
@@ -34,6 +34,20 @@ export type CreateMLTransformCommandOutput = CreateMLTransformResponse & __Metad
  *       transform. These parameters include <code>Role</code>, and optionally,
  *         <code>AllocatedCapacity</code>, <code>Timeout</code>, and <code>MaxRetries</code>. For more
  *       information, see <a href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-jobs-job.html">Jobs</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, CreateMLTransformCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, CreateMLTransformCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new CreateMLTransformCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateMLTransformCommandInput} for command's `input` shape.
+ * @see {@link CreateMLTransformCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateMLTransformCommand extends $Command<
   CreateMLTransformCommandInput,

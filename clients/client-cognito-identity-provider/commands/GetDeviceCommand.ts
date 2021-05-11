@@ -19,11 +19,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDeviceCommandInput = GetDeviceRequest;
-export type GetDeviceCommandOutput = GetDeviceResponse & __MetadataBearer;
+export interface GetDeviceCommandInput extends GetDeviceRequest {}
+export interface GetDeviceCommandOutput extends GetDeviceResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the device.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, GetDeviceCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, GetDeviceCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new GetDeviceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDeviceCommandInput} for command's `input` shape.
+ * @see {@link GetDeviceCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDeviceCommand extends $Command<
   GetDeviceCommandInput,

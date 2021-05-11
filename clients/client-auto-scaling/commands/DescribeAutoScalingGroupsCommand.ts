@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAutoScalingGroupsCommandInput = AutoScalingGroupNamesType;
-export type DescribeAutoScalingGroupsCommandOutput = AutoScalingGroupsType & __MetadataBearer;
+export interface DescribeAutoScalingGroupsCommandInput extends AutoScalingGroupNamesType {}
+export interface DescribeAutoScalingGroupsCommandOutput extends AutoScalingGroupsType, __MetadataBearer {}
 
 /**
  * <p>Describes one or more Auto Scaling groups.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AutoScalingClient, DescribeAutoScalingGroupsCommand } from "@aws-sdk/client-auto-scaling"; // ES Modules import
+ * // const { AutoScalingClient, DescribeAutoScalingGroupsCommand } = require("@aws-sdk/client-auto-scaling"); // CommonJS import
+ * const client = new AutoScalingClient(config);
+ * const command = new DescribeAutoScalingGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAutoScalingGroupsCommandInput} for command's `input` shape.
+ * @see {@link DescribeAutoScalingGroupsCommandOutput} for command's `response` shape.
+ * @see {@link AutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAutoScalingGroupsCommand extends $Command<
   DescribeAutoScalingGroupsCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CopySnapshotCommandInput = CopySnapshotRequest;
-export type CopySnapshotCommandOutput = CopySnapshotResult & __MetadataBearer;
+export interface CopySnapshotCommandInput extends CopySnapshotRequest {}
+export interface CopySnapshotCommandOutput extends CopySnapshotResult, __MetadataBearer {}
 
 /**
  * <p>Copies a manual snapshot of an instance or disk as another manual snapshot, or copies an
@@ -32,6 +32,20 @@ export type CopySnapshotCommandOutput = CopySnapshotResult & __MetadataBearer;
  *         <code>source region</code>, <code>source resource name</code>, <code>target snapshot
  *         name</code>, and either the <code>restore date</code> or the <code>use latest restorable
  *         auto snapshot</code> parameters.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, CopySnapshotCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, CopySnapshotCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new CopySnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CopySnapshotCommandInput} for command's `input` shape.
+ * @see {@link CopySnapshotCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CopySnapshotCommand extends $Command<
   CopySnapshotCommandInput,

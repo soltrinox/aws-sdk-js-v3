@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeScheduledInstancesCommandInput = DescribeScheduledInstancesRequest;
-export type DescribeScheduledInstancesCommandOutput = DescribeScheduledInstancesResult & __MetadataBearer;
+export interface DescribeScheduledInstancesCommandInput extends DescribeScheduledInstancesRequest {}
+export interface DescribeScheduledInstancesCommandOutput extends DescribeScheduledInstancesResult, __MetadataBearer {}
 
 /**
  * <p>Describes the specified Scheduled Instances or all your Scheduled Instances.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeScheduledInstancesCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeScheduledInstancesCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeScheduledInstancesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeScheduledInstancesCommandInput} for command's `input` shape.
+ * @see {@link DescribeScheduledInstancesCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeScheduledInstancesCommand extends $Command<
   DescribeScheduledInstancesCommandInput,

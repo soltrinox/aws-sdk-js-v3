@@ -20,13 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetResolverQueryLogConfigAssociationCommandInput = GetResolverQueryLogConfigAssociationRequest;
-export type GetResolverQueryLogConfigAssociationCommandOutput = GetResolverQueryLogConfigAssociationResponse &
-  __MetadataBearer;
+export interface GetResolverQueryLogConfigAssociationCommandInput extends GetResolverQueryLogConfigAssociationRequest {}
+export interface GetResolverQueryLogConfigAssociationCommandOutput
+  extends GetResolverQueryLogConfigAssociationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Gets information about a specified association between a Resolver query logging configuration and an Amazon VPC. When you associate a VPC
  * 			with a query logging configuration, Resolver logs DNS queries that originate in that VPC.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53ResolverClient, GetResolverQueryLogConfigAssociationCommand } from "@aws-sdk/client-route53resolver"; // ES Modules import
+ * // const { Route53ResolverClient, GetResolverQueryLogConfigAssociationCommand } = require("@aws-sdk/client-route53resolver"); // CommonJS import
+ * const client = new Route53ResolverClient(config);
+ * const command = new GetResolverQueryLogConfigAssociationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetResolverQueryLogConfigAssociationCommandInput} for command's `input` shape.
+ * @see {@link GetResolverQueryLogConfigAssociationCommandOutput} for command's `response` shape.
+ * @see {@link Route53ResolverClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetResolverQueryLogConfigAssociationCommand extends $Command<
   GetResolverQueryLogConfigAssociationCommandInput,

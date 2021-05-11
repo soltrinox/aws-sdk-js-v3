@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListApprovedOriginsCommandInput = ListApprovedOriginsRequest;
-export type ListApprovedOriginsCommandOutput = ListApprovedOriginsResponse & __MetadataBearer;
+export interface ListApprovedOriginsCommandInput extends ListApprovedOriginsRequest {}
+export interface ListApprovedOriginsCommandOutput extends ListApprovedOriginsResponse, __MetadataBearer {}
 
 /**
- * <p>Returns a paginated list of all approved origins associated with the instance.</p>
+ * <p>This API is in preview release for Amazon Connect and is subject to change.</p>
+ *          <p>Returns a paginated list of all approved origins associated with the instance.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, ListApprovedOriginsCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, ListApprovedOriginsCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new ListApprovedOriginsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListApprovedOriginsCommandInput} for command's `input` shape.
+ * @see {@link ListApprovedOriginsCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListApprovedOriginsCommand extends $Command<
   ListApprovedOriginsCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteModelBiasJobDefinitionCommandInput = DeleteModelBiasJobDefinitionRequest;
-export type DeleteModelBiasJobDefinitionCommandOutput = __MetadataBearer;
+export interface DeleteModelBiasJobDefinitionCommandInput extends DeleteModelBiasJobDefinitionRequest {}
+export interface DeleteModelBiasJobDefinitionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes an Amazon SageMaker model bias job definition.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DeleteModelBiasJobDefinitionCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DeleteModelBiasJobDefinitionCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DeleteModelBiasJobDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteModelBiasJobDefinitionCommandInput} for command's `input` shape.
+ * @see {@link DeleteModelBiasJobDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteModelBiasJobDefinitionCommand extends $Command<
   DeleteModelBiasJobDefinitionCommandInput,

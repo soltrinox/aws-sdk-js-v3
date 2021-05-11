@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeSnapshotsCommandInput = DescribeSnapshotsRequest;
-export type DescribeSnapshotsCommandOutput = DescribeSnapshotsResult & __MetadataBearer;
+export interface DescribeSnapshotsCommandInput extends DescribeSnapshotsRequest {}
+export interface DescribeSnapshotsCommandOutput extends DescribeSnapshotsResult, __MetadataBearer {}
 
 /**
  * <p>Describes the specified EBS snapshots available to you or all of the EBS snapshots
@@ -68,6 +68,20 @@ export type DescribeSnapshotsCommandOutput = DescribeSnapshotsResult & __Metadat
  *       results.</p>
  *          <p>To get the state of fast snapshot restores for a snapshot, use <a>DescribeFastSnapshotRestores</a>.</p>
  *          <p>For more information about EBS snapshots, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html">Amazon EBS snapshots</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeSnapshotsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeSnapshotsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeSnapshotsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeSnapshotsCommandInput} for command's `input` shape.
+ * @see {@link DescribeSnapshotsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeSnapshotsCommand extends $Command<
   DescribeSnapshotsCommandInput,

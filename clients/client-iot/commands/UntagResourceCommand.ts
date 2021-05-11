@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UntagResourceCommandInput = UntagResourceRequest;
-export type UntagResourceCommandOutput = UntagResourceResponse & __MetadataBearer;
+export interface UntagResourceCommandInput extends UntagResourceRequest {}
+export interface UntagResourceCommandOutput extends UntagResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Removes the given tags (metadata) from the resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, UntagResourceCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, UntagResourceCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new UntagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UntagResourceCommandInput} for command's `input` shape.
+ * @see {@link UntagResourceCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UntagResourceCommand extends $Command<
   UntagResourceCommandInput,

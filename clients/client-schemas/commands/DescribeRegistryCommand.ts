@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeRegistryCommandInput = DescribeRegistryRequest;
-export type DescribeRegistryCommandOutput = DescribeRegistryResponse & __MetadataBearer;
+export interface DescribeRegistryCommandInput extends DescribeRegistryRequest {}
+export interface DescribeRegistryCommandOutput extends DescribeRegistryResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the registry.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SchemasClient, DescribeRegistryCommand } from "@aws-sdk/client-schemas"; // ES Modules import
+ * // const { SchemasClient, DescribeRegistryCommand } = require("@aws-sdk/client-schemas"); // CommonJS import
+ * const client = new SchemasClient(config);
+ * const command = new DescribeRegistryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeRegistryCommandInput} for command's `input` shape.
+ * @see {@link DescribeRegistryCommandOutput} for command's `response` shape.
+ * @see {@link SchemasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeRegistryCommand extends $Command<
   DescribeRegistryCommandInput,

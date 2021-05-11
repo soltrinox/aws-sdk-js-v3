@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeInstanceRefreshesCommandInput = DescribeInstanceRefreshesType;
-export type DescribeInstanceRefreshesCommandOutput = DescribeInstanceRefreshesAnswer & __MetadataBearer;
+export interface DescribeInstanceRefreshesCommandInput extends DescribeInstanceRefreshesType {}
+export interface DescribeInstanceRefreshesCommandOutput extends DescribeInstanceRefreshesAnswer, __MetadataBearer {}
 
 /**
  * <p>Describes one or more instance refreshes.</p>
@@ -54,8 +54,23 @@ export type DescribeInstanceRefreshesCommandOutput = DescribeInstanceRefreshesAn
  *                   <code>Cancelled</code> - The operation is cancelled. </p>
  *             </li>
  *          </ul>
- *         <p>For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html">Replacing Auto Scaling Instances
- *                 Based on an Instance Refresh</a>.</p>
+ *         <p>For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html">Replacing Auto Scaling instances
+ *                 based on an instance refresh</a> in the
+ *             <i>Amazon EC2 Auto Scaling User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AutoScalingClient, DescribeInstanceRefreshesCommand } from "@aws-sdk/client-auto-scaling"; // ES Modules import
+ * // const { AutoScalingClient, DescribeInstanceRefreshesCommand } = require("@aws-sdk/client-auto-scaling"); // CommonJS import
+ * const client = new AutoScalingClient(config);
+ * const command = new DescribeInstanceRefreshesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeInstanceRefreshesCommandInput} for command's `input` shape.
+ * @see {@link DescribeInstanceRefreshesCommandOutput} for command's `response` shape.
+ * @see {@link AutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeInstanceRefreshesCommand extends $Command<
   DescribeInstanceRefreshesCommandInput,

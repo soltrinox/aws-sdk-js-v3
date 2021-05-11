@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListBundlesCommandInput = ListBundlesRequest;
-export type ListBundlesCommandOutput = ListBundlesResult & __MetadataBearer;
+export interface ListBundlesCommandInput extends ListBundlesRequest {}
+export interface ListBundlesCommandOutput extends ListBundlesResult, __MetadataBearer {}
 
 /**
  * <p>
  *             List all available bundles.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MobileClient, ListBundlesCommand } from "@aws-sdk/client-mobile"; // ES Modules import
+ * // const { MobileClient, ListBundlesCommand } = require("@aws-sdk/client-mobile"); // CommonJS import
+ * const client = new MobileClient(config);
+ * const command = new ListBundlesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListBundlesCommandInput} for command's `input` shape.
+ * @see {@link ListBundlesCommandOutput} for command's `response` shape.
+ * @see {@link MobileClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListBundlesCommand extends $Command<
   ListBundlesCommandInput,

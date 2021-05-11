@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeKinesisStreamingDestinationCommandInput = DescribeKinesisStreamingDestinationInput;
-export type DescribeKinesisStreamingDestinationCommandOutput = DescribeKinesisStreamingDestinationOutput &
-  __MetadataBearer;
+export interface DescribeKinesisStreamingDestinationCommandInput extends DescribeKinesisStreamingDestinationInput {}
+export interface DescribeKinesisStreamingDestinationCommandOutput
+  extends DescribeKinesisStreamingDestinationOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Returns information about the status of Kinesis streaming.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, DescribeKinesisStreamingDestinationCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, DescribeKinesisStreamingDestinationCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new DescribeKinesisStreamingDestinationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeKinesisStreamingDestinationCommandInput} for command's `input` shape.
+ * @see {@link DescribeKinesisStreamingDestinationCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeKinesisStreamingDestinationCommand extends $Command<
   DescribeKinesisStreamingDestinationCommandInput,

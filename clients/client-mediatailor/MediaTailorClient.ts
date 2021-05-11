@@ -1,25 +1,67 @@
+import { CreateChannelCommandInput, CreateChannelCommandOutput } from "./commands/CreateChannelCommand";
+import { CreateProgramCommandInput, CreateProgramCommandOutput } from "./commands/CreateProgramCommand";
+import {
+  CreateSourceLocationCommandInput,
+  CreateSourceLocationCommandOutput,
+} from "./commands/CreateSourceLocationCommand";
+import { CreateVodSourceCommandInput, CreateVodSourceCommandOutput } from "./commands/CreateVodSourceCommand";
+import { DeleteChannelCommandInput, DeleteChannelCommandOutput } from "./commands/DeleteChannelCommand";
+import {
+  DeleteChannelPolicyCommandInput,
+  DeleteChannelPolicyCommandOutput,
+} from "./commands/DeleteChannelPolicyCommand";
 import {
   DeletePlaybackConfigurationCommandInput,
   DeletePlaybackConfigurationCommandOutput,
 } from "./commands/DeletePlaybackConfigurationCommand";
+import { DeleteProgramCommandInput, DeleteProgramCommandOutput } from "./commands/DeleteProgramCommand";
+import {
+  DeleteSourceLocationCommandInput,
+  DeleteSourceLocationCommandOutput,
+} from "./commands/DeleteSourceLocationCommand";
+import { DeleteVodSourceCommandInput, DeleteVodSourceCommandOutput } from "./commands/DeleteVodSourceCommand";
+import { DescribeChannelCommandInput, DescribeChannelCommandOutput } from "./commands/DescribeChannelCommand";
+import { DescribeProgramCommandInput, DescribeProgramCommandOutput } from "./commands/DescribeProgramCommand";
+import {
+  DescribeSourceLocationCommandInput,
+  DescribeSourceLocationCommandOutput,
+} from "./commands/DescribeSourceLocationCommand";
+import { DescribeVodSourceCommandInput, DescribeVodSourceCommandOutput } from "./commands/DescribeVodSourceCommand";
+import { GetChannelPolicyCommandInput, GetChannelPolicyCommandOutput } from "./commands/GetChannelPolicyCommand";
+import { GetChannelScheduleCommandInput, GetChannelScheduleCommandOutput } from "./commands/GetChannelScheduleCommand";
 import {
   GetPlaybackConfigurationCommandInput,
   GetPlaybackConfigurationCommandOutput,
 } from "./commands/GetPlaybackConfigurationCommand";
+import { ListChannelsCommandInput, ListChannelsCommandOutput } from "./commands/ListChannelsCommand";
 import {
   ListPlaybackConfigurationsCommandInput,
   ListPlaybackConfigurationsCommandOutput,
 } from "./commands/ListPlaybackConfigurationsCommand";
 import {
+  ListSourceLocationsCommandInput,
+  ListSourceLocationsCommandOutput,
+} from "./commands/ListSourceLocationsCommand";
+import {
   ListTagsForResourceCommandInput,
   ListTagsForResourceCommandOutput,
 } from "./commands/ListTagsForResourceCommand";
+import { ListVodSourcesCommandInput, ListVodSourcesCommandOutput } from "./commands/ListVodSourcesCommand";
+import { PutChannelPolicyCommandInput, PutChannelPolicyCommandOutput } from "./commands/PutChannelPolicyCommand";
 import {
   PutPlaybackConfigurationCommandInput,
   PutPlaybackConfigurationCommandOutput,
 } from "./commands/PutPlaybackConfigurationCommand";
+import { StartChannelCommandInput, StartChannelCommandOutput } from "./commands/StartChannelCommand";
+import { StopChannelCommandInput, StopChannelCommandOutput } from "./commands/StopChannelCommand";
 import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
 import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
+import { UpdateChannelCommandInput, UpdateChannelCommandOutput } from "./commands/UpdateChannelCommand";
+import {
+  UpdateSourceLocationCommandInput,
+  UpdateSourceLocationCommandOutput,
+} from "./commands/UpdateSourceLocationCommand";
+import { UpdateVodSourceCommandInput, UpdateVodSourceCommandOutput } from "./commands/UpdateVodSourceCommand";
 import { ClientDefaultValues as __ClientDefaultValues } from "./runtimeConfig";
 import {
   EndpointsInputConfig,
@@ -72,22 +114,70 @@ import {
 } from "@aws-sdk/types";
 
 export type ServiceInputTypes =
+  | CreateChannelCommandInput
+  | CreateProgramCommandInput
+  | CreateSourceLocationCommandInput
+  | CreateVodSourceCommandInput
+  | DeleteChannelCommandInput
+  | DeleteChannelPolicyCommandInput
   | DeletePlaybackConfigurationCommandInput
+  | DeleteProgramCommandInput
+  | DeleteSourceLocationCommandInput
+  | DeleteVodSourceCommandInput
+  | DescribeChannelCommandInput
+  | DescribeProgramCommandInput
+  | DescribeSourceLocationCommandInput
+  | DescribeVodSourceCommandInput
+  | GetChannelPolicyCommandInput
+  | GetChannelScheduleCommandInput
   | GetPlaybackConfigurationCommandInput
+  | ListChannelsCommandInput
   | ListPlaybackConfigurationsCommandInput
+  | ListSourceLocationsCommandInput
   | ListTagsForResourceCommandInput
+  | ListVodSourcesCommandInput
+  | PutChannelPolicyCommandInput
   | PutPlaybackConfigurationCommandInput
+  | StartChannelCommandInput
+  | StopChannelCommandInput
   | TagResourceCommandInput
-  | UntagResourceCommandInput;
+  | UntagResourceCommandInput
+  | UpdateChannelCommandInput
+  | UpdateSourceLocationCommandInput
+  | UpdateVodSourceCommandInput;
 
 export type ServiceOutputTypes =
+  | CreateChannelCommandOutput
+  | CreateProgramCommandOutput
+  | CreateSourceLocationCommandOutput
+  | CreateVodSourceCommandOutput
+  | DeleteChannelCommandOutput
+  | DeleteChannelPolicyCommandOutput
   | DeletePlaybackConfigurationCommandOutput
+  | DeleteProgramCommandOutput
+  | DeleteSourceLocationCommandOutput
+  | DeleteVodSourceCommandOutput
+  | DescribeChannelCommandOutput
+  | DescribeProgramCommandOutput
+  | DescribeSourceLocationCommandOutput
+  | DescribeVodSourceCommandOutput
+  | GetChannelPolicyCommandOutput
+  | GetChannelScheduleCommandOutput
   | GetPlaybackConfigurationCommandOutput
+  | ListChannelsCommandOutput
   | ListPlaybackConfigurationsCommandOutput
+  | ListSourceLocationsCommandOutput
   | ListTagsForResourceCommandOutput
+  | ListVodSourcesCommandOutput
+  | PutChannelPolicyCommandOutput
   | PutPlaybackConfigurationCommandOutput
+  | StartChannelCommandOutput
+  | StopChannelCommandOutput
   | TagResourceCommandOutput
-  | UntagResourceCommandOutput;
+  | UntagResourceCommandOutput
+  | UpdateChannelCommandOutput
+  | UpdateSourceLocationCommandOutput
+  | UpdateVodSourceCommandOutput;
 
 export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__HttpHandlerOptions>> {
   /**
@@ -154,7 +244,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -185,7 +275,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type MediaTailorClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type MediaTailorClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -193,8 +283,12 @@ export type MediaTailorClientConfig = Partial<__SmithyConfiguration<__HttpHandle
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of MediaTailorClient class constructor that set the region, credentials and other options.
+ */
+export interface MediaTailorClientConfig extends MediaTailorClientConfigType {}
 
-export type MediaTailorClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type MediaTailorClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -202,9 +296,13 @@ export type MediaTailorClientResolvedConfig = __SmithyResolvedConfiguration<__Ht
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of MediaTailorClient class. This is resolved and normalized from the {@link MediaTailorClientConfig | constructor configuration interface}.
+ */
+export interface MediaTailorClientResolvedConfig extends MediaTailorClientResolvedConfigType {}
 
 /**
- * <p>Use the AWS Elemental MediaTailor SDK to configure scalable ad insertion for your live and VOD content. With AWS Elemental MediaTailor, you can serve targeted ads to viewers while maintaining broadcast quality in over-the-top (OTT) video applications. For information about using the service, including detailed information about the settings covered in this guide, see the AWS Elemental MediaTailor User Guide.<p>Through the SDK, you manage AWS Elemental MediaTailor configurations the same as you do through the console. For example, you specify ad insertion behavior and mapping information for the origin server and the ad decision server (ADS).</p>
+ * <p>Use the AWS Elemental MediaTailor SDKs and CLI to configure scalable ad insertion and linear channels. With MediaTailor, you can assemble existing content into a linear stream and serve targeted ads to viewers while maintaining broadcast quality in over-the-top (OTT) video applications. For information about using the service, including detailed information about the settings covered in this guide, see the <a href="https://docs.aws.amazon.com/mediatailor/latest/ug/">AWS Elemental MediaTailor User Guide</a>.</p> <p>Through the SDKs and the CLI you manage AWS Elemental MediaTailor configurations and channels the same as you do through the console. For example, you specify ad insertion behavior and mapping information for the origin server and the ad decision server (ADS).</p>
  */
 export class MediaTailorClient extends __Client<
   __HttpHandlerOptions,
@@ -212,6 +310,9 @@ export class MediaTailorClient extends __Client<
   ServiceOutputTypes,
   MediaTailorClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of MediaTailorClient class. This is resolved and normalized from the {@link MediaTailorClientConfig | constructor configuration interface}.
+   */
   readonly config: MediaTailorClientResolvedConfig;
 
   constructor(configuration: MediaTailorClientConfig) {

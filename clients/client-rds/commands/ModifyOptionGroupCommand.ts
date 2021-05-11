@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyOptionGroupCommandInput = ModifyOptionGroupMessage;
-export type ModifyOptionGroupCommandOutput = ModifyOptionGroupResult & __MetadataBearer;
+export interface ModifyOptionGroupCommandInput extends ModifyOptionGroupMessage {}
+export interface ModifyOptionGroupCommandOutput extends ModifyOptionGroupResult, __MetadataBearer {}
 
 /**
  * <p>Modifies an existing option group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, ModifyOptionGroupCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, ModifyOptionGroupCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new ModifyOptionGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyOptionGroupCommandInput} for command's `input` shape.
+ * @see {@link ModifyOptionGroupCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyOptionGroupCommand extends $Command<
   ModifyOptionGroupCommandInput,

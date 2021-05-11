@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListResolverRulesCommandInput = ListResolverRulesRequest;
-export type ListResolverRulesCommandOutput = ListResolverRulesResponse & __MetadataBearer;
+export interface ListResolverRulesCommandInput extends ListResolverRulesRequest {}
+export interface ListResolverRulesCommandOutput extends ListResolverRulesResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the Resolver rules that were created using the current AWS account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53ResolverClient, ListResolverRulesCommand } from "@aws-sdk/client-route53resolver"; // ES Modules import
+ * // const { Route53ResolverClient, ListResolverRulesCommand } = require("@aws-sdk/client-route53resolver"); // CommonJS import
+ * const client = new Route53ResolverClient(config);
+ * const command = new ListResolverRulesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListResolverRulesCommandInput} for command's `input` shape.
+ * @see {@link ListResolverRulesCommandOutput} for command's `response` shape.
+ * @see {@link Route53ResolverClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListResolverRulesCommand extends $Command<
   ListResolverRulesCommandInput,

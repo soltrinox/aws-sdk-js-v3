@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteTableCommandInput = DeleteTableInput;
-export type DeleteTableCommandOutput = DeleteTableOutput & __MetadataBearer;
+export interface DeleteTableCommandInput extends DeleteTableInput {}
+export interface DeleteTableCommandOutput extends DeleteTableOutput, __MetadataBearer {}
 
 /**
  * <p>The <code>DeleteTable</code> operation deletes a table and all of its items. After a
@@ -38,6 +38,20 @@ export type DeleteTableCommandOutput = DeleteTableOutput & __MetadataBearer;
  *       into the <code>DISABLED</code> state, and the stream is automatically deleted after 24 hours.</p>
  *
  *          <p>Use the <code>DescribeTable</code> action to check the status of the table. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, DeleteTableCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, DeleteTableCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new DeleteTableCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteTableCommandInput} for command's `input` shape.
+ * @see {@link DeleteTableCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteTableCommand extends $Command<
   DeleteTableCommandInput,

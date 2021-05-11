@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetModelsCommandInput = GetModelsRequest;
-export type GetModelsCommandOutput = GetModelsResponse & __MetadataBearer;
+export interface GetModelsCommandInput extends GetModelsRequest {}
+export interface GetModelsCommandOutput extends GetModelsResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the Models for an API.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApiGatewayV2Client, GetModelsCommand } from "@aws-sdk/client-apigatewayv2"; // ES Modules import
+ * // const { ApiGatewayV2Client, GetModelsCommand } = require("@aws-sdk/client-apigatewayv2"); // CommonJS import
+ * const client = new ApiGatewayV2Client(config);
+ * const command = new GetModelsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetModelsCommandInput} for command's `input` shape.
+ * @see {@link GetModelsCommandOutput} for command's `response` shape.
+ * @see {@link ApiGatewayV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetModelsCommand extends $Command<
   GetModelsCommandInput,

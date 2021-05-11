@@ -22,6 +22,9 @@ export interface ActionSource {
 }
 
 export namespace ActionSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionSource): any => ({
     ...obj,
   });
@@ -79,6 +82,9 @@ export interface ActionSummary {
 }
 
 export namespace ActionSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionSummary): any => ({
     ...obj,
   });
@@ -129,6 +135,9 @@ export interface AddAssociationRequest {
 }
 
 export namespace AddAssociationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddAssociationRequest): any => ({
     ...obj,
   });
@@ -147,6 +156,9 @@ export interface AddAssociationResponse {
 }
 
 export namespace AddAssociationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddAssociationResponse): any => ({
     ...obj,
   });
@@ -163,6 +175,9 @@ export interface ResourceLimitExceeded extends __SmithyException, $MetadataBeare
 }
 
 export namespace ResourceLimitExceeded {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceLimitExceeded): any => ({
     ...obj,
   });
@@ -178,6 +193,9 @@ export interface ResourceNotFound extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ResourceNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFound): any => ({
     ...obj,
   });
@@ -199,6 +217,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -212,14 +233,17 @@ export interface AddTagsInput {
 
   /**
    * <p>An array of key-value pairs. You can use tags to categorize your AWS resources in
-   *            different ways, for example, by purpose, owner, or environment. For more information,
-   *            see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
-   *                Resources</a>.</p>
+   *             different ways, for example, by purpose, owner, or environment. For more information,
+   *             see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
+   *                 Resources</a>.</p>
    */
   Tags: Tag[] | undefined;
 }
 
 export namespace AddTagsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsInput): any => ({
     ...obj,
   });
@@ -233,6 +257,9 @@ export interface AddTagsOutput {
 }
 
 export namespace AddTagsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsOutput): any => ({
     ...obj,
   });
@@ -254,6 +281,9 @@ export interface AgentVersion {
 }
 
 export namespace AgentVersion {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AgentVersion): any => ({
     ...obj,
   });
@@ -270,6 +300,9 @@ export interface Alarm {
 }
 
 export namespace Alarm {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Alarm): any => ({
     ...obj,
   });
@@ -308,6 +341,9 @@ export interface MetricDefinition {
 }
 
 export namespace MetricDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricDefinition): any => ({
     ...obj,
   });
@@ -401,6 +437,9 @@ export interface AlgorithmSpecification {
 }
 
 export namespace AlgorithmSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlgorithmSpecification): any => ({
     ...obj,
   });
@@ -442,6 +481,9 @@ export interface AlgorithmStatusItem {
 }
 
 export namespace AlgorithmStatusItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlgorithmStatusItem): any => ({
     ...obj,
   });
@@ -463,6 +505,9 @@ export interface AlgorithmStatusDetails {
 }
 
 export namespace AlgorithmStatusDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlgorithmStatusDetails): any => ({
     ...obj,
   });
@@ -499,6 +544,9 @@ export interface AlgorithmSummary {
 }
 
 export namespace AlgorithmSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlgorithmSummary): any => ({
     ...obj,
   });
@@ -547,6 +595,9 @@ export interface FileSystemDataSource {
 }
 
 export namespace FileSystemDataSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FileSystemDataSource): any => ({
     ...obj,
   });
@@ -668,6 +719,9 @@ export interface S3DataSource {
 }
 
 export namespace S3DataSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3DataSource): any => ({
     ...obj,
   });
@@ -689,6 +743,9 @@ export interface DataSource {
 }
 
 export namespace DataSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataSource): any => ({
     ...obj,
   });
@@ -723,6 +780,9 @@ export interface ShuffleConfig {
 }
 
 export namespace ShuffleConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ShuffleConfig): any => ({
     ...obj,
   });
@@ -799,6 +859,9 @@ export interface Channel {
 }
 
 export namespace Channel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Channel): any => ({
     ...obj,
   });
@@ -847,13 +910,13 @@ export interface OutputDataConfig {
    *             policy with an <code>s3:PutObject</code> permission that only allows objects with
    *             server-side encryption, set the condition key of
    *                 <code>s3:x-amz-server-side-encryption</code> to <code>"aws:kms"</code>. For more
-   *             information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html">KMS-Managed Encryption Keys</a> in the <i>Amazon Simple Storage Service Developer
+   *             information, see <a href="https://docs.aws.amazon.com/mazonS3/latest/dev/UsingKMSEncryption.html">KMS-Managed Encryption Keys</a> in the <i>Amazon Simple Storage Service Developer
    *                 Guide.</i>
    *          </p>
    *         <p>The KMS key policy must grant permission to the IAM role that you specify in your
    *                 <code>CreateTrainingJob</code>, <code>CreateTransformJob</code>, or
    *                 <code>CreateHyperParameterTuningJob</code> requests. For more information, see
-   *                 <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key Policies in AWS KMS</a> in the <i>AWS Key Management Service Developer
+   *                 <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key Policies in AWS KMS</a> in the <i>AWS Key Management Service Developer
    *                 Guide</i>.</p>
    */
   KmsKeyId?: string;
@@ -866,6 +929,9 @@ export interface OutputDataConfig {
 }
 
 export namespace OutputDataConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OutputDataConfig): any => ({
     ...obj,
   });
@@ -984,6 +1050,9 @@ export interface ResourceConfig {
 }
 
 export namespace ResourceConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceConfig): any => ({
     ...obj,
   });
@@ -1027,6 +1096,9 @@ export interface StoppingCondition {
 }
 
 export namespace StoppingCondition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StoppingCondition): any => ({
     ...obj,
   });
@@ -1080,6 +1152,9 @@ export interface TrainingJobDefinition {
 }
 
 export namespace TrainingJobDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrainingJobDefinition): any => ({
     ...obj,
   });
@@ -1163,6 +1238,9 @@ export interface TransformS3DataSource {
 }
 
 export namespace TransformS3DataSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TransformS3DataSource): any => ({
     ...obj,
   });
@@ -1179,6 +1257,9 @@ export interface TransformDataSource {
 }
 
 export namespace TransformDataSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TransformDataSource): any => ({
     ...obj,
   });
@@ -1260,6 +1341,9 @@ export interface TransformInput {
 }
 
 export namespace TransformInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TransformInput): any => ({
     ...obj,
   });
@@ -1348,6 +1432,9 @@ export interface TransformOutput {
 }
 
 export namespace TransformOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TransformOutput): any => ({
     ...obj,
   });
@@ -1435,6 +1522,9 @@ export interface TransformResources {
 }
 
 export namespace TransformResources {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TransformResources): any => ({
     ...obj,
   });
@@ -1490,6 +1580,9 @@ export interface TransformJobDefinition {
 }
 
 export namespace TransformJobDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TransformJobDefinition): any => ({
     ...obj,
   });
@@ -1522,6 +1615,9 @@ export interface AlgorithmValidationProfile {
 }
 
 export namespace AlgorithmValidationProfile {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlgorithmValidationProfile): any => ({
     ...obj,
   });
@@ -1545,6 +1641,9 @@ export interface AlgorithmValidationSpecification {
 }
 
 export namespace AlgorithmValidationSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlgorithmValidationSpecification): any => ({
     ...obj,
   });
@@ -1568,40 +1667,62 @@ export interface AnnotationConsolidationConfig {
    *         <ul>
    *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-BoundingBox</code>
+   *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-BoundingBox</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-BoundingBox</code>
+   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-BoundingBox</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-BoundingBox</code>
+   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-BoundingBox</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-BoundingBox</code>
+   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-BoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-BoundingBox</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-BoundingBox</code>
+   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-BoundingBox</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-BoundingBox</code>
+   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-BoundingBox</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-BoundingBox</code>
+   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-BoundingBox</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-BoundingBox</code>
+   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-BoundingBox</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-BoundingBox</code>
+   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-BoundingBox</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-BoundingBox</code>
+   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-BoundingBox</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-BoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-BoundingBox</code>
+   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-BoundingBox</code>
    *                 </p>
    *             </li>
    *          </ul>
@@ -1614,38 +1735,60 @@ export interface AnnotationConsolidationConfig {
    *                 <p>
    *                     <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-ImageMultiClass</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-ImageMultiClass</code>
+   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-ImageMultiClass</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-ImageMultiClass</code>
+   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-ImageMultiClass</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClass</code>
+   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClass</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClass</code>
+   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClass</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClass</code>
+   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClass</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-ImageMultiClass</code>
+   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-ImageMultiClass</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-ImageMultiClass</code>
+   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-ImageMultiClass</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-ImageMultiClass</code>
+   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-ImageMultiClass</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-ImageMultiClass</code>
+   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-ImageMultiClass</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-ImageMultiClass</code>
+   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-ImageMultiClass</code>
    *                 </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-ImageMultiClass</code>
+   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-ImageMultiClass</code>
    *                 </p>
    *             </li>
    *          </ul>
@@ -1656,41 +1799,63 @@ export interface AnnotationConsolidationConfig {
    *         <ul>
    *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-ImageMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-ImageMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-ImageMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-ImageMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-ImageMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-ImageMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-ImageMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-ImageMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-ImageMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-ImageMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-ImageMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-ImageMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-ImageMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-ImageMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-ImageMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-ImageMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-ImageMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-ImageMultiClassMultiLabel</code>
+   *                </p>
    *             </li>
    *          </ul>
    *         <p>
@@ -1700,41 +1865,63 @@ export interface AnnotationConsolidationConfig {
    *         <ul>
    *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-SemanticSegmentation</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-SemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-SemanticSegmentation</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-SemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-SemanticSegmentation</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-SemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-SemanticSegmentation</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-SemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-SemanticSegmentation</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-SemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-SemanticSegmentation</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-SemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-SemanticSegmentation</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-SemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-SemanticSegmentation</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-SemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-SemanticSegmentation</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-SemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-SemanticSegmentation</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-SemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-SemanticSegmentation</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-SemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-SemanticSegmentation</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-SemanticSegmentation</code>
+   *                </p>
    *             </li>
    *          </ul>
    *         <p>
@@ -1744,41 +1931,63 @@ export interface AnnotationConsolidationConfig {
    *         <ul>
    *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClass</code>
-   *                 </p>
+   *                   <code>rn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClass</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-TextMultiClass</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-TextMultiClass</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-TextMultiClass</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-TextMultiClass</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClass</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClass</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClass</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClass</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClass</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClass</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-TextMultiClass</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-TextMultiClass</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-TextMultiClass</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-TextMultiClass</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-TextMultiClass</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-TextMultiClass</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-TextMultiClass</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-TextMultiClass</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-TextMultiClass</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-TextMultiClass</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-TextMultiClass</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-TextMultiClass</code>
+   *                </p>
    *             </li>
    *          </ul>
    *         <p>
@@ -1788,41 +1997,63 @@ export interface AnnotationConsolidationConfig {
    *         <ul>
    *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-TextMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-TextMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-TextMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-TextMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-TextMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-TextMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-TextMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-TextMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-TextMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-TextMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-TextMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-TextMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-TextMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-TextMultiClassMultiLabel</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-TextMultiClassMultiLabel</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-TextMultiClassMultiLabel</code>
+   *                </p>
    *             </li>
    *          </ul>
    *         <p>
@@ -1830,87 +2061,64 @@ export interface AnnotationConsolidationConfig {
    *             and calculates aggregate boundaries, resolving to most-assigned label.</p>
    *         <ul>
    *             <li>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-NamedEntityRecognition</code>
+   *                </p>
    *             </li>
-   *          </ul>
-   *
-   *
-   *         <p>
-   *             <b>Named entity recognition</b> - Groups similar selections
-   *             and calculates aggregate boundaries, resolving to most-assigned label.</p>
-   *         <ul>
    *             <li>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-NamedEntityRecognition</code>
-   *                 </p>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-NamedEntityRecognition</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-NamedEntityRecognition</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-NamedEntityRecognition</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-NamedEntityRecognition</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-NamedEntityRecognition</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-NamedEntityRecognition</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-NamedEntityRecognition</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-NamedEntityRecognition</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-NamedEntityRecognition</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-NamedEntityRecognition</code>
+   *                </p>
    *             </li>
    *          </ul>
    *
@@ -1924,40 +2132,62 @@ export interface AnnotationConsolidationConfig {
    *             label for each video.</p>
    *         <ul>
    *             <li>
-   *                 <p>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-VideoMultiClass</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-VideoMultiClass</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-VideoMultiClass</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-VideoMultiClass</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VideoMultiClass</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VideoMultiClass</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-VideoMultiClass</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-VideoMultiClass</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VideoMultiClass</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-VideoMultiClass</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VideoMultiClass</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-VideoMultiClass</code>
    *                </p>
    *             </li>
@@ -1970,40 +2200,62 @@ export interface AnnotationConsolidationConfig {
    *             and pedestrians.</p>
    *         <ul>
    *             <li>
-   *                 <p>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-VideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-VideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-VideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-VideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-VideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-VideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-VideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-VideoObjectDetection</code>
    *                </p>
    *             </li>
@@ -2015,40 +2267,62 @@ export interface AnnotationConsolidationConfig {
    *             workers to track the movement of objects, such as cars, bikes, and pedestrians. </p>
    *         <ul>
    *             <li>
-   *                 <p>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-VideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-VideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-VideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-VideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-VideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-VideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-VideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-VideoObjectTracking</code>
    *                </p>
    *             </li>
@@ -2056,139 +2330,205 @@ export interface AnnotationConsolidationConfig {
    *
    *
    *         <p>
-   *             <b>3D point cloud object detection</b> - Use this task type
+   *             <b>3D Point Cloud Object Detection</b> - Use this task type
    *             when you want workers to classify objects in a 3D point cloud by drawing 3D cuboids
    *             around objects. For example, you can use this task type to ask workers to identify
    *             different types of objects in a point cloud, such as cars, bikes, and
    *             pedestrians.</p>
    *         <ul>
    *             <li>
-   *                 <p>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-3DPointCloudObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-3DPointCloudObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-3DPointCloudObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-3DPointCloudObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-3DPointCloudObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-3DPointCloudObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-3DPointCloudObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-3DPointCloudObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-3DPointCloudObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-3DPointCloudObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-3DPointCloudObjectDetection</code>
    *                </p>
    *             </li>
    *          </ul>
    *         <p>
-   *             <b>3D point cloud object tracking</b> - Use this task type
+   *             <b>3D Point Cloud Object Tracking</b> - Use this task type
    *             when you want workers to draw 3D cuboids around objects that appear in a sequence of 3D
    *             point cloud frames. For example, you can use this task type to ask workers to track the
    *             movement of vehicles across multiple point cloud frames. </p>
    *         <ul>
    *             <li>
-   *                 <p>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-3DPointCloudObjectTracking</code>
    *                </p>
    *             </li>
    *          </ul>
    *         <p>
-   *             <b>3D point cloud semantic segmentation</b> - Use this task
+   *             <b>3D Point Cloud Semantic Segmentation</b> - Use this task
    *             type when you want workers to create a point-level semantic segmentation masks by
    *             painting objects in a 3D point cloud using different colors where each color is assigned
    *             to one of the classes you specify.</p>
    *         <ul>
    *             <li>
-   *                 <p>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-3DPointCloudSemanticSegmentation</code>
-   *                 </p>
+   *                </p>
    *             </li>
    *          </ul>
    *
@@ -2201,182 +2541,270 @@ export interface AnnotationConsolidationConfig {
    *             see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-verification-data.html">Verify and Adjust Labels </a>.</p>
    *
    *         <p>
-   *             <b>Semantic segmentation adjustment</b> - Treats each pixel
+   *             <b>Semantic Segmentation Adjustment</b> - Treats each pixel
    *             in an image as a multi-class classification and treats pixel adjusted annotations from
    *             workers as "votes" for the correct label.</p>
    *         <ul>
    *             <li>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentSemanticSegmentation</code>
-   *                 </p>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentSemanticSegmentation</code>
+   *                </p>
    *             </li>
    *          </ul>
    *
    *         <p>
-   *             <b>Semantic segmentation verification</b> - Uses a variant
+   *             <b>Semantic Segmentation Verification</b> - Uses a variant
    *             of the Expectation Maximization approach to estimate the true class of verification
    *             judgment for semantic segmentation labels based on annotations from individual
    *             workers.</p>
    *         <ul>
    *             <li>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-VerificationSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-VerificationSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-VerificationSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-VerificationSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VerificationSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VerificationSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-VerificationSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-VerificationSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VerificationSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-VerificationSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VerificationSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-VerificationSemanticSegmentation</code>
-   *                 </p>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-VerificationSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-VerificationSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-VerificationSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-VerificationSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VerificationSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VerificationSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-VerificationSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-VerificationSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VerificationSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-VerificationSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VerificationSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-VerificationSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *
+   *         <p>
+   *             <b>Bounding Box Adjustment</b> - Finds the most similar
+   *             boxes from different workers based on the Jaccard index of the adjusted
+   *             annotations.</p>
+   *         <ul>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentBoundingBox</code>
+   *                </p>
    *             </li>
    *          </ul>
    *         <p>
-   *             <b>Bounding box verification</b> - Uses a variant of the
+   *             <b>Bounding Box Verification</b> - Uses a variant of the
    *             Expectation Maximization approach to estimate the true class of verification judgement
    *             for bounding box labels based on annotations from individual workers.</p>
    *         <ul>
    *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-VerificationBoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-VerificationBoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-VerificationBoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-VerificationBoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VerificationBoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VerificationBoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-VerificationBoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-VerificationBoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VerificationBoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-VerificationBoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VerificationBoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-VerificationBoundingBox</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-VerificationBoundingBox</code>
+   *                </p>
    *             </li>
-   *          </ul>
-   *
-   *         <p>
-   *             <b>Bounding box adjustment</b> - Finds the most similar
-   *             boxes from different workers based on the Jaccard index of the adjusted
-   *             annotations.</p>
-   *         <ul>
    *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentBoundingBox</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-VerificationBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentBoundingBox</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-VerificationBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentBoundingBox</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-VerificationBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentBoundingBox</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VerificationBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentBoundingBox</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VerificationBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentBoundingBox</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-VerificationBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentBoundingBox</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-VerificationBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentBoundingBox</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VerificationBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentBoundingBox</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-VerificationBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentBoundingBox</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VerificationBoundingBox</code>
+   *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
-   *                     <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentBoundingBox</code>
-   *                 </p>
-   *                 <p>
-   *                     <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentBoundingBox</code>
-   *                 </p>
+   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-VerificationBoundingBox</code>
+   *                </p>
    *             </li>
    *          </ul>
    *
@@ -2389,40 +2817,62 @@ export interface AnnotationConsolidationConfig {
    *
    *         <ul>
    *             <li>
-   *                 <p>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentVideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentVideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentVideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentVideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentVideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentVideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentVideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentVideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentVideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentVideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentVideoObjectDetection</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentVideoObjectDetection</code>
    *                </p>
    *             </li>
@@ -2433,40 +2883,62 @@ export interface AnnotationConsolidationConfig {
    *             to video frames to track object movement across a sequence of video frames.</p>
    *         <ul>
    *             <li>
-   *                 <p>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentVideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentVideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentVideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentVideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentVideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentVideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentVideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentVideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentVideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentVideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentVideoObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentVideoObjectTracking</code>
    *                </p>
    *             </li>
@@ -2475,133 +2947,204 @@ export interface AnnotationConsolidationConfig {
    *
    *
    *         <p>
-   *             <b>3D point cloud object detection adjustment</b> - Use this task type
-   *             when you want workers to adjust 3D cuboids around objects in a 3D point cloud. </p>
+   *             <b>3D Point Cloud Object Detection Adjustment</b> - Use this
+   *             task type when you want workers to adjust 3D cuboids around objects in a 3D point cloud. </p>
    *         <ul>
    *             <li>
    *                 <p>
    *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-Adjustment3DPointCloudObjectDetection</code>
    *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
    *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-Adjustment3DPointCloudObjectDetection</code>
    *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
    *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-Adjustment3DPointCloudObjectDetection</code>
    *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
    *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-Adjustment3DPointCloudObjectDetection</code>
    *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
    *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-Adjustment3DPointCloudObjectDetection</code>
    *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
    *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-Adjustment3DPointCloudObjectDetection</code>
    *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
    *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-Adjustment3DPointCloudObjectDetection</code>
    *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
    *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-Adjustment3DPointCloudObjectDetection</code>
    *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
    *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-Adjustment3DPointCloudObjectDetection</code>
    *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
    *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-Adjustment3DPointCloudObjectDetection</code>
    *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
    *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-Adjustment3DPointCloudObjectDetection</code>
    *                </p>
+   *             </li>
+   *             <li>
    *                 <p>
    *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-Adjustment3DPointCloudObjectDetection</code>
    *                </p>
    *             </li>
    *          </ul>
    *         <p>
-   *             <b>3D point cloud object tracking adjustment</b> - Use this task type
-   *             when you want workers to adjust 3D cuboids around objects that appear in a sequence of 3D
-   *             point cloud frames.</p>
+   *             <b>3D Point Cloud Object Tracking Adjustment</b> - Use this
+   *             task type when you want workers to adjust 3D cuboids around objects that appear in a
+   *             sequence of 3D point cloud frames.</p>
    *         <ul>
    *             <li>
-   *                 <p>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-Adjustment3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-Adjustment3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-Adjustment3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-Adjustment3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-Adjustment3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-Adjustment3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-Adjustment3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-Adjustment3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-Adjustment3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-Adjustment3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-Adjustment3DPointCloudObjectTracking</code>
    *                </p>
-   *                 <p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-Adjustment3DPointCloudObjectTracking</code>
    *                </p>
    *             </li>
    *          </ul>
    *         <p>
-   *             <b>3D point cloud semantic segmentation adjustment</b> - Use this task
+   *             <b>3D Point Cloud Semantic Segmentation Adjustment</b> - Use this task
    *             type when you want workers to adjust a point-level semantic segmentation masks using a paint tool.</p>
    *         <ul>
    *             <li>
-   *                 <p>
+   *                <p>
+   *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudSemanticSegmentation</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-1:432418664414:function:ACS-Adjustment3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-east-2:266458841044:function:ACS-Adjustment3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:us-west-2:081040173940:function:ACS-Adjustment3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:ACS-Adjustment3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-Adjustment3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-Adjustment3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:ACS-Adjustment3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:ACS-Adjustment3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-Adjustment3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:ACS-Adjustment3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-Adjustment3DPointCloudSemanticSegmentation</code>
-   *                 </p>
-   *                 <p>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:ACS-Adjustment3DPointCloudSemanticSegmentation</code>
-   *                 </p>
+   *                </p>
    *             </li>
    *          </ul>
    */
@@ -2609,6 +3152,9 @@ export interface AnnotationConsolidationConfig {
 }
 
 export namespace AnnotationConsolidationConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AnnotationConsolidationConfig): any => ({
     ...obj,
   });
@@ -2664,6 +3210,9 @@ export interface AppDetails {
 }
 
 export namespace AppDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppDetails): any => ({
     ...obj,
   });
@@ -2691,6 +3240,9 @@ export interface FileSystemConfig {
 }
 
 export namespace FileSystemConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FileSystemConfig): any => ({
     ...obj,
   });
@@ -2712,6 +3264,9 @@ export interface KernelSpec {
 }
 
 export namespace KernelSpec {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KernelSpec): any => ({
     ...obj,
   });
@@ -2734,6 +3289,9 @@ export interface KernelGatewayImageConfig {
 }
 
 export namespace KernelGatewayImageConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KernelGatewayImageConfig): any => ({
     ...obj,
   });
@@ -2770,6 +3328,9 @@ export interface AppImageConfigDetails {
 }
 
 export namespace AppImageConfigDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppImageConfigDetails): any => ({
     ...obj,
   });
@@ -2846,6 +3407,9 @@ export interface AppSpecification {
 }
 
 export namespace AppSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppSpecification): any => ({
     ...obj,
   });
@@ -2874,6 +3438,9 @@ export interface ArtifactSourceType {
 }
 
 export namespace ArtifactSourceType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ArtifactSourceType): any => ({
     ...obj,
   });
@@ -2895,6 +3462,9 @@ export interface ArtifactSource {
 }
 
 export namespace ArtifactSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ArtifactSource): any => ({
     ...obj,
   });
@@ -2937,6 +3507,9 @@ export interface ArtifactSummary {
 }
 
 export namespace ArtifactSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ArtifactSummary): any => ({
     ...obj,
   });
@@ -2955,6 +3528,9 @@ export interface AssociateTrialComponentRequest {
 }
 
 export namespace AssociateTrialComponentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateTrialComponentRequest): any => ({
     ...obj,
   });
@@ -2973,6 +3549,9 @@ export interface AssociateTrialComponentResponse {
 }
 
 export namespace AssociateTrialComponentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateTrialComponentResponse): any => ({
     ...obj,
   });
@@ -3000,6 +3579,9 @@ export interface UserContext {
 }
 
 export namespace UserContext {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserContext): any => ({
     ...obj,
   });
@@ -3059,6 +3641,9 @@ export interface AssociationSummary {
 }
 
 export namespace AssociationSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociationSummary): any => ({
     ...obj,
   });
@@ -3125,6 +3710,9 @@ export interface AthenaDatasetDefinition {
 }
 
 export namespace AthenaDatasetDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AthenaDatasetDefinition): any => ({
     ...obj,
   });
@@ -3133,6 +3721,44 @@ export namespace AthenaDatasetDefinition {
 export enum AuthMode {
   IAM = "IAM",
   SSO = "SSO",
+}
+
+/**
+ * <p>Location of artifacts for an AutoML candidate job.</p>
+ */
+export interface CandidateArtifactLocations {
+  /**
+   * <p>The S3 prefix to the explainability artifacts generated for the AutoML candidate.</p>
+   */
+  Explainability: string | undefined;
+}
+
+export namespace CandidateArtifactLocations {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CandidateArtifactLocations): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The properties of an AutoML candidate job.</p>
+ */
+export interface CandidateProperties {
+  /**
+   * <p>The S3 prefix to the artifacts generated for an AutoML candidate.</p>
+   */
+  CandidateArtifactLocations?: CandidateArtifactLocations;
+}
+
+export namespace CandidateProperties {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CandidateProperties): any => ({
+    ...obj,
+  });
 }
 
 export enum CandidateStatus {
@@ -3170,6 +3796,9 @@ export interface AutoMLCandidateStep {
 }
 
 export namespace AutoMLCandidateStep {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLCandidateStep): any => ({
     ...obj,
   });
@@ -3210,35 +3839,39 @@ export interface FinalAutoMLJobObjectiveMetric {
 }
 
 export namespace FinalAutoMLJobObjectiveMetric {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FinalAutoMLJobObjectiveMetric): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A list of container definitions that describe the different containers that make up one
- *          AutoML candidate. Refer to ContainerDefinition for more details.</p>
+ * <p>A list of container definitions that describe the different containers that make up an
+ *          AutoML candidate. For more information, see .</p>
  */
 export interface AutoMLContainerDefinition {
   /**
-   * <p>The ECR path of the container. Refer to ContainerDefinition for more details.</p>
+   * <p>The ECR path of the container. For more information, see .</p>
    */
   Image: string | undefined;
 
   /**
-   * <p>The location of the model artifacts. Refer to ContainerDefinition for more
-   *          details.</p>
+   * <p>The location of the model artifacts. For more information, see .</p>
    */
   ModelDataUrl: string | undefined;
 
   /**
-   * <p>Environment variables to set in the container. Refer to ContainerDefinition for more
-   *          details.</p>
+   * <p>Environment variables to set in the container. For more information, see .</p>
    */
   Environment?: { [key: string]: string };
 }
 
 export namespace AutoMLContainerDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLContainerDefinition): any => ({
     ...obj,
   });
@@ -3304,9 +3937,17 @@ export interface AutoMLCandidate {
    * <p>The failure reason.</p>
    */
   FailureReason?: string;
+
+  /**
+   * <p>The AutoML candidate's properties.</p>
+   */
+  CandidateProperties?: CandidateProperties;
 }
 
 export namespace AutoMLCandidate {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLCandidate): any => ({
     ...obj,
   });
@@ -3333,6 +3974,9 @@ export interface AutoMLS3DataSource {
 }
 
 export namespace AutoMLS3DataSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLS3DataSource): any => ({
     ...obj,
   });
@@ -3352,33 +3996,41 @@ export interface AutoMLDataSource {
 }
 
 export namespace AutoMLDataSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLDataSource): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Similar to Channel. A channel is a named input source that training algorithms can
- *          consume. Refer to Channel for detailed descriptions.</p>
+ * <p>A channel is a named input source that training algorithms can consume. For more
+ *          information, see .</p>
  */
 export interface AutoMLChannel {
   /**
-   * <p>The data source.</p>
+   * <p>The data source for an AutoML channel.</p>
    */
   DataSource: AutoMLDataSource | undefined;
 
   /**
-   * <p>You can use Gzip or None. The default value is None.</p>
+   * <p>You can use <code>Gzip</code> or <code>None</code>. The default value is
+   *             <code>None</code>.</p>
    */
   CompressionType?: CompressionType | string;
 
   /**
-   * <p>The name of the target variable in supervised learning, a.k.a. 'y'.</p>
+   * <p>The name of the target variable in supervised learning, usually represented by
+   *          'y'.</p>
    */
   TargetAttributeName: string | undefined;
 }
 
 export namespace AutoMLChannel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLChannel): any => ({
     ...obj,
   });
@@ -3400,6 +4052,9 @@ export interface AutoMLJobArtifacts {
 }
 
 export namespace AutoMLJobArtifacts {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLJobArtifacts): any => ({
     ...obj,
   });
@@ -3422,12 +4077,15 @@ export interface AutoMLJobCompletionCriteria {
 
   /**
    * <p>The maximum time, in seconds, an AutoML job is allowed to wait for a trial to complete.
-   *          It must be equal to or greater than MaxRuntimePerTrainingJobInSeconds.</p>
+   *          It must be equal to or greater than <code>MaxRuntimePerTrainingJobInSeconds</code>.</p>
    */
   MaxAutoMLJobRuntimeInSeconds?: number;
 }
 
 export namespace AutoMLJobCompletionCriteria {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLJobCompletionCriteria): any => ({
     ...obj,
   });
@@ -3455,6 +4113,9 @@ export interface VpcConfig {
 }
 
 export namespace VpcConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VpcConfig): any => ({
     ...obj,
   });
@@ -3481,17 +4142,20 @@ export interface AutoMLSecurityConfig {
 }
 
 export namespace AutoMLSecurityConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLSecurityConfig): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A collection of settings used for a job.</p>
+ * <p>A collection of settings used for an AutoML job.</p>
  */
 export interface AutoMLJobConfig {
   /**
-   * <p>How long a job is allowed to run, or how many candidates a job is allowed to
+   * <p>How long an AutoML job is allowed to run, or how many candidates a job is allowed to
    *          generate.</p>
    */
   CompletionCriteria?: AutoMLJobCompletionCriteria;
@@ -3503,6 +4167,9 @@ export interface AutoMLJobConfig {
 }
 
 export namespace AutoMLJobConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLJobConfig): any => ({
     ...obj,
   });
@@ -3520,64 +4187,61 @@ export interface AutoMLJobObjective {
    *          <ul>
    *             <li>
    *                <p>
-   *                   <code>MSE</code>: The mean squared error (MSE) is
-   *                the average of the squared differences between the predicted and actual values. It is
-   *                used for regression. MSE values are always positive, the better a model is at
-   *                predicting the actual values the smaller the MSE value. When the data contains
-   *                outliers, they tend to dominate the MSE which might cause subpar prediction
-   *                performance.</p>
+   *                   <code>MSE</code>: The mean squared error (MSE) is the average of the squared
+   *                differences between the predicted and actual values. It is used for regression. MSE
+   *                values are always positive, the better a model is at predicting the actual values the
+   *                smaller the MSE value. When the data contains outliers, they tend to dominate the MSE
+   *                which might cause subpar prediction performance.</p>
    *             </li>
    *             <li>
    *                <p>
-   *                   <code>Accuracy</code>: The ratio of the number
-   *                correctly classified items to the total number (correctly and incorrectly)
-   *                classified. It is used for binary and multiclass classification. Measures how close
-   *                the predicted class values are to the actual values. Accuracy values vary between
-   *                zero and one, one being perfect accuracy and zero perfect inaccuracy.</p>
+   *                   <code>Accuracy</code>: The ratio of the number correctly classified items to the
+   *                total number (correctly and incorrectly) classified. It is used for binary and
+   *                multiclass classification. Measures how close the predicted class values are to the
+   *                actual values. Accuracy values vary between zero and one, one being perfect accuracy
+   *                and zero perfect inaccuracy.</p>
    *             </li>
    *             <li>
    *                <p>
-   *                   <code>F1</code>: The F1 score is the harmonic
-   *                mean of the precision and recall. It is used for binary classification into classes
-   *                traditionally referred to as positive and negative. Predictions are said to be true
-   *                when they match their actual (correct) class; false when they do not. Precision is
-   *                the ratio of the true positive predictions to all positive predictions (including the
-   *                false positives) in a data set and measures the quality of the prediction when it
-   *                predicts the positive class. Recall (or sensitivity) is the ratio of the true
-   *                positive predictions to all actual positive instances and measures how completely a
-   *                model predicts the actual class members in a data set. The standard F1 score weighs
-   *                precision and recall equally. But which metric is paramount typically depends on
-   *                specific aspects of a problem. F1 scores vary between zero and one, one being the
-   *                best possible performance and zero the worst.</p>
+   *                   <code>F1</code>: The F1 score is the harmonic mean of the precision and recall. It
+   *                is used for binary classification into classes traditionally referred to as positive
+   *                and negative. Predictions are said to be true when they match their actual (correct)
+   *                class; false when they do not. Precision is the ratio of the true positive
+   *                predictions to all positive predictions (including the false positives) in a data set
+   *                and measures the quality of the prediction when it predicts the positive class.
+   *                Recall (or sensitivity) is the ratio of the true positive predictions to all actual
+   *                positive instances and measures how completely a model predicts the actual class
+   *                members in a data set. The standard F1 score weighs precision and recall equally. But
+   *                which metric is paramount typically depends on specific aspects of a problem. F1
+   *                scores vary between zero and one, one being the best possible performance and zero
+   *                the worst.</p>
    *             </li>
    *             <li>
    *                <p>
-   *                   <code>AUC</code>: The area under the curve (AUC)
-   *                metric is used to compare and evaluate binary classification by algorithms such as
-   *                logistic regression that return probabilities. A threshold is needed to map the
-   *                probabilities into classifications. The relevant curve is the receiver operating
-   *                characteristic curve that plots the true positive rate (TPR) of predictions (or
-   *                recall) against the false positive rate (FPR) as a function of the threshold value,
-   *                above which a prediction is considered positive. Increasing the threshold results in
-   *                fewer false positives but more false negatives. AUC is the area under this receiver
-   *                operating characteristic curve and so provides an aggregated measure of the model
-   *                performance across all possible classification thresholds. The AUC score can also be
-   *                interpreted as the probability that a randomly selected positive data point is more
-   *                likely to be predicted positive than a randomly selected negative example. AUC scores
-   *                vary between zero and one, one being perfect accuracy and one half not better than a
-   *                random classifier. Values less that one half predict worse than a random predictor
-   *                and such consistently bad predictors can be inverted to obtain better than random
-   *                predictors.</p>
+   *                   <code>AUC</code>: The area under the curve (AUC) metric is used to compare and
+   *                evaluate binary classification by algorithms such as logistic regression that return
+   *                probabilities. A threshold is needed to map the probabilities into classifications.
+   *                The relevant curve is the receiver operating characteristic curve that plots the true
+   *                positive rate (TPR) of predictions (or recall) against the false positive rate (FPR)
+   *                as a function of the threshold value, above which a prediction is considered
+   *                positive. Increasing the threshold results in fewer false positives but more false
+   *                negatives. AUC is the area under this receiver operating characteristic curve and so
+   *                provides an aggregated measure of the model performance across all possible
+   *                classification thresholds. The AUC score can also be interpreted as the probability
+   *                that a randomly selected positive data point is more likely to be predicted positive
+   *                than a randomly selected negative example. AUC scores vary between zero and one, one
+   *                being perfect accuracy and one half not better than a random classifier. Values less
+   *                that one half predict worse than a random predictor and such consistently bad
+   *                predictors can be inverted to obtain better than random predictors.</p>
    *             </li>
    *             <li>
    *                <p>
-   *                   <code>F1macro</code>: The F1macro score applies
-   *                F1 scoring to multiclass classification. In this context, you have multiple classes
-   *                to predict. You just calculate the precision and recall for each class as you did for
-   *                the positive class in binary classification. Then used these values to calculate the
-   *                F1 score for each class and average them to obtain the F1macro score. F1macro scores
-   *                vary between zero and one, one being the best possible performance and zero the
-   *                worst.</p>
+   *                   <code>F1macro</code>: The F1macro score applies F1 scoring to multiclass
+   *                classification. In this context, you have multiple classes to predict. You just
+   *                calculate the precision and recall for each class as you did for the positive class
+   *                in binary classification. Then used these values to calculate the F1 score for each
+   *                class and average them to obtain the F1macro score. F1macro scores vary between zero
+   *                and one, one being the best possible performance and zero the worst.</p>
    *             </li>
    *          </ul>
    *          <p>If you do not specify a metric explicitly, the default behavior is to automatically
@@ -3601,6 +4265,9 @@ export interface AutoMLJobObjective {
 }
 
 export namespace AutoMLJobObjective {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLJobObjective): any => ({
     ...obj,
   });
@@ -3609,8 +4276,11 @@ export namespace AutoMLJobObjective {
 export enum AutoMLJobSecondaryStatus {
   ANALYZING_DATA = "AnalyzingData",
   CANDIDATE_DEFINITIONS_GENERATED = "CandidateDefinitionsGenerated",
+  COMPLETED = "Completed",
+  EXPLAINABILITY_ERROR = "ExplainabilityError",
   FAILED = "Failed",
   FEATURE_ENGINEERING = "FeatureEngineering",
+  GENERATING_EXPLAINABILITY_REPORT = "GeneratingExplainabilityReport",
   MAX_AUTO_ML_JOB_RUNTIME_REACHED = "MaxAutoMLJobRuntimeReached",
   MAX_CANDIDATES_REACHED = "MaxCandidatesReached",
   MODEL_TUNING = "ModelTuning",
@@ -3628,31 +4298,50 @@ export enum AutoMLJobStatus {
 }
 
 /**
- * <p>Provides a summary about a job.</p>
+ * <p>The reason for a partial failure of an AutoML job.</p>
+ */
+export interface AutoMLPartialFailureReason {
+  /**
+   * <p>The message containing the reason for a partial failure of an AutoML job.</p>
+   */
+  PartialFailureMessage?: string;
+}
+
+export namespace AutoMLPartialFailureReason {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AutoMLPartialFailureReason): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Provides a summary about an AutoML job.</p>
  */
 export interface AutoMLJobSummary {
   /**
-   * <p>The name of the object you are requesting.</p>
+   * <p>The name of the AutoML you are requesting.</p>
    */
   AutoMLJobName: string | undefined;
 
   /**
-   * <p>The ARN of the job.</p>
+   * <p>The ARN of the AutoML job.</p>
    */
   AutoMLJobArn: string | undefined;
 
   /**
-   * <p>The job's status.</p>
+   * <p>The status of the AutoML job.</p>
    */
   AutoMLJobStatus: AutoMLJobStatus | string | undefined;
 
   /**
-   * <p>The job's secondary status.</p>
+   * <p>The secondary status of the AutoML job.</p>
    */
   AutoMLJobSecondaryStatus: AutoMLJobSecondaryStatus | string | undefined;
 
   /**
-   * <p>When the job was created.</p>
+   * <p>When the AutoML job was created.</p>
    */
   CreationTime: Date | undefined;
 
@@ -3662,17 +4351,25 @@ export interface AutoMLJobSummary {
   EndTime?: Date;
 
   /**
-   * <p>When the job was last modified.</p>
+   * <p>When the AutoML job was last modified.</p>
    */
   LastModifiedTime: Date | undefined;
 
   /**
-   * <p>The failure reason of a job.</p>
+   * <p>The failure reason of an AutoML job.</p>
    */
   FailureReason?: string;
+
+  /**
+   * <p>The list of reasons for partial failures within an AutoML job.</p>
+   */
+  PartialFailureReasons?: AutoMLPartialFailureReason[];
 }
 
 export namespace AutoMLJobSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLJobSummary): any => ({
     ...obj,
   });
@@ -3694,6 +4391,9 @@ export interface AutoMLOutputDataConfig {
 }
 
 export namespace AutoMLOutputDataConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLOutputDataConfig): any => ({
     ...obj,
   });
@@ -3721,6 +4421,9 @@ export interface AutoRollbackConfig {
 }
 
 export namespace AutoRollbackConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoRollbackConfig): any => ({
     ...obj,
   });
@@ -3752,6 +4455,9 @@ export interface MetricsSource {
 }
 
 export namespace MetricsSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricsSource): any => ({
     ...obj,
   });
@@ -3768,6 +4474,9 @@ export interface Bias {
 }
 
 export namespace Bias {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Bias): any => ({
     ...obj,
   });
@@ -3794,6 +4503,9 @@ export interface CapacitySize {
 }
 
 export namespace CapacitySize {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CapacitySize): any => ({
     ...obj,
   });
@@ -3825,6 +4537,9 @@ export interface TrafficRoutingConfig {
 }
 
 export namespace TrafficRoutingConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrafficRoutingConfig): any => ({
     ...obj,
   });
@@ -3851,6 +4566,9 @@ export interface BlueGreenUpdatePolicy {
 }
 
 export namespace BlueGreenUpdatePolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BlueGreenUpdatePolicy): any => ({
     ...obj,
   });
@@ -3872,6 +4590,9 @@ export interface CacheHitResult {
 }
 
 export namespace CacheHitResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheHitResult): any => ({
     ...obj,
   });
@@ -3899,6 +4620,9 @@ export interface CaptureContentTypeHeader {
 }
 
 export namespace CaptureContentTypeHeader {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CaptureContentTypeHeader): any => ({
     ...obj,
   });
@@ -3920,6 +4644,9 @@ export interface CaptureOption {
 }
 
 export namespace CaptureOption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CaptureOption): any => ({
     ...obj,
   });
@@ -3948,6 +4675,9 @@ export interface CategoricalParameterRange {
 }
 
 export namespace CategoricalParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CategoricalParameterRange): any => ({
     ...obj,
   });
@@ -3964,6 +4694,9 @@ export interface CategoricalParameterRangeSpecification {
 }
 
 export namespace CategoricalParameterRangeSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CategoricalParameterRangeSpecification): any => ({
     ...obj,
   });
@@ -4010,6 +4743,9 @@ export interface ChannelSpecification {
 }
 
 export namespace ChannelSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelSpecification): any => ({
     ...obj,
   });
@@ -4034,6 +4770,9 @@ export interface CheckpointConfig {
 }
 
 export namespace CheckpointConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CheckpointConfig): any => ({
     ...obj,
   });
@@ -4077,6 +4816,9 @@ export interface GitConfig {
 }
 
 export namespace GitConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GitConfig): any => ({
     ...obj,
   });
@@ -4115,6 +4857,9 @@ export interface CodeRepositorySummary {
 }
 
 export namespace CodeRepositorySummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CodeRepositorySummary): any => ({
     ...obj,
   });
@@ -4143,6 +4888,9 @@ export interface CognitoConfig {
 }
 
 export namespace CognitoConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CognitoConfig): any => ({
     ...obj,
   });
@@ -4172,6 +4920,9 @@ export interface CognitoMemberDefinition {
 }
 
 export namespace CognitoMemberDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CognitoMemberDefinition): any => ({
     ...obj,
   });
@@ -4196,6 +4947,9 @@ export interface CollectionConfiguration {
 }
 
 export namespace CollectionConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CollectionConfiguration): any => ({
     ...obj,
   });
@@ -4224,6 +4978,7 @@ export enum TargetDevice {
   LAMBDA = "lambda",
   ML_C4 = "ml_c4",
   ML_C5 = "ml_c5",
+  ML_EIA2 = "ml_eia2",
   ML_G4DN = "ml_g4dn",
   ML_INF1 = "ml_inf1",
   ML_M4 = "ml_m4",
@@ -4325,6 +5080,9 @@ export interface CompilationJobSummary {
 }
 
 export namespace CompilationJobSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompilationJobSummary): any => ({
     ...obj,
   });
@@ -4346,6 +5104,9 @@ export interface ConditionStepMetadata {
 }
 
 export namespace ConditionStepMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConditionStepMetadata): any => ({
     ...obj,
   });
@@ -4362,6 +5123,9 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
@@ -4373,9 +5137,34 @@ export enum RepositoryAccessMode {
 }
 
 /**
+ * <p>Specifies an authentication configuration for the private docker registry
+ *             where your model image is hosted. Specify a value for this property only if you specified <code>Vpc</code> as the value for the
+ *             <code>RepositoryAccessMode</code> field of the <code>ImageConfig</code> object that you
+ *             passed to a call to <a>CreateModel</a> and the private Docker registry where the model
+ *             image is hosted requires authentication.</p>
+ */
+export interface RepositoryAuthConfig {
+  /**
+   * <p>The Amazon Resource Name (ARN) of an AWS Lambda function that provides credentials to
+   *             authenticate to the private Docker registry where your model image is hosted. For
+   *             information about how to create an AWS Lambda function, see <a href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html">Create a Lambda function with the console</a> in the
+   *             <i>AWS Lambda Developer Guide</i>.</p>
+   */
+  RepositoryCredentialsProviderArn: string | undefined;
+}
+
+export namespace RepositoryAuthConfig {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RepositoryAuthConfig): any => ({
+    ...obj,
+  });
+}
+
+/**
  * <p>Specifies whether the model container is in Amazon ECR or a private Docker registry
- *             accessible from your
- *             Amazon Virtual Private Cloud (VPC).</p>
+ *             accessible from your Amazon Virtual Private Cloud (VPC).</p>
  */
 export interface ImageConfig {
   /**
@@ -4393,9 +5182,20 @@ export interface ImageConfig {
    *          </ul>
    */
   RepositoryAccessMode: RepositoryAccessMode | string | undefined;
+
+  /**
+   * <p>(Optional) Specifies an authentication configuration for the private docker registry
+   *             where your model image is hosted. Specify a value for this property only if you specified <code>Vpc</code> as the value for the
+   *             <code>RepositoryAccessMode</code> field, and the private Docker registry where the model
+   *         image is hosted requires authentication.</p>
+   */
+  RepositoryAuthConfig?: RepositoryAuthConfig;
 }
 
 export namespace ImageConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImageConfig): any => ({
     ...obj,
   });
@@ -4404,6 +5204,35 @@ export namespace ImageConfig {
 export enum ContainerMode {
   MULTI_MODEL = "MultiModel",
   SINGLE_MODEL = "SingleModel",
+}
+
+export enum ModelCacheSetting {
+  DISABLED = "Disabled",
+  ENABLED = "Enabled",
+}
+
+/**
+ * <p>Specifies additional configuration for hosting multi-model endpoints.</p>
+ */
+export interface MultiModelConfig {
+  /**
+   * <p>Whether to cache models for a multi-model endpoint. By default, multi-model endpoints
+   *             cache models so that a model does not have to be loaded into memory each time it is
+   *             invoked. Some use cases do not benefit from model caching. For example, if an endpoint
+   *             hosts a large number of models that are each invoked infrequently, the endpoint might
+   *             perform better if you disable model caching. To disable model caching, set the value of
+   *             this parameter to <code>Disabled</code>.</p>
+   */
+  ModelCacheSetting?: ModelCacheSetting | string;
+}
+
+export namespace MultiModelConfig {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: MultiModelConfig): any => ({
+    ...obj,
+  });
 }
 
 /**
@@ -4430,22 +5259,20 @@ export interface ContainerDefinition {
   /**
    * <p>The path where inference code is stored. This can be either in Amazon EC2 Container Registry or in a
    *             Docker registry that is accessible from the same VPC that you configure for your
-   *             endpoint. If you are using your
-   *             own custom algorithm instead of an algorithm provided by Amazon SageMaker, the inference code must
-   *             meet Amazon SageMaker requirements. Amazon SageMaker supports both <code>registry/repository[:tag]</code> and
-   *                 <code>registry/repository[@digest]</code> image path formats. For more information,
-   *             see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using
-   *                 Your Own Algorithms with Amazon SageMaker</a>
+   *             endpoint. If you are using your own custom algorithm instead of an algorithm provided by
+   *             Amazon SageMaker, the inference code must meet Amazon SageMaker requirements. Amazon SageMaker supports both
+   *                 <code>registry/repository[:tag]</code> and <code>registry/repository[@digest]</code>
+   *             image path formats. For more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html">Using Your Own Algorithms with Amazon
+   *                 SageMaker</a>
    *         </p>
    */
   Image?: string;
 
   /**
    * <p>Specifies whether the model container is in Amazon ECR or a private Docker registry
-   *             accessible from your
-   *             Amazon Virtual Private Cloud (VPC). For information about storing containers in a private Docker registry,
-   *             see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-containers-inference-private.html">Use a Private Docker
-   *                 Registry for Real-Time Inference Containers</a>
+   *             accessible from your Amazon Virtual Private Cloud (VPC). For information about storing containers in a
+   *             private Docker registry, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-containers-inference-private.html">Use a
+   *                 Private Docker Registry for Real-Time Inference Containers</a>
    *         </p>
    */
   ImageConfig?: ImageConfig;
@@ -4490,9 +5317,17 @@ export interface ContainerDefinition {
    *             model.</p>
    */
   ModelPackageName?: string;
+
+  /**
+   * <p>Specifies additional configuration for multi-model endpoints.</p>
+   */
+  MultiModelConfig?: MultiModelConfig;
 }
 
 export namespace ContainerDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ContainerDefinition): any => ({
     ...obj,
   });
@@ -4524,6 +5359,9 @@ export interface ContextSource {
 }
 
 export namespace ContextSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ContextSource): any => ({
     ...obj,
   });
@@ -4566,6 +5404,9 @@ export interface ContextSummary {
 }
 
 export namespace ContextSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ContextSummary): any => ({
     ...obj,
   });
@@ -4635,6 +5476,9 @@ export interface ContinuousParameterRange {
 }
 
 export namespace ContinuousParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ContinuousParameterRange): any => ({
     ...obj,
   });
@@ -4656,6 +5500,9 @@ export interface ContinuousParameterRangeSpecification {
 }
 
 export namespace ContinuousParameterRangeSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ContinuousParameterRangeSpecification): any => ({
     ...obj,
   });
@@ -4687,6 +5534,9 @@ export interface MetadataProperties {
 }
 
 export namespace MetadataProperties {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetadataProperties): any => ({
     ...obj,
   });
@@ -4735,6 +5585,9 @@ export interface CreateActionRequest {
 }
 
 export namespace CreateActionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateActionRequest): any => ({
     ...obj,
   });
@@ -4748,6 +5601,9 @@ export interface CreateActionResponse {
 }
 
 export namespace CreateActionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateActionResponse): any => ({
     ...obj,
   });
@@ -4796,6 +5652,9 @@ export interface ModelPackageContainerDefinition {
 }
 
 export namespace ModelPackageContainerDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModelPackageContainerDefinition): any => ({
     ...obj,
   });
@@ -4882,13 +5741,15 @@ export interface InferenceSpecification {
   /**
    * <p>A list of the instance types on which a transformation job can be run or on which an
    *             endpoint can be deployed.</p>
-   *         <p>This parameter is required for unversioned models, and optional for versioned models.</p>
+   *         <p>This parameter is required for unversioned models, and optional for versioned
+   *             models.</p>
    */
   SupportedTransformInstanceTypes?: (TransformInstanceType | string)[];
 
   /**
    * <p>A list of the instance types that are used to generate inferences in real-time.</p>
-   *         <p>This parameter is required for unversioned models, and optional for versioned models.</p>
+   *         <p>This parameter is required for unversioned models, and optional for versioned
+   *             models.</p>
    */
   SupportedRealtimeInferenceInstanceTypes?: (ProductionVariantInstanceType | string)[];
 
@@ -4904,6 +5765,9 @@ export interface InferenceSpecification {
 }
 
 export namespace InferenceSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InferenceSpecification): any => ({
     ...obj,
   });
@@ -4925,6 +5789,9 @@ export interface IntegerParameterRangeSpecification {
 }
 
 export namespace IntegerParameterRangeSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IntegerParameterRangeSpecification): any => ({
     ...obj,
   });
@@ -4955,6 +5822,9 @@ export interface ParameterRange {
 }
 
 export namespace ParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ParameterRange): any => ({
     ...obj,
   });
@@ -5011,6 +5881,9 @@ export interface HyperParameterSpecification {
 }
 
 export namespace HyperParameterSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HyperParameterSpecification): any => ({
     ...obj,
   });
@@ -5045,6 +5918,9 @@ export interface HyperParameterTuningJobObjective {
 }
 
 export namespace HyperParameterTuningJobObjective {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HyperParameterTuningJobObjective): any => ({
     ...obj,
   });
@@ -5104,6 +5980,9 @@ export interface TrainingSpecification {
 }
 
 export namespace TrainingSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrainingSpecification): any => ({
     ...obj,
   });
@@ -5187,14 +6066,17 @@ export interface CreateAlgorithmInput {
 
   /**
    * <p>An array of key-value pairs. You can use tags to categorize your AWS resources in
-   *            different ways, for example, by purpose, owner, or environment. For more information,
-   *            see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
-   *                Resources</a>.</p>
+   *             different ways, for example, by purpose, owner, or environment. For more information,
+   *             see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
+   *                 Resources</a>.</p>
    */
   Tags?: Tag[];
 }
 
 export namespace CreateAlgorithmInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAlgorithmInput): any => ({
     ...obj,
   });
@@ -5208,6 +6090,9 @@ export interface CreateAlgorithmOutput {
 }
 
 export namespace CreateAlgorithmOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAlgorithmOutput): any => ({
     ...obj,
   });
@@ -5235,6 +6120,9 @@ export interface ResourceSpec {
 }
 
 export namespace ResourceSpec {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceSpec): any => ({
     ...obj,
   });
@@ -5252,7 +6140,8 @@ export interface CreateAppRequest {
   UserProfileName: string | undefined;
 
   /**
-   * <p>The type of app.</p>
+   * <p>The type of app. Supported apps are <code>JupyterServer</code> and
+   *         <code>KernelGateway</code>. <code>TensorBoard</code> is not supported.</p>
    */
   AppType: AppType | string | undefined;
 
@@ -5274,6 +6163,9 @@ export interface CreateAppRequest {
 }
 
 export namespace CreateAppRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAppRequest): any => ({
     ...obj,
   });
@@ -5287,6 +6179,9 @@ export interface CreateAppResponse {
 }
 
 export namespace CreateAppResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAppResponse): any => ({
     ...obj,
   });
@@ -5302,6 +6197,9 @@ export interface ResourceInUse extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ResourceInUse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceInUse): any => ({
     ...obj,
   });
@@ -5325,6 +6223,9 @@ export interface CreateAppImageConfigRequest {
 }
 
 export namespace CreateAppImageConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAppImageConfigRequest): any => ({
     ...obj,
   });
@@ -5338,6 +6239,9 @@ export interface CreateAppImageConfigResponse {
 }
 
 export namespace CreateAppImageConfigResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAppImageConfigResponse): any => ({
     ...obj,
   });
@@ -5376,6 +6280,9 @@ export interface CreateArtifactRequest {
 }
 
 export namespace CreateArtifactRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateArtifactRequest): any => ({
     ...obj,
   });
@@ -5389,6 +6296,9 @@ export interface CreateArtifactResponse {
 }
 
 export namespace CreateArtifactResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateArtifactResponse): any => ({
     ...obj,
   });
@@ -5402,36 +6312,41 @@ export enum ProblemType {
 
 export interface CreateAutoMLJobRequest {
   /**
-   * <p>Identifies an Autopilot job. Must be unique to your account and is case-insensitive.</p>
+   * <p>Identifies an Autopilot job. The name must be unique to your account and is
+   *          case-insensitive.</p>
    */
   AutoMLJobName: string | undefined;
 
   /**
-   * <p>Similar to InputDataConfig supported by Tuning. Format(s) supported: CSV. Minimum of 500
-   *          rows.</p>
+   * <p>An array of channel objects that describes the input data and its location. Each channel
+   *          is a named input source. Similar to <code>InputDataConfig</code> supported by . Format(s) supported: CSV. Minimum
+   *          of 500 rows.</p>
    */
   InputDataConfig: AutoMLChannel[] | undefined;
 
   /**
-   * <p>Similar to OutputDataConfig supported by Tuning. Format(s) supported: CSV.</p>
+   * <p>Provides information about encryption and the Amazon S3 output path needed to store
+   *          artifacts from an AutoML job. Format(s) supported: CSV.</p>
    */
   OutputDataConfig: AutoMLOutputDataConfig | undefined;
 
   /**
-   * <p>Defines the kind of preprocessing and algorithms intended for the candidates. Options
-   *          include: BinaryClassification, MulticlassClassification, and Regression.</p>
+   * <p>Defines the type of supervised learning available for the candidates. Options include:
+   *          BinaryClassification, MulticlassClassification, and Regression. For more information, see
+   *             <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development-problem-types.html">
+   *             Amazon SageMaker Autopilot problem types and algorithm support</a>.</p>
    */
   ProblemType?: ProblemType | string;
 
   /**
-   * <p>Defines the objective of a an AutoML job. You provide a <a>AutoMLJobObjective$MetricName</a> and Autopilot infers whether to minimize or
-   *          maximize it. If a metric is not specified, the most commonly used ObjectiveMetric for
-   *          problem type is automaically selected.</p>
+   * <p>Defines the objective metric used to measure the predictive quality of an AutoML job.
+   *          You provide a <a>AutoMLJobObjective$MetricName</a> and Autopilot infers whether to
+   *          minimize or maximize it.</p>
    */
   AutoMLJobObjective?: AutoMLJobObjective;
 
   /**
-   * <p>Contains CompletionCriteria and SecurityConfig.</p>
+   * <p>Contains CompletionCriteria and SecurityConfig settings for the AutoML job.</p>
    */
   AutoMLJobConfig?: AutoMLJobConfig;
 
@@ -5441,8 +6356,8 @@ export interface CreateAutoMLJobRequest {
   RoleArn: string | undefined;
 
   /**
-   * <p>Generates possible candidates without training a model. A candidate is a combination of
-   *          data preprocessors, algorithms, and algorithm parameter settings.</p>
+   * <p>Generates possible candidates without training the models. A candidate is a combination
+   *          of data preprocessors, algorithms, and algorithm parameter settings.</p>
    */
   GenerateCandidateDefinitionsOnly?: boolean;
 
@@ -5454,6 +6369,9 @@ export interface CreateAutoMLJobRequest {
 }
 
 export namespace CreateAutoMLJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAutoMLJobRequest): any => ({
     ...obj,
   });
@@ -5461,12 +6379,15 @@ export namespace CreateAutoMLJobRequest {
 
 export interface CreateAutoMLJobResponse {
   /**
-   * <p>When a job is created, it is assigned a unique ARN.</p>
+   * <p>The unique ARN that is assigned to the AutoML job when it is created.</p>
    */
   AutoMLJobArn: string | undefined;
 }
 
 export namespace CreateAutoMLJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAutoMLJobResponse): any => ({
     ...obj,
   });
@@ -5487,14 +6408,17 @@ export interface CreateCodeRepositoryInput {
 
   /**
    * <p>An array of key-value pairs. You can use tags to categorize your AWS resources in
-   *            different ways, for example, by purpose, owner, or environment. For more information,
-   *            see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
-   *                Resources</a>.</p>
+   *             different ways, for example, by purpose, owner, or environment. For more information,
+   *             see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
+   *                 Resources</a>.</p>
    */
   Tags?: Tag[];
 }
 
 export namespace CreateCodeRepositoryInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCodeRepositoryInput): any => ({
     ...obj,
   });
@@ -5508,6 +6432,9 @@ export interface CreateCodeRepositoryOutput {
 }
 
 export namespace CreateCodeRepositoryOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCodeRepositoryOutput): any => ({
     ...obj,
   });
@@ -5820,6 +6747,52 @@ export interface InputConfig {
    *                </ul>
    *             </li>
    *          </ul>
+   *         <p>Depending on the model format, <code>DataInputConfig</code> requires the following parameters for
+   *             <code>ml_eia2</code>
+   *             <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OutputConfig.html#sagemaker-Type-OutputConfig-TargetDevice">OutputConfig:TargetDevice</a>.</p>
+   *         <ul>
+   *             <li>
+   *                <p>For TensorFlow models saved in the SavedModel format, specify the input names
+   *                 from <code>signature_def_key</code> and the input model shapes for <code>DataInputConfig</code>.
+   *                 Specify the <code>signature_def_key</code> in
+   *                 <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OutputConfig.html#sagemaker-Type-OutputConfig-CompilerOptions">
+   *                      <code>OutputConfig:CompilerOptions</code>
+   *                   </a> if
+   *                 the model does not use TensorFlow's default signature def key. For example:</p>
+   *                 <ul>
+   *                   <li>
+   *                         <p>
+   *                         <code>"DataInputConfig": {"inputs": [1, 224, 224, 3]}</code>
+   *                      </p>
+   *                     </li>
+   *                   <li>
+   *                         <p>
+   *                         <code>"CompilerOptions": {"signature_def_key": "serving_custom"}</code>
+   *                      </p>
+   *                     </li>
+   *                </ul>
+   *             </li>
+   *             <li>
+   *                <p>For TensorFlow models saved as a frozen graph, specify the input tensor names and shapes
+   *                 in <code>DataInputConfig</code> and the output tensor names for <code>output_names</code> in
+   *                 <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OutputConfig.html#sagemaker-Type-OutputConfig-CompilerOptions">
+   *                      <code>OutputConfig:CompilerOptions</code>
+   *                   </a>.
+   *                 For example:</p>
+   *                 <ul>
+   *                   <li>
+   *                      <p>
+   *                         <code>"DataInputConfig": {"input_tensor:0": [1, 224, 224, 3]}</code>
+   *                      </p>
+   *                   </li>
+   *                   <li>
+   *                      <p>
+   *                         <code>"CompilerOptions": {"output_names": ["output_tensor:0"]}</code>
+   *                      </p>
+   *                   </li>
+   *                </ul>
+   *             </li>
+   *          </ul>
    */
   DataInputConfig: string | undefined;
 
@@ -5828,9 +6801,21 @@ export interface InputConfig {
    *             TENSORFLOW.</p>
    */
   Framework: Framework | string | undefined;
+
+  /**
+   * <p>Specifies the framework version to use.</p>
+   *         <p>This API field is only supported for PyTorch framework versions <code>1.4</code>,
+   *             <code>1.5</code>, and <code>1.6</code> for
+   *             cloud instance target devices: <code>ml_c4</code>, <code>ml_c5</code>, <code>ml_m4</code>,
+   *             <code>ml_m5</code>, <code>ml_p2</code>, <code>ml_p3</code>, and <code>ml_g4dn</code>.</p>
+   */
+  FrameworkVersion?: string;
 }
 
 export namespace InputConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputConfig): any => ({
     ...obj,
   });
@@ -5853,7 +6838,7 @@ export interface TargetPlatform {
    *                 <p>
    *                   <code>ANDROID</code>: Android operating systems. Android API level can be
    *                     specified using the <code>ANDROID_PLATFORM</code> compiler option. For example,
-   *                         <code>"CompilerOptions": {'ANDROID_PLATFORM': 28}</code>
+   *                     <code>"CompilerOptions": {'ANDROID_PLATFORM': 28}</code>
    *                </p>
    *             </li>
    *          </ul>
@@ -5894,7 +6879,7 @@ export interface TargetPlatform {
    *             <li>
    *                 <p>
    *                   <code>NVIDIA</code>: Nvidia graphics processing unit. It also requires
-   *                         <code>gpu-code</code>, <code>trt-ver</code>, <code>cuda-ver</code> compiler
+   *                     <code>gpu-code</code>, <code>trt-ver</code>, <code>cuda-ver</code> compiler
    *                     options</p>
    *             </li>
    *             <li>
@@ -5911,6 +6896,9 @@ export interface TargetPlatform {
 }
 
 export namespace TargetPlatform {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TargetPlatform): any => ({
     ...obj,
   });
@@ -6016,6 +7004,23 @@ export interface OutputConfig {
    *         <ul>
    *             <li>
    *                 <p>
+   *                   <code>DTYPE</code>: Specifies the data type for the input. When compiling for
+   *                     <code>ml_*</code> (except for <code>ml_inf</code>) instances using PyTorch
+   *                     framework, provide the data type (dtype) of the model's input.
+   *                         <code>"float32"</code> is used if <code>"DTYPE"</code> is not specified.
+   *                     Options for data type are:</p>
+   *                 <ul>
+   *                   <li>
+   *                      <p>float32: Use either <code>"float"</code> or <code>"float32"</code>.</p>
+   *                   </li>
+   *                   <li>
+   *                      <p>int64: Use either <code>"int64"</code> or <code>"long"</code>.</p>
+   *                   </li>
+   *                </ul>
+   *                 <p> For example, <code>{"dtype" : "float32"}</code>.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
    *                   <code>CPU</code>: Compilation for CPU supports the following compiler
    *                     options.</p>
    *                 <ul>
@@ -6114,6 +7119,32 @@ export interface OutputConfig {
    *                     </li>
    *                </ul>
    *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>EIA</code>: Compilation for the Elastic Inference Accelerator supports the following
+   *                     compiler options:</p>
+   *                 <ul>
+   *                   <li>
+   *                      <p>
+   *                         <code>precision_mode</code>: Specifies the precision of compiled artifacts. Supported values
+   *                         are <code>"FP16"</code> and <code>"FP32"</code>. Default is
+   *                         <code>"FP32"</code>.</p>
+   *                   </li>
+   *                   <li>
+   *                      <p>
+   *                         <code>signature_def_key</code>: Specifies the signature to use for models in SavedModel
+   *                         format. Defaults is TensorFlow's default signature def key.</p>
+   *                   </li>
+   *                   <li>
+   *                      <p>
+   *                         <code>output_names</code>: Specifies a list of output tensor names for
+   *                         models in FrozenGraph format. Set at most one API field, either: <code>signature_def_key</code> or <code>output_names</code>.</p>
+   *                   </li>
+   *                </ul>
+   *                 <p>For example:
+   *                     <code>{"precision_mode": "FP32",  "output_names": ["output:0"]}</code>
+   *                </p>
+   *             </li>
    *          </ul>
    */
   CompilerOptions?: string;
@@ -6147,6 +7178,9 @@ export interface OutputConfig {
 }
 
 export namespace OutputConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OutputConfig): any => ({
     ...obj,
   });
@@ -6206,14 +7240,17 @@ export interface CreateCompilationJobRequest {
 
   /**
    * <p>An array of key-value pairs. You can use tags to categorize your AWS resources in
-   *            different ways, for example, by purpose, owner, or environment. For more information,
-   *            see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
-   *                Resources</a>.</p>
+   *             different ways, for example, by purpose, owner, or environment. For more information,
+   *             see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
+   *                 Resources</a>.</p>
    */
   Tags?: Tag[];
 }
 
 export namespace CreateCompilationJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCompilationJobRequest): any => ({
     ...obj,
   });
@@ -6235,6 +7272,9 @@ export interface CreateCompilationJobResponse {
 }
 
 export namespace CreateCompilationJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCompilationJobResponse): any => ({
     ...obj,
   });
@@ -6273,6 +7313,9 @@ export interface CreateContextRequest {
 }
 
 export namespace CreateContextRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateContextRequest): any => ({
     ...obj,
   });
@@ -6286,6 +7329,9 @@ export interface CreateContextResponse {
 }
 
 export namespace CreateContextResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateContextResponse): any => ({
     ...obj,
   });
@@ -6331,6 +7377,9 @@ export interface DataQualityAppSpecification {
 }
 
 export namespace DataQualityAppSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataQualityAppSpecification): any => ({
     ...obj,
   });
@@ -6347,6 +7396,9 @@ export interface MonitoringConstraintsResource {
 }
 
 export namespace MonitoringConstraintsResource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MonitoringConstraintsResource): any => ({
     ...obj,
   });
@@ -6363,6 +7415,9 @@ export interface MonitoringStatisticsResource {
 }
 
 export namespace MonitoringStatisticsResource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MonitoringStatisticsResource): any => ({
     ...obj,
   });
@@ -6391,6 +7446,9 @@ export interface DataQualityBaselineConfig {
 }
 
 export namespace DataQualityBaselineConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataQualityBaselineConfig): any => ({
     ...obj,
   });
@@ -6472,6 +7530,9 @@ export interface EndpointInput {
 }
 
 export namespace EndpointInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EndpointInput): any => ({
     ...obj,
   });
@@ -6489,6 +7550,9 @@ export interface DataQualityJobInput {
 }
 
 export namespace DataQualityJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataQualityJobInput): any => ({
     ...obj,
   });
@@ -6524,6 +7588,9 @@ export interface MonitoringS3Output {
 }
 
 export namespace MonitoringS3Output {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MonitoringS3Output): any => ({
     ...obj,
   });
@@ -6540,6 +7607,9 @@ export interface MonitoringOutput {
 }
 
 export namespace MonitoringOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MonitoringOutput): any => ({
     ...obj,
   });
@@ -6563,6 +7633,9 @@ export interface MonitoringOutputConfig {
 }
 
 export namespace MonitoringOutputConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MonitoringOutputConfig): any => ({
     ...obj,
   });
@@ -6639,6 +7712,9 @@ export interface MonitoringClusterConfig {
 }
 
 export namespace MonitoringClusterConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MonitoringClusterConfig): any => ({
     ...obj,
   });
@@ -6655,6 +7731,9 @@ export interface MonitoringResources {
 }
 
 export namespace MonitoringResources {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MonitoringResources): any => ({
     ...obj,
   });
@@ -6687,6 +7766,9 @@ export interface MonitoringNetworkConfig {
 }
 
 export namespace MonitoringNetworkConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MonitoringNetworkConfig): any => ({
     ...obj,
   });
@@ -6703,6 +7785,9 @@ export interface MonitoringStoppingCondition {
 }
 
 export namespace MonitoringStoppingCondition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MonitoringStoppingCondition): any => ({
     ...obj,
   });
@@ -6764,6 +7849,9 @@ export interface CreateDataQualityJobDefinitionRequest {
 }
 
 export namespace CreateDataQualityJobDefinitionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDataQualityJobDefinitionRequest): any => ({
     ...obj,
   });
@@ -6777,6 +7865,9 @@ export interface CreateDataQualityJobDefinitionResponse {
 }
 
 export namespace CreateDataQualityJobDefinitionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDataQualityJobDefinitionResponse): any => ({
     ...obj,
   });
@@ -6798,6 +7889,9 @@ export interface EdgeOutputConfig {
 }
 
 export namespace EdgeOutputConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EdgeOutputConfig): any => ({
     ...obj,
   });
@@ -6831,6 +7925,9 @@ export interface CreateDeviceFleetRequest {
 }
 
 export namespace CreateDeviceFleetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDeviceFleetRequest): any => ({
     ...obj,
   });
@@ -6847,6 +7944,9 @@ export interface JupyterServerAppSettings {
 }
 
 export namespace JupyterServerAppSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JupyterServerAppSettings): any => ({
     ...obj,
   });
@@ -6874,6 +7974,9 @@ export interface CustomImage {
 }
 
 export namespace CustomImage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CustomImage): any => ({
     ...obj,
   });
@@ -6895,6 +7998,9 @@ export interface KernelGatewayAppSettings {
 }
 
 export namespace KernelGatewayAppSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KernelGatewayAppSettings): any => ({
     ...obj,
   });
@@ -6906,10 +8012,11 @@ export enum NotebookOutputOption {
 }
 
 /**
- * <p>Specifies options when sharing an Amazon SageMaker Studio notebook. These settings are specified
- *      as part of <code>DefaultUserSettings</code> when the <a>CreateDomain</a> API is
- *      called, and as part of <code>UserSettings</code> when the <a>CreateUserProfile</a>
- *      API is called.</p>
+ * <p>Specifies options for sharing SageMaker Studio notebooks. These settings are
+ *     specified as part of <code>DefaultUserSettings</code> when the <code>CreateDomain</code>
+ *     API is called, and as part of <code>UserSettings</code> when the <code>CreateUserProfile</code>
+ *     API is called. When <code>SharingSettings</code> is not specified, notebook sharing
+ *     isn't allowed.</p>
  */
 export interface SharingSettings {
   /**
@@ -6920,7 +8027,7 @@ export interface SharingSettings {
 
   /**
    * <p>When <code>NotebookOutputOption</code> is <code>Allowed</code>, the Amazon S3 bucket used
-   *          to save the notebook cell output.</p>
+   *          to store the shared notebook snapshots.</p>
    */
   S3OutputPath?: string;
 
@@ -6932,6 +8039,9 @@ export interface SharingSettings {
 }
 
 export namespace SharingSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SharingSettings): any => ({
     ...obj,
   });
@@ -6948,13 +8058,22 @@ export interface TensorBoardAppSettings {
 }
 
 export namespace TensorBoardAppSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TensorBoardAppSettings): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A collection of settings.</p>
+ * <p>A collection of settings that apply to users of Amazon SageMaker Studio. These settings are
+ *       specified when the <code>CreateUserProfile</code> API is called, and as <code>DefaultUserSettings</code>
+ *       when the <code>CreateDomain</code> API is called.</p>
+ *          <p>
+ *             <code>SecurityGroups</code> is aggregated when specified in both calls. For all other
+ *      settings in <code>UserSettings</code>, the values specified in <code>CreateUserProfile</code>
+ *      take precedence over those specified in <code>CreateDomain</code>.</p>
  */
 export interface UserSettings {
   /**
@@ -6964,13 +8083,17 @@ export interface UserSettings {
 
   /**
    * <p>The security groups for the Amazon Virtual Private Cloud (VPC) that Studio uses for communication.</p>
-   *          <p>Optional when the <code>CreateDomain.AppNetworkAccessType</code> parameter is set to <code>PublicInternetOnly</code>.</p>
-   *          <p>Required when the <code>CreateDomain.AppNetworkAccessType</code> parameter is set to <code>VpcOnly</code>.</p>
+   *          <p>Optional when the <code>CreateDomain.AppNetworkAccessType</code> parameter is set to
+   *          <code>PublicInternetOnly</code>.</p>
+   *          <p>Required when the <code>CreateDomain.AppNetworkAccessType</code> parameter is set to
+   *          <code>VpcOnly</code>.</p>
+   *          <p>Amazon SageMaker adds a security group to allow NFS traffic from SageMaker Studio. Therefore, the
+   *          number of security groups that you can specify is one less than the maximum number shown.</p>
    */
   SecurityGroups?: string[];
 
   /**
-   * <p>The sharing settings.</p>
+   * <p>Specifies options for sharing SageMaker Studio notebooks.</p>
    */
   SharingSettings?: SharingSettings;
 
@@ -6991,6 +8114,9 @@ export interface UserSettings {
 }
 
 export namespace UserSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserSettings): any => ({
     ...obj,
   });
@@ -7008,7 +8134,12 @@ export interface CreateDomainRequest {
   AuthMode: AuthMode | string | undefined;
 
   /**
-   * <p>The default user settings.</p>
+   * <p>The default settings to use to create a user profile when <code>UserSettings</code> isn't specified
+   *          in the call to the <code>CreateUserProfile</code> API.</p>
+   *          <p>
+   *             <code>SecurityGroups</code> is aggregated when specified in both calls. For all other
+   *          settings in <code>UserSettings</code>, the values specified in <code>CreateUserProfile</code>
+   *          take precedence over those specified in <code>CreateDomain</code>.</p>
    */
   DefaultUserSettings: UserSettings | undefined;
 
@@ -7025,7 +8156,7 @@ export interface CreateDomainRequest {
   /**
    * <p>Tags to associated with the Domain. Each tag consists of a key and an optional value.
    *          Tag keys must be unique per resource. Tags are searchable using the
-   *          <a>Search</a> API.</p>
+   *          <code>Search</code> API.</p>
    */
   Tags?: Tag[];
 
@@ -7061,6 +8192,9 @@ export interface CreateDomainRequest {
 }
 
 export namespace CreateDomainRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDomainRequest): any => ({
     ...obj,
   });
@@ -7079,6 +8213,9 @@ export interface CreateDomainResponse {
 }
 
 export namespace CreateDomainResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDomainResponse): any => ({
     ...obj,
   });
@@ -7127,6 +8264,9 @@ export interface CreateEdgePackagingJobRequest {
 }
 
 export namespace CreateEdgePackagingJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateEdgePackagingJobRequest): any => ({
     ...obj,
   });
@@ -7134,27 +8274,30 @@ export namespace CreateEdgePackagingJobRequest {
 
 export interface CreateEndpointInput {
   /**
-   * <p>The name of the endpoint.The name must be unique within an AWS Region in your AWS account. The name is case-insensitive in <code>CreateEndpoint</code>,
-   *             but the case is preserved and must be matched in .</p>
+   * <p>The name of the endpoint.The name must be unique within an AWS Region in your AWS
+   *             account. The name is case-insensitive in <code>CreateEndpoint</code>, but the case is
+   *             preserved and must be matched in .</p>
    */
   EndpointName: string | undefined;
 
   /**
-   * <p>The name of an endpoint configuration. For more information, see
-   *             <a>CreateEndpointConfig</a>. </p>
+   * <p>The name of an endpoint configuration. For more information, see <a>CreateEndpointConfig</a>. </p>
    */
   EndpointConfigName: string | undefined;
 
   /**
    * <p>An array of key-value pairs. You can use tags to categorize your AWS resources in
-   *            different ways, for example, by purpose, owner, or environment. For more information,
-   *            see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
-   *                Resources</a>.</p>
+   *             different ways, for example, by purpose, owner, or environment. For more information,
+   *             see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
+   *                 Resources</a>.</p>
    */
   Tags?: Tag[];
 }
 
 export namespace CreateEndpointInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateEndpointInput): any => ({
     ...obj,
   });
@@ -7168,6 +8311,9 @@ export interface CreateEndpointOutput {
 }
 
 export namespace CreateEndpointOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateEndpointOutput): any => ({
     ...obj,
   });
@@ -7209,6 +8355,9 @@ export interface DataCaptureConfig {
 }
 
 export namespace DataCaptureConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataCaptureConfig): any => ({
     ...obj,
   });
@@ -7221,6 +8370,74 @@ export enum ProductionVariantAcceleratorType {
   ML_EIA2_LARGE = "ml.eia2.large",
   ML_EIA2_MEDIUM = "ml.eia2.medium",
   ML_EIA2_XLARGE = "ml.eia2.xlarge",
+}
+
+/**
+ * <p>Specifies configuration for a core dump from the model container when the process
+ *             crashes.</p>
+ */
+export interface ProductionVariantCoreDumpConfig {
+  /**
+   * <p>The Amazon S3 bucket to send the core dump to.</p>
+   */
+  DestinationS3Uri: string | undefined;
+
+  /**
+   * <p>The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt the core dump data at rest using
+   *             Amazon S3 server-side encryption. The <code>KmsKeyId</code> can be any of the following
+   *             formats: </p>
+   *         <ul>
+   *             <li>
+   *                 <p>// KMS Key ID</p>
+   *                 <p>
+   *                     <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>// Amazon Resource Name (ARN) of a KMS Key</p>
+   *                 <p>
+   *                     <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>// KMS Key Alias</p>
+   *                 <p>
+   *                     <code>"alias/ExampleAlias"</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>// Amazon Resource Name (ARN) of a KMS Key Alias</p>
+   *                 <p>
+   *                     <code>"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"</code>
+   *                 </p>
+   *             </li>
+   *          </ul>
+   *
+   *         <p>If you use a KMS key ID or an alias of your master key, the Amazon SageMaker execution role must
+   *             include permissions to call <code>kms:Encrypt</code>. If you don't provide a KMS key ID,
+   *             Amazon SageMaker uses the default KMS key for Amazon S3 for your role's account. Amazon SageMaker uses server-side
+   *             encryption with KMS-managed keys for <code>OutputDataConfig</code>. If you use a bucket
+   *             policy with an <code>s3:PutObject</code> permission that only allows objects with
+   *             server-side encryption, set the condition key of
+   *             <code>s3:x-amz-server-side-encryption</code> to <code>"aws:kms"</code>. For more
+   *             information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html">KMS-Managed Encryption Keys</a> in the <i>Amazon Simple Storage Service Developer
+   *                     Guide.</i>
+   *          </p>
+   *         <p>The KMS key policy must grant permission to the IAM role that you specify in your
+   *             <code>CreateEndpoint</code> and <code>UpdateEndpoint</code> requests. For more information, see
+   *             <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using Key Policies in AWS KMS</a> in the <i>AWS Key Management Service Developer
+   *                     Guide</i>.</p>
+   */
+  KmsKeyId?: string;
+}
+
+export namespace ProductionVariantCoreDumpConfig {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ProductionVariantCoreDumpConfig): any => ({
+    ...obj,
+  });
 }
 
 /**
@@ -7267,9 +8484,18 @@ export interface ProductionVariant {
    *                 Inference in Amazon SageMaker</a>.</p>
    */
   AcceleratorType?: ProductionVariantAcceleratorType | string;
+
+  /**
+   * <p>Specifies configuration for a core dump from the model container when the process
+   *             crashes.</p>
+   */
+  CoreDumpConfig?: ProductionVariantCoreDumpConfig;
 }
 
 export namespace ProductionVariant {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProductionVariant): any => ({
     ...obj,
   });
@@ -7294,9 +8520,9 @@ export interface CreateEndpointConfigInput {
 
   /**
    * <p>An array of key-value pairs. You can use tags to categorize your AWS resources in
-   *            different ways, for example, by purpose, owner, or environment. For more information,
-   *            see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
-   *                Resources</a>.</p>
+   *             different ways, for example, by purpose, owner, or environment. For more information,
+   *             see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
+   *                 Resources</a>.</p>
    */
   Tags?: Tag[];
 
@@ -7347,6 +8573,9 @@ export interface CreateEndpointConfigInput {
 }
 
 export namespace CreateEndpointConfigInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateEndpointConfigInput): any => ({
     ...obj,
   });
@@ -7360,6 +8589,9 @@ export interface CreateEndpointConfigOutput {
 }
 
 export namespace CreateEndpointConfigOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateEndpointConfigOutput): any => ({
     ...obj,
   });
@@ -7392,6 +8624,9 @@ export interface CreateExperimentRequest {
 }
 
 export namespace CreateExperimentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateExperimentRequest): any => ({
     ...obj,
   });
@@ -7405,6 +8640,9 @@ export interface CreateExperimentResponse {
 }
 
 export namespace CreateExperimentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateExperimentResponse): any => ({
     ...obj,
   });
@@ -7436,6 +8674,9 @@ export interface FeatureDefinition {
 }
 
 export namespace FeatureDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FeatureDefinition): any => ({
     ...obj,
   });
@@ -7463,6 +8704,9 @@ export interface DataCatalogConfig {
 }
 
 export namespace DataCatalogConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataCatalogConfig): any => ({
     ...obj,
   });
@@ -7493,9 +8737,17 @@ export interface S3StorageConfig {
    *          </ul>
    */
   KmsKeyId?: string;
+
+  /**
+   * <p>The S3 path where offline records are written.</p>
+   */
+  ResolvedOutputS3Uri?: string;
 }
 
 export namespace S3StorageConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3StorageConfig): any => ({
     ...obj,
   });
@@ -7529,6 +8781,9 @@ export interface OfflineStoreConfig {
 }
 
 export namespace OfflineStoreConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OfflineStoreConfig): any => ({
     ...obj,
   });
@@ -7616,6 +8871,9 @@ export interface OnlineStoreSecurityConfig {
 }
 
 export namespace OnlineStoreSecurityConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OnlineStoreSecurityConfig): any => ({
     ...obj,
   });
@@ -7645,6 +8903,9 @@ export interface OnlineStoreConfig {
 }
 
 export namespace OnlineStoreConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OnlineStoreConfig): any => ({
     ...obj,
   });
@@ -7776,6 +9037,9 @@ export interface CreateFeatureGroupRequest {
 }
 
 export namespace CreateFeatureGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFeatureGroupRequest): any => ({
     ...obj,
   });
@@ -7790,6 +9054,9 @@ export interface CreateFeatureGroupResponse {
 }
 
 export namespace CreateFeatureGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFeatureGroupResponse): any => ({
     ...obj,
   });
@@ -7810,6 +9077,9 @@ export interface HumanLoopActivationConditionsConfig {
 }
 
 export namespace HumanLoopActivationConditionsConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HumanLoopActivationConditionsConfig): any => ({
     ...obj,
   });
@@ -7820,12 +9090,16 @@ export namespace HumanLoopActivationConditionsConfig {
  */
 export interface HumanLoopActivationConfig {
   /**
-   * <p>Container structure for defining under what conditions SageMaker creates a human loop.</p>
+   * <p>Container structure for defining under what conditions SageMaker creates a human
+   *          loop.</p>
    */
   HumanLoopActivationConditionsConfig: HumanLoopActivationConditionsConfig | undefined;
 }
 
 export namespace HumanLoopActivationConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HumanLoopActivationConfig): any => ({
     ...obj,
   });
@@ -7852,6 +9126,9 @@ export interface USD {
 }
 
 export namespace USD {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: USD): any => ({
     ...obj,
   });
@@ -8169,6 +9446,9 @@ export interface PublicWorkforceTaskPrice {
 }
 
 export namespace PublicWorkforceTaskPrice {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PublicWorkforceTaskPrice): any => ({
     ...obj,
   });
@@ -8179,12 +9459,20 @@ export namespace PublicWorkforceTaskPrice {
  */
 export interface HumanLoopConfig {
   /**
-   * <p>Amazon Resource Name (ARN) of a team of workers.</p>
+   * <p>Amazon Resource Name (ARN) of a team of workers. To learn more about the types of
+   *          workforces and work teams you can create and use with Amazon A2I, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management.html">Create
+   *             and Manage Workforces</a>.</p>
    */
   WorkteamArn: string | undefined;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the human task user interface.</p>
+   *          <p>You can use standard HTML and Crowd HTML Elements to create a custom worker task
+   *          template. You use this template to create a human task UI.</p>
+   *          <p>To learn how to create a custom HTML template, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-custom-templates.html">Create Custom Worker
+   *             Task Template</a>.</p>
+   *          <p>To learn how to create a human task UI, which is a worker task template that can be used
+   *          in a flow definition, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-worker-template-console.html">Create and Delete a Worker Task Templates</a>.</p>
    */
   HumanTaskUiArn: string | undefined;
 
@@ -8212,7 +9500,8 @@ export interface HumanLoopConfig {
   TaskAvailabilityLifetimeInSeconds?: number;
 
   /**
-   * <p>The amount of time that a worker has to complete a task. The default value is 3,600 seconds (1 hour)</p>
+   * <p>The amount of time that a worker has to complete a task. The default value is 3,600
+   *          seconds (1 hour).</p>
    */
   TaskTimeLimitInSeconds?: number;
 
@@ -8529,6 +9818,9 @@ export interface HumanLoopConfig {
 }
 
 export namespace HumanLoopConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HumanLoopConfig): any => ({
     ...obj,
   });
@@ -8546,6 +9838,9 @@ export interface HumanLoopRequestSource {
 }
 
 export namespace HumanLoopRequestSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HumanLoopRequestSource): any => ({
     ...obj,
   });
@@ -8557,6 +9852,8 @@ export namespace HumanLoopRequestSource {
 export interface FlowDefinitionOutputConfig {
   /**
    * <p>The Amazon S3 path where the object containing human output will be made available.</p>
+   *          <p>To learn more about the format of Amazon A2I output data, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-output-data.html">Amazon A2I
+   *             Output Data</a>.</p>
    */
   S3OutputPath: string | undefined;
 
@@ -8567,6 +9864,9 @@ export interface FlowDefinitionOutputConfig {
 }
 
 export namespace FlowDefinitionOutputConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FlowDefinitionOutputConfig): any => ({
     ...obj,
   });
@@ -8611,6 +9911,9 @@ export interface CreateFlowDefinitionRequest {
 }
 
 export namespace CreateFlowDefinitionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFlowDefinitionRequest): any => ({
     ...obj,
   });
@@ -8624,6 +9927,9 @@ export interface CreateFlowDefinitionResponse {
 }
 
 export namespace CreateFlowDefinitionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFlowDefinitionResponse): any => ({
     ...obj,
   });
@@ -8640,6 +9946,9 @@ export interface UiTemplate {
 }
 
 export namespace UiTemplate {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UiTemplate): any => ({
     ...obj,
   });
@@ -8663,6 +9972,9 @@ export interface CreateHumanTaskUiRequest {
 }
 
 export namespace CreateHumanTaskUiRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateHumanTaskUiRequest): any => ({
     ...obj,
   });
@@ -8676,6 +9988,9 @@ export interface CreateHumanTaskUiResponse {
 }
 
 export namespace CreateHumanTaskUiResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateHumanTaskUiResponse): any => ({
     ...obj,
   });
@@ -8733,6 +10048,9 @@ export interface IntegerParameterRange {
 }
 
 export namespace IntegerParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IntegerParameterRange): any => ({
     ...obj,
   });
@@ -8771,6 +10089,9 @@ export interface ParameterRanges {
 }
 
 export namespace ParameterRanges {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ParameterRanges): any => ({
     ...obj,
   });
@@ -8801,6 +10122,9 @@ export interface ResourceLimits {
 }
 
 export namespace ResourceLimits {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceLimits): any => ({
     ...obj,
   });
@@ -8827,6 +10151,9 @@ export interface TuningJobCompletionCriteria {
 }
 
 export namespace TuningJobCompletionCriteria {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TuningJobCompletionCriteria): any => ({
     ...obj,
   });
@@ -8894,6 +10221,9 @@ export interface HyperParameterTuningJobConfig {
 }
 
 export namespace HyperParameterTuningJobConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HyperParameterTuningJobConfig): any => ({
     ...obj,
   });
@@ -8952,6 +10282,9 @@ export interface HyperParameterAlgorithmSpecification {
 }
 
 export namespace HyperParameterAlgorithmSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HyperParameterAlgorithmSpecification): any => ({
     ...obj,
   });
@@ -9097,6 +10430,9 @@ export interface HyperParameterTrainingJobDefinition {
 }
 
 export namespace HyperParameterTrainingJobDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HyperParameterTrainingJobDefinition): any => ({
     ...obj,
   });
@@ -9115,6 +10451,9 @@ export interface ParentHyperParameterTuningJob {
 }
 
 export namespace ParentHyperParameterTuningJob {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ParentHyperParameterTuningJob): any => ({
     ...obj,
   });
@@ -9187,6 +10526,9 @@ export interface HyperParameterTuningJobWarmStartConfig {
 }
 
 export namespace HyperParameterTuningJobWarmStartConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HyperParameterTuningJobWarmStartConfig): any => ({
     ...obj,
   });
@@ -9196,8 +10538,8 @@ export interface CreateHyperParameterTuningJobRequest {
   /**
    * <p>The name of the tuning job. This name is the prefix for the names of all training jobs
    *             that this tuning job launches. The name must be unique within the same AWS account and
-   *             AWS Region. The name must have 1 to 32 characters. Valid characters are a-z, A-Z,
-   *             0-9, and : + = @ _ % - (hyphen). The name is not case sensitive.</p>
+   *             AWS Region. The name must have 1 to 32 characters. Valid characters are a-z, A-Z, 0-9,
+   *             and : + = @ _ % - (hyphen). The name is not case sensitive.</p>
    */
   HyperParameterTuningJobName: string | undefined;
 
@@ -9246,9 +10588,9 @@ export interface CreateHyperParameterTuningJobRequest {
 
   /**
    * <p>An array of key-value pairs. You can use tags to categorize your AWS resources in
-   *            different ways, for example, by purpose, owner, or environment. For more information,
-   *            see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
-   *                Resources</a>.</p>
+   *             different ways, for example, by purpose, owner, or environment. For more information,
+   *             see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
+   *                 Resources</a>.</p>
    *         <p>Tags that you specify for the tuning job are also added to all training jobs that the
    *             tuning job launches.</p>
    */
@@ -9256,6 +10598,9 @@ export interface CreateHyperParameterTuningJobRequest {
 }
 
 export namespace CreateHyperParameterTuningJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateHyperParameterTuningJobRequest): any => ({
     ...obj,
   });
@@ -9270,6 +10615,9 @@ export interface CreateHyperParameterTuningJobResponse {
 }
 
 export namespace CreateHyperParameterTuningJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateHyperParameterTuningJobResponse): any => ({
     ...obj,
   });
@@ -9303,6 +10651,9 @@ export interface CreateImageRequest {
 }
 
 export namespace CreateImageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateImageRequest): any => ({
     ...obj,
   });
@@ -9316,6 +10667,9 @@ export interface CreateImageResponse {
 }
 
 export namespace CreateImageResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateImageResponse): any => ({
     ...obj,
   });
@@ -9344,6 +10698,9 @@ export interface CreateImageVersionRequest {
 }
 
 export namespace CreateImageVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateImageVersionRequest): any => ({
     ...obj,
   });
@@ -9357,6 +10714,9 @@ export interface CreateImageVersionResponse {
 }
 
 export namespace CreateImageVersionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateImageVersionResponse): any => ({
     ...obj,
   });
@@ -9378,7 +10738,7 @@ export interface UiConfig {
    * <p>The ARN of the worker task template used to render the worker UI and tools for
    *             labeling job tasks.</p>
    *         <p>Use this parameter when you are creating a labeling job for 3D point cloud and video
-   *             fram labeling jobs. Use your labeling job task type to select one of the following ARN's
+   *             fram labeling jobs. Use your labeling job task type to select one of the following ARNs
    *             and use it with this parameter when you create a labeling job. Replace
    *                 <code>aws-region</code> with the AWS region you are creating your labeling job
    *             in.</p>
@@ -9445,6 +10805,9 @@ export interface UiConfig {
 }
 
 export namespace UiConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UiConfig): any => ({
     ...obj,
   });
@@ -10386,62 +11749,62 @@ export interface HumanTaskConfig {
    *         <ul>
    *             <li>
    *                 <p>
-   *                   <code>arn:aws:lambda:us-east-1:432418664414:function:PRE-Adjustment3DPointCloudObjectTracking</code>
+   *                   <code>arn:aws:lambda:us-east-1:432418664414:function:PRE-VerificationBoundingBox</code>
    *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:PRE-Adjustment3DPointCloudObjectTracking</code>
+   *                   <code>arn:aws:lambda:us-east-2:266458841044:function:PRE-VerificationBoundingBox</code>
    *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:PRE-Adjustment3DPointCloudObjectTracking</code>
+   *                   <code>arn:aws:lambda:us-west-2:081040173940:function:PRE-VerificationBoundingBox</code>
    *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:PRE-Adjustment3DPointCloudObjectTracking</code>
+   *                   <code>arn:aws:lambda:eu-west-1:568282634449:function:PRE-VerificationBoundingBox</code>
    *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-Adjustment3DPointCloudObjectTracking</code>
+   *                   <code>arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VerificationBoundingBox</code>
    *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-Adjustment3DPointCloudObjectTracking</code>
+   *                   <code>arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VerificationBoundingBox</code>
    *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:PRE-Adjustment3DPointCloudObjectTracking</code>
+   *                   <code>arn:aws:lambda:ap-south-1:565803892007:function:PRE-VerificationBoundingBox</code>
    *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:PRE-Adjustment3DPointCloudObjectTracking</code>
+   *                   <code>arn:aws:lambda:eu-central-1:203001061592:function:PRE-VerificationBoundingBox</code>
    *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-Adjustment3DPointCloudObjectTracking</code>
+   *                   <code>arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VerificationBoundingBox</code>
    *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:PRE-Adjustment3DPointCloudObjectTracking</code>
+   *                   <code>arn:aws:lambda:eu-west-2:487402164563:function:PRE-VerificationBoundingBox</code>
    *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-Adjustment3DPointCloudObjectTracking</code>
+   *                   <code>arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VerificationBoundingBox</code>
    *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:PRE-Adjustment3DPointCloudObjectTracking</code>
+   *                   <code>arn:aws:lambda:ca-central-1:918755190332:function:PRE-VerificationBoundingBox</code>
    *                </p>
    *             </li>
    *          </ul>
@@ -11011,15 +12374,41 @@ export interface HumanTaskConfig {
   NumberOfHumanWorkersPerDataObject: number | undefined;
 
   /**
-   * <p>The amount of time that a worker has to complete a task.</p>
+   * <p>The amount of time that a worker has to complete a task. </p>
+   *         <p>If you create a custom labeling job, the maximum value for this parameter is 8 hours
+   *             (28,800 seconds).</p>
+   *         <p>If you create a labeling job using a <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html">built-in task type</a> the maximum
+   *             for this parameter depends on the task type you use:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>For <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-label-images.html">image</a> and
+   *                     <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-label-text.html">text</a> labeling jobs,
+   *                     the maximum is 8 hours (28,800 seconds).</p>
+   *             </li>
+   *             <li>
+   *                 <p>For <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud.html">3D point cloud</a> and <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-video.html">video frame</a> labeling jobs,
+   *                     the maximum is 7 days (604,800 seconds). If you want to change these limits,
+   *                     contact AWS Support.</p>
+   *             </li>
+   *          </ul>
    */
   TaskTimeLimitInSeconds: number | undefined;
 
   /**
-   * <p>The length of time that a task remains available for labeling by human workers.
-   *                 <b>If you choose the Amazon Mechanical Turk workforce, the maximum is 12 hours
-   *                 (43200)</b>. The default value is 864000 seconds (10 days). For private and vendor workforces, the maximum is as
-   *             listed.</p>
+   * <p>The length of time that a task remains available for labeling by human workers. The
+   *             default and maximum values for this parameter depend on the type of workforce you
+   *             use.</p>
+   *         <ul>
+   *             <li>
+   *                 <p>If you choose the Amazon Mechanical Turk workforce, the maximum is 12 hours (43,200 seconds).
+   *                     The default is 6 hours (21,600 seconds).</p>
+   *             </li>
+   *             <li>
+   *                 <p>If you choose a private or vendor workforce, the default value is 10 days
+   *                     (864,000 seconds). For most users, the maximum is also 10 days. If you want to
+   *                     change this limit, contact AWS Support.</p>
+   *             </li>
+   *          </ul>
    */
   TaskAvailabilityLifetimeInSeconds?: number;
 
@@ -11042,6 +12431,9 @@ export interface HumanTaskConfig {
 }
 
 export namespace HumanTaskConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HumanTaskConfig): any => ({
     ...obj,
   });
@@ -11061,6 +12453,9 @@ export interface LabelingJobDataAttributes {
 }
 
 export namespace LabelingJobDataAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LabelingJobDataAttributes): any => ({
     ...obj,
   });
@@ -11071,12 +12466,33 @@ export namespace LabelingJobDataAttributes {
  */
 export interface LabelingJobS3DataSource {
   /**
-   * <p>The Amazon S3 location of the manifest file that describes the input data objects.</p>
+   * <p>The Amazon S3 location of the manifest file that describes the input data objects. </p>
+   *         <p>The input manifest file referenced in <code>ManifestS3Uri</code> must contain one of
+   *             the following keys: <code>source-ref</code> or <code>source</code>. The value of the
+   *             keys are interpreted as follows:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                   <code>source-ref</code>: The source of the object is the Amazon S3 object
+   *                     specified in the value. Use this value when the object is a binary object, such
+   *                     as an image.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>source</code>: The source of the object is the value. Use this
+   *                     value when the object is a text value.</p>
+   *             </li>
+   *          </ul>
+   *         <p>If you are a new user of Ground Truth, it is recommended you review <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-input-data-input-manifest.html">Use an Input Manifest File </a> in the Amazon SageMaker Developer Guide to learn how to
+   *             create an input manifest file.</p>
    */
   ManifestS3Uri: string | undefined;
 }
 
 export namespace LabelingJobS3DataSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LabelingJobS3DataSource): any => ({
     ...obj,
   });
@@ -11089,13 +12505,14 @@ export interface LabelingJobSnsDataSource {
   /**
    * <p>The Amazon SNS input topic Amazon Resource Name (ARN). Specify the ARN of the input topic
    *       you will use to send new data objects to a streaming labeling job.</p>
-   *          <p>If you specify an input topic for <code>SnsTopicArn</code> in <code>InputConfig</code>,
-   *       you must specify a value for <code>SnsTopicArn</code> in <code>OutputConfig</code>.</p>
    */
   SnsTopicArn: string | undefined;
 }
 
 export namespace LabelingJobSnsDataSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LabelingJobSnsDataSource): any => ({
     ...obj,
   });
@@ -11103,6 +12520,7 @@ export namespace LabelingJobSnsDataSource {
 
 /**
  * <p>Provides information about the location of input data.</p>
+ *
  *          <p>You must specify at least one of the following: <code>S3DataSource</code> or <code>SnsDataSource</code>.</p>
  *          <p>Use <code>SnsDataSource</code> to specify an SNS input topic
  *     for a streaming labeling job. If you do not specify
@@ -11118,12 +12536,15 @@ export interface LabelingJobDataSource {
   S3DataSource?: LabelingJobS3DataSource;
 
   /**
-   * <p>An Amazon SNS data source used for streaming labeling jobs.</p>
+   * <p>An Amazon SNS data source used for streaming labeling jobs. To learn more, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-streaming-labeling-job.html#sms-streaming-how-it-works-send-data">Send Data to a Streaming Labeling Job</a>. </p>
    */
   SnsDataSource?: LabelingJobSnsDataSource;
 }
 
 export namespace LabelingJobDataSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LabelingJobDataSource): any => ({
     ...obj,
   });
@@ -11145,28 +12566,39 @@ export interface LabelingJobInputConfig {
 }
 
 export namespace LabelingJobInputConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LabelingJobInputConfig): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Provides configuration information for labeling jobs.</p>
+ * <p>Configure encryption on the storage volume attached to the ML compute instance used to
+ *             run automated data labeling model training and inference. </p>
  */
 export interface LabelingJobResourceConfig {
   /**
    * <p>The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to encrypt data on the storage volume
-   *             attached to the ML compute instance(s) that run the training job. The
-   *                 <code>VolumeKmsKeyId</code> can be any of the following formats:</p>
+   *             attached to the ML compute instance(s) that run the training and inference jobs used for
+   *             automated data labeling. </p>
+   *         <p>You can only specify a <code>VolumeKmsKeyId</code> when you create a labeling job with
+   *             automated data labeling enabled using the API operation <code>CreateLabelingJob</code>.
+   *             You cannot specify an AWS KMS customer managed CMK to encrypt the storage volume used for
+   *             automated data labeling model training and inference when you create a labeling job
+   *             using the console. To learn more, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-security.html">Output Data and Storage Volume
+   *                 Encryption</a>.</p>
+   *         <p>The <code>VolumeKmsKeyId</code> can be any of the following formats:</p>
    *         <ul>
    *             <li>
-   *                 <p>// KMS Key ID</p>
+   *                 <p>KMS Key ID</p>
    *                 <p>
    *                     <code>"1234abcd-12ab-34cd-56ef-1234567890ab"</code>
    *                 </p>
    *             </li>
    *             <li>
-   *                 <p>// Amazon Resource Name (ARN) of a KMS Key</p>
+   *                 <p>Amazon Resource Name (ARN) of a KMS Key</p>
    *                 <p>
    *                     <code>"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"</code>
    *                 </p>
@@ -11177,6 +12609,9 @@ export interface LabelingJobResourceConfig {
 }
 
 export namespace LabelingJobResourceConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LabelingJobResourceConfig): any => ({
     ...obj,
   });
@@ -11242,6 +12677,9 @@ export interface LabelingJobAlgorithmsConfig {
 }
 
 export namespace LabelingJobAlgorithmsConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LabelingJobAlgorithmsConfig): any => ({
     ...obj,
   });
@@ -11258,35 +12696,34 @@ export interface LabelingJobOutputConfig {
 
   /**
    * <p>The AWS Key Management Service ID of the key used to encrypt the output data, if any.</p>
-   *         <p>If you use a KMS key ID or an alias of your master key, the Amazon SageMaker execution role must
-   *             include permissions to call <code>kms:Encrypt</code>. If you don't provide a KMS key ID,
-   *             Amazon SageMaker uses the default KMS key for Amazon S3 for your role's account. Amazon SageMaker uses server-side
-   *             encryption with KMS-managed keys for <code>LabelingJobOutputConfig</code>. If you use a
-   *             bucket policy with an <code>s3:PutObject</code> permission that only allows objects with
-   *             server-side encryption, set the condition key of
+   *         <p>If you provide your own KMS key ID, you must add the required permissions to your KMS
+   *             key described in <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-security-permission.html#sms-security-kms-permissions">Encrypt Output Data and Storage Volume with AWS KMS</a>.</p>
+   *         <p>If you don't provide a KMS key ID, Amazon SageMaker uses the default AWS KMS key for Amazon S3 for your
+   *             role's account to encrypt your output data.</p>
+   *         <p>If you use a bucket policy with an <code>s3:PutObject</code> permission that only
+   *             allows objects with server-side encryption, set the condition key of
    *                 <code>s3:x-amz-server-side-encryption</code> to <code>"aws:kms"</code>. For more
    *             information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html">KMS-Managed Encryption Keys</a> in the <i>Amazon Simple Storage Service Developer
    *                 Guide.</i>
    *          </p>
-   *         <p>The KMS key policy must grant permission to the IAM role that you specify in your
-   *                 <code>CreateLabelingJob</code> request. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html">Using
-   *                 Key Policies in AWS KMS</a> in the <i>AWS Key Management Service Developer
-   *                 Guide</i>.</p>
    */
   KmsKeyId?: string;
 
   /**
    * <p>An Amazon Simple Notification Service (Amazon SNS) output topic ARN.</p>
-   *          <p>When workers complete labeling tasks, Ground Truth will send
-   *       labeling task output data to the SNS output topic you specify here.</p>
-   *          <p>You must provide a value for this parameter
-   *       if you provide an Amazon SNS input topic in <code>SnsDataSource</code>
-   *       in <code>InputConfig</code>.</p>
+   *          <p>If you provide an <code>SnsTopicArn</code> in <code>OutputConfig</code>, when workers
+   *             complete labeling tasks, Ground Truth will send labeling task output data to the SNS output
+   *             topic you specify here. </p>
+   *         <p>To learn more, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-streaming-labeling-job.html#sms-streaming-how-it-works-output-data">Receive Output Data from a Streaming Labeling
+   *                 Job</a>. </p>
    */
   SnsTopicArn?: string;
 }
 
 export namespace LabelingJobOutputConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LabelingJobOutputConfig): any => ({
     ...obj,
   });
@@ -11313,6 +12750,9 @@ export interface LabelingJobStoppingConditions {
 }
 
 export namespace LabelingJobStoppingConditions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LabelingJobStoppingConditions): any => ({
     ...obj,
   });
@@ -11321,22 +12761,94 @@ export namespace LabelingJobStoppingConditions {
 export interface CreateLabelingJobRequest {
   /**
    * <p>The name of the labeling job. This name is used to identify the job in a list of
-   *             labeling jobs.</p>
+   *             labeling jobs. Labeling job names must be unique within an AWS account and region.
+   *                 <code>LabelingJobName</code> is not case sensitive. For example, Example-job and
+   *             example-job are considered the same labeling job name by Ground Truth.</p>
    */
   LabelingJobName: string | undefined;
 
   /**
    * <p>The attribute name to use for the label in the output manifest file. This is the key
    *             for the key/value pair formed with the label that a worker assigns to the object. The
-   *             name can't end with "-metadata". If you are running a semantic segmentation labeling
-   *             job, the attribute name must end with "-ref". If you are running any other kind of
-   *             labeling job, the attribute name must not end with "-ref".</p>
+   *                 <code>LabelAttributeName</code> must meet the following requirements.</p>
+   *         <ul>
+   *             <li>
+   *                 <p>The name can't end with "-metadata". </p>
+   *             </li>
+   *             <li>
+   *                 <p>If you are using one of the following <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html">built-in task types</a>,
+   *                     the attribute name <i>must</i> end with "-ref". If the task type
+   *                     you are using is not listed below, the attribute name <i>must
+   *                         not</i> end with "-ref".</p>
+   *                 <ul>
+   *                   <li>
+   *                         <p>Image semantic segmentation (<code>SemanticSegmentation)</code>, and
+   *                             adjustment (<code>AdjustmentSemanticSegmentation</code>) and
+   *                             verification (<code>VerificationSemanticSegmentation</code>) labeling
+   *                             jobs for this task type.</p>
+   *                     </li>
+   *                   <li>
+   *                         <p>Video frame object detection (<code>VideoObjectDetection</code>), and
+   *                             adjustment and verification
+   *                             (<code>AdjustmentVideoObjectDetection</code>) labeling jobs for this
+   *                             task type.</p>
+   *                     </li>
+   *                   <li>
+   *                         <p>Video frame object tracking (<code>VideoObjectTracking</code>), and
+   *                             adjustment and verification (<code>AdjustmentVideoObjectTracking</code>)
+   *                             labeling jobs for this task type.</p>
+   *                     </li>
+   *                   <li>
+   *                         <p>3D point cloud semantic segmentation
+   *                                 (<code>3DPointCloudSemanticSegmentation</code>), and adjustment and
+   *                             verification (<code>Adjustment3DPointCloudSemanticSegmentation</code>)
+   *                             labeling jobs for this task type. </p>
+   *                     </li>
+   *                   <li>
+   *                         <p>3D point cloud object tracking
+   *                                 (<code>3DPointCloudObjectTracking</code>), and adjustment and
+   *                             verification (<code>Adjustment3DPointCloudObjectTracking</code>)
+   *                             labeling jobs for this task type. </p>
+   *                     </li>
+   *                </ul>
+   *             </li>
+   *          </ul>
+   *         <p></p>
+   *         <important>
+   *             <p>If you are creating an adjustment or verification labeling job, you must use a
+   *                     <i>different</i>
+   *                 <code>LabelAttributeName</code> than the one used in the original labeling job. The
+   *                 original labeling job is the Ground Truth labeling job that produced the labels that you
+   *                 want verified or adjusted. To learn more about adjustment and verification labeling
+   *                 jobs, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-verification-data.html">Verify and Adjust
+   *                     Labels</a>.</p>
+   *         </important>
    */
   LabelAttributeName: string | undefined;
 
   /**
    * <p>Input data for the labeling job, such as the Amazon S3 location of the data objects and the
    *             location of the manifest file that describes the data objects.</p>
+   *         <p>You must specify at least one of the following: <code>S3DataSource</code> or
+   *                 <code>SnsDataSource</code>. </p>
+   *         <ul>
+   *             <li>
+   *                 <p>Use <code>SnsDataSource</code> to specify an SNS input topic for a streaming
+   *                     labeling job. If you do not specify and SNS input topic ARN, Ground Truth will
+   *                     create a one-time labeling job that stops after all data objects in the input
+   *                     manifest file have been labeled.</p>
+   *             </li>
+   *             <li>
+   *                 <p>Use <code>S3DataSource</code> to specify an input manifest file for both
+   *                     streaming and one-time labeling jobs. Adding an <code>S3DataSource</code> is
+   *                     optional if you use <code>SnsDataSource</code> to create a streaming labeling
+   *                     job.</p>
+   *             </li>
+   *          </ul>
+   *         <p>If you use the Amazon Mechanical Turk workforce, your input data should not include
+   *             confidential information, personal information or protected health information. Use
+   *                 <code>ContentClassifiers</code> to specify that your data is free of personally
+   *             identifiable information and adult content.</p>
    */
   InputConfig: LabelingJobInputConfig | undefined;
 
@@ -11354,9 +12866,10 @@ export interface CreateLabelingJobRequest {
   RoleArn: string | undefined;
 
   /**
-   * <p>The S3 URI of the file that defines the categories used to label the data
-   *             objects.</p>
-   *         <p>For 3D point cloud task types, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud-label-category-config.html">Create a
+   * <p>The S3 URI of the file, referred to as a <i>label category configuration
+   *                 file</i>, that defines the categories used to label the data objects.</p>
+   *         <p>For 3D point cloud and video frame task types, you can add label category attributes
+   *             and frame attributes to your label category configuration file. To learn how, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud-label-category-config.html">Create a
    *                 Labeling Category Configuration File for 3D Point Cloud Labeling Jobs</a>. </p>
    *         <p>For all other <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html">built-in task types</a> and <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates.html">custom
    *                 tasks</a>, your label category configuration file must be a JSON file in the
@@ -11364,50 +12877,38 @@ export interface CreateLabelingJobRequest {
    *                 <code>label_2</code>,<code>...</code>,<code>label_n</code> with your label
    *             categories.</p>
    *         <p>
-   *             <code>{</code>
-   *         </p>
+   *             <code>{ </code>
+   *          </p>
    *         <p>
-   *             <code> "document-version": "2018-11-28"</code>
-   *         </p>
+   *             <code>"document-version": "2018-11-28",</code>
+   *          </p>
    *         <p>
-   *             <code> "labels": [</code>
-   *         </p>
-   *         <p>
-   *             <code>   {</code>
-   *         </p>
-   *         <p>
-   *             <code> "label": "<i>label_1</i>"</code>
-   *         </p>
-   *         <p>
-   *             <code>   },</code>
-   *         </p>
-   *         <p>
-   *             <code>   {</code>
-   *         </p>
-   *         <p>
-   *             <code> "label": "<i>label_2</i>"</code>
-   *         </p>
-   *         <p>
-   *             <code>   },</code>
-   *         </p>
-   *         <p>
-   *             <code>   ...</code>
-   *         </p>
-   *         <p>
-   *             <code>   {</code>
-   *         </p>
-   *         <p>
-   *             <code> "label": "<i>label_n</i>"</code>
-   *         </p>
-   *         <p>
-   *             <code>   }</code>
-   *         </p>
-   *         <p>
-   *             <code> ]</code>
-   *         </p>
+   *             <code>"labels": [{"label": "label_1"},{"label": "label_2"},...{"label":
+   *                 "label_n"}]</code>
+   *          </p>
    *         <p>
    *             <code>}</code>
-   *         </p>
+   *          </p>
+   *         <p>Note the following about the label category configuration file:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>For image classification and text classification (single and multi-label) you
+   *                     must specify at least two label categories. For all other task types, the
+   *                     minimum number of label categories required is one. </p>
+   *             </li>
+   *             <li>
+   *                 <p>Each label category must be unique, you cannot specify duplicate label
+   *                     categories.</p>
+   *             </li>
+   *             <li>
+   *                 <p>If you create a 3D point cloud or video frame adjustment or verification
+   *                     labeling job, you must include <code>auditLabelAttributeName</code> in the label
+   *                     category configuration. Use this parameter to enter the <a href="https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName">
+   *                      <code>LabelAttributeName</code>
+   *                   </a> of the labeling job you want to
+   *                     adjust or verify annotations of.</p>
+   *             </li>
+   *          </ul>
    */
   LabelCategoryConfigS3Uri?: string;
 
@@ -11436,6 +12937,9 @@ export interface CreateLabelingJobRequest {
 }
 
 export namespace CreateLabelingJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLabelingJobRequest): any => ({
     ...obj,
   });
@@ -11450,7 +12954,44 @@ export interface CreateLabelingJobResponse {
 }
 
 export namespace CreateLabelingJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLabelingJobResponse): any => ({
+    ...obj,
+  });
+}
+
+export enum InferenceExecutionMode {
+  DIRECT = "Direct",
+  SERIAL = "Serial",
+}
+
+/**
+ * <p>Specifies details about how containers in a multi-container endpoint are run.</p>
+ */
+export interface InferenceExecutionConfig {
+  /**
+   * <p>How containers in a multi-container are run. The following values are valid.</p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                   <code>SERIAL</code> - Containers run as a serial pipeline.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>DIRECT</code> - Only the individual container that you specify is run.</p>
+   *             </li>
+   *          </ul>
+   */
+  Mode: InferenceExecutionMode | string | undefined;
+}
+
+export namespace InferenceExecutionConfig {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InferenceExecutionConfig): any => ({
     ...obj,
   });
 }
@@ -11474,6 +13015,11 @@ export interface CreateModelInput {
   Containers?: ContainerDefinition[];
 
   /**
+   * <p>Specifies details of how containers in a multi-container endpoint are called.</p>
+   */
+  InferenceExecutionConfig?: InferenceExecutionConfig;
+
+  /**
    * <p>The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can assume to access model
    *             artifacts and docker image for deployment on ML compute instances or for batch transform
    *             jobs. Deploying on ML compute instances is part of model hosting. For more information,
@@ -11488,9 +13034,9 @@ export interface CreateModelInput {
 
   /**
    * <p>An array of key-value pairs. You can use tags to categorize your AWS resources in
-   *            different ways, for example, by purpose, owner, or environment. For more information,
-   *            see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
-   *                Resources</a>.</p>
+   *             different ways, for example, by purpose, owner, or environment. For more information,
+   *             see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
+   *                 Resources</a>.</p>
    */
   Tags?: Tag[];
 
@@ -11511,6 +13057,9 @@ export interface CreateModelInput {
 }
 
 export namespace CreateModelInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateModelInput): any => ({
     ...obj,
   });
@@ -11524,6 +13073,9 @@ export interface CreateModelOutput {
 }
 
 export namespace CreateModelOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateModelOutput): any => ({
     ...obj,
   });
@@ -11552,6 +13104,9 @@ export interface ModelBiasAppSpecification {
 }
 
 export namespace ModelBiasAppSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModelBiasAppSpecification): any => ({
     ...obj,
   });
@@ -11573,6 +13128,9 @@ export interface ModelBiasBaselineConfig {
 }
 
 export namespace ModelBiasBaselineConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModelBiasBaselineConfig): any => ({
     ...obj,
   });
@@ -11589,6 +13147,9 @@ export interface MonitoringGroundTruthS3Input {
 }
 
 export namespace MonitoringGroundTruthS3Input {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MonitoringGroundTruthS3Input): any => ({
     ...obj,
   });
@@ -11610,6 +13171,9 @@ export interface ModelBiasJobInput {
 }
 
 export namespace ModelBiasJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModelBiasJobInput): any => ({
     ...obj,
   });
@@ -11671,6 +13235,9 @@ export interface CreateModelBiasJobDefinitionRequest {
 }
 
 export namespace CreateModelBiasJobDefinitionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateModelBiasJobDefinitionRequest): any => ({
     ...obj,
   });
@@ -11684,6 +13251,9 @@ export interface CreateModelBiasJobDefinitionResponse {
 }
 
 export namespace CreateModelBiasJobDefinitionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateModelBiasJobDefinitionResponse): any => ({
     ...obj,
   });
@@ -11712,6 +13282,9 @@ export interface ModelExplainabilityAppSpecification {
 }
 
 export namespace ModelExplainabilityAppSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModelExplainabilityAppSpecification): any => ({
     ...obj,
   });
@@ -11733,6 +13306,9 @@ export interface ModelExplainabilityBaselineConfig {
 }
 
 export namespace ModelExplainabilityBaselineConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModelExplainabilityBaselineConfig): any => ({
     ...obj,
   });
@@ -11749,6 +13325,9 @@ export interface ModelExplainabilityJobInput {
 }
 
 export namespace ModelExplainabilityJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModelExplainabilityJobInput): any => ({
     ...obj,
   });
@@ -11811,6 +13390,9 @@ export interface CreateModelExplainabilityJobDefinitionRequest {
 }
 
 export namespace CreateModelExplainabilityJobDefinitionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateModelExplainabilityJobDefinitionRequest): any => ({
     ...obj,
   });
@@ -11824,6 +13406,9 @@ export interface CreateModelExplainabilityJobDefinitionResponse {
 }
 
 export namespace CreateModelExplainabilityJobDefinitionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateModelExplainabilityJobDefinitionResponse): any => ({
     ...obj,
   });
@@ -11846,6 +13431,9 @@ export interface Explainability {
 }
 
 export namespace Explainability {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Explainability): any => ({
     ...obj,
   });
@@ -11867,6 +13455,9 @@ export interface ModelDataQuality {
 }
 
 export namespace ModelDataQuality {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModelDataQuality): any => ({
     ...obj,
   });
@@ -11888,279 +13479,10 @@ export interface ModelQuality {
 }
 
 export namespace ModelQuality {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModelQuality): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Contains metrics captured from a model.</p>
- */
-export interface ModelMetrics {
-  /**
-   * <p>Metrics that measure the quality of a model.</p>
-   */
-  ModelQuality?: ModelQuality;
-
-  /**
-   * <p>Metrics that measure the quality of the input data for a model.</p>
-   */
-  ModelDataQuality?: ModelDataQuality;
-
-  /**
-   * <p>Metrics that measure bais in a model.</p>
-   */
-  Bias?: Bias;
-
-  /**
-   * <p>Metrics that help explain a model.</p>
-   */
-  Explainability?: Explainability;
-}
-
-export namespace ModelMetrics {
-  export const filterSensitiveLog = (obj: ModelMetrics): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Specifies an algorithm that was used to create the model package. The algorithm must
- *             be either an algorithm resource in your Amazon SageMaker account or an algorithm in AWS Marketplace that you
- *             are subscribed to.</p>
- */
-export interface SourceAlgorithm {
-  /**
-   * <p>The Amazon S3 path where the model artifacts, which result from model training, are stored.
-   *             This path must point to a single <code>gzip</code> compressed tar archive
-   *                 (<code>.tar.gz</code> suffix).</p>
-   *         <note>
-   *             <p>The model artifacts must be in an S3 bucket that is in the same region as the
-   *                 algorithm.</p>
-   *         </note>
-   */
-  ModelDataUrl?: string;
-
-  /**
-   * <p>The name of an algorithm that was used to create the model package. The algorithm must
-   *             be either an algorithm resource in your Amazon SageMaker account or an algorithm in AWS Marketplace that you
-   *             are subscribed to.</p>
-   */
-  AlgorithmName: string | undefined;
-}
-
-export namespace SourceAlgorithm {
-  export const filterSensitiveLog = (obj: SourceAlgorithm): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>A list of algorithms that were used to create a model package.</p>
- */
-export interface SourceAlgorithmSpecification {
-  /**
-   * <p>A list of the algorithms that were used to create a model package.</p>
-   */
-  SourceAlgorithms: SourceAlgorithm[] | undefined;
-}
-
-export namespace SourceAlgorithmSpecification {
-  export const filterSensitiveLog = (obj: SourceAlgorithmSpecification): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Contains data, such as the inputs and targeted instance types that are used in the
- *             process of validating the model package.</p>
- *         <p>The data provided in the validation profile is made available to your buyers on AWS
- *             Marketplace.</p>
- */
-export interface ModelPackageValidationProfile {
-  /**
-   * <p>The name of the profile for the model package.</p>
-   */
-  ProfileName: string | undefined;
-
-  /**
-   * <p>The <code>TransformJobDefinition</code> object that describes the transform job used
-   *             for the validation of the model package.</p>
-   */
-  TransformJobDefinition: TransformJobDefinition | undefined;
-}
-
-export namespace ModelPackageValidationProfile {
-  export const filterSensitiveLog = (obj: ModelPackageValidationProfile): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Specifies batch transform jobs that Amazon SageMaker runs to validate your model package.</p>
- */
-export interface ModelPackageValidationSpecification {
-  /**
-   * <p>The IAM roles to be used for the validation of the model package.</p>
-   */
-  ValidationRole: string | undefined;
-
-  /**
-   * <p>An array of <code>ModelPackageValidationProfile</code> objects, each of which
-   *             specifies a batch transform job that Amazon SageMaker runs to validate your model package.</p>
-   */
-  ValidationProfiles: ModelPackageValidationProfile[] | undefined;
-}
-
-export namespace ModelPackageValidationSpecification {
-  export const filterSensitiveLog = (obj: ModelPackageValidationSpecification): any => ({
-    ...obj,
-  });
-}
-
-export interface CreateModelPackageInput {
-  /**
-   * <p>The name of the model package. The name must have 1 to 63 characters. Valid characters
-   *             are a-z, A-Z, 0-9, and - (hyphen).</p>
-   *         <p>This parameter is required for unversioned models. It is not applicable to versioned
-   *             models.</p>
-   */
-  ModelPackageName?: string;
-
-  /**
-   * <p>The name of the model group that this model version belongs to.</p>
-   *         <p>This parameter is required for versioned models, and does not apply to unversioned
-   *             models.</p>
-   */
-  ModelPackageGroupName?: string;
-
-  /**
-   * <p>A description of the model package.</p>
-   */
-  ModelPackageDescription?: string;
-
-  /**
-   * <p>Specifies details about inference jobs that can be run with models based on this model
-   *             package, including the following:</p>
-   *         <ul>
-   *             <li>
-   *                 <p>The Amazon ECR paths of containers that contain the inference code and model
-   *                     artifacts.</p>
-   *             </li>
-   *             <li>
-   *                 <p>The instance types that the model package supports for transform jobs and
-   *                     real-time endpoints used for inference.</p>
-   *             </li>
-   *             <li>
-   *                 <p>The input and output content formats that the model package supports for
-   *                     inference.</p>
-   *             </li>
-   *          </ul>
-   */
-  InferenceSpecification?: InferenceSpecification;
-
-  /**
-   * <p>Specifies configurations for one or more transform jobs that Amazon SageMaker runs to test the
-   *             model package.</p>
-   */
-  ValidationSpecification?: ModelPackageValidationSpecification;
-
-  /**
-   * <p>Details about the algorithm that was used to create the model package.</p>
-   */
-  SourceAlgorithmSpecification?: SourceAlgorithmSpecification;
-
-  /**
-   * <p>Whether to certify the model package for listing on AWS Marketplace.</p>
-   *         <p>This parameter is optional for unversioned models, and does not apply to versioned
-   *             models.</p>
-   */
-  CertifyForMarketplace?: boolean;
-
-  /**
-   * <p>A list of key value pairs associated with the model. For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
-   *                 resources</a> in the <i>AWS General Reference Guide</i>.</p>
-   */
-  Tags?: Tag[];
-
-  /**
-   * <p>Whether the model is approved for deployment.</p>
-   *         <p>This parameter is optional for versioned models, and does not apply to unversioned
-   *             models.</p>
-   *         <p>For versioned models, the value of this parameter must be set to <code>Approved</code>
-   *         to deploy the model.</p>
-   */
-  ModelApprovalStatus?: ModelApprovalStatus | string;
-
-  /**
-   * <p>Metadata properties of the tracking entity, trial, or trial component.</p>
-   */
-  MetadataProperties?: MetadataProperties;
-
-  /**
-   * <p>A structure that contains model metrics reports.</p>
-   */
-  ModelMetrics?: ModelMetrics;
-
-  /**
-   * <p>A unique token that guarantees that the call to this API is idempotent.</p>
-   */
-  ClientToken?: string;
-}
-
-export namespace CreateModelPackageInput {
-  export const filterSensitiveLog = (obj: CreateModelPackageInput): any => ({
-    ...obj,
-  });
-}
-
-export interface CreateModelPackageOutput {
-  /**
-   * <p>The Amazon Resource Name (ARN) of the new model package.</p>
-   */
-  ModelPackageArn: string | undefined;
-}
-
-export namespace CreateModelPackageOutput {
-  export const filterSensitiveLog = (obj: CreateModelPackageOutput): any => ({
-    ...obj,
-  });
-}
-
-export interface CreateModelPackageGroupInput {
-  /**
-   * <p>The name of the model group.</p>
-   */
-  ModelPackageGroupName: string | undefined;
-
-  /**
-   * <p>A description for the model group.</p>
-   */
-  ModelPackageGroupDescription?: string;
-
-  /**
-   * <p>A list of key value pairs associated with the model group. For more information, see
-   *                 <a href="https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html">Tagging AWS
-   *                 resources</a> in the <i>AWS General Reference Guide</i>.</p>
-   */
-  Tags?: Tag[];
-}
-
-export namespace CreateModelPackageGroupInput {
-  export const filterSensitiveLog = (obj: CreateModelPackageGroupInput): any => ({
-    ...obj,
-  });
-}
-
-export interface CreateModelPackageGroupOutput {
-  /**
-   * <p>The Amazon Resource Name (ARN) of the model group.</p>
-   */
-  ModelPackageGroupArn: string | undefined;
-}
-
-export namespace CreateModelPackageGroupOutput {
-  export const filterSensitiveLog = (obj: CreateModelPackageGroupOutput): any => ({
     ...obj,
   });
 }

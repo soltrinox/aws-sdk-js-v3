@@ -37,6 +37,7 @@ import {
   GetCostAndUsageWithResourcesCommandInput,
   GetCostAndUsageWithResourcesCommandOutput,
 } from "./commands/GetCostAndUsageWithResourcesCommand";
+import { GetCostCategoriesCommandInput, GetCostCategoriesCommandOutput } from "./commands/GetCostCategoriesCommand";
 import { GetCostForecastCommandInput, GetCostForecastCommandOutput } from "./commands/GetCostForecastCommand";
 import { GetDimensionValuesCommandInput, GetDimensionValuesCommandOutput } from "./commands/GetDimensionValuesCommand";
 import {
@@ -157,6 +158,7 @@ export type ServiceInputTypes =
   | GetAnomalySubscriptionsCommandInput
   | GetCostAndUsageCommandInput
   | GetCostAndUsageWithResourcesCommandInput
+  | GetCostCategoriesCommandInput
   | GetCostForecastCommandInput
   | GetDimensionValuesCommandInput
   | GetReservationCoverageCommandInput
@@ -188,6 +190,7 @@ export type ServiceOutputTypes =
   | GetAnomalySubscriptionsCommandOutput
   | GetCostAndUsageCommandOutput
   | GetCostAndUsageWithResourcesCommandOutput
+  | GetCostCategoriesCommandOutput
   | GetCostForecastCommandOutput
   | GetDimensionValuesCommandOutput
   | GetReservationCoverageCommandOutput
@@ -271,7 +274,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -302,7 +305,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type CostExplorerClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type CostExplorerClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -310,8 +313,12 @@ export type CostExplorerClientConfig = Partial<__SmithyConfiguration<__HttpHandl
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of CostExplorerClient class constructor that set the region, credentials and other options.
+ */
+export interface CostExplorerClientConfig extends CostExplorerClientConfigType {}
 
-export type CostExplorerClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type CostExplorerClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -319,6 +326,10 @@ export type CostExplorerClientResolvedConfig = __SmithyResolvedConfiguration<__H
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of CostExplorerClient class. This is resolved and normalized from the {@link CostExplorerClientConfig | constructor configuration interface}.
+ */
+export interface CostExplorerClientResolvedConfig extends CostExplorerClientResolvedConfigType {}
 
 /**
  * <p>The Cost Explorer API enables you to programmatically query your cost and usage data. You can query for aggregated data
@@ -342,6 +353,9 @@ export class CostExplorerClient extends __Client<
   ServiceOutputTypes,
   CostExplorerClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of CostExplorerClient class. This is resolved and normalized from the {@link CostExplorerClientConfig | constructor configuration interface}.
+   */
   readonly config: CostExplorerClientResolvedConfig;
 
   constructor(configuration: CostExplorerClientConfig) {

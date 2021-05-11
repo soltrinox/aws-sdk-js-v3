@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelStatementCommandInput = CancelStatementRequest;
-export type CancelStatementCommandOutput = CancelStatementResponse & __MetadataBearer;
+export interface CancelStatementCommandInput extends CancelStatementRequest {}
+export interface CancelStatementCommandOutput extends CancelStatementResponse, __MetadataBearer {}
 
 /**
  * <p>Cancels a running query. To be canceled, a query must be running. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftDataClient, CancelStatementCommand } from "@aws-sdk/client-redshift-data"; // ES Modules import
+ * // const { RedshiftDataClient, CancelStatementCommand } = require("@aws-sdk/client-redshift-data"); // CommonJS import
+ * const client = new RedshiftDataClient(config);
+ * const command = new CancelStatementCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelStatementCommandInput} for command's `input` shape.
+ * @see {@link CancelStatementCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftDataClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelStatementCommand extends $Command<
   CancelStatementCommandInput,

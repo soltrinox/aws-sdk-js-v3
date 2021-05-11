@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTextTranslationJobsCommandInput = ListTextTranslationJobsRequest;
-export type ListTextTranslationJobsCommandOutput = ListTextTranslationJobsResponse & __MetadataBearer;
+export interface ListTextTranslationJobsCommandInput extends ListTextTranslationJobsRequest {}
+export interface ListTextTranslationJobsCommandOutput extends ListTextTranslationJobsResponse, __MetadataBearer {}
 
 /**
  * <p>Gets a list of the batch translation jobs that you have submitted.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TranslateClient, ListTextTranslationJobsCommand } from "@aws-sdk/client-translate"; // ES Modules import
+ * // const { TranslateClient, ListTextTranslationJobsCommand } = require("@aws-sdk/client-translate"); // CommonJS import
+ * const client = new TranslateClient(config);
+ * const command = new ListTextTranslationJobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTextTranslationJobsCommandInput} for command's `input` shape.
+ * @see {@link ListTextTranslationJobsCommandOutput} for command's `response` shape.
+ * @see {@link TranslateClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTextTranslationJobsCommand extends $Command<
   ListTextTranslationJobsCommandInput,

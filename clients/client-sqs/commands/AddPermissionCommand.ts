@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddPermissionCommandInput = AddPermissionRequest;
-export type AddPermissionCommandOutput = __MetadataBearer;
+export interface AddPermissionCommandInput extends AddPermissionRequest {}
+export interface AddPermissionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Adds a permission to a queue for a specific
@@ -57,8 +57,22 @@ export type AddPermissionCommandOutput = __MetadataBearer;
  *             <code>&AttributeName.2=second</code>
  *          </p>
  *          <note>
- *             <p>Cross-account permissions don't apply to this action. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name">Grant Cross-Account Permissions to a Role and a User Name</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+ *             <p>Cross-account permissions don't apply to this action. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name">Grant cross-account permissions to a role and a user name</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SQSClient, AddPermissionCommand } from "@aws-sdk/client-sqs"; // ES Modules import
+ * // const { SQSClient, AddPermissionCommand } = require("@aws-sdk/client-sqs"); // CommonJS import
+ * const client = new SQSClient(config);
+ * const command = new AddPermissionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddPermissionCommandInput} for command's `input` shape.
+ * @see {@link AddPermissionCommandOutput} for command's `response` shape.
+ * @see {@link SQSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddPermissionCommand extends $Command<
   AddPermissionCommandInput,

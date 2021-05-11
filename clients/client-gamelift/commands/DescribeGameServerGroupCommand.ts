@@ -17,12 +17,12 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeGameServerGroupCommandInput = DescribeGameServerGroupInput;
-export type DescribeGameServerGroupCommandOutput = DescribeGameServerGroupOutput & __MetadataBearer;
+export interface DescribeGameServerGroupCommandInput extends DescribeGameServerGroupInput {}
+export interface DescribeGameServerGroupCommandOutput extends DescribeGameServerGroupOutput, __MetadataBearer {}
 
 /**
  * <p>
- *             <b>This operation is used with the Amazon GameLift FleetIQ solution and game server groups.</b>
+ *             <b>This operation is used with the GameLift FleetIQ solution and game server groups.</b>
  *          </p>
  *         <p>Retrieves information on a game server group. This operation returns only properties
  *             related to GameLift FleetIQ. To view or update properties for the corresponding Auto Scaling group,
@@ -37,50 +37,33 @@ export type DescribeGameServerGroupCommandOutput = DescribeGameServerGroupOutput
  *             <a href="https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html">GameLift FleetIQ Guide</a>
  *         </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateGameServerGroup</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ListGameServerGroups</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeGameServerGroup</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateGameServerGroup</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteGameServerGroup</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ResumeGameServerGroup</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>SuspendGameServerGroup</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeGameServerInstances</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>CreateGameServerGroup</a> |
+ *                     <a>ListGameServerGroups</a> |
+ *                     <a>DescribeGameServerGroup</a> |
+ *                     <a>UpdateGameServerGroup</a> |
+ *                     <a>DeleteGameServerGroup</a> |
+ *                     <a>ResumeGameServerGroup</a> |
+ *                     <a>SuspendGameServerGroup</a> |
+ *                     <a>DescribeGameServerInstances</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/reference-awssdk-fleetiq.html">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, DescribeGameServerGroupCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, DescribeGameServerGroupCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new DescribeGameServerGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeGameServerGroupCommandInput} for command's `input` shape.
+ * @see {@link DescribeGameServerGroupCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeGameServerGroupCommand extends $Command<
   DescribeGameServerGroupCommandInput,

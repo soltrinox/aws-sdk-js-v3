@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeregisterContainerInstanceCommandInput = DeregisterContainerInstanceRequest;
-export type DeregisterContainerInstanceCommandOutput = DeregisterContainerInstanceResponse & __MetadataBearer;
+export interface DeregisterContainerInstanceCommandInput extends DeregisterContainerInstanceRequest {}
+export interface DeregisterContainerInstanceCommandOutput
+  extends DeregisterContainerInstanceResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Deregisters an Amazon ECS container instance from the specified cluster. This instance is
@@ -34,6 +36,20 @@ export type DeregisterContainerInstanceCommandOutput = DeregisterContainerInstan
  * 				instance from your cluster (stopped container instances or instances with
  * 				disconnected agents are not automatically deregistered when terminated).</p>
  * 		       </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, DeregisterContainerInstanceCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, DeregisterContainerInstanceCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new DeregisterContainerInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeregisterContainerInstanceCommandInput} for command's `input` shape.
+ * @see {@link DeregisterContainerInstanceCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeregisterContainerInstanceCommand extends $Command<
   DeregisterContainerInstanceCommandInput,

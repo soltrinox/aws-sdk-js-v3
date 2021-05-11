@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDBClusterEndpointCommandInput = DeleteDBClusterEndpointMessage;
-export type DeleteDBClusterEndpointCommandOutput = DBClusterEndpoint & __MetadataBearer;
+export interface DeleteDBClusterEndpointCommandInput extends DeleteDBClusterEndpointMessage {}
+export interface DeleteDBClusterEndpointCommandOutput extends DBClusterEndpoint, __MetadataBearer {}
 
 /**
  * <p>Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster.</p>
  *          <note>
  *            <p>This action only applies to Aurora DB clusters.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, DeleteDBClusterEndpointCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, DeleteDBClusterEndpointCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new DeleteDBClusterEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDBClusterEndpointCommandInput} for command's `input` shape.
+ * @see {@link DeleteDBClusterEndpointCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDBClusterEndpointCommand extends $Command<
   DeleteDBClusterEndpointCommandInput,

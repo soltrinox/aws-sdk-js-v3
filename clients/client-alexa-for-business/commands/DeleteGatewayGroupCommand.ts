@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteGatewayGroupCommandInput = DeleteGatewayGroupRequest;
-export type DeleteGatewayGroupCommandOutput = DeleteGatewayGroupResponse & __MetadataBearer;
+export interface DeleteGatewayGroupCommandInput extends DeleteGatewayGroupRequest {}
+export interface DeleteGatewayGroupCommandOutput extends DeleteGatewayGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a gateway group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, DeleteGatewayGroupCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, DeleteGatewayGroupCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new DeleteGatewayGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteGatewayGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteGatewayGroupCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteGatewayGroupCommand extends $Command<
   DeleteGatewayGroupCommandInput,

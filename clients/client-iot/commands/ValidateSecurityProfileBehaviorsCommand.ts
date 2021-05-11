@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ValidateSecurityProfileBehaviorsCommandInput = ValidateSecurityProfileBehaviorsRequest;
-export type ValidateSecurityProfileBehaviorsCommandOutput = ValidateSecurityProfileBehaviorsResponse & __MetadataBearer;
+export interface ValidateSecurityProfileBehaviorsCommandInput extends ValidateSecurityProfileBehaviorsRequest {}
+export interface ValidateSecurityProfileBehaviorsCommandOutput
+  extends ValidateSecurityProfileBehaviorsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Validates a Device Defender security profile behaviors specification.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, ValidateSecurityProfileBehaviorsCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, ValidateSecurityProfileBehaviorsCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new ValidateSecurityProfileBehaviorsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ValidateSecurityProfileBehaviorsCommandInput} for command's `input` shape.
+ * @see {@link ValidateSecurityProfileBehaviorsCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ValidateSecurityProfileBehaviorsCommand extends $Command<
   ValidateSecurityProfileBehaviorsCommandInput,

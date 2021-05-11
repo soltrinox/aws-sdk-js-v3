@@ -1,5 +1,5 @@
 import { SecurityHubClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SecurityHubClient";
-import { GetEnabledStandardsRequest, GetEnabledStandardsResponse } from "../models/models_0";
+import { GetEnabledStandardsRequest, GetEnabledStandardsResponse } from "../models/models_1";
 import {
   deserializeAws_restJson1GetEnabledStandardsCommand,
   serializeAws_restJson1GetEnabledStandardsCommand,
@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetEnabledStandardsCommandInput = GetEnabledStandardsRequest;
-export type GetEnabledStandardsCommandOutput = GetEnabledStandardsResponse & __MetadataBearer;
+export interface GetEnabledStandardsCommandInput extends GetEnabledStandardsRequest {}
+export interface GetEnabledStandardsCommandOutput extends GetEnabledStandardsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of the standards that are currently enabled.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecurityHubClient, GetEnabledStandardsCommand } from "@aws-sdk/client-securityhub"; // ES Modules import
+ * // const { SecurityHubClient, GetEnabledStandardsCommand } = require("@aws-sdk/client-securityhub"); // CommonJS import
+ * const client = new SecurityHubClient(config);
+ * const command = new GetEnabledStandardsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetEnabledStandardsCommandInput} for command's `input` shape.
+ * @see {@link GetEnabledStandardsCommandOutput} for command's `response` shape.
+ * @see {@link SecurityHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetEnabledStandardsCommand extends $Command<
   GetEnabledStandardsCommandInput,

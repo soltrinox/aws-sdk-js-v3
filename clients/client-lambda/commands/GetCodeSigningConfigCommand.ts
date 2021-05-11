@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCodeSigningConfigCommandInput = GetCodeSigningConfigRequest;
-export type GetCodeSigningConfigCommandOutput = GetCodeSigningConfigResponse & __MetadataBearer;
+export interface GetCodeSigningConfigCommandInput extends GetCodeSigningConfigRequest {}
+export interface GetCodeSigningConfigCommandOutput extends GetCodeSigningConfigResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information about the specified code signing configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LambdaClient, GetCodeSigningConfigCommand } from "@aws-sdk/client-lambda"; // ES Modules import
+ * // const { LambdaClient, GetCodeSigningConfigCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+ * const client = new LambdaClient(config);
+ * const command = new GetCodeSigningConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCodeSigningConfigCommandInput} for command's `input` shape.
+ * @see {@link GetCodeSigningConfigCommandOutput} for command's `response` shape.
+ * @see {@link LambdaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCodeSigningConfigCommand extends $Command<
   GetCodeSigningConfigCommandInput,

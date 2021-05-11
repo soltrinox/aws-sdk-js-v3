@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateMonitoringScheduleCommandInput = UpdateMonitoringScheduleRequest;
-export type UpdateMonitoringScheduleCommandOutput = UpdateMonitoringScheduleResponse & __MetadataBearer;
+export interface UpdateMonitoringScheduleCommandInput extends UpdateMonitoringScheduleRequest {}
+export interface UpdateMonitoringScheduleCommandOutput extends UpdateMonitoringScheduleResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a previously created schedule.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, UpdateMonitoringScheduleCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, UpdateMonitoringScheduleCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new UpdateMonitoringScheduleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateMonitoringScheduleCommandInput} for command's `input` shape.
+ * @see {@link UpdateMonitoringScheduleCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateMonitoringScheduleCommand extends $Command<
   UpdateMonitoringScheduleCommandInput,

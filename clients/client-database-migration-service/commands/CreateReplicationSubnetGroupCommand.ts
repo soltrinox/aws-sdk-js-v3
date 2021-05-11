@@ -21,11 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateReplicationSubnetGroupCommandInput = CreateReplicationSubnetGroupMessage;
-export type CreateReplicationSubnetGroupCommandOutput = CreateReplicationSubnetGroupResponse & __MetadataBearer;
+export interface CreateReplicationSubnetGroupCommandInput extends CreateReplicationSubnetGroupMessage {}
+export interface CreateReplicationSubnetGroupCommandOutput
+  extends CreateReplicationSubnetGroupResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a replication subnet group given a list of the subnet IDs in a VPC.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, CreateReplicationSubnetGroupCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, CreateReplicationSubnetGroupCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new CreateReplicationSubnetGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateReplicationSubnetGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateReplicationSubnetGroupCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateReplicationSubnetGroupCommand extends $Command<
   CreateReplicationSubnetGroupCommandInput,

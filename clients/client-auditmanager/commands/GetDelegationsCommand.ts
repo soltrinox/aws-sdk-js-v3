@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDelegationsCommandInput = GetDelegationsRequest;
-export type GetDelegationsCommandOutput = GetDelegationsResponse & __MetadataBearer;
+export interface GetDelegationsCommandInput extends GetDelegationsRequest {}
+export interface GetDelegationsCommandOutput extends GetDelegationsResponse, __MetadataBearer {}
 
 /**
  * <p>
  *    Returns a list of delegations from an audit owner to a delegate.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AuditManagerClient, GetDelegationsCommand } from "@aws-sdk/client-auditmanager"; // ES Modules import
+ * // const { AuditManagerClient, GetDelegationsCommand } = require("@aws-sdk/client-auditmanager"); // CommonJS import
+ * const client = new AuditManagerClient(config);
+ * const command = new GetDelegationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDelegationsCommandInput} for command's `input` shape.
+ * @see {@link GetDelegationsCommandOutput} for command's `response` shape.
+ * @see {@link AuditManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDelegationsCommand extends $Command<
   GetDelegationsCommandInput,

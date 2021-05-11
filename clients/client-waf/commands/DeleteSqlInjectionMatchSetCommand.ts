@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteSqlInjectionMatchSetCommandInput = DeleteSqlInjectionMatchSetRequest;
-export type DeleteSqlInjectionMatchSetCommandOutput = DeleteSqlInjectionMatchSetResponse & __MetadataBearer;
+export interface DeleteSqlInjectionMatchSetCommandInput extends DeleteSqlInjectionMatchSetRequest {}
+export interface DeleteSqlInjectionMatchSetCommandOutput extends DeleteSqlInjectionMatchSetResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -46,6 +46,20 @@ export type DeleteSqlInjectionMatchSetCommandOutput = DeleteSqlInjectionMatchSet
  *                <p>Submit a <code>DeleteSqlInjectionMatchSet</code> request.</p>
  *             </li>
  *          </ol>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFClient, DeleteSqlInjectionMatchSetCommand } from "@aws-sdk/client-waf"; // ES Modules import
+ * // const { WAFClient, DeleteSqlInjectionMatchSetCommand } = require("@aws-sdk/client-waf"); // CommonJS import
+ * const client = new WAFClient(config);
+ * const command = new DeleteSqlInjectionMatchSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteSqlInjectionMatchSetCommandInput} for command's `input` shape.
+ * @see {@link DeleteSqlInjectionMatchSetCommandOutput} for command's `response` shape.
+ * @see {@link WAFClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteSqlInjectionMatchSetCommand extends $Command<
   DeleteSqlInjectionMatchSetCommandInput,

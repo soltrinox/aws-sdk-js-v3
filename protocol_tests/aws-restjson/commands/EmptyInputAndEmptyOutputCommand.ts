@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type EmptyInputAndEmptyOutputCommandInput = EmptyInputAndEmptyOutputInput;
-export type EmptyInputAndEmptyOutputCommandOutput = EmptyInputAndEmptyOutputOutput & __MetadataBearer;
+export interface EmptyInputAndEmptyOutputCommandInput extends EmptyInputAndEmptyOutputInput {}
+export interface EmptyInputAndEmptyOutputCommandOutput extends EmptyInputAndEmptyOutputOutput, __MetadataBearer {}
 
 /**
  * The example tests how requests and responses are serialized when there's
  * no request or response payload because the operation has an empty input
  * and empty output structure that reuses the same shape. While this should
  * be rare, code generators must support this.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestJsonProtocolClient, EmptyInputAndEmptyOutputCommand } from "@aws-sdk/aws-restjson"; // ES Modules import
+ * // const { RestJsonProtocolClient, EmptyInputAndEmptyOutputCommand } = require("@aws-sdk/aws-restjson"); // CommonJS import
+ * const client = new RestJsonProtocolClient(config);
+ * const command = new EmptyInputAndEmptyOutputCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link EmptyInputAndEmptyOutputCommandInput} for command's `input` shape.
+ * @see {@link EmptyInputAndEmptyOutputCommandOutput} for command's `response` shape.
+ * @see {@link RestJsonProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class EmptyInputAndEmptyOutputCommand extends $Command<
   EmptyInputAndEmptyOutputCommandInput,

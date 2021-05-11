@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateFileSystemCommandInput = CreateFileSystemRequest;
-export type CreateFileSystemCommandOutput = CreateFileSystemResponse & __MetadataBearer;
+export interface CreateFileSystemCommandInput extends CreateFileSystemRequest {}
+export interface CreateFileSystemCommandOutput extends CreateFileSystemResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new, empty Amazon FSx file system.</p>
@@ -54,6 +54,20 @@ export type CreateFileSystemCommandOutput = CreateFileSystemResponse & __Metadat
  *                 creation status by calling the <a>DescribeFileSystems</a> operation,
  *                 which returns the file system state along with other information.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FSxClient, CreateFileSystemCommand } from "@aws-sdk/client-fsx"; // ES Modules import
+ * // const { FSxClient, CreateFileSystemCommand } = require("@aws-sdk/client-fsx"); // CommonJS import
+ * const client = new FSxClient(config);
+ * const command = new CreateFileSystemCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateFileSystemCommandInput} for command's `input` shape.
+ * @see {@link CreateFileSystemCommandOutput} for command's `response` shape.
+ * @see {@link FSxClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateFileSystemCommand extends $Command<
   CreateFileSystemCommandInput,

@@ -21,11 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateAcceleratorAttributesCommandInput = UpdateAcceleratorAttributesRequest;
-export type UpdateAcceleratorAttributesCommandOutput = UpdateAcceleratorAttributesResponse & __MetadataBearer;
+export interface UpdateAcceleratorAttributesCommandInput extends UpdateAcceleratorAttributesRequest {}
+export interface UpdateAcceleratorAttributesCommandOutput
+  extends UpdateAcceleratorAttributesResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Update the attributes for an accelerator. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, UpdateAcceleratorAttributesCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, UpdateAcceleratorAttributesCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new UpdateAcceleratorAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateAcceleratorAttributesCommandInput} for command's `input` shape.
+ * @see {@link UpdateAcceleratorAttributesCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateAcceleratorAttributesCommand extends $Command<
   UpdateAcceleratorAttributesCommandInput,

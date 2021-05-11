@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceRequest;
-export type TagResourceCommandOutput = TagResourceResponse & __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceRequest {}
+export interface TagResourceCommandOutput extends TagResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Adds one or more key-value tags to a Kinesis Analytics application. Note that the maximum number of application tags includes system tags. The maximum number of user-defined application tags is 50.
  *       For more information, see <a href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html">Using Tagging</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisAnalyticsClient, TagResourceCommand } from "@aws-sdk/client-kinesis-analytics"; // ES Modules import
+ * // const { KinesisAnalyticsClient, TagResourceCommand } = require("@aws-sdk/client-kinesis-analytics"); // CommonJS import
+ * const client = new KinesisAnalyticsClient(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link KinesisAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

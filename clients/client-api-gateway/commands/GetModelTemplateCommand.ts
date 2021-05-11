@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetModelTemplateCommandInput = GetModelTemplateRequest;
-export type GetModelTemplateCommandOutput = Template & __MetadataBearer;
+export interface GetModelTemplateCommandInput extends GetModelTemplateRequest {}
+export interface GetModelTemplateCommandOutput extends Template, __MetadataBearer {}
 
 /**
  * <p>Generates a sample mapping template that can be used to transform a payload into the structure of a model.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, GetModelTemplateCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, GetModelTemplateCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new GetModelTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetModelTemplateCommandInput} for command's `input` shape.
+ * @see {@link GetModelTemplateCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetModelTemplateCommand extends $Command<
   GetModelTemplateCommandInput,

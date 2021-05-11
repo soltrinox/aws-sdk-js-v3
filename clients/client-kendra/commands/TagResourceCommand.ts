@@ -17,12 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceRequest;
-export type TagResourceCommandOutput = TagResourceResponse & __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceRequest {}
+export interface TagResourceCommandOutput extends TagResourceResponse, __MetadataBearer {}
 
 /**
- * <p>Adds the specified tag to the specified index, FAQ, or data source resource. If the tag
- *       already exists, the existing value is replaced with the new value.</p>
+ * <p>Adds the specified tag to the specified index, FAQ, or data source
+ *       resource. If the tag already exists, the existing value is replaced with
+ *       the new value.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KendraClient, TagResourceCommand } from "@aws-sdk/client-kendra"; // ES Modules import
+ * // const { KendraClient, TagResourceCommand } = require("@aws-sdk/client-kendra"); // CommonJS import
+ * const client = new KendraClient(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link KendraClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

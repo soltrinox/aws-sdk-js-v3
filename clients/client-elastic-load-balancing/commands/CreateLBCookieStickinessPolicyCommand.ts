@@ -21,8 +21,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateLBCookieStickinessPolicyCommandInput = CreateLBCookieStickinessPolicyInput;
-export type CreateLBCookieStickinessPolicyCommandOutput = CreateLBCookieStickinessPolicyOutput & __MetadataBearer;
+export interface CreateLBCookieStickinessPolicyCommandInput extends CreateLBCookieStickinessPolicyInput {}
+export interface CreateLBCookieStickinessPolicyCommandOutput
+  extends CreateLBCookieStickinessPolicyOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser (user-agent) or a specified expiration period. This policy can be associated only with HTTP/HTTPS listeners.</p>
@@ -32,6 +34,20 @@ export type CreateLBCookieStickinessPolicyCommandOutput = CreateLBCookieStickine
  *
  *         <p>For more information, see <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration">Duration-Based Session Stickiness</a>
  *             in the <i>Classic Load Balancers Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingClient, CreateLBCookieStickinessPolicyCommand } from "@aws-sdk/client-elastic-load-balancing"; // ES Modules import
+ * // const { ElasticLoadBalancingClient, CreateLBCookieStickinessPolicyCommand } = require("@aws-sdk/client-elastic-load-balancing"); // CommonJS import
+ * const client = new ElasticLoadBalancingClient(config);
+ * const command = new CreateLBCookieStickinessPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateLBCookieStickinessPolicyCommandInput} for command's `input` shape.
+ * @see {@link CreateLBCookieStickinessPolicyCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateLBCookieStickinessPolicyCommand extends $Command<
   CreateLBCookieStickinessPolicyCommandInput,

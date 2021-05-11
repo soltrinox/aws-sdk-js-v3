@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDistributionBundleCommandInput = UpdateDistributionBundleRequest;
-export type UpdateDistributionBundleCommandOutput = UpdateDistributionBundleResult & __MetadataBearer;
+export interface UpdateDistributionBundleCommandInput extends UpdateDistributionBundleRequest {}
+export interface UpdateDistributionBundleCommandOutput extends UpdateDistributionBundleResult, __MetadataBearer {}
 
 /**
  * <p>Updates the bundle of your Amazon Lightsail content delivery network (CDN)
@@ -31,6 +31,20 @@ export type UpdateDistributionBundleCommandOutput = UpdateDistributionBundleResu
  *       cycle. To determine if you can update your distribution's bundle, use the
  *         <code>GetDistributions</code> action. The <code>ableToUpdateBundle</code> parameter in the
  *       result will indicate whether you can currently update your distribution's bundle.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, UpdateDistributionBundleCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, UpdateDistributionBundleCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new UpdateDistributionBundleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDistributionBundleCommandInput} for command's `input` shape.
+ * @see {@link UpdateDistributionBundleCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDistributionBundleCommand extends $Command<
   UpdateDistributionBundleCommandInput,

@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeProvisioningParametersCommandInput = DescribeProvisioningParametersInput;
-export type DescribeProvisioningParametersCommandOutput = DescribeProvisioningParametersOutput & __MetadataBearer;
+export interface DescribeProvisioningParametersCommandInput extends DescribeProvisioningParametersInput {}
+export interface DescribeProvisioningParametersCommandOutput
+  extends DescribeProvisioningParametersOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Gets information about the configuration required to provision the specified product using
@@ -29,6 +31,20 @@ export type DescribeProvisioningParametersCommandOutput = DescribeProvisioningPa
  *          do not include conflicted TagOption keys as tags, or this causes the error
  *          "Parameter validation failed: Missing required parameter in Tags[<i>N</i>]:<i>Value</i>".
  *          Tag the provisioned product with the value <code>sc-tagoption-conflict-portfolioId-productId</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, DescribeProvisioningParametersCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, DescribeProvisioningParametersCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new DescribeProvisioningParametersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeProvisioningParametersCommandInput} for command's `input` shape.
+ * @see {@link DescribeProvisioningParametersCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeProvisioningParametersCommand extends $Command<
   DescribeProvisioningParametersCommandInput,

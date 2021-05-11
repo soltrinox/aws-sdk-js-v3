@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateWorkspacesCommandInput = CreateWorkspacesRequest;
-export type CreateWorkspacesCommandOutput = CreateWorkspacesResult & __MetadataBearer;
+export interface CreateWorkspacesCommandInput extends CreateWorkspacesRequest {}
+export interface CreateWorkspacesCommandOutput extends CreateWorkspacesResult, __MetadataBearer {}
 
 /**
  * <p>Creates one or more WorkSpaces.</p>
  *          <p>This operation is asynchronous and returns before the WorkSpaces are created.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, CreateWorkspacesCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, CreateWorkspacesCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new CreateWorkspacesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateWorkspacesCommandInput} for command's `input` shape.
+ * @see {@link CreateWorkspacesCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateWorkspacesCommand extends $Command<
   CreateWorkspacesCommandInput,

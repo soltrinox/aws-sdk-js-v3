@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListSigningJobsCommandInput = ListSigningJobsRequest;
-export type ListSigningJobsCommandOutput = ListSigningJobsResponse & __MetadataBearer;
+export interface ListSigningJobsCommandInput extends ListSigningJobsRequest {}
+export interface ListSigningJobsCommandOutput extends ListSigningJobsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists all your signing jobs. You can use the <code>maxResults</code> parameter to
@@ -28,6 +28,20 @@ export type ListSigningJobsCommandOutput = ListSigningJobsResponse & __MetadataB
  * 			continue calling <code>ListSigningJobs</code> with your <code>maxResults</code>
  * 			parameter and with new values that code signing returns in the <code>nextToken</code>
  * 			parameter until all of your signing jobs have been returned. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SignerClient, ListSigningJobsCommand } from "@aws-sdk/client-signer"; // ES Modules import
+ * // const { SignerClient, ListSigningJobsCommand } = require("@aws-sdk/client-signer"); // CommonJS import
+ * const client = new SignerClient(config);
+ * const command = new ListSigningJobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListSigningJobsCommandInput} for command's `input` shape.
+ * @see {@link ListSigningJobsCommandOutput} for command's `response` shape.
+ * @see {@link SignerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListSigningJobsCommand extends $Command<
   ListSigningJobsCommandInput,

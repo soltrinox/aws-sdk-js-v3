@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteModelCommandInput = DeleteModelInput;
-export type DeleteModelCommandOutput = __MetadataBearer;
+export interface DeleteModelCommandInput extends DeleteModelInput {}
+export interface DeleteModelCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a model. The <code>DeleteModel</code> API deletes only the model entry that
  *             was created in Amazon SageMaker when you called the <a>CreateModel</a> API. It does not
  *             delete model artifacts, inference code, or the IAM role that you specified when
  *             creating the model. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DeleteModelCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DeleteModelCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DeleteModelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteModelCommandInput} for command's `input` shape.
+ * @see {@link DeleteModelCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteModelCommand extends $Command<
   DeleteModelCommandInput,

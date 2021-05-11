@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartMLLabelingSetGenerationTaskRunCommandInput = StartMLLabelingSetGenerationTaskRunRequest;
-export type StartMLLabelingSetGenerationTaskRunCommandOutput = StartMLLabelingSetGenerationTaskRunResponse &
-  __MetadataBearer;
+export interface StartMLLabelingSetGenerationTaskRunCommandInput extends StartMLLabelingSetGenerationTaskRunRequest {}
+export interface StartMLLabelingSetGenerationTaskRunCommandOutput
+  extends StartMLLabelingSetGenerationTaskRunResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Starts the active learning workflow for your machine learning transform to improve the
@@ -39,6 +40,20 @@ export type StartMLLabelingSetGenerationTaskRunCommandOutput = StartMLLabelingSe
  *         <code>StartImportLabelsTaskRun</code>. After <code>StartImportLabelsTaskRun</code> finishes,
  *       all future runs of the machine learning transform will use the new and improved labels and
  *       perform a higher-quality transformation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, StartMLLabelingSetGenerationTaskRunCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, StartMLLabelingSetGenerationTaskRunCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new StartMLLabelingSetGenerationTaskRunCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartMLLabelingSetGenerationTaskRunCommandInput} for command's `input` shape.
+ * @see {@link StartMLLabelingSetGenerationTaskRunCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartMLLabelingSetGenerationTaskRunCommand extends $Command<
   StartMLLabelingSetGenerationTaskRunCommandInput,

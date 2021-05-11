@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SendMessageBatchCommandInput = SendMessageBatchRequest;
-export type SendMessageBatchCommandOutput = SendMessageBatchResult & __MetadataBearer;
+export interface SendMessageBatchCommandInput extends SendMessageBatchRequest {}
+export interface SendMessageBatchCommandOutput extends SendMessageBatchResult, __MetadataBearer {}
 
 /**
  * <p>Delivers up to ten messages to the specified queue. This is a batch version of <code>
@@ -41,6 +41,20 @@ export type SendMessageBatchCommandOutput = SendMessageBatchResult & __MetadataB
  *          <p>
  *             <code>&AttributeName.2=second</code>
  *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SQSClient, SendMessageBatchCommand } from "@aws-sdk/client-sqs"; // ES Modules import
+ * // const { SQSClient, SendMessageBatchCommand } = require("@aws-sdk/client-sqs"); // CommonJS import
+ * const client = new SQSClient(config);
+ * const command = new SendMessageBatchCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SendMessageBatchCommandInput} for command's `input` shape.
+ * @see {@link SendMessageBatchCommandOutput} for command's `response` shape.
+ * @see {@link SQSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SendMessageBatchCommand extends $Command<
   SendMessageBatchCommandInput,

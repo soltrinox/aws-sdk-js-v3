@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteRemediationExceptionsCommandInput = DeleteRemediationExceptionsRequest;
-export type DeleteRemediationExceptionsCommandOutput = DeleteRemediationExceptionsResponse & __MetadataBearer;
+export interface DeleteRemediationExceptionsCommandInput extends DeleteRemediationExceptionsRequest {}
+export interface DeleteRemediationExceptionsCommandOutput
+  extends DeleteRemediationExceptionsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Deletes one or more remediation exceptions mentioned in the resource keys.</p>
@@ -26,6 +28,20 @@ export type DeleteRemediationExceptionsCommandOutput = DeleteRemediationExceptio
  *             <p>AWS Config generates a remediation exception when a problem occurs executing a remediation action to a specific resource.
  * 			Remediation exceptions blocks auto-remediation until the exception is cleared.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DeleteRemediationExceptionsCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DeleteRemediationExceptionsCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DeleteRemediationExceptionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteRemediationExceptionsCommandInput} for command's `input` shape.
+ * @see {@link DeleteRemediationExceptionsCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteRemediationExceptionsCommand extends $Command<
   DeleteRemediationExceptionsCommandInput,

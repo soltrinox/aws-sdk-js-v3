@@ -21,11 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListApplicationDependenciesCommandInput = ListApplicationDependenciesRequest;
-export type ListApplicationDependenciesCommandOutput = ListApplicationDependenciesResponse & __MetadataBearer;
+export interface ListApplicationDependenciesCommandInput extends ListApplicationDependenciesRequest {}
+export interface ListApplicationDependenciesCommandOutput
+  extends ListApplicationDependenciesResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieves the list of applications nested in the containing application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServerlessApplicationRepositoryClient, ListApplicationDependenciesCommand } from "@aws-sdk/client-serverlessapplicationrepository"; // ES Modules import
+ * // const { ServerlessApplicationRepositoryClient, ListApplicationDependenciesCommand } = require("@aws-sdk/client-serverlessapplicationrepository"); // CommonJS import
+ * const client = new ServerlessApplicationRepositoryClient(config);
+ * const command = new ListApplicationDependenciesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListApplicationDependenciesCommandInput} for command's `input` shape.
+ * @see {@link ListApplicationDependenciesCommandOutput} for command's `response` shape.
+ * @see {@link ServerlessApplicationRepositoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListApplicationDependenciesCommand extends $Command<
   ListApplicationDependenciesCommandInput,

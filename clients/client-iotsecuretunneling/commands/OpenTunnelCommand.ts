@@ -21,12 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type OpenTunnelCommandInput = OpenTunnelRequest;
-export type OpenTunnelCommandOutput = OpenTunnelResponse & __MetadataBearer;
+export interface OpenTunnelCommandInput extends OpenTunnelRequest {}
+export interface OpenTunnelCommandOutput extends OpenTunnelResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new tunnel, and returns two client access tokens for clients to use to
  * 			connect to the AWS IoT Secure Tunneling proxy server.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTSecureTunnelingClient, OpenTunnelCommand } from "@aws-sdk/client-iotsecuretunneling"; // ES Modules import
+ * // const { IoTSecureTunnelingClient, OpenTunnelCommand } = require("@aws-sdk/client-iotsecuretunneling"); // CommonJS import
+ * const client = new IoTSecureTunnelingClient(config);
+ * const command = new OpenTunnelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link OpenTunnelCommandInput} for command's `input` shape.
+ * @see {@link OpenTunnelCommandOutput} for command's `response` shape.
+ * @see {@link IoTSecureTunnelingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class OpenTunnelCommand extends $Command<
   OpenTunnelCommandInput,

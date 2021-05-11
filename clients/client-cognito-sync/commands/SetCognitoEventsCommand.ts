@@ -17,12 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SetCognitoEventsCommandInput = SetCognitoEventsRequest;
-export type SetCognitoEventsCommandOutput = __MetadataBearer;
+export interface SetCognitoEventsCommandInput extends SetCognitoEventsRequest {}
+export interface SetCognitoEventsCommandOutput extends __MetadataBearer {}
 
 /**
- * <p>Sets the AWS Lambda function for a given event type for an identity pool. This request only updates the key/value pair specified. Other key/values pairs are not updated. To remove a key value pair, pass a empty value for the particular key.</p>
- *          <p>This API can only be called with developer credentials. You cannot call this API with the temporary user credentials provided by Cognito Identity.</p>
+ * <p>Sets the AWS Lambda function for a given event type for an identity pool. This request only updates the key/value pair specified. Other key/values pairs are not updated. To remove a key value pair, pass a empty value for the particular key.</p><p>This API can only be called with developer credentials. You cannot call this API with the temporary user credentials provided by Cognito Identity.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoSyncClient, SetCognitoEventsCommand } from "@aws-sdk/client-cognito-sync"; // ES Modules import
+ * // const { CognitoSyncClient, SetCognitoEventsCommand } = require("@aws-sdk/client-cognito-sync"); // CommonJS import
+ * const client = new CognitoSyncClient(config);
+ * const command = new SetCognitoEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SetCognitoEventsCommandInput} for command's `input` shape.
+ * @see {@link SetCognitoEventsCommandOutput} for command's `response` shape.
+ * @see {@link CognitoSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SetCognitoEventsCommand extends $Command<
   SetCognitoEventsCommandInput,

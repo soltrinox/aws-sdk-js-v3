@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteModelExplainabilityJobDefinitionCommandInput = DeleteModelExplainabilityJobDefinitionRequest;
-export type DeleteModelExplainabilityJobDefinitionCommandOutput = __MetadataBearer;
+export interface DeleteModelExplainabilityJobDefinitionCommandInput
+  extends DeleteModelExplainabilityJobDefinitionRequest {}
+export interface DeleteModelExplainabilityJobDefinitionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes an Amazon SageMaker model explainability job definition.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DeleteModelExplainabilityJobDefinitionCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DeleteModelExplainabilityJobDefinitionCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DeleteModelExplainabilityJobDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteModelExplainabilityJobDefinitionCommandInput} for command's `input` shape.
+ * @see {@link DeleteModelExplainabilityJobDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteModelExplainabilityJobDefinitionCommand extends $Command<
   DeleteModelExplainabilityJobDefinitionCommandInput,

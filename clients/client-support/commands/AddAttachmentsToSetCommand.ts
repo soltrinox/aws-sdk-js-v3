@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddAttachmentsToSetCommandInput = AddAttachmentsToSetRequest;
-export type AddAttachmentsToSetCommandOutput = AddAttachmentsToSetResponse & __MetadataBearer;
+export interface AddAttachmentsToSetCommandInput extends AddAttachmentsToSetRequest {}
+export interface AddAttachmentsToSetCommandOutput extends AddAttachmentsToSetResponse, __MetadataBearer {}
 
 /**
  * <p>Adds one or more attachments to an attachment set. </p>
@@ -39,6 +39,20 @@ export type AddAttachmentsToSetCommandOutput = AddAttachmentsToSetResponse & __M
  *                 </li>
  *             </ul>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SupportClient, AddAttachmentsToSetCommand } from "@aws-sdk/client-support"; // ES Modules import
+ * // const { SupportClient, AddAttachmentsToSetCommand } = require("@aws-sdk/client-support"); // CommonJS import
+ * const client = new SupportClient(config);
+ * const command = new AddAttachmentsToSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddAttachmentsToSetCommandInput} for command's `input` shape.
+ * @see {@link AddAttachmentsToSetCommandOutput} for command's `response` shape.
+ * @see {@link SupportClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddAttachmentsToSetCommand extends $Command<
   AddAttachmentsToSetCommandInput,

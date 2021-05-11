@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RevokeInvitationCommandInput = RevokeInvitationRequest;
-export type RevokeInvitationCommandOutput = RevokeInvitationResponse & __MetadataBearer;
+export interface RevokeInvitationCommandInput extends RevokeInvitationRequest {}
+export interface RevokeInvitationCommandOutput extends RevokeInvitationResponse, __MetadataBearer {}
 
 /**
  * <p>Revokes an invitation and invalidates the enrollment URL.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, RevokeInvitationCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, RevokeInvitationCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new RevokeInvitationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RevokeInvitationCommandInput} for command's `input` shape.
+ * @see {@link RevokeInvitationCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RevokeInvitationCommand extends $Command<
   RevokeInvitationCommandInput,

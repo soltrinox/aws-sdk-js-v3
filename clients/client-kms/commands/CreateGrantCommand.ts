@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateGrantCommandInput = CreateGrantRequest;
-export type CreateGrantCommandOutput = CreateGrantResponse & __MetadataBearer;
+export interface CreateGrantCommandInput extends CreateGrantRequest {}
+export interface CreateGrantCommandOutput extends CreateGrantResponse, __MetadataBearer {}
 
 /**
  * <p>Adds a grant to a customer master key (CMK). The grant allows the grantee principal to use
@@ -54,15 +54,57 @@ export type CreateGrantCommandOutput = CreateGrantResponse & __MetadataBearer;
  *           encryption context is not supported on asymmetric CMKs.</p>
  *             </li>
  *          </ul>
- *          <p>For information about symmetric and asymmetric CMKs, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html">Using Symmetric and Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
- *          <p>To perform this operation on a CMK in a different AWS account, specify the key
- *   ARN in the value of the <code>KeyId</code> parameter. For more information about grants, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/grants.html">Grants</a> in the
+ *          <p>For information about symmetric and asymmetric CMKs, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html">Using Symmetric and Asymmetric CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>. For more information about grants, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/grants.html">Grants</a> in the
  *       <i>
  *                <i>AWS Key Management Service Developer Guide</i>
  *             </i>.</p>
  *          <p>The CMK that you use for this operation must be in a compatible key state. For
  * details, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use
  * of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+ *          <p>
+ *             <b>Cross-account use</b>: Yes. To perform this operation on a CMK in a different AWS account, specify the key
+ *   ARN in the value of the <code>KeyId</code> parameter. </p>
+ *          <p>
+ *             <b>Required permissions</b>: <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:CreateGrant</a> (key policy)</p>
+ *          <p>
+ *             <b>Related operations:</b>
+ *          </p>
+ *          <ul>
+ *             <li>
+ *                <p>
+ *                   <a>ListGrants</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>ListRetirableGrants</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>RetireGrant</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>RevokeGrant</a>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, CreateGrantCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, CreateGrantCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new CreateGrantCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateGrantCommandInput} for command's `input` shape.
+ * @see {@link CreateGrantCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateGrantCommand extends $Command<
   CreateGrantCommandInput,

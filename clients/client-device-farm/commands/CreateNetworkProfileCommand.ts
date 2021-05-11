@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateNetworkProfileCommandInput = CreateNetworkProfileRequest;
-export type CreateNetworkProfileCommandOutput = CreateNetworkProfileResult & __MetadataBearer;
+export interface CreateNetworkProfileCommandInput extends CreateNetworkProfileRequest {}
+export interface CreateNetworkProfileCommandOutput extends CreateNetworkProfileResult, __MetadataBearer {}
 
 /**
  * <p>Creates a network profile.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, CreateNetworkProfileCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, CreateNetworkProfileCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new CreateNetworkProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateNetworkProfileCommandInput} for command's `input` shape.
+ * @see {@link CreateNetworkProfileCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateNetworkProfileCommand extends $Command<
   CreateNetworkProfileCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceRequest;
-export type TagResourceCommandOutput = __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceRequest {}
+export interface TagResourceCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Adds <a href="https://docs.aws.amazon.com/lambda/latest/dg/tagging.html">tags</a> to a function.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LambdaClient, TagResourceCommand } from "@aws-sdk/client-lambda"; // ES Modules import
+ * // const { LambdaClient, TagResourceCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+ * const client = new LambdaClient(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link LambdaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

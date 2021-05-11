@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDataCatalogCommandInput = UpdateDataCatalogInput;
-export type UpdateDataCatalogCommandOutput = UpdateDataCatalogOutput & __MetadataBearer;
+export interface UpdateDataCatalogCommandInput extends UpdateDataCatalogInput {}
+export interface UpdateDataCatalogCommandOutput extends UpdateDataCatalogOutput, __MetadataBearer {}
 
 /**
  * <p>Updates the data catalog that has the specified name.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AthenaClient, UpdateDataCatalogCommand } from "@aws-sdk/client-athena"; // ES Modules import
+ * // const { AthenaClient, UpdateDataCatalogCommand } = require("@aws-sdk/client-athena"); // CommonJS import
+ * const client = new AthenaClient(config);
+ * const command = new UpdateDataCatalogCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDataCatalogCommandInput} for command's `input` shape.
+ * @see {@link UpdateDataCatalogCommandOutput} for command's `response` shape.
+ * @see {@link AthenaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDataCatalogCommand extends $Command<
   UpdateDataCatalogCommandInput,

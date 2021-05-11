@@ -19,14 +19,14 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutBucketReplicationCommandInput = PutBucketReplicationRequest;
-export type PutBucketReplicationCommandOutput = __MetadataBearer;
+export interface PutBucketReplicationCommandInput extends PutBucketReplicationRequest {}
+export interface PutBucketReplicationCommandOutput extends __MetadataBearer {}
 
 /**
  * <p> Creates a replication configuration or replaces an existing one. For more information,
  *          see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html">Replication</a> in the <i>Amazon S3 Developer Guide</i>. </p>
  *          <note>
- *             <p>To perform this operation, the user or role performing the operation must have the
+ *             <p>To perform this operation, the user or role performing the action must have the
  *                <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html">iam:PassRole</a> permission.</p>
  *          </note>
  *          <p>Specify the replication configuration in the request body. In the replication
@@ -55,7 +55,7 @@ export type PutBucketReplicationCommandOutput = __MetadataBearer;
  *          <p>By default, a resource owner, in this case the AWS account that created the bucket, can
  *          perform this operation. The resource owner can also grant others permissions to perform the
  *          operation. For more information about permissions, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html">Specifying Permissions in a Policy</a>
- *          and <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">Managing Access Permissions to Your
+ *          and <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html">Managing Access Permissions to Your
  *             Amazon S3 Resources</a>.</p>
  *
  *          <p>
@@ -87,6 +87,20 @@ export type PutBucketReplicationCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, PutBucketReplicationCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, PutBucketReplicationCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new PutBucketReplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutBucketReplicationCommandInput} for command's `input` shape.
+ * @see {@link PutBucketReplicationCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutBucketReplicationCommand extends $Command<
   PutBucketReplicationCommandInput,

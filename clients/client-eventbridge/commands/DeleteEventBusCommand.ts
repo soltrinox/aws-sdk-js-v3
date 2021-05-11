@@ -17,13 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteEventBusCommandInput = DeleteEventBusRequest;
-export type DeleteEventBusCommandOutput = __MetadataBearer;
+export interface DeleteEventBusCommandInput extends DeleteEventBusRequest {}
+export interface DeleteEventBusCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified custom event bus or partner event bus. All rules associated with
- *             this event bus need to be deleted. You can't delete your account's default event
- *             bus.</p>
+ *       this event bus need to be deleted. You can't delete your account's default event bus.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EventBridgeClient, DeleteEventBusCommand } from "@aws-sdk/client-eventbridge"; // ES Modules import
+ * // const { EventBridgeClient, DeleteEventBusCommand } = require("@aws-sdk/client-eventbridge"); // CommonJS import
+ * const client = new EventBridgeClient(config);
+ * const command = new DeleteEventBusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteEventBusCommandInput} for command's `input` shape.
+ * @see {@link DeleteEventBusCommandOutput} for command's `response` shape.
+ * @see {@link EventBridgeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteEventBusCommand extends $Command<
   DeleteEventBusCommandInput,

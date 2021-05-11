@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeSignalingChannelCommandInput = DescribeSignalingChannelInput;
-export type DescribeSignalingChannelCommandOutput = DescribeSignalingChannelOutput & __MetadataBearer;
+export interface DescribeSignalingChannelCommandInput extends DescribeSignalingChannelInput {}
+export interface DescribeSignalingChannelCommandOutput extends DescribeSignalingChannelOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the most current information about the signaling channel. You must specify
  *             either the name or the Amazon Resource Name (ARN) of the channel that you want to
  *             describe.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisVideoClient, DescribeSignalingChannelCommand } from "@aws-sdk/client-kinesis-video"; // ES Modules import
+ * // const { KinesisVideoClient, DescribeSignalingChannelCommand } = require("@aws-sdk/client-kinesis-video"); // CommonJS import
+ * const client = new KinesisVideoClient(config);
+ * const command = new DescribeSignalingChannelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeSignalingChannelCommandInput} for command's `input` shape.
+ * @see {@link DescribeSignalingChannelCommandOutput} for command's `response` shape.
+ * @see {@link KinesisVideoClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeSignalingChannelCommand extends $Command<
   DescribeSignalingChannelCommandInput,

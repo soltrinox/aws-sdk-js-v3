@@ -18,13 +18,13 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeJobCommandInput = DescribeJobRequest;
-export type DescribeJobCommandOutput = DescribeJobResult & __MetadataBearer;
+export interface DescribeJobCommandInput extends DescribeJobRequest {}
+export interface DescribeJobCommandOutput extends DescribeJobResult, __MetadataBearer {}
 
 /**
  * <p>Retrieves the configuration parameters and status for a Batch Operations job. For more
  *          information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html">S3 Batch Operations</a> in
- *          the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *          the <i>Amazon Simple Storage Service User Guide</i>.</p>
  *          <p></p>
  *          <p>Related actions include:</p>
  *          <ul>
@@ -49,6 +49,20 @@ export type DescribeJobCommandOutput = DescribeJobResult & __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, DescribeJobCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, DescribeJobCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new DescribeJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeJobCommandInput} for command's `input` shape.
+ * @see {@link DescribeJobCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeJobCommand extends $Command<
   DescribeJobCommandInput,

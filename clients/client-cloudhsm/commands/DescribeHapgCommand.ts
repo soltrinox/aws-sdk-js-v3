@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeHapgCommandInput = DescribeHapgRequest;
-export type DescribeHapgCommandOutput = DescribeHapgResponse & __MetadataBearer;
+export interface DescribeHapgCommandInput extends DescribeHapgRequest {}
+export interface DescribeHapgCommandOutput extends DescribeHapgResponse, __MetadataBearer {}
 
 /**
  * <p>This is documentation for <b>AWS CloudHSM Classic</b>. For
@@ -32,6 +32,20 @@ export type DescribeHapgCommandOutput = DescribeHapgResponse & __MetadataBearer;
  *       and the <a href="https://docs.aws.amazon.com/cloudhsm/latest/APIReference/">AWS CloudHSM API
  *       Reference</a>.</p>
  *          <p>Retrieves information about a high-availability partition group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudHSMClient, DescribeHapgCommand } from "@aws-sdk/client-cloudhsm"; // ES Modules import
+ * // const { CloudHSMClient, DescribeHapgCommand } = require("@aws-sdk/client-cloudhsm"); // CommonJS import
+ * const client = new CloudHSMClient(config);
+ * const command = new DescribeHapgCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeHapgCommandInput} for command's `input` shape.
+ * @see {@link DescribeHapgCommandOutput} for command's `response` shape.
+ * @see {@link CloudHSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeHapgCommand extends $Command<
   DescribeHapgCommandInput,

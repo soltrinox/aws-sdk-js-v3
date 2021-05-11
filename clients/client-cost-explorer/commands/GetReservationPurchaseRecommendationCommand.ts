@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetReservationPurchaseRecommendationCommandInput = GetReservationPurchaseRecommendationRequest;
-export type GetReservationPurchaseRecommendationCommandOutput = GetReservationPurchaseRecommendationResponse &
-  __MetadataBearer;
+export interface GetReservationPurchaseRecommendationCommandInput extends GetReservationPurchaseRecommendationRequest {}
+export interface GetReservationPurchaseRecommendationCommandOutput
+  extends GetReservationPurchaseRecommendationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Gets recommendations for which reservations to purchase. These recommendations could help you reduce your costs.
@@ -35,6 +36,20 @@ export type GetReservationPurchaseRecommendationCommandOutput = GetReservationPu
  * 			in an instance family. This makes it easier to purchase a size-flexible RI. AWS also shows the equal number of normalized units
  * 			so that you can purchase any instance size that you want. For this example, your RI recommendation would be for <code>c4.large</code>
  * 			because that is the smallest size instance in the c4 instance family.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CostExplorerClient, GetReservationPurchaseRecommendationCommand } from "@aws-sdk/client-cost-explorer"; // ES Modules import
+ * // const { CostExplorerClient, GetReservationPurchaseRecommendationCommand } = require("@aws-sdk/client-cost-explorer"); // CommonJS import
+ * const client = new CostExplorerClient(config);
+ * const command = new GetReservationPurchaseRecommendationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetReservationPurchaseRecommendationCommandInput} for command's `input` shape.
+ * @see {@link GetReservationPurchaseRecommendationCommandOutput} for command's `response` shape.
+ * @see {@link CostExplorerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetReservationPurchaseRecommendationCommand extends $Command<
   GetReservationPurchaseRecommendationCommandInput,

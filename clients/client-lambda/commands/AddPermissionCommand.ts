@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddPermissionCommandInput = AddPermissionRequest;
-export type AddPermissionCommandOutput = AddPermissionResponse & __MetadataBearer;
+export interface AddPermissionCommandInput extends AddPermissionRequest {}
+export interface AddPermissionCommandOutput extends AddPermissionResponse, __MetadataBearer {}
 
 /**
  * <p>Grants an AWS service or another account permission to use a function. You can apply the policy at the
@@ -33,6 +33,20 @@ export type AddPermissionCommandOutput = AddPermissionResponse & __MetadataBeare
  *
  *          <p>This action adds a statement to a resource-based permissions policy for the function. For more information
  *       about function policies, see <a href="https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html">Lambda Function Policies</a>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LambdaClient, AddPermissionCommand } from "@aws-sdk/client-lambda"; // ES Modules import
+ * // const { LambdaClient, AddPermissionCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+ * const client = new LambdaClient(config);
+ * const command = new AddPermissionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddPermissionCommandInput} for command's `input` shape.
+ * @see {@link AddPermissionCommandOutput} for command's `response` shape.
+ * @see {@link LambdaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddPermissionCommand extends $Command<
   AddPermissionCommandInput,

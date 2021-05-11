@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteExpressionCommandInput = DeleteExpressionRequest;
-export type DeleteExpressionCommandOutput = DeleteExpressionResponse & __MetadataBearer;
+export interface DeleteExpressionCommandInput extends DeleteExpressionRequest {}
+export interface DeleteExpressionCommandOutput extends DeleteExpressionResponse, __MetadataBearer {}
 
 /**
  * <p>Removes an <code><a>Expression</a></code> from the search domain. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudSearchClient, DeleteExpressionCommand } from "@aws-sdk/client-cloudsearch"; // ES Modules import
+ * // const { CloudSearchClient, DeleteExpressionCommand } = require("@aws-sdk/client-cloudsearch"); // CommonJS import
+ * const client = new CloudSearchClient(config);
+ * const command = new DeleteExpressionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteExpressionCommandInput} for command's `input` shape.
+ * @see {@link DeleteExpressionCommandOutput} for command's `response` shape.
+ * @see {@link CloudSearchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteExpressionCommand extends $Command<
   DeleteExpressionCommandInput,

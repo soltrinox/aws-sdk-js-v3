@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCrawlersCommandInput = GetCrawlersRequest;
-export type GetCrawlersCommandOutput = GetCrawlersResponse & __MetadataBearer;
+export interface GetCrawlersCommandInput extends GetCrawlersRequest {}
+export interface GetCrawlersCommandOutput extends GetCrawlersResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves metadata for all crawlers defined in the customer
  *       account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetCrawlersCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetCrawlersCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetCrawlersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCrawlersCommandInput} for command's `input` shape.
+ * @see {@link GetCrawlersCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCrawlersCommand extends $Command<
   GetCrawlersCommandInput,

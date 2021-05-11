@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceRequest;
-export type TagResourceCommandOutput = TagResourceResult & __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceRequest {}
+export interface TagResourceCommandOutput extends TagResourceResult, __MetadataBearer {}
 
 /**
  * <p>Associates a set of provided tags with a notification rule.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodestarNotificationsClient, TagResourceCommand } from "@aws-sdk/client-codestar-notifications"; // ES Modules import
+ * // const { CodestarNotificationsClient, TagResourceCommand } = require("@aws-sdk/client-codestar-notifications"); // CommonJS import
+ * const client = new CodestarNotificationsClient(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link CodestarNotificationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

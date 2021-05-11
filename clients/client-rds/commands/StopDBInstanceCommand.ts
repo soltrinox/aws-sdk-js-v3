@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopDBInstanceCommandInput = StopDBInstanceMessage;
-export type StopDBInstanceCommandOutput = StopDBInstanceResult & __MetadataBearer;
+export interface StopDBInstanceCommandInput extends StopDBInstanceMessage {}
+export interface StopDBInstanceCommandOutput extends StopDBInstanceResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -39,6 +39,20 @@ export type StopDBInstanceCommandOutput = StopDBInstanceResult & __MetadataBeare
  *             For Aurora clusters, use <code>StopDBCluster</code> instead.
  *           </p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, StopDBInstanceCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, StopDBInstanceCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new StopDBInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopDBInstanceCommandInput} for command's `input` shape.
+ * @see {@link StopDBInstanceCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopDBInstanceCommand extends $Command<
   StopDBInstanceCommandInput,

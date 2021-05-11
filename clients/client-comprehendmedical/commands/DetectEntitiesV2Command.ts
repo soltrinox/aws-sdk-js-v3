@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DetectEntitiesV2CommandInput = DetectEntitiesV2Request;
-export type DetectEntitiesV2CommandOutput = DetectEntitiesV2Response & __MetadataBearer;
+export interface DetectEntitiesV2CommandInput extends DetectEntitiesV2Request {}
+export interface DetectEntitiesV2CommandOutput extends DetectEntitiesV2Response, __MetadataBearer {}
 
 /**
  * <p>Inspects the clinical text for a variety of medical entities and returns specific
@@ -35,6 +35,20 @@ export type DetectEntitiesV2CommandOutput = DetectEntitiesV2Response & __Metadat
  *         <code>DetectEntitiesV2</code> operation in all new applications.</p>
  *          <p>The <code>DetectEntitiesV2</code> operation returns the <code>Acuity</code> and
  *         <code>Direction</code> entities as attributes instead of types. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ComprehendMedicalClient, DetectEntitiesV2Command } from "@aws-sdk/client-comprehendmedical"; // ES Modules import
+ * // const { ComprehendMedicalClient, DetectEntitiesV2Command } = require("@aws-sdk/client-comprehendmedical"); // CommonJS import
+ * const client = new ComprehendMedicalClient(config);
+ * const command = new DetectEntitiesV2Command(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DetectEntitiesV2CommandInput} for command's `input` shape.
+ * @see {@link DetectEntitiesV2CommandOutput} for command's `response` shape.
+ * @see {@link ComprehendMedicalClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DetectEntitiesV2Command extends $Command<
   DetectEntitiesV2CommandInput,

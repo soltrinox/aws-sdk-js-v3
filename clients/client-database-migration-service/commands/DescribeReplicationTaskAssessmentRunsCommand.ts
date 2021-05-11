@@ -24,9 +24,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeReplicationTaskAssessmentRunsCommandInput = DescribeReplicationTaskAssessmentRunsMessage;
-export type DescribeReplicationTaskAssessmentRunsCommandOutput = DescribeReplicationTaskAssessmentRunsResponse &
-  __MetadataBearer;
+export interface DescribeReplicationTaskAssessmentRunsCommandInput
+  extends DescribeReplicationTaskAssessmentRunsMessage {}
+export interface DescribeReplicationTaskAssessmentRunsCommandOutput
+  extends DescribeReplicationTaskAssessmentRunsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns a paginated list of premigration assessment runs based on filter
@@ -38,6 +40,20 @@ export type DescribeReplicationTaskAssessmentRunsCommandOutput = DescribeReplica
  *             information, see the <code>DescribeReplicationTaskIndividualAssessments</code>
  *             operation. </p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, DescribeReplicationTaskAssessmentRunsCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, DescribeReplicationTaskAssessmentRunsCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new DescribeReplicationTaskAssessmentRunsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeReplicationTaskAssessmentRunsCommandInput} for command's `input` shape.
+ * @see {@link DescribeReplicationTaskAssessmentRunsCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeReplicationTaskAssessmentRunsCommand extends $Command<
   DescribeReplicationTaskAssessmentRunsCommandInput,

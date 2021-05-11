@@ -21,13 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceRequest;
-export type TagResourceCommandOutput = TagResourceResponse & __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceRequest {}
+export interface TagResourceCommandOutput extends TagResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Add tags to an accelerator resource. </p>
  * 		       <p>For more information, see <a href="https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html">Tagging
  * 			in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, TagResourceCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, TagResourceCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

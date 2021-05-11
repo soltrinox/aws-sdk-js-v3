@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateApplicationCommandInput = UpdateApplicationRequest;
-export type UpdateApplicationCommandOutput = UpdateApplicationResponse & __MetadataBearer;
+export interface UpdateApplicationCommandInput extends UpdateApplicationRequest {}
+export interface UpdateApplicationCommandOutput extends UpdateApplicationResponse, __MetadataBearer {}
 
 /**
  * <p>Updates metadata about an application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationDiscoveryServiceClient, UpdateApplicationCommand } from "@aws-sdk/client-application-discovery-service"; // ES Modules import
+ * // const { ApplicationDiscoveryServiceClient, UpdateApplicationCommand } = require("@aws-sdk/client-application-discovery-service"); // CommonJS import
+ * const client = new ApplicationDiscoveryServiceClient(config);
+ * const command = new UpdateApplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateApplicationCommandInput} for command's `input` shape.
+ * @see {@link UpdateApplicationCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationDiscoveryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateApplicationCommand extends $Command<
   UpdateApplicationCommandInput,

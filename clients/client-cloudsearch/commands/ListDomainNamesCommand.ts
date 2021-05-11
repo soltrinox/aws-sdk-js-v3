@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDomainNamesCommandInput = {};
-export type ListDomainNamesCommandOutput = ListDomainNamesResponse & __MetadataBearer;
+export interface ListDomainNamesCommandInput {}
+export interface ListDomainNamesCommandOutput extends ListDomainNamesResponse, __MetadataBearer {}
 
 /**
  * <p>Lists all search domains owned by an account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudSearchClient, ListDomainNamesCommand } from "@aws-sdk/client-cloudsearch"; // ES Modules import
+ * // const { CloudSearchClient, ListDomainNamesCommand } = require("@aws-sdk/client-cloudsearch"); // CommonJS import
+ * const client = new CloudSearchClient(config);
+ * const command = new ListDomainNamesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDomainNamesCommandInput} for command's `input` shape.
+ * @see {@link ListDomainNamesCommandOutput} for command's `response` shape.
+ * @see {@link CloudSearchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDomainNamesCommand extends $Command<
   ListDomainNamesCommandInput,

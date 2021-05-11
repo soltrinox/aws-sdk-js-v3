@@ -17,9 +17,34 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SearchInsightsCommandInput = SearchInsightsRequest;
-export type SearchInsightsCommandOutput = SearchInsightsResponse & __MetadataBearer;
+export interface SearchInsightsCommandInput extends SearchInsightsRequest {}
+export interface SearchInsightsCommandOutput extends SearchInsightsResponse, __MetadataBearer {}
 
+/**
+ * <p>
+ *    		Returns a list of insights in your AWS account. You can specify which insights are returned by their start time, one or more statuses
+ *    		(<code>ONGOING</code>, <code>CLOSED</code>, and <code>CLOSED</code>), one or more severities (<code>LOW</code>, <code>MEDIUM</code>,
+ *    		and <code>HIGH</code>), and type (<code>REACTIVE</code> or <code>PROACTIVE</code>).
+ *    	</p>
+ *    	     <p>
+ *    		Use the <code>Filters</code> parameter to specify status and severity
+ *    		search parameters. Use the <code>Type</code> parameter to specify <code>REACTIVE</code> or <code>PROACTIVE</code> in your search.
+ *    	</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DevOpsGuruClient, SearchInsightsCommand } from "@aws-sdk/client-devops-guru"; // ES Modules import
+ * // const { DevOpsGuruClient, SearchInsightsCommand } = require("@aws-sdk/client-devops-guru"); // CommonJS import
+ * const client = new DevOpsGuruClient(config);
+ * const command = new SearchInsightsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SearchInsightsCommandInput} for command's `input` shape.
+ * @see {@link SearchInsightsCommandOutput} for command's `response` shape.
+ * @see {@link DevOpsGuruClientResolvedConfig | config} for command's `input` shape.
+ *
+ */
 export class SearchInsightsCommand extends $Command<
   SearchInsightsCommandInput,
   SearchInsightsCommandOutput,

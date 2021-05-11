@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteLifecyclePolicyCommandInput = DeleteLifecyclePolicyRequest;
-export type DeleteLifecyclePolicyCommandOutput = DeleteLifecyclePolicyResponse & __MetadataBearer;
+export interface DeleteLifecyclePolicyCommandInput extends DeleteLifecyclePolicyRequest {}
+export interface DeleteLifecyclePolicyCommandOutput extends DeleteLifecyclePolicyResponse, __MetadataBearer {}
 
 /**
- * <p>Deletes the specified lifecycle policy and halts the automated operations that the policy specified.</p>
+ * <p>Deletes the specified lifecycle policy and halts the automated operations that the
+ * 			policy specified.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DLMClient, DeleteLifecyclePolicyCommand } from "@aws-sdk/client-dlm"; // ES Modules import
+ * // const { DLMClient, DeleteLifecyclePolicyCommand } = require("@aws-sdk/client-dlm"); // CommonJS import
+ * const client = new DLMClient(config);
+ * const command = new DeleteLifecyclePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteLifecyclePolicyCommandInput} for command's `input` shape.
+ * @see {@link DeleteLifecyclePolicyCommandOutput} for command's `response` shape.
+ * @see {@link DLMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteLifecyclePolicyCommand extends $Command<
   DeleteLifecyclePolicyCommandInput,

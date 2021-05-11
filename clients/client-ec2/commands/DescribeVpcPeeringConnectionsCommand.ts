@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeVpcPeeringConnectionsCommandInput = DescribeVpcPeeringConnectionsRequest;
-export type DescribeVpcPeeringConnectionsCommandOutput = DescribeVpcPeeringConnectionsResult & __MetadataBearer;
+export interface DescribeVpcPeeringConnectionsCommandInput extends DescribeVpcPeeringConnectionsRequest {}
+export interface DescribeVpcPeeringConnectionsCommandOutput
+  extends DescribeVpcPeeringConnectionsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Describes one or more of your VPC peering connections.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeVpcPeeringConnectionsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeVpcPeeringConnectionsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeVpcPeeringConnectionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeVpcPeeringConnectionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeVpcPeeringConnectionsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeVpcPeeringConnectionsCommand extends $Command<
   DescribeVpcPeeringConnectionsCommandInput,

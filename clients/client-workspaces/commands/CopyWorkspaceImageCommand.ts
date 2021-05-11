@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CopyWorkspaceImageCommandInput = CopyWorkspaceImageRequest;
-export type CopyWorkspaceImageCommandOutput = CopyWorkspaceImageResult & __MetadataBearer;
+export interface CopyWorkspaceImageCommandInput extends CopyWorkspaceImageRequest {}
+export interface CopyWorkspaceImageCommandOutput extends CopyWorkspaceImageResult, __MetadataBearer {}
 
 /**
  * <p>Copies the specified image from the specified Region to the current Region.
@@ -38,6 +38,20 @@ export type CopyWorkspaceImageCommandOutput = CopyWorkspaceImageResult & __Metad
  *             correct AWS account. To determine if an image has been shared and to see the AWS
  *             account ID that owns an image, use the <a href="https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImages.html">DescribeWorkSpaceImages</a> and <a href="https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImagePermissions.html">DescribeWorkspaceImagePermissions</a> API operations. </p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, CopyWorkspaceImageCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, CopyWorkspaceImageCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new CopyWorkspaceImageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CopyWorkspaceImageCommandInput} for command's `input` shape.
+ * @see {@link CopyWorkspaceImageCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CopyWorkspaceImageCommand extends $Command<
   CopyWorkspaceImageCommandInput,

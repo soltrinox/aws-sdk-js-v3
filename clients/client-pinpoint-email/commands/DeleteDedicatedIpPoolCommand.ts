@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDedicatedIpPoolCommandInput = DeleteDedicatedIpPoolRequest;
-export type DeleteDedicatedIpPoolCommandOutput = DeleteDedicatedIpPoolResponse & __MetadataBearer;
+export interface DeleteDedicatedIpPoolCommandInput extends DeleteDedicatedIpPoolRequest {}
+export interface DeleteDedicatedIpPoolCommandOutput extends DeleteDedicatedIpPoolResponse, __MetadataBearer {}
 
 /**
  * <p>Delete a dedicated IP pool.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointEmailClient, DeleteDedicatedIpPoolCommand } from "@aws-sdk/client-pinpoint-email"; // ES Modules import
+ * // const { PinpointEmailClient, DeleteDedicatedIpPoolCommand } = require("@aws-sdk/client-pinpoint-email"); // CommonJS import
+ * const client = new PinpointEmailClient(config);
+ * const command = new DeleteDedicatedIpPoolCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDedicatedIpPoolCommandInput} for command's `input` shape.
+ * @see {@link DeleteDedicatedIpPoolCommandOutput} for command's `response` shape.
+ * @see {@link PinpointEmailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDedicatedIpPoolCommand extends $Command<
   DeleteDedicatedIpPoolCommandInput,

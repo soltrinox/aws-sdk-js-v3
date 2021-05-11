@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteRegexMatchSetCommandInput = DeleteRegexMatchSetRequest;
-export type DeleteRegexMatchSetCommandOutput = DeleteRegexMatchSetResponse & __MetadataBearer;
+export interface DeleteRegexMatchSetCommandInput extends DeleteRegexMatchSetRequest {}
+export interface DeleteRegexMatchSetCommandOutput extends DeleteRegexMatchSetResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -45,6 +45,20 @@ export type DeleteRegexMatchSetCommandOutput = DeleteRegexMatchSetResponse & __M
  *                <p>Submit a <code>DeleteRegexMatchSet</code> request.</p>
  *             </li>
  *          </ol>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFRegionalClient, DeleteRegexMatchSetCommand } from "@aws-sdk/client-waf-regional"; // ES Modules import
+ * // const { WAFRegionalClient, DeleteRegexMatchSetCommand } = require("@aws-sdk/client-waf-regional"); // CommonJS import
+ * const client = new WAFRegionalClient(config);
+ * const command = new DeleteRegexMatchSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteRegexMatchSetCommandInput} for command's `input` shape.
+ * @see {@link DeleteRegexMatchSetCommandOutput} for command's `response` shape.
+ * @see {@link WAFRegionalClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteRegexMatchSetCommand extends $Command<
   DeleteRegexMatchSetCommandInput,

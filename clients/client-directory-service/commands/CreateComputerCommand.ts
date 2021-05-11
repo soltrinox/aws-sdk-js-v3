@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateComputerCommandInput = CreateComputerRequest;
-export type CreateComputerCommandOutput = CreateComputerResult & __MetadataBearer;
+export interface CreateComputerCommandInput extends CreateComputerRequest {}
+export interface CreateComputerCommandOutput extends CreateComputerResult, __MetadataBearer {}
 
 /**
  * <p>Creates an Active Directory computer object in the specified directory.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectoryServiceClient, CreateComputerCommand } from "@aws-sdk/client-directory-service"; // ES Modules import
+ * // const { DirectoryServiceClient, CreateComputerCommand } = require("@aws-sdk/client-directory-service"); // CommonJS import
+ * const client = new DirectoryServiceClient(config);
+ * const command = new CreateComputerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateComputerCommandInput} for command's `input` shape.
+ * @see {@link CreateComputerCommandOutput} for command's `response` shape.
+ * @see {@link DirectoryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateComputerCommand extends $Command<
   CreateComputerCommandInput,

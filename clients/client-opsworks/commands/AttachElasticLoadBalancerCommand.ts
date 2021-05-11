@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AttachElasticLoadBalancerCommandInput = AttachElasticLoadBalancerRequest;
-export type AttachElasticLoadBalancerCommandOutput = __MetadataBearer;
+export interface AttachElasticLoadBalancerCommandInput extends AttachElasticLoadBalancerRequest {}
+export interface AttachElasticLoadBalancerCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Attaches an Elastic Load Balancing load balancer to a specified layer. AWS OpsWorks Stacks does not support
@@ -35,6 +35,20 @@ export type AttachElasticLoadBalancerCommandOutput = __MetadataBearer;
  *       level for the stack, or an attached policy that explicitly grants permissions. For more
  *       information on user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, AttachElasticLoadBalancerCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, AttachElasticLoadBalancerCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new AttachElasticLoadBalancerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AttachElasticLoadBalancerCommandInput} for command's `input` shape.
+ * @see {@link AttachElasticLoadBalancerCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AttachElasticLoadBalancerCommand extends $Command<
   AttachElasticLoadBalancerCommandInput,

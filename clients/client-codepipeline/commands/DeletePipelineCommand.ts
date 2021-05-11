@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeletePipelineCommandInput = DeletePipelineInput;
-export type DeletePipelineCommandOutput = __MetadataBearer;
+export interface DeletePipelineCommandInput extends DeletePipelineInput {}
+export interface DeletePipelineCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified pipeline.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodePipelineClient, DeletePipelineCommand } from "@aws-sdk/client-codepipeline"; // ES Modules import
+ * // const { CodePipelineClient, DeletePipelineCommand } = require("@aws-sdk/client-codepipeline"); // CommonJS import
+ * const client = new CodePipelineClient(config);
+ * const command = new DeletePipelineCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeletePipelineCommandInput} for command's `input` shape.
+ * @see {@link DeletePipelineCommandOutput} for command's `response` shape.
+ * @see {@link CodePipelineClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeletePipelineCommand extends $Command<
   DeletePipelineCommandInput,

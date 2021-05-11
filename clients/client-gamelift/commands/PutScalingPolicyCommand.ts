@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutScalingPolicyCommandInput = PutScalingPolicyInput;
-export type PutScalingPolicyCommandOutput = PutScalingPolicyOutput & __MetadataBearer;
+export interface PutScalingPolicyCommandInput extends PutScalingPolicyInput {}
+export interface PutScalingPolicyCommandOutput extends PutScalingPolicyOutput, __MetadataBearer {}
 
 /**
  * <p>Creates or updates a scaling policy for a fleet. Scaling policies are used to
@@ -84,55 +84,34 @@ export type PutScalingPolicyCommandOutput = PutScalingPolicyOutput & __MetadataB
  *             policies are automatically in force as soon as they're successfully created. If the
  *             fleet's auto-scaling actions are temporarily suspended, the new policy will be in force
  *             once the fleet actions are restarted.</p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>DescribeFleetCapacity</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateFleetCapacity</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeEC2InstanceLimits</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>Manage scaling policies:</p>
- *                <ul>
- *                   <li>
- *                      <p>
- *                         <a>PutScalingPolicy</a> (auto-scaling)</p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>DescribeScalingPolicies</a> (auto-scaling)</p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>DeleteScalingPolicy</a> (auto-scaling)</p>
- *                   </li>
- *                </ul>
- *             </li>
- *             <li>
- *                <p>Manage fleet actions:</p>
- *                <ul>
- *                   <li>
- *                      <p>
- *                         <a>StartFleetActions</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>StopFleetActions</a>
- *                      </p>
- *                   </li>
- *                </ul>
- *             </li>
- *          </ul>
+ *         <p>
+ *             <b>Related actions</b>
+ *          </p>
+ *                     <p>
+ *             <a>DescribeFleetCapacity</a> |
+ *                     <a>UpdateFleetCapacity</a> |
+ *                     <a>DescribeEC2InstanceLimits</a> |
+ *                     <a>PutScalingPolicy</a> |
+ *                     <a>DescribeScalingPolicies</a> |
+ *                     <a>DeleteScalingPolicy</a> |
+ *                     <a>StopFleetActions</a> |
+ *                     <a>StartFleetActions</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, PutScalingPolicyCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, PutScalingPolicyCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new PutScalingPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutScalingPolicyCommandInput} for command's `input` shape.
+ * @see {@link PutScalingPolicyCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutScalingPolicyCommand extends $Command<
   PutScalingPolicyCommandInput,

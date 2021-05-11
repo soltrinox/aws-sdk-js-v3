@@ -11,6 +11,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -23,7 +26,7 @@ export interface CreateOutpostInput {
   Name: string | undefined;
 
   /**
-   * <p>The Outpost description.</p>
+   * <p>The description of the Outpost.</p>
    */
   Description?: string;
 
@@ -51,6 +54,9 @@ export interface CreateOutpostInput {
 }
 
 export namespace CreateOutpostInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateOutpostInput): any => ({
     ...obj,
   });
@@ -86,7 +92,7 @@ export interface Outpost {
   Name?: string;
 
   /**
-   * <p>The Outpost description.</p>
+   * <p>The description of the Outpost.</p>
    */
   Description?: string;
 
@@ -114,6 +120,9 @@ export interface Outpost {
 }
 
 export namespace Outpost {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Outpost): any => ({
     ...obj,
   });
@@ -127,6 +136,9 @@ export interface CreateOutpostOutput {
 }
 
 export namespace CreateOutpostOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateOutpostOutput): any => ({
     ...obj,
   });
@@ -142,6 +154,9 @@ export interface InternalServerException extends __SmithyException, $MetadataBea
 }
 
 export namespace InternalServerException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerException): any => ({
     ...obj,
   });
@@ -157,6 +172,9 @@ export interface NotFoundException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotFoundException): any => ({
     ...obj,
   });
@@ -172,6 +190,9 @@ export interface ServiceQuotaExceededException extends __SmithyException, $Metad
 }
 
 export namespace ServiceQuotaExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceQuotaExceededException): any => ({
     ...obj,
   });
@@ -187,6 +208,9 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
@@ -200,6 +224,9 @@ export interface DeleteOutpostInput {
 }
 
 export namespace DeleteOutpostInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteOutpostInput): any => ({
     ...obj,
   });
@@ -208,6 +235,9 @@ export namespace DeleteOutpostInput {
 export interface DeleteOutpostOutput {}
 
 export namespace DeleteOutpostOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteOutpostOutput): any => ({
     ...obj,
   });
@@ -221,6 +251,9 @@ export interface DeleteSiteInput {
 }
 
 export namespace DeleteSiteInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSiteInput): any => ({
     ...obj,
   });
@@ -229,6 +262,9 @@ export namespace DeleteSiteInput {
 export interface DeleteSiteOutput {}
 
 export namespace DeleteSiteOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSiteOutput): any => ({
     ...obj,
   });
@@ -242,6 +278,9 @@ export interface GetOutpostInput {
 }
 
 export namespace GetOutpostInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOutpostInput): any => ({
     ...obj,
   });
@@ -255,6 +294,9 @@ export interface GetOutpostOutput {
 }
 
 export namespace GetOutpostOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOutpostOutput): any => ({
     ...obj,
   });
@@ -278,6 +320,9 @@ export interface GetOutpostInstanceTypesInput {
 }
 
 export namespace GetOutpostInstanceTypesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOutpostInstanceTypesInput): any => ({
     ...obj,
   });
@@ -294,6 +339,9 @@ export interface InstanceTypeItem {
 }
 
 export namespace InstanceTypeItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceTypeItem): any => ({
     ...obj,
   });
@@ -322,6 +370,9 @@ export interface GetOutpostInstanceTypesOutput {
 }
 
 export namespace GetOutpostInstanceTypesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOutpostInstanceTypesOutput): any => ({
     ...obj,
   });
@@ -340,6 +391,9 @@ export interface ListOutpostsInput {
 }
 
 export namespace ListOutpostsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListOutpostsInput): any => ({
     ...obj,
   });
@@ -358,6 +412,9 @@ export interface ListOutpostsOutput {
 }
 
 export namespace ListOutpostsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListOutpostsOutput): any => ({
     ...obj,
   });
@@ -376,6 +433,9 @@ export interface ListSitesInput {
 }
 
 export namespace ListSitesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSitesInput): any => ({
     ...obj,
   });
@@ -412,6 +472,9 @@ export interface Site {
 }
 
 export namespace Site {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Site): any => ({
     ...obj,
   });
@@ -430,7 +493,106 @@ export interface ListSitesOutput {
 }
 
 export namespace ListSitesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSitesOutput): any => ({
+    ...obj,
+  });
+}
+
+export interface ListTagsForResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the resource.</p>
+   */
+  ResourceArn: string | undefined;
+}
+
+export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListTagsForResourceResponse {
+  /**
+   * <p>The resource tags.</p>
+   */
+  Tags?: { [key: string]: string };
+}
+
+export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface TagResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the resource.</p>
+   */
+  ResourceArn: string | undefined;
+
+  /**
+   * <p>The tags to add to the resource.</p>
+   */
+  Tags: { [key: string]: string } | undefined;
+}
+
+export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagResourceResponse {}
+
+export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface UntagResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the resource.</p>
+   */
+  ResourceArn: string | undefined;
+
+  /**
+   * <p>The tag keys.</p>
+   */
+  TagKeys: string[] | undefined;
+}
+
+export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface UntagResourceResponse {}
+
+export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
 }

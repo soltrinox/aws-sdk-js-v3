@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateChannelClassCommandInput = UpdateChannelClassRequest;
-export type UpdateChannelClassCommandOutput = UpdateChannelClassResponse & __MetadataBearer;
+export interface UpdateChannelClassCommandInput extends UpdateChannelClassRequest {}
+export interface UpdateChannelClassCommandOutput extends UpdateChannelClassResponse, __MetadataBearer {}
 
 /**
  * Changes the class of the channel.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, UpdateChannelClassCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, UpdateChannelClassCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new UpdateChannelClassCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateChannelClassCommandInput} for command's `input` shape.
+ * @see {@link UpdateChannelClassCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateChannelClassCommand extends $Command<
   UpdateChannelClassCommandInput,

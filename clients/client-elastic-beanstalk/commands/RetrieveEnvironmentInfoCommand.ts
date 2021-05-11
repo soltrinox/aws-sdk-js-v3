@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RetrieveEnvironmentInfoCommandInput = RetrieveEnvironmentInfoMessage;
-export type RetrieveEnvironmentInfoCommandOutput = RetrieveEnvironmentInfoResultMessage & __MetadataBearer;
+export interface RetrieveEnvironmentInfoCommandInput extends RetrieveEnvironmentInfoMessage {}
+export interface RetrieveEnvironmentInfoCommandOutput extends RetrieveEnvironmentInfoResultMessage, __MetadataBearer {}
 
 /**
  * <p>Retrieves the compiled information from a <a>RequestEnvironmentInfo</a>
@@ -31,6 +31,20 @@ export type RetrieveEnvironmentInfoCommandOutput = RetrieveEnvironmentInfoResult
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticBeanstalkClient, RetrieveEnvironmentInfoCommand } from "@aws-sdk/client-elastic-beanstalk"; // ES Modules import
+ * // const { ElasticBeanstalkClient, RetrieveEnvironmentInfoCommand } = require("@aws-sdk/client-elastic-beanstalk"); // CommonJS import
+ * const client = new ElasticBeanstalkClient(config);
+ * const command = new RetrieveEnvironmentInfoCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RetrieveEnvironmentInfoCommandInput} for command's `input` shape.
+ * @see {@link RetrieveEnvironmentInfoCommandOutput} for command's `response` shape.
+ * @see {@link ElasticBeanstalkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RetrieveEnvironmentInfoCommand extends $Command<
   RetrieveEnvironmentInfoCommandInput,

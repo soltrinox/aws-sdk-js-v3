@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEventsForOrganizationCommandInput = DescribeEventsForOrganizationRequest;
-export type DescribeEventsForOrganizationCommandOutput = DescribeEventsForOrganizationResponse & __MetadataBearer;
+export interface DescribeEventsForOrganizationCommandInput extends DescribeEventsForOrganizationRequest {}
+export interface DescribeEventsForOrganizationCommandOutput
+  extends DescribeEventsForOrganizationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns information about events across your organization in AWS Organizations. You can use
@@ -49,10 +51,24 @@ export type DescribeEventsForOrganizationCommandOutput = DescribeEventsForOrgani
  *          <p>For more information about the different types of AWS Health events, see <a href="https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html">Event</a>.</p>
  *          <p>Before you can call this operation, you must first enable AWS Health to work with
  *          AWS Organizations. To do this, call the <a href="https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html">EnableHealthServiceAccessForOrganization</a> operation from your organization's
- *          master AWS account.</p>
+ *          management account.</p>
  *          <note>
  *             <p>This API operation uses pagination. Specify the <code>nextToken</code> parameter in the next request to return more results.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { HealthClient, DescribeEventsForOrganizationCommand } from "@aws-sdk/client-health"; // ES Modules import
+ * // const { HealthClient, DescribeEventsForOrganizationCommand } = require("@aws-sdk/client-health"); // CommonJS import
+ * const client = new HealthClient(config);
+ * const command = new DescribeEventsForOrganizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEventsForOrganizationCommandInput} for command's `input` shape.
+ * @see {@link DescribeEventsForOrganizationCommandOutput} for command's `response` shape.
+ * @see {@link HealthClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEventsForOrganizationCommand extends $Command<
   DescribeEventsForOrganizationCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestartSimulationJobCommandInput = RestartSimulationJobRequest;
-export type RestartSimulationJobCommandOutput = RestartSimulationJobResponse & __MetadataBearer;
+export interface RestartSimulationJobCommandInput extends RestartSimulationJobRequest {}
+export interface RestartSimulationJobCommandOutput extends RestartSimulationJobResponse, __MetadataBearer {}
 
 /**
  * <p>Restarts a running simulation job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RoboMakerClient, RestartSimulationJobCommand } from "@aws-sdk/client-robomaker"; // ES Modules import
+ * // const { RoboMakerClient, RestartSimulationJobCommand } = require("@aws-sdk/client-robomaker"); // CommonJS import
+ * const client = new RoboMakerClient(config);
+ * const command = new RestartSimulationJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestartSimulationJobCommandInput} for command's `input` shape.
+ * @see {@link RestartSimulationJobCommandOutput} for command's `response` shape.
+ * @see {@link RoboMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestartSimulationJobCommand extends $Command<
   RestartSimulationJobCommandInput,

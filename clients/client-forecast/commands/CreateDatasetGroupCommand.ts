@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDatasetGroupCommandInput = CreateDatasetGroupRequest;
-export type CreateDatasetGroupCommandOutput = CreateDatasetGroupResponse & __MetadataBearer;
+export interface CreateDatasetGroupCommandInput extends CreateDatasetGroupRequest {}
+export interface CreateDatasetGroupCommandOutput extends CreateDatasetGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a dataset group, which holds a collection of related datasets. You can add
@@ -31,6 +31,20 @@ export type CreateDatasetGroupCommandOutput = CreateDatasetGroupResponse & __Met
  *             <p>The <code>Status</code> of a dataset group must be <code>ACTIVE</code> before you can
  *          use the dataset group to create a predictor. To get the status, use the <a>DescribeDatasetGroup</a> operation.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ForecastClient, CreateDatasetGroupCommand } from "@aws-sdk/client-forecast"; // ES Modules import
+ * // const { ForecastClient, CreateDatasetGroupCommand } = require("@aws-sdk/client-forecast"); // CommonJS import
+ * const client = new ForecastClient(config);
+ * const command = new CreateDatasetGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDatasetGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateDatasetGroupCommandOutput} for command's `response` shape.
+ * @see {@link ForecastClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDatasetGroupCommand extends $Command<
   CreateDatasetGroupCommandInput,

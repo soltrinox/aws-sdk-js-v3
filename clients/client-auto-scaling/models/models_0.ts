@@ -12,6 +12,9 @@ export interface ActiveInstanceRefreshNotFoundFault extends __SmithyException, $
 }
 
 export namespace ActiveInstanceRefreshNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActiveInstanceRefreshNotFoundFault): any => ({
     ...obj,
   });
@@ -86,9 +89,23 @@ export interface Activity {
    * <p>The details about the activity.</p>
    */
   Details?: string;
+
+  /**
+   * <p>The state of the Auto Scaling group, which is either <code>InService</code> or
+   *                 <code>Deleted</code>.</p>
+   */
+  AutoScalingGroupState?: string;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the Auto Scaling group.</p>
+   */
+  AutoScalingGroupARN?: string;
 }
 
 export namespace Activity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Activity): any => ({
     ...obj,
   });
@@ -111,6 +128,9 @@ export interface ActivitiesType {
 }
 
 export namespace ActivitiesType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActivitiesType): any => ({
     ...obj,
   });
@@ -124,6 +144,9 @@ export interface ActivityType {
 }
 
 export namespace ActivityType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActivityType): any => ({
     ...obj,
   });
@@ -141,6 +164,9 @@ export interface AdjustmentType {
 }
 
 export namespace AdjustmentType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AdjustmentType): any => ({
     ...obj,
   });
@@ -162,6 +188,9 @@ export interface Alarm {
 }
 
 export namespace Alarm {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Alarm): any => ({
     ...obj,
   });
@@ -180,6 +209,9 @@ export interface AlreadyExistsFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace AlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlreadyExistsFault): any => ({
     ...obj,
   });
@@ -198,6 +230,9 @@ export interface AttachInstancesQuery {
 }
 
 export namespace AttachInstancesQuery {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AttachInstancesQuery): any => ({
     ...obj,
   });
@@ -217,6 +252,9 @@ export interface ResourceContentionFault extends __SmithyException, $MetadataBea
 }
 
 export namespace ResourceContentionFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceContentionFault): any => ({
     ...obj,
   });
@@ -232,6 +270,9 @@ export interface ServiceLinkedRoleFailure extends __SmithyException, $MetadataBe
 }
 
 export namespace ServiceLinkedRoleFailure {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceLinkedRoleFailure): any => ({
     ...obj,
   });
@@ -240,6 +281,9 @@ export namespace ServiceLinkedRoleFailure {
 export interface AttachLoadBalancersResultType {}
 
 export namespace AttachLoadBalancersResultType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AttachLoadBalancersResultType): any => ({
     ...obj,
   });
@@ -258,6 +302,9 @@ export interface AttachLoadBalancersType {
 }
 
 export namespace AttachLoadBalancersType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AttachLoadBalancersType): any => ({
     ...obj,
   });
@@ -266,6 +313,9 @@ export namespace AttachLoadBalancersType {
 export interface AttachLoadBalancerTargetGroupsResultType {}
 
 export namespace AttachLoadBalancerTargetGroupsResultType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AttachLoadBalancerTargetGroupsResultType): any => ({
     ...obj,
   });
@@ -285,6 +335,9 @@ export interface AttachLoadBalancerTargetGroupsType {
 }
 
 export namespace AttachLoadBalancerTargetGroupsType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AttachLoadBalancerTargetGroupsType): any => ({
     ...obj,
   });
@@ -311,6 +364,9 @@ export interface FailedScheduledUpdateGroupActionRequest {
 }
 
 export namespace FailedScheduledUpdateGroupActionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FailedScheduledUpdateGroupActionRequest): any => ({
     ...obj,
   });
@@ -325,6 +381,9 @@ export interface BatchDeleteScheduledActionAnswer {
 }
 
 export namespace BatchDeleteScheduledActionAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDeleteScheduledActionAnswer): any => ({
     ...obj,
   });
@@ -344,6 +403,9 @@ export interface BatchDeleteScheduledActionType {
 }
 
 export namespace BatchDeleteScheduledActionType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDeleteScheduledActionType): any => ({
     ...obj,
   });
@@ -358,6 +420,9 @@ export interface BatchPutScheduledUpdateGroupActionAnswer {
 }
 
 export namespace BatchPutScheduledUpdateGroupActionAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchPutScheduledUpdateGroupActionAnswer): any => ({
     ...obj,
   });
@@ -365,8 +430,6 @@ export namespace BatchPutScheduledUpdateGroupActionAnswer {
 
 /**
  * <p>Describes information used for one or more scheduled scaling action updates in a <a>BatchPutScheduledUpdateGroupAction</a> operation.</p>
- *         <p>When updating a scheduled scaling action, all optional parameters are left unchanged
- *             if not specified.</p>
  */
 export interface ScheduledUpdateGroupActionRequest {
   /**
@@ -386,8 +449,7 @@ export interface ScheduledUpdateGroupActionRequest {
   StartTime?: Date;
 
   /**
-   * <p>The date and time for the recurring schedule to end. Amazon EC2 Auto Scaling does not perform the
-   *             action after this time.</p>
+   * <p>The date and time for the recurring schedule to end, in UTC.</p>
    */
   EndTime?: Date;
 
@@ -399,6 +461,7 @@ export interface ScheduledUpdateGroupActionRequest {
    *         <p>When <code>StartTime</code> and <code>EndTime</code> are specified with
    *                 <code>Recurrence</code>, they form the boundaries of when the recurring action
    *             starts and stops.</p>
+   *         <p>Cron expressions use Universal Coordinated Time (UTC) by default.</p>
    */
   Recurrence?: string;
 
@@ -417,9 +480,21 @@ export interface ScheduledUpdateGroupActionRequest {
    *             action runs and the capacity it attempts to maintain.</p>
    */
   DesiredCapacity?: number;
+
+  /**
+   * <p>Specifies the time zone for a cron expression. If a time zone is not provided, UTC is
+   *             used by default. </p>
+   *         <p>Valid values are the canonical names of the IANA time zones, derived from the IANA
+   *             Time Zone Database (such as <code>Etc/GMT+9</code> or <code>Pacific/Tahiti</code>). For
+   *             more information, see <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</a>.</p>
+   */
+  TimeZone?: string;
 }
 
 export namespace ScheduledUpdateGroupActionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledUpdateGroupActionRequest): any => ({
     ...obj,
   });
@@ -438,6 +513,9 @@ export interface BatchPutScheduledUpdateGroupActionType {
 }
 
 export namespace BatchPutScheduledUpdateGroupActionType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchPutScheduledUpdateGroupActionType): any => ({
     ...obj,
   });
@@ -459,6 +537,9 @@ export interface LimitExceededFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace LimitExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededFault): any => ({
     ...obj,
   });
@@ -472,6 +553,9 @@ export interface CancelInstanceRefreshAnswer {
 }
 
 export namespace CancelInstanceRefreshAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelInstanceRefreshAnswer): any => ({
     ...obj,
   });
@@ -485,6 +569,9 @@ export interface CancelInstanceRefreshType {
 }
 
 export namespace CancelInstanceRefreshType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelInstanceRefreshType): any => ({
     ...obj,
   });
@@ -493,6 +580,9 @@ export namespace CancelInstanceRefreshType {
 export interface CompleteLifecycleActionAnswer {}
 
 export namespace CompleteLifecycleActionAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompleteLifecycleActionAnswer): any => ({
     ...obj,
   });
@@ -529,6 +619,9 @@ export interface CompleteLifecycleActionType {
 }
 
 export namespace CompleteLifecycleActionType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompleteLifecycleActionType): any => ({
     ...obj,
   });
@@ -559,7 +652,8 @@ export interface LaunchTemplateSpecification {
   LaunchTemplateName?: string;
 
   /**
-   * <p>The version number, <code>$Latest</code>, or <code>$Default</code>. To get the version number, use the Amazon EC2 <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplateVersions.html">DescribeLaunchTemplateVersions</a> API operation. New launch template versions
+   * <p>The version number, <code>$Latest</code>, or <code>$Default</code>. To get the version
+   *             number, use the Amazon EC2 <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplateVersions.html">DescribeLaunchTemplateVersions</a> API operation. New launch template versions
    *             can be created using the Amazon EC2 <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLaunchTemplateVersion.html">CreateLaunchTemplateVersion</a> API. If the value is <code>$Latest</code>,
    *             Amazon EC2 Auto Scaling selects the latest version of the launch template when launching instances. If
    *             the value is <code>$Default</code>, Amazon EC2 Auto Scaling selects the default version of the launch
@@ -569,6 +663,9 @@ export interface LaunchTemplateSpecification {
 }
 
 export namespace LaunchTemplateSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LaunchTemplateSpecification): any => ({
     ...obj,
   });
@@ -668,6 +765,9 @@ export interface LifecycleHookSpecification {
 }
 
 export namespace LifecycleHookSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleHookSpecification): any => ({
     ...obj,
   });
@@ -690,11 +790,11 @@ export interface InstancesDistribution {
   /**
    * <p>Indicates how to allocate instance types to fulfill On-Demand capacity. The only valid
    *             value is <code>prioritized</code>, which is also the default value. This strategy uses
-   *             the order of instance types in the overrides to define the launch priority of each
-   *             instance type. The first instance type in the array is prioritized higher than the last.
-   *             If all your On-Demand capacity cannot be fulfilled using your highest priority instance,
-   *             then the Auto Scaling groups launches the remaining capacity using the second priority instance
-   *             type, and so on.</p>
+   *             the order of instance types in the <code>LaunchTemplateOverrides</code> to define the
+   *             launch priority of each instance type. The first instance type in the array is
+   *             prioritized higher than the last. If all your On-Demand capacity cannot be fulfilled
+   *             using your highest priority instance, then the Auto Scaling groups launches the remaining
+   *             capacity using the second priority instance type, and so on.</p>
    */
   OnDemandAllocationStrategy?: string;
 
@@ -716,13 +816,18 @@ export interface InstancesDistribution {
   OnDemandPercentageAboveBaseCapacity?: number;
 
   /**
-   * <p>Indicates how to allocate instances across Spot Instance pools. If the allocation
-   *             strategy is <code>capacity-optimized</code> (recommended), the Auto Scaling group launches
-   *             instances using Spot pools that are optimally chosen based on the available Spot
-   *             capacity. If the allocation strategy is <code>lowest-price</code>, the Auto Scaling group
-   *             launches instances using the Spot pools with the lowest price, and evenly allocates your
+   * <p>Indicates how to allocate instances across Spot Instance pools. </p>
+   *         <p>If the allocation strategy is <code>lowest-price</code>, the Auto Scaling group launches
+   *             instances using the Spot pools with the lowest price, and evenly allocates your
    *             instances across the number of Spot pools that you specify. Defaults to
    *                 <code>lowest-price</code> if not specified.</p>
+   *         <p>If the allocation strategy is <code>capacity-optimized</code> (recommended), the Auto Scaling
+   *             group launches instances using Spot pools that are optimally chosen based on the
+   *             available Spot capacity. Alternatively, you can use
+   *                 <code>capacity-optimized-prioritized</code> and set the order of instance types in
+   *             the list of launch template overrides from highest to lowest priority (from first to
+   *             last in the list). Amazon EC2 Auto Scaling honors the instance type priorities on a best-effort basis
+   *             but optimizes for capacity first. </p>
    */
   SpotAllocationStrategy?: string;
 
@@ -744,6 +849,9 @@ export interface InstancesDistribution {
 }
 
 export namespace InstancesDistribution {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstancesDistribution): any => ({
     ...obj,
   });
@@ -751,7 +859,10 @@ export namespace InstancesDistribution {
 
 /**
  * <p>Describes an override for a launch template. The maximum number of instance types that
- *             can be associated with an Auto Scaling group is 20. For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-override-options.html">Configuring overrides</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>. </p>
+ *             can be associated with an Auto Scaling group is 40. The maximum number of distinct launch
+ *             templates you can define for an Auto Scaling group is 20. For more information about configuring
+ *             overrides, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-override-options.html">Configuring
+ *                 overrides</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>. </p>
  */
 export interface LaunchTemplateOverrides {
   /**
@@ -787,6 +898,9 @@ export interface LaunchTemplateOverrides {
 }
 
 export namespace LaunchTemplateOverrides {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LaunchTemplateOverrides): any => ({
     ...obj,
   });
@@ -794,7 +908,7 @@ export namespace LaunchTemplateOverrides {
 
 /**
  * <p>Describes a launch template and overrides. </p>
- *         <p>You specify these parameters as part of a mixed instances policy. </p>
+ *         <p>You specify these properties as part of a mixed instances policy. </p>
  *         <p>When you update the launch template or overrides, existing Amazon EC2 instances continue to
  *             run. When scale out occurs, Amazon EC2 Auto Scaling launches instances to match the new settings. When
  *             scale in occurs, Amazon EC2 Auto Scaling terminates instances according to the group's termination
@@ -807,7 +921,7 @@ export interface LaunchTemplate {
   LaunchTemplateSpecification?: LaunchTemplateSpecification;
 
   /**
-   * <p>Any parameters that you specify override the same parameters in the launch template.
+   * <p>Any properties that you specify override the same properties in the launch template.
    *             If not provided, Amazon EC2 Auto Scaling uses the instance type specified in the launch template when
    *             it launches an instance. </p>
    */
@@ -815,6 +929,9 @@ export interface LaunchTemplate {
 }
 
 export namespace LaunchTemplate {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LaunchTemplate): any => ({
     ...obj,
   });
@@ -828,7 +945,7 @@ export namespace LaunchTemplate {
  *                 Guide</i>.</p>
  *         <p>You can create a mixed instances policy for a new Auto Scaling group, or you can create it for
  *             an existing group by updating the group to specify <code>MixedInstancesPolicy</code> as
- *             the top-level parameter instead of a launch configuration or launch template.</p>
+ *             the top-level property instead of a launch configuration or launch template.</p>
  */
 export interface MixedInstancesPolicy {
   /**
@@ -839,13 +956,16 @@ export interface MixedInstancesPolicy {
   LaunchTemplate?: LaunchTemplate;
 
   /**
-   * <p>Specifies the instances distribution. If not provided, the value for each parameter in
+   * <p>Specifies the instances distribution. If not provided, the value for each property in
    *                 <code>InstancesDistribution</code> uses a default value.</p>
    */
   InstancesDistribution?: InstancesDistribution;
 }
 
 export namespace MixedInstancesPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MixedInstancesPolicy): any => ({
     ...obj,
   });
@@ -884,6 +1004,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -904,8 +1027,7 @@ export interface CreateAutoScalingGroupType {
   LaunchConfigurationName?: string;
 
   /**
-   * <p>Parameters used to specify the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-launchtemplate.html">launch
-   *                 template</a> and version to use to launch instances. </p>
+   * <p>Parameters used to specify the launch template and version to use to launch instances. </p>
    *         <p>Conditional: You must specify either a launch template (<code>LaunchTemplate</code> or
    *                 <code>MixedInstancesPolicy</code>) or a launch configuration
    *                 (<code>LaunchConfigurationName</code> or <code>InstanceId</code>).</p>
@@ -919,13 +1041,13 @@ export interface CreateAutoScalingGroupType {
   LaunchTemplate?: LaunchTemplateSpecification;
 
   /**
-   * <p>An embedded object that specifies a mixed instances policy. The required parameters
-   *             must be specified. If optional parameters are unspecified, their default values are
+   * <p>An embedded object that specifies a mixed instances policy. The required properties
+   *             must be specified. If optional properties are unspecified, their default values are
    *             used.</p>
-   *         <p>The policy includes parameters that not only define the distribution of On-Demand
+   *         <p>The policy includes properties that not only define the distribution of On-Demand
    *             Instances and Spot Instances, the maximum price to pay for Spot Instances, and how the
    *             Auto Scaling group allocates instance types to fulfill On-Demand and Spot capacities, but also
-   *             the parameters that specify the instance configuration information—the launch template
+   *             the properties that specify the instance configuration information—the launch template
    *             and instance types. The policy can also include a weight for each instance type and
    *             different launch templates for individual instance types. For more information, see
    *                 <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html">Auto Scaling groups with multiple
@@ -1085,8 +1207,8 @@ export interface CreateAutoScalingGroupType {
 
   /**
    * <p>The Amazon Resource Name (ARN) of the service-linked role that the Auto Scaling group uses to
-   *             call other AWS services on your behalf. By default, Amazon EC2 Auto Scaling uses a service-linked role
-   *             named AWSServiceRoleForAutoScaling, which it creates if it does not exist. For more
+   *             call other AWS services on your behalf. By default, Amazon EC2 Auto Scaling uses a service-linked
+   *             role named AWSServiceRoleForAutoScaling, which it creates if it does not exist. For more
    *             information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-service-linked-role.html">Service-linked
    *                 roles</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>.</p>
    */
@@ -1102,6 +1224,9 @@ export interface CreateAutoScalingGroupType {
 }
 
 export namespace CreateAutoScalingGroupType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAutoScalingGroupType): any => ({
     ...obj,
   });
@@ -1137,8 +1262,7 @@ export interface Ebs {
    *             Provisioned IOPS SSD, <code>gp2</code> for General Purpose SSD, <code>st1</code> for
    *             Throughput Optimized HDD, or <code>sc1</code> for Cold HDD. For more information, see
    *                 <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon
-   *                 EBS Volume Types</a> in the <i>Amazon EC2 User Guide for Linux
-   *                 Instances</i>.</p>
+   *                 EBS Volume Types</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
    *         <p>Valid Values: <code>standard</code> | <code>io1</code> | <code>gp2</code> |
    *                 <code>st1</code> | <code>sc1</code>
    *          </p>
@@ -1180,8 +1304,7 @@ export interface Ebs {
    *                 encrypted.</p>
    *         </note>
    *         <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html">Using Encryption with EBS-Backed
-   *                 AMIs</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>
-   *             and <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/key-policy-requirements-EBS-encryption.html">Required
+   *                 AMIs</a> in the <i>Amazon EC2 User Guide for Linux Instances</i> and <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/key-policy-requirements-EBS-encryption.html">Required
    *                 CMK key policy for use with encrypted volumes</a> in the
    *                 <i>Amazon EC2 Auto Scaling User Guide</i>.</p>
    */
@@ -1189,6 +1312,9 @@ export interface Ebs {
 }
 
 export namespace Ebs {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Ebs): any => ({
     ...obj,
   });
@@ -1208,8 +1334,7 @@ export interface BlockDeviceMapping {
   /**
    * <p>The device name exposed to the EC2 instance (for example, <code>/dev/sdh</code> or
    *                 <code>xvdh</code>). For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html">Device Naming on Linux
-   *                 Instances</a> in the <i>Amazon EC2 User Guide for Linux
-   *                 Instances</i>.</p>
+   *                 Instances</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
    */
   DeviceName: string | undefined;
 
@@ -1232,6 +1357,9 @@ export interface BlockDeviceMapping {
 }
 
 export namespace BlockDeviceMapping {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BlockDeviceMapping): any => ({
     ...obj,
   });
@@ -1249,6 +1377,9 @@ export interface InstanceMonitoring {
 }
 
 export namespace InstanceMonitoring {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceMonitoring): any => ({
     ...obj,
   });
@@ -1288,7 +1419,6 @@ export interface InstanceMetadataOptions {
    * <p>The desired HTTP PUT response hop limit for instance metadata requests. The larger the
    *             number, the further instance metadata requests can travel.</p>
    *         <p>Default: 1</p>
-   *         <p>Possible values: Integers from 1 to 64</p>
    */
   HttpPutResponseHopLimit?: number;
 
@@ -1304,6 +1434,9 @@ export interface InstanceMetadataOptions {
 }
 
 export namespace InstanceMetadataOptions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceMetadataOptions): any => ({
     ...obj,
   });
@@ -1338,8 +1471,7 @@ export interface CreateLaunchConfigurationType {
    *                 User Guide</i>.</p>
    *         <p>[EC2-Classic] Specify either the security group names or the security group IDs. For
    *             more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">Amazon EC2 Security
-   *                 Groups</a> in the <i>Amazon EC2 User Guide for Linux
-   *             Instances</i>.</p>
+   *                 Groups</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
    */
   SecurityGroups?: string[];
 
@@ -1363,9 +1495,11 @@ export interface CreateLaunchConfigurationType {
   ClassicLinkVPCSecurityGroups?: string[];
 
   /**
-   * <p>The Base64-encoded user data to make available to the launched EC2 instances. For more
-   *             information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance metadata and user
-   *                 data</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
+   * <p>The user data to make available to the launched EC2 instances. For more information,
+   *             see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance metadata and user data</a> (Linux) and <a href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html">Instance metadata and
+   *                 user data</a> (Windows). If you are using a command line tool, base64-encoding
+   *             is performed for you, and you can load the text from a file. Otherwise, you must provide
+   *             base64-encoded text. User data is limited to 16 KB.</p>
    */
   UserData?: string;
 
@@ -1386,9 +1520,7 @@ export interface CreateLaunchConfigurationType {
   /**
    * <p>Specifies the instance type of the EC2 instance.</p>
    *         <p>For information about available instance types, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes">Available
-   *                 Instance Types</a> in the <i>Amazon EC2 User Guide for Linux
-   *                 Instances.</i>
-   *          </p>
+   *                 Instance Types</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
    *         <p>If you do not specify <code>InstanceId</code>, you must specify
    *                 <code>InstanceType</code>.</p>
    */
@@ -1407,8 +1539,7 @@ export interface CreateLaunchConfigurationType {
   /**
    * <p>A block device mapping, which specifies the block devices for the instance. You can
    *             specify virtual devices and EBS volumes. For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html">Block Device
-   *                 Mapping</a> in the <i>Amazon EC2 User Guide for Linux
-   *                 Instances</i>.</p>
+   *                 Mapping</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
    */
   BlockDeviceMappings?: BlockDeviceMapping[];
 
@@ -1454,8 +1585,7 @@ export interface CreateLaunchConfigurationType {
    *             performance. This optimization is not available with all instance types. Additional fees
    *             are incurred when you enable EBS optimization for an instance type that is not
    *             EBS-optimized by default. For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html">Amazon EBS-Optimized
-   *                 Instances</a> in the <i>Amazon EC2 User Guide for Linux
-   *                 Instances</i>.</p>
+   *                 Instances</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
    *         <p>The default value is <code>false</code>.</p>
    */
   EbsOptimized?: boolean;
@@ -1486,8 +1616,9 @@ export interface CreateLaunchConfigurationType {
    *             parameter to <code>dedicated</code>.</p>
    *         <p>If you specify <code>PlacementTenancy</code>, you must specify at least one subnet for
    *                 <code>VPCZoneIdentifier</code> when you create your group.</p>
-   *         <p>For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-dedicated-instances.html">Configuring instance tenancy with Amazon EC2 Auto Scaling</a> in the
-   *                 <i>Amazon EC2 Auto Scaling User Guide</i>.</p>
+   *         <p>For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-dedicated-instances.html">Configuring
+   *                 instance tenancy with Amazon EC2 Auto Scaling</a> in the
+   *             <i>Amazon EC2 Auto Scaling User Guide</i>.</p>
    *         <p>Valid Values: <code>default</code> | <code>dedicated</code>
    *         </p>
    */
@@ -1501,6 +1632,9 @@ export interface CreateLaunchConfigurationType {
 }
 
 export namespace CreateLaunchConfigurationType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLaunchConfigurationType): any => ({
     ...obj,
   });
@@ -1514,6 +1648,9 @@ export interface CreateOrUpdateTagsType {
 }
 
 export namespace CreateOrUpdateTagsType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateOrUpdateTagsType): any => ({
     ...obj,
   });
@@ -1532,6 +1669,9 @@ export interface ResourceInUseFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ResourceInUseFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceInUseFault): any => ({
     ...obj,
   });
@@ -1546,12 +1686,15 @@ export interface DeleteAutoScalingGroupType {
   /**
    * <p>Specifies that the group is to be deleted along with all instances associated with the
    *             group, without waiting for all instances to be terminated. This parameter also deletes
-   *             any lifecycle actions associated with the group.</p>
+   *             any outstanding lifecycle actions associated with the group.</p>
    */
   ForceDelete?: boolean;
 }
 
 export namespace DeleteAutoScalingGroupType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAutoScalingGroupType): any => ({
     ...obj,
   });
@@ -1571,6 +1714,9 @@ export interface ScalingActivityInProgressFault extends __SmithyException, $Meta
 }
 
 export namespace ScalingActivityInProgressFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScalingActivityInProgressFault): any => ({
     ...obj,
   });
@@ -1584,6 +1730,9 @@ export interface LaunchConfigurationNameType {
 }
 
 export namespace LaunchConfigurationNameType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LaunchConfigurationNameType): any => ({
     ...obj,
   });
@@ -1592,6 +1741,9 @@ export namespace LaunchConfigurationNameType {
 export interface DeleteLifecycleHookAnswer {}
 
 export namespace DeleteLifecycleHookAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteLifecycleHookAnswer): any => ({
     ...obj,
   });
@@ -1610,6 +1762,9 @@ export interface DeleteLifecycleHookType {
 }
 
 export namespace DeleteLifecycleHookType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteLifecycleHookType): any => ({
     ...obj,
   });
@@ -1629,6 +1784,9 @@ export interface DeleteNotificationConfigurationType {
 }
 
 export namespace DeleteNotificationConfigurationType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteNotificationConfigurationType): any => ({
     ...obj,
   });
@@ -1647,6 +1805,9 @@ export interface DeletePolicyType {
 }
 
 export namespace DeletePolicyType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePolicyType): any => ({
     ...obj,
   });
@@ -1665,6 +1826,9 @@ export interface DeleteScheduledActionType {
 }
 
 export namespace DeleteScheduledActionType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteScheduledActionType): any => ({
     ...obj,
   });
@@ -1678,7 +1842,45 @@ export interface DeleteTagsType {
 }
 
 export namespace DeleteTagsType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteTagsType): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteWarmPoolAnswer {}
+
+export namespace DeleteWarmPoolAnswer {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteWarmPoolAnswer): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteWarmPoolType {
+  /**
+   * <p>The name of the Auto Scaling group.</p>
+   */
+  AutoScalingGroupName: string | undefined;
+
+  /**
+   * <p>Specifies that the warm pool is to be deleted along with all instances associated with
+   *             the warm pool, without waiting for all instances to be terminated. This parameter also
+   *             deletes any outstanding lifecycle actions associated with the warm pool
+   *             instances.</p>
+   */
+  ForceDelete?: boolean;
+}
+
+export namespace DeleteWarmPoolType {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteWarmPoolType): any => ({
     ...obj,
   });
 }
@@ -1691,8 +1893,8 @@ export interface DescribeAccountLimitsAnswer {
   MaxNumberOfAutoScalingGroups?: number;
 
   /**
-   * <p>The maximum number of launch configurations allowed for your AWS account. The default
-   *             is 200 launch configurations per AWS Region.</p>
+   * <p>The maximum number of launch configurations allowed for your AWS account. The
+   *             default is 200 launch configurations per AWS Region.</p>
    */
   MaxNumberOfLaunchConfigurations?: number;
 
@@ -1708,6 +1910,9 @@ export interface DescribeAccountLimitsAnswer {
 }
 
 export namespace DescribeAccountLimitsAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAccountLimitsAnswer): any => ({
     ...obj,
   });
@@ -1721,6 +1926,9 @@ export interface DescribeAdjustmentTypesAnswer {
 }
 
 export namespace DescribeAdjustmentTypesAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAdjustmentTypesAnswer): any => ({
     ...obj,
   });
@@ -1748,6 +1956,9 @@ export interface AutoScalingGroupNamesType {
 }
 
 export namespace AutoScalingGroupNamesType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingGroupNamesType): any => ({
     ...obj,
   });
@@ -1825,6 +2036,41 @@ export interface EnabledMetric {
    *                     <code>GroupTotalCapacity</code>
    *                 </p>
    *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolDesiredCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolWarmedCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolPendingCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolTerminatingCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolTotalCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>GroupAndWarmPoolDesiredCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>GroupAndWarmPoolTotalCapacity</code>
+   *                 </p>
+   *             </li>
    *          </ul>
    */
   Metric?: string;
@@ -1836,6 +2082,9 @@ export interface EnabledMetric {
 }
 
 export namespace EnabledMetric {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnabledMetric): any => ({
     ...obj,
   });
@@ -1855,6 +2104,15 @@ export enum LifecycleState {
   TERMINATING = "Terminating",
   TERMINATING_PROCEED = "Terminating:Proceed",
   TERMINATING_WAIT = "Terminating:Wait",
+  WARMED_PENDING = "Warmed:Pending",
+  WARMED_PENDING_PROCEED = "Warmed:Pending:Proceed",
+  WARMED_PENDING_WAIT = "Warmed:Pending:Wait",
+  WARMED_RUNNING = "Warmed:Running",
+  WARMED_STOPPED = "Warmed:Stopped",
+  WARMED_TERMINATED = "Warmed:Terminated",
+  WARMED_TERMINATING = "Warmed:Terminating",
+  WARMED_TERMINATING_PROCEED = "Warmed:Terminating:Proceed",
+  WARMED_TERMINATING_WAIT = "Warmed:Terminating:Wait",
 }
 
 /**
@@ -1878,7 +2136,8 @@ export interface Instance {
 
   /**
    * <p>A description of the current lifecycle state. The <code>Quarantined</code> state is
-   *             not used.</p>
+   *             not used. For information about lifecycle states, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html">Instance
+   *                 lifecycle</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>. </p>
    */
   LifecycleState: LifecycleState | string | undefined;
 
@@ -1914,6 +2173,9 @@ export interface Instance {
 }
 
 export namespace Instance {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Instance): any => ({
     ...obj,
   });
@@ -1936,6 +2198,9 @@ export interface SuspendedProcess {
 }
 
 export namespace SuspendedProcess {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SuspendedProcess): any => ({
     ...obj,
   });
@@ -1974,7 +2239,55 @@ export interface TagDescription {
 }
 
 export namespace TagDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagDescription): any => ({
+    ...obj,
+  });
+}
+
+export enum WarmPoolState {
+  Running = "Running",
+  Stopped = "Stopped",
+}
+
+export enum WarmPoolStatus {
+  PendingDelete = "PendingDelete",
+}
+
+/**
+ * <p>Describes a warm pool configuration. </p>
+ */
+export interface WarmPoolConfiguration {
+  /**
+   * <p>The total maximum number of instances that are allowed to be in the warm pool or in
+   *             any state except <code>Terminated</code> for the Auto Scaling group.</p>
+   */
+  MaxGroupPreparedCapacity?: number;
+
+  /**
+   * <p>The minimum number of instances to maintain in the warm pool.</p>
+   */
+  MinSize?: number;
+
+  /**
+   * <p>The instance state to transition to after the lifecycle actions are complete:
+   *                 <code>Stopped</code> or <code>Running</code>.</p>
+   */
+  PoolState?: WarmPoolState | string;
+
+  /**
+   * <p>The status of a warm pool that is marked for deletion.</p>
+   */
+  Status?: WarmPoolStatus | string;
+}
+
+export namespace WarmPoolConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: WarmPoolConfiguration): any => ({
     ...obj,
   });
 }
@@ -2125,9 +2438,22 @@ export interface AutoScalingGroup {
    * <p>Indicates whether Capacity Rebalancing is enabled.</p>
    */
   CapacityRebalance?: boolean;
+
+  /**
+   * <p>The warm pool for the group.</p>
+   */
+  WarmPoolConfiguration?: WarmPoolConfiguration;
+
+  /**
+   * <p>The current size of the warm pool.</p>
+   */
+  WarmPoolSize?: number;
 }
 
 export namespace AutoScalingGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingGroup): any => ({
     ...obj,
   });
@@ -2149,6 +2475,9 @@ export interface AutoScalingGroupsType {
 }
 
 export namespace AutoScalingGroupsType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingGroupsType): any => ({
     ...obj,
   });
@@ -2167,6 +2496,9 @@ export interface InvalidNextToken extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidNextToken {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextToken): any => ({
     ...obj,
   });
@@ -2197,7 +2529,20 @@ export interface AutoScalingInstanceDetails {
   AvailabilityZone: string | undefined;
 
   /**
-   * <p>The lifecycle state for the instance.</p>
+   * <p>The lifecycle state for the instance. The <code>Quarantined</code> state is not used.
+   *             For information about lifecycle states, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html">Instance
+   *                 lifecycle</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>. </p>
+   *         <p>Valid Values: <code>Pending</code> | <code>Pending:Wait</code> |
+   *                 <code>Pending:Proceed</code> | <code>Quarantined</code> | <code>InService</code> |
+   *                 <code>Terminating</code> | <code>Terminating:Wait</code> |
+   *                 <code>Terminating:Proceed</code> | <code>Terminated</code> | <code>Detaching</code>
+   *             | <code>Detached</code> | <code>EnteringStandby</code> | <code>Standby</code> |
+   *                 <code>Warmed:Pending</code> | <code>Warmed:Pending:Wait</code> |
+   *                 <code>Warmed:Pending:Proceed</code> | <code>Warmed:Terminating</code> |
+   *                 <code>Warmed:Terminating:Wait</code> | <code>Warmed:Terminating:Proceed</code> |
+   *                 <code>Warmed:Terminated</code> | <code>Warmed:Stopped</code> |
+   *                 <code>Warmed:Running</code>
+   *          </p>
    */
   LifecycleState: string | undefined;
 
@@ -2234,6 +2579,9 @@ export interface AutoScalingInstanceDetails {
 }
 
 export namespace AutoScalingInstanceDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingInstanceDetails): any => ({
     ...obj,
   });
@@ -2255,6 +2603,9 @@ export interface AutoScalingInstancesType {
 }
 
 export namespace AutoScalingInstancesType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingInstancesType): any => ({
     ...obj,
   });
@@ -2282,6 +2633,9 @@ export interface DescribeAutoScalingInstancesType {
 }
 
 export namespace DescribeAutoScalingInstancesType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAutoScalingInstancesType): any => ({
     ...obj,
   });
@@ -2295,7 +2649,94 @@ export interface DescribeAutoScalingNotificationTypesAnswer {
 }
 
 export namespace DescribeAutoScalingNotificationTypesAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAutoScalingNotificationTypesAnswer): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Reports the progress of an instance fresh on instances that are in the Auto Scaling
+ *             group.</p>
+ */
+export interface InstanceRefreshLivePoolProgress {
+  /**
+   * <p>The percentage of instances in the Auto Scaling group that have been replaced. For each
+   *             instance replacement, Amazon EC2 Auto Scaling tracks the instance's health status and warm-up time.
+   *             When the instance's health status changes to healthy and the specified warm-up time
+   *             passes, the instance is considered updated and added to the percentage complete.</p>
+   */
+  PercentageComplete?: number;
+
+  /**
+   * <p>The number of instances remaining to update.</p>
+   */
+  InstancesToUpdate?: number;
+}
+
+export namespace InstanceRefreshLivePoolProgress {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InstanceRefreshLivePoolProgress): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Reports the progress of an instance fresh on instances that are in the warm
+ *             pool.</p>
+ */
+export interface InstanceRefreshWarmPoolProgress {
+  /**
+   * <p>The percentage of instances in the warm pool that have been replaced. For each
+   *             instance replacement, Amazon EC2 Auto Scaling tracks the instance's health status and warm-up time.
+   *             When the instance's health status changes to healthy and the specified warm-up time
+   *             passes, the instance is considered updated and added to the percentage complete.</p>
+   */
+  PercentageComplete?: number;
+
+  /**
+   * <p>The number of instances remaining to update.</p>
+   */
+  InstancesToUpdate?: number;
+}
+
+export namespace InstanceRefreshWarmPoolProgress {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InstanceRefreshWarmPoolProgress): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Reports the progress of an instance refresh on an Auto Scaling group that has a warm pool.
+ *             This includes separate details for instances in the warm pool and instances in the Auto Scaling
+ *             group (the live pool).</p>
+ */
+export interface InstanceRefreshProgressDetails {
+  /**
+   * <p>Indicates the progress of an instance fresh on instances that are in the Auto Scaling
+   *             group.</p>
+   */
+  LivePoolProgress?: InstanceRefreshLivePoolProgress;
+
+  /**
+   * <p>Indicates the progress of an instance fresh on instances that are in the warm
+   *             pool.</p>
+   */
+  WarmPoolProgress?: InstanceRefreshWarmPoolProgress;
+}
+
+export namespace InstanceRefreshProgressDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InstanceRefreshProgressDetails): any => ({
     ...obj,
   });
 }
@@ -2386,9 +2827,17 @@ export interface InstanceRefresh {
    *             complete.</p>
    */
   InstancesToUpdate?: number;
+
+  /**
+   * <p>Additional progress details for an Auto Scaling group that has a warm pool.</p>
+   */
+  ProgressDetails?: InstanceRefreshProgressDetails;
 }
 
 export namespace InstanceRefresh {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceRefresh): any => ({
     ...obj,
   });
@@ -2410,6 +2859,9 @@ export interface DescribeInstanceRefreshesAnswer {
 }
 
 export namespace DescribeInstanceRefreshesAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeInstanceRefreshesAnswer): any => ({
     ...obj,
   });
@@ -2440,6 +2892,9 @@ export interface DescribeInstanceRefreshesType {
 }
 
 export namespace DescribeInstanceRefreshesType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeInstanceRefreshesType): any => ({
     ...obj,
   });
@@ -2466,6 +2921,9 @@ export interface LaunchConfigurationNamesType {
 }
 
 export namespace LaunchConfigurationNamesType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LaunchConfigurationNamesType): any => ({
     ...obj,
   });
@@ -2519,24 +2977,24 @@ export interface LaunchConfiguration {
    * <p>The IDs of one or more security groups for the VPC specified in
    *                 <code>ClassicLinkVPCId</code>.</p>
    *         <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html">ClassicLink</a> in the
-   *                 <i>Amazon EC2 User Guide for Linux Instances</i> and <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink">Linking EC2-Classic instances to a VPC</a> in the
-   *                 <i>Amazon EC2 Auto Scaling User Guide</i>.</p>
+   *                 <i>Amazon EC2 User Guide for Linux Instances</i> and <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink">Linking EC2-Classic
+   *                 instances to a VPC</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>.</p>
    */
   ClassicLinkVPCSecurityGroups?: string[];
 
   /**
-   * <p>The Base64-encoded user data to make available to the launched EC2 instances. For more
-   *             information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance metadata and user
-   *                 data</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
+   * <p>The user data to make available to the launched EC2 instances. For more information,
+   *             see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">Instance metadata and user data</a> (Linux) and <a href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html">Instance metadata and
+   *                 user data</a> (Windows). If you are using a command line tool, base64-encoding
+   *             is performed for you, and you can load the text from a file. Otherwise, you must provide
+   *             base64-encoded text. User data is limited to 16 KB.</p>
    */
   UserData?: string;
 
   /**
    * <p>The instance type for the instances.</p>
    *         <p>For information about available instance types, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes">Available
-   *                 Instance Types</a> in the <i>Amazon EC2 User Guide for Linux
-   *                 Instances.</i>
-   *          </p>
+   *                 Instance Types</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
    */
   InstanceType: string | undefined;
 
@@ -2553,8 +3011,7 @@ export interface LaunchConfiguration {
   /**
    * <p>A block device mapping, which specifies the block devices for the instance. For more
    *             information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html">Block Device
-   *                 Mapping</a> in the <i>Amazon EC2 User Guide for Linux
-   *                 Instances</i>.</p>
+   *                 Mapping</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
    */
   BlockDeviceMappings?: BlockDeviceMapping[];
 
@@ -2591,8 +3048,7 @@ export interface LaunchConfiguration {
   /**
    * <p>Specifies whether the launch configuration is optimized for EBS I/O
    *             (<code>true</code>) or not (<code>false</code>). For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html">Amazon
-   *                 EBS-Optimized Instances</a> in the <i>Amazon EC2 User Guide for Linux
-   *                 Instances</i>.</p>
+   *                 EBS-Optimized Instances</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
    */
   EbsOptimized?: boolean;
 
@@ -2621,6 +3077,9 @@ export interface LaunchConfiguration {
 }
 
 export namespace LaunchConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LaunchConfiguration): any => ({
     ...obj,
   });
@@ -2642,6 +3101,9 @@ export interface LaunchConfigurationsType {
 }
 
 export namespace LaunchConfigurationsType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LaunchConfigurationsType): any => ({
     ...obj,
   });
@@ -2720,6 +3182,9 @@ export interface LifecycleHook {
 }
 
 export namespace LifecycleHook {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleHook): any => ({
     ...obj,
   });
@@ -2733,6 +3198,9 @@ export interface DescribeLifecycleHooksAnswer {
 }
 
 export namespace DescribeLifecycleHooksAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLifecycleHooksAnswer): any => ({
     ...obj,
   });
@@ -2752,6 +3220,9 @@ export interface DescribeLifecycleHooksType {
 }
 
 export namespace DescribeLifecycleHooksType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLifecycleHooksType): any => ({
     ...obj,
   });
@@ -2765,6 +3236,9 @@ export interface DescribeLifecycleHookTypesAnswer {
 }
 
 export namespace DescribeLifecycleHookTypesAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLifecycleHookTypesAnswer): any => ({
     ...obj,
   });
@@ -2790,6 +3264,9 @@ export interface DescribeLoadBalancersRequest {
 }
 
 export namespace DescribeLoadBalancersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLoadBalancersRequest): any => ({
     ...obj,
   });
@@ -2847,6 +3324,9 @@ export interface LoadBalancerState {
 }
 
 export namespace LoadBalancerState {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoadBalancerState): any => ({
     ...obj,
   });
@@ -2868,6 +3348,9 @@ export interface DescribeLoadBalancersResponse {
 }
 
 export namespace DescribeLoadBalancersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLoadBalancersResponse): any => ({
     ...obj,
   });
@@ -2893,6 +3376,9 @@ export interface DescribeLoadBalancerTargetGroupsRequest {
 }
 
 export namespace DescribeLoadBalancerTargetGroupsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLoadBalancerTargetGroupsRequest): any => ({
     ...obj,
   });
@@ -2948,6 +3434,9 @@ export interface LoadBalancerTargetGroupState {
 }
 
 export namespace LoadBalancerTargetGroupState {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoadBalancerTargetGroupState): any => ({
     ...obj,
   });
@@ -2969,6 +3458,9 @@ export interface DescribeLoadBalancerTargetGroupsResponse {
 }
 
 export namespace DescribeLoadBalancerTargetGroupsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLoadBalancerTargetGroupsResponse): any => ({
     ...obj,
   });
@@ -2985,6 +3477,9 @@ export interface MetricGranularityType {
 }
 
 export namespace MetricGranularityType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricGranularityType): any => ({
     ...obj,
   });
@@ -3062,12 +3557,50 @@ export interface MetricCollectionType {
    *                     <code>GroupTotalCapacity</code>
    *                 </p>
    *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolDesiredCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolWarmedCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolPendingCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolTerminatingCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolTotalCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>GroupAndWarmPoolDesiredCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>GroupAndWarmPoolTotalCapacity</code>
+   *                 </p>
+   *             </li>
    *          </ul>
    */
   Metric?: string;
 }
 
 export namespace MetricCollectionType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricCollectionType): any => ({
     ...obj,
   });
@@ -3086,6 +3619,9 @@ export interface DescribeMetricCollectionTypesAnswer {
 }
 
 export namespace DescribeMetricCollectionTypesAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeMetricCollectionTypesAnswer): any => ({
     ...obj,
   });
@@ -3140,6 +3676,9 @@ export interface NotificationConfiguration {
 }
 
 export namespace NotificationConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotificationConfiguration): any => ({
     ...obj,
   });
@@ -3161,6 +3700,9 @@ export interface DescribeNotificationConfigurationsAnswer {
 }
 
 export namespace DescribeNotificationConfigurationsAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeNotificationConfigurationsAnswer): any => ({
     ...obj,
   });
@@ -3186,6 +3728,9 @@ export interface DescribeNotificationConfigurationsType {
 }
 
 export namespace DescribeNotificationConfigurationsType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeNotificationConfigurationsType): any => ({
     ...obj,
   });
@@ -3225,6 +3770,9 @@ export interface DescribePoliciesType {
 }
 
 export namespace DescribePoliciesType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePoliciesType): any => ({
     ...obj,
   });
@@ -3296,6 +3844,9 @@ export interface StepAdjustment {
 }
 
 export namespace StepAdjustment {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StepAdjustment): any => ({
     ...obj,
   });
@@ -3317,6 +3868,9 @@ export interface MetricDimension {
 }
 
 export namespace MetricDimension {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricDimension): any => ({
     ...obj,
   });
@@ -3382,6 +3936,9 @@ export interface CustomizedMetricSpecification {
 }
 
 export namespace CustomizedMetricSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CustomizedMetricSpecification): any => ({
     ...obj,
   });
@@ -3454,6 +4011,9 @@ export interface PredefinedMetricSpecification {
 }
 
 export namespace PredefinedMetricSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PredefinedMetricSpecification): any => ({
     ...obj,
   });
@@ -3490,6 +4050,9 @@ export interface TargetTrackingConfiguration {
 }
 
 export namespace TargetTrackingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TargetTrackingConfiguration): any => ({
     ...obj,
   });
@@ -3607,6 +4170,9 @@ export interface ScalingPolicy {
 }
 
 export namespace ScalingPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScalingPolicy): any => ({
     ...obj,
   });
@@ -3628,6 +4194,9 @@ export interface PoliciesType {
 }
 
 export namespace PoliciesType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PoliciesType): any => ({
     ...obj,
   });
@@ -3648,6 +4217,11 @@ export interface DescribeScalingActivitiesType {
   AutoScalingGroupName?: string;
 
   /**
+   * <p>Indicates whether to include scaling activity from deleted Auto Scaling groups.</p>
+   */
+  IncludeDeletedGroups?: boolean;
+
+  /**
    * <p>The maximum number of items to return with this call. The default value is
    *                 <code>100</code> and the maximum value is <code>100</code>.</p>
    */
@@ -3661,6 +4235,9 @@ export interface DescribeScalingActivitiesType {
 }
 
 export namespace DescribeScalingActivitiesType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeScalingActivitiesType): any => ({
     ...obj,
   });
@@ -3725,6 +4302,9 @@ export interface ProcessType {
 }
 
 export namespace ProcessType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProcessType): any => ({
     ...obj,
   });
@@ -3738,6 +4318,9 @@ export interface ProcessesType {
 }
 
 export namespace ProcessesType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProcessesType): any => ({
     ...obj,
   });
@@ -3782,6 +4365,9 @@ export interface DescribeScheduledActionsType {
 }
 
 export namespace DescribeScheduledActionsType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeScheduledActionsType): any => ({
     ...obj,
   });
@@ -3849,9 +4435,17 @@ export interface ScheduledUpdateGroupAction {
    *             action runs and the capacity it attempts to maintain.</p>
    */
   DesiredCapacity?: number;
+
+  /**
+   * <p>The time zone for the cron expression.</p>
+   */
+  TimeZone?: string;
 }
 
 export namespace ScheduledUpdateGroupAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledUpdateGroupAction): any => ({
     ...obj,
   });
@@ -3873,6 +4467,9 @@ export interface ScheduledActionsType {
 }
 
 export namespace ScheduledActionsType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledActionsType): any => ({
     ...obj,
   });
@@ -3898,6 +4495,9 @@ export interface Filter {
 }
 
 export namespace Filter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Filter): any => ({
     ...obj,
   });
@@ -3924,6 +4524,9 @@ export interface DescribeTagsType {
 }
 
 export namespace DescribeTagsType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeTagsType): any => ({
     ...obj,
   });
@@ -3945,6 +4548,9 @@ export interface TagsType {
 }
 
 export namespace TagsType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagsType): any => ({
     ...obj,
   });
@@ -3961,7 +4567,65 @@ export interface DescribeTerminationPolicyTypesAnswer {
 }
 
 export namespace DescribeTerminationPolicyTypesAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeTerminationPolicyTypesAnswer): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeWarmPoolAnswer {
+  /**
+   * <p>The warm pool configuration details. </p>
+   */
+  WarmPoolConfiguration?: WarmPoolConfiguration;
+
+  /**
+   * <p>The instances that are currently in the warm pool.</p>
+   */
+  Instances?: Instance[];
+
+  /**
+   * <p>The token for the next set of items to return. (You received this token from a
+   *             previous call.)</p>
+   */
+  NextToken?: string;
+}
+
+export namespace DescribeWarmPoolAnswer {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeWarmPoolAnswer): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeWarmPoolType {
+  /**
+   * <p>The name of the Auto Scaling group.</p>
+   */
+  AutoScalingGroupName: string | undefined;
+
+  /**
+   * <p>The maximum number of instances to return with this call. The maximum value is
+   *                 <code>50</code>.</p>
+   */
+  MaxRecords?: number;
+
+  /**
+   * <p>The token for the next set of instances to return. (You received this token from a
+   *             previous call.)</p>
+   */
+  NextToken?: string;
+}
+
+export namespace DescribeWarmPoolType {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeWarmPoolType): any => ({
     ...obj,
   });
 }
@@ -3974,6 +4638,9 @@ export interface DetachInstancesAnswer {
 }
 
 export namespace DetachInstancesAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetachInstancesAnswer): any => ({
     ...obj,
   });
@@ -3998,6 +4665,9 @@ export interface DetachInstancesQuery {
 }
 
 export namespace DetachInstancesQuery {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetachInstancesQuery): any => ({
     ...obj,
   });
@@ -4006,6 +4676,9 @@ export namespace DetachInstancesQuery {
 export interface DetachLoadBalancersResultType {}
 
 export namespace DetachLoadBalancersResultType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetachLoadBalancersResultType): any => ({
     ...obj,
   });
@@ -4024,6 +4697,9 @@ export interface DetachLoadBalancersType {
 }
 
 export namespace DetachLoadBalancersType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetachLoadBalancersType): any => ({
     ...obj,
   });
@@ -4032,6 +4708,9 @@ export namespace DetachLoadBalancersType {
 export interface DetachLoadBalancerTargetGroupsResultType {}
 
 export namespace DetachLoadBalancerTargetGroupsResultType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetachLoadBalancerTargetGroupsResultType): any => ({
     ...obj,
   });
@@ -4051,6 +4730,9 @@ export interface DetachLoadBalancerTargetGroupsType {
 }
 
 export namespace DetachLoadBalancerTargetGroupsType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetachLoadBalancerTargetGroupsType): any => ({
     ...obj,
   });
@@ -4130,6 +4812,41 @@ export interface DisableMetricsCollectionQuery {
    *                     <code>GroupTotalCapacity</code>
    *                 </p>
    *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolDesiredCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolWarmedCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolPendingCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolTerminatingCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolTotalCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>GroupAndWarmPoolDesiredCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>GroupAndWarmPoolTotalCapacity</code>
+   *                 </p>
+   *             </li>
    *          </ul>
    *         <p>If you omit this parameter, all metrics are disabled. </p>
    */
@@ -4137,6 +4854,9 @@ export interface DisableMetricsCollectionQuery {
 }
 
 export namespace DisableMetricsCollectionQuery {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisableMetricsCollectionQuery): any => ({
     ...obj,
   });
@@ -4221,6 +4941,44 @@ export interface EnableMetricsCollectionQuery {
    *                 </p>
    *             </li>
    *          </ul>
+   *         <p>The warm pools feature supports the following additional metrics: </p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolDesiredCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolWarmedCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolPendingCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolTerminatingCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>WarmPoolTotalCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>GroupAndWarmPoolDesiredCapacity</code>
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>GroupAndWarmPoolTotalCapacity</code>
+   *                 </p>
+   *             </li>
+   *          </ul>
    *         <p>If you omit this parameter, all metrics are enabled. </p>
    */
   Metrics?: string[];
@@ -4233,6 +4991,9 @@ export interface EnableMetricsCollectionQuery {
 }
 
 export namespace EnableMetricsCollectionQuery {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableMetricsCollectionQuery): any => ({
     ...obj,
   });
@@ -4246,6 +5007,9 @@ export interface EnterStandbyAnswer {
 }
 
 export namespace EnterStandbyAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnterStandbyAnswer): any => ({
     ...obj,
   });
@@ -4270,6 +5034,9 @@ export interface EnterStandbyQuery {
 }
 
 export namespace EnterStandbyQuery {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnterStandbyQuery): any => ({
     ...obj,
   });
@@ -4317,6 +5084,9 @@ export interface ExecutePolicyType {
 }
 
 export namespace ExecutePolicyType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExecutePolicyType): any => ({
     ...obj,
   });
@@ -4330,6 +5100,9 @@ export interface ExitStandbyAnswer {
 }
 
 export namespace ExitStandbyAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExitStandbyAnswer): any => ({
     ...obj,
   });
@@ -4348,6 +5121,9 @@ export interface ExitStandbyQuery {
 }
 
 export namespace ExitStandbyQuery {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExitStandbyQuery): any => ({
     ...obj,
   });
@@ -4356,6 +5132,9 @@ export namespace ExitStandbyQuery {
 export interface PutLifecycleHookAnswer {}
 
 export namespace PutLifecycleHookAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutLifecycleHookAnswer): any => ({
     ...obj,
   });
@@ -4433,6 +5212,9 @@ export interface PutLifecycleHookType {
 }
 
 export namespace PutLifecycleHookType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutLifecycleHookType): any => ({
     ...obj,
   });
@@ -4458,6 +5240,9 @@ export interface PutNotificationConfigurationType {
 }
 
 export namespace PutNotificationConfigurationType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutNotificationConfigurationType): any => ({
     ...obj,
   });
@@ -4479,6 +5264,9 @@ export interface PolicyARNType {
 }
 
 export namespace PolicyARNType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyARNType): any => ({
     ...obj,
   });
@@ -4641,6 +5429,9 @@ export interface PutScalingPolicyType {
 }
 
 export namespace PutScalingPolicyType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutScalingPolicyType): any => ({
     ...obj,
   });
@@ -4674,19 +5465,19 @@ export interface PutScheduledUpdateGroupActionType {
   StartTime?: Date;
 
   /**
-   * <p>The date and time for the recurring schedule to end. Amazon EC2 Auto Scaling does not perform the
-   *             action after this time.</p>
+   * <p>The date and time for the recurring schedule to end, in UTC.</p>
    */
   EndTime?: Date;
 
   /**
-   * <p>The recurring schedule for this action, in Unix cron syntax format. This format
-   *             consists of five fields separated by white spaces: [Minute] [Hour] [Day_of_Month]
-   *             [Month_of_Year] [Day_of_Week]. The value must be in quotes (for example, <code>"30 0 1
-   *                 1,6,12 *"</code>). For more information about this format, see <a href="http://crontab.org">Crontab</a>.</p>
+   * <p>The recurring schedule for this action. This format consists of five fields separated
+   *             by white spaces: [Minute] [Hour] [Day_of_Month] [Month_of_Year] [Day_of_Week]. The value
+   *             must be in quotes (for example, <code>"30 0 1 1,6,12 *"</code>). For more information
+   *             about this format, see <a href="http://crontab.org">Crontab</a>.</p>
    *         <p>When <code>StartTime</code> and <code>EndTime</code> are specified with
    *                 <code>Recurrence</code>, they form the boundaries of when the recurring action
    *             starts and stops.</p>
+   *         <p>Cron expressions use Universal Coordinated Time (UTC) by default.</p>
    */
   Recurrence?: string;
 
@@ -4706,10 +5497,84 @@ export interface PutScheduledUpdateGroupActionType {
    *             if you add more scaling conditions. </p>
    */
   DesiredCapacity?: number;
+
+  /**
+   * <p>Specifies the time zone for a cron expression. If a time zone is not provided, UTC is
+   *             used by default. </p>
+   *         <p>Valid values are the canonical names of the IANA time zones, derived from the IANA
+   *             Time Zone Database (such as <code>Etc/GMT+9</code> or <code>Pacific/Tahiti</code>). For
+   *             more information, see <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</a>.</p>
+   */
+  TimeZone?: string;
 }
 
 export namespace PutScheduledUpdateGroupActionType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutScheduledUpdateGroupActionType): any => ({
+    ...obj,
+  });
+}
+
+export interface PutWarmPoolAnswer {}
+
+export namespace PutWarmPoolAnswer {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PutWarmPoolAnswer): any => ({
+    ...obj,
+  });
+}
+
+export interface PutWarmPoolType {
+  /**
+   * <p>The name of the Auto Scaling group.</p>
+   */
+  AutoScalingGroupName: string | undefined;
+
+  /**
+   * <p>Specifies the total maximum number of instances that are allowed to be in the warm
+   *             pool or in any state except <code>Terminated</code> for the Auto Scaling group. This is an
+   *             optional property. Specify it only if the warm pool size should not be determined by the
+   *             difference between the group's maximum capacity and its desired capacity. </p>
+   *         <important>
+   *             <p>Amazon EC2 Auto Scaling will launch and maintain either the difference between the group's
+   *                 maximum capacity and its desired capacity, if a value for
+   *                     <code>MaxGroupPreparedCapacity</code> is not specified, or the difference
+   *                 between the <code>MaxGroupPreparedCapacity</code> and the desired capacity, if a
+   *                 value for <code>MaxGroupPreparedCapacity</code> is specified. </p>
+   *             <p>The size of the warm pool is dynamic. Only when
+   *                     <code>MaxGroupPreparedCapacity</code> and <code>MinSize</code> are set to the
+   *                 same value does the warm pool have an absolute size.</p>
+   *         </important>
+   *         <p>If the desired capacity of the Auto Scaling group is higher than the
+   *                 <code>MaxGroupPreparedCapacity</code>, the capacity of the warm pool is 0. To remove
+   *             a value that you previously set, include the property but specify -1 for the value.
+   *         </p>
+   */
+  MaxGroupPreparedCapacity?: number;
+
+  /**
+   * <p>Specifies the minimum number of instances to maintain in the warm pool. This helps you
+   *             to ensure that there is always a certain number of warmed instances available to handle
+   *             traffic spikes. Defaults to 0 if not specified.</p>
+   */
+  MinSize?: number;
+
+  /**
+   * <p>Sets the instance state to transition to after the lifecycle hooks finish. Valid
+   *             values are: <code>Stopped</code> (default) or <code>Running</code>.</p>
+   */
+  PoolState?: WarmPoolState | string;
+}
+
+export namespace PutWarmPoolType {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PutWarmPoolType): any => ({
     ...obj,
   });
 }
@@ -4717,6 +5582,9 @@ export namespace PutScheduledUpdateGroupActionType {
 export interface RecordLifecycleActionHeartbeatAnswer {}
 
 export namespace RecordLifecycleActionHeartbeatAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecordLifecycleActionHeartbeatAnswer): any => ({
     ...obj,
   });
@@ -4747,6 +5615,9 @@ export interface RecordLifecycleActionHeartbeatType {
 }
 
 export namespace RecordLifecycleActionHeartbeatType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecordLifecycleActionHeartbeatType): any => ({
     ...obj,
   });
@@ -4813,6 +5684,9 @@ export interface ScalingProcessQuery {
 }
 
 export namespace ScalingProcessQuery {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScalingProcessQuery): any => ({
     ...obj,
   });
@@ -4839,6 +5713,9 @@ export interface SetDesiredCapacityType {
 }
 
 export namespace SetDesiredCapacityType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetDesiredCapacityType): any => ({
     ...obj,
   });
@@ -4871,6 +5748,9 @@ export interface SetInstanceHealthQuery {
 }
 
 export namespace SetInstanceHealthQuery {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetInstanceHealthQuery): any => ({
     ...obj,
   });
@@ -4879,6 +5759,9 @@ export namespace SetInstanceHealthQuery {
 export interface SetInstanceProtectionAnswer {}
 
 export namespace SetInstanceProtectionAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetInstanceProtectionAnswer): any => ({
     ...obj,
   });
@@ -4903,6 +5786,9 @@ export interface SetInstanceProtectionQuery {
 }
 
 export namespace SetInstanceProtectionQuery {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetInstanceProtectionQuery): any => ({
     ...obj,
   });
@@ -4919,6 +5805,9 @@ export interface InstanceRefreshInProgressFault extends __SmithyException, $Meta
 }
 
 export namespace InstanceRefreshInProgressFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceRefreshInProgressFault): any => ({
     ...obj,
   });
@@ -4932,6 +5821,9 @@ export interface StartInstanceRefreshAnswer {
 }
 
 export namespace StartInstanceRefreshAnswer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartInstanceRefreshAnswer): any => ({
     ...obj,
   });
@@ -4939,6 +5831,9 @@ export namespace StartInstanceRefreshAnswer {
 
 /**
  * <p>Describes information used to start an instance refresh. </p>
+ *         <p>All properties are optional. However, if you specify a value for
+ *                 <code>CheckpointDelay</code>, you must also provide a value for
+ *                 <code>CheckpointPercentages</code>. </p>
  */
 export interface RefreshPreferences {
   /**
@@ -4956,9 +5851,31 @@ export interface RefreshPreferences {
    *             group.</p>
    */
   InstanceWarmup?: number;
+
+  /**
+   * <p>Threshold values for each checkpoint in ascending order. Each number must be unique.
+   *             To replace all instances in the Auto Scaling group, the last number in the array must be
+   *                 <code>100</code>.</p>
+   *         <p>For usage examples, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-adding-checkpoints-instance-refresh.html">Adding
+   *                 checkpoints to an instance refresh</a> in the
+   *             <i>Amazon EC2 Auto Scaling User Guide</i>.</p>
+   */
+  CheckpointPercentages?: number[];
+
+  /**
+   * <p>The amount of time, in seconds, to wait after a checkpoint before continuing. This
+   *             property is optional, but if you specify a value for it, you must also specify a value
+   *             for <code>CheckpointPercentages</code>. If you specify a value for
+   *                 <code>CheckpointPercentages</code> and not for <code>CheckpointDelay</code>, the
+   *                 <code>CheckpointDelay</code> defaults to <code>3600</code> (1 hour). </p>
+   */
+  CheckpointDelay?: number;
 }
 
 export namespace RefreshPreferences {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RefreshPreferences): any => ({
     ...obj,
   });
@@ -4997,6 +5914,9 @@ export interface StartInstanceRefreshType {
 }
 
 export namespace StartInstanceRefreshType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartInstanceRefreshType): any => ({
     ...obj,
   });
@@ -5016,6 +5936,9 @@ export interface TerminateInstanceInAutoScalingGroupType {
 }
 
 export namespace TerminateInstanceInAutoScalingGroupType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TerminateInstanceInAutoScalingGroupType): any => ({
     ...obj,
   });
@@ -5043,7 +5966,7 @@ export interface UpdateAutoScalingGroupType {
 
   /**
    * <p>An embedded object that specifies a mixed instances policy. When you make changes to
-   *             an existing policy, all optional parameters are left unchanged if not specified. For
+   *             an existing policy, all optional properties are left unchanged if not specified. For
    *             more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html">Auto Scaling groups with multiple
    *                 instance types and purchase options</a> in the <i>Amazon EC2 Auto Scaling User
    *                 Guide</i>.</p>
@@ -5162,6 +6085,9 @@ export interface UpdateAutoScalingGroupType {
 }
 
 export namespace UpdateAutoScalingGroupType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAutoScalingGroupType): any => ({
     ...obj,
   });

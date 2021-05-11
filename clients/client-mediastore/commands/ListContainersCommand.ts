@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListContainersCommandInput = ListContainersInput;
-export type ListContainersCommandOutput = ListContainersOutput & __MetadataBearer;
+export interface ListContainersCommandInput extends ListContainersInput {}
+export interface ListContainersCommandOutput extends ListContainersOutput, __MetadataBearer {}
 
 /**
  * <p>Lists the properties of all containers in AWS Elemental MediaStore. </p>
@@ -30,6 +30,20 @@ export type ListContainersCommandOutput = ListContainersOutput & __MetadataBeare
  *          still more containers to receive. </p>
  *          <p>See also <a>DescribeContainer</a>, which gets the properties of one
  *          container. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaStoreClient, ListContainersCommand } from "@aws-sdk/client-mediastore"; // ES Modules import
+ * // const { MediaStoreClient, ListContainersCommand } = require("@aws-sdk/client-mediastore"); // CommonJS import
+ * const client = new MediaStoreClient(config);
+ * const command = new ListContainersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListContainersCommandInput} for command's `input` shape.
+ * @see {@link ListContainersCommandOutput} for command's `response` shape.
+ * @see {@link MediaStoreClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListContainersCommand extends $Command<
   ListContainersCommandInput,

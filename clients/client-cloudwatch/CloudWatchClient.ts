@@ -5,6 +5,7 @@ import {
 } from "./commands/DeleteAnomalyDetectorCommand";
 import { DeleteDashboardsCommandInput, DeleteDashboardsCommandOutput } from "./commands/DeleteDashboardsCommand";
 import { DeleteInsightRulesCommandInput, DeleteInsightRulesCommandOutput } from "./commands/DeleteInsightRulesCommand";
+import { DeleteMetricStreamCommandInput, DeleteMetricStreamCommandOutput } from "./commands/DeleteMetricStreamCommand";
 import {
   DescribeAlarmHistoryCommandInput,
   DescribeAlarmHistoryCommandOutput,
@@ -42,11 +43,13 @@ import {
   GetMetricStatisticsCommandInput,
   GetMetricStatisticsCommandOutput,
 } from "./commands/GetMetricStatisticsCommand";
+import { GetMetricStreamCommandInput, GetMetricStreamCommandOutput } from "./commands/GetMetricStreamCommand";
 import {
   GetMetricWidgetImageCommandInput,
   GetMetricWidgetImageCommandOutput,
 } from "./commands/GetMetricWidgetImageCommand";
 import { ListDashboardsCommandInput, ListDashboardsCommandOutput } from "./commands/ListDashboardsCommand";
+import { ListMetricStreamsCommandInput, ListMetricStreamsCommandOutput } from "./commands/ListMetricStreamsCommand";
 import { ListMetricsCommandInput, ListMetricsCommandOutput } from "./commands/ListMetricsCommand";
 import {
   ListTagsForResourceCommandInput,
@@ -58,7 +61,10 @@ import { PutDashboardCommandInput, PutDashboardCommandOutput } from "./commands/
 import { PutInsightRuleCommandInput, PutInsightRuleCommandOutput } from "./commands/PutInsightRuleCommand";
 import { PutMetricAlarmCommandInput, PutMetricAlarmCommandOutput } from "./commands/PutMetricAlarmCommand";
 import { PutMetricDataCommandInput, PutMetricDataCommandOutput } from "./commands/PutMetricDataCommand";
+import { PutMetricStreamCommandInput, PutMetricStreamCommandOutput } from "./commands/PutMetricStreamCommand";
 import { SetAlarmStateCommandInput, SetAlarmStateCommandOutput } from "./commands/SetAlarmStateCommand";
+import { StartMetricStreamsCommandInput, StartMetricStreamsCommandOutput } from "./commands/StartMetricStreamsCommand";
+import { StopMetricStreamsCommandInput, StopMetricStreamsCommandOutput } from "./commands/StopMetricStreamsCommand";
 import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
 import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
 import { ClientDefaultValues as __ClientDefaultValues } from "./runtimeConfig";
@@ -117,6 +123,7 @@ export type ServiceInputTypes =
   | DeleteAnomalyDetectorCommandInput
   | DeleteDashboardsCommandInput
   | DeleteInsightRulesCommandInput
+  | DeleteMetricStreamCommandInput
   | DescribeAlarmHistoryCommandInput
   | DescribeAlarmsCommandInput
   | DescribeAlarmsForMetricCommandInput
@@ -130,8 +137,10 @@ export type ServiceInputTypes =
   | GetInsightRuleReportCommandInput
   | GetMetricDataCommandInput
   | GetMetricStatisticsCommandInput
+  | GetMetricStreamCommandInput
   | GetMetricWidgetImageCommandInput
   | ListDashboardsCommandInput
+  | ListMetricStreamsCommandInput
   | ListMetricsCommandInput
   | ListTagsForResourceCommandInput
   | PutAnomalyDetectorCommandInput
@@ -140,7 +149,10 @@ export type ServiceInputTypes =
   | PutInsightRuleCommandInput
   | PutMetricAlarmCommandInput
   | PutMetricDataCommandInput
+  | PutMetricStreamCommandInput
   | SetAlarmStateCommandInput
+  | StartMetricStreamsCommandInput
+  | StopMetricStreamsCommandInput
   | TagResourceCommandInput
   | UntagResourceCommandInput;
 
@@ -149,6 +161,7 @@ export type ServiceOutputTypes =
   | DeleteAnomalyDetectorCommandOutput
   | DeleteDashboardsCommandOutput
   | DeleteInsightRulesCommandOutput
+  | DeleteMetricStreamCommandOutput
   | DescribeAlarmHistoryCommandOutput
   | DescribeAlarmsCommandOutput
   | DescribeAlarmsForMetricCommandOutput
@@ -162,8 +175,10 @@ export type ServiceOutputTypes =
   | GetInsightRuleReportCommandOutput
   | GetMetricDataCommandOutput
   | GetMetricStatisticsCommandOutput
+  | GetMetricStreamCommandOutput
   | GetMetricWidgetImageCommandOutput
   | ListDashboardsCommandOutput
+  | ListMetricStreamsCommandOutput
   | ListMetricsCommandOutput
   | ListTagsForResourceCommandOutput
   | PutAnomalyDetectorCommandOutput
@@ -172,7 +187,10 @@ export type ServiceOutputTypes =
   | PutInsightRuleCommandOutput
   | PutMetricAlarmCommandOutput
   | PutMetricDataCommandOutput
+  | PutMetricStreamCommandOutput
   | SetAlarmStateCommandOutput
+  | StartMetricStreamsCommandOutput
+  | StopMetricStreamsCommandOutput
   | TagResourceCommandOutput
   | UntagResourceCommandOutput;
 
@@ -241,7 +259,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -272,7 +290,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type CloudWatchClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type CloudWatchClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -280,8 +298,12 @@ export type CloudWatchClientConfig = Partial<__SmithyConfiguration<__HttpHandler
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of CloudWatchClient class constructor that set the region, credentials and other options.
+ */
+export interface CloudWatchClientConfig extends CloudWatchClientConfigType {}
 
-export type CloudWatchClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type CloudWatchClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -289,6 +311,10 @@ export type CloudWatchClientResolvedConfig = __SmithyResolvedConfiguration<__Htt
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of CloudWatchClient class. This is resolved and normalized from the {@link CloudWatchClientConfig | constructor configuration interface}.
+ */
+export interface CloudWatchClientResolvedConfig extends CloudWatchClientResolvedConfigType {}
 
 /**
  * <p>Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the
@@ -313,6 +339,9 @@ export class CloudWatchClient extends __Client<
   ServiceOutputTypes,
   CloudWatchClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of CloudWatchClient class. This is resolved and normalized from the {@link CloudWatchClientConfig | constructor configuration interface}.
+   */
   readonly config: CloudWatchClientResolvedConfig;
 
   constructor(configuration: CloudWatchClientConfig) {

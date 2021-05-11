@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetObjectTorrentCommandInput = GetObjectTorrentRequest;
-export type GetObjectTorrentCommandOutput = GetObjectTorrentOutput & __MetadataBearer;
+export interface GetObjectTorrentCommandInput extends GetObjectTorrentRequest {}
+export interface GetObjectTorrentCommandOutput extends GetObjectTorrentOutput, __MetadataBearer {}
 
 /**
  * <p>Returns torrent files from a bucket. BitTorrent can save you bandwidth when you're
@@ -31,7 +31,7 @@ export type GetObjectTorrentCommandOutput = GetObjectTorrentOutput & __MetadataB
  *          </note>
  *          <p>To use GET, you must have READ access to the object.</p>
  *          <p>This action is not supported by Amazon S3 on Outposts.</p>
- *          <p>The following operation is related to <code>GetObjectTorrent</code>:</p>
+ *          <p>The following action is related to <code>GetObjectTorrent</code>:</p>
  *          <ul>
  *             <li>
  *                <p>
@@ -39,6 +39,20 @@ export type GetObjectTorrentCommandOutput = GetObjectTorrentOutput & __MetadataB
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetObjectTorrentCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetObjectTorrentCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetObjectTorrentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetObjectTorrentCommandInput} for command's `input` shape.
+ * @see {@link GetObjectTorrentCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetObjectTorrentCommand extends $Command<
   GetObjectTorrentCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateTemplateAliasCommandInput = CreateTemplateAliasRequest;
-export type CreateTemplateAliasCommandOutput = CreateTemplateAliasResponse & __MetadataBearer;
+export interface CreateTemplateAliasCommandInput extends CreateTemplateAliasRequest {}
+export interface CreateTemplateAliasCommandOutput extends CreateTemplateAliasResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a template alias for a template.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, CreateTemplateAliasCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, CreateTemplateAliasCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new CreateTemplateAliasCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateTemplateAliasCommandInput} for command's `input` shape.
+ * @see {@link CreateTemplateAliasCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateTemplateAliasCommand extends $Command<
   CreateTemplateAliasCommandInput,

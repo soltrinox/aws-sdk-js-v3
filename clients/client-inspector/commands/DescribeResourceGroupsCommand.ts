@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeResourceGroupsCommandInput = DescribeResourceGroupsRequest;
-export type DescribeResourceGroupsCommandOutput = DescribeResourceGroupsResponse & __MetadataBearer;
+export interface DescribeResourceGroupsCommandInput extends DescribeResourceGroupsRequest {}
+export interface DescribeResourceGroupsCommandOutput extends DescribeResourceGroupsResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the resource groups that are specified by the ARNs of the resource
  *          groups.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { InspectorClient, DescribeResourceGroupsCommand } from "@aws-sdk/client-inspector"; // ES Modules import
+ * // const { InspectorClient, DescribeResourceGroupsCommand } = require("@aws-sdk/client-inspector"); // CommonJS import
+ * const client = new InspectorClient(config);
+ * const command = new DescribeResourceGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeResourceGroupsCommandInput} for command's `input` shape.
+ * @see {@link DescribeResourceGroupsCommandOutput} for command's `response` shape.
+ * @see {@link InspectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeResourceGroupsCommand extends $Command<
   DescribeResourceGroupsCommandInput,

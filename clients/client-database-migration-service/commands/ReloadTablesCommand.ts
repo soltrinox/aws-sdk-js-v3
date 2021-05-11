@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ReloadTablesCommandInput = ReloadTablesMessage;
-export type ReloadTablesCommandOutput = ReloadTablesResponse & __MetadataBearer;
+export interface ReloadTablesCommandInput extends ReloadTablesMessage {}
+export interface ReloadTablesCommandOutput extends ReloadTablesResponse, __MetadataBearer {}
 
 /**
  * <p>Reloads the target database table with the source data. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, ReloadTablesCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, ReloadTablesCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new ReloadTablesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ReloadTablesCommandInput} for command's `input` shape.
+ * @see {@link ReloadTablesCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ReloadTablesCommand extends $Command<
   ReloadTablesCommandInput,

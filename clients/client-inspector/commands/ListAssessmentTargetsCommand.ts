@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAssessmentTargetsCommandInput = ListAssessmentTargetsRequest;
-export type ListAssessmentTargetsCommandOutput = ListAssessmentTargetsResponse & __MetadataBearer;
+export interface ListAssessmentTargetsCommandInput extends ListAssessmentTargetsRequest {}
+export interface ListAssessmentTargetsCommandOutput extends ListAssessmentTargetsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the ARNs of the assessment targets within this AWS account. For more
  *          information about assessment targets, see <a href="https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html">Amazon Inspector Assessment
  *             Targets</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { InspectorClient, ListAssessmentTargetsCommand } from "@aws-sdk/client-inspector"; // ES Modules import
+ * // const { InspectorClient, ListAssessmentTargetsCommand } = require("@aws-sdk/client-inspector"); // CommonJS import
+ * const client = new InspectorClient(config);
+ * const command = new ListAssessmentTargetsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAssessmentTargetsCommandInput} for command's `input` shape.
+ * @see {@link ListAssessmentTargetsCommandOutput} for command's `response` shape.
+ * @see {@link InspectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAssessmentTargetsCommand extends $Command<
   ListAssessmentTargetsCommandInput,

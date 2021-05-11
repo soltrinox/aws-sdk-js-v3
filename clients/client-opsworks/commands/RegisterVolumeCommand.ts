@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RegisterVolumeCommandInput = RegisterVolumeRequest;
-export type RegisterVolumeCommandOutput = RegisterVolumeResult & __MetadataBearer;
+export interface RegisterVolumeCommandInput extends RegisterVolumeRequest {}
+export interface RegisterVolumeCommandOutput extends RegisterVolumeResult, __MetadataBearer {}
 
 /**
  * <p>Registers an Amazon EBS volume with a specified stack. A volume can be registered with only one
@@ -29,6 +29,20 @@ export type RegisterVolumeCommandOutput = RegisterVolumeResult & __MetadataBeare
  *       level for the stack, or an attached policy that explicitly grants permissions. For more
  *       information on user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, RegisterVolumeCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, RegisterVolumeCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new RegisterVolumeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RegisterVolumeCommandInput} for command's `input` shape.
+ * @see {@link RegisterVolumeCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RegisterVolumeCommand extends $Command<
   RegisterVolumeCommandInput,

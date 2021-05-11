@@ -20,13 +20,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEffectivePatchesForPatchBaselineCommandInput = DescribeEffectivePatchesForPatchBaselineRequest;
-export type DescribeEffectivePatchesForPatchBaselineCommandOutput = DescribeEffectivePatchesForPatchBaselineResult &
-  __MetadataBearer;
+export interface DescribeEffectivePatchesForPatchBaselineCommandInput
+  extends DescribeEffectivePatchesForPatchBaselineRequest {}
+export interface DescribeEffectivePatchesForPatchBaselineCommandOutput
+  extends DescribeEffectivePatchesForPatchBaselineResult,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieves the current effective patches (the patch and the approval state) for the specified
  *    patch baseline. Note that this API applies only to Windows patch baselines.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DescribeEffectivePatchesForPatchBaselineCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DescribeEffectivePatchesForPatchBaselineCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DescribeEffectivePatchesForPatchBaselineCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEffectivePatchesForPatchBaselineCommandInput} for command's `input` shape.
+ * @see {@link DescribeEffectivePatchesForPatchBaselineCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEffectivePatchesForPatchBaselineCommand extends $Command<
   DescribeEffectivePatchesForPatchBaselineCommandInput,

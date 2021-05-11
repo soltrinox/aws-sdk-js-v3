@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetInvitationConfigurationCommandInput = GetInvitationConfigurationRequest;
-export type GetInvitationConfigurationCommandOutput = GetInvitationConfigurationResponse & __MetadataBearer;
+export interface GetInvitationConfigurationCommandInput extends GetInvitationConfigurationRequest {}
+export interface GetInvitationConfigurationCommandOutput extends GetInvitationConfigurationResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the configured values for the user enrollment invitation email
  *          template.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, GetInvitationConfigurationCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, GetInvitationConfigurationCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new GetInvitationConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetInvitationConfigurationCommandInput} for command's `input` shape.
+ * @see {@link GetInvitationConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetInvitationConfigurationCommand extends $Command<
   GetInvitationConfigurationCommandInput,

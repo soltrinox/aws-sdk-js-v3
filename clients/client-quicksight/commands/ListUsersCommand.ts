@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListUsersCommandInput = ListUsersRequest;
-export type ListUsersCommandOutput = ListUsersResponse & __MetadataBearer;
+export interface ListUsersCommandInput extends ListUsersRequest {}
+export interface ListUsersCommandOutput extends ListUsersResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of all of the Amazon QuickSight users belonging to this account. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, ListUsersCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, ListUsersCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new ListUsersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListUsersCommandInput} for command's `input` shape.
+ * @see {@link ListUsersCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListUsersCommand extends $Command<
   ListUsersCommandInput,

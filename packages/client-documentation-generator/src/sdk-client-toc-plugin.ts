@@ -1,8 +1,16 @@
+import { dirname } from "path";
 import { ReferenceType } from "typedoc/dist/lib/models";
-import { DeclarationReflection, Reflection, ReflectionKind } from "typedoc/dist/lib/models/reflections";
+import {
+  DeclarationReflection,
+  ProjectReflection,
+  Reflection,
+  ReflectionKind,
+} from "typedoc/dist/lib/models/reflections";
 import { Component, RendererComponent } from "typedoc/dist/lib/output/components";
 import { PageEvent } from "typedoc/dist/lib/output/events";
 import { NavigationItem } from "typedoc/dist/lib/output/models/NavigationItem";
+
+import { getCurrentClientDirectory } from "./utils";
 
 /**
  * Group the ToC for easier observability.
@@ -12,6 +20,8 @@ export class SdkClientTocPlugin extends RendererComponent {
   private commandsNavigationItem?: NavigationItem;
   private clientsNavigationItem?: NavigationItem;
   private paginatorsNavigationItem?: NavigationItem;
+  private waitersNavigationItem?: NavigationItem;
+  private clientDir?: string;
 
   initialize() {
     // disable existing toc plugin
@@ -46,9 +56,15 @@ export class SdkClientTocPlugin extends RendererComponent {
       this.clientsNavigationItem = new NavigationItem("Clients", void 0, page.toc);
       this.commandsNavigationItem = new NavigationItem("Commands", void 0, page.toc);
       this.paginatorsNavigationItem = new NavigationItem("Paginators", void 0, page.toc);
+      this.waitersNavigationItem = new NavigationItem("Waiters", void 0, page.toc);
     }
 
     this.buildToc(model, trail, page.toc, tocRestriction);
+  }
+
+  // Confirm declaration comes from the same folder as the client class
+  private belongsToClientPackage(model: DeclarationReflection): boolean {
+    return this.clientDir && model.sources?.[0].file?.fullFileName.indexOf(this.clientDir) === 0;
   }
 
   private isClient(model: DeclarationReflection): boolean {
@@ -57,28 +73,38 @@ export class SdkClientTocPlugin extends RendererComponent {
       model.kindOf(ReflectionKind.Class) &&
       model.getFullName() !== "Client" && // Exclude the Smithy Client class.
       (model.name.endsWith("Client") /* Modular client like S3Client */ ||
-        (extendedTypes.length === 1 &&
-          (extendedTypes[0] as ReferenceType).name.endsWith("Client"))) /* Legacy client like S3 */
+        extendedTypes.filter((reference) => (reference as ReferenceType).name === `${model.name}Client`).length > 0) &&
+      /* Filter out other client classes that not sourced from the same directory as current client. e.g. STS, SSO */
+      this.belongsToClientPackage(model)
     );
   }
 
   private isCommand(model: DeclarationReflection): boolean {
     return (
       model.kindOf(ReflectionKind.Class) &&
-      model.getFullName() !== "Command" && // Exclude the Smithy Command class.
       model.name.endsWith("Command") &&
-      model.children?.some((child) => child.name === "resolveMiddleware")
+      model.children?.some((child) => child.name === "resolveMiddleware") &&
+      this.belongsToClientPackage(model)
     );
   }
 
   private isPaginator(model: DeclarationReflection): boolean {
-    return model.name.startsWith("paginate") && model.kindOf(ReflectionKind.Function);
+    return (
+      model.name.startsWith("paginate") && model.kindOf(ReflectionKind.Function) && this.belongsToClientPackage(model)
+    );
   }
 
   private isInputOrOutput(model: DeclarationReflection): boolean {
     return (
-      model.kindOf(ReflectionKind.TypeAlias) &&
-      (model.name.endsWith("CommandInput") || model.name.endsWith("CommandOutput"))
+      model.kindOf(ReflectionKind.Interface) &&
+      (model.name.endsWith("CommandInput") || model.name.endsWith("CommandOutput")) &&
+      this.belongsToClientPackage(model)
+    );
+  }
+
+  private isWaiter(model: DeclarationReflection): boolean {
+    return (
+      model.name.startsWith("waitFor") && model.kindOf(ReflectionKind.Function) && this.belongsToClientPackage(model)
     );
   }
 
@@ -93,6 +119,7 @@ export class SdkClientTocPlugin extends RendererComponent {
   buildToc(model: Reflection, trail: Reflection[], parent: NavigationItem, restriction?: string[]) {
     const index = trail.indexOf(model);
     const children = model["children"] || [];
+    if (!this.clientDir) this.clientDir = this.loadClientDir(model);
 
     if (index < trail.length - 1 && children.length > 40) {
       const child = trail[index + 1];
@@ -118,6 +145,8 @@ export class SdkClientTocPlugin extends RendererComponent {
           NavigationItem.create(child, this.paginatorsNavigationItem, true);
         } else if (this.isInputOrOutput(child)) {
           NavigationItem.create(child, this.commandsNavigationItem, true);
+        } else if (this.isWaiter(child)) {
+          NavigationItem.create(child, this.waitersNavigationItem, true);
         } else {
           const item = NavigationItem.create(child, parent, true);
           if (trail.includes(child)) {
@@ -130,5 +159,14 @@ export class SdkClientTocPlugin extends RendererComponent {
       // Group commands and input/output interface of each command.
       this.commandsNavigationItem?.children.sort((childA, childB) => childA.title.localeCompare(childB.title));
     }
+  }
+
+  private loadClientDir(model: Reflection) {
+    let projectModel = (model as any) as ProjectReflection;
+    while (projectModel.constructor.name !== "ProjectReflection" && !projectModel.kindOf(ReflectionKind.SomeModule)) {
+      projectModel = projectModel.parent as ProjectReflection;
+    }
+    const clientsDirectory = getCurrentClientDirectory({ project: projectModel as ProjectReflection });
+    return dirname(clientsDirectory?.files.find((file) => file.name.endsWith("Client.ts")).fullFileName);
   }
 }

@@ -17,13 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateInstanceProfileCommandInput = CreateInstanceProfileRequest;
-export type CreateInstanceProfileCommandOutput = CreateInstanceProfileResponse & __MetadataBearer;
+export interface CreateInstanceProfileCommandInput extends CreateInstanceProfileRequest {}
+export interface CreateInstanceProfileCommandOutput extends CreateInstanceProfileResponse, __MetadataBearer {}
 
 /**
- * <p> Creates a new instance profile. For information about instance profiles, go to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html">About Instance
- *             Profiles</a>.</p>
- *          <p>The number and size of IAM resources in an AWS account are limited. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html">IAM and STS Quotas</a> in the <i>IAM User Guide</i>.</p>
+ * <p> Creates a new instance profile. For information about instance profiles, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html">Using
+ *                 roles for applications on Amazon EC2</a> in the
+ *                 <i>IAM User Guide</i>, and <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#ec2-instance-profile">Instance profiles</a> in the <i>Amazon EC2 User Guide</i>.</p>
+ *         <p> For information about the number of instance profiles you can create, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html">IAM object
+ *                 quotas</a> in the <i>IAM User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, CreateInstanceProfileCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, CreateInstanceProfileCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new CreateInstanceProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateInstanceProfileCommandInput} for command's `input` shape.
+ * @see {@link CreateInstanceProfileCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateInstanceProfileCommand extends $Command<
   CreateInstanceProfileCommandInput,

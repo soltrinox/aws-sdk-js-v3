@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTagsForResourceCommandInput = ListTagsForResourceRequest;
-export type ListTagsForResourceCommandOutput = ListTagsForResourceResponse & __MetadataBearer;
+export interface ListTagsForResourceCommandInput extends ListTagsForResourceRequest {}
+export interface ListTagsForResourceCommandOutput extends ListTagsForResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Returns tags for a resource. Tagging is currently supported only for directories with a
  *       limit of 50 tags per directory. All 50 tags are returned for a given directory with this API
  *       call.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, ListTagsForResourceCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, ListTagsForResourceCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new ListTagsForResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTagsForResourceCommandInput} for command's `input` shape.
+ * @see {@link ListTagsForResourceCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTagsForResourceCommand extends $Command<
   ListTagsForResourceCommandInput,

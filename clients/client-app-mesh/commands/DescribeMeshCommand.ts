@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeMeshCommandInput = DescribeMeshInput;
-export type DescribeMeshCommandOutput = DescribeMeshOutput & __MetadataBearer;
+export interface DescribeMeshCommandInput extends DescribeMeshInput {}
+export interface DescribeMeshCommandOutput extends DescribeMeshOutput, __MetadataBearer {}
 
 /**
  * <p>Describes an existing service mesh.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppMeshClient, DescribeMeshCommand } from "@aws-sdk/client-app-mesh"; // ES Modules import
+ * // const { AppMeshClient, DescribeMeshCommand } = require("@aws-sdk/client-app-mesh"); // CommonJS import
+ * const client = new AppMeshClient(config);
+ * const command = new DescribeMeshCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeMeshCommandInput} for command's `input` shape.
+ * @see {@link DescribeMeshCommandOutput} for command's `response` shape.
+ * @see {@link AppMeshClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeMeshCommand extends $Command<
   DescribeMeshCommandInput,

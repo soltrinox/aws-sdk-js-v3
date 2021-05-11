@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCommunicationsCommandInput = DescribeCommunicationsRequest;
-export type DescribeCommunicationsCommandOutput = DescribeCommunicationsResponse & __MetadataBearer;
+export interface DescribeCommunicationsCommandInput extends DescribeCommunicationsRequest {}
+export interface DescribeCommunicationsCommandOutput extends DescribeCommunicationsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns communications and attachments for one or more support cases. Use the
@@ -45,6 +45,20 @@ export type DescribeCommunicationsCommandOutput = DescribeCommunicationsResponse
  *                 </li>
  *             </ul>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SupportClient, DescribeCommunicationsCommand } from "@aws-sdk/client-support"; // ES Modules import
+ * // const { SupportClient, DescribeCommunicationsCommand } = require("@aws-sdk/client-support"); // CommonJS import
+ * const client = new SupportClient(config);
+ * const command = new DescribeCommunicationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCommunicationsCommandInput} for command's `input` shape.
+ * @see {@link DescribeCommunicationsCommandOutput} for command's `response` shape.
+ * @see {@link SupportClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCommunicationsCommand extends $Command<
   DescribeCommunicationsCommandInput,

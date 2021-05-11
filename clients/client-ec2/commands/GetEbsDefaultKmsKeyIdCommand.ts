@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetEbsDefaultKmsKeyIdCommandInput = GetEbsDefaultKmsKeyIdRequest;
-export type GetEbsDefaultKmsKeyIdCommandOutput = GetEbsDefaultKmsKeyIdResult & __MetadataBearer;
+export interface GetEbsDefaultKmsKeyIdCommandInput extends GetEbsDefaultKmsKeyIdRequest {}
+export interface GetEbsDefaultKmsKeyIdCommandOutput extends GetEbsDefaultKmsKeyIdResult, __MetadataBearer {}
 
 /**
  * <p>Describes the default customer master key (CMK) for EBS encryption by default for your account in this Region.
@@ -26,6 +26,20 @@ export type GetEbsDefaultKmsKeyIdCommandOutput = GetEbsDefaultKmsKeyIdResult & _
  *       <a>ResetEbsDefaultKmsKeyId</a>.</p>
  *          <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS encryption</a>
  *       in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, GetEbsDefaultKmsKeyIdCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, GetEbsDefaultKmsKeyIdCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new GetEbsDefaultKmsKeyIdCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetEbsDefaultKmsKeyIdCommandInput} for command's `input` shape.
+ * @see {@link GetEbsDefaultKmsKeyIdCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetEbsDefaultKmsKeyIdCommand extends $Command<
   GetEbsDefaultKmsKeyIdCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteCloudFrontOriginAccessIdentityCommandInput = DeleteCloudFrontOriginAccessIdentityRequest;
-export type DeleteCloudFrontOriginAccessIdentityCommandOutput = __MetadataBearer;
+export interface DeleteCloudFrontOriginAccessIdentityCommandInput extends DeleteCloudFrontOriginAccessIdentityRequest {}
+export interface DeleteCloudFrontOriginAccessIdentityCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Delete an origin access identity. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, DeleteCloudFrontOriginAccessIdentityCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, DeleteCloudFrontOriginAccessIdentityCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new DeleteCloudFrontOriginAccessIdentityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteCloudFrontOriginAccessIdentityCommandInput} for command's `input` shape.
+ * @see {@link DeleteCloudFrontOriginAccessIdentityCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteCloudFrontOriginAccessIdentityCommand extends $Command<
   DeleteCloudFrontOriginAccessIdentityCommandInput,

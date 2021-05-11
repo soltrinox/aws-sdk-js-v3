@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetContactCommandInput = GetContactRequest;
-export type GetContactCommandOutput = GetContactResponse & __MetadataBearer;
+export interface GetContactCommandInput extends GetContactRequest {}
+export interface GetContactCommandOutput extends GetContactResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a contact from a contact list.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, GetContactCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, GetContactCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new GetContactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetContactCommandInput} for command's `input` shape.
+ * @see {@link GetContactCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetContactCommand extends $Command<
   GetContactCommandInput,

@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListGatewayRoutesCommandInput = ListGatewayRoutesInput;
-export type ListGatewayRoutesCommandOutput = ListGatewayRoutesOutput & __MetadataBearer;
+export interface ListGatewayRoutesCommandInput extends ListGatewayRoutesInput {}
+export interface ListGatewayRoutesCommandOutput extends ListGatewayRoutesOutput, __MetadataBearer {}
 
 /**
  * <p>Returns a list of existing gateway routes that are associated to a virtual
  *          gateway.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppMeshClient, ListGatewayRoutesCommand } from "@aws-sdk/client-app-mesh"; // ES Modules import
+ * // const { AppMeshClient, ListGatewayRoutesCommand } = require("@aws-sdk/client-app-mesh"); // CommonJS import
+ * const client = new AppMeshClient(config);
+ * const command = new ListGatewayRoutesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListGatewayRoutesCommandInput} for command's `input` shape.
+ * @see {@link ListGatewayRoutesCommandOutput} for command's `response` shape.
+ * @see {@link AppMeshClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListGatewayRoutesCommand extends $Command<
   ListGatewayRoutesCommandInput,

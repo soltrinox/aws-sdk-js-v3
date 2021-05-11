@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type NotifyWorkersCommandInput = NotifyWorkersRequest;
-export type NotifyWorkersCommandOutput = NotifyWorkersResponse & __MetadataBearer;
+export interface NotifyWorkersCommandInput extends NotifyWorkersRequest {}
+export interface NotifyWorkersCommandOutput extends NotifyWorkersResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -31,6 +31,20 @@ export type NotifyWorkersCommandOutput = NotifyWorkersResponse & __MetadataBeare
  *             only if you have previously approved or rejected work from the
  *             Worker.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, NotifyWorkersCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, NotifyWorkersCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new NotifyWorkersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link NotifyWorkersCommandInput} for command's `input` shape.
+ * @see {@link NotifyWorkersCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class NotifyWorkersCommand extends $Command<
   NotifyWorkersCommandInput,

@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateApplicationCommandInput = CreateApplicationRequest;
-export type CreateApplicationCommandOutput = CreateApplicationResponse & __MetadataBearer;
+export interface CreateApplicationCommandInput extends CreateApplicationRequest {}
+export interface CreateApplicationCommandOutput extends CreateApplicationResponse, __MetadataBearer {}
 
 /**
  * <p>Adds an application that is created from a resource group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationInsightsClient, CreateApplicationCommand } from "@aws-sdk/client-application-insights"; // ES Modules import
+ * // const { ApplicationInsightsClient, CreateApplicationCommand } = require("@aws-sdk/client-application-insights"); // CommonJS import
+ * const client = new ApplicationInsightsClient(config);
+ * const command = new CreateApplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateApplicationCommandInput} for command's `input` shape.
+ * @see {@link CreateApplicationCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationInsightsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateApplicationCommand extends $Command<
   CreateApplicationCommandInput,

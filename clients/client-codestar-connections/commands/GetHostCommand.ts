@@ -18,12 +18,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetHostCommandInput = GetHostInput;
-export type GetHostCommandOutput = GetHostOutput & __MetadataBearer;
+export interface GetHostCommandInput extends GetHostInput {}
+export interface GetHostCommandOutput extends GetHostOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the host ARN and details such as status, provider type, endpoint, and, if
  *       applicable, the VPC configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeStarConnectionsClient, GetHostCommand } from "@aws-sdk/client-codestar-connections"; // ES Modules import
+ * // const { CodeStarConnectionsClient, GetHostCommand } = require("@aws-sdk/client-codestar-connections"); // CommonJS import
+ * const client = new CodeStarConnectionsClient(config);
+ * const command = new GetHostCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetHostCommandInput} for command's `input` shape.
+ * @see {@link GetHostCommandOutput} for command's `response` shape.
+ * @see {@link CodeStarConnectionsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetHostCommand extends $Command<
   GetHostCommandInput,

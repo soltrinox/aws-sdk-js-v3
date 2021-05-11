@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteCertificateCommandInput = DeleteCertificateRequest;
-export type DeleteCertificateCommandOutput = __MetadataBearer;
+export interface DeleteCertificateCommandInput extends DeleteCertificateRequest {}
+export interface DeleteCertificateCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified certificate.</p>
  *          <p>A certificate cannot be deleted if it has a policy or IoT thing attached to it or if
  *          its status is set to ACTIVE. To delete a certificate, first use the <a>DetachPrincipalPolicy</a> API to detach all policies. Next, use the <a>UpdateCertificate</a> API to set the certificate to the INACTIVE
  *          status.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DeleteCertificateCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DeleteCertificateCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DeleteCertificateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteCertificateCommandInput} for command's `input` shape.
+ * @see {@link DeleteCertificateCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteCertificateCommand extends $Command<
   DeleteCertificateCommandInput,

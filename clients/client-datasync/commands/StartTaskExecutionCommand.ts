@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartTaskExecutionCommandInput = StartTaskExecutionRequest;
-export type StartTaskExecutionCommandOutput = StartTaskExecutionResponse & __MetadataBearer;
+export interface StartTaskExecutionCommandInput extends StartTaskExecutionRequest {}
+export interface StartTaskExecutionCommandOutput extends StartTaskExecutionResponse, __MetadataBearer {}
 
 /**
  * <p>Starts a specific invocation of a task. A <code>TaskExecution</code> value represents
@@ -28,8 +28,22 @@ export type StartTaskExecutionCommandOutput = StartTaskExecutionResponse & __Met
  *             <code>TaskExecution</code> has the following transition phases: INITIALIZING |
  *       PREPARING | TRANSFERRING | VERIFYING | SUCCESS/FAILURE. </p>
  *
- *          <p>For detailed information, see the Task Execution section in the Components
- *       and Terminology topic in the <i>AWS DataSync User Guide</i>.</p>
+ *          <p>For detailed information, see the Task Execution section in the Components and
+ *       Terminology topic in the <i>AWS DataSync User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataSyncClient, StartTaskExecutionCommand } from "@aws-sdk/client-datasync"; // ES Modules import
+ * // const { DataSyncClient, StartTaskExecutionCommand } = require("@aws-sdk/client-datasync"); // CommonJS import
+ * const client = new DataSyncClient(config);
+ * const command = new StartTaskExecutionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartTaskExecutionCommandInput} for command's `input` shape.
+ * @see {@link StartTaskExecutionCommandOutput} for command's `response` shape.
+ * @see {@link DataSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartTaskExecutionCommand extends $Command<
   StartTaskExecutionCommandInput,

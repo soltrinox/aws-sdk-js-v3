@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateSubnetCidrBlockCommandInput = AssociateSubnetCidrBlockRequest;
-export type AssociateSubnetCidrBlockCommandOutput = AssociateSubnetCidrBlockResult & __MetadataBearer;
+export interface AssociateSubnetCidrBlockCommandInput extends AssociateSubnetCidrBlockRequest {}
+export interface AssociateSubnetCidrBlockCommandOutput extends AssociateSubnetCidrBlockResult, __MetadataBearer {}
 
 /**
  * <p>Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR
  *             block with your subnet. An IPv6 CIDR block must have a prefix length of /64.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, AssociateSubnetCidrBlockCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, AssociateSubnetCidrBlockCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new AssociateSubnetCidrBlockCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateSubnetCidrBlockCommandInput} for command's `input` shape.
+ * @see {@link AssociateSubnetCidrBlockCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateSubnetCidrBlockCommand extends $Command<
   AssociateSubnetCidrBlockCommandInput,

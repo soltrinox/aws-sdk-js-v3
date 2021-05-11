@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartMaintenanceCommandInput = StartMaintenanceRequest;
-export type StartMaintenanceCommandOutput = StartMaintenanceResponse & __MetadataBearer;
+export interface StartMaintenanceCommandInput extends StartMaintenanceRequest {}
+export interface StartMaintenanceCommandOutput extends StartMaintenanceResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -29,6 +29,20 @@ export type StartMaintenanceCommandOutput = StartMaintenanceResponse & __Metadat
  *       Maintenance can only be started on servers in <code>HEALTHY</code> and <code>UNHEALTHY</code> states. Otherwise, an <code>InvalidStateException</code> is thrown.
  *       A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksCMClient, StartMaintenanceCommand } from "@aws-sdk/client-opsworkscm"; // ES Modules import
+ * // const { OpsWorksCMClient, StartMaintenanceCommand } = require("@aws-sdk/client-opsworkscm"); // CommonJS import
+ * const client = new OpsWorksCMClient(config);
+ * const command = new StartMaintenanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartMaintenanceCommandInput} for command's `input` shape.
+ * @see {@link StartMaintenanceCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksCMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartMaintenanceCommand extends $Command<
   StartMaintenanceCommandInput,

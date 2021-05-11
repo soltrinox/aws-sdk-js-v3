@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAuthorizersCommandInput = ListAuthorizersRequest;
-export type ListAuthorizersCommandOutput = ListAuthorizersResponse & __MetadataBearer;
+export interface ListAuthorizersCommandInput extends ListAuthorizersRequest {}
+export interface ListAuthorizersCommandOutput extends ListAuthorizersResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the authorizers registered in your account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, ListAuthorizersCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, ListAuthorizersCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new ListAuthorizersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAuthorizersCommandInput} for command's `input` shape.
+ * @see {@link ListAuthorizersCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAuthorizersCommand extends $Command<
   ListAuthorizersCommandInput,

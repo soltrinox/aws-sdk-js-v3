@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateStreamCommandInput = UpdateStreamInput;
-export type UpdateStreamCommandOutput = UpdateStreamOutput & __MetadataBearer;
+export interface UpdateStreamCommandInput extends UpdateStreamInput {}
+export interface UpdateStreamCommandOutput extends UpdateStreamOutput, __MetadataBearer {}
 
 /**
  * <p>Updates stream metadata, such as the device name and media type.</p>
@@ -31,6 +31,20 @@ export type UpdateStreamCommandOutput = UpdateStreamOutput & __MetadataBearer;
  *         <p>
  *             <code>UpdateStream</code> is an asynchronous operation, and takes time to
  *             complete.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisVideoClient, UpdateStreamCommand } from "@aws-sdk/client-kinesis-video"; // ES Modules import
+ * // const { KinesisVideoClient, UpdateStreamCommand } = require("@aws-sdk/client-kinesis-video"); // CommonJS import
+ * const client = new KinesisVideoClient(config);
+ * const command = new UpdateStreamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateStreamCommandInput} for command's `input` shape.
+ * @see {@link UpdateStreamCommandOutput} for command's `response` shape.
+ * @see {@link KinesisVideoClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateStreamCommand extends $Command<
   UpdateStreamCommandInput,

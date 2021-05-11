@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteConfigurationCommandInput = DeleteConfigurationRequest;
-export type DeleteConfigurationCommandOutput = DeleteConfigurationResponse & __MetadataBearer;
+export interface DeleteConfigurationCommandInput extends DeleteConfigurationRequest {}
+export interface DeleteConfigurationCommandOutput extends DeleteConfigurationResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an MSK Configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, DeleteConfigurationCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, DeleteConfigurationCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new DeleteConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteConfigurationCommandInput} for command's `input` shape.
+ * @see {@link DeleteConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteConfigurationCommand extends $Command<
   DeleteConfigurationCommandInput,

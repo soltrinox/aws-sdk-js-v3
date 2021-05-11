@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateModelCommandInput = CreateModelRequest;
-export type CreateModelCommandOutput = CreateModelResult & __MetadataBearer;
+export interface CreateModelCommandInput extends CreateModelRequest {}
+export interface CreateModelCommandOutput extends CreateModelResult, __MetadataBearer {}
 
 /**
  * <p>Creates a model using the specified model type.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FraudDetectorClient, CreateModelCommand } from "@aws-sdk/client-frauddetector"; // ES Modules import
+ * // const { FraudDetectorClient, CreateModelCommand } = require("@aws-sdk/client-frauddetector"); // CommonJS import
+ * const client = new FraudDetectorClient(config);
+ * const command = new CreateModelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateModelCommandInput} for command's `input` shape.
+ * @see {@link CreateModelCommandOutput} for command's `response` shape.
+ * @see {@link FraudDetectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateModelCommand extends $Command<
   CreateModelCommandInput,

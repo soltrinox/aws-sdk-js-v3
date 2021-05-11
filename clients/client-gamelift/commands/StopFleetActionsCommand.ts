@@ -17,16 +17,32 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopFleetActionsCommandInput = StopFleetActionsInput;
-export type StopFleetActionsCommandOutput = StopFleetActionsOutput & __MetadataBearer;
+export interface StopFleetActionsCommandInput extends StopFleetActionsInput {}
+export interface StopFleetActionsCommandOutput extends StopFleetActionsOutput, __MetadataBearer {}
 
 /**
- * <p>Suspends activity on a fleet. Currently, this operation is used to stop a fleet's
- *             auto-scaling activity. It is used to temporarily stop triggering scaling events. The
- *             policies can be retained and auto-scaling activity can be restarted using <a>StartFleetActions</a>. You can view a fleet's stopped actions using <a>DescribeFleetAttributes</a>.</p>
- *         <p>To stop fleet actions, specify the fleet ID and the type of actions to suspend. When
- *             auto-scaling fleet actions are stopped, Amazon GameLift no longer initiates scaling events except
- *             in response to manual changes using <a>UpdateFleetCapacity</a>. </p>
+ * <p>Suspends certain types of activity in a fleet location. Currently, this operation is
+ *             used to stop auto-scaling activity. For multi-location fleets, fleet actions are managed
+ *             separately for each location. </p>
+ *         <p>Stopping fleet actions has several potential purposes. It allows you to temporarily
+ *             stop auto-scaling activity but retain your scaling policies for use in the future. For
+ *             multi-location fleets, you can set up fleet-wide auto-scaling, and then opt out of it
+ *             for certain locations. </p>
+ *         <p>This operation can be used in the following ways: </p>
+ *         <ul>
+ *             <li>
+ *                 <p>To stop actions on instances in the fleet's home Region, provide a fleet ID
+ *                     and the type of actions to suspend. </p>
+ *             </li>
+ *             <li>
+ *                 <p>To stop actions on instances in one of the fleet's remote locations, provide a
+ *                     fleet ID, a location name, and the type of actions to suspend. </p>
+ *             </li>
+ *          </ul>
+ *         <p>If successful, GameLift no longer initiates scaling events except in response to manual
+ *             changes using <a>UpdateFleetCapacity</a>. You can view a fleet's stopped
+ *             actions using <a>DescribeFleetAttributes</a> or <a>DescribeFleetLocationAttributes</a>. Suspended activity can be restarted
+ *             using <a>StartFleetActions</a>.</p>
  *         <p>
  *             <b>Learn more</b>
  *          </p>
@@ -34,40 +50,34 @@ export type StopFleetActionsCommandOutput = StopFleetActionsOutput & __MetadataB
  *             <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html">Setting up GameLift Fleets</a>
  *          </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateFleet</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ListFleets</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteFleet</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeFleetAttributes</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateFleetAttributes</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>StartFleetActions</a> or <a>StopFleetActions</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>CreateFleet</a> |
+ *                     <a>UpdateFleetCapacity</a> |
+ *                     <a>PutScalingPolicy</a> |
+ *                     <a>DescribeEC2InstanceLimits</a> |
+ *                     <a>DescribeFleetAttributes</a> |
+ *                     <a>DescribeFleetLocationAttributes</a> |
+ *                     <a>UpdateFleetAttributes</a> |
+ *                     <a>StopFleetActions</a> |
+ *                     <a>DeleteFleet</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, StopFleetActionsCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, StopFleetActionsCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new StopFleetActionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopFleetActionsCommandInput} for command's `input` shape.
+ * @see {@link StopFleetActionsCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopFleetActionsCommand extends $Command<
   StopFleetActionsCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type FilterLogEventsCommandInput = FilterLogEventsRequest;
-export type FilterLogEventsCommandOutput = FilterLogEventsResponse & __MetadataBearer;
+export interface FilterLogEventsCommandInput extends FilterLogEventsRequest {}
+export interface FilterLogEventsCommandOutput extends FilterLogEventsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists log events from the specified log group. You can list all the log events or filter the results
@@ -30,6 +30,20 @@ export type FilterLogEventsCommandOutput = FilterLogEventsResponse & __MetadataB
  *     while there are more log events available through the token.</p>
  *          <p>The returned log events are sorted by event timestamp, the timestamp when the event was ingested
  *     by CloudWatch Logs, and the ID of the <code>PutLogEvents</code> request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, FilterLogEventsCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, FilterLogEventsCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new FilterLogEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link FilterLogEventsCommandInput} for command's `input` shape.
+ * @see {@link FilterLogEventsCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class FilterLogEventsCommand extends $Command<
   FilterLogEventsCommandInput,

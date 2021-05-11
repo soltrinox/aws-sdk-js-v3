@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetModelsCommandInput = GetModelsRequest;
-export type GetModelsCommandOutput = GetModelsResult & __MetadataBearer;
+export interface GetModelsCommandInput extends GetModelsRequest {}
+export interface GetModelsCommandOutput extends GetModelsResult, __MetadataBearer {}
 
 /**
  * <p>Gets one or more models. Gets all models for the AWS account if no model type and no model id provided. Gets all models for the AWS account and model type, if the model type is specified but model id is not provided. Gets a specific model if (model type, model id) tuple is specified. </p>
@@ -25,6 +25,20 @@ export type GetModelsCommandOutput = GetModelsResult & __MetadataBearer;
  *          To get the next page results, provide the pagination token from the
  *             response as part of your request. A null pagination token
  *          fetches the records from the beginning.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FraudDetectorClient, GetModelsCommand } from "@aws-sdk/client-frauddetector"; // ES Modules import
+ * // const { FraudDetectorClient, GetModelsCommand } = require("@aws-sdk/client-frauddetector"); // CommonJS import
+ * const client = new FraudDetectorClient(config);
+ * const command = new GetModelsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetModelsCommandInput} for command's `input` shape.
+ * @see {@link GetModelsCommandOutput} for command's `response` shape.
+ * @see {@link FraudDetectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetModelsCommand extends $Command<
   GetModelsCommandInput,

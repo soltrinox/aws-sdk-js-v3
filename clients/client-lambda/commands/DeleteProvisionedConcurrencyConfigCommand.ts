@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteProvisionedConcurrencyConfigCommandInput = DeleteProvisionedConcurrencyConfigRequest;
-export type DeleteProvisionedConcurrencyConfigCommandOutput = __MetadataBearer;
+export interface DeleteProvisionedConcurrencyConfigCommandInput extends DeleteProvisionedConcurrencyConfigRequest {}
+export interface DeleteProvisionedConcurrencyConfigCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the provisioned concurrency configuration for a function.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LambdaClient, DeleteProvisionedConcurrencyConfigCommand } from "@aws-sdk/client-lambda"; // ES Modules import
+ * // const { LambdaClient, DeleteProvisionedConcurrencyConfigCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+ * const client = new LambdaClient(config);
+ * const command = new DeleteProvisionedConcurrencyConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteProvisionedConcurrencyConfigCommandInput} for command's `input` shape.
+ * @see {@link DeleteProvisionedConcurrencyConfigCommandOutput} for command's `response` shape.
+ * @see {@link LambdaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteProvisionedConcurrencyConfigCommand extends $Command<
   DeleteProvisionedConcurrencyConfigCommandInput,

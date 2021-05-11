@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeUserCommandInput = DescribeUserRequest;
-export type DescribeUserCommandOutput = DescribeUserResponse & __MetadataBearer;
+export interface DescribeUserCommandInput extends DescribeUserRequest {}
+export interface DescribeUserCommandOutput extends DescribeUserResponse, __MetadataBearer {}
 
 /**
  * Returns information about an ActiveMQ user.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MqClient, DescribeUserCommand } from "@aws-sdk/client-mq"; // ES Modules import
+ * // const { MqClient, DescribeUserCommand } = require("@aws-sdk/client-mq"); // CommonJS import
+ * const client = new MqClient(config);
+ * const command = new DescribeUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeUserCommandInput} for command's `input` shape.
+ * @see {@link DescribeUserCommandOutput} for command's `response` shape.
+ * @see {@link MqClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeUserCommand extends $Command<
   DescribeUserCommandInput,

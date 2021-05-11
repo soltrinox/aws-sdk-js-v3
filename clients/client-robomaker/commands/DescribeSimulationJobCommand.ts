@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeSimulationJobCommandInput = DescribeSimulationJobRequest;
-export type DescribeSimulationJobCommandOutput = DescribeSimulationJobResponse & __MetadataBearer;
+export interface DescribeSimulationJobCommandInput extends DescribeSimulationJobRequest {}
+export interface DescribeSimulationJobCommandOutput extends DescribeSimulationJobResponse, __MetadataBearer {}
 
 /**
  * <p>Describes a simulation job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RoboMakerClient, DescribeSimulationJobCommand } from "@aws-sdk/client-robomaker"; // ES Modules import
+ * // const { RoboMakerClient, DescribeSimulationJobCommand } = require("@aws-sdk/client-robomaker"); // CommonJS import
+ * const client = new RoboMakerClient(config);
+ * const command = new DescribeSimulationJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeSimulationJobCommandInput} for command's `input` shape.
+ * @see {@link DescribeSimulationJobCommandOutput} for command's `response` shape.
+ * @see {@link RoboMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeSimulationJobCommand extends $Command<
   DescribeSimulationJobCommandInput,

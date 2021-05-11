@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCacheParameterGroupCommandInput = CreateCacheParameterGroupMessage;
-export type CreateCacheParameterGroupCommandOutput = CreateCacheParameterGroupResult & __MetadataBearer;
+export interface CreateCacheParameterGroupCommandInput extends CreateCacheParameterGroupMessage {}
+export interface CreateCacheParameterGroupCommandOutput extends CreateCacheParameterGroupResult, __MetadataBearer {}
 
 /**
  * <p>Creates a new Amazon ElastiCache cache parameter group. An ElastiCache
@@ -37,6 +37,20 @@ export type CreateCacheParameterGroupCommandOutput = CreateCacheParameterGroupRe
  *                   <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html">Parameters and Parameter Groups</a> in the ElastiCache User Guide.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, CreateCacheParameterGroupCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, CreateCacheParameterGroupCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new CreateCacheParameterGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCacheParameterGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateCacheParameterGroupCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCacheParameterGroupCommand extends $Command<
   CreateCacheParameterGroupCommandInput,

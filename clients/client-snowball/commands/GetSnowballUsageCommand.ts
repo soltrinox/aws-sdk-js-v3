@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSnowballUsageCommandInput = GetSnowballUsageRequest;
-export type GetSnowballUsageCommandOutput = GetSnowballUsageResult & __MetadataBearer;
+export interface GetSnowballUsageCommandInput extends GetSnowballUsageRequest {}
+export interface GetSnowballUsageCommandOutput extends GetSnowballUsageResult, __MetadataBearer {}
 
 /**
  * <p>Returns information about the Snow Family service limit for your account, and also the
@@ -26,6 +26,20 @@ export type GetSnowballUsageCommandOutput = GetSnowballUsageResult & __MetadataB
  *
  *          <p>The default service limit for the number of Snow devices that you can have at one time is
  *       1. If you want to increase your service limit, contact AWS Support.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SnowballClient, GetSnowballUsageCommand } from "@aws-sdk/client-snowball"; // ES Modules import
+ * // const { SnowballClient, GetSnowballUsageCommand } = require("@aws-sdk/client-snowball"); // CommonJS import
+ * const client = new SnowballClient(config);
+ * const command = new GetSnowballUsageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSnowballUsageCommandInput} for command's `input` shape.
+ * @see {@link GetSnowballUsageCommandOutput} for command's `response` shape.
+ * @see {@link SnowballClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSnowballUsageCommand extends $Command<
   GetSnowballUsageCommandInput,

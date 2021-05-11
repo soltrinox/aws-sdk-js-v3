@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeConfigurationRecordersCommandInput = DescribeConfigurationRecordersRequest;
-export type DescribeConfigurationRecordersCommandOutput = DescribeConfigurationRecordersResponse & __MetadataBearer;
+export interface DescribeConfigurationRecordersCommandInput extends DescribeConfigurationRecordersRequest {}
+export interface DescribeConfigurationRecordersCommandOutput
+  extends DescribeConfigurationRecordersResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the details for the specified configuration recorders.
@@ -29,6 +31,20 @@ export type DescribeConfigurationRecordersCommandOutput = DescribeConfigurationR
  * 			         <p>Currently, you can specify only one configuration recorder
  * 				per region in your account.</p>
  * 		       </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DescribeConfigurationRecordersCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DescribeConfigurationRecordersCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DescribeConfigurationRecordersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeConfigurationRecordersCommandInput} for command's `input` shape.
+ * @see {@link DescribeConfigurationRecordersCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeConfigurationRecordersCommand extends $Command<
   DescribeConfigurationRecordersCommandInput,

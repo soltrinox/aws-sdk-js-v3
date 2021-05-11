@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSolutionCommandInput = CreateSolutionRequest;
-export type CreateSolutionCommandOutput = CreateSolutionResponse & __MetadataBearer;
+export interface CreateSolutionCommandInput extends CreateSolutionRequest {}
+export interface CreateSolutionCommandOutput extends CreateSolutionResponse, __MetadataBearer {}
 
 /**
  * <p>Creates the configuration for training a model. A trained model is known as
@@ -36,6 +36,10 @@ export type CreateSolutionCommandOutput = CreateSolutionResponse & __MetadataBea
  *       recipes provided by Amazon Personalize. Alternatively, you can specify
  *       <code>performAutoML</code> and Amazon Personalize will analyze your data and select the
  *       optimum USER_PERSONALIZATION recipe for you.</p>
+ *          <note>
+ *             <p>Amazon Personalize doesn't support configuring the <code>hpoObjective</code>
+ *         for solution hyperparameter optimization at this time.</p>
+ *          </note>
  *          <p>
  *             <b>Status</b>
  *          </p>
@@ -90,6 +94,20 @@ export type CreateSolutionCommandOutput = CreateSolutionResponse & __MetadataBea
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PersonalizeClient, CreateSolutionCommand } from "@aws-sdk/client-personalize"; // ES Modules import
+ * // const { PersonalizeClient, CreateSolutionCommand } = require("@aws-sdk/client-personalize"); // CommonJS import
+ * const client = new PersonalizeClient(config);
+ * const command = new CreateSolutionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSolutionCommandInput} for command's `input` shape.
+ * @see {@link CreateSolutionCommandOutput} for command's `response` shape.
+ * @see {@link PersonalizeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSolutionCommand extends $Command<
   CreateSolutionCommandInput,

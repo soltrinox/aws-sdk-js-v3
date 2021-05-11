@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GreetingWithErrorsCommandInput = {};
-export type GreetingWithErrorsCommandOutput = GreetingWithErrorsOutput & __MetadataBearer;
+export interface GreetingWithErrorsCommandInput {}
+export interface GreetingWithErrorsCommandOutput extends GreetingWithErrorsOutput, __MetadataBearer {}
 
 /**
  * This operation has three possible return values:
@@ -29,6 +29,20 @@ export type GreetingWithErrorsCommandOutput = GreetingWithErrorsOutput & __Metad
  *
  * Implementations must be able to successfully take a response and
  * properly deserialize successful and error responses.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { JsonProtocolClient, GreetingWithErrorsCommand } from "@aws-sdk/aws-json"; // ES Modules import
+ * // const { JsonProtocolClient, GreetingWithErrorsCommand } = require("@aws-sdk/aws-json"); // CommonJS import
+ * const client = new JsonProtocolClient(config);
+ * const command = new GreetingWithErrorsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GreetingWithErrorsCommandInput} for command's `input` shape.
+ * @see {@link GreetingWithErrorsCommandOutput} for command's `response` shape.
+ * @see {@link JsonProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GreetingWithErrorsCommand extends $Command<
   GreetingWithErrorsCommandInput,

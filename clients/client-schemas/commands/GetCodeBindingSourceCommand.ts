@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCodeBindingSourceCommandInput = GetCodeBindingSourceRequest;
-export type GetCodeBindingSourceCommandOutput = GetCodeBindingSourceResponse & __MetadataBearer;
+export interface GetCodeBindingSourceCommandInput extends GetCodeBindingSourceRequest {}
+export interface GetCodeBindingSourceCommandOutput extends GetCodeBindingSourceResponse, __MetadataBearer {}
 
 /**
  * <p>Get the code binding source URI.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SchemasClient, GetCodeBindingSourceCommand } from "@aws-sdk/client-schemas"; // ES Modules import
+ * // const { SchemasClient, GetCodeBindingSourceCommand } = require("@aws-sdk/client-schemas"); // CommonJS import
+ * const client = new SchemasClient(config);
+ * const command = new GetCodeBindingSourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCodeBindingSourceCommandInput} for command's `input` shape.
+ * @see {@link GetCodeBindingSourceCommandOutput} for command's `response` shape.
+ * @see {@link SchemasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCodeBindingSourceCommand extends $Command<
   GetCodeBindingSourceCommandInput,

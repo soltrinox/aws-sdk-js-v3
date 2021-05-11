@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateGlobalClusterCommandInput = CreateGlobalClusterMessage;
-export type CreateGlobalClusterCommandOutput = CreateGlobalClusterResult & __MetadataBearer;
+export interface CreateGlobalClusterCommandInput extends CreateGlobalClusterMessage {}
+export interface CreateGlobalClusterCommandOutput extends CreateGlobalClusterResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -38,6 +38,20 @@ export type CreateGlobalClusterCommandOutput = CreateGlobalClusterResult & __Met
  *          <note>
  *            <p>This action only applies to Aurora DB clusters.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, CreateGlobalClusterCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, CreateGlobalClusterCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new CreateGlobalClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateGlobalClusterCommandInput} for command's `input` shape.
+ * @see {@link CreateGlobalClusterCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateGlobalClusterCommand extends $Command<
   CreateGlobalClusterCommandInput,

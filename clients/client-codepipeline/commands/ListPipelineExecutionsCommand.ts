@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPipelineExecutionsCommandInput = ListPipelineExecutionsInput;
-export type ListPipelineExecutionsCommandOutput = ListPipelineExecutionsOutput & __MetadataBearer;
+export interface ListPipelineExecutionsCommandInput extends ListPipelineExecutionsInput {}
+export interface ListPipelineExecutionsCommandOutput extends ListPipelineExecutionsOutput, __MetadataBearer {}
 
 /**
  * <p>Gets a summary of the most recent executions for a pipeline.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodePipelineClient, ListPipelineExecutionsCommand } from "@aws-sdk/client-codepipeline"; // ES Modules import
+ * // const { CodePipelineClient, ListPipelineExecutionsCommand } = require("@aws-sdk/client-codepipeline"); // CommonJS import
+ * const client = new CodePipelineClient(config);
+ * const command = new ListPipelineExecutionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPipelineExecutionsCommandInput} for command's `input` shape.
+ * @see {@link ListPipelineExecutionsCommandOutput} for command's `response` shape.
+ * @see {@link CodePipelineClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPipelineExecutionsCommand extends $Command<
   ListPipelineExecutionsCommandInput,

@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTemplateCommandInput = GetTemplateInput;
-export type GetTemplateCommandOutput = GetTemplateOutput & __MetadataBearer;
+export interface GetTemplateCommandInput extends GetTemplateInput {}
+export interface GetTemplateCommandOutput extends GetTemplateOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the template body for a specified stack. You can get the template for running
@@ -26,6 +26,20 @@ export type GetTemplateCommandOutput = GetTemplateOutput & __MetadataBearer;
  *             <p> If the template does not exist, a <code>ValidationError</code> is returned.
  *          </p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, GetTemplateCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, GetTemplateCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new GetTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTemplateCommandInput} for command's `input` shape.
+ * @see {@link GetTemplateCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTemplateCommand extends $Command<
   GetTemplateCommandInput,

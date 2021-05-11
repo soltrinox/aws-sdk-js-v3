@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAliasesCommandInput = ListAliasesRequest;
-export type ListAliasesCommandOutput = ListAliasesResponse & __MetadataBearer;
+export interface ListAliasesCommandInput extends ListAliasesRequest {}
+export interface ListAliasesCommandOutput extends ListAliasesResponse, __MetadataBearer {}
 
 /**
- * <p>Creates a paginated call to list the aliases associated with a given entity.</p>
+ * <p>Creates a paginated call to list the aliases associated with a given
+ *          entity.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkMailClient, ListAliasesCommand } from "@aws-sdk/client-workmail"; // ES Modules import
+ * // const { WorkMailClient, ListAliasesCommand } = require("@aws-sdk/client-workmail"); // CommonJS import
+ * const client = new WorkMailClient(config);
+ * const command = new ListAliasesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAliasesCommandInput} for command's `input` shape.
+ * @see {@link ListAliasesCommandOutput} for command's `response` shape.
+ * @see {@link WorkMailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAliasesCommand extends $Command<
   ListAliasesCommandInput,

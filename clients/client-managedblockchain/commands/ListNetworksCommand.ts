@@ -21,11 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListNetworksCommandInput = ListNetworksInput;
-export type ListNetworksCommandOutput = ListNetworksOutput & __MetadataBearer;
+export interface ListNetworksCommandInput extends ListNetworksInput {}
+export interface ListNetworksCommandOutput extends ListNetworksOutput, __MetadataBearer {}
 
 /**
- * <p>Returns information about the networks in which the current AWS account has members.</p>
+ * <p>Returns information about the networks in which the current AWS account participates.</p>
+ *          <p>Applies to Hyperledger Fabric and Ethereum.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ManagedBlockchainClient, ListNetworksCommand } from "@aws-sdk/client-managedblockchain"; // ES Modules import
+ * // const { ManagedBlockchainClient, ListNetworksCommand } = require("@aws-sdk/client-managedblockchain"); // CommonJS import
+ * const client = new ManagedBlockchainClient(config);
+ * const command = new ListNetworksCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListNetworksCommandInput} for command's `input` shape.
+ * @see {@link ListNetworksCommandOutput} for command's `response` shape.
+ * @see {@link ManagedBlockchainClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListNetworksCommand extends $Command<
   ListNetworksCommandInput,

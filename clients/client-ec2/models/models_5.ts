@@ -1,6 +1,9 @@
 import {
+  AddressAttribute,
+  AddressAttributeName,
   BlockDeviceMapping,
   ByoipCidr,
+  ClientVpnAuthorizationRuleStatus,
   CreditSpecificationRequest,
   ElasticGpuSpecification,
   IamInstanceProfileSpecification,
@@ -8,17 +11,19 @@ import {
   IpPermission,
   MarketType,
   Placement,
+  RouteTableAssociationState,
   ShutdownBehavior,
   SpotInstanceType,
   TagSpecification,
   TransitGatewayAttachmentResourceType,
   _InstanceType,
 } from "./models_0";
-import { InstanceIpv6Address, LocalGatewayRoute, TransitGatewayRoute } from "./models_1";
+import { InstanceIpv6Address, LocalGatewayRoute, ManagedPrefixList, TransitGatewayRoute } from "./models_1";
 import {
   ClientVpnConnectionStatus,
   Filter,
   HttpTokensState,
+  InstanceAttributeName,
   InstanceMetadataEndpointState,
   InstanceState,
 } from "./models_2";
@@ -26,14 +31,1149 @@ import {
   InstanceNetworkInterfaceSpecification,
   NetworkInsightsAnalysis,
   RunInstancesMonitoringEnabled,
+  SnapshotAttributeName,
+  SpotFleetRequestConfigData,
+  SpotInstanceRequest,
+  SpotPlacement,
 } from "./models_3";
-import {
-  CapacityReservationSpecification,
-  CpuOptionsRequest,
-  ElasticInferenceAccelerator,
-  EnclaveOptionsRequest,
-  InstanceMonitoring,
-} from "./models_4";
+import { CapacityReservationSpecification, InstanceMonitoring, Status } from "./models_4";
+
+export interface ReplaceRouteTableAssociationRequest {
+  /**
+   * <p>The association ID.</p>
+   */
+  AssociationId: string | undefined;
+
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *    and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *    Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+
+  /**
+   * <p>The ID of the new route table to associate with the subnet.</p>
+   */
+  RouteTableId: string | undefined;
+}
+
+export namespace ReplaceRouteTableAssociationRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReplaceRouteTableAssociationRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ReplaceRouteTableAssociationResult {
+  /**
+   * <p>The ID of the new association.</p>
+   */
+  NewAssociationId?: string;
+
+  /**
+   * <p>The state of the association.</p>
+   */
+  AssociationState?: RouteTableAssociationState;
+}
+
+export namespace ReplaceRouteTableAssociationResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReplaceRouteTableAssociationResult): any => ({
+    ...obj,
+  });
+}
+
+export interface ReplaceTransitGatewayRouteRequest {
+  /**
+   * <p>The CIDR range used for the destination match. Routing decisions are based on the most specific match.</p>
+   */
+  DestinationCidrBlock: string | undefined;
+
+  /**
+   * <p>The ID of the route table.</p>
+   */
+  TransitGatewayRouteTableId: string | undefined;
+
+  /**
+   * <p>The ID of the attachment.</p>
+   */
+  TransitGatewayAttachmentId?: string;
+
+  /**
+   * <p>Indicates whether traffic matching this route is to be dropped.</p>
+   */
+  Blackhole?: boolean;
+
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *    and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *    Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+}
+
+export namespace ReplaceTransitGatewayRouteRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReplaceTransitGatewayRouteRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ReplaceTransitGatewayRouteResult {
+  /**
+   * <p>Information about the modified route.</p>
+   */
+  Route?: TransitGatewayRoute;
+}
+
+export namespace ReplaceTransitGatewayRouteResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReplaceTransitGatewayRouteResult): any => ({
+    ...obj,
+  });
+}
+
+export type ReportInstanceReasonCodes =
+  | "instance-stuck-in-state"
+  | "not-accepting-credentials"
+  | "other"
+  | "password-not-available"
+  | "performance-ebs-volume"
+  | "performance-instance-store"
+  | "performance-network"
+  | "performance-other"
+  | "unresponsive";
+
+export type ReportStatusType = "impaired" | "ok";
+
+export interface ReportInstanceStatusRequest {
+  /**
+   * <p>Descriptive text about the health state of your instance.</p>
+   */
+  Description?: string;
+
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *    and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *    Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+
+  /**
+   * <p>The time at which the reported instance health state ended.</p>
+   */
+  EndTime?: Date;
+
+  /**
+   * <p>The instances.</p>
+   */
+  Instances: string[] | undefined;
+
+  /**
+   * <p>The reason codes that describe the health state of your instance.</p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                     <code>instance-stuck-in-state</code>: My instance is stuck in a state.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>unresponsive</code>: My instance is unresponsive.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>not-accepting-credentials</code>: My instance is not accepting my
+   *                     credentials.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>password-not-available</code>: A password is not available for my
+   *                     instance.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>performance-network</code>: My instance is experiencing performance
+   *                     problems that I believe are network related.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>performance-instance-store</code>: My instance is experiencing performance
+   *                     problems that I believe are related to the instance stores.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>performance-ebs-volume</code>: My instance is experiencing performance
+   *                     problems that I believe are related to an EBS volume.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>performance-other</code>: My instance is experiencing performance
+   *                     problems.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>other</code>: [explain using the description parameter]</p>
+   *             </li>
+   *          </ul>
+   */
+  ReasonCodes: (ReportInstanceReasonCodes | string)[] | undefined;
+
+  /**
+   * <p>The time at which the reported instance health state began.</p>
+   */
+  StartTime?: Date;
+
+  /**
+   * <p>The status of all instances listed.</p>
+   */
+  Status: ReportStatusType | string | undefined;
+}
+
+export namespace ReportInstanceStatusRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReportInstanceStatusRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains the parameters for RequestSpotFleet.</p>
+ */
+export interface RequestSpotFleetRequest {
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *       and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *       Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+
+  /**
+   * <p>The configuration for the Spot Fleet request.</p>
+   */
+  SpotFleetRequestConfig: SpotFleetRequestConfigData | undefined;
+}
+
+export namespace RequestSpotFleetRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RequestSpotFleetRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains the output of RequestSpotFleet.</p>
+ */
+export interface RequestSpotFleetResponse {
+  /**
+   * <p>The ID of the Spot Fleet request.</p>
+   */
+  SpotFleetRequestId?: string;
+}
+
+export namespace RequestSpotFleetResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RequestSpotFleetResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Describes the launch specification for an instance.</p>
+ */
+export interface RequestSpotLaunchSpecification {
+  /**
+   * <p>One or more security group IDs.</p>
+   */
+  SecurityGroupIds?: string[];
+
+  /**
+   * <p>One or more security groups. When requesting instances in a VPC, you must specify the IDs of the security groups. When requesting instances in EC2-Classic, you can specify the names or the IDs of the security groups.</p>
+   */
+  SecurityGroups?: string[];
+
+  /**
+   * <p>Deprecated.</p>
+   */
+  AddressingType?: string;
+
+  /**
+   * <p>One or more block device mapping entries. You can't specify both a snapshot ID and an encryption value.
+   *            This is because only blank volumes can be encrypted on creation. If a snapshot is the basis for a volume,
+   *            it is not blank and its encryption status is used for the volume encryption status.</p>
+   */
+  BlockDeviceMappings?: BlockDeviceMapping[];
+
+  /**
+   * <p>Indicates whether the instance is optimized for EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS Optimized instance.</p>
+   *          <p>Default: <code>false</code>
+   *          </p>
+   */
+  EbsOptimized?: boolean;
+
+  /**
+   * <p>The IAM instance profile.</p>
+   */
+  IamInstanceProfile?: IamInstanceProfileSpecification;
+
+  /**
+   * <p>The ID of the AMI.</p>
+   */
+  ImageId?: string;
+
+  /**
+   * <p>The instance type.</p>
+   */
+  InstanceType?: _InstanceType | string;
+
+  /**
+   * <p>The ID of the kernel.</p>
+   */
+  KernelId?: string;
+
+  /**
+   * <p>The name of the key pair.</p>
+   */
+  KeyName?: string;
+
+  /**
+   * <p>Indicates whether basic or detailed monitoring is enabled for the instance.</p>
+   *          <p>Default: Disabled</p>
+   */
+  Monitoring?: RunInstancesMonitoringEnabled;
+
+  /**
+   * <p>One or more network interfaces. If you specify a network interface, you must specify
+   *            subnet IDs and security group IDs using the network interface.</p>
+   */
+  NetworkInterfaces?: InstanceNetworkInterfaceSpecification[];
+
+  /**
+   * <p>The placement information for the instance.</p>
+   */
+  Placement?: SpotPlacement;
+
+  /**
+   * <p>The ID of the RAM disk.</p>
+   */
+  RamdiskId?: string;
+
+  /**
+   * <p>The ID of the subnet in which to launch the instance.</p>
+   */
+  SubnetId?: string;
+
+  /**
+   * <p>The Base64-encoded user data for the instance. User data is limited to 16 KB.</p>
+   */
+  UserData?: string;
+}
+
+export namespace RequestSpotLaunchSpecification {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RequestSpotLaunchSpecification): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains the parameters for RequestSpotInstances.</p>
+ */
+export interface RequestSpotInstancesRequest {
+  /**
+   * <p>The user-specified name for a logical grouping of requests.</p>
+   *          <p>When you specify an Availability Zone group in a Spot Instance request, all Spot Instances in the request are launched in the same Availability Zone. Instance proximity is maintained with this parameter, but the choice of Availability Zone is not. The group applies only to requests for Spot Instances of the same instance type. Any additional Spot Instance requests that are specified with the same Availability Zone group name are launched in that same Availability Zone, as long as at least one instance from the group is still active.</p>
+   *          <p>If there is no active instance running in the Availability Zone group that you specify for a new Spot Instance request (all instances are terminated, the request is expired, or the maximum price you specified falls below current Spot price), then Amazon EC2 launches the instance in any Availability Zone where the constraint can be met. Consequently, the subsequent set of Spot Instances could be placed in a different zone from the original request, even if you specified the same Availability Zone group.</p>
+   *          <p>Default: Instances are launched in any available Availability Zone.</p>
+   */
+  AvailabilityZoneGroup?: string;
+
+  /**
+   * <p>The required duration for the Spot Instances (also known as Spot blocks), in minutes. This value must be a multiple of 60 (60, 120, 180, 240, 300, or 360).</p>
+   *          <p>The duration period starts as soon as your Spot Instance receives its instance ID. At
+   *             the end of the duration period, Amazon EC2 marks the Spot Instance for termination and
+   *             provides a Spot Instance termination notice, which gives the instance a two-minute
+   *             warning before it terminates.</p>
+   *          <p>You can't specify an Availability Zone group or a launch group if you specify a
+   *             duration.</p>
+   *          <p>New accounts or accounts with no previous billing history with AWS are not eligible for
+   *             Spot Instances with a defined duration (also known as Spot blocks).</p>
+   */
+  BlockDurationMinutes?: number;
+
+  /**
+   * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+   *        For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to Ensure Idempotency</a>
+   *        in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
+   */
+  ClientToken?: string;
+
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *        and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *        Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+
+  /**
+   * <p>The maximum number of Spot Instances to launch.</p>
+   *          <p>Default: 1</p>
+   */
+  InstanceCount?: number;
+
+  /**
+   * <p>The instance launch group. Launch groups are Spot Instances that launch together and terminate together.</p>
+   *          <p>Default: Instances are launched and terminated individually</p>
+   */
+  LaunchGroup?: string;
+
+  /**
+   * <p>The launch specification.</p>
+   */
+  LaunchSpecification?: RequestSpotLaunchSpecification;
+
+  /**
+   * <p>The maximum price per hour that you are willing to pay for a Spot Instance. The default is the On-Demand price.</p>
+   */
+  SpotPrice?: string;
+
+  /**
+   * <p>The Spot Instance request type.</p>
+   *          <p>Default: <code>one-time</code>
+   *          </p>
+   */
+  Type?: SpotInstanceType | string;
+
+  /**
+   * <p>The start date of the request. If this is a one-time request, the request becomes active at this date and time and remains active until all instances launch, the request expires, or the request is canceled. If the request is persistent, the request becomes active at this date and time and remains active until it expires or is canceled.</p>
+   *    	     <p>The specified start date and time cannot be equal to the current date and time. You must specify a start date and time that occurs after the current date and time.</p>
+   */
+  ValidFrom?: Date;
+
+  /**
+   * <p>The end date of the request, in UTC format
+   *                 (<i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
+   *          <ul>
+   *             <li>
+   *                 <p>For a persistent request, the request remains active until the <code>ValidUntil</code> date
+   *                     and time is reached. Otherwise, the request remains active until you cancel it.
+   *                 </p>
+   *             </li>
+   *             <li>
+   *                 <p>For a one-time request, the request remains active until all instances launch,
+   *                     the request is canceled, or the <code>ValidUntil</code> date and time is
+   *                     reached. By default, the request is valid for 7 days from the date the request
+   *                     was created.</p>
+   *             </li>
+   *          </ul>
+   */
+  ValidUntil?: Date;
+
+  /**
+   * <p>The key-value pair for tagging the Spot Instance request on creation. The value for <code>ResourceType</code> must be <code>spot-instances-request</code>, otherwise the Spot Instance request fails. To tag the Spot Instance request after it has been created, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html">CreateTags</a>.
+   *         </p>
+   */
+  TagSpecifications?: TagSpecification[];
+
+  /**
+   * <p>The behavior when a Spot Instance is interrupted. The default is <code>terminate</code>.</p>
+   */
+  InstanceInterruptionBehavior?: InstanceInterruptionBehavior | string;
+}
+
+export namespace RequestSpotInstancesRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RequestSpotInstancesRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains the output of RequestSpotInstances.</p>
+ */
+export interface RequestSpotInstancesResult {
+  /**
+   * <p>One or more Spot Instance requests.</p>
+   */
+  SpotInstanceRequests?: SpotInstanceRequest[];
+}
+
+export namespace RequestSpotInstancesResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RequestSpotInstancesResult): any => ({
+    ...obj,
+  });
+}
+
+export interface ResetAddressAttributeRequest {
+  /**
+   * <p>[EC2-VPC] The allocation ID.</p>
+   */
+  AllocationId: string | undefined;
+
+  /**
+   * <p>The attribute of the IP address.</p>
+   */
+  Attribute: AddressAttributeName | string | undefined;
+
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *    and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *    Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+}
+
+export namespace ResetAddressAttributeRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResetAddressAttributeRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ResetAddressAttributeResult {
+  /**
+   * <p>Information about the IP address.</p>
+   */
+  Address?: AddressAttribute;
+}
+
+export namespace ResetAddressAttributeResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResetAddressAttributeResult): any => ({
+    ...obj,
+  });
+}
+
+export interface ResetEbsDefaultKmsKeyIdRequest {
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *    and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *    Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+}
+
+export namespace ResetEbsDefaultKmsKeyIdRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResetEbsDefaultKmsKeyIdRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ResetEbsDefaultKmsKeyIdResult {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the default CMK for EBS encryption by default.</p>
+   */
+  KmsKeyId?: string;
+}
+
+export namespace ResetEbsDefaultKmsKeyIdResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResetEbsDefaultKmsKeyIdResult): any => ({
+    ...obj,
+  });
+}
+
+export type ResetFpgaImageAttributeName = "loadPermission";
+
+export interface ResetFpgaImageAttributeRequest {
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *    and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *    Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+
+  /**
+   * <p>The ID of the AFI.</p>
+   */
+  FpgaImageId: string | undefined;
+
+  /**
+   * <p>The attribute.</p>
+   */
+  Attribute?: ResetFpgaImageAttributeName | string;
+}
+
+export namespace ResetFpgaImageAttributeRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResetFpgaImageAttributeRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ResetFpgaImageAttributeResult {
+  /**
+   * <p>Is <code>true</code> if the request succeeds, and an error otherwise.</p>
+   */
+  Return?: boolean;
+}
+
+export namespace ResetFpgaImageAttributeResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResetFpgaImageAttributeResult): any => ({
+    ...obj,
+  });
+}
+
+export type ResetImageAttributeName = "launchPermission";
+
+/**
+ * <p>Contains the parameters for ResetImageAttribute.</p>
+ */
+export interface ResetImageAttributeRequest {
+  /**
+   * <p>The attribute to reset (currently you can only reset the launch permission attribute).</p>
+   */
+  Attribute: ResetImageAttributeName | string | undefined;
+
+  /**
+   * <p>The ID of the AMI.</p>
+   */
+  ImageId: string | undefined;
+
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *        and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *        Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+}
+
+export namespace ResetImageAttributeRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResetImageAttributeRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ResetInstanceAttributeRequest {
+  /**
+   * <p>The attribute to reset.</p>
+   *         <important>
+   *             <p>You can only reset the following attributes: <code>kernel</code> |
+   *                     <code>ramdisk</code> | <code>sourceDestCheck</code>. To change an instance
+   *                 attribute, use <a>ModifyInstanceAttribute</a>.</p>
+   *         </important>
+   */
+  Attribute: InstanceAttributeName | string | undefined;
+
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *    and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *    Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+
+  /**
+   * <p>The ID of the instance.</p>
+   */
+  InstanceId: string | undefined;
+}
+
+export namespace ResetInstanceAttributeRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResetInstanceAttributeRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains the parameters for ResetNetworkInterfaceAttribute.</p>
+ */
+export interface ResetNetworkInterfaceAttributeRequest {
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *             and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *             Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+
+  /**
+   * <p>The ID of the network interface.</p>
+   */
+  NetworkInterfaceId: string | undefined;
+
+  /**
+   * <p>The source/destination checking attribute. Resets the value to <code>true</code>.</p>
+   */
+  SourceDestCheck?: string;
+}
+
+export namespace ResetNetworkInterfaceAttributeRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResetNetworkInterfaceAttributeRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ResetSnapshotAttributeRequest {
+  /**
+   * <p>The attribute to reset. Currently, only the attribute for permission to create volumes can
+   *       be reset.</p>
+   */
+  Attribute: SnapshotAttributeName | string | undefined;
+
+  /**
+   * <p>The ID of the snapshot.</p>
+   */
+  SnapshotId: string | undefined;
+
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *    and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *    Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+}
+
+export namespace ResetSnapshotAttributeRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResetSnapshotAttributeRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface RestoreAddressToClassicRequest {
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *    and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *    Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+
+  /**
+   * <p>The Elastic IP address.</p>
+   */
+  PublicIp: string | undefined;
+}
+
+export namespace RestoreAddressToClassicRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RestoreAddressToClassicRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface RestoreAddressToClassicResult {
+  /**
+   * <p>The Elastic IP address.</p>
+   */
+  PublicIp?: string;
+
+  /**
+   * <p>The move status for the IP address.</p>
+   */
+  Status?: Status | string;
+}
+
+export namespace RestoreAddressToClassicResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RestoreAddressToClassicResult): any => ({
+    ...obj,
+  });
+}
+
+export interface RestoreManagedPrefixListVersionRequest {
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *    and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *    Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+
+  /**
+   * <p>The ID of the prefix list.</p>
+   */
+  PrefixListId: string | undefined;
+
+  /**
+   * <p>The version to restore.</p>
+   */
+  PreviousVersion: number | undefined;
+
+  /**
+   * <p>The current version number for the prefix list.</p>
+   */
+  CurrentVersion: number | undefined;
+}
+
+export namespace RestoreManagedPrefixListVersionRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RestoreManagedPrefixListVersionRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface RestoreManagedPrefixListVersionResult {
+  /**
+   * <p>Information about the prefix list.</p>
+   */
+  PrefixList?: ManagedPrefixList;
+}
+
+export namespace RestoreManagedPrefixListVersionResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RestoreManagedPrefixListVersionResult): any => ({
+    ...obj,
+  });
+}
+
+export interface RevokeClientVpnIngressRequest {
+  /**
+   * <p>The ID of the Client VPN endpoint with which the authorization rule is associated.</p>
+   */
+  ClientVpnEndpointId: string | undefined;
+
+  /**
+   * <p>The IPv4 address range, in CIDR notation, of the network for which access is being removed.</p>
+   */
+  TargetNetworkCidr: string | undefined;
+
+  /**
+   * <p>The ID of the Active Directory group for which to revoke access. </p>
+   */
+  AccessGroupId?: string;
+
+  /**
+   * <p>Indicates whether access should be revoked for all clients.</p>
+   */
+  RevokeAllGroups?: boolean;
+
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>. Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+}
+
+export namespace RevokeClientVpnIngressRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RevokeClientVpnIngressRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface RevokeClientVpnIngressResult {
+  /**
+   * <p>The current state of the authorization rule.</p>
+   */
+  Status?: ClientVpnAuthorizationRuleStatus;
+}
+
+export namespace RevokeClientVpnIngressResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RevokeClientVpnIngressResult): any => ({
+    ...obj,
+  });
+}
+
+export interface RevokeSecurityGroupEgressRequest {
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *    and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *    Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+
+  /**
+   * <p>The ID of the security group.</p>
+   */
+  GroupId: string | undefined;
+
+  /**
+   * <p>The sets of IP permissions. You can't specify a destination security group and a CIDR IP address range in the same set of permissions.</p>
+   */
+  IpPermissions?: IpPermission[];
+
+  /**
+   * <p>Not supported. Use a set of IP permissions to specify the CIDR.</p>
+   */
+  CidrIp?: string;
+
+  /**
+   * <p>Not supported. Use a set of IP permissions to specify the port.</p>
+   */
+  FromPort?: number;
+
+  /**
+   * <p>Not supported. Use a set of IP permissions to specify the protocol name or
+   *             number.</p>
+   */
+  IpProtocol?: string;
+
+  /**
+   * <p>Not supported. Use a set of IP permissions to specify the port.</p>
+   */
+  ToPort?: number;
+
+  /**
+   * <p>Not supported. Use a set of IP permissions to specify a
+   *            destination security group.</p>
+   */
+  SourceSecurityGroupName?: string;
+
+  /**
+   * <p>Not supported. Use a set of IP permissions to specify a destination security
+   *             group.</p>
+   */
+  SourceSecurityGroupOwnerId?: string;
+}
+
+export namespace RevokeSecurityGroupEgressRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RevokeSecurityGroupEgressRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface RevokeSecurityGroupEgressResult {
+  /**
+   * <p>Returns <code>true</code> if the request succeeds; otherwise, returns an error.</p>
+   */
+  Return?: boolean;
+
+  /**
+   * <p>The outbound rules that were unknown to the service. In some cases,
+   *                 <code>unknownIpPermissionSet</code> might be in a different format from the request
+   *             parameter. </p>
+   */
+  UnknownIpPermissions?: IpPermission[];
+}
+
+export namespace RevokeSecurityGroupEgressResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RevokeSecurityGroupEgressResult): any => ({
+    ...obj,
+  });
+}
+
+export interface RevokeSecurityGroupIngressRequest {
+  /**
+   * <p>The CIDR IP address range. You can't specify this parameter when specifying a source security group.</p>
+   */
+  CidrIp?: string;
+
+  /**
+   * <p>The start of port range for the TCP and UDP protocols, or an ICMP type number. For the ICMP type number,
+   *         use <code>-1</code> to specify all ICMP types.</p>
+   */
+  FromPort?: number;
+
+  /**
+   * <p>The ID of the security group. You must specify either the security group ID or the
+   *            security group name in the request. For security groups in a nondefault VPC, you must
+   *            specify the security group ID.</p>
+   */
+  GroupId?: string;
+
+  /**
+   * <p>[EC2-Classic, default VPC] The name of the security group. You must specify either the
+   *            security group ID or the security group name in the request.</p>
+   */
+  GroupName?: string;
+
+  /**
+   * <p>The sets of IP permissions. You can't specify a source security group and a CIDR IP address range in the same set of permissions.</p>
+   */
+  IpPermissions?: IpPermission[];
+
+  /**
+   * <p>The IP protocol name (<code>tcp</code>, <code>udp</code>, <code>icmp</code>) or number
+   *         (see <a href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">Protocol Numbers</a>).
+   *         Use <code>-1</code> to specify all.</p>
+   */
+  IpProtocol?: string;
+
+  /**
+   * <p>[EC2-Classic, default VPC] The name of the source security group. You can't specify this parameter in combination with the following parameters: the CIDR IP address range, the start of the port range, the IP protocol, and the end of the port range. For EC2-VPC, the source security group must be in the same VPC. To revoke a specific rule for an IP protocol and port range, use a set of IP permissions instead.</p>
+   */
+  SourceSecurityGroupName?: string;
+
+  /**
+   * <p>[EC2-Classic] The AWS account ID of the source security group, if the source security group is in a different account. You can't specify this parameter in combination with the following parameters: the CIDR IP address range, the IP protocol, the start of the port range, and the end of the port range. To revoke a specific rule for an IP protocol and port range, use a set of IP permissions instead.</p>
+   */
+  SourceSecurityGroupOwnerId?: string;
+
+  /**
+   * <p>The end of port range for the TCP and UDP protocols, or an ICMP code number. For the ICMP code number,
+   *         use <code>-1</code> to specify all ICMP codes for the ICMP type.</p>
+   */
+  ToPort?: number;
+
+  /**
+   * <p>Checks whether you have the required permissions for the action, without actually making the request,
+   *    and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>.
+   *    Otherwise, it is <code>UnauthorizedOperation</code>.</p>
+   */
+  DryRun?: boolean;
+}
+
+export namespace RevokeSecurityGroupIngressRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RevokeSecurityGroupIngressRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface RevokeSecurityGroupIngressResult {
+  /**
+   * <p>Returns <code>true</code> if the request succeeds; otherwise, returns an error.</p>
+   */
+  Return?: boolean;
+
+  /**
+   * <p>The inbound rules that were unknown to the service. In some cases,
+   *                 <code>unknownIpPermissionSet</code> might be in a different format from the request
+   *             parameter. </p>
+   */
+  UnknownIpPermissions?: IpPermission[];
+}
+
+export namespace RevokeSecurityGroupIngressResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RevokeSecurityGroupIngressResult): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The CPU options for the instance. Both the core count and threads per core must be
+ *             specified in the request.</p>
+ */
+export interface CpuOptionsRequest {
+  /**
+   * <p>The number of CPU cores for the instance.</p>
+   */
+  CoreCount?: number;
+
+  /**
+   * <p>The number of threads per CPU core. To disable multithreading for
+   *             the instance, specify a value of <code>1</code>. Otherwise, specify the default value of
+   *                 <code>2</code>.</p>
+   */
+  ThreadsPerCore?: number;
+}
+
+export namespace CpuOptionsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CpuOptionsRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>
+ *            Describes an elastic inference accelerator.
+ *         </p>
+ */
+export interface ElasticInferenceAccelerator {
+  /**
+   * <p>
+   *         	The type of elastic inference accelerator. The possible values are <code>eia1.medium</code>, <code>eia1.large</code>, <code>eia1.xlarge</code>, <code>eia2.medium</code>, <code>eia2.large</code>, and <code>eia2.xlarge</code>.
+   *         </p>
+   */
+  Type: string | undefined;
+
+  /**
+   * <p>
+   *             The number of elastic inference accelerators to attach to the instance.
+   *         </p>
+   *          <p>Default: 1</p>
+   */
+  Count?: number;
+}
+
+export namespace ElasticInferenceAccelerator {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ElasticInferenceAccelerator): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Indicates whether the instance is enabled for AWS Nitro Enclaves. For more information,
+ *     		see <a href="https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html">
+ *     			What is AWS Nitro Enclaves?</a> in the <i>AWS Nitro Enclaves User Guide</i>.</p>
+ */
+export interface EnclaveOptionsRequest {
+  /**
+   * <p>To enable the instance for AWS Nitro Enclaves, set this parameter to <code>true</code>.</p>
+   */
+  Enabled?: boolean;
+}
+
+export namespace EnclaveOptionsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: EnclaveOptionsRequest): any => ({
+    ...obj,
+  });
+}
 
 /**
  * <p>Indicates whether your instance is configured for hibernation. This parameter is valid
@@ -53,6 +1193,9 @@ export interface HibernationOptionsRequest {
 }
 
 export namespace HibernationOptionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HibernationOptionsRequest): any => ({
     ...obj,
   });
@@ -115,6 +1258,9 @@ export interface SpotMarketOptions {
 }
 
 export namespace SpotMarketOptions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SpotMarketOptions): any => ({
     ...obj,
   });
@@ -136,6 +1282,9 @@ export interface InstanceMarketOptionsRequest {
 }
 
 export namespace InstanceMarketOptionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceMarketOptionsRequest): any => ({
     ...obj,
   });
@@ -164,6 +1313,9 @@ export interface LaunchTemplateSpecification {
 }
 
 export namespace LaunchTemplateSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LaunchTemplateSpecification): any => ({
     ...obj,
   });
@@ -180,6 +1332,9 @@ export interface LicenseConfigurationRequest {
 }
 
 export namespace LicenseConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LicenseConfigurationRequest): any => ({
     ...obj,
   });
@@ -224,6 +1379,9 @@ export interface InstanceMetadataOptionsRequest {
 }
 
 export namespace InstanceMetadataOptionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceMetadataOptionsRequest): any => ({
     ...obj,
   });
@@ -412,7 +1570,7 @@ export interface RunInstancesRequest {
   EbsOptimized?: boolean;
 
   /**
-   * <p>The IAM instance profile.</p>
+   * <p>The name or Amazon Resource Name (ARN) of an IAM instance profile.</p>
    */
   IamInstanceProfile?: IamInstanceProfileSpecification;
 
@@ -532,6 +1690,9 @@ export interface RunInstancesRequest {
 }
 
 export namespace RunInstancesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RunInstancesRequest): any => ({
     ...obj,
   });
@@ -584,6 +1745,9 @@ export interface ScheduledInstancesEbs {
 }
 
 export namespace ScheduledInstancesEbs {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledInstancesEbs): any => ({
     ...obj,
   });
@@ -622,6 +1786,9 @@ export interface ScheduledInstancesBlockDeviceMapping {
 }
 
 export namespace ScheduledInstancesBlockDeviceMapping {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledInstancesBlockDeviceMapping): any => ({
     ...obj,
   });
@@ -643,6 +1810,9 @@ export interface ScheduledInstancesIamInstanceProfile {
 }
 
 export namespace ScheduledInstancesIamInstanceProfile {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledInstancesIamInstanceProfile): any => ({
     ...obj,
   });
@@ -659,6 +1829,9 @@ export interface ScheduledInstancesMonitoring {
 }
 
 export namespace ScheduledInstancesMonitoring {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledInstancesMonitoring): any => ({
     ...obj,
   });
@@ -675,6 +1848,9 @@ export interface ScheduledInstancesIpv6Address {
 }
 
 export namespace ScheduledInstancesIpv6Address {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledInstancesIpv6Address): any => ({
     ...obj,
   });
@@ -696,6 +1872,9 @@ export interface ScheduledInstancesPrivateIpAddressConfig {
 }
 
 export namespace ScheduledInstancesPrivateIpAddressConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledInstancesPrivateIpAddressConfig): any => ({
     ...obj,
   });
@@ -771,6 +1950,9 @@ export interface ScheduledInstancesNetworkInterface {
 }
 
 export namespace ScheduledInstancesNetworkInterface {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledInstancesNetworkInterface): any => ({
     ...obj,
   });
@@ -792,6 +1974,9 @@ export interface ScheduledInstancesPlacement {
 }
 
 export namespace ScheduledInstancesPlacement {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledInstancesPlacement): any => ({
     ...obj,
   });
@@ -877,6 +2062,9 @@ export interface ScheduledInstancesLaunchSpecification {
 }
 
 export namespace ScheduledInstancesLaunchSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledInstancesLaunchSpecification): any => ({
     ...obj,
   });
@@ -918,6 +2106,9 @@ export interface RunScheduledInstancesRequest {
 }
 
 export namespace RunScheduledInstancesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RunScheduledInstancesRequest): any => ({
     ...obj,
   });
@@ -934,6 +2125,9 @@ export interface RunScheduledInstancesResult {
 }
 
 export namespace RunScheduledInstancesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RunScheduledInstancesResult): any => ({
     ...obj,
   });
@@ -970,6 +2164,9 @@ export interface SearchLocalGatewayRoutesRequest {
 }
 
 export namespace SearchLocalGatewayRoutesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchLocalGatewayRoutesRequest): any => ({
     ...obj,
   });
@@ -988,6 +2185,9 @@ export interface SearchLocalGatewayRoutesResult {
 }
 
 export namespace SearchLocalGatewayRoutesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchLocalGatewayRoutesResult): any => ({
     ...obj,
   });
@@ -1066,6 +2266,9 @@ export interface SearchTransitGatewayMulticastGroupsRequest {
 }
 
 export namespace SearchTransitGatewayMulticastGroupsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchTransitGatewayMulticastGroupsRequest): any => ({
     ...obj,
   });
@@ -1134,6 +2337,9 @@ export interface TransitGatewayMulticastGroup {
 }
 
 export namespace TransitGatewayMulticastGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TransitGatewayMulticastGroup): any => ({
     ...obj,
   });
@@ -1152,6 +2358,9 @@ export interface SearchTransitGatewayMulticastGroupsResult {
 }
 
 export namespace SearchTransitGatewayMulticastGroupsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchTransitGatewayMulticastGroupsResult): any => ({
     ...obj,
   });
@@ -1227,6 +2436,9 @@ export interface SearchTransitGatewayRoutesRequest {
 }
 
 export namespace SearchTransitGatewayRoutesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchTransitGatewayRoutesRequest): any => ({
     ...obj,
   });
@@ -1245,6 +2457,9 @@ export interface SearchTransitGatewayRoutesResult {
 }
 
 export namespace SearchTransitGatewayRoutesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchTransitGatewayRoutesResult): any => ({
     ...obj,
   });
@@ -1265,6 +2480,9 @@ export interface SendDiagnosticInterruptRequest {
 }
 
 export namespace SendDiagnosticInterruptRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendDiagnosticInterruptRequest): any => ({
     ...obj,
   });
@@ -1290,6 +2508,9 @@ export interface StartInstancesRequest {
 }
 
 export namespace StartInstancesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartInstancesRequest): any => ({
     ...obj,
   });
@@ -1316,6 +2537,9 @@ export interface InstanceStateChange {
 }
 
 export namespace InstanceStateChange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceStateChange): any => ({
     ...obj,
   });
@@ -1329,6 +2553,9 @@ export interface StartInstancesResult {
 }
 
 export namespace StartInstancesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartInstancesResult): any => ({
     ...obj,
   });
@@ -1365,6 +2592,9 @@ export interface StartNetworkInsightsAnalysisRequest {
 }
 
 export namespace StartNetworkInsightsAnalysisRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartNetworkInsightsAnalysisRequest): any => ({
     ...obj,
   });
@@ -1378,6 +2608,9 @@ export interface StartNetworkInsightsAnalysisResult {
 }
 
 export namespace StartNetworkInsightsAnalysisResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartNetworkInsightsAnalysisResult): any => ({
     ...obj,
   });
@@ -1398,6 +2631,9 @@ export interface StartVpcEndpointServicePrivateDnsVerificationRequest {
 }
 
 export namespace StartVpcEndpointServicePrivateDnsVerificationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartVpcEndpointServicePrivateDnsVerificationRequest): any => ({
     ...obj,
   });
@@ -1411,6 +2647,9 @@ export interface StartVpcEndpointServicePrivateDnsVerificationResult {
 }
 
 export namespace StartVpcEndpointServicePrivateDnsVerificationResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartVpcEndpointServicePrivateDnsVerificationResult): any => ({
     ...obj,
   });
@@ -1451,6 +2690,9 @@ export interface StopInstancesRequest {
 }
 
 export namespace StopInstancesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopInstancesRequest): any => ({
     ...obj,
   });
@@ -1464,6 +2706,9 @@ export interface StopInstancesResult {
 }
 
 export namespace StopInstancesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopInstancesResult): any => ({
     ...obj,
   });
@@ -1493,6 +2738,9 @@ export interface TerminateClientVpnConnectionsRequest {
 }
 
 export namespace TerminateClientVpnConnectionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TerminateClientVpnConnectionsRequest): any => ({
     ...obj,
   });
@@ -1519,6 +2767,9 @@ export interface TerminateConnectionStatus {
 }
 
 export namespace TerminateConnectionStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TerminateConnectionStatus): any => ({
     ...obj,
   });
@@ -1542,6 +2793,9 @@ export interface TerminateClientVpnConnectionsResult {
 }
 
 export namespace TerminateClientVpnConnectionsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TerminateClientVpnConnectionsResult): any => ({
     ...obj,
   });
@@ -1564,6 +2818,9 @@ export interface TerminateInstancesRequest {
 }
 
 export namespace TerminateInstancesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TerminateInstancesRequest): any => ({
     ...obj,
   });
@@ -1577,6 +2834,9 @@ export interface TerminateInstancesResult {
 }
 
 export namespace TerminateInstancesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TerminateInstancesResult): any => ({
     ...obj,
   });
@@ -1584,17 +2844,20 @@ export namespace TerminateInstancesResult {
 
 export interface UnassignIpv6AddressesRequest {
   /**
-   * <p>The IPv6 addresses to unassign from the network interface.</p>
-   */
-  Ipv6Addresses: string[] | undefined;
-
-  /**
    * <p>The ID of the network interface.</p>
    */
   NetworkInterfaceId: string | undefined;
+
+  /**
+   * <p>The IPv6 addresses to unassign from the network interface.</p>
+   */
+  Ipv6Addresses: string[] | undefined;
 }
 
 export namespace UnassignIpv6AddressesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnassignIpv6AddressesRequest): any => ({
     ...obj,
   });
@@ -1613,6 +2876,9 @@ export interface UnassignIpv6AddressesResult {
 }
 
 export namespace UnassignIpv6AddressesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnassignIpv6AddressesResult): any => ({
     ...obj,
   });
@@ -1634,6 +2900,9 @@ export interface UnassignPrivateIpAddressesRequest {
 }
 
 export namespace UnassignPrivateIpAddressesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnassignPrivateIpAddressesRequest): any => ({
     ...obj,
   });
@@ -1654,6 +2923,9 @@ export interface UnmonitorInstancesRequest {
 }
 
 export namespace UnmonitorInstancesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnmonitorInstancesRequest): any => ({
     ...obj,
   });
@@ -1667,6 +2939,9 @@ export interface UnmonitorInstancesResult {
 }
 
 export namespace UnmonitorInstancesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnmonitorInstancesResult): any => ({
     ...obj,
   });
@@ -1700,6 +2975,9 @@ export interface UpdateSecurityGroupRuleDescriptionsEgressRequest {
 }
 
 export namespace UpdateSecurityGroupRuleDescriptionsEgressRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateSecurityGroupRuleDescriptionsEgressRequest): any => ({
     ...obj,
   });
@@ -1713,6 +2991,9 @@ export interface UpdateSecurityGroupRuleDescriptionsEgressResult {
 }
 
 export namespace UpdateSecurityGroupRuleDescriptionsEgressResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateSecurityGroupRuleDescriptionsEgressResult): any => ({
     ...obj,
   });
@@ -1746,6 +3027,9 @@ export interface UpdateSecurityGroupRuleDescriptionsIngressRequest {
 }
 
 export namespace UpdateSecurityGroupRuleDescriptionsIngressRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateSecurityGroupRuleDescriptionsIngressRequest): any => ({
     ...obj,
   });
@@ -1759,6 +3043,9 @@ export interface UpdateSecurityGroupRuleDescriptionsIngressResult {
 }
 
 export namespace UpdateSecurityGroupRuleDescriptionsIngressResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateSecurityGroupRuleDescriptionsIngressResult): any => ({
     ...obj,
   });
@@ -1779,6 +3066,9 @@ export interface WithdrawByoipCidrRequest {
 }
 
 export namespace WithdrawByoipCidrRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WithdrawByoipCidrRequest): any => ({
     ...obj,
   });
@@ -1792,6 +3082,9 @@ export interface WithdrawByoipCidrResult {
 }
 
 export namespace WithdrawByoipCidrResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WithdrawByoipCidrResult): any => ({
     ...obj,
   });

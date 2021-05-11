@@ -18,12 +18,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetObjectRetentionCommandInput = GetObjectRetentionRequest;
-export type GetObjectRetentionCommandOutput = GetObjectRetentionOutput & __MetadataBearer;
+export interface GetObjectRetentionCommandInput extends GetObjectRetentionRequest {}
+export interface GetObjectRetentionCommandOutput extends GetObjectRetentionOutput, __MetadataBearer {}
 
 /**
  * <p>Retrieves an object's retention settings. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">Locking Objects</a>.</p>
  *          <p>This action is not supported by Amazon S3 on Outposts.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetObjectRetentionCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetObjectRetentionCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetObjectRetentionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetObjectRetentionCommandInput} for command's `input` shape.
+ * @see {@link GetObjectRetentionCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetObjectRetentionCommand extends $Command<
   GetObjectRetentionCommandInput,

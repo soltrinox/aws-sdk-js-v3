@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreDBClusterFromS3CommandInput = RestoreDBClusterFromS3Message;
-export type RestoreDBClusterFromS3CommandOutput = RestoreDBClusterFromS3Result & __MetadataBearer;
+export interface RestoreDBClusterFromS3CommandInput extends RestoreDBClusterFromS3Message {}
+export interface RestoreDBClusterFromS3CommandOutput extends RestoreDBClusterFromS3Result, __MetadataBearer {}
 
 /**
  * <p>Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon S3 bucket.
@@ -41,6 +41,20 @@ export type RestoreDBClusterFromS3CommandOutput = RestoreDBClusterFromS3Result &
  *             <p>This action only applies to Aurora DB clusters. The source DB engine must be
  *                 MySQL.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, RestoreDBClusterFromS3Command } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, RestoreDBClusterFromS3Command } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new RestoreDBClusterFromS3Command(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreDBClusterFromS3CommandInput} for command's `input` shape.
+ * @see {@link RestoreDBClusterFromS3CommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreDBClusterFromS3Command extends $Command<
   RestoreDBClusterFromS3CommandInput,

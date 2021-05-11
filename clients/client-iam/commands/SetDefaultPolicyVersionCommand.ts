@@ -17,16 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SetDefaultPolicyVersionCommandInput = SetDefaultPolicyVersionRequest;
-export type SetDefaultPolicyVersionCommandOutput = __MetadataBearer;
+export interface SetDefaultPolicyVersionCommandInput extends SetDefaultPolicyVersionRequest {}
+export interface SetDefaultPolicyVersionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Sets the specified version of the specified policy as the policy's default (operative)
- *          version.</p>
- *          <p>This operation affects all users, groups, and roles that the policy is attached to. To
- *          list the users, groups, and roles that the policy is attached to, use the <a>ListEntitiesForPolicy</a> API.</p>
- *          <p>For information about managed policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline
- *             Policies</a> in the <i>IAM User Guide</i>.</p>
+ *             version.</p>
+ *         <p>This operation affects all users, groups, and roles that the policy is attached to. To
+ *             list the users, groups, and roles that the policy is attached to, use <a>ListEntitiesForPolicy</a>.</p>
+ *         <p>For information about managed policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed policies and inline
+ *                 policies</a> in the <i>IAM User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, SetDefaultPolicyVersionCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, SetDefaultPolicyVersionCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new SetDefaultPolicyVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SetDefaultPolicyVersionCommandInput} for command's `input` shape.
+ * @see {@link SetDefaultPolicyVersionCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SetDefaultPolicyVersionCommand extends $Command<
   SetDefaultPolicyVersionCommandInput,

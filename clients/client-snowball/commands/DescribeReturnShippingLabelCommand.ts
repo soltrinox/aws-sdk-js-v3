@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeReturnShippingLabelCommandInput = DescribeReturnShippingLabelRequest;
-export type DescribeReturnShippingLabelCommandOutput = DescribeReturnShippingLabelResult & __MetadataBearer;
+export interface DescribeReturnShippingLabelCommandInput extends DescribeReturnShippingLabelRequest {}
+export interface DescribeReturnShippingLabelCommandOutput extends DescribeReturnShippingLabelResult, __MetadataBearer {}
 
 /**
  * <p>Information on the shipping label of a Snow device that is being returned to AWS.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SnowballClient, DescribeReturnShippingLabelCommand } from "@aws-sdk/client-snowball"; // ES Modules import
+ * // const { SnowballClient, DescribeReturnShippingLabelCommand } = require("@aws-sdk/client-snowball"); // CommonJS import
+ * const client = new SnowballClient(config);
+ * const command = new DescribeReturnShippingLabelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeReturnShippingLabelCommandInput} for command's `input` shape.
+ * @see {@link DescribeReturnShippingLabelCommandOutput} for command's `response` shape.
+ * @see {@link SnowballClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeReturnShippingLabelCommand extends $Command<
   DescribeReturnShippingLabelCommandInput,

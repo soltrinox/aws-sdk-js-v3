@@ -17,15 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeSpotPriceHistoryCommandInput = DescribeSpotPriceHistoryRequest;
-export type DescribeSpotPriceHistoryCommandOutput = DescribeSpotPriceHistoryResult & __MetadataBearer;
+export interface DescribeSpotPriceHistoryCommandInput extends DescribeSpotPriceHistoryRequest {}
+export interface DescribeSpotPriceHistoryCommandOutput extends DescribeSpotPriceHistoryResult, __MetadataBearer {}
 
 /**
  * <p>Describes the Spot price history. For more information, see
  * 		<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html">Spot Instance pricing history</a>
  *         in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
- * 	        <p>When you specify a start and end time, this operation returns the prices of the instance types within the time range that you specified and the time when the price changed.
- * 	        The price is valid within the time period that you specified; the response merely indicates the last time that the price changed.</p>
+ *         <p>When you specify a start and end time, the operation returns the prices of the
+ *             instance types within that time range. It also returns the last price change before the
+ *             start time, which is the effective price as of the start time.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeSpotPriceHistoryCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeSpotPriceHistoryCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeSpotPriceHistoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeSpotPriceHistoryCommandInput} for command's `input` shape.
+ * @see {@link DescribeSpotPriceHistoryCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeSpotPriceHistoryCommand extends $Command<
   DescribeSpotPriceHistoryCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCapacityProviderCommandInput = CreateCapacityProviderRequest;
-export type CreateCapacityProviderCommandOutput = CreateCapacityProviderResponse & __MetadataBearer;
+export interface CreateCapacityProviderCommandInput extends CreateCapacityProviderRequest {}
+export interface CreateCapacityProviderCommandOutput extends CreateCapacityProviderResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new capacity provider. Capacity providers are associated with an Amazon ECS
@@ -28,6 +28,20 @@ export type CreateCapacityProviderCommandOutput = CreateCapacityProviderResponse
  * 			AWS Fargate use the <code>FARGATE</code> and <code>FARGATE_SPOT</code> capacity providers
  * 			which are already created and available to all accounts in Regions supported by
  * 			AWS Fargate.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, CreateCapacityProviderCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, CreateCapacityProviderCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new CreateCapacityProviderCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCapacityProviderCommandInput} for command's `input` shape.
+ * @see {@link CreateCapacityProviderCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCapacityProviderCommand extends $Command<
   CreateCapacityProviderCommandInput,

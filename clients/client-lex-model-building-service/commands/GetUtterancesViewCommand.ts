@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetUtterancesViewCommandInput = GetUtterancesViewRequest;
-export type GetUtterancesViewCommandOutput = GetUtterancesViewResponse & __MetadataBearer;
+export interface GetUtterancesViewCommandInput extends GetUtterancesViewRequest {}
+export interface GetUtterancesViewCommandOutput extends GetUtterancesViewResponse, __MetadataBearer {}
 
 /**
  * <p>Use the <code>GetUtterancesView</code> operation to get information
@@ -48,6 +48,20 @@ export type GetUtterancesViewCommandOutput = GetUtterancesViewResponse & __Metad
  *       utterances are not available.</p>
  *          <p>This operation requires permissions for the
  *         <code>lex:GetUtterancesView</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, GetUtterancesViewCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, GetUtterancesViewCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new GetUtterancesViewCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetUtterancesViewCommandInput} for command's `input` shape.
+ * @see {@link GetUtterancesViewCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetUtterancesViewCommand extends $Command<
   GetUtterancesViewCommandInput,

@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeTimeBasedAutoScalingCommandInput = DescribeTimeBasedAutoScalingRequest;
-export type DescribeTimeBasedAutoScalingCommandOutput = DescribeTimeBasedAutoScalingResult & __MetadataBearer;
+export interface DescribeTimeBasedAutoScalingCommandInput extends DescribeTimeBasedAutoScalingRequest {}
+export interface DescribeTimeBasedAutoScalingCommandOutput
+  extends DescribeTimeBasedAutoScalingResult,
+    __MetadataBearer {}
 
 /**
  * <p>Describes time-based auto scaling configurations for specified instances.</p>
@@ -30,6 +32,20 @@ export type DescribeTimeBasedAutoScalingCommandOutput = DescribeTimeBasedAutoSca
  *       Manage permissions level for the stack, or an attached policy that explicitly grants
  *       permissions. For more information about user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, DescribeTimeBasedAutoScalingCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, DescribeTimeBasedAutoScalingCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new DescribeTimeBasedAutoScalingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeTimeBasedAutoScalingCommandInput} for command's `input` shape.
+ * @see {@link DescribeTimeBasedAutoScalingCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeTimeBasedAutoScalingCommand extends $Command<
   DescribeTimeBasedAutoScalingCommandInput,

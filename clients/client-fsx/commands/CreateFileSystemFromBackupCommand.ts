@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateFileSystemFromBackupCommandInput = CreateFileSystemFromBackupRequest;
-export type CreateFileSystemFromBackupCommandOutput = CreateFileSystemFromBackupResponse & __MetadataBearer;
+export interface CreateFileSystemFromBackupCommandInput extends CreateFileSystemFromBackupRequest {}
+export interface CreateFileSystemFromBackupCommandOutput extends CreateFileSystemFromBackupResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new Amazon FSx file system from an existing Amazon FSx backup.</p>
@@ -57,6 +57,20 @@ export type CreateFileSystemFromBackupCommandOutput = CreateFileSystemFromBackup
  *                 operation, which returns the file system state along with other
  *                 information.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FSxClient, CreateFileSystemFromBackupCommand } from "@aws-sdk/client-fsx"; // ES Modules import
+ * // const { FSxClient, CreateFileSystemFromBackupCommand } = require("@aws-sdk/client-fsx"); // CommonJS import
+ * const client = new FSxClient(config);
+ * const command = new CreateFileSystemFromBackupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateFileSystemFromBackupCommandInput} for command's `input` shape.
+ * @see {@link CreateFileSystemFromBackupCommandOutput} for command's `response` shape.
+ * @see {@link FSxClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateFileSystemFromBackupCommand extends $Command<
   CreateFileSystemFromBackupCommandInput,

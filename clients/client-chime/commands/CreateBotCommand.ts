@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateBotCommandInput = CreateBotRequest;
-export type CreateBotCommandOutput = CreateBotResponse & __MetadataBearer;
+export interface CreateBotCommandInput extends CreateBotRequest {}
+export interface CreateBotCommandOutput extends CreateBotResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a bot for an Amazon Chime Enterprise account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, CreateBotCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, CreateBotCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new CreateBotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateBotCommandInput} for command's `input` shape.
+ * @see {@link CreateBotCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateBotCommand extends $Command<
   CreateBotCommandInput,

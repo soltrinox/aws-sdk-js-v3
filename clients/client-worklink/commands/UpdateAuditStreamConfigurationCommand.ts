@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateAuditStreamConfigurationCommandInput = UpdateAuditStreamConfigurationRequest;
-export type UpdateAuditStreamConfigurationCommandOutput = UpdateAuditStreamConfigurationResponse & __MetadataBearer;
+export interface UpdateAuditStreamConfigurationCommandInput extends UpdateAuditStreamConfigurationRequest {}
+export interface UpdateAuditStreamConfigurationCommandOutput
+  extends UpdateAuditStreamConfigurationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Updates the audit stream configuration for the fleet.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkLinkClient, UpdateAuditStreamConfigurationCommand } from "@aws-sdk/client-worklink"; // ES Modules import
+ * // const { WorkLinkClient, UpdateAuditStreamConfigurationCommand } = require("@aws-sdk/client-worklink"); // CommonJS import
+ * const client = new WorkLinkClient(config);
+ * const command = new UpdateAuditStreamConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateAuditStreamConfigurationCommandInput} for command's `input` shape.
+ * @see {@link UpdateAuditStreamConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link WorkLinkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateAuditStreamConfigurationCommand extends $Command<
   UpdateAuditStreamConfigurationCommandInput,

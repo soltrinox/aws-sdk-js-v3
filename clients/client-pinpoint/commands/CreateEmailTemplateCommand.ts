@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateEmailTemplateCommandInput = CreateEmailTemplateRequest;
-export type CreateEmailTemplateCommandOutput = CreateEmailTemplateResponse & __MetadataBearer;
+export interface CreateEmailTemplateCommandInput extends CreateEmailTemplateRequest {}
+export interface CreateEmailTemplateCommandOutput extends CreateEmailTemplateResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a message template for messages that are sent through the email channel.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, CreateEmailTemplateCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, CreateEmailTemplateCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new CreateEmailTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateEmailTemplateCommandInput} for command's `input` shape.
+ * @see {@link CreateEmailTemplateCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateEmailTemplateCommand extends $Command<
   CreateEmailTemplateCommandInput,

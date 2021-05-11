@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListJobsCommandInput = ListJobsRequest;
-export type ListJobsCommandOutput = ListJobsResponse & __MetadataBearer;
+export interface ListJobsCommandInput extends ListJobsRequest {}
+export interface ListJobsCommandOutput extends ListJobsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the names of all job resources in this AWS account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names.</p>
@@ -23,6 +23,20 @@ export type ListJobsCommandOutput = ListJobsResponse & __MetadataBearer;
  * 	        <p>This operation takes the optional <code>Tags</code> field, which you can use as a filter on
  *       the response so that tagged resources can be retrieved as a group. If you choose to use tags
  *       filtering, only resources with the tag are retrieved.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, ListJobsCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, ListJobsCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new ListJobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListJobsCommandInput} for command's `input` shape.
+ * @see {@link ListJobsCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListJobsCommand extends $Command<ListJobsCommandInput, ListJobsCommandOutput, GlueClientResolvedConfig> {
   // Start section: command_properties

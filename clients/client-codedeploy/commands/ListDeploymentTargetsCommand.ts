@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDeploymentTargetsCommandInput = ListDeploymentTargetsInput;
-export type ListDeploymentTargetsCommandOutput = ListDeploymentTargetsOutput & __MetadataBearer;
+export interface ListDeploymentTargetsCommandInput extends ListDeploymentTargetsInput {}
+export interface ListDeploymentTargetsCommandOutput extends ListDeploymentTargetsOutput, __MetadataBearer {}
 
 /**
  * <p> Returns an array of target IDs that are associated a deployment. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeDeployClient, ListDeploymentTargetsCommand } from "@aws-sdk/client-codedeploy"; // ES Modules import
+ * // const { CodeDeployClient, ListDeploymentTargetsCommand } = require("@aws-sdk/client-codedeploy"); // CommonJS import
+ * const client = new CodeDeployClient(config);
+ * const command = new ListDeploymentTargetsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDeploymentTargetsCommandInput} for command's `input` shape.
+ * @see {@link ListDeploymentTargetsCommandOutput} for command's `response` shape.
+ * @see {@link CodeDeployClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDeploymentTargetsCommand extends $Command<
   ListDeploymentTargetsCommandInput,

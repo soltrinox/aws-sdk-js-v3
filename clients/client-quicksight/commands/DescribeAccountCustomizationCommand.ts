@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAccountCustomizationCommandInput = DescribeAccountCustomizationRequest;
-export type DescribeAccountCustomizationCommandOutput = DescribeAccountCustomizationResponse & __MetadataBearer;
+export interface DescribeAccountCustomizationCommandInput extends DescribeAccountCustomizationRequest {}
+export interface DescribeAccountCustomizationCommandOutput
+  extends DescribeAccountCustomizationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Describes the customizations associated with the provided AWS account and Amazon
@@ -78,6 +80,20 @@ export type DescribeAccountCustomizationCommandOutput = DescribeAccountCustomiza
  *                     each AWS Region where you want to apply the same customizations. </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, DescribeAccountCustomizationCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, DescribeAccountCustomizationCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new DescribeAccountCustomizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAccountCustomizationCommandInput} for command's `input` shape.
+ * @see {@link DescribeAccountCustomizationCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAccountCustomizationCommand extends $Command<
   DescribeAccountCustomizationCommandInput,

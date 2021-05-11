@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetOpsMetadataCommandInput = GetOpsMetadataRequest;
-export type GetOpsMetadataCommandOutput = GetOpsMetadataResult & __MetadataBearer;
+export interface GetOpsMetadataCommandInput extends GetOpsMetadataRequest {}
+export interface GetOpsMetadataCommandOutput extends GetOpsMetadataResult, __MetadataBearer {}
 
 /**
- * <p>View operational metadata related to an application in AppManager.</p>
+ * <p>View operational metadata related to an application in Application Manager.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, GetOpsMetadataCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, GetOpsMetadataCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new GetOpsMetadataCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetOpsMetadataCommandInput} for command's `input` shape.
+ * @see {@link GetOpsMetadataCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetOpsMetadataCommand extends $Command<
   GetOpsMetadataCommandInput,

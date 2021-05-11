@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListMeshesCommandInput = ListMeshesInput;
-export type ListMeshesCommandOutput = ListMeshesOutput & __MetadataBearer;
+export interface ListMeshesCommandInput extends ListMeshesInput {}
+export interface ListMeshesCommandOutput extends ListMeshesOutput, __MetadataBearer {}
 
 /**
  * <p>Returns a list of existing service meshes.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppMeshClient, ListMeshesCommand } from "@aws-sdk/client-app-mesh"; // ES Modules import
+ * // const { AppMeshClient, ListMeshesCommand } = require("@aws-sdk/client-app-mesh"); // CommonJS import
+ * const client = new AppMeshClient(config);
+ * const command = new ListMeshesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListMeshesCommandInput} for command's `input` shape.
+ * @see {@link ListMeshesCommandOutput} for command's `response` shape.
+ * @see {@link AppMeshClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListMeshesCommand extends $Command<
   ListMeshesCommandInput,

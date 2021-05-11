@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListProgressUpdateStreamsCommandInput = ListProgressUpdateStreamsRequest;
-export type ListProgressUpdateStreamsCommandOutput = ListProgressUpdateStreamsResult & __MetadataBearer;
+export interface ListProgressUpdateStreamsCommandInput extends ListProgressUpdateStreamsRequest {}
+export interface ListProgressUpdateStreamsCommandOutput extends ListProgressUpdateStreamsResult, __MetadataBearer {}
 
 /**
  * <p>Lists progress update streams associated with the user account making this call.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MigrationHubClient, ListProgressUpdateStreamsCommand } from "@aws-sdk/client-migration-hub"; // ES Modules import
+ * // const { MigrationHubClient, ListProgressUpdateStreamsCommand } = require("@aws-sdk/client-migration-hub"); // CommonJS import
+ * const client = new MigrationHubClient(config);
+ * const command = new ListProgressUpdateStreamsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListProgressUpdateStreamsCommandInput} for command's `input` shape.
+ * @see {@link ListProgressUpdateStreamsCommandOutput} for command's `response` shape.
+ * @see {@link MigrationHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListProgressUpdateStreamsCommand extends $Command<
   ListProgressUpdateStreamsCommandInput,

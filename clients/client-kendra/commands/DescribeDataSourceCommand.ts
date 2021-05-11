@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDataSourceCommandInput = DescribeDataSourceRequest;
-export type DescribeDataSourceCommandOutput = DescribeDataSourceResponse & __MetadataBearer;
+export interface DescribeDataSourceCommandInput extends DescribeDataSourceRequest {}
+export interface DescribeDataSourceCommandOutput extends DescribeDataSourceResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about a Amazon Kendra data source.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KendraClient, DescribeDataSourceCommand } from "@aws-sdk/client-kendra"; // ES Modules import
+ * // const { KendraClient, DescribeDataSourceCommand } = require("@aws-sdk/client-kendra"); // CommonJS import
+ * const client = new KendraClient(config);
+ * const command = new DescribeDataSourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDataSourceCommandInput} for command's `input` shape.
+ * @see {@link DescribeDataSourceCommandOutput} for command's `response` shape.
+ * @see {@link KendraClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDataSourceCommand extends $Command<
   DescribeDataSourceCommandInput,

@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchWriteCommandInput = BatchWriteRequest;
-export type BatchWriteCommandOutput = BatchWriteResponse & __MetadataBearer;
+export interface BatchWriteCommandInput extends BatchWriteRequest {}
+export interface BatchWriteCommandOutput extends BatchWriteResponse, __MetadataBearer {}
 
 /**
  * <p>Performs all the write operations in a batch. Either all the operations succeed or
  *       none.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, BatchWriteCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, BatchWriteCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new BatchWriteCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchWriteCommandInput} for command's `input` shape.
+ * @see {@link BatchWriteCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchWriteCommand extends $Command<
   BatchWriteCommandInput,

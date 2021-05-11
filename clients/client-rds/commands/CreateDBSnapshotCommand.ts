@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDBSnapshotCommandInput = CreateDBSnapshotMessage;
-export type CreateDBSnapshotCommandOutput = CreateDBSnapshotResult & __MetadataBearer;
+export interface CreateDBSnapshotCommandInput extends CreateDBSnapshotMessage {}
+export interface CreateDBSnapshotCommandOutput extends CreateDBSnapshotResult, __MetadataBearer {}
 
 /**
  * <p>Creates a snapshot of a DB instance. The source DB instance must be in the <code>available</code> or
  *                 <code>storage-optimization</code> state.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, CreateDBSnapshotCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, CreateDBSnapshotCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new CreateDBSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDBSnapshotCommandInput} for command's `input` shape.
+ * @see {@link CreateDBSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDBSnapshotCommand extends $Command<
   CreateDBSnapshotCommandInput,

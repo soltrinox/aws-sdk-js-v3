@@ -20,13 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeOrganizationConfigurationCommandInput = DescribeOrganizationConfigurationRequest;
-export type DescribeOrganizationConfigurationCommandOutput = DescribeOrganizationConfigurationResponse &
-  __MetadataBearer;
+export interface DescribeOrganizationConfigurationCommandInput extends DescribeOrganizationConfigurationRequest {}
+export interface DescribeOrganizationConfigurationCommandOutput
+  extends DescribeOrganizationConfigurationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns information about the account selected as the delegated administrator for
  *       GuardDuty.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GuardDutyClient, DescribeOrganizationConfigurationCommand } from "@aws-sdk/client-guardduty"; // ES Modules import
+ * // const { GuardDutyClient, DescribeOrganizationConfigurationCommand } = require("@aws-sdk/client-guardduty"); // CommonJS import
+ * const client = new GuardDutyClient(config);
+ * const command = new DescribeOrganizationConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeOrganizationConfigurationCommandInput} for command's `input` shape.
+ * @see {@link DescribeOrganizationConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link GuardDutyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeOrganizationConfigurationCommand extends $Command<
   DescribeOrganizationConfigurationCommandInput,

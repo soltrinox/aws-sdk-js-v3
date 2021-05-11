@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetFileUploadURLCommandInput = GetFileUploadURLRequest;
-export type GetFileUploadURLCommandOutput = GetFileUploadURLResponse & __MetadataBearer;
+export interface GetFileUploadURLCommandInput extends GetFileUploadURLRequest {}
+export interface GetFileUploadURLCommandOutput extends GetFileUploadURLResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -39,6 +39,20 @@ export type GetFileUploadURLCommandOutput = GetFileUploadURLResponse & __Metadat
  *             Workers to upload files to use Amazon S3.
  *
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, GetFileUploadURLCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, GetFileUploadURLCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new GetFileUploadURLCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetFileUploadURLCommandInput} for command's `input` shape.
+ * @see {@link GetFileUploadURLCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetFileUploadURLCommand extends $Command<
   GetFileUploadURLCommandInput,

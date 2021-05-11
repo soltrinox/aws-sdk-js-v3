@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAssessmentReportCommandInput = CreateAssessmentReportRequest;
-export type CreateAssessmentReportCommandOutput = CreateAssessmentReportResponse & __MetadataBearer;
+export interface CreateAssessmentReportCommandInput extends CreateAssessmentReportRequest {}
+export interface CreateAssessmentReportCommandOutput extends CreateAssessmentReportResponse, __MetadataBearer {}
 
 /**
  * <p>
  * Creates an assessment report for the specified assessment.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AuditManagerClient, CreateAssessmentReportCommand } from "@aws-sdk/client-auditmanager"; // ES Modules import
+ * // const { AuditManagerClient, CreateAssessmentReportCommand } = require("@aws-sdk/client-auditmanager"); // CommonJS import
+ * const client = new AuditManagerClient(config);
+ * const command = new CreateAssessmentReportCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAssessmentReportCommandInput} for command's `input` shape.
+ * @see {@link CreateAssessmentReportCommandOutput} for command's `response` shape.
+ * @see {@link AuditManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAssessmentReportCommand extends $Command<
   CreateAssessmentReportCommandInput,

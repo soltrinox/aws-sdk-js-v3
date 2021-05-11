@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRouteResponseCommandInput = GetRouteResponseRequest;
-export type GetRouteResponseCommandOutput = GetRouteResponseResponse & __MetadataBearer;
+export interface GetRouteResponseCommandInput extends GetRouteResponseRequest {}
+export interface GetRouteResponseCommandOutput extends GetRouteResponseResponse, __MetadataBearer {}
 
 /**
  * <p>Gets a RouteResponse.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApiGatewayV2Client, GetRouteResponseCommand } from "@aws-sdk/client-apigatewayv2"; // ES Modules import
+ * // const { ApiGatewayV2Client, GetRouteResponseCommand } = require("@aws-sdk/client-apigatewayv2"); // CommonJS import
+ * const client = new ApiGatewayV2Client(config);
+ * const command = new GetRouteResponseCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRouteResponseCommandInput} for command's `input` shape.
+ * @see {@link GetRouteResponseCommandOutput} for command's `response` shape.
+ * @see {@link ApiGatewayV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRouteResponseCommand extends $Command<
   GetRouteResponseCommandInput,

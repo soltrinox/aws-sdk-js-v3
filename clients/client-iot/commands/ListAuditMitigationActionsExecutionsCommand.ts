@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAuditMitigationActionsExecutionsCommandInput = ListAuditMitigationActionsExecutionsRequest;
-export type ListAuditMitigationActionsExecutionsCommandOutput = ListAuditMitigationActionsExecutionsResponse &
-  __MetadataBearer;
+export interface ListAuditMitigationActionsExecutionsCommandInput extends ListAuditMitigationActionsExecutionsRequest {}
+export interface ListAuditMitigationActionsExecutionsCommandOutput
+  extends ListAuditMitigationActionsExecutionsResponse,
+    __MetadataBearer {}
 
 /**
- * <p>Gets the status of audit mitigation action tasks that were executed.</p>
+ * <p>Gets the status of audit mitigation action tasks that were
+ *       executed.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, ListAuditMitigationActionsExecutionsCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, ListAuditMitigationActionsExecutionsCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new ListAuditMitigationActionsExecutionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAuditMitigationActionsExecutionsCommandInput} for command's `input` shape.
+ * @see {@link ListAuditMitigationActionsExecutionsCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAuditMitigationActionsExecutionsCommand extends $Command<
   ListAuditMitigationActionsExecutionsCommandInput,

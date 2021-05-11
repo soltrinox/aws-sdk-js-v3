@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAssessmentTargetCommandInput = CreateAssessmentTargetRequest;
-export type CreateAssessmentTargetCommandOutput = CreateAssessmentTargetResponse & __MetadataBearer;
+export interface CreateAssessmentTargetCommandInput extends CreateAssessmentTargetRequest {}
+export interface CreateAssessmentTargetCommandOutput extends CreateAssessmentTargetResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new assessment target using the ARN of the resource group that is generated
@@ -29,6 +29,20 @@ export type CreateAssessmentTargetCommandOutput = CreateAssessmentTargetResponse
  *          perform security assessments. You can create up to 50 assessment targets per AWS account.
  *          You can run up to 500 concurrent agents per AWS account. For more information, see <a href="https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html">
  *             Amazon Inspector Assessment Targets</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { InspectorClient, CreateAssessmentTargetCommand } from "@aws-sdk/client-inspector"; // ES Modules import
+ * // const { InspectorClient, CreateAssessmentTargetCommand } = require("@aws-sdk/client-inspector"); // CommonJS import
+ * const client = new InspectorClient(config);
+ * const command = new CreateAssessmentTargetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAssessmentTargetCommandInput} for command's `input` shape.
+ * @see {@link CreateAssessmentTargetCommandOutput} for command's `response` shape.
+ * @see {@link InspectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAssessmentTargetCommand extends $Command<
   CreateAssessmentTargetCommandInput,

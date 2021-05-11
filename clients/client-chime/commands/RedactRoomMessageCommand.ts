@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RedactRoomMessageCommandInput = RedactRoomMessageRequest;
-export type RedactRoomMessageCommandOutput = RedactRoomMessageResponse & __MetadataBearer;
+export interface RedactRoomMessageCommandInput extends RedactRoomMessageRequest {}
+export interface RedactRoomMessageCommandOutput extends RedactRoomMessageResponse, __MetadataBearer {}
 
 /**
  * <p>Redacts the specified message from the specified Amazon Chime channel.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, RedactRoomMessageCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, RedactRoomMessageCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new RedactRoomMessageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RedactRoomMessageCommandInput} for command's `input` shape.
+ * @see {@link RedactRoomMessageCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RedactRoomMessageCommand extends $Command<
   RedactRoomMessageCommandInput,

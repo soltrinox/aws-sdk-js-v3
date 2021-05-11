@@ -18,29 +18,45 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutObjectLockConfigurationCommandInput = PutObjectLockConfigurationRequest;
-export type PutObjectLockConfigurationCommandOutput = PutObjectLockConfigurationOutput & __MetadataBearer;
+export interface PutObjectLockConfigurationCommandInput extends PutObjectLockConfigurationRequest {}
+export interface PutObjectLockConfigurationCommandOutput extends PutObjectLockConfigurationOutput, __MetadataBearer {}
 
 /**
  * <p>Places an Object Lock configuration on the specified bucket. The rule specified in the
  *          Object Lock configuration will be applied by default to every new object placed in the
- *          specified bucket.</p>
+ *          specified bucket. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">Locking Objects</a>.
+ *       </p>
  *          <note>
- *             <p>
- *                <code>DefaultRetention</code> requires either Days or Years. You can't specify both
- *             at the same time.</p>
+ *             <ul>
+ *                <li>
+ *                   <p>The <code>DefaultRetention</code> settings require both a mode and a
+ *                period.</p>
+ *                </li>
+ *                <li>
+ *                   <p>The <code>DefaultRetention</code> period can be either <code>Days</code>
+ *                or <code>Years</code> but you must select one. You cannot specify <code>Days</code>
+ *                and <code>Years</code> at the same time.</p>
+ *                </li>
+ *                <li>
+ *                   <p>You can only enable Object Lock for new buckets. If you want to turn on
+ *                Object Lock for an existing bucket, contact AWS Support.</p>
+ *                </li>
+ *             </ul>
  *          </note>
- *          <p class="title">
- *             <b>Related Resources</b>
- *          </p>
- *          <ul>
- *             <li>
- *                <p>
- *                   <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">Locking
- *                   Objects</a>
- *                </p>
- *             </li>
- *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, PutObjectLockConfigurationCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, PutObjectLockConfigurationCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new PutObjectLockConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutObjectLockConfigurationCommandInput} for command's `input` shape.
+ * @see {@link PutObjectLockConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutObjectLockConfigurationCommand extends $Command<
   PutObjectLockConfigurationCommandInput,

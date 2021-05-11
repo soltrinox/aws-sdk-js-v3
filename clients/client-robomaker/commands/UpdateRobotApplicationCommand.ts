@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateRobotApplicationCommandInput = UpdateRobotApplicationRequest;
-export type UpdateRobotApplicationCommandOutput = UpdateRobotApplicationResponse & __MetadataBearer;
+export interface UpdateRobotApplicationCommandInput extends UpdateRobotApplicationRequest {}
+export interface UpdateRobotApplicationCommandOutput extends UpdateRobotApplicationResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a robot application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RoboMakerClient, UpdateRobotApplicationCommand } from "@aws-sdk/client-robomaker"; // ES Modules import
+ * // const { RoboMakerClient, UpdateRobotApplicationCommand } = require("@aws-sdk/client-robomaker"); // CommonJS import
+ * const client = new RoboMakerClient(config);
+ * const command = new UpdateRobotApplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateRobotApplicationCommandInput} for command's `input` shape.
+ * @see {@link UpdateRobotApplicationCommandOutput} for command's `response` shape.
+ * @see {@link RoboMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateRobotApplicationCommand extends $Command<
   UpdateRobotApplicationCommandInput,

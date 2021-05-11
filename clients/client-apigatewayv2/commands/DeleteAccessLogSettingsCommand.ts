@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAccessLogSettingsCommandInput = DeleteAccessLogSettingsRequest;
-export type DeleteAccessLogSettingsCommandOutput = __MetadataBearer;
+export interface DeleteAccessLogSettingsCommandInput extends DeleteAccessLogSettingsRequest {}
+export interface DeleteAccessLogSettingsCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the AccessLogSettings for a Stage. To disable access logging for a Stage, delete its AccessLogSettings.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApiGatewayV2Client, DeleteAccessLogSettingsCommand } from "@aws-sdk/client-apigatewayv2"; // ES Modules import
+ * // const { ApiGatewayV2Client, DeleteAccessLogSettingsCommand } = require("@aws-sdk/client-apigatewayv2"); // CommonJS import
+ * const client = new ApiGatewayV2Client(config);
+ * const command = new DeleteAccessLogSettingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAccessLogSettingsCommandInput} for command's `input` shape.
+ * @see {@link DeleteAccessLogSettingsCommandOutput} for command's `response` shape.
+ * @see {@link ApiGatewayV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAccessLogSettingsCommand extends $Command<
   DeleteAccessLogSettingsCommandInput,

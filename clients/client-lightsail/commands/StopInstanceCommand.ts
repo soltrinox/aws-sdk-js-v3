@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopInstanceCommandInput = StopInstanceRequest;
-export type StopInstanceCommandOutput = StopInstanceResult & __MetadataBearer;
+export interface StopInstanceCommandInput extends StopInstanceRequest {}
+export interface StopInstanceCommandOutput extends StopInstanceResult, __MetadataBearer {}
 
 /**
  * <p>Stops a specific Amazon Lightsail instance that is currently running.</p>
@@ -30,6 +30,20 @@ export type StopInstanceCommandOutput = StopInstanceResult & __MetadataBearer;
  *          <p>The <code>stop instance</code> operation supports tag-based access control via resource
  *       tags applied to the resource identified by <code>instance name</code>. For more information,
  *       see the <a href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags">Lightsail Dev Guide</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, StopInstanceCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, StopInstanceCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new StopInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopInstanceCommandInput} for command's `input` shape.
+ * @see {@link StopInstanceCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopInstanceCommand extends $Command<
   StopInstanceCommandInput,

@@ -7,7 +7,32 @@ import { MetadataBearer as $MetadataBearer } from "@aws-sdk/types";
 export interface AbortTransactionRequest {}
 
 export namespace AbortTransactionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AbortTransactionRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains server-side performance information for a command. Amazon QLDB captures timing
+ *          information between the times when it receives the request and when it sends the
+ *          corresponding response.</p>
+ */
+export interface TimingInformation {
+  /**
+   * <p>The amount of time that QLDB spent on processing the command, measured in
+   *          milliseconds.</p>
+   */
+  ProcessingTimeMilliseconds?: number;
+}
+
+export namespace TimingInformation {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TimingInformation): any => ({
     ...obj,
   });
 }
@@ -15,9 +40,17 @@ export namespace AbortTransactionRequest {
 /**
  * <p>Contains the details of the aborted transaction.</p>
  */
-export interface AbortTransactionResult {}
+export interface AbortTransactionResult {
+  /**
+   * <p>Contains server-side performance information for the command.</p>
+   */
+  TimingInformation?: TimingInformation;
+}
 
 export namespace AbortTransactionResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AbortTransactionResult): any => ({
     ...obj,
   });
@@ -35,7 +68,28 @@ export interface BadRequestException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace BadRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BadRequestException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Returned when the request exceeds the processing capacity of the ledger.</p>
+ */
+export interface CapacityExceededException extends __SmithyException, $MetadataBearer {
+  name: "CapacityExceededException";
+  $fault: "server";
+  Message?: string;
+}
+
+export namespace CapacityExceededException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CapacityExceededException): any => ({
     ...obj,
   });
 }
@@ -54,12 +108,42 @@ export interface CommitTransactionRequest {
    *          the commit digest must be passed. QLDB validates <code>CommitDigest</code> and rejects
    *          the commit with an error if the digest computed on the client does not match the digest
    *          computed by QLDB.</p>
+   *          <p>The purpose of the <code>CommitDigest</code> parameter is to ensure that QLDB commits
+   *          a transaction if and only if the server has processed the exact set of statements sent by
+   *          the client, in the same order that client sent them, and with no duplicates.</p>
    */
   CommitDigest: Uint8Array | undefined;
 }
 
 export namespace CommitTransactionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CommitTransactionRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains I/O usage metrics for a command that was invoked.</p>
+ */
+export interface IOUsage {
+  /**
+   * <p>The number of read I/O requests that the command made.</p>
+   */
+  ReadIOs?: number;
+
+  /**
+   * <p>The number of write I/O requests that the command made.</p>
+   */
+  WriteIOs?: number;
+}
+
+export namespace IOUsage {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: IOUsage): any => ({
     ...obj,
   });
 }
@@ -77,9 +161,22 @@ export interface CommitTransactionResult {
    * <p>The commit digest of the committed transaction.</p>
    */
   CommitDigest?: Uint8Array;
+
+  /**
+   * <p>Contains server-side performance information for the command.</p>
+   */
+  TimingInformation?: TimingInformation;
+
+  /**
+   * <p>Contains metrics about the number of I/O requests that were consumed.</p>
+   */
+  ConsumedIOs?: IOUsage;
 }
 
 export namespace CommitTransactionResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CommitTransactionResult): any => ({
     ...obj,
   });
@@ -91,6 +188,9 @@ export namespace CommitTransactionResult {
 export interface EndSessionRequest {}
 
 export namespace EndSessionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EndSessionRequest): any => ({
     ...obj,
   });
@@ -99,16 +199,24 @@ export namespace EndSessionRequest {
 /**
  * <p>Contains the details of the ended session.</p>
  */
-export interface EndSessionResult {}
+export interface EndSessionResult {
+  /**
+   * <p>Contains server-side performance information for the command.</p>
+   */
+  TimingInformation?: TimingInformation;
+}
 
 export namespace EndSessionResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EndSessionResult): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A structure that can contain an Amazon Ion value in multiple encoding formats.</p>
+ * <p>A structure that can contain a value in multiple encoding formats.</p>
  */
 export interface ValueHolder {
   /**
@@ -123,6 +231,9 @@ export interface ValueHolder {
 }
 
 export namespace ValueHolder {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValueHolder): any => ({
     ...obj,
   });
@@ -149,6 +260,9 @@ export interface ExecuteStatementRequest {
 }
 
 export namespace ExecuteStatementRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExecuteStatementRequest): any => ({
     ...obj,
   });
@@ -170,6 +284,9 @@ export interface Page {
 }
 
 export namespace Page {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Page): any => ({
     ...obj,
   });
@@ -183,9 +300,22 @@ export interface ExecuteStatementResult {
    * <p>Contains the details of the first fetched page.</p>
    */
   FirstPage?: Page;
+
+  /**
+   * <p>Contains server-side performance information for the command.</p>
+   */
+  TimingInformation?: TimingInformation;
+
+  /**
+   * <p>Contains metrics about the number of I/O requests that were consumed.</p>
+   */
+  ConsumedIOs?: IOUsage;
 }
 
 export namespace ExecuteStatementResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExecuteStatementResult): any => ({
     ...obj,
   });
@@ -207,6 +337,9 @@ export interface FetchPageRequest {
 }
 
 export namespace FetchPageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FetchPageRequest): any => ({
     ...obj,
   });
@@ -220,9 +353,22 @@ export interface FetchPageResult {
    * <p>Contains details of the fetched page.</p>
    */
   Page?: Page;
+
+  /**
+   * <p>Contains server-side performance information for the command.</p>
+   */
+  TimingInformation?: TimingInformation;
+
+  /**
+   * <p>Contains metrics about the number of I/O requests that were consumed.</p>
+   */
+  ConsumedIOs?: IOUsage;
 }
 
 export namespace FetchPageResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FetchPageResult): any => ({
     ...obj,
   });
@@ -239,6 +385,9 @@ export interface InvalidSessionException extends __SmithyException, $MetadataBea
 }
 
 export namespace InvalidSessionException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidSessionException): any => ({
     ...obj,
   });
@@ -254,6 +403,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -270,6 +422,9 @@ export interface OccConflictException extends __SmithyException, $MetadataBearer
 }
 
 export namespace OccConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OccConflictException): any => ({
     ...obj,
   });
@@ -285,6 +440,9 @@ export interface RateExceededException extends __SmithyException, $MetadataBeare
 }
 
 export namespace RateExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RateExceededException): any => ({
     ...obj,
   });
@@ -301,6 +459,9 @@ export interface StartSessionRequest {
 }
 
 export namespace StartSessionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartSessionRequest): any => ({
     ...obj,
   });
@@ -312,6 +473,9 @@ export namespace StartSessionRequest {
 export interface StartTransactionRequest {}
 
 export namespace StartTransactionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartTransactionRequest): any => ({
     ...obj,
   });
@@ -365,6 +529,9 @@ export interface SendCommandRequest {
 }
 
 export namespace SendCommandRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendCommandRequest): any => ({
     ...obj,
   });
@@ -379,9 +546,17 @@ export interface StartSessionResult {
    *          every subsequent command that is issued during the current session.</p>
    */
   SessionToken?: string;
+
+  /**
+   * <p>Contains server-side performance information for the command.</p>
+   */
+  TimingInformation?: TimingInformation;
 }
 
 export namespace StartSessionResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartSessionResult): any => ({
     ...obj,
   });
@@ -395,9 +570,17 @@ export interface StartTransactionResult {
    * <p>The transaction ID of the started transaction.</p>
    */
   TransactionId?: string;
+
+  /**
+   * <p>Contains server-side performance information for the command.</p>
+   */
+  TimingInformation?: TimingInformation;
 }
 
 export namespace StartTransactionResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartTransactionResult): any => ({
     ...obj,
   });
@@ -443,6 +626,9 @@ export interface SendCommandResult {
 }
 
 export namespace SendCommandResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendCommandResult): any => ({
     ...obj,
   });

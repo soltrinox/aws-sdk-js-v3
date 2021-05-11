@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteUserEndpointsCommandInput = DeleteUserEndpointsRequest;
-export type DeleteUserEndpointsCommandOutput = DeleteUserEndpointsResponse & __MetadataBearer;
+export interface DeleteUserEndpointsCommandInput extends DeleteUserEndpointsRequest {}
+export interface DeleteUserEndpointsCommandOutput extends DeleteUserEndpointsResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes all the endpoints that are associated with a specific user ID.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, DeleteUserEndpointsCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, DeleteUserEndpointsCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new DeleteUserEndpointsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteUserEndpointsCommandInput} for command's `input` shape.
+ * @see {@link DeleteUserEndpointsCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteUserEndpointsCommand extends $Command<
   DeleteUserEndpointsCommandInput,

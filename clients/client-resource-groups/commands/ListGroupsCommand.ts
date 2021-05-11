@@ -17,11 +17,36 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListGroupsCommandInput = ListGroupsInput;
-export type ListGroupsCommandOutput = ListGroupsOutput & __MetadataBearer;
+export interface ListGroupsCommandInput extends ListGroupsInput {}
+export interface ListGroupsCommandOutput extends ListGroupsOutput, __MetadataBearer {}
 
 /**
  * <p>Returns a list of existing resource groups in your account.</p>
+ *          <p>
+ *             <b>Minimum permissions</b>
+ *          </p>
+ *          <p>To run this command, you must have the following permissions:</p>
+ *          <ul>
+ *             <li>
+ *                 <p>
+ *                   <code>resource-groups:ListGroups</code>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ResourceGroupsClient, ListGroupsCommand } from "@aws-sdk/client-resource-groups"; // ES Modules import
+ * // const { ResourceGroupsClient, ListGroupsCommand } = require("@aws-sdk/client-resource-groups"); // CommonJS import
+ * const client = new ResourceGroupsClient(config);
+ * const command = new ListGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListGroupsCommandInput} for command's `input` shape.
+ * @see {@link ListGroupsCommandOutput} for command's `response` shape.
+ * @see {@link ResourceGroupsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListGroupsCommand extends $Command<
   ListGroupsCommandInput,

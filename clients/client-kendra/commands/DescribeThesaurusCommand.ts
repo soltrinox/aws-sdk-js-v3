@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeThesaurusCommandInput = DescribeThesaurusRequest;
-export type DescribeThesaurusCommandOutput = DescribeThesaurusResponse & __MetadataBearer;
+export interface DescribeThesaurusCommandInput extends DescribeThesaurusRequest {}
+export interface DescribeThesaurusCommandOutput extends DescribeThesaurusResponse, __MetadataBearer {}
 
 /**
  * <p>Describes an existing Amazon Kendra thesaurus.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KendraClient, DescribeThesaurusCommand } from "@aws-sdk/client-kendra"; // ES Modules import
+ * // const { KendraClient, DescribeThesaurusCommand } = require("@aws-sdk/client-kendra"); // CommonJS import
+ * const client = new KendraClient(config);
+ * const command = new DescribeThesaurusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeThesaurusCommandInput} for command's `input` shape.
+ * @see {@link DescribeThesaurusCommandOutput} for command's `response` shape.
+ * @see {@link KendraClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeThesaurusCommand extends $Command<
   DescribeThesaurusCommandInput,

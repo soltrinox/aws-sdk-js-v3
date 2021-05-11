@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateParallelDataCommandInput = UpdateParallelDataRequest;
-export type UpdateParallelDataCommandOutput = UpdateParallelDataResponse & __MetadataBearer;
+export interface UpdateParallelDataCommandInput extends UpdateParallelDataRequest {}
+export interface UpdateParallelDataCommandOutput extends UpdateParallelDataResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a previously created parallel data resource by importing a new input file from
  *       Amazon S3.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TranslateClient, UpdateParallelDataCommand } from "@aws-sdk/client-translate"; // ES Modules import
+ * // const { TranslateClient, UpdateParallelDataCommand } = require("@aws-sdk/client-translate"); // CommonJS import
+ * const client = new TranslateClient(config);
+ * const command = new UpdateParallelDataCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateParallelDataCommandInput} for command's `input` shape.
+ * @see {@link UpdateParallelDataCommandOutput} for command's `response` shape.
+ * @see {@link TranslateClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateParallelDataCommand extends $Command<
   UpdateParallelDataCommandInput,

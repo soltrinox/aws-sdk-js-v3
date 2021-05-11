@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutBackupVaultAccessPolicyCommandInput = PutBackupVaultAccessPolicyInput;
-export type PutBackupVaultAccessPolicyCommandOutput = __MetadataBearer;
+export interface PutBackupVaultAccessPolicyCommandInput extends PutBackupVaultAccessPolicyInput {}
+export interface PutBackupVaultAccessPolicyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Sets a resource-based policy that is used to manage access permissions on the target
  *          backup vault. Requires a backup vault name and an access policy document in JSON
  *          format.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BackupClient, PutBackupVaultAccessPolicyCommand } from "@aws-sdk/client-backup"; // ES Modules import
+ * // const { BackupClient, PutBackupVaultAccessPolicyCommand } = require("@aws-sdk/client-backup"); // CommonJS import
+ * const client = new BackupClient(config);
+ * const command = new PutBackupVaultAccessPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutBackupVaultAccessPolicyCommandInput} for command's `input` shape.
+ * @see {@link PutBackupVaultAccessPolicyCommandOutput} for command's `response` shape.
+ * @see {@link BackupClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutBackupVaultAccessPolicyCommand extends $Command<
   PutBackupVaultAccessPolicyCommandInput,

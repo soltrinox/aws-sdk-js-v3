@@ -1,5 +1,5 @@
 import { SageMakerClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SageMakerClient";
-import { UpdateWorkforceRequest, UpdateWorkforceResponse } from "../models/models_2";
+import { UpdateWorkforceRequest, UpdateWorkforceResponse } from "../models/models_3";
 import {
   deserializeAws_json1_1UpdateWorkforceCommand,
   serializeAws_json1_1UpdateWorkforceCommand,
@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateWorkforceCommandInput = UpdateWorkforceRequest;
-export type UpdateWorkforceCommandOutput = UpdateWorkforceResponse & __MetadataBearer;
+export interface UpdateWorkforceCommandInput extends UpdateWorkforceRequest {}
+export interface UpdateWorkforceCommandOutput extends UpdateWorkforceResponse, __MetadataBearer {}
 
 /**
  * <p>Use this operation to update your workforce. You can use this operation to
@@ -43,6 +43,20 @@ export type UpdateWorkforceCommandOutput = UpdateWorkforceResponse & __MetadataB
  *         <important>
  *             <p>This operation only applies to private workforces.</p>
  *         </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, UpdateWorkforceCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, UpdateWorkforceCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new UpdateWorkforceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateWorkforceCommandInput} for command's `input` shape.
+ * @see {@link UpdateWorkforceCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateWorkforceCommand extends $Command<
   UpdateWorkforceCommandInput,

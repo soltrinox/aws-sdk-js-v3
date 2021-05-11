@@ -65,6 +65,11 @@ import {
   HttpPayloadTraitsWithMediaTypeCommandOutput,
 } from "./commands/HttpPayloadTraitsWithMediaTypeCommand";
 import {
+  HttpPayloadWithMemberXmlNameCommand,
+  HttpPayloadWithMemberXmlNameCommandInput,
+  HttpPayloadWithMemberXmlNameCommandOutput,
+} from "./commands/HttpPayloadWithMemberXmlNameCommand";
+import {
   HttpPayloadWithStructureCommand,
   HttpPayloadWithStructureCommandInput,
   HttpPayloadWithStructureCommandOutput,
@@ -120,6 +125,11 @@ import {
   InputAndOutputWithHeadersCommandOutput,
 } from "./commands/InputAndOutputWithHeadersCommand";
 import {
+  NestedXmlMapsCommand,
+  NestedXmlMapsCommandInput,
+  NestedXmlMapsCommandOutput,
+} from "./commands/NestedXmlMapsCommand";
+import {
   NoInputAndNoOutputCommand,
   NoInputAndNoOutputCommandInput,
   NoInputAndNoOutputCommandOutput,
@@ -149,6 +159,16 @@ import {
   QueryIdempotencyTokenAutoFillCommandInput,
   QueryIdempotencyTokenAutoFillCommandOutput,
 } from "./commands/QueryIdempotencyTokenAutoFillCommand";
+import {
+  QueryParamsAsStringListMapCommand,
+  QueryParamsAsStringListMapCommandInput,
+  QueryParamsAsStringListMapCommandOutput,
+} from "./commands/QueryParamsAsStringListMapCommand";
+import {
+  QueryPrecedenceCommand,
+  QueryPrecedenceCommandInput,
+  QueryPrecedenceCommandOutput,
+} from "./commands/QueryPrecedenceCommand";
 import {
   RecursiveShapesCommand,
   RecursiveShapesCommandInput,
@@ -648,6 +668,39 @@ export class RestXmlProtocol extends RestXmlProtocolClient {
   }
 
   /**
+   * The following example serializes a payload that uses an XML name
+   * on the member, changing the wrapper name.
+   */
+  public httpPayloadWithMemberXmlName(
+    args: HttpPayloadWithMemberXmlNameCommandInput,
+    options?: __HttpHandlerOptions
+  ): Promise<HttpPayloadWithMemberXmlNameCommandOutput>;
+  public httpPayloadWithMemberXmlName(
+    args: HttpPayloadWithMemberXmlNameCommandInput,
+    cb: (err: any, data?: HttpPayloadWithMemberXmlNameCommandOutput) => void
+  ): void;
+  public httpPayloadWithMemberXmlName(
+    args: HttpPayloadWithMemberXmlNameCommandInput,
+    options: __HttpHandlerOptions,
+    cb: (err: any, data?: HttpPayloadWithMemberXmlNameCommandOutput) => void
+  ): void;
+  public httpPayloadWithMemberXmlName(
+    args: HttpPayloadWithMemberXmlNameCommandInput,
+    optionsOrCb?: __HttpHandlerOptions | ((err: any, data?: HttpPayloadWithMemberXmlNameCommandOutput) => void),
+    cb?: (err: any, data?: HttpPayloadWithMemberXmlNameCommandOutput) => void
+  ): Promise<HttpPayloadWithMemberXmlNameCommandOutput> | void {
+    const command = new HttpPayloadWithMemberXmlNameCommand(args);
+    if (typeof optionsOrCb === "function") {
+      this.send(command, optionsOrCb);
+    } else if (typeof cb === "function") {
+      if (typeof optionsOrCb !== "object") throw new Error(`Expect http options but get ${typeof optionsOrCb}`);
+      this.send(command, optionsOrCb || {}, cb);
+    } else {
+      return this.send(command, optionsOrCb);
+    }
+  }
+
+  /**
    * This examples serializes a structure in the payload.
    *
    * Note that serializing a structure changes the wrapper element name
@@ -1004,6 +1057,35 @@ export class RestXmlProtocol extends RestXmlProtocolClient {
     }
   }
 
+  public nestedXmlMaps(
+    args: NestedXmlMapsCommandInput,
+    options?: __HttpHandlerOptions
+  ): Promise<NestedXmlMapsCommandOutput>;
+  public nestedXmlMaps(
+    args: NestedXmlMapsCommandInput,
+    cb: (err: any, data?: NestedXmlMapsCommandOutput) => void
+  ): void;
+  public nestedXmlMaps(
+    args: NestedXmlMapsCommandInput,
+    options: __HttpHandlerOptions,
+    cb: (err: any, data?: NestedXmlMapsCommandOutput) => void
+  ): void;
+  public nestedXmlMaps(
+    args: NestedXmlMapsCommandInput,
+    optionsOrCb?: __HttpHandlerOptions | ((err: any, data?: NestedXmlMapsCommandOutput) => void),
+    cb?: (err: any, data?: NestedXmlMapsCommandOutput) => void
+  ): Promise<NestedXmlMapsCommandOutput> | void {
+    const command = new NestedXmlMapsCommand(args);
+    if (typeof optionsOrCb === "function") {
+      this.send(command, optionsOrCb);
+    } else if (typeof cb === "function") {
+      if (typeof optionsOrCb !== "object") throw new Error(`Expect http options but get ${typeof optionsOrCb}`);
+      this.send(command, optionsOrCb || {}, cb);
+    } else {
+      return this.send(command, optionsOrCb);
+    }
+  }
+
   /**
    * The example tests how requests and responses are serialized when there's
    * no request or response payload because the operation has no input or output.
@@ -1191,6 +1273,64 @@ export class RestXmlProtocol extends RestXmlProtocolClient {
     cb?: (err: any, data?: QueryIdempotencyTokenAutoFillCommandOutput) => void
   ): Promise<QueryIdempotencyTokenAutoFillCommandOutput> | void {
     const command = new QueryIdempotencyTokenAutoFillCommand(args);
+    if (typeof optionsOrCb === "function") {
+      this.send(command, optionsOrCb);
+    } else if (typeof cb === "function") {
+      if (typeof optionsOrCb !== "object") throw new Error(`Expect http options but get ${typeof optionsOrCb}`);
+      this.send(command, optionsOrCb || {}, cb);
+    } else {
+      return this.send(command, optionsOrCb);
+    }
+  }
+
+  public queryParamsAsStringListMap(
+    args: QueryParamsAsStringListMapCommandInput,
+    options?: __HttpHandlerOptions
+  ): Promise<QueryParamsAsStringListMapCommandOutput>;
+  public queryParamsAsStringListMap(
+    args: QueryParamsAsStringListMapCommandInput,
+    cb: (err: any, data?: QueryParamsAsStringListMapCommandOutput) => void
+  ): void;
+  public queryParamsAsStringListMap(
+    args: QueryParamsAsStringListMapCommandInput,
+    options: __HttpHandlerOptions,
+    cb: (err: any, data?: QueryParamsAsStringListMapCommandOutput) => void
+  ): void;
+  public queryParamsAsStringListMap(
+    args: QueryParamsAsStringListMapCommandInput,
+    optionsOrCb?: __HttpHandlerOptions | ((err: any, data?: QueryParamsAsStringListMapCommandOutput) => void),
+    cb?: (err: any, data?: QueryParamsAsStringListMapCommandOutput) => void
+  ): Promise<QueryParamsAsStringListMapCommandOutput> | void {
+    const command = new QueryParamsAsStringListMapCommand(args);
+    if (typeof optionsOrCb === "function") {
+      this.send(command, optionsOrCb);
+    } else if (typeof cb === "function") {
+      if (typeof optionsOrCb !== "object") throw new Error(`Expect http options but get ${typeof optionsOrCb}`);
+      this.send(command, optionsOrCb || {}, cb);
+    } else {
+      return this.send(command, optionsOrCb);
+    }
+  }
+
+  public queryPrecedence(
+    args: QueryPrecedenceCommandInput,
+    options?: __HttpHandlerOptions
+  ): Promise<QueryPrecedenceCommandOutput>;
+  public queryPrecedence(
+    args: QueryPrecedenceCommandInput,
+    cb: (err: any, data?: QueryPrecedenceCommandOutput) => void
+  ): void;
+  public queryPrecedence(
+    args: QueryPrecedenceCommandInput,
+    options: __HttpHandlerOptions,
+    cb: (err: any, data?: QueryPrecedenceCommandOutput) => void
+  ): void;
+  public queryPrecedence(
+    args: QueryPrecedenceCommandInput,
+    optionsOrCb?: __HttpHandlerOptions | ((err: any, data?: QueryPrecedenceCommandOutput) => void),
+    cb?: (err: any, data?: QueryPrecedenceCommandOutput) => void
+  ): Promise<QueryPrecedenceCommandOutput> | void {
+    const command = new QueryPrecedenceCommand(args);
     if (typeof optionsOrCb === "function") {
       this.send(command, optionsOrCb);
     } else if (typeof cb === "function") {

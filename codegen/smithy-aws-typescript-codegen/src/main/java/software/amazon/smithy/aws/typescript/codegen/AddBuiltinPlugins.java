@@ -15,6 +15,7 @@
 
 package software.amazon.smithy.aws.typescript.codegen;
 
+import static software.amazon.smithy.aws.typescript.codegen.AwsTraitsUtils.isAwsService;
 import static software.amazon.smithy.typescript.codegen.integration.RuntimeClientPlugin.Convention.HAS_CONFIG;
 import static software.amazon.smithy.typescript.codegen.integration.RuntimeClientPlugin.Convention.HAS_MIDDLEWARE;
 
@@ -30,10 +31,12 @@ import software.amazon.smithy.typescript.codegen.integration.RuntimeClientPlugin
 import software.amazon.smithy.typescript.codegen.integration.TypeScriptIntegration;
 import software.amazon.smithy.utils.ListUtils;
 import software.amazon.smithy.utils.SetUtils;
+import software.amazon.smithy.utils.SmithyInternalApi;
 
 /**
  * Adds all built-in runtime client plugins to clients.
  */
+@SmithyInternalApi
 public class AddBuiltinPlugins implements TypeScriptIntegration {
     private static final Set<String> ROUTE_53_ID_MEMBERS = SetUtils.of("DelegationSetId", "HostedZoneId", "Id");
 
@@ -44,9 +47,16 @@ public class AddBuiltinPlugins implements TypeScriptIntegration {
         return ListUtils.of(
                 RuntimeClientPlugin.builder()
                         .withConventions(TypeScriptDependency.CONFIG_RESOLVER.dependency, "Region", HAS_CONFIG)
+                        .servicePredicate((m, s) -> isAwsService(s))
                         .build(),
+                // Only one of Endpoints or CustomEndpoints should be used
                 RuntimeClientPlugin.builder()
                         .withConventions(TypeScriptDependency.CONFIG_RESOLVER.dependency, "Endpoints", HAS_CONFIG)
+                        .servicePredicate((m, s) -> isAwsService(s))
+                        .build(),
+                RuntimeClientPlugin.builder()
+                        .withConventions(TypeScriptDependency.CONFIG_RESOLVER.dependency, "CustomEndpoints", HAS_CONFIG)
+                        .servicePredicate((m, s) -> !isAwsService(s))
                         .build(),
                 RuntimeClientPlugin.builder()
                         .withConventions(TypeScriptDependency.MIDDLEWARE_RETRY.dependency, "Retry")

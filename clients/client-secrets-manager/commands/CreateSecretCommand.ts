@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSecretCommandInput = CreateSecretRequest;
-export type CreateSecretCommandOutput = CreateSecretResponse & __MetadataBearer;
+export interface CreateSecretCommandInput extends CreateSecretRequest {}
+export interface CreateSecretCommandOutput extends CreateSecretResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new secret. A secret in Secrets Manager consists of both the protected secret data and the
@@ -109,6 +109,20 @@ export type CreateSecretCommandOutput = CreateSecretResponse & __MetadataBearer;
  *           value.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecretsManagerClient, CreateSecretCommand } from "@aws-sdk/client-secrets-manager"; // ES Modules import
+ * // const { SecretsManagerClient, CreateSecretCommand } = require("@aws-sdk/client-secrets-manager"); // CommonJS import
+ * const client = new SecretsManagerClient(config);
+ * const command = new CreateSecretCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSecretCommandInput} for command's `input` shape.
+ * @see {@link CreateSecretCommandOutput} for command's `response` shape.
+ * @see {@link SecretsManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSecretCommand extends $Command<
   CreateSecretCommandInput,

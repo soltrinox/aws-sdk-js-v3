@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateClassificationJobCommandInput = UpdateClassificationJobRequest;
-export type UpdateClassificationJobCommandOutput = UpdateClassificationJobResponse & __MetadataBearer;
+export interface UpdateClassificationJobCommandInput extends UpdateClassificationJobRequest {}
+export interface UpdateClassificationJobCommandOutput extends UpdateClassificationJobResponse, __MetadataBearer {}
 
 /**
  * <p>Changes the status of a classification job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Macie2Client, UpdateClassificationJobCommand } from "@aws-sdk/client-macie2"; // ES Modules import
+ * // const { Macie2Client, UpdateClassificationJobCommand } = require("@aws-sdk/client-macie2"); // CommonJS import
+ * const client = new Macie2Client(config);
+ * const command = new UpdateClassificationJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateClassificationJobCommandInput} for command's `input` shape.
+ * @see {@link UpdateClassificationJobCommandOutput} for command's `response` shape.
+ * @see {@link Macie2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateClassificationJobCommand extends $Command<
   UpdateClassificationJobCommandInput,

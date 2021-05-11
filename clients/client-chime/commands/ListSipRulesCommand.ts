@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListSipRulesCommandInput = ListSipRulesRequest;
-export type ListSipRulesCommandOutput = ListSipRulesResponse & __MetadataBearer;
+export interface ListSipRulesCommandInput extends ListSipRulesRequest {}
+export interface ListSipRulesCommandOutput extends ListSipRulesResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the SIP rules under the administrator's AWS account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, ListSipRulesCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, ListSipRulesCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new ListSipRulesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListSipRulesCommandInput} for command's `input` shape.
+ * @see {@link ListSipRulesCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListSipRulesCommand extends $Command<
   ListSipRulesCommandInput,

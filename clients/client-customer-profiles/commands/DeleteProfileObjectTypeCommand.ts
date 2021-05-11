@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteProfileObjectTypeCommandInput = DeleteProfileObjectTypeRequest;
-export type DeleteProfileObjectTypeCommandOutput = DeleteProfileObjectTypeResponse & __MetadataBearer;
+export interface DeleteProfileObjectTypeCommandInput extends DeleteProfileObjectTypeRequest {}
+export interface DeleteProfileObjectTypeCommandOutput extends DeleteProfileObjectTypeResponse, __MetadataBearer {}
 
 /**
  * <p>Removes a ProfileObjectType from a specific domain as well as removes all the
  *          ProfileObjects of that type. It also disables integrations from this specific
  *          ProfileObjectType. In addition, it scrubs all of the fields of the standard profile that
  *          were populated from this ProfileObjectType.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CustomerProfilesClient, DeleteProfileObjectTypeCommand } from "@aws-sdk/client-customer-profiles"; // ES Modules import
+ * // const { CustomerProfilesClient, DeleteProfileObjectTypeCommand } = require("@aws-sdk/client-customer-profiles"); // CommonJS import
+ * const client = new CustomerProfilesClient(config);
+ * const command = new DeleteProfileObjectTypeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteProfileObjectTypeCommandInput} for command's `input` shape.
+ * @see {@link DeleteProfileObjectTypeCommandOutput} for command's `response` shape.
+ * @see {@link CustomerProfilesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteProfileObjectTypeCommand extends $Command<
   DeleteProfileObjectTypeCommandInput,

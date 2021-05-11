@@ -22,8 +22,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AdminUpdateUserAttributesCommandInput = AdminUpdateUserAttributesRequest;
-export type AdminUpdateUserAttributesCommandOutput = AdminUpdateUserAttributesResponse & __MetadataBearer;
+export interface AdminUpdateUserAttributesCommandInput extends AdminUpdateUserAttributesRequest {}
+export interface AdminUpdateUserAttributesCommandOutput extends AdminUpdateUserAttributesResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the specified user's attributes, including developer attributes, as an
@@ -33,6 +33,20 @@ export type AdminUpdateUserAttributesCommandOutput = AdminUpdateUserAttributesRe
  *         <p>In addition to updating user attributes, this API can also be used to mark phone and
  *             email as verified.</p>
  *         <p>Calling this action requires developer credentials.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, AdminUpdateUserAttributesCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, AdminUpdateUserAttributesCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new AdminUpdateUserAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AdminUpdateUserAttributesCommandInput} for command's `input` shape.
+ * @see {@link AdminUpdateUserAttributesCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AdminUpdateUserAttributesCommand extends $Command<
   AdminUpdateUserAttributesCommandInput,

@@ -18,19 +18,19 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBucketTaggingCommandInput = GetBucketTaggingRequest;
-export type GetBucketTaggingCommandOutput = GetBucketTaggingResult & __MetadataBearer;
+export interface GetBucketTaggingCommandInput extends GetBucketTaggingRequest {}
+export interface GetBucketTaggingCommandOutput extends GetBucketTaggingResult, __MetadataBearer {}
 
 /**
  * <note>
- *             <p>This operation gets an Amazon S3 on Outposts bucket's tags. To get an
+ *             <p>This action gets an Amazon S3 on Outposts bucket's tags. To get an
  *          S3 bucket tags, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html">GetBucketTagging</a> in the <i>Amazon Simple Storage Service API</i>.
  *       </p>
  *          </note>
  *          <p>Returns the tag set associated with the Outposts bucket. For more information, see
- *             <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using Amazon S3 on Outposts</a> in the
- *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
- *          <p>To use this operation, you must have permission to perform the <code>GetBucketTagging</code> action.
+ *             <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using Amazon S3 on Outposts</a> in the
+ *             <i>Amazon Simple Storage Service User Guide</i>.</p>
+ *          <p>To use this action, you must have permission to perform the <code>GetBucketTagging</code> action.
  *          By default, the bucket owner has this permission and can grant this permission to others.</p>
  *
  *          <p>
@@ -61,6 +61,20 @@ export type GetBucketTaggingCommandOutput = GetBucketTaggingResult & __MetadataB
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, GetBucketTaggingCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, GetBucketTaggingCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new GetBucketTaggingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBucketTaggingCommandInput} for command's `input` shape.
+ * @see {@link GetBucketTaggingCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBucketTaggingCommand extends $Command<
   GetBucketTaggingCommandInput,

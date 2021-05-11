@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRateBasedRuleManagedKeysCommandInput = GetRateBasedRuleManagedKeysRequest;
-export type GetRateBasedRuleManagedKeysCommandOutput = GetRateBasedRuleManagedKeysResponse & __MetadataBearer;
+export interface GetRateBasedRuleManagedKeysCommandInput extends GetRateBasedRuleManagedKeysRequest {}
+export interface GetRateBasedRuleManagedKeysCommandOutput
+  extends GetRateBasedRuleManagedKeysResponse,
+    __MetadataBearer {}
 
 /**
  * <note>
@@ -32,6 +34,20 @@ export type GetRateBasedRuleManagedKeysCommandOutput = GetRateBasedRuleManagedKe
  *          <p>Returns an array of IP addresses currently being blocked by the <a>RateBasedRule</a> that is specified by the <code>RuleId</code>. The maximum
  *          number of managed keys that will be blocked is 10,000. If more than 10,000 addresses exceed
  *          the rate limit, the 10,000 addresses with the highest rates will be blocked.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFClient, GetRateBasedRuleManagedKeysCommand } from "@aws-sdk/client-waf"; // ES Modules import
+ * // const { WAFClient, GetRateBasedRuleManagedKeysCommand } = require("@aws-sdk/client-waf"); // CommonJS import
+ * const client = new WAFClient(config);
+ * const command = new GetRateBasedRuleManagedKeysCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRateBasedRuleManagedKeysCommandInput} for command's `input` shape.
+ * @see {@link GetRateBasedRuleManagedKeysCommandOutput} for command's `response` shape.
+ * @see {@link WAFClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRateBasedRuleManagedKeysCommand extends $Command<
   GetRateBasedRuleManagedKeysCommandInput,

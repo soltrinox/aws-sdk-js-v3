@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeSnapshotScheduleCommandInput = DescribeSnapshotScheduleInput;
-export type DescribeSnapshotScheduleCommandOutput = DescribeSnapshotScheduleOutput & __MetadataBearer;
+export interface DescribeSnapshotScheduleCommandInput extends DescribeSnapshotScheduleInput {}
+export interface DescribeSnapshotScheduleCommandOutput extends DescribeSnapshotScheduleOutput, __MetadataBearer {}
 
 /**
  * <p>Describes the snapshot schedule for the specified gateway volume. The snapshot schedule
  *          information includes intervals at which snapshots are automatically initiated on the
  *          volume. This operation is only supported in the cached volume and stored volume
  *          types.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, DescribeSnapshotScheduleCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, DescribeSnapshotScheduleCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new DescribeSnapshotScheduleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeSnapshotScheduleCommandInput} for command's `input` shape.
+ * @see {@link DescribeSnapshotScheduleCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeSnapshotScheduleCommand extends $Command<
   DescribeSnapshotScheduleCommandInput,

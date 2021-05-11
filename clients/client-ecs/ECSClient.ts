@@ -45,6 +45,7 @@ import {
   DiscoverPollEndpointCommandInput,
   DiscoverPollEndpointCommandOutput,
 } from "./commands/DiscoverPollEndpointCommand";
+import { ExecuteCommandCommandInput, ExecuteCommandCommandOutput } from "./commands/ExecuteCommandCommand";
 import {
   ListAccountSettingsCommandInput,
   ListAccountSettingsCommandOutput,
@@ -108,6 +109,7 @@ import {
   UpdateCapacityProviderCommandInput,
   UpdateCapacityProviderCommandOutput,
 } from "./commands/UpdateCapacityProviderCommand";
+import { UpdateClusterCommandInput, UpdateClusterCommandOutput } from "./commands/UpdateClusterCommand";
 import {
   UpdateClusterSettingsCommandInput,
   UpdateClusterSettingsCommandOutput,
@@ -198,6 +200,7 @@ export type ServiceInputTypes =
   | DescribeTaskSetsCommandInput
   | DescribeTasksCommandInput
   | DiscoverPollEndpointCommandInput
+  | ExecuteCommandCommandInput
   | ListAccountSettingsCommandInput
   | ListAttributesCommandInput
   | ListClustersCommandInput
@@ -222,6 +225,7 @@ export type ServiceInputTypes =
   | TagResourceCommandInput
   | UntagResourceCommandInput
   | UpdateCapacityProviderCommandInput
+  | UpdateClusterCommandInput
   | UpdateClusterSettingsCommandInput
   | UpdateContainerAgentCommandInput
   | UpdateContainerInstancesStateCommandInput
@@ -250,6 +254,7 @@ export type ServiceOutputTypes =
   | DescribeTaskSetsCommandOutput
   | DescribeTasksCommandOutput
   | DiscoverPollEndpointCommandOutput
+  | ExecuteCommandCommandOutput
   | ListAccountSettingsCommandOutput
   | ListAttributesCommandOutput
   | ListClustersCommandOutput
@@ -274,6 +279,7 @@ export type ServiceOutputTypes =
   | TagResourceCommandOutput
   | UntagResourceCommandOutput
   | UpdateCapacityProviderCommandOutput
+  | UpdateClusterCommandOutput
   | UpdateClusterSettingsCommandOutput
   | UpdateContainerAgentCommandOutput
   | UpdateContainerInstancesStateCommandOutput
@@ -346,7 +352,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -377,7 +383,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type ECSClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type ECSClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -385,8 +391,12 @@ export type ECSClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of ECSClient class constructor that set the region, credentials and other options.
+ */
+export interface ECSClientConfig extends ECSClientConfigType {}
 
-export type ECSClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type ECSClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -394,19 +404,21 @@ export type ECSClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandle
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of ECSClient class. This is resolved and normalized from the {@link ECSClientConfig | constructor configuration interface}.
+ */
+export interface ECSClientResolvedConfig extends ECSClientResolvedConfigType {}
 
 /**
  * <fullname>Amazon Elastic Container Service</fullname>
  * 		       <p>Amazon Elastic Container Service (Amazon ECS) is a highly scalable, fast, container management service that makes
  * 			it easy to run, stop, and manage Docker containers on a cluster. You can host your
  * 			cluster on a serverless infrastructure that is managed by Amazon ECS by launching your
- * 			services or tasks using the Fargate launch type. For more control, you can host your
- * 			tasks on a cluster of Amazon Elastic Compute Cloud (Amazon EC2) instances that you manage by using the EC2
- * 			launch type. For more information about launch types, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon ECS Launch
- * 			Types</a>.</p>
- * 		       <p>Amazon ECS lets you launch and stop container-based applications with simple API calls,
- * 			allows you to get the state of your cluster from a centralized service, and gives you
- * 			access to many familiar Amazon EC2 features.</p>
+ * 			services or tasks on AWS Fargate. For more control, you can host your tasks on a cluster
+ * 			of Amazon Elastic Compute Cloud (Amazon EC2) instances that you manage.</p>
+ * 		       <p>Amazon ECS makes it easy to launch and stop container-based applications with simple API
+ * 			calls, allows you to get the state of your cluster from a centralized service, and gives
+ * 			you access to many familiar Amazon EC2 features.</p>
  * 		       <p>You can use Amazon ECS to schedule the placement of containers across your cluster based on
  * 			your resource needs, isolation policies, and availability requirements. Amazon ECS eliminates
  * 			the need for you to operate your own cluster management and configuration management
@@ -418,6 +430,9 @@ export class ECSClient extends __Client<
   ServiceOutputTypes,
   ECSClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of ECSClient class. This is resolved and normalized from the {@link ECSClientConfig | constructor configuration interface}.
+   */
   readonly config: ECSClientResolvedConfig;
 
   constructor(configuration: ECSClientConfig) {

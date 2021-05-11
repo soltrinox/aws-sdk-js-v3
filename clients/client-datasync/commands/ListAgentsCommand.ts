@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAgentsCommandInput = ListAgentsRequest;
-export type ListAgentsCommandOutput = ListAgentsResponse & __MetadataBearer;
+export interface ListAgentsCommandInput extends ListAgentsRequest {}
+export interface ListAgentsCommandOutput extends ListAgentsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of agents owned by an AWS account in the AWS Region specified in the
@@ -29,6 +29,20 @@ export type ListAgentsCommandOutput = ListAgentsResponse & __MetadataBearer;
  *          <p>If you have more agents than are returned in a response (that is, the response returns
  *       only a truncated list of your agents), the response contains a marker that you can specify in
  *       your next request to fetch the next page of agents.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataSyncClient, ListAgentsCommand } from "@aws-sdk/client-datasync"; // ES Modules import
+ * // const { DataSyncClient, ListAgentsCommand } = require("@aws-sdk/client-datasync"); // CommonJS import
+ * const client = new DataSyncClient(config);
+ * const command = new ListAgentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAgentsCommandInput} for command's `input` shape.
+ * @see {@link ListAgentsCommandOutput} for command's `response` shape.
+ * @see {@link DataSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAgentsCommand extends $Command<
   ListAgentsCommandInput,

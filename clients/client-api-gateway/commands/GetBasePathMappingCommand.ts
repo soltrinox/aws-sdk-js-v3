@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBasePathMappingCommandInput = GetBasePathMappingRequest;
-export type GetBasePathMappingCommandOutput = BasePathMapping & __MetadataBearer;
+export interface GetBasePathMappingCommandInput extends GetBasePathMappingRequest {}
+export interface GetBasePathMappingCommandOutput extends BasePathMapping, __MetadataBearer {}
 
 /**
  * <p>Describe a <a>BasePathMapping</a> resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, GetBasePathMappingCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, GetBasePathMappingCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new GetBasePathMappingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBasePathMappingCommandInput} for command's `input` shape.
+ * @see {@link GetBasePathMappingCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBasePathMappingCommand extends $Command<
   GetBasePathMappingCommandInput,

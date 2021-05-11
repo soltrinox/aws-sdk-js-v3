@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBucketAnalyticsConfigurationCommandInput = DeleteBucketAnalyticsConfigurationRequest;
-export type DeleteBucketAnalyticsConfigurationCommandOutput = __MetadataBearer;
+export interface DeleteBucketAnalyticsConfigurationCommandInput extends DeleteBucketAnalyticsConfigurationRequest {}
+export interface DeleteBucketAnalyticsConfigurationCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes an analytics configuration for the bucket (specified by the analytics
@@ -27,7 +27,7 @@ export type DeleteBucketAnalyticsConfigurationCommandOutput = __MetadataBearer;
  *          <p>To use this operation, you must have permissions to perform the
  *             <code>s3:PutAnalyticsConfiguration</code> action. The bucket owner has this permission
  *          by default. The bucket owner can grant this permission to others. For more information
- *          about permissions, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources">Permissions Related to Bucket Subresource Operations</a> and <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">Managing Access Permissions to Your Amazon S3
+ *          about permissions, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources">Permissions Related to Bucket Subresource Operations</a> and <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html">Managing Access Permissions to Your Amazon S3
  *             Resources</a>.</p>
  *
  *          <p>For information about the Amazon S3 analytics feature, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html">Amazon S3 Analytics – Storage Class
@@ -52,6 +52,20 @@ export type DeleteBucketAnalyticsConfigurationCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, DeleteBucketAnalyticsConfigurationCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, DeleteBucketAnalyticsConfigurationCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new DeleteBucketAnalyticsConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBucketAnalyticsConfigurationCommandInput} for command's `input` shape.
+ * @see {@link DeleteBucketAnalyticsConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBucketAnalyticsConfigurationCommand extends $Command<
   DeleteBucketAnalyticsConfigurationCommandInput,

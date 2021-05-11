@@ -121,7 +121,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -152,7 +152,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type CloudSearchDomainClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type CloudSearchDomainClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -160,8 +160,12 @@ export type CloudSearchDomainClientConfig = Partial<__SmithyConfiguration<__Http
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of CloudSearchDomainClient class constructor that set the region, credentials and other options.
+ */
+export interface CloudSearchDomainClientConfig extends CloudSearchDomainClientConfigType {}
 
-export type CloudSearchDomainClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type CloudSearchDomainClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -169,11 +173,15 @@ export type CloudSearchDomainClientResolvedConfig = __SmithyResolvedConfiguratio
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of CloudSearchDomainClient class. This is resolved and normalized from the {@link CloudSearchDomainClientConfig | constructor configuration interface}.
+ */
+export interface CloudSearchDomainClientResolvedConfig extends CloudSearchDomainClientResolvedConfigType {}
 
 /**
- * <p>You use the AmazonCloudSearch2013 API to upload documents to a search domain and search those documents.</p>
+ * <p>You use the AmazonCloudSearch2013 API to upload documents to a search domain and search those documents. </p>
  *
- *          <p>The endpoints for submitting <code>UploadDocuments</code>, <code>Search</code>, and <code>Suggest</code> requests are domain-specific and require the <code>--endpoint-url</code> option. To get the endpoints for your domain, use the Amazon CloudSearch configuration service <code>DescribeDomains</code> action. The endpoints are also available on the domain dashboard in the Amazon CloudSearch console. You submit suggest requests to the search endpoint.</p>
+ *          <p>The endpoints for submitting <code>UploadDocuments</code>, <code>Search</code>, and <code>Suggest</code> requests are domain-specific. To get the endpoints for your domain, use the Amazon CloudSearch configuration service <code>DescribeDomains</code> action. The domain endpoints are also displayed on the domain dashboard in the Amazon CloudSearch console. You submit suggest requests to the search endpoint. </p>
  *          <p>For more information, see the <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide">Amazon CloudSearch Developer Guide</a>.</p>
  */
 export class CloudSearchDomainClient extends __Client<
@@ -182,6 +190,9 @@ export class CloudSearchDomainClient extends __Client<
   ServiceOutputTypes,
   CloudSearchDomainClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of CloudSearchDomainClient class. This is resolved and normalized from the {@link CloudSearchDomainClientConfig | constructor configuration interface}.
+   */
   readonly config: CloudSearchDomainClientResolvedConfig;
 
   constructor(configuration: CloudSearchDomainClientConfig) {

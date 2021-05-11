@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTagsForResourceCommandInput = ListTagsForResourceRequest;
-export type ListTagsForResourceCommandOutput = ListTagsForResourceResponse & __MetadataBearer;
+export interface ListTagsForResourceCommandInput extends ListTagsForResourceRequest {}
+export interface ListTagsForResourceCommandOutput extends ListTagsForResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Lists tags that are attached to the specified resource.</p>
@@ -39,6 +39,20 @@ export type ListTagsForResourceCommandOutput = ListTagsForResourceResponse & __M
  *          </ul>
  *         <p>This operation can be called only from the organization's
  * management account or by a member account that is a delegated administrator for an AWS service.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, ListTagsForResourceCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, ListTagsForResourceCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new ListTagsForResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTagsForResourceCommandInput} for command's `input` shape.
+ * @see {@link ListTagsForResourceCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTagsForResourceCommand extends $Command<
   ListTagsForResourceCommandInput,

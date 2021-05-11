@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCodeRepositoryCommandInput = CreateCodeRepositoryInput;
-export type CreateCodeRepositoryCommandOutput = CreateCodeRepositoryOutput & __MetadataBearer;
+export interface CreateCodeRepositoryCommandInput extends CreateCodeRepositoryInput {}
+export interface CreateCodeRepositoryCommandOutput extends CreateCodeRepositoryOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a Git repository as a resource in your Amazon SageMaker account. You can associate the
@@ -28,6 +28,20 @@ export type CreateCodeRepositoryCommandOutput = CreateCodeRepositoryOutput & __M
  *             the lifecycle of any notebook instances it is associated with.</p>
  *         <p>The repository can be hosted either in <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html">AWS CodeCommit</a> or in any
  *             other Git repository.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, CreateCodeRepositoryCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, CreateCodeRepositoryCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new CreateCodeRepositoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCodeRepositoryCommandInput} for command's `input` shape.
+ * @see {@link CreateCodeRepositoryCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCodeRepositoryCommand extends $Command<
   CreateCodeRepositoryCommandInput,

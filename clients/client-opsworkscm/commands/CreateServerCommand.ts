@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateServerCommandInput = CreateServerRequest;
-export type CreateServerCommandOutput = CreateServerResponse & __MetadataBearer;
+export interface CreateServerCommandInput extends CreateServerRequest {}
+export interface CreateServerCommandOutput extends CreateServerResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -49,6 +49,20 @@ export type CreateServerCommandOutput = CreateServerResponse & __MetadataBearer;
  *     </p>
  *          <p>To specify your own domain for a server, and provide your own self-signed or CA-signed certificate and private key, specify values for <code>CustomDomain</code>,
  *       <code>CustomCertificate</code>, and <code>CustomPrivateKey</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksCMClient, CreateServerCommand } from "@aws-sdk/client-opsworkscm"; // ES Modules import
+ * // const { OpsWorksCMClient, CreateServerCommand } = require("@aws-sdk/client-opsworkscm"); // CommonJS import
+ * const client = new OpsWorksCMClient(config);
+ * const command = new CreateServerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateServerCommandInput} for command's `input` shape.
+ * @see {@link CreateServerCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksCMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateServerCommand extends $Command<
   CreateServerCommandInput,

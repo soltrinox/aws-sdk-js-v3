@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateTableCommandInput = UpdateTableInput;
-export type UpdateTableCommandOutput = UpdateTableOutput & __MetadataBearer;
+export interface UpdateTableCommandInput extends UpdateTableInput {}
+export interface UpdateTableCommandOutput extends UpdateTableOutput, __MetadataBearer {}
 
 /**
  * <p>Modifies the provisioned throughput settings, global secondary indexes, or DynamoDB Streams settings for a given table.</p>
@@ -44,6 +44,20 @@ export type UpdateTableCommandOutput = UpdateTableOutput & __MetadataBearer;
  *       changes from <code>ACTIVE</code> to <code>UPDATING</code>. While it is <code>UPDATING</code>,
  *       you cannot issue another <code>UpdateTable</code> request. When the table returns to the
  *         <code>ACTIVE</code> state, the <code>UpdateTable</code> operation is complete.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, UpdateTableCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, UpdateTableCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new UpdateTableCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateTableCommandInput} for command's `input` shape.
+ * @see {@link UpdateTableCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateTableCommand extends $Command<
   UpdateTableCommandInput,

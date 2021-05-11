@@ -17,13 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AcceptReservedNodeExchangeCommandInput = AcceptReservedNodeExchangeInputMessage;
-export type AcceptReservedNodeExchangeCommandOutput = AcceptReservedNodeExchangeOutputMessage & __MetadataBearer;
+export interface AcceptReservedNodeExchangeCommandInput extends AcceptReservedNodeExchangeInputMessage {}
+export interface AcceptReservedNodeExchangeCommandOutput
+  extends AcceptReservedNodeExchangeOutputMessage,
+    __MetadataBearer {}
 
 /**
  * <p>Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to the
  *             configuration (term, payment type, or number of nodes) and no additional costs.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, AcceptReservedNodeExchangeCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, AcceptReservedNodeExchangeCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new AcceptReservedNodeExchangeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AcceptReservedNodeExchangeCommandInput} for command's `input` shape.
+ * @see {@link AcceptReservedNodeExchangeCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AcceptReservedNodeExchangeCommand extends $Command<
   AcceptReservedNodeExchangeCommandInput,

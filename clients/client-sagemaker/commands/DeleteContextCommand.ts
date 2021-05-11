@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteContextCommandInput = DeleteContextRequest;
-export type DeleteContextCommandOutput = DeleteContextResponse & __MetadataBearer;
+export interface DeleteContextCommandInput extends DeleteContextRequest {}
+export interface DeleteContextCommandOutput extends DeleteContextResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an context.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DeleteContextCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DeleteContextCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DeleteContextCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteContextCommandInput} for command's `input` shape.
+ * @see {@link DeleteContextCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteContextCommand extends $Command<
   DeleteContextCommandInput,

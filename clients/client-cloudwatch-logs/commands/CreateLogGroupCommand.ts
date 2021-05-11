@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateLogGroupCommandInput = CreateLogGroupRequest;
-export type CreateLogGroupCommandOutput = __MetadataBearer;
+export interface CreateLogGroupCommandInput extends CreateLogGroupRequest {}
+export interface CreateLogGroupCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Creates a log group with the specified name. You can create up to 20,000 log groups per account.</p>
@@ -48,6 +48,20 @@ export type CreateLogGroupCommandOutput = __MetadataBearer;
  *         your log group. For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html">Using Symmetric and Asymmetric
  *           Keys</a>.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, CreateLogGroupCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, CreateLogGroupCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new CreateLogGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateLogGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateLogGroupCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateLogGroupCommand extends $Command<
   CreateLogGroupCommandInput,

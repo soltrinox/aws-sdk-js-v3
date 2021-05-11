@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeLunaClientCommandInput = DescribeLunaClientRequest;
-export type DescribeLunaClientCommandOutput = DescribeLunaClientResponse & __MetadataBearer;
+export interface DescribeLunaClientCommandInput extends DescribeLunaClientRequest {}
+export interface DescribeLunaClientCommandOutput extends DescribeLunaClientResponse, __MetadataBearer {}
 
 /**
  * <p>This is documentation for <b>AWS CloudHSM Classic</b>. For
@@ -32,6 +32,20 @@ export type DescribeLunaClientCommandOutput = DescribeLunaClientResponse & __Met
  *       and the <a href="https://docs.aws.amazon.com/cloudhsm/latest/APIReference/">AWS CloudHSM API
  *       Reference</a>.</p>
  *          <p>Retrieves information about an HSM client.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudHSMClient, DescribeLunaClientCommand } from "@aws-sdk/client-cloudhsm"; // ES Modules import
+ * // const { CloudHSMClient, DescribeLunaClientCommand } = require("@aws-sdk/client-cloudhsm"); // CommonJS import
+ * const client = new CloudHSMClient(config);
+ * const command = new DescribeLunaClientCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeLunaClientCommandInput} for command's `input` shape.
+ * @see {@link DescribeLunaClientCommandOutput} for command's `response` shape.
+ * @see {@link CloudHSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeLunaClientCommand extends $Command<
   DescribeLunaClientCommandInput,

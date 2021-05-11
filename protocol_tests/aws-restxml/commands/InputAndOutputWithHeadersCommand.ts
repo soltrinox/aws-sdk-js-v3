@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type InputAndOutputWithHeadersCommandInput = InputAndOutputWithHeadersIO;
-export type InputAndOutputWithHeadersCommandOutput = InputAndOutputWithHeadersIO & __MetadataBearer;
+export interface InputAndOutputWithHeadersCommandInput extends InputAndOutputWithHeadersIO {}
+export interface InputAndOutputWithHeadersCommandOutput extends InputAndOutputWithHeadersIO, __MetadataBearer {}
 
 /**
  * The example tests how requests and responses are serialized when there is
  * no input or output payload but there are HTTP header bindings.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestXmlProtocolClient, InputAndOutputWithHeadersCommand } from "@aws-sdk/aws-restxml"; // ES Modules import
+ * // const { RestXmlProtocolClient, InputAndOutputWithHeadersCommand } = require("@aws-sdk/aws-restxml"); // CommonJS import
+ * const client = new RestXmlProtocolClient(config);
+ * const command = new InputAndOutputWithHeadersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link InputAndOutputWithHeadersCommandInput} for command's `input` shape.
+ * @see {@link InputAndOutputWithHeadersCommandOutput} for command's `response` shape.
+ * @see {@link RestXmlProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class InputAndOutputWithHeadersCommand extends $Command<
   InputAndOutputWithHeadersCommandInput,

@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ExecuteStatementCommandInput = ExecuteStatementInput;
-export type ExecuteStatementCommandOutput = ExecuteStatementOutput & __MetadataBearer;
+export interface ExecuteStatementCommandInput extends ExecuteStatementInput {}
+export interface ExecuteStatementCommandOutput extends ExecuteStatementOutput, __MetadataBearer {}
 
 /**
  * <p>
  * This operation allows you to perform reads and singleton writes on data stored in DynamoDB, using PartiQL.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, ExecuteStatementCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, ExecuteStatementCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new ExecuteStatementCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ExecuteStatementCommandInput} for command's `input` shape.
+ * @see {@link ExecuteStatementCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ExecuteStatementCommand extends $Command<
   ExecuteStatementCommandInput,

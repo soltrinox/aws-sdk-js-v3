@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDiscoveredResourceCountsCommandInput = GetDiscoveredResourceCountsRequest;
-export type GetDiscoveredResourceCountsCommandOutput = GetDiscoveredResourceCountsResponse & __MetadataBearer;
+export interface GetDiscoveredResourceCountsCommandInput extends GetDiscoveredResourceCountsRequest {}
+export interface GetDiscoveredResourceCountsCommandOutput
+  extends GetDiscoveredResourceCountsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the resource types, the number of each resource type,
@@ -85,6 +87,20 @@ export type GetDiscoveredResourceCountsCommandOutput = GetDiscoveredResourceCoun
  * 					<a>GetDiscoveredResourceCounts</a> action.
  * 			</p>
  * 		       </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, GetDiscoveredResourceCountsCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, GetDiscoveredResourceCountsCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new GetDiscoveredResourceCountsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDiscoveredResourceCountsCommandInput} for command's `input` shape.
+ * @see {@link GetDiscoveredResourceCountsCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDiscoveredResourceCountsCommand extends $Command<
   GetDiscoveredResourceCountsCommandInput,

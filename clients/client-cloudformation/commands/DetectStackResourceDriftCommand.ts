@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DetectStackResourceDriftCommandInput = DetectStackResourceDriftInput;
-export type DetectStackResourceDriftCommandOutput = DetectStackResourceDriftOutput & __MetadataBearer;
+export interface DetectStackResourceDriftCommandInput extends DetectStackResourceDriftInput {}
+export interface DetectStackResourceDriftCommandOutput extends DetectStackResourceDriftOutput, __MetadataBearer {}
 
 /**
  * <p>Returns information about whether a resource's actual configuration differs, or has
@@ -33,6 +33,20 @@ export type DetectStackResourceDriftCommandOutput = DetectStackResourceDriftOutp
  *          that support drift detection.</p>
  *          <p>Resources that do not currently support drift detection cannot be checked. For a list
  *          of resources that support drift detection, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html">Resources that Support Drift Detection</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, DetectStackResourceDriftCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, DetectStackResourceDriftCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new DetectStackResourceDriftCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DetectStackResourceDriftCommandInput} for command's `input` shape.
+ * @see {@link DetectStackResourceDriftCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DetectStackResourceDriftCommand extends $Command<
   DetectStackResourceDriftCommandInput,

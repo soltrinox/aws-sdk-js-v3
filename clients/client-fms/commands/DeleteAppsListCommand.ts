@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAppsListCommandInput = DeleteAppsListRequest;
-export type DeleteAppsListCommandOutput = __MetadataBearer;
+export interface DeleteAppsListCommandInput extends DeleteAppsListRequest {}
+export interface DeleteAppsListCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Permanently deletes an AWS Firewall Manager applications list.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FMSClient, DeleteAppsListCommand } from "@aws-sdk/client-fms"; // ES Modules import
+ * // const { FMSClient, DeleteAppsListCommand } = require("@aws-sdk/client-fms"); // CommonJS import
+ * const client = new FMSClient(config);
+ * const command = new DeleteAppsListCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAppsListCommandInput} for command's `input` shape.
+ * @see {@link DeleteAppsListCommandOutput} for command's `response` shape.
+ * @see {@link FMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAppsListCommand extends $Command<
   DeleteAppsListCommandInput,

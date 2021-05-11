@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDatabaseCommandInput = GetDatabaseInput;
-export type GetDatabaseCommandOutput = GetDatabaseOutput & __MetadataBearer;
+export interface GetDatabaseCommandInput extends GetDatabaseInput {}
+export interface GetDatabaseCommandOutput extends GetDatabaseOutput, __MetadataBearer {}
 
 /**
- * <p>Returns a database object for the specfied database and data catalog.</p>
+ * <p>Returns a database object for the specified database and data catalog.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AthenaClient, GetDatabaseCommand } from "@aws-sdk/client-athena"; // ES Modules import
+ * // const { AthenaClient, GetDatabaseCommand } = require("@aws-sdk/client-athena"); // CommonJS import
+ * const client = new AthenaClient(config);
+ * const command = new GetDatabaseCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDatabaseCommandInput} for command's `input` shape.
+ * @see {@link GetDatabaseCommandOutput} for command's `response` shape.
+ * @see {@link AthenaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDatabaseCommand extends $Command<
   GetDatabaseCommandInput,

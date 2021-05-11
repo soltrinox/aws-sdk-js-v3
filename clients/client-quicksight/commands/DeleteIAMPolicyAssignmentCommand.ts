@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteIAMPolicyAssignmentCommandInput = DeleteIAMPolicyAssignmentRequest;
-export type DeleteIAMPolicyAssignmentCommandOutput = DeleteIAMPolicyAssignmentResponse & __MetadataBearer;
+export interface DeleteIAMPolicyAssignmentCommandInput extends DeleteIAMPolicyAssignmentRequest {}
+export interface DeleteIAMPolicyAssignmentCommandOutput extends DeleteIAMPolicyAssignmentResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an existing IAM policy assignment.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, DeleteIAMPolicyAssignmentCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, DeleteIAMPolicyAssignmentCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new DeleteIAMPolicyAssignmentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteIAMPolicyAssignmentCommandInput} for command's `input` shape.
+ * @see {@link DeleteIAMPolicyAssignmentCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteIAMPolicyAssignmentCommand extends $Command<
   DeleteIAMPolicyAssignmentCommandInput,

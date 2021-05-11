@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeFileSystemPolicyCommandInput = DescribeFileSystemPolicyRequest;
-export type DescribeFileSystemPolicyCommandOutput = FileSystemPolicyDescription & __MetadataBearer;
+export interface DescribeFileSystemPolicyCommandInput extends DescribeFileSystemPolicyRequest {}
+export interface DescribeFileSystemPolicyCommandOutput extends FileSystemPolicyDescription, __MetadataBearer {}
 
 /**
  * <p>Returns the <code>FileSystemPolicy</code> for the specified EFS file system.</p>
  *          <p>This operation requires permissions for the <code>elasticfilesystem:DescribeFileSystemPolicy</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EFSClient, DescribeFileSystemPolicyCommand } from "@aws-sdk/client-efs"; // ES Modules import
+ * // const { EFSClient, DescribeFileSystemPolicyCommand } = require("@aws-sdk/client-efs"); // CommonJS import
+ * const client = new EFSClient(config);
+ * const command = new DescribeFileSystemPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeFileSystemPolicyCommandInput} for command's `input` shape.
+ * @see {@link DescribeFileSystemPolicyCommandOutput} for command's `response` shape.
+ * @see {@link EFSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeFileSystemPolicyCommand extends $Command<
   DescribeFileSystemPolicyCommandInput,

@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEventSourceCommandInput = DescribeEventSourceRequest;
-export type DescribeEventSourceCommandOutput = DescribeEventSourceResponse & __MetadataBearer;
+export interface DescribeEventSourceCommandInput extends DescribeEventSourceRequest {}
+export interface DescribeEventSourceCommandOutput extends DescribeEventSourceResponse, __MetadataBearer {}
 
 /**
  * <p>This operation lists details about a partner event source that is shared with your
- *             account.</p>
+ *       account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EventBridgeClient, DescribeEventSourceCommand } from "@aws-sdk/client-eventbridge"; // ES Modules import
+ * // const { EventBridgeClient, DescribeEventSourceCommand } = require("@aws-sdk/client-eventbridge"); // CommonJS import
+ * const client = new EventBridgeClient(config);
+ * const command = new DescribeEventSourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEventSourceCommandInput} for command's `input` shape.
+ * @see {@link DescribeEventSourceCommandOutput} for command's `response` shape.
+ * @see {@link EventBridgeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEventSourceCommand extends $Command<
   DescribeEventSourceCommandInput,

@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateStreamKeyCommandInput = CreateStreamKeyRequest;
-export type CreateStreamKeyCommandOutput = CreateStreamKeyResponse & __MetadataBearer;
+export interface CreateStreamKeyCommandInput extends CreateStreamKeyRequest {}
+export interface CreateStreamKeyCommandOutput extends CreateStreamKeyResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a stream key, used to initiate a stream, for the specified channel ARN.</p>
  *          <p>Note that <a>CreateChannel</a> creates a stream key. If you subsequently use
  *       CreateStreamKey on the same channel, it will fail because a stream key already exists and
  *       there is a limit of 1 stream key per channel. To reset the stream key on a channel, use <a>DeleteStreamKey</a> and then CreateStreamKey.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IvsClient, CreateStreamKeyCommand } from "@aws-sdk/client-ivs"; // ES Modules import
+ * // const { IvsClient, CreateStreamKeyCommand } = require("@aws-sdk/client-ivs"); // CommonJS import
+ * const client = new IvsClient(config);
+ * const command = new CreateStreamKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateStreamKeyCommandInput} for command's `input` shape.
+ * @see {@link CreateStreamKeyCommandOutput} for command's `response` shape.
+ * @see {@link IvsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateStreamKeyCommand extends $Command<
   CreateStreamKeyCommandInput,

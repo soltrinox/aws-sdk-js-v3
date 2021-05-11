@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetOperationsCommandInput = GetOperationsRequest;
-export type GetOperationsCommandOutput = GetOperationsResult & __MetadataBearer;
+export interface GetOperationsCommandInput extends GetOperationsRequest {}
+export interface GetOperationsCommandOutput extends GetOperationsResult, __MetadataBearer {}
 
 /**
  * <p>Returns information about all operations.</p>
  *          <p>Results are returned from oldest to newest, up to a maximum of 200. Results can be paged
  *       by making each subsequent call to <code>GetOperations</code> use the maximum (last)
  *         <code>statusChangedAt</code> value from the previous request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetOperationsCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetOperationsCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetOperationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetOperationsCommandInput} for command's `input` shape.
+ * @see {@link GetOperationsCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetOperationsCommand extends $Command<
   GetOperationsCommandInput,

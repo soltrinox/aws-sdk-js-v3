@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeMitigationActionCommandInput = DescribeMitigationActionRequest;
-export type DescribeMitigationActionCommandOutput = DescribeMitigationActionResponse & __MetadataBearer;
+export interface DescribeMitigationActionCommandInput extends DescribeMitigationActionRequest {}
+export interface DescribeMitigationActionCommandOutput extends DescribeMitigationActionResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about a mitigation action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DescribeMitigationActionCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DescribeMitigationActionCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DescribeMitigationActionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeMitigationActionCommandInput} for command's `input` shape.
+ * @see {@link DescribeMitigationActionCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeMitigationActionCommand extends $Command<
   DescribeMitigationActionCommandInput,

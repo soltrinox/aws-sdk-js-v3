@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateComponentCommandInput = CreateComponentRequest;
-export type CreateComponentCommandOutput = CreateComponentResponse & __MetadataBearer;
+export interface CreateComponentCommandInput extends CreateComponentRequest {}
+export interface CreateComponentCommandOutput extends CreateComponentResponse, __MetadataBearer {}
 
 /**
- * <p>Creates a new component that can be used to build, validate, test, and assess your image.</p>
+ * <p>Creates a new component that can be used to build, validate, test, and assess your
+ *       image.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ImagebuilderClient, CreateComponentCommand } from "@aws-sdk/client-imagebuilder"; // ES Modules import
+ * // const { ImagebuilderClient, CreateComponentCommand } = require("@aws-sdk/client-imagebuilder"); // CommonJS import
+ * const client = new ImagebuilderClient(config);
+ * const command = new CreateComponentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateComponentCommandInput} for command's `input` shape.
+ * @see {@link CreateComponentCommandOutput} for command's `response` shape.
+ * @see {@link ImagebuilderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateComponentCommand extends $Command<
   CreateComponentCommandInput,

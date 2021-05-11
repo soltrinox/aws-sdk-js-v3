@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListMembersCommandInput = ListMembersRequest;
-export type ListMembersCommandOutput = ListMembersResponse & __MetadataBearer;
+export interface ListMembersCommandInput extends ListMembersRequest {}
+export interface ListMembersCommandOutput extends ListMembersResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the list of member accounts for a behavior graph. Does not return member
  *          accounts that were removed from the behavior graph.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DetectiveClient, ListMembersCommand } from "@aws-sdk/client-detective"; // ES Modules import
+ * // const { DetectiveClient, ListMembersCommand } = require("@aws-sdk/client-detective"); // CommonJS import
+ * const client = new DetectiveClient(config);
+ * const command = new ListMembersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListMembersCommandInput} for command's `input` shape.
+ * @see {@link ListMembersCommandOutput} for command's `response` shape.
+ * @see {@link DetectiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListMembersCommand extends $Command<
   ListMembersCommandInput,

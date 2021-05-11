@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateFlowEntitlementCommandInput = UpdateFlowEntitlementRequest;
-export type UpdateFlowEntitlementCommandOutput = UpdateFlowEntitlementResponse & __MetadataBearer;
+export interface UpdateFlowEntitlementCommandInput extends UpdateFlowEntitlementRequest {}
+export interface UpdateFlowEntitlementCommandOutput extends UpdateFlowEntitlementResponse, __MetadataBearer {}
 
 /**
  * You can change an entitlement's description, subscribers, and encryption. If you change the subscribers, the service will remove the outputs that are are used by the subscribers that are removed.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaConnectClient, UpdateFlowEntitlementCommand } from "@aws-sdk/client-mediaconnect"; // ES Modules import
+ * // const { MediaConnectClient, UpdateFlowEntitlementCommand } = require("@aws-sdk/client-mediaconnect"); // CommonJS import
+ * const client = new MediaConnectClient(config);
+ * const command = new UpdateFlowEntitlementCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateFlowEntitlementCommandInput} for command's `input` shape.
+ * @see {@link UpdateFlowEntitlementCommandOutput} for command's `response` shape.
+ * @see {@link MediaConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateFlowEntitlementCommand extends $Command<
   UpdateFlowEntitlementCommandInput,

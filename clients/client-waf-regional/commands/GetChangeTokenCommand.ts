@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetChangeTokenCommandInput = GetChangeTokenRequest;
-export type GetChangeTokenCommandOutput = GetChangeTokenResponse & __MetadataBearer;
+export interface GetChangeTokenCommandInput extends GetChangeTokenRequest {}
+export interface GetChangeTokenCommandOutput extends GetChangeTokenResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -36,6 +36,20 @@ export type GetChangeTokenCommandOutput = GetChangeTokenResponse & __MetadataBea
  * 		       <p>When you use a change token in a create, update, or delete request, the status of the change token changes to <code>PENDING</code>,
  * 			which indicates that AWS WAF is propagating the change to all AWS WAF servers. Use <code>GetChangeTokenStatus</code> to determine the
  * 			status of your change token.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFRegionalClient, GetChangeTokenCommand } from "@aws-sdk/client-waf-regional"; // ES Modules import
+ * // const { WAFRegionalClient, GetChangeTokenCommand } = require("@aws-sdk/client-waf-regional"); // CommonJS import
+ * const client = new WAFRegionalClient(config);
+ * const command = new GetChangeTokenCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetChangeTokenCommandInput} for command's `input` shape.
+ * @see {@link GetChangeTokenCommandOutput} for command's `response` shape.
+ * @see {@link WAFRegionalClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetChangeTokenCommand extends $Command<
   GetChangeTokenCommandInput,

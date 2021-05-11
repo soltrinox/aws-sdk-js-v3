@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRateBasedRuleCommandInput = GetRateBasedRuleRequest;
-export type GetRateBasedRuleCommandOutput = GetRateBasedRuleResponse & __MetadataBearer;
+export interface GetRateBasedRuleCommandInput extends GetRateBasedRuleRequest {}
+export interface GetRateBasedRuleCommandOutput extends GetRateBasedRuleResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -32,6 +32,20 @@ export type GetRateBasedRuleCommandOutput = GetRateBasedRuleResponse & __Metadat
  *          <p>Returns the <a>RateBasedRule</a> that is specified by the
  *             <code>RuleId</code> that you included in the <code>GetRateBasedRule</code>
  *          request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFClient, GetRateBasedRuleCommand } from "@aws-sdk/client-waf"; // ES Modules import
+ * // const { WAFClient, GetRateBasedRuleCommand } = require("@aws-sdk/client-waf"); // CommonJS import
+ * const client = new WAFClient(config);
+ * const command = new GetRateBasedRuleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRateBasedRuleCommandInput} for command's `input` shape.
+ * @see {@link GetRateBasedRuleCommandOutput} for command's `response` shape.
+ * @see {@link WAFClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRateBasedRuleCommand extends $Command<
   GetRateBasedRuleCommandInput,

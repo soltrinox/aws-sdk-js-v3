@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateWebhookCommandInput = UpdateWebhookInput;
-export type UpdateWebhookCommandOutput = UpdateWebhookOutput & __MetadataBearer;
+export interface UpdateWebhookCommandInput extends UpdateWebhookInput {}
+export interface UpdateWebhookCommandOutput extends UpdateWebhookOutput, __MetadataBearer {}
 
 /**
  * <p> Updates the webhook associated with an AWS CodeBuild build project. </p>
@@ -26,6 +26,20 @@ export type UpdateWebhookCommandOutput = UpdateWebhookOutput & __MetadataBearer;
  *             <p> If you use Bitbucket for your repository, <code>rotateSecret</code> is ignored.
  *       </p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeBuildClient, UpdateWebhookCommand } from "@aws-sdk/client-codebuild"; // ES Modules import
+ * // const { CodeBuildClient, UpdateWebhookCommand } = require("@aws-sdk/client-codebuild"); // CommonJS import
+ * const client = new CodeBuildClient(config);
+ * const command = new UpdateWebhookCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateWebhookCommandInput} for command's `input` shape.
+ * @see {@link UpdateWebhookCommandOutput} for command's `response` shape.
+ * @see {@link CodeBuildClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateWebhookCommand extends $Command<
   UpdateWebhookCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetIntrospectionSchemaCommandInput = GetIntrospectionSchemaRequest;
-export type GetIntrospectionSchemaCommandOutput = GetIntrospectionSchemaResponse & __MetadataBearer;
+export interface GetIntrospectionSchemaCommandInput extends GetIntrospectionSchemaRequest {}
+export interface GetIntrospectionSchemaCommandOutput extends GetIntrospectionSchemaResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the introspection schema for a GraphQL API.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppSyncClient, GetIntrospectionSchemaCommand } from "@aws-sdk/client-appsync"; // ES Modules import
+ * // const { AppSyncClient, GetIntrospectionSchemaCommand } = require("@aws-sdk/client-appsync"); // CommonJS import
+ * const client = new AppSyncClient(config);
+ * const command = new GetIntrospectionSchemaCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetIntrospectionSchemaCommandInput} for command's `input` shape.
+ * @see {@link GetIntrospectionSchemaCommandOutput} for command's `response` shape.
+ * @see {@link AppSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetIntrospectionSchemaCommand extends $Command<
   GetIntrospectionSchemaCommandInput,

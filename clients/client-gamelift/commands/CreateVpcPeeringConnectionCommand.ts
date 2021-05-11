@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateVpcPeeringConnectionCommandInput = CreateVpcPeeringConnectionInput;
-export type CreateVpcPeeringConnectionCommandOutput = CreateVpcPeeringConnectionOutput & __MetadataBearer;
+export interface CreateVpcPeeringConnectionCommandInput extends CreateVpcPeeringConnectionInput {}
+export interface CreateVpcPeeringConnectionCommandOutput extends CreateVpcPeeringConnectionOutput, __MetadataBearer {}
 
 /**
  * <p>Establishes a VPC peering connection between a virtual private cloud (VPC) in an AWS account with the VPC
@@ -40,38 +40,32 @@ export type CreateVpcPeeringConnectionCommandOutput = CreateVpcPeeringConnection
  *             request is created. You can use continuous polling to track the request's status using
  *                 <a>DescribeVpcPeeringConnections</a>, or by monitoring fleet events for
  *             success or failure using <a>DescribeFleetEvents</a>. </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateVpcPeeringAuthorization</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeVpcPeeringAuthorizations</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteVpcPeeringAuthorization</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>CreateVpcPeeringConnection</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeVpcPeeringConnections</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteVpcPeeringConnection</a>
- *                </p>
- *             </li>
- *          </ul>
+ *         <p>
+ *             <b>Related actions</b>
+ *          </p>
+ *                     <p>
+ *             <a>CreateVpcPeeringAuthorization</a> |
+ *                     <a>DescribeVpcPeeringAuthorizations</a> |
+ *                     <a>DeleteVpcPeeringAuthorization</a> |
+ *                     <a>CreateVpcPeeringConnection</a> |
+ *                     <a>DescribeVpcPeeringConnections</a> |
+ *                     <a>DeleteVpcPeeringConnection</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, CreateVpcPeeringConnectionCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, CreateVpcPeeringConnectionCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new CreateVpcPeeringConnectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateVpcPeeringConnectionCommandInput} for command's `input` shape.
+ * @see {@link CreateVpcPeeringConnectionCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateVpcPeeringConnectionCommand extends $Command<
   CreateVpcPeeringConnectionCommandInput,

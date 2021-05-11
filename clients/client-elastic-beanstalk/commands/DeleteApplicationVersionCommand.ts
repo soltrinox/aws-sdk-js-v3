@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteApplicationVersionCommandInput = DeleteApplicationVersionMessage;
-export type DeleteApplicationVersionCommandOutput = __MetadataBearer;
+export interface DeleteApplicationVersionCommandInput extends DeleteApplicationVersionMessage {}
+export interface DeleteApplicationVersionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified version from the specified application.</p>
@@ -26,6 +26,20 @@ export type DeleteApplicationVersionCommandOutput = __MetadataBearer;
  *             <p>You cannot delete an application version that is associated with a running
  *         environment.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticBeanstalkClient, DeleteApplicationVersionCommand } from "@aws-sdk/client-elastic-beanstalk"; // ES Modules import
+ * // const { ElasticBeanstalkClient, DeleteApplicationVersionCommand } = require("@aws-sdk/client-elastic-beanstalk"); // CommonJS import
+ * const client = new ElasticBeanstalkClient(config);
+ * const command = new DeleteApplicationVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteApplicationVersionCommandInput} for command's `input` shape.
+ * @see {@link DeleteApplicationVersionCommandOutput} for command's `response` shape.
+ * @see {@link ElasticBeanstalkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteApplicationVersionCommand extends $Command<
   DeleteApplicationVersionCommandInput,

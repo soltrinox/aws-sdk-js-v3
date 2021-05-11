@@ -37,10 +37,12 @@ import software.amazon.smithy.typescript.codegen.TypeScriptWriter;
 import software.amazon.smithy.typescript.codegen.integration.HttpProtocolGeneratorUtils;
 import software.amazon.smithy.typescript.codegen.integration.ProtocolGenerator.GenerationContext;
 import software.amazon.smithy.utils.IoUtils;
+import software.amazon.smithy.utils.SmithyInternalApi;
 
 /**
  * Utility methods for generating AWS protocols.
  */
+@SmithyInternalApi
 final class AwsProtocolUtils {
 
     private AwsProtocolUtils() {}
@@ -221,6 +223,10 @@ final class AwsProtocolUtils {
      * @param context The generation context.
      */
     static void addItempotencyAutofillImport(GenerationContext context) {
+        // servers do not autogenerate idempotency tokens during deserialization
+        if (!context.getSettings().generateClient()) {
+            return;
+        }
         context.getModel().shapes(MemberShape.class)
                 .filter(memberShape -> memberShape.hasTrait(IdempotencyTokenTrait.class))
                 .findFirst()

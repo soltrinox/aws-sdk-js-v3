@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutSecretValueCommandInput = PutSecretValueRequest;
-export type PutSecretValueCommandOutput = PutSecretValueResponse & __MetadataBearer;
+export interface PutSecretValueCommandInput extends PutSecretValueRequest {}
+export interface PutSecretValueCommandOutput extends PutSecretValueResponse, __MetadataBearer {}
 
 /**
  * <p>Stores a new encrypted secret value in the specified secret. To do this, the operation
@@ -36,15 +36,13 @@ export type PutSecretValueCommandOutput = PutSecretValueResponse & __MetadataBea
  *           automatically attaches the staging label <code>AWSCURRENT</code> to the new version.</p>
  *             </li>
  *             <li>
- *                <p>If another version of this secret already exists, then this operation does not
- *           automatically move any staging labels other than those that you explicitly specify in the
- *             <code>VersionStages</code> parameter.</p>
+ *                <p>If you do not specify a value for VersionStages then Secrets Manager automatically
+ *           moves the staging label <code>AWSCURRENT</code> to this new version.</p>
  *             </li>
  *             <li>
  *                <p>If this operation moves the staging label <code>AWSCURRENT</code> from another version to this
- *           version (because you included it in the <code>StagingLabels</code> parameter) then
- *           Secrets Manager also automatically moves the staging label <code>AWSPREVIOUS</code> to the version that
- *           <code>AWSCURRENT</code> was removed from.</p>
+ *           version, then Secrets Manager also automatically moves the staging label <code>AWSPREVIOUS</code> to
+ *           the version that <code>AWSCURRENT</code> was removed from.</p>
  *             </li>
  *             <li>
  *                <p>This operation is idempotent. If a version with a <code>VersionId</code> with the same
@@ -111,6 +109,20 @@ export type PutSecretValueCommandOutput = PutSecretValueResponse & __MetadataBea
  *                <p>To list the versions attached to a secret, use <a>ListSecretVersionIds</a>.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecretsManagerClient, PutSecretValueCommand } from "@aws-sdk/client-secrets-manager"; // ES Modules import
+ * // const { SecretsManagerClient, PutSecretValueCommand } = require("@aws-sdk/client-secrets-manager"); // CommonJS import
+ * const client = new SecretsManagerClient(config);
+ * const command = new PutSecretValueCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutSecretValueCommandInput} for command's `input` shape.
+ * @see {@link PutSecretValueCommandOutput} for command's `response` shape.
+ * @see {@link SecretsManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutSecretValueCommand extends $Command<
   PutSecretValueCommandInput,

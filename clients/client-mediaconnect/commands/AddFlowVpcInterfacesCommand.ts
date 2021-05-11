@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddFlowVpcInterfacesCommandInput = AddFlowVpcInterfacesRequest;
-export type AddFlowVpcInterfacesCommandOutput = AddFlowVpcInterfacesResponse & __MetadataBearer;
+export interface AddFlowVpcInterfacesCommandInput extends AddFlowVpcInterfacesRequest {}
+export interface AddFlowVpcInterfacesCommandOutput extends AddFlowVpcInterfacesResponse, __MetadataBearer {}
 
 /**
  * Adds VPC interfaces to flow
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaConnectClient, AddFlowVpcInterfacesCommand } from "@aws-sdk/client-mediaconnect"; // ES Modules import
+ * // const { MediaConnectClient, AddFlowVpcInterfacesCommand } = require("@aws-sdk/client-mediaconnect"); // CommonJS import
+ * const client = new MediaConnectClient(config);
+ * const command = new AddFlowVpcInterfacesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddFlowVpcInterfacesCommandInput} for command's `input` shape.
+ * @see {@link AddFlowVpcInterfacesCommandOutput} for command's `response` shape.
+ * @see {@link MediaConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddFlowVpcInterfacesCommand extends $Command<
   AddFlowVpcInterfacesCommandInput,

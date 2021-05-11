@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ResetServiceSettingCommandInput = ResetServiceSettingRequest;
-export type ResetServiceSettingCommandOutput = ResetServiceSettingResult & __MetadataBearer;
+export interface ResetServiceSettingCommandInput extends ResetServiceSettingRequest {}
+export interface ResetServiceSettingCommandOutput extends ResetServiceSettingResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -36,6 +36,20 @@ export type ResetServiceSettingCommandOutput = ResetServiceSettingResult & __Met
  *
  *          <p>Reset the service setting for the account to the default value as provisioned by the AWS
  *    service team. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, ResetServiceSettingCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, ResetServiceSettingCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new ResetServiceSettingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ResetServiceSettingCommandInput} for command's `input` shape.
+ * @see {@link ResetServiceSettingCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ResetServiceSettingCommand extends $Command<
   ResetServiceSettingCommandInput,

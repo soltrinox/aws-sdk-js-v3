@@ -16,8 +16,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetObjectCommandInput = GetObjectRequest;
-export type GetObjectCommandOutput = GetObjectOutput & __MetadataBearer;
+export interface GetObjectCommandInput extends GetObjectRequest {}
+export interface GetObjectCommandOutput extends GetObjectOutput, __MetadataBearer {}
 
 /**
  * <p>Retrieves objects from Amazon S3. To use <code>GET</code>, you must have <code>READ</code>
@@ -45,7 +45,7 @@ export type GetObjectCommandOutput = GetObjectOutput & __MetadataBearer;
  *          <p>If the object you are retrieving is stored in the S3 Glacier or
  *          S3 Glacier Deep Archive storage class, or S3 Intelligent-Tiering Archive or
  *          S3 Intelligent-Tiering Deep Archive tiers, before you can retrieve the object you must first restore a
- *          copy using <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html">RestoreObject</a>. Otherwise, this operation returns an
+ *          copy using <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html">RestoreObject</a>. Otherwise, this action returns an
  *             <code>InvalidObjectStateError</code> error. For information about restoring archived
  *          objects, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html">Restoring Archived
  *             Objects</a>.</p>
@@ -99,7 +99,7 @@ export type GetObjectCommandOutput = GetObjectOutput & __MetadataBearer;
  *          <p>
  *             <b>Versioning</b>
  *          </p>
- *          <p>By default, the GET operation returns the current version of an object. To return a
+ *          <p>By default, the GET action returns the current version of an object. To return a
  *          different version, use the <code>versionId</code> subresource.</p>
  *
  *          <note>
@@ -194,6 +194,20 @@ export type GetObjectCommandOutput = GetObjectOutput & __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetObjectCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetObjectCommandInput} for command's `input` shape.
+ * @see {@link GetObjectCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetObjectCommand extends $Command<GetObjectCommandInput, GetObjectCommandOutput, S3ClientResolvedConfig> {
   // Start section: command_properties

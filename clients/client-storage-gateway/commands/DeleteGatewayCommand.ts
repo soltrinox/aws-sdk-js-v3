@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteGatewayCommandInput = DeleteGatewayInput;
-export type DeleteGatewayCommandOutput = DeleteGatewayOutput & __MetadataBearer;
+export interface DeleteGatewayCommandInput extends DeleteGatewayInput {}
+export interface DeleteGatewayCommandOutput extends DeleteGatewayOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes a gateway. To specify which gateway to delete, use the Amazon Resource Name
@@ -39,6 +39,20 @@ export type DeleteGatewayCommandOutput = DeleteGatewayOutput & __MetadataBearer;
  *                <a href="http://aws.amazon.com/storagegateway">AWS Storage Gateway detail
  *             page</a>.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, DeleteGatewayCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, DeleteGatewayCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new DeleteGatewayCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteGatewayCommandInput} for command's `input` shape.
+ * @see {@link DeleteGatewayCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteGatewayCommand extends $Command<
   DeleteGatewayCommandInput,

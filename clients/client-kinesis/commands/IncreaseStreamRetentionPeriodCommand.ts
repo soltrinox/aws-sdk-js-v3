@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type IncreaseStreamRetentionPeriodCommandInput = IncreaseStreamRetentionPeriodInput;
-export type IncreaseStreamRetentionPeriodCommandOutput = __MetadataBearer;
+export interface IncreaseStreamRetentionPeriodCommandInput extends IncreaseStreamRetentionPeriodInput {}
+export interface IncreaseStreamRetentionPeriodCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Increases the Kinesis data stream's retention period, which is the length of time
@@ -30,6 +30,20 @@ export type IncreaseStreamRetentionPeriodCommandOutput = __MetadataBearer;
  *             accessible after the operation has been called. For example, if a stream's retention
  *             period is set to 24 hours and is increased to 168 hours, any data that is older than 24
  *             hours remains inaccessible to consumer applications.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisClient, IncreaseStreamRetentionPeriodCommand } from "@aws-sdk/client-kinesis"; // ES Modules import
+ * // const { KinesisClient, IncreaseStreamRetentionPeriodCommand } = require("@aws-sdk/client-kinesis"); // CommonJS import
+ * const client = new KinesisClient(config);
+ * const command = new IncreaseStreamRetentionPeriodCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link IncreaseStreamRetentionPeriodCommandInput} for command's `input` shape.
+ * @see {@link IncreaseStreamRetentionPeriodCommandOutput} for command's `response` shape.
+ * @see {@link KinesisClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class IncreaseStreamRetentionPeriodCommand extends $Command<
   IncreaseStreamRetentionPeriodCommandInput,

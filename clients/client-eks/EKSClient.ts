@@ -1,3 +1,11 @@
+import {
+  AssociateEncryptionConfigCommandInput,
+  AssociateEncryptionConfigCommandOutput,
+} from "./commands/AssociateEncryptionConfigCommand";
+import {
+  AssociateIdentityProviderConfigCommandInput,
+  AssociateIdentityProviderConfigCommandOutput,
+} from "./commands/AssociateIdentityProviderConfigCommand";
 import { CreateAddonCommandInput, CreateAddonCommandOutput } from "./commands/CreateAddonCommand";
 import { CreateClusterCommandInput, CreateClusterCommandOutput } from "./commands/CreateClusterCommand";
 import {
@@ -22,14 +30,26 @@ import {
   DescribeFargateProfileCommandInput,
   DescribeFargateProfileCommandOutput,
 } from "./commands/DescribeFargateProfileCommand";
+import {
+  DescribeIdentityProviderConfigCommandInput,
+  DescribeIdentityProviderConfigCommandOutput,
+} from "./commands/DescribeIdentityProviderConfigCommand";
 import { DescribeNodegroupCommandInput, DescribeNodegroupCommandOutput } from "./commands/DescribeNodegroupCommand";
 import { DescribeUpdateCommandInput, DescribeUpdateCommandOutput } from "./commands/DescribeUpdateCommand";
+import {
+  DisassociateIdentityProviderConfigCommandInput,
+  DisassociateIdentityProviderConfigCommandOutput,
+} from "./commands/DisassociateIdentityProviderConfigCommand";
 import { ListAddonsCommandInput, ListAddonsCommandOutput } from "./commands/ListAddonsCommand";
 import { ListClustersCommandInput, ListClustersCommandOutput } from "./commands/ListClustersCommand";
 import {
   ListFargateProfilesCommandInput,
   ListFargateProfilesCommandOutput,
 } from "./commands/ListFargateProfilesCommand";
+import {
+  ListIdentityProviderConfigsCommandInput,
+  ListIdentityProviderConfigsCommandOutput,
+} from "./commands/ListIdentityProviderConfigsCommand";
 import { ListNodegroupsCommandInput, ListNodegroupsCommandOutput } from "./commands/ListNodegroupsCommand";
 import {
   ListTagsForResourceCommandInput,
@@ -107,6 +127,8 @@ import {
 } from "@aws-sdk/types";
 
 export type ServiceInputTypes =
+  | AssociateEncryptionConfigCommandInput
+  | AssociateIdentityProviderConfigCommandInput
   | CreateAddonCommandInput
   | CreateClusterCommandInput
   | CreateFargateProfileCommandInput
@@ -119,11 +141,14 @@ export type ServiceInputTypes =
   | DescribeAddonVersionsCommandInput
   | DescribeClusterCommandInput
   | DescribeFargateProfileCommandInput
+  | DescribeIdentityProviderConfigCommandInput
   | DescribeNodegroupCommandInput
   | DescribeUpdateCommandInput
+  | DisassociateIdentityProviderConfigCommandInput
   | ListAddonsCommandInput
   | ListClustersCommandInput
   | ListFargateProfilesCommandInput
+  | ListIdentityProviderConfigsCommandInput
   | ListNodegroupsCommandInput
   | ListTagsForResourceCommandInput
   | ListUpdatesCommandInput
@@ -136,6 +161,8 @@ export type ServiceInputTypes =
   | UpdateNodegroupVersionCommandInput;
 
 export type ServiceOutputTypes =
+  | AssociateEncryptionConfigCommandOutput
+  | AssociateIdentityProviderConfigCommandOutput
   | CreateAddonCommandOutput
   | CreateClusterCommandOutput
   | CreateFargateProfileCommandOutput
@@ -148,11 +175,14 @@ export type ServiceOutputTypes =
   | DescribeAddonVersionsCommandOutput
   | DescribeClusterCommandOutput
   | DescribeFargateProfileCommandOutput
+  | DescribeIdentityProviderConfigCommandOutput
   | DescribeNodegroupCommandOutput
   | DescribeUpdateCommandOutput
+  | DisassociateIdentityProviderConfigCommandOutput
   | ListAddonsCommandOutput
   | ListClustersCommandOutput
   | ListFargateProfilesCommandOutput
+  | ListIdentityProviderConfigsCommandOutput
   | ListNodegroupsCommandOutput
   | ListTagsForResourceCommandOutput
   | ListUpdatesCommandOutput
@@ -229,7 +259,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -260,7 +290,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type EKSClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type EKSClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -268,8 +298,12 @@ export type EKSClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of EKSClient class constructor that set the region, credentials and other options.
+ */
+export interface EKSClientConfig extends EKSClientConfigType {}
 
-export type EKSClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type EKSClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -277,6 +311,10 @@ export type EKSClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandle
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of EKSClient class. This is resolved and normalized from the {@link EKSClientConfig | constructor configuration interface}.
+ */
+export interface EKSClientResolvedConfig extends EKSClientResolvedConfigType {}
 
 /**
  * <p>Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service that makes it easy for you to run Kubernetes on
@@ -296,6 +334,9 @@ export class EKSClient extends __Client<
   ServiceOutputTypes,
   EKSClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of EKSClient class. This is resolved and normalized from the {@link EKSClientConfig | constructor configuration interface}.
+   */
   readonly config: EKSClientResolvedConfig;
 
   constructor(configuration: EKSClientConfig) {

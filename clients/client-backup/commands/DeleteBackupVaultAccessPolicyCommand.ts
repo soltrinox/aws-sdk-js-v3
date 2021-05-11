@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBackupVaultAccessPolicyCommandInput = DeleteBackupVaultAccessPolicyInput;
-export type DeleteBackupVaultAccessPolicyCommandOutput = __MetadataBearer;
+export interface DeleteBackupVaultAccessPolicyCommandInput extends DeleteBackupVaultAccessPolicyInput {}
+export interface DeleteBackupVaultAccessPolicyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the policy document that manages permissions on a backup vault.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BackupClient, DeleteBackupVaultAccessPolicyCommand } from "@aws-sdk/client-backup"; // ES Modules import
+ * // const { BackupClient, DeleteBackupVaultAccessPolicyCommand } = require("@aws-sdk/client-backup"); // CommonJS import
+ * const client = new BackupClient(config);
+ * const command = new DeleteBackupVaultAccessPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBackupVaultAccessPolicyCommandInput} for command's `input` shape.
+ * @see {@link DeleteBackupVaultAccessPolicyCommandOutput} for command's `response` shape.
+ * @see {@link BackupClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBackupVaultAccessPolicyCommand extends $Command<
   DeleteBackupVaultAccessPolicyCommandInput,

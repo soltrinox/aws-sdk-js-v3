@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeServicesCommandInput = DescribeServicesRequest;
-export type DescribeServicesCommandOutput = DescribeServicesResponse & __MetadataBearer;
+export interface DescribeServicesCommandInput extends DescribeServicesRequest {}
+export interface DescribeServicesCommandOutput extends DescribeServicesResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the current list of AWS services and a list of service categories for each
@@ -44,6 +44,20 @@ export type DescribeServicesCommandOutput = DescribeServicesResponse & __Metadat
  *                 </li>
  *             </ul>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SupportClient, DescribeServicesCommand } from "@aws-sdk/client-support"; // ES Modules import
+ * // const { SupportClient, DescribeServicesCommand } = require("@aws-sdk/client-support"); // CommonJS import
+ * const client = new SupportClient(config);
+ * const command = new DescribeServicesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeServicesCommandInput} for command's `input` shape.
+ * @see {@link DescribeServicesCommandOutput} for command's `response` shape.
+ * @see {@link SupportClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeServicesCommand extends $Command<
   DescribeServicesCommandInput,

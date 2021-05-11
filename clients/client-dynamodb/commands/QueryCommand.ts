@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type QueryCommandInput = QueryInput;
-export type QueryCommandOutput = QueryOutput & __MetadataBearer;
+export interface QueryCommandInput extends QueryInput {}
+export interface QueryCommandOutput extends QueryOutput, __MetadataBearer {}
 
 /**
  * <p>The <code>Query</code> operation finds items based on primary key values.
@@ -74,6 +74,20 @@ export type QueryCommandOutput = QueryOutput & __MetadataBearer;
  *             strongly consistent result. Global secondary indexes support eventually consistent reads
  *             only, so do not specify <code>ConsistentRead</code> when querying a global
  *             secondary index.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, QueryCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, QueryCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new QueryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link QueryCommandInput} for command's `input` shape.
+ * @see {@link QueryCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class QueryCommand extends $Command<QueryCommandInput, QueryCommandOutput, DynamoDBClientResolvedConfig> {
   // Start section: command_properties

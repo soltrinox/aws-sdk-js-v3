@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutClusterCapacityProvidersCommandInput = PutClusterCapacityProvidersRequest;
-export type PutClusterCapacityProvidersCommandOutput = PutClusterCapacityProvidersResponse & __MetadataBearer;
+export interface PutClusterCapacityProvidersCommandInput extends PutClusterCapacityProvidersRequest {}
+export interface PutClusterCapacityProvidersCommandOutput
+  extends PutClusterCapacityProvidersResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Modifies the available capacity providers and the default capacity provider strategy
@@ -35,6 +37,20 @@ export type PutClusterCapacityProvidersCommandOutput = PutClusterCapacityProvide
  * 			It is recommended to define a default capacity provider strategy for your cluster,
  * 			however you may specify an empty array (<code>[]</code>) to bypass defining a default
  * 			strategy.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, PutClusterCapacityProvidersCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, PutClusterCapacityProvidersCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new PutClusterCapacityProvidersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutClusterCapacityProvidersCommandInput} for command's `input` shape.
+ * @see {@link PutClusterCapacityProvidersCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutClusterCapacityProvidersCommand extends $Command<
   PutClusterCapacityProvidersCommandInput,

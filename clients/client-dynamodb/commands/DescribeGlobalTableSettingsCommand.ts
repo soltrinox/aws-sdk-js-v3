@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeGlobalTableSettingsCommandInput = DescribeGlobalTableSettingsInput;
-export type DescribeGlobalTableSettingsCommandOutput = DescribeGlobalTableSettingsOutput & __MetadataBearer;
+export interface DescribeGlobalTableSettingsCommandInput extends DescribeGlobalTableSettingsInput {}
+export interface DescribeGlobalTableSettingsCommandOutput extends DescribeGlobalTableSettingsOutput, __MetadataBearer {}
 
 /**
  * <p>Describes Region-specific settings for a global table.</p>
  *           <note>
  *             <p>This operation only applies to <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version 2017.11.29</a> of global tables.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, DescribeGlobalTableSettingsCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, DescribeGlobalTableSettingsCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new DescribeGlobalTableSettingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeGlobalTableSettingsCommandInput} for command's `input` shape.
+ * @see {@link DescribeGlobalTableSettingsCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeGlobalTableSettingsCommand extends $Command<
   DescribeGlobalTableSettingsCommandInput,

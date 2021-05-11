@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListRecoveryPointsByBackupVaultCommandInput = ListRecoveryPointsByBackupVaultInput;
-export type ListRecoveryPointsByBackupVaultCommandOutput = ListRecoveryPointsByBackupVaultOutput & __MetadataBearer;
+export interface ListRecoveryPointsByBackupVaultCommandInput extends ListRecoveryPointsByBackupVaultInput {}
+export interface ListRecoveryPointsByBackupVaultCommandOutput
+  extends ListRecoveryPointsByBackupVaultOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Returns detailed information about the recovery points stored in a backup vault.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BackupClient, ListRecoveryPointsByBackupVaultCommand } from "@aws-sdk/client-backup"; // ES Modules import
+ * // const { BackupClient, ListRecoveryPointsByBackupVaultCommand } = require("@aws-sdk/client-backup"); // CommonJS import
+ * const client = new BackupClient(config);
+ * const command = new ListRecoveryPointsByBackupVaultCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListRecoveryPointsByBackupVaultCommandInput} for command's `input` shape.
+ * @see {@link ListRecoveryPointsByBackupVaultCommandOutput} for command's `response` shape.
+ * @see {@link BackupClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListRecoveryPointsByBackupVaultCommand extends $Command<
   ListRecoveryPointsByBackupVaultCommandInput,

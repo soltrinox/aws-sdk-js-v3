@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutRecordsCommandInput = PutRecordsInput;
-export type PutRecordsCommandOutput = PutRecordsOutput & __MetadataBearer;
+export interface PutRecordsCommandInput extends PutRecordsInput {}
+export interface PutRecordsCommandOutput extends PutRecordsOutput, __MetadataBearer {}
 
 /**
  * <p>Writes multiple data records into a Kinesis data stream in a single call (also
@@ -77,6 +77,20 @@ export type PutRecordsCommandOutput = PutRecordsOutput & __MetadataBearer;
  *         </important>
  *         <p>By default, data records are accessible for 24 hours from the time that they are
  *             added to a stream. You can use <a>IncreaseStreamRetentionPeriod</a> or <a>DecreaseStreamRetentionPeriod</a> to modify this retention period.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisClient, PutRecordsCommand } from "@aws-sdk/client-kinesis"; // ES Modules import
+ * // const { KinesisClient, PutRecordsCommand } = require("@aws-sdk/client-kinesis"); // CommonJS import
+ * const client = new KinesisClient(config);
+ * const command = new PutRecordsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutRecordsCommandInput} for command's `input` shape.
+ * @see {@link PutRecordsCommandOutput} for command's `response` shape.
+ * @see {@link KinesisClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutRecordsCommand extends $Command<
   PutRecordsCommandInput,

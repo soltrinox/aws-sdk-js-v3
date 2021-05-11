@@ -15,8 +15,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPartsCommandInput = ListPartsRequest;
-export type ListPartsCommandOutput = ListPartsOutput & __MetadataBearer;
+export interface ListPartsCommandInput extends ListPartsRequest {}
+export interface ListPartsCommandOutput extends ListPartsOutput, __MetadataBearer {}
 
 /**
  * <p>Lists the parts that have been uploaded for a specific multipart upload. This operation
@@ -33,7 +33,7 @@ export type ListPartsCommandOutput = ListPartsOutput & __MetadataBearer;
  *          <p>For more information on multipart uploads, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html">Uploading Objects Using Multipart
  *             Upload</a>.</p>
  *
- *          <p>For information on permissions required to use the multipart upload API, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html">Multipart Upload API and
+ *          <p>For information on permissions required to use the multipart upload API, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html">Multipart Upload and
  *          Permissions</a>.</p>
  *
  *          <p>The following operations are related to <code>ListParts</code>:</p>
@@ -64,6 +64,20 @@ export type ListPartsCommandOutput = ListPartsOutput & __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, ListPartsCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, ListPartsCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new ListPartsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPartsCommandInput} for command's `input` shape.
+ * @see {@link ListPartsCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPartsCommand extends $Command<ListPartsCommandInput, ListPartsCommandOutput, S3ClientResolvedConfig> {
   // Start section: command_properties

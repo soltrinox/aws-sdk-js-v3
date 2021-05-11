@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateMatchmakingConfigurationCommandInput = UpdateMatchmakingConfigurationInput;
-export type UpdateMatchmakingConfigurationCommandOutput = UpdateMatchmakingConfigurationOutput & __MetadataBearer;
+export interface UpdateMatchmakingConfigurationCommandInput extends UpdateMatchmakingConfigurationInput {}
+export interface UpdateMatchmakingConfigurationCommandOutput
+  extends UpdateMatchmakingConfigurationOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Updates settings for a FlexMatch matchmaking configuration. These changes affect all matches and game sessions
@@ -29,53 +31,36 @@ export type UpdateMatchmakingConfigurationCommandOutput = UpdateMatchmakingConfi
  *          </p>
  *         <p>
  *             <a href="https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html">
- *             Design a FlexMatch Matchmaker</a>
+ *             Design a FlexMatch matchmaker</a>
  *          </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateMatchmakingConfiguration</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeMatchmakingConfigurations</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateMatchmakingConfiguration</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteMatchmakingConfiguration</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>CreateMatchmakingRuleSet</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeMatchmakingRuleSets</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ValidateMatchmakingRuleSet</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteMatchmakingRuleSet</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>CreateMatchmakingConfiguration</a> |
+ *                     <a>DescribeMatchmakingConfigurations</a> |
+ *                     <a>UpdateMatchmakingConfiguration</a> |
+ *                     <a>DeleteMatchmakingConfiguration</a> |
+ *                     <a>CreateMatchmakingRuleSet</a> |
+ *                     <a>DescribeMatchmakingRuleSets</a> |
+ *                     <a>ValidateMatchmakingRuleSet</a> |
+ *                     <a>DeleteMatchmakingRuleSet</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, UpdateMatchmakingConfigurationCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, UpdateMatchmakingConfigurationCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new UpdateMatchmakingConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateMatchmakingConfigurationCommandInput} for command's `input` shape.
+ * @see {@link UpdateMatchmakingConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateMatchmakingConfigurationCommand extends $Command<
   UpdateMatchmakingConfigurationCommandInput,

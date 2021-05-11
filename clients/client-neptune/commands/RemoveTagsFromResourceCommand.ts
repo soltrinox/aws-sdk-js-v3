@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveTagsFromResourceCommandInput = RemoveTagsFromResourceMessage;
-export type RemoveTagsFromResourceCommandOutput = __MetadataBearer;
+export interface RemoveTagsFromResourceCommandInput extends RemoveTagsFromResourceMessage {}
+export interface RemoveTagsFromResourceCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Removes metadata tags from an Amazon Neptune resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, RemoveTagsFromResourceCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, RemoveTagsFromResourceCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new RemoveTagsFromResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveTagsFromResourceCommandInput} for command's `input` shape.
+ * @see {@link RemoveTagsFromResourceCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveTagsFromResourceCommand extends $Command<
   RemoveTagsFromResourceCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateResourceDataSyncCommandInput = CreateResourceDataSyncRequest;
-export type CreateResourceDataSyncCommandOutput = CreateResourceDataSyncResult & __MetadataBearer;
+export interface CreateResourceDataSyncCommandInput extends CreateResourceDataSyncRequest {}
+export interface CreateResourceDataSyncCommandOutput extends CreateResourceDataSyncResult, __MetadataBearer {}
 
 /**
  * <p>A resource data sync helps you view data from multiple sources in a single location. Systems
@@ -44,6 +44,20 @@ export type CreateResourceDataSyncCommandOutput = CreateResourceDataSyncResult &
  *     in Amazon S3 to ensure secure data storage. We also recommend that you secure access to the Amazon S3
  *     bucket by creating a restrictive bucket policy. </p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, CreateResourceDataSyncCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, CreateResourceDataSyncCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new CreateResourceDataSyncCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateResourceDataSyncCommandInput} for command's `input` shape.
+ * @see {@link CreateResourceDataSyncCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateResourceDataSyncCommand extends $Command<
   CreateResourceDataSyncCommandInput,

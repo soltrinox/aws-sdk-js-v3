@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SampleChannelDataCommandInput = SampleChannelDataRequest;
-export type SampleChannelDataCommandOutput = SampleChannelDataResponse & __MetadataBearer;
+export interface SampleChannelDataCommandInput extends SampleChannelDataRequest {}
+export interface SampleChannelDataCommandOutput extends SampleChannelDataResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a sample of messages from the specified channel ingested during the specified
- *           timeframe. Up to 10 messages can be retrieved.</p>
+ *       timeframe. Up to 10 messages can be retrieved.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTAnalyticsClient, SampleChannelDataCommand } from "@aws-sdk/client-iotanalytics"; // ES Modules import
+ * // const { IoTAnalyticsClient, SampleChannelDataCommand } = require("@aws-sdk/client-iotanalytics"); // CommonJS import
+ * const client = new IoTAnalyticsClient(config);
+ * const command = new SampleChannelDataCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SampleChannelDataCommandInput} for command's `input` shape.
+ * @see {@link SampleChannelDataCommandOutput} for command's `response` shape.
+ * @see {@link IoTAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SampleChannelDataCommand extends $Command<
   SampleChannelDataCommandInput,

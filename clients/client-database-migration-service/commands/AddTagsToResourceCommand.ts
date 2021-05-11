@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddTagsToResourceCommandInput = AddTagsToResourceMessage;
-export type AddTagsToResourceCommandOutput = AddTagsToResourceResponse & __MetadataBearer;
+export interface AddTagsToResourceCommandInput extends AddTagsToResourceMessage {}
+export interface AddTagsToResourceCommandOutput extends AddTagsToResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Adds metadata tags to an AWS DMS resource, including replication instance, endpoint,
@@ -31,6 +31,20 @@ export type AddTagsToResourceCommandOutput = AddTagsToResourceResponse & __Metad
  *          an IAM policy for DMS. For more information, see <a href="https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html">
  *                <code>Tag</code>
  *             </a> data type description.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, AddTagsToResourceCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, AddTagsToResourceCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new AddTagsToResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddTagsToResourceCommandInput} for command's `input` shape.
+ * @see {@link AddTagsToResourceCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddTagsToResourceCommand extends $Command<
   AddTagsToResourceCommandInput,

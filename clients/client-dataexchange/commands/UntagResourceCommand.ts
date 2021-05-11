@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UntagResourceCommandInput = UntagResourceRequest;
-export type UntagResourceCommandOutput = __MetadataBearer;
+export interface UntagResourceCommandInput extends UntagResourceRequest {}
+export interface UntagResourceCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>This operation removes one or more tags from a resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataExchangeClient, UntagResourceCommand } from "@aws-sdk/client-dataexchange"; // ES Modules import
+ * // const { DataExchangeClient, UntagResourceCommand } = require("@aws-sdk/client-dataexchange"); // CommonJS import
+ * const client = new DataExchangeClient(config);
+ * const command = new UntagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UntagResourceCommandInput} for command's `input` shape.
+ * @see {@link UntagResourceCommandOutput} for command's `response` shape.
+ * @see {@link DataExchangeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UntagResourceCommand extends $Command<
   UntagResourceCommandInput,

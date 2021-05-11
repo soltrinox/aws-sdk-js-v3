@@ -20,15 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListRequestedServiceQuotaChangeHistoryByQuotaCommandInput = ListRequestedServiceQuotaChangeHistoryByQuotaRequest;
-export type ListRequestedServiceQuotaChangeHistoryByQuotaCommandOutput = ListRequestedServiceQuotaChangeHistoryByQuotaResponse &
-  __MetadataBearer;
+export interface ListRequestedServiceQuotaChangeHistoryByQuotaCommandInput
+  extends ListRequestedServiceQuotaChangeHistoryByQuotaRequest {}
+export interface ListRequestedServiceQuotaChangeHistoryByQuotaCommandOutput
+  extends ListRequestedServiceQuotaChangeHistoryByQuotaResponse,
+    __MetadataBearer {}
 
 /**
- * <p>Requests a list of the changes to specific service quotas. This command provides
- *       additional granularity over the <code>ListRequestedServiceQuotaChangeHistory</code> command.
- *       Once a quota change request has reached <code>CASE_CLOSED, APPROVED,</code> or
- *         <code>DENIED</code>, the history has been kept for 90 days.</p>
+ * <p>Retrieves the quota increase requests for the specified quota.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceQuotasClient, ListRequestedServiceQuotaChangeHistoryByQuotaCommand } from "@aws-sdk/client-service-quotas"; // ES Modules import
+ * // const { ServiceQuotasClient, ListRequestedServiceQuotaChangeHistoryByQuotaCommand } = require("@aws-sdk/client-service-quotas"); // CommonJS import
+ * const client = new ServiceQuotasClient(config);
+ * const command = new ListRequestedServiceQuotaChangeHistoryByQuotaCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListRequestedServiceQuotaChangeHistoryByQuotaCommandInput} for command's `input` shape.
+ * @see {@link ListRequestedServiceQuotaChangeHistoryByQuotaCommandOutput} for command's `response` shape.
+ * @see {@link ServiceQuotasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListRequestedServiceQuotaChangeHistoryByQuotaCommand extends $Command<
   ListRequestedServiceQuotaChangeHistoryByQuotaCommandInput,

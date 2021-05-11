@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetResolverRulePolicyCommandInput = GetResolverRulePolicyRequest;
-export type GetResolverRulePolicyCommandOutput = GetResolverRulePolicyResponse & __MetadataBearer;
+export interface GetResolverRulePolicyCommandInput extends GetResolverRulePolicyRequest {}
+export interface GetResolverRulePolicyCommandOutput extends GetResolverRulePolicyResponse, __MetadataBearer {}
 
 /**
- * <p>Gets information about a Resolver rule policy. A Resolver rule policy specifies the Resolver operations and resources
- * 			that you want to allow another AWS account to be able to use. </p>
+ * <p>Gets information about the Resolver rule policy for a specified rule. A Resolver rule policy includes the rule that you want to share
+ * 			with another account, the account that you want to share the rule with, and the Resolver operations that you want to allow the account to use. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53ResolverClient, GetResolverRulePolicyCommand } from "@aws-sdk/client-route53resolver"; // ES Modules import
+ * // const { Route53ResolverClient, GetResolverRulePolicyCommand } = require("@aws-sdk/client-route53resolver"); // CommonJS import
+ * const client = new Route53ResolverClient(config);
+ * const command = new GetResolverRulePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetResolverRulePolicyCommandInput} for command's `input` shape.
+ * @see {@link GetResolverRulePolicyCommandOutput} for command's `response` shape.
+ * @see {@link Route53ResolverClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetResolverRulePolicyCommand extends $Command<
   GetResolverRulePolicyCommandInput,

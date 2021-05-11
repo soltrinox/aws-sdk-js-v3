@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateMonitoringScheduleCommandInput = CreateMonitoringScheduleRequest;
-export type CreateMonitoringScheduleCommandOutput = CreateMonitoringScheduleResponse & __MetadataBearer;
+export interface CreateMonitoringScheduleCommandInput extends CreateMonitoringScheduleRequest {}
+export interface CreateMonitoringScheduleCommandOutput extends CreateMonitoringScheduleResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data
  *          captured for an Amazon SageMaker Endoint.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, CreateMonitoringScheduleCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, CreateMonitoringScheduleCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new CreateMonitoringScheduleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateMonitoringScheduleCommandInput} for command's `input` shape.
+ * @see {@link CreateMonitoringScheduleCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateMonitoringScheduleCommand extends $Command<
   CreateMonitoringScheduleCommandInput,

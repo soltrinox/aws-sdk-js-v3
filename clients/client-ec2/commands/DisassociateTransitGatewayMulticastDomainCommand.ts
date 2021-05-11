@@ -2,7 +2,7 @@ import { EC2ClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "
 import {
   DisassociateTransitGatewayMulticastDomainRequest,
   DisassociateTransitGatewayMulticastDomainResult,
-} from "../models/models_3";
+} from "../models/models_4";
 import {
   deserializeAws_ec2DisassociateTransitGatewayMulticastDomainCommand,
   serializeAws_ec2DisassociateTransitGatewayMulticastDomainCommand,
@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateTransitGatewayMulticastDomainCommandInput = DisassociateTransitGatewayMulticastDomainRequest;
-export type DisassociateTransitGatewayMulticastDomainCommandOutput = DisassociateTransitGatewayMulticastDomainResult &
-  __MetadataBearer;
+export interface DisassociateTransitGatewayMulticastDomainCommandInput
+  extends DisassociateTransitGatewayMulticastDomainRequest {}
+export interface DisassociateTransitGatewayMulticastDomainCommandOutput
+  extends DisassociateTransitGatewayMulticastDomainResult,
+    __MetadataBearer {}
 
 /**
  * <p>Disassociates the specified subnets from the transit gateway multicast domain. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DisassociateTransitGatewayMulticastDomainCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DisassociateTransitGatewayMulticastDomainCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DisassociateTransitGatewayMulticastDomainCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateTransitGatewayMulticastDomainCommandInput} for command's `input` shape.
+ * @see {@link DisassociateTransitGatewayMulticastDomainCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateTransitGatewayMulticastDomainCommand extends $Command<
   DisassociateTransitGatewayMulticastDomainCommandInput,

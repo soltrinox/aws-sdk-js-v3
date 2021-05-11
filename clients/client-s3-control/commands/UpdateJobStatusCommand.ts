@@ -18,13 +18,13 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateJobStatusCommandInput = UpdateJobStatusRequest;
-export type UpdateJobStatusCommandOutput = UpdateJobStatusResult & __MetadataBearer;
+export interface UpdateJobStatusCommandInput extends UpdateJobStatusRequest {}
+export interface UpdateJobStatusCommandOutput extends UpdateJobStatusResult, __MetadataBearer {}
 
 /**
- * <p>Updates the status for the specified job. Use this operation to confirm that you want to
+ * <p>Updates the status for the specified job. Use this action to confirm that you want to
  *          run a job or to cancel an existing job. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html">S3 Batch Operations</a> in the
- *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *             <i>Amazon Simple Storage Service User Guide</i>.</p>
  *          <p></p>
  *          <p>Related actions include:</p>
  *          <ul>
@@ -49,6 +49,20 @@ export type UpdateJobStatusCommandOutput = UpdateJobStatusResult & __MetadataBea
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, UpdateJobStatusCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, UpdateJobStatusCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new UpdateJobStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateJobStatusCommandInput} for command's `input` shape.
+ * @see {@link UpdateJobStatusCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateJobStatusCommand extends $Command<
   UpdateJobStatusCommandInput,

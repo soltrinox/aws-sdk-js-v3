@@ -20,13 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateWebsiteCertificateAuthorityCommandInput = AssociateWebsiteCertificateAuthorityRequest;
-export type AssociateWebsiteCertificateAuthorityCommandOutput = AssociateWebsiteCertificateAuthorityResponse &
-  __MetadataBearer;
+export interface AssociateWebsiteCertificateAuthorityCommandInput extends AssociateWebsiteCertificateAuthorityRequest {}
+export interface AssociateWebsiteCertificateAuthorityCommandOutput
+  extends AssociateWebsiteCertificateAuthorityResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Imports the root certificate of a certificate authority (CA) used to obtain TLS
  *             certificates used by associated websites within the company network.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkLinkClient, AssociateWebsiteCertificateAuthorityCommand } from "@aws-sdk/client-worklink"; // ES Modules import
+ * // const { WorkLinkClient, AssociateWebsiteCertificateAuthorityCommand } = require("@aws-sdk/client-worklink"); // CommonJS import
+ * const client = new WorkLinkClient(config);
+ * const command = new AssociateWebsiteCertificateAuthorityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateWebsiteCertificateAuthorityCommandInput} for command's `input` shape.
+ * @see {@link AssociateWebsiteCertificateAuthorityCommandOutput} for command's `response` shape.
+ * @see {@link WorkLinkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateWebsiteCertificateAuthorityCommand extends $Command<
   AssociateWebsiteCertificateAuthorityCommandInput,

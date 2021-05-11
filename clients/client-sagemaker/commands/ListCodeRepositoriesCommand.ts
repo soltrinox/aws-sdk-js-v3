@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListCodeRepositoriesCommandInput = ListCodeRepositoriesInput;
-export type ListCodeRepositoriesCommandOutput = ListCodeRepositoriesOutput & __MetadataBearer;
+export interface ListCodeRepositoriesCommandInput extends ListCodeRepositoriesInput {}
+export interface ListCodeRepositoriesCommandOutput extends ListCodeRepositoriesOutput, __MetadataBearer {}
 
 /**
  * <p>Gets a list of the Git repositories in your account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, ListCodeRepositoriesCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, ListCodeRepositoriesCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new ListCodeRepositoriesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListCodeRepositoriesCommandInput} for command's `input` shape.
+ * @see {@link ListCodeRepositoriesCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListCodeRepositoriesCommand extends $Command<
   ListCodeRepositoriesCommandInput,

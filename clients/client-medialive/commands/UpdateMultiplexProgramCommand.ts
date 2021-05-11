@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateMultiplexProgramCommandInput = UpdateMultiplexProgramRequest;
-export type UpdateMultiplexProgramCommandOutput = UpdateMultiplexProgramResponse & __MetadataBearer;
+export interface UpdateMultiplexProgramCommandInput extends UpdateMultiplexProgramRequest {}
+export interface UpdateMultiplexProgramCommandOutput extends UpdateMultiplexProgramResponse, __MetadataBearer {}
 
 /**
  * Update a program in a multiplex.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, UpdateMultiplexProgramCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, UpdateMultiplexProgramCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new UpdateMultiplexProgramCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateMultiplexProgramCommandInput} for command's `input` shape.
+ * @see {@link UpdateMultiplexProgramCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateMultiplexProgramCommand extends $Command<
   UpdateMultiplexProgramCommandInput,

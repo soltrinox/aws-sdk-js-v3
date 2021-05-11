@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTypesCommandInput = ListTypesInput;
-export type ListTypesCommandOutput = ListTypesOutput & __MetadataBearer;
+export interface ListTypesCommandInput extends ListTypesInput {}
+export interface ListTypesCommandOutput extends ListTypesOutput, __MetadataBearer {}
 
 /**
- * <p>Returns summary information about types that have been registered with CloudFormation.</p>
+ * <p>Returns summary information about extension that have been registered with CloudFormation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, ListTypesCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, ListTypesCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new ListTypesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTypesCommandInput} for command's `input` shape.
+ * @see {@link ListTypesCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTypesCommand extends $Command<
   ListTypesCommandInput,

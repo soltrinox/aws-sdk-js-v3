@@ -11,6 +11,9 @@ export interface AcceptInvitationRequest {
 }
 
 export namespace AcceptInvitationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AcceptInvitationRequest): any => ({
     ...obj,
   });
@@ -26,6 +29,9 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
@@ -41,6 +47,9 @@ export interface InternalServerException extends __SmithyException, $MetadataBea
 }
 
 export namespace InternalServerException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerException): any => ({
     ...obj,
   });
@@ -56,6 +65,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -71,13 +83,17 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>An AWS account that is the master of or a member of a behavior graph.</p>
+ * <p>An AWS account that is the administrator account of or a member of a behavior
+ *          graph.</p>
  */
 export interface Account {
   /**
@@ -92,7 +108,27 @@ export interface Account {
 }
 
 export namespace Account {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Account): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateGraphRequest {
+  /**
+   * <p>The tags to assign to the new behavior graph. For each tag, you provide the tag key and
+   *          the tag value.</p>
+   */
+  Tags?: { [key: string]: string };
+}
+
+export namespace CreateGraphRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateGraphRequest): any => ({
     ...obj,
   });
 }
@@ -105,6 +141,9 @@ export interface CreateGraphResponse {
 }
 
 export namespace CreateGraphResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateGraphResponse): any => ({
     ...obj,
   });
@@ -135,6 +174,9 @@ export interface ServiceQuotaExceededException extends __SmithyException, $Metad
 }
 
 export namespace ServiceQuotaExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceQuotaExceededException): any => ({
     ...obj,
   });
@@ -154,6 +196,13 @@ export interface CreateMembersRequest {
   Message?: string;
 
   /**
+   * <p>if set to <code>true</code>, then the member accounts do not receive email
+   *          notifications. By default, this is set to <code>false</code>, and the member accounts
+   *          receive email notifications.</p>
+   */
+  DisableEmailNotification?: boolean;
+
+  /**
    * <p>The list of AWS accounts to invite to become member accounts in the behavior graph.
    *          For each invited account, the account list contains the account identifier and the AWS
    *          account root user email address.</p>
@@ -162,6 +211,9 @@ export interface CreateMembersRequest {
 }
 
 export namespace CreateMembersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMembersRequest): any => ({
     ...obj,
   });
@@ -201,9 +253,16 @@ export interface MemberDetail {
   GraphArn?: string;
 
   /**
-   * <p>The AWS account identifier of the master account for the behavior graph.</p>
+   * @deprecated
+   *
+   * <p>The AWS account identifier of the administrator account for the behavior graph.</p>
    */
   MasterId?: string;
+
+  /**
+   * <p>The AWS account identifier of the administrator account for the behavior graph.</p>
+   */
+  AdministratorId?: string;
 
   /**
    * <p>The current membership status of the member account. The status can have one of the
@@ -278,6 +337,18 @@ export interface MemberDetail {
   UpdatedTime?: Date;
 
   /**
+   * <p>The data volume in bytes per day for the member account.</p>
+   */
+  VolumeUsageInBytes?: number;
+
+  /**
+   * <p>The data and time when the member account data volume was last updated.</p>
+   */
+  VolumeUsageUpdatedTime?: Date;
+
+  /**
+   * @deprecated
+   *
    * <p>The member account data volume as a percentage of the maximum allowed data volume. 0
    *          indicates 0 percent, and 100 indicates 100 percent.</p>
    *          <p>Note that this is not the percentage of the behavior graph data volume.</p>
@@ -289,12 +360,17 @@ export interface MemberDetail {
   PercentOfGraphUtilization?: number;
 
   /**
+   * @deprecated
+   *
    * <p>The date and time when the graph utilization percentage was last updated.</p>
    */
   PercentOfGraphUtilizationUpdatedTime?: Date;
 }
 
 export namespace MemberDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MemberDetail): any => ({
     ...obj,
   });
@@ -317,6 +393,9 @@ export interface UnprocessedAccount {
 }
 
 export namespace UnprocessedAccount {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnprocessedAccount): any => ({
     ...obj,
   });
@@ -339,6 +418,9 @@ export interface CreateMembersResponse {
 }
 
 export namespace CreateMembersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMembersResponse): any => ({
     ...obj,
   });
@@ -352,6 +434,9 @@ export interface DeleteGraphRequest {
 }
 
 export namespace DeleteGraphRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteGraphRequest): any => ({
     ...obj,
   });
@@ -371,6 +456,9 @@ export interface DeleteMembersRequest {
 }
 
 export namespace DeleteMembersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMembersRequest): any => ({
     ...obj,
   });
@@ -392,6 +480,9 @@ export interface DeleteMembersResponse {
 }
 
 export namespace DeleteMembersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMembersResponse): any => ({
     ...obj,
   });
@@ -407,6 +498,9 @@ export interface DisassociateMembershipRequest {
 }
 
 export namespace DisassociateMembershipRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateMembershipRequest): any => ({
     ...obj,
   });
@@ -428,6 +522,9 @@ export interface GetMembersRequest {
 }
 
 export namespace GetMembersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMembersRequest): any => ({
     ...obj,
   });
@@ -448,6 +545,9 @@ export interface GetMembersResponse {
 }
 
 export namespace GetMembersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMembersResponse): any => ({
     ...obj,
   });
@@ -469,6 +569,9 @@ export interface ListGraphsRequest {
 }
 
 export namespace ListGraphsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGraphsRequest): any => ({
     ...obj,
   });
@@ -491,6 +594,9 @@ export interface Graph {
 }
 
 export namespace Graph {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Graph): any => ({
     ...obj,
   });
@@ -498,7 +604,7 @@ export namespace Graph {
 
 export interface ListGraphsResponse {
   /**
-   * <p>A list of behavior graphs that the account is a master for.</p>
+   * <p>A list of behavior graphs that the account is an administrator account for.</p>
    */
   GraphList?: Graph[];
 
@@ -510,6 +616,9 @@ export interface ListGraphsResponse {
 }
 
 export namespace ListGraphsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGraphsResponse): any => ({
     ...obj,
   });
@@ -518,7 +627,7 @@ export namespace ListGraphsResponse {
 export interface ListInvitationsRequest {
   /**
    * <p>For requests to retrieve the next page of results, the pagination token that was
-   *          returned with the previous page of results.  The initial request does not include a
+   *          returned with the previous page of results. The initial request does not include a
    *          pagination token.</p>
    */
   NextToken?: string;
@@ -532,6 +641,9 @@ export interface ListInvitationsRequest {
 }
 
 export namespace ListInvitationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInvitationsRequest): any => ({
     ...obj,
   });
@@ -552,6 +664,9 @@ export interface ListInvitationsResponse {
 }
 
 export namespace ListInvitationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInvitationsResponse): any => ({
     ...obj,
   });
@@ -578,6 +693,9 @@ export interface ListMembersRequest {
 }
 
 export namespace ListMembersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMembersRequest): any => ({
     ...obj,
   });
@@ -600,7 +718,42 @@ export interface ListMembersResponse {
 }
 
 export namespace ListMembersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMembersResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListTagsForResourceRequest {
+  /**
+   * <p>The ARN of the behavior graph for which to retrieve the tag values.</p>
+   */
+  ResourceArn: string | undefined;
+}
+
+export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListTagsForResourceResponse {
+  /**
+   * <p>The tag values that are assigned to the behavior graph.</p>
+   */
+  Tags?: { [key: string]: string };
+}
+
+export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
 }
@@ -615,6 +768,9 @@ export interface RejectInvitationRequest {
 }
 
 export namespace RejectInvitationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RejectInvitationRequest): any => ({
     ...obj,
   });
@@ -629,13 +785,80 @@ export interface StartMonitoringMemberRequest {
   /**
    * <p>The account ID of the member account to try to enable.</p>
    *          <p>The account must be an invited member account with a status of
-   *          <code>ACCEPTED_BUT_DISABLED</code>. </p>
+   *             <code>ACCEPTED_BUT_DISABLED</code>. </p>
    */
   AccountId: string | undefined;
 }
 
 export namespace StartMonitoringMemberRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartMonitoringMemberRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagResourceRequest {
+  /**
+   * <p>The ARN of the behavior graph to assign the tags to.</p>
+   */
+  ResourceArn: string | undefined;
+
+  /**
+   * <p>The tag values to assign to the behavior graph.</p>
+   */
+  Tags: { [key: string]: string } | undefined;
+}
+
+export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagResourceResponse {}
+
+export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface UntagResourceRequest {
+  /**
+   * <p>The ARN of the behavior graph to remove the tags from.</p>
+   */
+  ResourceArn: string | undefined;
+
+  /**
+   * <p>The tag keys of the tags to remove from the behavior graph.</p>
+   */
+  TagKeys: string[] | undefined;
+}
+
+export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface UntagResourceResponse {}
+
+export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
 }

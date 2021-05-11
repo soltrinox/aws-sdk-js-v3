@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteResolverEndpointCommandInput = DeleteResolverEndpointRequest;
-export type DeleteResolverEndpointCommandOutput = DeleteResolverEndpointResponse & __MetadataBearer;
+export interface DeleteResolverEndpointCommandInput extends DeleteResolverEndpointRequest {}
+export interface DeleteResolverEndpointCommandOutput extends DeleteResolverEndpointResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a Resolver endpoint. The effect of deleting a Resolver endpoint depends on whether it's an inbound or an outbound
@@ -34,6 +34,20 @@ export type DeleteResolverEndpointCommandOutput = DeleteResolverEndpointResponse
  *                   <b>Outbound</b>: DNS queries from a VPC are no longer routed to your network.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53ResolverClient, DeleteResolverEndpointCommand } from "@aws-sdk/client-route53resolver"; // ES Modules import
+ * // const { Route53ResolverClient, DeleteResolverEndpointCommand } = require("@aws-sdk/client-route53resolver"); // CommonJS import
+ * const client = new Route53ResolverClient(config);
+ * const command = new DeleteResolverEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteResolverEndpointCommandInput} for command's `input` shape.
+ * @see {@link DeleteResolverEndpointCommandOutput} for command's `response` shape.
+ * @see {@link Route53ResolverClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteResolverEndpointCommand extends $Command<
   DeleteResolverEndpointCommandInput,

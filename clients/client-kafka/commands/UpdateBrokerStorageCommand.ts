@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateBrokerStorageCommandInput = UpdateBrokerStorageRequest;
-export type UpdateBrokerStorageCommandOutput = UpdateBrokerStorageResponse & __MetadataBearer;
+export interface UpdateBrokerStorageCommandInput extends UpdateBrokerStorageRequest {}
+export interface UpdateBrokerStorageCommandOutput extends UpdateBrokerStorageResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the EBS storage associated with MSK brokers.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, UpdateBrokerStorageCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, UpdateBrokerStorageCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new UpdateBrokerStorageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateBrokerStorageCommandInput} for command's `input` shape.
+ * @see {@link UpdateBrokerStorageCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateBrokerStorageCommand extends $Command<
   UpdateBrokerStorageCommandInput,

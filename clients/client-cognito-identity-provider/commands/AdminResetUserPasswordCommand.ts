@@ -22,8 +22,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AdminResetUserPasswordCommandInput = AdminResetUserPasswordRequest;
-export type AdminResetUserPasswordCommandOutput = AdminResetUserPasswordResponse & __MetadataBearer;
+export interface AdminResetUserPasswordCommandInput extends AdminResetUserPasswordRequest {}
+export interface AdminResetUserPasswordCommandOutput extends AdminResetUserPasswordResponse, __MetadataBearer {}
 
 /**
  * <p>Resets the specified user's password in a user pool as an administrator. Works on any
@@ -37,6 +37,20 @@ export type AdminResetUserPasswordCommandOutput = AdminResetUserPasswordResponse
  *             calling this API will also result in sending a message to the end user with the code to
  *             change their password.</p>
  *         <p>Calling this action requires developer credentials.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, AdminResetUserPasswordCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, AdminResetUserPasswordCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new AdminResetUserPasswordCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AdminResetUserPasswordCommandInput} for command's `input` shape.
+ * @see {@link AdminResetUserPasswordCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AdminResetUserPasswordCommand extends $Command<
   AdminResetUserPasswordCommandInput,

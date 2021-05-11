@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CopyClusterSnapshotCommandInput = CopyClusterSnapshotMessage;
-export type CopyClusterSnapshotCommandOutput = CopyClusterSnapshotResult & __MetadataBearer;
+export interface CopyClusterSnapshotCommandInput extends CopyClusterSnapshotMessage {}
+export interface CopyClusterSnapshotCommandOutput extends CopyClusterSnapshotResult, __MetadataBearer {}
 
 /**
  * <p>Copies the specified automated cluster snapshot to a new manual cluster snapshot.
@@ -33,6 +33,20 @@ export type CopyClusterSnapshotCommandOutput = CopyClusterSnapshotResult & __Met
  * For more information about working with snapshots, go to
  * <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon Redshift Snapshots</a>
  * in the <i>Amazon Redshift Cluster Management Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, CopyClusterSnapshotCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, CopyClusterSnapshotCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new CopyClusterSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CopyClusterSnapshotCommandInput} for command's `input` shape.
+ * @see {@link CopyClusterSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CopyClusterSnapshotCommand extends $Command<
   CopyClusterSnapshotCommandInput,

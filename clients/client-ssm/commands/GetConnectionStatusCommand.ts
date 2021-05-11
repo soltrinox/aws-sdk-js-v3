@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetConnectionStatusCommandInput = GetConnectionStatusRequest;
-export type GetConnectionStatusCommandOutput = GetConnectionStatusResponse & __MetadataBearer;
+export interface GetConnectionStatusCommandInput extends GetConnectionStatusRequest {}
+export interface GetConnectionStatusCommandOutput extends GetConnectionStatusResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the Session Manager connection status for an instance to determine whether it is running and
  *    ready to receive Session Manager connections.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, GetConnectionStatusCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, GetConnectionStatusCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new GetConnectionStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetConnectionStatusCommandInput} for command's `input` shape.
+ * @see {@link GetConnectionStatusCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetConnectionStatusCommand extends $Command<
   GetConnectionStatusCommandInput,

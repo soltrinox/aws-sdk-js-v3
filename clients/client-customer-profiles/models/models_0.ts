@@ -11,6 +11,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -39,6 +42,9 @@ export interface AddProfileKeyRequest {
 }
 
 export namespace AddProfileKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddProfileKeyRequest): any => ({
     ...obj,
   });
@@ -57,6 +63,9 @@ export interface AddProfileKeyResponse {
 }
 
 export namespace AddProfileKeyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddProfileKeyResponse): any => ({
     ...obj,
   });
@@ -72,6 +81,9 @@ export interface BadRequestException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace BadRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BadRequestException): any => ({
     ...obj,
   });
@@ -87,6 +99,9 @@ export interface InternalServerException extends __SmithyException, $MetadataBea
 }
 
 export namespace InternalServerException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerException): any => ({
     ...obj,
   });
@@ -102,6 +117,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -117,6 +135,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -179,7 +200,156 @@ export interface Address {
 }
 
 export namespace Address {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Address): any => ({
+    ...obj,
+  });
+}
+
+export enum MarketoConnectorOperator {
+  ADDITION = "ADDITION",
+  BETWEEN = "BETWEEN",
+  DIVISION = "DIVISION",
+  GREATER_THAN = "GREATER_THAN",
+  LESS_THAN = "LESS_THAN",
+  MASK_ALL = "MASK_ALL",
+  MASK_FIRST_N = "MASK_FIRST_N",
+  MASK_LAST_N = "MASK_LAST_N",
+  MULTIPLICATION = "MULTIPLICATION",
+  NO_OP = "NO_OP",
+  PROJECTION = "PROJECTION",
+  SUBTRACTION = "SUBTRACTION",
+  VALIDATE_NON_NEGATIVE = "VALIDATE_NON_NEGATIVE",
+  VALIDATE_NON_NULL = "VALIDATE_NON_NULL",
+  VALIDATE_NON_ZERO = "VALIDATE_NON_ZERO",
+  VALIDATE_NUMERIC = "VALIDATE_NUMERIC",
+}
+
+export enum S3ConnectorOperator {
+  ADDITION = "ADDITION",
+  BETWEEN = "BETWEEN",
+  DIVISION = "DIVISION",
+  EQUAL_TO = "EQUAL_TO",
+  GREATER_THAN = "GREATER_THAN",
+  GREATER_THAN_OR_EQUAL_TO = "GREATER_THAN_OR_EQUAL_TO",
+  LESS_THAN = "LESS_THAN",
+  LESS_THAN_OR_EQUAL_TO = "LESS_THAN_OR_EQUAL_TO",
+  MASK_ALL = "MASK_ALL",
+  MASK_FIRST_N = "MASK_FIRST_N",
+  MASK_LAST_N = "MASK_LAST_N",
+  MULTIPLICATION = "MULTIPLICATION",
+  NOT_EQUAL_TO = "NOT_EQUAL_TO",
+  NO_OP = "NO_OP",
+  PROJECTION = "PROJECTION",
+  SUBTRACTION = "SUBTRACTION",
+  VALIDATE_NON_NEGATIVE = "VALIDATE_NON_NEGATIVE",
+  VALIDATE_NON_NULL = "VALIDATE_NON_NULL",
+  VALIDATE_NON_ZERO = "VALIDATE_NON_ZERO",
+  VALIDATE_NUMERIC = "VALIDATE_NUMERIC",
+}
+
+export enum SalesforceConnectorOperator {
+  ADDITION = "ADDITION",
+  BETWEEN = "BETWEEN",
+  CONTAINS = "CONTAINS",
+  DIVISION = "DIVISION",
+  EQUAL_TO = "EQUAL_TO",
+  GREATER_THAN = "GREATER_THAN",
+  GREATER_THAN_OR_EQUAL_TO = "GREATER_THAN_OR_EQUAL_TO",
+  LESS_THAN = "LESS_THAN",
+  LESS_THAN_OR_EQUAL_TO = "LESS_THAN_OR_EQUAL_TO",
+  MASK_ALL = "MASK_ALL",
+  MASK_FIRST_N = "MASK_FIRST_N",
+  MASK_LAST_N = "MASK_LAST_N",
+  MULTIPLICATION = "MULTIPLICATION",
+  NOT_EQUAL_TO = "NOT_EQUAL_TO",
+  NO_OP = "NO_OP",
+  PROJECTION = "PROJECTION",
+  SUBTRACTION = "SUBTRACTION",
+  VALIDATE_NON_NEGATIVE = "VALIDATE_NON_NEGATIVE",
+  VALIDATE_NON_NULL = "VALIDATE_NON_NULL",
+  VALIDATE_NON_ZERO = "VALIDATE_NON_ZERO",
+  VALIDATE_NUMERIC = "VALIDATE_NUMERIC",
+}
+
+export enum ServiceNowConnectorOperator {
+  ADDITION = "ADDITION",
+  BETWEEN = "BETWEEN",
+  CONTAINS = "CONTAINS",
+  DIVISION = "DIVISION",
+  EQUAL_TO = "EQUAL_TO",
+  GREATER_THAN = "GREATER_THAN",
+  GREATER_THAN_OR_EQUAL_TO = "GREATER_THAN_OR_EQUAL_TO",
+  LESS_THAN = "LESS_THAN",
+  LESS_THAN_OR_EQUAL_TO = "LESS_THAN_OR_EQUAL_TO",
+  MASK_ALL = "MASK_ALL",
+  MASK_FIRST_N = "MASK_FIRST_N",
+  MASK_LAST_N = "MASK_LAST_N",
+  MULTIPLICATION = "MULTIPLICATION",
+  NOT_EQUAL_TO = "NOT_EQUAL_TO",
+  NO_OP = "NO_OP",
+  PROJECTION = "PROJECTION",
+  SUBTRACTION = "SUBTRACTION",
+  VALIDATE_NON_NEGATIVE = "VALIDATE_NON_NEGATIVE",
+  VALIDATE_NON_NULL = "VALIDATE_NON_NULL",
+  VALIDATE_NON_ZERO = "VALIDATE_NON_ZERO",
+  VALIDATE_NUMERIC = "VALIDATE_NUMERIC",
+}
+
+export enum ZendeskConnectorOperator {
+  ADDITION = "ADDITION",
+  DIVISION = "DIVISION",
+  GREATER_THAN = "GREATER_THAN",
+  MASK_ALL = "MASK_ALL",
+  MASK_FIRST_N = "MASK_FIRST_N",
+  MASK_LAST_N = "MASK_LAST_N",
+  MULTIPLICATION = "MULTIPLICATION",
+  NO_OP = "NO_OP",
+  PROJECTION = "PROJECTION",
+  SUBTRACTION = "SUBTRACTION",
+  VALIDATE_NON_NEGATIVE = "VALIDATE_NON_NEGATIVE",
+  VALIDATE_NON_NULL = "VALIDATE_NON_NULL",
+  VALIDATE_NON_ZERO = "VALIDATE_NON_ZERO",
+  VALIDATE_NUMERIC = "VALIDATE_NUMERIC",
+}
+
+/**
+ * <p>The operation to be performed on the provided source fields.</p>
+ */
+export interface ConnectorOperator {
+  /**
+   * <p>The operation to be performed on the provided Marketo source fields.</p>
+   */
+  Marketo?: MarketoConnectorOperator | string;
+
+  /**
+   * <p>The operation to be performed on the provided Amazon S3 source fields.</p>
+   */
+  S3?: S3ConnectorOperator | string;
+
+  /**
+   * <p>The operation to be performed on the provided Salesforce source fields.</p>
+   */
+  Salesforce?: SalesforceConnectorOperator | string;
+
+  /**
+   * <p>The operation to be performed on the provided ServiceNow source fields.</p>
+   */
+  ServiceNow?: ServiceNowConnectorOperator | string;
+
+  /**
+   * <p>The operation to be performed on the provided Zendesk source fields.</p>
+   */
+  Zendesk?: ZendeskConnectorOperator | string;
+}
+
+export namespace ConnectorOperator {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ConnectorOperator): any => ({
     ...obj,
   });
 }
@@ -205,8 +375,8 @@ export interface CreateDomainRequest {
   /**
    * <p>The URL of the SQS dead letter queue, which is used for reporting errors associated with
    *          ingesting data from third party applications. You must set up a policy on the
-   *          DeadLetterQueue for the SendMessage operation to enable Amazon Connect Customer Profiles to
-   *          send messages to the DeadLetterQueue.</p>
+   *          DeadLetterQueue for the SendMessage operation to enable Amazon Connect Customer Profiles to send
+   *          messages to the DeadLetterQueue.</p>
    */
   DeadLetterQueueUrl?: string;
 
@@ -217,6 +387,9 @@ export interface CreateDomainRequest {
 }
 
 export namespace CreateDomainRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDomainRequest): any => ({
     ...obj,
   });
@@ -263,6 +436,9 @@ export interface CreateDomainResponse {
 }
 
 export namespace CreateDomainResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDomainResponse): any => ({
     ...obj,
   });
@@ -396,6 +572,9 @@ export interface CreateProfileRequest {
 }
 
 export namespace CreateProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateProfileRequest): any => ({
     ...obj,
   });
@@ -409,6 +588,9 @@ export interface CreateProfileResponse {
 }
 
 export namespace CreateProfileResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateProfileResponse): any => ({
     ...obj,
   });
@@ -422,6 +604,9 @@ export interface DeleteDomainRequest {
 }
 
 export namespace DeleteDomainRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDomainRequest): any => ({
     ...obj,
   });
@@ -435,6 +620,9 @@ export interface DeleteDomainResponse {
 }
 
 export namespace DeleteDomainResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDomainResponse): any => ({
     ...obj,
   });
@@ -449,10 +637,13 @@ export interface DeleteIntegrationRequest {
   /**
    * <p>The URI of the S3 bucket or any other type of data source.</p>
    */
-  Uri?: string;
+  Uri: string | undefined;
 }
 
 export namespace DeleteIntegrationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteIntegrationRequest): any => ({
     ...obj,
   });
@@ -466,6 +657,9 @@ export interface DeleteIntegrationResponse {
 }
 
 export namespace DeleteIntegrationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteIntegrationResponse): any => ({
     ...obj,
   });
@@ -484,6 +678,9 @@ export interface DeleteProfileRequest {
 }
 
 export namespace DeleteProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProfileRequest): any => ({
     ...obj,
   });
@@ -497,6 +694,9 @@ export interface DeleteProfileResponse {
 }
 
 export namespace DeleteProfileResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProfileResponse): any => ({
     ...obj,
   });
@@ -525,6 +725,9 @@ export interface DeleteProfileKeyRequest {
 }
 
 export namespace DeleteProfileKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProfileKeyRequest): any => ({
     ...obj,
   });
@@ -538,6 +741,9 @@ export interface DeleteProfileKeyResponse {
 }
 
 export namespace DeleteProfileKeyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProfileKeyResponse): any => ({
     ...obj,
   });
@@ -566,6 +772,9 @@ export interface DeleteProfileObjectRequest {
 }
 
 export namespace DeleteProfileObjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProfileObjectRequest): any => ({
     ...obj,
   });
@@ -579,6 +788,9 @@ export interface DeleteProfileObjectResponse {
 }
 
 export namespace DeleteProfileObjectResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProfileObjectResponse): any => ({
     ...obj,
   });
@@ -597,6 +809,9 @@ export interface DeleteProfileObjectTypeRequest {
 }
 
 export namespace DeleteProfileObjectTypeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProfileObjectTypeRequest): any => ({
     ...obj,
   });
@@ -610,6 +825,9 @@ export interface DeleteProfileObjectTypeResponse {
 }
 
 export namespace DeleteProfileObjectTypeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProfileObjectTypeResponse): any => ({
     ...obj,
   });
@@ -623,6 +841,9 @@ export interface GetDomainRequest {
 }
 
 export namespace GetDomainRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDomainRequest): any => ({
     ...obj,
   });
@@ -656,6 +877,9 @@ export interface DomainStats {
 }
 
 export namespace DomainStats {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DomainStats): any => ({
     ...obj,
   });
@@ -707,6 +931,9 @@ export interface GetDomainResponse {
 }
 
 export namespace GetDomainResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDomainResponse): any => ({
     ...obj,
   });
@@ -721,10 +948,13 @@ export interface GetIntegrationRequest {
   /**
    * <p>The URI of the S3 bucket or any other type of data source.</p>
    */
-  Uri?: string;
+  Uri: string | undefined;
 }
 
 export namespace GetIntegrationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetIntegrationRequest): any => ({
     ...obj,
   });
@@ -763,6 +993,9 @@ export interface GetIntegrationResponse {
 }
 
 export namespace GetIntegrationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetIntegrationResponse): any => ({
     ...obj,
   });
@@ -781,6 +1014,9 @@ export interface GetProfileObjectTypeRequest {
 }
 
 export namespace GetProfileObjectTypeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetProfileObjectTypeRequest): any => ({
     ...obj,
   });
@@ -817,6 +1053,9 @@ export interface ObjectTypeField {
 }
 
 export namespace ObjectTypeField {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectTypeField): any => ({
     ...obj,
   });
@@ -854,6 +1093,9 @@ export interface ObjectTypeKey {
 }
 
 export namespace ObjectTypeKey {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectTypeKey): any => ({
     ...obj,
   });
@@ -922,6 +1164,9 @@ export interface GetProfileObjectTypeResponse {
 }
 
 export namespace GetProfileObjectTypeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetProfileObjectTypeResponse): any => ({
     ...obj,
   });
@@ -935,6 +1180,9 @@ export interface GetProfileObjectTypeTemplateRequest {
 }
 
 export namespace GetProfileObjectTypeTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetProfileObjectTypeTemplateRequest): any => ({
     ...obj,
   });
@@ -977,6 +1225,9 @@ export interface GetProfileObjectTypeTemplateResponse {
 }
 
 export namespace GetProfileObjectTypeTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetProfileObjectTypeTemplateResponse): any => ({
     ...obj,
   });
@@ -1000,6 +1251,9 @@ export interface ListAccountIntegrationsRequest {
 }
 
 export namespace ListAccountIntegrationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccountIntegrationsRequest): any => ({
     ...obj,
   });
@@ -1041,6 +1295,9 @@ export interface ListIntegrationItem {
 }
 
 export namespace ListIntegrationItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListIntegrationItem): any => ({
     ...obj,
   });
@@ -1059,6 +1316,9 @@ export interface ListAccountIntegrationsResponse {
 }
 
 export namespace ListAccountIntegrationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccountIntegrationsResponse): any => ({
     ...obj,
   });
@@ -1077,6 +1337,9 @@ export interface ListDomainsRequest {
 }
 
 export namespace ListDomainsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDomainsRequest): any => ({
     ...obj,
   });
@@ -1108,6 +1371,9 @@ export interface ListDomainItem {
 }
 
 export namespace ListDomainItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDomainItem): any => ({
     ...obj,
   });
@@ -1126,6 +1392,9 @@ export interface ListDomainsResponse {
 }
 
 export namespace ListDomainsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDomainsResponse): any => ({
     ...obj,
   });
@@ -1149,6 +1418,9 @@ export interface ListIntegrationsRequest {
 }
 
 export namespace ListIntegrationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListIntegrationsRequest): any => ({
     ...obj,
   });
@@ -1167,6 +1439,9 @@ export interface ListIntegrationsResponse {
 }
 
 export namespace ListIntegrationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListIntegrationsResponse): any => ({
     ...obj,
   });
@@ -1200,6 +1475,9 @@ export interface ListProfileObjectsRequest {
 }
 
 export namespace ListProfileObjectsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProfileObjectsRequest): any => ({
     ...obj,
   });
@@ -1227,6 +1505,9 @@ export interface ListProfileObjectsItem {
 }
 
 export namespace ListProfileObjectsItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProfileObjectsItem): any => ({
     ...obj,
   });
@@ -1245,6 +1526,9 @@ export interface ListProfileObjectsResponse {
 }
 
 export namespace ListProfileObjectsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProfileObjectsResponse): any => ({
     ...obj,
   });
@@ -1268,6 +1552,9 @@ export interface ListProfileObjectTypesRequest {
 }
 
 export namespace ListProfileObjectTypesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProfileObjectTypesRequest): any => ({
     ...obj,
   });
@@ -1304,6 +1591,9 @@ export interface ListProfileObjectTypeItem {
 }
 
 export namespace ListProfileObjectTypeItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProfileObjectTypeItem): any => ({
     ...obj,
   });
@@ -1322,6 +1612,9 @@ export interface ListProfileObjectTypesResponse {
 }
 
 export namespace ListProfileObjectTypesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProfileObjectTypesResponse): any => ({
     ...obj,
   });
@@ -1340,6 +1633,9 @@ export interface ListProfileObjectTypeTemplatesRequest {
 }
 
 export namespace ListProfileObjectTypeTemplatesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProfileObjectTypeTemplatesRequest): any => ({
     ...obj,
   });
@@ -1366,6 +1662,9 @@ export interface ListProfileObjectTypeTemplateItem {
 }
 
 export namespace ListProfileObjectTypeTemplateItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProfileObjectTypeTemplateItem): any => ({
     ...obj,
   });
@@ -1384,6 +1683,9 @@ export interface ListProfileObjectTypeTemplatesResponse {
 }
 
 export namespace ListProfileObjectTypeTemplatesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProfileObjectTypeTemplatesResponse): any => ({
     ...obj,
   });
@@ -1397,6 +1699,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -1410,7 +1715,459 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
+    ...obj,
+  });
+}
+
+export enum SourceConnectorType {
+  MARKETO = "Marketo",
+  S3 = "S3",
+  SALESFORCE = "Salesforce",
+  SERVICENOW = "Servicenow",
+  ZENDESK = "Zendesk",
+}
+
+/**
+ * <p>Specifies the configuration used when importing incremental records from the
+ *          source.</p>
+ */
+export interface IncrementalPullConfig {
+  /**
+   * <p>A field that specifies the date time or timestamp field as the criteria to use when
+   *          importing incremental records from the source.</p>
+   */
+  DatetimeTypeFieldName?: string;
+}
+
+export namespace IncrementalPullConfig {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: IncrementalPullConfig): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The properties that are applied when Marketo is being used as a source.</p>
+ */
+export interface MarketoSourceProperties {
+  /**
+   * <p>The object specified in the Marketo flow source.</p>
+   */
+  Object: string | undefined;
+}
+
+export namespace MarketoSourceProperties {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: MarketoSourceProperties): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The properties that are applied when Amazon S3 is being used as the flow source.</p>
+ */
+export interface S3SourceProperties {
+  /**
+   * <p>The Amazon S3 bucket name where the source files are stored.</p>
+   */
+  BucketName: string | undefined;
+
+  /**
+   * <p>The object key for the Amazon S3 bucket in which the source files are stored.</p>
+   */
+  BucketPrefix?: string;
+}
+
+export namespace S3SourceProperties {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: S3SourceProperties): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The properties that are applied when Salesforce is being used as a source.</p>
+ */
+export interface SalesforceSourceProperties {
+  /**
+   * <p>The object specified in the Salesforce flow source.</p>
+   */
+  Object: string | undefined;
+
+  /**
+   * <p>The flag that enables dynamic fetching of new (recently added) fields in the Salesforce
+   *          objects while running a flow.</p>
+   */
+  EnableDynamicFieldUpdate?: boolean;
+
+  /**
+   * <p>Indicates whether Amazon AppFlow includes deleted files in the flow run.</p>
+   */
+  IncludeDeletedRecords?: boolean;
+}
+
+export namespace SalesforceSourceProperties {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SalesforceSourceProperties): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The properties that are applied when ServiceNow is being used as a source.</p>
+ */
+export interface ServiceNowSourceProperties {
+  /**
+   * <p>The object specified in the ServiceNow flow source.</p>
+   */
+  Object: string | undefined;
+}
+
+export namespace ServiceNowSourceProperties {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ServiceNowSourceProperties): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The properties that are applied when using Zendesk as a flow source.</p>
+ */
+export interface ZendeskSourceProperties {
+  /**
+   * <p>The object specified in the Zendesk flow source.</p>
+   */
+  Object: string | undefined;
+}
+
+export namespace ZendeskSourceProperties {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ZendeskSourceProperties): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Specifies the information that is required to query a particular Amazon AppFlow connector.
+ *          Customer Profiles supports Salesforce, Zendesk, Marketo, ServiceNow and Amazon S3.</p>
+ */
+export interface SourceConnectorProperties {
+  /**
+   * <p>The properties that are applied when Marketo is being used as a source.</p>
+   */
+  Marketo?: MarketoSourceProperties;
+
+  /**
+   * <p>The properties that are applied when Amazon S3 is being used as the flow source.</p>
+   */
+  S3?: S3SourceProperties;
+
+  /**
+   * <p>The properties that are applied when Salesforce is being used as a source.</p>
+   */
+  Salesforce?: SalesforceSourceProperties;
+
+  /**
+   * <p>The properties that are applied when ServiceNow is being used as a source.</p>
+   */
+  ServiceNow?: ServiceNowSourceProperties;
+
+  /**
+   * <p>The properties that are applied when using Zendesk as a flow source.</p>
+   */
+  Zendesk?: ZendeskSourceProperties;
+}
+
+export namespace SourceConnectorProperties {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SourceConnectorProperties): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains information about the configuration of the source connector used in the
+ *          flow.</p>
+ */
+export interface SourceFlowConfig {
+  /**
+   * <p>The name of the AppFlow connector profile. This name must be unique for each connector
+   *          profile in the AWS account.</p>
+   */
+  ConnectorProfileName?: string;
+
+  /**
+   * <p>The type of connector, such as Salesforce, Marketo, and so on.</p>
+   */
+  ConnectorType: SourceConnectorType | string | undefined;
+
+  /**
+   * <p>Defines the configuration for a scheduled incremental data pull. If a valid
+   *          configuration is provided, the fields specified in the configuration are used when querying
+   *          for the incremental data pull.</p>
+   */
+  IncrementalPullConfig?: IncrementalPullConfig;
+
+  /**
+   * <p>Specifies the information that is required to query a particular source
+   *          connector.</p>
+   */
+  SourceConnectorProperties: SourceConnectorProperties | undefined;
+}
+
+export namespace SourceFlowConfig {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SourceFlowConfig): any => ({
+    ...obj,
+  });
+}
+
+export enum OperatorPropertiesKeys {
+  CONCAT_FORMAT = "CONCAT_FORMAT",
+  DATA_TYPE = "DATA_TYPE",
+  DESTINATION_DATA_TYPE = "DESTINATION_DATA_TYPE",
+  LOWER_BOUND = "LOWER_BOUND",
+  MASK_LENGTH = "MASK_LENGTH",
+  MASK_VALUE = "MASK_VALUE",
+  MATH_OPERATION_FIELDS_ORDER = "MATH_OPERATION_FIELDS_ORDER",
+  SOURCE_DATA_TYPE = "SOURCE_DATA_TYPE",
+  SUBFIELD_CATEGORY_MAP = "SUBFIELD_CATEGORY_MAP",
+  TRUNCATE_LENGTH = "TRUNCATE_LENGTH",
+  UPPER_BOUND = "UPPER_BOUND",
+  VALIDATION_ACTION = "VALIDATION_ACTION",
+  VALUE = "VALUE",
+  VALUES = "VALUES",
+}
+
+export enum TaskType {
+  ARITHMETIC = "Arithmetic",
+  FILTER = "Filter",
+  MAP = "Map",
+  MASK = "Mask",
+  MERGE = "Merge",
+  TRUNCATE = "Truncate",
+  VALIDATE = "Validate",
+}
+
+/**
+ * <p>A class for modeling different type of tasks. Task implementation varies based on the
+ *          TaskType.</p>
+ */
+export interface Task {
+  /**
+   * <p>The operation to be performed on the provided source fields.</p>
+   */
+  ConnectorOperator?: ConnectorOperator;
+
+  /**
+   * <p>A field in a destination connector, or a field value against which Amazon AppFlow validates a
+   *          source field.</p>
+   */
+  DestinationField?: string;
+
+  /**
+   * <p>The source fields to which a particular task is applied.</p>
+   */
+  SourceFields: string[] | undefined;
+
+  /**
+   * <p>A map used to store task-related information. The service looks for particular
+   *          information based on the TaskType.</p>
+   */
+  TaskProperties?: { [key: string]: string };
+
+  /**
+   * <p>Specifies the particular task implementation that Amazon AppFlow performs.</p>
+   */
+  TaskType: TaskType | string | undefined;
+}
+
+export namespace Task {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: Task): any => ({
+    ...obj,
+  });
+}
+
+export enum DataPullMode {
+  COMPLETE = "Complete",
+  INCREMENTAL = "Incremental",
+}
+
+/**
+ * <p>Specifies the configuration details of a scheduled-trigger flow that you define.
+ *          Currently, these settings only apply to the scheduled-trigger type.</p>
+ */
+export interface ScheduledTriggerProperties {
+  /**
+   * <p>The scheduling expression that determines the rate at which the schedule will run, for
+   *          example rate (5 minutes).</p>
+   */
+  ScheduleExpression: string | undefined;
+
+  /**
+   * <p>Specifies whether a scheduled flow has an incremental data transfer or a complete data
+   *          transfer for each flow run.</p>
+   */
+  DataPullMode?: DataPullMode | string;
+
+  /**
+   * <p>Specifies the scheduled start time for a scheduled-trigger flow.</p>
+   */
+  ScheduleStartTime?: Date;
+
+  /**
+   * <p>Specifies the scheduled end time for a scheduled-trigger flow.</p>
+   */
+  ScheduleEndTime?: Date;
+
+  /**
+   * <p>Specifies the time zone used when referring to the date and time of a
+   *          scheduled-triggered flow, such as America/New_York.</p>
+   */
+  Timezone?: string;
+
+  /**
+   * <p>Specifies the optional offset that is added to the time interval for a
+   *          schedule-triggered flow.</p>
+   */
+  ScheduleOffset?: number;
+
+  /**
+   * <p>Specifies the date range for the records to import from the connector in the first flow
+   *          run.</p>
+   */
+  FirstExecutionFrom?: Date;
+}
+
+export namespace ScheduledTriggerProperties {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ScheduledTriggerProperties): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Specifies the configuration details that control the trigger for a flow. Currently,
+ *          these settings only apply to the Scheduled trigger type.</p>
+ */
+export interface TriggerProperties {
+  /**
+   * <p>Specifies the configuration details of a schedule-triggered flow that you define.</p>
+   */
+  Scheduled?: ScheduledTriggerProperties;
+}
+
+export namespace TriggerProperties {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TriggerProperties): any => ({
+    ...obj,
+  });
+}
+
+export enum TriggerType {
+  EVENT = "Event",
+  ONDEMAND = "OnDemand",
+  SCHEDULED = "Scheduled",
+}
+
+/**
+ * <p>The trigger settings that determine how and when Amazon AppFlow runs the specified
+ *          flow.</p>
+ */
+export interface TriggerConfig {
+  /**
+   * <p>Specifies the type of flow trigger. It can be OnDemand, Scheduled, or Event.</p>
+   */
+  TriggerType: TriggerType | string | undefined;
+
+  /**
+   * <p>Specifies the configuration details of a schedule-triggered flow that you define.
+   *          Currently, these settings only apply to the Scheduled trigger type.</p>
+   */
+  TriggerProperties?: TriggerProperties;
+}
+
+export namespace TriggerConfig {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TriggerConfig): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The configurations that control how Customer Profiles retrieves data from the source,
+ *          Amazon AppFlow. Customer Profiles uses this information to create an AppFlow flow on behalf
+ *          of customers.</p>
+ */
+export interface FlowDefinition {
+  /**
+   * <p>A description of the flow you want to create.</p>
+   */
+  Description?: string;
+
+  /**
+   * <p>The specified name of the flow. Use underscores (_) or hyphens (-) only. Spaces are not
+   *          allowed.</p>
+   */
+  FlowName: string | undefined;
+
+  /**
+   * <p>The Amazon Resource Name of the AWS Key Management Service (KMS) key you provide for encryption.</p>
+   */
+  KmsArn: string | undefined;
+
+  /**
+   * <p>The configuration that controls how Customer Profiles retrieves data from the
+   *          source.</p>
+   */
+  SourceFlowConfig: SourceFlowConfig | undefined;
+
+  /**
+   * <p>A list of tasks that Customer Profiles performs while transferring the data in the flow
+   *          run.</p>
+   */
+  Tasks: Task[] | undefined;
+
+  /**
+   * <p>The trigger settings that determine how and when the flow runs.</p>
+   */
+  TriggerConfig: TriggerConfig | undefined;
+}
+
+export namespace FlowDefinition {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: FlowDefinition): any => ({
     ...obj,
   });
 }
@@ -1424,7 +2181,7 @@ export interface PutIntegrationRequest {
   /**
    * <p>The URI of the S3 bucket or any other type of data source.</p>
    */
-  Uri: string | undefined;
+  Uri?: string;
 
   /**
    * <p>The name of the profile object type.</p>
@@ -1435,9 +2192,18 @@ export interface PutIntegrationRequest {
    * <p>The tags used to organize, track, or control access for this resource.</p>
    */
   Tags?: { [key: string]: string };
+
+  /**
+   * <p>The configuration that controls how Customer Profiles retrieves data from the
+   *          source.</p>
+   */
+  FlowDefinition?: FlowDefinition;
 }
 
 export namespace PutIntegrationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutIntegrationRequest): any => ({
     ...obj,
   });
@@ -1476,6 +2242,9 @@ export interface PutIntegrationResponse {
 }
 
 export namespace PutIntegrationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutIntegrationResponse): any => ({
     ...obj,
   });
@@ -1499,6 +2268,9 @@ export interface PutProfileObjectRequest {
 }
 
 export namespace PutProfileObjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutProfileObjectRequest): any => ({
     ...obj,
   });
@@ -1512,6 +2284,9 @@ export interface PutProfileObjectResponse {
 }
 
 export namespace PutProfileObjectResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutProfileObjectResponse): any => ({
     ...obj,
   });
@@ -1575,6 +2350,9 @@ export interface PutProfileObjectTypeRequest {
 }
 
 export namespace PutProfileObjectTypeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutProfileObjectTypeRequest): any => ({
     ...obj,
   });
@@ -1643,6 +2421,9 @@ export interface PutProfileObjectTypeResponse {
 }
 
 export namespace PutProfileObjectTypeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutProfileObjectTypeResponse): any => ({
     ...obj,
   });
@@ -1679,6 +2460,9 @@ export interface SearchProfilesRequest {
 }
 
 export namespace SearchProfilesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchProfilesRequest): any => ({
     ...obj,
   });
@@ -1803,6 +2587,9 @@ export interface Profile {
 }
 
 export namespace Profile {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Profile): any => ({
     ...obj,
   });
@@ -1821,6 +2608,9 @@ export interface SearchProfilesResponse {
 }
 
 export namespace SearchProfilesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchProfilesResponse): any => ({
     ...obj,
   });
@@ -1839,6 +2629,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -1847,6 +2640,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -1865,6 +2661,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -1873,6 +2672,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
@@ -1913,6 +2715,9 @@ export interface UpdateDomainRequest {
 }
 
 export namespace UpdateDomainRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDomainRequest): any => ({
     ...obj,
   });
@@ -1959,6 +2764,9 @@ export interface UpdateDomainResponse {
 }
 
 export namespace UpdateDomainResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDomainResponse): any => ({
     ...obj,
   });
@@ -2020,6 +2828,9 @@ export interface UpdateAddress {
 }
 
 export namespace UpdateAddress {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAddress): any => ({
     ...obj,
   });
@@ -2146,6 +2957,9 @@ export interface UpdateProfileRequest {
 }
 
 export namespace UpdateProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateProfileRequest): any => ({
     ...obj,
   });
@@ -2159,6 +2973,9 @@ export interface UpdateProfileResponse {
 }
 
 export namespace UpdateProfileResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateProfileResponse): any => ({
     ...obj,
   });

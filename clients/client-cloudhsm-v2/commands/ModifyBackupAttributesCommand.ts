@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyBackupAttributesCommandInput = ModifyBackupAttributesRequest;
-export type ModifyBackupAttributesCommandOutput = ModifyBackupAttributesResponse & __MetadataBearer;
+export interface ModifyBackupAttributesCommandInput extends ModifyBackupAttributesRequest {}
+export interface ModifyBackupAttributesCommandOutput extends ModifyBackupAttributesResponse, __MetadataBearer {}
 
 /**
  * <p>Modifies attributes for AWS CloudHSM backup.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudHSMV2Client, ModifyBackupAttributesCommand } from "@aws-sdk/client-cloudhsm-v2"; // ES Modules import
+ * // const { CloudHSMV2Client, ModifyBackupAttributesCommand } = require("@aws-sdk/client-cloudhsm-v2"); // CommonJS import
+ * const client = new CloudHSMV2Client(config);
+ * const command = new ModifyBackupAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyBackupAttributesCommandInput} for command's `input` shape.
+ * @see {@link ModifyBackupAttributesCommandOutput} for command's `response` shape.
+ * @see {@link CloudHSMV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyBackupAttributesCommand extends $Command<
   ModifyBackupAttributesCommandInput,

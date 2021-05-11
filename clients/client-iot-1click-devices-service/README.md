@@ -54,7 +54,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new IoT1ClickDevicesServiceClient({ region: "REGION" });
 
 const params = {
@@ -139,7 +139,7 @@ const client = new AWS.IoT1ClickDevicesService({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.claimDevicesByClaimCode(params);
+  const data = await client.claimDevicesByClaimCode(params);
   // process data.
 } catch (error) {
   // error handling.

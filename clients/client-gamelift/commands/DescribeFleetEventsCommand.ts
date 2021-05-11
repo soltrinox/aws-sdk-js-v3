@@ -17,90 +17,54 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeFleetEventsCommandInput = DescribeFleetEventsInput;
-export type DescribeFleetEventsCommandOutput = DescribeFleetEventsOutput & __MetadataBearer;
+export interface DescribeFleetEventsCommandInput extends DescribeFleetEventsInput {}
+export interface DescribeFleetEventsCommandOutput extends DescribeFleetEventsOutput, __MetadataBearer {}
 
 /**
- * <p>Retrieves entries from the specified fleet's event log. You can specify a time
- *             range to limit the result set. Use the pagination parameters to retrieve results as a
- *             set of sequential pages. If successful, a collection of event log entries matching the
- *             request are returned.</p>
+ * <p>Retrieves entries from a fleet's event log. Fleet events are initiated by changes in
+ *             status, such as during fleet creation and termination, changes in capacity, etc. If a
+ *             fleet has multiple locations, events are also initiated by changes to status and
+ *             capacity in remote locations. </p>
+ *         <p>You can specify a time range to limit the result set. Use the pagination parameters to
+ *             retrieve results as a set of sequential pages. </p>
+ *         <p>If successful, a collection of event log entries matching the request are
+ *             returned.</p>
  *         <p>
  *             <b>Learn more</b>
  *          </p>
  *         <p>
- *             <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html">Setting up GameLift Fleets</a>
+ *             <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html">Setting up GameLift fleets</a>
  *          </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateFleet</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ListFleets</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteFleet</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>Describe fleets:</p>
- *                         <ul>
- *                   <li>
- *                      <p>
- *                         <a>DescribeFleetAttributes</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>DescribeFleetCapacity</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>DescribeFleetPortSettings</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>DescribeFleetUtilization</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>DescribeRuntimeConfiguration</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>DescribeEC2InstanceLimits</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>DescribeFleetEvents</a>
- *                      </p>
- *                   </li>
- *                </ul>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateFleetAttributes</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>StartFleetActions</a> or <a>StopFleetActions</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>ListFleets</a> |
+ *                     <a>DescribeEC2InstanceLimits</a> |
+ *                     <a>DescribeFleetAttributes</a> |
+ *                     <a>DescribeFleetCapacity</a> |
+ *                     <a>DescribeFleetEvents</a> |
+ *                     <a>DescribeFleetLocationAttributes</a> |
+ *                     <a>DescribeFleetPortSettings</a> |
+ *                     <a>DescribeFleetUtilization</a> |
+ *                     <a>DescribeRuntimeConfiguration</a> |
+ *                     <a>DescribeScalingPolicies</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, DescribeFleetEventsCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, DescribeFleetEventsCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new DescribeFleetEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeFleetEventsCommandInput} for command's `input` shape.
+ * @see {@link DescribeFleetEventsCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeFleetEventsCommand extends $Command<
   DescribeFleetEventsCommandInput,

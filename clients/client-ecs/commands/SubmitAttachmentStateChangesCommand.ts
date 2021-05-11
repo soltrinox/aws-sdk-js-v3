@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SubmitAttachmentStateChangesCommandInput = SubmitAttachmentStateChangesRequest;
-export type SubmitAttachmentStateChangesCommandOutput = SubmitAttachmentStateChangesResponse & __MetadataBearer;
+export interface SubmitAttachmentStateChangesCommandInput extends SubmitAttachmentStateChangesRequest {}
+export interface SubmitAttachmentStateChangesCommandOutput
+  extends SubmitAttachmentStateChangesResponse,
+    __MetadataBearer {}
 
 /**
  * <note>
@@ -26,6 +28,20 @@ export type SubmitAttachmentStateChangesCommandOutput = SubmitAttachmentStateCha
  *          </note>
  *          <p>Sent to
  * 			acknowledge that an attachment changed states.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, SubmitAttachmentStateChangesCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, SubmitAttachmentStateChangesCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new SubmitAttachmentStateChangesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SubmitAttachmentStateChangesCommandInput} for command's `input` shape.
+ * @see {@link SubmitAttachmentStateChangesCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SubmitAttachmentStateChangesCommand extends $Command<
   SubmitAttachmentStateChangesCommandInput,

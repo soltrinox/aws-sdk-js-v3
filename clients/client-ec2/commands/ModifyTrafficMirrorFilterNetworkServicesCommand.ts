@@ -20,9 +20,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyTrafficMirrorFilterNetworkServicesCommandInput = ModifyTrafficMirrorFilterNetworkServicesRequest;
-export type ModifyTrafficMirrorFilterNetworkServicesCommandOutput = ModifyTrafficMirrorFilterNetworkServicesResult &
-  __MetadataBearer;
+export interface ModifyTrafficMirrorFilterNetworkServicesCommandInput
+  extends ModifyTrafficMirrorFilterNetworkServicesRequest {}
+export interface ModifyTrafficMirrorFilterNetworkServicesCommandOutput
+  extends ModifyTrafficMirrorFilterNetworkServicesResult,
+    __MetadataBearer {}
 
 /**
  * <p>Allows or restricts mirroring network services.</p>
@@ -31,6 +33,20 @@ export type ModifyTrafficMirrorFilterNetworkServicesCommandOutput = ModifyTraffi
  *       </p>
  *          <p>For information about filter rule properties, see
  *          <a href="https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html">Network Services</a> in the <i>Traffic Mirroring User Guide </i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, ModifyTrafficMirrorFilterNetworkServicesCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, ModifyTrafficMirrorFilterNetworkServicesCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new ModifyTrafficMirrorFilterNetworkServicesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyTrafficMirrorFilterNetworkServicesCommandInput} for command's `input` shape.
+ * @see {@link ModifyTrafficMirrorFilterNetworkServicesCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyTrafficMirrorFilterNetworkServicesCommand extends $Command<
   ModifyTrafficMirrorFilterNetworkServicesCommandInput,

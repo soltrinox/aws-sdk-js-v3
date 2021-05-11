@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListResourceDataSyncCommandInput = ListResourceDataSyncRequest;
-export type ListResourceDataSyncCommandOutput = ListResourceDataSyncResult & __MetadataBearer;
+export interface ListResourceDataSyncCommandInput extends ListResourceDataSyncRequest {}
+export interface ListResourceDataSyncCommandOutput extends ListResourceDataSyncResult, __MetadataBearer {}
 
 /**
  * <p>Lists your resource data sync configurations. Includes information about the last time a
@@ -30,6 +30,20 @@ export type ListResourceDataSyncCommandOutput = ListResourceDataSyncResult & __M
  *    configurations to list, check the value of <code>NextToken</code> in the output. If there are
  *    more sync configurations to list, you can request them by specifying the <code>NextToken</code>
  *    returned in the call to the parameter of a subsequent call. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, ListResourceDataSyncCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, ListResourceDataSyncCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new ListResourceDataSyncCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListResourceDataSyncCommandInput} for command's `input` shape.
+ * @see {@link ListResourceDataSyncCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListResourceDataSyncCommand extends $Command<
   ListResourceDataSyncCommandInput,

@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeVirtualGatewaysCommandInput = {};
-export type DescribeVirtualGatewaysCommandOutput = VirtualGateways & __MetadataBearer;
+export interface DescribeVirtualGatewaysCommandInput {}
+export interface DescribeVirtualGatewaysCommandOutput extends VirtualGateways, __MetadataBearer {}
 
 /**
  * <p>Lists the virtual private gateways owned by the AWS account.</p>
  *          <p>You can create one or more AWS Direct Connect private virtual interfaces linked to a virtual private gateway.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectConnectClient, DescribeVirtualGatewaysCommand } from "@aws-sdk/client-direct-connect"; // ES Modules import
+ * // const { DirectConnectClient, DescribeVirtualGatewaysCommand } = require("@aws-sdk/client-direct-connect"); // CommonJS import
+ * const client = new DirectConnectClient(config);
+ * const command = new DescribeVirtualGatewaysCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeVirtualGatewaysCommandInput} for command's `input` shape.
+ * @see {@link DescribeVirtualGatewaysCommandOutput} for command's `response` shape.
+ * @see {@link DirectConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeVirtualGatewaysCommand extends $Command<
   DescribeVirtualGatewaysCommandInput,

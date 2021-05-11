@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchGetBuildsCommandInput = BatchGetBuildsInput;
-export type BatchGetBuildsCommandOutput = BatchGetBuildsOutput & __MetadataBearer;
+export interface BatchGetBuildsCommandInput extends BatchGetBuildsInput {}
+export interface BatchGetBuildsCommandOutput extends BatchGetBuildsOutput, __MetadataBearer {}
 
 /**
  * <p>Gets information about one or more builds.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeBuildClient, BatchGetBuildsCommand } from "@aws-sdk/client-codebuild"; // ES Modules import
+ * // const { CodeBuildClient, BatchGetBuildsCommand } = require("@aws-sdk/client-codebuild"); // CommonJS import
+ * const client = new CodeBuildClient(config);
+ * const command = new BatchGetBuildsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchGetBuildsCommandInput} for command's `input` shape.
+ * @see {@link BatchGetBuildsCommandOutput} for command's `response` shape.
+ * @see {@link CodeBuildClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchGetBuildsCommand extends $Command<
   BatchGetBuildsCommandInput,

@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAutoScalingGroupRecommendationsCommandInput = GetAutoScalingGroupRecommendationsRequest;
-export type GetAutoScalingGroupRecommendationsCommandOutput = GetAutoScalingGroupRecommendationsResponse &
-  __MetadataBearer;
+export interface GetAutoScalingGroupRecommendationsCommandInput extends GetAutoScalingGroupRecommendationsRequest {}
+export interface GetAutoScalingGroupRecommendationsCommandOutput
+  extends GetAutoScalingGroupRecommendationsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns Auto Scaling group recommendations.</p>
@@ -30,6 +31,20 @@ export type GetAutoScalingGroupRecommendationsCommandOutput = GetAutoScalingGrou
  *         <p>AWS Compute Optimizer generates recommendations for Amazon EC2 Auto Scaling groups that meet a specific set of
  *             requirements. For more information, see the <a href="https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html">Supported resources and
  *                 requirements</a> in the <i>AWS Compute Optimizer User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ComputeOptimizerClient, GetAutoScalingGroupRecommendationsCommand } from "@aws-sdk/client-compute-optimizer"; // ES Modules import
+ * // const { ComputeOptimizerClient, GetAutoScalingGroupRecommendationsCommand } = require("@aws-sdk/client-compute-optimizer"); // CommonJS import
+ * const client = new ComputeOptimizerClient(config);
+ * const command = new GetAutoScalingGroupRecommendationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAutoScalingGroupRecommendationsCommandInput} for command's `input` shape.
+ * @see {@link GetAutoScalingGroupRecommendationsCommandOutput} for command's `response` shape.
+ * @see {@link ComputeOptimizerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAutoScalingGroupRecommendationsCommand extends $Command<
   GetAutoScalingGroupRecommendationsCommandInput,

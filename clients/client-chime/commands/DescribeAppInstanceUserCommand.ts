@@ -17,11 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAppInstanceUserCommandInput = DescribeAppInstanceUserRequest;
-export type DescribeAppInstanceUserCommandOutput = DescribeAppInstanceUserResponse & __MetadataBearer;
+export interface DescribeAppInstanceUserCommandInput extends DescribeAppInstanceUserRequest {}
+export interface DescribeAppInstanceUserCommandOutput extends DescribeAppInstanceUserResponse, __MetadataBearer {}
 
 /**
- * <p>Returns the full details of an <code>AppInstanceUser</code>.</p>
+ * <p>
+ * Returns the full details of an
+ * <code>AppInstanceUser</code>
+ * .
+ * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, DescribeAppInstanceUserCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, DescribeAppInstanceUserCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new DescribeAppInstanceUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAppInstanceUserCommandInput} for command's `input` shape.
+ * @see {@link DescribeAppInstanceUserCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAppInstanceUserCommand extends $Command<
   DescribeAppInstanceUserCommandInput,

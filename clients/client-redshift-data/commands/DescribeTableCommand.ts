@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeTableCommandInput = DescribeTableRequest;
-export type DescribeTableCommandOutput = DescribeTableResponse & __MetadataBearer;
+export interface DescribeTableCommandInput extends DescribeTableRequest {}
+export interface DescribeTableCommandOutput extends DescribeTableResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the detailed information about a table from metadata in the cluster. The
@@ -37,6 +37,20 @@ export type DescribeTableCommandOutput = DescribeTableResponse & __MetadataBeare
  *           required to use this method. </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftDataClient, DescribeTableCommand } from "@aws-sdk/client-redshift-data"; // ES Modules import
+ * // const { RedshiftDataClient, DescribeTableCommand } = require("@aws-sdk/client-redshift-data"); // CommonJS import
+ * const client = new RedshiftDataClient(config);
+ * const command = new DescribeTableCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeTableCommandInput} for command's `input` shape.
+ * @see {@link DescribeTableCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftDataClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeTableCommand extends $Command<
   DescribeTableCommandInput,

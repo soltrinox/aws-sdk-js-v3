@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListStreamingDistributionsCommandInput = ListStreamingDistributionsRequest;
-export type ListStreamingDistributionsCommandOutput = ListStreamingDistributionsResult & __MetadataBearer;
+export interface ListStreamingDistributionsCommandInput extends ListStreamingDistributionsRequest {}
+export interface ListStreamingDistributionsCommandOutput extends ListStreamingDistributionsResult, __MetadataBearer {}
 
 /**
  * <p>List streaming distributions. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, ListStreamingDistributionsCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, ListStreamingDistributionsCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new ListStreamingDistributionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListStreamingDistributionsCommandInput} for command's `input` shape.
+ * @see {@link ListStreamingDistributionsCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListStreamingDistributionsCommand extends $Command<
   ListStreamingDistributionsCommandInput,

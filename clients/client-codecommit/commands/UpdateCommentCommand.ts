@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateCommentCommandInput = UpdateCommentInput;
-export type UpdateCommentCommandOutput = UpdateCommentOutput & __MetadataBearer;
+export interface UpdateCommentCommandInput extends UpdateCommentInput {}
+export interface UpdateCommentCommandOutput extends UpdateCommentOutput, __MetadataBearer {}
 
 /**
  * <p>Replaces the contents of a comment.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeCommitClient, UpdateCommentCommand } from "@aws-sdk/client-codecommit"; // ES Modules import
+ * // const { CodeCommitClient, UpdateCommentCommand } = require("@aws-sdk/client-codecommit"); // CommonJS import
+ * const client = new CodeCommitClient(config);
+ * const command = new UpdateCommentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateCommentCommandInput} for command's `input` shape.
+ * @see {@link UpdateCommentCommandOutput} for command's `response` shape.
+ * @see {@link CodeCommitClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateCommentCommand extends $Command<
   UpdateCommentCommandInput,

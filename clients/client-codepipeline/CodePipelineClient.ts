@@ -26,6 +26,7 @@ import {
   EnableStageTransitionCommandInput,
   EnableStageTransitionCommandOutput,
 } from "./commands/EnableStageTransitionCommand";
+import { GetActionTypeCommandInput, GetActionTypeCommandOutput } from "./commands/GetActionTypeCommand";
 import { GetJobDetailsCommandInput, GetJobDetailsCommandOutput } from "./commands/GetJobDetailsCommand";
 import { GetPipelineCommandInput, GetPipelineCommandOutput } from "./commands/GetPipelineCommand";
 import {
@@ -94,6 +95,7 @@ import {
 } from "./commands/StopPipelineExecutionCommand";
 import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
 import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
+import { UpdateActionTypeCommandInput, UpdateActionTypeCommandOutput } from "./commands/UpdateActionTypeCommand";
 import { UpdatePipelineCommandInput, UpdatePipelineCommandOutput } from "./commands/UpdatePipelineCommand";
 import { ClientDefaultValues as __ClientDefaultValues } from "./runtimeConfig";
 import {
@@ -157,6 +159,7 @@ export type ServiceInputTypes =
   | DeregisterWebhookWithThirdPartyCommandInput
   | DisableStageTransitionCommandInput
   | EnableStageTransitionCommandInput
+  | GetActionTypeCommandInput
   | GetJobDetailsCommandInput
   | GetPipelineCommandInput
   | GetPipelineExecutionCommandInput
@@ -183,6 +186,7 @@ export type ServiceInputTypes =
   | StopPipelineExecutionCommandInput
   | TagResourceCommandInput
   | UntagResourceCommandInput
+  | UpdateActionTypeCommandInput
   | UpdatePipelineCommandInput;
 
 export type ServiceOutputTypes =
@@ -196,6 +200,7 @@ export type ServiceOutputTypes =
   | DeregisterWebhookWithThirdPartyCommandOutput
   | DisableStageTransitionCommandOutput
   | EnableStageTransitionCommandOutput
+  | GetActionTypeCommandOutput
   | GetJobDetailsCommandOutput
   | GetPipelineCommandOutput
   | GetPipelineExecutionCommandOutput
@@ -222,6 +227,7 @@ export type ServiceOutputTypes =
   | StopPipelineExecutionCommandOutput
   | TagResourceCommandOutput
   | UntagResourceCommandOutput
+  | UpdateActionTypeCommandOutput
   | UpdatePipelineCommandOutput;
 
 export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__HttpHandlerOptions>> {
@@ -289,7 +295,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -320,7 +326,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type CodePipelineClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type CodePipelineClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -328,8 +334,12 @@ export type CodePipelineClientConfig = Partial<__SmithyConfiguration<__HttpHandl
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of CodePipelineClient class constructor that set the region, credentials and other options.
+ */
+export interface CodePipelineClientConfig extends CodePipelineClientConfigType {}
 
-export type CodePipelineClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type CodePipelineClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -337,6 +347,10 @@ export type CodePipelineClientResolvedConfig = __SmithyResolvedConfiguration<__H
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of CodePipelineClient class. This is resolved and normalized from the {@link CodePipelineClientConfig | constructor configuration interface}.
+ */
+export interface CodePipelineClientResolvedConfig extends CodePipelineClientResolvedConfigType {}
 
 /**
  * <fullname>AWS CodePipeline</fullname>
@@ -541,6 +555,9 @@ export class CodePipelineClient extends __Client<
   ServiceOutputTypes,
   CodePipelineClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of CodePipelineClient class. This is resolved and normalized from the {@link CodePipelineClientConfig | constructor configuration interface}.
+   */
   readonly config: CodePipelineClientResolvedConfig;
 
   constructor(configuration: CodePipelineClientConfig) {

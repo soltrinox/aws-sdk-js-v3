@@ -21,14 +21,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBotChannelAssociationCommandInput = GetBotChannelAssociationRequest;
-export type GetBotChannelAssociationCommandOutput = GetBotChannelAssociationResponse & __MetadataBearer;
+export interface GetBotChannelAssociationCommandInput extends GetBotChannelAssociationRequest {}
+export interface GetBotChannelAssociationCommandOutput extends GetBotChannelAssociationResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information about the association between an Amazon Lex bot and
  *       a messaging platform.</p>
  *          <p>This operation requires permissions for the
  *         <code>lex:GetBotChannelAssociation</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, GetBotChannelAssociationCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, GetBotChannelAssociationCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new GetBotChannelAssociationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBotChannelAssociationCommandInput} for command's `input` shape.
+ * @see {@link GetBotChannelAssociationCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBotChannelAssociationCommand extends $Command<
   GetBotChannelAssociationCommandInput,

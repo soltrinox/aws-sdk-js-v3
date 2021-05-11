@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutRetentionPolicyCommandInput = PutRetentionPolicyRequest;
-export type PutRetentionPolicyCommandOutput = __MetadataBearer;
+export interface PutRetentionPolicyCommandInput extends PutRetentionPolicyRequest {}
+export interface PutRetentionPolicyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Sets the retention of the specified log group. A retention policy allows you to
  *       configure the number of days for which to retain log events in the specified log
  *       group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, PutRetentionPolicyCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, PutRetentionPolicyCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new PutRetentionPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutRetentionPolicyCommandInput} for command's `input` shape.
+ * @see {@link PutRetentionPolicyCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutRetentionPolicyCommand extends $Command<
   PutRetentionPolicyCommandInput,

@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateBudgetActionCommandInput = UpdateBudgetActionRequest;
-export type UpdateBudgetActionCommandOutput = UpdateBudgetActionResponse & __MetadataBearer;
+export interface UpdateBudgetActionCommandInput extends UpdateBudgetActionRequest {}
+export interface UpdateBudgetActionCommandOutput extends UpdateBudgetActionResponse, __MetadataBearer {}
 
 /**
  * <p>
  *          Updates a budget action.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BudgetsClient, UpdateBudgetActionCommand } from "@aws-sdk/client-budgets"; // ES Modules import
+ * // const { BudgetsClient, UpdateBudgetActionCommand } = require("@aws-sdk/client-budgets"); // CommonJS import
+ * const client = new BudgetsClient(config);
+ * const command = new UpdateBudgetActionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateBudgetActionCommandInput} for command's `input` shape.
+ * @see {@link UpdateBudgetActionCommandOutput} for command's `response` shape.
+ * @see {@link BudgetsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateBudgetActionCommand extends $Command<
   UpdateBudgetActionCommandInput,

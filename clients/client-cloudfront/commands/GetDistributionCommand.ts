@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDistributionCommandInput = GetDistributionRequest;
-export type GetDistributionCommandOutput = GetDistributionResult & __MetadataBearer;
+export interface GetDistributionCommandInput extends GetDistributionRequest {}
+export interface GetDistributionCommandOutput extends GetDistributionResult, __MetadataBearer {}
 
 /**
  * <p>Get the information about a distribution.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, GetDistributionCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, GetDistributionCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new GetDistributionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDistributionCommandInput} for command's `input` shape.
+ * @see {@link GetDistributionCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDistributionCommand extends $Command<
   GetDistributionCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListSuitesCommandInput = ListSuitesRequest;
-export type ListSuitesCommandOutput = ListSuitesResult & __MetadataBearer;
+export interface ListSuitesCommandInput extends ListSuitesRequest {}
+export interface ListSuitesCommandOutput extends ListSuitesResult, __MetadataBearer {}
 
 /**
  * <p>Gets information about test suites for a given job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, ListSuitesCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, ListSuitesCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new ListSuitesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListSuitesCommandInput} for command's `input` shape.
+ * @see {@link ListSuitesCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListSuitesCommand extends $Command<
   ListSuitesCommandInput,

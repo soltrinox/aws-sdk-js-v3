@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDetectorVersionMetadataCommandInput = UpdateDetectorVersionMetadataRequest;
-export type UpdateDetectorVersionMetadataCommandOutput = UpdateDetectorVersionMetadataResult & __MetadataBearer;
+export interface UpdateDetectorVersionMetadataCommandInput extends UpdateDetectorVersionMetadataRequest {}
+export interface UpdateDetectorVersionMetadataCommandOutput
+  extends UpdateDetectorVersionMetadataResult,
+    __MetadataBearer {}
 
 /**
  * <p>Updates the detector version's description. You can update the metadata for any detector version (<code>DRAFT, ACTIVE,</code> or
  *                 <code>INACTIVE</code>). </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FraudDetectorClient, UpdateDetectorVersionMetadataCommand } from "@aws-sdk/client-frauddetector"; // ES Modules import
+ * // const { FraudDetectorClient, UpdateDetectorVersionMetadataCommand } = require("@aws-sdk/client-frauddetector"); // CommonJS import
+ * const client = new FraudDetectorClient(config);
+ * const command = new UpdateDetectorVersionMetadataCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDetectorVersionMetadataCommandInput} for command's `input` shape.
+ * @see {@link UpdateDetectorVersionMetadataCommandOutput} for command's `response` shape.
+ * @see {@link FraudDetectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDetectorVersionMetadataCommand extends $Command<
   UpdateDetectorVersionMetadataCommandInput,

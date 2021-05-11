@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSnapshotFromVolumeRecoveryPointCommandInput = CreateSnapshotFromVolumeRecoveryPointInput;
-export type CreateSnapshotFromVolumeRecoveryPointCommandOutput = CreateSnapshotFromVolumeRecoveryPointOutput &
-  __MetadataBearer;
+export interface CreateSnapshotFromVolumeRecoveryPointCommandInput extends CreateSnapshotFromVolumeRecoveryPointInput {}
+export interface CreateSnapshotFromVolumeRecoveryPointCommandOutput
+  extends CreateSnapshotFromVolumeRecoveryPointOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Initiates a snapshot of a gateway from a volume recovery point. This operation is only
@@ -46,6 +47,20 @@ export type CreateSnapshotFromVolumeRecoveryPointCommandOutput = CreateSnapshotF
  *             or <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSnapshot.html">DeleteSnapshot</a> in the <i>Amazon Elastic Compute Cloud API
  *                Reference</i>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, CreateSnapshotFromVolumeRecoveryPointCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, CreateSnapshotFromVolumeRecoveryPointCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new CreateSnapshotFromVolumeRecoveryPointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSnapshotFromVolumeRecoveryPointCommandInput} for command's `input` shape.
+ * @see {@link CreateSnapshotFromVolumeRecoveryPointCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSnapshotFromVolumeRecoveryPointCommand extends $Command<
   CreateSnapshotFromVolumeRecoveryPointCommandInput,

@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceRequest;
-export type TagResourceCommandOutput = TagResourceResponse & __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceRequest {}
+export interface TagResourceCommandOutput extends TagResourceResponse, __MetadataBearer {}
 
 /**
- * <p>Adds metadata tags to an AWS Glue DataBrew resource, such as a dataset, job, project,
- *             or recipe.</p>
+ * <p>Adds metadata tags to a DataBrew resource, such as a dataset, project, recipe, job, or
+ *             schedule.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataBrewClient, TagResourceCommand } from "@aws-sdk/client-databrew"; // ES Modules import
+ * // const { DataBrewClient, TagResourceCommand } = require("@aws-sdk/client-databrew"); // CommonJS import
+ * const client = new DataBrewClient(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link DataBrewClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

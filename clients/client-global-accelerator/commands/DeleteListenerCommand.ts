@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteListenerCommandInput = DeleteListenerRequest;
-export type DeleteListenerCommandOutput = __MetadataBearer;
+export interface DeleteListenerCommandInput extends DeleteListenerRequest {}
+export interface DeleteListenerCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Delete a listener from an accelerator.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, DeleteListenerCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, DeleteListenerCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new DeleteListenerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteListenerCommandInput} for command's `input` shape.
+ * @see {@link DeleteListenerCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteListenerCommand extends $Command<
   DeleteListenerCommandInput,

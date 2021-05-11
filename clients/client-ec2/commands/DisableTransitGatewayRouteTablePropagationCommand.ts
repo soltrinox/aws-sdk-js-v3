@@ -2,7 +2,7 @@ import { EC2ClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "
 import {
   DisableTransitGatewayRouteTablePropagationRequest,
   DisableTransitGatewayRouteTablePropagationResult,
-} from "../models/models_3";
+} from "../models/models_4";
 import {
   deserializeAws_ec2DisableTransitGatewayRouteTablePropagationCommand,
   serializeAws_ec2DisableTransitGatewayRouteTablePropagationCommand,
@@ -20,13 +20,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisableTransitGatewayRouteTablePropagationCommandInput = DisableTransitGatewayRouteTablePropagationRequest;
-export type DisableTransitGatewayRouteTablePropagationCommandOutput = DisableTransitGatewayRouteTablePropagationResult &
-  __MetadataBearer;
+export interface DisableTransitGatewayRouteTablePropagationCommandInput
+  extends DisableTransitGatewayRouteTablePropagationRequest {}
+export interface DisableTransitGatewayRouteTablePropagationCommandOutput
+  extends DisableTransitGatewayRouteTablePropagationResult,
+    __MetadataBearer {}
 
 /**
  * <p>Disables the specified resource attachment from propagating routes to the specified
  *          propagation route table.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DisableTransitGatewayRouteTablePropagationCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DisableTransitGatewayRouteTablePropagationCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DisableTransitGatewayRouteTablePropagationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisableTransitGatewayRouteTablePropagationCommandInput} for command's `input` shape.
+ * @see {@link DisableTransitGatewayRouteTablePropagationCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisableTransitGatewayRouteTablePropagationCommand extends $Command<
   DisableTransitGatewayRouteTablePropagationCommandInput,

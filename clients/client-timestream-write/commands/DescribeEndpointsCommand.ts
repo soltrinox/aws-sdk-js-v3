@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEndpointsCommandInput = DescribeEndpointsRequest;
-export type DescribeEndpointsCommandOutput = DescribeEndpointsResponse & __MetadataBearer;
+export interface DescribeEndpointsCommandInput extends DescribeEndpointsRequest {}
+export interface DescribeEndpointsCommandOutput extends DescribeEndpointsResponse, __MetadataBearer {}
 
 /**
  * <p>DescribeEndpoints returns a list of available endpoints to make Timestream API calls against. This API is available through both Write and Query.</p>
@@ -35,6 +35,20 @@ export type DescribeEndpointsCommandOutput = DescribeEndpointsResponse & __Metad
  *          </ul>
  *          <p>For detailed information on how to use DescribeEndpoints,
  *          see <a href="https://docs.aws.amazon.com/timestream/latest/developerguide/Using-API.endpoint-discovery.html">The Endpoint Discovery Pattern and REST APIs</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TimestreamWriteClient, DescribeEndpointsCommand } from "@aws-sdk/client-timestream-write"; // ES Modules import
+ * // const { TimestreamWriteClient, DescribeEndpointsCommand } = require("@aws-sdk/client-timestream-write"); // CommonJS import
+ * const client = new TimestreamWriteClient(config);
+ * const command = new DescribeEndpointsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEndpointsCommandInput} for command's `input` shape.
+ * @see {@link DescribeEndpointsCommandOutput} for command's `response` shape.
+ * @see {@link TimestreamWriteClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEndpointsCommand extends $Command<
   DescribeEndpointsCommandInput,

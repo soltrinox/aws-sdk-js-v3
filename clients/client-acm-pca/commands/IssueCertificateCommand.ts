@@ -17,19 +17,32 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type IssueCertificateCommandInput = IssueCertificateRequest;
-export type IssueCertificateCommandOutput = IssueCertificateResponse & __MetadataBearer;
+export interface IssueCertificateCommandInput extends IssueCertificateRequest {}
+export interface IssueCertificateCommandOutput extends IssueCertificateResponse, __MetadataBearer {}
 
 /**
- * <p>Uses your private certificate authority
- * 			(CA), or one that
- * 			has been shared with you, to issue a client certificate. This action returns the Amazon
- * 			Resource Name (ARN) of the certificate. You can retrieve the certificate by calling the
- * 				<a href="https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificate.html">GetCertificate</a> action and specifying the ARN. </p>
+ * <p>Uses your private certificate authority (CA), or one that has been shared with you, to
+ * 			issue a client certificate. This action returns the Amazon Resource Name (ARN) of the
+ * 			certificate. You can retrieve the certificate by calling the <a href="https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificate.html">GetCertificate</a> action and
+ * 			specifying the ARN. </p>
  * 		       <note>
  * 			         <p>You cannot use the ACM <b>ListCertificateAuthorities</b> action to retrieve the ARNs of the
  * 				certificates that you issue by using ACM Private CA.</p>
  * 		       </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ACMPCAClient, IssueCertificateCommand } from "@aws-sdk/client-acm-pca"; // ES Modules import
+ * // const { ACMPCAClient, IssueCertificateCommand } = require("@aws-sdk/client-acm-pca"); // CommonJS import
+ * const client = new ACMPCAClient(config);
+ * const command = new IssueCertificateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link IssueCertificateCommandInput} for command's `input` shape.
+ * @see {@link IssueCertificateCommandOutput} for command's `response` shape.
+ * @see {@link ACMPCAClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class IssueCertificateCommand extends $Command<
   IssueCertificateCommandInput,

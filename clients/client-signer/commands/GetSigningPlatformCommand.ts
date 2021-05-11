@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSigningPlatformCommandInput = GetSigningPlatformRequest;
-export type GetSigningPlatformCommandOutput = GetSigningPlatformResponse & __MetadataBearer;
+export interface GetSigningPlatformCommandInput extends GetSigningPlatformRequest {}
+export interface GetSigningPlatformCommandOutput extends GetSigningPlatformResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information on a specific signing platform.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SignerClient, GetSigningPlatformCommand } from "@aws-sdk/client-signer"; // ES Modules import
+ * // const { SignerClient, GetSigningPlatformCommand } = require("@aws-sdk/client-signer"); // CommonJS import
+ * const client = new SignerClient(config);
+ * const command = new GetSigningPlatformCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSigningPlatformCommandInput} for command's `input` shape.
+ * @see {@link GetSigningPlatformCommandOutput} for command's `response` shape.
+ * @see {@link SignerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSigningPlatformCommand extends $Command<
   GetSigningPlatformCommandInput,

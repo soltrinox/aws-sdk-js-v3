@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateRouteCommandInput = UpdateRouteInput;
-export type UpdateRouteCommandOutput = UpdateRouteOutput & __MetadataBearer;
+export interface UpdateRouteCommandInput extends UpdateRouteInput {}
+export interface UpdateRouteCommandOutput extends UpdateRouteOutput, __MetadataBearer {}
 
 /**
  * <p>Updates an existing route for a specified service mesh and virtual router.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppMeshClient, UpdateRouteCommand } from "@aws-sdk/client-app-mesh"; // ES Modules import
+ * // const { AppMeshClient, UpdateRouteCommand } = require("@aws-sdk/client-app-mesh"); // CommonJS import
+ * const client = new AppMeshClient(config);
+ * const command = new UpdateRouteCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateRouteCommandInput} for command's `input` shape.
+ * @see {@link UpdateRouteCommandOutput} for command's `response` shape.
+ * @see {@link AppMeshClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateRouteCommand extends $Command<
   UpdateRouteCommandInput,

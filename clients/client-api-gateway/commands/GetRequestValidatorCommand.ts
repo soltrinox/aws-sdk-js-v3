@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRequestValidatorCommandInput = GetRequestValidatorRequest;
-export type GetRequestValidatorCommandOutput = RequestValidator & __MetadataBearer;
+export interface GetRequestValidatorCommandInput extends GetRequestValidatorRequest {}
+export interface GetRequestValidatorCommandOutput extends RequestValidator, __MetadataBearer {}
 
 /**
  * <p>Gets a <a>RequestValidator</a> of a given <a>RestApi</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, GetRequestValidatorCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, GetRequestValidatorCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new GetRequestValidatorCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRequestValidatorCommandInput} for command's `input` shape.
+ * @see {@link GetRequestValidatorCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRequestValidatorCommand extends $Command<
   GetRequestValidatorCommandInput,

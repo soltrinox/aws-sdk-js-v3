@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeJobsCommandInput = DescribeJobsRequest;
-export type DescribeJobsCommandOutput = DescribeJobsResponse & __MetadataBearer;
+export interface DescribeJobsCommandInput extends DescribeJobsRequest {}
+export interface DescribeJobsCommandOutput extends DescribeJobsResponse, __MetadataBearer {}
 
 /**
  * <p>Describes a list of AWS Batch jobs.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BatchClient, DescribeJobsCommand } from "@aws-sdk/client-batch"; // ES Modules import
+ * // const { BatchClient, DescribeJobsCommand } = require("@aws-sdk/client-batch"); // CommonJS import
+ * const client = new BatchClient(config);
+ * const command = new DescribeJobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeJobsCommandInput} for command's `input` shape.
+ * @see {@link DescribeJobsCommandOutput} for command's `response` shape.
+ * @see {@link BatchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeJobsCommand extends $Command<
   DescribeJobsCommandInput,

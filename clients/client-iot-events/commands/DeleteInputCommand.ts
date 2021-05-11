@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteInputCommandInput = DeleteInputRequest;
-export type DeleteInputCommandOutput = DeleteInputResponse & __MetadataBearer;
+export interface DeleteInputCommandInput extends DeleteInputRequest {}
+export interface DeleteInputCommandOutput extends DeleteInputResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an input.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTEventsClient, DeleteInputCommand } from "@aws-sdk/client-iot-events"; // ES Modules import
+ * // const { IoTEventsClient, DeleteInputCommand } = require("@aws-sdk/client-iot-events"); // CommonJS import
+ * const client = new IoTEventsClient(config);
+ * const command = new DeleteInputCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteInputCommandInput} for command's `input` shape.
+ * @see {@link DeleteInputCommandOutput} for command's `response` shape.
+ * @see {@link IoTEventsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteInputCommand extends $Command<
   DeleteInputCommandInput,

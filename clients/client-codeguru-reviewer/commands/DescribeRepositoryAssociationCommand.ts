@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeRepositoryAssociationCommandInput = DescribeRepositoryAssociationRequest;
-export type DescribeRepositoryAssociationCommandOutput = DescribeRepositoryAssociationResponse & __MetadataBearer;
+export interface DescribeRepositoryAssociationCommandInput extends DescribeRepositoryAssociationRequest {}
+export interface DescribeRepositoryAssociationCommandOutput
+  extends DescribeRepositoryAssociationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>
@@ -27,6 +29,20 @@ export type DescribeRepositoryAssociationCommandOutput = DescribeRepositoryAssoc
  *             </a> object
  *          that contains information about the requested repository association.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeGuruReviewerClient, DescribeRepositoryAssociationCommand } from "@aws-sdk/client-codeguru-reviewer"; // ES Modules import
+ * // const { CodeGuruReviewerClient, DescribeRepositoryAssociationCommand } = require("@aws-sdk/client-codeguru-reviewer"); // CommonJS import
+ * const client = new CodeGuruReviewerClient(config);
+ * const command = new DescribeRepositoryAssociationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeRepositoryAssociationCommandInput} for command's `input` shape.
+ * @see {@link DescribeRepositoryAssociationCommandOutput} for command's `response` shape.
+ * @see {@link CodeGuruReviewerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeRepositoryAssociationCommand extends $Command<
   DescribeRepositoryAssociationCommandInput,

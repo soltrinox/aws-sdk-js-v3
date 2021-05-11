@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateBackupSelectionCommandInput = CreateBackupSelectionInput;
-export type CreateBackupSelectionCommandOutput = CreateBackupSelectionOutput & __MetadataBearer;
+export interface CreateBackupSelectionCommandInput extends CreateBackupSelectionInput {}
+export interface CreateBackupSelectionCommandOutput extends CreateBackupSelectionOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a JSON document that specifies a set of resources to assign to a backup plan.
@@ -61,6 +61,20 @@ export type CreateBackupSelectionCommandOutput = CreateBackupSelectionOutput & _
  *          selected. This shouldn't be confused with a logical AND, where all conditions must match.
  *          The matching patterns are logically put together using the OR operator.
  *          In other words, all patterns that match are selected for backup.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BackupClient, CreateBackupSelectionCommand } from "@aws-sdk/client-backup"; // ES Modules import
+ * // const { BackupClient, CreateBackupSelectionCommand } = require("@aws-sdk/client-backup"); // CommonJS import
+ * const client = new BackupClient(config);
+ * const command = new CreateBackupSelectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateBackupSelectionCommandInput} for command's `input` shape.
+ * @see {@link CreateBackupSelectionCommandOutput} for command's `response` shape.
+ * @see {@link BackupClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateBackupSelectionCommand extends $Command<
   CreateBackupSelectionCommandInput,

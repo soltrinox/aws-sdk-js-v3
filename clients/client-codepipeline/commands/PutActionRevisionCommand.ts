@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutActionRevisionCommandInput = PutActionRevisionInput;
-export type PutActionRevisionCommandOutput = PutActionRevisionOutput & __MetadataBearer;
+export interface PutActionRevisionCommandInput extends PutActionRevisionInput {}
+export interface PutActionRevisionCommandOutput extends PutActionRevisionOutput, __MetadataBearer {}
 
 /**
  * <p>Provides information to AWS CodePipeline about new revisions to a source.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodePipelineClient, PutActionRevisionCommand } from "@aws-sdk/client-codepipeline"; // ES Modules import
+ * // const { CodePipelineClient, PutActionRevisionCommand } = require("@aws-sdk/client-codepipeline"); // CommonJS import
+ * const client = new CodePipelineClient(config);
+ * const command = new PutActionRevisionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutActionRevisionCommandInput} for command's `input` shape.
+ * @see {@link PutActionRevisionCommandOutput} for command's `response` shape.
+ * @see {@link CodePipelineClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutActionRevisionCommand extends $Command<
   PutActionRevisionCommandInput,

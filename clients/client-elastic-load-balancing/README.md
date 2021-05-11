@@ -66,7 +66,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new ElasticLoadBalancingClient({ region: "REGION" });
 
 const params = {
@@ -151,7 +151,7 @@ const client = new AWS.ElasticLoadBalancing({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.addTags(params);
+  const data = await client.addTags(params);
   // process data.
 } catch (error) {
   // error handling.

@@ -11,6 +11,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -24,6 +27,9 @@ export interface BatchGetChannelRequest {
 }
 
 export namespace BatchGetChannelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetChannelRequest): any => ({
     ...obj,
   });
@@ -54,14 +60,16 @@ export interface Channel {
   name?: string;
 
   /**
-   * <p>Channel latency mode. Default: <code>LOW</code>.</p>
+   * <p>Channel latency mode. Use <code>NORMAL</code> to broadcast and deliver live video up to
+   *       Full HD. Use <code>LOW</code> for near-real-time interaction with viewers. Default: <code>LOW</code>. (Note: In the Amazon IVS console, <code>LOW</code> and
+   *       <code>NORMAL</code> correspond to Ultra-low and Standard, respectively.)</p>
    */
   latencyMode?: ChannelLatencyMode | string;
 
   /**
    * <p>Channel type, which determines the allowable resolution and bitrate. <i>If you
    *         exceed the allowable resolution or bitrate, the stream probably will disconnect
-   *         immediately.</i> Valid values:</p>
+   *         immediately.</i> Default: <code>STANDARD</code>. Valid values:</p>
    *          <ul>
    *             <li>
    *                <p>
@@ -76,9 +84,14 @@ export interface Channel {
    *           480 and bitrate can be up to 1.5 Mbps.</p>
    *             </li>
    *          </ul>
-   *          <p>Default: <code>STANDARD</code>.</p>
    */
   type?: ChannelType | string;
+
+  /**
+   * <p>Recording-configuration ARN. A value other than an empty string indicates that recording
+   *       is enabled. Default: "" (empty string, recording is disabled).</p>
+   */
+  recordingConfigurationArn?: string;
 
   /**
    * <p>Channel ingest endpoint, part of the definition of an ingest server, used when you set up
@@ -92,7 +105,8 @@ export interface Channel {
   playbackUrl?: string;
 
   /**
-   * <p>Whether the channel is authorized.</p>
+   * <p>Whether the channel is private (enabled for playback authorization). Default:
+   *         <code>false</code>.</p>
    */
   authorized?: boolean;
 
@@ -103,6 +117,9 @@ export interface Channel {
 }
 
 export namespace Channel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Channel): any => ({
     ...obj,
   });
@@ -129,6 +146,9 @@ export interface BatchError {
 }
 
 export namespace BatchError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchError): any => ({
     ...obj,
   });
@@ -143,6 +163,9 @@ export interface BatchGetChannelResponse {
 }
 
 export namespace BatchGetChannelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetChannelResponse): any => ({
     ...obj,
   });
@@ -156,6 +179,9 @@ export interface BatchGetStreamKeyRequest {
 }
 
 export namespace BatchGetStreamKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetStreamKeyRequest): any => ({
     ...obj,
   });
@@ -187,6 +213,9 @@ export interface StreamKey {
 }
 
 export namespace StreamKey {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StreamKey): any => ({
     ...obj,
   });
@@ -198,6 +227,9 @@ export interface BatchGetStreamKeyResponse {
 }
 
 export namespace BatchGetStreamKeyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetStreamKeyResponse): any => ({
     ...obj,
   });
@@ -210,14 +242,17 @@ export interface CreateChannelRequest {
   name?: string;
 
   /**
-   * <p>Channel latency mode. Default: <code>LOW</code>.</p>
+   * <p>Channel latency mode. Use <code>NORMAL</code> to broadcast and deliver live video up to
+   *       Full HD. Use <code>LOW</code> for near-real-time interaction with viewers. (Note: In the
+   *       Amazon IVS console, <code>LOW</code> and <code>NORMAL</code> correspond to Ultra-low and Standard, respectively.)
+   *       Default: <code>LOW</code>.</p>
    */
   latencyMode?: ChannelLatencyMode | string;
 
   /**
    * <p>Channel type, which determines the allowable resolution and bitrate. <i>If you
    *         exceed the allowable resolution or bitrate, the stream probably will disconnect
-   *         immediately.</i> Valid values:</p>
+   *         immediately.</i> Default: <code>STANDARD</code>. Valid values:</p>
    *          <ul>
    *             <li>
    *                <p>
@@ -232,22 +267,30 @@ export interface CreateChannelRequest {
    *           480 and bitrate can be up to 1.5 Mbps.</p>
    *             </li>
    *          </ul>
-   *          <p>Default: <code>STANDARD</code>.</p>
    */
   type?: ChannelType | string;
 
   /**
-   * <p>Whether the channel is authorized. Default: <code>false</code>.</p>
+   * <p>Whether the channel is private (enabled for playback authorization). Default:
+   *         <code>false</code>.</p>
    */
   authorized?: boolean;
 
   /**
-   * <p>See <a>Channel$tags</a>.</p>
+   * <p>Recording-configuration ARN. Default: "" (empty string, recording is disabled).</p>
+   */
+  recordingConfigurationArn?: string;
+
+  /**
+   * <p>Array of 1-50 maps, each of the form <code>string:string (key:value)</code>.</p>
    */
   tags?: { [key: string]: string };
 }
 
 export namespace CreateChannelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateChannelRequest): any => ({
     ...obj,
   });
@@ -266,6 +309,9 @@ export interface CreateChannelResponse {
 }
 
 export namespace CreateChannelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateChannelResponse): any => ({
     ...obj,
   });
@@ -281,7 +327,28 @@ export interface PendingVerification extends __SmithyException, $MetadataBearer 
 }
 
 export namespace PendingVerification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PendingVerification): any => ({
+    ...obj,
+  });
+}
+
+export interface ResourceNotFoundException extends __SmithyException, $MetadataBearer {
+  name: "ResourceNotFoundException";
+  $fault: "client";
+  /**
+   * <p>Request references a resource which does not exist.</p>
+   */
+  exceptionMessage?: string;
+}
+
+export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
 }
@@ -296,6 +363,9 @@ export interface ServiceQuotaExceededException extends __SmithyException, $Metad
 }
 
 export namespace ServiceQuotaExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceQuotaExceededException): any => ({
     ...obj,
   });
@@ -311,53 +381,10 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
-    ...obj,
-  });
-}
-
-export interface CreateStreamKeyRequest {
-  /**
-   * <p>ARN of the channel for which to create the stream key.</p>
-   */
-  channelArn: string | undefined;
-
-  /**
-   * <p>See <a>Channel$tags</a>.</p>
-   */
-  tags?: { [key: string]: string };
-}
-
-export namespace CreateStreamKeyRequest {
-  export const filterSensitiveLog = (obj: CreateStreamKeyRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface CreateStreamKeyResponse {
-  /**
-   * <p>Stream key used to authenticate an RTMPS stream for ingestion.</p>
-   */
-  streamKey?: StreamKey;
-}
-
-export namespace CreateStreamKeyResponse {
-  export const filterSensitiveLog = (obj: CreateStreamKeyResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface ResourceNotFoundException extends __SmithyException, $MetadataBearer {
-  name: "ResourceNotFoundException";
-  $fault: "client";
-  /**
-   * <p>Request references a resource which does not exist.</p>
-   */
-  exceptionMessage?: string;
-}
-
-export namespace ResourceNotFoundException {
-  export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
 }
@@ -372,7 +399,196 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>A complex type that describes an S3 location where recorded videos will be stored.</p>
+ */
+export interface S3DestinationConfiguration {
+  /**
+   * <p>Location (S3 bucket name) where recorded videos will be stored.</p>
+   */
+  bucketName: string | undefined;
+}
+
+export namespace S3DestinationConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: S3DestinationConfiguration): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>A complex type that describes a location where recorded videos will be stored. Each member
+ *       represents a type of destination configuration. For recording, you define one and only one
+ *       type of destination configuration.</p>
+ */
+export interface DestinationConfiguration {
+  /**
+   * <p>An S3 destination configuration where recorded videos will be stored.</p>
+   */
+  s3?: S3DestinationConfiguration;
+}
+
+export namespace DestinationConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DestinationConfiguration): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateRecordingConfigurationRequest {
+  /**
+   * <p>An arbitrary string (a nickname) that helps the customer identify that resource. The value
+   *       does not need to be unique.</p>
+   */
+  name?: string;
+
+  /**
+   * <p>A complex type that contains a destination configuration for where recorded video will be
+   *       stored.</p>
+   */
+  destinationConfiguration: DestinationConfiguration | undefined;
+
+  /**
+   * <p>Array of 1-50 maps, each of the form <code>string:string (key:value)</code>.</p>
+   */
+  tags?: { [key: string]: string };
+}
+
+export namespace CreateRecordingConfigurationRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateRecordingConfigurationRequest): any => ({
+    ...obj,
+  });
+}
+
+export enum RecordingConfigurationState {
+  Active = "ACTIVE",
+  CreateFailed = "CREATE_FAILED",
+  Creating = "CREATING",
+}
+
+/**
+ * <p>An object representing a configuration to record a channel stream.</p>
+ */
+export interface RecordingConfiguration {
+  /**
+   * <p>Recording-configuration ARN.</p>
+   */
+  arn: string | undefined;
+
+  /**
+   * <p>An arbitrary string (a nickname) assigned to a recording configuration that helps the
+   *       customer identify that resource. The value does not need to be unique.</p>
+   */
+  name?: string;
+
+  /**
+   * <p>A complex type that contains information about where recorded video will be stored.</p>
+   */
+  destinationConfiguration: DestinationConfiguration | undefined;
+
+  /**
+   * <p>Indicates the current state of the recording configuration. When the state is
+   *         <code>ACTIVE</code>, the configuration is ready for recording a channel stream.</p>
+   */
+  state: RecordingConfigurationState | string | undefined;
+
+  /**
+   * <p>Array of 1-50 maps, each of the form <code>string:string (key:value)</code>.</p>
+   */
+  tags?: { [key: string]: string };
+}
+
+export namespace RecordingConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RecordingConfiguration): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateRecordingConfigurationResponse {
+  /**
+   * <p>An object representing a configuration to record a channel stream.</p>
+   */
+  recordingConfiguration?: RecordingConfiguration;
+}
+
+export namespace CreateRecordingConfigurationResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateRecordingConfigurationResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface InternalServerException extends __SmithyException, $MetadataBearer {
+  name: "InternalServerException";
+  $fault: "server";
+  /**
+   * <p>Unexpected error during processing of request.</p>
+   */
+  exceptionMessage?: string;
+}
+
+export namespace InternalServerException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InternalServerException): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateStreamKeyRequest {
+  /**
+   * <p>ARN of the channel for which to create the stream key.</p>
+   */
+  channelArn: string | undefined;
+
+  /**
+   * <p>Array of 1-50 maps, each of the form <code>string:string (key:value)</code>.</p>
+   */
+  tags?: { [key: string]: string };
+}
+
+export namespace CreateStreamKeyRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateStreamKeyRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateStreamKeyResponse {
+  /**
+   * <p>Stream key used to authenticate an RTMPS stream for ingestion.</p>
+   */
+  streamKey?: StreamKey;
+}
+
+export namespace CreateStreamKeyResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateStreamKeyResponse): any => ({
     ...obj,
   });
 }
@@ -385,6 +601,9 @@ export interface DeleteChannelRequest {
 }
 
 export namespace DeleteChannelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteChannelRequest): any => ({
     ...obj,
   });
@@ -398,6 +617,9 @@ export interface DeletePlaybackKeyPairRequest {
 }
 
 export namespace DeletePlaybackKeyPairRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePlaybackKeyPairRequest): any => ({
     ...obj,
   });
@@ -406,7 +628,26 @@ export namespace DeletePlaybackKeyPairRequest {
 export interface DeletePlaybackKeyPairResponse {}
 
 export namespace DeletePlaybackKeyPairResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePlaybackKeyPairResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteRecordingConfigurationRequest {
+  /**
+   * <p>ARN of the recording configuration to be deleted.</p>
+   */
+  arn: string | undefined;
+}
+
+export namespace DeleteRecordingConfigurationRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteRecordingConfigurationRequest): any => ({
     ...obj,
   });
 }
@@ -419,6 +660,9 @@ export interface DeleteStreamKeyRequest {
 }
 
 export namespace DeleteStreamKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteStreamKeyRequest): any => ({
     ...obj,
   });
@@ -432,6 +676,9 @@ export interface GetChannelRequest {
 }
 
 export namespace GetChannelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetChannelRequest): any => ({
     ...obj,
   });
@@ -445,6 +692,9 @@ export interface GetChannelResponse {
 }
 
 export namespace GetChannelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetChannelResponse): any => ({
     ...obj,
   });
@@ -458,6 +708,9 @@ export interface GetPlaybackKeyPairRequest {
 }
 
 export namespace GetPlaybackKeyPairRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPlaybackKeyPairRequest): any => ({
     ...obj,
   });
@@ -473,7 +726,8 @@ export interface PlaybackKeyPair {
   arn?: string;
 
   /**
-   * <p>Key-pair name.</p>
+   * <p>An arbitrary string (a nickname) assigned to a playback key pair that helps the customer
+   *       identify that resource. The value does not need to be unique.</p>
    */
   name?: string;
 
@@ -489,6 +743,9 @@ export interface PlaybackKeyPair {
 }
 
 export namespace PlaybackKeyPair {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PlaybackKeyPair): any => ({
     ...obj,
   });
@@ -502,7 +759,42 @@ export interface GetPlaybackKeyPairResponse {
 }
 
 export namespace GetPlaybackKeyPairResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPlaybackKeyPairResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface GetRecordingConfigurationRequest {
+  /**
+   * <p>ARN of the recording configuration to be retrieved.</p>
+   */
+  arn: string | undefined;
+}
+
+export namespace GetRecordingConfigurationRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetRecordingConfigurationRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetRecordingConfigurationResponse {
+  /**
+   * <p>An object representing a configuration to record a channel stream.</p>
+   */
+  recordingConfiguration?: RecordingConfiguration;
+}
+
+export namespace GetRecordingConfigurationResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetRecordingConfigurationResponse): any => ({
     ...obj,
   });
 }
@@ -517,6 +809,9 @@ export interface ChannelNotBroadcasting extends __SmithyException, $MetadataBear
 }
 
 export namespace ChannelNotBroadcasting {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelNotBroadcasting): any => ({
     ...obj,
   });
@@ -530,6 +825,9 @@ export interface GetStreamRequest {
 }
 
 export namespace GetStreamRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStreamRequest): any => ({
     ...obj,
   });
@@ -556,8 +854,7 @@ export interface _Stream {
   channelArn?: string;
 
   /**
-   * <p>URL of the video master manifest, required by the video player to play the HLS
-   *       stream.</p>
+   * <p>URL of the master playlist, required by the video player to play the HLS stream.</p>
    */
   playbackUrl?: string;
 
@@ -577,12 +874,16 @@ export interface _Stream {
   health?: StreamHealth | string;
 
   /**
-   * <p>Number of current viewers of the stream.</p>
+   * <p>Number of current viewers of the stream. A value of -1 indicates that the request timed
+   *       out; in this case, retry.</p>
    */
   viewerCount?: number;
 }
 
 export namespace _Stream {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: _Stream): any => ({
     ...obj,
   });
@@ -596,6 +897,9 @@ export interface GetStreamResponse {
 }
 
 export namespace GetStreamResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStreamResponse): any => ({
     ...obj,
   });
@@ -609,6 +913,9 @@ export interface GetStreamKeyRequest {
 }
 
 export namespace GetStreamKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStreamKeyRequest): any => ({
     ...obj,
   });
@@ -622,6 +929,9 @@ export interface GetStreamKeyResponse {
 }
 
 export namespace GetStreamKeyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStreamKeyResponse): any => ({
     ...obj,
   });
@@ -646,6 +956,9 @@ export interface ImportPlaybackKeyPairRequest {
 }
 
 export namespace ImportPlaybackKeyPairRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportPlaybackKeyPairRequest): any => ({
     ...obj,
   });
@@ -659,6 +972,9 @@ export interface ImportPlaybackKeyPairResponse {
 }
 
 export namespace ImportPlaybackKeyPairResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportPlaybackKeyPairResponse): any => ({
     ...obj,
   });
@@ -671,18 +987,26 @@ export interface ListChannelsRequest {
   filterByName?: string;
 
   /**
+   * <p>Filters the channel list to match the specified recording-configuration ARN.</p>
+   */
+  filterByRecordingConfigurationArn?: string;
+
+  /**
    * <p>The first channel to retrieve. This is used for pagination; see the <code>nextToken</code>
    *       response field.</p>
    */
   nextToken?: string;
 
   /**
-   * <p>Maximum number of channels to return.</p>
+   * <p>Maximum number of channels to return. Default: 50.</p>
    */
   maxResults?: number;
 }
 
 export namespace ListChannelsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListChannelsRequest): any => ({
     ...obj,
   });
@@ -703,14 +1027,22 @@ export interface ChannelSummary {
   name?: string;
 
   /**
-   * <p>Channel latency mode. Default: <code>LOW</code>.</p>
+   * <p>Channel latency mode. Use <code>NORMAL</code> to broadcast and deliver live video up to Full HD. Use
+   *       <code>LOW</code> for near-real-time interaction with viewers. Default: <code>LOW</code>. (Note: In the Amazon IVS
+   *       console, <code>LOW</code> and <code>NORMAL</code> correspond to Ultra-low and Standard, respectively.)</p>
    */
   latencyMode?: ChannelLatencyMode | string;
 
   /**
-   * <p>Whether the channel is authorized.</p>
+   * <p>Whether the channel is private (enabled for playback authorization). Default: <code>false</code>.</p>
    */
   authorized?: boolean;
+
+  /**
+   * <p>Recording-configuration ARN. A value other than an empty string indicates that recording
+   *       is enabled. Default: "" (empty string, recording is disabled).</p>
+   */
+  recordingConfigurationArn?: string;
 
   /**
    * <p>Array of 1-50 maps, each of the form <code>string:string (key:value)</code>.</p>
@@ -719,6 +1051,9 @@ export interface ChannelSummary {
 }
 
 export namespace ChannelSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelSummary): any => ({
     ...obj,
   });
@@ -738,6 +1073,9 @@ export interface ListChannelsResponse {
 }
 
 export namespace ListChannelsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListChannelsResponse): any => ({
     ...obj,
   });
@@ -751,12 +1089,15 @@ export interface ListPlaybackKeyPairsRequest {
 
   /**
    * <p>The first key pair to retrieve. This is used for pagination; see the
-   *         <code>nextToken</code> response field.</p>
+   *         <code>nextToken</code> response field. Default: 50.</p>
    */
   maxResults?: number;
 }
 
 export namespace ListPlaybackKeyPairsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPlaybackKeyPairsRequest): any => ({
     ...obj,
   });
@@ -772,18 +1113,21 @@ export interface PlaybackKeyPairSummary {
   arn?: string;
 
   /**
-   * <p>Key-pair name.</p>
+   * <p>An arbitrary string (a nickname) assigned to a playback key pair that helps the customer
+   *       identify that resource. The value does not need to be unique.</p>
    */
   name?: string;
 
   /**
-   * <p>Array of 1-50 maps, each of the form <code>string:string (key:value)</code>
-   *          </p>
+   * <p>Array of 1-50 maps, each of the form <code>string:string (key:value)</code>.</p>
    */
   tags?: { [key: string]: string };
 }
 
 export namespace PlaybackKeyPairSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PlaybackKeyPairSummary): any => ({
     ...obj,
   });
@@ -803,7 +1147,95 @@ export interface ListPlaybackKeyPairsResponse {
 }
 
 export namespace ListPlaybackKeyPairsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPlaybackKeyPairsResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListRecordingConfigurationsRequest {
+  /**
+   * <p>The first recording configuration to retrieve. This is used for pagination; see the
+   *         <code>nextToken</code> response field.</p>
+   */
+  nextToken?: string;
+
+  /**
+   * <p>Maximum number of recording configurations to return. Default: 50. </p>
+   */
+  maxResults?: number;
+}
+
+export namespace ListRecordingConfigurationsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListRecordingConfigurationsRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Summary information about a RecordingConfiguration.</p>
+ */
+export interface RecordingConfigurationSummary {
+  /**
+   * <p>Recording-configuration ARN.</p>
+   */
+  arn: string | undefined;
+
+  /**
+   * <p>An arbitrary string (a nickname) assigned to a recording configuration that helps the
+   *       customer identify that resource. The value does not need to be unique.</p>
+   */
+  name?: string;
+
+  /**
+   * <p>A complex type that contains information about where recorded video will be stored.</p>
+   */
+  destinationConfiguration: DestinationConfiguration | undefined;
+
+  /**
+   * <p>Indicates the current state of the recording configuration. When the state is
+   *       <code>ACTIVE</code>, the configuration is ready for recording a channel stream.</p>
+   */
+  state: RecordingConfigurationState | string | undefined;
+
+  /**
+   * <p>Array of 1-50 maps, each of the form <code>string:string (key:value)</code>.</p>
+   */
+  tags?: { [key: string]: string };
+}
+
+export namespace RecordingConfigurationSummary {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RecordingConfigurationSummary): any => ({
+    ...obj,
+  });
+}
+
+export interface ListRecordingConfigurationsResponse {
+  /**
+   * <p>List of the matching recording configurations.</p>
+   */
+  recordingConfigurations: RecordingConfigurationSummary[] | undefined;
+
+  /**
+   * <p>If there are more recording configurations than <code>maxResults</code>, use
+   *         <code>nextToken</code> in the request to get the next set.</p>
+   */
+  nextToken?: string;
+}
+
+export namespace ListRecordingConfigurationsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListRecordingConfigurationsResponse): any => ({
     ...obj,
   });
 }
@@ -821,12 +1253,15 @@ export interface ListStreamKeysRequest {
   nextToken?: string;
 
   /**
-   * <p>Maximum number of streamKeys to return.</p>
+   * <p>Maximum number of streamKeys to return. Default: 50.</p>
    */
   maxResults?: number;
 }
 
 export namespace ListStreamKeysRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListStreamKeysRequest): any => ({
     ...obj,
   });
@@ -853,6 +1288,9 @@ export interface StreamKeySummary {
 }
 
 export namespace StreamKeySummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StreamKeySummary): any => ({
     ...obj,
   });
@@ -872,6 +1310,9 @@ export interface ListStreamKeysResponse {
 }
 
 export namespace ListStreamKeysResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListStreamKeysResponse): any => ({
     ...obj,
   });
@@ -885,12 +1326,15 @@ export interface ListStreamsRequest {
   nextToken?: string;
 
   /**
-   * <p>Maximum number of streams to return.</p>
+   * <p>Maximum number of streams to return. Default: 50.</p>
    */
   maxResults?: number;
 }
 
 export namespace ListStreamsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListStreamsRequest): any => ({
     ...obj,
   });
@@ -916,7 +1360,8 @@ export interface StreamSummary {
   health?: StreamHealth | string;
 
   /**
-   * <p>Number of current viewers of the stream.</p>
+   * <p>Number of current viewers of the stream. A value of -1 indicates that the request timed
+   *       out; in this case, retry.</p>
    */
   viewerCount?: number;
 
@@ -927,6 +1372,9 @@ export interface StreamSummary {
 }
 
 export namespace StreamSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StreamSummary): any => ({
     ...obj,
   });
@@ -946,22 +1394,10 @@ export interface ListStreamsResponse {
 }
 
 export namespace ListStreamsResponse {
-  export const filterSensitiveLog = (obj: ListStreamsResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface InternalServerException extends __SmithyException, $MetadataBearer {
-  name: "InternalServerException";
-  $fault: "server";
   /**
-   * <p>Unexpected error during processing of request.</p>
+   * @internal
    */
-  exceptionMessage?: string;
-}
-
-export namespace InternalServerException {
-  export const filterSensitiveLog = (obj: InternalServerException): any => ({
+  export const filterSensitiveLog = (obj: ListStreamsResponse): any => ({
     ...obj,
   });
 }
@@ -979,12 +1415,15 @@ export interface ListTagsForResourceRequest {
   nextToken?: string;
 
   /**
-   * <p>Maximum number of tags to return.</p>
+   * <p>Maximum number of tags to return. Default: 50.</p>
    */
   maxResults?: number;
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -1000,6 +1439,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -1019,6 +1461,9 @@ export interface PutMetadataRequest {
 }
 
 export namespace PutMetadataRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutMetadataRequest): any => ({
     ...obj,
   });
@@ -1034,6 +1479,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -1047,6 +1495,9 @@ export interface StopStreamRequest {
 }
 
 export namespace StopStreamRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopStreamRequest): any => ({
     ...obj,
   });
@@ -1055,6 +1506,9 @@ export namespace StopStreamRequest {
 export interface StopStreamResponse {}
 
 export namespace StopStreamResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopStreamResponse): any => ({
     ...obj,
   });
@@ -1070,6 +1524,9 @@ export interface StreamUnavailable extends __SmithyException, $MetadataBearer {
 }
 
 export namespace StreamUnavailable {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StreamUnavailable): any => ({
     ...obj,
   });
@@ -1088,6 +1545,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -1096,6 +1556,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -1114,6 +1577,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -1122,6 +1588,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
@@ -1139,14 +1608,17 @@ export interface UpdateChannelRequest {
   name?: string;
 
   /**
-   * <p>Channel latency mode. Default: <code>LOW</code>.</p>
+   * <p>Channel latency mode. Use <code>NORMAL</code> to broadcast and deliver live video up to Full HD. Use
+   *       <code>LOW</code> for near-real-time interaction with viewers. (Note: In the Amazon IVS console,
+   *         <code>LOW</code> and <code>NORMAL</code> correspond to Ultra-low and Standard,
+   *       respectively.)</p>
    */
   latencyMode?: ChannelLatencyMode | string;
 
   /**
    * <p>Channel type, which determines the allowable resolution and bitrate. <i>If you
    *         exceed the allowable resolution or bitrate, the stream probably will disconnect
-   *         immediately.</i> Valid values:</p>
+   *         immediately</i>. Valid values:</p>
    *          <ul>
    *             <li>
    *                <p>
@@ -1161,17 +1633,25 @@ export interface UpdateChannelRequest {
    *           480 and bitrate can be up to 1.5 Mbps.</p>
    *             </li>
    *          </ul>
-   *          <p>Default: <code>STANDARD</code>.</p>
    */
   type?: ChannelType | string;
 
   /**
-   * <p>Whether the channel is authorized. Default: <code>false</code>.</p>
+   * <p>Whether the channel is private (enabled for playback authorization).</p>
    */
   authorized?: boolean;
+
+  /**
+   * <p>Recording-configuration ARN. If this is set to an empty string, recording is disabled. A
+   *       value other than an empty string indicates that recording is enabled</p>
+   */
+  recordingConfigurationArn?: string;
 }
 
 export namespace UpdateChannelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateChannelRequest): any => ({
     ...obj,
   });
@@ -1185,6 +1665,9 @@ export interface UpdateChannelResponse {
 }
 
 export namespace UpdateChannelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateChannelResponse): any => ({
     ...obj,
   });

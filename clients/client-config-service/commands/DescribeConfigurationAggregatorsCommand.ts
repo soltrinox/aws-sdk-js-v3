@@ -17,14 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeConfigurationAggregatorsCommandInput = DescribeConfigurationAggregatorsRequest;
-export type DescribeConfigurationAggregatorsCommandOutput = DescribeConfigurationAggregatorsResponse & __MetadataBearer;
+export interface DescribeConfigurationAggregatorsCommandInput extends DescribeConfigurationAggregatorsRequest {}
+export interface DescribeConfigurationAggregatorsCommandOutput
+  extends DescribeConfigurationAggregatorsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the details of one or more configuration aggregators.
  * 			If the configuration aggregator is not specified, this action
  * 			returns the details for all the configuration aggregators associated
  * 			with the account. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DescribeConfigurationAggregatorsCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DescribeConfigurationAggregatorsCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DescribeConfigurationAggregatorsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeConfigurationAggregatorsCommandInput} for command's `input` shape.
+ * @see {@link DescribeConfigurationAggregatorsCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeConfigurationAggregatorsCommand extends $Command<
   DescribeConfigurationAggregatorsCommandInput,

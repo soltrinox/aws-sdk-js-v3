@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type InviteAccountToOrganizationCommandInput = InviteAccountToOrganizationRequest;
-export type InviteAccountToOrganizationCommandOutput = InviteAccountToOrganizationResponse & __MetadataBearer;
+export interface InviteAccountToOrganizationCommandInput extends InviteAccountToOrganizationRequest {}
+export interface InviteAccountToOrganizationCommandOutput
+  extends InviteAccountToOrganizationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Sends an invitation to another account to join your organization as a member account.
@@ -28,12 +30,12 @@ export type InviteAccountToOrganizationCommandOutput = InviteAccountToOrganizati
  *         <important>
  *             <ul>
  *                <li>
- *                     <p>You can invite AWS accounts only from the same seller as the
- *                         management account. For example, if your organization's management account was
- *                         created by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in
- *                         India, you can invite only other AISPL accounts to your organization. You
- *                         can't combine accounts from AISPL and AWS or from any other AWS seller.
- *                         For more information, see <a href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html">Consolidated
+ *                     <p>You can invite AWS accounts only from the same seller as the management
+ *                         account. For example, if your organization's management account was created
+ *                         by Amazon Internet Services Pvt. Ltd (AISPL), an AWS seller in India, you
+ *                         can invite only other AISPL accounts to your organization. You can't combine
+ *                         accounts from AISPL and AWS or from any other AWS seller. For more
+ *                         information, see <a href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilliing-India.html">Consolidated
  *                             Billing in India</a>.</p>
  *                 </li>
  *                <li>
@@ -47,6 +49,20 @@ export type InviteAccountToOrganizationCommandOutput = InviteAccountToOrganizati
  *         <p>If the request includes tags, then the requester must have the
  *                 <code>organizations:TagResource</code> permission.</p>
  *         <p>This operation can be called only from the organization's management account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, InviteAccountToOrganizationCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, InviteAccountToOrganizationCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new InviteAccountToOrganizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link InviteAccountToOrganizationCommandInput} for command's `input` shape.
+ * @see {@link InviteAccountToOrganizationCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class InviteAccountToOrganizationCommand extends $Command<
   InviteAccountToOrganizationCommandInput,

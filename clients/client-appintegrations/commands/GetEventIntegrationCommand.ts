@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetEventIntegrationCommandInput = GetEventIntegrationRequest;
-export type GetEventIntegrationCommandOutput = GetEventIntegrationResponse & __MetadataBearer;
+export interface GetEventIntegrationCommandInput extends GetEventIntegrationRequest {}
+export interface GetEventIntegrationCommandOutput extends GetEventIntegrationResponse, __MetadataBearer {}
 
 /**
  * <p>The Amazon AppIntegrations APIs are in preview release and are subject to change.</p>
  *          <p>Return information about the event integration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppIntegrationsClient, GetEventIntegrationCommand } from "@aws-sdk/client-appintegrations"; // ES Modules import
+ * // const { AppIntegrationsClient, GetEventIntegrationCommand } = require("@aws-sdk/client-appintegrations"); // CommonJS import
+ * const client = new AppIntegrationsClient(config);
+ * const command = new GetEventIntegrationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetEventIntegrationCommandInput} for command's `input` shape.
+ * @see {@link GetEventIntegrationCommandOutput} for command's `response` shape.
+ * @see {@link AppIntegrationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetEventIntegrationCommand extends $Command<
   GetEventIntegrationCommandInput,

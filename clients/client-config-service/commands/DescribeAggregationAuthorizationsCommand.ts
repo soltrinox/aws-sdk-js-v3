@@ -20,13 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAggregationAuthorizationsCommandInput = DescribeAggregationAuthorizationsRequest;
-export type DescribeAggregationAuthorizationsCommandOutput = DescribeAggregationAuthorizationsResponse &
-  __MetadataBearer;
+export interface DescribeAggregationAuthorizationsCommandInput extends DescribeAggregationAuthorizationsRequest {}
+export interface DescribeAggregationAuthorizationsCommandOutput
+  extends DescribeAggregationAuthorizationsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns a list of authorizations granted to various aggregator
  * 			accounts and regions.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DescribeAggregationAuthorizationsCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DescribeAggregationAuthorizationsCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DescribeAggregationAuthorizationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAggregationAuthorizationsCommandInput} for command's `input` shape.
+ * @see {@link DescribeAggregationAuthorizationsCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAggregationAuthorizationsCommand extends $Command<
   DescribeAggregationAuthorizationsCommandInput,

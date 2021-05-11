@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDataSourceFromRedshiftCommandInput = CreateDataSourceFromRedshiftInput;
-export type CreateDataSourceFromRedshiftCommandOutput = CreateDataSourceFromRedshiftOutput & __MetadataBearer;
+export interface CreateDataSourceFromRedshiftCommandInput extends CreateDataSourceFromRedshiftInput {}
+export interface CreateDataSourceFromRedshiftCommandOutput
+  extends CreateDataSourceFromRedshiftOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a <code>DataSource</code> from a database hosted on an Amazon Redshift cluster. A
@@ -54,6 +56,20 @@ export type CreateDataSourceFromRedshiftCommandOutput = CreateDataSourceFromReds
  *                 <code>GetDataSource</code> for an existing datasource and copy the values to a
  *                 <code>CreateDataSource</code> call. Change the settings that you want to change and
  *             make sure that all required fields have the appropriate values.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MachineLearningClient, CreateDataSourceFromRedshiftCommand } from "@aws-sdk/client-machine-learning"; // ES Modules import
+ * // const { MachineLearningClient, CreateDataSourceFromRedshiftCommand } = require("@aws-sdk/client-machine-learning"); // CommonJS import
+ * const client = new MachineLearningClient(config);
+ * const command = new CreateDataSourceFromRedshiftCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDataSourceFromRedshiftCommandInput} for command's `input` shape.
+ * @see {@link CreateDataSourceFromRedshiftCommandOutput} for command's `response` shape.
+ * @see {@link MachineLearningClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDataSourceFromRedshiftCommand extends $Command<
   CreateDataSourceFromRedshiftCommandInput,

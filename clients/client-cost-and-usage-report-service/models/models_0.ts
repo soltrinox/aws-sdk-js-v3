@@ -18,6 +18,9 @@ export interface DeleteReportDefinitionRequest {
 }
 
 export namespace DeleteReportDefinitionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReportDefinitionRequest): any => ({
     ...obj,
   });
@@ -34,6 +37,9 @@ export interface DeleteReportDefinitionResponse {
 }
 
 export namespace DeleteReportDefinitionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReportDefinitionResponse): any => ({
     ...obj,
   });
@@ -52,6 +58,9 @@ export interface InternalErrorException extends __SmithyException, $MetadataBear
 }
 
 export namespace InternalErrorException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalErrorException): any => ({
     ...obj,
   });
@@ -70,6 +79,9 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
@@ -91,6 +103,9 @@ export interface DescribeReportDefinitionsRequest {
 }
 
 export namespace DescribeReportDefinitionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReportDefinitionsRequest): any => ({
     ...obj,
   });
@@ -213,9 +228,19 @@ export interface ReportDefinition {
    *          to deliver the report in addition to the previous versions.</p>
    */
   ReportVersioning?: ReportVersioning | string;
+
+  /**
+   * <p>
+   *       The Amazon resource name of the billing view. You can get this value by using the billing view service public APIs.
+   *     </p>
+   */
+  BillingViewArn?: string;
 }
 
 export namespace ReportDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReportDefinition): any => ({
     ...obj,
   });
@@ -237,6 +262,9 @@ export interface DescribeReportDefinitionsResponse {
 }
 
 export namespace DescribeReportDefinitionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReportDefinitionsResponse): any => ({
     ...obj,
   });
@@ -259,6 +287,9 @@ export interface ModifyReportDefinitionRequest {
 }
 
 export namespace ModifyReportDefinitionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyReportDefinitionRequest): any => ({
     ...obj,
   });
@@ -267,6 +298,9 @@ export namespace ModifyReportDefinitionRequest {
 export interface ModifyReportDefinitionResponse {}
 
 export namespace ModifyReportDefinitionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyReportDefinitionResponse): any => ({
     ...obj,
   });
@@ -285,6 +319,9 @@ export interface DuplicateReportNameException extends __SmithyException, $Metada
 }
 
 export namespace DuplicateReportNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DuplicateReportNameException): any => ({
     ...obj,
   });
@@ -302,6 +339,9 @@ export interface PutReportDefinitionRequest {
 }
 
 export namespace PutReportDefinitionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutReportDefinitionRequest): any => ({
     ...obj,
   });
@@ -313,6 +353,9 @@ export namespace PutReportDefinitionRequest {
 export interface PutReportDefinitionResponse {}
 
 export namespace PutReportDefinitionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutReportDefinitionResponse): any => ({
     ...obj,
   });
@@ -331,6 +374,9 @@ export interface ReportLimitReachedException extends __SmithyException, $Metadat
 }
 
 export namespace ReportLimitReachedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReportLimitReachedException): any => ({
     ...obj,
   });

@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyDBClusterParameterGroupCommandInput = ModifyDBClusterParameterGroupMessage;
-export type ModifyDBClusterParameterGroupCommandOutput = DBClusterParameterGroupNameMessage & __MetadataBearer;
+export interface ModifyDBClusterParameterGroupCommandInput extends ModifyDBClusterParameterGroupMessage {}
+export interface ModifyDBClusterParameterGroupCommandOutput
+  extends DBClusterParameterGroupNameMessage,
+    __MetadataBearer {}
 
 /**
  * <p>
@@ -52,6 +54,20 @@ export type ModifyDBClusterParameterGroupCommandOutput = DBClusterParameterGroup
  *          <note>
  *             <p>This action only applies to Aurora DB clusters.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, ModifyDBClusterParameterGroupCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, ModifyDBClusterParameterGroupCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new ModifyDBClusterParameterGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyDBClusterParameterGroupCommandInput} for command's `input` shape.
+ * @see {@link ModifyDBClusterParameterGroupCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyDBClusterParameterGroupCommand extends $Command<
   ModifyDBClusterParameterGroupCommandInput,

@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateContactCommandInput = UpdateContactRequest;
-export type UpdateContactCommandOutput = UpdateContactResponse & __MetadataBearer;
+export interface UpdateContactCommandInput extends UpdateContactRequest {}
+export interface UpdateContactCommandOutput extends UpdateContactResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a contact's preferences for a list. It is not necessary to specify all
  *             existing topic preferences in the TopicPreferences object, just the ones that need
  *             updating.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, UpdateContactCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, UpdateContactCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new UpdateContactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateContactCommandInput} for command's `input` shape.
+ * @see {@link UpdateContactCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateContactCommand extends $Command<
   UpdateContactCommandInput,

@@ -17,14 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DetachCertificateFromDistributionCommandInput = DetachCertificateFromDistributionRequest;
-export type DetachCertificateFromDistributionCommandOutput = DetachCertificateFromDistributionResult & __MetadataBearer;
+export interface DetachCertificateFromDistributionCommandInput extends DetachCertificateFromDistributionRequest {}
+export interface DetachCertificateFromDistributionCommandOutput
+  extends DetachCertificateFromDistributionResult,
+    __MetadataBearer {}
 
 /**
  * <p>Detaches an SSL/TLS certificate from your Amazon Lightsail content delivery network (CDN)
  *       distribution.</p>
  *          <p>After the certificate is detached, your distribution stops accepting traffic for all of
  *       the domains that are associated with the certificate.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, DetachCertificateFromDistributionCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, DetachCertificateFromDistributionCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new DetachCertificateFromDistributionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DetachCertificateFromDistributionCommandInput} for command's `input` shape.
+ * @see {@link DetachCertificateFromDistributionCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DetachCertificateFromDistributionCommand extends $Command<
   DetachCertificateFromDistributionCommandInput,

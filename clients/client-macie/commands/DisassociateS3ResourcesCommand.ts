@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateS3ResourcesCommandInput = DisassociateS3ResourcesRequest;
-export type DisassociateS3ResourcesCommandOutput = DisassociateS3ResourcesResult & __MetadataBearer;
+export interface DisassociateS3ResourcesCommandInput extends DisassociateS3ResourcesRequest {}
+export interface DisassociateS3ResourcesCommandOutput extends DisassociateS3ResourcesResult, __MetadataBearer {}
 
 /**
  * <p>Removes specified S3 resources from being monitored by Amazon Macie Classic. If
  *       memberAccountId isn't specified, the action removes specified S3 resources from Macie Classic
- *       for the current master account. If memberAccountId is specified, the action removes specified
+ *       for the current Macie Classic administrator account. If memberAccountId is specified, the action removes specified
  *       S3 resources from Macie Classic for the specified member account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MacieClient, DisassociateS3ResourcesCommand } from "@aws-sdk/client-macie"; // ES Modules import
+ * // const { MacieClient, DisassociateS3ResourcesCommand } = require("@aws-sdk/client-macie"); // CommonJS import
+ * const client = new MacieClient(config);
+ * const command = new DisassociateS3ResourcesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateS3ResourcesCommandInput} for command's `input` shape.
+ * @see {@link DisassociateS3ResourcesCommandOutput} for command's `response` shape.
+ * @see {@link MacieClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateS3ResourcesCommand extends $Command<
   DisassociateS3ResourcesCommandInput,

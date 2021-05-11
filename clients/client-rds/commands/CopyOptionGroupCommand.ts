@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CopyOptionGroupCommandInput = CopyOptionGroupMessage;
-export type CopyOptionGroupCommandOutput = CopyOptionGroupResult & __MetadataBearer;
+export interface CopyOptionGroupCommandInput extends CopyOptionGroupMessage {}
+export interface CopyOptionGroupCommandOutput extends CopyOptionGroupResult, __MetadataBearer {}
 
 /**
  * <p>Copies the specified option group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, CopyOptionGroupCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, CopyOptionGroupCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new CopyOptionGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CopyOptionGroupCommandInput} for command's `input` shape.
+ * @see {@link CopyOptionGroupCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CopyOptionGroupCommand extends $Command<
   CopyOptionGroupCommandInput,

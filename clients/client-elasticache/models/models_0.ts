@@ -2,8 +2,8 @@ import { SmithyException as __SmithyException } from "@aws-sdk/smithy-client";
 import { MetadataBearer as $MetadataBearer } from "@aws-sdk/types";
 
 /**
- * <p>A cost allocation Tag that can be added to an ElastiCache cluster or replication group.
- *             Tags are composed of a Key/Value pair. A tag with a null Value is permitted.</p>
+ * <p>A tag that can be added to an ElastiCache cluster or replication group.
+ *             Tags are composed of a Key/Value pair. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. A tag with a null Value is permitted.</p>
  */
 export interface Tag {
   /**
@@ -18,6 +18,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -37,13 +40,16 @@ export interface AddTagsToResourceMessage {
   ResourceName: string | undefined;
 
   /**
-   * <p>A list of cost allocation tags to be added to this resource. A tag is a key-value pair.
-   *           A tag key must be accompanied by a tag value.</p>
+   * <p>A list of tags to be added to this resource. A tag is a key-value pair.
+   *           A tag key must be accompanied by a tag value, although null is accepted.</p>
    */
   Tags: Tag[] | undefined;
 }
 
 export namespace AddTagsToResourceMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsToResourceMessage): any => ({
     ...obj,
   });
@@ -59,7 +65,64 @@ export interface CacheClusterNotFoundFault extends __SmithyException, $MetadataB
 }
 
 export namespace CacheClusterNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheClusterNotFoundFault): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The requested cache parameter group name does not refer to an existing cache parameter group.</p>
+ */
+export interface CacheParameterGroupNotFoundFault extends __SmithyException, $MetadataBearer {
+  name: "CacheParameterGroupNotFoundFault";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace CacheParameterGroupNotFoundFault {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CacheParameterGroupNotFoundFault): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The requested cache security group name does not refer to an existing cache security group.</p>
+ */
+export interface CacheSecurityGroupNotFoundFault extends __SmithyException, $MetadataBearer {
+  name: "CacheSecurityGroupNotFoundFault";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace CacheSecurityGroupNotFoundFault {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CacheSecurityGroupNotFoundFault): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The requested cache subnet group name does not refer to an existing cache subnet group.</p>
+ */
+export interface CacheSubnetGroupNotFoundFault extends __SmithyException, $MetadataBearer {
+  name: "CacheSubnetGroupNotFoundFault";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace CacheSubnetGroupNotFoundFault {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CacheSubnetGroupNotFoundFault): any => ({
     ...obj,
   });
 }
@@ -74,7 +137,64 @@ export interface InvalidARNFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidARNFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidARNFault): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The requested replication group is not in the <code>available</code> state.</p>
+ */
+export interface InvalidReplicationGroupStateFault extends __SmithyException, $MetadataBearer {
+  name: "InvalidReplicationGroupStateFault";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace InvalidReplicationGroupStateFault {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidReplicationGroupStateFault): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The specified replication group does not exist.</p>
+ */
+export interface ReplicationGroupNotFoundFault extends __SmithyException, $MetadataBearer {
+  name: "ReplicationGroupNotFoundFault";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace ReplicationGroupNotFoundFault {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReplicationGroupNotFoundFault): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The requested reserved cache node was not found.</p>
+ */
+export interface ReservedCacheNodeNotFoundFault extends __SmithyException, $MetadataBearer {
+  name: "ReservedCacheNodeNotFoundFault";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace ReservedCacheNodeNotFoundFault {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReservedCacheNodeNotFoundFault): any => ({
     ...obj,
   });
 }
@@ -89,6 +209,9 @@ export interface SnapshotNotFoundFault extends __SmithyException, $MetadataBeare
 }
 
 export namespace SnapshotNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SnapshotNotFoundFault): any => ({
     ...obj,
   });
@@ -100,12 +223,15 @@ export namespace SnapshotNotFoundFault {
  */
 export interface TagListMessage {
   /**
-   * <p>A list of cost allocation tags as key-value pairs.</p>
+   * <p>A list of tags as key-value pairs.</p>
    */
   TagList?: Tag[];
 }
 
 export namespace TagListMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagListMessage): any => ({
     ...obj,
   });
@@ -121,7 +247,46 @@ export interface TagQuotaPerResourceExceeded extends __SmithyException, $Metadat
 }
 
 export namespace TagQuotaPerResourceExceeded {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagQuotaPerResourceExceeded): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The user group was not found or does not exist</p>
+ */
+export interface UserGroupNotFoundFault extends __SmithyException, $MetadataBearer {
+  name: "UserGroupNotFoundFault";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace UserGroupNotFoundFault {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UserGroupNotFoundFault): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The user does not exist or could not be found.</p>
+ */
+export interface UserNotFoundFault extends __SmithyException, $MetadataBearer {
+  name: "UserNotFoundFault";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace UserNotFoundFault {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UserNotFoundFault): any => ({
     ...obj,
   });
 }
@@ -148,6 +313,9 @@ export interface AllowedNodeTypeModificationsMessage {
 }
 
 export namespace AllowedNodeTypeModificationsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AllowedNodeTypeModificationsMessage): any => ({
     ...obj,
   });
@@ -163,6 +331,9 @@ export interface AuthorizationAlreadyExistsFault extends __SmithyException, $Met
 }
 
 export namespace AuthorizationAlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AuthorizationAlreadyExistsFault): any => ({
     ...obj,
   });
@@ -191,6 +362,9 @@ export interface AuthorizeCacheSecurityGroupIngressMessage {
 }
 
 export namespace AuthorizeCacheSecurityGroupIngressMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AuthorizeCacheSecurityGroupIngressMessage): any => ({
     ...obj,
   });
@@ -217,6 +391,9 @@ export interface EC2SecurityGroup {
 }
 
 export namespace EC2SecurityGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EC2SecurityGroup): any => ({
     ...obj,
   });
@@ -270,6 +447,9 @@ export interface CacheSecurityGroup {
 }
 
 export namespace CacheSecurityGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheSecurityGroup): any => ({
     ...obj,
   });
@@ -300,22 +480,10 @@ export interface AuthorizeCacheSecurityGroupIngressResult {
 }
 
 export namespace AuthorizeCacheSecurityGroupIngressResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AuthorizeCacheSecurityGroupIngressResult): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The requested cache security group name does not refer to an existing cache security group.</p>
- */
-export interface CacheSecurityGroupNotFoundFault extends __SmithyException, $MetadataBearer {
-  name: "CacheSecurityGroupNotFoundFault";
-  $fault: "client";
-  message?: string;
-}
-
-export namespace CacheSecurityGroupNotFoundFault {
-  export const filterSensitiveLog = (obj: CacheSecurityGroupNotFoundFault): any => ({
     ...obj,
   });
 }
@@ -330,6 +498,9 @@ export interface InvalidCacheSecurityGroupStateFault extends __SmithyException, 
 }
 
 export namespace InvalidCacheSecurityGroupStateFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidCacheSecurityGroupStateFault): any => ({
     ...obj,
   });
@@ -348,6 +519,9 @@ export interface InvalidParameterCombinationException extends __SmithyException,
 }
 
 export namespace InvalidParameterCombinationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidParameterCombinationException): any => ({
     ...obj,
   });
@@ -366,6 +540,9 @@ export interface InvalidParameterValueException extends __SmithyException, $Meta
 }
 
 export namespace InvalidParameterValueException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidParameterValueException): any => ({
     ...obj,
   });
@@ -389,6 +566,9 @@ export interface BatchApplyUpdateActionMessage {
 }
 
 export namespace BatchApplyUpdateActionMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchApplyUpdateActionMessage): any => ({
     ...obj,
   });
@@ -404,6 +584,9 @@ export interface ServiceUpdateNotFoundFault extends __SmithyException, $Metadata
 }
 
 export namespace ServiceUpdateNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceUpdateNotFoundFault): any => ({
     ...obj,
   });
@@ -447,6 +630,9 @@ export interface ProcessedUpdateAction {
 }
 
 export namespace ProcessedUpdateAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProcessedUpdateAction): any => ({
     ...obj,
   });
@@ -483,6 +669,9 @@ export interface UnprocessedUpdateAction {
 }
 
 export namespace UnprocessedUpdateAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnprocessedUpdateAction): any => ({
     ...obj,
   });
@@ -501,6 +690,9 @@ export interface UpdateActionResultsMessage {
 }
 
 export namespace UpdateActionResultsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateActionResultsMessage): any => ({
     ...obj,
   });
@@ -524,6 +716,9 @@ export interface BatchStopUpdateActionMessage {
 }
 
 export namespace BatchStopUpdateActionMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchStopUpdateActionMessage): any => ({
     ...obj,
   });
@@ -542,6 +737,9 @@ export interface CompleteMigrationMessage {
 }
 
 export namespace CompleteMigrationMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompleteMigrationMessage): any => ({
     ...obj,
   });
@@ -570,28 +768,163 @@ export interface Endpoint {
 }
 
 export namespace Endpoint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Endpoint): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The name of the Global Datastore and role of this replication group in the Global Datastore.</p>
+ * <p>The name of the Global datastore and role of this replication group in the Global datastore.</p>
  */
 export interface GlobalReplicationGroupInfo {
   /**
-   * <p>The name of the Global Datastore</p>
+   * <p>The name of the Global datastore</p>
    */
   GlobalReplicationGroupId?: string;
 
   /**
-   * <p>The role of the replication group in a Global Datastore. Can be primary or secondary.</p>
+   * <p>The role of the replication group in a Global datastore. Can be primary or secondary.</p>
    */
   GlobalReplicationGroupMemberRole?: string;
 }
 
 export namespace GlobalReplicationGroupInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GlobalReplicationGroupInfo): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The configuration details of the CloudWatch Logs destination.</p>
+ */
+export interface CloudWatchLogsDestinationDetails {
+  /**
+   * <p>The name of the CloudWatch Logs log group.</p>
+   */
+  LogGroup?: string;
+}
+
+export namespace CloudWatchLogsDestinationDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CloudWatchLogsDestinationDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The configuration details of the Kinesis Data Firehose destination.</p>
+ */
+export interface KinesisFirehoseDestinationDetails {
+  /**
+   * <p>The name of the Kinesis Data Firehose delivery stream.</p>
+   */
+  DeliveryStream?: string;
+}
+
+export namespace KinesisFirehoseDestinationDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: KinesisFirehoseDestinationDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.</p>
+ */
+export interface DestinationDetails {
+  /**
+   * <p>The configuration details of the CloudWatch Logs destination.</p>
+   */
+  CloudWatchLogsDetails?: CloudWatchLogsDestinationDetails;
+
+  /**
+   * <p>The configuration details of the Kinesis Data Firehose destination.</p>
+   */
+  KinesisFirehoseDetails?: KinesisFirehoseDestinationDetails;
+}
+
+export namespace DestinationDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DestinationDetails): any => ({
+    ...obj,
+  });
+}
+
+export enum DestinationType {
+  CloudWatchLogs = "cloudwatch-logs",
+  KinesisFirehose = "kinesis-firehose",
+}
+
+export enum LogFormat {
+  JSON = "json",
+  TEXT = "text",
+}
+
+export enum LogType {
+  SLOW_LOG = "slow-log",
+}
+
+export enum LogDeliveryConfigurationStatus {
+  ACTIVE = "active",
+  DISABLING = "disabling",
+  ENABLING = "enabling",
+  ERROR = "error",
+  MODIFYING = "modifying",
+}
+
+/**
+ * <p>Returns the destination, format and type of the logs. </p>
+ */
+export interface LogDeliveryConfiguration {
+  /**
+   * <p>Refers to <a href="https://redis.io/commands/slowlog">slow-log</a>.</p>
+   */
+  LogType?: LogType | string;
+
+  /**
+   * <p>Returns the destination type, either <code>cloudwatch-logs</code> or <code>kinesis-firehose</code>.</p>
+   */
+  DestinationType?: DestinationType | string;
+
+  /**
+   * <p>Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.</p>
+   */
+  DestinationDetails?: DestinationDetails;
+
+  /**
+   * <p>Returns the log format, either JSON or TEXT.</p>
+   */
+  LogFormat?: LogFormat | string;
+
+  /**
+   * <p>Returns the log delivery configuration status. Values are one of <code>enabling</code> | <code>disabling</code> | <code>modifying</code> | <code>active</code> | <code>error</code>
+   *          </p>
+   */
+  Status?: LogDeliveryConfigurationStatus | string;
+
+  /**
+   * <p>Returns an error message for the log delivery configuration.</p>
+   */
+  Message?: string;
+}
+
+export namespace LogDeliveryConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: LogDeliveryConfiguration): any => ({
     ...obj,
   });
 }
@@ -640,6 +973,9 @@ export interface NodeGroupMember {
 }
 
 export namespace NodeGroupMember {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeGroupMember): any => ({
     ...obj,
   });
@@ -686,6 +1022,9 @@ export interface NodeGroup {
 }
 
 export namespace NodeGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeGroup): any => ({
     ...obj,
   });
@@ -699,6 +1038,40 @@ export enum PendingAutomaticFailoverStatus {
 }
 
 /**
+ * <p>The log delivery configurations being modified </p>
+ */
+export interface PendingLogDeliveryConfiguration {
+  /**
+   * <p>Refers to <a href="https://redis.io/commands/slowlog">slow-log</a>.</p>
+   */
+  LogType?: LogType | string;
+
+  /**
+   * <p>Returns the destination type, either CloudWatch Logs or Kinesis Data Firehose.</p>
+   */
+  DestinationType?: DestinationType | string;
+
+  /**
+   * <p>Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.</p>
+   */
+  DestinationDetails?: DestinationDetails;
+
+  /**
+   * <p>Returns the log format, either JSON or TEXT</p>
+   */
+  LogFormat?: LogFormat | string;
+}
+
+export namespace PendingLogDeliveryConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PendingLogDeliveryConfiguration): any => ({
+    ...obj,
+  });
+}
+
+/**
  * <p>Represents the progress of an online resharding operation.</p>
  */
 export interface SlotMigration {
@@ -709,6 +1082,9 @@ export interface SlotMigration {
 }
 
 export namespace SlotMigration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SlotMigration): any => ({
     ...obj,
   });
@@ -725,6 +1101,9 @@ export interface ReshardingStatus {
 }
 
 export namespace ReshardingStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReshardingStatus): any => ({
     ...obj,
   });
@@ -746,6 +1125,9 @@ export interface UserGroupsUpdateStatus {
 }
 
 export namespace UserGroupsUpdateStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserGroupsUpdateStatus): any => ({
     ...obj,
   });
@@ -781,9 +1163,17 @@ export interface ReplicationGroupPendingModifiedValues {
    * <p>The user groups being modified.</p>
    */
   UserGroups?: UserGroupsUpdateStatus;
+
+  /**
+   * <p>The log delivery configurations being modified </p>
+   */
+  LogDeliveryConfigurations?: PendingLogDeliveryConfiguration[];
 }
 
 export namespace ReplicationGroupPendingModifiedValues {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationGroupPendingModifiedValues): any => ({
     ...obj,
   });
@@ -804,7 +1194,7 @@ export interface ReplicationGroup {
   Description?: string;
 
   /**
-   * <p>The name of the Global Datastore and role of this replication group in the Global Datastore.</p>
+   * <p>The name of the Global datastore and role of this replication group in the Global datastore.</p>
    */
   GlobalReplicationGroupInfo?: GlobalReplicationGroupInfo;
 
@@ -955,9 +1345,17 @@ export interface ReplicationGroup {
    * <p>The list of user group IDs that have access to the replication group.</p>
    */
   UserGroupIds?: string[];
+
+  /**
+   * <p>Returns the destination, format and type of the logs. </p>
+   */
+  LogDeliveryConfigurations?: LogDeliveryConfiguration[];
 }
 
 export namespace ReplicationGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationGroup): any => ({
     ...obj,
   });
@@ -971,37 +1369,10 @@ export interface CompleteMigrationResponse {
 }
 
 export namespace CompleteMigrationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompleteMigrationResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The requested replication group is not in the <code>available</code> state.</p>
- */
-export interface InvalidReplicationGroupStateFault extends __SmithyException, $MetadataBearer {
-  name: "InvalidReplicationGroupStateFault";
-  $fault: "client";
-  message?: string;
-}
-
-export namespace InvalidReplicationGroupStateFault {
-  export const filterSensitiveLog = (obj: InvalidReplicationGroupStateFault): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The specified replication group does not exist.</p>
- */
-export interface ReplicationGroupNotFoundFault extends __SmithyException, $MetadataBearer {
-  name: "ReplicationGroupNotFoundFault";
-  $fault: "client";
-  message?: string;
-}
-
-export namespace ReplicationGroupNotFoundFault {
-  export const filterSensitiveLog = (obj: ReplicationGroupNotFoundFault): any => ({
     ...obj,
   });
 }
@@ -1016,6 +1387,9 @@ export interface ReplicationGroupNotUnderMigrationFault extends __SmithyExceptio
 }
 
 export namespace ReplicationGroupNotUnderMigrationFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationGroupNotUnderMigrationFault): any => ({
     ...obj,
   });
@@ -1042,9 +1416,9 @@ export interface CopySnapshotMessage {
    *             This parameter is used only when exporting a snapshot for external access.</p>
    *         <p>When using this parameter to export a snapshot,
    *             be sure Amazon ElastiCache has the needed permissions to this S3 bucket.
-   *             For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access">Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket</a> in the <i>Amazon ElastiCache User Guide</i>.</p>
+   *             For more information, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access">Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket</a> in the <i>Amazon ElastiCache User Guide</i>.</p>
    *
-   *         <p>For more information, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html">Exporting a Snapshot</a> in the <i>Amazon ElastiCache User Guide</i>.</p>
+   *         <p>For more information, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html">Exporting a Snapshot</a> in the <i>Amazon ElastiCache User Guide</i>.</p>
    */
   TargetBucket?: string;
 
@@ -1052,9 +1426,17 @@ export interface CopySnapshotMessage {
    * <p>The ID of the KMS key used to encrypt the target snapshot.</p>
    */
   KmsKeyId?: string;
+
+  /**
+   * <p>A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CopySnapshotMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CopySnapshotMessage): any => ({
     ...obj,
   });
@@ -1098,7 +1480,7 @@ export interface NodeGroupConfiguration {
   ReplicaAvailabilityZones?: string[];
 
   /**
-   * <p>The output ARN of the primary node.</p>
+   * <p>The outpost ARN of the primary node.</p>
    */
   PrimaryOutpostArn?: string;
 
@@ -1109,6 +1491,9 @@ export interface NodeGroupConfiguration {
 }
 
 export namespace NodeGroupConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeGroupConfiguration): any => ({
     ...obj,
   });
@@ -1155,6 +1540,9 @@ export interface NodeSnapshot {
 }
 
 export namespace NodeSnapshot {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeSnapshot): any => ({
     ...obj,
   });
@@ -1227,7 +1615,8 @@ export interface Snapshot {
    * 						               </p>
    *
    * 						               <note>
-   *                         <p>At this time, M6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    *
    *
@@ -1337,7 +1726,8 @@ export interface Snapshot {
    *
    * 						               </p>
    * 						               <note>
-   *                         <p>At this time, R6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    * 					                <p>
    *                         <b>R5 node types:</b>
@@ -1428,7 +1818,7 @@ export interface Snapshot {
   /**
    * <p>The number of cache nodes in the source cluster.</p>
    *         <p>For clusters running Redis, this value must be 1.
-   *             For clusters running Memcached, this value must be between 1 and 20.</p>
+   *             For clusters running Memcached, this value must be between 1 and 40.</p>
    */
   NumCacheNodes?: number;
 
@@ -1571,6 +1961,9 @@ export interface Snapshot {
 }
 
 export namespace Snapshot {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Snapshot): any => ({
     ...obj,
   });
@@ -1584,6 +1977,9 @@ export interface CopySnapshotResult {
 }
 
 export namespace CopySnapshotResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CopySnapshotResult): any => ({
     ...obj,
   });
@@ -1599,6 +1995,9 @@ export interface InvalidSnapshotStateFault extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidSnapshotStateFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidSnapshotStateFault): any => ({
     ...obj,
   });
@@ -1614,6 +2013,9 @@ export interface SnapshotAlreadyExistsFault extends __SmithyException, $Metadata
 }
 
 export namespace SnapshotAlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SnapshotAlreadyExistsFault): any => ({
     ...obj,
   });
@@ -1629,6 +2031,9 @@ export interface SnapshotQuotaExceededFault extends __SmithyException, $Metadata
 }
 
 export namespace SnapshotQuotaExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SnapshotQuotaExceededFault): any => ({
     ...obj,
   });
@@ -1644,37 +2049,10 @@ export interface CacheClusterAlreadyExistsFault extends __SmithyException, $Meta
 }
 
 export namespace CacheClusterAlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheClusterAlreadyExistsFault): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The requested cache parameter group name does not refer to an existing cache parameter group.</p>
- */
-export interface CacheParameterGroupNotFoundFault extends __SmithyException, $MetadataBearer {
-  name: "CacheParameterGroupNotFoundFault";
-  $fault: "client";
-  message?: string;
-}
-
-export namespace CacheParameterGroupNotFoundFault {
-  export const filterSensitiveLog = (obj: CacheParameterGroupNotFoundFault): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The requested cache subnet group name does not refer to an existing cache subnet group.</p>
- */
-export interface CacheSubnetGroupNotFoundFault extends __SmithyException, $MetadataBearer {
-  name: "CacheSubnetGroupNotFoundFault";
-  $fault: "client";
-  message?: string;
-}
-
-export namespace CacheSubnetGroupNotFoundFault {
-  export const filterSensitiveLog = (obj: CacheSubnetGroupNotFoundFault): any => ({
     ...obj,
   });
 }
@@ -1689,6 +2067,9 @@ export interface ClusterQuotaForCustomerExceededFault extends __SmithyException,
 }
 
 export namespace ClusterQuotaForCustomerExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClusterQuotaForCustomerExceededFault): any => ({
     ...obj,
   });
@@ -1697,6 +2078,45 @@ export namespace ClusterQuotaForCustomerExceededFault {
 export enum AZMode {
   CROSS_AZ = "cross-az",
   SINGLE_AZ = "single-az",
+}
+
+/**
+ * <p>Specifies the destination, format and type of the logs. </p>
+ */
+export interface LogDeliveryConfigurationRequest {
+  /**
+   * <p>Refers to <a href="https://redis.io/commands/slowlog">slow-log</a>.</p>
+   */
+  LogType?: LogType | string;
+
+  /**
+   * <p>Specify either <code>cloudwatch-logs</code> or <code>kinesis-firehose</code> as the destination type.</p>
+   */
+  DestinationType?: DestinationType | string;
+
+  /**
+   * <p>Configuration details of either a CloudWatch Logs destination or Kinesis Data Firehose destination.</p>
+   */
+  DestinationDetails?: DestinationDetails;
+
+  /**
+   * <p>Specifies either JSON or TEXT</p>
+   */
+  LogFormat?: LogFormat | string;
+
+  /**
+   * <p>Specify if log delivery is enabled. Default <code>true</code>.</p>
+   */
+  Enabled?: boolean;
+}
+
+export namespace LogDeliveryConfigurationRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: LogDeliveryConfigurationRequest): any => ({
+    ...obj,
+  });
 }
 
 export enum OutpostMode {
@@ -1769,7 +2189,7 @@ export interface CreateCacheClusterMessage {
   /**
    * <p>The initial number of cache nodes that the cluster has.</p>
    *         <p>For clusters running Redis, this value must be 1.
-   *     For clusters running Memcached, this value must be between 1 and 20.</p>
+   *     For clusters running Memcached, this value must be between 1 and 40.</p>
    *         <p>If you need more than 20 nodes for your Memcached cluster,
    *             please fill out the ElastiCache Limit Increase Request form at <a href="http://aws.amazon.com/contact-us/elasticache-node-limit-request/">http://aws.amazon.com/contact-us/elasticache-node-limit-request/</a>.</p>
    */
@@ -1803,7 +2223,8 @@ export interface CreateCacheClusterMessage {
    * 						               </p>
    *
    * 						               <note>
-   *                         <p>At this time, M6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    *
    *
@@ -1913,7 +2334,8 @@ export interface CreateCacheClusterMessage {
    *
    * 						               </p>
    * 						               <note>
-   *                         <p>At this time, R6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    * 					                <p>
    *                         <b>R5 node types:</b>
@@ -2039,7 +2461,7 @@ export interface CreateCacheClusterMessage {
   SecurityGroupIds?: string[];
 
   /**
-   * <p>A list of cost allocation tags to be added to this resource.</p>
+   * <p>A list of tags to be added to this resource.</p>
    */
   Tags?: Tag[];
 
@@ -2071,51 +2493,6 @@ export interface CreateCacheClusterMessage {
    *             the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum
    *             maintenance window is a 60 minute period.
    *             Valid values for <code>ddd</code> are:</p>
-   *
-   *          <p>Specifies the weekly time range during which maintenance
-   *    on the cluster is performed. It is specified as a range in
-   *    the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum
-   *    maintenance window is a 60 minute period.</p>
-   *          <p>Valid values for <code>ddd</code> are:</p>
-   *          <ul>
-   *             <li>
-   *                <p>
-   *                   <code>sun</code>
-   *                </p>
-   *             </li>
-   *             <li>
-   *                <p>
-   *                   <code>mon</code>
-   *                </p>
-   *             </li>
-   *             <li>
-   *                <p>
-   *                   <code>tue</code>
-   *                </p>
-   *             </li>
-   *             <li>
-   *                <p>
-   *                   <code>wed</code>
-   *                </p>
-   *             </li>
-   *             <li>
-   *                <p>
-   *                   <code>thu</code>
-   *                </p>
-   *             </li>
-   *             <li>
-   *                <p>
-   *                   <code>fri</code>
-   *                </p>
-   *             </li>
-   *             <li>
-   *                <p>
-   *                   <code>sat</code>
-   *                </p>
-   *             </li>
-   *          </ul>
-   *          <p>Example: <code>sun:23:00-mon:01:30</code>
-   *          </p>
    */
   PreferredMaintenanceWindow?: string;
 
@@ -2195,9 +2572,17 @@ export interface CreateCacheClusterMessage {
    * <p>The outpost ARNs in which the cache cluster is created.</p>
    */
   PreferredOutpostArns?: string[];
+
+  /**
+   * <p>Specifies the destination, format and type of the logs. </p>
+   */
+  LogDeliveryConfigurations?: LogDeliveryConfigurationRequest[];
 }
 
 export namespace CreateCacheClusterMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCacheClusterMessage): any => ({
     ...obj,
   });
@@ -2234,7 +2619,8 @@ export namespace CreateCacheClusterMessage {
  * 						               </p>
  *
  * 						               <note>
- *                         <p>At this time, M6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+ *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+ *                         </p>
  *                      </note>
  *
  *
@@ -2344,7 +2730,8 @@ export namespace CreateCacheClusterMessage {
  *
  * 						               </p>
  * 						               <note>
- *                         <p>At this time, R6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+ *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+ *                         </p>
  *                      </note>
  * 					                <p>
  *                         <b>R5 node types:</b>
@@ -2463,6 +2850,9 @@ export interface CacheNode {
 }
 
 export namespace CacheNode {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheNode): any => ({
     ...obj,
   });
@@ -2490,6 +2880,9 @@ export interface CacheParameterGroupStatus {
 }
 
 export namespace CacheParameterGroupStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheParameterGroupStatus): any => ({
     ...obj,
   });
@@ -2511,6 +2904,9 @@ export interface CacheSecurityGroupMembership {
 }
 
 export namespace CacheSecurityGroupMembership {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheSecurityGroupMembership): any => ({
     ...obj,
   });
@@ -2534,6 +2930,9 @@ export interface NotificationConfiguration {
 }
 
 export namespace NotificationConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotificationConfiguration): any => ({
     ...obj,
   });
@@ -2547,7 +2946,7 @@ export interface PendingModifiedValues {
   /**
    * <p>The new number of cache nodes for the cluster.</p>
    *         <p>For clusters running Redis, this value must be 1.
-   *             For clusters running Memcached, this value must be between 1 and 20.</p>
+   *             For clusters running Memcached, this value must be between 1 and 40.</p>
    */
   NumCacheNodes?: number;
 
@@ -2571,9 +2970,17 @@ export interface PendingModifiedValues {
    * <p>The auth token status</p>
    */
   AuthTokenStatus?: AuthTokenUpdateStatus | string;
+
+  /**
+   * <p>The log delivery configurations being modified </p>
+   */
+  LogDeliveryConfigurations?: PendingLogDeliveryConfiguration[];
 }
 
 export namespace PendingModifiedValues {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PendingModifiedValues): any => ({
     ...obj,
   });
@@ -2597,6 +3004,9 @@ export interface SecurityGroupMembership {
 }
 
 export namespace SecurityGroupMembership {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SecurityGroupMembership): any => ({
     ...obj,
   });
@@ -2613,8 +3023,7 @@ export interface CacheCluster {
   CacheClusterId?: string;
 
   /**
-   * <p>Represents a Memcached cluster endpoint which, if Automatic Discovery is enabled on
-   *             the cluster, can be used by an application to connect to any node in the cluster.
+   * <p>Represents a Memcached cluster endpoint which can be used by an application to connect to any node in the cluster.
    *             The configuration endpoint will always have <code>.cfg</code> in it.</p>
    *         <p>Example: <code>mem-3.9dvc4r<u>.cfg</u>.usw2.cache.amazonaws.com:11211</code>
    *          </p>
@@ -2655,7 +3064,8 @@ export interface CacheCluster {
    * 						               </p>
    *
    * 						               <note>
-   *                         <p>At this time, M6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    *
    *
@@ -2765,7 +3175,8 @@ export interface CacheCluster {
    *
    * 						               </p>
    * 						               <note>
-   *                         <p>At this time, R6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    * 					                <p>
    *                         <b>R5 node types:</b>
@@ -2870,7 +3281,7 @@ export interface CacheCluster {
   /**
    * <p>The number of cache nodes in the cluster.</p>
    *         <p>For clusters running Redis, this value must be 1. For clusters running Memcached,
-   *             this value must be between 1 and 20.</p>
+   *             this value must be between 1 and 40.</p>
    */
   NumCacheNodes?: number;
 
@@ -3050,9 +3461,22 @@ export interface CacheCluster {
    * <p>The ARN (Amazon Resource Name) of the cache cluster.</p>
    */
   ARN?: string;
+
+  /**
+   * <p>A boolean value indicating whether log delivery is enabled for the replication group.</p>
+   */
+  ReplicationGroupLogDeliveryEnabled?: boolean;
+
+  /**
+   * <p>Returns the destination, format and type of the logs.</p>
+   */
+  LogDeliveryConfigurations?: LogDeliveryConfiguration[];
 }
 
 export namespace CacheCluster {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheCluster): any => ({
     ...obj,
   });
@@ -3066,6 +3490,9 @@ export interface CreateCacheClusterResult {
 }
 
 export namespace CreateCacheClusterResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCacheClusterResult): any => ({
     ...obj,
   });
@@ -3082,6 +3509,9 @@ export interface InsufficientCacheClusterCapacityFault extends __SmithyException
 }
 
 export namespace InsufficientCacheClusterCapacityFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsufficientCacheClusterCapacityFault): any => ({
     ...obj,
   });
@@ -3097,6 +3527,9 @@ export interface InvalidVPCNetworkStateFault extends __SmithyException, $Metadat
 }
 
 export namespace InvalidVPCNetworkStateFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidVPCNetworkStateFault): any => ({
     ...obj,
   });
@@ -3112,6 +3545,9 @@ export interface NodeQuotaForClusterExceededFault extends __SmithyException, $Me
 }
 
 export namespace NodeQuotaForClusterExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeQuotaForClusterExceededFault): any => ({
     ...obj,
   });
@@ -3127,6 +3563,9 @@ export interface NodeQuotaForCustomerExceededFault extends __SmithyException, $M
 }
 
 export namespace NodeQuotaForCustomerExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeQuotaForCustomerExceededFault): any => ({
     ...obj,
   });
@@ -3142,6 +3581,9 @@ export interface CacheParameterGroupAlreadyExistsFault extends __SmithyException
 }
 
 export namespace CacheParameterGroupAlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheParameterGroupAlreadyExistsFault): any => ({
     ...obj,
   });
@@ -3157,6 +3599,9 @@ export interface CacheParameterGroupQuotaExceededFault extends __SmithyException
 }
 
 export namespace CacheParameterGroupQuotaExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheParameterGroupQuotaExceededFault): any => ({
     ...obj,
   });
@@ -3191,9 +3636,17 @@ export interface CreateCacheParameterGroupMessage {
    * <p>A user-specified description for the cache parameter group.</p>
    */
   Description: string | undefined;
+
+  /**
+   * <p>A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateCacheParameterGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCacheParameterGroupMessage): any => ({
     ...obj,
   });
@@ -3230,7 +3683,7 @@ export interface CacheParameterGroup {
   Description?: string;
 
   /**
-   * <p>Indicates whether the parameter group is associated with a Global Datastore</p>
+   * <p>Indicates whether the parameter group is associated with a Global datastore</p>
    */
   IsGlobal?: boolean;
 
@@ -3241,6 +3694,9 @@ export interface CacheParameterGroup {
 }
 
 export namespace CacheParameterGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheParameterGroup): any => ({
     ...obj,
   });
@@ -3254,6 +3710,9 @@ export interface CreateCacheParameterGroupResult {
 }
 
 export namespace CreateCacheParameterGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCacheParameterGroupResult): any => ({
     ...obj,
   });
@@ -3269,6 +3728,9 @@ export interface InvalidCacheParameterGroupStateFault extends __SmithyException,
 }
 
 export namespace InvalidCacheParameterGroupStateFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidCacheParameterGroupStateFault): any => ({
     ...obj,
   });
@@ -3284,6 +3746,9 @@ export interface CacheSecurityGroupAlreadyExistsFault extends __SmithyException,
 }
 
 export namespace CacheSecurityGroupAlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheSecurityGroupAlreadyExistsFault): any => ({
     ...obj,
   });
@@ -3299,6 +3764,9 @@ export interface CacheSecurityGroupQuotaExceededFault extends __SmithyException,
 }
 
 export namespace CacheSecurityGroupQuotaExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheSecurityGroupQuotaExceededFault): any => ({
     ...obj,
   });
@@ -3320,9 +3788,17 @@ export interface CreateCacheSecurityGroupMessage {
    * <p>A description for the cache security group.</p>
    */
   Description: string | undefined;
+
+  /**
+   * <p>A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateCacheSecurityGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCacheSecurityGroupMessage): any => ({
     ...obj,
   });
@@ -3353,6 +3829,9 @@ export interface CreateCacheSecurityGroupResult {
 }
 
 export namespace CreateCacheSecurityGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCacheSecurityGroupResult): any => ({
     ...obj,
   });
@@ -3368,6 +3847,9 @@ export interface CacheSubnetGroupAlreadyExistsFault extends __SmithyException, $
 }
 
 export namespace CacheSubnetGroupAlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheSubnetGroupAlreadyExistsFault): any => ({
     ...obj,
   });
@@ -3383,6 +3865,9 @@ export interface CacheSubnetGroupQuotaExceededFault extends __SmithyException, $
 }
 
 export namespace CacheSubnetGroupQuotaExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheSubnetGroupQuotaExceededFault): any => ({
     ...obj,
   });
@@ -3398,6 +3883,9 @@ export interface CacheSubnetQuotaExceededFault extends __SmithyException, $Metad
 }
 
 export namespace CacheSubnetQuotaExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheSubnetQuotaExceededFault): any => ({
     ...obj,
   });
@@ -3424,9 +3912,17 @@ export interface CreateCacheSubnetGroupMessage {
    * <p>A list of VPC subnet IDs for the cache subnet group.</p>
    */
   SubnetIds: string[] | undefined;
+
+  /**
+   * <p>A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateCacheSubnetGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCacheSubnetGroupMessage): any => ({
     ...obj,
   });
@@ -3443,6 +3939,9 @@ export interface AvailabilityZone {
 }
 
 export namespace AvailabilityZone {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AvailabilityZone): any => ({
     ...obj,
   });
@@ -3459,6 +3958,9 @@ export interface SubnetOutpost {
 }
 
 export namespace SubnetOutpost {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SubnetOutpost): any => ({
     ...obj,
   });
@@ -3486,6 +3988,9 @@ export interface Subnet {
 }
 
 export namespace Subnet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Subnet): any => ({
     ...obj,
   });
@@ -3534,6 +4039,9 @@ export interface CacheSubnetGroup {
 }
 
 export namespace CacheSubnetGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheSubnetGroup): any => ({
     ...obj,
   });
@@ -3559,6 +4067,9 @@ export interface CreateCacheSubnetGroupResult {
 }
 
 export namespace CreateCacheSubnetGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCacheSubnetGroupResult): any => ({
     ...obj,
   });
@@ -3574,6 +4085,9 @@ export interface InvalidSubnet extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidSubnet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidSubnet): any => ({
     ...obj,
   });
@@ -3590,6 +4104,9 @@ export interface SubnetNotAllowedFault extends __SmithyException, $MetadataBeare
 }
 
 export namespace SubnetNotAllowedFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SubnetNotAllowedFault): any => ({
     ...obj,
   });
@@ -3597,14 +4114,14 @@ export namespace SubnetNotAllowedFault {
 
 export interface CreateGlobalReplicationGroupMessage {
   /**
-   * <p>The suffix name of a Global Datastore. Amazon ElastiCache automatically applies a prefix
-   *             to the Global Datastore ID when it is created. Each AWS Region has its own prefix. For instance, a Global Datastore ID created in the US-West-1 region will begin with "dsdfu" along with the suffix name you provide. The suffix, combined with the auto-generated prefix, guarantees uniqueness of the Global Datastore name across multiple regions.  </p>
-   *         <p>For a full list of AWS Regions and their respective Global Datastore iD prefixes, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Clusters-CLI.html">Using the AWS CLI with Global Datastores </a>.</p>
+   * <p>The suffix name of a Global datastore. Amazon ElastiCache automatically applies a prefix
+   *             to the Global datastore ID when it is created. Each AWS Region has its own prefix. For instance, a Global datastore ID created in the US-West-1 region will begin with "dsdfu" along with the suffix name you provide. The suffix, combined with the auto-generated prefix, guarantees uniqueness of the Global datastore name across multiple regions.  </p>
+   *         <p>For a full list of AWS Regions and their respective Global datastore iD prefixes, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastores-CLI.html">Using the AWS CLI with Global datastores </a>.</p>
    */
   GlobalReplicationGroupIdSuffix: string | undefined;
 
   /**
-   * <p>Provides details of the Global Datastore</p>
+   * <p>Provides details of the Global datastore</p>
    */
   GlobalReplicationGroupDescription?: string;
 
@@ -3615,6 +4132,9 @@ export interface CreateGlobalReplicationGroupMessage {
 }
 
 export namespace CreateGlobalReplicationGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateGlobalReplicationGroupMessage): any => ({
     ...obj,
   });
@@ -3636,22 +4156,25 @@ export interface GlobalNodeGroup {
 }
 
 export namespace GlobalNodeGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GlobalNodeGroup): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A member of a Global Datastore. It contains the Replication Group Id, the AWS region and the role of the replication group. </p>
+ * <p>A member of a Global datastore. It contains the Replication Group Id, the AWS region and the role of the replication group. </p>
  */
 export interface GlobalReplicationGroupMember {
   /**
-   * <p>The replication group id of the Global Datastore member.</p>
+   * <p>The replication group id of the Global datastore member.</p>
    */
   ReplicationGroupId?: string;
 
   /**
-   * <p>The AWS region of the Global Datastore member.</p>
+   * <p>The AWS region of the Global datastore member.</p>
    */
   ReplicationGroupRegion?: string;
 
@@ -3672,6 +4195,9 @@ export interface GlobalReplicationGroupMember {
 }
 
 export namespace GlobalReplicationGroupMember {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GlobalReplicationGroupMember): any => ({
     ...obj,
   });
@@ -3684,29 +4210,29 @@ export namespace GlobalReplicationGroupMember {
  *
  *         <ul>
  *             <li>
- *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global Datastore,
+ *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global datastore,
  *             which is what you use to associate a secondary cluster.</p>
  *             </li>
  *          </ul>
  */
 export interface GlobalReplicationGroup {
   /**
-   * <p>The name of the Global Datastore</p>
+   * <p>The name of the Global datastore</p>
    */
   GlobalReplicationGroupId?: string;
 
   /**
-   * <p>The optional description of the Global Datastore</p>
+   * <p>The optional description of the Global datastore</p>
    */
   GlobalReplicationGroupDescription?: string;
 
   /**
-   * <p>The status of the Global Datastore</p>
+   * <p>The status of the Global datastore</p>
    */
   Status?: string;
 
   /**
-   * <p>The cache node type of the Global Datastore</p>
+   * <p>The cache node type of the Global datastore</p>
    */
   CacheNodeType?: string;
 
@@ -3721,12 +4247,12 @@ export interface GlobalReplicationGroup {
   EngineVersion?: string;
 
   /**
-   * <p>The replication groups that comprise the Global Datastore.</p>
+   * <p>The replication groups that comprise the Global datastore.</p>
    */
   Members?: GlobalReplicationGroupMember[];
 
   /**
-   * <p>A flag that indicates whether the Global Datastore is cluster enabled.</p>
+   * <p>A flag that indicates whether the Global datastore is cluster enabled.</p>
    */
   ClusterEnabled?: boolean;
 
@@ -3747,6 +4273,9 @@ export interface GlobalReplicationGroup {
    * <p>A flag that enables in-transit encryption when set to true.
    *
    *             You cannot modify the value of <code>TransitEncryptionEnabled</code> after the cluster is created. To enable in-transit encryption on a cluster you must set <code>TransitEncryptionEnabled</code> to true when you create a cluster. </p>
+   *         <p>
+   *             <b>Required:</b>
+   *             Only available when creating a replication group in an Amazon VPC using redis version <code>3.2.6</code>, <code>4.x</code> or later.</p>
    */
   TransitEncryptionEnabled?: boolean;
 
@@ -3769,6 +4298,9 @@ export interface GlobalReplicationGroup {
 }
 
 export namespace GlobalReplicationGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GlobalReplicationGroup): any => ({
     ...obj,
   });
@@ -3782,7 +4314,7 @@ export interface CreateGlobalReplicationGroupResult {
    *
    *         <ul>
    *             <li>
-   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global Datastore,
+   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global datastore,
    *             which is what you use to associate a secondary cluster.</p>
    *             </li>
    *          </ul>
@@ -3791,13 +4323,16 @@ export interface CreateGlobalReplicationGroupResult {
 }
 
 export namespace CreateGlobalReplicationGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateGlobalReplicationGroupResult): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The Global Datastore name already exists.</p>
+ * <p>The Global datastore name already exists.</p>
  */
 export interface GlobalReplicationGroupAlreadyExistsFault extends __SmithyException, $MetadataBearer {
   name: "GlobalReplicationGroupAlreadyExistsFault";
@@ -3806,6 +4341,9 @@ export interface GlobalReplicationGroupAlreadyExistsFault extends __SmithyExcept
 }
 
 export namespace GlobalReplicationGroupAlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GlobalReplicationGroupAlreadyExistsFault): any => ({
     ...obj,
   });
@@ -3821,6 +4359,9 @@ export interface ServiceLinkedRoleNotFoundFault extends __SmithyException, $Meta
 }
 
 export namespace ServiceLinkedRoleNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceLinkedRoleNotFoundFault): any => ({
     ...obj,
   });
@@ -3854,7 +4395,7 @@ export interface CreateReplicationGroupMessage {
   ReplicationGroupDescription: string | undefined;
 
   /**
-   * <p>The name of the Global Datastore</p>
+   * <p>The name of the Global datastore</p>
    */
   GlobalReplicationGroupId?: string;
 
@@ -3963,7 +4504,8 @@ export interface CreateReplicationGroupMessage {
    * 						               </p>
    *
    * 						               <note>
-   *                         <p>At this time, M6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    *
    *
@@ -4073,7 +4615,8 @@ export interface CreateReplicationGroupMessage {
    *
    * 						               </p>
    * 						               <note>
-   *                         <p>At this time, R6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    * 					                <p>
    *                         <b>R5 node types:</b>
@@ -4151,7 +4694,7 @@ export interface CreateReplicationGroupMessage {
   CacheNodeType?: string;
 
   /**
-   * <p>The name of the cache engine to be used for the clusters in this replication group.</p>
+   * <p>The name of the cache engine to be used for the clusters in this replication group. Must be Redis.</p>
    */
   Engine?: string;
 
@@ -4172,9 +4715,7 @@ export interface CreateReplicationGroupMessage {
    * <p>The name of the parameter group to associate with this replication group.
    *             If this argument is omitted, the default cache parameter group for the specified engine is
    *             used.</p>
-   *         <note>
-   *             <p>If you are restoring to an engine version that is different than the original, you must specify the default version of that version. For example, <code>CacheParameterGroupName=default.redis4.0</code>.</p>
-   *          </note>
+   *
    *         <p>If you are running Redis version 3.2.4 or later, only one node group (shard), and want to use a default parameter group,
    *             we recommend that you specify the parameter group by name. </p>
    *         <ul>
@@ -4210,9 +4751,9 @@ export interface CreateReplicationGroupMessage {
   SecurityGroupIds?: string[];
 
   /**
-   * <p>A list of cost allocation tags to be added to this resource.
+   * <p>A list of tags to be added to this resource.
    *           Tags are comma-separated key,value pairs (e.g. Key=<code>myKey</code>, Value=<code>myKeyValue</code>. You can include multiple tags as shown following:
-   *           Key=<code>myKey</code>, Value=<code>myKeyValue</code> Key=<code>mySecondKey</code>, Value=<code>mySecondKeyValue</code>.</p>
+   *           Key=<code>myKey</code>, Value=<code>myKeyValue</code> Key=<code>mySecondKey</code>, Value=<code>mySecondKeyValue</code>. Tags on replication groups will be replicated to all nodes.</p>
    */
   Tags?: Tag[];
 
@@ -4399,9 +4940,17 @@ export interface CreateReplicationGroupMessage {
    * <p>The list of user groups to associate with the replication group.</p>
    */
   UserGroupIds?: string[];
+
+  /**
+   * <p>Specifies the destination, format and type of the logs.</p>
+   */
+  LogDeliveryConfigurations?: LogDeliveryConfigurationRequest[];
 }
 
 export namespace CreateReplicationGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateReplicationGroupMessage): any => ({
     ...obj,
   });
@@ -4415,13 +4964,16 @@ export interface CreateReplicationGroupResult {
 }
 
 export namespace CreateReplicationGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateReplicationGroupResult): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The Global Datastore does not exist</p>
+ * <p>The Global datastore does not exist</p>
  */
 export interface GlobalReplicationGroupNotFoundFault extends __SmithyException, $MetadataBearer {
   name: "GlobalReplicationGroupNotFoundFault";
@@ -4430,6 +4982,9 @@ export interface GlobalReplicationGroupNotFoundFault extends __SmithyException, 
 }
 
 export namespace GlobalReplicationGroupNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GlobalReplicationGroupNotFoundFault): any => ({
     ...obj,
   });
@@ -4445,13 +5000,16 @@ export interface InvalidCacheClusterStateFault extends __SmithyException, $Metad
 }
 
 export namespace InvalidCacheClusterStateFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidCacheClusterStateFault): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The Global Datastore is not available or in primary-only state.</p>
+ * <p>The Global datastore is not available or in primary-only state.</p>
  */
 export interface InvalidGlobalReplicationGroupStateFault extends __SmithyException, $MetadataBearer {
   name: "InvalidGlobalReplicationGroupStateFault";
@@ -4460,6 +5018,9 @@ export interface InvalidGlobalReplicationGroupStateFault extends __SmithyExcepti
 }
 
 export namespace InvalidGlobalReplicationGroupStateFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidGlobalReplicationGroupStateFault): any => ({
     ...obj,
   });
@@ -4475,6 +5036,9 @@ export interface InvalidUserGroupStateFault extends __SmithyException, $Metadata
 }
 
 export namespace InvalidUserGroupStateFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidUserGroupStateFault): any => ({
     ...obj,
   });
@@ -4491,6 +5055,9 @@ export interface NodeGroupsPerReplicationGroupQuotaExceededFault extends __Smith
 }
 
 export namespace NodeGroupsPerReplicationGroupQuotaExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeGroupsPerReplicationGroupQuotaExceededFault): any => ({
     ...obj,
   });
@@ -4506,22 +5073,10 @@ export interface ReplicationGroupAlreadyExistsFault extends __SmithyException, $
 }
 
 export namespace ReplicationGroupAlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationGroupAlreadyExistsFault): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The user group was not found or does not exist</p>
- */
-export interface UserGroupNotFoundFault extends __SmithyException, $MetadataBearer {
-  name: "UserGroupNotFoundFault";
-  $fault: "client";
-  message?: string;
-}
-
-export namespace UserGroupNotFoundFault {
-  export const filterSensitiveLog = (obj: UserGroupNotFoundFault): any => ({
     ...obj,
   });
 }
@@ -4549,9 +5104,17 @@ export interface CreateSnapshotMessage {
    * <p>The ID of the KMS key used to encrypt the snapshot.</p>
    */
   KmsKeyId?: string;
+
+  /**
+   * <p>A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateSnapshotMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSnapshotMessage): any => ({
     ...obj,
   });
@@ -4565,6 +5128,9 @@ export interface CreateSnapshotResult {
 }
 
 export namespace CreateSnapshotResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSnapshotResult): any => ({
     ...obj,
   });
@@ -4590,6 +5156,9 @@ export interface SnapshotFeatureNotSupportedFault extends __SmithyException, $Me
 }
 
 export namespace SnapshotFeatureNotSupportedFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SnapshotFeatureNotSupportedFault): any => ({
     ...obj,
   });
@@ -4607,27 +5176,35 @@ export interface CreateUserMessage {
   UserName: string | undefined;
 
   /**
-   * <p>Must be Redis. </p>
+   * <p>The current supported value is Redis. </p>
    */
   Engine: string | undefined;
 
   /**
-   * <p>Passwords used for this user account. You can create up to two passwords for each user.</p>
+   * <p>Passwords used for this user. You can create up to two passwords for each user.</p>
    */
   Passwords?: string[];
 
   /**
-   * <p>Access permissions string used for this user account.</p>
+   * <p>Access permissions string used for this user.</p>
    */
   AccessString: string | undefined;
 
   /**
-   * <p>Indicates a password is not required for this user account.</p>
+   * <p>Indicates a password is not required for this user.</p>
    */
   NoPasswordRequired?: boolean;
+
+  /**
+   * <p>A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateUserMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateUserMessage): any => ({
     ...obj,
   });
@@ -4643,6 +5220,9 @@ export interface DuplicateUserNameFault extends __SmithyException, $MetadataBear
 }
 
 export namespace DuplicateUserNameFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DuplicateUserNameFault): any => ({
     ...obj,
   });
@@ -4669,6 +5249,9 @@ export interface Authentication {
 }
 
 export namespace Authentication {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Authentication): any => ({
     ...obj,
   });
@@ -4691,12 +5274,12 @@ export interface User {
   Status?: string;
 
   /**
-   * <p>Must be Redis. </p>
+   * <p>The current supported value is Redis.</p>
    */
   Engine?: string;
 
   /**
-   * <p>Access permissions string used for this user account.</p>
+   * <p>Access permissions string used for this user.</p>
    */
   AccessString?: string;
 
@@ -4711,12 +5294,15 @@ export interface User {
   Authentication?: Authentication;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of the user account.</p>
+   * <p>The Amazon Resource Name (ARN) of the user.</p>
    */
   ARN?: string;
 }
 
 export namespace User {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: User): any => ({
     ...obj,
   });
@@ -4732,6 +5318,9 @@ export interface UserAlreadyExistsFault extends __SmithyException, $MetadataBear
 }
 
 export namespace UserAlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserAlreadyExistsFault): any => ({
     ...obj,
   });
@@ -4747,6 +5336,9 @@ export interface UserQuotaExceededFault extends __SmithyException, $MetadataBear
 }
 
 export namespace UserQuotaExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserQuotaExceededFault): any => ({
     ...obj,
   });
@@ -4759,7 +5351,7 @@ export interface CreateUserGroupMessage {
   UserGroupId: string | undefined;
 
   /**
-   * <p>Must be Redis. </p>
+   * <p>The current supported value is Redis. </p>
    */
   Engine: string | undefined;
 
@@ -4767,9 +5359,17 @@ export interface CreateUserGroupMessage {
    * <p>The list of user IDs that belong to the user group.</p>
    */
   UserIds?: string[];
+
+  /**
+   * <p>A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateUserGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateUserGroupMessage): any => ({
     ...obj,
   });
@@ -4785,6 +5385,9 @@ export interface DefaultUserRequired extends __SmithyException, $MetadataBearer 
 }
 
 export namespace DefaultUserRequired {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DefaultUserRequired): any => ({
     ...obj,
   });
@@ -4795,7 +5398,7 @@ export namespace DefaultUserRequired {
  */
 export interface UserGroupPendingChanges {
   /**
-   * <p>The list of user group IDs ro remove.</p>
+   * <p>The list of user IDs to remove.</p>
    */
   UserIdsToRemove?: string[];
 
@@ -4806,6 +5409,9 @@ export interface UserGroupPendingChanges {
 }
 
 export namespace UserGroupPendingChanges {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserGroupPendingChanges): any => ({
     ...obj,
   });
@@ -4823,7 +5429,7 @@ export interface UserGroup {
   Status?: string;
 
   /**
-   * <p>Must be Redis. </p>
+   * <p>The current supported value is Redis. </p>
    */
   Engine?: string;
 
@@ -4849,6 +5455,9 @@ export interface UserGroup {
 }
 
 export namespace UserGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserGroup): any => ({
     ...obj,
   });
@@ -4864,6 +5473,9 @@ export interface UserGroupAlreadyExistsFault extends __SmithyException, $Metadat
 }
 
 export namespace UserGroupAlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserGroupAlreadyExistsFault): any => ({
     ...obj,
   });
@@ -4879,29 +5491,17 @@ export interface UserGroupQuotaExceededFault extends __SmithyException, $Metadat
 }
 
 export namespace UserGroupQuotaExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserGroupQuotaExceededFault): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The user does not exist or could not be found.</p>
- */
-export interface UserNotFoundFault extends __SmithyException, $MetadataBearer {
-  name: "UserNotFoundFault";
-  $fault: "client";
-  message?: string;
-}
-
-export namespace UserNotFoundFault {
-  export const filterSensitiveLog = (obj: UserNotFoundFault): any => ({
     ...obj,
   });
 }
 
 export interface DecreaseNodeGroupsInGlobalReplicationGroupMessage {
   /**
-   * <p>The name of the Global Datastore</p>
+   * <p>The name of the Global datastore</p>
    */
   GlobalReplicationGroupId: string | undefined;
 
@@ -4911,16 +5511,17 @@ export interface DecreaseNodeGroupsInGlobalReplicationGroupMessage {
   NodeGroupCount: number | undefined;
 
   /**
-   * <p>If the value of NodeGroupCount is less than the current number of node groups (shards), then either NodeGroupsToRemove or NodeGroupsToRetain is required. NodeGroupsToRemove is a list of NodeGroupIds to remove from the cluster.
+   * <p>If the value of NodeGroupCount is less than the current number of node groups (shards), then either NodeGroupsToRemove or NodeGroupsToRetain is required. GlobalNodeGroupsToRemove is a list of NodeGroupIds to remove from the cluster.
    *
-   *             ElastiCache for Redis will attempt to remove all node groups listed by NodeGroupsToRemove from the cluster. </p>
+   *             ElastiCache for Redis will attempt to remove all node groups listed by GlobalNodeGroupsToRemove from the cluster. </p>
    */
   GlobalNodeGroupsToRemove?: string[];
 
   /**
-   * <p>If the value of NodeGroupCount is less than the current number of node groups (shards), then either NodeGroupsToRemove or NodeGroupsToRetain is required. NodeGroupsToRemove is a list of NodeGroupIds to remove from the cluster.
+   * <p>If the value of NodeGroupCount is less than the current number of node groups (shards), then either NodeGroupsToRemove or NodeGroupsToRetain is required. GlobalNodeGroupsToRetain is a list of NodeGroupIds to retain from the cluster. ElastiCache for Redis will attempt to retain all node groups listed by GlobalNodeGroupsToRetain from the cluster.
    *
-   *             ElastiCache for Redis will attempt to remove all node groups listed by NodeGroupsToRemove from the cluster. </p>
+   *
+   *              </p>
    */
   GlobalNodeGroupsToRetain?: string[];
 
@@ -4931,6 +5532,9 @@ export interface DecreaseNodeGroupsInGlobalReplicationGroupMessage {
 }
 
 export namespace DecreaseNodeGroupsInGlobalReplicationGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DecreaseNodeGroupsInGlobalReplicationGroupMessage): any => ({
     ...obj,
   });
@@ -4944,7 +5548,7 @@ export interface DecreaseNodeGroupsInGlobalReplicationGroupResult {
    *
    *         <ul>
    *             <li>
-   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global Datastore,
+   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global datastore,
    *             which is what you use to associate a secondary cluster.</p>
    *             </li>
    *          </ul>
@@ -4953,6 +5557,9 @@ export interface DecreaseNodeGroupsInGlobalReplicationGroupResult {
 }
 
 export namespace DecreaseNodeGroupsInGlobalReplicationGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DecreaseNodeGroupsInGlobalReplicationGroupResult): any => ({
     ...obj,
   });
@@ -5010,6 +5617,9 @@ export interface ConfigureShard {
 }
 
 export namespace ConfigureShard {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigureShard): any => ({
     ...obj,
   });
@@ -5067,6 +5677,9 @@ export interface DecreaseReplicaCountMessage {
 }
 
 export namespace DecreaseReplicaCountMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DecreaseReplicaCountMessage): any => ({
     ...obj,
   });
@@ -5080,6 +5693,9 @@ export interface DecreaseReplicaCountResult {
 }
 
 export namespace DecreaseReplicaCountResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DecreaseReplicaCountResult): any => ({
     ...obj,
   });
@@ -5095,6 +5711,9 @@ export interface NoOperationFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NoOperationFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoOperationFault): any => ({
     ...obj,
   });
@@ -5117,6 +5736,9 @@ export interface DeleteCacheClusterMessage {
 }
 
 export namespace DeleteCacheClusterMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCacheClusterMessage): any => ({
     ...obj,
   });
@@ -5130,6 +5752,9 @@ export interface DeleteCacheClusterResult {
 }
 
 export namespace DeleteCacheClusterResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCacheClusterResult): any => ({
     ...obj,
   });
@@ -5149,6 +5774,9 @@ export interface DeleteCacheParameterGroupMessage {
 }
 
 export namespace DeleteCacheParameterGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCacheParameterGroupMessage): any => ({
     ...obj,
   });
@@ -5168,6 +5796,9 @@ export interface DeleteCacheSecurityGroupMessage {
 }
 
 export namespace DeleteCacheSecurityGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCacheSecurityGroupMessage): any => ({
     ...obj,
   });
@@ -5183,6 +5814,9 @@ export interface CacheSubnetGroupInUse extends __SmithyException, $MetadataBeare
 }
 
 export namespace CacheSubnetGroupInUse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheSubnetGroupInUse): any => ({
     ...obj,
   });
@@ -5200,6 +5834,9 @@ export interface DeleteCacheSubnetGroupMessage {
 }
 
 export namespace DeleteCacheSubnetGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCacheSubnetGroupMessage): any => ({
     ...obj,
   });
@@ -5207,7 +5844,7 @@ export namespace DeleteCacheSubnetGroupMessage {
 
 export interface DeleteGlobalReplicationGroupMessage {
   /**
-   * <p>The name of the Global Datastore</p>
+   * <p>The name of the Global datastore</p>
    */
   GlobalReplicationGroupId: string | undefined;
 
@@ -5218,6 +5855,9 @@ export interface DeleteGlobalReplicationGroupMessage {
 }
 
 export namespace DeleteGlobalReplicationGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteGlobalReplicationGroupMessage): any => ({
     ...obj,
   });
@@ -5231,7 +5871,7 @@ export interface DeleteGlobalReplicationGroupResult {
    *
    *         <ul>
    *             <li>
-   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global Datastore,
+   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global datastore,
    *             which is what you use to associate a secondary cluster.</p>
    *             </li>
    *          </ul>
@@ -5240,6 +5880,9 @@ export interface DeleteGlobalReplicationGroupResult {
 }
 
 export namespace DeleteGlobalReplicationGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteGlobalReplicationGroupResult): any => ({
     ...obj,
   });
@@ -5270,6 +5913,9 @@ export interface DeleteReplicationGroupMessage {
 }
 
 export namespace DeleteReplicationGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReplicationGroupMessage): any => ({
     ...obj,
   });
@@ -5283,6 +5929,9 @@ export interface DeleteReplicationGroupResult {
 }
 
 export namespace DeleteReplicationGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReplicationGroupResult): any => ({
     ...obj,
   });
@@ -5299,6 +5948,9 @@ export interface DeleteSnapshotMessage {
 }
 
 export namespace DeleteSnapshotMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSnapshotMessage): any => ({
     ...obj,
   });
@@ -5312,6 +5964,9 @@ export interface DeleteSnapshotResult {
 }
 
 export namespace DeleteSnapshotResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSnapshotResult): any => ({
     ...obj,
   });
@@ -5327,6 +5982,9 @@ export interface DefaultUserAssociatedToUserGroupFault extends __SmithyException
 }
 
 export namespace DefaultUserAssociatedToUserGroupFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DefaultUserAssociatedToUserGroupFault): any => ({
     ...obj,
   });
@@ -5340,6 +5998,9 @@ export interface DeleteUserMessage {
 }
 
 export namespace DeleteUserMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteUserMessage): any => ({
     ...obj,
   });
@@ -5355,6 +6016,9 @@ export interface InvalidUserStateFault extends __SmithyException, $MetadataBeare
 }
 
 export namespace InvalidUserStateFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidUserStateFault): any => ({
     ...obj,
   });
@@ -5368,6 +6032,9 @@ export interface DeleteUserGroupMessage {
 }
 
 export namespace DeleteUserGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteUserGroupMessage): any => ({
     ...obj,
   });
@@ -5389,6 +6056,9 @@ export interface CacheClusterMessage {
 }
 
 export namespace CacheClusterMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheClusterMessage): any => ({
     ...obj,
   });
@@ -5437,6 +6107,9 @@ export interface DescribeCacheClustersMessage {
 }
 
 export namespace DescribeCacheClustersMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCacheClustersMessage): any => ({
     ...obj,
   });
@@ -5484,6 +6157,9 @@ export interface CacheEngineVersion {
 }
 
 export namespace CacheEngineVersion {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheEngineVersion): any => ({
     ...obj,
   });
@@ -5506,6 +6182,9 @@ export interface CacheEngineVersionMessage {
 }
 
 export namespace CacheEngineVersionMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheEngineVersionMessage): any => ({
     ...obj,
   });
@@ -5581,6 +6260,9 @@ export interface DescribeCacheEngineVersionsMessage {
 }
 
 export namespace DescribeCacheEngineVersionsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCacheEngineVersionsMessage): any => ({
     ...obj,
   });
@@ -5603,6 +6285,9 @@ export interface CacheParameterGroupsMessage {
 }
 
 export namespace CacheParameterGroupsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheParameterGroupsMessage): any => ({
     ...obj,
   });
@@ -5636,6 +6321,9 @@ export interface DescribeCacheParameterGroupsMessage {
 }
 
 export namespace DescribeCacheParameterGroupsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCacheParameterGroupsMessage): any => ({
     ...obj,
   });
@@ -5657,6 +6345,9 @@ export interface CacheNodeTypeSpecificValue {
 }
 
 export namespace CacheNodeTypeSpecificValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheNodeTypeSpecificValue): any => ({
     ...obj,
   });
@@ -5722,6 +6413,9 @@ export interface CacheNodeTypeSpecificParameter {
 }
 
 export namespace CacheNodeTypeSpecificParameter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheNodeTypeSpecificParameter): any => ({
     ...obj,
   });
@@ -5782,6 +6476,9 @@ export interface Parameter {
 }
 
 export namespace Parameter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Parameter): any => ({
     ...obj,
   });
@@ -5809,6 +6506,9 @@ export interface CacheParameterGroupDetails {
 }
 
 export namespace CacheParameterGroupDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheParameterGroupDetails): any => ({
     ...obj,
   });
@@ -5850,6 +6550,9 @@ export interface DescribeCacheParametersMessage {
 }
 
 export namespace DescribeCacheParametersMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCacheParametersMessage): any => ({
     ...obj,
   });
@@ -5871,6 +6574,9 @@ export interface CacheSecurityGroupMessage {
 }
 
 export namespace CacheSecurityGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheSecurityGroupMessage): any => ({
     ...obj,
   });
@@ -5904,6 +6610,9 @@ export interface DescribeCacheSecurityGroupsMessage {
 }
 
 export namespace DescribeCacheSecurityGroupsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCacheSecurityGroupsMessage): any => ({
     ...obj,
   });
@@ -5925,6 +6634,9 @@ export interface CacheSubnetGroupMessage {
 }
 
 export namespace CacheSubnetGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheSubnetGroupMessage): any => ({
     ...obj,
   });
@@ -5959,6 +6671,9 @@ export interface DescribeCacheSubnetGroupsMessage {
 }
 
 export namespace DescribeCacheSubnetGroupsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCacheSubnetGroupsMessage): any => ({
     ...obj,
   });
@@ -6003,6 +6718,9 @@ export interface DescribeEngineDefaultParametersMessage {
 }
 
 export namespace DescribeEngineDefaultParametersMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEngineDefaultParametersMessage): any => ({
     ...obj,
   });
@@ -6045,6 +6763,9 @@ export interface EngineDefaults {
 }
 
 export namespace EngineDefaults {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EngineDefaults): any => ({
     ...obj,
   });
@@ -6058,6 +6779,9 @@ export interface DescribeEngineDefaultParametersResult {
 }
 
 export namespace DescribeEngineDefaultParametersResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEngineDefaultParametersResult): any => ({
     ...obj,
   });
@@ -6127,6 +6851,9 @@ export interface DescribeEventsMessage {
 }
 
 export namespace DescribeEventsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEventsMessage): any => ({
     ...obj,
   });
@@ -6161,6 +6888,9 @@ export interface Event {
 }
 
 export namespace Event {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Event): any => ({
     ...obj,
   });
@@ -6182,6 +6912,9 @@ export interface EventsMessage {
 }
 
 export namespace EventsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EventsMessage): any => ({
     ...obj,
   });
@@ -6189,7 +6922,7 @@ export namespace EventsMessage {
 
 export interface DescribeGlobalReplicationGroupsMessage {
   /**
-   * <p>The name of the Global Datastore</p>
+   * <p>The name of the Global datastore</p>
    */
   GlobalReplicationGroupId?: string;
 
@@ -6204,12 +6937,15 @@ export interface DescribeGlobalReplicationGroupsMessage {
   Marker?: string;
 
   /**
-   * <p>Returns the list of members that comprise the Global Datastore.</p>
+   * <p>Returns the list of members that comprise the Global datastore.</p>
    */
   ShowMemberInfo?: boolean;
 }
 
 export namespace DescribeGlobalReplicationGroupsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeGlobalReplicationGroupsMessage): any => ({
     ...obj,
   });
@@ -6228,6 +6964,9 @@ export interface DescribeGlobalReplicationGroupsResult {
 }
 
 export namespace DescribeGlobalReplicationGroupsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeGlobalReplicationGroupsResult): any => ({
     ...obj,
   });
@@ -6262,6 +7001,9 @@ export interface DescribeReplicationGroupsMessage {
 }
 
 export namespace DescribeReplicationGroupsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationGroupsMessage): any => ({
     ...obj,
   });
@@ -6283,6 +7025,9 @@ export interface ReplicationGroupMessage {
 }
 
 export namespace ReplicationGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationGroupMessage): any => ({
     ...obj,
   });
@@ -6334,7 +7079,8 @@ export interface DescribeReservedCacheNodesMessage {
    * 						               </p>
    *
    * 						               <note>
-   *                         <p>At this time, M6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    *
    *
@@ -6444,7 +7190,8 @@ export interface DescribeReservedCacheNodesMessage {
    *
    * 						               </p>
    * 						               <note>
-   *                         <p>At this time, R6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    * 					                <p>
    *                         <b>R5 node types:</b>
@@ -6562,6 +7309,9 @@ export interface DescribeReservedCacheNodesMessage {
 }
 
 export namespace DescribeReservedCacheNodesMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReservedCacheNodesMessage): any => ({
     ...obj,
   });
@@ -6584,6 +7334,9 @@ export interface RecurringCharge {
 }
 
 export namespace RecurringCharge {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecurringCharge): any => ({
     ...obj,
   });
@@ -6632,7 +7385,8 @@ export interface ReservedCacheNode {
    * 						               </p>
    *
    * 						               <note>
-   *                         <p>At this time, M6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    *
    *
@@ -6742,7 +7496,8 @@ export interface ReservedCacheNode {
    *
    * 						               </p>
    * 						               <note>
-   *                         <p>At this time, R6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    * 					                <p>
    *                         <b>R5 node types:</b>
@@ -6873,6 +7628,9 @@ export interface ReservedCacheNode {
 }
 
 export namespace ReservedCacheNode {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReservedCacheNode): any => ({
     ...obj,
   });
@@ -6894,22 +7652,10 @@ export interface ReservedCacheNodeMessage {
 }
 
 export namespace ReservedCacheNodeMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReservedCacheNodeMessage): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The requested reserved cache node was not found.</p>
- */
-export interface ReservedCacheNodeNotFoundFault extends __SmithyException, $MetadataBearer {
-  name: "ReservedCacheNodeNotFoundFault";
-  $fault: "client";
-  message?: string;
-}
-
-export namespace ReservedCacheNodeNotFoundFault {
-  export const filterSensitiveLog = (obj: ReservedCacheNodeNotFoundFault): any => ({
     ...obj,
   });
 }
@@ -6956,7 +7702,8 @@ export interface DescribeReservedCacheNodesOfferingsMessage {
    * 						               </p>
    *
    * 						               <note>
-   *                         <p>At this time, M6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    *
    *
@@ -7066,7 +7813,8 @@ export interface DescribeReservedCacheNodesOfferingsMessage {
    *
    * 						               </p>
    * 						               <note>
-   *                         <p>At this time, R6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    * 					                <p>
    *                         <b>R5 node types:</b>
@@ -7185,6 +7933,9 @@ export interface DescribeReservedCacheNodesOfferingsMessage {
 }
 
 export namespace DescribeReservedCacheNodesOfferingsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReservedCacheNodesOfferingsMessage): any => ({
     ...obj,
   });
@@ -7227,7 +7978,8 @@ export interface ReservedCacheNodesOffering {
    * 						               </p>
    *
    * 						               <note>
-   *                         <p>At this time, M6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    *
    *
@@ -7337,7 +8089,8 @@ export interface ReservedCacheNodesOffering {
    *
    * 						               </p>
    * 						               <note>
-   *                         <p>At this time, R6g node types are available in the following regions: us-east-1, us-west-2, us-east-2, eu-central-1, eu-west-1 and ap-northeast-1.</p>
+   *                         <p>For region availability, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion">Supported Node Types</a>
+   *                         </p>
    *                      </note>
    * 					                <p>
    *                         <b>R5 node types:</b>
@@ -7446,6 +8199,9 @@ export interface ReservedCacheNodesOffering {
 }
 
 export namespace ReservedCacheNodesOffering {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReservedCacheNodesOffering): any => ({
     ...obj,
   });
@@ -7467,6 +8223,9 @@ export interface ReservedCacheNodesOfferingMessage {
 }
 
 export namespace ReservedCacheNodesOfferingMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReservedCacheNodesOfferingMessage): any => ({
     ...obj,
   });
@@ -7482,6 +8241,9 @@ export interface ReservedCacheNodesOfferingNotFoundFault extends __SmithyExcepti
 }
 
 export namespace ReservedCacheNodesOfferingNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReservedCacheNodesOfferingNotFoundFault): any => ({
     ...obj,
   });
@@ -7519,6 +8281,9 @@ export interface DescribeServiceUpdatesMessage {
 }
 
 export namespace DescribeServiceUpdatesMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeServiceUpdatesMessage): any => ({
     ...obj,
   });
@@ -7601,6 +8366,9 @@ export interface ServiceUpdate {
 }
 
 export namespace ServiceUpdate {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceUpdate): any => ({
     ...obj,
   });
@@ -7622,6 +8390,9 @@ export interface ServiceUpdatesMessage {
 }
 
 export namespace ServiceUpdatesMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceUpdatesMessage): any => ({
     ...obj,
   });
@@ -7646,6 +8417,9 @@ export interface DescribeSnapshotsListMessage {
 }
 
 export namespace DescribeSnapshotsListMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSnapshotsListMessage): any => ({
     ...obj,
   });
@@ -7704,6 +8478,9 @@ export interface DescribeSnapshotsMessage {
 }
 
 export namespace DescribeSnapshotsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSnapshotsMessage): any => ({
     ...obj,
   });
@@ -7725,6 +8502,9 @@ export interface TimeRangeFilter {
 }
 
 export namespace TimeRangeFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TimeRangeFilter): any => ({
     ...obj,
   });
@@ -7786,6 +8566,9 @@ export interface DescribeUpdateActionsMessage {
 }
 
 export namespace DescribeUpdateActionsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeUpdateActionsMessage): any => ({
     ...obj,
   });
@@ -7851,6 +8634,9 @@ export interface CacheNodeUpdateStatus {
 }
 
 export namespace CacheNodeUpdateStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheNodeUpdateStatus): any => ({
     ...obj,
   });
@@ -7907,6 +8693,9 @@ export interface NodeGroupMemberUpdateStatus {
 }
 
 export namespace NodeGroupMemberUpdateStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeGroupMemberUpdateStatus): any => ({
     ...obj,
   });
@@ -7928,6 +8717,9 @@ export interface NodeGroupUpdateStatus {
 }
 
 export namespace NodeGroupUpdateStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeGroupUpdateStatus): any => ({
     ...obj,
   });
@@ -8031,6 +8823,9 @@ export interface UpdateAction {
 }
 
 export namespace UpdateAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAction): any => ({
     ...obj,
   });
@@ -8052,6 +8847,9 @@ export interface UpdateActionsMessage {
 }
 
 export namespace UpdateActionsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateActionsMessage): any => ({
     ...obj,
   });
@@ -8075,6 +8873,9 @@ export interface DescribeUserGroupsMessage {
 }
 
 export namespace DescribeUserGroupsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeUserGroupsMessage): any => ({
     ...obj,
   });
@@ -8093,6 +8894,9 @@ export interface DescribeUserGroupsResult {
 }
 
 export namespace DescribeUserGroupsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeUserGroupsResult): any => ({
     ...obj,
   });
@@ -8114,6 +8918,9 @@ export interface Filter {
 }
 
 export namespace Filter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Filter): any => ({
     ...obj,
   });
@@ -8147,6 +8954,9 @@ export interface DescribeUsersMessage {
 }
 
 export namespace DescribeUsersMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeUsersMessage): any => ({
     ...obj,
   });
@@ -8165,6 +8975,9 @@ export interface DescribeUsersResult {
 }
 
 export namespace DescribeUsersResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeUsersResult): any => ({
     ...obj,
   });
@@ -8172,22 +8985,25 @@ export namespace DescribeUsersResult {
 
 export interface DisassociateGlobalReplicationGroupMessage {
   /**
-   * <p>The name of the Global Datastore</p>
+   * <p>The name of the Global datastore</p>
    */
   GlobalReplicationGroupId: string | undefined;
 
   /**
-   * <p>The name of the secondary cluster you wish to remove from the Global Datastore</p>
+   * <p>The name of the secondary cluster you wish to remove from the Global datastore</p>
    */
   ReplicationGroupId: string | undefined;
 
   /**
-   * <p>The AWS region of secondary cluster you wish to remove from the Global Datastore</p>
+   * <p>The AWS region of secondary cluster you wish to remove from the Global datastore</p>
    */
   ReplicationGroupRegion: string | undefined;
 }
 
 export namespace DisassociateGlobalReplicationGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateGlobalReplicationGroupMessage): any => ({
     ...obj,
   });
@@ -8201,7 +9017,7 @@ export interface DisassociateGlobalReplicationGroupResult {
    *
    *         <ul>
    *             <li>
-   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global Datastore,
+   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global datastore,
    *             which is what you use to associate a secondary cluster.</p>
    *             </li>
    *          </ul>
@@ -8210,6 +9026,9 @@ export interface DisassociateGlobalReplicationGroupResult {
 }
 
 export namespace DisassociateGlobalReplicationGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateGlobalReplicationGroupResult): any => ({
     ...obj,
   });
@@ -8217,12 +9036,12 @@ export namespace DisassociateGlobalReplicationGroupResult {
 
 export interface FailoverGlobalReplicationGroupMessage {
   /**
-   * <p>The name of the Global Datastore</p>
+   * <p>The name of the Global datastore</p>
    */
   GlobalReplicationGroupId: string | undefined;
 
   /**
-   * <p>The AWS region of the primary cluster of the Global Datastore</p>
+   * <p>The AWS region of the primary cluster of the Global datastore</p>
    */
   PrimaryRegion: string | undefined;
 
@@ -8233,6 +9052,9 @@ export interface FailoverGlobalReplicationGroupMessage {
 }
 
 export namespace FailoverGlobalReplicationGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FailoverGlobalReplicationGroupMessage): any => ({
     ...obj,
   });
@@ -8246,7 +9068,7 @@ export interface FailoverGlobalReplicationGroupResult {
    *
    *         <ul>
    *             <li>
-   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global Datastore,
+   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global datastore,
    *             which is what you use to associate a secondary cluster.</p>
    *             </li>
    *          </ul>
@@ -8255,6 +9077,9 @@ export interface FailoverGlobalReplicationGroupResult {
 }
 
 export namespace FailoverGlobalReplicationGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FailoverGlobalReplicationGroupResult): any => ({
     ...obj,
   });
@@ -8278,6 +9103,9 @@ export interface ReshardingConfiguration {
 }
 
 export namespace ReshardingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReshardingConfiguration): any => ({
     ...obj,
   });
@@ -8304,6 +9132,9 @@ export interface RegionalConfiguration {
 }
 
 export namespace RegionalConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegionalConfiguration): any => ({
     ...obj,
   });
@@ -8311,7 +9142,7 @@ export namespace RegionalConfiguration {
 
 export interface IncreaseNodeGroupsInGlobalReplicationGroupMessage {
   /**
-   * <p>The name of the Global Datastore</p>
+   * <p>The name of the Global datastore</p>
    */
   GlobalReplicationGroupId: string | undefined;
 
@@ -8321,7 +9152,7 @@ export interface IncreaseNodeGroupsInGlobalReplicationGroupMessage {
   NodeGroupCount: number | undefined;
 
   /**
-   * <p>Describes the replication group IDs, the AWS regions where they are stored and the shard configuration for each that comprise the Global Datastore</p>
+   * <p>Describes the replication group IDs, the AWS regions where they are stored and the shard configuration for each that comprise the Global datastore</p>
    */
   RegionalConfigurations?: RegionalConfiguration[];
 
@@ -8332,6 +9163,9 @@ export interface IncreaseNodeGroupsInGlobalReplicationGroupMessage {
 }
 
 export namespace IncreaseNodeGroupsInGlobalReplicationGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IncreaseNodeGroupsInGlobalReplicationGroupMessage): any => ({
     ...obj,
   });
@@ -8345,7 +9179,7 @@ export interface IncreaseNodeGroupsInGlobalReplicationGroupResult {
    *
    *         <ul>
    *             <li>
-   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global Datastore,
+   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global datastore,
    *             which is what you use to associate a secondary cluster.</p>
    *             </li>
    *          </ul>
@@ -8354,6 +9188,9 @@ export interface IncreaseNodeGroupsInGlobalReplicationGroupResult {
 }
 
 export namespace IncreaseNodeGroupsInGlobalReplicationGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IncreaseNodeGroupsInGlobalReplicationGroupResult): any => ({
     ...obj,
   });
@@ -8389,6 +9226,9 @@ export interface IncreaseReplicaCountMessage {
 }
 
 export namespace IncreaseReplicaCountMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IncreaseReplicaCountMessage): any => ({
     ...obj,
   });
@@ -8402,6 +9242,9 @@ export interface IncreaseReplicaCountResult {
 }
 
 export namespace IncreaseReplicaCountResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IncreaseReplicaCountResult): any => ({
     ...obj,
   });
@@ -8417,6 +9260,9 @@ export interface InvalidKMSKeyFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidKMSKeyFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidKMSKeyFault): any => ({
     ...obj,
   });
@@ -8451,6 +9297,9 @@ export interface ListAllowedNodeTypeModificationsMessage {
 }
 
 export namespace ListAllowedNodeTypeModificationsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAllowedNodeTypeModificationsMessage): any => ({
     ...obj,
   });
@@ -8470,6 +9319,9 @@ export interface ListTagsForResourceMessage {
 }
 
 export namespace ListTagsForResourceMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceMessage): any => ({
     ...obj,
   });
@@ -8496,7 +9348,7 @@ export interface ModifyCacheClusterMessage {
    *         <p>If you are removing cache nodes, you must
    *             use the <code>CacheNodeIdsToRemove</code> parameter to provide the IDs of the specific cache nodes to remove.</p>
    *         <p>For clusters running Redis, this value must be 1.
-   *     For clusters running Memcached, this value must be between 1 and 20.</p>
+   *     For clusters running Memcached, this value must be between 1 and 40.</p>
    *
    *         <note>
    *             <p>Adding or removing Memcached cache nodes can be applied immediately or as a pending operation (see <code>ApplyImmediately</code>).</p>
@@ -8543,11 +9395,14 @@ export interface ModifyCacheClusterMessage {
   AZMode?: AZMode | string;
 
   /**
-   * <p>The list of Availability Zones where the new Memcached cache nodes are created.</p>
+   * <note>
+   *             <p>This option is only supported on Memcached clusters.</p>
+   *          </note>
+   *         <p>The list of Availability Zones where the new Memcached cache nodes are created.</p>
    *         <p>This parameter is only valid when <code>NumCacheNodes</code> in the request is greater
    *             than the sum of the number of active cache nodes and the number of cache nodes pending creation (which may be zero).
    *             The number of Availability Zones supplied in this list must match the cache nodes being added in this request.</p>
-   *         <p>This option is only supported on Memcached clusters.</p>
+   *
    *         <p>Scenarios:</p>
    *             <ul>
    *             <li>
@@ -8820,13 +9675,21 @@ export interface ModifyCacheClusterMessage {
    *             </li>
    *          </ul>
    *         <p>
-   *             For more information, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html">Authenticating Users with Redis AUTH</a>
+   *             For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html">Authenticating Users with Redis AUTH</a>
    *          </p>
    */
   AuthTokenUpdateStrategy?: AuthTokenUpdateStrategyType | string;
+
+  /**
+   * <p>Specifies the destination, format and type of the logs.</p>
+   */
+  LogDeliveryConfigurations?: LogDeliveryConfigurationRequest[];
 }
 
 export namespace ModifyCacheClusterMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyCacheClusterMessage): any => ({
     ...obj,
   });
@@ -8840,6 +9703,9 @@ export interface ModifyCacheClusterResult {
 }
 
 export namespace ModifyCacheClusterResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyCacheClusterResult): any => ({
     ...obj,
   });
@@ -8868,6 +9734,9 @@ export interface CacheParameterGroupNameMessage {
 }
 
 export namespace CacheParameterGroupNameMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CacheParameterGroupNameMessage): any => ({
     ...obj,
   });
@@ -8889,6 +9758,9 @@ export interface ParameterNameValue {
 }
 
 export namespace ParameterNameValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ParameterNameValue): any => ({
     ...obj,
   });
@@ -8910,6 +9782,9 @@ export interface ModifyCacheParameterGroupMessage {
 }
 
 export namespace ModifyCacheParameterGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyCacheParameterGroupMessage): any => ({
     ...obj,
   });
@@ -8939,6 +9814,9 @@ export interface ModifyCacheSubnetGroupMessage {
 }
 
 export namespace ModifyCacheSubnetGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyCacheSubnetGroupMessage): any => ({
     ...obj,
   });
@@ -8964,6 +9842,9 @@ export interface ModifyCacheSubnetGroupResult {
 }
 
 export namespace ModifyCacheSubnetGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyCacheSubnetGroupResult): any => ({
     ...obj,
   });
@@ -8979,6 +9860,9 @@ export interface SubnetInUse extends __SmithyException, $MetadataBearer {
 }
 
 export namespace SubnetInUse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SubnetInUse): any => ({
     ...obj,
   });
@@ -8986,7 +9870,7 @@ export namespace SubnetInUse {
 
 export interface ModifyGlobalReplicationGroupMessage {
   /**
-   * <p>The name of the Global Datastore</p>
+   * <p>The name of the Global datastore</p>
    */
   GlobalReplicationGroupId: string | undefined;
 
@@ -8998,17 +9882,22 @@ export interface ModifyGlobalReplicationGroupMessage {
   ApplyImmediately: boolean | undefined;
 
   /**
-   * <p>A valid cache node type that you want to scale this Global Datastore to.</p>
+   * <p>A valid cache node type that you want to scale this Global datastore to.</p>
    */
   CacheNodeType?: string;
 
   /**
-   * <p>The upgraded version of the cache engine to be run on the clusters in the Global Datastore. </p>
+   * <p>The upgraded version of the cache engine to be run on the clusters in the Global datastore. </p>
    */
   EngineVersion?: string;
 
   /**
-   * <p>A description of the Global Datastore</p>
+   * <p>The name of the cache parameter group to use with the Global datastore. It must be compatible with the major engine version used by the Global datastore.</p>
+   */
+  CacheParameterGroupName?: string;
+
+  /**
+   * <p>A description of the Global datastore</p>
    */
   GlobalReplicationGroupDescription?: string;
 
@@ -9019,6 +9908,9 @@ export interface ModifyGlobalReplicationGroupMessage {
 }
 
 export namespace ModifyGlobalReplicationGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyGlobalReplicationGroupMessage): any => ({
     ...obj,
   });
@@ -9032,7 +9924,7 @@ export interface ModifyGlobalReplicationGroupResult {
    *
    *         <ul>
    *             <li>
-   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global Datastore,
+   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global datastore,
    *             which is what you use to associate a secondary cluster.</p>
    *             </li>
    *          </ul>
@@ -9041,6 +9933,9 @@ export interface ModifyGlobalReplicationGroupResult {
 }
 
 export namespace ModifyGlobalReplicationGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyGlobalReplicationGroupResult): any => ({
     ...obj,
   });
@@ -9081,7 +9976,7 @@ export interface ModifyReplicationGroupMessage {
   AutomaticFailoverEnabled?: boolean;
 
   /**
-   * <p>A flag indicating if you have Multi-AZ enabled to enhance fault tolerance. For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html">Minimizing Downtime: Multi-AZ</a>.</p>
+   * <p>A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.</p>
    */
   MultiAZEnabled?: boolean;
 
@@ -9262,7 +10157,7 @@ export interface ModifyReplicationGroupMessage {
    *             </li>
    *          </ul>
    *             <p>
-   *                 For more information, see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html">Authenticating Users with Redis AUTH</a>
+   *                 For more information, see <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html">Authenticating Users with Redis AUTH</a>
    *          </p>
    */
   AuthTokenUpdateStrategy?: AuthTokenUpdateStrategyType | string;
@@ -9281,9 +10176,17 @@ export interface ModifyReplicationGroupMessage {
    * <p>Removes the user groups that can access this replication group.</p>
    */
   RemoveUserGroups?: boolean;
+
+  /**
+   * <p>Specifies the destination, format and type of the logs.</p>
+   */
+  LogDeliveryConfigurations?: LogDeliveryConfigurationRequest[];
 }
 
 export namespace ModifyReplicationGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyReplicationGroupMessage): any => ({
     ...obj,
   });
@@ -9297,6 +10200,9 @@ export interface ModifyReplicationGroupResult {
 }
 
 export namespace ModifyReplicationGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyReplicationGroupResult): any => ({
     ...obj,
   });
@@ -9360,6 +10266,9 @@ export interface ModifyReplicationGroupShardConfigurationMessage {
 }
 
 export namespace ModifyReplicationGroupShardConfigurationMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyReplicationGroupShardConfigurationMessage): any => ({
     ...obj,
   });
@@ -9373,6 +10282,9 @@ export interface ModifyReplicationGroupShardConfigurationResult {
 }
 
 export namespace ModifyReplicationGroupShardConfigurationResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyReplicationGroupShardConfigurationResult): any => ({
     ...obj,
   });
@@ -9385,7 +10297,7 @@ export interface ModifyUserMessage {
   UserId: string | undefined;
 
   /**
-   * <p>Access permissions string used for this user account.</p>
+   * <p>Access permissions string used for this user.</p>
    */
   AccessString?: string;
 
@@ -9395,17 +10307,20 @@ export interface ModifyUserMessage {
   AppendAccessString?: string;
 
   /**
-   * <p>The passwords belonging to the user account. You are allowed up to two.</p>
+   * <p>The passwords belonging to the user. You are allowed up to two.</p>
    */
   Passwords?: string[];
 
   /**
-   * <p>Indicates no password is required for the user account.</p>
+   * <p>Indicates no password is required for the user.</p>
    */
   NoPasswordRequired?: boolean;
 }
 
 export namespace ModifyUserMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyUserMessage): any => ({
     ...obj,
   });
@@ -9429,6 +10344,9 @@ export interface ModifyUserGroupMessage {
 }
 
 export namespace ModifyUserGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyUserGroupMessage): any => ({
     ...obj,
   });
@@ -9462,9 +10380,17 @@ export interface PurchaseReservedCacheNodesOfferingMessage {
    *          </p>
    */
   CacheNodeCount?: number;
+
+  /**
+   * <p>A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace PurchaseReservedCacheNodesOfferingMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PurchaseReservedCacheNodesOfferingMessage): any => ({
     ...obj,
   });
@@ -9478,6 +10404,9 @@ export interface PurchaseReservedCacheNodesOfferingResult {
 }
 
 export namespace PurchaseReservedCacheNodesOfferingResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PurchaseReservedCacheNodesOfferingResult): any => ({
     ...obj,
   });
@@ -9493,6 +10422,9 @@ export interface ReservedCacheNodeAlreadyExistsFault extends __SmithyException, 
 }
 
 export namespace ReservedCacheNodeAlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReservedCacheNodeAlreadyExistsFault): any => ({
     ...obj,
   });
@@ -9508,6 +10440,9 @@ export interface ReservedCacheNodeQuotaExceededFault extends __SmithyException, 
 }
 
 export namespace ReservedCacheNodeQuotaExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReservedCacheNodeQuotaExceededFault): any => ({
     ...obj,
   });
@@ -9515,7 +10450,7 @@ export namespace ReservedCacheNodeQuotaExceededFault {
 
 export interface RebalanceSlotsInGlobalReplicationGroupMessage {
   /**
-   * <p>The name of the Global Datastore</p>
+   * <p>The name of the Global datastore</p>
    */
   GlobalReplicationGroupId: string | undefined;
 
@@ -9526,6 +10461,9 @@ export interface RebalanceSlotsInGlobalReplicationGroupMessage {
 }
 
 export namespace RebalanceSlotsInGlobalReplicationGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RebalanceSlotsInGlobalReplicationGroupMessage): any => ({
     ...obj,
   });
@@ -9539,7 +10477,7 @@ export interface RebalanceSlotsInGlobalReplicationGroupResult {
    *
    *         <ul>
    *             <li>
-   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global Datastore,
+   *                <p>The <b>GlobalReplicationGroupIdSuffix</b> represents the name of the Global datastore,
    *             which is what you use to associate a secondary cluster.</p>
    *             </li>
    *          </ul>
@@ -9548,6 +10486,9 @@ export interface RebalanceSlotsInGlobalReplicationGroupResult {
 }
 
 export namespace RebalanceSlotsInGlobalReplicationGroupResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RebalanceSlotsInGlobalReplicationGroupResult): any => ({
     ...obj,
   });
@@ -9569,6 +10510,9 @@ export interface RebootCacheClusterMessage {
 }
 
 export namespace RebootCacheClusterMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RebootCacheClusterMessage): any => ({
     ...obj,
   });
@@ -9582,6 +10526,9 @@ export interface RebootCacheClusterResult {
 }
 
 export namespace RebootCacheClusterResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RebootCacheClusterResult): any => ({
     ...obj,
   });
@@ -9606,6 +10553,9 @@ export interface RemoveTagsFromResourceMessage {
 }
 
 export namespace RemoveTagsFromResourceMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveTagsFromResourceMessage): any => ({
     ...obj,
   });
@@ -9621,6 +10571,9 @@ export interface TagNotFoundFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace TagNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagNotFoundFault): any => ({
     ...obj,
   });
@@ -9656,6 +10609,9 @@ export interface ResetCacheParameterGroupMessage {
 }
 
 export namespace ResetCacheParameterGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResetCacheParameterGroupMessage): any => ({
     ...obj,
   });
@@ -9671,6 +10627,9 @@ export interface AuthorizationNotFoundFault extends __SmithyException, $Metadata
 }
 
 export namespace AuthorizationNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AuthorizationNotFoundFault): any => ({
     ...obj,
   });
@@ -9699,6 +10658,9 @@ export interface RevokeCacheSecurityGroupIngressMessage {
 }
 
 export namespace RevokeCacheSecurityGroupIngressMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RevokeCacheSecurityGroupIngressMessage): any => ({
     ...obj,
   });
@@ -9729,6 +10691,9 @@ export interface RevokeCacheSecurityGroupIngressResult {
 }
 
 export namespace RevokeCacheSecurityGroupIngressResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RevokeCacheSecurityGroupIngressResult): any => ({
     ...obj,
   });
@@ -9744,6 +10709,9 @@ export interface ReplicationGroupAlreadyUnderMigrationFault extends __SmithyExce
 }
 
 export namespace ReplicationGroupAlreadyUnderMigrationFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationGroupAlreadyUnderMigrationFault): any => ({
     ...obj,
   });
@@ -9765,6 +10733,9 @@ export interface CustomerNodeEndpoint {
 }
 
 export namespace CustomerNodeEndpoint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CustomerNodeEndpoint): any => ({
     ...obj,
   });
@@ -9783,6 +10754,9 @@ export interface StartMigrationMessage {
 }
 
 export namespace StartMigrationMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartMigrationMessage): any => ({
     ...obj,
   });
@@ -9796,6 +10770,9 @@ export interface StartMigrationResponse {
 }
 
 export namespace StartMigrationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartMigrationResponse): any => ({
     ...obj,
   });
@@ -9811,6 +10788,9 @@ export interface APICallRateForCustomerExceededFault extends __SmithyException, 
 }
 
 export namespace APICallRateForCustomerExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: APICallRateForCustomerExceededFault): any => ({
     ...obj,
   });
@@ -9827,6 +10807,9 @@ export interface NodeGroupNotFoundFault extends __SmithyException, $MetadataBear
 }
 
 export namespace NodeGroupNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeGroupNotFoundFault): any => ({
     ...obj,
   });
@@ -9848,6 +10831,9 @@ export interface TestFailoverMessage {
 }
 
 export namespace TestFailoverMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestFailoverMessage): any => ({
     ...obj,
   });
@@ -9863,6 +10849,9 @@ export interface TestFailoverNotAvailableFault extends __SmithyException, $Metad
 }
 
 export namespace TestFailoverNotAvailableFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestFailoverNotAvailableFault): any => ({
     ...obj,
   });
@@ -9876,6 +10865,9 @@ export interface TestFailoverResult {
 }
 
 export namespace TestFailoverResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestFailoverResult): any => ({
     ...obj,
   });

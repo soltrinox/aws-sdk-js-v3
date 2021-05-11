@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeprovisionByoipCidrCommandInput = DeprovisionByoipCidrRequest;
-export type DeprovisionByoipCidrCommandOutput = DeprovisionByoipCidrResponse & __MetadataBearer;
+export interface DeprovisionByoipCidrCommandInput extends DeprovisionByoipCidrRequest {}
+export interface DeprovisionByoipCidrCommandOutput extends DeprovisionByoipCidrResponse, __MetadataBearer {}
 
 /**
  * <p>Releases the specified address range that you provisioned to use with your AWS resources
@@ -32,6 +32,20 @@ export type DeprovisionByoipCidrCommandOutput = DeprovisionByoipCidrResponse & _
  * 		</p>
  * 		       <p>For more information, see <a href="https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html">Bring Your Own
  * 			IP Addresses (BYOIP)</a> in the <i>AWS Global Accelerator Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, DeprovisionByoipCidrCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, DeprovisionByoipCidrCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new DeprovisionByoipCidrCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeprovisionByoipCidrCommandInput} for command's `input` shape.
+ * @see {@link DeprovisionByoipCidrCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeprovisionByoipCidrCommand extends $Command<
   DeprovisionByoipCidrCommandInput,

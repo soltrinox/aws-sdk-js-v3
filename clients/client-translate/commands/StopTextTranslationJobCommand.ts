@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopTextTranslationJobCommandInput = StopTextTranslationJobRequest;
-export type StopTextTranslationJobCommandOutput = StopTextTranslationJobResponse & __MetadataBearer;
+export interface StopTextTranslationJobCommandInput extends StopTextTranslationJobRequest {}
+export interface StopTextTranslationJobCommandOutput extends StopTextTranslationJobResponse, __MetadataBearer {}
 
 /**
  * <p>Stops an asynchronous batch translation job that is in progress.</p>
@@ -28,6 +28,20 @@ export type StopTextTranslationJobCommandOutput = StopTextTranslationJobResponse
  *         <code>STOPPED</code> state.</p>
  *          <p>Asynchronous batch translation jobs are started with the <a>StartTextTranslationJob</a> operation. You can use the <a>DescribeTextTranslationJob</a> or <a>ListTextTranslationJobs</a>
  *       operations to get a batch translation job's <code>JobId</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TranslateClient, StopTextTranslationJobCommand } from "@aws-sdk/client-translate"; // ES Modules import
+ * // const { TranslateClient, StopTextTranslationJobCommand } = require("@aws-sdk/client-translate"); // CommonJS import
+ * const client = new TranslateClient(config);
+ * const command = new StopTextTranslationJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopTextTranslationJobCommandInput} for command's `input` shape.
+ * @see {@link StopTextTranslationJobCommandOutput} for command's `response` shape.
+ * @see {@link TranslateClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopTextTranslationJobCommand extends $Command<
   StopTextTranslationJobCommandInput,

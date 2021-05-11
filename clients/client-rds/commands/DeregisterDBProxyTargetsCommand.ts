@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeregisterDBProxyTargetsCommandInput = DeregisterDBProxyTargetsRequest;
-export type DeregisterDBProxyTargetsCommandOutput = DeregisterDBProxyTargetsResponse & __MetadataBearer;
+export interface DeregisterDBProxyTargetsCommandInput extends DeregisterDBProxyTargetsRequest {}
+export interface DeregisterDBProxyTargetsCommandOutput extends DeregisterDBProxyTargetsResponse, __MetadataBearer {}
 
 /**
  * <p>Remove the association between one or more <code>DBProxyTarget</code> data structures and a <code>DBProxyTargetGroup</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, DeregisterDBProxyTargetsCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, DeregisterDBProxyTargetsCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new DeregisterDBProxyTargetsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeregisterDBProxyTargetsCommandInput} for command's `input` shape.
+ * @see {@link DeregisterDBProxyTargetsCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeregisterDBProxyTargetsCommand extends $Command<
   DeregisterDBProxyTargetsCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateNetworkProfileCommandInput = UpdateNetworkProfileRequest;
-export type UpdateNetworkProfileCommandOutput = UpdateNetworkProfileResponse & __MetadataBearer;
+export interface UpdateNetworkProfileCommandInput extends UpdateNetworkProfileRequest {}
+export interface UpdateNetworkProfileCommandOutput extends UpdateNetworkProfileResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a network profile by the network profile ARN.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, UpdateNetworkProfileCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, UpdateNetworkProfileCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new UpdateNetworkProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateNetworkProfileCommandInput} for command's `input` shape.
+ * @see {@link UpdateNetworkProfileCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateNetworkProfileCommand extends $Command<
   UpdateNetworkProfileCommandInput,

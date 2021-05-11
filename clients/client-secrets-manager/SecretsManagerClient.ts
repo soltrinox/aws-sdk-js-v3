@@ -16,8 +16,20 @@ import {
 import { ListSecretsCommandInput, ListSecretsCommandOutput } from "./commands/ListSecretsCommand";
 import { PutResourcePolicyCommandInput, PutResourcePolicyCommandOutput } from "./commands/PutResourcePolicyCommand";
 import { PutSecretValueCommandInput, PutSecretValueCommandOutput } from "./commands/PutSecretValueCommand";
+import {
+  RemoveRegionsFromReplicationCommandInput,
+  RemoveRegionsFromReplicationCommandOutput,
+} from "./commands/RemoveRegionsFromReplicationCommand";
+import {
+  ReplicateSecretToRegionsCommandInput,
+  ReplicateSecretToRegionsCommandOutput,
+} from "./commands/ReplicateSecretToRegionsCommand";
 import { RestoreSecretCommandInput, RestoreSecretCommandOutput } from "./commands/RestoreSecretCommand";
 import { RotateSecretCommandInput, RotateSecretCommandOutput } from "./commands/RotateSecretCommand";
+import {
+  StopReplicationToReplicaCommandInput,
+  StopReplicationToReplicaCommandOutput,
+} from "./commands/StopReplicationToReplicaCommand";
 import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
 import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
 import { UpdateSecretCommandInput, UpdateSecretCommandOutput } from "./commands/UpdateSecretCommand";
@@ -93,8 +105,11 @@ export type ServiceInputTypes =
   | ListSecretsCommandInput
   | PutResourcePolicyCommandInput
   | PutSecretValueCommandInput
+  | RemoveRegionsFromReplicationCommandInput
+  | ReplicateSecretToRegionsCommandInput
   | RestoreSecretCommandInput
   | RotateSecretCommandInput
+  | StopReplicationToReplicaCommandInput
   | TagResourceCommandInput
   | UntagResourceCommandInput
   | UpdateSecretCommandInput
@@ -114,8 +129,11 @@ export type ServiceOutputTypes =
   | ListSecretsCommandOutput
   | PutResourcePolicyCommandOutput
   | PutSecretValueCommandOutput
+  | RemoveRegionsFromReplicationCommandOutput
+  | ReplicateSecretToRegionsCommandOutput
   | RestoreSecretCommandOutput
   | RotateSecretCommandOutput
+  | StopReplicationToReplicaCommandOutput
   | TagResourceCommandOutput
   | UntagResourceCommandOutput
   | UpdateSecretCommandOutput
@@ -187,7 +205,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -218,7 +236,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type SecretsManagerClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type SecretsManagerClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -226,8 +244,12 @@ export type SecretsManagerClientConfig = Partial<__SmithyConfiguration<__HttpHan
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of SecretsManagerClient class constructor that set the region, credentials and other options.
+ */
+export interface SecretsManagerClientConfig extends SecretsManagerClientConfigType {}
 
-export type SecretsManagerClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type SecretsManagerClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -235,6 +257,10 @@ export type SecretsManagerClientResolvedConfig = __SmithyResolvedConfiguration<_
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of SecretsManagerClient class. This is resolved and normalized from the {@link SecretsManagerClientConfig | constructor configuration interface}.
+ */
+export interface SecretsManagerClientResolvedConfig extends SecretsManagerClientResolvedConfigType {}
 
 /**
  * <fullname>AWS Secrets Manager API Reference</fullname>
@@ -307,6 +333,9 @@ export class SecretsManagerClient extends __Client<
   ServiceOutputTypes,
   SecretsManagerClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of SecretsManagerClient class. This is resolved and normalized from the {@link SecretsManagerClientConfig | constructor configuration interface}.
+   */
   readonly config: SecretsManagerClientResolvedConfig;
 
   constructor(configuration: SecretsManagerClientConfig) {

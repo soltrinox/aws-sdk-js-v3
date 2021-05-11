@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDBClusterSnapshotAttributesCommandInput = DescribeDBClusterSnapshotAttributesMessage;
-export type DescribeDBClusterSnapshotAttributesCommandOutput = DescribeDBClusterSnapshotAttributesResult &
-  __MetadataBearer;
+export interface DescribeDBClusterSnapshotAttributesCommandInput extends DescribeDBClusterSnapshotAttributesMessage {}
+export interface DescribeDBClusterSnapshotAttributesCommandOutput
+  extends DescribeDBClusterSnapshotAttributesResult,
+    __MetadataBearer {}
 
 /**
  * <p>Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot.</p>
@@ -36,6 +37,20 @@ export type DescribeDBClusterSnapshotAttributesCommandOutput = DescribeDBCluster
  *         <note>
  *             <p>This action only applies to Aurora DB clusters.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, DescribeDBClusterSnapshotAttributesCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, DescribeDBClusterSnapshotAttributesCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new DescribeDBClusterSnapshotAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDBClusterSnapshotAttributesCommandInput} for command's `input` shape.
+ * @see {@link DescribeDBClusterSnapshotAttributesCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDBClusterSnapshotAttributesCommand extends $Command<
   DescribeDBClusterSnapshotAttributesCommandInput,

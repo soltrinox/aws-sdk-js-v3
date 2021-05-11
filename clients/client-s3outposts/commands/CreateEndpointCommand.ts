@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateEndpointCommandInput = CreateEndpointRequest;
-export type CreateEndpointCommandOutput = CreateEndpointResult & __MetadataBearer;
+export interface CreateEndpointCommandInput extends CreateEndpointRequest {}
+export interface CreateEndpointCommandOutput extends CreateEndpointResult, __MetadataBearer {}
 
 /**
  * <p>S3 on Outposts access points simplify managing data access at scale for shared datasets
@@ -39,6 +39,20 @@ export type CreateEndpointCommandOutput = CreateEndpointResult & __MetadataBeare
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3OutpostsClient, CreateEndpointCommand } from "@aws-sdk/client-s3outposts"; // ES Modules import
+ * // const { S3OutpostsClient, CreateEndpointCommand } = require("@aws-sdk/client-s3outposts"); // CommonJS import
+ * const client = new S3OutpostsClient(config);
+ * const command = new CreateEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateEndpointCommandInput} for command's `input` shape.
+ * @see {@link CreateEndpointCommandOutput} for command's `response` shape.
+ * @see {@link S3OutpostsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateEndpointCommand extends $Command<
   CreateEndpointCommandInput,

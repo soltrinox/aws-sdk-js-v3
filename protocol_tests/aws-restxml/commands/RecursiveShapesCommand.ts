@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RecursiveShapesCommandInput = RecursiveShapesInputOutput;
-export type RecursiveShapesCommandOutput = RecursiveShapesInputOutput & __MetadataBearer;
+export interface RecursiveShapesCommandInput extends RecursiveShapesInputOutput {}
+export interface RecursiveShapesCommandOutput extends RecursiveShapesInputOutput, __MetadataBearer {}
 
 /**
  * Recursive shapes
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestXmlProtocolClient, RecursiveShapesCommand } from "@aws-sdk/aws-restxml"; // ES Modules import
+ * // const { RestXmlProtocolClient, RecursiveShapesCommand } = require("@aws-sdk/aws-restxml"); // CommonJS import
+ * const client = new RestXmlProtocolClient(config);
+ * const command = new RecursiveShapesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RecursiveShapesCommandInput} for command's `input` shape.
+ * @see {@link RecursiveShapesCommandOutput} for command's `response` shape.
+ * @see {@link RestXmlProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RecursiveShapesCommand extends $Command<
   RecursiveShapesCommandInput,

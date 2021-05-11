@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UntagResourceCommandInput = UntagResourceRequest;
-export type UntagResourceCommandOutput = UntagResourceResponse & __MetadataBearer;
+export interface UntagResourceCommandInput extends UntagResourceRequest {}
+export interface UntagResourceCommandOutput extends UntagResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Removes the tags with the specified keys from the specified resource. Tags are key:value
@@ -28,6 +28,20 @@ export type UntagResourceCommandOutput = UntagResourceResponse & __MetadataBeare
  *          resource.</p>
  *          <p>You can manage tags for the AWS resources that you manage through AWS Network Firewall:
  *          firewalls, firewall policies, and rule groups. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkFirewallClient, UntagResourceCommand } from "@aws-sdk/client-network-firewall"; // ES Modules import
+ * // const { NetworkFirewallClient, UntagResourceCommand } = require("@aws-sdk/client-network-firewall"); // CommonJS import
+ * const client = new NetworkFirewallClient(config);
+ * const command = new UntagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UntagResourceCommandInput} for command's `input` shape.
+ * @see {@link UntagResourceCommandOutput} for command's `response` shape.
+ * @see {@link NetworkFirewallClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UntagResourceCommand extends $Command<
   UntagResourceCommandInput,

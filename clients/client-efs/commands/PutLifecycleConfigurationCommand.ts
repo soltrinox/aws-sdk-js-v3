@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutLifecycleConfigurationCommandInput = PutLifecycleConfigurationRequest;
-export type PutLifecycleConfigurationCommandOutput = LifecycleConfigurationDescription & __MetadataBearer;
+export interface PutLifecycleConfigurationCommandInput extends PutLifecycleConfigurationRequest {}
+export interface PutLifecycleConfigurationCommandOutput extends LifecycleConfigurationDescription, __MetadataBearer {}
 
 /**
  * <p>Enables lifecycle management by creating a new <code>LifecycleConfiguration</code>
@@ -50,6 +50,20 @@ export type PutLifecycleConfigurationCommandOutput = LifecycleConfigurationDescr
  *          <p>To apply a <code>LifecycleConfiguration</code> object to an encrypted file system, you
  *       need the same AWS Key Management Service (AWS KMS) permissions as when you created the encrypted
  *       file system. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EFSClient, PutLifecycleConfigurationCommand } from "@aws-sdk/client-efs"; // ES Modules import
+ * // const { EFSClient, PutLifecycleConfigurationCommand } = require("@aws-sdk/client-efs"); // CommonJS import
+ * const client = new EFSClient(config);
+ * const command = new PutLifecycleConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutLifecycleConfigurationCommandInput} for command's `input` shape.
+ * @see {@link PutLifecycleConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link EFSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutLifecycleConfigurationCommand extends $Command<
   PutLifecycleConfigurationCommandInput,

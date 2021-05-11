@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateTagsForResourceCommandInput = UpdateTagsForResourceMessage;
-export type UpdateTagsForResourceCommandOutput = __MetadataBearer;
+export interface UpdateTagsForResourceCommandInput extends UpdateTagsForResourceMessage {}
+export interface UpdateTagsForResourceCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Update the list of tags applied to an AWS Elastic Beanstalk resource. Two lists can be passed: <code>TagsToAdd</code>
@@ -41,6 +41,20 @@ export type UpdateTagsForResourceCommandOutput = __MetadataBearer;
  *             </dd>
  *          </dl>
  *          <p>For details about creating a custom user policy, see <a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#AWSHowTo.iam.policies">Creating a Custom User Policy</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticBeanstalkClient, UpdateTagsForResourceCommand } from "@aws-sdk/client-elastic-beanstalk"; // ES Modules import
+ * // const { ElasticBeanstalkClient, UpdateTagsForResourceCommand } = require("@aws-sdk/client-elastic-beanstalk"); // CommonJS import
+ * const client = new ElasticBeanstalkClient(config);
+ * const command = new UpdateTagsForResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateTagsForResourceCommandInput} for command's `input` shape.
+ * @see {@link UpdateTagsForResourceCommandOutput} for command's `response` shape.
+ * @see {@link ElasticBeanstalkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateTagsForResourceCommand extends $Command<
   UpdateTagsForResourceCommandInput,

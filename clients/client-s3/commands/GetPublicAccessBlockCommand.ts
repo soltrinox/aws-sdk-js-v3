@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetPublicAccessBlockCommandInput = GetPublicAccessBlockRequest;
-export type GetPublicAccessBlockCommandOutput = GetPublicAccessBlockOutput & __MetadataBearer;
+export interface GetPublicAccessBlockCommandInput extends GetPublicAccessBlockRequest {}
+export interface GetPublicAccessBlockCommandOutput extends GetPublicAccessBlockOutput, __MetadataBearer {}
 
 /**
  * <p>Retrieves the <code>PublicAccessBlock</code> configuration for an Amazon S3 bucket. To use
@@ -62,6 +62,20 @@ export type GetPublicAccessBlockCommandOutput = GetPublicAccessBlockOutput & __M
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetPublicAccessBlockCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetPublicAccessBlockCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetPublicAccessBlockCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetPublicAccessBlockCommandInput} for command's `input` shape.
+ * @see {@link GetPublicAccessBlockCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetPublicAccessBlockCommand extends $Command<
   GetPublicAccessBlockCommandInput,

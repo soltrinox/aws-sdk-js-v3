@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RegisterRdsDbInstanceCommandInput = RegisterRdsDbInstanceRequest;
-export type RegisterRdsDbInstanceCommandOutput = __MetadataBearer;
+export interface RegisterRdsDbInstanceCommandInput extends RegisterRdsDbInstanceRequest {}
+export interface RegisterRdsDbInstanceCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Registers an Amazon RDS instance with a stack.</p>
@@ -27,6 +27,20 @@ export type RegisterRdsDbInstanceCommandOutput = __MetadataBearer;
  *       level for the stack, or an attached policy that explicitly grants permissions. For more
  *       information on user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, RegisterRdsDbInstanceCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, RegisterRdsDbInstanceCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new RegisterRdsDbInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RegisterRdsDbInstanceCommandInput} for command's `input` shape.
+ * @see {@link RegisterRdsDbInstanceCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RegisterRdsDbInstanceCommand extends $Command<
   RegisterRdsDbInstanceCommandInput,

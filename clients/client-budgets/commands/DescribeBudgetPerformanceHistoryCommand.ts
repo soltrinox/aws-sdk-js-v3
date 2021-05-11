@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeBudgetPerformanceHistoryCommandInput = DescribeBudgetPerformanceHistoryRequest;
-export type DescribeBudgetPerformanceHistoryCommandOutput = DescribeBudgetPerformanceHistoryResponse & __MetadataBearer;
+export interface DescribeBudgetPerformanceHistoryCommandInput extends DescribeBudgetPerformanceHistoryRequest {}
+export interface DescribeBudgetPerformanceHistoryCommandOutput
+  extends DescribeBudgetPerformanceHistoryResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Describes the history for <code>DAILY</code>, <code>MONTHLY</code>, and <code>QUARTERLY</code> budgets. Budget history isn't available for <code>ANNUAL</code> budgets.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BudgetsClient, DescribeBudgetPerformanceHistoryCommand } from "@aws-sdk/client-budgets"; // ES Modules import
+ * // const { BudgetsClient, DescribeBudgetPerformanceHistoryCommand } = require("@aws-sdk/client-budgets"); // CommonJS import
+ * const client = new BudgetsClient(config);
+ * const command = new DescribeBudgetPerformanceHistoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeBudgetPerformanceHistoryCommandInput} for command's `input` shape.
+ * @see {@link DescribeBudgetPerformanceHistoryCommandOutput} for command's `response` shape.
+ * @see {@link BudgetsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeBudgetPerformanceHistoryCommand extends $Command<
   DescribeBudgetPerformanceHistoryCommandInput,

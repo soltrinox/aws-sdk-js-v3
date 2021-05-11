@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveTagsFromCertificateCommandInput = RemoveTagsFromCertificateRequest;
-export type RemoveTagsFromCertificateCommandOutput = __MetadataBearer;
+export interface RemoveTagsFromCertificateCommandInput extends RemoveTagsFromCertificateRequest {}
+export interface RemoveTagsFromCertificateCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Remove one or more tags from an ACM certificate. A tag consists of a key-value pair. If
@@ -28,6 +28,20 @@ export type RemoveTagsFromCertificateCommandOutput = __MetadataBearer;
  *
  *          <p>To add tags to a certificate, use the <a>AddTagsToCertificate</a> action. To
  *       view all of the tags that have been applied to a specific ACM certificate, use the <a>ListTagsForCertificate</a> action. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ACMClient, RemoveTagsFromCertificateCommand } from "@aws-sdk/client-acm"; // ES Modules import
+ * // const { ACMClient, RemoveTagsFromCertificateCommand } = require("@aws-sdk/client-acm"); // CommonJS import
+ * const client = new ACMClient(config);
+ * const command = new RemoveTagsFromCertificateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveTagsFromCertificateCommandInput} for command's `input` shape.
+ * @see {@link RemoveTagsFromCertificateCommandOutput} for command's `response` shape.
+ * @see {@link ACMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveTagsFromCertificateCommand extends $Command<
   RemoveTagsFromCertificateCommandInput,

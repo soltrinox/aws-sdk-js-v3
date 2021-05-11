@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateListenerCommandInput = UpdateListenerRequest;
-export type UpdateListenerCommandOutput = UpdateListenerResponse & __MetadataBearer;
+export interface UpdateListenerCommandInput extends UpdateListenerRequest {}
+export interface UpdateListenerCommandOutput extends UpdateListenerResponse, __MetadataBearer {}
 
 /**
  * <p>Update a listener. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, UpdateListenerCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, UpdateListenerCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new UpdateListenerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateListenerCommandInput} for command's `input` shape.
+ * @see {@link UpdateListenerCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateListenerCommand extends $Command<
   UpdateListenerCommandInput,

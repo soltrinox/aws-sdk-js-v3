@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopBuildBatchCommandInput = StopBuildBatchInput;
-export type StopBuildBatchCommandOutput = StopBuildBatchOutput & __MetadataBearer;
+export interface StopBuildBatchCommandInput extends StopBuildBatchInput {}
+export interface StopBuildBatchCommandOutput extends StopBuildBatchOutput, __MetadataBearer {}
 
 /**
  * <p>Stops a running batch build.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeBuildClient, StopBuildBatchCommand } from "@aws-sdk/client-codebuild"; // ES Modules import
+ * // const { CodeBuildClient, StopBuildBatchCommand } = require("@aws-sdk/client-codebuild"); // CommonJS import
+ * const client = new CodeBuildClient(config);
+ * const command = new StopBuildBatchCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopBuildBatchCommandInput} for command's `input` shape.
+ * @see {@link StopBuildBatchCommandOutput} for command's `response` shape.
+ * @see {@link CodeBuildClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopBuildBatchCommand extends $Command<
   StopBuildBatchCommandInput,

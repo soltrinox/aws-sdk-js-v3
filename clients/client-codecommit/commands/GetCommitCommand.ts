@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCommitCommandInput = GetCommitInput;
-export type GetCommitCommandOutput = GetCommitOutput & __MetadataBearer;
+export interface GetCommitCommandInput extends GetCommitInput {}
+export interface GetCommitCommandOutput extends GetCommitOutput, __MetadataBearer {}
 
 /**
  * <p>Returns information about a commit, including commit message and committer information.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeCommitClient, GetCommitCommand } from "@aws-sdk/client-codecommit"; // ES Modules import
+ * // const { CodeCommitClient, GetCommitCommand } = require("@aws-sdk/client-codecommit"); // CommonJS import
+ * const client = new CodeCommitClient(config);
+ * const command = new GetCommitCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCommitCommandInput} for command's `input` shape.
+ * @see {@link GetCommitCommandOutput} for command's `response` shape.
+ * @see {@link CodeCommitClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCommitCommand extends $Command<
   GetCommitCommandInput,

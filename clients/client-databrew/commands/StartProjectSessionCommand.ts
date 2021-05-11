@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartProjectSessionCommandInput = StartProjectSessionRequest;
-export type StartProjectSessionCommandOutput = StartProjectSessionResponse & __MetadataBearer;
+export interface StartProjectSessionCommandInput extends StartProjectSessionRequest {}
+export interface StartProjectSessionCommandOutput extends StartProjectSessionResponse, __MetadataBearer {}
 
 /**
- * <p>Creates an interactive session, enabling you to manipulate an AWS Glue DataBrew
+ * <p>Creates an interactive session, enabling you to manipulate data in a DataBrew
  *             project.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataBrewClient, StartProjectSessionCommand } from "@aws-sdk/client-databrew"; // ES Modules import
+ * // const { DataBrewClient, StartProjectSessionCommand } = require("@aws-sdk/client-databrew"); // CommonJS import
+ * const client = new DataBrewClient(config);
+ * const command = new StartProjectSessionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartProjectSessionCommandInput} for command's `input` shape.
+ * @see {@link StartProjectSessionCommandOutput} for command's `response` shape.
+ * @see {@link DataBrewClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartProjectSessionCommand extends $Command<
   StartProjectSessionCommandInput,

@@ -22,12 +22,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AdminDisableUserCommandInput = AdminDisableUserRequest;
-export type AdminDisableUserCommandOutput = AdminDisableUserResponse & __MetadataBearer;
+export interface AdminDisableUserCommandInput extends AdminDisableUserRequest {}
+export interface AdminDisableUserCommandOutput extends AdminDisableUserResponse, __MetadataBearer {}
 
 /**
  * <p>Disables the specified user.</p>
  *         <p>Calling this action requires developer credentials.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, AdminDisableUserCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, AdminDisableUserCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new AdminDisableUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AdminDisableUserCommandInput} for command's `input` shape.
+ * @see {@link AdminDisableUserCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AdminDisableUserCommand extends $Command<
   AdminDisableUserCommandInput,

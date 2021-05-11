@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UntagResourceCommandInput = UntagResourceRequest;
-export type UntagResourceCommandOutput = UntagResourceResponse & __MetadataBearer;
+export interface UntagResourceCommandInput extends UntagResourceRequest {}
+export interface UntagResourceCommandOutput extends UntagResourceResponse, __MetadataBearer {}
 
 /**
  * <p>
  * Removes a tag from a resource in AWS Audit Manager.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AuditManagerClient, UntagResourceCommand } from "@aws-sdk/client-auditmanager"; // ES Modules import
+ * // const { AuditManagerClient, UntagResourceCommand } = require("@aws-sdk/client-auditmanager"); // CommonJS import
+ * const client = new AuditManagerClient(config);
+ * const command = new UntagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UntagResourceCommandInput} for command's `input` shape.
+ * @see {@link UntagResourceCommandOutput} for command's `response` shape.
+ * @see {@link AuditManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UntagResourceCommand extends $Command<
   UntagResourceCommandInput,

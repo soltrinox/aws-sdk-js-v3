@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSubscriptionDefinitionVersionCommandInput = CreateSubscriptionDefinitionVersionRequest;
-export type CreateSubscriptionDefinitionVersionCommandOutput = CreateSubscriptionDefinitionVersionResponse &
-  __MetadataBearer;
+export interface CreateSubscriptionDefinitionVersionCommandInput extends CreateSubscriptionDefinitionVersionRequest {}
+export interface CreateSubscriptionDefinitionVersionCommandOutput
+  extends CreateSubscriptionDefinitionVersionResponse,
+    __MetadataBearer {}
 
 /**
  * Creates a version of a subscription definition which has already been defined.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, CreateSubscriptionDefinitionVersionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, CreateSubscriptionDefinitionVersionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new CreateSubscriptionDefinitionVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSubscriptionDefinitionVersionCommandInput} for command's `input` shape.
+ * @see {@link CreateSubscriptionDefinitionVersionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSubscriptionDefinitionVersionCommand extends $Command<
   CreateSubscriptionDefinitionVersionCommandInput,

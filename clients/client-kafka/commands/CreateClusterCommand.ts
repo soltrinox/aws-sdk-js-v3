@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateClusterCommandInput = CreateClusterRequest;
-export type CreateClusterCommandOutput = CreateClusterResponse & __MetadataBearer;
+export interface CreateClusterCommandInput extends CreateClusterRequest {}
+export interface CreateClusterCommandOutput extends CreateClusterResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new MSK cluster.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, CreateClusterCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, CreateClusterCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new CreateClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateClusterCommandInput} for command's `input` shape.
+ * @see {@link CreateClusterCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateClusterCommand extends $Command<
   CreateClusterCommandInput,

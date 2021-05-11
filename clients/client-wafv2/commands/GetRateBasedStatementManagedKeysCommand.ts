@@ -17,14 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRateBasedStatementManagedKeysCommandInput = GetRateBasedStatementManagedKeysRequest;
-export type GetRateBasedStatementManagedKeysCommandOutput = GetRateBasedStatementManagedKeysResponse & __MetadataBearer;
+export interface GetRateBasedStatementManagedKeysCommandInput extends GetRateBasedStatementManagedKeysRequest {}
+export interface GetRateBasedStatementManagedKeysCommandOutput
+  extends GetRateBasedStatementManagedKeysResponse,
+    __MetadataBearer {}
 
 /**
- * <note>
- *             <p>This is the latest version of <b>AWS WAF</b>, named AWS WAFV2, released in November, 2019. For information, including how to migrate your AWS WAF resources from the prior release, see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>.  </p>
- *          </note>
- *          <p>Retrieves the keys that are currently blocked by a rate-based rule. The maximum number of managed keys that can be blocked for a single rate-based rule is 10,000. If more than 10,000 addresses exceed the rate limit, those with the highest rates are blocked.</p>
+ * <p>Retrieves the keys that are currently blocked by a rate-based rule. The maximum number of managed keys that can be blocked for a single rate-based rule is 10,000. If more than 10,000 addresses exceed the rate limit, those with the highest rates are blocked.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFV2Client, GetRateBasedStatementManagedKeysCommand } from "@aws-sdk/client-wafv2"; // ES Modules import
+ * // const { WAFV2Client, GetRateBasedStatementManagedKeysCommand } = require("@aws-sdk/client-wafv2"); // CommonJS import
+ * const client = new WAFV2Client(config);
+ * const command = new GetRateBasedStatementManagedKeysCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRateBasedStatementManagedKeysCommandInput} for command's `input` shape.
+ * @see {@link GetRateBasedStatementManagedKeysCommandOutput} for command's `response` shape.
+ * @see {@link WAFV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRateBasedStatementManagedKeysCommand extends $Command<
   GetRateBasedStatementManagedKeysCommandInput,

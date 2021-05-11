@@ -1,5 +1,6 @@
 import { RedshiftClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../RedshiftClient";
-import { ClusterCredentials, GetClusterCredentialsMessage } from "../models/models_0";
+import { ClusterCredentials } from "../models/models_0";
+import { GetClusterCredentialsMessage } from "../models/models_1";
 import {
   deserializeAws_queryGetClusterCredentialsCommand,
   serializeAws_queryGetClusterCredentialsCommand,
@@ -17,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetClusterCredentialsCommandInput = GetClusterCredentialsMessage;
-export type GetClusterCredentialsCommandOutput = ClusterCredentials & __MetadataBearer;
+export interface GetClusterCredentialsCommandInput extends GetClusterCredentialsMessage {}
+export interface GetClusterCredentialsCommandOutput extends ClusterCredentials, __MetadataBearer {}
 
 /**
  * <p>Returns a database user name and temporary password with temporary authorization to
@@ -42,6 +43,20 @@ export type GetClusterCredentialsCommandOutput = ClusterCredentials & __Metadata
  *             privilege.</p>
  *         <p>If the <code>DbName</code> parameter is specified, the IAM policy must allow access
  *             to the resource <code>dbname</code> for the specified database name. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, GetClusterCredentialsCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, GetClusterCredentialsCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new GetClusterCredentialsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetClusterCredentialsCommandInput} for command's `input` shape.
+ * @see {@link GetClusterCredentialsCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetClusterCredentialsCommand extends $Command<
   GetClusterCredentialsCommandInput,

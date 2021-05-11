@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RejectInputDeviceTransferCommandInput = RejectInputDeviceTransferRequest;
-export type RejectInputDeviceTransferCommandOutput = RejectInputDeviceTransferResponse & __MetadataBearer;
+export interface RejectInputDeviceTransferCommandInput extends RejectInputDeviceTransferRequest {}
+export interface RejectInputDeviceTransferCommandOutput extends RejectInputDeviceTransferResponse, __MetadataBearer {}
 
 /**
  * Reject the transfer of the specified input device to your AWS account.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, RejectInputDeviceTransferCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, RejectInputDeviceTransferCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new RejectInputDeviceTransferCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RejectInputDeviceTransferCommandInput} for command's `input` shape.
+ * @see {@link RejectInputDeviceTransferCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RejectInputDeviceTransferCommand extends $Command<
   RejectInputDeviceTransferCommandInput,

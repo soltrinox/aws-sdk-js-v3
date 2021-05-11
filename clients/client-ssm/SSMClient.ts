@@ -262,6 +262,10 @@ import {
   ListComplianceSummariesCommandOutput,
 } from "./commands/ListComplianceSummariesCommand";
 import {
+  ListDocumentMetadataHistoryCommandInput,
+  ListDocumentMetadataHistoryCommandOutput,
+} from "./commands/ListDocumentMetadataHistoryCommand";
+import {
   ListDocumentVersionsCommandInput,
   ListDocumentVersionsCommandOutput,
 } from "./commands/ListDocumentVersionsCommand";
@@ -270,6 +274,7 @@ import {
   ListInventoryEntriesCommandInput,
   ListInventoryEntriesCommandOutput,
 } from "./commands/ListInventoryEntriesCommand";
+import { ListOpsItemEventsCommandInput, ListOpsItemEventsCommandOutput } from "./commands/ListOpsItemEventsCommand";
 import { ListOpsMetadataCommandInput, ListOpsMetadataCommandOutput } from "./commands/ListOpsMetadataCommand";
 import {
   ListResourceComplianceSummariesCommandInput,
@@ -328,12 +333,20 @@ import {
   StartAutomationExecutionCommandInput,
   StartAutomationExecutionCommandOutput,
 } from "./commands/StartAutomationExecutionCommand";
+import {
+  StartChangeRequestExecutionCommandInput,
+  StartChangeRequestExecutionCommandOutput,
+} from "./commands/StartChangeRequestExecutionCommand";
 import { StartSessionCommandInput, StartSessionCommandOutput } from "./commands/StartSessionCommand";
 import {
   StopAutomationExecutionCommandInput,
   StopAutomationExecutionCommandOutput,
 } from "./commands/StopAutomationExecutionCommand";
 import { TerminateSessionCommandInput, TerminateSessionCommandOutput } from "./commands/TerminateSessionCommand";
+import {
+  UnlabelParameterVersionCommandInput,
+  UnlabelParameterVersionCommandOutput,
+} from "./commands/UnlabelParameterVersionCommand";
 import { UpdateAssociationCommandInput, UpdateAssociationCommandOutput } from "./commands/UpdateAssociationCommand";
 import {
   UpdateAssociationStatusCommandInput,
@@ -344,6 +357,10 @@ import {
   UpdateDocumentDefaultVersionCommandInput,
   UpdateDocumentDefaultVersionCommandOutput,
 } from "./commands/UpdateDocumentDefaultVersionCommand";
+import {
+  UpdateDocumentMetadataCommandInput,
+  UpdateDocumentMetadataCommandOutput,
+} from "./commands/UpdateDocumentMetadataCommand";
 import {
   UpdateMaintenanceWindowCommandInput,
   UpdateMaintenanceWindowCommandOutput,
@@ -515,9 +532,11 @@ export type ServiceInputTypes =
   | ListCommandsCommandInput
   | ListComplianceItemsCommandInput
   | ListComplianceSummariesCommandInput
+  | ListDocumentMetadataHistoryCommandInput
   | ListDocumentVersionsCommandInput
   | ListDocumentsCommandInput
   | ListInventoryEntriesCommandInput
+  | ListOpsItemEventsCommandInput
   | ListOpsMetadataCommandInput
   | ListResourceComplianceSummariesCommandInput
   | ListResourceDataSyncCommandInput
@@ -537,13 +556,16 @@ export type ServiceInputTypes =
   | SendCommandCommandInput
   | StartAssociationsOnceCommandInput
   | StartAutomationExecutionCommandInput
+  | StartChangeRequestExecutionCommandInput
   | StartSessionCommandInput
   | StopAutomationExecutionCommandInput
   | TerminateSessionCommandInput
+  | UnlabelParameterVersionCommandInput
   | UpdateAssociationCommandInput
   | UpdateAssociationStatusCommandInput
   | UpdateDocumentCommandInput
   | UpdateDocumentDefaultVersionCommandInput
+  | UpdateDocumentMetadataCommandInput
   | UpdateMaintenanceWindowCommandInput
   | UpdateMaintenanceWindowTargetCommandInput
   | UpdateMaintenanceWindowTaskCommandInput
@@ -644,9 +666,11 @@ export type ServiceOutputTypes =
   | ListCommandsCommandOutput
   | ListComplianceItemsCommandOutput
   | ListComplianceSummariesCommandOutput
+  | ListDocumentMetadataHistoryCommandOutput
   | ListDocumentVersionsCommandOutput
   | ListDocumentsCommandOutput
   | ListInventoryEntriesCommandOutput
+  | ListOpsItemEventsCommandOutput
   | ListOpsMetadataCommandOutput
   | ListResourceComplianceSummariesCommandOutput
   | ListResourceDataSyncCommandOutput
@@ -666,13 +690,16 @@ export type ServiceOutputTypes =
   | SendCommandCommandOutput
   | StartAssociationsOnceCommandOutput
   | StartAutomationExecutionCommandOutput
+  | StartChangeRequestExecutionCommandOutput
   | StartSessionCommandOutput
   | StopAutomationExecutionCommandOutput
   | TerminateSessionCommandOutput
+  | UnlabelParameterVersionCommandOutput
   | UpdateAssociationCommandOutput
   | UpdateAssociationStatusCommandOutput
   | UpdateDocumentCommandOutput
   | UpdateDocumentDefaultVersionCommandOutput
+  | UpdateDocumentMetadataCommandOutput
   | UpdateMaintenanceWindowCommandOutput
   | UpdateMaintenanceWindowTargetCommandOutput
   | UpdateMaintenanceWindowTaskCommandOutput
@@ -748,7 +775,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -779,7 +806,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type SSMClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type SSMClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -787,8 +814,12 @@ export type SSMClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of SSMClient class constructor that set the region, credentials and other options.
+ */
+export interface SSMClientConfig extends SSMClientConfigType {}
 
-export type SSMClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type SSMClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -796,6 +827,10 @@ export type SSMClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandle
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of SSMClient class. This is resolved and normalized from the {@link SSMClientConfig | constructor configuration interface}.
+ */
+export interface SSMClientResolvedConfig extends SSMClientResolvedConfigType {}
 
 /**
  * <fullname>AWS Systems Manager</fullname>
@@ -819,6 +854,9 @@ export class SSMClient extends __Client<
   ServiceOutputTypes,
   SSMClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of SSMClient class. This is resolved and normalized from the {@link SSMClientConfig | constructor configuration interface}.
+   */
   readonly config: SSMClientResolvedConfig;
 
   constructor(configuration: SSMClientConfig) {

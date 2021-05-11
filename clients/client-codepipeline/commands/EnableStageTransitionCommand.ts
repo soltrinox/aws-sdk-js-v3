@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type EnableStageTransitionCommandInput = EnableStageTransitionInput;
-export type EnableStageTransitionCommandOutput = __MetadataBearer;
+export interface EnableStageTransitionCommandInput extends EnableStageTransitionInput {}
+export interface EnableStageTransitionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Enables artifacts in a pipeline to transition to a stage in a pipeline.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodePipelineClient, EnableStageTransitionCommand } from "@aws-sdk/client-codepipeline"; // ES Modules import
+ * // const { CodePipelineClient, EnableStageTransitionCommand } = require("@aws-sdk/client-codepipeline"); // CommonJS import
+ * const client = new CodePipelineClient(config);
+ * const command = new EnableStageTransitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link EnableStageTransitionCommandInput} for command's `input` shape.
+ * @see {@link EnableStageTransitionCommandOutput} for command's `response` shape.
+ * @see {@link CodePipelineClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class EnableStageTransitionCommand extends $Command<
   EnableStageTransitionCommandInput,

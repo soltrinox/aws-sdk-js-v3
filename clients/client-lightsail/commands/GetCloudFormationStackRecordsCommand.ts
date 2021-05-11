@@ -17,14 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCloudFormationStackRecordsCommandInput = GetCloudFormationStackRecordsRequest;
-export type GetCloudFormationStackRecordsCommandOutput = GetCloudFormationStackRecordsResult & __MetadataBearer;
+export interface GetCloudFormationStackRecordsCommandInput extends GetCloudFormationStackRecordsRequest {}
+export interface GetCloudFormationStackRecordsCommandOutput
+  extends GetCloudFormationStackRecordsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the CloudFormation stack record created as a result of the <code>create cloud
  *         formation stack</code> operation.</p>
  *          <p>An AWS CloudFormation stack is used to create a new Amazon EC2 instance from an exported Lightsail
  *       snapshot.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetCloudFormationStackRecordsCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetCloudFormationStackRecordsCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetCloudFormationStackRecordsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCloudFormationStackRecordsCommandInput} for command's `input` shape.
+ * @see {@link GetCloudFormationStackRecordsCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCloudFormationStackRecordsCommand extends $Command<
   GetCloudFormationStackRecordsCommandInput,

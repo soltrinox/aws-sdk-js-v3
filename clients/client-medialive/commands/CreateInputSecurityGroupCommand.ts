@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateInputSecurityGroupCommandInput = CreateInputSecurityGroupRequest;
-export type CreateInputSecurityGroupCommandOutput = CreateInputSecurityGroupResponse & __MetadataBearer;
+export interface CreateInputSecurityGroupCommandInput extends CreateInputSecurityGroupRequest {}
+export interface CreateInputSecurityGroupCommandOutput extends CreateInputSecurityGroupResponse, __MetadataBearer {}
 
 /**
  * Creates a Input Security Group
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, CreateInputSecurityGroupCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, CreateInputSecurityGroupCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new CreateInputSecurityGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateInputSecurityGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateInputSecurityGroupCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateInputSecurityGroupCommand extends $Command<
   CreateInputSecurityGroupCommandInput,

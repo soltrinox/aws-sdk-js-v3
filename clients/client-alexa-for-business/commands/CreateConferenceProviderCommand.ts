@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateConferenceProviderCommandInput = CreateConferenceProviderRequest;
-export type CreateConferenceProviderCommandOutput = CreateConferenceProviderResponse & __MetadataBearer;
+export interface CreateConferenceProviderCommandInput extends CreateConferenceProviderRequest {}
+export interface CreateConferenceProviderCommandOutput extends CreateConferenceProviderResponse, __MetadataBearer {}
 
 /**
  * <p>Adds a new conference provider under the user's AWS account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, CreateConferenceProviderCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, CreateConferenceProviderCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new CreateConferenceProviderCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateConferenceProviderCommandInput} for command's `input` shape.
+ * @see {@link CreateConferenceProviderCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateConferenceProviderCommand extends $Command<
   CreateConferenceProviderCommandInput,

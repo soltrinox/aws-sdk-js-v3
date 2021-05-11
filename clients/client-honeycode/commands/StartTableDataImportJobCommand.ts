@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartTableDataImportJobCommandInput = StartTableDataImportJobRequest;
-export type StartTableDataImportJobCommandOutput = StartTableDataImportJobResult & __MetadataBearer;
+export interface StartTableDataImportJobCommandInput extends StartTableDataImportJobRequest {}
+export interface StartTableDataImportJobCommandOutput extends StartTableDataImportJobResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -26,6 +26,20 @@ export type StartTableDataImportJobCommandOutput = StartTableDataImportJobResult
  *             the id of the job that was started. To find out the status of the import request, you need to call the
  *             DescribeTableDataImportJob API.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { HoneycodeClient, StartTableDataImportJobCommand } from "@aws-sdk/client-honeycode"; // ES Modules import
+ * // const { HoneycodeClient, StartTableDataImportJobCommand } = require("@aws-sdk/client-honeycode"); // CommonJS import
+ * const client = new HoneycodeClient(config);
+ * const command = new StartTableDataImportJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartTableDataImportJobCommandInput} for command's `input` shape.
+ * @see {@link StartTableDataImportJobCommandOutput} for command's `response` shape.
+ * @see {@link HoneycodeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartTableDataImportJobCommand extends $Command<
   StartTableDataImportJobCommandInput,

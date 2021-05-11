@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateApplicationCommandInput = CreateApplicationInput;
-export type CreateApplicationCommandOutput = CreateApplicationOutput & __MetadataBearer;
+export interface CreateApplicationCommandInput extends CreateApplicationInput {}
+export interface CreateApplicationCommandOutput extends CreateApplicationOutput, __MetadataBearer {}
 
 /**
  * <p>Creates an application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeDeployClient, CreateApplicationCommand } from "@aws-sdk/client-codedeploy"; // ES Modules import
+ * // const { CodeDeployClient, CreateApplicationCommand } = require("@aws-sdk/client-codedeploy"); // CommonJS import
+ * const client = new CodeDeployClient(config);
+ * const command = new CreateApplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateApplicationCommandInput} for command's `input` shape.
+ * @see {@link CreateApplicationCommandOutput} for command's `response` shape.
+ * @see {@link CodeDeployClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateApplicationCommand extends $Command<
   CreateApplicationCommandInput,

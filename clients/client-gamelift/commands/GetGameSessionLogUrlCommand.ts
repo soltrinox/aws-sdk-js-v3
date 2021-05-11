@@ -17,70 +17,47 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetGameSessionLogUrlCommandInput = GetGameSessionLogUrlInput;
-export type GetGameSessionLogUrlCommandOutput = GetGameSessionLogUrlOutput & __MetadataBearer;
+export interface GetGameSessionLogUrlCommandInput extends GetGameSessionLogUrlInput {}
+export interface GetGameSessionLogUrlCommandOutput extends GetGameSessionLogUrlOutput, __MetadataBearer {}
 
 /**
  * <p>Retrieves the location of stored game session logs for a specified game session.
- *             When a game session is terminated, Amazon GameLift automatically stores the logs in Amazon S3 and
+ *             When a game session is terminated, GameLift automatically stores the logs in Amazon S3 and
  *             retains them for 14 days. Use this URL to download the logs.</p>
  *         <note>
  *             <p>See the <a href="https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift">AWS Service
  *                     Limits</a> page for maximum log file sizes. Log files that exceed this limit
  *                 are not saved.</p>
  *         </note>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateGameSession</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeGameSessions</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeGameSessionDetails</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>SearchGameSessions</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateGameSession</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>GetGameSessionLogUrl</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>Game session placements</p>
- *                         <ul>
- *                   <li>
- *                      <p>
- *                         <a>StartGameSessionPlacement</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>DescribeGameSessionPlacement</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>StopGameSessionPlacement</a>
- *                      </p>
- *                   </li>
- *                </ul>
- *             </li>
- *          </ul>
+ *         <p>
+ *             <b>Related actions</b>
+ *          </p>
+ *                     <p>
+ *             <a>CreateGameSession</a> |
+ *                     <a>DescribeGameSessions</a> |
+ *                     <a>DescribeGameSessionDetails</a> |
+ *                     <a>SearchGameSessions</a> |
+ *                     <a>UpdateGameSession</a> |
+ *                     <a>GetGameSessionLogUrl</a> |
+ *                     <a>StartGameSessionPlacement</a> |
+ *                     <a>DescribeGameSessionPlacement</a> |
+ *                     <a>StopGameSessionPlacement</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, GetGameSessionLogUrlCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, GetGameSessionLogUrlCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new GetGameSessionLogUrlCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetGameSessionLogUrlCommandInput} for command's `input` shape.
+ * @see {@link GetGameSessionLogUrlCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetGameSessionLogUrlCommand extends $Command<
   GetGameSessionLogUrlCommandInput,

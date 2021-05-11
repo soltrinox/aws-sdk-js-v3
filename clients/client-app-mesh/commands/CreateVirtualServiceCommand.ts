@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateVirtualServiceCommandInput = CreateVirtualServiceInput;
-export type CreateVirtualServiceCommandOutput = CreateVirtualServiceOutput & __MetadataBearer;
+export interface CreateVirtualServiceCommandInput extends CreateVirtualServiceInput {}
+export interface CreateVirtualServiceCommandOutput extends CreateVirtualServiceOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a virtual service within a service mesh.</p>
@@ -28,6 +28,20 @@ export type CreateVirtualServiceCommandOutput = CreateVirtualServiceOutput & __M
  *          virtual node or virtual router that is specified as the provider for the virtual
  *          service.</p>
  *          <p>For more information about virtual services, see <a href="https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_services.html">Virtual services</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppMeshClient, CreateVirtualServiceCommand } from "@aws-sdk/client-app-mesh"; // ES Modules import
+ * // const { AppMeshClient, CreateVirtualServiceCommand } = require("@aws-sdk/client-app-mesh"); // CommonJS import
+ * const client = new AppMeshClient(config);
+ * const command = new CreateVirtualServiceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateVirtualServiceCommandInput} for command's `input` shape.
+ * @see {@link CreateVirtualServiceCommandOutput} for command's `response` shape.
+ * @see {@link AppMeshClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateVirtualServiceCommand extends $Command<
   CreateVirtualServiceCommandInput,

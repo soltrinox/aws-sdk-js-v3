@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteProtectionCommandInput = DeleteProtectionRequest;
-export type DeleteProtectionCommandOutput = DeleteProtectionResponse & __MetadataBearer;
+export interface DeleteProtectionCommandInput extends DeleteProtectionRequest {}
+export interface DeleteProtectionCommandOutput extends DeleteProtectionResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an AWS Shield Advanced <a>Protection</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ShieldClient, DeleteProtectionCommand } from "@aws-sdk/client-shield"; // ES Modules import
+ * // const { ShieldClient, DeleteProtectionCommand } = require("@aws-sdk/client-shield"); // CommonJS import
+ * const client = new ShieldClient(config);
+ * const command = new DeleteProtectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteProtectionCommandInput} for command's `input` shape.
+ * @see {@link DeleteProtectionCommandOutput} for command's `response` shape.
+ * @see {@link ShieldClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteProtectionCommand extends $Command<
   DeleteProtectionCommandInput,

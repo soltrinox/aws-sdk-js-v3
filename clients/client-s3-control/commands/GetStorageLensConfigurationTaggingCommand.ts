@@ -21,20 +21,35 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetStorageLensConfigurationTaggingCommandInput = GetStorageLensConfigurationTaggingRequest;
-export type GetStorageLensConfigurationTaggingCommandOutput = GetStorageLensConfigurationTaggingResult &
-  __MetadataBearer;
+export interface GetStorageLensConfigurationTaggingCommandInput extends GetStorageLensConfigurationTaggingRequest {}
+export interface GetStorageLensConfigurationTaggingCommandOutput
+  extends GetStorageLensConfigurationTaggingResult,
+    __MetadataBearer {}
 
 /**
  * <p>Gets the tags of Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see
- *          <a href="https://docs.aws.amazon.com/https:/docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens.html">Working with Amazon S3 Storage Lens</a> in the
- *          <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *          <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens.html">Assessing your storage
+ *             activity and usage with Amazon S3 Storage Lens </a> in the <i>Amazon Simple Storage Service User Guide</i>.</p>
  *          <note>
  *             <p>To use this action,
  *          you must have permission to perform the <code>s3:GetStorageLensConfigurationTagging</code> action. For more
- *          information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens.html#storage_lens_IAM">Setting permissions to use Amazon S3 Storage Lens</a> in the
- *          <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *          information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html">Setting permissions to use Amazon S3 Storage Lens</a> in the
+ *          <i>Amazon Simple Storage Service User Guide</i>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, GetStorageLensConfigurationTaggingCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, GetStorageLensConfigurationTaggingCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new GetStorageLensConfigurationTaggingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetStorageLensConfigurationTaggingCommandInput} for command's `input` shape.
+ * @see {@link GetStorageLensConfigurationTaggingCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetStorageLensConfigurationTaggingCommand extends $Command<
   GetStorageLensConfigurationTaggingCommandInput,

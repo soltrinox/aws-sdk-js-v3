@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCertificateAuthorityCommandInput = DescribeCertificateAuthorityRequest;
-export type DescribeCertificateAuthorityCommandOutput = DescribeCertificateAuthorityResponse & __MetadataBearer;
+export interface DescribeCertificateAuthorityCommandInput extends DescribeCertificateAuthorityRequest {}
+export interface DescribeCertificateAuthorityCommandOutput
+  extends DescribeCertificateAuthorityResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Lists information about your private certificate authority (CA) or one that has been
@@ -51,7 +53,7 @@ export type DescribeCertificateAuthorityCommandOutput = DescribeCertificateAutho
  *             <li>
  * 				           <p>
  *                   <code>FAILED</code> - Your private CA has failed. Your CA can fail because of
- * 					problems such a network outage or backend AWS failure or other errors. A
+ * 					problems such a network outage or back-end AWS failure or other errors. A
  * 					failed CA can never return to the pending state. You must create a new CA.
  * 				</p>
  * 			         </li>
@@ -62,6 +64,20 @@ export type DescribeCertificateAuthorityCommandOutput = DescribeCertificateAutho
  * 					restoration period is also included in this action's output.</p>
  * 			         </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ACMPCAClient, DescribeCertificateAuthorityCommand } from "@aws-sdk/client-acm-pca"; // ES Modules import
+ * // const { ACMPCAClient, DescribeCertificateAuthorityCommand } = require("@aws-sdk/client-acm-pca"); // CommonJS import
+ * const client = new ACMPCAClient(config);
+ * const command = new DescribeCertificateAuthorityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCertificateAuthorityCommandInput} for command's `input` shape.
+ * @see {@link DescribeCertificateAuthorityCommandOutput} for command's `response` shape.
+ * @see {@link ACMPCAClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCertificateAuthorityCommand extends $Command<
   DescribeCertificateAuthorityCommandInput,

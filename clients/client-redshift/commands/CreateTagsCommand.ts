@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateTagsCommandInput = CreateTagsMessage;
-export type CreateTagsCommandOutput = __MetadataBearer;
+export interface CreateTagsCommandInput extends CreateTagsMessage {}
+export interface CreateTagsCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Adds tags to a cluster.</p>
@@ -23,6 +23,20 @@ export type CreateTagsCommandOutput = __MetadataBearer;
  *             resource, you will receive an error and the attempt will fail.</p>
  *         <p>If you specify a key that already exists for the resource, the value for that key
  *             will be updated with the new value.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, CreateTagsCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, CreateTagsCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new CreateTagsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateTagsCommandInput} for command's `input` shape.
+ * @see {@link CreateTagsCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateTagsCommand extends $Command<
   CreateTagsCommandInput,

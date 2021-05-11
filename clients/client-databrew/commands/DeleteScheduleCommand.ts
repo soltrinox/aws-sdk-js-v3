@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteScheduleCommandInput = DeleteScheduleRequest;
-export type DeleteScheduleCommandOutput = DeleteScheduleResponse & __MetadataBearer;
+export interface DeleteScheduleCommandInput extends DeleteScheduleRequest {}
+export interface DeleteScheduleCommandOutput extends DeleteScheduleResponse, __MetadataBearer {}
 
 /**
- * <p>Deletes the specified AWS Glue DataBrew schedule from the current AWS account.</p>
+ * <p>Deletes the specified DataBrew schedule.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataBrewClient, DeleteScheduleCommand } from "@aws-sdk/client-databrew"; // ES Modules import
+ * // const { DataBrewClient, DeleteScheduleCommand } = require("@aws-sdk/client-databrew"); // CommonJS import
+ * const client = new DataBrewClient(config);
+ * const command = new DeleteScheduleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteScheduleCommandInput} for command's `input` shape.
+ * @see {@link DeleteScheduleCommandOutput} for command's `response` shape.
+ * @see {@link DataBrewClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteScheduleCommand extends $Command<
   DeleteScheduleCommandInput,

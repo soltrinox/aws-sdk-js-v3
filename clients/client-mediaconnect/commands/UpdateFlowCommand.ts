@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateFlowCommandInput = UpdateFlowRequest;
-export type UpdateFlowCommandOutput = UpdateFlowResponse & __MetadataBearer;
+export interface UpdateFlowCommandInput extends UpdateFlowRequest {}
+export interface UpdateFlowCommandOutput extends UpdateFlowResponse, __MetadataBearer {}
 
 /**
  * Updates flow
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaConnectClient, UpdateFlowCommand } from "@aws-sdk/client-mediaconnect"; // ES Modules import
+ * // const { MediaConnectClient, UpdateFlowCommand } = require("@aws-sdk/client-mediaconnect"); // CommonJS import
+ * const client = new MediaConnectClient(config);
+ * const command = new UpdateFlowCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateFlowCommandInput} for command's `input` shape.
+ * @see {@link UpdateFlowCommandOutput} for command's `response` shape.
+ * @see {@link MediaConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateFlowCommand extends $Command<
   UpdateFlowCommandInput,

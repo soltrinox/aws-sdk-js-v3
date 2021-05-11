@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateResourceCommandInput = CreateResourceRequest;
-export type CreateResourceCommandOutput = Resource & __MetadataBearer;
+export interface CreateResourceCommandInput extends CreateResourceRequest {}
+export interface CreateResourceCommandOutput extends Resource, __MetadataBearer {}
 
 /**
  * <p>Creates a <a>Resource</a> resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, CreateResourceCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, CreateResourceCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new CreateResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateResourceCommandInput} for command's `input` shape.
+ * @see {@link CreateResourceCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateResourceCommand extends $Command<
   CreateResourceCommandInput,

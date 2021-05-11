@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteCostCategoryDefinitionCommandInput = DeleteCostCategoryDefinitionRequest;
-export type DeleteCostCategoryDefinitionCommandOutput = DeleteCostCategoryDefinitionResponse & __MetadataBearer;
+export interface DeleteCostCategoryDefinitionCommandInput extends DeleteCostCategoryDefinitionRequest {}
+export interface DeleteCostCategoryDefinitionCommandOutput
+  extends DeleteCostCategoryDefinitionResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Deletes a Cost Category. Expenses from this month going forward will no longer be categorized with this Cost Category.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CostExplorerClient, DeleteCostCategoryDefinitionCommand } from "@aws-sdk/client-cost-explorer"; // ES Modules import
+ * // const { CostExplorerClient, DeleteCostCategoryDefinitionCommand } = require("@aws-sdk/client-cost-explorer"); // CommonJS import
+ * const client = new CostExplorerClient(config);
+ * const command = new DeleteCostCategoryDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteCostCategoryDefinitionCommandInput} for command's `input` shape.
+ * @see {@link DeleteCostCategoryDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link CostExplorerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteCostCategoryDefinitionCommand extends $Command<
   DeleteCostCategoryDefinitionCommandInput,

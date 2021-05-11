@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateKeysAndCertificateCommandInput = CreateKeysAndCertificateRequest;
-export type CreateKeysAndCertificateCommandOutput = CreateKeysAndCertificateResponse & __MetadataBearer;
+export interface CreateKeysAndCertificateCommandInput extends CreateKeysAndCertificateRequest {}
+export interface CreateKeysAndCertificateCommandOutput extends CreateKeysAndCertificateResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued
@@ -27,6 +27,20 @@ export type CreateKeysAndCertificateCommandOutput = CreateKeysAndCertificateResp
  *          <p>
  *             <b>Note</b> This is the only time AWS IoT issues the private key
  *          for this certificate, so it is important to keep it in a secure location.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, CreateKeysAndCertificateCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, CreateKeysAndCertificateCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new CreateKeysAndCertificateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateKeysAndCertificateCommandInput} for command's `input` shape.
+ * @see {@link CreateKeysAndCertificateCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateKeysAndCertificateCommand extends $Command<
   CreateKeysAndCertificateCommandInput,

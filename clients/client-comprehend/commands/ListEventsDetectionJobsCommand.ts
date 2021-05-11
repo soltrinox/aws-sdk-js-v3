@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListEventsDetectionJobsCommandInput = ListEventsDetectionJobsRequest;
-export type ListEventsDetectionJobsCommandOutput = ListEventsDetectionJobsResponse & __MetadataBearer;
+export interface ListEventsDetectionJobsCommandInput extends ListEventsDetectionJobsRequest {}
+export interface ListEventsDetectionJobsCommandOutput extends ListEventsDetectionJobsResponse, __MetadataBearer {}
 
 /**
  * <p>Gets a list of the events detection jobs that you have submitted.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ComprehendClient, ListEventsDetectionJobsCommand } from "@aws-sdk/client-comprehend"; // ES Modules import
+ * // const { ComprehendClient, ListEventsDetectionJobsCommand } = require("@aws-sdk/client-comprehend"); // CommonJS import
+ * const client = new ComprehendClient(config);
+ * const command = new ListEventsDetectionJobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListEventsDetectionJobsCommandInput} for command's `input` shape.
+ * @see {@link ListEventsDetectionJobsCommandOutput} for command's `response` shape.
+ * @see {@link ComprehendClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListEventsDetectionJobsCommand extends $Command<
   ListEventsDetectionJobsCommandInput,

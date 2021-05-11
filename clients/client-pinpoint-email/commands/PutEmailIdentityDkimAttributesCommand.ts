@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutEmailIdentityDkimAttributesCommandInput = PutEmailIdentityDkimAttributesRequest;
-export type PutEmailIdentityDkimAttributesCommandOutput = PutEmailIdentityDkimAttributesResponse & __MetadataBearer;
+export interface PutEmailIdentityDkimAttributesCommandInput extends PutEmailIdentityDkimAttributesRequest {}
+export interface PutEmailIdentityDkimAttributesCommandOutput
+  extends PutEmailIdentityDkimAttributesResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Used to enable or disable DKIM authentication for an email identity.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointEmailClient, PutEmailIdentityDkimAttributesCommand } from "@aws-sdk/client-pinpoint-email"; // ES Modules import
+ * // const { PinpointEmailClient, PutEmailIdentityDkimAttributesCommand } = require("@aws-sdk/client-pinpoint-email"); // CommonJS import
+ * const client = new PinpointEmailClient(config);
+ * const command = new PutEmailIdentityDkimAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutEmailIdentityDkimAttributesCommandInput} for command's `input` shape.
+ * @see {@link PutEmailIdentityDkimAttributesCommandOutput} for command's `response` shape.
+ * @see {@link PinpointEmailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutEmailIdentityDkimAttributesCommand extends $Command<
   PutEmailIdentityDkimAttributesCommandInput,

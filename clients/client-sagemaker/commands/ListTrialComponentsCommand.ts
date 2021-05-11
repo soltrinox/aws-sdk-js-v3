@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTrialComponentsCommandInput = ListTrialComponentsRequest;
-export type ListTrialComponentsCommandOutput = ListTrialComponentsResponse & __MetadataBearer;
+export interface ListTrialComponentsCommandInput extends ListTrialComponentsRequest {}
+export interface ListTrialComponentsCommandOutput extends ListTrialComponentsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the trial components in your account. You can sort the list by trial component name
@@ -41,6 +41,20 @@ export type ListTrialComponentsCommandOutput = ListTrialComponentsResponse & __M
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, ListTrialComponentsCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, ListTrialComponentsCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new ListTrialComponentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTrialComponentsCommandInput} for command's `input` shape.
+ * @see {@link ListTrialComponentsCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTrialComponentsCommand extends $Command<
   ListTrialComponentsCommandInput,

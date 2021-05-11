@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateMyUserProfileCommandInput = UpdateMyUserProfileRequest;
-export type UpdateMyUserProfileCommandOutput = __MetadataBearer;
+export interface UpdateMyUserProfileCommandInput extends UpdateMyUserProfileRequest {}
+export interface UpdateMyUserProfileCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Updates a user's SSH public key.</p>
@@ -27,6 +27,20 @@ export type UpdateMyUserProfileCommandOutput = __MetadataBearer;
  *       enabled or an attached policy that explicitly grants permissions. For more information about user
  *       permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, UpdateMyUserProfileCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, UpdateMyUserProfileCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new UpdateMyUserProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateMyUserProfileCommandInput} for command's `input` shape.
+ * @see {@link UpdateMyUserProfileCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateMyUserProfileCommand extends $Command<
   UpdateMyUserProfileCommandInput,

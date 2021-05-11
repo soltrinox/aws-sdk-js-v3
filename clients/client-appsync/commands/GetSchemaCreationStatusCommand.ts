@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSchemaCreationStatusCommandInput = GetSchemaCreationStatusRequest;
-export type GetSchemaCreationStatusCommandOutput = GetSchemaCreationStatusResponse & __MetadataBearer;
+export interface GetSchemaCreationStatusCommandInput extends GetSchemaCreationStatusRequest {}
+export interface GetSchemaCreationStatusCommandOutput extends GetSchemaCreationStatusResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the current status of a schema creation operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppSyncClient, GetSchemaCreationStatusCommand } from "@aws-sdk/client-appsync"; // ES Modules import
+ * // const { AppSyncClient, GetSchemaCreationStatusCommand } = require("@aws-sdk/client-appsync"); // CommonJS import
+ * const client = new AppSyncClient(config);
+ * const command = new GetSchemaCreationStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSchemaCreationStatusCommandInput} for command's `input` shape.
+ * @see {@link GetSchemaCreationStatusCommandOutput} for command's `response` shape.
+ * @see {@link AppSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSchemaCreationStatusCommand extends $Command<
   GetSchemaCreationStatusCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopTransformJobCommandInput = StopTransformJobRequest;
-export type StopTransformJobCommandOutput = __MetadataBearer;
+export interface StopTransformJobCommandInput extends StopTransformJobRequest {}
+export interface StopTransformJobCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Stops a transform job.</p>
@@ -27,6 +27,20 @@ export type StopTransformJobCommandOutput = __MetadataBearer;
  *             stops
  *             the job, the status is set to <code>Stopped</code>. When you stop a transform job before
  *             it is completed, Amazon SageMaker doesn't store the job's output in Amazon S3.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, StopTransformJobCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, StopTransformJobCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new StopTransformJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopTransformJobCommandInput} for command's `input` shape.
+ * @see {@link StopTransformJobCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopTransformJobCommand extends $Command<
   StopTransformJobCommandInput,

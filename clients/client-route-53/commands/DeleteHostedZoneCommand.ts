@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteHostedZoneCommandInput = DeleteHostedZoneRequest;
-export type DeleteHostedZoneCommandOutput = DeleteHostedZoneResponse & __MetadataBearer;
+export interface DeleteHostedZoneCommandInput extends DeleteHostedZoneRequest {}
+export interface DeleteHostedZoneCommandOutput extends DeleteHostedZoneResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a hosted zone.</p>
@@ -61,6 +61,20 @@ export type DeleteHostedZoneCommandOutput = DeleteHostedZoneResponse & __Metadat
  * 				AWS account.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, DeleteHostedZoneCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, DeleteHostedZoneCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new DeleteHostedZoneCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteHostedZoneCommandInput} for command's `input` shape.
+ * @see {@link DeleteHostedZoneCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteHostedZoneCommand extends $Command<
   DeleteHostedZoneCommandInput,

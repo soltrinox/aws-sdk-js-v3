@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListLicensesCommandInput = ListLicensesRequest;
-export type ListLicensesCommandOutput = ListLicensesResponse & __MetadataBearer;
+export interface ListLicensesCommandInput extends ListLicensesRequest {}
+export interface ListLicensesCommandOutput extends ListLicensesResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the licenses for your account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LicenseManagerClient, ListLicensesCommand } from "@aws-sdk/client-license-manager"; // ES Modules import
+ * // const { LicenseManagerClient, ListLicensesCommand } = require("@aws-sdk/client-license-manager"); // CommonJS import
+ * const client = new LicenseManagerClient(config);
+ * const command = new ListLicensesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListLicensesCommandInput} for command's `input` shape.
+ * @see {@link ListLicensesCommandOutput} for command's `response` shape.
+ * @see {@link LicenseManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListLicensesCommand extends $Command<
   ListLicensesCommandInput,

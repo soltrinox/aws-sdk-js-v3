@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateTargetsWithJobCommandInput = AssociateTargetsWithJobRequest;
-export type AssociateTargetsWithJobCommandOutput = AssociateTargetsWithJobResponse & __MetadataBearer;
+export interface AssociateTargetsWithJobCommandInput extends AssociateTargetsWithJobRequest {}
+export interface AssociateTargetsWithJobCommandOutput extends AssociateTargetsWithJobResponse, __MetadataBearer {}
 
 /**
  * <p>Associates a group with a continuous job. The following criteria must be met: </p>
@@ -34,6 +34,20 @@ export type AssociateTargetsWithJobCommandOutput = AssociateTargetsWithJobRespon
  *                 <p>The total number of targets associated with a job must not exceed 100.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, AssociateTargetsWithJobCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, AssociateTargetsWithJobCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new AssociateTargetsWithJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateTargetsWithJobCommandInput} for command's `input` shape.
+ * @see {@link AssociateTargetsWithJobCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateTargetsWithJobCommand extends $Command<
   AssociateTargetsWithJobCommandInput,

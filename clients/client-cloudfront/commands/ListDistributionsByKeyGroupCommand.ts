@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDistributionsByKeyGroupCommandInput = ListDistributionsByKeyGroupRequest;
-export type ListDistributionsByKeyGroupCommandOutput = ListDistributionsByKeyGroupResult & __MetadataBearer;
+export interface ListDistributionsByKeyGroupCommandInput extends ListDistributionsByKeyGroupRequest {}
+export interface ListDistributionsByKeyGroupCommandOutput extends ListDistributionsByKeyGroupResult, __MetadataBearer {}
 
 /**
  * <p>Gets a list of distribution IDs for distributions that have a cache behavior that references
@@ -28,6 +28,20 @@ export type ListDistributionsByKeyGroupCommandOutput = ListDistributionsByKeyGro
  * 			default maximum, the response is paginated. To get the next page of items, send a
  * 			subsequent request that specifies the <code>NextMarker</code> value from the current
  * 			response as the <code>Marker</code> value in the subsequent request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, ListDistributionsByKeyGroupCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, ListDistributionsByKeyGroupCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new ListDistributionsByKeyGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDistributionsByKeyGroupCommandInput} for command's `input` shape.
+ * @see {@link ListDistributionsByKeyGroupCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDistributionsByKeyGroupCommand extends $Command<
   ListDistributionsByKeyGroupCommandInput,

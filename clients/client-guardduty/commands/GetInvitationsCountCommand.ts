@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetInvitationsCountCommandInput = GetInvitationsCountRequest;
-export type GetInvitationsCountCommandOutput = GetInvitationsCountResponse & __MetadataBearer;
+export interface GetInvitationsCountCommandInput extends GetInvitationsCountRequest {}
+export interface GetInvitationsCountCommandOutput extends GetInvitationsCountResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the count of all GuardDuty membership invitations that were sent to the current
  *       member account except the currently accepted invitation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GuardDutyClient, GetInvitationsCountCommand } from "@aws-sdk/client-guardduty"; // ES Modules import
+ * // const { GuardDutyClient, GetInvitationsCountCommand } = require("@aws-sdk/client-guardduty"); // CommonJS import
+ * const client = new GuardDutyClient(config);
+ * const command = new GetInvitationsCountCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetInvitationsCountCommandInput} for command's `input` shape.
+ * @see {@link GetInvitationsCountCommandOutput} for command's `response` shape.
+ * @see {@link GuardDutyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetInvitationsCountCommand extends $Command<
   GetInvitationsCountCommandInput,

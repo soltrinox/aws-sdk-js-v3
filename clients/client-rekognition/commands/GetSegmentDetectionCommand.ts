@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSegmentDetectionCommandInput = GetSegmentDetectionRequest;
-export type GetSegmentDetectionCommandOutput = GetSegmentDetectionResponse & __MetadataBearer;
+export interface GetSegmentDetectionCommandInput extends GetSegmentDetectionRequest {}
+export interface GetSegmentDetectionCommandOutput extends GetSegmentDetectionResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the segment detection results of a Amazon Rekognition Video analysis started by <a>StartSegmentDetection</a>.</p>
@@ -44,6 +44,20 @@ export type GetSegmentDetectionCommandOutput = GetSegmentDetectionResponse & __M
  *       call to <code>GetSegmentDetection</code>.</p>
  *
  *          <p>For more information, see Detecting Video Segments in Stored Video in the Amazon Rekognition Developer Guide.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, GetSegmentDetectionCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, GetSegmentDetectionCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new GetSegmentDetectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSegmentDetectionCommandInput} for command's `input` shape.
+ * @see {@link GetSegmentDetectionCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSegmentDetectionCommand extends $Command<
   GetSegmentDetectionCommandInput,

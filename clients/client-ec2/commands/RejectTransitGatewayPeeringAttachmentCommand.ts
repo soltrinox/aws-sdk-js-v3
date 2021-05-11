@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RejectTransitGatewayPeeringAttachmentCommandInput = RejectTransitGatewayPeeringAttachmentRequest;
-export type RejectTransitGatewayPeeringAttachmentCommandOutput = RejectTransitGatewayPeeringAttachmentResult &
-  __MetadataBearer;
+export interface RejectTransitGatewayPeeringAttachmentCommandInput
+  extends RejectTransitGatewayPeeringAttachmentRequest {}
+export interface RejectTransitGatewayPeeringAttachmentCommandOutput
+  extends RejectTransitGatewayPeeringAttachmentResult,
+    __MetadataBearer {}
 
 /**
  * <p>Rejects a transit gateway peering attachment request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, RejectTransitGatewayPeeringAttachmentCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, RejectTransitGatewayPeeringAttachmentCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new RejectTransitGatewayPeeringAttachmentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RejectTransitGatewayPeeringAttachmentCommandInput} for command's `input` shape.
+ * @see {@link RejectTransitGatewayPeeringAttachmentCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RejectTransitGatewayPeeringAttachmentCommand extends $Command<
   RejectTransitGatewayPeeringAttachmentCommandInput,

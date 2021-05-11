@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutTraceSegmentsCommandInput = PutTraceSegmentsRequest;
-export type PutTraceSegmentsCommandOutput = PutTraceSegmentsResult & __MetadataBearer;
+export interface PutTraceSegmentsCommandInput extends PutTraceSegmentsRequest {}
+export interface PutTraceSegmentsCommandOutput extends PutTraceSegmentsResult, __MetadataBearer {}
 
 /**
  * <p>Uploads segment documents to AWS X-Ray. The <a href="https://docs.aws.amazon.com/xray/index.html">X-Ray SDK</a> generates segment documents and sends them to the X-Ray daemon, which uploads them in
@@ -84,6 +84,20 @@ export type PutTraceSegmentsCommandOutput = PutTraceSegmentsResult & __MetadataB
  *           digits.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { XRayClient, PutTraceSegmentsCommand } from "@aws-sdk/client-xray"; // ES Modules import
+ * // const { XRayClient, PutTraceSegmentsCommand } = require("@aws-sdk/client-xray"); // CommonJS import
+ * const client = new XRayClient(config);
+ * const command = new PutTraceSegmentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutTraceSegmentsCommandInput} for command's `input` shape.
+ * @see {@link PutTraceSegmentsCommandOutput} for command's `response` shape.
+ * @see {@link XRayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutTraceSegmentsCommand extends $Command<
   PutTraceSegmentsCommandInput,

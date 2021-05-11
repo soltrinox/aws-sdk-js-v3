@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateBackendAPICommandInput = UpdateBackendAPIRequest;
-export type UpdateBackendAPICommandOutput = UpdateBackendAPIResponse & __MetadataBearer;
+export interface UpdateBackendAPICommandInput extends UpdateBackendAPIRequest {}
+export interface UpdateBackendAPICommandOutput extends UpdateBackendAPIResponse, __MetadataBearer {}
 
 /**
  * <p>Updates an existing backend API resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AmplifyBackendClient, UpdateBackendAPICommand } from "@aws-sdk/client-amplifybackend"; // ES Modules import
+ * // const { AmplifyBackendClient, UpdateBackendAPICommand } = require("@aws-sdk/client-amplifybackend"); // CommonJS import
+ * const client = new AmplifyBackendClient(config);
+ * const command = new UpdateBackendAPICommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateBackendAPICommandInput} for command's `input` shape.
+ * @see {@link UpdateBackendAPICommandOutput} for command's `response` shape.
+ * @see {@link AmplifyBackendClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateBackendAPICommand extends $Command<
   UpdateBackendAPICommandInput,

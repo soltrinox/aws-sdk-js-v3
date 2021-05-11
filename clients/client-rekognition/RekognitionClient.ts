@@ -68,6 +68,10 @@ import {
   ListStreamProcessorsCommandOutput,
 } from "./commands/ListStreamProcessorsCommand";
 import {
+  ListTagsForResourceCommandInput,
+  ListTagsForResourceCommandOutput,
+} from "./commands/ListTagsForResourceCommand";
+import {
   RecognizeCelebritiesCommandInput,
   RecognizeCelebritiesCommandOutput,
 } from "./commands/RecognizeCelebritiesCommand";
@@ -109,6 +113,8 @@ import {
   StopStreamProcessorCommandInput,
   StopStreamProcessorCommandOutput,
 } from "./commands/StopStreamProcessorCommand";
+import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
+import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
 import { ClientDefaultValues as __ClientDefaultValues } from "./runtimeConfig";
 import {
   EndpointsInputConfig,
@@ -194,6 +200,7 @@ export type ServiceInputTypes =
   | ListCollectionsCommandInput
   | ListFacesCommandInput
   | ListStreamProcessorsCommandInput
+  | ListTagsForResourceCommandInput
   | RecognizeCelebritiesCommandInput
   | SearchFacesByImageCommandInput
   | SearchFacesCommandInput
@@ -208,7 +215,9 @@ export type ServiceInputTypes =
   | StartStreamProcessorCommandInput
   | StartTextDetectionCommandInput
   | StopProjectVersionCommandInput
-  | StopStreamProcessorCommandInput;
+  | StopStreamProcessorCommandInput
+  | TagResourceCommandInput
+  | UntagResourceCommandInput;
 
 export type ServiceOutputTypes =
   | CompareFacesCommandOutput
@@ -244,6 +253,7 @@ export type ServiceOutputTypes =
   | ListCollectionsCommandOutput
   | ListFacesCommandOutput
   | ListStreamProcessorsCommandOutput
+  | ListTagsForResourceCommandOutput
   | RecognizeCelebritiesCommandOutput
   | SearchFacesByImageCommandOutput
   | SearchFacesCommandOutput
@@ -258,7 +268,9 @@ export type ServiceOutputTypes =
   | StartStreamProcessorCommandOutput
   | StartTextDetectionCommandOutput
   | StopProjectVersionCommandOutput
-  | StopStreamProcessorCommandOutput;
+  | StopStreamProcessorCommandOutput
+  | TagResourceCommandOutput
+  | UntagResourceCommandOutput;
 
 export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__HttpHandlerOptions>> {
   /**
@@ -325,7 +337,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -356,7 +368,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type RekognitionClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type RekognitionClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -364,8 +376,12 @@ export type RekognitionClientConfig = Partial<__SmithyConfiguration<__HttpHandle
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of RekognitionClient class constructor that set the region, credentials and other options.
+ */
+export interface RekognitionClientConfig extends RekognitionClientConfigType {}
 
-export type RekognitionClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type RekognitionClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -373,6 +389,10 @@ export type RekognitionClientResolvedConfig = __SmithyResolvedConfiguration<__Ht
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of RekognitionClient class. This is resolved and normalized from the {@link RekognitionClientConfig | constructor configuration interface}.
+ */
+export interface RekognitionClientResolvedConfig extends RekognitionClientResolvedConfigType {}
 
 /**
  * <p>This is the Amazon Rekognition API reference.</p>
@@ -383,6 +403,9 @@ export class RekognitionClient extends __Client<
   ServiceOutputTypes,
   RekognitionClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of RekognitionClient class. This is resolved and normalized from the {@link RekognitionClientConfig | constructor configuration interface}.
+   */
   readonly config: RekognitionClientResolvedConfig;
 
   constructor(configuration: RekognitionClientConfig) {

@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreBackupCommandInput = RestoreBackupRequest;
-export type RestoreBackupCommandOutput = RestoreBackupResponse & __MetadataBearer;
+export interface RestoreBackupCommandInput extends RestoreBackupRequest {}
+export interface RestoreBackupCommandOutput extends RestoreBackupResponse, __MetadataBearer {}
 
 /**
  * <p>Restores a specified AWS CloudHSM backup that is in the
  *                 <code>PENDING_DELETION</code> state. For mor information on deleting a backup, see
  *                 <a>DeleteBackup</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudHSMV2Client, RestoreBackupCommand } from "@aws-sdk/client-cloudhsm-v2"; // ES Modules import
+ * // const { CloudHSMV2Client, RestoreBackupCommand } = require("@aws-sdk/client-cloudhsm-v2"); // CommonJS import
+ * const client = new CloudHSMV2Client(config);
+ * const command = new RestoreBackupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreBackupCommandInput} for command's `input` shape.
+ * @see {@link RestoreBackupCommandOutput} for command's `response` shape.
+ * @see {@link CloudHSMV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreBackupCommand extends $Command<
   RestoreBackupCommandInput,

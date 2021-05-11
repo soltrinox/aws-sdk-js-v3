@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RegisterTaskWithMaintenanceWindowCommandInput = RegisterTaskWithMaintenanceWindowRequest;
-export type RegisterTaskWithMaintenanceWindowCommandOutput = RegisterTaskWithMaintenanceWindowResult & __MetadataBearer;
+export interface RegisterTaskWithMaintenanceWindowCommandInput extends RegisterTaskWithMaintenanceWindowRequest {}
+export interface RegisterTaskWithMaintenanceWindowCommandOutput
+  extends RegisterTaskWithMaintenanceWindowResult,
+    __MetadataBearer {}
 
 /**
  * <p>Adds a new task to a maintenance window.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, RegisterTaskWithMaintenanceWindowCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, RegisterTaskWithMaintenanceWindowCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new RegisterTaskWithMaintenanceWindowCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RegisterTaskWithMaintenanceWindowCommandInput} for command's `input` shape.
+ * @see {@link RegisterTaskWithMaintenanceWindowCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RegisterTaskWithMaintenanceWindowCommand extends $Command<
   RegisterTaskWithMaintenanceWindowCommandInput,

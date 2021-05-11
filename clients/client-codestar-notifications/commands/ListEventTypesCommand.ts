@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListEventTypesCommandInput = ListEventTypesRequest;
-export type ListEventTypesCommandOutput = ListEventTypesResult & __MetadataBearer;
+export interface ListEventTypesCommandInput extends ListEventTypesRequest {}
+export interface ListEventTypesCommandOutput extends ListEventTypesResult, __MetadataBearer {}
 
 /**
  * <p>Returns information about the event types available for configuring notifications.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodestarNotificationsClient, ListEventTypesCommand } from "@aws-sdk/client-codestar-notifications"; // ES Modules import
+ * // const { CodestarNotificationsClient, ListEventTypesCommand } = require("@aws-sdk/client-codestar-notifications"); // CommonJS import
+ * const client = new CodestarNotificationsClient(config);
+ * const command = new ListEventTypesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListEventTypesCommandInput} for command's `input` shape.
+ * @see {@link ListEventTypesCommandOutput} for command's `response` shape.
+ * @see {@link CodestarNotificationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListEventTypesCommand extends $Command<
   ListEventTypesCommandInput,

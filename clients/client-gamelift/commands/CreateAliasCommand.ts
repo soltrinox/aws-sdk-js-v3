@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAliasCommandInput = CreateAliasInput;
-export type CreateAliasCommandOutput = CreateAliasOutput & __MetadataBearer;
+export interface CreateAliasCommandInput extends CreateAliasInput {}
+export interface CreateAliasCommandOutput extends CreateAliasOutput, __MetadataBearer {}
 
 /**
  * <p>Creates an alias for a fleet. In most situations, you can use an alias ID in place of
@@ -35,38 +35,32 @@ export type CreateAliasCommandOutput = CreateAliasOutput & __MetadataBearer;
  *             multiple aliases. If successful, a new alias record is returned, including an alias ID
  *             and an ARN. You can reassign an alias to another fleet by calling
  *                 <code>UpdateAlias</code>.</p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateAlias</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ListAliases</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeAlias</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateAlias</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteAlias</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ResolveAlias</a>
- *                </p>
- *             </li>
- *          </ul>
+ *         <p>
+ *             <b>Related actions</b>
+ *          </p>
+ *                     <p>
+ *             <a>CreateAlias</a> |
+ *                     <a>ListAliases</a> |
+ *                     <a>DescribeAlias</a> |
+ *                     <a>UpdateAlias</a> |
+ *                     <a>DeleteAlias</a> |
+ *                     <a>ResolveAlias</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, CreateAliasCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, CreateAliasCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new CreateAliasCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAliasCommandInput} for command's `input` shape.
+ * @see {@link CreateAliasCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAliasCommand extends $Command<
   CreateAliasCommandInput,

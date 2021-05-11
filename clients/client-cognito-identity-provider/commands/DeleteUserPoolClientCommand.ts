@@ -22,11 +22,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteUserPoolClientCommandInput = DeleteUserPoolClientRequest;
-export type DeleteUserPoolClientCommandOutput = __MetadataBearer;
+export interface DeleteUserPoolClientCommandInput extends DeleteUserPoolClientRequest {}
+export interface DeleteUserPoolClientCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Allows the developer to delete the user pool client.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, DeleteUserPoolClientCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, DeleteUserPoolClientCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new DeleteUserPoolClientCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteUserPoolClientCommandInput} for command's `input` shape.
+ * @see {@link DeleteUserPoolClientCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteUserPoolClientCommand extends $Command<
   DeleteUserPoolClientCommandInput,

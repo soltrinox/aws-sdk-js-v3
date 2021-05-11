@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeBundleCommandInput = DescribeBundleRequest;
-export type DescribeBundleCommandOutput = DescribeBundleResult & __MetadataBearer;
+export interface DescribeBundleCommandInput extends DescribeBundleRequest {}
+export interface DescribeBundleCommandOutput extends DescribeBundleResult, __MetadataBearer {}
 
 /**
  * <p>
  *             Get the bundle details for the requested bundle id.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MobileClient, DescribeBundleCommand } from "@aws-sdk/client-mobile"; // ES Modules import
+ * // const { MobileClient, DescribeBundleCommand } = require("@aws-sdk/client-mobile"); // CommonJS import
+ * const client = new MobileClient(config);
+ * const command = new DescribeBundleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeBundleCommandInput} for command's `input` shape.
+ * @see {@link DescribeBundleCommandOutput} for command's `response` shape.
+ * @see {@link MobileClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeBundleCommand extends $Command<
   DescribeBundleCommandInput,

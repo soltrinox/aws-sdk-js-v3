@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTrafficPolicyInstancesByPolicyCommandInput = ListTrafficPolicyInstancesByPolicyRequest;
-export type ListTrafficPolicyInstancesByPolicyCommandOutput = ListTrafficPolicyInstancesByPolicyResponse &
-  __MetadataBearer;
+export interface ListTrafficPolicyInstancesByPolicyCommandInput extends ListTrafficPolicyInstancesByPolicyRequest {}
+export interface ListTrafficPolicyInstancesByPolicyCommandOutput
+  extends ListTrafficPolicyInstancesByPolicyResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Gets information about the traffic policy instances that you created by using a specify traffic policy version.</p>
@@ -33,6 +34,20 @@ export type ListTrafficPolicyInstancesByPolicyCommandOutput = ListTrafficPolicyI
  * 		       </note>
  * 		       <p>Route 53 returns a maximum of 100 items in each response. If you have a lot of traffic policy instances, you can use the
  * 			<code>MaxItems</code> parameter to list them in groups of up to 100.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, ListTrafficPolicyInstancesByPolicyCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, ListTrafficPolicyInstancesByPolicyCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new ListTrafficPolicyInstancesByPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTrafficPolicyInstancesByPolicyCommandInput} for command's `input` shape.
+ * @see {@link ListTrafficPolicyInstancesByPolicyCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTrafficPolicyInstancesByPolicyCommand extends $Command<
   ListTrafficPolicyInstancesByPolicyCommandInput,

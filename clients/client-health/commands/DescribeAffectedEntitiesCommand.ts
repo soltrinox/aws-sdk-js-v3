@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAffectedEntitiesCommandInput = DescribeAffectedEntitiesRequest;
-export type DescribeAffectedEntitiesCommandOutput = DescribeAffectedEntitiesResponse & __MetadataBearer;
+export interface DescribeAffectedEntitiesCommandInput extends DescribeAffectedEntitiesRequest {}
+export interface DescribeAffectedEntitiesCommandOutput extends DescribeAffectedEntitiesResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of entities that have been affected by the specified events, based on the
@@ -30,8 +30,30 @@ export type DescribeAffectedEntitiesCommandOutput = DescribeAffectedEntitiesResp
  *             <code>lastUpdatedTime</code> of the entity, starting with the most recent.</p>
  *
  *          <note>
- *             <p>This API operation uses pagination. Specify the <code>nextToken</code> parameter in the next request to return more results.</p>
+ *             <ul>
+ *                <li>
+ *                   <p>This API operation uses pagination. Specify the <code>nextToken</code> parameter in the next request to return more results.</p>
+ *                </li>
+ *                <li>
+ *                   <p>This operation supports resource-level permissions. You can use this operation to allow or deny access to specific AWS Health events. For more
+ *                   information, see <a href="https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions">Resource- and action-based conditions</a> in the <i>AWS Health User Guide</i>.</p>
+ *                </li>
+ *             </ul>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { HealthClient, DescribeAffectedEntitiesCommand } from "@aws-sdk/client-health"; // ES Modules import
+ * // const { HealthClient, DescribeAffectedEntitiesCommand } = require("@aws-sdk/client-health"); // CommonJS import
+ * const client = new HealthClient(config);
+ * const command = new DescribeAffectedEntitiesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAffectedEntitiesCommandInput} for command's `input` shape.
+ * @see {@link DescribeAffectedEntitiesCommandOutput} for command's `response` shape.
+ * @see {@link HealthClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAffectedEntitiesCommand extends $Command<
   DescribeAffectedEntitiesCommandInput,

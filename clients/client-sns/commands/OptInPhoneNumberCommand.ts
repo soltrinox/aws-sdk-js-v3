@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type OptInPhoneNumberCommandInput = OptInPhoneNumberInput;
-export type OptInPhoneNumberCommandOutput = OptInPhoneNumberResponse & __MetadataBearer;
+export interface OptInPhoneNumberCommandInput extends OptInPhoneNumberInput {}
+export interface OptInPhoneNumberCommandOutput extends OptInPhoneNumberResponse, __MetadataBearer {}
 
 /**
  * <p>Use this request to opt in a phone number that is opted out, which enables you to
  *             resume sending SMS messages to the number.</p>
  *         <p>You can opt in a phone number only once every 30 days.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SNSClient, OptInPhoneNumberCommand } from "@aws-sdk/client-sns"; // ES Modules import
+ * // const { SNSClient, OptInPhoneNumberCommand } = require("@aws-sdk/client-sns"); // CommonJS import
+ * const client = new SNSClient(config);
+ * const command = new OptInPhoneNumberCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link OptInPhoneNumberCommandInput} for command's `input` shape.
+ * @see {@link OptInPhoneNumberCommandOutput} for command's `response` shape.
+ * @see {@link SNSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class OptInPhoneNumberCommand extends $Command<
   OptInPhoneNumberCommandInput,

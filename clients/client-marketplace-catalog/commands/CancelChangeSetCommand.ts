@@ -21,14 +21,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelChangeSetCommandInput = CancelChangeSetRequest;
-export type CancelChangeSetCommandOutput = CancelChangeSetResponse & __MetadataBearer;
+export interface CancelChangeSetCommandInput extends CancelChangeSetRequest {}
+export interface CancelChangeSetCommandOutput extends CancelChangeSetResponse, __MetadataBearer {}
 
 /**
  * <p>Used to cancel an open change request. Must be sent before the status of the request
  *             changes to <code>APPLYING</code>, the final stage of completing your change request. You
  *             can describe a change during the 60-day request history retention period for API
  *             calls.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MarketplaceCatalogClient, CancelChangeSetCommand } from "@aws-sdk/client-marketplace-catalog"; // ES Modules import
+ * // const { MarketplaceCatalogClient, CancelChangeSetCommand } = require("@aws-sdk/client-marketplace-catalog"); // CommonJS import
+ * const client = new MarketplaceCatalogClient(config);
+ * const command = new CancelChangeSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelChangeSetCommandInput} for command's `input` shape.
+ * @see {@link CancelChangeSetCommandOutput} for command's `response` shape.
+ * @see {@link MarketplaceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelChangeSetCommand extends $Command<
   CancelChangeSetCommandInput,

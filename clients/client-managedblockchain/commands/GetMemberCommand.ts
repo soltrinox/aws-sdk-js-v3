@@ -21,11 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetMemberCommandInput = GetMemberInput;
-export type GetMemberCommandOutput = GetMemberOutput & __MetadataBearer;
+export interface GetMemberCommandInput extends GetMemberInput {}
+export interface GetMemberCommandOutput extends GetMemberOutput, __MetadataBearer {}
 
 /**
  * <p>Returns detailed information about a member.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ManagedBlockchainClient, GetMemberCommand } from "@aws-sdk/client-managedblockchain"; // ES Modules import
+ * // const { ManagedBlockchainClient, GetMemberCommand } = require("@aws-sdk/client-managedblockchain"); // CommonJS import
+ * const client = new ManagedBlockchainClient(config);
+ * const command = new GetMemberCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetMemberCommandInput} for command's `input` shape.
+ * @see {@link GetMemberCommandOutput} for command's `response` shape.
+ * @see {@link ManagedBlockchainClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetMemberCommand extends $Command<
   GetMemberCommandInput,

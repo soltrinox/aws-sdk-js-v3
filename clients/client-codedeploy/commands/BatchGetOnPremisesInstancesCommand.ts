@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchGetOnPremisesInstancesCommandInput = BatchGetOnPremisesInstancesInput;
-export type BatchGetOnPremisesInstancesCommandOutput = BatchGetOnPremisesInstancesOutput & __MetadataBearer;
+export interface BatchGetOnPremisesInstancesCommandInput extends BatchGetOnPremisesInstancesInput {}
+export interface BatchGetOnPremisesInstancesCommandOutput extends BatchGetOnPremisesInstancesOutput, __MetadataBearer {}
 
 /**
- * <p>Gets information about one or more on-premises instances. The maximum number of on-premises instances that can be returned is 25.</p>
+ * <p>Gets information about one or more on-premises instances. The maximum number of
+ *             on-premises instances that can be returned is 25.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeDeployClient, BatchGetOnPremisesInstancesCommand } from "@aws-sdk/client-codedeploy"; // ES Modules import
+ * // const { CodeDeployClient, BatchGetOnPremisesInstancesCommand } = require("@aws-sdk/client-codedeploy"); // CommonJS import
+ * const client = new CodeDeployClient(config);
+ * const command = new BatchGetOnPremisesInstancesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchGetOnPremisesInstancesCommandInput} for command's `input` shape.
+ * @see {@link BatchGetOnPremisesInstancesCommandOutput} for command's `response` shape.
+ * @see {@link CodeDeployClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchGetOnPremisesInstancesCommand extends $Command<
   BatchGetOnPremisesInstancesCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCapacityReservationCommandInput = CreateCapacityReservationRequest;
-export type CreateCapacityReservationCommandOutput = CreateCapacityReservationResult & __MetadataBearer;
+export interface CreateCapacityReservationCommandInput extends CreateCapacityReservationRequest {}
+export interface CreateCapacityReservationCommandOutput extends CreateCapacityReservationResult, __MetadataBearer {}
 
 /**
  * <p>Creates a new Capacity Reservation with the specified attributes.</p>
@@ -38,6 +38,20 @@ export type CreateCapacityReservationCommandOutput = CreateCapacityReservationRe
  * 			increase your On-Demand Instance limit for the required instance type and try again. For
  * 			more information about increasing your instance limits, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html">Amazon EC2 Service
  * 				Quotas</a> in the <i>Amazon EC2 User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, CreateCapacityReservationCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, CreateCapacityReservationCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new CreateCapacityReservationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCapacityReservationCommandInput} for command's `input` shape.
+ * @see {@link CreateCapacityReservationCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCapacityReservationCommand extends $Command<
   CreateCapacityReservationCommandInput,

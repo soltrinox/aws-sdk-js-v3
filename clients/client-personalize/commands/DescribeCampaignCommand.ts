@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCampaignCommandInput = DescribeCampaignRequest;
-export type DescribeCampaignCommandOutput = DescribeCampaignResponse & __MetadataBearer;
+export interface DescribeCampaignCommandInput extends DescribeCampaignRequest {}
+export interface DescribeCampaignCommandOutput extends DescribeCampaignResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the given campaign, including its status.</p>
@@ -34,6 +34,20 @@ export type DescribeCampaignCommandOutput = DescribeCampaignResponse & __Metadat
  *          <p>When the <code>status</code> is <code>CREATE FAILED</code>, the response includes the
  *       <code>failureReason</code> key, which describes why.</p>
  *          <p>For more information on campaigns, see <a>CreateCampaign</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PersonalizeClient, DescribeCampaignCommand } from "@aws-sdk/client-personalize"; // ES Modules import
+ * // const { PersonalizeClient, DescribeCampaignCommand } = require("@aws-sdk/client-personalize"); // CommonJS import
+ * const client = new PersonalizeClient(config);
+ * const command = new DescribeCampaignCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCampaignCommandInput} for command's `input` shape.
+ * @see {@link DescribeCampaignCommandOutput} for command's `response` shape.
+ * @see {@link PersonalizeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCampaignCommand extends $Command<
   DescribeCampaignCommandInput,

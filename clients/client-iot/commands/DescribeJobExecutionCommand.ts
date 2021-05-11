@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeJobExecutionCommandInput = DescribeJobExecutionRequest;
-export type DescribeJobExecutionCommandOutput = DescribeJobExecutionResponse & __MetadataBearer;
+export interface DescribeJobExecutionCommandInput extends DescribeJobExecutionRequest {}
+export interface DescribeJobExecutionCommandOutput extends DescribeJobExecutionResponse, __MetadataBearer {}
 
 /**
  * <p>Describes a job execution.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DescribeJobExecutionCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DescribeJobExecutionCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DescribeJobExecutionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeJobExecutionCommandInput} for command's `input` shape.
+ * @see {@link DescribeJobExecutionCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeJobExecutionCommand extends $Command<
   DescribeJobExecutionCommandInput,

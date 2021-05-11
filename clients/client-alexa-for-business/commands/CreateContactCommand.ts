@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateContactCommandInput = CreateContactRequest;
-export type CreateContactCommandOutput = CreateContactResponse & __MetadataBearer;
+export interface CreateContactCommandInput extends CreateContactRequest {}
+export interface CreateContactCommandOutput extends CreateContactResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a contact with the specified details.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, CreateContactCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, CreateContactCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new CreateContactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateContactCommandInput} for command's `input` shape.
+ * @see {@link CreateContactCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateContactCommand extends $Command<
   CreateContactCommandInput,

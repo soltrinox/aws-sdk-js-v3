@@ -1,5 +1,5 @@
 import { SecurityHubClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SecurityHubClient";
-import { DisassociateMembersRequest, DisassociateMembersResponse } from "../models/models_0";
+import { DisassociateMembersRequest, DisassociateMembersResponse } from "../models/models_1";
 import {
   deserializeAws_restJson1DisassociateMembersCommand,
   serializeAws_restJson1DisassociateMembersCommand,
@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateMembersCommandInput = DisassociateMembersRequest;
-export type DisassociateMembersCommandOutput = DisassociateMembersResponse & __MetadataBearer;
+export interface DisassociateMembersCommandInput extends DisassociateMembersRequest {}
+export interface DisassociateMembersCommandOutput extends DisassociateMembersResponse, __MetadataBearer {}
 
 /**
- * <p>Disassociates the specified member accounts from the associated master account.</p>
- *          <p>Can be used to disassociate both accounts that are in an organization and accounts that
+ * <p>Disassociates the specified member accounts from the associated administrator account.</p>
+ *          <p>Can be used to disassociate both accounts that are managed using Organizations and accounts that
  *          were invited manually.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecurityHubClient, DisassociateMembersCommand } from "@aws-sdk/client-securityhub"; // ES Modules import
+ * // const { SecurityHubClient, DisassociateMembersCommand } = require("@aws-sdk/client-securityhub"); // CommonJS import
+ * const client = new SecurityHubClient(config);
+ * const command = new DisassociateMembersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateMembersCommandInput} for command's `input` shape.
+ * @see {@link DisassociateMembersCommandOutput} for command's `response` shape.
+ * @see {@link SecurityHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateMembersCommand extends $Command<
   DisassociateMembersCommandInput,

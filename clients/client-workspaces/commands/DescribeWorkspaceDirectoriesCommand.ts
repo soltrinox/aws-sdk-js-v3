@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeWorkspaceDirectoriesCommandInput = DescribeWorkspaceDirectoriesRequest;
-export type DescribeWorkspaceDirectoriesCommandOutput = DescribeWorkspaceDirectoriesResult & __MetadataBearer;
+export interface DescribeWorkspaceDirectoriesCommandInput extends DescribeWorkspaceDirectoriesRequest {}
+export interface DescribeWorkspaceDirectoriesCommandOutput
+  extends DescribeWorkspaceDirectoriesResult,
+    __MetadataBearer {}
 
 /**
  * <p>Describes the available directories that are registered with
  *          Amazon WorkSpaces.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, DescribeWorkspaceDirectoriesCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, DescribeWorkspaceDirectoriesCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new DescribeWorkspaceDirectoriesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeWorkspaceDirectoriesCommandInput} for command's `input` shape.
+ * @see {@link DescribeWorkspaceDirectoriesCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeWorkspaceDirectoriesCommand extends $Command<
   DescribeWorkspaceDirectoriesCommandInput,

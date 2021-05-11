@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveAccountFromOrganizationCommandInput = RemoveAccountFromOrganizationRequest;
-export type RemoveAccountFromOrganizationCommandOutput = __MetadataBearer;
+export interface RemoveAccountFromOrganizationCommandInput extends RemoveAccountFromOrganizationRequest {}
+export interface RemoveAccountFromOrganizationCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Removes the specified account from the organization.</p>
@@ -46,12 +46,33 @@ export type RemoveAccountFromOrganizationCommandOutput = __MetadataBearer;
  *                   </p>
  *                 </li>
  *                <li>
+ *                     <p>The account that you want to leave must not be a delegated administrator
+ *                         account for any AWS service enabled for your organization. If the account
+ *                         is a delegated administrator, you must first change the delegated
+ *                         administrator account to another account that is remaining in the
+ *                         organization.</p>
+ *                 </li>
+ *                <li>
  *                     <p>After the account leaves the organization, all tags that were attached to
  *                         the account object in the organization are deleted. AWS accounts outside
  *                         of an organization do not support tags.</p>
  *                 </li>
  *             </ul>
  *         </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, RemoveAccountFromOrganizationCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, RemoveAccountFromOrganizationCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new RemoveAccountFromOrganizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveAccountFromOrganizationCommandInput} for command's `input` shape.
+ * @see {@link RemoveAccountFromOrganizationCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveAccountFromOrganizationCommand extends $Command<
   RemoveAccountFromOrganizationCommandInput,

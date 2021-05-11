@@ -256,7 +256,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -287,7 +287,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type ElasticLoadBalancingV2ClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type ElasticLoadBalancingV2ClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -295,8 +295,12 @@ export type ElasticLoadBalancingV2ClientConfig = Partial<__SmithyConfiguration<_
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of ElasticLoadBalancingV2Client class constructor that set the region, credentials and other options.
+ */
+export interface ElasticLoadBalancingV2ClientConfig extends ElasticLoadBalancingV2ClientConfigType {}
 
-export type ElasticLoadBalancingV2ClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type ElasticLoadBalancingV2ClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -304,35 +308,42 @@ export type ElasticLoadBalancingV2ClientResolvedConfig = __SmithyResolvedConfigu
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of ElasticLoadBalancingV2Client class. This is resolved and normalized from the {@link ElasticLoadBalancingV2ClientConfig | constructor configuration interface}.
+ */
+export interface ElasticLoadBalancingV2ClientResolvedConfig extends ElasticLoadBalancingV2ClientResolvedConfigType {}
 
 /**
  * <fullname>Elastic Load Balancing</fullname>
  *
- *          <p>A load balancer distributes incoming traffic across targets, such as your EC2
- *       instances. This enables you to increase the availability of your application. The load
- *       balancer also monitors the health of its registered targets and ensures that it routes traffic
- *       only to healthy targets. You configure your load balancer to accept incoming traffic by
- *       specifying one or more listeners, which are configured with a protocol and port number for
- *       connections from clients to the load balancer. You configure a target group with a protocol
- *       and port number for connections from the load balancer to the targets, and with health check
- *       settings to be used when checking the health status of the targets.</p>
+ *          <p>A load balancer distributes incoming traffic across targets, such as your EC2 instances.
+ *       This enables you to increase the availability of your application. The load balancer also
+ *       monitors the health of its registered targets and ensures that it routes traffic only to
+ *       healthy targets. You configure your load balancer to accept incoming traffic by specifying one
+ *       or more listeners, which are configured with a protocol and port number for connections from
+ *       clients to the load balancer. You configure a target group with a protocol and port number for
+ *       connections from the load balancer to the targets, and with health check settings to be used
+ *       when checking the health status of the targets.</p>
  *
  *          <p>Elastic Load Balancing supports the following types of load balancers: Application Load
- *       Balancers, Network Load Balancers, Gateway Load Balancers, and Classic Load Balancers.
- *       This reference covers the following load balancer types:</p>
+ *       Balancers, Network Load Balancers, Gateway Load Balancers, and Classic Load Balancers. This
+ *       reference covers the following load balancer types:</p>
  *          <ul>
  *             <li>
- *                <p>Application Load Balancer - Operates at the application layer (layer 7) and supports HTTP and HTTPS.</p>
+ *                <p>Application Load Balancer - Operates at the application layer (layer 7) and supports
+ *           HTTP and HTTPS.</p>
  *             </li>
  *             <li>
- *                <p>Network Load Balancer - Operates at the transport layer (layer 4) and supports TCP, TLS, and UDP.</p>
+ *                <p>Network Load Balancer - Operates at the transport layer (layer 4) and supports TCP,
+ *           TLS, and UDP.</p>
  *             </li>
  *             <li>
  *                <p>Gateway Load Balancer - Operates at the network layer (layer 3).</p>
  *             </li>
  *          </ul>
  *
- *          <p>For more information, see the <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/">Elastic Load Balancing User Guide</a>.</p>
+ *          <p>For more information, see the <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/">Elastic Load Balancing User
+ *       Guide</a>.</p>
  *
  *
  *
@@ -349,6 +360,9 @@ export class ElasticLoadBalancingV2Client extends __Client<
   ServiceOutputTypes,
   ElasticLoadBalancingV2ClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of ElasticLoadBalancingV2Client class. This is resolved and normalized from the {@link ElasticLoadBalancingV2ClientConfig | constructor configuration interface}.
+   */
   readonly config: ElasticLoadBalancingV2ClientResolvedConfig;
 
   constructor(configuration: ElasticLoadBalancingV2ClientConfig) {

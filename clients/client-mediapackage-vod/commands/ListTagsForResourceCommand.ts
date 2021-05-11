@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTagsForResourceCommandInput = ListTagsForResourceRequest;
-export type ListTagsForResourceCommandOutput = ListTagsForResourceResponse & __MetadataBearer;
+export interface ListTagsForResourceCommandInput extends ListTagsForResourceRequest {}
+export interface ListTagsForResourceCommandOutput extends ListTagsForResourceResponse, __MetadataBearer {}
 
 /**
  * Returns a list of the tags assigned to the specified resource.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaPackageVodClient, ListTagsForResourceCommand } from "@aws-sdk/client-mediapackage-vod"; // ES Modules import
+ * // const { MediaPackageVodClient, ListTagsForResourceCommand } = require("@aws-sdk/client-mediapackage-vod"); // CommonJS import
+ * const client = new MediaPackageVodClient(config);
+ * const command = new ListTagsForResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTagsForResourceCommandInput} for command's `input` shape.
+ * @see {@link ListTagsForResourceCommandOutput} for command's `response` shape.
+ * @see {@link MediaPackageVodClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTagsForResourceCommand extends $Command<
   ListTagsForResourceCommandInput,

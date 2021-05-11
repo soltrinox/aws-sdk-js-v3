@@ -5,20 +5,37 @@ import {
 } from "./commands/BatchGetQueryExecutionCommand";
 import { CreateDataCatalogCommandInput, CreateDataCatalogCommandOutput } from "./commands/CreateDataCatalogCommand";
 import { CreateNamedQueryCommandInput, CreateNamedQueryCommandOutput } from "./commands/CreateNamedQueryCommand";
+import {
+  CreatePreparedStatementCommandInput,
+  CreatePreparedStatementCommandOutput,
+} from "./commands/CreatePreparedStatementCommand";
 import { CreateWorkGroupCommandInput, CreateWorkGroupCommandOutput } from "./commands/CreateWorkGroupCommand";
 import { DeleteDataCatalogCommandInput, DeleteDataCatalogCommandOutput } from "./commands/DeleteDataCatalogCommand";
 import { DeleteNamedQueryCommandInput, DeleteNamedQueryCommandOutput } from "./commands/DeleteNamedQueryCommand";
+import {
+  DeletePreparedStatementCommandInput,
+  DeletePreparedStatementCommandOutput,
+} from "./commands/DeletePreparedStatementCommand";
 import { DeleteWorkGroupCommandInput, DeleteWorkGroupCommandOutput } from "./commands/DeleteWorkGroupCommand";
 import { GetDataCatalogCommandInput, GetDataCatalogCommandOutput } from "./commands/GetDataCatalogCommand";
 import { GetDatabaseCommandInput, GetDatabaseCommandOutput } from "./commands/GetDatabaseCommand";
 import { GetNamedQueryCommandInput, GetNamedQueryCommandOutput } from "./commands/GetNamedQueryCommand";
+import {
+  GetPreparedStatementCommandInput,
+  GetPreparedStatementCommandOutput,
+} from "./commands/GetPreparedStatementCommand";
 import { GetQueryExecutionCommandInput, GetQueryExecutionCommandOutput } from "./commands/GetQueryExecutionCommand";
 import { GetQueryResultsCommandInput, GetQueryResultsCommandOutput } from "./commands/GetQueryResultsCommand";
 import { GetTableMetadataCommandInput, GetTableMetadataCommandOutput } from "./commands/GetTableMetadataCommand";
 import { GetWorkGroupCommandInput, GetWorkGroupCommandOutput } from "./commands/GetWorkGroupCommand";
 import { ListDataCatalogsCommandInput, ListDataCatalogsCommandOutput } from "./commands/ListDataCatalogsCommand";
 import { ListDatabasesCommandInput, ListDatabasesCommandOutput } from "./commands/ListDatabasesCommand";
+import { ListEngineVersionsCommandInput, ListEngineVersionsCommandOutput } from "./commands/ListEngineVersionsCommand";
 import { ListNamedQueriesCommandInput, ListNamedQueriesCommandOutput } from "./commands/ListNamedQueriesCommand";
+import {
+  ListPreparedStatementsCommandInput,
+  ListPreparedStatementsCommandOutput,
+} from "./commands/ListPreparedStatementsCommand";
 import {
   ListQueryExecutionsCommandInput,
   ListQueryExecutionsCommandOutput,
@@ -37,6 +54,10 @@ import { StopQueryExecutionCommandInput, StopQueryExecutionCommandOutput } from 
 import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
 import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
 import { UpdateDataCatalogCommandInput, UpdateDataCatalogCommandOutput } from "./commands/UpdateDataCatalogCommand";
+import {
+  UpdatePreparedStatementCommandInput,
+  UpdatePreparedStatementCommandOutput,
+} from "./commands/UpdatePreparedStatementCommand";
 import { UpdateWorkGroupCommandInput, UpdateWorkGroupCommandOutput } from "./commands/UpdateWorkGroupCommand";
 import { ClientDefaultValues as __ClientDefaultValues } from "./runtimeConfig";
 import {
@@ -94,20 +115,25 @@ export type ServiceInputTypes =
   | BatchGetQueryExecutionCommandInput
   | CreateDataCatalogCommandInput
   | CreateNamedQueryCommandInput
+  | CreatePreparedStatementCommandInput
   | CreateWorkGroupCommandInput
   | DeleteDataCatalogCommandInput
   | DeleteNamedQueryCommandInput
+  | DeletePreparedStatementCommandInput
   | DeleteWorkGroupCommandInput
   | GetDataCatalogCommandInput
   | GetDatabaseCommandInput
   | GetNamedQueryCommandInput
+  | GetPreparedStatementCommandInput
   | GetQueryExecutionCommandInput
   | GetQueryResultsCommandInput
   | GetTableMetadataCommandInput
   | GetWorkGroupCommandInput
   | ListDataCatalogsCommandInput
   | ListDatabasesCommandInput
+  | ListEngineVersionsCommandInput
   | ListNamedQueriesCommandInput
+  | ListPreparedStatementsCommandInput
   | ListQueryExecutionsCommandInput
   | ListTableMetadataCommandInput
   | ListTagsForResourceCommandInput
@@ -117,6 +143,7 @@ export type ServiceInputTypes =
   | TagResourceCommandInput
   | UntagResourceCommandInput
   | UpdateDataCatalogCommandInput
+  | UpdatePreparedStatementCommandInput
   | UpdateWorkGroupCommandInput;
 
 export type ServiceOutputTypes =
@@ -124,20 +151,25 @@ export type ServiceOutputTypes =
   | BatchGetQueryExecutionCommandOutput
   | CreateDataCatalogCommandOutput
   | CreateNamedQueryCommandOutput
+  | CreatePreparedStatementCommandOutput
   | CreateWorkGroupCommandOutput
   | DeleteDataCatalogCommandOutput
   | DeleteNamedQueryCommandOutput
+  | DeletePreparedStatementCommandOutput
   | DeleteWorkGroupCommandOutput
   | GetDataCatalogCommandOutput
   | GetDatabaseCommandOutput
   | GetNamedQueryCommandOutput
+  | GetPreparedStatementCommandOutput
   | GetQueryExecutionCommandOutput
   | GetQueryResultsCommandOutput
   | GetTableMetadataCommandOutput
   | GetWorkGroupCommandOutput
   | ListDataCatalogsCommandOutput
   | ListDatabasesCommandOutput
+  | ListEngineVersionsCommandOutput
   | ListNamedQueriesCommandOutput
+  | ListPreparedStatementsCommandOutput
   | ListQueryExecutionsCommandOutput
   | ListTableMetadataCommandOutput
   | ListTagsForResourceCommandOutput
@@ -147,6 +179,7 @@ export type ServiceOutputTypes =
   | TagResourceCommandOutput
   | UntagResourceCommandOutput
   | UpdateDataCatalogCommandOutput
+  | UpdatePreparedStatementCommandOutput
   | UpdateWorkGroupCommandOutput;
 
 export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__HttpHandlerOptions>> {
@@ -214,7 +247,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -245,7 +278,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type AthenaClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type AthenaClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -253,8 +286,12 @@ export type AthenaClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOpti
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of AthenaClient class constructor that set the region, credentials and other options.
+ */
+export interface AthenaClientConfig extends AthenaClientConfigType {}
 
-export type AthenaClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type AthenaClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -262,6 +299,10 @@ export type AthenaClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHan
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of AthenaClient class. This is resolved and normalized from the {@link AthenaClientConfig | constructor configuration interface}.
+ */
+export interface AthenaClientResolvedConfig extends AthenaClientResolvedConfigType {}
 
 /**
  * <p>Amazon Athena is an interactive query service that lets you use standard SQL to
@@ -284,6 +325,9 @@ export class AthenaClient extends __Client<
   ServiceOutputTypes,
   AthenaClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of AthenaClient class. This is resolved and normalized from the {@link AthenaClientConfig | constructor configuration interface}.
+   */
   readonly config: AthenaClientResolvedConfig;
 
   constructor(configuration: AthenaClientConfig) {

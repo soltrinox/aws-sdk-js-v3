@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDiscovererCommandInput = UpdateDiscovererRequest;
-export type UpdateDiscovererCommandOutput = UpdateDiscovererResponse & __MetadataBearer;
+export interface UpdateDiscovererCommandInput extends UpdateDiscovererRequest {}
+export interface UpdateDiscovererCommandOutput extends UpdateDiscovererResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the discoverer</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SchemasClient, UpdateDiscovererCommand } from "@aws-sdk/client-schemas"; // ES Modules import
+ * // const { SchemasClient, UpdateDiscovererCommand } = require("@aws-sdk/client-schemas"); // CommonJS import
+ * const client = new SchemasClient(config);
+ * const command = new UpdateDiscovererCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDiscovererCommandInput} for command's `input` shape.
+ * @see {@link UpdateDiscovererCommandOutput} for command's `response` shape.
+ * @see {@link SchemasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDiscovererCommand extends $Command<
   UpdateDiscovererCommandInput,

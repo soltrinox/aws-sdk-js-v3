@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteFleetCommandInput = DeleteFleetRequest;
-export type DeleteFleetCommandOutput = DeleteFleetResult & __MetadataBearer;
+export interface DeleteFleetCommandInput extends DeleteFleetRequest {}
+export interface DeleteFleetCommandOutput extends DeleteFleetResult, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified fleet.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppStreamClient, DeleteFleetCommand } from "@aws-sdk/client-appstream"; // ES Modules import
+ * // const { AppStreamClient, DeleteFleetCommand } = require("@aws-sdk/client-appstream"); // CommonJS import
+ * const client = new AppStreamClient(config);
+ * const command = new DeleteFleetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteFleetCommandInput} for command's `input` shape.
+ * @see {@link DeleteFleetCommandOutput} for command's `response` shape.
+ * @see {@link AppStreamClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteFleetCommand extends $Command<
   DeleteFleetCommandInput,

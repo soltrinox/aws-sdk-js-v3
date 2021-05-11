@@ -33,9 +33,13 @@ export interface AllQueryStringTypesInput {
   queryTimestampList?: Date[];
   queryEnum?: FooEnum | string;
   queryEnumList?: (FooEnum | string)[];
+  queryParamsMapOfStrings?: { [key: string]: string };
 }
 
 export namespace AllQueryStringTypesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AllQueryStringTypesInput): any => ({
     ...obj,
   });
@@ -46,6 +50,9 @@ export interface ComplexNestedErrorData {
 }
 
 export namespace ComplexNestedErrorData {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ComplexNestedErrorData): any => ({
     ...obj,
   });
@@ -63,6 +70,9 @@ export interface ComplexError extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ComplexError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ComplexError): any => ({
     ...obj,
   });
@@ -74,6 +84,9 @@ export interface ConstantAndVariableQueryStringInput {
 }
 
 export namespace ConstantAndVariableQueryStringInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConstantAndVariableQueryStringInput): any => ({
     ...obj,
   });
@@ -84,6 +97,9 @@ export interface ConstantQueryStringInput {
 }
 
 export namespace ConstantQueryStringInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConstantQueryStringInput): any => ({
     ...obj,
   });
@@ -94,6 +110,9 @@ export interface GreetingStruct {
 }
 
 export namespace GreetingStruct {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GreetingStruct): any => ({
     ...obj,
   });
@@ -102,6 +121,9 @@ export namespace GreetingStruct {
 export interface EmptyInputAndEmptyOutputInput {}
 
 export namespace EmptyInputAndEmptyOutputInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EmptyInputAndEmptyOutputInput): any => ({
     ...obj,
   });
@@ -110,6 +132,9 @@ export namespace EmptyInputAndEmptyOutputInput {
 export interface EmptyInputAndEmptyOutputOutput {}
 
 export namespace EmptyInputAndEmptyOutputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EmptyInputAndEmptyOutputOutput): any => ({
     ...obj,
   });
@@ -120,7 +145,27 @@ export interface HostLabelInput {
 }
 
 export namespace HostLabelInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HostLabelInput): any => ({
+    ...obj,
+  });
+}
+
+export enum StringEnum {
+  V = "enumvalue",
+}
+
+export interface EnumPayloadInput {
+  payload?: StringEnum | string;
+}
+
+export namespace EnumPayloadInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: EnumPayloadInput): any => ({
     ...obj,
   });
 }
@@ -135,6 +180,9 @@ export interface FooError extends __SmithyException, $MetadataBearer {
 }
 
 export namespace FooError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FooError): any => ({
     ...obj,
   });
@@ -145,6 +193,9 @@ export interface GreetingWithErrorsOutput {
 }
 
 export namespace GreetingWithErrorsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GreetingWithErrorsOutput): any => ({
     ...obj,
   });
@@ -160,6 +211,9 @@ export interface InvalidGreeting extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidGreeting {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidGreeting): any => ({
     ...obj,
   });
@@ -171,6 +225,9 @@ export interface HttpPayloadTraitsInputOutput {
 }
 
 export namespace HttpPayloadTraitsInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HttpPayloadTraitsInputOutput): any => ({
     ...obj,
   });
@@ -182,6 +239,9 @@ export interface HttpPayloadTraitsWithMediaTypeInputOutput {
 }
 
 export namespace HttpPayloadTraitsWithMediaTypeInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HttpPayloadTraitsWithMediaTypeInputOutput): any => ({
     ...obj,
   });
@@ -193,6 +253,9 @@ export interface NestedPayload {
 }
 
 export namespace NestedPayload {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NestedPayload): any => ({
     ...obj,
   });
@@ -203,6 +266,9 @@ export interface HttpPayloadWithStructureInputOutput {
 }
 
 export namespace HttpPayloadWithStructureInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HttpPayloadWithStructureInputOutput): any => ({
     ...obj,
   });
@@ -214,6 +280,9 @@ export interface HttpPrefixHeadersInputOutput {
 }
 
 export namespace HttpPrefixHeadersInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HttpPrefixHeadersInputOutput): any => ({
     ...obj,
   });
@@ -224,6 +293,9 @@ export interface HttpPrefixHeadersResponseOutput {
 }
 
 export namespace HttpPrefixHeadersResponseOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HttpPrefixHeadersResponseOutput): any => ({
     ...obj,
   });
@@ -235,6 +307,9 @@ export interface HttpRequestWithGreedyLabelInPathInput {
 }
 
 export namespace HttpRequestWithGreedyLabelInPathInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HttpRequestWithGreedyLabelInPathInput): any => ({
     ...obj,
   });
@@ -259,6 +334,9 @@ export interface HttpRequestWithLabelsInput {
 }
 
 export namespace HttpRequestWithLabelsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HttpRequestWithLabelsInput): any => ({
     ...obj,
   });
@@ -275,6 +353,9 @@ export interface HttpRequestWithLabelsAndTimestampFormatInput {
 }
 
 export namespace HttpRequestWithLabelsAndTimestampFormatInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HttpRequestWithLabelsAndTimestampFormatInput): any => ({
     ...obj,
   });
@@ -285,7 +366,23 @@ export interface HttpResponseCodeOutput {
 }
 
 export namespace HttpResponseCodeOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HttpResponseCodeOutput): any => ({
+    ...obj,
+  });
+}
+
+export interface StringPayloadInput {
+  payload?: string;
+}
+
+export namespace StringPayloadInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: StringPayloadInput): any => ({
     ...obj,
   });
 }
@@ -295,6 +392,9 @@ export interface IgnoreQueryParamsInResponseOutput {
 }
 
 export namespace IgnoreQueryParamsInResponseOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IgnoreQueryParamsInResponseOutput): any => ({
     ...obj,
   });
@@ -306,6 +406,9 @@ export interface InlineDocumentInputOutput {
 }
 
 export namespace InlineDocumentInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InlineDocumentInputOutput): any => ({
     ...obj,
   });
@@ -316,6 +419,9 @@ export interface InlineDocumentAsPayloadInputOutput {
 }
 
 export namespace InlineDocumentAsPayloadInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InlineDocumentAsPayloadInputOutput): any => ({
     ...obj,
   });
@@ -341,6 +447,9 @@ export interface InputAndOutputWithHeadersIO {
 }
 
 export namespace InputAndOutputWithHeadersIO {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputAndOutputWithHeadersIO): any => ({
     ...obj,
   });
@@ -351,6 +460,9 @@ export interface JsonBlobsInputOutput {
 }
 
 export namespace JsonBlobsInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JsonBlobsInputOutput): any => ({
     ...obj,
   });
@@ -366,6 +478,9 @@ export interface JsonEnumsInputOutput {
 }
 
 export namespace JsonEnumsInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JsonEnumsInputOutput): any => ({
     ...obj,
   });
@@ -377,6 +492,9 @@ export interface StructureListMember {
 }
 
 export namespace StructureListMember {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StructureListMember): any => ({
     ...obj,
   });
@@ -399,6 +517,9 @@ export interface JsonListsInputOutput {
 }
 
 export namespace JsonListsInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JsonListsInputOutput): any => ({
     ...obj,
   });
@@ -416,6 +537,9 @@ export interface JsonMapsInputOutput {
 }
 
 export namespace JsonMapsInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JsonMapsInputOutput): any => ({
     ...obj,
   });
@@ -429,7 +553,23 @@ export interface JsonTimestampsInputOutput {
 }
 
 export namespace JsonTimestampsInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JsonTimestampsInputOutput): any => ({
+    ...obj,
+  });
+}
+
+export interface RenamedGreeting {
+  salutation?: string;
+}
+
+export namespace RenamedGreeting {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RenamedGreeting): any => ({
     ...obj,
   });
 }
@@ -444,6 +584,7 @@ export type MyUnion =
   | MyUnion.ListValueMember
   | MyUnion.MapValueMember
   | MyUnion.NumberValueMember
+  | MyUnion.RenamedStructureValueMember
   | MyUnion.StringValueMember
   | MyUnion.StructureValueMember
   | MyUnion.TimestampValueMember
@@ -460,6 +601,7 @@ export namespace MyUnion {
     listValue?: never;
     mapValue?: never;
     structureValue?: never;
+    renamedStructureValue?: never;
     $unknown?: never;
   }
 
@@ -473,6 +615,7 @@ export namespace MyUnion {
     listValue?: never;
     mapValue?: never;
     structureValue?: never;
+    renamedStructureValue?: never;
     $unknown?: never;
   }
 
@@ -486,6 +629,7 @@ export namespace MyUnion {
     listValue?: never;
     mapValue?: never;
     structureValue?: never;
+    renamedStructureValue?: never;
     $unknown?: never;
   }
 
@@ -499,6 +643,7 @@ export namespace MyUnion {
     listValue?: never;
     mapValue?: never;
     structureValue?: never;
+    renamedStructureValue?: never;
     $unknown?: never;
   }
 
@@ -512,6 +657,7 @@ export namespace MyUnion {
     listValue?: never;
     mapValue?: never;
     structureValue?: never;
+    renamedStructureValue?: never;
     $unknown?: never;
   }
 
@@ -525,6 +671,7 @@ export namespace MyUnion {
     listValue?: never;
     mapValue?: never;
     structureValue?: never;
+    renamedStructureValue?: never;
     $unknown?: never;
   }
 
@@ -538,6 +685,7 @@ export namespace MyUnion {
     listValue: string[];
     mapValue?: never;
     structureValue?: never;
+    renamedStructureValue?: never;
     $unknown?: never;
   }
 
@@ -551,6 +699,7 @@ export namespace MyUnion {
     listValue?: never;
     mapValue: { [key: string]: string };
     structureValue?: never;
+    renamedStructureValue?: never;
     $unknown?: never;
   }
 
@@ -564,6 +713,21 @@ export namespace MyUnion {
     listValue?: never;
     mapValue?: never;
     structureValue: GreetingStruct;
+    renamedStructureValue?: never;
+    $unknown?: never;
+  }
+
+  export interface RenamedStructureValueMember {
+    stringValue?: never;
+    booleanValue?: never;
+    numberValue?: never;
+    blobValue?: never;
+    timestampValue?: never;
+    enumValue?: never;
+    listValue?: never;
+    mapValue?: never;
+    structureValue?: never;
+    renamedStructureValue: RenamedGreeting;
     $unknown?: never;
   }
 
@@ -577,6 +741,7 @@ export namespace MyUnion {
     listValue?: never;
     mapValue?: never;
     structureValue?: never;
+    renamedStructureValue?: never;
     $unknown: [string, any];
   }
 
@@ -590,6 +755,7 @@ export namespace MyUnion {
     listValue: (value: string[]) => T;
     mapValue: (value: { [key: string]: string }) => T;
     structureValue: (value: GreetingStruct) => T;
+    renamedStructureValue: (value: RenamedGreeting) => T;
     _: (name: string, value: any) => T;
   }
 
@@ -603,9 +769,13 @@ export namespace MyUnion {
     if (value.listValue !== undefined) return visitor.listValue(value.listValue);
     if (value.mapValue !== undefined) return visitor.mapValue(value.mapValue);
     if (value.structureValue !== undefined) return visitor.structureValue(value.structureValue);
+    if (value.renamedStructureValue !== undefined) return visitor.renamedStructureValue(value.renamedStructureValue);
     return visitor._(value.$unknown[0], value.$unknown[1]);
   };
 
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MyUnion): any => {
     if (obj.stringValue !== undefined) return { stringValue: obj.stringValue };
     if (obj.booleanValue !== undefined) return { booleanValue: obj.booleanValue };
@@ -617,6 +787,8 @@ export namespace MyUnion {
     if (obj.mapValue !== undefined) return { mapValue: obj.mapValue };
     if (obj.structureValue !== undefined)
       return { structureValue: GreetingStruct.filterSensitiveLog(obj.structureValue) };
+    if (obj.renamedStructureValue !== undefined)
+      return { renamedStructureValue: RenamedGreeting.filterSensitiveLog(obj.renamedStructureValue) };
     if (obj.$unknown !== undefined) return { [obj.$unknown[0]]: "UNKNOWN" };
   };
 }
@@ -632,6 +804,9 @@ export interface UnionInputOutput {
 }
 
 export namespace UnionInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnionInputOutput): any => ({
     ...obj,
     ...(obj.contents && { contents: MyUnion.filterSensitiveLog(obj.contents) }),
@@ -643,6 +818,9 @@ export interface MediaTypeHeaderInput {
 }
 
 export namespace MediaTypeHeaderInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MediaTypeHeaderInput): any => ({
     ...obj,
   });
@@ -653,6 +831,9 @@ export interface MediaTypeHeaderOutput {
 }
 
 export namespace MediaTypeHeaderOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MediaTypeHeaderOutput): any => ({
     ...obj,
   });
@@ -661,6 +842,9 @@ export namespace MediaTypeHeaderOutput {
 export interface NoInputAndOutputOutput {}
 
 export namespace NoInputAndOutputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoInputAndOutputOutput): any => ({
     ...obj,
   });
@@ -673,6 +857,9 @@ export interface NullAndEmptyHeadersIO {
 }
 
 export namespace NullAndEmptyHeadersIO {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NullAndEmptyHeadersIO): any => ({
     ...obj,
   });
@@ -684,6 +871,9 @@ export interface OmitsNullSerializesEmptyStringInput {
 }
 
 export namespace OmitsNullSerializesEmptyStringInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OmitsNullSerializesEmptyStringInput): any => ({
     ...obj,
   });
@@ -694,7 +884,38 @@ export interface QueryIdempotencyTokenAutoFillInput {
 }
 
 export namespace QueryIdempotencyTokenAutoFillInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QueryIdempotencyTokenAutoFillInput): any => ({
+    ...obj,
+  });
+}
+
+export interface QueryParamsAsStringListMapInput {
+  qux?: string;
+  foo?: { [key: string]: string[] };
+}
+
+export namespace QueryParamsAsStringListMapInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: QueryParamsAsStringListMapInput): any => ({
+    ...obj,
+  });
+}
+
+export interface QueryPrecedenceInput {
+  foo?: string;
+  baz?: { [key: string]: string };
+}
+
+export namespace QueryPrecedenceInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: QueryPrecedenceInput): any => ({
     ...obj,
   });
 }
@@ -713,6 +934,9 @@ export interface SimpleScalarPropertiesInputOutput {
 }
 
 export namespace SimpleScalarPropertiesInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SimpleScalarPropertiesInputOutput): any => ({
     ...obj,
   });
@@ -724,6 +948,9 @@ export interface StreamingTraitsInputOutput {
 }
 
 export namespace StreamingTraitsInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StreamingTraitsInputOutput): any => ({
     ...obj,
   });
@@ -735,6 +962,9 @@ export interface StreamingTraitsRequireLengthInputOutput {
 }
 
 export namespace StreamingTraitsRequireLengthInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StreamingTraitsRequireLengthInputOutput): any => ({
     ...obj,
   });
@@ -746,6 +976,9 @@ export interface StreamingTraitsWithMediaTypeInputOutput {
 }
 
 export namespace StreamingTraitsWithMediaTypeInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StreamingTraitsWithMediaTypeInputOutput): any => ({
     ...obj,
   });
@@ -762,6 +995,9 @@ export interface TimestampFormatHeadersIO {
 }
 
 export namespace TimestampFormatHeadersIO {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TimestampFormatHeadersIO): any => ({
     ...obj,
   });
@@ -773,6 +1009,9 @@ export interface RecursiveShapesInputOutputNested1 {
 }
 
 export namespace RecursiveShapesInputOutputNested1 {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecursiveShapesInputOutputNested1): any => ({
     ...obj,
   });
@@ -784,6 +1023,9 @@ export interface RecursiveShapesInputOutputNested2 {
 }
 
 export namespace RecursiveShapesInputOutputNested2 {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecursiveShapesInputOutputNested2): any => ({
     ...obj,
   });
@@ -794,6 +1036,9 @@ export interface RecursiveShapesInputOutput {
 }
 
 export namespace RecursiveShapesInputOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecursiveShapesInputOutput): any => ({
     ...obj,
   });

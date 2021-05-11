@@ -1,5 +1,5 @@
 import { ConfigServiceClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../ConfigServiceClient";
-import { PutResourceConfigRequest } from "../models/models_0";
+import { PutResourceConfigRequest } from "../models/models_1";
 import {
   deserializeAws_json1_1PutResourceConfigCommand,
   serializeAws_json1_1PutResourceConfigCommand,
@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutResourceConfigCommandInput = PutResourceConfigRequest;
-export type PutResourceConfigCommandOutput = __MetadataBearer;
+export interface PutResourceConfigCommandInput extends PutResourceConfigRequest {}
+export interface PutResourceConfigCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Records the configuration state for the resource provided in the request.
@@ -31,6 +31,20 @@ export type PutResourceConfigCommandOutput = __MetadataBearer;
  * 				</p>
  * 		          <p>Write-only schema properites are not recorded as part of the published configuration item.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, PutResourceConfigCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, PutResourceConfigCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new PutResourceConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutResourceConfigCommandInput} for command's `input` shape.
+ * @see {@link PutResourceConfigCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutResourceConfigCommand extends $Command<
   PutResourceConfigCommandInput,

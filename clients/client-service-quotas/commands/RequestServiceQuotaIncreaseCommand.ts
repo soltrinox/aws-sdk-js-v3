@@ -17,12 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RequestServiceQuotaIncreaseCommandInput = RequestServiceQuotaIncreaseRequest;
-export type RequestServiceQuotaIncreaseCommandOutput = RequestServiceQuotaIncreaseResponse & __MetadataBearer;
+export interface RequestServiceQuotaIncreaseCommandInput extends RequestServiceQuotaIncreaseRequest {}
+export interface RequestServiceQuotaIncreaseCommandOutput
+  extends RequestServiceQuotaIncreaseResponse,
+    __MetadataBearer {}
 
 /**
- * <p>Retrieves the details of a service quota increase request. The response to this command
- *       provides the details in the <a>RequestedServiceQuotaChange</a> object. </p>
+ * <p>Submits a quota increase request for the specified quota.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceQuotasClient, RequestServiceQuotaIncreaseCommand } from "@aws-sdk/client-service-quotas"; // ES Modules import
+ * // const { ServiceQuotasClient, RequestServiceQuotaIncreaseCommand } = require("@aws-sdk/client-service-quotas"); // CommonJS import
+ * const client = new ServiceQuotasClient(config);
+ * const command = new RequestServiceQuotaIncreaseCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RequestServiceQuotaIncreaseCommandInput} for command's `input` shape.
+ * @see {@link RequestServiceQuotaIncreaseCommandOutput} for command's `response` shape.
+ * @see {@link ServiceQuotasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RequestServiceQuotaIncreaseCommand extends $Command<
   RequestServiceQuotaIncreaseCommandInput,

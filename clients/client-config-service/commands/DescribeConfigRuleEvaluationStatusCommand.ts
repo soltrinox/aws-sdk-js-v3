@@ -20,15 +20,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeConfigRuleEvaluationStatusCommandInput = DescribeConfigRuleEvaluationStatusRequest;
-export type DescribeConfigRuleEvaluationStatusCommandOutput = DescribeConfigRuleEvaluationStatusResponse &
-  __MetadataBearer;
+export interface DescribeConfigRuleEvaluationStatusCommandInput extends DescribeConfigRuleEvaluationStatusRequest {}
+export interface DescribeConfigRuleEvaluationStatusCommandOutput
+  extends DescribeConfigRuleEvaluationStatusResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns status information for each of your AWS managed Config
  * 			rules. The status includes information such as the last time AWS
  * 			Config invoked the rule, the last time AWS Config failed to invoke
  * 			the rule, and the related error for the last failure.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DescribeConfigRuleEvaluationStatusCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DescribeConfigRuleEvaluationStatusCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DescribeConfigRuleEvaluationStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeConfigRuleEvaluationStatusCommandInput} for command's `input` shape.
+ * @see {@link DescribeConfigRuleEvaluationStatusCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeConfigRuleEvaluationStatusCommand extends $Command<
   DescribeConfigRuleEvaluationStatusCommandInput,

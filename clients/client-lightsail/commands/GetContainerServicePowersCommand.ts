@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetContainerServicePowersCommandInput = GetContainerServicePowersRequest;
-export type GetContainerServicePowersCommandOutput = GetContainerServicePowersResult & __MetadataBearer;
+export interface GetContainerServicePowersCommandInput extends GetContainerServicePowersRequest {}
+export interface GetContainerServicePowersCommandOutput extends GetContainerServicePowersResult, __MetadataBearer {}
 
 /**
  * <p>Returns the list of powers that can be specified for your Amazon Lightsail container
@@ -26,6 +26,20 @@ export type GetContainerServicePowersCommandOutput = GetContainerServicePowersRe
  *
  *          <p>The power specifies the amount of memory, the number of vCPUs, and the base price of the
  *       container service.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetContainerServicePowersCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetContainerServicePowersCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetContainerServicePowersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetContainerServicePowersCommandInput} for command's `input` shape.
+ * @see {@link GetContainerServicePowersCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetContainerServicePowersCommand extends $Command<
   GetContainerServicePowersCommandInput,

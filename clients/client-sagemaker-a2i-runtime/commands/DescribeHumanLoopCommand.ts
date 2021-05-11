@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeHumanLoopCommandInput = DescribeHumanLoopRequest;
-export type DescribeHumanLoopCommandOutput = DescribeHumanLoopResponse & __MetadataBearer;
+export interface DescribeHumanLoopCommandInput extends DescribeHumanLoopRequest {}
+export interface DescribeHumanLoopCommandOutput extends DescribeHumanLoopResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information about the specified human loop.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerA2IRuntimeClient, DescribeHumanLoopCommand } from "@aws-sdk/client-sagemaker-a2i-runtime"; // ES Modules import
+ * // const { SageMakerA2IRuntimeClient, DescribeHumanLoopCommand } = require("@aws-sdk/client-sagemaker-a2i-runtime"); // CommonJS import
+ * const client = new SageMakerA2IRuntimeClient(config);
+ * const command = new DescribeHumanLoopCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeHumanLoopCommandInput} for command's `input` shape.
+ * @see {@link DescribeHumanLoopCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerA2IRuntimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeHumanLoopCommand extends $Command<
   DescribeHumanLoopCommandInput,

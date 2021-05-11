@@ -17,15 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateServiceQuotaTemplateCommandInput = AssociateServiceQuotaTemplateRequest;
-export type AssociateServiceQuotaTemplateCommandOutput = AssociateServiceQuotaTemplateResponse & __MetadataBearer;
+export interface AssociateServiceQuotaTemplateCommandInput extends AssociateServiceQuotaTemplateRequest {}
+export interface AssociateServiceQuotaTemplateCommandOutput
+  extends AssociateServiceQuotaTemplateResponse,
+    __MetadataBearer {}
 
 /**
- * <p>Associates the Service Quotas template with your organization so that when new accounts
- *       are created in your organization, the template submits increase requests for the specified
- *       service quotas. Use the Service Quotas template to request an increase for any adjustable
- *       quota value. After you define the Service Quotas template, use this operation to associate, or
- *       enable, the template. </p>
+ * <p>Associates your quota request template with your organization. When a new account is
+ *       created in your organization, the quota increase requests in the template are automatically
+ *       applied to the account. You can add a quota increase request for any adjustable quota to your
+ *       template.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceQuotasClient, AssociateServiceQuotaTemplateCommand } from "@aws-sdk/client-service-quotas"; // ES Modules import
+ * // const { ServiceQuotasClient, AssociateServiceQuotaTemplateCommand } = require("@aws-sdk/client-service-quotas"); // CommonJS import
+ * const client = new ServiceQuotasClient(config);
+ * const command = new AssociateServiceQuotaTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateServiceQuotaTemplateCommandInput} for command's `input` shape.
+ * @see {@link AssociateServiceQuotaTemplateCommandOutput} for command's `response` shape.
+ * @see {@link ServiceQuotasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateServiceQuotaTemplateCommand extends $Command<
   AssociateServiceQuotaTemplateCommandInput,

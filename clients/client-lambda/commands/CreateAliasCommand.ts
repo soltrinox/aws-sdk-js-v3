@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAliasCommandInput = CreateAliasRequest;
-export type CreateAliasCommandOutput = AliasConfiguration & __MetadataBearer;
+export interface CreateAliasCommandInput extends CreateAliasRequest {}
+export interface CreateAliasCommandOutput extends AliasConfiguration, __MetadataBearer {}
 
 /**
  * <p>Creates an <a href="https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html">alias</a> for a
@@ -27,6 +27,20 @@ export type CreateAliasCommandOutput = AliasConfiguration & __MetadataBearer;
  *          <p>You can also map an alias to split invocation requests between two versions. Use the
  *         <code>RoutingConfig</code> parameter to specify a second version and the percentage of invocation requests that
  *       it receives.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LambdaClient, CreateAliasCommand } from "@aws-sdk/client-lambda"; // ES Modules import
+ * // const { LambdaClient, CreateAliasCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+ * const client = new LambdaClient(config);
+ * const command = new CreateAliasCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAliasCommandInput} for command's `input` shape.
+ * @see {@link CreateAliasCommandOutput} for command's `response` shape.
+ * @see {@link LambdaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAliasCommand extends $Command<
   CreateAliasCommandInput,

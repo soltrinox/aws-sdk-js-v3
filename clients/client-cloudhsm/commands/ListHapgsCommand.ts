@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListHapgsCommandInput = ListHapgsRequest;
-export type ListHapgsCommandOutput = ListHapgsResponse & __MetadataBearer;
+export interface ListHapgsCommandInput extends ListHapgsRequest {}
+export interface ListHapgsCommandOutput extends ListHapgsResponse, __MetadataBearer {}
 
 /**
  * <p>This is documentation for <b>AWS CloudHSM Classic</b>. For
@@ -33,6 +33,20 @@ export type ListHapgsCommandOutput = ListHapgsResponse & __MetadataBearer;
  *       If more results are available, the <code>NextToken</code> member of the response contains a
  *       token that you pass in the next call to <code>ListHapgs</code> to retrieve the next set of
  *       items.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudHSMClient, ListHapgsCommand } from "@aws-sdk/client-cloudhsm"; // ES Modules import
+ * // const { CloudHSMClient, ListHapgsCommand } = require("@aws-sdk/client-cloudhsm"); // CommonJS import
+ * const client = new CloudHSMClient(config);
+ * const command = new ListHapgsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListHapgsCommandInput} for command's `input` shape.
+ * @see {@link ListHapgsCommandOutput} for command's `response` shape.
+ * @see {@link CloudHSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListHapgsCommand extends $Command<
   ListHapgsCommandInput,

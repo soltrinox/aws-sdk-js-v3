@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDataSourceFromRDSCommandInput = CreateDataSourceFromRDSInput;
-export type CreateDataSourceFromRDSCommandOutput = CreateDataSourceFromRDSOutput & __MetadataBearer;
+export interface CreateDataSourceFromRDSCommandInput extends CreateDataSourceFromRDSInput {}
+export interface CreateDataSourceFromRDSCommandOutput extends CreateDataSourceFromRDSOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a <code>DataSource</code> object from an <a href="http://aws.amazon.com/rds/"> Amazon Relational Database Service</a> (Amazon RDS). A <code>DataSource</code> references data that can be used to perform <code>CreateMLModel</code>, <code>CreateEvaluation</code>, or <code>CreateBatchPrediction</code> operations.</p>
@@ -33,6 +33,20 @@ export type CreateDataSourceFromRDSCommandOutput = CreateDataSourceFromRDSOutput
  *         <p>
  *           If Amazon ML cannot accept the input source, it sets the <code>Status</code> parameter to <code>FAILED</code> and includes an error message in the <code>Message</code> attribute of the <code>GetDataSource</code> operation response.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MachineLearningClient, CreateDataSourceFromRDSCommand } from "@aws-sdk/client-machine-learning"; // ES Modules import
+ * // const { MachineLearningClient, CreateDataSourceFromRDSCommand } = require("@aws-sdk/client-machine-learning"); // CommonJS import
+ * const client = new MachineLearningClient(config);
+ * const command = new CreateDataSourceFromRDSCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDataSourceFromRDSCommandInput} for command's `input` shape.
+ * @see {@link CreateDataSourceFromRDSCommandOutput} for command's `response` shape.
+ * @see {@link MachineLearningClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDataSourceFromRDSCommand extends $Command<
   CreateDataSourceFromRDSCommandInput,

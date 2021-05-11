@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEvaluationsCommandInput = DescribeEvaluationsInput;
-export type DescribeEvaluationsCommandOutput = DescribeEvaluationsOutput & __MetadataBearer;
+export interface DescribeEvaluationsCommandInput extends DescribeEvaluationsInput {}
+export interface DescribeEvaluationsCommandOutput extends DescribeEvaluationsOutput, __MetadataBearer {}
 
 /**
  * <p>Returns a list of <code>DescribeEvaluations</code> that match the search criteria in the request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MachineLearningClient, DescribeEvaluationsCommand } from "@aws-sdk/client-machine-learning"; // ES Modules import
+ * // const { MachineLearningClient, DescribeEvaluationsCommand } = require("@aws-sdk/client-machine-learning"); // CommonJS import
+ * const client = new MachineLearningClient(config);
+ * const command = new DescribeEvaluationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEvaluationsCommandInput} for command's `input` shape.
+ * @see {@link DescribeEvaluationsCommandOutput} for command's `response` shape.
+ * @see {@link MachineLearningClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEvaluationsCommand extends $Command<
   DescribeEvaluationsCommandInput,

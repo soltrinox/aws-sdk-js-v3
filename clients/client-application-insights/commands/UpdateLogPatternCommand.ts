@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateLogPatternCommandInput = UpdateLogPatternRequest;
-export type UpdateLogPatternCommandOutput = UpdateLogPatternResponse & __MetadataBearer;
+export interface UpdateLogPatternCommandInput extends UpdateLogPatternRequest {}
+export interface UpdateLogPatternCommandOutput extends UpdateLogPatternResponse, __MetadataBearer {}
 
 /**
  * <p>Adds a log pattern to a <code>LogPatternSet</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationInsightsClient, UpdateLogPatternCommand } from "@aws-sdk/client-application-insights"; // ES Modules import
+ * // const { ApplicationInsightsClient, UpdateLogPatternCommand } = require("@aws-sdk/client-application-insights"); // CommonJS import
+ * const client = new ApplicationInsightsClient(config);
+ * const command = new UpdateLogPatternCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateLogPatternCommandInput} for command's `input` shape.
+ * @see {@link UpdateLogPatternCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationInsightsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateLogPatternCommand extends $Command<
   UpdateLogPatternCommandInput,

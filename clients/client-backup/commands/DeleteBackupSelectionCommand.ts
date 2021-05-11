@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBackupSelectionCommandInput = DeleteBackupSelectionInput;
-export type DeleteBackupSelectionCommandOutput = __MetadataBearer;
+export interface DeleteBackupSelectionCommandInput extends DeleteBackupSelectionInput {}
+export interface DeleteBackupSelectionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the resource selection associated with a backup plan that is specified by the
  *             <code>SelectionId</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BackupClient, DeleteBackupSelectionCommand } from "@aws-sdk/client-backup"; // ES Modules import
+ * // const { BackupClient, DeleteBackupSelectionCommand } = require("@aws-sdk/client-backup"); // CommonJS import
+ * const client = new BackupClient(config);
+ * const command = new DeleteBackupSelectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBackupSelectionCommandInput} for command's `input` shape.
+ * @see {@link DeleteBackupSelectionCommandOutput} for command's `response` shape.
+ * @see {@link BackupClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBackupSelectionCommand extends $Command<
   DeleteBackupSelectionCommandInput,

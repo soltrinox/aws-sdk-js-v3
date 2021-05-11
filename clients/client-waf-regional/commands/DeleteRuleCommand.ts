@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteRuleCommandInput = DeleteRuleRequest;
-export type DeleteRuleCommandOutput = DeleteRuleResponse & __MetadataBearer;
+export interface DeleteRuleCommandInput extends DeleteRuleRequest {}
+export interface DeleteRuleCommandOutput extends DeleteRuleResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -45,6 +45,20 @@ export type DeleteRuleCommandOutput = DeleteRuleResponse & __MetadataBearer;
  *                <p>Submit a <code>DeleteRule</code> request.</p>
  *             </li>
  *          </ol>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFRegionalClient, DeleteRuleCommand } from "@aws-sdk/client-waf-regional"; // ES Modules import
+ * // const { WAFRegionalClient, DeleteRuleCommand } = require("@aws-sdk/client-waf-regional"); // CommonJS import
+ * const client = new WAFRegionalClient(config);
+ * const command = new DeleteRuleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteRuleCommandInput} for command's `input` shape.
+ * @see {@link DeleteRuleCommandOutput} for command's `response` shape.
+ * @see {@link WAFRegionalClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteRuleCommand extends $Command<
   DeleteRuleCommandInput,

@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeTemplatePermissionsCommandInput = DescribeTemplatePermissionsRequest;
-export type DescribeTemplatePermissionsCommandOutput = DescribeTemplatePermissionsResponse & __MetadataBearer;
+export interface DescribeTemplatePermissionsCommandInput extends DescribeTemplatePermissionsRequest {}
+export interface DescribeTemplatePermissionsCommandOutput
+  extends DescribeTemplatePermissionsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Describes read and write permissions on a template.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, DescribeTemplatePermissionsCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, DescribeTemplatePermissionsCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new DescribeTemplatePermissionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeTemplatePermissionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeTemplatePermissionsCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeTemplatePermissionsCommand extends $Command<
   DescribeTemplatePermissionsCommandInput,

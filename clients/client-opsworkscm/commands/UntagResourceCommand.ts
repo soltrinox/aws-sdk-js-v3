@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UntagResourceCommandInput = UntagResourceRequest;
-export type UntagResourceCommandOutput = UntagResourceResponse & __MetadataBearer;
+export interface UntagResourceCommandInput extends UntagResourceRequest {}
+export interface UntagResourceCommandOutput extends UntagResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Removes specified tags from an AWS OpsWorks-CM server or backup.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksCMClient, UntagResourceCommand } from "@aws-sdk/client-opsworkscm"; // ES Modules import
+ * // const { OpsWorksCMClient, UntagResourceCommand } = require("@aws-sdk/client-opsworkscm"); // CommonJS import
+ * const client = new OpsWorksCMClient(config);
+ * const command = new UntagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UntagResourceCommandInput} for command's `input` shape.
+ * @see {@link UntagResourceCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksCMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UntagResourceCommand extends $Command<
   UntagResourceCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateGroupCommandInput = UpdateGroupRequest;
-export type UpdateGroupCommandOutput = UpdateGroupResponse & __MetadataBearer;
+export interface UpdateGroupCommandInput extends UpdateGroupRequest {}
+export interface UpdateGroupCommandOutput extends UpdateGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Changes a group description. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, UpdateGroupCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, UpdateGroupCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new UpdateGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateGroupCommandInput} for command's `input` shape.
+ * @see {@link UpdateGroupCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateGroupCommand extends $Command<
   UpdateGroupCommandInput,

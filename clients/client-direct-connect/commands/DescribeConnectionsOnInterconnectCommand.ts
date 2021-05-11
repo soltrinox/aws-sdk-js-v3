@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeConnectionsOnInterconnectCommandInput = DescribeConnectionsOnInterconnectRequest;
-export type DescribeConnectionsOnInterconnectCommandOutput = Connections & __MetadataBearer;
+export interface DescribeConnectionsOnInterconnectCommandInput extends DescribeConnectionsOnInterconnectRequest {}
+export interface DescribeConnectionsOnInterconnectCommandOutput extends Connections, __MetadataBearer {}
 
 /**
  * @deprecated
@@ -28,6 +28,20 @@ export type DescribeConnectionsOnInterconnectCommandOutput = Connections & __Met
  *          <note>
  *             <p>Intended for use by AWS Direct Connect Partners only.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectConnectClient, DescribeConnectionsOnInterconnectCommand } from "@aws-sdk/client-direct-connect"; // ES Modules import
+ * // const { DirectConnectClient, DescribeConnectionsOnInterconnectCommand } = require("@aws-sdk/client-direct-connect"); // CommonJS import
+ * const client = new DirectConnectClient(config);
+ * const command = new DescribeConnectionsOnInterconnectCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeConnectionsOnInterconnectCommandInput} for command's `input` shape.
+ * @see {@link DescribeConnectionsOnInterconnectCommandOutput} for command's `response` shape.
+ * @see {@link DirectConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeConnectionsOnInterconnectCommand extends $Command<
   DescribeConnectionsOnInterconnectCommandInput,

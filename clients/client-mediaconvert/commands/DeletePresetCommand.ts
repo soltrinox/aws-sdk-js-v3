@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeletePresetCommandInput = DeletePresetRequest;
-export type DeletePresetCommandOutput = DeletePresetResponse & __MetadataBearer;
+export interface DeletePresetCommandInput extends DeletePresetRequest {}
+export interface DeletePresetCommandOutput extends DeletePresetResponse, __MetadataBearer {}
 
 /**
  * Permanently delete a preset you have created.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaConvertClient, DeletePresetCommand } from "@aws-sdk/client-mediaconvert"; // ES Modules import
+ * // const { MediaConvertClient, DeletePresetCommand } = require("@aws-sdk/client-mediaconvert"); // CommonJS import
+ * const client = new MediaConvertClient(config);
+ * const command = new DeletePresetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeletePresetCommandInput} for command's `input` shape.
+ * @see {@link DeletePresetCommandOutput} for command's `response` shape.
+ * @see {@link MediaConvertClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeletePresetCommand extends $Command<
   DeletePresetCommandInput,

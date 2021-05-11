@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutAppInstanceRetentionSettingsCommandInput = PutAppInstanceRetentionSettingsRequest;
-export type PutAppInstanceRetentionSettingsCommandOutput = PutAppInstanceRetentionSettingsResponse & __MetadataBearer;
+export interface PutAppInstanceRetentionSettingsCommandInput extends PutAppInstanceRetentionSettingsRequest {}
+export interface PutAppInstanceRetentionSettingsCommandOutput
+  extends PutAppInstanceRetentionSettingsResponse,
+    __MetadataBearer {}
 
 /**
- * <p>Sets the amount of time in days that a given app instance retains data.</p>
+ * <p>Sets the amount of time in days that a given <code>AppInstance</code> retains data.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, PutAppInstanceRetentionSettingsCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, PutAppInstanceRetentionSettingsCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new PutAppInstanceRetentionSettingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutAppInstanceRetentionSettingsCommandInput} for command's `input` shape.
+ * @see {@link PutAppInstanceRetentionSettingsCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutAppInstanceRetentionSettingsCommand extends $Command<
   PutAppInstanceRetentionSettingsCommandInput,

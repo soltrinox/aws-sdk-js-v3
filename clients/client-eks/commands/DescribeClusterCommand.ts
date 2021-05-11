@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeClusterCommandInput = DescribeClusterRequest;
-export type DescribeClusterCommandOutput = DescribeClusterResponse & __MetadataBearer;
+export interface DescribeClusterCommandInput extends DescribeClusterRequest {}
+export interface DescribeClusterCommandOutput extends DescribeClusterResponse, __MetadataBearer {}
 
 /**
  * <p>Returns descriptive information about an Amazon EKS cluster.</p>
@@ -30,6 +30,20 @@ export type DescribeClusterCommandOutput = DescribeClusterResponse & __MetadataB
  *             <p>The API server endpoint and certificate authority data aren't available until the
  *                 cluster reaches the <code>ACTIVE</code> state.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EKSClient, DescribeClusterCommand } from "@aws-sdk/client-eks"; // ES Modules import
+ * // const { EKSClient, DescribeClusterCommand } = require("@aws-sdk/client-eks"); // CommonJS import
+ * const client = new EKSClient(config);
+ * const command = new DescribeClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeClusterCommandInput} for command's `input` shape.
+ * @see {@link DescribeClusterCommandOutput} for command's `response` shape.
+ * @see {@link EKSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeClusterCommand extends $Command<
   DescribeClusterCommandInput,

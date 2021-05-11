@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutFunctionConcurrencyCommandInput = PutFunctionConcurrencyRequest;
-export type PutFunctionConcurrencyCommandOutput = Concurrency & __MetadataBearer;
+export interface PutFunctionConcurrencyCommandInput extends PutFunctionConcurrencyRequest {}
+export interface PutFunctionConcurrencyCommandOutput extends Concurrency, __MetadataBearer {}
 
 /**
  * <p>Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency
@@ -30,6 +30,20 @@ export type PutFunctionConcurrencyCommandOutput = Concurrency & __MetadataBearer
  *          <p>Use <a>GetAccountSettings</a> to see your Regional concurrency limit. You can reserve concurrency
  *       for as many functions as you like, as long as you leave at least 100 simultaneous executions unreserved for
  *       functions that aren't configured with a per-function limit. For more information, see <a href="https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html">Managing Concurrency</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LambdaClient, PutFunctionConcurrencyCommand } from "@aws-sdk/client-lambda"; // ES Modules import
+ * // const { LambdaClient, PutFunctionConcurrencyCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+ * const client = new LambdaClient(config);
+ * const command = new PutFunctionConcurrencyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutFunctionConcurrencyCommandInput} for command's `input` shape.
+ * @see {@link PutFunctionConcurrencyCommandOutput} for command's `response` shape.
+ * @see {@link LambdaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutFunctionConcurrencyCommand extends $Command<
   PutFunctionConcurrencyCommandInput,

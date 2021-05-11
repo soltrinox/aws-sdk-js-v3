@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateUserCommandInput = CreateUserRequest;
-export type CreateUserCommandOutput = CreateUserResponse & __MetadataBearer;
+export interface CreateUserCommandInput extends CreateUserRequest {}
+export interface CreateUserCommandOutput extends CreateUserResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a user under the specified Amazon Chime account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, CreateUserCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, CreateUserCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new CreateUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateUserCommandInput} for command's `input` shape.
+ * @see {@link CreateUserCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateUserCommand extends $Command<
   CreateUserCommandInput,

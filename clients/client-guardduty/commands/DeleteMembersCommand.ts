@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteMembersCommandInput = DeleteMembersRequest;
-export type DeleteMembersCommandOutput = DeleteMembersResponse & __MetadataBearer;
+export interface DeleteMembersCommandInput extends DeleteMembersRequest {}
+export interface DeleteMembersCommandOutput extends DeleteMembersResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes GuardDuty member accounts (to the current GuardDuty administrator account) specified by
  *       the account IDs.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GuardDutyClient, DeleteMembersCommand } from "@aws-sdk/client-guardduty"; // ES Modules import
+ * // const { GuardDutyClient, DeleteMembersCommand } = require("@aws-sdk/client-guardduty"); // CommonJS import
+ * const client = new GuardDutyClient(config);
+ * const command = new DeleteMembersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteMembersCommandInput} for command's `input` shape.
+ * @see {@link DeleteMembersCommandOutput} for command's `response` shape.
+ * @see {@link GuardDutyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteMembersCommand extends $Command<
   DeleteMembersCommandInput,

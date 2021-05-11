@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreDBInstanceFromDBSnapshotCommandInput = RestoreDBInstanceFromDBSnapshotMessage;
-export type RestoreDBInstanceFromDBSnapshotCommandOutput = RestoreDBInstanceFromDBSnapshotResult & __MetadataBearer;
+export interface RestoreDBInstanceFromDBSnapshotCommandInput extends RestoreDBInstanceFromDBSnapshotMessage {}
+export interface RestoreDBInstanceFromDBSnapshotCommandOutput
+  extends RestoreDBInstanceFromDBSnapshotResult,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a new DB instance from a DB snapshot. The target database is created from the source database restore point with most
@@ -35,6 +37,20 @@ export type RestoreDBInstanceFromDBSnapshotCommandOutput = RestoreDBInstanceFrom
  *          <note>
  *             <p>This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, use <code>RestoreDBClusterFromSnapshot</code>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, RestoreDBInstanceFromDBSnapshotCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, RestoreDBInstanceFromDBSnapshotCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new RestoreDBInstanceFromDBSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreDBInstanceFromDBSnapshotCommandInput} for command's `input` shape.
+ * @see {@link RestoreDBInstanceFromDBSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreDBInstanceFromDBSnapshotCommand extends $Command<
   RestoreDBInstanceFromDBSnapshotCommandInput,

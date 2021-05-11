@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateTransformJobCommandInput = CreateTransformJobRequest;
-export type CreateTransformJobCommandOutput = CreateTransformJobResponse & __MetadataBearer;
+export interface CreateTransformJobCommandInput extends CreateTransformJobRequest {}
+export interface CreateTransformJobCommandOutput extends CreateTransformJobResponse, __MetadataBearer {}
 
 /**
  * <p>Starts a transform job. A transform job uses a trained model to get inferences on a
@@ -56,6 +56,20 @@ export type CreateTransformJobCommandOutput = CreateTransformJobResponse & __Met
  *          </ul>
  *         <p>For more information about how batch transformation works, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html">Batch
  *                 Transform</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, CreateTransformJobCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, CreateTransformJobCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new CreateTransformJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateTransformJobCommandInput} for command's `input` shape.
+ * @see {@link CreateTransformJobCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateTransformJobCommand extends $Command<
   CreateTransformJobCommandInput,

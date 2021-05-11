@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SwapEnvironmentCNAMEsCommandInput = SwapEnvironmentCNAMEsMessage;
-export type SwapEnvironmentCNAMEsCommandOutput = __MetadataBearer;
+export interface SwapEnvironmentCNAMEsCommandInput extends SwapEnvironmentCNAMEsMessage {}
+export interface SwapEnvironmentCNAMEsCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Swaps the CNAMEs of two environments.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticBeanstalkClient, SwapEnvironmentCNAMEsCommand } from "@aws-sdk/client-elastic-beanstalk"; // ES Modules import
+ * // const { ElasticBeanstalkClient, SwapEnvironmentCNAMEsCommand } = require("@aws-sdk/client-elastic-beanstalk"); // CommonJS import
+ * const client = new ElasticBeanstalkClient(config);
+ * const command = new SwapEnvironmentCNAMEsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SwapEnvironmentCNAMEsCommandInput} for command's `input` shape.
+ * @see {@link SwapEnvironmentCNAMEsCommandOutput} for command's `response` shape.
+ * @see {@link ElasticBeanstalkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SwapEnvironmentCNAMEsCommand extends $Command<
   SwapEnvironmentCNAMEsCommandInput,

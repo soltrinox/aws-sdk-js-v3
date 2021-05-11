@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateJobCommandInput = CreateJobRequest;
-export type CreateJobCommandOutput = CreateJobResponse & __MetadataBearer;
+export interface CreateJobCommandInput extends CreateJobRequest {}
+export interface CreateJobCommandOutput extends CreateJobResponse, __MetadataBearer {}
 
 /**
  * <p>When you create a job, Elastic Transcoder returns JSON data that includes the values that you specified
@@ -30,6 +30,20 @@ export type CreateJobCommandOutput = CreateJobResponse & __MetadataBearer;
  *         <p>If you have specified more than one output for your jobs (for example, one output for the
  *             Kindle Fire and another output for the Apple iPhone 4s), you currently must use the Elastic Transcoder API to
  *             list the jobs (as opposed to the AWS Console).</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticTranscoderClient, CreateJobCommand } from "@aws-sdk/client-elastic-transcoder"; // ES Modules import
+ * // const { ElasticTranscoderClient, CreateJobCommand } = require("@aws-sdk/client-elastic-transcoder"); // CommonJS import
+ * const client = new ElasticTranscoderClient(config);
+ * const command = new CreateJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateJobCommandInput} for command's `input` shape.
+ * @see {@link CreateJobCommandOutput} for command's `response` shape.
+ * @see {@link ElasticTranscoderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateJobCommand extends $Command<
   CreateJobCommandInput,

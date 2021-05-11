@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateMatchmakingRuleSetCommandInput = CreateMatchmakingRuleSetInput;
-export type CreateMatchmakingRuleSetCommandOutput = CreateMatchmakingRuleSetOutput & __MetadataBearer;
+export interface CreateMatchmakingRuleSetCommandInput extends CreateMatchmakingRuleSetInput {}
+export interface CreateMatchmakingRuleSetCommandOutput extends CreateMatchmakingRuleSetOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a new rule set for FlexMatch matchmaking. A rule set describes the type of match
@@ -37,14 +37,14 @@ export type CreateMatchmakingRuleSetCommandOutput = CreateMatchmakingRuleSetOutp
  *         <ul>
  *             <li>
  *                 <p>
- *                   <a href="https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html">Build a Rule
- *                         Set</a>
+ *                   <a href="https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html">Build a rule
+ *                         set</a>
  *                </p>
  *             </li>
  *             <li>
  *                 <p>
  *                   <a href="https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html">Design a
- *                         Matchmaker</a>
+ *                         matchmaker</a>
  *                </p>
  *             </li>
  *             <li>
@@ -55,50 +55,33 @@ export type CreateMatchmakingRuleSetCommandOutput = CreateMatchmakingRuleSetOutp
  *             </li>
  *          </ul>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateMatchmakingConfiguration</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeMatchmakingConfigurations</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateMatchmakingConfiguration</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteMatchmakingConfiguration</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>CreateMatchmakingRuleSet</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeMatchmakingRuleSets</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ValidateMatchmakingRuleSet</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteMatchmakingRuleSet</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>CreateMatchmakingConfiguration</a> |
+ *                     <a>DescribeMatchmakingConfigurations</a> |
+ *                     <a>UpdateMatchmakingConfiguration</a> |
+ *                     <a>DeleteMatchmakingConfiguration</a> |
+ *                     <a>CreateMatchmakingRuleSet</a> |
+ *                     <a>DescribeMatchmakingRuleSets</a> |
+ *                     <a>ValidateMatchmakingRuleSet</a> |
+ *                     <a>DeleteMatchmakingRuleSet</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, CreateMatchmakingRuleSetCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, CreateMatchmakingRuleSetCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new CreateMatchmakingRuleSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateMatchmakingRuleSetCommandInput} for command's `input` shape.
+ * @see {@link CreateMatchmakingRuleSetCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateMatchmakingRuleSetCommand extends $Command<
   CreateMatchmakingRuleSetCommandInput,

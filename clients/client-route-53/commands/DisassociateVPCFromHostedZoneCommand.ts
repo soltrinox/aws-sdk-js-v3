@@ -18,8 +18,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateVPCFromHostedZoneCommandInput = DisassociateVPCFromHostedZoneRequest;
-export type DisassociateVPCFromHostedZoneCommandOutput = DisassociateVPCFromHostedZoneResponse & __MetadataBearer;
+export interface DisassociateVPCFromHostedZoneCommandInput extends DisassociateVPCFromHostedZoneRequest {}
+export interface DisassociateVPCFromHostedZoneCommandOutput
+  extends DisassociateVPCFromHostedZoneResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an Amazon Route 53 private hosted zone. Note the following:</p>
@@ -43,6 +45,20 @@ export type DisassociateVPCFromHostedZoneCommandOutput = DisassociateVPCFromHost
  * 					If the hosted zone has a value for <code>OwningService</code>, you can't use <code>DisassociateVPCFromHostedZone</code>.</p>
  * 			         </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, DisassociateVPCFromHostedZoneCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, DisassociateVPCFromHostedZoneCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new DisassociateVPCFromHostedZoneCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateVPCFromHostedZoneCommandInput} for command's `input` shape.
+ * @see {@link DisassociateVPCFromHostedZoneCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateVPCFromHostedZoneCommand extends $Command<
   DisassociateVPCFromHostedZoneCommandInput,

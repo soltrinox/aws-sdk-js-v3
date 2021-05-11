@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAuthorizersCommandInput = GetAuthorizersRequest;
-export type GetAuthorizersCommandOutput = GetAuthorizersResponse & __MetadataBearer;
+export interface GetAuthorizersCommandInput extends GetAuthorizersRequest {}
+export interface GetAuthorizersCommandOutput extends GetAuthorizersResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the Authorizers for an API.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApiGatewayV2Client, GetAuthorizersCommand } from "@aws-sdk/client-apigatewayv2"; // ES Modules import
+ * // const { ApiGatewayV2Client, GetAuthorizersCommand } = require("@aws-sdk/client-apigatewayv2"); // CommonJS import
+ * const client = new ApiGatewayV2Client(config);
+ * const command = new GetAuthorizersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAuthorizersCommandInput} for command's `input` shape.
+ * @see {@link GetAuthorizersCommandOutput} for command's `response` shape.
+ * @see {@link ApiGatewayV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAuthorizersCommand extends $Command<
   GetAuthorizersCommandInput,

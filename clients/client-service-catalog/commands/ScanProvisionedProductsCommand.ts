@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ScanProvisionedProductsCommandInput = ScanProvisionedProductsInput;
-export type ScanProvisionedProductsCommandOutput = ScanProvisionedProductsOutput & __MetadataBearer;
+export interface ScanProvisionedProductsCommandInput extends ScanProvisionedProductsInput {}
+export interface ScanProvisionedProductsCommandOutput extends ScanProvisionedProductsOutput, __MetadataBearer {}
 
 /**
  * <p>Lists the provisioned products that are available (not terminated).</p>
  *          <p>To use additional filtering, see <a>SearchProvisionedProducts</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, ScanProvisionedProductsCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, ScanProvisionedProductsCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new ScanProvisionedProductsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ScanProvisionedProductsCommandInput} for command's `input` shape.
+ * @see {@link ScanProvisionedProductsCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ScanProvisionedProductsCommand extends $Command<
   ScanProvisionedProductsCommandInput,

@@ -16,12 +16,15 @@ export interface AdminAccount {
   accountId?: string;
 
   /**
-   * <p>The current status of the account as a delegated administrator of Amazon Macie for the organization.</p>
+   * <p>The current status of the account as the delegated administrator of Amazon Macie for the organization.</p>
    */
   status?: AdminStatus | string;
 }
 
 export namespace AdminAccount {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AdminAccount): any => ({
     ...obj,
   });
@@ -63,9 +66,18 @@ export interface BatchGetCustomDataIdentifierSummary {
 }
 
 export namespace BatchGetCustomDataIdentifierSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetCustomDataIdentifierSummary): any => ({
     ...obj,
   });
+}
+
+export enum AllowsUnencryptedObjectUploads {
+  FALSE = "FALSE",
+  TRUE = "TRUE",
+  UNKNOWN = "UNKNOWN",
 }
 
 export enum IsDefinedInJob {
@@ -106,6 +118,9 @@ export interface JobDetails {
 }
 
 export namespace JobDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobDetails): any => ({
     ...obj,
   });
@@ -116,17 +131,17 @@ export namespace JobDetails {
  */
 export interface ObjectCountByEncryptionType {
   /**
-   * <p>The total number of objects that are encrypted using a customer-managed key. The objects use customer-provided server-side (SSE-C) encryption.</p>
+   * <p>The total number of objects that are encrypted using a customer-managed key. The objects use customer-provided server-side encryption (SSE-C).</p>
    */
   customerManaged?: number;
 
   /**
-   * <p>The total number of objects that are encrypted using an AWS Key Management Service (AWS KMS) customer master key (CMK). The objects use AWS managed AWS KMS (AWS-KMS) encryption or customer managed AWS KMS (SSE-KMS) encryption.</p>
+   * <p>The total number of objects that are encrypted using an AWS Key Management Service (AWS KMS) customer master key (CMK). The objects use AWS managed AWS KMS encryption (AWS-KMS) or customer managed AWS KMS encryption (SSE-KMS).</p>
    */
   kmsManaged?: number;
 
   /**
-   * <p>The total number of objects that are encrypted using an Amazon S3 managed key. The objects use Amazon S3 managed (SSE-S3) encryption.</p>
+   * <p>The total number of objects that are encrypted using an Amazon S3 managed key. The objects use Amazon S3 managed encryption (SSE-S3).</p>
    */
   s3Managed?: number;
 
@@ -134,9 +149,17 @@ export interface ObjectCountByEncryptionType {
    * <p>The total number of objects that aren't encrypted or use client-side encryption.</p>
    */
   unencrypted?: number;
+
+  /**
+   * <p>The total number of objects that Amazon Macie doesn't have current encryption metadata for. Macie can't provide current data about the encryption settings for these objects.</p>
+   */
+  unknown?: number;
 }
 
 export namespace ObjectCountByEncryptionType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectCountByEncryptionType): any => ({
     ...obj,
   });
@@ -149,7 +172,7 @@ export enum EffectivePermission {
 }
 
 /**
- * <p>Provides information about the block public access settings for an S3 bucket. These settings can apply to a bucket at the account level or bucket level. For detailed information about each setting, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html">Using Amazon S3 block public access</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ * <p>Provides information about the block public access settings for an S3 bucket. These settings can apply to a bucket at the account level or bucket level. For detailed information about each setting, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html">Blocking public access to your Amazon S3 storage</a> in the <i>Amazon Simple Storage Service User Guide</i>.</p>
  */
 export interface BlockPublicAccess {
   /**
@@ -174,22 +197,28 @@ export interface BlockPublicAccess {
 }
 
 export namespace BlockPublicAccess {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BlockPublicAccess): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Provides information about account-level permissions settings that apply to an S3 bucket.</p>
+ * <p>Provides information about the account-level permissions settings that apply to an S3 bucket.</p>
  */
 export interface AccountLevelPermissions {
   /**
-   * <p>The block public access settings for the bucket.</p>
+   * <p>The block public access settings for the AWS account that owns the bucket.</p>
    */
   blockPublicAccess?: BlockPublicAccess;
 }
 
 export namespace AccountLevelPermissions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccountLevelPermissions): any => ({
     ...obj,
   });
@@ -211,13 +240,16 @@ export interface AccessControlList {
 }
 
 export namespace AccessControlList {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessControlList): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Provides information about the permissions settings of a bucket policy for an S3 bucket.</p>
+ * <p>Provides information about the permissions settings of the bucket policy for an S3 bucket.</p>
  */
 export interface BucketPolicy {
   /**
@@ -232,6 +264,9 @@ export interface BucketPolicy {
 }
 
 export namespace BucketPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketPolicy): any => ({
     ...obj,
   });
@@ -258,6 +293,9 @@ export interface BucketLevelPermissions {
 }
 
 export namespace BucketLevelPermissions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketLevelPermissions): any => ({
     ...obj,
   });
@@ -279,6 +317,9 @@ export interface BucketPermissionConfiguration {
 }
 
 export namespace BucketPermissionConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketPermissionConfiguration): any => ({
     ...obj,
   });
@@ -294,12 +335,15 @@ export interface BucketPublicAccess {
   effectivePermission?: EffectivePermission | string;
 
   /**
-   * <p>The account-level and bucket-level permissions for the bucket.</p>
+   * <p>The account-level and bucket-level permissions settings for the bucket.</p>
    */
   permissionConfiguration?: BucketPermissionConfiguration;
 }
 
 export namespace BucketPublicAccess {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketPublicAccess): any => ({
     ...obj,
   });
@@ -326,7 +370,40 @@ export interface ReplicationDetails {
 }
 
 export namespace ReplicationDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationDetails): any => ({
+    ...obj,
+  });
+}
+
+export enum Type {
+  AES256 = "AES256",
+  NONE = "NONE",
+  aws_kms = "aws:kms",
+}
+
+/**
+ * <p>Provides information about the default server-side encryption settings for an S3 bucket. For detailed information about these settings, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html">Setting default server-side encryption behavior for Amazon S3 buckets</a> in the <i>Amazon Simple Storage Service User Guide</i>.</p>
+ */
+export interface BucketServerSideEncryption {
+  /**
+   * <p>The Amazon Resource Name (ARN) or unique identifier (key ID) for the AWS Key Management Service (AWS KMS) customer master key (CMK) that's used by default to encrypt objects that are added to the bucket. This value is null if the bucket uses an Amazon S3 managed key to encrypt new objects or the bucket doesn't encrypt new objects by default.</p>
+   */
+  kmsMasterKeyId?: string;
+
+  /**
+   * <p>The type of server-side encryption that's used by default when storing new objects in the bucket. Possible values are:</p> <ul><li><p>AES256 - New objects are encrypted with an Amazon S3 managed key and use Amazon S3 managed encryption (SSE-S3).</p></li> <li><p>aws:kms - New objects are encrypted with an AWS KMS CMK, specified by the kmsMasterKeyId property, and use AWS managed AWS KMS encryption (AWS-KMS) or customer managed AWS KMS encryption (SSE-KMS).</p></li> <li><p>NONE - New objects aren't encrypted by default. Default encryption is disabled for the bucket.</p></li></ul>
+   */
+  type?: Type | string;
+}
+
+export namespace BucketServerSideEncryption {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: BucketServerSideEncryption): any => ({
     ...obj,
   });
 }
@@ -354,13 +431,16 @@ export interface KeyValuePair {
 }
 
 export namespace KeyValuePair {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KeyValuePair): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Provides information about the total storage size (in bytes) or number of objects that Amazon Macie can't analyze in one or more S3 buckets. In a BucketMetadata object, this data is for a specific bucket. In a GetBucketStatisticsResponse object, this data is aggregated for all the buckets in the query results.</p>
+ * <p>Provides information about the total storage size (in bytes) or number of objects that Amazon Macie can't analyze in one or more S3 buckets. In a BucketMetadata object, this data is for a specific bucket. In a GetBucketStatisticsResponse object, this data is aggregated for all the buckets in the query results. If versioning is enabled for a bucket, total storage size values are based on the size of the latest version of each applicable object in the bucket.</p>
  */
 export interface ObjectLevelStatistics {
   /**
@@ -380,6 +460,9 @@ export interface ObjectLevelStatistics {
 }
 
 export namespace ObjectLevelStatistics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectLevelStatistics): any => ({
     ...obj,
   });
@@ -393,6 +476,11 @@ export interface BucketMetadata {
    * <p>The unique identifier for the AWS account that owns the bucket.</p>
    */
   accountId?: string;
+
+  /**
+   * <p>Specifies whether the bucket policy for the bucket requires server-side encryption of objects when objects are uploaded to the bucket. Possible values are:</p> <ul><li><p>FALSE - The bucket policy requires server-side encryption of new objects. PutObject requests must include the x-amz-server-side-encryption header and the value for that header must be AES256 or aws:kms.</p></li> <li><p>TRUE - The bucket doesn't have a bucket policy or it has a bucket policy that doesn't require server-side encryption of new objects. If a bucket policy exists, it doesn't require PutObject requests to include the x-amz-server-side-encryption header and it doesn't require the value for that header to be AES256 or aws:kms.</p></li> <li><p>UNKNOWN - Amazon Macie can't determine whether the bucket policy requires server-side encryption of new objects.</p></li></ul>
+   */
+  allowsUnencryptedObjectUploads?: AllowsUnencryptedObjectUploads | string;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the bucket.</p>
@@ -415,7 +503,7 @@ export interface BucketMetadata {
   classifiableObjectCount?: number;
 
   /**
-   * <p>The total storage size, in bytes, of the objects that Amazon Macie can analyze in the bucket. These objects use a supported storage class and have a file name extension for a supported file or storage format.</p>
+   * <p>The total storage size, in bytes, of the objects that Amazon Macie can analyze in the bucket. These objects use a supported storage class and have a file name extension for a supported file or storage format.</p> <p>If versioning is enabled for the bucket, Macie calculates this value based on the size of the latest version of each applicable object in the bucket. This value doesn't reflect the storage size of all versions of each applicable object in the bucket.</p>
    */
   classifiableSizeInBytes?: number;
 
@@ -425,7 +513,7 @@ export interface BucketMetadata {
   jobDetails?: JobDetails;
 
   /**
-   * <p>The date and time, in UTC and extended ISO 8601 format, when Amazon Macie most recently retrieved data about the bucket from Amazon S3.</p>
+   * <p>The date and time, in UTC and extended ISO 8601 format, when Amazon Macie most recently retrieved both bucket and object metadata from Amazon S3 for the bucket.</p>
    */
   lastUpdated?: Date;
 
@@ -440,7 +528,7 @@ export interface BucketMetadata {
   objectCountByEncryptionType?: ObjectCountByEncryptionType;
 
   /**
-   * <p>Specifies whether the bucket is publicly accessible. If this value is true, an access control list (ACL), bucket policy, or block public access settings allow the bucket to be accessed by the general public.</p>
+   * <p>Specifies whether the bucket is publicly accessible due to the combination of permissions settings that apply to the bucket, and provides information about those settings.</p>
    */
   publicAccess?: BucketPublicAccess;
 
@@ -455,17 +543,22 @@ export interface BucketMetadata {
   replicationDetails?: ReplicationDetails;
 
   /**
+   * <p>Specifies whether the bucket encrypts new objects by default and, if so, the type of server-side encryption that's used.</p>
+   */
+  serverSideEncryption?: BucketServerSideEncryption;
+
+  /**
    * <p>Specifies whether the bucket is shared with another AWS account. Possible values are:</p> <ul><li><p>EXTERNAL - The bucket is shared with an AWS account that isn't part of the same Amazon Macie organization.</p></li> <li><p>INTERNAL - The bucket is shared with an AWS account that's part of the same Amazon Macie organization.</p></li> <li><p>NOT_SHARED - The bucket isn't shared with other AWS accounts.</p></li> <li><p>UNKNOWN - Amazon Macie wasn't able to evaluate the shared access settings for the bucket.</p></li></ul>
    */
   sharedAccess?: SharedAccess | string;
 
   /**
-   * <p>The total storage size, in bytes, of the bucket.</p>
+   * <p>The total storage size, in bytes, of the bucket.</p> <p>If versioning is enabled for the bucket, Amazon Macie calculates this value based on the size of the latest version of each object in the bucket. This value doesn't reflect the storage size of all versions of each object in the bucket.</p>
    */
   sizeInBytes?: number;
 
   /**
-   * <p>The total compressed storage size, in bytes, of the bucket.</p>
+   * <p>The total compressed storage size, in bytes, of the bucket.</p> <p>If versioning is enabled for the bucket, Macie calculates this value based on the size of the latest version of each object in the bucket. This value doesn't reflect the storage size of all versions of each object in the bucket.</p>
    */
   sizeInBytesCompressed?: number;
 
@@ -491,6 +584,9 @@ export interface BucketMetadata {
 }
 
 export namespace BucketMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketMetadata): any => ({
     ...obj,
   });
@@ -527,6 +623,9 @@ export interface CustomDataIdentifierSummary {
 }
 
 export namespace CustomDataIdentifierSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CustomDataIdentifierSummary): any => ({
     ...obj,
   });
@@ -552,7 +651,7 @@ export interface Cell {
   column?: number;
 
   /**
-   * <p>The name of the column that contains the data, if available.</p>
+   * <p>The name of the column that contains the data, if available. This value is also null if Amazon Macie detects sensitive data in the name of any column in the file.</p>
    */
   columnName?: string;
 
@@ -563,6 +662,9 @@ export interface Cell {
 }
 
 export namespace Cell {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Cell): any => ({
     ...obj,
   });
@@ -589,6 +691,9 @@ export interface Range {
 }
 
 export namespace Range {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Range): any => ({
     ...obj,
   });
@@ -615,6 +720,9 @@ export interface Page {
 }
 
 export namespace Page {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Page): any => ({
     ...obj,
   });
@@ -625,7 +733,7 @@ export namespace Page {
  */
 export interface _Record {
   /**
-   * <p>The path, as a JSONPath expression, to the field in the record that contains the data.</p> <p>If the name of an element exceeds 20 characters, Amazon Macie truncates the name by removing characters from the beginning of the name. If the resulting full path exceeds 250 characters, Macie also truncates the path, starting with the first element in the path, until the path contains 250 or fewer characters.</p>
+   * <p>The path, as a JSONPath expression, to the field in the record that contains the data. If Amazon Macie detects sensitive data in the name of any element in the path, Macie omits this field.</p> <p>If the name of an element exceeds 20 characters, Macie truncates the name by removing characters from the beginning of the name. If the resulting full path exceeds 250 characters, Macie also truncates the path, starting with the first element in the path, until the path contains 250 or fewer characters.</p>
    */
   jsonPath?: string;
 
@@ -636,6 +744,9 @@ export interface _Record {
 }
 
 export namespace _Record {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: _Record): any => ({
     ...obj,
   });
@@ -651,7 +762,7 @@ export interface Occurrences {
   cells?: Cell[];
 
   /**
-   * <p>An array of objects, one for each occurrence of sensitive data in a Microsoft Word document or non-binary text file, such as an HTML, JSON, TXT, or XML file. Each object specifies the line that contains the data, and the position of the data on that line.</p> <p>This value is often null for file types that are supported by Cell, Page, or Record objects. Exceptions are the locations of: data in unstructured sections of an otherwise structured file, such as a comment in a file; and, data in a malformed file that Amazon Macie analyzes as plain text.</p>
+   * <p>An array of objects, one for each occurrence of sensitive data in a Microsoft Word document or non-binary text file, such as an HTML, JSON, TXT, or XML file. Each object specifies the line that contains the data, and the position of the data on that line.</p> <p>This value is often null for file types that are supported by Cell, Page, or Record objects. Exceptions are the locations of data in: unstructured sections of an otherwise structured file, such as a comment in a file; a malformed file that Amazon Macie analyzes as plain text; and, a CSV or TSV file that has any column names that contain sensitive data.</p>
    */
   lineRanges?: Range[];
 
@@ -672,6 +783,9 @@ export interface Occurrences {
 }
 
 export namespace Occurrences {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Occurrences): any => ({
     ...obj,
   });
@@ -703,6 +817,9 @@ export interface CustomDetection {
 }
 
 export namespace CustomDetection {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CustomDetection): any => ({
     ...obj,
   });
@@ -724,6 +841,9 @@ export interface CustomDataIdentifiers {
 }
 
 export namespace CustomDataIdentifiers {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CustomDataIdentifiers): any => ({
     ...obj,
   });
@@ -757,6 +877,9 @@ export interface DefaultDetection {
 }
 
 export namespace DefaultDetection {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DefaultDetection): any => ({
     ...obj,
   });
@@ -783,6 +906,9 @@ export interface SensitiveDataItem {
 }
 
 export namespace SensitiveDataItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SensitiveDataItem): any => ({
     ...obj,
   });
@@ -804,6 +930,9 @@ export interface ClassificationResultStatus {
 }
 
 export namespace ClassificationResultStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClassificationResultStatus): any => ({
     ...obj,
   });
@@ -845,6 +974,9 @@ export interface ClassificationResult {
 }
 
 export namespace ClassificationResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClassificationResult): any => ({
     ...obj,
   });
@@ -876,6 +1008,9 @@ export interface ClassificationDetails {
 }
 
 export namespace ClassificationDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClassificationDetails): any => ({
     ...obj,
   });
@@ -911,6 +1046,9 @@ export interface ApiCallDetails {
 }
 
 export namespace ApiCallDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ApiCallDetails): any => ({
     ...obj,
   });
@@ -932,6 +1070,9 @@ export interface FindingAction {
 }
 
 export namespace FindingAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FindingAction): any => ({
     ...obj,
   });
@@ -948,6 +1089,9 @@ export interface DomainDetails {
 }
 
 export namespace DomainDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DomainDetails): any => ({
     ...obj,
   });
@@ -964,6 +1108,9 @@ export interface IpCity {
 }
 
 export namespace IpCity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IpCity): any => ({
     ...obj,
   });
@@ -985,6 +1132,9 @@ export interface IpCountry {
 }
 
 export namespace IpCountry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IpCountry): any => ({
     ...obj,
   });
@@ -1006,6 +1156,9 @@ export interface IpGeoLocation {
 }
 
 export namespace IpGeoLocation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IpGeoLocation): any => ({
     ...obj,
   });
@@ -1037,6 +1190,9 @@ export interface IpOwner {
 }
 
 export namespace IpOwner {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IpOwner): any => ({
     ...obj,
   });
@@ -1073,6 +1229,9 @@ export interface IpAddressDetails {
 }
 
 export namespace IpAddressDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IpAddressDetails): any => ({
     ...obj,
   });
@@ -1094,6 +1253,9 @@ export interface SessionContextAttributes {
 }
 
 export namespace SessionContextAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SessionContextAttributes): any => ({
     ...obj,
   });
@@ -1130,6 +1292,9 @@ export interface SessionIssuer {
 }
 
 export namespace SessionIssuer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SessionIssuer): any => ({
     ...obj,
   });
@@ -1151,6 +1316,9 @@ export interface SessionContext {
 }
 
 export namespace SessionContext {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SessionContext): any => ({
     ...obj,
   });
@@ -1187,6 +1355,9 @@ export interface AssumedRole {
 }
 
 export namespace AssumedRole {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssumedRole): any => ({
     ...obj,
   });
@@ -1208,6 +1379,9 @@ export interface AwsAccount {
 }
 
 export namespace AwsAccount {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AwsAccount): any => ({
     ...obj,
   });
@@ -1224,6 +1398,9 @@ export interface AwsService {
 }
 
 export namespace AwsService {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AwsService): any => ({
     ...obj,
   });
@@ -1260,6 +1437,9 @@ export interface FederatedUser {
 }
 
 export namespace FederatedUser {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FederatedUser): any => ({
     ...obj,
   });
@@ -1291,6 +1471,9 @@ export interface IamUser {
 }
 
 export namespace IamUser {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IamUser): any => ({
     ...obj,
   });
@@ -1317,6 +1500,9 @@ export interface UserIdentityRoot {
 }
 
 export namespace UserIdentityRoot {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserIdentityRoot): any => ({
     ...obj,
   });
@@ -1372,6 +1558,9 @@ export interface UserIdentity {
 }
 
 export namespace UserIdentity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserIdentity): any => ({
     ...obj,
   });
@@ -1398,6 +1587,9 @@ export interface FindingActor {
 }
 
 export namespace FindingActor {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FindingActor): any => ({
     ...obj,
   });
@@ -1419,6 +1611,9 @@ export interface PolicyDetails {
 }
 
 export namespace PolicyDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyDetails): any => ({
     ...obj,
   });
@@ -1436,17 +1631,20 @@ export enum EncryptionType {
  */
 export interface ServerSideEncryption {
   /**
-   * <p>The server-side encryption algorithm that's used when storing data in the bucket or object. If encryption is disabled for the bucket or object, this value is NONE.</p>
+   * <p>The server-side encryption algorithm that's used when storing data in the bucket or object. If default encryption is disabled for the bucket or the object isn't encrypted using server-side encryption, this value is NONE.</p>
    */
   encryptionType?: EncryptionType | string;
 
   /**
-   * <p>The unique identifier for the AWS Key Management Service (AWS KMS) master key that's used to encrypt the bucket or object. This value is null if AWS KMS isn't used to encrypt the bucket or object.</p>
+   * <p>The Amazon Resource Name (ARN) or unique identifier (key ID) for the AWS Key Management Service (AWS KMS) customer master key (CMK) that's used to encrypt data in the bucket or the object. If an AWS KMS CMK isn't used, this value is null.</p>
    */
   kmsMasterKeyId?: string;
 }
 
 export namespace ServerSideEncryption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServerSideEncryption): any => ({
     ...obj,
   });
@@ -1468,6 +1666,9 @@ export interface S3BucketOwner {
 }
 
 export namespace S3BucketOwner {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3BucketOwner): any => ({
     ...obj,
   });
@@ -1477,6 +1678,11 @@ export namespace S3BucketOwner {
  * <p>Provides information about an S3 bucket that a finding applies to.</p>
  */
 export interface S3Bucket {
+  /**
+   * <p>Specifies whether the bucket policy for the bucket requires server-side encryption of objects when objects are uploaded to the bucket. Possible values are:</p> <ul><li><p>FALSE - The bucket policy requires server-side encryption of new objects. PutObject requests must include the x-amz-server-side-encryption header and the value for that header must be AES256 or aws:kms.</p></li> <li><p>TRUE - The bucket doesn't have a bucket policy or it has a bucket policy that doesn't require server-side encryption of new objects. If a bucket policy exists, it doesn't require PutObject requests to include the x-amz-server-side-encryption header and it doesn't require the value for that header to be AES256 or aws:kms.</p></li> <li><p>UNKNOWN - Amazon Macie can't determine whether the bucket policy requires server-side encryption of objects.</p></li></ul>
+   */
+  allowsUnencryptedObjectUploads?: AllowsUnencryptedObjectUploads | string;
+
   /**
    * <p>The Amazon Resource Name (ARN) of the bucket.</p>
    */
@@ -1498,7 +1704,7 @@ export interface S3Bucket {
   name?: string;
 
   /**
-   * <p>The display name and account identifier for the user who owns the bucket.</p>
+   * <p>The display name and AWS account ID for the user who owns the bucket.</p>
    */
   owner?: S3BucketOwner;
 
@@ -1514,6 +1720,9 @@ export interface S3Bucket {
 }
 
 export namespace S3Bucket {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Bucket): any => ({
     ...obj,
   });
@@ -1569,7 +1778,7 @@ export interface S3Object {
   publicAccess?: boolean;
 
   /**
-   * <p>The type of server-side encryption that's used for the object.</p>
+   * <p>The type of server-side encryption that's used to encrypt the object.</p>
    */
   serverSideEncryption?: ServerSideEncryption;
 
@@ -1595,6 +1804,9 @@ export interface S3Object {
 }
 
 export namespace S3Object {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Object): any => ({
     ...obj,
   });
@@ -1616,6 +1828,9 @@ export interface ResourcesAffected {
 }
 
 export namespace ResourcesAffected {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourcesAffected): any => ({
     ...obj,
   });
@@ -1643,6 +1858,9 @@ export interface Severity {
 }
 
 export namespace Severity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Severity): any => ({
     ...obj,
   });
@@ -1757,6 +1975,9 @@ export interface Finding {
 }
 
 export namespace Finding {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Finding): any => ({
     ...obj,
   });
@@ -1798,6 +2019,9 @@ export interface FindingsFilterListItem {
 }
 
 export namespace FindingsFilterListItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FindingsFilterListItem): any => ({
     ...obj,
   });
@@ -1819,6 +2043,9 @@ export interface GroupCount {
 }
 
 export namespace GroupCount {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GroupCount): any => ({
     ...obj,
   });
@@ -1863,6 +2090,9 @@ export interface Invitation {
 }
 
 export namespace Invitation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Invitation): any => ({
     ...obj,
   });
@@ -1876,11 +2106,13 @@ export enum JobComparator {
   LT = "LT",
   LTE = "LTE",
   NE = "NE",
+  STARTS_WITH = "STARTS_WITH",
 }
 
 export enum ScopeFilterKey {
   BUCKET_CREATION_DATE = "BUCKET_CREATION_DATE",
   OBJECT_EXTENSION = "OBJECT_EXTENSION",
+  OBJECT_KEY = "OBJECT_KEY",
   OBJECT_LAST_MODIFIED_DATE = "OBJECT_LAST_MODIFIED_DATE",
   OBJECT_SIZE = "OBJECT_SIZE",
   TAG = "TAG",
@@ -1891,7 +2123,7 @@ export enum ScopeFilterKey {
  */
 export interface SimpleScopeTerm {
   /**
-   * <p>The operator to use in the condition. Valid operators for each supported property (key) are:</p> <ul><li><p>OBJECT_EXTENSION - EQ (equals) or NE (not equals)</p></li> <li><p>OBJECT_LAST_MODIFIED_DATE - Any operator except CONTAINS</p></li> <li><p>OBJECT_SIZE - Any operator except CONTAINS</p></li> <li><p>TAG - EQ (equals) or NE (not equals)</p></li></ul>
+   * <p>The operator to use in the condition. Valid operators for each supported property (key) are:</p> <ul><li><p>OBJECT_EXTENSION - EQ (equals) or NE (not equals)</p></li> <li><p>OBJECT_KEY - STARTS_WITH</p></li> <li><p>OBJECT_LAST_MODIFIED_DATE - Any operator except CONTAINS</p></li> <li><p>OBJECT_SIZE - Any operator except CONTAINS</p></li> <li><p>TAG - EQ (equals) or NE (not equals)</p></li></ul>
    */
   comparator?: JobComparator | string;
 
@@ -1901,12 +2133,15 @@ export interface SimpleScopeTerm {
   key?: ScopeFilterKey | string;
 
   /**
-   * <p>An array that lists the values to use in the condition. If the value for the key property is OBJECT_EXTENSION, this array can specify multiple values and Amazon Macie uses an OR operator to join the values. Otherwise, this array can specify only one value. Valid values for each supported property (key) are:</p> <ul><li><p>OBJECT_EXTENSION - A string that represents the file name extension of an object. For example: doc, docx, pdf</p></li> <li><p>OBJECT_LAST_MODIFIED_DATE - The date and time (in UTC and extended ISO 8601 format) when an object was created or last changed, whichever is latest. For example: 2020-09-28T14:31:13Z</p></li> <li><p>OBJECT_SIZE - An integer that represents the storage size (in bytes) of an object.</p></li> <li><p>TAG - A string that represents a tag key for an object. For advanced options, use a TagScopeTerm object, instead of a SimpleScopeTerm object, to define a tag-based condition for the job.</p></li></ul>
+   * <p>An array that lists the values to use in the condition. If the value for the key property is OBJECT_EXTENSION or OBJECT_KEY, this array can specify multiple values and Amazon Macie uses an OR operator to join the values. Otherwise, this array can specify only one value.</p> <p>Valid values for each supported property (key) are:</p> <ul><li><p>OBJECT_EXTENSION - A string that represents the file name extension of an object. For example: docx or pdf</p></li> <li><p>OBJECT_KEY - A string that represents the key prefix (folder name or path) of an object. For example: logs or awslogs/eventlogs. This value applies a condition to objects whose keys (names) begin with the specified value.</p></li> <li><p>OBJECT_LAST_MODIFIED_DATE - The date and time (in UTC and extended ISO 8601 format) when an object was created or last changed, whichever is latest. For example: 2020-09-28T14:31:13Z</p></li> <li><p>OBJECT_SIZE - An integer that represents the storage size (in bytes) of an object.</p></li> <li><p>TAG - A string that represents a tag key for an object. For advanced options, use a TagScopeTerm object, instead of a SimpleScopeTerm object, to define a tag-based condition for the job.</p></li></ul> <p>Macie doesn't support use of wildcard characters in values. Also, string values are case sensitive.</p>
    */
   values?: string[];
 }
 
 export namespace SimpleScopeTerm {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SimpleScopeTerm): any => ({
     ...obj,
   });
@@ -1928,6 +2163,9 @@ export interface TagValuePair {
 }
 
 export namespace TagValuePair {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagValuePair): any => ({
     ...obj,
   });
@@ -1963,6 +2201,9 @@ export interface TagScopeTerm {
 }
 
 export namespace TagScopeTerm {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagScopeTerm): any => ({
     ...obj,
   });
@@ -1984,6 +2225,9 @@ export interface JobScopeTerm {
 }
 
 export namespace JobScopeTerm {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobScopeTerm): any => ({
     ...obj,
   });
@@ -1994,17 +2238,20 @@ export namespace JobScopeTerm {
  */
 export interface S3BucketDefinitionForJob {
   /**
-   * <p>The unique identifier for the AWS account that owns the buckets. If you specify this value and don't specify a value for the buckets array, the job analyzes objects in all the buckets that are owned by the account and meet other conditions specified for the job.</p>
+   * <p>The unique identifier for the AWS account that owns the buckets.</p>
    */
-  accountId?: string;
+  accountId: string | undefined;
 
   /**
    * <p>An array that lists the names of the buckets.</p>
    */
-  buckets?: string[];
+  buckets: string[] | undefined;
 }
 
 export namespace S3BucketDefinitionForJob {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3BucketDefinitionForJob): any => ({
     ...obj,
   });
@@ -2040,22 +2287,25 @@ export interface LastRunErrorStatus {
 }
 
 export namespace LastRunErrorStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LastRunErrorStatus): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Provides information about when a classification job was paused and when it will expire and be cancelled if it isn't resumed. This object is present only if a job's current status (jobStatus) is USER_PAUSED. The information in this object applies only to a job that was paused while it had a status of RUNNING.</p>
+ * <p>Provides information about when a classification job was paused. For a one-time job, this object also specifies when the job will expire and be cancelled if it isn't resumed. For a recurring job, this object also specifies when the paused job run will expire and be cancelled if it isn't resumed. This object is present only if a job's current status (jobStatus) is USER_PAUSED. The information in this object applies only to a job that was paused while it had a status of RUNNING.</p>
  */
 export interface UserPausedDetails {
   /**
-   * <p>The date and time, in UTC and extended ISO 8601 format, when the job will expire and be cancelled if you don't resume it first. If you don't resume a job within 30 days of pausing it, the job expires and Amazon Macie cancels it.</p>
+   * <p>The date and time, in UTC and extended ISO 8601 format, when the job or job run will expire and be cancelled if you don't resume it first.</p>
    */
   jobExpiresAt?: Date;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of the AWS Health event that Amazon Macie sent to notify you of the job's pending expiration and cancellation. This value is null if a job has been paused for less than 23 days.</p>
+   * <p>The Amazon Resource Name (ARN) of the AWS Health event that Amazon Macie sent to notify you of the job or job run's pending expiration and cancellation. This value is null if a job has been paused for less than 23 days.</p>
    */
   jobImminentExpirationHealthEventArn?: string;
 
@@ -2066,6 +2316,9 @@ export interface UserPausedDetails {
 }
 
 export namespace UserPausedDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserPausedDetails): any => ({
     ...obj,
   });
@@ -2091,7 +2344,7 @@ export interface JobSummary {
   jobId?: string;
 
   /**
-   * <p>The current status of the job. Possible values are:</p> <ul><li><p>CANCELLED - You cancelled the job, or you paused the job while it had a status of RUNNING and you didn't resume it within 30 days of pausing it.</p></li> <li><p>COMPLETE - For a one-time job, Amazon Macie finished processing the data specified for the job. This value doesn't apply to recurring jobs.</p></li> <li><p>IDLE - For a recurring job, the previous scheduled run is complete and the next scheduled run is pending. This value doesn't apply to one-time jobs.</p></li> <li><p>PAUSED - Amazon Macie started running the job but additional processing would exceed the monthly sensitive data discovery quota for your account or one or more member accounts that the job analyzes data for.</p></li> <li><p>RUNNING - For a one-time job, the job is in progress. For a recurring job, a scheduled run is in progress.</p></li> <li><p>USER_PAUSED - You paused the job. If you paused the job while it had a status of RUNNING and you don't resume the job within 30 days of pausing it, the job expires and is cancelled. To check the job's expiration date, refer to the UserPausedDetails.jobExpiresAt property.</p></li></ul>
+   * <p>The current status of the job. Possible values are:</p> <ul><li><p>CANCELLED - You cancelled the job or, if it's a one-time job, you paused the job and didn't resume it within 30 days.</p></li> <li><p>COMPLETE - For a one-time job, Amazon Macie finished processing the data specified for the job. This value doesn't apply to recurring jobs.</p></li> <li><p>IDLE - For a recurring job, the previous scheduled run is complete and the next scheduled run is pending. This value doesn't apply to one-time jobs.</p></li> <li><p>PAUSED - Amazon Macie started running the job but additional processing would exceed the monthly sensitive data discovery quota for your account or one or more member accounts that the job analyzes data for.</p></li> <li><p>RUNNING - For a one-time job, the job is in progress. For a recurring job, a scheduled run is in progress.</p></li> <li><p>USER_PAUSED - You paused the job. If you paused the job while it had a status of RUNNING and you don't resume it within 30 days of pausing it, the job or job run will expire and be cancelled, depending on the job's type. To check the expiration date, refer to the UserPausedDetails.jobExpiresAt property.</p></li></ul>
    */
   jobStatus?: JobStatus | string;
 
@@ -2111,12 +2364,15 @@ export interface JobSummary {
   name?: string;
 
   /**
-   * <p>If the current status of the job is USER_PAUSED, specifies when the job was paused and when the job will expire and be cancelled if it isn't resumed. This value is present only if the value for jobStatus is USER_PAUSED.</p>
+   * <p>If the current status of the job is USER_PAUSED, specifies when the job was paused and when the job or job run will expire and be cancelled if it isn't resumed. This value is present only if the value for jobStatus is USER_PAUSED.</p>
    */
   userPausedDetails?: UserPausedDetails;
 }
 
 export namespace JobSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobSummary): any => ({
     ...obj,
   });
@@ -2150,19 +2406,27 @@ export interface ListJobsFilterTerm {
 }
 
 export namespace ListJobsFilterTerm {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobsFilterTerm): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Provides information about an account that's associated with an Amazon Macie master account.</p>
+ * <p>Provides information about an account that's associated with an Amazon Macie administrator account.</p>
  */
 export interface Member {
   /**
    * <p>The AWS account ID for the account.</p>
    */
   accountId?: string;
+
+  /**
+   * <p>The AWS account ID for the administrator account.</p>
+   */
+  administratorAccountId?: string;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the account.</p>
@@ -2180,12 +2444,12 @@ export interface Member {
   invitedAt?: Date;
 
   /**
-   * <p>The AWS account ID for the master account.</p>
+   * <p>(Deprecated) The AWS account ID for the administrator account. This property has been replaced by the administratorAccountId property and is retained only for backward compatibility.</p>
    */
   masterAccountId?: string;
 
   /**
-   * <p>The current status of the relationship between the account and the master account.</p>
+   * <p>The current status of the relationship between the account and the administrator account.</p>
    */
   relationshipStatus?: RelationshipStatus | string;
 
@@ -2195,12 +2459,15 @@ export interface Member {
   tags?: { [key: string]: string };
 
   /**
-   * <p>The date and time, in UTC and extended ISO 8601 format, of the most recent change to the status of the relationship between the account and the master account.</p>
+   * <p>The date and time, in UTC and extended ISO 8601 format, of the most recent change to the status of the relationship between the account and the administrator account.</p>
    */
   updatedAt?: Date;
 }
 
 export namespace Member {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Member): any => ({
     ...obj,
   });
@@ -2232,6 +2499,9 @@ export interface UnprocessedAccount {
 }
 
 export namespace UnprocessedAccount {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnprocessedAccount): any => ({
     ...obj,
   });
@@ -2246,7 +2516,7 @@ export enum Unit {
 }
 
 /**
- * <p>Specifies a current quota for an account.</p>
+ * <p>Specifies a current quota for an Amazon Macie account.</p>
  */
 export interface ServiceLimit {
   /**
@@ -2266,6 +2536,9 @@ export interface ServiceLimit {
 }
 
 export namespace ServiceLimit {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceLimit): any => ({
     ...obj,
   });
@@ -2277,7 +2550,7 @@ export enum UsageType {
 }
 
 /**
- * <p>Provides data for a specific usage metric and the corresponding quota for an account. The value for the metric is an aggregated value that reports usage during the past 30 days.</p>
+ * <p>Provides data for a specific usage metric and the corresponding quota for an Amazon Macie account.</p>
  */
 export interface UsageByAccount {
   /**
@@ -2296,19 +2569,22 @@ export interface UsageByAccount {
   serviceLimit?: ServiceLimit;
 
   /**
-   * <p>The name of the metric. Possible values are: DATA_INVENTORY_EVALUATION, for monitoring S3 buckets; and, SENSITIVE_DATA_DISCOVERY, for analyzing sensitive data.</p>
+   * <p>The name of the metric. Possible values are: DATA_INVENTORY_EVALUATION, for monitoring S3 buckets; and, SENSITIVE_DATA_DISCOVERY, for analyzing S3 objects to detect sensitive data.</p>
    */
   type?: UsageType | string;
 }
 
 export namespace UsageByAccount {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UsageByAccount): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Provides quota and aggregated usage data for an account.</p>
+ * <p>Provides quota and aggregated usage data for an Amazon Macie account.</p>
  */
 export interface UsageRecord {
   /**
@@ -2328,6 +2604,9 @@ export interface UsageRecord {
 }
 
 export namespace UsageRecord {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UsageRecord): any => ({
     ...obj,
   });
@@ -2351,7 +2630,7 @@ export enum UsageStatisticsFilterKey {
 }
 
 /**
- * <p>Specifies a condition for filtering the results of a query for account quotas and usage data.</p>
+ * <p>Specifies a condition for filtering the results of a query for quota and usage data for one or more Amazon Macie accounts.</p>
  */
 export interface UsageStatisticsFilter {
   /**
@@ -2365,19 +2644,22 @@ export interface UsageStatisticsFilter {
   key?: UsageStatisticsFilterKey | string;
 
   /**
-   * <p>An array that lists values to use in the condition, based on the value for the field specified by the key property. If the value for the key property is accountId, this array can specify multiple values. Otherwise, this array can specify only one value.</p> <p>Valid values for each supported field are:</p> <ul><li><p>accountId - The unique identifier for an AWS account.</p></li></ul> <ul><li><p>freeTrialStartDate - The date and time, in UTC and extended ISO 8601 format, when the free trial started for an account.</p></li></ul> <ul><li><p>serviceLimit - A Boolean (true or false) value that indicates whether an account has reached its monthly quota.</p></li></ul> <ul><li><p>total - A string that represents the current, estimated month-to-date cost for an account.</p></li></ul>
+   * <p>An array that lists values to use in the condition, based on the value for the field specified by the key property. If the value for the key property is accountId, this array can specify multiple values. Otherwise, this array can specify only one value.</p> <p>Valid values for each supported field are:</p> <ul><li><p>accountId - The unique identifier for an AWS account.</p></li></ul> <ul><li><p>freeTrialStartDate - The date and time, in UTC and extended ISO 8601 format, when the free trial started for an account.</p></li></ul> <ul><li><p>serviceLimit - A Boolean (true or false) value that indicates whether an account has reached its monthly quota.</p></li></ul> <ul><li><p>total - A string that represents the current estimated cost for an account.</p></li></ul>
    */
   values?: string[];
 }
 
 export namespace UsageStatisticsFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UsageStatisticsFilter): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Provides aggregated data for a usage metric. The value for the metric reports usage data for an account during the past 30 days.</p>
+ * <p>Provides aggregated data for an Amazon Macie usage metric. The value for the metric reports estimated usage data for an account for the preceding 30 days or the current calendar month to date, depending on the time period (timeRange) specified in the request.</p>
  */
 export interface UsageTotal {
   /**
@@ -2391,12 +2673,15 @@ export interface UsageTotal {
   estimatedCost?: string;
 
   /**
-   * <p>The name of the metric. Possible values are: DATA_INVENTORY_EVALUATION, for monitoring S3 buckets; and, SENSITIVE_DATA_DISCOVERY, for analyzing sensitive data.</p>
+   * <p>The name of the metric. Possible values are: DATA_INVENTORY_EVALUATION, for monitoring S3 buckets; and, SENSITIVE_DATA_DISCOVERY, for analyzing S3 objects to detect sensitive data.</p>
    */
   type?: UsageType | string;
 }
 
 export namespace UsageTotal {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UsageTotal): any => ({
     ...obj,
   });
@@ -2404,17 +2689,25 @@ export namespace UsageTotal {
 
 export interface AcceptInvitationRequest {
   /**
+   * <p>The AWS account ID for the account that sent the invitation.</p>
+   */
+  administratorAccountId?: string;
+
+  /**
    * <p>The unique identifier for the invitation to accept.</p>
    */
   invitationId: string | undefined;
 
   /**
-   * <p>The AWS account ID for the account that sent the invitation.</p>
+   * <p>(Deprecated) The AWS account ID for the account that sent the invitation. This property has been replaced by the administratorAccountId property and is retained only for backward compatibility.</p>
    */
-  masterAccount: string | undefined;
+  masterAccount?: string;
 }
 
 export namespace AcceptInvitationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AcceptInvitationRequest): any => ({
     ...obj,
   });
@@ -2423,6 +2716,9 @@ export namespace AcceptInvitationRequest {
 export interface AcceptInvitationResponse {}
 
 export namespace AcceptInvitationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AcceptInvitationResponse): any => ({
     ...obj,
   });
@@ -2441,6 +2737,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -2459,6 +2758,9 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
@@ -2477,6 +2779,9 @@ export interface InternalServerException extends __SmithyException, $MetadataBea
 }
 
 export namespace InternalServerException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerException): any => ({
     ...obj,
   });
@@ -2495,6 +2800,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -2513,6 +2821,9 @@ export interface ServiceQuotaExceededException extends __SmithyException, $Metad
 }
 
 export namespace ServiceQuotaExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceQuotaExceededException): any => ({
     ...obj,
   });
@@ -2531,6 +2842,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -2549,13 +2863,16 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Specifies details for an account to associate with an Amazon Macie master account.</p>
+ * <p>Specifies details for an account to associate with an Amazon Macie administrator account.</p>
  */
 export interface AccountDetail {
   /**
@@ -2570,6 +2887,9 @@ export interface AccountDetail {
 }
 
 export namespace AccountDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccountDetail): any => ({
     ...obj,
   });
@@ -2583,6 +2903,9 @@ export interface BatchGetCustomDataIdentifiersRequest {
 }
 
 export namespace BatchGetCustomDataIdentifiersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetCustomDataIdentifiersRequest): any => ({
     ...obj,
   });
@@ -2601,6 +2924,9 @@ export interface BatchGetCustomDataIdentifiersResponse {
 }
 
 export namespace BatchGetCustomDataIdentifiersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetCustomDataIdentifiersResponse): any => ({
     ...obj,
   });
@@ -2632,39 +2958,50 @@ export interface BucketCountByEffectivePermission {
 }
 
 export namespace BucketCountByEffectivePermission {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketCountByEffectivePermission): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Provides information about the number of S3 buckets that use certain types of server-side encryption or don't encrypt objects by default.</p>
+ * <p>Provides information about the number of S3 buckets that use certain types of server-side encryption by default or don't encrypt new objects by default. For detailed information about these settings, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html">Setting default server-side encryption behavior for Amazon S3 buckets</a> in the <i>Amazon Simple Storage Service User Guide</i>.</p>
  */
 export interface BucketCountByEncryptionType {
   /**
-   * <p>The total number of buckets that use an AWS Key Management Service (AWS KMS) customer master key (CMK) to encrypt objects. These buckets use AWS managed AWS KMS (AWS-KMS) encryption or customer managed AWS KMS (SSE-KMS) encryption.</p>
+   * <p>The total number of buckets that use an AWS Key Management Service (AWS KMS) customer master key (CMK) to encrypt new objects by default. These buckets use AWS managed AWS KMS encryption (AWS-KMS) or customer managed AWS KMS encryption (SSE-KMS) by default.</p>
    */
   kmsManaged?: number;
 
   /**
-   * <p>The total number of buckets that use an Amazon S3 managed key to encrypt objects. These buckets use Amazon S3 managed (SSE-S3) encryption.</p>
+   * <p>The total number of buckets that use an Amazon S3 managed key to encrypt new objects by default. These buckets use Amazon S3 managed encryption (SSE-S3) by default.</p>
    */
   s3Managed?: number;
 
   /**
-   * <p>The total number of buckets that don't encrypt objects by default. Default encryption is disabled for these buckets.</p>
+   * <p>The total number of buckets that don't encrypt new objects by default. Default encryption is disabled for these buckets.</p>
    */
   unencrypted?: number;
+
+  /**
+   * <p>The total number of buckets that Amazon Macie doesn't have current encryption metadata for. Macie can't provide current data about the default encryption settings for these buckets.</p>
+   */
+  unknown?: number;
 }
 
 export namespace BucketCountByEncryptionType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketCountByEncryptionType): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Provides information about the number of S3 buckets that are shared with other AWS accounts.</p>
+ * <p>Provides information about the number of S3 buckets that are and aren't shared with other AWS accounts.</p>
  */
 export interface BucketCountBySharedAccessType {
   /**
@@ -2689,52 +3026,87 @@ export interface BucketCountBySharedAccessType {
 }
 
 export namespace BucketCountBySharedAccessType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketCountBySharedAccessType): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Specifies the operator to use in an attribute-based condition that filters the results of a query for information about S3 buckets.</p>
+ * <p>Provides information about the number of S3 buckets whose bucket policies do and don't require server-side encryption of objects when objects are uploaded to the buckets.</p>
+ */
+export interface BucketCountPolicyAllowsUnencryptedObjectUploads {
+  /**
+   * <p>The total number of buckets that don't have a bucket policy or have a bucket policy that doesn't require server-side encryption of new objects. If a bucket policy exists, the policy doesn't require PutObject requests to include the x-amz-server-side-encryption header and it doesn't require the value for that header to be AES256 or aws:kms.</p>
+   */
+  allowsUnencryptedObjectUploads?: number;
+
+  /**
+   * <p>The total number of buckets whose bucket policies require server-side encryption of new objects. PutObject requests for these buckets must include the x-amz-server-side-encryption header and the value for that header must be AES256 or aws:kms.</p>
+   */
+  deniesUnencryptedObjectUploads?: number;
+
+  /**
+   * <p>The total number of buckets that Amazon Macie wasn't able to evaluate server-side encryption requirements for. Macie can't determine whether the bucket policies for these buckets require server-side encryption of new objects.</p>
+   */
+  unknown?: number;
+}
+
+export namespace BucketCountPolicyAllowsUnencryptedObjectUploads {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: BucketCountPolicyAllowsUnencryptedObjectUploads): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Specifies the operator to use in a property-based condition that filters the results of a query for information about S3 buckets.</p>
  */
 export interface BucketCriteriaAdditionalProperties {
   /**
-   * <p>An equal to condition to apply to a specified attribute value for buckets.</p>
+   * <p>The value for the property matches (equals) the specified value. If you specify multiple values, Macie uses OR logic to join the values.</p>
    */
   eq?: string[];
 
   /**
-   * <p>A greater than condition to apply to a specified attribute value for buckets.</p>
+   * <p>The value for the property is greater than the specified value.</p>
    */
   gt?: number;
 
   /**
-   * <p>A greater than or equal to condition to apply to a specified attribute value for buckets.</p>
+   * <p>The value for the property is greater than or equal to the specified value.</p>
    */
   gte?: number;
 
   /**
-   * <p>A less than condition to apply to a specified attribute value for buckets.</p>
+   * <p>The value for the property is less than the specified value.</p>
    */
   lt?: number;
 
   /**
-   * <p>A less than or equal to condition to apply to a specified attribute value for buckets.</p>
+   * <p>The value for the property is less than or equal to the specified value.</p>
    */
   lte?: number;
 
   /**
-   * <p>A not equal to condition to apply to a specified attribute value for buckets.</p>
+   * <p>The value for the property doesn't match (doesn't equal) the specified value. If you specify multiple values, Amazon Macie uses OR logic to join the values.</p>
    */
   neq?: string[];
 
   /**
-   * <p>The prefix of the buckets to include in the results.</p>
+   * <p>The name of the bucket begins with the specified value.</p>
    */
   prefix?: string;
 }
 
 export namespace BucketCriteriaAdditionalProperties {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketCriteriaAdditionalProperties): any => ({
     ...obj,
   });
@@ -2750,17 +3122,20 @@ export enum OrderBy {
  */
 export interface BucketSortCriteria {
   /**
-   * <p>The name of the attribute to sort the results by. This value can be the name of any property that Amazon Macie defines as bucket metadata, such as bucketName or accountId.</p>
+   * <p>The name of the bucket property to sort the results by. This value can be one of the following properties that Amazon Macie defines as bucket metadata: accountId, bucketName, classifiableObjectCount, classifiableSizeInBytes, objectCount, or sizeInBytes.</p>
    */
   attributeName?: string;
 
   /**
-   * <p>The sort order to apply to the results, based on the value for the property specified by the attributeName property. Valid values are: ASC, sort the results in ascending order; and, DESC, sort the results in descending order.</p>
+   * <p>The sort order to apply to the results, based on the value specified by the attributeName property. Valid values are: ASC, sort the results in ascending order; and, DESC, sort the results in descending order.</p>
    */
   orderBy?: OrderBy | string;
 }
 
 export namespace BucketSortCriteria {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketSortCriteria): any => ({
     ...obj,
   });
@@ -2787,6 +3162,9 @@ export interface S3Destination {
 }
 
 export namespace S3Destination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Destination): any => ({
     ...obj,
   });
@@ -2803,6 +3181,9 @@ export interface ClassificationExportConfiguration {
 }
 
 export namespace ClassificationExportConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClassificationExportConfiguration): any => ({
     ...obj,
   });
@@ -2819,6 +3200,9 @@ export interface JobScopingBlock {
 }
 
 export namespace JobScopingBlock {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobScopingBlock): any => ({
     ...obj,
   });
@@ -2840,6 +3224,9 @@ export interface Scoping {
 }
 
 export namespace Scoping {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Scoping): any => ({
     ...obj,
   });
@@ -2861,6 +3248,9 @@ export interface S3JobDefinition {
 }
 
 export namespace S3JobDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3JobDefinition): any => ({
     ...obj,
   });
@@ -2872,6 +3262,9 @@ export namespace S3JobDefinition {
 export interface DailySchedule {}
 
 export namespace DailySchedule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DailySchedule): any => ({
     ...obj,
   });
@@ -2882,12 +3275,15 @@ export namespace DailySchedule {
  */
 export interface MonthlySchedule {
   /**
-   * <p>The numeric day of the month when Amazon Macie runs the job. This value can be an integer from 1 through 31.</p> <p>If this value exceeds the number of days in a certain month, Macie runs the job on the last day of that month. For example, if this value is 31 and a month has only 30 days, Macie runs the job on day 30 of that month.</p>
+   * <p>The numeric day of the month when Amazon Macie runs the job. This value can be an integer from 1 through 31.</p> <p>If this value exceeds the number of days in a certain month, Macie doesn't run the job that month. Macie runs the job only during months that have the specified day. For example, if this value is 31 and a month has only 30 days, Macie doesn't run the job that month. To run the job every month, specify a value that's less than 29.</p>
    */
   dayOfMonth?: number;
 }
 
 export namespace MonthlySchedule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MonthlySchedule): any => ({
     ...obj,
   });
@@ -2914,6 +3310,9 @@ export interface WeeklySchedule {
 }
 
 export namespace WeeklySchedule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WeeklySchedule): any => ({
     ...obj,
   });
@@ -2940,6 +3339,9 @@ export interface JobScheduleFrequency {
 }
 
 export namespace JobScheduleFrequency {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobScheduleFrequency): any => ({
     ...obj,
   });
@@ -2998,6 +3400,9 @@ export interface CreateClassificationJobRequest {
 }
 
 export namespace CreateClassificationJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateClassificationJobRequest): any => ({
     ...obj,
   });
@@ -3016,6 +3421,9 @@ export interface CreateClassificationJobResponse {
 }
 
 export namespace CreateClassificationJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateClassificationJobResponse): any => ({
     ...obj,
   });
@@ -3038,7 +3446,7 @@ export interface CreateCustomDataIdentifierRequest {
   ignoreWords?: string[];
 
   /**
-   * <p>An array that lists specific character sequences (keywords), one of which must be within proximity (maximumMatchDistance) of the regular expression to match. The array can contain as many as 50 keywords. Each keyword can contain 4 - 90 characters. Keywords aren't case sensitive.</p>
+   * <p>An array that lists specific character sequences (keywords), one of which must be within proximity (maximumMatchDistance) of the regular expression to match. The array can contain as many as 50 keywords. Each keyword can contain 3 - 90 characters. Keywords aren't case sensitive.</p>
    */
   keywords?: string[];
 
@@ -3064,6 +3472,9 @@ export interface CreateCustomDataIdentifierRequest {
 }
 
 export namespace CreateCustomDataIdentifierRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCustomDataIdentifierRequest): any => ({
     ...obj,
   });
@@ -3077,52 +3488,58 @@ export interface CreateCustomDataIdentifierResponse {
 }
 
 export namespace CreateCustomDataIdentifierResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCustomDataIdentifierResponse): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Specifies the operator to use in a property-based condition that filters the results of a query for findings.</p>
+ * <p>Specifies the operator to use in a property-based condition that filters the results of a query for findings. For detailed information and examples of each operator, see <a href="https://docs.aws.amazon.com/macie/latest/user/findings-filter-basics.html">Fundamentals of filtering findings</a> in the <i>Amazon Macie User Guide</i>.</p>
  */
 export interface CriterionAdditionalProperties {
   /**
-   * <p>An equal to condition to apply to a specified property value for findings.</p>
+   * <p>The value for the property matches (equals) the specified value. If you specify multiple values, Macie uses OR logic to join the values.</p>
    */
   eq?: string[];
 
   /**
-   * <p>A condition that requires an array field to exactly match the specified property values. You can use this operator with the following properties: customDataIdentifiers.detections.arn, customDataIdentifiers.detections.name, resourcesAffected.s3Bucket.tags.key, resourcesAffected.s3Bucket.tags.value, resourcesAffected.s3Object.tags.key, resourcesAffected.s3Object.tags.value, sensitiveData.category, and sensitiveData.detections.type.</p>
+   * <p>The value for the property exclusively matches (equals an exact match for) all the specified values. If you specify multiple values, Amazon Macie uses AND logic to join the values.</p> <p>You can use this operator with the following properties: customDataIdentifiers.detections.arn, customDataIdentifiers.detections.name, resourcesAffected.s3Bucket.tags.key, resourcesAffected.s3Bucket.tags.value, resourcesAffected.s3Object.tags.key, resourcesAffected.s3Object.tags.value, sensitiveData.category, and sensitiveData.detections.type.</p>
    */
   eqExactMatch?: string[];
 
   /**
-   * <p>A greater than condition to apply to a specified property value for findings.</p>
+   * <p>The value for the property is greater than the specified value.</p>
    */
   gt?: number;
 
   /**
-   * <p>A greater than or equal to condition to apply to a specified property value for findings.</p>
+   * <p>The value for the property is greater than or equal to the specified value.</p>
    */
   gte?: number;
 
   /**
-   * <p>A less than condition to apply to a specified property value for findings.</p>
+   * <p>The value for the property is less than the specified value.</p>
    */
   lt?: number;
 
   /**
-   * <p>A less than or equal to condition to apply to a specified property value for findings.</p>
+   * <p>The value for the property is less than or equal to the specified value.</p>
    */
   lte?: number;
 
   /**
-   * <p>A not equal to condition to apply to a specified property value for findings.</p>
+   * <p>The value for the property doesn't match (doesn't equal) the specified value. If you specify multiple values, Macie uses OR logic to join the values.</p>
    */
   neq?: string[];
 }
 
 export namespace CriterionAdditionalProperties {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CriterionAdditionalProperties): any => ({
     ...obj,
   });
@@ -3133,12 +3550,15 @@ export namespace CriterionAdditionalProperties {
  */
 export interface FindingCriteria {
   /**
-   * <p>A condition that specifies the property, operator, and value to use to filter the results.</p>
+   * <p>A condition that specifies the property, operator, and one or more values to use to filter the results.</p>
    */
   criterion?: { [key: string]: CriterionAdditionalProperties };
 }
 
 export namespace FindingCriteria {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FindingCriteria): any => ({
     ...obj,
   });
@@ -3182,6 +3602,9 @@ export interface CreateFindingsFilterRequest {
 }
 
 export namespace CreateFindingsFilterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFindingsFilterRequest): any => ({
     ...obj,
   });
@@ -3200,6 +3623,9 @@ export interface CreateFindingsFilterResponse {
 }
 
 export namespace CreateFindingsFilterResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFindingsFilterResponse): any => ({
     ...obj,
   });
@@ -3223,6 +3649,9 @@ export interface CreateInvitationsRequest {
 }
 
 export namespace CreateInvitationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateInvitationsRequest): any => ({
     ...obj,
   });
@@ -3236,6 +3665,9 @@ export interface CreateInvitationsResponse {
 }
 
 export namespace CreateInvitationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateInvitationsResponse): any => ({
     ...obj,
   });
@@ -3243,7 +3675,7 @@ export namespace CreateInvitationsResponse {
 
 export interface CreateMemberRequest {
   /**
-   * <p>The details for the account to associate with the master account.</p>
+   * <p>The details for the account to associate with the administrator account.</p>
    */
   account: AccountDetail | undefined;
 
@@ -3254,6 +3686,9 @@ export interface CreateMemberRequest {
 }
 
 export namespace CreateMemberRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMemberRequest): any => ({
     ...obj,
   });
@@ -3261,12 +3696,15 @@ export namespace CreateMemberRequest {
 
 export interface CreateMemberResponse {
   /**
-   * <p>The Amazon Resource Name (ARN) of the account that was associated with the master account.</p>
+   * <p>The Amazon Resource Name (ARN) of the account that was associated with the administrator account.</p>
    */
   arn?: string;
 }
 
 export namespace CreateMemberResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMemberResponse): any => ({
     ...obj,
   });
@@ -3280,6 +3718,9 @@ export interface CreateSampleFindingsRequest {
 }
 
 export namespace CreateSampleFindingsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSampleFindingsRequest): any => ({
     ...obj,
   });
@@ -3288,6 +3729,9 @@ export namespace CreateSampleFindingsRequest {
 export interface CreateSampleFindingsResponse {}
 
 export namespace CreateSampleFindingsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSampleFindingsResponse): any => ({
     ...obj,
   });
@@ -3301,6 +3745,9 @@ export interface DeclineInvitationsRequest {
 }
 
 export namespace DeclineInvitationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeclineInvitationsRequest): any => ({
     ...obj,
   });
@@ -3314,6 +3761,9 @@ export interface DeclineInvitationsResponse {
 }
 
 export namespace DeclineInvitationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeclineInvitationsResponse): any => ({
     ...obj,
   });
@@ -3327,6 +3777,9 @@ export interface DeleteCustomDataIdentifierRequest {
 }
 
 export namespace DeleteCustomDataIdentifierRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCustomDataIdentifierRequest): any => ({
     ...obj,
   });
@@ -3335,6 +3788,9 @@ export namespace DeleteCustomDataIdentifierRequest {
 export interface DeleteCustomDataIdentifierResponse {}
 
 export namespace DeleteCustomDataIdentifierResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCustomDataIdentifierResponse): any => ({
     ...obj,
   });
@@ -3348,6 +3804,9 @@ export interface DeleteFindingsFilterRequest {
 }
 
 export namespace DeleteFindingsFilterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFindingsFilterRequest): any => ({
     ...obj,
   });
@@ -3356,6 +3815,9 @@ export namespace DeleteFindingsFilterRequest {
 export interface DeleteFindingsFilterResponse {}
 
 export namespace DeleteFindingsFilterResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFindingsFilterResponse): any => ({
     ...obj,
   });
@@ -3369,6 +3831,9 @@ export interface DeleteInvitationsRequest {
 }
 
 export namespace DeleteInvitationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteInvitationsRequest): any => ({
     ...obj,
   });
@@ -3382,6 +3847,9 @@ export interface DeleteInvitationsResponse {
 }
 
 export namespace DeleteInvitationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteInvitationsResponse): any => ({
     ...obj,
   });
@@ -3395,6 +3863,9 @@ export interface DeleteMemberRequest {
 }
 
 export namespace DeleteMemberRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMemberRequest): any => ({
     ...obj,
   });
@@ -3403,6 +3874,9 @@ export namespace DeleteMemberRequest {
 export interface DeleteMemberResponse {}
 
 export namespace DeleteMemberResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMemberResponse): any => ({
     ...obj,
   });
@@ -3431,6 +3905,9 @@ export interface DescribeBucketsRequest {
 }
 
 export namespace DescribeBucketsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeBucketsRequest): any => ({
     ...obj,
   });
@@ -3449,6 +3926,9 @@ export interface DescribeBucketsResponse {
 }
 
 export namespace DescribeBucketsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeBucketsResponse): any => ({
     ...obj,
   });
@@ -3462,6 +3942,9 @@ export interface DescribeClassificationJobRequest {
 }
 
 export namespace DescribeClassificationJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeClassificationJobRequest): any => ({
     ...obj,
   });
@@ -3483,6 +3966,9 @@ export interface Statistics {
 }
 
 export namespace Statistics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Statistics): any => ({
     ...obj,
   });
@@ -3525,7 +4011,7 @@ export interface DescribeClassificationJobResponse {
   jobId?: string;
 
   /**
-   * <p>The current status of the job. Possible values are:</p> <ul><li><p>CANCELLED - You cancelled the job, or you paused the job while it had a status of RUNNING and you didn't resume it within 30 days of pausing it.</p></li> <li><p>COMPLETE - For a one-time job, Amazon Macie finished processing the data specified for the job. This value doesn't apply to recurring jobs.</p></li> <li><p>IDLE - For a recurring job, the previous scheduled run is complete and the next scheduled run is pending. This value doesn't apply to one-time jobs.</p></li> <li><p>PAUSED - Amazon Macie started running the job but additional processing would exceed the monthly sensitive data discovery quota for your account or one or more member accounts that the job analyzes data for.</p></li> <li><p>RUNNING - For a one-time job, the job is in progress. For a recurring job, a scheduled run is in progress.</p></li> <li><p>USER_PAUSED - You paused the job. If you paused the job while it had a status of RUNNING and you don't resume the job within 30 days of pausing it, the job expires and is cancelled. To check the job's expiration date, refer to the UserPausedDetails.jobExpiresAt property.</p></li></ul>
+   * <p>The current status of the job. Possible values are:</p> <ul><li><p>CANCELLED - You cancelled the job or, if it's a one-time job, you paused the job and didn't resume it within 30 days.</p></li> <li><p>COMPLETE - For a one-time job, Amazon Macie finished processing the data specified for the job. This value doesn't apply to recurring jobs.</p></li> <li><p>IDLE - For a recurring job, the previous scheduled run is complete and the next scheduled run is pending. This value doesn't apply to one-time jobs.</p></li> <li><p>PAUSED - Amazon Macie started running the job but additional processing would exceed the monthly sensitive data discovery quota for your account or one or more member accounts that the job analyzes data for.</p></li> <li><p>RUNNING - For a one-time job, the job is in progress. For a recurring job, a scheduled run is in progress.</p></li> <li><p>USER_PAUSED - You paused the job. If you paused the job while it had a status of RUNNING and you don't resume it within 30 days of pausing it, the job or job run will expire and be cancelled, depending on the job's type. To check the expiration date, refer to the UserPausedDetails.jobExpiresAt property.</p></li></ul>
    */
   jobStatus?: JobStatus | string;
 
@@ -3575,12 +4061,15 @@ export interface DescribeClassificationJobResponse {
   tags?: { [key: string]: string };
 
   /**
-   * <p>If the current status of the job is USER_PAUSED, specifies when the job was paused and when the job will expire and be cancelled if it isn't resumed. This value is present only if the value for jobStatus is USER_PAUSED.</p>
+   * <p>If the current status of the job is USER_PAUSED, specifies when the job was paused and when the job or job run will expire and be cancelled if it isn't resumed. This value is present only if the value for jobStatus is USER_PAUSED.</p>
    */
   userPausedDetails?: UserPausedDetails;
 }
 
 export namespace DescribeClassificationJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeClassificationJobResponse): any => ({
     ...obj,
   });
@@ -3589,6 +4078,9 @@ export namespace DescribeClassificationJobResponse {
 export interface DescribeOrganizationConfigurationRequest {}
 
 export namespace DescribeOrganizationConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationConfigurationRequest): any => ({
     ...obj,
   });
@@ -3607,6 +4099,9 @@ export interface DescribeOrganizationConfigurationResponse {
 }
 
 export namespace DescribeOrganizationConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationConfigurationResponse): any => ({
     ...obj,
   });
@@ -3615,6 +4110,9 @@ export namespace DescribeOrganizationConfigurationResponse {
 export interface DisableMacieRequest {}
 
 export namespace DisableMacieRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisableMacieRequest): any => ({
     ...obj,
   });
@@ -3623,6 +4121,9 @@ export namespace DisableMacieRequest {
 export interface DisableMacieResponse {}
 
 export namespace DisableMacieResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisableMacieResponse): any => ({
     ...obj,
   });
@@ -3630,12 +4131,15 @@ export namespace DisableMacieResponse {
 
 export interface DisableOrganizationAdminAccountRequest {
   /**
-   * <p>The AWS account ID of the delegated administrator account.</p>
+   * <p>The AWS account ID of the delegated Amazon Macie administrator account.</p>
    */
   adminAccountId: string | undefined;
 }
 
 export namespace DisableOrganizationAdminAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisableOrganizationAdminAccountRequest): any => ({
     ...obj,
   });
@@ -3644,7 +4148,32 @@ export namespace DisableOrganizationAdminAccountRequest {
 export interface DisableOrganizationAdminAccountResponse {}
 
 export namespace DisableOrganizationAdminAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisableOrganizationAdminAccountResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface DisassociateFromAdministratorAccountRequest {}
+
+export namespace DisassociateFromAdministratorAccountRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DisassociateFromAdministratorAccountRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DisassociateFromAdministratorAccountResponse {}
+
+export namespace DisassociateFromAdministratorAccountResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DisassociateFromAdministratorAccountResponse): any => ({
     ...obj,
   });
 }
@@ -3652,6 +4181,9 @@ export namespace DisableOrganizationAdminAccountResponse {
 export interface DisassociateFromMasterAccountRequest {}
 
 export namespace DisassociateFromMasterAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateFromMasterAccountRequest): any => ({
     ...obj,
   });
@@ -3660,6 +4192,9 @@ export namespace DisassociateFromMasterAccountRequest {
 export interface DisassociateFromMasterAccountResponse {}
 
 export namespace DisassociateFromMasterAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateFromMasterAccountResponse): any => ({
     ...obj,
   });
@@ -3673,6 +4208,9 @@ export interface DisassociateMemberRequest {
 }
 
 export namespace DisassociateMemberRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateMemberRequest): any => ({
     ...obj,
   });
@@ -3681,6 +4219,9 @@ export namespace DisassociateMemberRequest {
 export interface DisassociateMemberResponse {}
 
 export namespace DisassociateMemberResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateMemberResponse): any => ({
     ...obj,
   });
@@ -3709,12 +4250,15 @@ export interface EnableMacieRequest {
   findingPublishingFrequency?: FindingPublishingFrequency | string;
 
   /**
-   * <p>Specifies the status for the account. To enable Amazon Macie and start all Amazon Macie activities for the account, set this value to ENABLED.</p>
+   * <p>Specifies the new status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to ENABLED.</p>
    */
   status?: MacieStatus | string;
 }
 
 export namespace EnableMacieRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableMacieRequest): any => ({
     ...obj,
   });
@@ -3723,6 +4267,9 @@ export namespace EnableMacieRequest {
 export interface EnableMacieResponse {}
 
 export namespace EnableMacieResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableMacieResponse): any => ({
     ...obj,
   });
@@ -3741,6 +4288,9 @@ export interface EnableOrganizationAdminAccountRequest {
 }
 
 export namespace EnableOrganizationAdminAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableOrganizationAdminAccountRequest): any => ({
     ...obj,
   });
@@ -3749,6 +4299,9 @@ export namespace EnableOrganizationAdminAccountRequest {
 export interface EnableOrganizationAdminAccountResponse {}
 
 export namespace EnableOrganizationAdminAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableOrganizationAdminAccountResponse): any => ({
     ...obj,
   });
@@ -3775,7 +4328,37 @@ export interface FindingStatisticsSortCriteria {
 }
 
 export namespace FindingStatisticsSortCriteria {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FindingStatisticsSortCriteria): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAdministratorAccountRequest {}
+
+export namespace GetAdministratorAccountRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAdministratorAccountRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAdministratorAccountResponse {
+  /**
+   * <p>The AWS account ID for the administrator account. If the accounts are associated by a Macie membership invitation, this object also provides details about the invitation that was sent to establish the relationship between the accounts.</p>
+   */
+  administrator?: Invitation;
+}
+
+export namespace GetAdministratorAccountResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAdministratorAccountResponse): any => ({
     ...obj,
   });
 }
@@ -3788,6 +4371,9 @@ export interface GetBucketStatisticsRequest {
 }
 
 export namespace GetBucketStatisticsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketStatisticsRequest): any => ({
     ...obj,
   });
@@ -3805,12 +4391,17 @@ export interface GetBucketStatisticsResponse {
   bucketCountByEffectivePermission?: BucketCountByEffectivePermission;
 
   /**
-   * <p>The total number of buckets, grouped by server-side encryption type. This object also reports the total number of buckets that don't encrypt objects by default.</p>
+   * <p>The total number of buckets that use certain types of server-side encryption to encrypt new objects by default. This object also reports the total number of buckets that don't encrypt new objects by default.</p>
    */
   bucketCountByEncryptionType?: BucketCountByEncryptionType;
 
   /**
-   * <p>The total number of buckets that are shared with another AWS account.</p>
+   * <p>The total number of buckets whose bucket policies do and don't require server-side encryption of objects when objects are uploaded to the buckets.</p>
+   */
+  bucketCountByObjectEncryptionRequirement?: BucketCountPolicyAllowsUnencryptedObjectUploads;
+
+  /**
+   * <p>The total number of buckets that are and aren't shared with another AWS account.</p>
    */
   bucketCountBySharedAccessType?: BucketCountBySharedAccessType;
 
@@ -3820,12 +4411,12 @@ export interface GetBucketStatisticsResponse {
   classifiableObjectCount?: number;
 
   /**
-   * <p>The total storage size, in bytes, of all the objects that Amazon Macie can analyze in the buckets. These objects use a supported storage class and have a file name extension for a supported file or storage format.</p>
+   * <p>The total storage size, in bytes, of all the objects that Amazon Macie can analyze in the buckets. These objects use a supported storage class and have a file name extension for a supported file or storage format.</p> <p>If versioning is enabled for any of the buckets, Macie calculates this value based on the size of the latest version of each applicable object in those buckets. This value doesn't reflect the storage size of all versions of all applicable objects in the buckets.</p>
    */
   classifiableSizeInBytes?: number;
 
   /**
-   * <p>The date and time, in UTC and extended ISO 8601 format, when Amazon Macie most recently retrieved data about the buckets from Amazon S3.</p>
+   * <p>The date and time, in UTC and extended ISO 8601 format, when Amazon Macie most recently retrieved both bucket and object metadata from Amazon S3 for the buckets.</p>
    */
   lastUpdated?: Date;
 
@@ -3835,12 +4426,12 @@ export interface GetBucketStatisticsResponse {
   objectCount?: number;
 
   /**
-   * <p>The total storage size, in bytes, of the buckets.</p>
+   * <p>The total storage size, in bytes, of the buckets.</p> <p>If versioning is enabled for any of the buckets, Macie calculates this value based on the size of the latest version of each object in those buckets. This value doesn't reflect the storage size of all versions of the objects in the buckets.</p>
    */
   sizeInBytes?: number;
 
   /**
-   * <p>The total compressed storage size, in bytes, of the buckets.</p>
+   * <p>The total compressed storage size, in bytes, of the buckets.</p> <p>If versioning is enabled for any of the buckets, Macie calculates this value based on the size of the latest version of each object in those buckets. This value doesn't reflect the storage size of all versions of the objects in the buckets.</p>
    */
   sizeInBytesCompressed?: number;
 
@@ -3850,12 +4441,15 @@ export interface GetBucketStatisticsResponse {
   unclassifiableObjectCount?: ObjectLevelStatistics;
 
   /**
-   * <p>The total storage size, in bytes, of all the objects that Amazon Macie can't analyze in the buckets. These objects don't use a supported storage class or don't have a file name extension for a supported file or storage format.</p>
+   * <p>The total storage size, in bytes, of the objects that Amazon Macie can't analyze in the buckets. These objects don't use a supported storage class or don't have a file name extension for a supported file or storage format.</p>
    */
   unclassifiableObjectSizeInBytes?: ObjectLevelStatistics;
 }
 
 export namespace GetBucketStatisticsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketStatisticsResponse): any => ({
     ...obj,
   });
@@ -3864,6 +4458,9 @@ export namespace GetBucketStatisticsResponse {
 export interface GetClassificationExportConfigurationRequest {}
 
 export namespace GetClassificationExportConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetClassificationExportConfigurationRequest): any => ({
     ...obj,
   });
@@ -3877,6 +4474,9 @@ export interface GetClassificationExportConfigurationResponse {
 }
 
 export namespace GetClassificationExportConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetClassificationExportConfigurationResponse): any => ({
     ...obj,
   });
@@ -3890,6 +4490,9 @@ export interface GetCustomDataIdentifierRequest {
 }
 
 export namespace GetCustomDataIdentifierRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCustomDataIdentifierRequest): any => ({
     ...obj,
   });
@@ -3953,6 +4556,9 @@ export interface GetCustomDataIdentifierResponse {
 }
 
 export namespace GetCustomDataIdentifierResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCustomDataIdentifierResponse): any => ({
     ...obj,
   });
@@ -3974,6 +4580,9 @@ export interface SortCriteria {
 }
 
 export namespace SortCriteria {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SortCriteria): any => ({
     ...obj,
   });
@@ -3992,6 +4601,9 @@ export interface GetFindingsRequest {
 }
 
 export namespace GetFindingsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetFindingsRequest): any => ({
     ...obj,
   });
@@ -4005,6 +4617,9 @@ export interface GetFindingsResponse {
 }
 
 export namespace GetFindingsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetFindingsResponse): any => ({
     ...obj,
   });
@@ -4018,6 +4633,9 @@ export interface GetFindingsFilterRequest {
 }
 
 export namespace GetFindingsFilterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetFindingsFilterRequest): any => ({
     ...obj,
   });
@@ -4066,7 +4684,61 @@ export interface GetFindingsFilterResponse {
 }
 
 export namespace GetFindingsFilterResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetFindingsFilterResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface GetFindingsPublicationConfigurationRequest {}
+
+export namespace GetFindingsPublicationConfigurationRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetFindingsPublicationConfigurationRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Specifies configuration settings that determine which findings are published to AWS Security Hub automatically. For information about how Macie publishes findings to Security Hub, see <a href="https://docs.aws.amazon.com/macie/latest/user/securityhub-integration.html">Amazon Macie integration with Security Hub</a> in the <i>Amazon Macie User Guide</i>.</p>
+ */
+export interface SecurityHubConfiguration {
+  /**
+   * <p>Specifies whether to publish sensitive data findings to AWS Security Hub. If you set this value to true, Amazon Macie automatically publishes all sensitive data findings that weren't suppressed by a findings filter. The default value is false.</p>
+   */
+  publishClassificationFindings: boolean | undefined;
+
+  /**
+   * <p>Specifies whether to publish policy findings to AWS Security Hub. If you set this value to true, Amazon Macie automatically publishes all new and updated policy findings that weren't suppressed by a findings filter. The default value is true.</p>
+   */
+  publishPolicyFindings: boolean | undefined;
+}
+
+export namespace SecurityHubConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SecurityHubConfiguration): any => ({
+    ...obj,
+  });
+}
+
+export interface GetFindingsPublicationConfigurationResponse {
+  /**
+   * <p>The configuration settings that determine which findings are published to AWS Security Hub.</p>
+   */
+  securityHubConfiguration?: SecurityHubConfiguration;
+}
+
+export namespace GetFindingsPublicationConfigurationResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetFindingsPublicationConfigurationResponse): any => ({
     ...obj,
   });
 }
@@ -4101,6 +4773,9 @@ export interface GetFindingStatisticsRequest {
 }
 
 export namespace GetFindingStatisticsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetFindingStatisticsRequest): any => ({
     ...obj,
   });
@@ -4114,6 +4789,9 @@ export interface GetFindingStatisticsResponse {
 }
 
 export namespace GetFindingStatisticsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetFindingStatisticsResponse): any => ({
     ...obj,
   });
@@ -4122,6 +4800,9 @@ export namespace GetFindingStatisticsResponse {
 export interface GetInvitationsCountRequest {}
 
 export namespace GetInvitationsCountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetInvitationsCountRequest): any => ({
     ...obj,
   });
@@ -4135,6 +4816,9 @@ export interface GetInvitationsCountResponse {
 }
 
 export namespace GetInvitationsCountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetInvitationsCountResponse): any => ({
     ...obj,
   });
@@ -4143,6 +4827,9 @@ export namespace GetInvitationsCountResponse {
 export interface GetMacieSessionRequest {}
 
 export namespace GetMacieSessionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMacieSessionRequest): any => ({
     ...obj,
   });
@@ -4155,27 +4842,30 @@ export interface GetMacieSessionResponse {
   createdAt?: Date;
 
   /**
-   * <p>The frequency with which Amazon Macie publishes updates to policy findings for the account. This includes publishing updates to AWS Security Hub and Amazon EventBridge (formerly called Amazon CloudWatch Events).</p>
+   * <p>The frequency with which Macie publishes updates to policy findings for the account. This includes publishing updates to AWS Security Hub and Amazon EventBridge (formerly called Amazon CloudWatch Events).</p>
    */
   findingPublishingFrequency?: FindingPublishingFrequency | string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of the service-linked role that allows Amazon Macie to monitor and analyze data in AWS resources for the account.</p>
+   * <p>The Amazon Resource Name (ARN) of the service-linked role that allows Macie to monitor and analyze data in AWS resources for the account.</p>
    */
   serviceRole?: string;
 
   /**
-   * <p>The current status of the Amazon Macie account. Possible values are: PAUSED, the account is enabled but all Amazon Macie activities are suspended (paused) for the account; and, ENABLED, the account is enabled and all Amazon Macie activities are enabled for the account.</p>
+   * <p>The current status of the Macie account. Possible values are: PAUSED, the account is enabled but all Macie activities are suspended (paused) for the account; and, ENABLED, the account is enabled and all Macie activities are enabled for the account.</p>
    */
   status?: MacieStatus | string;
 
   /**
-   * <p>The date and time, in UTC and extended ISO 8601 format, of the most recent change to the status of the Amazon Macie account.</p>
+   * <p>The date and time, in UTC and extended ISO 8601 format, of the most recent change to the status of the Macie account.</p>
    */
   updatedAt?: Date;
 }
 
 export namespace GetMacieSessionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMacieSessionResponse): any => ({
     ...obj,
   });
@@ -4184,6 +4874,9 @@ export namespace GetMacieSessionResponse {
 export interface GetMasterAccountRequest {}
 
 export namespace GetMasterAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMasterAccountRequest): any => ({
     ...obj,
   });
@@ -4191,12 +4884,15 @@ export namespace GetMasterAccountRequest {
 
 export interface GetMasterAccountResponse {
   /**
-   * <p>The AWS account ID for the master account. If the accounts are associated by a Macie membership invitation, this object also provides details about the invitation that was sent and accepted to establish the relationship between the accounts.</p>
+   * <p>(Deprecated) The AWS account ID for the administrator account. If the accounts are associated by a Macie membership invitation, this object also provides details about the invitation that was sent to establish the relationship between the accounts.</p>
    */
   master?: Invitation;
 }
 
 export namespace GetMasterAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMasterAccountResponse): any => ({
     ...obj,
   });
@@ -4210,6 +4906,9 @@ export interface GetMemberRequest {
 }
 
 export namespace GetMemberRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMemberRequest): any => ({
     ...obj,
   });
@@ -4220,6 +4919,11 @@ export interface GetMemberResponse {
    * <p>The AWS account ID for the account.</p>
    */
   accountId?: string;
+
+  /**
+   * <p>The AWS account ID for the administrator account.</p>
+   */
+  administratorAccountId?: string;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the account.</p>
@@ -4237,12 +4941,12 @@ export interface GetMemberResponse {
   invitedAt?: Date;
 
   /**
-   * <p>The AWS account ID for the master account.</p>
+   * <p>(Deprecated) The AWS account ID for the administrator account. This property has been replaced by the administratorAccountId property and is retained only for backward compatibility.</p>
    */
   masterAccountId?: string;
 
   /**
-   * <p>The current status of the relationship between the account and the master account.</p>
+   * <p>The current status of the relationship between the account and the administrator account.</p>
    */
   relationshipStatus?: RelationshipStatus | string;
 
@@ -4252,12 +4956,15 @@ export interface GetMemberResponse {
   tags?: { [key: string]: string };
 
   /**
-   * <p>The date and time, in UTC and extended ISO 8601 format, of the most recent change to the status of the relationship between the account and the master account.</p>
+   * <p>The date and time, in UTC and extended ISO 8601 format, of the most recent change to the status of the relationship between the account and the administrator account.</p>
    */
   updatedAt?: Date;
 }
 
 export namespace GetMemberResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMemberResponse): any => ({
     ...obj,
   });
@@ -4271,7 +4978,7 @@ export enum UsageStatisticsSortKey {
 }
 
 /**
- * <p>Specifies criteria for sorting the results of a query for account quotas and usage data.</p>
+ * <p>Specifies criteria for sorting the results of a query for Amazon Macie account quotas and usage data.</p>
  */
 export interface UsageStatisticsSortBy {
   /**
@@ -4286,14 +4993,22 @@ export interface UsageStatisticsSortBy {
 }
 
 export namespace UsageStatisticsSortBy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UsageStatisticsSortBy): any => ({
     ...obj,
   });
 }
 
+export enum TimeRange {
+  MONTH_TO_DATE = "MONTH_TO_DATE",
+  PAST_30_DAYS = "PAST_30_DAYS",
+}
+
 export interface GetUsageStatisticsRequest {
   /**
-   * <p>An array of objects, one for each condition to use to filter the query results. If the array contains more than one object, Amazon Macie uses an AND operator to join the conditions specified by the objects.</p>
+   * <p>An array of objects, one for each condition to use to filter the query results. If you specify more than one condition, Amazon Macie uses an AND operator to join the conditions.</p>
    */
   filterBy?: UsageStatisticsFilter[];
 
@@ -4311,9 +5026,17 @@ export interface GetUsageStatisticsRequest {
    * <p>The criteria to use to sort the query results.</p>
    */
   sortBy?: UsageStatisticsSortBy;
+
+  /**
+   * <p>The inclusive time period to query usage data for. Valid values are: MONTH_TO_DATE, for the current calendar month to date; and, PAST_30_DAYS, for the preceding 30 days. If you don't specify a value, Amazon Macie provides usage data for the preceding 30 days.</p>
+   */
+  timeRange?: TimeRange | string;
 }
 
 export namespace GetUsageStatisticsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUsageStatisticsRequest): any => ({
     ...obj,
   });
@@ -4329,17 +5052,33 @@ export interface GetUsageStatisticsResponse {
    * <p>An array of objects that contains the results of the query. Each object contains the data for an account that meets the filter criteria specified in the request.</p>
    */
   records?: UsageRecord[];
+
+  /**
+   * <p>The inclusive time period that the usage data applies to. Possible values are: MONTH_TO_DATE, for the current calendar month to date; and, PAST_30_DAYS, for the preceding 30 days.</p>
+   */
+  timeRange?: TimeRange | string;
 }
 
 export namespace GetUsageStatisticsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUsageStatisticsResponse): any => ({
     ...obj,
   });
 }
 
-export interface GetUsageTotalsRequest {}
+export interface GetUsageTotalsRequest {
+  /**
+   * <p>The inclusive time period to retrieve the data for. Valid values are: MONTH_TO_DATE, for the current calendar month to date; and, PAST_30_DAYS, for the preceding 30 days. If you don't specify a value for this parameter, Amazon Macie provides aggregated usage data for the preceding 30 days.</p>
+   */
+  timeRange?: string;
+}
 
 export namespace GetUsageTotalsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUsageTotalsRequest): any => ({
     ...obj,
   });
@@ -4347,12 +5086,20 @@ export namespace GetUsageTotalsRequest {
 
 export interface GetUsageTotalsResponse {
   /**
+   * <p>The inclusive time period that the usage data applies to. Possible values are: MONTH_TO_DATE, for the current calendar month to date; and, PAST_30_DAYS, for the preceding 30 days.</p>
+   */
+  timeRange?: TimeRange | string;
+
+  /**
    * <p>An array of objects that contains the results of the query. Each object contains the data for a specific usage metric.</p>
    */
   usageTotals?: UsageTotal[];
 }
 
 export namespace GetUsageTotalsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUsageTotalsResponse): any => ({
     ...obj,
   });
@@ -4374,6 +5121,9 @@ export interface ListJobsFilterCriteria {
 }
 
 export namespace ListJobsFilterCriteria {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobsFilterCriteria): any => ({
     ...obj,
   });
@@ -4402,6 +5152,9 @@ export interface ListJobsSortCriteria {
 }
 
 export namespace ListJobsSortCriteria {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobsSortCriteria): any => ({
     ...obj,
   });
@@ -4430,6 +5183,9 @@ export interface ListClassificationJobsRequest {
 }
 
 export namespace ListClassificationJobsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListClassificationJobsRequest): any => ({
     ...obj,
   });
@@ -4448,6 +5204,9 @@ export interface ListClassificationJobsResponse {
 }
 
 export namespace ListClassificationJobsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListClassificationJobsResponse): any => ({
     ...obj,
   });
@@ -4466,6 +5225,9 @@ export interface ListCustomDataIdentifiersRequest {
 }
 
 export namespace ListCustomDataIdentifiersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListCustomDataIdentifiersRequest): any => ({
     ...obj,
   });
@@ -4484,6 +5246,9 @@ export interface ListCustomDataIdentifiersResponse {
 }
 
 export namespace ListCustomDataIdentifiersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListCustomDataIdentifiersResponse): any => ({
     ...obj,
   });
@@ -4512,6 +5277,9 @@ export interface ListFindingsRequest {
 }
 
 export namespace ListFindingsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListFindingsRequest): any => ({
     ...obj,
   });
@@ -4530,6 +5298,9 @@ export interface ListFindingsResponse {
 }
 
 export namespace ListFindingsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListFindingsResponse): any => ({
     ...obj,
   });
@@ -4548,6 +5319,9 @@ export interface ListFindingsFiltersRequest {
 }
 
 export namespace ListFindingsFiltersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListFindingsFiltersRequest): any => ({
     ...obj,
   });
@@ -4566,6 +5340,9 @@ export interface ListFindingsFiltersResponse {
 }
 
 export namespace ListFindingsFiltersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListFindingsFiltersResponse): any => ({
     ...obj,
   });
@@ -4584,6 +5361,9 @@ export interface ListInvitationsRequest {
 }
 
 export namespace ListInvitationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInvitationsRequest): any => ({
     ...obj,
   });
@@ -4602,6 +5382,9 @@ export interface ListInvitationsResponse {
 }
 
 export namespace ListInvitationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInvitationsResponse): any => ({
     ...obj,
   });
@@ -4619,12 +5402,15 @@ export interface ListMembersRequest {
   nextToken?: string;
 
   /**
-   * <p>Specifies which accounts to include in the response, based on the status of an account's relationship with the master account. By default, the response includes only current member accounts. To include all accounts, set the value for this parameter to false.</p>
+   * <p>Specifies which accounts to include in the response, based on the status of an account's relationship with the administrator account. By default, the response includes only current member accounts. To include all accounts, set this value to false.</p>
    */
   onlyAssociated?: string;
 }
 
 export namespace ListMembersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMembersRequest): any => ({
     ...obj,
   });
@@ -4632,7 +5418,7 @@ export namespace ListMembersRequest {
 
 export interface ListMembersResponse {
   /**
-   * <p>An array of objects, one for each account that's associated with the master account and meets the criteria specified by the onlyAssociated request parameter.</p>
+   * <p>An array of objects, one for each account that's associated with the administrator account and meets the criteria specified by the onlyAssociated request parameter.</p>
    */
   members?: Member[];
 
@@ -4643,6 +5429,9 @@ export interface ListMembersResponse {
 }
 
 export namespace ListMembersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMembersResponse): any => ({
     ...obj,
   });
@@ -4661,6 +5450,9 @@ export interface ListOrganizationAdminAccountsRequest {
 }
 
 export namespace ListOrganizationAdminAccountsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListOrganizationAdminAccountsRequest): any => ({
     ...obj,
   });
@@ -4679,6 +5471,9 @@ export interface ListOrganizationAdminAccountsResponse {
 }
 
 export namespace ListOrganizationAdminAccountsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListOrganizationAdminAccountsResponse): any => ({
     ...obj,
   });
@@ -4692,6 +5487,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -4705,6 +5503,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -4718,6 +5519,9 @@ export interface PutClassificationExportConfigurationRequest {
 }
 
 export namespace PutClassificationExportConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutClassificationExportConfigurationRequest): any => ({
     ...obj,
   });
@@ -4731,7 +5535,42 @@ export interface PutClassificationExportConfigurationResponse {
 }
 
 export namespace PutClassificationExportConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutClassificationExportConfigurationResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface PutFindingsPublicationConfigurationRequest {
+  /**
+   * <p>A unique, case-sensitive token that you provide to ensure the idempotency of the request.</p>
+   */
+  clientToken?: string;
+
+  /**
+   * <p>The configuration settings that determine which findings to publish to AWS Security Hub.</p>
+   */
+  securityHubConfiguration?: SecurityHubConfiguration;
+}
+
+export namespace PutFindingsPublicationConfigurationRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PutFindingsPublicationConfigurationRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface PutFindingsPublicationConfigurationResponse {}
+
+export namespace PutFindingsPublicationConfigurationResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PutFindingsPublicationConfigurationResponse): any => ({
     ...obj,
   });
 }
@@ -4749,6 +5588,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -4757,6 +5599,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -4769,7 +5614,7 @@ export interface TestCustomDataIdentifierRequest {
   ignoreWords?: string[];
 
   /**
-   * <p>An array that lists specific character sequences (keywords), one of which must be within proximity (maximumMatchDistance) of the regular expression to match. The array can contain as many as 50 keywords. Each keyword can contain 4 - 90 characters. Keywords aren't case sensitive.</p>
+   * <p>An array that lists specific character sequences (keywords), one of which must be within proximity (maximumMatchDistance) of the regular expression to match. The array can contain as many as 50 keywords. Each keyword can contain 3 - 90 characters. Keywords aren't case sensitive.</p>
    */
   keywords?: string[];
 
@@ -4790,6 +5635,9 @@ export interface TestCustomDataIdentifierRequest {
 }
 
 export namespace TestCustomDataIdentifierRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestCustomDataIdentifierRequest): any => ({
     ...obj,
   });
@@ -4803,6 +5651,9 @@ export interface TestCustomDataIdentifierResponse {
 }
 
 export namespace TestCustomDataIdentifierResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestCustomDataIdentifierResponse): any => ({
     ...obj,
   });
@@ -4821,6 +5672,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -4829,6 +5683,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
@@ -4841,12 +5698,15 @@ export interface UpdateClassificationJobRequest {
   jobId: string | undefined;
 
   /**
-   * <p>The new status for the job. Valid values are:</p> <ul><li><p>CANCELLED - Stops the job permanently and cancels it. You can't resume a job after you cancel it. This value is valid only if the job's current status is IDLE, PAUSED, RUNNING, or USER_PAUSED.</p></li> <li><p>RUNNING - Resumes the job. This value is valid only if the job's current status is USER_PAUSED. If you specify this value, Amazon Macie immediately resumes processing from the point where you paused the job. Otherwise, Macie resumes the job according to the schedule and other configuration settings for the job.</p></li> <li><p>USER_PAUSED - Pauses the job. This value is valid only if the job's current status is IDLE or RUNNING. If you specify this value and the job's current status is RUNNING, Macie immediately begins to pause all processing tasks for the job.</p> <p>If you pause a job when its status is RUNNING and you don't resume the job within 30 days, the job expires and Macie cancels it. You can't resume a job after it's cancelled.</p></li></ul>
+   * <p>The new status for the job. Valid values are:</p> <ul><li><p>CANCELLED - Stops the job permanently and cancels it. This value is valid only if the job's current status is IDLE, PAUSED, RUNNING, or USER_PAUSED.</p> <p>If you specify this value and the job's current status is RUNNING, Amazon Macie immediately begins to stop all processing tasks for the job. You can't resume or restart a job after you cancel it.</p></li> <li><p>RUNNING - Resumes the job. This value is valid only if the job's current status is USER_PAUSED.</p> <p>If you paused the job while it was actively running and you specify this value less than 30 days after you paused the job, Macie immediately resumes processing from the point where you paused the job. Otherwise, Macie resumes the job according to the schedule and other settings for the job.</p></li> <li><p>USER_PAUSED - Pauses the job temporarily. This value is valid only if the job's current status is IDLE, PAUSED, or RUNNING. If you specify this value and the job's current status is RUNNING, Macie immediately begins to pause all processing tasks for the job.</p> <p>If you pause a one-time job and you don't resume it within 30 days, the job expires and Macie cancels the job. If you pause a recurring job when its status is RUNNING and you don't resume it within 30 days, the job run expires and Macie cancels the run. To check the expiration date, refer to the UserPausedDetails.jobExpiresAt property.</p></li></ul>
    */
   jobStatus: JobStatus | string | undefined;
 }
 
 export namespace UpdateClassificationJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateClassificationJobRequest): any => ({
     ...obj,
   });
@@ -4855,6 +5715,9 @@ export namespace UpdateClassificationJobRequest {
 export interface UpdateClassificationJobResponse {}
 
 export namespace UpdateClassificationJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateClassificationJobResponse): any => ({
     ...obj,
   });
@@ -4893,6 +5756,9 @@ export interface UpdateFindingsFilterRequest {
 }
 
 export namespace UpdateFindingsFilterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFindingsFilterRequest): any => ({
     ...obj,
   });
@@ -4911,6 +5777,9 @@ export interface UpdateFindingsFilterResponse {
 }
 
 export namespace UpdateFindingsFilterResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFindingsFilterResponse): any => ({
     ...obj,
   });
@@ -4923,12 +5792,15 @@ export interface UpdateMacieSessionRequest {
   findingPublishingFrequency?: FindingPublishingFrequency | string;
 
   /**
-   * <p>Specifies whether to change the status of the account. Valid values are: ENABLED, resume all Amazon Macie activities for the account; and, PAUSED, suspend all Macie activities for the account.</p>
+   * <p>Specifies a new status for the account. Valid values are: ENABLED, resume all Amazon Macie activities for the account; and, PAUSED, suspend all Macie activities for the account.</p>
    */
   status?: MacieStatus | string;
 }
 
 export namespace UpdateMacieSessionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateMacieSessionRequest): any => ({
     ...obj,
   });
@@ -4937,6 +5809,9 @@ export namespace UpdateMacieSessionRequest {
 export interface UpdateMacieSessionResponse {}
 
 export namespace UpdateMacieSessionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateMacieSessionResponse): any => ({
     ...obj,
   });
@@ -4955,6 +5830,9 @@ export interface UpdateMemberSessionRequest {
 }
 
 export namespace UpdateMemberSessionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateMemberSessionRequest): any => ({
     ...obj,
   });
@@ -4963,6 +5841,9 @@ export namespace UpdateMemberSessionRequest {
 export interface UpdateMemberSessionResponse {}
 
 export namespace UpdateMemberSessionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateMemberSessionResponse): any => ({
     ...obj,
   });
@@ -4970,12 +5851,15 @@ export namespace UpdateMemberSessionResponse {
 
 export interface UpdateOrganizationConfigurationRequest {
   /**
-   * <p>Specifies whether Amazon Macie is enabled automatically for each account, when the account is added to the AWS organization.</p>
+   * <p>Specifies whether to enable Amazon Macie automatically for each account, when the account is added to the AWS organization.</p>
    */
   autoEnable: boolean | undefined;
 }
 
 export namespace UpdateOrganizationConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateOrganizationConfigurationRequest): any => ({
     ...obj,
   });
@@ -4984,6 +5868,9 @@ export namespace UpdateOrganizationConfigurationRequest {
 export interface UpdateOrganizationConfigurationResponse {}
 
 export namespace UpdateOrganizationConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateOrganizationConfigurationResponse): any => ({
     ...obj,
   });

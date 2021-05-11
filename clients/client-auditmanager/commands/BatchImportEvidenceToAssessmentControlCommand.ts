@@ -20,14 +20,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchImportEvidenceToAssessmentControlCommandInput = BatchImportEvidenceToAssessmentControlRequest;
-export type BatchImportEvidenceToAssessmentControlCommandOutput = BatchImportEvidenceToAssessmentControlResponse &
-  __MetadataBearer;
+export interface BatchImportEvidenceToAssessmentControlCommandInput
+  extends BatchImportEvidenceToAssessmentControlRequest {}
+export interface BatchImportEvidenceToAssessmentControlCommandOutput
+  extends BatchImportEvidenceToAssessmentControlResponse,
+    __MetadataBearer {}
 
 /**
  * <p>
  *          Uploads one or more pieces of evidence to the specified control in the assessment in AWS Audit Manager.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AuditManagerClient, BatchImportEvidenceToAssessmentControlCommand } from "@aws-sdk/client-auditmanager"; // ES Modules import
+ * // const { AuditManagerClient, BatchImportEvidenceToAssessmentControlCommand } = require("@aws-sdk/client-auditmanager"); // CommonJS import
+ * const client = new AuditManagerClient(config);
+ * const command = new BatchImportEvidenceToAssessmentControlCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchImportEvidenceToAssessmentControlCommandInput} for command's `input` shape.
+ * @see {@link BatchImportEvidenceToAssessmentControlCommandOutput} for command's `response` shape.
+ * @see {@link AuditManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchImportEvidenceToAssessmentControlCommand extends $Command<
   BatchImportEvidenceToAssessmentControlCommandInput,

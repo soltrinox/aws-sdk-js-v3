@@ -20,6 +20,7 @@ import {
   EndpointWithHostLabelOperationCommandOutput,
 } from "./commands/EndpointWithHostLabelOperationCommand";
 import { GreetingWithErrorsCommandInput, GreetingWithErrorsCommandOutput } from "./commands/GreetingWithErrorsCommand";
+import { HttpEnumPayloadCommandInput, HttpEnumPayloadCommandOutput } from "./commands/HttpEnumPayloadCommand";
 import { HttpPayloadTraitsCommandInput, HttpPayloadTraitsCommandOutput } from "./commands/HttpPayloadTraitsCommand";
 import {
   HttpPayloadTraitsWithMediaTypeCommandInput,
@@ -47,6 +48,7 @@ import {
   HttpRequestWithLabelsCommandOutput,
 } from "./commands/HttpRequestWithLabelsCommand";
 import { HttpResponseCodeCommandInput, HttpResponseCodeCommandOutput } from "./commands/HttpResponseCodeCommand";
+import { HttpStringPayloadCommandInput, HttpStringPayloadCommandOutput } from "./commands/HttpStringPayloadCommand";
 import {
   IgnoreQueryParamsInResponseCommandInput,
   IgnoreQueryParamsInResponseCommandOutput,
@@ -85,6 +87,11 @@ import {
   QueryIdempotencyTokenAutoFillCommandInput,
   QueryIdempotencyTokenAutoFillCommandOutput,
 } from "./commands/QueryIdempotencyTokenAutoFillCommand";
+import {
+  QueryParamsAsStringListMapCommandInput,
+  QueryParamsAsStringListMapCommandOutput,
+} from "./commands/QueryParamsAsStringListMapCommand";
+import { QueryPrecedenceCommandInput, QueryPrecedenceCommandOutput } from "./commands/QueryPrecedenceCommand";
 import { RecursiveShapesCommandInput, RecursiveShapesCommandOutput } from "./commands/RecursiveShapesCommand";
 import {
   SimpleScalarPropertiesCommandInput,
@@ -122,12 +129,6 @@ import {
 import { getLoggerPlugin } from "@aws-sdk/middleware-logger";
 import { RetryInputConfig, RetryResolvedConfig, getRetryPlugin, resolveRetryConfig } from "@aws-sdk/middleware-retry";
 import {
-  AwsAuthInputConfig,
-  AwsAuthResolvedConfig,
-  getAwsAuthPlugin,
-  resolveAwsAuthConfig,
-} from "@aws-sdk/middleware-signing";
-import {
   UserAgentInputConfig,
   UserAgentResolvedConfig,
   getUserAgentPlugin,
@@ -142,7 +143,6 @@ import {
 import {
   Provider,
   RegionInfoProvider,
-  Credentials as __Credentials,
   Decoder as __Decoder,
   Encoder as __Encoder,
   HashConstructor as __HashConstructor,
@@ -162,6 +162,7 @@ export type ServiceInputTypes =
   | EndpointOperationCommandInput
   | EndpointWithHostLabelOperationCommandInput
   | GreetingWithErrorsCommandInput
+  | HttpEnumPayloadCommandInput
   | HttpPayloadTraitsCommandInput
   | HttpPayloadTraitsWithMediaTypeCommandInput
   | HttpPayloadWithStructureCommandInput
@@ -171,6 +172,7 @@ export type ServiceInputTypes =
   | HttpRequestWithLabelsAndTimestampFormatCommandInput
   | HttpRequestWithLabelsCommandInput
   | HttpResponseCodeCommandInput
+  | HttpStringPayloadCommandInput
   | IgnoreQueryParamsInResponseCommandInput
   | InlineDocumentAsPayloadCommandInput
   | InlineDocumentCommandInput
@@ -188,6 +190,8 @@ export type ServiceInputTypes =
   | NullAndEmptyHeadersServerCommandInput
   | OmitsNullSerializesEmptyStringCommandInput
   | QueryIdempotencyTokenAutoFillCommandInput
+  | QueryParamsAsStringListMapCommandInput
+  | QueryPrecedenceCommandInput
   | RecursiveShapesCommandInput
   | SimpleScalarPropertiesCommandInput
   | StreamingTraitsCommandInput
@@ -203,6 +207,7 @@ export type ServiceOutputTypes =
   | EndpointOperationCommandOutput
   | EndpointWithHostLabelOperationCommandOutput
   | GreetingWithErrorsCommandOutput
+  | HttpEnumPayloadCommandOutput
   | HttpPayloadTraitsCommandOutput
   | HttpPayloadTraitsWithMediaTypeCommandOutput
   | HttpPayloadWithStructureCommandOutput
@@ -212,6 +217,7 @@ export type ServiceOutputTypes =
   | HttpRequestWithLabelsAndTimestampFormatCommandOutput
   | HttpRequestWithLabelsCommandOutput
   | HttpResponseCodeCommandOutput
+  | HttpStringPayloadCommandOutput
   | IgnoreQueryParamsInResponseCommandOutput
   | InlineDocumentAsPayloadCommandOutput
   | InlineDocumentCommandOutput
@@ -229,6 +235,8 @@ export type ServiceOutputTypes =
   | NullAndEmptyHeadersServerCommandOutput
   | OmitsNullSerializesEmptyStringCommandOutput
   | QueryIdempotencyTokenAutoFillCommandOutput
+  | QueryParamsAsStringListMapCommandOutput
+  | QueryPrecedenceCommandOutput
   | RecursiveShapesCommandOutput
   | SimpleScalarPropertiesCommandOutput
   | StreamingTraitsCommandOutput
@@ -301,11 +309,6 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
-   */
-  region?: string | __Provider<string>;
-
-  /**
    * Value for how many times a request will be made at most in case of retry.
    */
   maxAttempts?: number | __Provider<number>;
@@ -314,11 +317,6 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
    * Optional logger for logging debug/info/warn/error.
    */
   logger?: __Logger;
-
-  /**
-   * Default credentials provider; Not available in browser runtime.
-   */
-  credentialDefaultProvider?: (input: any) => __Provider<__Credentials>;
 
   /**
    * Fetch related hostname, signing name or signing region with given region.
@@ -332,23 +330,29 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type RestJsonProtocolClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type RestJsonProtocolClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
   RetryInputConfig &
   HostHeaderInputConfig &
-  AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of RestJsonProtocolClient class constructor that set the region, credentials and other options.
+ */
+export interface RestJsonProtocolClientConfig extends RestJsonProtocolClientConfigType {}
 
-export type RestJsonProtocolClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type RestJsonProtocolClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
   RetryResolvedConfig &
   HostHeaderResolvedConfig &
-  AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of RestJsonProtocolClient class. This is resolved and normalized from the {@link RestJsonProtocolClientConfig | constructor configuration interface}.
+ */
+export interface RestJsonProtocolClientResolvedConfig extends RestJsonProtocolClientResolvedConfigType {}
 
 /**
  * A REST JSON service that sends JSON requests and responses.
@@ -359,6 +363,9 @@ export class RestJsonProtocolClient extends __Client<
   ServiceOutputTypes,
   RestJsonProtocolClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of RestJsonProtocolClient class. This is resolved and normalized from the {@link RestJsonProtocolClientConfig | constructor configuration interface}.
+   */
   readonly config: RestJsonProtocolClientResolvedConfig;
 
   constructor(configuration: RestJsonProtocolClientConfig) {
@@ -370,15 +377,13 @@ export class RestJsonProtocolClient extends __Client<
     let _config_2 = resolveEndpointsConfig(_config_1);
     let _config_3 = resolveRetryConfig(_config_2);
     let _config_4 = resolveHostHeaderConfig(_config_3);
-    let _config_5 = resolveAwsAuthConfig(_config_4);
-    let _config_6 = resolveUserAgentConfig(_config_5);
-    super(_config_6);
-    this.config = _config_6;
+    let _config_5 = resolveUserAgentConfig(_config_4);
+    super(_config_5);
+    this.config = _config_5;
     this.middlewareStack.use(getRetryPlugin(this.config));
     this.middlewareStack.use(getContentLengthPlugin(this.config));
     this.middlewareStack.use(getHostHeaderPlugin(this.config));
     this.middlewareStack.use(getLoggerPlugin(this.config));
-    this.middlewareStack.use(getAwsAuthPlugin(this.config));
     this.middlewareStack.use(getUserAgentPlugin(this.config));
   }
 

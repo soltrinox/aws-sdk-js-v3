@@ -15,10 +15,6 @@ such as personally identifiable information (PII) or intellectual property, and 
 with dashboards and alerts that give visibility into how this data is being accessed or moved.
 For more information, see the <a href="https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html">Amazon Macie
 Classic User Guide</a>. </p>
-<p>A new Amazon Macie is now available with significant design improvements and additional
-features, at a lower price and in most AWS Regions. We encourage you to explore and use
-the new and improved features, and benefit from the reduced cost. To learn about features and
-pricing for the new Amazon Macie, see <a href="https://aws.amazon.com/macie/">Amazon Macie</a>.</p>
 
 ## Installing
 
@@ -57,7 +53,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new MacieClient({ region: "REGION" });
 
 const params = {
@@ -142,7 +138,7 @@ const client = new AWS.Macie({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.associateMemberAccount(params);
+  const data = await client.associateMemberAccount(params);
   // process data.
 } catch (error) {
   // error handling.

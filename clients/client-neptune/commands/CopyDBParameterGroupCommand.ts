@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CopyDBParameterGroupCommandInput = CopyDBParameterGroupMessage;
-export type CopyDBParameterGroupCommandOutput = CopyDBParameterGroupResult & __MetadataBearer;
+export interface CopyDBParameterGroupCommandInput extends CopyDBParameterGroupMessage {}
+export interface CopyDBParameterGroupCommandOutput extends CopyDBParameterGroupResult, __MetadataBearer {}
 
 /**
  * <p>Copies the specified DB parameter group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, CopyDBParameterGroupCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, CopyDBParameterGroupCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new CopyDBParameterGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CopyDBParameterGroupCommandInput} for command's `input` shape.
+ * @see {@link CopyDBParameterGroupCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CopyDBParameterGroupCommand extends $Command<
   CopyDBParameterGroupCommandInput,

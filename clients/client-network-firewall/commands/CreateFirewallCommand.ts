@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateFirewallCommandInput = CreateFirewallRequest;
-export type CreateFirewallCommandOutput = CreateFirewallResponse & __MetadataBearer;
+export interface CreateFirewallCommandInput extends CreateFirewallRequest {}
+export interface CreateFirewallCommandOutput extends CreateFirewallResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an AWS Network Firewall <a>Firewall</a> and accompanying <a>FirewallStatus</a> for a VPC. </p>
@@ -28,6 +28,20 @@ export type CreateFirewallCommandOutput = CreateFirewallResponse & __MetadataBea
  *          themselves, for example <a>UpdateLoggingConfiguration</a>, <a>AssociateSubnets</a>, and <a>UpdateFirewallDeleteProtection</a>. </p>
  *          <p>To manage a firewall's tags, use the standard AWS resource tagging operations, <a>ListTagsForResource</a>, <a>TagResource</a>, and <a>UntagResource</a>.</p>
  *          <p>To retrieve information about firewalls, use <a>ListFirewalls</a> and <a>DescribeFirewall</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkFirewallClient, CreateFirewallCommand } from "@aws-sdk/client-network-firewall"; // ES Modules import
+ * // const { NetworkFirewallClient, CreateFirewallCommand } = require("@aws-sdk/client-network-firewall"); // CommonJS import
+ * const client = new NetworkFirewallClient(config);
+ * const command = new CreateFirewallCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateFirewallCommandInput} for command's `input` shape.
+ * @see {@link CreateFirewallCommandOutput} for command's `response` shape.
+ * @see {@link NetworkFirewallClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateFirewallCommand extends $Command<
   CreateFirewallCommandInput,

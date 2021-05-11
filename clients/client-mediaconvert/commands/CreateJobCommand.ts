@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateJobCommandInput = CreateJobRequest;
-export type CreateJobCommandOutput = CreateJobResponse & __MetadataBearer;
+export interface CreateJobCommandInput extends CreateJobRequest {}
+export interface CreateJobCommandOutput extends CreateJobResponse, __MetadataBearer {}
 
 /**
  * Create a new transcoding job. For information about jobs and job settings, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaConvertClient, CreateJobCommand } from "@aws-sdk/client-mediaconvert"; // ES Modules import
+ * // const { MediaConvertClient, CreateJobCommand } = require("@aws-sdk/client-mediaconvert"); // CommonJS import
+ * const client = new MediaConvertClient(config);
+ * const command = new CreateJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateJobCommandInput} for command's `input` shape.
+ * @see {@link CreateJobCommandOutput} for command's `response` shape.
+ * @see {@link MediaConvertClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateJobCommand extends $Command<
   CreateJobCommandInput,

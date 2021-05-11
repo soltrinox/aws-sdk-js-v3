@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetMasterAccountCommandInput = GetMasterAccountRequest;
-export type GetMasterAccountCommandOutput = GetMasterAccountResponse & __MetadataBearer;
+export interface GetMasterAccountCommandInput extends GetMasterAccountRequest {}
+export interface GetMasterAccountCommandOutput extends GetMasterAccountResponse, __MetadataBearer {}
 
 /**
- * <p>Retrieves information about the Amazon Macie master account for an account.</p>
+ * <p>(Deprecated) Retrieves information about the Amazon Macie administrator account for an account. This operation has been replaced by the <link  linkend="GetAdministratorAccount">GetAdministratorAccount</link> operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Macie2Client, GetMasterAccountCommand } from "@aws-sdk/client-macie2"; // ES Modules import
+ * // const { Macie2Client, GetMasterAccountCommand } = require("@aws-sdk/client-macie2"); // CommonJS import
+ * const client = new Macie2Client(config);
+ * const command = new GetMasterAccountCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetMasterAccountCommandInput} for command's `input` shape.
+ * @see {@link GetMasterAccountCommandOutput} for command's `response` shape.
+ * @see {@link Macie2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetMasterAccountCommand extends $Command<
   GetMasterAccountCommandInput,

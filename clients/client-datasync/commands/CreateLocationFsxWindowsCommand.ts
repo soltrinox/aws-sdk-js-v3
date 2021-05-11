@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateLocationFsxWindowsCommandInput = CreateLocationFsxWindowsRequest;
-export type CreateLocationFsxWindowsCommandOutput = CreateLocationFsxWindowsResponse & __MetadataBearer;
+export interface CreateLocationFsxWindowsCommandInput extends CreateLocationFsxWindowsRequest {}
+export interface CreateLocationFsxWindowsCommandOutput extends CreateLocationFsxWindowsResponse, __MetadataBearer {}
 
 /**
- * <p>Creates an endpoint for an Amazon FSx for Windows file system.</p>
+ * <p>Creates an endpoint for an Amazon FSx for Windows File Server file system.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataSyncClient, CreateLocationFsxWindowsCommand } from "@aws-sdk/client-datasync"; // ES Modules import
+ * // const { DataSyncClient, CreateLocationFsxWindowsCommand } = require("@aws-sdk/client-datasync"); // CommonJS import
+ * const client = new DataSyncClient(config);
+ * const command = new CreateLocationFsxWindowsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateLocationFsxWindowsCommandInput} for command's `input` shape.
+ * @see {@link CreateLocationFsxWindowsCommandOutput} for command's `response` shape.
+ * @see {@link DataSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateLocationFsxWindowsCommand extends $Command<
   CreateLocationFsxWindowsCommandInput,

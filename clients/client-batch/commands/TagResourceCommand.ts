@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceRequest;
-export type TagResourceCommandOutput = TagResourceResponse & __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceRequest {}
+export interface TagResourceCommandOutput extends TagResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Associates the specified tags to a resource with the specified <code>resourceArn</code>. If existing tags on a
  *    resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags
  *    associated with that resource are deleted as well. AWS Batch resources that support tags are compute environments, jobs, job definitions, and job
  *  queues. ARNs for child jobs of array and multi-node parallel (MNP) jobs are not supported.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BatchClient, TagResourceCommand } from "@aws-sdk/client-batch"; // ES Modules import
+ * // const { BatchClient, TagResourceCommand } = require("@aws-sdk/client-batch"); // CommonJS import
+ * const client = new BatchClient(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link BatchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

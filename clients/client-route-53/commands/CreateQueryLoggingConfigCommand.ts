@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateQueryLoggingConfigCommandInput = CreateQueryLoggingConfigRequest;
-export type CreateQueryLoggingConfigCommandOutput = CreateQueryLoggingConfigResponse & __MetadataBearer;
+export interface CreateQueryLoggingConfigCommandInput extends CreateQueryLoggingConfigRequest {}
+export interface CreateQueryLoggingConfigCommandOutput extends CreateQueryLoggingConfigResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a configuration for DNS query logging. After you create a query logging configuration, Amazon Route 53 begins to publish
@@ -139,6 +139,20 @@ export type CreateQueryLoggingConfigCommandOutput = CreateQueryLoggingConfigResp
  * 					<a href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteQueryLoggingConfig.html">DeleteQueryLoggingConfig</a>.</p>
  * 				        </dd>
  *          </dl>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, CreateQueryLoggingConfigCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, CreateQueryLoggingConfigCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new CreateQueryLoggingConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateQueryLoggingConfigCommandInput} for command's `input` shape.
+ * @see {@link CreateQueryLoggingConfigCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateQueryLoggingConfigCommand extends $Command<
   CreateQueryLoggingConfigCommandInput,

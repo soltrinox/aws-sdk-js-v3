@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDBClusterSnapshotCommandInput = DeleteDBClusterSnapshotMessage;
-export type DeleteDBClusterSnapshotCommandOutput = DeleteDBClusterSnapshotResult & __MetadataBearer;
+export interface DeleteDBClusterSnapshotCommandInput extends DeleteDBClusterSnapshotMessage {}
+export interface DeleteDBClusterSnapshotCommandOutput extends DeleteDBClusterSnapshotResult, __MetadataBearer {}
 
 /**
  * <p>Deletes a DB cluster snapshot. If the snapshot is being copied, the copy operation is terminated.</p>
@@ -33,6 +33,20 @@ export type DeleteDBClusterSnapshotCommandOutput = DeleteDBClusterSnapshotResult
  *          <note>
  *             <p>This action only applies to Aurora DB clusters.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, DeleteDBClusterSnapshotCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, DeleteDBClusterSnapshotCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new DeleteDBClusterSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDBClusterSnapshotCommandInput} for command's `input` shape.
+ * @see {@link DeleteDBClusterSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDBClusterSnapshotCommand extends $Command<
   DeleteDBClusterSnapshotCommandInput,

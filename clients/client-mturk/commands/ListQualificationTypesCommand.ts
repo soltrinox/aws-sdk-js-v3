@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListQualificationTypesCommandInput = ListQualificationTypesRequest;
-export type ListQualificationTypesCommandOutput = ListQualificationTypesResponse & __MetadataBearer;
+export interface ListQualificationTypesCommandInput extends ListQualificationTypesRequest {}
+export interface ListQualificationTypesCommandOutput extends ListQualificationTypesResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -27,6 +27,20 @@ export type ListQualificationTypesCommandOutput = ListQualificationTypesResponse
  *             operation returns a list of Qualification types, filtered by
  *             an optional search term.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, ListQualificationTypesCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, ListQualificationTypesCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new ListQualificationTypesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListQualificationTypesCommandInput} for command's `input` shape.
+ * @see {@link ListQualificationTypesCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListQualificationTypesCommand extends $Command<
   ListQualificationTypesCommandInput,

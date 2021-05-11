@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutResourcePolicyCommandInput = PutResourcePolicyRequest;
-export type PutResourcePolicyCommandOutput = PutResourcePolicyResponse & __MetadataBearer;
+export interface PutResourcePolicyCommandInput extends PutResourcePolicyRequest {}
+export interface PutResourcePolicyCommandOutput extends PutResourcePolicyResponse, __MetadataBearer {}
 
 /**
  * <p>The name of the policy.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SchemasClient, PutResourcePolicyCommand } from "@aws-sdk/client-schemas"; // ES Modules import
+ * // const { SchemasClient, PutResourcePolicyCommand } = require("@aws-sdk/client-schemas"); // CommonJS import
+ * const client = new SchemasClient(config);
+ * const command = new PutResourcePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutResourcePolicyCommandInput} for command's `input` shape.
+ * @see {@link PutResourcePolicyCommandOutput} for command's `response` shape.
+ * @see {@link SchemasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutResourcePolicyCommand extends $Command<
   PutResourcePolicyCommandInput,

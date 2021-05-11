@@ -17,12 +17,12 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetResourcePolicyCommandInput = GetResourcePolicyRequest;
-export type GetResourcePolicyCommandOutput = GetResourcePolicyResponse & __MetadataBearer;
+export interface GetResourcePolicyCommandInput extends GetResourcePolicyRequest {}
+export interface GetResourcePolicyCommandOutput extends GetResourcePolicyResponse, __MetadataBearer {}
 
 /**
- * <p>Retrieves the JSON text of the resource-based policy document attached to the
- *       specified secret. The JSON request string input and response output displays formatted code
+ * <p>Retrieves the JSON text of the resource-based policy document attached to the specified
+ *       secret. The JSON request string input and response output displays formatted code
  *       with white space and line breaks for better readability. Submit your input as a single line
  *       JSON string.</p>
  *          <p>
@@ -48,6 +48,20 @@ export type GetResourcePolicyCommandOutput = GetResourcePolicyResponse & __Metad
  *                <p>To list all of the currently available secrets, use <a>ListSecrets</a>.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecretsManagerClient, GetResourcePolicyCommand } from "@aws-sdk/client-secrets-manager"; // ES Modules import
+ * // const { SecretsManagerClient, GetResourcePolicyCommand } = require("@aws-sdk/client-secrets-manager"); // CommonJS import
+ * const client = new SecretsManagerClient(config);
+ * const command = new GetResourcePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetResourcePolicyCommandInput} for command's `input` shape.
+ * @see {@link GetResourcePolicyCommandOutput} for command's `response` shape.
+ * @see {@link SecretsManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetResourcePolicyCommand extends $Command<
   GetResourcePolicyCommandInput,

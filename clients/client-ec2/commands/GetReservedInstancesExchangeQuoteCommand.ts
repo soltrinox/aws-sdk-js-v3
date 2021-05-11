@@ -17,13 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetReservedInstancesExchangeQuoteCommandInput = GetReservedInstancesExchangeQuoteRequest;
-export type GetReservedInstancesExchangeQuoteCommandOutput = GetReservedInstancesExchangeQuoteResult & __MetadataBearer;
+export interface GetReservedInstancesExchangeQuoteCommandInput extends GetReservedInstancesExchangeQuoteRequest {}
+export interface GetReservedInstancesExchangeQuoteCommandOutput
+  extends GetReservedInstancesExchangeQuoteResult,
+    __MetadataBearer {}
 
 /**
  * <p>Returns a quote and exchange information for exchanging one or more specified
  *             Convertible Reserved Instances for a new Convertible Reserved Instance. If the exchange
  *             cannot be performed, the reason is returned in the response. Use <a>AcceptReservedInstancesExchangeQuote</a> to perform the exchange.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, GetReservedInstancesExchangeQuoteCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, GetReservedInstancesExchangeQuoteCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new GetReservedInstancesExchangeQuoteCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetReservedInstancesExchangeQuoteCommandInput} for command's `input` shape.
+ * @see {@link GetReservedInstancesExchangeQuoteCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetReservedInstancesExchangeQuoteCommand extends $Command<
   GetReservedInstancesExchangeQuoteCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteHapgCommandInput = DeleteHapgRequest;
-export type DeleteHapgCommandOutput = DeleteHapgResponse & __MetadataBearer;
+export interface DeleteHapgCommandInput extends DeleteHapgRequest {}
+export interface DeleteHapgCommandOutput extends DeleteHapgResponse, __MetadataBearer {}
 
 /**
  * <p>This is documentation for <b>AWS CloudHSM Classic</b>. For
@@ -32,6 +32,20 @@ export type DeleteHapgCommandOutput = DeleteHapgResponse & __MetadataBearer;
  *       and the <a href="https://docs.aws.amazon.com/cloudhsm/latest/APIReference/">AWS CloudHSM API
  *       Reference</a>.</p>
  *          <p>Deletes a high-availability partition group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudHSMClient, DeleteHapgCommand } from "@aws-sdk/client-cloudhsm"; // ES Modules import
+ * // const { CloudHSMClient, DeleteHapgCommand } = require("@aws-sdk/client-cloudhsm"); // CommonJS import
+ * const client = new CloudHSMClient(config);
+ * const command = new DeleteHapgCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteHapgCommandInput} for command's `input` shape.
+ * @see {@link DeleteHapgCommandOutput} for command's `response` shape.
+ * @see {@link CloudHSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteHapgCommand extends $Command<
   DeleteHapgCommandInput,

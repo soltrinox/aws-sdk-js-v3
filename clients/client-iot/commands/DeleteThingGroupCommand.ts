@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteThingGroupCommandInput = DeleteThingGroupRequest;
-export type DeleteThingGroupCommandOutput = DeleteThingGroupResponse & __MetadataBearer;
+export interface DeleteThingGroupCommandInput extends DeleteThingGroupRequest {}
+export interface DeleteThingGroupCommandOutput extends DeleteThingGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a thing group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DeleteThingGroupCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DeleteThingGroupCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DeleteThingGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteThingGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteThingGroupCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteThingGroupCommand extends $Command<
   DeleteThingGroupCommandInput,

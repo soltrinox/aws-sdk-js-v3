@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutBucketNotificationConfigurationCommandInput = PutBucketNotificationConfigurationRequest;
-export type PutBucketNotificationConfigurationCommandOutput = __MetadataBearer;
+export interface PutBucketNotificationConfigurationCommandInput extends PutBucketNotificationConfigurationRequest {}
+export interface PutBucketNotificationConfigurationCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Enables notifications of specified events for a bucket. For more information about event
@@ -40,7 +40,7 @@ export type PutBucketNotificationConfigurationCommandOutput = __MetadataBearer;
  *          <p>
  *             <code></NotificationConfiguration></code>
  *          </p>
- *          <p>This operation replaces the existing notification configuration with the configuration
+ *          <p>This action replaces the existing notification configuration with the configuration
  *          you include in the request body.</p>
  *
  *          <p>After Amazon S3 receives this request, it first verifies that any Amazon Simple Notification
@@ -62,7 +62,7 @@ export type PutBucketNotificationConfigurationCommandOutput = __MetadataBearer;
  *             <p>The PUT notification is an atomic operation. For example, suppose your notification
  *             configuration includes SNS topic, SQS queue, and Lambda function configurations. When
  *             you send a PUT request with this configuration, Amazon S3 sends test messages to your SNS
- *             topic. If the message fails, the entire PUT operation will fail, and Amazon S3 will not add
+ *             topic. If the message fails, the entire PUT action will fail, and Amazon S3 will not add
  *             the configuration to your bucket.</p>
  *          </note>
  *
@@ -75,7 +75,7 @@ export type PutBucketNotificationConfigurationCommandOutput = __MetadataBearer;
  *          the <code>x-amz-sns-test-message-id</code> header containing the message ID of the test
  *          notification sent to the topic.</p>
  *
- *          <p>The following operation is related to
+ *          <p>The following action is related to
  *          <code>PutBucketNotificationConfiguration</code>:</p>
  *          <ul>
  *             <li>
@@ -84,6 +84,20 @@ export type PutBucketNotificationConfigurationCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, PutBucketNotificationConfigurationCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, PutBucketNotificationConfigurationCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new PutBucketNotificationConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutBucketNotificationConfigurationCommandInput} for command's `input` shape.
+ * @see {@link PutBucketNotificationConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutBucketNotificationConfigurationCommand extends $Command<
   PutBucketNotificationConfigurationCommandInput,

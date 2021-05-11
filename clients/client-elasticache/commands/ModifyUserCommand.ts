@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyUserCommandInput = ModifyUserMessage;
-export type ModifyUserCommandOutput = User & __MetadataBearer;
+export interface ModifyUserCommandInput extends ModifyUserMessage {}
+export interface ModifyUserCommandOutput extends User, __MetadataBearer {}
 
 /**
  * <p>Changes user password(s) and/or access string.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, ModifyUserCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, ModifyUserCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new ModifyUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyUserCommandInput} for command's `input` shape.
+ * @see {@link ModifyUserCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyUserCommand extends $Command<
   ModifyUserCommandInput,

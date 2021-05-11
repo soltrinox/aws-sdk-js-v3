@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateClusterKafkaVersionCommandInput = UpdateClusterKafkaVersionRequest;
-export type UpdateClusterKafkaVersionCommandOutput = UpdateClusterKafkaVersionResponse & __MetadataBearer;
+export interface UpdateClusterKafkaVersionCommandInput extends UpdateClusterKafkaVersionRequest {}
+export interface UpdateClusterKafkaVersionCommandOutput extends UpdateClusterKafkaVersionResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the Apache Kafka version for the cluster.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, UpdateClusterKafkaVersionCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, UpdateClusterKafkaVersionCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new UpdateClusterKafkaVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateClusterKafkaVersionCommandInput} for command's `input` shape.
+ * @see {@link UpdateClusterKafkaVersionCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateClusterKafkaVersionCommand extends $Command<
   UpdateClusterKafkaVersionCommandInput,

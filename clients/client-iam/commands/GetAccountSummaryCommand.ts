@@ -17,13 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAccountSummaryCommandInput = {};
-export type GetAccountSummaryCommandOutput = GetAccountSummaryResponse & __MetadataBearer;
+export interface GetAccountSummaryCommandInput {}
+export interface GetAccountSummaryCommandOutput extends GetAccountSummaryResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about IAM entity usage and IAM quotas in the AWS
- *          account.</p>
- *          <p>The number and size of IAM resources in an AWS account are limited. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html">IAM and STS Quotas</a> in the <i>IAM User Guide</i>.</p>
+ *             account.</p>
+ *         <p> For information about IAM quotas, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html">IAM and STS quotas</a> in the
+ *                 <i>IAM User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, GetAccountSummaryCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, GetAccountSummaryCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new GetAccountSummaryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAccountSummaryCommandInput} for command's `input` shape.
+ * @see {@link GetAccountSummaryCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAccountSummaryCommand extends $Command<
   GetAccountSummaryCommandInput,

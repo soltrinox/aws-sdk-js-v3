@@ -18,15 +18,15 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBucketWebsiteCommandInput = GetBucketWebsiteRequest;
-export type GetBucketWebsiteCommandOutput = GetBucketWebsiteOutput & __MetadataBearer;
+export interface GetBucketWebsiteCommandInput extends GetBucketWebsiteRequest {}
+export interface GetBucketWebsiteCommandOutput extends GetBucketWebsiteOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the website configuration for a bucket. To host website on Amazon S3, you can
  *          configure a bucket as website by adding a website configuration. For more information about
  *          hosting websites, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html">Hosting Websites on
  *             Amazon S3</a>. </p>
- *          <p>This GET operation requires the <code>S3:GetBucketWebsite</code> permission. By default,
+ *          <p>This GET action requires the <code>S3:GetBucketWebsite</code> permission. By default,
  *          only the bucket owner can read the bucket website configuration. However, bucket owners can
  *          allow other users to read the website configuration by writing a bucket policy granting
  *          them the <code>S3:GetBucketWebsite</code> permission.</p>
@@ -43,6 +43,20 @@ export type GetBucketWebsiteCommandOutput = GetBucketWebsiteOutput & __MetadataB
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetBucketWebsiteCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetBucketWebsiteCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetBucketWebsiteCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBucketWebsiteCommandInput} for command's `input` shape.
+ * @see {@link GetBucketWebsiteCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBucketWebsiteCommand extends $Command<
   GetBucketWebsiteCommandInput,

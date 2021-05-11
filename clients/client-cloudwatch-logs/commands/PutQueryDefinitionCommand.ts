@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutQueryDefinitionCommandInput = PutQueryDefinitionRequest;
-export type PutQueryDefinitionCommandOutput = PutQueryDefinitionResponse & __MetadataBearer;
+export interface PutQueryDefinitionCommandInput extends PutQueryDefinitionRequest {}
+export interface PutQueryDefinitionCommandOutput extends PutQueryDefinitionResponse, __MetadataBearer {}
 
 /**
  * <p>Creates or updates a query definition for CloudWatch Logs Insights. For
@@ -33,6 +33,20 @@ export type PutQueryDefinitionCommandOutput = PutQueryDefinitionResponse & __Met
  *       to contain no log groups.</p>
  *          <p>You must have the <code>logs:PutQueryDefinition</code> permission to be able to perform
  *     this operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, PutQueryDefinitionCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, PutQueryDefinitionCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new PutQueryDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutQueryDefinitionCommandInput} for command's `input` shape.
+ * @see {@link PutQueryDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutQueryDefinitionCommand extends $Command<
   PutQueryDefinitionCommandInput,

@@ -20,13 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAssociationForServiceQuotaTemplateCommandInput = GetAssociationForServiceQuotaTemplateRequest;
-export type GetAssociationForServiceQuotaTemplateCommandOutput = GetAssociationForServiceQuotaTemplateResponse &
-  __MetadataBearer;
+export interface GetAssociationForServiceQuotaTemplateCommandInput
+  extends GetAssociationForServiceQuotaTemplateRequest {}
+export interface GetAssociationForServiceQuotaTemplateCommandOutput
+  extends GetAssociationForServiceQuotaTemplateResponse,
+    __MetadataBearer {}
 
 /**
- * <p>Retrieves the <code>ServiceQuotaTemplateAssociationStatus</code> value from the service.
- *       Use this action to determine if the Service Quota template is associated, or enabled. </p>
+ * <p>Retrieves the status of the association for the quota request template.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceQuotasClient, GetAssociationForServiceQuotaTemplateCommand } from "@aws-sdk/client-service-quotas"; // ES Modules import
+ * // const { ServiceQuotasClient, GetAssociationForServiceQuotaTemplateCommand } = require("@aws-sdk/client-service-quotas"); // CommonJS import
+ * const client = new ServiceQuotasClient(config);
+ * const command = new GetAssociationForServiceQuotaTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAssociationForServiceQuotaTemplateCommandInput} for command's `input` shape.
+ * @see {@link GetAssociationForServiceQuotaTemplateCommandOutput} for command's `response` shape.
+ * @see {@link ServiceQuotasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAssociationForServiceQuotaTemplateCommand extends $Command<
   GetAssociationForServiceQuotaTemplateCommandInput,

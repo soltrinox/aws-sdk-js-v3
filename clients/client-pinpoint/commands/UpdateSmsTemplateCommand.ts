@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateSmsTemplateCommandInput = UpdateSmsTemplateRequest;
-export type UpdateSmsTemplateCommandOutput = UpdateSmsTemplateResponse & __MetadataBearer;
+export interface UpdateSmsTemplateCommandInput extends UpdateSmsTemplateRequest {}
+export interface UpdateSmsTemplateCommandOutput extends UpdateSmsTemplateResponse, __MetadataBearer {}
 
 /**
  * <p>Updates an existing message template for messages that are sent through the SMS channel.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, UpdateSmsTemplateCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, UpdateSmsTemplateCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new UpdateSmsTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateSmsTemplateCommandInput} for command's `input` shape.
+ * @see {@link UpdateSmsTemplateCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateSmsTemplateCommand extends $Command<
   UpdateSmsTemplateCommandInput,

@@ -21,12 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeregisterTargetsCommandInput = DeregisterTargetsInput;
-export type DeregisterTargetsCommandOutput = DeregisterTargetsOutput & __MetadataBearer;
+export interface DeregisterTargetsCommandInput extends DeregisterTargetsInput {}
+export interface DeregisterTargetsCommandOutput extends DeregisterTargetsOutput, __MetadataBearer {}
 
 /**
- * <p>Deregisters the specified targets from the specified target group. After the targets
- *       are deregistered, they no longer receive traffic from the load balancer.</p>
+ * <p>Deregisters the specified targets from the specified target group. After the targets are
+ *       deregistered, they no longer receive traffic from the load balancer.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingV2Client, DeregisterTargetsCommand } from "@aws-sdk/client-elastic-load-balancing-v2"; // ES Modules import
+ * // const { ElasticLoadBalancingV2Client, DeregisterTargetsCommand } = require("@aws-sdk/client-elastic-load-balancing-v2"); // CommonJS import
+ * const client = new ElasticLoadBalancingV2Client(config);
+ * const command = new DeregisterTargetsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeregisterTargetsCommandInput} for command's `input` shape.
+ * @see {@link DeregisterTargetsCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeregisterTargetsCommand extends $Command<
   DeregisterTargetsCommandInput,

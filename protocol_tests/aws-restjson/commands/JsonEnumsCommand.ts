@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type JsonEnumsCommandInput = JsonEnumsInputOutput;
-export type JsonEnumsCommandOutput = JsonEnumsInputOutput & __MetadataBearer;
+export interface JsonEnumsCommandInput extends JsonEnumsInputOutput {}
+export interface JsonEnumsCommandOutput extends JsonEnumsInputOutput, __MetadataBearer {}
 
 /**
  * This example serializes enums as top level properties, in lists, sets, and maps.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestJsonProtocolClient, JsonEnumsCommand } from "@aws-sdk/aws-restjson"; // ES Modules import
+ * // const { RestJsonProtocolClient, JsonEnumsCommand } = require("@aws-sdk/aws-restjson"); // CommonJS import
+ * const client = new RestJsonProtocolClient(config);
+ * const command = new JsonEnumsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link JsonEnumsCommandInput} for command's `input` shape.
+ * @see {@link JsonEnumsCommandOutput} for command's `response` shape.
+ * @see {@link RestJsonProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class JsonEnumsCommand extends $Command<
   JsonEnumsCommandInput,

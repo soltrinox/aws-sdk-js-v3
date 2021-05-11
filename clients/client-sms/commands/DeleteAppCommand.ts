@@ -14,12 +14,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAppCommandInput = DeleteAppRequest;
-export type DeleteAppCommandOutput = DeleteAppResponse & __MetadataBearer;
+export interface DeleteAppCommandInput extends DeleteAppRequest {}
+export interface DeleteAppCommandOutput extends DeleteAppResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified application. Optionally deletes the launched stack associated with
  *             the application and all AWS SMS replication jobs for servers in the application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SMSClient, DeleteAppCommand } from "@aws-sdk/client-sms"; // ES Modules import
+ * // const { SMSClient, DeleteAppCommand } = require("@aws-sdk/client-sms"); // CommonJS import
+ * const client = new SMSClient(config);
+ * const command = new DeleteAppCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAppCommandInput} for command's `input` shape.
+ * @see {@link DeleteAppCommandOutput} for command's `response` shape.
+ * @see {@link SMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAppCommand extends $Command<DeleteAppCommandInput, DeleteAppCommandOutput, SMSClientResolvedConfig> {
   // Start section: command_properties

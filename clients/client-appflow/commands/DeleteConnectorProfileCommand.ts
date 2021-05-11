@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteConnectorProfileCommandInput = DeleteConnectorProfileRequest;
-export type DeleteConnectorProfileCommandOutput = DeleteConnectorProfileResponse & __MetadataBearer;
+export interface DeleteConnectorProfileCommandInput extends DeleteConnectorProfileRequest {}
+export interface DeleteConnectorProfileCommandOutput extends DeleteConnectorProfileResponse, __MetadataBearer {}
 
 /**
  * <p>
  *  Enables you to delete an existing connector profile.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppflowClient, DeleteConnectorProfileCommand } from "@aws-sdk/client-appflow"; // ES Modules import
+ * // const { AppflowClient, DeleteConnectorProfileCommand } = require("@aws-sdk/client-appflow"); // CommonJS import
+ * const client = new AppflowClient(config);
+ * const command = new DeleteConnectorProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteConnectorProfileCommandInput} for command's `input` shape.
+ * @see {@link DeleteConnectorProfileCommandOutput} for command's `response` shape.
+ * @see {@link AppflowClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteConnectorProfileCommand extends $Command<
   DeleteConnectorProfileCommandInput,

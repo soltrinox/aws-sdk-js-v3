@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTagsForResourceCommandInput = ListTagsForResourceRequest;
-export type ListTagsForResourceCommandOutput = ListTagsForResourceResponse & __MetadataBearer;
+export interface ListTagsForResourceCommandInput extends ListTagsForResourceRequest {}
+export interface ListTagsForResourceCommandOutput extends ListTagsForResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the tags (keys and values) that are associated with a classification job, custom data identifier, findings filter, or member account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Macie2Client, ListTagsForResourceCommand } from "@aws-sdk/client-macie2"; // ES Modules import
+ * // const { Macie2Client, ListTagsForResourceCommand } = require("@aws-sdk/client-macie2"); // CommonJS import
+ * const client = new Macie2Client(config);
+ * const command = new ListTagsForResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTagsForResourceCommandInput} for command's `input` shape.
+ * @see {@link ListTagsForResourceCommandOutput} for command's `response` shape.
+ * @see {@link Macie2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTagsForResourceCommand extends $Command<
   ListTagsForResourceCommandInput,

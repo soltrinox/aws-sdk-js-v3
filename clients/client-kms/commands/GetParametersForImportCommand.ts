@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetParametersForImportCommandInput = GetParametersForImportRequest;
-export type GetParametersForImportCommandOutput = GetParametersForImportResponse & __MetadataBearer;
+export interface GetParametersForImportCommandInput extends GetParametersForImportRequest {}
+export interface GetParametersForImportCommandOutput extends GetParametersForImportResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the items you need to import key material into a symmetric, customer managed
@@ -38,6 +38,40 @@ export type GetParametersForImportCommandOutput = GetParametersForImportResponse
  *          <p>The CMK that you use for this operation must be in a compatible key state. For
  * details, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use
  * of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+ *          <p>
+ *             <b>Cross-account use</b>: No. You cannot perform this operation on a CMK in a different AWS account.</p>
+ *
+ *          <p>
+ *             <b>Required permissions</b>: <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:GetParametersForImport</a> (key policy)</p>
+ *          <p>
+ *             <b>Related operations:</b>
+ *          </p>
+ *          <ul>
+ *             <li>
+ *                <p>
+ *                   <a>ImportKeyMaterial</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>DeleteImportedKeyMaterial</a>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, GetParametersForImportCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, GetParametersForImportCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new GetParametersForImportCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetParametersForImportCommandInput} for command's `input` shape.
+ * @see {@link GetParametersForImportCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetParametersForImportCommand extends $Command<
   GetParametersForImportCommandInput,

@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutJobTaggingCommandInput = PutJobTaggingRequest;
-export type PutJobTaggingCommandOutput = PutJobTaggingResult & __MetadataBearer;
+export interface PutJobTaggingCommandInput extends PutJobTaggingRequest {}
+export interface PutJobTaggingCommandOutput extends PutJobTaggingResult, __MetadataBearer {}
 
 /**
  * <p>Sets the supplied tag-set on an S3 Batch Operations job.</p>
@@ -28,7 +28,7 @@ export type PutJobTaggingCommandOutput = PutJobTaggingResult & __MetadataBearer;
  *          the existing tag set, you can either replace the existing tag set entirely, or make changes
  *          within the existing tag set by retrieving the existing tag set using <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetJobTagging.html">GetJobTagging</a>, modify that tag set, and use this action to replace the
  *          tag set with the one you modified. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags">Controlling access and
- *             labeling jobs using tags</a> in the <i>Amazon Simple Storage Service Developer Guide</i>. </p>
+ *             labeling jobs using tags</a> in the <i>Amazon Simple Storage Service User Guide</i>. </p>
  *          <p></p>
  *          <note>
  *             <ul>
@@ -67,7 +67,7 @@ export type PutJobTaggingCommandOutput = PutJobTaggingResult & __MetadataBearer;
  *             </ul>
  *          </note>
  *          <p></p>
- *          <p>To use this operation, you must have permission to perform the <code>s3:PutJobTagging</code> action.</p>
+ *          <p>To use this action, you must have permission to perform the <code>s3:PutJobTagging</code> action.</p>
  *          <p>Related actions include:</p>
  *          <ul>
  *             <li>
@@ -86,6 +86,20 @@ export type PutJobTaggingCommandOutput = PutJobTaggingResult & __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, PutJobTaggingCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, PutJobTaggingCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new PutJobTaggingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutJobTaggingCommandInput} for command's `input` shape.
+ * @see {@link PutJobTaggingCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutJobTaggingCommand extends $Command<
   PutJobTaggingCommandInput,

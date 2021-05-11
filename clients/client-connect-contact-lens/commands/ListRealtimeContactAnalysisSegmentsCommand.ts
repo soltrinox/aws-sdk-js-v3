@@ -24,12 +24,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListRealtimeContactAnalysisSegmentsCommandInput = ListRealtimeContactAnalysisSegmentsRequest;
-export type ListRealtimeContactAnalysisSegmentsCommandOutput = ListRealtimeContactAnalysisSegmentsResponse &
-  __MetadataBearer;
+export interface ListRealtimeContactAnalysisSegmentsCommandInput extends ListRealtimeContactAnalysisSegmentsRequest {}
+export interface ListRealtimeContactAnalysisSegmentsCommandOutput
+  extends ListRealtimeContactAnalysisSegmentsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Provides a list of analysis segments for a real-time analysis session.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectContactLensClient, ListRealtimeContactAnalysisSegmentsCommand } from "@aws-sdk/client-connect-contact-lens"; // ES Modules import
+ * // const { ConnectContactLensClient, ListRealtimeContactAnalysisSegmentsCommand } = require("@aws-sdk/client-connect-contact-lens"); // CommonJS import
+ * const client = new ConnectContactLensClient(config);
+ * const command = new ListRealtimeContactAnalysisSegmentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListRealtimeContactAnalysisSegmentsCommandInput} for command's `input` shape.
+ * @see {@link ListRealtimeContactAnalysisSegmentsCommandOutput} for command's `response` shape.
+ * @see {@link ConnectContactLensClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListRealtimeContactAnalysisSegmentsCommand extends $Command<
   ListRealtimeContactAnalysisSegmentsCommandInput,

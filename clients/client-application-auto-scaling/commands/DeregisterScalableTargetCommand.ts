@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeregisterScalableTargetCommandInput = DeregisterScalableTargetRequest;
-export type DeregisterScalableTargetCommandOutput = DeregisterScalableTargetResponse & __MetadataBearer;
+export interface DeregisterScalableTargetCommandInput extends DeregisterScalableTargetRequest {}
+export interface DeregisterScalableTargetCommandOutput extends DeregisterScalableTargetResponse, __MetadataBearer {}
 
 /**
  * <p>Deregisters an Application Auto Scaling scalable target when you have finished using it. To see which
@@ -31,6 +31,20 @@ export type DeregisterScalableTargetCommandOutput = DeregisterScalableTargetResp
  *             <p>Deregistering a scalable target deletes the scaling policies and the scheduled
  *             actions that are associated with it.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationAutoScalingClient, DeregisterScalableTargetCommand } from "@aws-sdk/client-application-auto-scaling"; // ES Modules import
+ * // const { ApplicationAutoScalingClient, DeregisterScalableTargetCommand } = require("@aws-sdk/client-application-auto-scaling"); // CommonJS import
+ * const client = new ApplicationAutoScalingClient(config);
+ * const command = new DeregisterScalableTargetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeregisterScalableTargetCommandInput} for command's `input` shape.
+ * @see {@link DeregisterScalableTargetCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationAutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeregisterScalableTargetCommand extends $Command<
   DeregisterScalableTargetCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDevicePoolsCommandInput = ListDevicePoolsRequest;
-export type ListDevicePoolsCommandOutput = ListDevicePoolsResult & __MetadataBearer;
+export interface ListDevicePoolsCommandInput extends ListDevicePoolsRequest {}
+export interface ListDevicePoolsCommandOutput extends ListDevicePoolsResult, __MetadataBearer {}
 
 /**
  * <p>Gets information about device pools.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, ListDevicePoolsCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, ListDevicePoolsCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new ListDevicePoolsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDevicePoolsCommandInput} for command's `input` shape.
+ * @see {@link ListDevicePoolsCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDevicePoolsCommand extends $Command<
   ListDevicePoolsCommandInput,

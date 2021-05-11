@@ -12,6 +12,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -43,6 +46,9 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
@@ -69,6 +75,9 @@ export interface InputS3Object {
 }
 
 export namespace InputS3Object {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputS3Object): any => ({
     ...obj,
   });
@@ -86,6 +95,9 @@ export interface DatasetGroundTruthManifest {
 }
 
 export namespace DatasetGroundTruthManifest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetGroundTruthManifest): any => ({
     ...obj,
   });
@@ -102,6 +114,9 @@ export interface DatasetSource {
 }
 
 export namespace DatasetSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetSource): any => ({
     ...obj,
   });
@@ -146,6 +161,9 @@ export interface CreateDatasetRequest {
 }
 
 export namespace CreateDatasetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetRequest): any => ({
     ...obj,
   });
@@ -190,6 +208,9 @@ export interface DatasetMetadata {
 }
 
 export namespace DatasetMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetMetadata): any => ({
     ...obj,
   });
@@ -203,6 +224,9 @@ export interface CreateDatasetResponse {
 }
 
 export namespace CreateDatasetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetResponse): any => ({
     ...obj,
   });
@@ -222,6 +246,9 @@ export interface InternalServerException extends __SmithyException, $MetadataBea
 }
 
 export namespace InternalServerException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerException): any => ({
     ...obj,
   });
@@ -246,6 +273,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -281,6 +311,9 @@ export interface ServiceQuotaExceededException extends __SmithyException, $Metad
 }
 
 export namespace ServiceQuotaExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceQuotaExceededException): any => ({
     ...obj,
   });
@@ -310,6 +343,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -326,48 +362,33 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The S3 location where Amazon Lookout for Vision saves training output.</p>
- */
-export interface OutputS3Object {
-  /**
-   * <p>The bucket that contains the training output.</p>
-   */
-  Bucket: string | undefined;
-
-  /**
-   * <p>The location of the training output in the bucket.</p>
-   */
-  Key: string | undefined;
-}
-
-export namespace OutputS3Object {
-  export const filterSensitiveLog = (obj: OutputS3Object): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Information about the location of a manifest file.</p>
+ * <p>Information about the location training output.</p>
  */
 export interface S3Location {
   /**
-   * <p>The S3 bucket that contain the manifest file.</p>
+   * <p>The S3 bucket that contains the training output.</p>
    */
   Bucket: string | undefined;
 
   /**
-   * <p>The path and name of the manifest file with the S3 bucket.</p>
+   * <p>The path of the folder, within the S3 bucket, that contains the training output.</p>
    */
   Prefix?: string;
 }
 
 export namespace S3Location {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Location): any => ({
     ...obj,
   });
@@ -384,7 +405,85 @@ export interface OutputConfig {
 }
 
 export namespace OutputConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OutputConfig): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>A key and value pair that is attached to the specified Amazon Lookout for Vision model.</p>
+ */
+export interface Tag {
+  /**
+   * <p>The key of the tag that is attached to the specified model.</p>
+   */
+  Key: string | undefined;
+
+  /**
+   * <p>The value of the tag that is attached to the specified model.</p>
+   */
+  Value: string | undefined;
+}
+
+export namespace Tag {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: Tag): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateModelRequest {
+  /**
+   * <p>The name of the project in which you want to create a model version.</p>
+   */
+  ProjectName: string | undefined;
+
+  /**
+   * <p>A description for the version of the model.</p>
+   */
+  Description?: string;
+
+  /**
+   * <p>ClientToken is an idempotency token that ensures a call to <code>CreateModel</code>
+   *       completes only once.  You choose the value to pass. For example, An issue,
+   *       such as an network outage, might prevent you from getting a response from <code>CreateModel</code>.
+   *       In this case, safely retry your call
+   *        to <code>CreateModel</code> by using the same <code>ClientToken</code> parameter value. An error occurs
+   *        if the other input parameters are not the same as in the first request. Using a different
+   *        value for <code>ClientToken</code> is considered a new call to <code>CreateModel</code>. An idempotency
+   *        token is active for 8 hours.</p>
+   */
+  ClientToken?: string;
+
+  /**
+   * <p>The location where Amazon Lookout for Vision saves the training results.</p>
+   */
+  OutputConfig: OutputConfig | undefined;
+
+  /**
+   * <p>The identifier for your AWS Key Management Service (AWS KMS) customer master key (CMK).
+   *          The key is used to encrypt training and test images copied into the service for model training. Your
+   *          source images are unaffected.
+   *          If this parameter is not specified, the copied images are encrypted by a key that AWS owns and manages.</p>
+   */
+  KmsKeyId?: string;
+
+  /**
+   * <p>A set of tags (key-value pairs) that you want to attach to the model.</p>
+   */
+  Tags?: Tag[];
+}
+
+export namespace CreateModelRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateModelRequest): any => ({
     ...obj,
   });
 }
@@ -410,6 +509,9 @@ export interface ModelPerformance {
 }
 
 export namespace ModelPerformance {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModelPerformance): any => ({
     ...obj,
   });
@@ -425,6 +527,452 @@ export enum ModelStatus {
   TRAINED = "TRAINED",
   TRAINING = "TRAINING",
   TRAINING_FAILED = "TRAINING_FAILED",
+}
+
+/**
+ * <p>Describes an Amazon Lookout for Vision model.</p>
+ */
+export interface ModelMetadata {
+  /**
+   * <p>The unix timestamp for the date and time that the model was created. </p>
+   */
+  CreationTimestamp?: Date;
+
+  /**
+   * <p>The version of the model.</p>
+   */
+  ModelVersion?: string;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the model.</p>
+   */
+  ModelArn?: string;
+
+  /**
+   * <p>The description for the model.</p>
+   */
+  Description?: string;
+
+  /**
+   * <p>The status of the model.</p>
+   */
+  Status?: ModelStatus | string;
+
+  /**
+   * <p>The status message for the model.</p>
+   */
+  StatusMessage?: string;
+
+  /**
+   * <p>Performance metrics for the model. Not available until training has successfully completed.</p>
+   */
+  Performance?: ModelPerformance;
+}
+
+export namespace ModelMetadata {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ModelMetadata): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateModelResponse {
+  /**
+   * <p>The response from a call to <code>CreateModel</code>.</p>
+   */
+  ModelMetadata?: ModelMetadata;
+}
+
+export namespace CreateModelResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateModelResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateProjectRequest {
+  /**
+   * <p>The name for the project.</p>
+   */
+  ProjectName: string | undefined;
+
+  /**
+   * <p>ClientToken is an idempotency token that ensures a call to <code>CreateProject</code>
+   *       completes only once.  You choose the value to pass. For example, An issue,
+   *       such as an network outage, might prevent you from getting a response from <code>CreateProject</code>.
+   *       In this case, safely retry your call
+   *        to <code>CreateProject</code> by using the same <code>ClientToken</code> parameter value. An error occurs
+   *        if the other input parameters are not the same as in the first request. Using a different
+   *        value for <code>ClientToken</code> is considered a new call to <code>CreateProject</code>. An idempotency
+   *        token is active for 8 hours.</p>
+   */
+  ClientToken?: string;
+}
+
+export namespace CreateProjectRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateProjectRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Metadata about an Amazon Lookout for Vision project.</p>
+ */
+export interface ProjectMetadata {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the project.</p>
+   */
+  ProjectArn?: string;
+
+  /**
+   * <p>The name of the project.</p>
+   */
+  ProjectName?: string;
+
+  /**
+   * <p>The unix timestamp for the date and time that the project was created. </p>
+   */
+  CreationTimestamp?: Date;
+}
+
+export namespace ProjectMetadata {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ProjectMetadata): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateProjectResponse {
+  /**
+   * <p>Information about the project.</p>
+   */
+  ProjectMetadata?: ProjectMetadata;
+}
+
+export namespace CreateProjectResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateProjectResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Statistics about the images in a dataset.</p>
+ */
+export interface DatasetImageStats {
+  /**
+   * <p>The total number of images in the dataset.</p>
+   */
+  Total?: number;
+
+  /**
+   * <p>The total number of labeled images.</p>
+   */
+  Labeled?: number;
+
+  /**
+   * <p>The total number of images labeled as normal.</p>
+   */
+  Normal?: number;
+
+  /**
+   * <p>the total number of images labeled as an anomaly.</p>
+   */
+  Anomaly?: number;
+}
+
+export namespace DatasetImageStats {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DatasetImageStats): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The description for a dataset. For more information, see <a>DescribeDataset</a>.</p>
+ */
+export interface DatasetDescription {
+  /**
+   * <p>The name of the project that contains the dataset.</p>
+   */
+  ProjectName?: string;
+
+  /**
+   * <p>The type of the dataset. The value <code>train</code> represents a training dataset or single dataset project.
+   *       The value <code>test</code> represents a test dataset.</p>
+   */
+  DatasetType?: string;
+
+  /**
+   * <p>The Unix timestamp for the time and date that the dataset was created.</p>
+   */
+  CreationTimestamp?: Date;
+
+  /**
+   * <p>The Unix timestamp for the date and time that the dataset was last updated.</p>
+   */
+  LastUpdatedTimestamp?: Date;
+
+  /**
+   * <p>The status of the dataset.</p>
+   */
+  Status?: DatasetStatus | string;
+
+  /**
+   * <p>The status message for the dataset. </p>
+   */
+  StatusMessage?: string;
+
+  /**
+   * <p></p>
+   */
+  ImageStats?: DatasetImageStats;
+}
+
+export namespace DatasetDescription {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DatasetDescription): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteDatasetRequest {
+  /**
+   * <p>The name of the project that contains the dataset that you want to delete.</p>
+   */
+  ProjectName: string | undefined;
+
+  /**
+   * <p>The type of the dataset to delete. Specify <code>train</code> to delete the training dataset.
+   *       Specify <code>test</code> to delete the test dataset. To delete the dataset in a single dataset project,
+   *          specify <code>train</code>.</p>
+   */
+  DatasetType: string | undefined;
+
+  /**
+   * <p>ClientToken is an idempotency token that ensures a call to <code>DeleteDataset</code>
+   *       completes only once.  You choose the value to pass. For example, An issue,
+   *       such as an network outage, might prevent you from getting a response from <code>DeleteDataset</code>.
+   *       In this case, safely retry your call
+   *        to <code>DeleteDataset</code> by using the same <code>ClientToken</code> parameter value. An error occurs
+   *        if the other input parameters are not the same as in the first request. Using a different
+   *        value for <code>ClientToken</code> is considered a new call to <code>DeleteDataset</code>. An idempotency
+   *        token is active for 8 hours.</p>
+   */
+  ClientToken?: string;
+}
+
+export namespace DeleteDatasetRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteDatasetRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteDatasetResponse {}
+
+export namespace DeleteDatasetResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteDatasetResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteModelRequest {
+  /**
+   * <p>The name of the project that contains the model that you want to delete.</p>
+   */
+  ProjectName: string | undefined;
+
+  /**
+   * <p>The version of the model that you want to delete.</p>
+   */
+  ModelVersion: string | undefined;
+
+  /**
+   * <p>ClientToken is an idempotency token that ensures a call to <code>DeleteModel</code>
+   *       completes only once.  You choose the value to pass. For example, An issue,
+   *       such as an network outage, might prevent you from getting a response from <code>DeleteModel</code>.
+   *       In this case, safely retry your call
+   *        to <code>DeleteModel</code> by using the same <code>ClientToken</code> parameter value. An error occurs
+   *        if the other input parameters are not the same as in the first request. Using a different
+   *        value for <code>ClientToken</code> is considered a new call to <code>DeleteModel</code>. An idempotency
+   *        token is active for 8 hours.</p>
+   */
+  ClientToken?: string;
+}
+
+export namespace DeleteModelRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteModelRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteModelResponse {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the model that was deleted.</p>
+   */
+  ModelArn?: string;
+}
+
+export namespace DeleteModelResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteModelResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteProjectRequest {
+  /**
+   * <p>The name of the project to delete.</p>
+   */
+  ProjectName: string | undefined;
+
+  /**
+   * <p>ClientToken is an idempotency token that ensures a call to <code>DeleteProject</code>
+   *          completes only once.  You choose the value to pass. For example, An issue,
+   *          such as an network outage, might prevent you from getting a response from <code>DeleteProject</code>.
+   *          In this case, safely retry your call
+   *          to <code>DeleteProject</code> by using the same <code>ClientToken</code> parameter value. An error occurs
+   *          if the other input parameters are not the same as in the first request. Using a different
+   *          value for <code>ClientToken</code> is considered a new call to <code>DeleteProject</code>. An idempotency
+   *          token is active for 8 hours.</p>
+   */
+  ClientToken?: string;
+}
+
+export namespace DeleteProjectRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteProjectRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteProjectResponse {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the project that was deleted.</p>
+   */
+  ProjectArn?: string;
+}
+
+export namespace DeleteProjectResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteProjectResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeDatasetRequest {
+  /**
+   * <p>The name of the project that contains the dataset that you want to describe.</p>
+   */
+  ProjectName: string | undefined;
+
+  /**
+   * <p>The type of the dataset to describe. Specify <code>train</code> to describe the
+   *       training dataset. Specify <code>test</code> to describe the test dataset.
+   *       If you have a single dataset project, specify <code>train</code>
+   *          </p>
+   */
+  DatasetType: string | undefined;
+}
+
+export namespace DescribeDatasetRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeDatasetRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeDatasetResponse {
+  /**
+   * <p>The description of the requested dataset. </p>
+   */
+  DatasetDescription?: DatasetDescription;
+}
+
+export namespace DescribeDatasetResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeDatasetResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeModelRequest {
+  /**
+   * <p>The project that contains the version of a model that you want to describe.</p>
+   */
+  ProjectName: string | undefined;
+
+  /**
+   * <p>The version of the model that you want to describe.</p>
+   */
+  ModelVersion: string | undefined;
+}
+
+export namespace DescribeModelRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeModelRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The S3 location where Amazon Lookout for Vision saves training output.</p>
+ */
+export interface OutputS3Object {
+  /**
+   * <p>The bucket that contains the training output.</p>
+   */
+  Bucket: string | undefined;
+
+  /**
+   * <p>The location of the training output in the bucket.</p>
+   */
+  Key: string | undefined;
+}
+
+export namespace OutputS3Object {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: OutputS3Object): any => ({
+    ...obj,
+  });
 }
 
 /**
@@ -495,423 +1043,10 @@ export interface ModelDescription {
 }
 
 export namespace ModelDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModelDescription): any => ({
-    ...obj,
-  });
-}
-
-export interface CreateModelRequest {
-  /**
-   * <p>The name of the project in which you want to create a model version.</p>
-   */
-  ProjectName: string | undefined;
-
-  /**
-   * <p>A description for the version of the model.</p>
-   */
-  Description?: ModelDescription;
-
-  /**
-   * <p>ClientToken is an idempotency token that ensures a call to <code>CreateModel</code>
-   *       completes only once.  You choose the value to pass. For example, An issue,
-   *       such as an network outage, might prevent you from getting a response from <code>CreateModel</code>.
-   *       In this case, safely retry your call
-   *        to <code>CreateModel</code> by using the same <code>ClientToken</code> parameter value. An error occurs
-   *        if the other input parameters are not the same as in the first request. Using a different
-   *        value for <code>ClientToken</code> is considered a new call to <code>CreateModel</code>. An idempotency
-   *        token is active for 8 hours.</p>
-   */
-  ClientToken?: string;
-
-  /**
-   * <p>The location where Amazon Lookout for Vision saves the training results.</p>
-   */
-  OutputConfig: OutputConfig | undefined;
-
-  /**
-   * <p>The identifier of the AWS Key Management Service (AWS KMS) customer master key (CMK)
-   *        to use for encypting the model. If this parameter is not specified, the
-   *        model is encrypted by a key that AWS owns and manages.</p>
-   */
-  KmsKeyId?: string;
-}
-
-export namespace CreateModelRequest {
-  export const filterSensitiveLog = (obj: CreateModelRequest): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Describes an Amazon Lookout for Vision model.</p>
- */
-export interface ModelMetadata {
-  /**
-   * <p>The unix timestamp for the date and time that the model was created. </p>
-   */
-  CreationTimestamp?: Date;
-
-  /**
-   * <p>The version of the model.</p>
-   */
-  ModelVersion?: string;
-
-  /**
-   * <p>The Amazon Resource Name (ARN) of the model.</p>
-   */
-  ModelArn?: string;
-
-  /**
-   * <p>The description for the model.</p>
-   */
-  Description?: string;
-
-  /**
-   * <p>The status of the model.</p>
-   */
-  Status?: ModelStatus | string;
-
-  /**
-   * <p>The status message for the model.</p>
-   */
-  StatusMessage?: string;
-
-  /**
-   * <p>Performance metrics for the model. Created during training.</p>
-   */
-  Performance?: ModelPerformance;
-}
-
-export namespace ModelMetadata {
-  export const filterSensitiveLog = (obj: ModelMetadata): any => ({
-    ...obj,
-  });
-}
-
-export interface CreateModelResponse {
-  /**
-   * <p>The response from a call to <code>CreateModel</code>.</p>
-   */
-  ModelMetadata?: ModelMetadata;
-}
-
-export namespace CreateModelResponse {
-  export const filterSensitiveLog = (obj: CreateModelResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface CreateProjectRequest {
-  /**
-   * <p>S nsme for the project.</p>
-   */
-  ProjectName: string | undefined;
-
-  /**
-   * <p>ClientToken is an idempotency token that ensures a call to <code>CreateProject</code>
-   *       completes only once.  You choose the value to pass. For example, An issue,
-   *       such as an network outage, might prevent you from getting a response from <code>CreateProject</code>.
-   *       In this case, safely retry your call
-   *        to <code>CreateProject</code> by using the same <code>ClientToken</code> parameter value. An error occurs
-   *        if the other input parameters are not the same as in the first request. Using a different
-   *        value for <code>ClientToken</code> is considered a new call to <code>CreateProject</code>. An idempotency
-   *        token is active for 8 hours.</p>
-   */
-  ClientToken?: string;
-}
-
-export namespace CreateProjectRequest {
-  export const filterSensitiveLog = (obj: CreateProjectRequest): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Metadata about an Amazon Lookout for Vision project.</p>
- */
-export interface ProjectMetadata {
-  /**
-   * <p>The Amazon Resource Name (ARN) of the project.</p>
-   */
-  ProjectArn?: string;
-
-  /**
-   * <p>The name of the project.</p>
-   */
-  ProjectName?: string;
-
-  /**
-   * <p>The unix timestamp for the date and time that the project was created. </p>
-   */
-  CreationTimestamp?: Date;
-}
-
-export namespace ProjectMetadata {
-  export const filterSensitiveLog = (obj: ProjectMetadata): any => ({
-    ...obj,
-  });
-}
-
-export interface CreateProjectResponse {
-  /**
-   * <p>Information about the project.</p>
-   */
-  ProjectMetadata?: ProjectMetadata;
-}
-
-export namespace CreateProjectResponse {
-  export const filterSensitiveLog = (obj: CreateProjectResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Statistics about the images in a dataset.</p>
- */
-export interface DatasetImageStats {
-  /**
-   * <p>The total number of images in the dataset.</p>
-   */
-  Total?: number;
-
-  /**
-   * <p>The total number of labeled images.</p>
-   */
-  Labeled?: number;
-
-  /**
-   * <p>The total number of images labeled as normal.</p>
-   */
-  Normal?: number;
-
-  /**
-   * <p>the total number of images labeled as an anomaly.</p>
-   */
-  Anomaly?: number;
-}
-
-export namespace DatasetImageStats {
-  export const filterSensitiveLog = (obj: DatasetImageStats): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The description for a dataset. For more information, see <a>DescribeDataset</a>.</p>
- */
-export interface DatasetDescription {
-  /**
-   * <p>The name of the project that contains the dataset.</p>
-   */
-  ProjectName?: string;
-
-  /**
-   * <p>The type of the dataset. The value <code>train</code> represents a training dataset or single dataset project.
-   *       The value <code>test</code> represents a test dataset.</p>
-   */
-  DatasetType?: string;
-
-  /**
-   * <p>The Unix timestamp for the time and date that the dataset was created.</p>
-   */
-  CreationTimestamp?: Date;
-
-  /**
-   * <p>The Unix timestamp for the date and time that the dataset was last updated.</p>
-   */
-  LastUpdatedTimestamp?: Date;
-
-  /**
-   * <p>The status of the dataset.</p>
-   */
-  Status?: DatasetStatus | string;
-
-  /**
-   * <p>The status message for the dataset. </p>
-   */
-  StatusMessage?: string;
-
-  /**
-   * <p></p>
-   */
-  ImageStats?: DatasetImageStats;
-}
-
-export namespace DatasetDescription {
-  export const filterSensitiveLog = (obj: DatasetDescription): any => ({
-    ...obj,
-  });
-}
-
-export interface DeleteDatasetRequest {
-  /**
-   * <p>The name of the project that contains the dataset that you want to delete.</p>
-   */
-  ProjectName: string | undefined;
-
-  /**
-   * <p>The type of the dataset to delete. Specify <code>train</code> to delete the training dataset.
-   *       Specify <code>test</code> to delete the test dataset. To delete the dataset in a single dataset project,
-   *          specify <code>train</code>.</p>
-   */
-  DatasetType: string | undefined;
-
-  /**
-   * <p>ClientToken is an idempotency token that ensures a call to <code>DeleteDataset</code>
-   *       completes only once.  You choose the value to pass. For example, An issue,
-   *       such as an network outage, might prevent you from getting a response from <code>DeleteDataset</code>.
-   *       In this case, safely retry your call
-   *        to <code>DeleteDataset</code> by using the same <code>ClientToken</code> parameter value. An error occurs
-   *        if the other input parameters are not the same as in the first request. Using a different
-   *        value for <code>ClientToken</code> is considered a new call to <code>DeleteDataset</code>. An idempotency
-   *        token is active for 8 hours.</p>
-   */
-  ClientToken?: string;
-}
-
-export namespace DeleteDatasetRequest {
-  export const filterSensitiveLog = (obj: DeleteDatasetRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface DeleteDatasetResponse {}
-
-export namespace DeleteDatasetResponse {
-  export const filterSensitiveLog = (obj: DeleteDatasetResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface DeleteModelRequest {
-  /**
-   * <p>The name of the project that contains the model that you want to delete.</p>
-   */
-  ProjectName: string | undefined;
-
-  /**
-   * <p>The version of the model that you want to delete.</p>
-   */
-  ModelVersion: string | undefined;
-
-  /**
-   * <p>ClientToken is an idempotency token that ensures a call to <code>DeleteModel</code>
-   *       completes only once.  You choose the value to pass. For example, An issue,
-   *       such as an network outage, might prevent you from getting a response from <code>DeleteModel</code>.
-   *       In this case, safely retry your call
-   *        to <code>DeleteModel</code> by using the same <code>ClientToken</code> parameter value. An error occurs
-   *        if the other input parameters are not the same as in the first request. Using a different
-   *        value for <code>ClientToken</code> is considered a new call to <code>DeleteModel</code>. An idempotency
-   *        token is active for 8 hours.</p>
-   */
-  ClientToken?: string;
-}
-
-export namespace DeleteModelRequest {
-  export const filterSensitiveLog = (obj: DeleteModelRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface DeleteModelResponse {
-  /**
-   * <p>The Amazon Resource Name (ARN) of the model that was deleted.</p>
-   */
-  ModelArn?: string;
-}
-
-export namespace DeleteModelResponse {
-  export const filterSensitiveLog = (obj: DeleteModelResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface DeleteProjectRequest {
-  /**
-   * <p>The name of the project to delete.</p>
-   */
-  ProjectName: string | undefined;
-
-  /**
-   * <p>ClientToken is an idempotency token that ensures a call to <code>DeleteProject</code>
-   *          completes only once.  You choose the value to pass. For example, An issue,
-   *          such as an network outage, might prevent you from getting a response from <code>DeleteProject</code>.
-   *          In this case, safely retry your call
-   *          to <code>DeleteProject</code> by using the same <code>ClientToken</code> parameter value. An error occurs
-   *          if the other input parameters are not the same as in the first request. Using a different
-   *          value for <code>ClientToken</code> is considered a new call to <code>DeleteProject</code>. An idempotency
-   *          token is active for 8 hours.</p>
-   */
-  ClientToken?: string;
-}
-
-export namespace DeleteProjectRequest {
-  export const filterSensitiveLog = (obj: DeleteProjectRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface DeleteProjectResponse {
-  /**
-   * <p>The Amazon Resource Name (ARN) of the project that was deleted.</p>
-   */
-  ProjectArn?: string;
-}
-
-export namespace DeleteProjectResponse {
-  export const filterSensitiveLog = (obj: DeleteProjectResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface DescribeDatasetRequest {
-  /**
-   * <p>The name of the project that contains the dataset that you want to describe.</p>
-   */
-  ProjectName: string | undefined;
-
-  /**
-   * <p>The type of the dataset to describe. Specify <code>train</code> to describe the
-   *       training dataset. Specify <code>test</code> to describe the test dataset.
-   *       If you have a single dataset project, specify <code>train</code>
-   *          </p>
-   */
-  DatasetType: string | undefined;
-}
-
-export namespace DescribeDatasetRequest {
-  export const filterSensitiveLog = (obj: DescribeDatasetRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface DescribeDatasetResponse {
-  /**
-   * <p>The description of the requested dataset. </p>
-   */
-  DatasetDescription?: DatasetDescription;
-}
-
-export namespace DescribeDatasetResponse {
-  export const filterSensitiveLog = (obj: DescribeDatasetResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface DescribeModelRequest {
-  /**
-   * <p>The project that contains the version of a model that you want to describe.</p>
-   */
-  ProjectName: string | undefined;
-
-  /**
-   * <p>The version of the model that you want to describe.</p>
-   */
-  ModelVersion: string | undefined;
-}
-
-export namespace DescribeModelRequest {
-  export const filterSensitiveLog = (obj: DescribeModelRequest): any => ({
     ...obj,
   });
 }
@@ -924,6 +1059,9 @@ export interface DescribeModelResponse {
 }
 
 export namespace DescribeModelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeModelResponse): any => ({
     ...obj,
   });
@@ -937,6 +1075,9 @@ export interface DescribeProjectRequest {
 }
 
 export namespace DescribeProjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeProjectRequest): any => ({
     ...obj,
   });
@@ -968,6 +1109,9 @@ export interface ProjectDescription {
 }
 
 export namespace ProjectDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProjectDescription): any => ({
     ...obj,
   });
@@ -981,6 +1125,9 @@ export interface DescribeProjectResponse {
 }
 
 export namespace DescribeProjectResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeProjectResponse): any => ({
     ...obj,
   });
@@ -1010,6 +1157,9 @@ export interface DetectAnomaliesRequest {
 }
 
 export namespace DetectAnomaliesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetectAnomaliesRequest): any => ({
     ...obj,
   });
@@ -1026,6 +1176,9 @@ export interface ImageSource {
 }
 
 export namespace ImageSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImageSource): any => ({
     ...obj,
   });
@@ -1053,6 +1206,9 @@ export interface DetectAnomalyResult {
 }
 
 export namespace DetectAnomalyResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetectAnomalyResult): any => ({
     ...obj,
   });
@@ -1066,6 +1222,9 @@ export interface DetectAnomaliesResponse {
 }
 
 export namespace DetectAnomaliesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetectAnomaliesResponse): any => ({
     ...obj,
   });
@@ -1128,6 +1287,9 @@ export interface ListDatasetEntriesRequest {
 }
 
 export namespace ListDatasetEntriesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetEntriesRequest): any => ({
     ...obj,
   });
@@ -1147,6 +1309,9 @@ export interface ListDatasetEntriesResponse {
 }
 
 export namespace ListDatasetEntriesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetEntriesResponse): any => ({
     ...obj,
   });
@@ -1174,6 +1339,9 @@ export interface ListModelsRequest {
 }
 
 export namespace ListModelsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListModelsRequest): any => ({
     ...obj,
   });
@@ -1193,6 +1361,9 @@ export interface ListModelsResponse {
 }
 
 export namespace ListModelsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListModelsResponse): any => ({
     ...obj,
   });
@@ -1215,6 +1386,9 @@ export interface ListProjectsRequest {
 }
 
 export namespace ListProjectsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProjectsRequest): any => ({
     ...obj,
   });
@@ -1234,7 +1408,42 @@ export interface ListProjectsResponse {
 }
 
 export namespace ListProjectsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProjectsResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListTagsForResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the model for which you want to list tags. </p>
+   */
+  ResourceArn: string | undefined;
+}
+
+export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListTagsForResourceResponse {
+  /**
+   * <p>A map of tag keys and values attached to the specified model.</p>
+   */
+  Tags?: Tag[];
+}
+
+export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
 }
@@ -1274,16 +1483,20 @@ export interface StartModelRequest {
 }
 
 export namespace StartModelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartModelRequest): any => ({
     ...obj,
   });
 }
 
 export enum ModelHostingStatus {
-  FAILED = "FAILED",
-  RUNNING = "RUNNING",
-  STARTING = "STARTING",
-  STOPPED = "STOPPED",
+  HOSTED = "HOSTED",
+  HOSTING_FAILED = "HOSTING_FAILED",
+  STARTING_HOSTING = "STARTING_HOSTING",
+  STOPPING_HOSTING = "STOPPING_HOSTING",
+  SYSTEM_UPDATING = "SYSTEM_UPDATING",
 }
 
 export interface StartModelResponse {
@@ -1294,6 +1507,9 @@ export interface StartModelResponse {
 }
 
 export namespace StartModelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartModelResponse): any => ({
     ...obj,
   });
@@ -1327,6 +1543,9 @@ export interface StopModelRequest {
 }
 
 export namespace StopModelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopModelRequest): any => ({
     ...obj,
   });
@@ -1340,7 +1559,74 @@ export interface StopModelResponse {
 }
 
 export namespace StopModelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopModelResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface TagResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the model to assign the tags.</p>
+   */
+  ResourceArn: string | undefined;
+
+  /**
+   * <p>The key-value tags to assign to the model.</p>
+   */
+  Tags: Tag[] | undefined;
+}
+
+export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagResourceResponse {}
+
+export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface UntagResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the model from which you want to remove tags. </p>
+   */
+  ResourceArn: string | undefined;
+
+  /**
+   * <p>A list of the keys of the tags that you want to remove.</p>
+   */
+  TagKeys: string[] | undefined;
+}
+
+export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface UntagResourceResponse {}
+
+export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
 }
@@ -1378,6 +1664,9 @@ export interface UpdateDatasetEntriesRequest {
 }
 
 export namespace UpdateDatasetEntriesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDatasetEntriesRequest): any => ({
     ...obj,
   });
@@ -1391,6 +1680,9 @@ export interface UpdateDatasetEntriesResponse {
 }
 
 export namespace UpdateDatasetEntriesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDatasetEntriesResponse): any => ({
     ...obj,
   });

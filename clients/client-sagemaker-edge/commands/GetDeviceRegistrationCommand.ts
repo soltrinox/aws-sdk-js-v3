@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDeviceRegistrationCommandInput = GetDeviceRegistrationRequest;
-export type GetDeviceRegistrationCommandOutput = GetDeviceRegistrationResult & __MetadataBearer;
+export interface GetDeviceRegistrationCommandInput extends GetDeviceRegistrationRequest {}
+export interface GetDeviceRegistrationCommandOutput extends GetDeviceRegistrationResult, __MetadataBearer {}
 
 /**
  * <p>Use to check if a device is registered with SageMaker Edge Manager.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SagemakerEdgeClient, GetDeviceRegistrationCommand } from "@aws-sdk/client-sagemaker-edge"; // ES Modules import
+ * // const { SagemakerEdgeClient, GetDeviceRegistrationCommand } = require("@aws-sdk/client-sagemaker-edge"); // CommonJS import
+ * const client = new SagemakerEdgeClient(config);
+ * const command = new GetDeviceRegistrationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDeviceRegistrationCommandInput} for command's `input` shape.
+ * @see {@link GetDeviceRegistrationCommandOutput} for command's `response` shape.
+ * @see {@link SagemakerEdgeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDeviceRegistrationCommand extends $Command<
   GetDeviceRegistrationCommandInput,

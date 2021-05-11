@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEventsCommandInput = DescribeEventsMessage;
-export type DescribeEventsCommandOutput = EventDescriptionsMessage & __MetadataBearer;
+export interface DescribeEventsCommandInput extends DescribeEventsMessage {}
+export interface DescribeEventsCommandOutput extends EventDescriptionsMessage, __MetadataBearer {}
 
 /**
  * <p>Returns list of event descriptions matching criteria up to the last 6 weeks.</p>
@@ -26,6 +26,20 @@ export type DescribeEventsCommandOutput = EventDescriptionsMessage & __MetadataB
  *             <p>This action returns the most recent 1,000 events from the specified
  *           <code>NextToken</code>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticBeanstalkClient, DescribeEventsCommand } from "@aws-sdk/client-elastic-beanstalk"; // ES Modules import
+ * // const { ElasticBeanstalkClient, DescribeEventsCommand } = require("@aws-sdk/client-elastic-beanstalk"); // CommonJS import
+ * const client = new ElasticBeanstalkClient(config);
+ * const command = new DescribeEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEventsCommandInput} for command's `input` shape.
+ * @see {@link DescribeEventsCommandOutput} for command's `response` shape.
+ * @see {@link ElasticBeanstalkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEventsCommand extends $Command<
   DescribeEventsCommandInput,

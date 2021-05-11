@@ -11,6 +11,10 @@ import {
 } from "./commands/CreateConnectionAliasCommand";
 import { CreateIpGroupCommandInput, CreateIpGroupCommandOutput } from "./commands/CreateIpGroupCommand";
 import { CreateTagsCommandInput, CreateTagsCommandOutput } from "./commands/CreateTagsCommand";
+import {
+  CreateWorkspaceBundleCommandInput,
+  CreateWorkspaceBundleCommandOutput,
+} from "./commands/CreateWorkspaceBundleCommand";
 import { CreateWorkspacesCommandInput, CreateWorkspacesCommandOutput } from "./commands/CreateWorkspacesCommand";
 import {
   DeleteConnectionAliasCommandInput,
@@ -18,6 +22,10 @@ import {
 } from "./commands/DeleteConnectionAliasCommand";
 import { DeleteIpGroupCommandInput, DeleteIpGroupCommandOutput } from "./commands/DeleteIpGroupCommand";
 import { DeleteTagsCommandInput, DeleteTagsCommandOutput } from "./commands/DeleteTagsCommand";
+import {
+  DeleteWorkspaceBundleCommandInput,
+  DeleteWorkspaceBundleCommandOutput,
+} from "./commands/DeleteWorkspaceBundleCommand";
 import {
   DeleteWorkspaceImageCommandInput,
   DeleteWorkspaceImageCommandOutput,
@@ -135,6 +143,10 @@ import {
   UpdateRulesOfIpGroupCommandOutput,
 } from "./commands/UpdateRulesOfIpGroupCommand";
 import {
+  UpdateWorkspaceBundleCommandInput,
+  UpdateWorkspaceBundleCommandOutput,
+} from "./commands/UpdateWorkspaceBundleCommand";
+import {
   UpdateWorkspaceImagePermissionCommandInput,
   UpdateWorkspaceImagePermissionCommandOutput,
 } from "./commands/UpdateWorkspaceImagePermissionCommand";
@@ -197,10 +209,12 @@ export type ServiceInputTypes =
   | CreateConnectionAliasCommandInput
   | CreateIpGroupCommandInput
   | CreateTagsCommandInput
+  | CreateWorkspaceBundleCommandInput
   | CreateWorkspacesCommandInput
   | DeleteConnectionAliasCommandInput
   | DeleteIpGroupCommandInput
   | DeleteTagsCommandInput
+  | DeleteWorkspaceBundleCommandInput
   | DeleteWorkspaceImageCommandInput
   | DeregisterWorkspaceDirectoryCommandInput
   | DescribeAccountCommandInput
@@ -239,6 +253,7 @@ export type ServiceInputTypes =
   | TerminateWorkspacesCommandInput
   | UpdateConnectionAliasPermissionCommandInput
   | UpdateRulesOfIpGroupCommandInput
+  | UpdateWorkspaceBundleCommandInput
   | UpdateWorkspaceImagePermissionCommandInput;
 
 export type ServiceOutputTypes =
@@ -249,10 +264,12 @@ export type ServiceOutputTypes =
   | CreateConnectionAliasCommandOutput
   | CreateIpGroupCommandOutput
   | CreateTagsCommandOutput
+  | CreateWorkspaceBundleCommandOutput
   | CreateWorkspacesCommandOutput
   | DeleteConnectionAliasCommandOutput
   | DeleteIpGroupCommandOutput
   | DeleteTagsCommandOutput
+  | DeleteWorkspaceBundleCommandOutput
   | DeleteWorkspaceImageCommandOutput
   | DeregisterWorkspaceDirectoryCommandOutput
   | DescribeAccountCommandOutput
@@ -291,6 +308,7 @@ export type ServiceOutputTypes =
   | TerminateWorkspacesCommandOutput
   | UpdateConnectionAliasPermissionCommandOutput
   | UpdateRulesOfIpGroupCommandOutput
+  | UpdateWorkspaceBundleCommandOutput
   | UpdateWorkspaceImagePermissionCommandOutput;
 
 export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__HttpHandlerOptions>> {
@@ -358,7 +376,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -389,7 +407,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type WorkSpacesClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type WorkSpacesClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -397,8 +415,12 @@ export type WorkSpacesClientConfig = Partial<__SmithyConfiguration<__HttpHandler
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of WorkSpacesClient class constructor that set the region, credentials and other options.
+ */
+export interface WorkSpacesClientConfig extends WorkSpacesClientConfigType {}
 
-export type WorkSpacesClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type WorkSpacesClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -406,6 +428,10 @@ export type WorkSpacesClientResolvedConfig = __SmithyResolvedConfiguration<__Htt
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of WorkSpacesClient class. This is resolved and normalized from the {@link WorkSpacesClientConfig | constructor configuration interface}.
+ */
+export interface WorkSpacesClientResolvedConfig extends WorkSpacesClientResolvedConfigType {}
 
 /**
  * <fullname>Amazon WorkSpaces Service</fullname>
@@ -418,6 +444,9 @@ export class WorkSpacesClient extends __Client<
   ServiceOutputTypes,
   WorkSpacesClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of WorkSpacesClient class. This is resolved and normalized from the {@link WorkSpacesClientConfig | constructor configuration interface}.
+   */
   readonly config: WorkSpacesClientResolvedConfig;
 
   constructor(configuration: WorkSpacesClientConfig) {

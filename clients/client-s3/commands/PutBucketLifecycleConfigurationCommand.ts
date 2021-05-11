@@ -19,12 +19,12 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutBucketLifecycleConfigurationCommandInput = PutBucketLifecycleConfigurationRequest;
-export type PutBucketLifecycleConfigurationCommandOutput = __MetadataBearer;
+export interface PutBucketLifecycleConfigurationCommandInput extends PutBucketLifecycleConfigurationRequest {}
+export interface PutBucketLifecycleConfigurationCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle
- *          configuration. For information about lifecycle configuration, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">Managing Access Permissions to Your Amazon S3
+ *          configuration. For information about lifecycle configuration, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html">Managing Access Permissions to Your Amazon S3
  *             Resources</a>.</p>
  *
  *          <note>
@@ -95,7 +95,7 @@ export type PutBucketLifecycleConfigurationCommandOutput = __MetadataBearer;
  *          </ul>
  *
  *
- *          <p>For more information about permissions, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">Managing Access Permissions to Your Amazon S3
+ *          <p>For more information about permissions, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html">Managing Access Permissions to Your Amazon S3
  *             Resources</a>.</p>
  *
  *          <p>The following are related to <code>PutBucketLifecycleConfiguration</code>:</p>
@@ -117,6 +117,20 @@ export type PutBucketLifecycleConfigurationCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, PutBucketLifecycleConfigurationCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, PutBucketLifecycleConfigurationCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new PutBucketLifecycleConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutBucketLifecycleConfigurationCommandInput} for command's `input` shape.
+ * @see {@link PutBucketLifecycleConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutBucketLifecycleConfigurationCommand extends $Command<
   PutBucketLifecycleConfigurationCommandInput,

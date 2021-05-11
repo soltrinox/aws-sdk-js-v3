@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CheckSchemaVersionValidityCommandInput = CheckSchemaVersionValidityInput;
-export type CheckSchemaVersionValidityCommandOutput = CheckSchemaVersionValidityResponse & __MetadataBearer;
+export interface CheckSchemaVersionValidityCommandInput extends CheckSchemaVersionValidityInput {}
+export interface CheckSchemaVersionValidityCommandOutput extends CheckSchemaVersionValidityResponse, __MetadataBearer {}
 
 /**
  * <p>Validates the supplied schema. This call has no side effects, it simply validates using the supplied schema using <code>DataFormat</code> as the format. Since it does not take a schema set name, no compatibility checks are performed.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, CheckSchemaVersionValidityCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, CheckSchemaVersionValidityCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new CheckSchemaVersionValidityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CheckSchemaVersionValidityCommandInput} for command's `input` shape.
+ * @see {@link CheckSchemaVersionValidityCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CheckSchemaVersionValidityCommand extends $Command<
   CheckSchemaVersionValidityCommandInput,

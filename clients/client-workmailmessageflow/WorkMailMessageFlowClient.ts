@@ -2,6 +2,10 @@ import {
   GetRawMessageContentCommandInput,
   GetRawMessageContentCommandOutput,
 } from "./commands/GetRawMessageContentCommand";
+import {
+  PutRawMessageContentCommandInput,
+  PutRawMessageContentCommandOutput,
+} from "./commands/PutRawMessageContentCommand";
 import { ClientDefaultValues as __ClientDefaultValues } from "./runtimeConfig";
 import {
   EndpointsInputConfig,
@@ -53,9 +57,9 @@ import {
   UserAgent as __UserAgent,
 } from "@aws-sdk/types";
 
-export type ServiceInputTypes = GetRawMessageContentCommandInput;
+export type ServiceInputTypes = GetRawMessageContentCommandInput | PutRawMessageContentCommandInput;
 
-export type ServiceOutputTypes = GetRawMessageContentCommandOutput;
+export type ServiceOutputTypes = GetRawMessageContentCommandOutput | PutRawMessageContentCommandOutput;
 
 export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__HttpHandlerOptions>> {
   /**
@@ -122,7 +126,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -153,7 +157,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type WorkMailMessageFlowClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type WorkMailMessageFlowClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -161,8 +165,12 @@ export type WorkMailMessageFlowClientConfig = Partial<__SmithyConfiguration<__Ht
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of WorkMailMessageFlowClient class constructor that set the region, credentials and other options.
+ */
+export interface WorkMailMessageFlowClientConfig extends WorkMailMessageFlowClientConfigType {}
 
-export type WorkMailMessageFlowClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type WorkMailMessageFlowClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -170,6 +178,10 @@ export type WorkMailMessageFlowClientResolvedConfig = __SmithyResolvedConfigurat
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of WorkMailMessageFlowClient class. This is resolved and normalized from the {@link WorkMailMessageFlowClientConfig | constructor configuration interface}.
+ */
+export interface WorkMailMessageFlowClientResolvedConfig extends WorkMailMessageFlowClientResolvedConfigType {}
 
 /**
  * <p>The WorkMail Message Flow API provides access to email messages as they are
@@ -184,6 +196,9 @@ export class WorkMailMessageFlowClient extends __Client<
   ServiceOutputTypes,
   WorkMailMessageFlowClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of WorkMailMessageFlowClient class. This is resolved and normalized from the {@link WorkMailMessageFlowClientConfig | constructor configuration interface}.
+   */
   readonly config: WorkMailMessageFlowClientResolvedConfig;
 
   constructor(configuration: WorkMailMessageFlowClientConfig) {

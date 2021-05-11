@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAWSServiceAccessForOrganizationCommandInput = ListAWSServiceAccessForOrganizationRequest;
-export type ListAWSServiceAccessForOrganizationCommandOutput = ListAWSServiceAccessForOrganizationResponse &
-  __MetadataBearer;
+export interface ListAWSServiceAccessForOrganizationCommandInput extends ListAWSServiceAccessForOrganizationRequest {}
+export interface ListAWSServiceAccessForOrganizationCommandOutput
+  extends ListAWSServiceAccessForOrganizationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns a list of the AWS services that you enabled to integrate with your
@@ -34,6 +35,20 @@ export type ListAWSServiceAccessForOrganizationCommandOutput = ListAWSServiceAcc
  *          </p>
  *         <p>This operation can be called only from the organization's
  * management account or by a member account that is a delegated administrator for an AWS service.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, ListAWSServiceAccessForOrganizationCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, ListAWSServiceAccessForOrganizationCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new ListAWSServiceAccessForOrganizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAWSServiceAccessForOrganizationCommandInput} for command's `input` shape.
+ * @see {@link ListAWSServiceAccessForOrganizationCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAWSServiceAccessForOrganizationCommand extends $Command<
   ListAWSServiceAccessForOrganizationCommandInput,

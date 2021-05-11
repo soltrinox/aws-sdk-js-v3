@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveTagsFromResourceCommandInput = RemoveTagsFromResourceMessage;
-export type RemoveTagsFromResourceCommandOutput = RemoveTagsFromResourceResponse & __MetadataBearer;
+export interface RemoveTagsFromResourceCommandInput extends RemoveTagsFromResourceMessage {}
+export interface RemoveTagsFromResourceCommandOutput extends RemoveTagsFromResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Removes metadata tags from an AWS DMS resource, including replication instance,
@@ -31,6 +31,20 @@ export type RemoveTagsFromResourceCommandOutput = RemoveTagsFromResourceResponse
  *                <code>Tag</code>
  *             </a>
  *          data type description.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, RemoveTagsFromResourceCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, RemoveTagsFromResourceCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new RemoveTagsFromResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveTagsFromResourceCommandInput} for command's `input` shape.
+ * @see {@link RemoveTagsFromResourceCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveTagsFromResourceCommand extends $Command<
   RemoveTagsFromResourceCommandInput,

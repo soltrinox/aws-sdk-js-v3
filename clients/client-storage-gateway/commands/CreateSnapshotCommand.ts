@@ -17,14 +17,14 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSnapshotCommandInput = CreateSnapshotInput;
-export type CreateSnapshotCommandOutput = CreateSnapshotOutput & __MetadataBearer;
+export interface CreateSnapshotCommandInput extends CreateSnapshotInput {}
+export interface CreateSnapshotCommandOutput extends CreateSnapshotOutput, __MetadataBearer {}
 
 /**
  * <p>Initiates a snapshot of a volume.</p>
  *
  *          <p>AWS Storage Gateway provides the ability to back up point-in-time snapshots of your data
- *          to Amazon Simple Storage (Amazon S3) for durable off-site recovery, as well as import the
+ *          to Amazon Simple Storage (Amazon S3) for durable off-site recovery, and also import the
  *          data to an Amazon Elastic Block Store (EBS) volume in Amazon Elastic Compute Cloud (EC2).
  *          You can take snapshots of your gateway volume on a scheduled or ad hoc basis. This API
  *          enables you to take an ad hoc snapshot. For more information, see <a href="https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot">Editing a
@@ -49,6 +49,20 @@ export type CreateSnapshotCommandOutput = CreateSnapshotOutput & __MetadataBeare
  *             <p>Volume and snapshot IDs are changing to a longer length ID format. For more
  *             information, see the important note on the <a href="https://docs.aws.amazon.com/storagegateway/latest/APIReference/Welcome.html">Welcome</a> page.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, CreateSnapshotCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, CreateSnapshotCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new CreateSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSnapshotCommandInput} for command's `input` shape.
+ * @see {@link CreateSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSnapshotCommand extends $Command<
   CreateSnapshotCommandInput,

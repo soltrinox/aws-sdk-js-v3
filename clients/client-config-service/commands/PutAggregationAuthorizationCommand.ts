@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutAggregationAuthorizationCommandInput = PutAggregationAuthorizationRequest;
-export type PutAggregationAuthorizationCommandOutput = PutAggregationAuthorizationResponse & __MetadataBearer;
+export interface PutAggregationAuthorizationCommandInput extends PutAggregationAuthorizationRequest {}
+export interface PutAggregationAuthorizationCommandOutput
+  extends PutAggregationAuthorizationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Authorizes the aggregator account and region to collect data
  * 			from the source account and region. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, PutAggregationAuthorizationCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, PutAggregationAuthorizationCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new PutAggregationAuthorizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutAggregationAuthorizationCommandInput} for command's `input` shape.
+ * @see {@link PutAggregationAuthorizationCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutAggregationAuthorizationCommand extends $Command<
   PutAggregationAuthorizationCommandInput,

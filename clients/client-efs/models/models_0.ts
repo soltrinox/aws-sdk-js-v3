@@ -14,6 +14,9 @@ export interface AccessPointAlreadyExists extends __SmithyException, $MetadataBe
 }
 
 export namespace AccessPointAlreadyExists {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessPointAlreadyExists): any => ({
     ...obj,
   });
@@ -24,6 +27,7 @@ export enum LifeCycleState {
   CREATING = "creating",
   DELETED = "deleted",
   DELETING = "deleting",
+  ERROR = "error",
   UPDATING = "updating",
 }
 
@@ -49,6 +53,9 @@ export interface PosixUser {
 }
 
 export namespace PosixUser {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PosixUser): any => ({
     ...obj,
   });
@@ -60,6 +67,9 @@ export namespace PosixUser {
  *       If the access point root directory does not exist, EFS creates it with these settings when a client connects to the access point.
  *       When specifying <code>CreationInfo</code>, you must include values for all properties.
  *    </p>
+ *          <p>Amazon EFS creates a root directory only if you have provided the  CreationInfo: OwnUid, OwnGID, and permissions for the directory.
+ *       If  you do not provide this information, Amazon EFS does not create the root directory. If the root directory does not exist, attempts to mount
+ *       using the access point will fail.</p>
  *          <important>
  *             <p>If you do not provide <code>CreationInfo</code> and the specified <code>RootDirectory</code> does not exist,
  *       attempts to mount the file system using the access point will fail.</p>
@@ -83,6 +93,9 @@ export interface CreationInfo {
 }
 
 export namespace CreationInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreationInfo): any => ({
     ...obj,
   });
@@ -117,6 +130,9 @@ export interface RootDirectory {
 }
 
 export namespace RootDirectory {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RootDirectory): any => ({
     ...obj,
   });
@@ -140,6 +156,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -202,6 +221,9 @@ export interface AccessPointDescription {
 }
 
 export namespace AccessPointDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessPointDescription): any => ({
     ...obj,
   });
@@ -219,6 +241,9 @@ export interface AccessPointLimitExceeded extends __SmithyException, $MetadataBe
 }
 
 export namespace AccessPointLimitExceeded {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessPointLimitExceeded): any => ({
     ...obj,
   });
@@ -236,7 +261,30 @@ export interface AccessPointNotFound extends __SmithyException, $MetadataBearer 
 }
 
 export namespace AccessPointNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessPointNotFound): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Returned if the Availability Zone that was specified for a mount target is different from the Availability Zone that was specified for One Zone storage classes.
+ *             For more information, see <a href="https://docs.aws.amazon.com/efs/latest/ug/availability-durability.html">Regional and One Zone storage redundancy</a>.</p>
+ */
+export interface AvailabilityZonesMismatch extends __SmithyException, $MetadataBearer {
+  name: "AvailabilityZonesMismatch";
+  $fault: "client";
+  ErrorCode?: string;
+  Message?: string;
+}
+
+export namespace AvailabilityZonesMismatch {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AvailabilityZonesMismatch): any => ({
     ...obj,
   });
 }
@@ -249,8 +297,8 @@ export enum Status {
 }
 
 /**
- * <p>The backup policy for the file system, showing the curent status. If
- *       <code>ENABLED</code>, the file system is being backed up.</p>
+ * <p>The backup policy for the file system used to create automatic daily backups. If status has a value of
+ *       <code>ENABLED</code>, the file system is being automatically backed up. For more information, see <a href="https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html#automatic-backups">Automatic backups</a>.</p>
  */
 export interface BackupPolicy {
   /**
@@ -258,27 +306,27 @@ export interface BackupPolicy {
    *          <ul>
    *             <li>
    *                <p>
-   *                   <i>
-   *                      <code>ENABLED</code> - EFS is automatically backing up the file system.</i>
-   *                </p>
+   *                   <b>
+   *                      <code>ENABLED</code>
+   *                   </b> - EFS is automatically backing up the file system.></p>
    *             </li>
    *             <li>
    *                <p>
-   *                   <i>
-   *                      <code>ENABLING</code> - EFS is turning on automatic backups for the file system.</i>
-   *                </p>
+   *                   <b>
+   *                      <code>ENABLING</code>
+   *                   </b> - EFS is turning on automatic backups for the file system.</p>
    *             </li>
    *             <li>
    *                <p>
-   *                   <i>
-   *                      <code>DISABLED</code> - automatic back ups are turned off for the file system.</i>
-   *                </p>
+   *                   <b>
+   *                      <code>DISABLED</code>
+   *                   </b> - automatic back ups are turned off for the file system.</p>
    *             </li>
    *             <li>
    *                <p>
-   *                   <i>
-   *                      <code>DISABLED</code> - EFS is turning off automatic backups for the file system.</i>
-   *                </p>
+   *                   <b>
+   *                      <code>DISABLING</code>
+   *                   </b> - EFS is turning off automatic backups for the file system.</p>
    *             </li>
    *          </ul>
    */
@@ -286,6 +334,9 @@ export interface BackupPolicy {
 }
 
 export namespace BackupPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupPolicy): any => ({
     ...obj,
   });
@@ -299,6 +350,9 @@ export interface BackupPolicyDescription {
 }
 
 export namespace BackupPolicyDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupPolicyDescription): any => ({
     ...obj,
   });
@@ -316,6 +370,9 @@ export interface BadRequest extends __SmithyException, $MetadataBearer {
 }
 
 export namespace BadRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BadRequest): any => ({
     ...obj,
   });
@@ -350,12 +407,18 @@ export interface CreateAccessPointRequest {
    *       The clients using the access point can only access the root directory and below.
    *       If the <code>RootDirectory</code> > <code>Path</code> specified does not exist,
    *       EFS creates it and applies the <code>CreationInfo</code> settings when a client connects to an access point.
-   *       When specifying a <code>RootDirectory</code>, you need to provide the <code>Path</code>, and the <code>CreationInfo</code> is optional.</p>
+   *       When specifying a <code>RootDirectory</code>, you need to provide the <code>Path</code>, and the <code>CreationInfo</code>.</p>
+   *          <p>Amazon EFS creates a root directory only if you have provided the  CreationInfo: OwnUid, OwnGID, and permissions for the directory.
+   *       If  you do not provide this information, Amazon EFS does not create the root directory. If the root directory does not exist, attempts to mount
+   *       using the access point will fail.</p>
    */
   RootDirectory?: RootDirectory;
 }
 
 export namespace CreateAccessPointRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccessPointRequest): any => ({
     ...obj,
   });
@@ -373,6 +436,9 @@ export interface FileSystemNotFound extends __SmithyException, $MetadataBearer {
 }
 
 export namespace FileSystemNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FileSystemNotFound): any => ({
     ...obj,
   });
@@ -389,6 +455,9 @@ export interface IncorrectFileSystemLifeCycleState extends __SmithyException, $M
 }
 
 export namespace IncorrectFileSystemLifeCycleState {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IncorrectFileSystemLifeCycleState): any => ({
     ...obj,
   });
@@ -405,6 +474,9 @@ export interface InternalServerError extends __SmithyException, $MetadataBearer 
 }
 
 export namespace InternalServerError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerError): any => ({
     ...obj,
   });
@@ -433,6 +505,9 @@ export interface CreateFileSystemRequest {
    *       mode can scale to higher levels of aggregate throughput and operations per second with a
    *       tradeoff of slightly higher latencies for most file operations. The performance mode
    *       can't be changed after the file system has been created.</p>
+   *          <note>
+   *             <p>The <code>maxIO</code> mode is not supported on file systems using One Zone storage classes.</p>
+   *          </note>
    */
   PerformanceMode?: PerformanceMode | string;
 
@@ -447,7 +522,7 @@ export interface CreateFileSystemRequest {
 
   /**
    * <p>The ID of the AWS KMS CMK to be used to protect the encrypted file system. This
-   *       parameter is only required if you want to use a nondefault CMK. If this parameter is not
+   *       parameter is only required if you want to use a non-default CMK. If this parameter is not
    *       specified, the default CMK for Amazon EFS is used. This ID can be in one of the following
    *       formats:</p>
    *          <ul>
@@ -476,26 +551,52 @@ export interface CreateFileSystemRequest {
   KmsKeyId?: string;
 
   /**
-   * <p>The throughput mode for the file system to be created. There are two throughput modes to
-   *       choose from for your file system: <code>bursting</code> and <code>provisioned</code>. If you set <code>ThroughputMode</code> to <code>provisioned</code>,
-   *       you must also set a value for <code>ProvisionedThroughPutInMibps</code>. You can decrease your file
-   *       system's throughput in Provisioned Throughput mode or change between the throughput modes
-   *       as long as it’s been more than 24 hours since the last decrease or throughput mode
-   *       change. For more,
-   *       see <a href="https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput">Specifying Throughput with Provisioned Mode</a>
-   *       in the <i>Amazon EFS User Guide.</i>
-   *          </p>
+   * <p>Specifies the throughput mode for the file system, either <code>bursting</code> or
+   *         <code>provisioned</code>. If you set <code>ThroughputMode</code> to
+   *       <code>provisioned</code>, you must also set a value for
+   *         <code>ProvisionedThroughputInMibps</code>. After you create the file system, you can
+   *       decrease your file system's throughput in Provisioned Throughput mode or change between
+   *       the throughput modes, as long as it’s been more than 24 hours since the last decrease or
+   *       throughput mode change. For more information, see <a href="https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput">Specifying throughput with
+   *         provisioned mode</a> in the <i>Amazon EFS User Guide</i>. </p>
+   *          <p>Default is <code>bursting</code>.</p>
    */
   ThroughputMode?: ThroughputMode | string;
 
   /**
    * <p>The throughput, measured in MiB/s, that you want to provision for a file system that
-   *       you're creating. Valid values are 1-1024. Required if <code>ThroughputMode</code> is set to <code>provisioned</code>. The upper limit for throughput is 1024 MiB/s.
-   *       You can get this limit increased by contacting AWS Support. For more information, see <a href="https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits">Amazon EFS Limits That You Can Increase</a>
-   *       in the <i>Amazon EFS User Guide.</i>
-   *          </p>
+   *       you're creating. Valid values are 1-1024. Required if <code>ThroughputMode</code> is set
+   *       to <code>provisioned</code>. The upper limit for throughput is 1024 MiB/s. To increase this
+   *       limit, contact AWS Support. For more information, see <a href="https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits">Amazon EFS quotas that you can increase</a>
+   *       in the <i>Amazon EFS User Guide</i>.</p>
    */
   ProvisionedThroughputInMibps?: number;
+
+  /**
+   * <p>Used to create a file system that uses One Zone storage classes. It specifies the AWS
+   *       Availability Zone in which to create the file system. Use the format <code>us-east-1a</code>
+   *       to specify the Availability Zone. For
+   *       more information about One Zone storage classes, see <a href="https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html">Using EFS storage classes</a> in the <i>Amazon EFS User Guide</i>.</p>
+   *          <note>
+   *             <p>One Zone storage classes are not available in all Availability Zones in AWS Regions where
+   *         Amazon EFS is available.</p>
+   *          </note>
+   */
+  AvailabilityZoneName?: string;
+
+  /**
+   * <p>Specifies whether automatic backups are enabled on the file system that you are creating.
+   *       Set the value to <code>true</code> to enable automatic backups. If you are creating a file
+   *       system that uses One Zone storage classes, automatic backups are enabled by default. For more
+   *       information, see <a href="https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html#automatic-backups">Automatic backups</a> in the
+   *         <i>Amazon EFS User Guide</i>.</p>
+   *          <p>Default is <code>false</code>. However, if you specify an <code>AvailabilityZoneName</code>,
+   *       the default is <code>true</code>.</p>
+   *          <note>
+   *             <p>AWS Backup is not available in all AWS Regions where Amazon EFS is available.</p>
+   *          </note>
+   */
+  Backup?: boolean;
 
   /**
    * <p>A value that specifies to create one or more tags associated with the file system. Each
@@ -506,6 +607,9 @@ export interface CreateFileSystemRequest {
 }
 
 export namespace CreateFileSystemRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFileSystemRequest): any => ({
     ...obj,
   });
@@ -524,6 +628,9 @@ export interface FileSystemAlreadyExists extends __SmithyException, $MetadataBea
 }
 
 export namespace FileSystemAlreadyExists {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FileSystemAlreadyExists): any => ({
     ...obj,
   });
@@ -564,6 +671,9 @@ export interface FileSystemSize {
 }
 
 export namespace FileSystemSize {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FileSystemSize): any => ({
     ...obj,
   });
@@ -651,24 +761,32 @@ export interface FileSystemDescription {
   KmsKeyId?: string;
 
   /**
-   * <p>The throughput mode for a file system. There are two throughput modes to choose from for
-   *       your file system: <code>bursting</code> and <code>provisioned</code>. If you set <code>ThroughputMode</code> to <code>provisioned</code>,
-   *       you must also set a value for <code>ProvisionedThroughPutInMibps</code>. You can decrease your file system's
-   *       throughput in Provisioned Throughput mode or change between the throughput modes as long as
-   *       it’s been more than 24 hours since the last decrease or throughput mode change.
+   * <p>Displays the file system's throughput mode. For more information, see
+   *       <a href="https://docs.aws.amazon.com/efs/latest/ug/performance.html#throughput-modes">Throughput modes</a>
+   *       in the <i>Amazon EFS User Guide</i>.
    *     </p>
    */
   ThroughputMode?: ThroughputMode | string;
 
   /**
-   * <p>The throughput, measured in MiB/s, that you want to provision for a file system. Valid values are 1-1024.
-   *       Required if <code>ThroughputMode</code> is set to <code>provisioned</code>. The limit
-   *       on throughput is 1024 MiB/s. You can get these limits increased by contacting AWS Support. For
-   *       more information, see <a href="https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits">Amazon EFS Limits That You Can Increase</a>
-   *       in the <i>Amazon EFS User Guide.</i>
-   *          </p>
+   * <p>The amount of provisioned throughput, measured in MiB/s, for the file system. Valid for
+   *       file systems using <code>ThroughputMode</code> set to <code>provisioned</code>.</p>
    */
   ProvisionedThroughputInMibps?: number;
+
+  /**
+   * <p>Describes the AWS Availability Zone in which the file system is located, and is valid only
+   *       for file systems using One Zone storage classes. For more information, see <a href="https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html">Using EFS storage classes</a>
+   *       in the <i>Amazon EFS User Guide</i>.</p>
+   */
+  AvailabilityZoneName?: string;
+
+  /**
+   * <p>The unique and consistent identifier of the Availability Zone in which the file system's
+   *       One Zone storage classes exist. For example, <code>use1-az1</code> is an Availability Zone ID
+   *       for the us-east-1 AWS Region, and it has the same location in every AWS account.</p>
+   */
+  AvailabilityZoneId?: string;
 
   /**
    * <p>The tags associated with the file system, presented as an array of <code>Tag</code>
@@ -678,6 +796,9 @@ export interface FileSystemDescription {
 }
 
 export namespace FileSystemDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FileSystemDescription): any => ({
     ...obj,
   });
@@ -695,6 +816,9 @@ export interface FileSystemLimitExceeded extends __SmithyException, $MetadataBea
 }
 
 export namespace FileSystemLimitExceeded {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FileSystemLimitExceeded): any => ({
     ...obj,
   });
@@ -705,7 +829,7 @@ export namespace FileSystemLimitExceeded {
  *             might be returned when you try to create a file system in provisioned throughput mode,
  *             when you attempt to increase the provisioned throughput of an existing file system, or
  *             when you attempt to change an existing file system from bursting to provisioned
- *             throughput mode.</p>
+ *             throughput mode. Try again later.</p>
  */
 export interface InsufficientThroughputCapacity extends __SmithyException, $MetadataBearer {
   name: "InsufficientThroughputCapacity";
@@ -715,6 +839,9 @@ export interface InsufficientThroughputCapacity extends __SmithyException, $Meta
 }
 
 export namespace InsufficientThroughputCapacity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsufficientThroughputCapacity): any => ({
     ...obj,
   });
@@ -732,7 +859,29 @@ export interface ThroughputLimitExceeded extends __SmithyException, $MetadataBea
 }
 
 export namespace ThroughputLimitExceeded {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThroughputLimitExceeded): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Returned if the requested Amazon EFS functionality is not available in the specified Availability Zone.</p>
+ */
+export interface UnsupportedAvailabilityZone extends __SmithyException, $MetadataBearer {
+  name: "UnsupportedAvailabilityZone";
+  $fault: "client";
+  ErrorCode: string | undefined;
+  Message?: string;
+}
+
+export namespace UnsupportedAvailabilityZone {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UnsupportedAvailabilityZone): any => ({
     ...obj,
   });
 }
@@ -747,7 +896,8 @@ export interface CreateMountTargetRequest {
   FileSystemId: string | undefined;
 
   /**
-   * <p>The ID of the subnet to add the mount target in.</p>
+   * <p>The ID of the subnet to add the mount target in. For file systems that use One Zone storage classes, use the subnet
+   *     that is associated with the file system's Availability Zone.</p>
    */
   SubnetId: string | undefined;
 
@@ -764,6 +914,9 @@ export interface CreateMountTargetRequest {
 }
 
 export namespace CreateMountTargetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMountTargetRequest): any => ({
     ...obj,
   });
@@ -781,6 +934,9 @@ export interface IpAddressInUse extends __SmithyException, $MetadataBearer {
 }
 
 export namespace IpAddressInUse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IpAddressInUse): any => ({
     ...obj,
   });
@@ -798,6 +954,9 @@ export interface MountTargetConflict extends __SmithyException, $MetadataBearer 
 }
 
 export namespace MountTargetConflict {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MountTargetConflict): any => ({
     ...obj,
   });
@@ -844,25 +1003,28 @@ export interface MountTargetDescription {
   NetworkInterfaceId?: string;
 
   /**
-   * <p>The unique and consistent identifier of the Availability Zone (AZ) that the mount target resides in.
+   * <p>The unique and consistent identifier of the Availability Zone that the mount target resides in.
    *       For example, <code>use1-az1</code> is an AZ ID for the us-east-1 Region and it has the same location in every AWS account.</p>
    */
   AvailabilityZoneId?: string;
 
   /**
-   * <p>The name of the Availability Zone (AZ) that the mount target resides in. AZs are
+   * <p>The name of the Availability Zone in which the mount target is located. Availability Zones are
    *       independently mapped to names for each AWS account. For example, the Availability Zone
    *       <code>us-east-1a</code> for your AWS account might not be the same location as <code>us-east-1a</code> for another AWS account.</p>
    */
   AvailabilityZoneName?: string;
 
   /**
-   * <p>The Virtual Private Cloud (VPC) ID that the mount target is configured in.</p>
+   * <p>The virtual private cloud (VPC) ID that the mount target is configured in.</p>
    */
   VpcId?: string;
 }
 
 export namespace MountTargetDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MountTargetDescription): any => ({
     ...obj,
   });
@@ -883,6 +1045,9 @@ export interface NetworkInterfaceLimitExceeded extends __SmithyException, $Metad
 }
 
 export namespace NetworkInterfaceLimitExceeded {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NetworkInterfaceLimitExceeded): any => ({
     ...obj,
   });
@@ -900,6 +1065,9 @@ export interface NoFreeAddressesInSubnet extends __SmithyException, $MetadataBea
 }
 
 export namespace NoFreeAddressesInSubnet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoFreeAddressesInSubnet): any => ({
     ...obj,
   });
@@ -917,6 +1085,9 @@ export interface SecurityGroupLimitExceeded extends __SmithyException, $Metadata
 }
 
 export namespace SecurityGroupLimitExceeded {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SecurityGroupLimitExceeded): any => ({
     ...obj,
   });
@@ -934,6 +1105,9 @@ export interface SecurityGroupNotFound extends __SmithyException, $MetadataBeare
 }
 
 export namespace SecurityGroupNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SecurityGroupNotFound): any => ({
     ...obj,
   });
@@ -951,23 +1125,10 @@ export interface SubnetNotFound extends __SmithyException, $MetadataBearer {
 }
 
 export namespace SubnetNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SubnetNotFound): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p></p>
- */
-export interface UnsupportedAvailabilityZone extends __SmithyException, $MetadataBearer {
-  name: "UnsupportedAvailabilityZone";
-  $fault: "client";
-  ErrorCode: string | undefined;
-  Message?: string;
-}
-
-export namespace UnsupportedAvailabilityZone {
-  export const filterSensitiveLog = (obj: UnsupportedAvailabilityZone): any => ({
     ...obj,
   });
 }
@@ -990,6 +1151,9 @@ export interface CreateTagsRequest {
 }
 
 export namespace CreateTagsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateTagsRequest): any => ({
     ...obj,
   });
@@ -1003,6 +1167,9 @@ export interface DeleteAccessPointRequest {
 }
 
 export namespace DeleteAccessPointRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAccessPointRequest): any => ({
     ...obj,
   });
@@ -1019,6 +1186,9 @@ export interface DeleteFileSystemRequest {
 }
 
 export namespace DeleteFileSystemRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFileSystemRequest): any => ({
     ...obj,
   });
@@ -1035,6 +1205,9 @@ export interface FileSystemInUse extends __SmithyException, $MetadataBearer {
 }
 
 export namespace FileSystemInUse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FileSystemInUse): any => ({
     ...obj,
   });
@@ -1048,6 +1221,9 @@ export interface DeleteFileSystemPolicyRequest {
 }
 
 export namespace DeleteFileSystemPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFileSystemPolicyRequest): any => ({
     ...obj,
   });
@@ -1064,6 +1240,9 @@ export interface DeleteMountTargetRequest {
 }
 
 export namespace DeleteMountTargetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMountTargetRequest): any => ({
     ...obj,
   });
@@ -1081,6 +1260,9 @@ export interface DependencyTimeout extends __SmithyException, $MetadataBearer {
 }
 
 export namespace DependencyTimeout {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DependencyTimeout): any => ({
     ...obj,
   });
@@ -1098,6 +1280,9 @@ export interface MountTargetNotFound extends __SmithyException, $MetadataBearer 
 }
 
 export namespace MountTargetNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MountTargetNotFound): any => ({
     ...obj,
   });
@@ -1119,6 +1304,9 @@ export interface DeleteTagsRequest {
 }
 
 export namespace DeleteTagsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteTagsRequest): any => ({
     ...obj,
   });
@@ -1150,6 +1338,9 @@ export interface DescribeAccessPointsRequest {
 }
 
 export namespace DescribeAccessPointsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAccessPointsRequest): any => ({
     ...obj,
   });
@@ -1169,6 +1360,9 @@ export interface DescribeAccessPointsResponse {
 }
 
 export namespace DescribeAccessPointsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAccessPointsResponse): any => ({
     ...obj,
   });
@@ -1182,6 +1376,9 @@ export interface DescribeBackupPolicyRequest {
 }
 
 export namespace DescribeBackupPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeBackupPolicyRequest): any => ({
     ...obj,
   });
@@ -1198,13 +1395,16 @@ export interface PolicyNotFound extends __SmithyException, $MetadataBearer {
 }
 
 export namespace PolicyNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyNotFound): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Returned if the AWS Backup service is not available in the region that the request was made.</p>
+ * <p>Returned if the AWS Backup service is not available in the Region in which the request was made.</p>
  */
 export interface ValidationException extends __SmithyException, $MetadataBearer {
   name: "ValidationException";
@@ -1214,6 +1414,9 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
@@ -1227,6 +1430,9 @@ export interface DescribeFileSystemPolicyRequest {
 }
 
 export namespace DescribeFileSystemPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFileSystemPolicyRequest): any => ({
     ...obj,
   });
@@ -1245,6 +1451,9 @@ export interface FileSystemPolicyDescription {
 }
 
 export namespace FileSystemPolicyDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FileSystemPolicyDescription): any => ({
     ...obj,
   });
@@ -1282,6 +1491,9 @@ export interface DescribeFileSystemsRequest {
 }
 
 export namespace DescribeFileSystemsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFileSystemsRequest): any => ({
     ...obj,
   });
@@ -1306,6 +1518,9 @@ export interface DescribeFileSystemsResponse {
 }
 
 export namespace DescribeFileSystemsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFileSystemsResponse): any => ({
     ...obj,
   });
@@ -1320,6 +1535,9 @@ export interface DescribeLifecycleConfigurationRequest {
 }
 
 export namespace DescribeLifecycleConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLifecycleConfigurationRequest): any => ({
     ...obj,
   });
@@ -1348,6 +1566,9 @@ export interface LifecyclePolicy {
 }
 
 export namespace LifecyclePolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecyclePolicy): any => ({
     ...obj,
   });
@@ -1362,6 +1583,9 @@ export interface LifecycleConfigurationDescription {
 }
 
 export namespace LifecycleConfigurationDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleConfigurationDescription): any => ({
     ...obj,
   });
@@ -1405,6 +1629,9 @@ export interface DescribeMountTargetsRequest {
 }
 
 export namespace DescribeMountTargetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeMountTargetsRequest): any => ({
     ...obj,
   });
@@ -1435,6 +1662,9 @@ export interface DescribeMountTargetsResponse {
 }
 
 export namespace DescribeMountTargetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeMountTargetsResponse): any => ({
     ...obj,
   });
@@ -1451,6 +1681,9 @@ export interface DescribeMountTargetSecurityGroupsRequest {
 }
 
 export namespace DescribeMountTargetSecurityGroupsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeMountTargetSecurityGroupsRequest): any => ({
     ...obj,
   });
@@ -1464,6 +1697,9 @@ export interface DescribeMountTargetSecurityGroupsResponse {
 }
 
 export namespace DescribeMountTargetSecurityGroupsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeMountTargetSecurityGroupsResponse): any => ({
     ...obj,
   });
@@ -1481,6 +1717,9 @@ export interface IncorrectMountTargetState extends __SmithyException, $MetadataB
 }
 
 export namespace IncorrectMountTargetState {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IncorrectMountTargetState): any => ({
     ...obj,
   });
@@ -1511,6 +1750,9 @@ export interface DescribeTagsRequest {
 }
 
 export namespace DescribeTagsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeTagsRequest): any => ({
     ...obj,
   });
@@ -1541,6 +1783,9 @@ export interface DescribeTagsResponse {
 }
 
 export namespace DescribeTagsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeTagsResponse): any => ({
     ...obj,
   });
@@ -1558,6 +1803,9 @@ export interface InvalidPolicyException extends __SmithyException, $MetadataBear
 }
 
 export namespace InvalidPolicyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidPolicyException): any => ({
     ...obj,
   });
@@ -1581,6 +1829,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -1600,6 +1851,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -1621,6 +1875,9 @@ export interface ModifyMountTargetSecurityGroupsRequest {
 }
 
 export namespace ModifyMountTargetSecurityGroupsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyMountTargetSecurityGroupsRequest): any => ({
     ...obj,
   });
@@ -1639,6 +1896,9 @@ export interface PutBackupPolicyRequest {
 }
 
 export namespace PutBackupPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBackupPolicyRequest): any => ({
     ...obj,
   });
@@ -1652,6 +1912,7 @@ export interface PutFileSystemPolicyRequest {
 
   /**
    * <p>The <code>FileSystemPolicy</code> that you're creating. Accepts a JSON formatted policy definition.
+   *      EFS file system policies have a 20,000 character limit.
    *       To find out more about the elements that make up a file system policy, see
    *       <a href="https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies">EFS Resource-based Policies</a>.
    *     </p>
@@ -1670,6 +1931,9 @@ export interface PutFileSystemPolicyRequest {
 }
 
 export namespace PutFileSystemPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutFileSystemPolicyRequest): any => ({
     ...obj,
   });
@@ -1692,6 +1956,9 @@ export interface PutLifecycleConfigurationRequest {
 }
 
 export namespace PutLifecycleConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutLifecycleConfigurationRequest): any => ({
     ...obj,
   });
@@ -1710,6 +1977,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -1722,12 +1992,16 @@ export interface UntagResourceRequest {
   ResourceId: string | undefined;
 
   /**
-   * <p>The keys of the key:value tag pairs that you want to remove from the specified EFS resource.</p>
+   * <p>The keys of the key-value tag pairs that you want to remove from the specified EFS
+   *       resource.</p>
    */
   TagKeys: string[] | undefined;
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -1745,6 +2019,9 @@ export interface TooManyRequests extends __SmithyException, $MetadataBearer {
 }
 
 export namespace TooManyRequests {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyRequests): any => ({
     ...obj,
   });
@@ -1757,22 +2034,26 @@ export interface UpdateFileSystemRequest {
   FileSystemId: string | undefined;
 
   /**
-   * <p>(Optional) The throughput mode that you want your file system to use. If you're not
+   * <p>(Optional) Updates the file system's throughput mode. If you're not
    *       updating your throughput mode, you don't need to provide this value in your
-   *       request. If you are changing the <code>ThroughputMode</code> to <code>provisioned</code>, you must also set a value for <code>ProvisionedThroughputInMibps</code>.</p>
+   *       request. If you are changing the <code>ThroughputMode</code> to <code>provisioned</code>,
+   *       you must also set a value for <code>ProvisionedThroughputInMibps</code>.</p>
    */
   ThroughputMode?: ThroughputMode | string;
 
   /**
-   * <p>(Optional) The amount of throughput, in MiB/s, that you want to provision for your file
-   *       system. Valid values are 1-1024. Required if <code>ThroughputMode</code> is changed to <code>provisioned</code> on update.
-   *       If you're not updating the amount of provisioned throughput for your file system, you
-   *       don't need to provide this value in your request. </p>
+   * <p>(Optional) Sets the amount of provisioned throughput, in MiB/s, for the file
+   *       system. Valid values are 1-1024. If you are changing the throughput mode to provisioned, you must also
+   *       provide the amount of provisioned throughput. Required if <code>ThroughputMode</code> is changed
+   *       to <code>provisioned</code> on update.</p>
    */
   ProvisionedThroughputInMibps?: number;
 }
 
 export namespace UpdateFileSystemRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFileSystemRequest): any => ({
     ...obj,
   });

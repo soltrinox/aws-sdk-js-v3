@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSecretValueCommandInput = GetSecretValueRequest;
-export type GetSecretValueCommandOutput = GetSecretValueResponse & __MetadataBearer;
+export interface GetSecretValueCommandInput extends GetSecretValueRequest {}
+export interface GetSecretValueCommandOutput extends GetSecretValueResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the contents of the encrypted fields <code>SecretString</code> or
@@ -49,6 +49,20 @@ export type GetSecretValueCommandOutput = GetSecretValueResponse & __MetadataBea
  *                <p>To retrieve the non-encrypted details for the secret, use <a>DescribeSecret</a>.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecretsManagerClient, GetSecretValueCommand } from "@aws-sdk/client-secrets-manager"; // ES Modules import
+ * // const { SecretsManagerClient, GetSecretValueCommand } = require("@aws-sdk/client-secrets-manager"); // CommonJS import
+ * const client = new SecretsManagerClient(config);
+ * const command = new GetSecretValueCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSecretValueCommandInput} for command's `input` shape.
+ * @see {@link GetSecretValueCommandOutput} for command's `response` shape.
+ * @see {@link SecretsManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSecretValueCommand extends $Command<
   GetSecretValueCommandInput,

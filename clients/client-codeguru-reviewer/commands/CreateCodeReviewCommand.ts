@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCodeReviewCommandInput = CreateCodeReviewRequest;
-export type CreateCodeReviewCommandOutput = CreateCodeReviewResponse & __MetadataBearer;
+export interface CreateCodeReviewCommandInput extends CreateCodeReviewRequest {}
+export interface CreateCodeReviewCommandOutput extends CreateCodeReviewResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -28,6 +28,20 @@ export type CreateCodeReviewCommandOutput = CreateCodeReviewResponse & __Metadat
  *          of <code>RepositoryAnalysis</code>. This type of code review analyzes all code under a specified branch in an associated repository.
  *          <code>PullRequest</code> code reviews are automatically triggered by a pull request so cannot be created using this method.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeGuruReviewerClient, CreateCodeReviewCommand } from "@aws-sdk/client-codeguru-reviewer"; // ES Modules import
+ * // const { CodeGuruReviewerClient, CreateCodeReviewCommand } = require("@aws-sdk/client-codeguru-reviewer"); // CommonJS import
+ * const client = new CodeGuruReviewerClient(config);
+ * const command = new CreateCodeReviewCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCodeReviewCommandInput} for command's `input` shape.
+ * @see {@link CreateCodeReviewCommandOutput} for command's `response` shape.
+ * @see {@link CodeGuruReviewerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCodeReviewCommand extends $Command<
   CreateCodeReviewCommandInput,

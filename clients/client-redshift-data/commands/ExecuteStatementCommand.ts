@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ExecuteStatementCommandInput = ExecuteStatementInput;
-export type ExecuteStatementCommandOutput = ExecuteStatementOutput & __MetadataBearer;
+export interface ExecuteStatementCommandInput extends ExecuteStatementInput {}
+export interface ExecuteStatementCommandOutput extends ExecuteStatementOutput, __MetadataBearer {}
 
 /**
  * <p>Runs an SQL statement, which can be data manipulation language (DML) or data definition
@@ -36,6 +36,20 @@ export type ExecuteStatementCommandOutput = ExecuteStatementOutput & __MetadataB
  *           operation is required to use this method. </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftDataClient, ExecuteStatementCommand } from "@aws-sdk/client-redshift-data"; // ES Modules import
+ * // const { RedshiftDataClient, ExecuteStatementCommand } = require("@aws-sdk/client-redshift-data"); // CommonJS import
+ * const client = new RedshiftDataClient(config);
+ * const command = new ExecuteStatementCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ExecuteStatementCommandInput} for command's `input` shape.
+ * @see {@link ExecuteStatementCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftDataClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ExecuteStatementCommand extends $Command<
   ExecuteStatementCommandInput,

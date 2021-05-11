@@ -16,8 +16,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type LeaveOrganizationCommandInput = {};
-export type LeaveOrganizationCommandOutput = __MetadataBearer;
+export interface LeaveOrganizationCommandInput {}
+export interface LeaveOrganizationCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Removes a member account from its parent organization. This version of the operation
@@ -28,8 +28,8 @@ export type LeaveOrganizationCommandOutput = __MetadataBearer;
  *         <important>
  *             <ul>
  *                <li>
- *                     <p>The management account in an organization with all features enabled can set
- *                         service control policies (SCPs) that can restrict what administrators of
+ *                     <p>The management account in an organization with all features enabled can
+ *                         set service control policies (SCPs) that can restrict what administrators of
  *                         member accounts can do. This includes preventing them from successfully
  *                         calling <code>LeaveOrganization</code> and leaving the organization.</p>
  *                 </li>
@@ -61,6 +61,13 @@ export type LeaveOrganizationCommandOutput = __MetadataBearer;
  *                   </p>
  *                 </li>
  *                <li>
+ *                     <p>The account that you want to leave must not be a delegated administrator
+ *                         account for any AWS service enabled for your organization. If the account
+ *                         is a delegated administrator, you must first change the delegated
+ *                         administrator account to another account that is remaining in the
+ *                         organization.</p>
+ *                 </li>
+ *                <li>
  *                     <p>You can leave an organization only after you enable IAM user access to
  *                         billing in your account. For more information, see <a href="http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate">Activating Access to the Billing and Cost Management Console</a> in
  *                         the <i>AWS Billing and Cost Management User Guide.</i>
@@ -71,8 +78,27 @@ export type LeaveOrganizationCommandOutput = __MetadataBearer;
  *                         the account object in the organization are deleted. AWS accounts outside
  *                         of an organization do not support tags.</p>
  *                 </li>
+ *                <li>
+ *                     <p>A newly created account has a waiting period before it can be removed from
+ *                         its organization. If you get an error that indicates that a wait period is
+ *                         required, then try again in a few days.</p>
+ *                 </li>
  *             </ul>
  *         </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, LeaveOrganizationCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, LeaveOrganizationCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new LeaveOrganizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link LeaveOrganizationCommandInput} for command's `input` shape.
+ * @see {@link LeaveOrganizationCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class LeaveOrganizationCommand extends $Command<
   LeaveOrganizationCommandInput,

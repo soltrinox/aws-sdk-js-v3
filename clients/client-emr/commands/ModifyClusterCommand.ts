@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyClusterCommandInput = ModifyClusterInput;
-export type ModifyClusterCommandOutput = ModifyClusterOutput & __MetadataBearer;
+export interface ModifyClusterCommandInput extends ModifyClusterInput {}
+export interface ModifyClusterCommandOutput extends ModifyClusterOutput, __MetadataBearer {}
 
 /**
  * <p>Modifies the number of steps that can be executed concurrently for the cluster specified
  *          using ClusterID.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EMRClient, ModifyClusterCommand } from "@aws-sdk/client-emr"; // ES Modules import
+ * // const { EMRClient, ModifyClusterCommand } = require("@aws-sdk/client-emr"); // CommonJS import
+ * const client = new EMRClient(config);
+ * const command = new ModifyClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyClusterCommandInput} for command's `input` shape.
+ * @see {@link ModifyClusterCommandOutput} for command's `response` shape.
+ * @see {@link EMRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyClusterCommand extends $Command<
   ModifyClusterCommandInput,

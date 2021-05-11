@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchAssociateApprovalRuleTemplateWithRepositoriesCommandInput = BatchAssociateApprovalRuleTemplateWithRepositoriesInput;
-export type BatchAssociateApprovalRuleTemplateWithRepositoriesCommandOutput = BatchAssociateApprovalRuleTemplateWithRepositoriesOutput &
-  __MetadataBearer;
+export interface BatchAssociateApprovalRuleTemplateWithRepositoriesCommandInput
+  extends BatchAssociateApprovalRuleTemplateWithRepositoriesInput {}
+export interface BatchAssociateApprovalRuleTemplateWithRepositoriesCommandOutput
+  extends BatchAssociateApprovalRuleTemplateWithRepositoriesOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Creates an association between an approval rule template and one or more specified repositories. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeCommitClient, BatchAssociateApprovalRuleTemplateWithRepositoriesCommand } from "@aws-sdk/client-codecommit"; // ES Modules import
+ * // const { CodeCommitClient, BatchAssociateApprovalRuleTemplateWithRepositoriesCommand } = require("@aws-sdk/client-codecommit"); // CommonJS import
+ * const client = new CodeCommitClient(config);
+ * const command = new BatchAssociateApprovalRuleTemplateWithRepositoriesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchAssociateApprovalRuleTemplateWithRepositoriesCommandInput} for command's `input` shape.
+ * @see {@link BatchAssociateApprovalRuleTemplateWithRepositoriesCommandOutput} for command's `response` shape.
+ * @see {@link CodeCommitClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchAssociateApprovalRuleTemplateWithRepositoriesCommand extends $Command<
   BatchAssociateApprovalRuleTemplateWithRepositoriesCommandInput,

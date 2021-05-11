@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateIndexingConfigurationCommandInput = UpdateIndexingConfigurationRequest;
-export type UpdateIndexingConfigurationCommandOutput = UpdateIndexingConfigurationResponse & __MetadataBearer;
+export interface UpdateIndexingConfigurationCommandInput extends UpdateIndexingConfigurationRequest {}
+export interface UpdateIndexingConfigurationCommandOutput
+  extends UpdateIndexingConfigurationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Updates the search configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, UpdateIndexingConfigurationCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, UpdateIndexingConfigurationCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new UpdateIndexingConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateIndexingConfigurationCommandInput} for command's `input` shape.
+ * @see {@link UpdateIndexingConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateIndexingConfigurationCommand extends $Command<
   UpdateIndexingConfigurationCommandInput,

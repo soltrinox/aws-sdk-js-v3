@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type InviteMembersCommandInput = InviteMembersRequest;
-export type InviteMembersCommandOutput = InviteMembersResponse & __MetadataBearer;
+export interface InviteMembersCommandInput extends InviteMembersRequest {}
+export interface InviteMembersCommandOutput extends InviteMembersResponse, __MetadataBearer {}
 
 /**
  * <p>Invites other AWS accounts (created as members of the current AWS account by
  *       CreateMembers) to enable GuardDuty, and allow the current AWS account to view and manage these
  *       accounts' findings on their behalf as the GuardDuty administrator account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GuardDutyClient, InviteMembersCommand } from "@aws-sdk/client-guardduty"; // ES Modules import
+ * // const { GuardDutyClient, InviteMembersCommand } = require("@aws-sdk/client-guardduty"); // CommonJS import
+ * const client = new GuardDutyClient(config);
+ * const command = new InviteMembersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link InviteMembersCommandInput} for command's `input` shape.
+ * @see {@link InviteMembersCommandOutput} for command's `response` shape.
+ * @see {@link GuardDutyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class InviteMembersCommand extends $Command<
   InviteMembersCommandInput,

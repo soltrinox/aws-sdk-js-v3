@@ -21,11 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeLoadBalancerAttributesCommandInput = DescribeLoadBalancerAttributesInput;
-export type DescribeLoadBalancerAttributesCommandOutput = DescribeLoadBalancerAttributesOutput & __MetadataBearer;
+export interface DescribeLoadBalancerAttributesCommandInput extends DescribeLoadBalancerAttributesInput {}
+export interface DescribeLoadBalancerAttributesCommandOutput
+  extends DescribeLoadBalancerAttributesOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Describes the attributes for the specified load balancer.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingClient, DescribeLoadBalancerAttributesCommand } from "@aws-sdk/client-elastic-load-balancing"; // ES Modules import
+ * // const { ElasticLoadBalancingClient, DescribeLoadBalancerAttributesCommand } = require("@aws-sdk/client-elastic-load-balancing"); // CommonJS import
+ * const client = new ElasticLoadBalancingClient(config);
+ * const command = new DescribeLoadBalancerAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeLoadBalancerAttributesCommandInput} for command's `input` shape.
+ * @see {@link DescribeLoadBalancerAttributesCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeLoadBalancerAttributesCommand extends $Command<
   DescribeLoadBalancerAttributesCommandInput,

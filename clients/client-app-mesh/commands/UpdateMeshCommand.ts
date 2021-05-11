@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateMeshCommandInput = UpdateMeshInput;
-export type UpdateMeshCommandOutput = UpdateMeshOutput & __MetadataBearer;
+export interface UpdateMeshCommandInput extends UpdateMeshInput {}
+export interface UpdateMeshCommandOutput extends UpdateMeshOutput, __MetadataBearer {}
 
 /**
  * <p>Updates an existing service mesh.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppMeshClient, UpdateMeshCommand } from "@aws-sdk/client-app-mesh"; // ES Modules import
+ * // const { AppMeshClient, UpdateMeshCommand } = require("@aws-sdk/client-app-mesh"); // CommonJS import
+ * const client = new AppMeshClient(config);
+ * const command = new UpdateMeshCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateMeshCommandInput} for command's `input` shape.
+ * @see {@link UpdateMeshCommandOutput} for command's `response` shape.
+ * @see {@link AppMeshClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateMeshCommand extends $Command<
   UpdateMeshCommandInput,

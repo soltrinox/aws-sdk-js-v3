@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeJobQueuesCommandInput = DescribeJobQueuesRequest;
-export type DescribeJobQueuesCommandOutput = DescribeJobQueuesResponse & __MetadataBearer;
+export interface DescribeJobQueuesCommandInput extends DescribeJobQueuesRequest {}
+export interface DescribeJobQueuesCommandOutput extends DescribeJobQueuesResponse, __MetadataBearer {}
 
 /**
  * <p>Describes one or more of your job queues.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BatchClient, DescribeJobQueuesCommand } from "@aws-sdk/client-batch"; // ES Modules import
+ * // const { BatchClient, DescribeJobQueuesCommand } = require("@aws-sdk/client-batch"); // CommonJS import
+ * const client = new BatchClient(config);
+ * const command = new DescribeJobQueuesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeJobQueuesCommandInput} for command's `input` shape.
+ * @see {@link DescribeJobQueuesCommandOutput} for command's `response` shape.
+ * @see {@link BatchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeJobQueuesCommand extends $Command<
   DescribeJobQueuesCommandInput,

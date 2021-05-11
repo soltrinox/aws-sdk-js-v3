@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateTransitGatewayConnectPeerCommandInput = AssociateTransitGatewayConnectPeerRequest;
-export type AssociateTransitGatewayConnectPeerCommandOutput = AssociateTransitGatewayConnectPeerResponse &
-  __MetadataBearer;
+export interface AssociateTransitGatewayConnectPeerCommandInput extends AssociateTransitGatewayConnectPeerRequest {}
+export interface AssociateTransitGatewayConnectPeerCommandOutput
+  extends AssociateTransitGatewayConnectPeerResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Associates a transit gateway Connect peer with a device, and optionally, with a link. If you
@@ -30,6 +31,20 @@ export type AssociateTransitGatewayConnectPeerCommandOutput = AssociateTransitGa
  *         <p>You can only associate transit gateway Connect peers that have been created on a
  *             transit gateway that's registered in your global network.</p>
  *         <p>You cannot associate a transit gateway Connect peer with more than one device and link. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkManagerClient, AssociateTransitGatewayConnectPeerCommand } from "@aws-sdk/client-networkmanager"; // ES Modules import
+ * // const { NetworkManagerClient, AssociateTransitGatewayConnectPeerCommand } = require("@aws-sdk/client-networkmanager"); // CommonJS import
+ * const client = new NetworkManagerClient(config);
+ * const command = new AssociateTransitGatewayConnectPeerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateTransitGatewayConnectPeerCommandInput} for command's `input` shape.
+ * @see {@link AssociateTransitGatewayConnectPeerCommandOutput} for command's `response` shape.
+ * @see {@link NetworkManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateTransitGatewayConnectPeerCommand extends $Command<
   AssociateTransitGatewayConnectPeerCommandInput,

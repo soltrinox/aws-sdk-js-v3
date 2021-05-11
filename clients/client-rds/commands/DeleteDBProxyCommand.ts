@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDBProxyCommandInput = DeleteDBProxyRequest;
-export type DeleteDBProxyCommandOutput = DeleteDBProxyResponse & __MetadataBearer;
+export interface DeleteDBProxyCommandInput extends DeleteDBProxyRequest {}
+export interface DeleteDBProxyCommandOutput extends DeleteDBProxyResponse, __MetadataBearer {}
 
 /**
- * <p>Deletes an existing proxy.</p>
+ * <p>Deletes an existing DB proxy.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, DeleteDBProxyCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, DeleteDBProxyCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new DeleteDBProxyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDBProxyCommandInput} for command's `input` shape.
+ * @see {@link DeleteDBProxyCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDBProxyCommand extends $Command<
   DeleteDBProxyCommandInput,

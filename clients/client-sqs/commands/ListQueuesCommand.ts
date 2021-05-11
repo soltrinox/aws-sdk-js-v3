@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListQueuesCommandInput = ListQueuesRequest;
-export type ListQueuesCommandOutput = ListQueuesResult & __MetadataBearer;
+export interface ListQueuesCommandInput extends ListQueuesRequest {}
+export interface ListQueuesCommandOutput extends ListQueuesResult, __MetadataBearer {}
 
 /**
  * <p>Returns a list of your queues in the current region. The response includes a maximum of 1,000 results. If you specify a value for the optional
@@ -28,8 +28,22 @@ export type ListQueuesCommandOutput = ListQueuesResult & __MetadataBearer;
  *           <code>NextToken</code> as a parameter in your next request to
  *           <code>listQueues</code> to receive the next page of results.  </p>
  *          <note>
- *             <p>Cross-account permissions don't apply to this action. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name">Grant Cross-Account Permissions to a Role and a User Name</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+ *             <p>Cross-account permissions don't apply to this action. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name">Grant cross-account permissions to a role and a user name</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SQSClient, ListQueuesCommand } from "@aws-sdk/client-sqs"; // ES Modules import
+ * // const { SQSClient, ListQueuesCommand } = require("@aws-sdk/client-sqs"); // CommonJS import
+ * const client = new SQSClient(config);
+ * const command = new ListQueuesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListQueuesCommandInput} for command's `input` shape.
+ * @see {@link ListQueuesCommandOutput} for command's `response` shape.
+ * @see {@link SQSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListQueuesCommand extends $Command<
   ListQueuesCommandInput,

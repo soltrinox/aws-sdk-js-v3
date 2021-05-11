@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagStreamCommandInput = TagStreamInput;
-export type TagStreamCommandOutput = TagStreamOutput & __MetadataBearer;
+export interface TagStreamCommandInput extends TagStreamInput {}
+export interface TagStreamCommandOutput extends TagStreamOutput, __MetadataBearer {}
 
 /**
  * <p>Adds one or more tags to a stream. A <i>tag</i> is a key-value pair
@@ -31,6 +31,20 @@ export type TagStreamCommandOutput = TagStreamOutput & __MetadataBearer;
  *         <p>This operation requires permission for the <code>KinesisVideo:TagStream</code>
  *             action.</p>
  *         <p>Kinesis video streams support up to 50 tags.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisVideoClient, TagStreamCommand } from "@aws-sdk/client-kinesis-video"; // ES Modules import
+ * // const { KinesisVideoClient, TagStreamCommand } = require("@aws-sdk/client-kinesis-video"); // CommonJS import
+ * const client = new KinesisVideoClient(config);
+ * const command = new TagStreamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagStreamCommandInput} for command's `input` shape.
+ * @see {@link TagStreamCommandOutput} for command's `response` shape.
+ * @see {@link KinesisVideoClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagStreamCommand extends $Command<
   TagStreamCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteClassifierCommandInput = DeleteClassifierRequest;
-export type DeleteClassifierCommandOutput = DeleteClassifierResponse & __MetadataBearer;
+export interface DeleteClassifierCommandInput extends DeleteClassifierRequest {}
+export interface DeleteClassifierCommandOutput extends DeleteClassifierResponse, __MetadataBearer {}
 
 /**
  * <p>Removes a classifier from the Data Catalog.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, DeleteClassifierCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, DeleteClassifierCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new DeleteClassifierCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteClassifierCommandInput} for command's `input` shape.
+ * @see {@link DeleteClassifierCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteClassifierCommand extends $Command<
   DeleteClassifierCommandInput,

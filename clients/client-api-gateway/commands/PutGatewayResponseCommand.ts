@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutGatewayResponseCommandInput = PutGatewayResponseRequest;
-export type PutGatewayResponseCommandOutput = GatewayResponse & __MetadataBearer;
+export interface PutGatewayResponseCommandInput extends PutGatewayResponseRequest {}
+export interface PutGatewayResponseCommandOutput extends GatewayResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a customization of a <a>GatewayResponse</a> of a specified response type and status code on the given <a>RestApi</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, PutGatewayResponseCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, PutGatewayResponseCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new PutGatewayResponseCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutGatewayResponseCommandInput} for command's `input` shape.
+ * @see {@link PutGatewayResponseCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutGatewayResponseCommand extends $Command<
   PutGatewayResponseCommandInput,

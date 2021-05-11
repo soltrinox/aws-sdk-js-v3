@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateConfigurationSetEventDestinationCommandInput = UpdateConfigurationSetEventDestinationRequest;
-export type UpdateConfigurationSetEventDestinationCommandOutput = UpdateConfigurationSetEventDestinationResponse &
-  __MetadataBearer;
+export interface UpdateConfigurationSetEventDestinationCommandInput
+  extends UpdateConfigurationSetEventDestinationRequest {}
+export interface UpdateConfigurationSetEventDestinationCommandOutput
+  extends UpdateConfigurationSetEventDestinationResponse,
+    __MetadataBearer {}
 
 /**
  * Update an event destination in a configuration set. An event destination is a location that you publish information about your voice calls to. For example, you can log an event to an Amazon CloudWatch destination when a call fails.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointSMSVoiceClient, UpdateConfigurationSetEventDestinationCommand } from "@aws-sdk/client-pinpoint-sms-voice"; // ES Modules import
+ * // const { PinpointSMSVoiceClient, UpdateConfigurationSetEventDestinationCommand } = require("@aws-sdk/client-pinpoint-sms-voice"); // CommonJS import
+ * const client = new PinpointSMSVoiceClient(config);
+ * const command = new UpdateConfigurationSetEventDestinationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateConfigurationSetEventDestinationCommandInput} for command's `input` shape.
+ * @see {@link UpdateConfigurationSetEventDestinationCommandOutput} for command's `response` shape.
+ * @see {@link PinpointSMSVoiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateConfigurationSetEventDestinationCommand extends $Command<
   UpdateConfigurationSetEventDestinationCommandInput,

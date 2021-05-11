@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeMatchmakingConfigurationsCommandInput = DescribeMatchmakingConfigurationsInput;
-export type DescribeMatchmakingConfigurationsCommandOutput = DescribeMatchmakingConfigurationsOutput & __MetadataBearer;
+export interface DescribeMatchmakingConfigurationsCommandInput extends DescribeMatchmakingConfigurationsInput {}
+export interface DescribeMatchmakingConfigurationsCommandOutput
+  extends DescribeMatchmakingConfigurationsOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieves the details of FlexMatch matchmaking configurations. </p>
@@ -32,54 +34,37 @@ export type DescribeMatchmakingConfigurationsCommandOutput = DescribeMatchmaking
  *             <b>Learn more</b>
  *          </p>
  *         <p>
- *             <a href="https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/matchmaker-build.html"> Setting Up FlexMatch
- *                 Matchmakers</a>
+ *             <a href="https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/matchmaker-build.html"> Setting up FlexMatch
+ *                 matchmakers</a>
  *          </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateMatchmakingConfiguration</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeMatchmakingConfigurations</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateMatchmakingConfiguration</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteMatchmakingConfiguration</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>CreateMatchmakingRuleSet</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeMatchmakingRuleSets</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ValidateMatchmakingRuleSet</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteMatchmakingRuleSet</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>CreateMatchmakingConfiguration</a> |
+ *                     <a>DescribeMatchmakingConfigurations</a> |
+ *                     <a>UpdateMatchmakingConfiguration</a> |
+ *                     <a>DeleteMatchmakingConfiguration</a> |
+ *                     <a>CreateMatchmakingRuleSet</a> |
+ *                     <a>DescribeMatchmakingRuleSets</a> |
+ *                     <a>ValidateMatchmakingRuleSet</a> |
+ *                     <a>DeleteMatchmakingRuleSet</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, DescribeMatchmakingConfigurationsCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, DescribeMatchmakingConfigurationsCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new DescribeMatchmakingConfigurationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeMatchmakingConfigurationsCommandInput} for command's `input` shape.
+ * @see {@link DescribeMatchmakingConfigurationsCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeMatchmakingConfigurationsCommand extends $Command<
   DescribeMatchmakingConfigurationsCommandInput,

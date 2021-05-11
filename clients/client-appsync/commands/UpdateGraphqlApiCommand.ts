@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateGraphqlApiCommandInput = UpdateGraphqlApiRequest;
-export type UpdateGraphqlApiCommandOutput = UpdateGraphqlApiResponse & __MetadataBearer;
+export interface UpdateGraphqlApiCommandInput extends UpdateGraphqlApiRequest {}
+export interface UpdateGraphqlApiCommandOutput extends UpdateGraphqlApiResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a <code>GraphqlApi</code> object.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppSyncClient, UpdateGraphqlApiCommand } from "@aws-sdk/client-appsync"; // ES Modules import
+ * // const { AppSyncClient, UpdateGraphqlApiCommand } = require("@aws-sdk/client-appsync"); // CommonJS import
+ * const client = new AppSyncClient(config);
+ * const command = new UpdateGraphqlApiCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateGraphqlApiCommandInput} for command's `input` shape.
+ * @see {@link UpdateGraphqlApiCommandOutput} for command's `response` shape.
+ * @see {@link AppSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateGraphqlApiCommand extends $Command<
   UpdateGraphqlApiCommandInput,

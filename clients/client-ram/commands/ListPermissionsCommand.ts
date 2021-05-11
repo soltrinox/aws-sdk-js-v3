@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPermissionsCommandInput = ListPermissionsRequest;
-export type ListPermissionsCommandOutput = ListPermissionsResponse & __MetadataBearer;
+export interface ListPermissionsCommandInput extends ListPermissionsRequest {}
+export interface ListPermissionsCommandOutput extends ListPermissionsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the AWS RAM permissions.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RAMClient, ListPermissionsCommand } from "@aws-sdk/client-ram"; // ES Modules import
+ * // const { RAMClient, ListPermissionsCommand } = require("@aws-sdk/client-ram"); // CommonJS import
+ * const client = new RAMClient(config);
+ * const command = new ListPermissionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPermissionsCommandInput} for command's `input` shape.
+ * @see {@link ListPermissionsCommandOutput} for command's `response` shape.
+ * @see {@link RAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPermissionsCommand extends $Command<
   ListPermissionsCommandInput,

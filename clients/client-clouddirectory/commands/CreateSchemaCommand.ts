@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSchemaCommandInput = CreateSchemaRequest;
-export type CreateSchemaCommandOutput = CreateSchemaResponse & __MetadataBearer;
+export interface CreateSchemaCommandInput extends CreateSchemaRequest {}
+export interface CreateSchemaCommandOutput extends CreateSchemaResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new schema in a development state. A schema can exist in three
@@ -42,6 +42,20 @@ export type CreateSchemaCommandOutput = CreateSchemaResponse & __MetadataBearer;
  *           facets. You can apply only published schemas to directories. </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, CreateSchemaCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, CreateSchemaCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new CreateSchemaCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSchemaCommandInput} for command's `input` shape.
+ * @see {@link CreateSchemaCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSchemaCommand extends $Command<
   CreateSchemaCommandInput,

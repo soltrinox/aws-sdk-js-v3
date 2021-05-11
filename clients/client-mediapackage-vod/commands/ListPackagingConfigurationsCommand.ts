@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPackagingConfigurationsCommandInput = ListPackagingConfigurationsRequest;
-export type ListPackagingConfigurationsCommandOutput = ListPackagingConfigurationsResponse & __MetadataBearer;
+export interface ListPackagingConfigurationsCommandInput extends ListPackagingConfigurationsRequest {}
+export interface ListPackagingConfigurationsCommandOutput
+  extends ListPackagingConfigurationsResponse,
+    __MetadataBearer {}
 
 /**
  * Returns a collection of MediaPackage VOD PackagingConfiguration resources.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaPackageVodClient, ListPackagingConfigurationsCommand } from "@aws-sdk/client-mediapackage-vod"; // ES Modules import
+ * // const { MediaPackageVodClient, ListPackagingConfigurationsCommand } = require("@aws-sdk/client-mediapackage-vod"); // CommonJS import
+ * const client = new MediaPackageVodClient(config);
+ * const command = new ListPackagingConfigurationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPackagingConfigurationsCommandInput} for command's `input` shape.
+ * @see {@link ListPackagingConfigurationsCommandOutput} for command's `response` shape.
+ * @see {@link MediaPackageVodClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPackagingConfigurationsCommand extends $Command<
   ListPackagingConfigurationsCommandInput,

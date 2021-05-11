@@ -14,13 +14,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListStepsCommandInput = ListStepsInput;
-export type ListStepsCommandOutput = ListStepsOutput & __MetadataBearer;
+export interface ListStepsCommandInput extends ListStepsInput {}
+export interface ListStepsCommandOutput extends ListStepsOutput, __MetadataBearer {}
 
 /**
  * <p>Provides a list of steps for the cluster in reverse order unless you specify
  *             <code>stepIds</code> with the request of filter by <code>StepStates</code>. You can
- *          specify a maximum of ten <code>stepIDs</code>.</p>
+ *          specify a maximum of 10 <code>stepIDs</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EMRClient, ListStepsCommand } from "@aws-sdk/client-emr"; // ES Modules import
+ * // const { EMRClient, ListStepsCommand } = require("@aws-sdk/client-emr"); // CommonJS import
+ * const client = new EMRClient(config);
+ * const command = new ListStepsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListStepsCommandInput} for command's `input` shape.
+ * @see {@link ListStepsCommandOutput} for command's `response` shape.
+ * @see {@link EMRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListStepsCommand extends $Command<ListStepsCommandInput, ListStepsCommandOutput, EMRClientResolvedConfig> {
   // Start section: command_properties

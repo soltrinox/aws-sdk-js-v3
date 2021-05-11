@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UntagAttendeeCommandInput = UntagAttendeeRequest;
-export type UntagAttendeeCommandOutput = __MetadataBearer;
+export interface UntagAttendeeCommandInput extends UntagAttendeeRequest {}
+export interface UntagAttendeeCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Untags the specified tags from the specified Amazon Chime SDK attendee.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, UntagAttendeeCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, UntagAttendeeCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new UntagAttendeeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UntagAttendeeCommandInput} for command's `input` shape.
+ * @see {@link UntagAttendeeCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UntagAttendeeCommand extends $Command<
   UntagAttendeeCommandInput,

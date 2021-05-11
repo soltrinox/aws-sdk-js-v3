@@ -20,9 +20,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateConfigurationSetEventDestinationCommandInput = UpdateConfigurationSetEventDestinationRequest;
-export type UpdateConfigurationSetEventDestinationCommandOutput = UpdateConfigurationSetEventDestinationResponse &
-  __MetadataBearer;
+export interface UpdateConfigurationSetEventDestinationCommandInput
+  extends UpdateConfigurationSetEventDestinationRequest {}
+export interface UpdateConfigurationSetEventDestinationCommandOutput
+  extends UpdateConfigurationSetEventDestinationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Update the configuration of an event destination for a configuration set.</p>
@@ -31,6 +33,20 @@ export type UpdateConfigurationSetEventDestinationCommandOutput = UpdateConfigur
  *             you can send information about these events to. For example, you can send event data to
  *             Amazon SNS to receive notifications when you receive bounces or complaints, or you can use
  *             Amazon Kinesis Data Firehose to stream data to Amazon S3 for long-term storage.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointEmailClient, UpdateConfigurationSetEventDestinationCommand } from "@aws-sdk/client-pinpoint-email"; // ES Modules import
+ * // const { PinpointEmailClient, UpdateConfigurationSetEventDestinationCommand } = require("@aws-sdk/client-pinpoint-email"); // CommonJS import
+ * const client = new PinpointEmailClient(config);
+ * const command = new UpdateConfigurationSetEventDestinationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateConfigurationSetEventDestinationCommandInput} for command's `input` shape.
+ * @see {@link UpdateConfigurationSetEventDestinationCommandOutput} for command's `response` shape.
+ * @see {@link PinpointEmailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateConfigurationSetEventDestinationCommand extends $Command<
   UpdateConfigurationSetEventDestinationCommandInput,

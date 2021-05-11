@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeFleetCommandInput = DescribeFleetRequest;
-export type DescribeFleetCommandOutput = DescribeFleetResponse & __MetadataBearer;
+export interface DescribeFleetCommandInput extends DescribeFleetRequest {}
+export interface DescribeFleetCommandOutput extends DescribeFleetResponse, __MetadataBearer {}
 
 /**
  * <p>Describes a fleet.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RoboMakerClient, DescribeFleetCommand } from "@aws-sdk/client-robomaker"; // ES Modules import
+ * // const { RoboMakerClient, DescribeFleetCommand } = require("@aws-sdk/client-robomaker"); // CommonJS import
+ * const client = new RoboMakerClient(config);
+ * const command = new DescribeFleetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeFleetCommandInput} for command's `input` shape.
+ * @see {@link DescribeFleetCommandOutput} for command's `response` shape.
+ * @see {@link RoboMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeFleetCommand extends $Command<
   DescribeFleetCommandInput,

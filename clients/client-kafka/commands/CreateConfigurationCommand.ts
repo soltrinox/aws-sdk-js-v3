@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateConfigurationCommandInput = CreateConfigurationRequest;
-export type CreateConfigurationCommandOutput = CreateConfigurationResponse & __MetadataBearer;
+export interface CreateConfigurationCommandInput extends CreateConfigurationRequest {}
+export interface CreateConfigurationCommandOutput extends CreateConfigurationResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new MSK configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, CreateConfigurationCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, CreateConfigurationCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new CreateConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateConfigurationCommandInput} for command's `input` shape.
+ * @see {@link CreateConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateConfigurationCommand extends $Command<
   CreateConfigurationCommandInput,

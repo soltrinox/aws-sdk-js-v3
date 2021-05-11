@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SetTerminationProtectionCommandInput = SetTerminationProtectionInput;
-export type SetTerminationProtectionCommandOutput = __MetadataBearer;
+export interface SetTerminationProtectionCommandInput extends SetTerminationProtectionInput {}
+export interface SetTerminationProtectionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>SetTerminationProtection locks a cluster (job flow) so the EC2 instances in the cluster
@@ -36,6 +36,20 @@ export type SetTerminationProtectionCommandOutput = __MetadataBearer;
  *          value to <code>false</code>. </p>
  *          <p> For more information, see<a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html">Managing Cluster
  *             Termination</a> in the <i>Amazon EMR Management Guide</i>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EMRClient, SetTerminationProtectionCommand } from "@aws-sdk/client-emr"; // ES Modules import
+ * // const { EMRClient, SetTerminationProtectionCommand } = require("@aws-sdk/client-emr"); // CommonJS import
+ * const client = new EMRClient(config);
+ * const command = new SetTerminationProtectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SetTerminationProtectionCommandInput} for command's `input` shape.
+ * @see {@link SetTerminationProtectionCommandOutput} for command's `response` shape.
+ * @see {@link EMRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SetTerminationProtectionCommand extends $Command<
   SetTerminationProtectionCommandInput,

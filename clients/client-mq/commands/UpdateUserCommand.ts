@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateUserCommandInput = UpdateUserRequest;
-export type UpdateUserCommandOutput = UpdateUserResponse & __MetadataBearer;
+export interface UpdateUserCommandInput extends UpdateUserRequest {}
+export interface UpdateUserCommandOutput extends UpdateUserResponse, __MetadataBearer {}
 
 /**
  * Updates the information for an ActiveMQ user.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MqClient, UpdateUserCommand } from "@aws-sdk/client-mq"; // ES Modules import
+ * // const { MqClient, UpdateUserCommand } = require("@aws-sdk/client-mq"); // CommonJS import
+ * const client = new MqClient(config);
+ * const command = new UpdateUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateUserCommandInput} for command's `input` shape.
+ * @see {@link UpdateUserCommandOutput} for command's `response` shape.
+ * @see {@link MqClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateUserCommand extends $Command<
   UpdateUserCommandInput,

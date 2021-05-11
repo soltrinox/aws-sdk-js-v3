@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetUserSettingsCommandInput = GetUserSettingsRequest;
-export type GetUserSettingsCommandOutput = GetUserSettingsResponse & __MetadataBearer;
+export interface GetUserSettingsCommandInput extends GetUserSettingsRequest {}
+export interface GetUserSettingsCommandOutput extends GetUserSettingsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves settings for the specified user ID, such as any associated phone number settings.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, GetUserSettingsCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, GetUserSettingsCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new GetUserSettingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetUserSettingsCommandInput} for command's `input` shape.
+ * @see {@link GetUserSettingsCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetUserSettingsCommand extends $Command<
   GetUserSettingsCommandInput,

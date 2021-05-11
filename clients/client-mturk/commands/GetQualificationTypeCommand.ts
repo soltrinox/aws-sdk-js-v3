@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetQualificationTypeCommandInput = GetQualificationTypeRequest;
-export type GetQualificationTypeCommandOutput = GetQualificationTypeResponse & __MetadataBearer;
+export interface GetQualificationTypeCommandInput extends GetQualificationTypeRequest {}
+export interface GetQualificationTypeCommandOutput extends GetQualificationTypeResponse, __MetadataBearer {}
 
 /**
  * <p>
  *             The <code>GetQualificationType</code>operation retrieves information about a Qualification type using its ID.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, GetQualificationTypeCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, GetQualificationTypeCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new GetQualificationTypeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetQualificationTypeCommandInput} for command's `input` shape.
+ * @see {@link GetQualificationTypeCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetQualificationTypeCommand extends $Command<
   GetQualificationTypeCommandInput,

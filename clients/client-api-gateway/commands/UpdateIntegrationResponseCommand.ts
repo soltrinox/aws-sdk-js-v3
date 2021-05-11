@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateIntegrationResponseCommandInput = UpdateIntegrationResponseRequest;
-export type UpdateIntegrationResponseCommandOutput = IntegrationResponse & __MetadataBearer;
+export interface UpdateIntegrationResponseCommandInput extends UpdateIntegrationResponseRequest {}
+export interface UpdateIntegrationResponseCommandOutput extends IntegrationResponse, __MetadataBearer {}
 
 /**
  * <p>Represents an update integration response.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, UpdateIntegrationResponseCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, UpdateIntegrationResponseCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new UpdateIntegrationResponseCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateIntegrationResponseCommandInput} for command's `input` shape.
+ * @see {@link UpdateIntegrationResponseCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateIntegrationResponseCommand extends $Command<
   UpdateIntegrationResponseCommandInput,

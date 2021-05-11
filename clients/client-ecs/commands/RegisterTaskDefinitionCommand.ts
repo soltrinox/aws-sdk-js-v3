@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RegisterTaskDefinitionCommandInput = RegisterTaskDefinitionRequest;
-export type RegisterTaskDefinitionCommandOutput = RegisterTaskDefinitionResponse & __MetadataBearer;
+export interface RegisterTaskDefinitionCommandInput extends RegisterTaskDefinitionRequest {}
+export interface RegisterTaskDefinitionCommandOutput extends RegisterTaskDefinitionResponse, __MetadataBearer {}
 
 /**
  * <p>Registers a new task definition from the supplied <code>family</code> and
@@ -39,6 +39,20 @@ export type RegisterTaskDefinitionCommandOutput = RegisterTaskDefinitionResponse
  * 				<a>NetworkConfiguration</a> when you create a service or run a task with
  * 			the task definition. For more information, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task Networking</a>
  * 			in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, RegisterTaskDefinitionCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, RegisterTaskDefinitionCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new RegisterTaskDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RegisterTaskDefinitionCommandInput} for command's `input` shape.
+ * @see {@link RegisterTaskDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RegisterTaskDefinitionCommand extends $Command<
   RegisterTaskDefinitionCommandInput,

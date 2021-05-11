@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteLanguageModelCommandInput = DeleteLanguageModelRequest;
-export type DeleteLanguageModelCommandOutput = __MetadataBearer;
+export interface DeleteLanguageModelCommandInput extends DeleteLanguageModelRequest {}
+export interface DeleteLanguageModelCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a custom language model using its name.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TranscribeClient, DeleteLanguageModelCommand } from "@aws-sdk/client-transcribe"; // ES Modules import
+ * // const { TranscribeClient, DeleteLanguageModelCommand } = require("@aws-sdk/client-transcribe"); // CommonJS import
+ * const client = new TranscribeClient(config);
+ * const command = new DeleteLanguageModelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteLanguageModelCommandInput} for command's `input` shape.
+ * @see {@link DeleteLanguageModelCommandOutput} for command's `response` shape.
+ * @see {@link TranscribeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteLanguageModelCommand extends $Command<
   DeleteLanguageModelCommandInput,

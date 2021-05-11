@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AttachInstancesToLoadBalancerCommandInput = AttachInstancesToLoadBalancerRequest;
-export type AttachInstancesToLoadBalancerCommandOutput = AttachInstancesToLoadBalancerResult & __MetadataBearer;
+export interface AttachInstancesToLoadBalancerCommandInput extends AttachInstancesToLoadBalancerRequest {}
+export interface AttachInstancesToLoadBalancerCommandOutput
+  extends AttachInstancesToLoadBalancerResult,
+    __MetadataBearer {}
 
 /**
  * <p>Attaches one or more Lightsail instances to a load balancer.</p>
@@ -27,6 +29,20 @@ export type AttachInstancesToLoadBalancerCommandOutput = AttachInstancesToLoadBa
  *          <p>The <code>attach instances to load balancer</code> operation supports tag-based access
  *       control via resource tags applied to the resource identified by <code>load balancer
  *         name</code>. For more information, see the <a href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags">Lightsail Dev Guide</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, AttachInstancesToLoadBalancerCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, AttachInstancesToLoadBalancerCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new AttachInstancesToLoadBalancerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AttachInstancesToLoadBalancerCommandInput} for command's `input` shape.
+ * @see {@link AttachInstancesToLoadBalancerCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AttachInstancesToLoadBalancerCommand extends $Command<
   AttachInstancesToLoadBalancerCommandInput,

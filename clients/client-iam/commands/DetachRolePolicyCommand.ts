@@ -17,15 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DetachRolePolicyCommandInput = DetachRolePolicyRequest;
-export type DetachRolePolicyCommandOutput = __MetadataBearer;
+export interface DetachRolePolicyCommandInput extends DetachRolePolicyRequest {}
+export interface DetachRolePolicyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Removes the specified managed policy from the specified role.</p>
- *          <p>A role can also have inline policies embedded with it. To delete an inline policy, use
- *          the <a>DeleteRolePolicy</a> API. For information about policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed
- *             Policies and Inline Policies</a> in the
- *          <i>IAM User Guide</i>.</p>
+ *         <p>A role can also have inline policies embedded with it. To delete an inline policy, use
+ *                 <a>DeleteRolePolicy</a>. For information about policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed
+ *                 policies and inline policies</a> in the
+ *             <i>IAM User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, DetachRolePolicyCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, DetachRolePolicyCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new DetachRolePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DetachRolePolicyCommandInput} for command's `input` shape.
+ * @see {@link DetachRolePolicyCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DetachRolePolicyCommand extends $Command<
   DetachRolePolicyCommandInput,

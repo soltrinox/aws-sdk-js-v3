@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutDedicatedIpInPoolCommandInput = PutDedicatedIpInPoolRequest;
-export type PutDedicatedIpInPoolCommandOutput = PutDedicatedIpInPoolResponse & __MetadataBearer;
+export interface PutDedicatedIpInPoolCommandInput extends PutDedicatedIpInPoolRequest {}
+export interface PutDedicatedIpInPoolCommandOutput extends PutDedicatedIpInPoolResponse, __MetadataBearer {}
 
 /**
  * <p>Move a dedicated IP address to an existing dedicated IP pool.</p>
@@ -31,6 +31,20 @@ export type PutDedicatedIpInPoolCommandOutput = PutDedicatedIpInPoolResponse & _
  *                 using the <code>CreateDedicatedIpPool</code> operation.</p>
  *
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointEmailClient, PutDedicatedIpInPoolCommand } from "@aws-sdk/client-pinpoint-email"; // ES Modules import
+ * // const { PinpointEmailClient, PutDedicatedIpInPoolCommand } = require("@aws-sdk/client-pinpoint-email"); // CommonJS import
+ * const client = new PinpointEmailClient(config);
+ * const command = new PutDedicatedIpInPoolCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutDedicatedIpInPoolCommandInput} for command's `input` shape.
+ * @see {@link PutDedicatedIpInPoolCommandOutput} for command's `response` shape.
+ * @see {@link PinpointEmailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutDedicatedIpInPoolCommand extends $Command<
   PutDedicatedIpInPoolCommandInput,

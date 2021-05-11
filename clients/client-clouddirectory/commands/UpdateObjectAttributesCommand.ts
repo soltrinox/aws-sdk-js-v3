@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateObjectAttributesCommandInput = UpdateObjectAttributesRequest;
-export type UpdateObjectAttributesCommandOutput = UpdateObjectAttributesResponse & __MetadataBearer;
+export interface UpdateObjectAttributesCommandInput extends UpdateObjectAttributesRequest {}
+export interface UpdateObjectAttributesCommandOutput extends UpdateObjectAttributesResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a given object's attributes.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, UpdateObjectAttributesCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, UpdateObjectAttributesCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new UpdateObjectAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateObjectAttributesCommandInput} for command's `input` shape.
+ * @see {@link UpdateObjectAttributesCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateObjectAttributesCommand extends $Command<
   UpdateObjectAttributesCommandInput,

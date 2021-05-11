@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceInput;
-export type TagResourceCommandOutput = __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceInput {}
+export interface TagResourceCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Associate a set of tags with an Amazon DynamoDB resource. You can then activate these
@@ -28,6 +28,20 @@ export type TagResourceCommandOutput = __MetadataBearer;
  *          <p>For an overview on tagging DynamoDB resources, see
  *       <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html">Tagging for DynamoDB</a>
  *       in the <i>Amazon DynamoDB Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, TagResourceCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, TagResourceCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

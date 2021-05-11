@@ -17,12 +17,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateEventSourceMappingCommandInput = UpdateEventSourceMappingRequest;
-export type UpdateEventSourceMappingCommandOutput = EventSourceMappingConfiguration & __MetadataBearer;
+export interface UpdateEventSourceMappingCommandInput extends UpdateEventSourceMappingRequest {}
+export interface UpdateEventSourceMappingCommandOutput extends EventSourceMappingConfiguration, __MetadataBearer {}
 
 /**
- * <p>Updates an event source mapping. You can change the function that AWS Lambda invokes, or pause invocation and
- *       resume later from the same location.</p>
+ * <p>Updates an event source mapping. You can change the function that AWS Lambda invokes, or pause invocation and resume later from the same location.</p>
  *          <p>The following error handling options are only available for stream sources (DynamoDB and Kinesis):</p>
  *          <ul>
  *             <li>
@@ -46,6 +45,20 @@ export type UpdateEventSourceMappingCommandOutput = EventSourceMappingConfigurat
  *                   <code>ParallelizationFactor</code> - Process multiple batches from each shard concurrently.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LambdaClient, UpdateEventSourceMappingCommand } from "@aws-sdk/client-lambda"; // ES Modules import
+ * // const { LambdaClient, UpdateEventSourceMappingCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+ * const client = new LambdaClient(config);
+ * const command = new UpdateEventSourceMappingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateEventSourceMappingCommandInput} for command's `input` shape.
+ * @see {@link UpdateEventSourceMappingCommandOutput} for command's `response` shape.
+ * @see {@link LambdaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateEventSourceMappingCommand extends $Command<
   UpdateEventSourceMappingCommandInput,

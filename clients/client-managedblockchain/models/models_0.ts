@@ -7,9 +7,13 @@ import { MetadataBearer as $MetadataBearer } from "@aws-sdk/types";
 export interface AccessDeniedException extends __SmithyException, $MetadataBearer {
   name: "AccessDeniedException";
   $fault: "client";
+  Message?: string;
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -22,6 +26,7 @@ export enum ThresholdComparator {
 
 /**
  * <p>A policy type that defines the voting rules for the network. The rules decide if a proposal is approved. Approval may be based on criteria such as the percentage of <code>YES</code> votes and the duration of the proposal. The policy applies to all proposals and is specified when the network is created.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
  */
 export interface ApprovalThresholdPolicy {
   /**
@@ -41,6 +46,9 @@ export interface ApprovalThresholdPolicy {
 }
 
 export namespace ApprovalThresholdPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ApprovalThresholdPolicy): any => ({
     ...obj,
   });
@@ -56,12 +64,15 @@ export interface MemberFabricConfiguration {
   AdminUsername: string | undefined;
 
   /**
-   * <p>The password for the member's initial administrative user. The <code>AdminPassword</code> must be at least eight characters long and no more than 32 characters. It must contain at least one uppercase letter, one lowercase letter, and one digit. It cannot have a single quote(‘), double quote(“), forward slash(/), backward slash(\), @, or a space.</p>
+   * <p>The password for the member's initial administrative user. The <code>AdminPassword</code> must be at least eight characters long and no more than 32 characters. It must contain at least one uppercase letter, one lowercase letter, and one digit. It cannot have a single quotation mark (‘), a double quotation marks (“), a forward slash(/), a backward slash(\), @, or a space.</p>
    */
   AdminPassword: string | undefined;
 }
 
 export namespace MemberFabricConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MemberFabricConfiguration): any => ({
     ...obj,
     ...(obj.AdminPassword && { AdminPassword: SENSITIVE_STRING }),
@@ -79,6 +90,9 @@ export interface MemberFrameworkConfiguration {
 }
 
 export namespace MemberFrameworkConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MemberFrameworkConfiguration): any => ({
     ...obj,
     ...(obj.Fabric && { Fabric: MemberFabricConfiguration.filterSensitiveLog(obj.Fabric) }),
@@ -96,6 +110,9 @@ export interface LogConfiguration {
 }
 
 export namespace LogConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LogConfiguration): any => ({
     ...obj,
   });
@@ -112,6 +129,9 @@ export interface LogConfigurations {
 }
 
 export namespace LogConfigurations {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LogConfigurations): any => ({
     ...obj,
   });
@@ -128,6 +148,9 @@ export interface MemberFabricLogPublishingConfiguration {
 }
 
 export namespace MemberFabricLogPublishingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MemberFabricLogPublishingConfiguration): any => ({
     ...obj,
   });
@@ -144,6 +167,9 @@ export interface MemberLogPublishingConfiguration {
 }
 
 export namespace MemberLogPublishingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MemberLogPublishingConfiguration): any => ({
     ...obj,
   });
@@ -151,6 +177,7 @@ export namespace MemberLogPublishingConfiguration {
 
 /**
  * <p>Configuration properties of the member.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
  */
 export interface MemberConfiguration {
   /**
@@ -172,9 +199,18 @@ export interface MemberConfiguration {
    * <p>Configuration properties for logging events associated with a member of a Managed Blockchain network.</p>
    */
   LogPublishingConfiguration?: MemberLogPublishingConfiguration;
+
+  /**
+   * <p>Tags assigned to the member. Tags consist of a key and optional value. For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
+   *          <p>When specifying tags during creation, you can specify multiple key-value pairs in a single request, with an overall maximum of 50 tags added to each resource.</p>
+   */
+  Tags?: { [key: string]: string };
 }
 
 export namespace MemberConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MemberConfiguration): any => ({
     ...obj,
     ...(obj.FrameworkConfiguration && {
@@ -206,6 +242,9 @@ export interface CreateMemberInput {
 }
 
 export namespace CreateMemberInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMemberInput): any => ({
     ...obj,
     ...(obj.MemberConfiguration && {
@@ -222,6 +261,9 @@ export interface CreateMemberOutput {
 }
 
 export namespace CreateMemberOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMemberOutput): any => ({
     ...obj,
   });
@@ -236,6 +278,9 @@ export interface InternalServiceErrorException extends __SmithyException, $Metad
 }
 
 export namespace InternalServiceErrorException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServiceErrorException): any => ({
     ...obj,
   });
@@ -251,6 +296,9 @@ export interface InvalidRequestException extends __SmithyException, $MetadataBea
 }
 
 export namespace InvalidRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRequestException): any => ({
     ...obj,
   });
@@ -266,6 +314,9 @@ export interface ResourceAlreadyExistsException extends __SmithyException, $Meta
 }
 
 export namespace ResourceAlreadyExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceAlreadyExistsException): any => ({
     ...obj,
   });
@@ -281,21 +332,31 @@ export interface ResourceLimitExceededException extends __SmithyException, $Meta
 }
 
 export namespace ResourceLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceLimitExceededException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A requested resource does not exist on the network. It may have been deleted or referenced inaccurately.</p>
+ * <p>A requested resource does not exist. It may have been deleted or referenced inaccurately.</p>
  */
 export interface ResourceNotFoundException extends __SmithyException, $MetadataBearer {
   name: "ResourceNotFoundException";
   $fault: "client";
   Message?: string;
+  /**
+   * <p>A requested resource does not exist. It may have been deleted or referenced inaccurately.</p>
+   */
+  ResourceName?: string;
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -311,6 +372,9 @@ export interface ResourceNotReadyException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotReadyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotReadyException): any => ({
     ...obj,
   });
@@ -325,12 +389,38 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
 }
 
+/**
+ * <p></p>
+ */
+export interface TooManyTagsException extends __SmithyException, $MetadataBearer {
+  name: "TooManyTagsException";
+  $fault: "client";
+  Message?: string;
+  /**
+   * <p></p>
+   */
+  ResourceName?: string;
+}
+
+export namespace TooManyTagsException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TooManyTagsException): any => ({
+    ...obj,
+  });
+}
+
 export enum Framework {
+  ETHEREUM = "ETHEREUM",
   HYPERLEDGER_FABRIC = "HYPERLEDGER_FABRIC",
 }
 
@@ -350,6 +440,9 @@ export interface NetworkFabricConfiguration {
 }
 
 export namespace NetworkFabricConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NetworkFabricConfiguration): any => ({
     ...obj,
   });
@@ -370,6 +463,9 @@ export interface NetworkFrameworkConfiguration {
 }
 
 export namespace NetworkFrameworkConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NetworkFrameworkConfiguration): any => ({
     ...obj,
   });
@@ -379,6 +475,7 @@ export namespace NetworkFrameworkConfiguration {
  * <p>
  *          The voting rules for the network to decide if a proposal is accepted
  *       </p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
  */
 export interface VotingPolicy {
   /**
@@ -388,6 +485,9 @@ export interface VotingPolicy {
 }
 
 export namespace VotingPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VotingPolicy): any => ({
     ...obj,
   });
@@ -437,9 +537,19 @@ export interface CreateNetworkInput {
    * <p>Configuration properties for the first member within the network.</p>
    */
   MemberConfiguration: MemberConfiguration | undefined;
+
+  /**
+   * <p>Tags to assign to the network. Each tag consists of a key and optional value.</p>
+   *          <p>When specifying tags during creation, you can specify multiple key-value pairs in a single request, with an overall maximum of 50 tags added to each resource.</p>
+   *          <p>For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
+   */
+  Tags?: { [key: string]: string };
 }
 
 export namespace CreateNetworkInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateNetworkInput): any => ({
     ...obj,
     ...(obj.MemberConfiguration && {
@@ -461,6 +571,9 @@ export interface CreateNetworkOutput {
 }
 
 export namespace CreateNetworkOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateNetworkOutput): any => ({
     ...obj,
   });
@@ -482,13 +595,16 @@ export interface NodeFabricLogPublishingConfiguration {
 }
 
 export namespace NodeFabricLogPublishingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeFabricLogPublishingConfiguration): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Configuration properties for logging events associated with a peer node owned by a member in a Managed Blockchain network.</p>
+ * <p>Configuration properties for logging events associated with a peer node on a Hyperledger Fabric network on Managed Blockchain.</p>
  */
 export interface NodeLogPublishingConfiguration {
   /**
@@ -498,6 +614,9 @@ export interface NodeLogPublishingConfiguration {
 }
 
 export namespace NodeLogPublishingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeLogPublishingConfiguration): any => ({
     ...obj,
   });
@@ -509,7 +628,7 @@ export enum StateDBType {
 }
 
 /**
- * <p>Configuration properties of a peer node.</p>
+ * <p>Configuration properties of a node.</p>
  */
 export interface NodeConfiguration {
   /**
@@ -518,23 +637,27 @@ export interface NodeConfiguration {
   InstanceType: string | undefined;
 
   /**
-   * <p>The Availability Zone in which the node exists.</p>
+   * <p>The Availability Zone in which the node exists. Required for Ethereum nodes. </p>
    */
-  AvailabilityZone: string | undefined;
+  AvailabilityZone?: string;
 
   /**
-   * <p>Configuration properties for logging events associated with a peer node owned by a member in a Managed Blockchain network.
+   * <p>Configuration properties for logging events associated with a peer node on a Hyperledger Fabric network on Managed Blockchain.
    *       </p>
    */
   LogPublishingConfiguration?: NodeLogPublishingConfiguration;
 
   /**
    * <p>The state database that the node uses. Values are <code>LevelDB</code> or <code>CouchDB</code>. When using an Amazon Managed Blockchain network with Hyperledger Fabric version 1.4 or later, the default is <code>CouchDB</code>.</p>
+   *          <p>Applies only to Hyperledger Fabric.</p>
    */
   StateDB?: StateDBType | string;
 }
 
 export namespace NodeConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeConfiguration): any => ({
     ...obj,
   });
@@ -547,22 +670,51 @@ export interface CreateNodeInput {
   ClientRequestToken?: string;
 
   /**
-   * <p>The unique identifier of the network in which this node runs.</p>
+   * <p>The unique identifier of the network for the node.</p>
+   *          <p>Ethereum public networks have the following <code>NetworkId</code>s:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>n-ethereum-mainnet</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>n-ethereum-rinkeby</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>n-ethereum-ropsten</code>
+   *                </p>
+   *             </li>
+   *          </ul>
    */
   NetworkId: string | undefined;
 
   /**
    * <p>The unique identifier of the member that owns this node.</p>
+   *          <p>Applies only to Hyperledger Fabric.</p>
    */
-  MemberId: string | undefined;
+  MemberId?: string;
 
   /**
    * <p>The properties of a node configuration.</p>
    */
   NodeConfiguration: NodeConfiguration | undefined;
+
+  /**
+   * <p>Tags to assign to the node. Each tag consists of a key and optional value.</p>
+   *          <p>When specifying tags during creation, you can specify multiple key-value pairs in a single request, with an overall maximum of 50 tags added to each resource.</p>
+   *          <p>For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
+   */
+  Tags?: { [key: string]: string };
 }
 
 export namespace CreateNodeInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateNodeInput): any => ({
     ...obj,
   });
@@ -576,6 +728,9 @@ export interface CreateNodeOutput {
 }
 
 export namespace CreateNodeOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateNodeOutput): any => ({
     ...obj,
   });
@@ -583,6 +738,7 @@ export namespace CreateNodeOutput {
 
 /**
  * <p>An action to invite a specific AWS account to create a member and join the network. The <code>InviteAction</code> is carried out when a <code>Proposal</code> is <code>APPROVED</code>.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
  */
 export interface InviteAction {
   /**
@@ -592,6 +748,9 @@ export interface InviteAction {
 }
 
 export namespace InviteAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InviteAction): any => ({
     ...obj,
   });
@@ -599,6 +758,7 @@ export namespace InviteAction {
 
 /**
  * <p>An action to remove a member from a Managed Blockchain network as the result of a removal proposal that is <code>APPROVED</code>. The member and all associated resources are deleted from the network.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
  */
 export interface RemoveAction {
   /**
@@ -608,6 +768,9 @@ export interface RemoveAction {
 }
 
 export namespace RemoveAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveAction): any => ({
     ...obj,
   });
@@ -617,6 +780,7 @@ export namespace RemoveAction {
  * <p>
  *          The actions to carry out if a proposal is <code>APPROVED</code>.
  *       </p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
  */
 export interface ProposalActions {
   /**
@@ -635,6 +799,9 @@ export interface ProposalActions {
 }
 
 export namespace ProposalActions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProposalActions): any => ({
     ...obj,
   });
@@ -666,9 +833,19 @@ export interface CreateProposalInput {
    * <p>A description for the proposal that is visible to voting members, for example, "Proposal to add Example Corp. as member."</p>
    */
   Description?: string;
+
+  /**
+   * <p>Tags to assign to the proposal. Each tag consists of a key and optional value.</p>
+   *          <p>When specifying tags during creation, you can specify multiple key-value pairs in a single request, with an overall maximum of 50 tags added to each resource. If the proposal is for a network invitation, the invitation inherits the tags added to the proposal.</p>
+   *          <p>For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
+   */
+  Tags?: { [key: string]: string };
 }
 
 export namespace CreateProposalInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateProposalInput): any => ({
     ...obj,
   });
@@ -682,6 +859,9 @@ export interface CreateProposalOutput {
 }
 
 export namespace CreateProposalOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateProposalOutput): any => ({
     ...obj,
   });
@@ -700,6 +880,9 @@ export interface DeleteMemberInput {
 }
 
 export namespace DeleteMemberInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMemberInput): any => ({
     ...obj,
   });
@@ -708,6 +891,9 @@ export namespace DeleteMemberInput {
 export interface DeleteMemberOutput {}
 
 export namespace DeleteMemberOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMemberOutput): any => ({
     ...obj,
   });
@@ -715,14 +901,33 @@ export namespace DeleteMemberOutput {
 
 export interface DeleteNodeInput {
   /**
-   * <p>The unique identifier of the network that the node belongs to.</p>
+   * <p>The unique identifier of the network that the node is on.</p>
+   *          <p>Ethereum public networks have the following <code>NetworkId</code>s:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>n-ethereum-mainnet</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>n-ethereum-rinkeby</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>n-ethereum-ropsten</code>
+   *                </p>
+   *             </li>
+   *          </ul>
    */
   NetworkId: string | undefined;
 
   /**
    * <p>The unique identifier of the member that owns this node.</p>
+   *          <p>Applies only to Hyperledger Fabric and is required for Hyperledger Fabric.</p>
    */
-  MemberId: string | undefined;
+  MemberId?: string;
 
   /**
    * <p>The unique identifier of the node.</p>
@@ -731,6 +936,9 @@ export interface DeleteNodeInput {
 }
 
 export namespace DeleteNodeInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteNodeInput): any => ({
     ...obj,
   });
@@ -739,6 +947,9 @@ export namespace DeleteNodeInput {
 export interface DeleteNodeOutput {}
 
 export namespace DeleteNodeOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteNodeOutput): any => ({
     ...obj,
   });
@@ -757,6 +968,9 @@ export interface GetMemberInput {
 }
 
 export namespace GetMemberInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMemberInput): any => ({
     ...obj,
   });
@@ -778,6 +992,9 @@ export interface MemberFabricAttributes {
 }
 
 export namespace MemberFabricAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MemberFabricAttributes): any => ({
     ...obj,
   });
@@ -794,6 +1011,9 @@ export interface MemberFrameworkAttributes {
 }
 
 export namespace MemberFrameworkAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MemberFrameworkAttributes): any => ({
     ...obj,
   });
@@ -810,6 +1030,7 @@ export enum MemberStatus {
 
 /**
  * <p>Member configuration properties.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
  */
 export interface Member {
   /**
@@ -875,9 +1096,22 @@ export interface Member {
    * <p>The date and time that the member was created.</p>
    */
   CreationDate?: Date;
+
+  /**
+   * <p>Tags assigned to the member. Tags consist of a key and optional value. For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
+   */
+  Tags?: { [key: string]: string };
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the member. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
+   */
+  Arn?: string;
 }
 
 export namespace Member {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Member): any => ({
     ...obj,
   });
@@ -891,6 +1125,9 @@ export interface GetMemberOutput {
 }
 
 export namespace GetMemberOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMemberOutput): any => ({
     ...obj,
   });
@@ -904,7 +1141,43 @@ export interface GetNetworkInput {
 }
 
 export namespace GetNetworkInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetNetworkInput): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Attributes of Ethereum for a network. </p>
+ */
+export interface NetworkEthereumAttributes {
+  /**
+   * <p>The Ethereum <code>CHAIN_ID</code> associated with the Ethereum network. Chain IDs are as follows:</p>
+   *          <ul>
+   *             <li>
+   *                <p>mainnet = <code>1</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>rinkeby = <code>4</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>ropsten = <code>3</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   */
+  ChainId?: string;
+}
+
+export namespace NetworkEthereumAttributes {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: NetworkEthereumAttributes): any => ({
     ...obj,
   });
 }
@@ -925,6 +1198,9 @@ export interface NetworkFabricAttributes {
 }
 
 export namespace NetworkFabricAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NetworkFabricAttributes): any => ({
     ...obj,
   });
@@ -938,9 +1214,17 @@ export interface NetworkFrameworkAttributes {
    * <p>Attributes of Hyperledger Fabric for a Managed Blockchain network that uses Hyperledger Fabric.</p>
    */
   Fabric?: NetworkFabricAttributes;
+
+  /**
+   * <p>Attributes of an Ethereum network for Managed Blockchain resources participating in an Ethereum network. </p>
+   */
+  Ethereum?: NetworkEthereumAttributes;
 }
 
 export namespace NetworkFrameworkAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NetworkFrameworkAttributes): any => ({
     ...obj,
   });
@@ -1007,9 +1291,23 @@ export interface Network {
    * <p>The date and time that the network was created.</p>
    */
   CreationDate?: Date;
+
+  /**
+   * <p>Tags assigned to the network. Each tag consists of a key and optional value.</p>
+   *          <p>For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
+   */
+  Tags?: { [key: string]: string };
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the network. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
+   */
+  Arn?: string;
 }
 
 export namespace Network {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Network): any => ({
     ...obj,
   });
@@ -1023,6 +1321,9 @@ export interface GetNetworkOutput {
 }
 
 export namespace GetNetworkOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetNetworkOutput): any => ({
     ...obj,
   });
@@ -1030,14 +1331,15 @@ export namespace GetNetworkOutput {
 
 export interface GetNodeInput {
   /**
-   * <p>The unique identifier of the network to which the node belongs.</p>
+   * <p>The unique identifier of the network that the node is on.</p>
    */
   NetworkId: string | undefined;
 
   /**
    * <p>The unique identifier of the member that owns the node.</p>
+   *          <p>Applies only to Hyperledger Fabric and is required for Hyperledger Fabric.</p>
    */
-  MemberId: string | undefined;
+  MemberId?: string;
 
   /**
    * <p>The unique identifier of the node.</p>
@@ -1046,13 +1348,40 @@ export interface GetNodeInput {
 }
 
 export namespace GetNodeInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetNodeInput): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Attributes of Hyperledger Fabric for a peer node on a Managed Blockchain network that uses Hyperledger Fabric.</p>
+ * <p>Attributes of an Ethereum node.</p>
+ */
+export interface NodeEthereumAttributes {
+  /**
+   * <p>The endpoint on which the Ethereum node listens to run Ethereum JSON-RPC methods over HTTP connections from a client. Use this endpoint in client code for smart contracts when using an HTTP connection. Connections to this endpoint are authenticated using <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4</a>.</p>
+   */
+  HttpEndpoint?: string;
+
+  /**
+   * <p>The endpoint on which the Ethereum node listens to run Ethereum JSON-RPC methods over WebSockets connections from a client. Use this endpoint in client code for smart contracts when using a WebSockets connection. Connections to this endpoint are authenticated using <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4</a>.</p>
+   */
+  WebSocketEndpoint?: string;
+}
+
+export namespace NodeEthereumAttributes {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: NodeEthereumAttributes): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Attributes of Hyperledger Fabric for a peer node on a Hyperledger Fabric network on Managed Blockchain.</p>
  */
 export interface NodeFabricAttributes {
   /**
@@ -1067,22 +1396,33 @@ export interface NodeFabricAttributes {
 }
 
 export namespace NodeFabricAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeFabricAttributes): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Attributes relevant to a peer node on a Managed Blockchain network for the blockchain framework that the network uses.</p>
+ * <p>Attributes relevant to a node on a Managed Blockchain network for the blockchain framework that the network uses.</p>
  */
 export interface NodeFrameworkAttributes {
   /**
    * <p>Attributes of Hyperledger Fabric for a peer node on a Managed Blockchain network that uses Hyperledger Fabric.</p>
    */
   Fabric?: NodeFabricAttributes;
+
+  /**
+   * <p>Attributes of Ethereum for a node on a Managed Blockchain network that uses Ethereum. </p>
+   */
+  Ethereum?: NodeEthereumAttributes;
 }
 
 export namespace NodeFrameworkAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeFrameworkAttributes): any => ({
     ...obj,
   });
@@ -1095,20 +1435,22 @@ export enum NodeStatus {
   DELETED = "DELETED",
   DELETING = "DELETING",
   FAILED = "FAILED",
+  UNHEALTHY = "UNHEALTHY",
   UPDATING = "UPDATING",
 }
 
 /**
- * <p>Configuration properties of a peer node.</p>
+ * <p>Configuration properties of a node.</p>
  */
 export interface Node {
   /**
-   * <p>The unique identifier of the network that the node is in.</p>
+   * <p>The unique identifier of the network that the node is on.</p>
    */
   NetworkId?: string;
 
   /**
    * <p>The unique identifier of the member to which the node belongs.</p>
+   *          <p>Applies only to Hyperledger Fabric.</p>
    */
   MemberId?: string;
 
@@ -1123,7 +1465,7 @@ export interface Node {
   InstanceType?: string;
 
   /**
-   * <p>The Availability Zone in which the node exists.</p>
+   * <p>The Availability Zone in which the node exists. Required for Ethereum nodes. </p>
    */
   AvailabilityZone?: string;
 
@@ -1133,12 +1475,13 @@ export interface Node {
   FrameworkAttributes?: NodeFrameworkAttributes;
 
   /**
-   * <p>Configuration properties for logging events associated with a peer node owned by a member in a Managed Blockchain network.</p>
+   * <p>Configuration properties for logging events associated with a peer node on a Hyperledger Fabric network on Managed Blockchain.</p>
    */
   LogPublishingConfiguration?: NodeLogPublishingConfiguration;
 
   /**
    * <p>The state database that the node uses. Values are <code>LevelDB</code> or <code>CouchDB</code>.</p>
+   *          <p>Applies only to Hyperledger Fabric.</p>
    */
   StateDB?: StateDBType | string;
 
@@ -1151,9 +1494,23 @@ export interface Node {
    * <p>The date and time that the node was created.</p>
    */
   CreationDate?: Date;
+
+  /**
+   * <p>Tags assigned to the node. Each tag consists of a key and optional value.</p>
+   *          <p>For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
+   */
+  Tags?: { [key: string]: string };
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the node. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
+   */
+  Arn?: string;
 }
 
 export namespace Node {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Node): any => ({
     ...obj,
   });
@@ -1167,6 +1524,9 @@ export interface GetNodeOutput {
 }
 
 export namespace GetNodeOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetNodeOutput): any => ({
     ...obj,
   });
@@ -1185,6 +1545,9 @@ export interface GetProposalInput {
 }
 
 export namespace GetProposalInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetProposalInput): any => ({
     ...obj,
   });
@@ -1200,6 +1563,7 @@ export enum ProposalStatus {
 
 /**
  * <p>Properties of a proposal on a Managed Blockchain network.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
  */
 export interface Proposal {
   /**
@@ -1293,9 +1657,23 @@ export interface Proposal {
    *       </p>
    */
   OutstandingVoteCount?: number;
+
+  /**
+   * <p>Tags assigned to the proposal. Each tag consists of a key and optional value.</p>
+   *          <p>For more information about tags, see <a href="https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Ethereum Developer Guide</i>, or <a href="https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html">Tagging Resources</a> in the <i>Amazon Managed Blockchain Hyperledger Fabric Developer Guide</i>.</p>
+   */
+  Tags?: { [key: string]: string };
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the proposal. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
+   */
+  Arn?: string;
 }
 
 export namespace Proposal {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Proposal): any => ({
     ...obj,
   });
@@ -1309,6 +1687,9 @@ export interface GetProposalOutput {
 }
 
 export namespace GetProposalOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetProposalOutput): any => ({
     ...obj,
   });
@@ -1324,6 +1705,9 @@ export interface IllegalActionException extends __SmithyException, $MetadataBear
 }
 
 export namespace IllegalActionException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IllegalActionException): any => ({
     ...obj,
   });
@@ -1367,9 +1751,17 @@ export interface NetworkSummary {
    * <p>The date and time that the network was created.</p>
    */
   CreationDate?: Date;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the network. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
+   */
+  Arn?: string;
 }
 
 export namespace NetworkSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NetworkSummary): any => ({
     ...obj,
   });
@@ -1385,6 +1777,7 @@ export enum InvitationStatus {
 
 /**
  * <p>An invitation to an AWS account to create a member and join the network.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
  */
 export interface Invitation {
   /**
@@ -1433,9 +1826,17 @@ export interface Invitation {
    * <p>A summary of network configuration properties.</p>
    */
   NetworkSummary?: NetworkSummary;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the invitation. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
+   */
+  Arn?: string;
 }
 
 export namespace Invitation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Invitation): any => ({
     ...obj,
   });
@@ -1454,6 +1855,9 @@ export interface ListInvitationsInput {
 }
 
 export namespace ListInvitationsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInvitationsInput): any => ({
     ...obj,
   });
@@ -1472,6 +1876,9 @@ export interface ListInvitationsOutput {
 }
 
 export namespace ListInvitationsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInvitationsOutput): any => ({
     ...obj,
   });
@@ -1512,6 +1919,9 @@ export interface ListMembersInput {
 }
 
 export namespace ListMembersInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMembersInput): any => ({
     ...obj,
   });
@@ -1519,6 +1929,7 @@ export namespace ListMembersInput {
 
 /**
  * <p>A summary of configuration properties for a member.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
  */
 export interface MemberSummary {
   /**
@@ -1574,9 +1985,17 @@ export interface MemberSummary {
    * <p>An indicator of whether the member is owned by your AWS account or a different AWS account.</p>
    */
   IsOwned?: boolean;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the member. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
+   */
+  Arn?: string;
 }
 
 export namespace MemberSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MemberSummary): any => ({
     ...obj,
   });
@@ -1595,6 +2014,9 @@ export interface ListMembersOutput {
 }
 
 export namespace ListMembersOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMembersOutput): any => ({
     ...obj,
   });
@@ -1613,6 +2035,7 @@ export interface ListNetworksInput {
 
   /**
    * <p>An optional status specifier. If provided, only networks currently in this status are listed.</p>
+   *          <p>Applies only to Hyperledger Fabric.</p>
    */
   Status?: NetworkStatus | string;
 
@@ -1628,6 +2051,9 @@ export interface ListNetworksInput {
 }
 
 export namespace ListNetworksInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListNetworksInput): any => ({
     ...obj,
   });
@@ -1646,6 +2072,9 @@ export interface ListNetworksOutput {
 }
 
 export namespace ListNetworksOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListNetworksOutput): any => ({
     ...obj,
   });
@@ -1659,8 +2088,9 @@ export interface ListNodesInput {
 
   /**
    * <p>The unique identifier of the member who owns the nodes to list.</p>
+   *          <p>Applies only to Hyperledger Fabric and is required for Hyperledger Fabric.</p>
    */
-  MemberId: string | undefined;
+  MemberId?: string;
 
   /**
    * <p>An optional status specifier. If provided, only nodes currently in this status are listed.</p>
@@ -1679,13 +2109,16 @@ export interface ListNodesInput {
 }
 
 export namespace ListNodesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListNodesInput): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A summary of configuration properties for a peer node.</p>
+ * <p>A summary of configuration properties for a node.</p>
  */
 export interface NodeSummary {
   /**
@@ -1712,9 +2145,17 @@ export interface NodeSummary {
    * <p>The EC2 instance type for the node.</p>
    */
   InstanceType?: string;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the node. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
+   */
+  Arn?: string;
 }
 
 export namespace NodeSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeSummary): any => ({
     ...obj,
   });
@@ -1733,6 +2174,9 @@ export interface ListNodesOutput {
 }
 
 export namespace ListNodesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListNodesOutput): any => ({
     ...obj,
   });
@@ -1762,6 +2206,9 @@ export interface ListProposalsInput {
 }
 
 export namespace ListProposalsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProposalsInput): any => ({
     ...obj,
   });
@@ -1769,6 +2216,7 @@ export namespace ListProposalsInput {
 
 /**
  * <p>Properties of a proposal.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
  */
 export interface ProposalSummary {
   /**
@@ -1839,9 +2287,17 @@ export interface ProposalSummary {
    *       </p>
    */
   ExpirationDate?: Date;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the proposal. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
+   */
+  Arn?: string;
 }
 
 export namespace ProposalSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProposalSummary): any => ({
     ...obj,
   });
@@ -1860,6 +2316,9 @@ export interface ListProposalsOutput {
 }
 
 export namespace ListProposalsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProposalsOutput): any => ({
     ...obj,
   });
@@ -1896,6 +2355,9 @@ export interface ListProposalVotesInput {
 }
 
 export namespace ListProposalVotesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProposalVotesInput): any => ({
     ...obj,
   });
@@ -1910,6 +2372,7 @@ export enum VoteValue {
  * <p>
  *          Properties of an individual vote that a member cast for a proposal.
  *       </p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
  */
 export interface VoteSummary {
   /**
@@ -1935,6 +2398,9 @@ export interface VoteSummary {
 }
 
 export namespace VoteSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VoteSummary): any => ({
     ...obj,
   });
@@ -1943,7 +2409,7 @@ export namespace VoteSummary {
 export interface ListProposalVotesOutput {
   /**
    * <p>
-   *          The listing of votes.
+   *          The list of votes.
    *       </p>
    */
   ProposalVotes?: VoteSummary[];
@@ -1957,7 +2423,42 @@ export interface ListProposalVotesOutput {
 }
 
 export namespace ListProposalVotesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProposalVotesOutput): any => ({
+    ...obj,
+  });
+}
+
+export interface ListTagsForResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the resource. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
+   */
+  ResourceArn: string | undefined;
+}
+
+export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListTagsForResourceResponse {
+  /**
+   * <p>The tags assigned to the resource.</p>
+   */
+  Tags?: { [key: string]: string };
+}
+
+export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
 }
@@ -1970,6 +2471,9 @@ export interface RejectInvitationInput {
 }
 
 export namespace RejectInvitationInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RejectInvitationInput): any => ({
     ...obj,
   });
@@ -1978,19 +2482,86 @@ export namespace RejectInvitationInput {
 export interface RejectInvitationOutput {}
 
 export namespace RejectInvitationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RejectInvitationOutput): any => ({
+    ...obj,
+  });
+}
+
+export interface TagResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the resource. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
+   */
+  ResourceArn: string | undefined;
+
+  /**
+   * <p>The tags to assign to the specified resource. Tag values can be empty, for example, <code>"MyTagKey" : ""</code>. You can specify multiple key-value pairs in a single request, with an overall maximum of 50 tags added to each resource.</p>
+   */
+  Tags: { [key: string]: string } | undefined;
+}
+
+export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagResourceResponse {}
+
+export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface UntagResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the resource. For more information about ARNs and their format, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
+   */
+  ResourceArn: string | undefined;
+
+  /**
+   * <p>The tag keys.</p>
+   */
+  TagKeys: string[] | undefined;
+}
+
+export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface UntagResourceResponse {}
+
+export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
 }
 
 export interface UpdateMemberInput {
   /**
-   * <p>The unique ID of the Managed Blockchain network to which the member belongs.</p>
+   * <p>The unique identifier of the Managed Blockchain network to which the member belongs.</p>
    */
   NetworkId: string | undefined;
 
   /**
-   * <p>The unique ID of the member.</p>
+   * <p>The unique identifier of the member.</p>
    */
   MemberId: string | undefined;
 
@@ -2001,6 +2572,9 @@ export interface UpdateMemberInput {
 }
 
 export namespace UpdateMemberInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateMemberInput): any => ({
     ...obj,
   });
@@ -2009,6 +2583,9 @@ export namespace UpdateMemberInput {
 export interface UpdateMemberOutput {}
 
 export namespace UpdateMemberOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateMemberOutput): any => ({
     ...obj,
   });
@@ -2016,17 +2593,18 @@ export namespace UpdateMemberOutput {
 
 export interface UpdateNodeInput {
   /**
-   * <p>The unique ID of the Managed Blockchain network to which the node belongs.</p>
+   * <p>The unique identifier of the network that the node is on.</p>
    */
   NetworkId: string | undefined;
 
   /**
-   * <p>The unique ID of the member that owns the node.</p>
+   * <p>The unique identifier of the member that owns the node.</p>
+   *          <p>Applies only to Hyperledger Fabric.</p>
    */
-  MemberId: string | undefined;
+  MemberId?: string;
 
   /**
-   * <p>The unique ID of the node.</p>
+   * <p>The unique identifier of the node.</p>
    */
   NodeId: string | undefined;
 
@@ -2037,6 +2615,9 @@ export interface UpdateNodeInput {
 }
 
 export namespace UpdateNodeInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateNodeInput): any => ({
     ...obj,
   });
@@ -2045,6 +2626,9 @@ export namespace UpdateNodeInput {
 export interface UpdateNodeOutput {}
 
 export namespace UpdateNodeOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateNodeOutput): any => ({
     ...obj,
   });
@@ -2080,6 +2664,9 @@ export interface VoteOnProposalInput {
 }
 
 export namespace VoteOnProposalInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VoteOnProposalInput): any => ({
     ...obj,
   });
@@ -2088,6 +2675,9 @@ export namespace VoteOnProposalInput {
 export interface VoteOnProposalOutput {}
 
 export namespace VoteOnProposalOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VoteOnProposalOutput): any => ({
     ...obj,
   });

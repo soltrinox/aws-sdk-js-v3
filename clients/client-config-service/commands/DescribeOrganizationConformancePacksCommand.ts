@@ -20,20 +20,32 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeOrganizationConformancePacksCommandInput = DescribeOrganizationConformancePacksRequest;
-export type DescribeOrganizationConformancePacksCommandOutput = DescribeOrganizationConformancePacksResponse &
-  __MetadataBearer;
+export interface DescribeOrganizationConformancePacksCommandInput extends DescribeOrganizationConformancePacksRequest {}
+export interface DescribeOrganizationConformancePacksCommandOutput
+  extends DescribeOrganizationConformancePacksResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns a list of organization conformance packs. </p>
- * 		       <p>Only a master account and a delegated administrator account can call this API.
- * 			When calling this API with a delegated administrator, you must ensure AWS Organizations
- * 				<code>ListDelegatedAdministrator</code> permissions are added.</p>
  * 		       <note>
  *             <p>When you specify the limit and the next token, you receive a paginated response. </p>
  * 			         <p>Limit and next token are not applicable if you specify organization conformance packs names. They are only applicable,
  * 			when you request all the organization conformance packs. </p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DescribeOrganizationConformancePacksCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DescribeOrganizationConformancePacksCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DescribeOrganizationConformancePacksCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeOrganizationConformancePacksCommandInput} for command's `input` shape.
+ * @see {@link DescribeOrganizationConformancePacksCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeOrganizationConformancePacksCommand extends $Command<
   DescribeOrganizationConformancePacksCommandInput,

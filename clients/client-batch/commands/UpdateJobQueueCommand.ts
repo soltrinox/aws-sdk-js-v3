@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateJobQueueCommandInput = UpdateJobQueueRequest;
-export type UpdateJobQueueCommandOutput = UpdateJobQueueResponse & __MetadataBearer;
+export interface UpdateJobQueueCommandInput extends UpdateJobQueueRequest {}
+export interface UpdateJobQueueCommandOutput extends UpdateJobQueueResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a job queue.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BatchClient, UpdateJobQueueCommand } from "@aws-sdk/client-batch"; // ES Modules import
+ * // const { BatchClient, UpdateJobQueueCommand } = require("@aws-sdk/client-batch"); // CommonJS import
+ * const client = new BatchClient(config);
+ * const command = new UpdateJobQueueCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateJobQueueCommandInput} for command's `input` shape.
+ * @see {@link UpdateJobQueueCommandOutput} for command's `response` shape.
+ * @see {@link BatchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateJobQueueCommand extends $Command<
   UpdateJobQueueCommandInput,

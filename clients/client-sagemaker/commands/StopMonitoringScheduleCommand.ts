@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopMonitoringScheduleCommandInput = StopMonitoringScheduleRequest;
-export type StopMonitoringScheduleCommandOutput = __MetadataBearer;
+export interface StopMonitoringScheduleCommandInput extends StopMonitoringScheduleRequest {}
+export interface StopMonitoringScheduleCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Stops a previously started monitoring schedule.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, StopMonitoringScheduleCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, StopMonitoringScheduleCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new StopMonitoringScheduleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopMonitoringScheduleCommandInput} for command's `input` shape.
+ * @see {@link StopMonitoringScheduleCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopMonitoringScheduleCommand extends $Command<
   StopMonitoringScheduleCommandInput,

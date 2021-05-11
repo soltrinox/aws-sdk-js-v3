@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DetectEntitiesCommandInput = DetectEntitiesRequest;
-export type DetectEntitiesCommandOutput = DetectEntitiesResponse & __MetadataBearer;
+export interface DetectEntitiesCommandInput extends DetectEntitiesRequest {}
+export interface DetectEntitiesCommandOutput extends DetectEntitiesResponse, __MetadataBearer {}
 
 /**
  * @deprecated
@@ -31,6 +31,20 @@ export type DetectEntitiesCommandOutput = DetectEntitiesResponse & __MetadataBea
  *          <p> Inspects the clinical text for a variety of medical entities and returns specific
  *       information about them such as entity category, location, and confidence score on that
  *       information .</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ComprehendMedicalClient, DetectEntitiesCommand } from "@aws-sdk/client-comprehendmedical"; // ES Modules import
+ * // const { ComprehendMedicalClient, DetectEntitiesCommand } = require("@aws-sdk/client-comprehendmedical"); // CommonJS import
+ * const client = new ComprehendMedicalClient(config);
+ * const command = new DetectEntitiesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DetectEntitiesCommandInput} for command's `input` shape.
+ * @see {@link DetectEntitiesCommandOutput} for command's `response` shape.
+ * @see {@link ComprehendMedicalClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DetectEntitiesCommand extends $Command<
   DetectEntitiesCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateConfigurationCommandInput = UpdateConfigurationRequest;
-export type UpdateConfigurationCommandOutput = UpdateConfigurationResponse & __MetadataBearer;
+export interface UpdateConfigurationCommandInput extends UpdateConfigurationRequest {}
+export interface UpdateConfigurationCommandOutput extends UpdateConfigurationResponse, __MetadataBearer {}
 
 /**
  * <p>Updates an MSK configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, UpdateConfigurationCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, UpdateConfigurationCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new UpdateConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateConfigurationCommandInput} for command's `input` shape.
+ * @see {@link UpdateConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateConfigurationCommand extends $Command<
   UpdateConfigurationCommandInput,

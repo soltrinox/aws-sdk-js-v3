@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetPublicKeyCommandInput = GetPublicKeyRequest;
-export type GetPublicKeyCommandOutput = GetPublicKeyResult & __MetadataBearer;
+export interface GetPublicKeyCommandInput extends GetPublicKeyRequest {}
+export interface GetPublicKeyCommandOutput extends GetPublicKeyResult, __MetadataBearer {}
 
 /**
  * <p>Gets a public key.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, GetPublicKeyCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, GetPublicKeyCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new GetPublicKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetPublicKeyCommandInput} for command's `input` shape.
+ * @see {@link GetPublicKeyCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetPublicKeyCommand extends $Command<
   GetPublicKeyCommandInput,

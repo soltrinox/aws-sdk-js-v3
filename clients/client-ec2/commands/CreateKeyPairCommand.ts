@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateKeyPairCommandInput = CreateKeyPairRequest;
-export type CreateKeyPairCommandOutput = KeyPair & __MetadataBearer;
+export interface CreateKeyPairCommandInput extends CreateKeyPairRequest {}
+export interface CreateKeyPairCommandOutput extends KeyPair, __MetadataBearer {}
 
 /**
  * <p>Creates a 2048-bit RSA key pair with the specified name. Amazon EC2 stores the public
@@ -28,6 +28,20 @@ export type CreateKeyPairCommandOutput = KeyPair & __MetadataBearer;
  *             to any Region using <a>ImportKeyPair</a>.</p>
  *          <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Key Pairs</a> in the
  *                 <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, CreateKeyPairCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, CreateKeyPairCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new CreateKeyPairCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateKeyPairCommandInput} for command's `input` shape.
+ * @see {@link CreateKeyPairCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateKeyPairCommand extends $Command<
   CreateKeyPairCommandInput,

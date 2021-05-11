@@ -17,6 +17,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -40,6 +43,9 @@ export interface AddTagsToOnPremisesInstancesInput {
 }
 
 export namespace AddTagsToOnPremisesInstancesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsToOnPremisesInstancesInput): any => ({
     ...obj,
   });
@@ -59,6 +65,9 @@ export interface InstanceLimitExceededException extends __SmithyException, $Meta
 }
 
 export namespace InstanceLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceLimitExceededException): any => ({
     ...obj,
   });
@@ -77,6 +86,9 @@ export interface InstanceNameRequiredException extends __SmithyException, $Metad
 }
 
 export namespace InstanceNameRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceNameRequiredException): any => ({
     ...obj,
   });
@@ -95,6 +107,9 @@ export interface InstanceNotRegisteredException extends __SmithyException, $Meta
 }
 
 export namespace InstanceNotRegisteredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceNotRegisteredException): any => ({
     ...obj,
   });
@@ -113,6 +128,9 @@ export interface InvalidInstanceNameException extends __SmithyException, $Metada
 }
 
 export namespace InvalidInstanceNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidInstanceNameException): any => ({
     ...obj,
   });
@@ -131,6 +149,9 @@ export interface InvalidTagException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace InvalidTagException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTagException): any => ({
     ...obj,
   });
@@ -149,6 +170,9 @@ export interface TagLimitExceededException extends __SmithyException, $MetadataB
 }
 
 export namespace TagLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagLimitExceededException): any => ({
     ...obj,
   });
@@ -167,6 +191,9 @@ export interface TagRequiredException extends __SmithyException, $MetadataBearer
 }
 
 export namespace TagRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagRequiredException): any => ({
     ...obj,
   });
@@ -184,6 +211,9 @@ export interface Alarm {
 }
 
 export namespace Alarm {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Alarm): any => ({
     ...obj,
   });
@@ -224,6 +254,9 @@ export interface AlarmConfiguration {
 }
 
 export namespace AlarmConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlarmConfiguration): any => ({
     ...obj,
   });
@@ -242,6 +275,9 @@ export interface AlarmsLimitExceededException extends __SmithyException, $Metada
 }
 
 export namespace AlarmsLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlarmsLimitExceededException): any => ({
     ...obj,
   });
@@ -261,6 +297,9 @@ export interface ApplicationAlreadyExistsException extends __SmithyException, $M
 }
 
 export namespace ApplicationAlreadyExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ApplicationAlreadyExistsException): any => ({
     ...obj,
   });
@@ -279,6 +318,9 @@ export interface ApplicationDoesNotExistException extends __SmithyException, $Me
 }
 
 export namespace ApplicationDoesNotExistException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ApplicationDoesNotExistException): any => ({
     ...obj,
   });
@@ -328,6 +370,9 @@ export interface ApplicationInfo {
 }
 
 export namespace ApplicationInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ApplicationInfo): any => ({
     ...obj,
   });
@@ -346,6 +391,9 @@ export interface ApplicationLimitExceededException extends __SmithyException, $M
 }
 
 export namespace ApplicationLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ApplicationLimitExceededException): any => ({
     ...obj,
   });
@@ -364,6 +412,9 @@ export interface ApplicationNameRequiredException extends __SmithyException, $Me
 }
 
 export namespace ApplicationNameRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ApplicationNameRequiredException): any => ({
     ...obj,
   });
@@ -402,15 +453,17 @@ export interface AppSpecContent {
 }
 
 export namespace AppSpecContent {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppSpecContent): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>
- *             The specified ARN is not supported. For example, it might be an ARN for a resource that is not expected.
- *         </p>
+ * <p> The specified ARN is not supported. For example, it might be an ARN for a resource
+ *             that is not expected. </p>
  */
 export interface ArnNotSupportedException extends __SmithyException, $MetadataBearer {
   name: "ArnNotSupportedException";
@@ -422,6 +475,9 @@ export interface ArnNotSupportedException extends __SmithyException, $MetadataBe
 }
 
 export namespace ArnNotSupportedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ArnNotSupportedException): any => ({
     ...obj,
   });
@@ -451,6 +507,9 @@ export interface AutoRollbackConfiguration {
 }
 
 export namespace AutoRollbackConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoRollbackConfiguration): any => ({
     ...obj,
   });
@@ -472,6 +531,9 @@ export interface AutoScalingGroup {
 }
 
 export namespace AutoScalingGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingGroup): any => ({
     ...obj,
   });
@@ -496,6 +558,9 @@ export interface GitHubLocation {
 }
 
 export namespace GitHubLocation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GitHubLocation): any => ({
     ...obj,
   });
@@ -568,6 +633,9 @@ export interface S3Location {
 }
 
 export namespace S3Location {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Location): any => ({
     ...obj,
   });
@@ -594,6 +662,9 @@ export interface RawString {
 }
 
 export namespace RawString {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RawString): any => ({
     ...obj,
   });
@@ -618,9 +689,9 @@ export interface RevisionLocation {
    *                     only).</p>
    *             </li>
    *             <li>
-   *                 <p>AppSpecContent: An <code>AppSpecContent</code> object that contains the contents of an AppSpec file for
-   *                     an AWS Lambda or Amazon ECS deployment. The content is formatted as JSON or YAML
-   *                     stored as a RawString.</p>
+   *                 <p>AppSpecContent: An <code>AppSpecContent</code> object that contains the
+   *                     contents of an AppSpec file for an AWS Lambda or Amazon ECS deployment. The
+   *                     content is formatted as JSON or YAML stored as a RawString.</p>
    *             </li>
    *          </ul>
    */
@@ -652,6 +723,9 @@ export interface RevisionLocation {
 }
 
 export namespace RevisionLocation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RevisionLocation): any => ({
     ...obj,
   });
@@ -668,13 +742,17 @@ export interface BatchGetApplicationRevisionsInput {
   applicationName: string | undefined;
 
   /**
-   * <p>An array of <code>RevisionLocation</code> objects that specify information to get about the application revisions, including type and
-   *             location. The maximum number of <code>RevisionLocation</code> objects you can specify is 25.</p>
+   * <p>An array of <code>RevisionLocation</code> objects that specify information to get
+   *             about the application revisions, including type and location. The maximum number of
+   *                 <code>RevisionLocation</code> objects you can specify is 25.</p>
    */
   revisions: RevisionLocation[] | undefined;
 }
 
 export namespace BatchGetApplicationRevisionsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetApplicationRevisionsInput): any => ({
     ...obj,
   });
@@ -711,6 +789,9 @@ export interface GenericRevisionInfo {
 }
 
 export namespace GenericRevisionInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenericRevisionInfo): any => ({
     ...obj,
   });
@@ -733,6 +814,9 @@ export interface RevisionInfo {
 }
 
 export namespace RevisionInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RevisionInfo): any => ({
     ...obj,
   });
@@ -759,6 +843,9 @@ export interface BatchGetApplicationRevisionsOutput {
 }
 
 export namespace BatchGetApplicationRevisionsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetApplicationRevisionsOutput): any => ({
     ...obj,
   });
@@ -777,6 +864,9 @@ export interface BatchLimitExceededException extends __SmithyException, $Metadat
 }
 
 export namespace BatchLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchLimitExceededException): any => ({
     ...obj,
   });
@@ -795,6 +885,9 @@ export interface InvalidApplicationNameException extends __SmithyException, $Met
 }
 
 export namespace InvalidApplicationNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidApplicationNameException): any => ({
     ...obj,
   });
@@ -813,6 +906,9 @@ export interface InvalidRevisionException extends __SmithyException, $MetadataBe
 }
 
 export namespace InvalidRevisionException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRevisionException): any => ({
     ...obj,
   });
@@ -831,6 +927,9 @@ export interface RevisionRequiredException extends __SmithyException, $MetadataB
 }
 
 export namespace RevisionRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RevisionRequiredException): any => ({
     ...obj,
   });
@@ -841,12 +940,16 @@ export namespace RevisionRequiredException {
  */
 export interface BatchGetApplicationsInput {
   /**
-   * <p>A list of application names separated by spaces. The maximum number of application names you can specify is 100.</p>
+   * <p>A list of application names separated by spaces. The maximum number of application
+   *             names you can specify is 100.</p>
    */
   applicationNames: string[] | undefined;
 }
 
 export namespace BatchGetApplicationsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetApplicationsInput): any => ({
     ...obj,
   });
@@ -863,6 +966,9 @@ export interface BatchGetApplicationsOutput {
 }
 
 export namespace BatchGetApplicationsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetApplicationsOutput): any => ({
     ...obj,
   });
@@ -885,6 +991,9 @@ export interface BatchGetDeploymentGroupsInput {
 }
 
 export namespace BatchGetDeploymentGroupsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetDeploymentGroupsInput): any => ({
     ...obj,
   });
@@ -928,6 +1037,9 @@ export interface DeploymentReadyOption {
 }
 
 export namespace DeploymentReadyOption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentReadyOption): any => ({
     ...obj,
   });
@@ -962,6 +1074,9 @@ export interface GreenFleetProvisioningOption {
 }
 
 export namespace GreenFleetProvisioningOption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GreenFleetProvisioningOption): any => ({
     ...obj,
   });
@@ -975,8 +1090,7 @@ export enum InstanceAction {
 /**
  * <p>Information about whether instances in the original environment are terminated when a
  *             blue/green deployment is successful. <code>BlueInstanceTerminationOption</code> does not
- *             apply to Lambda deployments.
- *         </p>
+ *             apply to Lambda deployments. </p>
  */
 export interface BlueInstanceTerminationOption {
   /**
@@ -999,22 +1113,22 @@ export interface BlueInstanceTerminationOption {
   action?: InstanceAction | string;
 
   /**
-   * <p>For an Amazon EC2 deployment, the number of minutes to wait after a successful blue/green deployment before
-   *             terminating instances from the original environment.</p>
+   * <p>For an Amazon EC2 deployment, the number of minutes to wait after a successful
+   *             blue/green deployment before terminating instances from the original environment.</p>
    *
-   *         <p>
-   *             For an Amazon ECS deployment, the number of minutes before deleting the original (blue) task set. During an Amazon ECS deployment,
-   *             CodeDeploy shifts traffic from the original (blue) task set to a replacement (green) task set.
-   *         </p>
+   *         <p> For an Amazon ECS deployment, the number of minutes before deleting the original
+   *             (blue) task set. During an Amazon ECS deployment, CodeDeploy shifts traffic from the
+   *             original (blue) task set to a replacement (green) task set. </p>
    *
-   *         <p>
-   *             The maximum setting is 2880 minutes (2 days).
-   *         </p>
+   *         <p> The maximum setting is 2880 minutes (2 days). </p>
    */
   terminationWaitTimeInMinutes?: number;
 }
 
 export namespace BlueInstanceTerminationOption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BlueInstanceTerminationOption): any => ({
     ...obj,
   });
@@ -1044,6 +1158,9 @@ export interface BlueGreenDeploymentConfiguration {
 }
 
 export namespace BlueGreenDeploymentConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BlueGreenDeploymentConfiguration): any => ({
     ...obj,
   });
@@ -1076,6 +1193,9 @@ export interface DeploymentStyle {
 }
 
 export namespace DeploymentStyle {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentStyle): any => ({
     ...obj,
   });
@@ -1122,6 +1242,9 @@ export interface EC2TagFilter {
 }
 
 export namespace EC2TagFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EC2TagFilter): any => ({
     ...obj,
   });
@@ -1140,6 +1263,9 @@ export interface EC2TagSet {
 }
 
 export namespace EC2TagSet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EC2TagSet): any => ({
     ...obj,
   });
@@ -1162,6 +1288,9 @@ export interface ECSService {
 }
 
 export namespace ECSService {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ECSService): any => ({
     ...obj,
   });
@@ -1207,6 +1336,9 @@ export interface LastDeploymentInfo {
 }
 
 export namespace LastDeploymentInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LastDeploymentInfo): any => ({
     ...obj,
   });
@@ -1229,6 +1361,9 @@ export interface ELBInfo {
 }
 
 export namespace ELBInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ELBInfo): any => ({
     ...obj,
   });
@@ -1251,6 +1386,9 @@ export interface TargetGroupInfo {
 }
 
 export namespace TargetGroupInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TargetGroupInfo): any => ({
     ...obj,
   });
@@ -1270,6 +1408,9 @@ export interface TrafficRoute {
 }
 
 export namespace TrafficRoute {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrafficRoute): any => ({
     ...obj,
   });
@@ -1282,7 +1423,8 @@ export namespace TrafficRoute {
 export interface TargetGroupPairInfo {
   /**
    * <p> One pair of target groups. One is associated with the original task set. The second
-   *             is associated with the task set that serves traffic after the deployment is complete. </p>
+   *             is associated with the task set that serves traffic after the deployment is complete.
+   *         </p>
    */
   targetGroups?: TargetGroupInfo[];
 
@@ -1294,12 +1436,16 @@ export interface TargetGroupPairInfo {
 
   /**
    * <p> An optional path used by a load balancer to route test traffic after an Amazon ECS
-   *             deployment. Validation can occur while test traffic is served during a deployment. </p>
+   *             deployment. Validation can occur while test traffic is served during a deployment.
+   *         </p>
    */
   testTrafficRoute?: TrafficRoute;
 }
 
 export namespace TargetGroupPairInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TargetGroupPairInfo): any => ({
     ...obj,
   });
@@ -1332,12 +1478,15 @@ export interface LoadBalancerInfo {
 
   /**
    * <p> The target group pair information. This is an array of
-   *             <code>TargeGroupPairInfo</code> objects with a maximum size of one. </p>
+   *                 <code>TargeGroupPairInfo</code> objects with a maximum size of one. </p>
    */
   targetGroupPairInfoList?: TargetGroupPairInfo[];
 }
 
 export namespace LoadBalancerInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoadBalancerInfo): any => ({
     ...obj,
   });
@@ -1381,6 +1530,9 @@ export interface TagFilter {
 }
 
 export namespace TagFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagFilter): any => ({
     ...obj,
   });
@@ -1399,9 +1551,17 @@ export interface OnPremisesTagSet {
 }
 
 export namespace OnPremisesTagSet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OnPremisesTagSet): any => ({
     ...obj,
   });
+}
+
+export enum OutdatedInstancesStrategy {
+  Ignore = "IGNORE",
+  Update = "UPDATE",
 }
 
 export enum TriggerEventType {
@@ -1439,6 +1599,9 @@ export interface TriggerConfig {
 }
 
 export namespace TriggerConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TriggerConfig): any => ({
     ...obj,
   });
@@ -1486,9 +1649,10 @@ export interface DeploymentGroupInfo {
   autoScalingGroups?: AutoScalingGroup[];
 
   /**
-   * <p>A service role Amazon Resource Name (ARN) that grants CodeDeploy permission to make calls to AWS services on your behalf.
-   *             For more information, see <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html">Create a Service Role for AWS CodeDeploy</a> in
-   *             the <i>AWS CodeDeploy User Guide</i>.</p>
+   * <p>A service role Amazon Resource Name (ARN) that grants CodeDeploy permission to make
+   *             calls to AWS services on your behalf. For more information, see <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/getting-started-create-service-role.html">Create a
+   *                 Service Role for AWS CodeDeploy</a> in the <i>AWS CodeDeploy User
+   *                 Guide</i>.</p>
    */
   serviceRoleArn?: string;
 
@@ -1519,6 +1683,18 @@ export interface DeploymentGroupInfo {
    *             run and whether to route deployment traffic behind a load balancer.</p>
    */
   deploymentStyle?: DeploymentStyle;
+
+  /**
+   * <p>Indicates what happens when new EC2 instances are launched mid-deployment and do not
+   *             receive the deployed application revision.</p>
+   *         <p>If this option is set to <code>UPDATE</code> or is unspecified, CodeDeploy initiates
+   *             one or more 'auto-update outdated instances' deployments to apply the deployed
+   *             application revision to the new EC2 instances.</p>
+   *         <p>If this option is set to <code>IGNORE</code>, CodeDeploy does not initiate a
+   *             deployment to update the new EC2 instances. This may result in instances having
+   *             different revisions.</p>
+   */
+  outdatedInstancesStrategy?: OutdatedInstancesStrategy | string;
 
   /**
    * <p>Information about blue/green deployment options for a deployment group.</p>
@@ -1556,7 +1732,8 @@ export interface DeploymentGroupInfo {
   onPremisesTagSet?: OnPremisesTagSet;
 
   /**
-   * <p>The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).</p>
+   * <p>The destination platform type for the deployment (<code>Lambda</code>,
+   *                 <code>Server</code>, or <code>ECS</code>).</p>
    */
   computePlatform?: ComputePlatform | string;
 
@@ -1564,12 +1741,15 @@ export interface DeploymentGroupInfo {
    * <p> The target Amazon ECS services in the deployment group. This applies only to
    *             deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service
    *             is specified as an Amazon ECS cluster and service name pair using the format
-   *             <code><clustername>:<servicename></code>. </p>
+   *                 <code><clustername>:<servicename></code>. </p>
    */
   ecsServices?: ECSService[];
 }
 
 export namespace DeploymentGroupInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentGroupInfo): any => ({
     ...obj,
   });
@@ -1591,6 +1771,9 @@ export interface BatchGetDeploymentGroupsOutput {
 }
 
 export namespace BatchGetDeploymentGroupsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetDeploymentGroupsOutput): any => ({
     ...obj,
   });
@@ -1609,6 +1792,9 @@ export interface DeploymentConfigDoesNotExistException extends __SmithyException
 }
 
 export namespace DeploymentConfigDoesNotExistException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentConfigDoesNotExistException): any => ({
     ...obj,
   });
@@ -1627,6 +1813,9 @@ export interface DeploymentGroupNameRequiredException extends __SmithyException,
 }
 
 export namespace DeploymentGroupNameRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentGroupNameRequiredException): any => ({
     ...obj,
   });
@@ -1645,6 +1834,9 @@ export interface InvalidDeploymentGroupNameException extends __SmithyException, 
 }
 
 export namespace InvalidDeploymentGroupNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidDeploymentGroupNameException): any => ({
     ...obj,
   });
@@ -1660,12 +1852,16 @@ export interface BatchGetDeploymentInstancesInput {
   deploymentId: string | undefined;
 
   /**
-   * <p>The unique IDs of instances used in the deployment. The maximum number of instance IDs you can specify is 25.</p>
+   * <p>The unique IDs of instances used in the deployment. The maximum number of instance IDs
+   *             you can specify is 25.</p>
    */
   instanceIds: string[] | undefined;
 }
 
 export namespace BatchGetDeploymentInstancesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetDeploymentInstancesInput): any => ({
     ...obj,
   });
@@ -1735,6 +1931,9 @@ export interface Diagnostics {
 }
 
 export namespace Diagnostics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Diagnostics): any => ({
     ...obj,
   });
@@ -1802,6 +2001,9 @@ export interface LifecycleEvent {
 }
 
 export namespace LifecycleEvent {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleEvent): any => ({
     ...obj,
   });
@@ -1895,6 +2097,9 @@ export interface InstanceSummary {
 }
 
 export namespace InstanceSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceSummary): any => ({
     ...obj,
   });
@@ -1916,6 +2121,9 @@ export interface BatchGetDeploymentInstancesOutput {
 }
 
 export namespace BatchGetDeploymentInstancesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetDeploymentInstancesOutput): any => ({
     ...obj,
   });
@@ -1934,6 +2142,9 @@ export interface DeploymentDoesNotExistException extends __SmithyException, $Met
 }
 
 export namespace DeploymentDoesNotExistException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentDoesNotExistException): any => ({
     ...obj,
   });
@@ -1952,6 +2163,9 @@ export interface DeploymentIdRequiredException extends __SmithyException, $Metad
 }
 
 export namespace DeploymentIdRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentIdRequiredException): any => ({
     ...obj,
   });
@@ -1972,6 +2186,9 @@ export interface InstanceIdRequiredException extends __SmithyException, $Metadat
 }
 
 export namespace InstanceIdRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceIdRequiredException): any => ({
     ...obj,
   });
@@ -1991,6 +2208,9 @@ export interface InvalidComputePlatformException extends __SmithyException, $Met
 }
 
 export namespace InvalidComputePlatformException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidComputePlatformException): any => ({
     ...obj,
   });
@@ -2009,6 +2229,9 @@ export interface InvalidDeploymentIdException extends __SmithyException, $Metada
 }
 
 export namespace InvalidDeploymentIdException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidDeploymentIdException): any => ({
     ...obj,
   });
@@ -2019,12 +2242,16 @@ export namespace InvalidDeploymentIdException {
  */
 export interface BatchGetDeploymentsInput {
   /**
-   * <p> A list of deployment IDs, separated by spaces. The maximum number of deployment IDs you can specify is 25.</p>
+   * <p> A list of deployment IDs, separated by spaces. The maximum number of deployment IDs
+   *             you can specify is 25.</p>
    */
   deploymentIds: string[] | undefined;
 }
 
 export namespace BatchGetDeploymentsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetDeploymentsInput): any => ({
     ...obj,
   });
@@ -2035,6 +2262,7 @@ export enum DeploymentCreator {
   CloudFormation = "CloudFormation",
   CloudFormationRollback = "CloudFormationRollback",
   CodeDeploy = "CodeDeploy",
+  CodeDeployAutoUpdate = "CodeDeployAutoUpdate",
   CodeDeployRollback = "codeDeployRollback",
   User = "user",
 }
@@ -2077,6 +2305,9 @@ export interface DeploymentOverview {
 }
 
 export namespace DeploymentOverview {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentOverview): any => ({
     ...obj,
   });
@@ -2190,6 +2421,9 @@ export interface ErrorInformation {
 }
 
 export namespace ErrorInformation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ErrorInformation): any => ({
     ...obj,
   });
@@ -2199,6 +2433,31 @@ export enum FileExistsBehavior {
   DISALLOW = "DISALLOW",
   OVERWRITE = "OVERWRITE",
   RETAIN = "RETAIN",
+}
+
+/**
+ * <p>Information about deployments related to the specified deployment.</p>
+ */
+export interface RelatedDeployments {
+  /**
+   * <p>The deployment ID of the root deployment that triggered this deployment.</p>
+   */
+  autoUpdateOutdatedInstancesRootDeploymentId?: string;
+
+  /**
+   * <p>The deployment IDs of 'auto-update outdated instances' deployments triggered by this
+   *             deployment.</p>
+   */
+  autoUpdateOutdatedInstancesDeploymentIds?: string[];
+}
+
+export namespace RelatedDeployments {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RelatedDeployments): any => ({
+    ...obj,
+  });
 }
 
 /**
@@ -2224,6 +2483,9 @@ export interface RollbackInfo {
 }
 
 export namespace RollbackInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RollbackInfo): any => ({
     ...obj,
   });
@@ -2256,6 +2518,9 @@ export interface TargetInstances {
 }
 
 export namespace TargetInstances {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TargetInstances): any => ({
     ...obj,
   });
@@ -2353,6 +2618,11 @@ export interface DeploymentInfo {
    *                   <code>codeDeployRollback</code>: A rollback process created the
    *                     deployment.</p>
    *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>CodeDeployAutoUpdate</code>: An auto-update process created the
+   *                     deployment when it detected outdated EC2 instances.</p>
+   *             </li>
    *          </ul>
    */
   creator?: DeploymentCreator | string;
@@ -2366,11 +2636,10 @@ export interface DeploymentInfo {
    *                 <code>BlockTraffic</code>. If <code>AfterBlockTraffic</code> fails, the deployment
    *             continues with <code>ApplicationStop</code>. </p>
    *
-   *         <p>
-   *             If false or not specified, then if a lifecycle event fails during a deployment to an instance, that deployment fails.
-   *             If deployment to that instance is part of an overall deployment and the number of healthy hosts is not less than the minimum number of healthy hosts,
-   *             then a deployment to the next instance is attempted.
-   *         </p>
+   *         <p> If false or not specified, then if a lifecycle event fails during a deployment to an
+   *             instance, that deployment fails. If deployment to that instance is part of an overall
+   *             deployment and the number of healthy hosts is not less than the minimum number of
+   *             healthy hosts, then a deployment to the next instance is attempted. </p>
    *
    *         <p> During a deployment, the AWS CodeDeploy agent runs the scripts specified for
    *                 <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and
@@ -2470,7 +2739,8 @@ export interface DeploymentInfo {
   deploymentStatusMessages?: string[];
 
   /**
-   * <p>The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).</p>
+   * <p>The destination platform type for the deployment (<code>Lambda</code>,
+   *                 <code>Server</code>, or <code>ECS</code>).</p>
    */
   computePlatform?: ComputePlatform | string;
 
@@ -2479,9 +2749,17 @@ export interface DeploymentInfo {
    *             is linked to this deployment.</p>
    */
   externalId?: string;
+
+  /**
+   * <p>Information about deployments related to the specified deployment.</p>
+   */
+  relatedDeployments?: RelatedDeployments;
 }
 
 export namespace DeploymentInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentInfo): any => ({
     ...obj,
   });
@@ -2498,6 +2776,9 @@ export interface BatchGetDeploymentsOutput {
 }
 
 export namespace BatchGetDeploymentsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetDeploymentsOutput): any => ({
     ...obj,
   });
@@ -2511,23 +2792,24 @@ export interface BatchGetDeploymentTargetsInput {
 
   /**
    * <p> The unique IDs of the deployment targets. The compute platform of the deployment
-   *             determines the type of the targets and their formats. The maximum number of deployment target IDs you can specify is 25.</p>
+   *             determines the type of the targets and their formats. The maximum number of deployment
+   *             target IDs you can specify is 25.</p>
    *         <ul>
    *             <li>
    *                 <p> For deployments that use the EC2/On-premises compute platform, the target IDs
    *                     are EC2 or on-premises instances IDs, and their target type is
-   *                     <code>instanceTarget</code>. </p>
+   *                         <code>instanceTarget</code>. </p>
    *             </li>
    *             <li>
    *                 <p> For deployments that use the AWS Lambda compute platform, the target IDs are
    *                     the names of Lambda functions, and their target type is
-   *                     <code>instanceTarget</code>. </p>
+   *                         <code>instanceTarget</code>. </p>
    *             </li>
    *             <li>
    *                 <p> For deployments that use the Amazon ECS compute platform, the target IDs are
    *                     pairs of Amazon ECS clusters and services specified using the format
-   *                     <code><clustername>:<servicename></code>. Their target type is
-   *                     <code>ecsTarget</code>. </p>
+   *                         <code><clustername>:<servicename></code>. Their target type is
+   *                         <code>ecsTarget</code>. </p>
    *             </li>
    *             <li>
    *                 <p> For deployments that are deployed with AWS CloudFormation, the target IDs are
@@ -2540,6 +2822,9 @@ export interface BatchGetDeploymentTargetsInput {
 }
 
 export namespace BatchGetDeploymentTargetsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetDeploymentTargetsInput): any => ({
     ...obj,
   });
@@ -2585,7 +2870,8 @@ export interface CloudFormationTarget {
   lifecycleEvents?: LifecycleEvent[];
 
   /**
-   * <p> The status of an AWS CloudFormation blue/green deployment's target application. </p>
+   * <p> The status of an AWS CloudFormation blue/green deployment's target application.
+   *         </p>
    */
   status?: TargetStatus | string;
 
@@ -2602,6 +2888,9 @@ export interface CloudFormationTarget {
 }
 
 export namespace CloudFormationTarget {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudFormationTarget): any => ({
     ...obj,
   });
@@ -2645,7 +2934,7 @@ export interface ECSTaskSet {
    *             during an Amazon ECS deployment. A task in the <code>PENDING</code> state is preparing
    *             to enter the <code>RUNNING</code> state. A task set enters the <code>PENDING</code>
    *             status when it launches for the first time, or when it is restarted after being in the
-   *             <code>STOPPED</code> state. </p>
+   *                 <code>STOPPED</code> state. </p>
    */
   pendingCount?: number;
 
@@ -2661,16 +2950,19 @@ export interface ECSTaskSet {
    *         <ul>
    *             <li>
    *                 <p>
-   *                     <code>PRIMARY</code>: Indicates the task set is serving production traffic. </p>
+   *                     <code>PRIMARY</code>: Indicates the task set is serving production traffic.
+   *                 </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                     <code>ACTIVE</code>: Indicates the task set is not serving production traffic. </p>
+   *                     <code>ACTIVE</code>: Indicates the task set is not serving production traffic.
+   *                 </p>
    *             </li>
    *             <li>
    *                 <p>
    *                     <code>DRAINING</code>: Indicates the tasks in the task set are being stopped and
-   *                     their corresponding targets are being deregistered from their target group. </p>
+   *                     their corresponding targets are being deregistered from their target group.
+   *                 </p>
    *             </li>
    *          </ul>
    */
@@ -2689,12 +2981,15 @@ export interface ECSTaskSet {
 
   /**
    * <p> A label that identifies whether the ECS task set is an original target
-   *             (<code>BLUE</code>) or a replacement target (<code>GREEN</code>). </p>
+   *                 (<code>BLUE</code>) or a replacement target (<code>GREEN</code>). </p>
    */
   taskSetLabel?: TargetLabel | string;
 }
 
 export namespace ECSTaskSet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ECSTaskSet): any => ({
     ...obj,
   });
@@ -2743,6 +3038,9 @@ export interface ECSTarget {
 }
 
 export namespace ECSTarget {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ECSTarget): any => ({
     ...obj,
   });
@@ -2792,21 +3090,20 @@ export interface InstanceTarget {
 }
 
 export namespace InstanceTarget {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceTarget): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>
- *             Information about a Lambda function specified in a deployment.
- *         </p>
+ * <p> Information about a Lambda function specified in a deployment. </p>
  */
 export interface LambdaFunctionInfo {
   /**
-   * <p>
-   *             The name of a Lambda function.
-   *         </p>
+   * <p> The name of a Lambda function. </p>
    */
   functionName?: string;
 
@@ -2817,28 +3114,27 @@ export interface LambdaFunctionInfo {
   functionAlias?: string;
 
   /**
-   * <p>
-   *             The version of a Lambda function that production traffic points to.
-   *         </p>
+   * <p> The version of a Lambda function that production traffic points to. </p>
    */
   currentVersion?: string;
 
   /**
-   * <p>
-   *             The version of a Lambda function that production traffic points to after the Lambda function is deployed.
-   *         </p>
+   * <p> The version of a Lambda function that production traffic points to after the Lambda
+   *             function is deployed. </p>
    */
   targetVersion?: string;
 
   /**
-   * <p>
-   *             The percentage of production traffic that the target version of a Lambda function receives.
-   *         </p>
+   * <p> The percentage of production traffic that the target version of a Lambda function
+   *             receives. </p>
    */
   targetVersionWeight?: number;
 }
 
 export namespace LambdaFunctionInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LambdaFunctionInfo): any => ({
     ...obj,
   });
@@ -2882,14 +3178,16 @@ export interface LambdaTarget {
   lifecycleEvents?: LifecycleEvent[];
 
   /**
-   * <p>
-   *             A <code>LambdaFunctionInfo</code> object that describes a target Lambda function.
+   * <p> A <code>LambdaFunctionInfo</code> object that describes a target Lambda function.
    *         </p>
    */
   lambdaFunctionInfo?: LambdaFunctionInfo;
 }
 
 export namespace LambdaTarget {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LambdaTarget): any => ({
     ...obj,
   });
@@ -2900,7 +3198,8 @@ export namespace LambdaTarget {
  */
 export interface DeploymentTarget {
   /**
-   * <p>The deployment type that is specific to the deployment's compute platform or deployments initiated by a CloudFormation stack update.</p>
+   * <p>The deployment type that is specific to the deployment's compute platform or
+   *             deployments initiated by a CloudFormation stack update.</p>
    */
   deploymentTargetType?: DeploymentTargetType | string;
 
@@ -2931,6 +3230,9 @@ export interface DeploymentTarget {
 }
 
 export namespace DeploymentTarget {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentTarget): any => ({
     ...obj,
   });
@@ -2968,6 +3270,9 @@ export interface BatchGetDeploymentTargetsOutput {
 }
 
 export namespace BatchGetDeploymentTargetsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetDeploymentTargetsOutput): any => ({
     ...obj,
   });
@@ -2986,6 +3291,9 @@ export interface DeploymentNotStartedException extends __SmithyException, $Metad
 }
 
 export namespace DeploymentNotStartedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentNotStartedException): any => ({
     ...obj,
   });
@@ -3004,6 +3312,9 @@ export interface DeploymentTargetDoesNotExistException extends __SmithyException
 }
 
 export namespace DeploymentTargetDoesNotExistException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentTargetDoesNotExistException): any => ({
     ...obj,
   });
@@ -3022,6 +3333,9 @@ export interface DeploymentTargetIdRequiredException extends __SmithyException, 
 }
 
 export namespace DeploymentTargetIdRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentTargetIdRequiredException): any => ({
     ...obj,
   });
@@ -3042,6 +3356,9 @@ export interface DeploymentTargetListSizeExceededException extends __SmithyExcep
 }
 
 export namespace DeploymentTargetListSizeExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentTargetListSizeExceededException): any => ({
     ...obj,
   });
@@ -3062,6 +3379,9 @@ export interface InstanceDoesNotExistException extends __SmithyException, $Metad
 }
 
 export namespace InstanceDoesNotExistException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceDoesNotExistException): any => ({
     ...obj,
   });
@@ -3080,6 +3400,9 @@ export interface InvalidDeploymentTargetIdException extends __SmithyException, $
 }
 
 export namespace InvalidDeploymentTargetIdException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidDeploymentTargetIdException): any => ({
     ...obj,
   });
@@ -3090,12 +3413,16 @@ export namespace InvalidDeploymentTargetIdException {
  */
 export interface BatchGetOnPremisesInstancesInput {
   /**
-   * <p>The names of the on-premises instances about which to get information. The maximum number of instance names you can specify is 25.</p>
+   * <p>The names of the on-premises instances about which to get information. The maximum
+   *             number of instance names you can specify is 25.</p>
    */
   instanceNames: string[] | undefined;
 }
 
 export namespace BatchGetOnPremisesInstancesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetOnPremisesInstancesInput): any => ({
     ...obj,
   });
@@ -3143,6 +3470,9 @@ export interface InstanceInfo {
 }
 
 export namespace InstanceInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceInfo): any => ({
     ...obj,
   });
@@ -3159,6 +3489,9 @@ export interface BatchGetOnPremisesInstancesOutput {
 }
 
 export namespace BatchGetOnPremisesInstancesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetOnPremisesInstancesOutput): any => ({
     ...obj,
   });
@@ -3177,6 +3510,9 @@ export interface BucketNameFilterRequiredException extends __SmithyException, $M
 }
 
 export namespace BucketNameFilterRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketNameFilterRequiredException): any => ({
     ...obj,
   });
@@ -3197,12 +3533,16 @@ export interface ContinueDeploymentInput {
   /**
    * <p> The status of the deployment's waiting period. <code>READY_WAIT</code> indicates that
    *             the deployment is ready to start shifting traffic. <code>TERMINATION_WAIT</code>
-   *             indicates that the traffic is shifted, but the original target is not terminated. </p>
+   *             indicates that the traffic is shifted, but the original target is not terminated.
+   *         </p>
    */
   deploymentWaitType?: DeploymentWaitType | string;
 }
 
 export namespace ContinueDeploymentInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ContinueDeploymentInput): any => ({
     ...obj,
   });
@@ -3221,6 +3561,9 @@ export interface DeploymentAlreadyCompletedException extends __SmithyException, 
 }
 
 export namespace DeploymentAlreadyCompletedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentAlreadyCompletedException): any => ({
     ...obj,
   });
@@ -3239,6 +3582,9 @@ export interface DeploymentIsNotInReadyStateException extends __SmithyException,
 }
 
 export namespace DeploymentIsNotInReadyStateException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentIsNotInReadyStateException): any => ({
     ...obj,
   });
@@ -3257,6 +3603,9 @@ export interface InvalidDeploymentStatusException extends __SmithyException, $Me
 }
 
 export namespace InvalidDeploymentStatusException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidDeploymentStatusException): any => ({
     ...obj,
   });
@@ -3275,6 +3624,9 @@ export interface InvalidDeploymentWaitTypeException extends __SmithyException, $
 }
 
 export namespace InvalidDeploymentWaitTypeException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidDeploymentWaitTypeException): any => ({
     ...obj,
   });
@@ -3293,6 +3645,9 @@ export interface UnsupportedActionForDeploymentTypeException extends __SmithyExc
 }
 
 export namespace UnsupportedActionForDeploymentTypeException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnsupportedActionForDeploymentTypeException): any => ({
     ...obj,
   });
@@ -3315,15 +3670,17 @@ export interface CreateApplicationInput {
   computePlatform?: ComputePlatform | string;
 
   /**
-   * <p>
-   *             The metadata that you apply to CodeDeploy applications to help you organize and categorize them. Each tag
-   *             consists of a key and an optional value, both of which you define.
-   *         </p>
+   * <p> The metadata that you apply to CodeDeploy applications to help you organize and
+   *             categorize them. Each tag consists of a key and an optional value, both of which you
+   *             define. </p>
    */
   tags?: Tag[];
 }
 
 export namespace CreateApplicationInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateApplicationInput): any => ({
     ...obj,
   });
@@ -3340,15 +3697,16 @@ export interface CreateApplicationOutput {
 }
 
 export namespace CreateApplicationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateApplicationOutput): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>
- *             The specified tags are not valid.
- *         </p>
+ * <p> The specified tags are not valid. </p>
  */
 export interface InvalidTagsToAddException extends __SmithyException, $MetadataBearer {
   name: "InvalidTagsToAddException";
@@ -3360,6 +3718,9 @@ export interface InvalidTagsToAddException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidTagsToAddException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTagsToAddException): any => ({
     ...obj,
   });
@@ -3408,11 +3769,10 @@ export interface CreateDeploymentInput {
    *             deployment continues with <code>BlockTraffic</code>. If <code>AfterBlockTraffic</code>
    *             fails, the deployment continues with <code>ApplicationStop</code>. </p>
    *
-   *         <p>
-   *             If false or not specified, then if a lifecycle event fails during a deployment to an instance, that deployment fails.
-   *             If deployment to that instance is part of an overall deployment and the number of healthy hosts is not less than the minimum number of healthy hosts,
-   *             then a deployment to the next instance is attempted.
-   *         </p>
+   *         <p> If false or not specified, then if a lifecycle event fails during a deployment to an
+   *             instance, that deployment fails. If deployment to that instance is part of an overall
+   *             deployment and the number of healthy hosts is not less than the minimum number of
+   *             healthy hosts, then a deployment to the next instance is attempted. </p>
    *
    *         <p> During a deployment, the AWS CodeDeploy agent runs the scripts specified for
    *                 <code>ApplicationStop</code>, <code>BeforeBlockTraffic</code>, and
@@ -3471,6 +3831,9 @@ export interface CreateDeploymentInput {
 }
 
 export namespace CreateDeploymentInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDeploymentInput): any => ({
     ...obj,
   });
@@ -3487,6 +3850,9 @@ export interface CreateDeploymentOutput {
 }
 
 export namespace CreateDeploymentOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDeploymentOutput): any => ({
     ...obj,
   });
@@ -3505,6 +3871,9 @@ export interface DeploymentGroupDoesNotExistException extends __SmithyException,
 }
 
 export namespace DeploymentGroupDoesNotExistException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentGroupDoesNotExistException): any => ({
     ...obj,
   });
@@ -3523,6 +3892,9 @@ export interface DeploymentLimitExceededException extends __SmithyException, $Me
 }
 
 export namespace DeploymentLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentLimitExceededException): any => ({
     ...obj,
   });
@@ -3541,6 +3913,9 @@ export interface DescriptionTooLongException extends __SmithyException, $Metadat
 }
 
 export namespace DescriptionTooLongException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescriptionTooLongException): any => ({
     ...obj,
   });
@@ -3561,6 +3936,9 @@ export interface InvalidAutoRollbackConfigException extends __SmithyException, $
 }
 
 export namespace InvalidAutoRollbackConfigException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidAutoRollbackConfigException): any => ({
     ...obj,
   });
@@ -3579,6 +3957,9 @@ export interface InvalidAutoScalingGroupException extends __SmithyException, $Me
 }
 
 export namespace InvalidAutoScalingGroupException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidAutoScalingGroupException): any => ({
     ...obj,
   });
@@ -3597,6 +3978,9 @@ export interface InvalidDeploymentConfigNameException extends __SmithyException,
 }
 
 export namespace InvalidDeploymentConfigNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidDeploymentConfigNameException): any => ({
     ...obj,
   });
@@ -3618,6 +4002,9 @@ export interface InvalidFileExistsBehaviorException extends __SmithyException, $
 }
 
 export namespace InvalidFileExistsBehaviorException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidFileExistsBehaviorException): any => ({
     ...obj,
   });
@@ -3636,6 +4023,9 @@ export interface InvalidGitHubAccountTokenException extends __SmithyException, $
 }
 
 export namespace InvalidGitHubAccountTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidGitHubAccountTokenException): any => ({
     ...obj,
   });
@@ -3656,6 +4046,9 @@ export interface InvalidIgnoreApplicationStopFailuresValueException extends __Sm
 }
 
 export namespace InvalidIgnoreApplicationStopFailuresValueException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidIgnoreApplicationStopFailuresValueException): any => ({
     ...obj,
   });
@@ -3674,6 +4067,9 @@ export interface InvalidLoadBalancerInfoException extends __SmithyException, $Me
 }
 
 export namespace InvalidLoadBalancerInfoException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidLoadBalancerInfoException): any => ({
     ...obj,
   });
@@ -3694,6 +4090,9 @@ export interface InvalidRoleException extends __SmithyException, $MetadataBearer
 }
 
 export namespace InvalidRoleException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRoleException): any => ({
     ...obj,
   });
@@ -3727,6 +4126,9 @@ export interface InvalidTargetInstancesException extends __SmithyException, $Met
 }
 
 export namespace InvalidTargetInstancesException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTargetInstancesException): any => ({
     ...obj,
   });
@@ -3746,6 +4148,9 @@ export interface InvalidTrafficRoutingConfigurationException extends __SmithyExc
 }
 
 export namespace InvalidTrafficRoutingConfigurationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTrafficRoutingConfigurationException): any => ({
     ...obj,
   });
@@ -3766,6 +4171,9 @@ export interface InvalidUpdateOutdatedInstancesOnlyValueException extends __Smit
 }
 
 export namespace InvalidUpdateOutdatedInstancesOnlyValueException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidUpdateOutdatedInstancesOnlyValueException): any => ({
     ...obj,
   });
@@ -3784,6 +4192,9 @@ export interface RevisionDoesNotExistException extends __SmithyException, $Metad
 }
 
 export namespace RevisionDoesNotExistException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RevisionDoesNotExistException): any => ({
     ...obj,
   });
@@ -3802,6 +4213,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -3813,11 +4227,6 @@ export type MinimumHealthyHostsType = "FLEET_PERCENT" | "HOST_COUNT";
  * <p>Information about minimum healthy instance.</p>
  */
 export interface MinimumHealthyHosts {
-  /**
-   * <p>The minimum healthy instance value.</p>
-   */
-  value?: number;
-
   /**
    * <p>The minimum healthy instance type:</p>
    *         <ul>
@@ -3839,32 +4248,40 @@ export interface MinimumHealthyHosts {
    *             four or more instances are deployed to successfully. Otherwise, the deployment
    *             fails.</p>
    *         <note>
-   *             <p>In a call to the <code>GetDeploymentConfig</code>,
-   *                 CodeDeployDefault.OneAtATime returns a minimum healthy instance type of
-   *                 MOST_CONCURRENCY and a value of 1. This means a deployment to only one instance at a
-   *                 time. (You cannot set the type to MOST_CONCURRENCY, only to HOST_COUNT or
-   *                 FLEET_PERCENT.) In addition, with CodeDeployDefault.OneAtATime, AWS CodeDeploy
-   *                 attempts to ensure that all instances but one are kept in a healthy state during the
-   *                 deployment. Although this allows one instance at a time to be taken offline for a
-   *                 new deployment, it also means that if the deployment to the last instance fails, the
-   *                 overall deployment is still successful.</p>
+   *             <p>In a call to the <code>GetDeploymentConfig</code>, CodeDeployDefault.OneAtATime
+   *                 returns a minimum healthy instance type of MOST_CONCURRENCY and a value of 1. This
+   *                 means a deployment to only one instance at a time. (You cannot set the type to
+   *                 MOST_CONCURRENCY, only to HOST_COUNT or FLEET_PERCENT.) In addition, with
+   *                 CodeDeployDefault.OneAtATime, AWS CodeDeploy attempts to ensure that all instances
+   *                 but one are kept in a healthy state during the deployment. Although this allows one
+   *                 instance at a time to be taken offline for a new deployment, it also means that if
+   *                 the deployment to the last instance fails, the overall deployment is still
+   *                 successful.</p>
    *         </note>
    *         <p>For more information, see <a href="https://docs.aws.amazon.com/codedeploy/latest/userguide/instances-health.html">AWS CodeDeploy Instance
    *                 Health</a> in the <i>AWS CodeDeploy User Guide</i>.</p>
    */
   type?: MinimumHealthyHostsType | string;
+
+  /**
+   * <p>The minimum healthy instance value.</p>
+   */
+  value?: number;
 }
 
 export namespace MinimumHealthyHosts {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MinimumHealthyHosts): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A configuration that shifts traffic from one version of a Lambda function or ECS task set to another
- *             in two increments. The original and target Lambda function versions or ECS task sets are specified in the
- *             deployment's AppSpec file.</p>
+ * <p>A configuration that shifts traffic from one version of a Lambda function or ECS task
+ *             set to another in two increments. The original and target Lambda function versions or
+ *             ECS task sets are specified in the deployment's AppSpec file.</p>
  */
 export interface TimeBasedCanary {
   /**
@@ -3881,16 +4298,19 @@ export interface TimeBasedCanary {
 }
 
 export namespace TimeBasedCanary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TimeBasedCanary): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A configuration that shifts traffic from one version of a Lambda function or ECS task set to another
- *             in equal increments, with an equal number of minutes between each increment. The
- *             original and target Lambda function versions or ECS task sets are specified in the deployment's AppSpec
- *             file.</p>
+ * <p>A configuration that shifts traffic from one version of a Lambda function or ECS task
+ *             set to another in equal increments, with an equal number of minutes between each
+ *             increment. The original and target Lambda function versions or ECS task sets are
+ *             specified in the deployment's AppSpec file.</p>
  */
 export interface TimeBasedLinear {
   /**
@@ -3907,6 +4327,9 @@ export interface TimeBasedLinear {
 }
 
 export namespace TimeBasedLinear {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TimeBasedLinear): any => ({
     ...obj,
   });
@@ -3931,22 +4354,25 @@ export interface TrafficRoutingConfig {
   type?: TrafficRoutingType | string;
 
   /**
-   * <p>A configuration that shifts traffic from one version of a Lambda function or ECS task set to another
-   *             in two increments. The original and target Lambda function versions or ECS task sets are specified in the
-   *             deployment's AppSpec file.</p>
+   * <p>A configuration that shifts traffic from one version of a Lambda function or ECS task
+   *             set to another in two increments. The original and target Lambda function versions or
+   *             ECS task sets are specified in the deployment's AppSpec file.</p>
    */
   timeBasedCanary?: TimeBasedCanary;
 
   /**
-   * <p>A configuration that shifts traffic from one version of a Lambda function or ECS task set to another
-   *             in equal increments, with an equal number of minutes between each increment. The
-   *             original and target Lambda function versions or ECS task sets are specified in the deployment's AppSpec
-   *             file.</p>
+   * <p>A configuration that shifts traffic from one version of a Lambda function or ECS task
+   *             set to another in equal increments, with an equal number of minutes between each
+   *             increment. The original and target Lambda function versions or ECS task sets are
+   *             specified in the deployment's AppSpec file.</p>
    */
   timeBasedLinear?: TimeBasedLinear;
 }
 
 export namespace TrafficRoutingConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrafficRoutingConfig): any => ({
     ...obj,
   });
@@ -3990,12 +4416,16 @@ export interface CreateDeploymentConfigInput {
   trafficRoutingConfig?: TrafficRoutingConfig;
 
   /**
-   * <p>The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).</p>
+   * <p>The destination platform type for the deployment (<code>Lambda</code>,
+   *                 <code>Server</code>, or <code>ECS</code>).</p>
    */
   computePlatform?: ComputePlatform | string;
 }
 
 export namespace CreateDeploymentConfigInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDeploymentConfigInput): any => ({
     ...obj,
   });
@@ -4012,6 +4442,9 @@ export interface CreateDeploymentConfigOutput {
 }
 
 export namespace CreateDeploymentConfigOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDeploymentConfigOutput): any => ({
     ...obj,
   });
@@ -4031,6 +4464,9 @@ export interface DeploymentConfigAlreadyExistsException extends __SmithyExceptio
 }
 
 export namespace DeploymentConfigAlreadyExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentConfigAlreadyExistsException): any => ({
     ...obj,
   });
@@ -4049,6 +4485,9 @@ export interface DeploymentConfigLimitExceededException extends __SmithyExceptio
 }
 
 export namespace DeploymentConfigLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentConfigLimitExceededException): any => ({
     ...obj,
   });
@@ -4067,6 +4506,9 @@ export interface DeploymentConfigNameRequiredException extends __SmithyException
 }
 
 export namespace DeploymentConfigNameRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentConfigNameRequiredException): any => ({
     ...obj,
   });
@@ -4085,6 +4527,9 @@ export interface InvalidMinimumHealthyHostValueException extends __SmithyExcepti
 }
 
 export namespace InvalidMinimumHealthyHostValueException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidMinimumHealthyHostValueException): any => ({
     ...obj,
   });
@@ -4165,6 +4610,18 @@ export interface CreateDeploymentGroupInput {
   autoRollbackConfiguration?: AutoRollbackConfiguration;
 
   /**
+   * <p>Indicates what happens when new EC2 instances are launched mid-deployment and do not
+   *             receive the deployed application revision.</p>
+   *         <p>If this option is set to <code>UPDATE</code> or is unspecified, CodeDeploy initiates
+   *             one or more 'auto-update outdated instances' deployments to apply the deployed
+   *             application revision to the new EC2 instances.</p>
+   *         <p>If this option is set to <code>IGNORE</code>, CodeDeploy does not initiate a
+   *             deployment to update the new EC2 instances. This may result in instances having
+   *             different revisions.</p>
+   */
+  outdatedInstancesStrategy?: OutdatedInstancesStrategy | string;
+
+  /**
    * <p>Information about the type of deployment, in-place or blue/green, that you want to run
    *             and whether to route deployment traffic behind a load balancer.</p>
    */
@@ -4191,7 +4648,7 @@ export interface CreateDeploymentGroupInput {
    * <p> The target Amazon ECS services in the deployment group. This applies only to
    *             deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service
    *             is specified as an Amazon ECS cluster and service name pair using the format
-   *             <code><clustername>:<servicename></code>. </p>
+   *                 <code><clustername>:<servicename></code>. </p>
    */
   ecsServices?: ECSService[];
 
@@ -4203,15 +4660,17 @@ export interface CreateDeploymentGroupInput {
   onPremisesTagSet?: OnPremisesTagSet;
 
   /**
-   * <p>
-   *             The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each tag
-   *             consists of a key and an optional value, both of which you define.
-   *         </p>
+   * <p> The metadata that you apply to CodeDeploy deployment groups to help you organize and
+   *             categorize them. Each tag consists of a key and an optional value, both of which you
+   *             define. </p>
    */
   tags?: Tag[];
 }
 
 export namespace CreateDeploymentGroupInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDeploymentGroupInput): any => ({
     ...obj,
   });
@@ -4228,6 +4687,9 @@ export interface CreateDeploymentGroupOutput {
 }
 
 export namespace CreateDeploymentGroupOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDeploymentGroupOutput): any => ({
     ...obj,
   });
@@ -4247,6 +4709,9 @@ export interface DeploymentGroupAlreadyExistsException extends __SmithyException
 }
 
 export namespace DeploymentGroupAlreadyExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentGroupAlreadyExistsException): any => ({
     ...obj,
   });
@@ -4265,6 +4730,9 @@ export interface DeploymentGroupLimitExceededException extends __SmithyException
 }
 
 export namespace DeploymentGroupLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentGroupLimitExceededException): any => ({
     ...obj,
   });
@@ -4284,6 +4752,9 @@ export interface ECSServiceMappingLimitExceededException extends __SmithyExcepti
 }
 
 export namespace ECSServiceMappingLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ECSServiceMappingLimitExceededException): any => ({
     ...obj,
   });
@@ -4319,6 +4790,9 @@ export interface InvalidAlarmConfigException extends __SmithyException, $Metadat
 }
 
 export namespace InvalidAlarmConfigException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidAlarmConfigException): any => ({
     ...obj,
   });
@@ -4338,6 +4812,9 @@ export interface InvalidBlueGreenDeploymentConfigurationException extends __Smit
 }
 
 export namespace InvalidBlueGreenDeploymentConfigurationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidBlueGreenDeploymentConfigurationException): any => ({
     ...obj,
   });
@@ -4358,6 +4835,9 @@ export interface InvalidDeploymentStyleException extends __SmithyException, $Met
 }
 
 export namespace InvalidDeploymentStyleException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidDeploymentStyleException): any => ({
     ...obj,
   });
@@ -4377,6 +4857,9 @@ export interface InvalidEC2TagCombinationException extends __SmithyException, $M
 }
 
 export namespace InvalidEC2TagCombinationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidEC2TagCombinationException): any => ({
     ...obj,
   });
@@ -4395,6 +4878,9 @@ export interface InvalidEC2TagException extends __SmithyException, $MetadataBear
 }
 
 export namespace InvalidEC2TagException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidEC2TagException): any => ({
     ...obj,
   });
@@ -4413,6 +4899,9 @@ export interface InvalidECSServiceException extends __SmithyException, $Metadata
 }
 
 export namespace InvalidECSServiceException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidECSServiceException): any => ({
     ...obj,
   });
@@ -4431,6 +4920,9 @@ export interface InvalidInputException extends __SmithyException, $MetadataBeare
 }
 
 export namespace InvalidInputException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidInputException): any => ({
     ...obj,
   });
@@ -4450,6 +4942,9 @@ export interface InvalidOnPremisesTagCombinationException extends __SmithyExcept
 }
 
 export namespace InvalidOnPremisesTagCombinationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidOnPremisesTagCombinationException): any => ({
     ...obj,
   });
@@ -4468,6 +4963,9 @@ export interface InvalidTargetGroupPairException extends __SmithyException, $Met
 }
 
 export namespace InvalidTargetGroupPairException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTargetGroupPairException): any => ({
     ...obj,
   });
@@ -4486,6 +4984,9 @@ export interface InvalidTriggerConfigException extends __SmithyException, $Metad
 }
 
 export namespace InvalidTriggerConfigException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTriggerConfigException): any => ({
     ...obj,
   });
@@ -4504,6 +5005,9 @@ export interface LifecycleHookLimitExceededException extends __SmithyException, 
 }
 
 export namespace LifecycleHookLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleHookLimitExceededException): any => ({
     ...obj,
   });
@@ -4522,6 +5026,9 @@ export interface RoleRequiredException extends __SmithyException, $MetadataBeare
 }
 
 export namespace RoleRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RoleRequiredException): any => ({
     ...obj,
   });
@@ -4541,6 +5048,9 @@ export interface TagSetListLimitExceededException extends __SmithyException, $Me
 }
 
 export namespace TagSetListLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagSetListLimitExceededException): any => ({
     ...obj,
   });
@@ -4559,6 +5069,9 @@ export interface TriggerTargetsLimitExceededException extends __SmithyException,
 }
 
 export namespace TriggerTargetsLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TriggerTargetsLimitExceededException): any => ({
     ...obj,
   });
@@ -4576,6 +5089,9 @@ export interface DeleteApplicationInput {
 }
 
 export namespace DeleteApplicationInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteApplicationInput): any => ({
     ...obj,
   });
@@ -4593,6 +5109,9 @@ export interface DeleteDeploymentConfigInput {
 }
 
 export namespace DeleteDeploymentConfigInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDeploymentConfigInput): any => ({
     ...obj,
   });
@@ -4611,6 +5130,9 @@ export interface DeploymentConfigInUseException extends __SmithyException, $Meta
 }
 
 export namespace DeploymentConfigInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentConfigInUseException): any => ({
     ...obj,
   });
@@ -4629,6 +5151,9 @@ export interface InvalidOperationException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidOperationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidOperationException): any => ({
     ...obj,
   });
@@ -4651,6 +5176,9 @@ export interface DeleteDeploymentGroupInput {
 }
 
 export namespace DeleteDeploymentGroupInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDeploymentGroupInput): any => ({
     ...obj,
   });
@@ -4671,6 +5199,9 @@ export interface DeleteDeploymentGroupOutput {
 }
 
 export namespace DeleteDeploymentGroupOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDeploymentGroupOutput): any => ({
     ...obj,
   });
@@ -4687,6 +5218,9 @@ export interface DeleteGitHubAccountTokenInput {
 }
 
 export namespace DeleteGitHubAccountTokenInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteGitHubAccountTokenInput): any => ({
     ...obj,
   });
@@ -4703,6 +5237,9 @@ export interface DeleteGitHubAccountTokenOutput {
 }
 
 export namespace DeleteGitHubAccountTokenOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteGitHubAccountTokenOutput): any => ({
     ...obj,
   });
@@ -4721,6 +5258,9 @@ export interface GitHubAccountTokenDoesNotExistException extends __SmithyExcepti
 }
 
 export namespace GitHubAccountTokenDoesNotExistException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GitHubAccountTokenDoesNotExistException): any => ({
     ...obj,
   });
@@ -4739,6 +5279,9 @@ export interface GitHubAccountTokenNameRequiredException extends __SmithyExcepti
 }
 
 export namespace GitHubAccountTokenNameRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GitHubAccountTokenNameRequiredException): any => ({
     ...obj,
   });
@@ -4757,6 +5300,9 @@ export interface InvalidGitHubAccountTokenNameException extends __SmithyExceptio
 }
 
 export namespace InvalidGitHubAccountTokenNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidGitHubAccountTokenNameException): any => ({
     ...obj,
   });
@@ -4775,6 +5321,9 @@ export interface OperationNotSupportedException extends __SmithyException, $Meta
 }
 
 export namespace OperationNotSupportedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OperationNotSupportedException): any => ({
     ...obj,
   });
@@ -4793,6 +5342,9 @@ export interface ResourceValidationException extends __SmithyException, $Metadat
 }
 
 export namespace ResourceValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceValidationException): any => ({
     ...obj,
   });
@@ -4807,6 +5359,9 @@ export interface DeleteResourcesByExternalIdInput {
 }
 
 export namespace DeleteResourcesByExternalIdInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteResourcesByExternalIdInput): any => ({
     ...obj,
   });
@@ -4815,6 +5370,9 @@ export namespace DeleteResourcesByExternalIdInput {
 export interface DeleteResourcesByExternalIdOutput {}
 
 export namespace DeleteResourcesByExternalIdOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteResourcesByExternalIdOutput): any => ({
     ...obj,
   });
@@ -4831,6 +5389,9 @@ export interface DeregisterOnPremisesInstanceInput {
 }
 
 export namespace DeregisterOnPremisesInstanceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeregisterOnPremisesInstanceInput): any => ({
     ...obj,
   });
@@ -4848,6 +5409,9 @@ export interface GetApplicationInput {
 }
 
 export namespace GetApplicationInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetApplicationInput): any => ({
     ...obj,
   });
@@ -4864,6 +5428,9 @@ export interface GetApplicationOutput {
 }
 
 export namespace GetApplicationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetApplicationOutput): any => ({
     ...obj,
   });
@@ -4885,6 +5452,9 @@ export interface GetApplicationRevisionInput {
 }
 
 export namespace GetApplicationRevisionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetApplicationRevisionInput): any => ({
     ...obj,
   });
@@ -4911,6 +5481,9 @@ export interface GetApplicationRevisionOutput {
 }
 
 export namespace GetApplicationRevisionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetApplicationRevisionOutput): any => ({
     ...obj,
   });
@@ -4927,6 +5500,9 @@ export interface GetDeploymentInput {
 }
 
 export namespace GetDeploymentInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDeploymentInput): any => ({
     ...obj,
   });
@@ -4943,6 +5519,9 @@ export interface GetDeploymentOutput {
 }
 
 export namespace GetDeploymentOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDeploymentOutput): any => ({
     ...obj,
   });
@@ -4960,6 +5539,9 @@ export interface GetDeploymentConfigInput {
 }
 
 export namespace GetDeploymentConfigInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDeploymentConfigInput): any => ({
     ...obj,
   });
@@ -4990,18 +5572,22 @@ export interface DeploymentConfigInfo {
   createTime?: Date;
 
   /**
-   * <p>The destination platform type for the deployment (<code>Lambda</code>, <code>Server</code>, or <code>ECS</code>).</p>
+   * <p>The destination platform type for the deployment (<code>Lambda</code>,
+   *                 <code>Server</code>, or <code>ECS</code>).</p>
    */
   computePlatform?: ComputePlatform | string;
 
   /**
    * <p>The configuration that specifies how the deployment traffic is routed. Used for
-   *         deployments with a Lambda or ECS compute platform only.</p>
+   *             deployments with a Lambda or ECS compute platform only.</p>
    */
   trafficRoutingConfig?: TrafficRoutingConfig;
 }
 
 export namespace DeploymentConfigInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeploymentConfigInfo): any => ({
     ...obj,
   });
@@ -5018,6 +5604,9 @@ export interface GetDeploymentConfigOutput {
 }
 
 export namespace GetDeploymentConfigOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDeploymentConfigOutput): any => ({
     ...obj,
   });
@@ -5040,6 +5629,9 @@ export interface GetDeploymentGroupInput {
 }
 
 export namespace GetDeploymentGroupInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDeploymentGroupInput): any => ({
     ...obj,
   });
@@ -5056,6 +5648,9 @@ export interface GetDeploymentGroupOutput {
 }
 
 export namespace GetDeploymentGroupOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDeploymentGroupOutput): any => ({
     ...obj,
   });
@@ -5077,6 +5672,9 @@ export interface GetDeploymentInstanceInput {
 }
 
 export namespace GetDeploymentInstanceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDeploymentInstanceInput): any => ({
     ...obj,
   });
@@ -5095,6 +5693,9 @@ export interface GetDeploymentInstanceOutput {
 }
 
 export namespace GetDeploymentInstanceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDeploymentInstanceOutput): any => ({
     ...obj,
   });
@@ -5113,6 +5714,9 @@ export interface GetDeploymentTargetInput {
 }
 
 export namespace GetDeploymentTargetInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDeploymentTargetInput): any => ({
     ...obj,
   });
@@ -5130,6 +5734,9 @@ export interface GetDeploymentTargetOutput {
 }
 
 export namespace GetDeploymentTargetOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDeploymentTargetOutput): any => ({
     ...obj,
   });
@@ -5146,6 +5753,9 @@ export interface GetOnPremisesInstanceInput {
 }
 
 export namespace GetOnPremisesInstanceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOnPremisesInstanceInput): any => ({
     ...obj,
   });
@@ -5162,6 +5772,9 @@ export interface GetOnPremisesInstanceOutput {
 }
 
 export namespace GetOnPremisesInstanceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOnPremisesInstanceOutput): any => ({
     ...obj,
   });
@@ -5180,6 +5793,9 @@ export interface InvalidBucketNameFilterException extends __SmithyException, $Me
 }
 
 export namespace InvalidBucketNameFilterException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidBucketNameFilterException): any => ({
     ...obj,
   });
@@ -5198,6 +5814,9 @@ export interface InvalidDeployedStateFilterException extends __SmithyException, 
 }
 
 export namespace InvalidDeployedStateFilterException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidDeployedStateFilterException): any => ({
     ...obj,
   });
@@ -5216,6 +5835,9 @@ export interface InvalidKeyPrefixFilterException extends __SmithyException, $Met
 }
 
 export namespace InvalidKeyPrefixFilterException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidKeyPrefixFilterException): any => ({
     ...obj,
   });
@@ -5234,6 +5856,9 @@ export interface InvalidNextTokenException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidNextTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextTokenException): any => ({
     ...obj,
   });
@@ -5253,6 +5878,9 @@ export interface InvalidSortByException extends __SmithyException, $MetadataBear
 }
 
 export namespace InvalidSortByException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidSortByException): any => ({
     ...obj,
   });
@@ -5271,6 +5899,9 @@ export interface InvalidSortOrderException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidSortOrderException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidSortOrderException): any => ({
     ...obj,
   });
@@ -5316,7 +5947,8 @@ export interface ListApplicationRevisionsInput {
    *                     deployment.</p>
    *             </li>
    *          </ul>
-   *         <p> If not specified or set to null, the results are returned in an arbitrary order. </p>
+   *         <p> If not specified or set to null, the results are returned in an arbitrary order.
+   *         </p>
    */
   sortBy?: ApplicationRevisionSortBy | string;
 
@@ -5379,6 +6011,9 @@ export interface ListApplicationRevisionsInput {
 }
 
 export namespace ListApplicationRevisionsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListApplicationRevisionsInput): any => ({
     ...obj,
   });
@@ -5402,6 +6037,9 @@ export interface ListApplicationRevisionsOutput {
 }
 
 export namespace ListApplicationRevisionsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListApplicationRevisionsOutput): any => ({
     ...obj,
   });
@@ -5419,6 +6057,9 @@ export interface ListApplicationsInput {
 }
 
 export namespace ListApplicationsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListApplicationsInput): any => ({
     ...obj,
   });
@@ -5442,6 +6083,9 @@ export interface ListApplicationsOutput {
 }
 
 export namespace ListApplicationsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListApplicationsOutput): any => ({
     ...obj,
   });
@@ -5459,6 +6103,9 @@ export interface ListDeploymentConfigsInput {
 }
 
 export namespace ListDeploymentConfigsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDeploymentConfigsInput): any => ({
     ...obj,
   });
@@ -5483,6 +6130,9 @@ export interface ListDeploymentConfigsOutput {
 }
 
 export namespace ListDeploymentConfigsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDeploymentConfigsOutput): any => ({
     ...obj,
   });
@@ -5506,6 +6156,9 @@ export interface ListDeploymentGroupsInput {
 }
 
 export namespace ListDeploymentGroupsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDeploymentGroupsInput): any => ({
     ...obj,
   });
@@ -5534,6 +6187,9 @@ export interface ListDeploymentGroupsOutput {
 }
 
 export namespace ListDeploymentGroupsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDeploymentGroupsOutput): any => ({
     ...obj,
   });
@@ -5553,6 +6209,9 @@ export interface InvalidDeploymentInstanceTypeException extends __SmithyExceptio
 }
 
 export namespace InvalidDeploymentInstanceTypeException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidDeploymentInstanceTypeException): any => ({
     ...obj,
   });
@@ -5571,6 +6230,9 @@ export interface InvalidInstanceStatusException extends __SmithyException, $Meta
 }
 
 export namespace InvalidInstanceStatusException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidInstanceStatusException): any => ({
     ...obj,
   });
@@ -5591,6 +6253,9 @@ export interface InvalidInstanceTypeException extends __SmithyException, $Metada
 }
 
 export namespace InvalidInstanceTypeException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidInstanceTypeException): any => ({
     ...obj,
   });
@@ -5609,6 +6274,9 @@ export interface InvalidTargetFilterNameException extends __SmithyException, $Me
 }
 
 export namespace InvalidTargetFilterNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTargetFilterNameException): any => ({
     ...obj,
   });
@@ -5672,6 +6340,9 @@ export interface ListDeploymentInstancesInput {
 }
 
 export namespace ListDeploymentInstancesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDeploymentInstancesInput): any => ({
     ...obj,
   });
@@ -5695,6 +6366,9 @@ export interface ListDeploymentInstancesOutput {
 }
 
 export namespace ListDeploymentInstancesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDeploymentInstancesOutput): any => ({
     ...obj,
   });
@@ -5713,6 +6387,9 @@ export interface InvalidExternalIdException extends __SmithyException, $Metadata
 }
 
 export namespace InvalidExternalIdException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidExternalIdException): any => ({
     ...obj,
   });
@@ -5731,6 +6408,9 @@ export interface InvalidTimeRangeException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidTimeRangeException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTimeRangeException): any => ({
     ...obj,
   });
@@ -5758,6 +6438,9 @@ export interface TimeRange {
 }
 
 export namespace TimeRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TimeRange): any => ({
     ...obj,
   });
@@ -5771,10 +6454,9 @@ export interface ListDeploymentsInput {
    * <p>The name of an AWS CodeDeploy application associated with the IAM user or AWS
    *             account.</p>
    *         <note>
-   *             <p>If <code>applicationName</code> is specified, then <code>deploymentGroupName</code> must
-   *                 be specified. If it is not specified, then <code>deploymentGroupName</code> must not
-   *                 be specified.
-   *             </p>
+   *             <p>If <code>applicationName</code> is specified, then
+   *                     <code>deploymentGroupName</code> must be specified. If it is not specified, then
+   *                     <code>deploymentGroupName</code> must not be specified. </p>
    *         </note>
    */
   applicationName?: string;
@@ -5782,16 +6464,16 @@ export interface ListDeploymentsInput {
   /**
    * <p>The name of a deployment group for the specified application.</p>
    *         <note>
-   *             <p>If <code>deploymentGroupName</code> is specified, then <code>applicationName</code> must
-   *                 be specified. If it is not specified, then <code>applicationName</code> must not
-   *                 be specified.
-   *             </p>
+   *             <p>If <code>deploymentGroupName</code> is specified, then
+   *                     <code>applicationName</code> must be specified. If it is not specified, then
+   *                     <code>applicationName</code> must not be specified. </p>
    *         </note>
    */
   deploymentGroupName?: string;
 
   /**
-   * <p>The unique ID of an external resource for returning deployments linked to the external resource.</p>
+   * <p>The unique ID of an external resource for returning deployments linked to the external
+   *             resource.</p>
    */
   externalId?: string;
 
@@ -5843,6 +6525,9 @@ export interface ListDeploymentsInput {
 }
 
 export namespace ListDeploymentsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDeploymentsInput): any => ({
     ...obj,
   });
@@ -5866,6 +6551,9 @@ export interface ListDeploymentsOutput {
 }
 
 export namespace ListDeploymentsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDeploymentsOutput): any => ({
     ...obj,
   });
@@ -5893,14 +6581,15 @@ export interface ListDeploymentTargetsInput {
    *         <ul>
    *             <li>
    *                 <p>
-   *                     <code>TargetStatus</code> - A <code>TargetStatus</code> filter string can be <code>Failed</code>, <code>InProgress</code>, <code>Pending</code>,
-   *                     <code>Ready</code>, <code>Skipped</code>, <code>Succeeded</code>, or <code>Unknown</code>.
-   *                 </p>
+   *                     <code>TargetStatus</code> - A <code>TargetStatus</code> filter string can be
+   *                         <code>Failed</code>, <code>InProgress</code>, <code>Pending</code>,
+   *                         <code>Ready</code>, <code>Skipped</code>, <code>Succeeded</code>, or
+   *                         <code>Unknown</code>. </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                     <code>ServerInstanceLabel</code> - A <code>ServerInstanceLabel</code> filter string can be <code>Blue</code> or <code>Green</code>.
-   *                 </p>
+   *                     <code>ServerInstanceLabel</code> - A <code>ServerInstanceLabel</code> filter
+   *                     string can be <code>Blue</code> or <code>Green</code>. </p>
    *             </li>
    *          </ul>
    */
@@ -5908,6 +6597,9 @@ export interface ListDeploymentTargetsInput {
 }
 
 export namespace ListDeploymentTargetsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDeploymentTargetsInput): any => ({
     ...obj,
   });
@@ -5920,14 +6612,17 @@ export interface ListDeploymentTargetsOutput {
   targetIds?: string[];
 
   /**
-   * <p> If a large amount of information is returned, a token identifier is also  returned.
-   *             It can be used in a subsequent <code>ListDeploymentTargets</code> call to return the
-   *             next set of deployment targets in the list. </p>
+   * <p> If a large amount of information is returned, a token identifier is also returned. It
+   *             can be used in a subsequent <code>ListDeploymentTargets</code> call to return the next
+   *             set of deployment targets in the list. </p>
    */
   nextToken?: string;
 }
 
 export namespace ListDeploymentTargetsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDeploymentTargetsOutput): any => ({
     ...obj,
   });
@@ -5945,6 +6640,9 @@ export interface ListGitHubAccountTokenNamesInput {
 }
 
 export namespace ListGitHubAccountTokenNamesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGitHubAccountTokenNamesInput): any => ({
     ...obj,
   });
@@ -5968,6 +6666,9 @@ export interface ListGitHubAccountTokenNamesOutput {
 }
 
 export namespace ListGitHubAccountTokenNamesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGitHubAccountTokenNamesOutput): any => ({
     ...obj,
   });
@@ -5986,6 +6687,9 @@ export interface InvalidRegistrationStatusException extends __SmithyException, $
 }
 
 export namespace InvalidRegistrationStatusException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRegistrationStatusException): any => ({
     ...obj,
   });
@@ -6004,6 +6708,9 @@ export interface InvalidTagFilterException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidTagFilterException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTagFilterException): any => ({
     ...obj,
   });
@@ -6036,8 +6743,8 @@ export interface ListOnPremisesInstancesInput {
   registrationStatus?: RegistrationStatus | string;
 
   /**
-   * <p>The on-premises instance tags that are used to restrict the  on-premises instance
-   *             names returned.</p>
+   * <p>The on-premises instance tags that are used to restrict the on-premises instance names
+   *             returned.</p>
    */
   tagFilters?: TagFilter[];
 
@@ -6049,6 +6756,9 @@ export interface ListOnPremisesInstancesInput {
 }
 
 export namespace ListOnPremisesInstancesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListOnPremisesInstancesInput): any => ({
     ...obj,
   });
@@ -6072,15 +6782,16 @@ export interface ListOnPremisesInstancesOutput {
 }
 
 export namespace ListOnPremisesInstancesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListOnPremisesInstancesOutput): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>
- *             The specified ARN is not in a valid format.
- *         </p>
+ * <p> The specified ARN is not in a valid format. </p>
  */
 export interface InvalidArnException extends __SmithyException, $MetadataBearer {
   name: "InvalidArnException";
@@ -6092,6 +6803,9 @@ export interface InvalidArnException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace InvalidArnException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidArnException): any => ({
     ...obj,
   });
@@ -6099,21 +6813,23 @@ export namespace InvalidArnException {
 
 export interface ListTagsForResourceInput {
   /**
-   * <p>
-   *             The ARN of a CodeDeploy resource. <code>ListTagsForResource</code> returns all the tags associated with the
-   *             resource that is identified by the <code>ResourceArn</code>.
+   * <p> The ARN of a CodeDeploy resource. <code>ListTagsForResource</code> returns all the
+   *             tags associated with the resource that is identified by the <code>ResourceArn</code>.
    *         </p>
    */
   ResourceArn: string | undefined;
 
   /**
-   * <p>An identifier returned from the previous <code>ListTagsForResource</code> call.
-   *                 It can be used to return the next set of applications in the list.</p>
+   * <p>An identifier returned from the previous <code>ListTagsForResource</code> call. It can
+   *             be used to return the next set of applications in the list.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListTagsForResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceInput): any => ({
     ...obj,
   });
@@ -6121,10 +6837,8 @@ export namespace ListTagsForResourceInput {
 
 export interface ListTagsForResourceOutput {
   /**
-   * <p>
-   *             A list of tags returned by <code>ListTagsForResource</code>. The tags are associated with the resource
-   *             identified by the input <code>ResourceArn</code> parameter.
-   *         </p>
+   * <p> A list of tags returned by <code>ListTagsForResource</code>. The tags are associated
+   *             with the resource identified by the input <code>ResourceArn</code> parameter. </p>
    */
   Tags?: Tag[];
 
@@ -6137,15 +6851,16 @@ export interface ListTagsForResourceOutput {
 }
 
 export namespace ListTagsForResourceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceOutput): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>
- *             The ARN of a resource is required, but was not found.
- *         </p>
+ * <p> The ARN of a resource is required, but was not found. </p>
  */
 export interface ResourceArnRequiredException extends __SmithyException, $MetadataBearer {
   name: "ResourceArnRequiredException";
@@ -6157,6 +6872,9 @@ export interface ResourceArnRequiredException extends __SmithyException, $Metada
 }
 
 export namespace ResourceArnRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceArnRequiredException): any => ({
     ...obj,
   });
@@ -6177,6 +6895,9 @@ export interface InvalidLifecycleEventHookExecutionIdException extends __SmithyE
 }
 
 export namespace InvalidLifecycleEventHookExecutionIdException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidLifecycleEventHookExecutionIdException): any => ({
     ...obj,
   });
@@ -6196,6 +6917,9 @@ export interface InvalidLifecycleEventHookExecutionStatusException extends __Smi
 }
 
 export namespace InvalidLifecycleEventHookExecutionStatusException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidLifecycleEventHookExecutionStatusException): any => ({
     ...obj,
   });
@@ -6215,6 +6939,9 @@ export interface LifecycleEventAlreadyCompletedException extends __SmithyExcepti
 }
 
 export namespace LifecycleEventAlreadyCompletedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleEventAlreadyCompletedException): any => ({
     ...obj,
   });
@@ -6234,13 +6961,17 @@ export interface PutLifecycleEventHookExecutionStatusInput {
   lifecycleEventHookExecutionId?: string;
 
   /**
-   * <p>The result of a Lambda function that validates a deployment lifecycle event
-   *                 (<code>Succeeded</code> or <code>Failed</code>).</p>
+   * <p>The result of a Lambda function that validates a deployment lifecycle event.
+   *                 <code>Succeeded</code> and <code>Failed</code> are the only valid values for
+   *                 <code>status</code>.</p>
    */
   status?: LifecycleEventStatus | string;
 }
 
 export namespace PutLifecycleEventHookExecutionStatusInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutLifecycleEventHookExecutionStatusInput): any => ({
     ...obj,
   });
@@ -6255,6 +6986,9 @@ export interface PutLifecycleEventHookExecutionStatusOutput {
 }
 
 export namespace PutLifecycleEventHookExecutionStatusOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutLifecycleEventHookExecutionStatusOutput): any => ({
     ...obj,
   });
@@ -6283,6 +7017,9 @@ export interface RegisterApplicationRevisionInput {
 }
 
 export namespace RegisterApplicationRevisionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegisterApplicationRevisionInput): any => ({
     ...obj,
   });
@@ -6302,6 +7039,9 @@ export interface IamArnRequiredException extends __SmithyException, $MetadataBea
 }
 
 export namespace IamArnRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IamArnRequiredException): any => ({
     ...obj,
   });
@@ -6321,6 +7061,9 @@ export interface IamSessionArnAlreadyRegisteredException extends __SmithyExcepti
 }
 
 export namespace IamSessionArnAlreadyRegisteredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IamSessionArnAlreadyRegisteredException): any => ({
     ...obj,
   });
@@ -6339,6 +7082,9 @@ export interface IamUserArnAlreadyRegisteredException extends __SmithyException,
 }
 
 export namespace IamUserArnAlreadyRegisteredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IamUserArnAlreadyRegisteredException): any => ({
     ...obj,
   });
@@ -6357,6 +7103,9 @@ export interface IamUserArnRequiredException extends __SmithyException, $Metadat
 }
 
 export namespace IamUserArnRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IamUserArnRequiredException): any => ({
     ...obj,
   });
@@ -6375,6 +7124,9 @@ export interface InstanceNameAlreadyRegisteredException extends __SmithyExceptio
 }
 
 export namespace InstanceNameAlreadyRegisteredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceNameAlreadyRegisteredException): any => ({
     ...obj,
   });
@@ -6393,6 +7145,9 @@ export interface InvalidIamSessionArnException extends __SmithyException, $Metad
 }
 
 export namespace InvalidIamSessionArnException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidIamSessionArnException): any => ({
     ...obj,
   });
@@ -6411,6 +7166,9 @@ export interface InvalidIamUserArnException extends __SmithyException, $Metadata
 }
 
 export namespace InvalidIamUserArnException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidIamUserArnException): any => ({
     ...obj,
   });
@@ -6430,6 +7188,9 @@ export interface MultipleIamArnsProvidedException extends __SmithyException, $Me
 }
 
 export namespace MultipleIamArnsProvidedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MultipleIamArnsProvidedException): any => ({
     ...obj,
   });
@@ -6456,6 +7217,9 @@ export interface RegisterOnPremisesInstanceInput {
 }
 
 export namespace RegisterOnPremisesInstanceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegisterOnPremisesInstanceInput): any => ({
     ...obj,
   });
@@ -6478,6 +7242,9 @@ export interface RemoveTagsFromOnPremisesInstancesInput {
 }
 
 export namespace RemoveTagsFromOnPremisesInstancesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveTagsFromOnPremisesInstancesInput): any => ({
     ...obj,
   });
@@ -6492,6 +7259,9 @@ export interface SkipWaitTimeForInstanceTerminationInput {
 }
 
 export namespace SkipWaitTimeForInstanceTerminationInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SkipWaitTimeForInstanceTerminationInput): any => ({
     ...obj,
   });
@@ -6514,6 +7284,9 @@ export interface StopDeploymentInput {
 }
 
 export namespace StopDeploymentInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopDeploymentInput): any => ({
     ...obj,
   });
@@ -6548,6 +7321,9 @@ export interface StopDeploymentOutput {
 }
 
 export namespace StopDeploymentOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopDeploymentOutput): any => ({
     ...obj,
   });
@@ -6555,21 +7331,21 @@ export namespace StopDeploymentOutput {
 
 export interface TagResourceInput {
   /**
-   * <p>
-   *             The ARN of a resource, such as a CodeDeploy application or deployment group.
-   *         </p>
+   * <p> The ARN of a resource, such as a CodeDeploy application or deployment group. </p>
    */
   ResourceArn: string | undefined;
 
   /**
-   * <p>
-   *             A list of tags that <code>TagResource</code> associates with a resource. The resource is identified by the <code>ResourceArn</code> input parameter.
-   *         </p>
+   * <p> A list of tags that <code>TagResource</code> associates with a resource. The resource
+   *             is identified by the <code>ResourceArn</code> input parameter. </p>
    */
   Tags: Tag[] | undefined;
 }
 
 export namespace TagResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceInput): any => ({
     ...obj,
   });
@@ -6578,6 +7354,9 @@ export namespace TagResourceInput {
 export interface TagResourceOutput {}
 
 export namespace TagResourceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceOutput): any => ({
     ...obj,
   });
@@ -6591,15 +7370,17 @@ export interface UntagResourceInput {
   ResourceArn: string | undefined;
 
   /**
-   * <p>
-   *             A list of keys of <code>Tag</code> objects. The <code>Tag</code> objects identified by the keys are disassociated from the resource
-   *             specified by the <code>ResourceArn</code> input parameter.
-   *         </p>
+   * <p> A list of keys of <code>Tag</code> objects. The <code>Tag</code> objects identified
+   *             by the keys are disassociated from the resource specified by the
+   *                 <code>ResourceArn</code> input parameter. </p>
    */
   TagKeys: string[] | undefined;
 }
 
 export namespace UntagResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceInput): any => ({
     ...obj,
   });
@@ -6608,6 +7389,9 @@ export namespace UntagResourceInput {
 export interface UntagResourceOutput {}
 
 export namespace UntagResourceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceOutput): any => ({
     ...obj,
   });
@@ -6629,6 +7413,9 @@ export interface UpdateApplicationInput {
 }
 
 export namespace UpdateApplicationInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateApplicationInput): any => ({
     ...obj,
   });
@@ -6705,6 +7492,18 @@ export interface UpdateDeploymentGroupInput {
   autoRollbackConfiguration?: AutoRollbackConfiguration;
 
   /**
+   * <p>Indicates what happens when new EC2 instances are launched mid-deployment and do not
+   *             receive the deployed application revision.</p>
+   *         <p>If this option is set to <code>UPDATE</code> or is unspecified, CodeDeploy initiates
+   *             one or more 'auto-update outdated instances' deployments to apply the deployed
+   *             application revision to the new EC2 instances.</p>
+   *         <p>If this option is set to <code>IGNORE</code>, CodeDeploy does not initiate a
+   *             deployment to update the new EC2 instances. This may result in instances having
+   *             different revisions.</p>
+   */
+  outdatedInstancesStrategy?: OutdatedInstancesStrategy | string;
+
+  /**
    * <p>Information about the type of deployment, either in-place or blue/green, you want to
    *             run and whether to route deployment traffic behind a load balancer.</p>
    */
@@ -6730,7 +7529,7 @@ export interface UpdateDeploymentGroupInput {
    * <p> The target Amazon ECS services in the deployment group. This applies only to
    *             deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service
    *             is specified as an Amazon ECS cluster and service name pair using the format
-   *             <code><clustername>:<servicename></code>. </p>
+   *                 <code><clustername>:<servicename></code>. </p>
    */
   ecsServices?: ECSService[];
 
@@ -6742,6 +7541,9 @@ export interface UpdateDeploymentGroupInput {
 }
 
 export namespace UpdateDeploymentGroupInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDeploymentGroupInput): any => ({
     ...obj,
   });
@@ -6762,6 +7564,9 @@ export interface UpdateDeploymentGroupOutput {
 }
 
 export namespace UpdateDeploymentGroupOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDeploymentGroupOutput): any => ({
     ...obj,
   });

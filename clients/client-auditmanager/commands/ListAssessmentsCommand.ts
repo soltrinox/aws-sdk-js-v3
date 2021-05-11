@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAssessmentsCommandInput = ListAssessmentsRequest;
-export type ListAssessmentsCommandOutput = ListAssessmentsResponse & __MetadataBearer;
+export interface ListAssessmentsCommandInput extends ListAssessmentsRequest {}
+export interface ListAssessmentsCommandOutput extends ListAssessmentsResponse, __MetadataBearer {}
 
 /**
  * <p>
  * Returns a list of current and past assessments from AWS Audit Manager.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AuditManagerClient, ListAssessmentsCommand } from "@aws-sdk/client-auditmanager"; // ES Modules import
+ * // const { AuditManagerClient, ListAssessmentsCommand } = require("@aws-sdk/client-auditmanager"); // CommonJS import
+ * const client = new AuditManagerClient(config);
+ * const command = new ListAssessmentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAssessmentsCommandInput} for command's `input` shape.
+ * @see {@link ListAssessmentsCommandOutput} for command's `response` shape.
+ * @see {@link AuditManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAssessmentsCommand extends $Command<
   ListAssessmentsCommandInput,

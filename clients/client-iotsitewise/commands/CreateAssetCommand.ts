@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAssetCommandInput = CreateAssetRequest;
-export type CreateAssetCommandOutput = CreateAssetResponse & __MetadataBearer;
+export interface CreateAssetCommandInput extends CreateAssetRequest {}
+export interface CreateAssetCommandOutput extends CreateAssetResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an asset from an existing asset model. For more information, see <a href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-assets.html">Creating assets</a> in the
  *         <i>AWS IoT SiteWise User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTSiteWiseClient, CreateAssetCommand } from "@aws-sdk/client-iotsitewise"; // ES Modules import
+ * // const { IoTSiteWiseClient, CreateAssetCommand } = require("@aws-sdk/client-iotsitewise"); // CommonJS import
+ * const client = new IoTSiteWiseClient(config);
+ * const command = new CreateAssetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAssetCommandInput} for command's `input` shape.
+ * @see {@link CreateAssetCommandOutput} for command's `response` shape.
+ * @see {@link IoTSiteWiseClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAssetCommand extends $Command<
   CreateAssetCommandInput,

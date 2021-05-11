@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateFieldLevelEncryptionConfigCommandInput = CreateFieldLevelEncryptionConfigRequest;
-export type CreateFieldLevelEncryptionConfigCommandOutput = CreateFieldLevelEncryptionConfigResult & __MetadataBearer;
+export interface CreateFieldLevelEncryptionConfigCommandInput extends CreateFieldLevelEncryptionConfigRequest {}
+export interface CreateFieldLevelEncryptionConfigCommandOutput
+  extends CreateFieldLevelEncryptionConfigResult,
+    __MetadataBearer {}
 
 /**
  * <p>Create a new field-level encryption configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, CreateFieldLevelEncryptionConfigCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, CreateFieldLevelEncryptionConfigCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new CreateFieldLevelEncryptionConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateFieldLevelEncryptionConfigCommandInput} for command's `input` shape.
+ * @see {@link CreateFieldLevelEncryptionConfigCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateFieldLevelEncryptionConfigCommand extends $Command<
   CreateFieldLevelEncryptionConfigCommandInput,

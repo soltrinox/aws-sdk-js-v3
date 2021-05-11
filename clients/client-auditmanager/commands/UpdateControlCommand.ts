@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateControlCommandInput = UpdateControlRequest;
-export type UpdateControlCommandOutput = UpdateControlResponse & __MetadataBearer;
+export interface UpdateControlCommandInput extends UpdateControlRequest {}
+export interface UpdateControlCommandOutput extends UpdateControlResponse, __MetadataBearer {}
 
 /**
  * <p>
  * Updates a custom control in AWS Audit Manager.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AuditManagerClient, UpdateControlCommand } from "@aws-sdk/client-auditmanager"; // ES Modules import
+ * // const { AuditManagerClient, UpdateControlCommand } = require("@aws-sdk/client-auditmanager"); // CommonJS import
+ * const client = new AuditManagerClient(config);
+ * const command = new UpdateControlCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateControlCommandInput} for command's `input` shape.
+ * @see {@link UpdateControlCommandOutput} for command's `response` shape.
+ * @see {@link AuditManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateControlCommand extends $Command<
   UpdateControlCommandInput,

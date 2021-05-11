@@ -6,8 +6,11 @@ import { MetadataBearer as $MetadataBearer } from "@aws-sdk/types";
  */
 export interface AdvancedBackupSetting {
   /**
-   * <p>The type of AWS resource to be backed up. For VSS Windows backups, the only supported
-   *          resource type is Amazon EC2.</p>
+   * <p>Specifies an object containing resource type and backup options. The only supported
+   *          resource type is Amazon EC2 instances with Windows VSS. For an CloudFormation example, see
+   *          the <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/integrate-cloudformation-with-aws-backup.html">sample
+   *             CloudFormation template to enable Windows VSS</a> in the <i>AWS Backup User
+   *             Guide</i>.</p>
    *          <p>Valid values: <code>EC2</code>.</p>
    */
   ResourceType?: string;
@@ -29,6 +32,9 @@ export interface AdvancedBackupSetting {
 }
 
 export namespace AdvancedBackupSetting {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AdvancedBackupSetting): any => ({
     ...obj,
   });
@@ -64,6 +70,9 @@ export interface AlreadyExistsException extends __SmithyException, $MetadataBear
 }
 
 export namespace AlreadyExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlreadyExistsException): any => ({
     ...obj,
   });
@@ -99,6 +108,9 @@ export interface RecoveryPointCreator {
 }
 
 export namespace RecoveryPointCreator {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecoveryPointCreator): any => ({
     ...obj,
   });
@@ -191,8 +203,11 @@ export interface BackupJob {
   BackupSizeInBytes?: number;
 
   /**
-   * <p>Specifies the IAM role ARN used to create the target recovery point; for example,
-   *             <code>arn:aws:iam::123456789012:role/S3Access</code>.</p>
+   * <p>Specifies the IAM role ARN used to create the target recovery point. IAM roles other
+   *          than the default role must include either <code>AWSBackup</code> or <code>AwsBackup</code>
+   *          in the role name. For example,
+   *             <code>arn:aws:iam::123456789012:role/AWSBackupRDSAccess</code>. Role names without those
+   *          strings lack permissions to perform backup jobs.</p>
    */
   IamRoleArn?: string;
 
@@ -223,7 +238,8 @@ export interface BackupJob {
 
   /**
    * <p>The type of AWS resource to be backed up; for example, an Amazon Elastic Block Store
-   *          (Amazon EBS) volume or an Amazon Relational Database Service (Amazon RDS) database. For VSS Windows backups, the only supported resource type is Amazon EC2.</p>
+   *          (Amazon EBS) volume or an Amazon Relational Database Service (Amazon RDS) database. For VSS
+   *          Windows backups, the only supported resource type is Amazon EC2.</p>
    */
   ResourceType?: string;
 
@@ -236,8 +252,9 @@ export interface BackupJob {
   /**
    * <p>Specifies the backup option for a selected resource. This option is only available for
    *          Windows VSS backup jobs.</p>
-   *          <p>Valid values: Set to <code>"WindowsVSS”:“enabled"</code> to enable WindowsVSS backup option and create a VSS Windows backup.
-   *          Set to “WindowsVSS”:”disabled” to create a regular backup. If you specify an invalid option, you get an
+   *          <p>Valid values: Set to <code>"WindowsVSS”:“enabled"</code> to enable WindowsVSS backup
+   *          option and create a VSS Windows backup. Set to “WindowsVSS”:”disabled” to create a regular
+   *          backup. If you specify an invalid option, you get an
    *             <code>InvalidParameterValueException</code> exception.</p>
    */
   BackupOptions?: { [key: string]: string };
@@ -249,6 +266,9 @@ export interface BackupJob {
 }
 
 export namespace BackupJob {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupJob): any => ({
     ...obj,
   });
@@ -261,6 +281,7 @@ export namespace BackupJob {
  *          days. Therefore, on the console, the “expire after days” setting must be 90 days greater
  *          than the “transition to cold after days” setting. The “transition to cold after days”
  *          setting cannot be changed after a backup has been transitioned to cold.</p>
+ *          <p>Only Amazon EFS file system backups can be transitioned to cold storage.</p>
  */
 export interface Lifecycle {
   /**
@@ -277,6 +298,9 @@ export interface Lifecycle {
 }
 
 export namespace Lifecycle {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Lifecycle): any => ({
     ...obj,
   });
@@ -293,6 +317,7 @@ export interface CopyAction {
    *          days. Therefore, on the console, the “expire after days” setting must be 90 days greater
    *          than the “transition to cold after days” setting. The “transition to cold after days”
    *          setting cannot be changed after a backup has been transitioned to cold.</p>
+   *          <p>Only Amazon EFS file system backups can be transitioned to cold storage.</p>
    */
   Lifecycle?: Lifecycle;
 
@@ -305,6 +330,9 @@ export interface CopyAction {
 }
 
 export namespace CopyAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CopyAction): any => ({
     ...obj,
   });
@@ -327,18 +355,23 @@ export interface BackupRule {
   TargetBackupVaultName: string | undefined;
 
   /**
-   * <p>A CRON expression specifying when AWS Backup initiates a backup job. For more information about cron expressions, see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">Schedule Expressions for Rules</a> in
-   *               the <i>Amazon CloudWatch Events User Guide.</i>. Prior to specifying a value for this parameter, we recommend testing your cron expression using one of the many available cron generator and testing tools.</p>
+   * <p>A CRON expression specifying when AWS Backup initiates a backup job. For more
+   *          information about cron expressions, see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">Schedule Expressions for Rules</a> in the <i>Amazon CloudWatch Events User
+   *             Guide.</i>. Prior to specifying a value for this parameter, we recommend testing
+   *          your cron expression using one of the many available cron generator and testing
+   *          tools.</p>
    */
   ScheduleExpression?: string;
 
   /**
-   * <p>A value in minutes after a backup is scheduled before a job will be canceled if it doesn't start successfully. This value is optional.</p>
+   * <p>A value in minutes after a backup is scheduled before a job will be canceled if it
+   *          doesn't start successfully. This value is optional.</p>
    */
   StartWindowMinutes?: number;
 
   /**
-   * <p>A value in minutes after a backup job is successfully started before it must be completed or it will be canceled by AWS Backup. This value is optional.</p>
+   * <p>A value in minutes after a backup job is successfully started before it must be
+   *          completed or it will be canceled by AWS Backup. This value is optional.</p>
    */
   CompletionWindowMinutes?: number;
 
@@ -350,6 +383,7 @@ export interface BackupRule {
    *          days. Therefore, the “expire after days” setting must be 90 days greater than the
    *          “transition to cold after days” setting. The “transition to cold after days” setting cannot
    *          be changed after a backup has been transitioned to cold. </p>
+   *          <p>Only Amazon EFS file system backups can be transitioned to cold storage.</p>
    */
   Lifecycle?: Lifecycle;
 
@@ -366,12 +400,23 @@ export interface BackupRule {
   RuleId?: string;
 
   /**
-   * <p>An array of <code>CopyAction</code> objects, which contains the details of the copy operation.</p>
+   * <p>An array of <code>CopyAction</code> objects, which contains the details of the copy
+   *          operation.</p>
    */
   CopyActions?: CopyAction[];
+
+  /**
+   * <p>Specifies whether AWS Backup creates continuous backups. True causes AWS Backup to
+   *          create continuous backups capable of point-in-time restore (PITR). False (or not specified)
+   *          causes AWS Backup to create snapshot backups.</p>
+   */
+  EnableContinuousBackup?: boolean;
 }
 
 export namespace BackupRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupRule): any => ({
     ...obj,
     ...(obj.RecoveryPointTags && { RecoveryPointTags: SENSITIVE_STRING }),
@@ -402,6 +447,9 @@ export interface BackupPlan {
 }
 
 export namespace BackupPlan {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupPlan): any => ({
     ...obj,
     ...(obj.Rules && { Rules: obj.Rules.map((item) => BackupRule.filterSensitiveLog(item)) }),
@@ -430,12 +478,14 @@ export interface BackupRuleInput {
   ScheduleExpression?: string;
 
   /**
-   * <p>A value in minutes after a backup is scheduled before a job will be canceled if it doesn't start successfully. This value is optional.</p>
+   * <p>A value in minutes after a backup is scheduled before a job will be canceled if it
+   *          doesn't start successfully. This value is optional.</p>
    */
   StartWindowMinutes?: number;
 
   /**
-   * <p>A value in minutes after a backup job is successfully started before it must be completed or it will be canceled by AWS Backup. This value is optional.</p>
+   * <p>A value in minutes after a backup job is successfully started before it must be
+   *          completed or it will be canceled by AWS Backup. This value is optional.</p>
    */
   CompletionWindowMinutes?: number;
 
@@ -447,6 +497,7 @@ export interface BackupRuleInput {
    *          days. Therefore, the “expire after days” setting must be 90 days greater than the
    *          “transition to cold after days” setting. The “transition to cold after days” setting cannot
    *          be changed after a backup has been transitioned to cold. </p>
+   *          <p>Only Amazon EFS file system backups can be transitioned to cold storage.</p>
    */
   Lifecycle?: Lifecycle;
 
@@ -457,12 +508,23 @@ export interface BackupRuleInput {
   RecoveryPointTags?: { [key: string]: string };
 
   /**
-   * <p>An array of <code>CopyAction</code> objects, which contains the details of the copy operation.</p>
+   * <p>An array of <code>CopyAction</code> objects, which contains the details of the copy
+   *          operation.</p>
    */
   CopyActions?: CopyAction[];
+
+  /**
+   * <p>Specifies whether AWS Backup creates continuous backups. True causes AWS Backup to
+   *          create continuous backups capable of point-in-time restore (PITR). False (or not specified)
+   *          causes AWS Backup to create snapshot backups.</p>
+   */
+  EnableContinuousBackup?: boolean;
 }
 
 export namespace BackupRuleInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupRuleInput): any => ({
     ...obj,
     ...(obj.RecoveryPointTags && { RecoveryPointTags: SENSITIVE_STRING }),
@@ -487,12 +549,16 @@ export interface BackupPlanInput {
   Rules: BackupRuleInput[] | undefined;
 
   /**
-   * <p>Specifies a list of <code>BackupOptions</code> for each resource type. These settings are only available for Windows VSS backup jobs.</p>
+   * <p>Specifies a list of <code>BackupOptions</code> for each resource type. These settings
+   *          are only available for Windows VSS backup jobs.</p>
    */
   AdvancedBackupSettings?: AdvancedBackupSetting[];
 }
 
 export namespace BackupPlanInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupPlanInput): any => ({
     ...obj,
     ...(obj.Rules && { Rules: obj.Rules.map((item) => BackupRuleInput.filterSensitiveLog(item)) }),
@@ -562,6 +628,9 @@ export interface BackupPlansListMember {
 }
 
 export namespace BackupPlansListMember {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupPlansListMember): any => ({
     ...obj,
   });
@@ -583,6 +652,9 @@ export interface BackupPlanTemplatesListMember {
 }
 
 export namespace BackupPlanTemplatesListMember {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupPlanTemplatesListMember): any => ({
     ...obj,
   });
@@ -618,6 +690,9 @@ export interface Condition {
 }
 
 export namespace Condition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Condition): any => ({
     ...obj,
   });
@@ -639,20 +714,24 @@ export interface BackupSelection {
   IamRoleArn: string | undefined;
 
   /**
-   * <p>An array of strings that contain Amazon Resource Names (ARNs)  of resources to assign
-   *          to a backup plan.</p>
+   * <p>An array of strings that contain Amazon Resource Names (ARNs)
+   *
+   *          of resources to assign to a backup plan.</p>
    */
   Resources?: string[];
 
   /**
    * <p>An array of conditions used to specify a set of resources to assign to a backup plan;
-   *          for example, <code>"StringEquals": {"ec2:ResourceTag/Department":
-   *          "accounting"</code>.</p>
+   *          for example, <code>"StringEquals": {"ec2:ResourceTag/Department": "accounting"</code>.
+   *          Assigns the backup plan to every resource with at least one matching tag.</p>
    */
   ListOfTags?: Condition[];
 }
 
 export namespace BackupSelection {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupSelection): any => ({
     ...obj,
   });
@@ -699,6 +778,9 @@ export interface BackupSelectionsListMember {
 }
 
 export namespace BackupSelectionsListMember {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupSelectionsListMember): any => ({
     ...obj,
   });
@@ -735,7 +817,7 @@ export interface BackupVaultListMember {
 
   /**
    * <p>An Amazon Resource Name (ARN) that uniquely identifies a backup vault; for example,
-   *          <code>arn:aws:backup:us-east-1:123456789012:vault:aBackupVault</code>.</p>
+   *             <code>arn:aws:backup:us-east-1:123456789012:vault:aBackupVault</code>.</p>
    */
   BackupVaultArn?: string;
 
@@ -749,7 +831,7 @@ export interface BackupVaultListMember {
 
   /**
    * <p>The server-side encryption key that is used to protect your backups; for example,
-   *          <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>.</p>
+   *             <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>.</p>
    */
   EncryptionKeyArn?: string;
 
@@ -766,6 +848,9 @@ export interface BackupVaultListMember {
 }
 
 export namespace BackupVaultListMember {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupVaultListMember): any => ({
     ...obj,
   });
@@ -781,6 +866,7 @@ export namespace BackupVaultListMember {
  *          days. Therefore, the “expire after days” setting must be 90 days greater than the
  *          “transition to cold after days” setting. The “transition to cold after days” setting cannot
  *          be changed after a backup has been transitioned to cold.</p>
+ *          <p>Only Amazon EFS file system backups can be transitioned to cold storage.</p>
  */
 export interface CalculatedLifecycle {
   /**
@@ -795,6 +881,9 @@ export interface CalculatedLifecycle {
 }
 
 export namespace CalculatedLifecycle {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CalculatedLifecycle): any => ({
     ...obj,
   });
@@ -846,22 +935,22 @@ export interface CopyJob {
   DestinationRecoveryPointArn?: string;
 
   /**
-   * <p>The AWS resource to be copied; for example, an Amazon Elastic Block Store (Amazon EBS) volume or an
-   *          Amazon Relational Database Service (Amazon RDS) database.</p>
+   * <p>The AWS resource to be copied; for example, an Amazon Elastic Block Store (Amazon EBS)
+   *          volume or an Amazon Relational Database Service (Amazon RDS) database.</p>
    */
   ResourceArn?: string;
 
   /**
-   * <p>The date and time a copy job is created, in Unix format and Coordinated Universal Time (UTC). The
-   *          value of <code>CreationDate</code> is accurate to milliseconds. For example, the value 1516925490.087
-   *          represents Friday, January 26, 2018 12:11:30.087 AM.</p>
+   * <p>The date and time a copy job is created, in Unix format and Coordinated Universal Time
+   *          (UTC). The value of <code>CreationDate</code> is accurate to milliseconds. For example, the
+   *          value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</p>
    */
   CreationDate?: Date;
 
   /**
-   * <p>The date and time a copy job is completed, in Unix format and Coordinated Universal Time (UTC). The
-   *          value of <code>CompletionDate</code> is accurate to milliseconds. For example, the value 1516925490.087
-   *          represents Friday, January 26, 2018 12:11:30.087 AM.</p>
+   * <p>The date and time a copy job is completed, in Unix format and Coordinated Universal Time
+   *          (UTC). The value of <code>CompletionDate</code> is accurate to milliseconds. For example,
+   *          the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</p>
    */
   CompletionDate?: Date;
 
@@ -893,14 +982,16 @@ export interface CopyJob {
   CreatedBy?: RecoveryPointCreator;
 
   /**
-   * <p>The type of AWS resource to be copied;
-   *          for example, an Amazon Elastic Block Store (Amazon EBS) volume or an Amazon
-   *          Relational Database Service (Amazon RDS) database. </p>
+   * <p>The type of AWS resource to be copied; for example, an Amazon Elastic Block Store
+   *          (Amazon EBS) volume or an Amazon Relational Database Service (Amazon RDS) database.</p>
    */
   ResourceType?: string;
 }
 
 export namespace CopyJob {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CopyJob): any => ({
     ...obj,
   });
@@ -922,14 +1013,16 @@ export interface CreateBackupPlanInput {
 
   /**
    * <p>Identifies the request and allows failed requests to be retried without the risk of
-   *          running
-   *          the operation twice. If the request includes a <code>CreatorRequestId</code> that matches
-   *          an existing backup plan, that plan is returned. This parameter is optional.</p>
+   *          running the operation twice. If the request includes a <code>CreatorRequestId</code> that
+   *          matches an existing backup plan, that plan is returned. This parameter is optional.</p>
    */
   CreatorRequestId?: string;
 }
 
 export namespace CreateBackupPlanInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBackupPlanInput): any => ({
     ...obj,
     ...(obj.BackupPlan && { BackupPlan: BackupPlanInput.filterSensitiveLog(obj.BackupPlan) }),
@@ -964,12 +1057,16 @@ export interface CreateBackupPlanOutput {
   VersionId?: string;
 
   /**
-   * <p>A list of <code>BackupOptions</code> settings for a resource type. This option is only available for Windows VSS backup jobs.</p>
+   * <p>A list of <code>BackupOptions</code> settings for a resource type. This option is only
+   *          available for Windows VSS backup jobs.</p>
    */
   AdvancedBackupSettings?: AdvancedBackupSetting[];
 }
 
 export namespace CreateBackupPlanOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBackupPlanOutput): any => ({
     ...obj,
   });
@@ -996,6 +1093,9 @@ export interface InvalidParameterValueException extends __SmithyException, $Meta
 }
 
 export namespace InvalidParameterValueException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidParameterValueException): any => ({
     ...obj,
   });
@@ -1022,6 +1122,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -1047,6 +1150,9 @@ export interface MissingParameterValueException extends __SmithyException, $Meta
 }
 
 export namespace MissingParameterValueException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MissingParameterValueException): any => ({
     ...obj,
   });
@@ -1072,6 +1178,9 @@ export interface ServiceUnavailableException extends __SmithyException, $Metadat
 }
 
 export namespace ServiceUnavailableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceUnavailableException): any => ({
     ...obj,
   });
@@ -1097,6 +1206,9 @@ export interface CreateBackupSelectionInput {
 }
 
 export namespace CreateBackupSelectionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBackupSelectionInput): any => ({
     ...obj,
   });
@@ -1124,6 +1236,9 @@ export interface CreateBackupSelectionOutput {
 }
 
 export namespace CreateBackupSelectionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBackupSelectionOutput): any => ({
     ...obj,
   });
@@ -1133,7 +1248,7 @@ export interface CreateBackupVaultInput {
   /**
    * <p>The name of a logical container where backups are stored. Backup vaults are identified
    *          by names that are unique to the account used to create them and the AWS Region where they
-   *          are created. They consist of lowercase letters, numbers, and hyphens.</p>
+   *          are created. They consist of letters, numbers, and hyphens.</p>
    */
   BackupVaultName: string | undefined;
 
@@ -1157,6 +1272,9 @@ export interface CreateBackupVaultInput {
 }
 
 export namespace CreateBackupVaultInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBackupVaultInput): any => ({
     ...obj,
     ...(obj.BackupVaultTags && { BackupVaultTags: SENSITIVE_STRING }),
@@ -1187,6 +1305,9 @@ export interface CreateBackupVaultOutput {
 }
 
 export namespace CreateBackupVaultOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBackupVaultOutput): any => ({
     ...obj,
   });
@@ -1200,6 +1321,9 @@ export interface DeleteBackupPlanInput {
 }
 
 export namespace DeleteBackupPlanInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBackupPlanInput): any => ({
     ...obj,
   });
@@ -1233,6 +1357,9 @@ export interface DeleteBackupPlanOutput {
 }
 
 export namespace DeleteBackupPlanOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBackupPlanOutput): any => ({
     ...obj,
   });
@@ -1259,6 +1386,9 @@ export interface InvalidRequestException extends __SmithyException, $MetadataBea
 }
 
 export namespace InvalidRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRequestException): any => ({
     ...obj,
   });
@@ -1284,6 +1414,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -1303,6 +1436,9 @@ export interface DeleteBackupSelectionInput {
 }
 
 export namespace DeleteBackupSelectionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBackupSelectionInput): any => ({
     ...obj,
   });
@@ -1318,6 +1454,9 @@ export interface DeleteBackupVaultInput {
 }
 
 export namespace DeleteBackupVaultInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBackupVaultInput): any => ({
     ...obj,
   });
@@ -1333,6 +1472,9 @@ export interface DeleteBackupVaultAccessPolicyInput {
 }
 
 export namespace DeleteBackupVaultAccessPolicyInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBackupVaultAccessPolicyInput): any => ({
     ...obj,
   });
@@ -1348,6 +1490,9 @@ export interface DeleteBackupVaultNotificationsInput {
 }
 
 export namespace DeleteBackupVaultNotificationsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBackupVaultNotificationsInput): any => ({
     ...obj,
   });
@@ -1369,7 +1514,39 @@ export interface DeleteRecoveryPointInput {
 }
 
 export namespace DeleteRecoveryPointInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRecoveryPointInput): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>AWS Backup is already performing an action on this recovery point. It can't perform the
+ *          action you requested until the first action finishes. Try again later.</p>
+ */
+export interface InvalidResourceStateException extends __SmithyException, $MetadataBearer {
+  name: "InvalidResourceStateException";
+  $fault: "client";
+  Code?: string;
+  Message?: string;
+  /**
+   * <p></p>
+   */
+  Type?: string;
+
+  /**
+   * <p></p>
+   */
+  Context?: string;
+}
+
+export namespace InvalidResourceStateException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidResourceStateException): any => ({
     ...obj,
   });
 }
@@ -1395,6 +1572,9 @@ export interface DependencyFailureException extends __SmithyException, $Metadata
 }
 
 export namespace DependencyFailureException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DependencyFailureException): any => ({
     ...obj,
   });
@@ -1408,6 +1588,9 @@ export interface DescribeBackupJobInput {
 }
 
 export namespace DescribeBackupJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeBackupJobInput): any => ({
     ...obj,
   });
@@ -1544,6 +1727,9 @@ export interface DescribeBackupJobOutput {
 }
 
 export namespace DescribeBackupJobOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeBackupJobOutput): any => ({
     ...obj,
   });
@@ -1559,6 +1745,9 @@ export interface DescribeBackupVaultInput {
 }
 
 export namespace DescribeBackupVaultInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeBackupVaultInput): any => ({
     ...obj,
   });
@@ -1605,6 +1794,9 @@ export interface DescribeBackupVaultOutput {
 }
 
 export namespace DescribeBackupVaultOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeBackupVaultOutput): any => ({
     ...obj,
   });
@@ -1618,6 +1810,9 @@ export interface DescribeCopyJobInput {
 }
 
 export namespace DescribeCopyJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCopyJobInput): any => ({
     ...obj,
   });
@@ -1631,6 +1826,9 @@ export interface DescribeCopyJobOutput {
 }
 
 export namespace DescribeCopyJobOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCopyJobOutput): any => ({
     ...obj,
   });
@@ -1639,6 +1837,9 @@ export namespace DescribeCopyJobOutput {
 export interface DescribeGlobalSettingsInput {}
 
 export namespace DescribeGlobalSettingsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeGlobalSettingsInput): any => ({
     ...obj,
   });
@@ -1651,15 +1852,18 @@ export interface DescribeGlobalSettingsOutput {
   GlobalSettings?: { [key: string]: string };
 
   /**
-   * <p>The date and time that the global settings was last updated. This update is in Unix format and
-   *          Coordinated Universal Time (UTC). The value of <code>LastUpdateTime</code> is accurate to
-   *          milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018
-   *          12:11:30.087 AM.</p>
+   * <p>The date and time that the global settings were last updated. This update is in Unix
+   *          format and Coordinated Universal Time (UTC). The value of <code>LastUpdateTime</code> is
+   *          accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January
+   *          26, 2018 12:11:30.087 AM.</p>
    */
   LastUpdateTime?: Date;
 }
 
 export namespace DescribeGlobalSettingsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeGlobalSettingsOutput): any => ({
     ...obj,
   });
@@ -1674,6 +1878,9 @@ export interface DescribeProtectedResourceInput {
 }
 
 export namespace DescribeProtectedResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeProtectedResourceInput): any => ({
     ...obj,
   });
@@ -1702,6 +1909,9 @@ export interface DescribeProtectedResourceOutput {
 }
 
 export namespace DescribeProtectedResourceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeProtectedResourceOutput): any => ({
     ...obj,
   });
@@ -1723,6 +1933,9 @@ export interface DescribeRecoveryPointInput {
 }
 
 export namespace DescribeRecoveryPointInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRecoveryPointInput): any => ({
     ...obj,
   });
@@ -1762,8 +1975,10 @@ export interface DescribeRecoveryPointOutput {
   BackupVaultArn?: string;
 
   /**
-   * <p>An Amazon Resource Name (ARN) that uniquely identifies the source vault where the resource was originally backed up in; for example,
-   *          <code>arn:aws:backup:us-east-1:123456789012:vault:BackupVault</code>. If the recovery is restored to the same AWS account or Region, this value will be <code>null</code>.</p>
+   * <p>An Amazon Resource Name (ARN) that uniquely identifies the source vault where the
+   *          resource was originally backed up in; for example,
+   *             <code>arn:aws:backup:us-east-1:123456789012:vault:BackupVault</code>. If the recovery is
+   *          restored to the same AWS account or Region, this value will be <code>null</code>.</p>
    */
   SourceBackupVaultArn?: string;
 
@@ -1837,6 +2052,7 @@ export interface DescribeRecoveryPointOutput {
    *          minimum of 90 days. Therefore, the “expire after days” setting must be 90 days greater than
    *          the “transition to cold after days” setting. The “transition to cold after days” setting
    *          cannot be changed after a backup has been transitioned to cold. </p>
+   *          <p>Only Amazon EFS file system backups can be transitioned to cold storage.</p>
    */
   Lifecycle?: Lifecycle;
 
@@ -1868,6 +2084,9 @@ export interface DescribeRecoveryPointOutput {
 }
 
 export namespace DescribeRecoveryPointOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRecoveryPointOutput): any => ({
     ...obj,
   });
@@ -1876,6 +2095,9 @@ export namespace DescribeRecoveryPointOutput {
 export interface DescribeRegionSettingsInput {}
 
 export namespace DescribeRegionSettingsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRegionSettingsInput): any => ({
     ...obj,
   });
@@ -1889,6 +2111,9 @@ export interface DescribeRegionSettingsOutput {
 }
 
 export namespace DescribeRegionSettingsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRegionSettingsOutput): any => ({
     ...obj,
   });
@@ -1902,6 +2127,9 @@ export interface DescribeRestoreJobInput {
 }
 
 export namespace DescribeRestoreJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRestoreJobInput): any => ({
     ...obj,
   });
@@ -1996,7 +2224,32 @@ export interface DescribeRestoreJobOutput {
 }
 
 export namespace DescribeRestoreJobOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRestoreJobOutput): any => ({
+    ...obj,
+  });
+}
+
+export interface DisassociateRecoveryPointInput {
+  /**
+   * <p>The unique name of an AWS Backup vault. Required.</p>
+   */
+  BackupVaultName: string | undefined;
+
+  /**
+   * <p>An Amazon Resource Name (ARN) that uniquely identifies an AWS Backup recovery point.
+   *          Required.</p>
+   */
+  RecoveryPointArn: string | undefined;
+}
+
+export namespace DisassociateRecoveryPointInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DisassociateRecoveryPointInput): any => ({
     ...obj,
   });
 }
@@ -2009,6 +2262,9 @@ export interface ExportBackupPlanTemplateInput {
 }
 
 export namespace ExportBackupPlanTemplateInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportBackupPlanTemplateInput): any => ({
     ...obj,
   });
@@ -2027,6 +2283,9 @@ export interface ExportBackupPlanTemplateOutput {
 }
 
 export namespace ExportBackupPlanTemplateOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportBackupPlanTemplateOutput): any => ({
     ...obj,
   });
@@ -2046,6 +2305,9 @@ export interface GetBackupPlanInput {
 }
 
 export namespace GetBackupPlanInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBackupPlanInput): any => ({
     ...obj,
   });
@@ -2113,6 +2375,9 @@ export interface GetBackupPlanOutput {
 }
 
 export namespace GetBackupPlanOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBackupPlanOutput): any => ({
     ...obj,
     ...(obj.BackupPlan && { BackupPlan: BackupPlan.filterSensitiveLog(obj.BackupPlan) }),
@@ -2127,6 +2392,9 @@ export interface GetBackupPlanFromJSONInput {
 }
 
 export namespace GetBackupPlanFromJSONInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBackupPlanFromJSONInput): any => ({
     ...obj,
   });
@@ -2141,6 +2409,9 @@ export interface GetBackupPlanFromJSONOutput {
 }
 
 export namespace GetBackupPlanFromJSONOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBackupPlanFromJSONOutput): any => ({
     ...obj,
     ...(obj.BackupPlan && { BackupPlan: BackupPlan.filterSensitiveLog(obj.BackupPlan) }),
@@ -2155,6 +2426,9 @@ export interface GetBackupPlanFromTemplateInput {
 }
 
 export namespace GetBackupPlanFromTemplateInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBackupPlanFromTemplateInput): any => ({
     ...obj,
   });
@@ -2169,6 +2443,9 @@ export interface GetBackupPlanFromTemplateOutput {
 }
 
 export namespace GetBackupPlanFromTemplateOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBackupPlanFromTemplateOutput): any => ({
     ...obj,
     ...(obj.BackupPlanDocument && { BackupPlanDocument: BackupPlan.filterSensitiveLog(obj.BackupPlanDocument) }),
@@ -2189,6 +2466,9 @@ export interface GetBackupSelectionInput {
 }
 
 export namespace GetBackupSelectionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBackupSelectionInput): any => ({
     ...obj,
   });
@@ -2227,6 +2507,9 @@ export interface GetBackupSelectionOutput {
 }
 
 export namespace GetBackupSelectionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBackupSelectionOutput): any => ({
     ...obj,
   });
@@ -2242,6 +2525,9 @@ export interface GetBackupVaultAccessPolicyInput {
 }
 
 export namespace GetBackupVaultAccessPolicyInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBackupVaultAccessPolicyInput): any => ({
     ...obj,
   });
@@ -2268,6 +2554,9 @@ export interface GetBackupVaultAccessPolicyOutput {
 }
 
 export namespace GetBackupVaultAccessPolicyOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBackupVaultAccessPolicyOutput): any => ({
     ...obj,
   });
@@ -2283,6 +2572,9 @@ export interface GetBackupVaultNotificationsInput {
 }
 
 export namespace GetBackupVaultNotificationsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBackupVaultNotificationsInput): any => ({
     ...obj,
   });
@@ -2316,6 +2608,9 @@ export interface GetBackupVaultNotificationsOutput {
 }
 
 export namespace GetBackupVaultNotificationsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBackupVaultNotificationsOutput): any => ({
     ...obj,
   });
@@ -2337,6 +2632,9 @@ export interface GetRecoveryPointRestoreMetadataInput {
 }
 
 export namespace GetRecoveryPointRestoreMetadataInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRecoveryPointRestoreMetadataInput): any => ({
     ...obj,
   });
@@ -2364,6 +2662,9 @@ export interface GetRecoveryPointRestoreMetadataOutput {
 }
 
 export namespace GetRecoveryPointRestoreMetadataOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRecoveryPointRestoreMetadataOutput): any => ({
     ...obj,
     ...(obj.RestoreMetadata && { RestoreMetadata: SENSITIVE_STRING }),
@@ -2396,6 +2697,10 @@ export interface GetSupportedResourceTypesOutput {
    *             </li>
    *             <li>
    *                <p>
+   *                   <code>Aurora</code> for Amazon Aurora</p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>Storage Gateway</code> for AWS Storage Gateway</p>
    *             </li>
    *          </ul>
@@ -2404,6 +2709,9 @@ export interface GetSupportedResourceTypesOutput {
 }
 
 export namespace GetSupportedResourceTypesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSupportedResourceTypesOutput): any => ({
     ...obj,
   });
@@ -2477,6 +2785,10 @@ export interface ListBackupJobsInput {
    *             </li>
    *             <li>
    *                <p>
+   *                   <code>Aurora</code> for Amazon Aurora</p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>Storage Gateway</code> for AWS Storage Gateway</p>
    *             </li>
    *          </ul>
@@ -2484,12 +2796,18 @@ export interface ListBackupJobsInput {
   ByResourceType?: string;
 
   /**
-   * <p>The account ID to list the jobs from. Returns only backup jobs associated with the specified account ID.</p>
+   * <p>The account ID to list the jobs from. Returns only backup jobs associated with the
+   *          specified account ID.</p>
+   *          <p>If used from an AWS Organizations management account, passing <code>*</code> returns all
+   *          jobs across the organization.</p>
    */
   ByAccountId?: string;
 }
 
 export namespace ListBackupJobsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBackupJobsInput): any => ({
     ...obj,
   });
@@ -2512,6 +2830,9 @@ export interface ListBackupJobsOutput {
 }
 
 export namespace ListBackupJobsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBackupJobsOutput): any => ({
     ...obj,
   });
@@ -2539,6 +2860,9 @@ export interface ListBackupPlansInput {
 }
 
 export namespace ListBackupPlansInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBackupPlansInput): any => ({
     ...obj,
   });
@@ -2561,6 +2885,9 @@ export interface ListBackupPlansOutput {
 }
 
 export namespace ListBackupPlansOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBackupPlansOutput): any => ({
     ...obj,
   });
@@ -2582,6 +2909,9 @@ export interface ListBackupPlanTemplatesInput {
 }
 
 export namespace ListBackupPlanTemplatesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBackupPlanTemplatesInput): any => ({
     ...obj,
   });
@@ -2603,6 +2933,9 @@ export interface ListBackupPlanTemplatesOutput {
 }
 
 export namespace ListBackupPlanTemplatesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBackupPlanTemplatesOutput): any => ({
     ...obj,
   });
@@ -2629,6 +2962,9 @@ export interface ListBackupPlanVersionsInput {
 }
 
 export namespace ListBackupPlanVersionsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBackupPlanVersionsInput): any => ({
     ...obj,
   });
@@ -2650,6 +2986,9 @@ export interface ListBackupPlanVersionsOutput {
 }
 
 export namespace ListBackupPlanVersionsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBackupPlanVersionsOutput): any => ({
     ...obj,
   });
@@ -2676,6 +3015,9 @@ export interface ListBackupSelectionsInput {
 }
 
 export namespace ListBackupSelectionsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBackupSelectionsInput): any => ({
     ...obj,
   });
@@ -2698,6 +3040,9 @@ export interface ListBackupSelectionsOutput {
 }
 
 export namespace ListBackupSelectionsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBackupSelectionsOutput): any => ({
     ...obj,
   });
@@ -2719,6 +3064,9 @@ export interface ListBackupVaultsInput {
 }
 
 export namespace ListBackupVaultsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBackupVaultsInput): any => ({
     ...obj,
   });
@@ -2742,6 +3090,9 @@ export interface ListBackupVaultsOutput {
 }
 
 export namespace ListBackupVaultsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBackupVaultsOutput): any => ({
     ...obj,
   });
@@ -2749,9 +3100,9 @@ export namespace ListBackupVaultsOutput {
 
 export interface ListCopyJobsInput {
   /**
-   * <p>The next item following a partial list of returned items.
-   *          For example, if a request is made to return maxResults number of items,
-   *          NextToken allows you to return more items in your list starting at the location pointed to by the next token. </p>
+   * <p>The next item following a partial list of returned items. For example, if a request is
+   *          made to return maxResults number of items, NextToken allows you to return more items in
+   *          your list starting at the location pointed to by the next token. </p>
    */
   NextToken?: string;
 
@@ -2761,7 +3112,8 @@ export interface ListCopyJobsInput {
   MaxResults?: number;
 
   /**
-   * <p>Returns only copy jobs that match the specified resource Amazon Resource Name (ARN). </p>
+   * <p>Returns only copy jobs that match the specified resource Amazon Resource Name (ARN).
+   *       </p>
    */
   ByResourceArn?: string;
 
@@ -2805,6 +3157,10 @@ export interface ListCopyJobsInput {
    *             </li>
    *             <li>
    *                <p>
+   *                   <code>Aurora</code> for Amazon Aurora</p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>Storage Gateway</code> for AWS Storage Gateway</p>
    *             </li>
    *          </ul>
@@ -2813,17 +3169,22 @@ export interface ListCopyJobsInput {
 
   /**
    * <p>An Amazon Resource Name (ARN) that uniquely identifies a source backup vault to copy
-   *          from; for example, <code>arn:aws:backup:us-east-1:123456789012:vault:aBackupVault</code>. </p>
+   *          from; for example, <code>arn:aws:backup:us-east-1:123456789012:vault:aBackupVault</code>.
+   *       </p>
    */
   ByDestinationVaultArn?: string;
 
   /**
-   * <p>The account ID to list the jobs from. Returns only copy jobs associated with the specified account ID.</p>
+   * <p>The account ID to list the jobs from. Returns only copy jobs associated with the
+   *          specified account ID.</p>
    */
   ByAccountId?: string;
 }
 
 export namespace ListCopyJobsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListCopyJobsInput): any => ({
     ...obj,
   });
@@ -2831,18 +3192,23 @@ export namespace ListCopyJobsInput {
 
 export interface ListCopyJobsOutput {
   /**
-   * <p>An array of structures containing metadata about your copy jobs returned in JSON format. </p>
+   * <p>An array of structures containing metadata about your copy jobs returned in JSON format.
+   *       </p>
    */
   CopyJobs?: CopyJob[];
 
   /**
-   * <p>The next item following a partial list of returned items. For example, if a request is made to return maxResults number of items,
-   *          NextToken allows you to return more items in your list starting at the location pointed to by the next token. </p>
+   * <p>The next item following a partial list of returned items. For example, if a request is
+   *          made to return maxResults number of items, NextToken allows you to return more items in
+   *          your list starting at the location pointed to by the next token. </p>
    */
   NextToken?: string;
 }
 
 export namespace ListCopyJobsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListCopyJobsOutput): any => ({
     ...obj,
   });
@@ -2864,6 +3230,9 @@ export interface ListProtectedResourcesInput {
 }
 
 export namespace ListProtectedResourcesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProtectedResourcesInput): any => ({
     ...obj,
   });
@@ -2881,7 +3250,8 @@ export interface ProtectedResource {
 
   /**
    * <p>The type of AWS resource; for example, an Amazon Elastic Block Store (Amazon EBS) volume
-   *          or an Amazon Relational Database Service (Amazon RDS) database. For VSS Windows backups, the only supported resource type is Amazon EC2.</p>
+   *          or an Amazon Relational Database Service (Amazon RDS) database. For VSS Windows backups,
+   *          the only supported resource type is Amazon EC2.</p>
    */
   ResourceType?: string;
 
@@ -2895,6 +3265,9 @@ export interface ProtectedResource {
 }
 
 export namespace ProtectedResource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProtectedResource): any => ({
     ...obj,
   });
@@ -2918,6 +3291,9 @@ export interface ListProtectedResourcesOutput {
 }
 
 export namespace ListProtectedResourcesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProtectedResourcesOutput): any => ({
     ...obj,
   });
@@ -2972,6 +3348,9 @@ export interface ListRecoveryPointsByBackupVaultInput {
 }
 
 export namespace ListRecoveryPointsByBackupVaultInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecoveryPointsByBackupVaultInput): any => ({
     ...obj,
   });
@@ -3001,8 +3380,8 @@ export interface RecoveryPointByBackupVault {
   BackupVaultArn?: string;
 
   /**
-   * <p>The backup vault where the recovery point was originally copied from.
-   *          If the recovery point is restored to the same account this value will be <code>null</code>.</p>
+   * <p>The backup vault where the recovery point was originally copied from. If the recovery
+   *          point is restored to the same account this value will be <code>null</code>.</p>
    */
   SourceBackupVaultArn?: string;
 
@@ -3014,8 +3393,8 @@ export interface RecoveryPointByBackupVault {
 
   /**
    * <p>The type of AWS resource saved as a recovery point; for example, an Amazon Elastic Block
-   *          Store (Amazon EBS) volume or an Amazon Relational Database Service (Amazon RDS)
-   *          database. For VSS Windows backups, the only supported resource type is Amazon EC2.</p>
+   *          Store (Amazon EBS) volume or an Amazon Relational Database Service (Amazon RDS) database.
+   *          For VSS Windows backups, the only supported resource type is Amazon EC2.</p>
    */
   ResourceType?: string;
 
@@ -3072,6 +3451,7 @@ export interface RecoveryPointByBackupVault {
    *          days. Therefore, the “expire after days” setting must be 90 days greater than the
    *          “transition to cold after days” setting. The “transition to cold after days” setting cannot
    *          be changed after a backup has been transitioned to cold. </p>
+   *          <p>Only Amazon EFS file system backups can be transitioned to cold storage.</p>
    */
   Lifecycle?: Lifecycle;
 
@@ -3097,6 +3477,9 @@ export interface RecoveryPointByBackupVault {
 }
 
 export namespace RecoveryPointByBackupVault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecoveryPointByBackupVault): any => ({
     ...obj,
   });
@@ -3119,6 +3502,9 @@ export interface ListRecoveryPointsByBackupVaultOutput {
 }
 
 export namespace ListRecoveryPointsByBackupVaultOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecoveryPointsByBackupVaultOutput): any => ({
     ...obj,
   });
@@ -3146,6 +3532,9 @@ export interface ListRecoveryPointsByResourceInput {
 }
 
 export namespace ListRecoveryPointsByResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecoveryPointsByResourceInput): any => ({
     ...obj,
   });
@@ -3194,6 +3583,9 @@ export interface RecoveryPointByResource {
 }
 
 export namespace RecoveryPointByResource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecoveryPointByResource): any => ({
     ...obj,
   });
@@ -3216,6 +3608,9 @@ export interface ListRecoveryPointsByResourceOutput {
 }
 
 export namespace ListRecoveryPointsByResourceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecoveryPointsByResourceOutput): any => ({
     ...obj,
   });
@@ -3236,7 +3631,8 @@ export interface ListRestoreJobsInput {
   MaxResults?: number;
 
   /**
-   * <p>The account ID to list the jobs from. Returns only restore jobs associated with the specified account ID.</p>
+   * <p>The account ID to list the jobs from. Returns only restore jobs associated with the
+   *          specified account ID.</p>
    */
   ByAccountId?: string;
 
@@ -3257,6 +3653,9 @@ export interface ListRestoreJobsInput {
 }
 
 export namespace ListRestoreJobsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRestoreJobsInput): any => ({
     ...obj,
   });
@@ -3340,12 +3739,16 @@ export interface RestoreJobsListMember {
 
   /**
    * <p>The resource type of the listed restore jobs; for example, an Amazon Elastic Block Store
-   *          (Amazon EBS) volume or an Amazon Relational Database Service (Amazon RDS) database. For VSS Windows backups, the only supported resource type is Amazon EC2.</p>
+   *          (Amazon EBS) volume or an Amazon Relational Database Service (Amazon RDS) database. For VSS
+   *          Windows backups, the only supported resource type is Amazon EC2.</p>
    */
   ResourceType?: string;
 }
 
 export namespace RestoreJobsListMember {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RestoreJobsListMember): any => ({
     ...obj,
   });
@@ -3368,6 +3771,9 @@ export interface ListRestoreJobsOutput {
 }
 
 export namespace ListRestoreJobsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRestoreJobsOutput): any => ({
     ...obj,
   });
@@ -3396,6 +3802,9 @@ export interface ListTagsInput {
 }
 
 export namespace ListTagsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsInput): any => ({
     ...obj,
   });
@@ -3418,6 +3827,9 @@ export interface ListTagsOutput {
 }
 
 export namespace ListTagsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsOutput): any => ({
     ...obj,
     ...(obj.Tags && { Tags: SENSITIVE_STRING }),
@@ -3439,6 +3851,9 @@ export interface PutBackupVaultAccessPolicyInput {
 }
 
 export namespace PutBackupVaultAccessPolicyInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBackupVaultAccessPolicyInput): any => ({
     ...obj,
   });
@@ -3466,6 +3881,9 @@ export interface PutBackupVaultNotificationsInput {
 }
 
 export namespace PutBackupVaultNotificationsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBackupVaultNotificationsInput): any => ({
     ...obj,
   });
@@ -3498,12 +3916,16 @@ export interface StartBackupJobInput {
   IdempotencyToken?: string;
 
   /**
-   * <p>A value in minutes after a backup is scheduled before a job will be canceled if it doesn't start successfully. This value is optional.</p>
+   * <p>A value in minutes after a backup is scheduled before a job will be canceled if it
+   *          doesn't start successfully. This value is optional, and the default is 8 hours.</p>
    */
   StartWindowMinutes?: number;
 
   /**
-   * <p>A value in minutes after a backup job is successfully started before it must be completed or it will be canceled by AWS Backup. This value is optional.</p>
+   * <p>A value in minutes during which a successfully started backup must complete, or else AWS
+   *          Backup will cancel the job. This value is optional. This value begins counting down from
+   *          when the backup was scheduled. It does not add additional time for
+   *             <code>StartWindowMinutes</code>, or if the backup started later than scheduled.</p>
    */
   CompleteWindowMinutes?: number;
 
@@ -3515,6 +3937,7 @@ export interface StartBackupJobInput {
    *          days. Therefore, the “expire after days” setting must be 90 days greater than the
    *          “transition to cold after days” setting. The “transition to cold after days” setting cannot
    *          be changed after a backup has been transitioned to cold. </p>
+   *          <p>Only Amazon EFS file system backups can be transitioned to cold storage.</p>
    */
   Lifecycle?: Lifecycle;
 
@@ -3527,13 +3950,17 @@ export interface StartBackupJobInput {
   /**
    * <p>Specifies the backup option for a selected resource. This option is only available for
    *          Windows VSS backup jobs.</p>
-   *          <p>Valid values: Set to <code>"WindowsVSS”:“enabled"</code> to enable WindowsVSS backup option and create a VSS Windows backup.
-   *          Set to “WindowsVSS”:”disabled” to create a regular backup. The WindowsVSS option is not enabled by default.</p>
+   *          <p>Valid values: Set to <code>"WindowsVSS”:“enabled"</code> to enable WindowsVSS backup
+   *          option and create a VSS Windows backup. Set to “WindowsVSS”:”disabled” to create a regular
+   *          backup. The WindowsVSS option is not enabled by default.</p>
    */
   BackupOptions?: { [key: string]: string };
 }
 
 export namespace StartBackupJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartBackupJobInput): any => ({
     ...obj,
     ...(obj.RecoveryPointTags && { RecoveryPointTags: SENSITIVE_STRING }),
@@ -3553,7 +3980,7 @@ export interface StartBackupJobOutput {
   RecoveryPointArn?: string;
 
   /**
-   * <p>The date and time that a backup job is started, in Unix format and Coordinated Universal
+   * <p>The date and time that a backup job is created, in Unix format and Coordinated Universal
    *          Time (UTC). The value of <code>CreationDate</code> is accurate to milliseconds. For
    *          example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087
    *          AM.</p>
@@ -3562,6 +3989,9 @@ export interface StartBackupJobOutput {
 }
 
 export namespace StartBackupJobOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartBackupJobOutput): any => ({
     ...obj,
   });
@@ -3569,19 +3999,22 @@ export namespace StartBackupJobOutput {
 
 export interface StartCopyJobInput {
   /**
-   * <p>An ARN that uniquely identifies a recovery point to use for the copy job; for example, arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45. </p>
+   * <p>An ARN that uniquely identifies a recovery point to use for the copy job; for example,
+   *          arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45.
+   *       </p>
    */
   RecoveryPointArn: string | undefined;
 
   /**
-   * <p>The name of a logical source container where backups are stored.
-   *          Backup vaults are identified by names that are unique to the account used to create them and the AWS Region where they are created.
-   *          They consist of lowercase letters, numbers, and hyphens.</p>
+   * <p>The name of a logical source container where backups are stored. Backup vaults are
+   *          identified by names that are unique to the account used to create them and the AWS Region
+   *          where they are created. They consist of lowercase letters, numbers, and hyphens.</p>
    */
   SourceBackupVaultName: string | undefined;
 
   /**
-   * <p>An Amazon Resource Name (ARN) that uniquely identifies a destination backup vault to copy to; for example,
+   * <p>An Amazon Resource Name (ARN) that uniquely identifies a destination backup vault to
+   *          copy to; for example,
    *          <code>arn:aws:backup:us-east-1:123456789012:vault:aBackupVault</code>.</p>
    */
   DestinationBackupVaultArn: string | undefined;
@@ -3594,7 +4027,7 @@ export interface StartCopyJobInput {
 
   /**
    * <p>A customer chosen string that can be used to distinguish between calls to
-   *          <code>StartCopyJob</code>.</p>
+   *             <code>StartCopyJob</code>.</p>
    */
   IdempotencyToken?: string;
 
@@ -3605,11 +4038,15 @@ export interface StartCopyJobInput {
    *          days. Therefore, on the console, the “expire after days” setting must be 90 days greater
    *          than the “transition to cold after days” setting. The “transition to cold after days”
    *          setting cannot be changed after a backup has been transitioned to cold.</p>
+   *          <p>Only Amazon EFS file system backups can be transitioned to cold storage.</p>
    */
   Lifecycle?: Lifecycle;
 }
 
 export namespace StartCopyJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartCopyJobInput): any => ({
     ...obj,
   });
@@ -3622,14 +4059,18 @@ export interface StartCopyJobOutput {
   CopyJobId?: string;
 
   /**
-   * <p>The date and time that a copy job is started, in Unix format and Coordinated Universal Time (UTC).
-   *          The value of <code>CreationDate</code> is accurate to milliseconds.
-   *          For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.</p>
+   * <p>The date and time that a copy job is created, in Unix format and Coordinated Universal
+   *          Time (UTC). The value of <code>CreationDate</code> is accurate to milliseconds. For
+   *          example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087
+   *          AM.</p>
    */
   CreationDate?: Date;
 }
 
 export namespace StartCopyJobOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartCopyJobOutput): any => ({
     ...obj,
   });
@@ -3650,7 +4091,8 @@ export interface StartRestoreJobInput {
    *          provided by <code>GetRecoveryPointRestoreMetadata</code> might be required to restore a
    *          resource. For example, you might need to provide a new resource name if the original
    *          already exists.</p>
-   *          <p>You need to specify specific metadata to restore an Amazon Elastic File System (Amazon EFS) instance:</p>
+   *          <p>You need to specify specific metadata to restore an Amazon Elastic File System (Amazon
+   *          EFS) instance:</p>
    *          <ul>
    *             <li>
    *                <p>
@@ -3659,14 +4101,15 @@ export interface StartRestoreJobInput {
    *             </li>
    *             <li>
    *                <p>
-   *                   <code>Encrypted</code>:  A Boolean value that, if true, specifies that the
-   *                file system is encrypted. If <code>KmsKeyId</code> is specified,
-   *                <code>Encrypted</code> must be set to <code>true</code>.</p>
+   *                   <code>Encrypted</code>: A Boolean value that, if true, specifies that the file
+   *                system is encrypted. If <code>KmsKeyId</code> is specified, <code>Encrypted</code>
+   *                must be set to <code>true</code>.</p>
    *             </li>
    *             <li>
    *                <p>
    *                   <code>KmsKeyId</code>: Specifies the AWS KMS key that is used to encrypt the
-   *                restored file system. You can specify a key from another AWS account provided that key it is properly shared with your account via AWS KMS.</p>
+   *                restored file system. You can specify a key from another AWS account provided that
+   *                key it is properly shared with your account via AWS KMS.</p>
    *             </li>
    *             <li>
    *                <p>
@@ -3675,20 +4118,20 @@ export interface StartRestoreJobInput {
    *             </li>
    *             <li>
    *                <p>
-   *                   <code>CreationToken</code>: A user-supplied value that ensures the
-   *                uniqueness (idempotency) of the request.</p>
+   *                   <code>CreationToken</code>: A user-supplied value that ensures the uniqueness
+   *                (idempotency) of the request.</p>
    *             </li>
    *             <li>
    *                <p>
-   *                   <code>newFileSystem</code>:  A Boolean value that, if true, specifies that
-   *                the recovery point is restored to a new Amazon EFS file system.</p>
+   *                   <code>newFileSystem</code>: A Boolean value that, if true, specifies that the
+   *                recovery point is restored to a new Amazon EFS file system.</p>
    *             </li>
    *             <li>
    *                <p>
-   *                   <code>ItemsToRestore </code>: A serialized list of up to five strings
-   *             where each string is a file path. Use <code>ItemsToRestore</code> to restore
-   *             specific files or directories rather than the entire file system. This parameter is
-   *             optional.</p>
+   *                   <code>ItemsToRestore </code>: An array of one to five strings where each string is
+   *                a file path. Use <code>ItemsToRestore</code> to restore specific files or directories
+   *                rather than the entire file system. This parameter is optional. For example,
+   *                   <code>"itemsToRestore":"[\"/my.test\"]"</code>.</p>
    *             </li>
    *          </ul>
    */
@@ -3731,6 +4174,10 @@ export interface StartRestoreJobInput {
    *             </li>
    *             <li>
    *                <p>
+   *                   <code>Aurora</code> for Amazon Aurora</p>
+   *             </li>
+   *             <li>
+   *                <p>
    *                   <code>Storage Gateway</code> for AWS Storage Gateway</p>
    *             </li>
    *          </ul>
@@ -3739,6 +4186,9 @@ export interface StartRestoreJobInput {
 }
 
 export namespace StartRestoreJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartRestoreJobInput): any => ({
     ...obj,
     ...(obj.Metadata && { Metadata: SENSITIVE_STRING }),
@@ -3753,6 +4203,9 @@ export interface StartRestoreJobOutput {
 }
 
 export namespace StartRestoreJobOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartRestoreJobOutput): any => ({
     ...obj,
   });
@@ -3766,6 +4219,9 @@ export interface StopBackupJobInput {
 }
 
 export namespace StopBackupJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopBackupJobInput): any => ({
     ...obj,
   });
@@ -3780,12 +4236,15 @@ export interface TagResourceInput {
 
   /**
    * <p>Key-value pairs that are used to help organize your resources. You can assign your own
-   *          metadata to the resources you create. </p>
+   *          metadata to the resources you create.</p>
    */
   Tags: { [key: string]: string } | undefined;
 }
 
 export namespace TagResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceInput): any => ({
     ...obj,
     ...(obj.Tags && { Tags: SENSITIVE_STRING }),
@@ -3806,6 +4265,9 @@ export interface UntagResourceInput {
 }
 
 export namespace UntagResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceInput): any => ({
     ...obj,
     ...(obj.TagKeyList && { TagKeyList: SENSITIVE_STRING }),
@@ -3826,6 +4288,9 @@ export interface UpdateBackupPlanInput {
 }
 
 export namespace UpdateBackupPlanInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateBackupPlanInput): any => ({
     ...obj,
     ...(obj.BackupPlan && { BackupPlan: BackupPlanInput.filterSensitiveLog(obj.BackupPlan) }),
@@ -3865,6 +4330,9 @@ export interface UpdateBackupPlanOutput {
 }
 
 export namespace UpdateBackupPlanOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateBackupPlanOutput): any => ({
     ...obj,
   });
@@ -3878,6 +4346,9 @@ export interface UpdateGlobalSettingsInput {
 }
 
 export namespace UpdateGlobalSettingsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateGlobalSettingsInput): any => ({
     ...obj,
   });
@@ -3910,6 +4381,9 @@ export interface UpdateRecoveryPointLifecycleInput {
 }
 
 export namespace UpdateRecoveryPointLifecycleInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRecoveryPointLifecycleInput): any => ({
     ...obj,
   });
@@ -3936,6 +4410,7 @@ export interface UpdateRecoveryPointLifecycleOutput {
    *          days. Therefore, the “expire after days” setting must be 90 days greater than the
    *          “transition to cold after days” setting. The “transition to cold after days” setting cannot
    *          be changed after a backup has been transitioned to cold. </p>
+   *          <p>Only Amazon EFS file system backups can be transitioned to cold storage.</p>
    */
   Lifecycle?: Lifecycle;
 
@@ -3947,6 +4422,9 @@ export interface UpdateRecoveryPointLifecycleOutput {
 }
 
 export namespace UpdateRecoveryPointLifecycleOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRecoveryPointLifecycleOutput): any => ({
     ...obj,
   });
@@ -3960,6 +4438,9 @@ export interface UpdateRegionSettingsInput {
 }
 
 export namespace UpdateRegionSettingsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRegionSettingsInput): any => ({
     ...obj,
   });

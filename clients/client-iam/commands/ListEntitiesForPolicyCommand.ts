@@ -17,18 +17,32 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListEntitiesForPolicyCommandInput = ListEntitiesForPolicyRequest;
-export type ListEntitiesForPolicyCommandOutput = ListEntitiesForPolicyResponse & __MetadataBearer;
+export interface ListEntitiesForPolicyCommandInput extends ListEntitiesForPolicyRequest {}
+export interface ListEntitiesForPolicyCommandOutput extends ListEntitiesForPolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Lists all IAM users, groups, and roles that the specified managed policy is attached
- *          to.</p>
- *          <p>You can use the optional <code>EntityFilter</code> parameter to limit the results to a
- *          particular type of entity (users, groups, or roles). For example, to list only the roles
- *          that are attached to the specified policy, set <code>EntityFilter</code> to
- *             <code>Role</code>.</p>
- *          <p>You can paginate the results using the <code>MaxItems</code> and <code>Marker</code>
- *          parameters.</p>
+ *             to.</p>
+ *         <p>You can use the optional <code>EntityFilter</code> parameter to limit the results to a
+ *             particular type of entity (users, groups, or roles). For example, to list only the roles
+ *             that are attached to the specified policy, set <code>EntityFilter</code> to
+ *                 <code>Role</code>.</p>
+ *         <p>You can paginate the results using the <code>MaxItems</code> and <code>Marker</code>
+ *             parameters.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, ListEntitiesForPolicyCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, ListEntitiesForPolicyCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new ListEntitiesForPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListEntitiesForPolicyCommandInput} for command's `input` shape.
+ * @see {@link ListEntitiesForPolicyCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListEntitiesForPolicyCommand extends $Command<
   ListEntitiesForPolicyCommandInput,

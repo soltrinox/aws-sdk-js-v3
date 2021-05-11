@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteFindingsFilterCommandInput = DeleteFindingsFilterRequest;
-export type DeleteFindingsFilterCommandOutput = DeleteFindingsFilterResponse & __MetadataBearer;
+export interface DeleteFindingsFilterCommandInput extends DeleteFindingsFilterRequest {}
+export interface DeleteFindingsFilterCommandOutput extends DeleteFindingsFilterResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a findings filter.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Macie2Client, DeleteFindingsFilterCommand } from "@aws-sdk/client-macie2"; // ES Modules import
+ * // const { Macie2Client, DeleteFindingsFilterCommand } = require("@aws-sdk/client-macie2"); // CommonJS import
+ * const client = new Macie2Client(config);
+ * const command = new DeleteFindingsFilterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteFindingsFilterCommandInput} for command's `input` shape.
+ * @see {@link DeleteFindingsFilterCommandOutput} for command's `response` shape.
+ * @see {@link Macie2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteFindingsFilterCommand extends $Command<
   DeleteFindingsFilterCommandInput,

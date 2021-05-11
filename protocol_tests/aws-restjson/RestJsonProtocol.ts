@@ -35,6 +35,11 @@ import {
   GreetingWithErrorsCommandOutput,
 } from "./commands/GreetingWithErrorsCommand";
 import {
+  HttpEnumPayloadCommand,
+  HttpEnumPayloadCommandInput,
+  HttpEnumPayloadCommandOutput,
+} from "./commands/HttpEnumPayloadCommand";
+import {
   HttpPayloadTraitsCommand,
   HttpPayloadTraitsCommandInput,
   HttpPayloadTraitsCommandOutput,
@@ -79,6 +84,11 @@ import {
   HttpResponseCodeCommandInput,
   HttpResponseCodeCommandOutput,
 } from "./commands/HttpResponseCodeCommand";
+import {
+  HttpStringPayloadCommand,
+  HttpStringPayloadCommandInput,
+  HttpStringPayloadCommandOutput,
+} from "./commands/HttpStringPayloadCommand";
 import {
   IgnoreQueryParamsInResponseCommand,
   IgnoreQueryParamsInResponseCommandInput,
@@ -144,6 +154,16 @@ import {
   QueryIdempotencyTokenAutoFillCommandInput,
   QueryIdempotencyTokenAutoFillCommandOutput,
 } from "./commands/QueryIdempotencyTokenAutoFillCommand";
+import {
+  QueryParamsAsStringListMapCommand,
+  QueryParamsAsStringListMapCommandInput,
+  QueryParamsAsStringListMapCommandOutput,
+} from "./commands/QueryParamsAsStringListMapCommand";
+import {
+  QueryPrecedenceCommand,
+  QueryPrecedenceCommandInput,
+  QueryPrecedenceCommandOutput,
+} from "./commands/QueryPrecedenceCommand";
 import {
   RecursiveShapesCommand,
   RecursiveShapesCommandInput,
@@ -405,6 +425,35 @@ export class RestJsonProtocol extends RestJsonProtocolClient {
     cb?: (err: any, data?: GreetingWithErrorsCommandOutput) => void
   ): Promise<GreetingWithErrorsCommandOutput> | void {
     const command = new GreetingWithErrorsCommand(args);
+    if (typeof optionsOrCb === "function") {
+      this.send(command, optionsOrCb);
+    } else if (typeof cb === "function") {
+      if (typeof optionsOrCb !== "object") throw new Error(`Expect http options but get ${typeof optionsOrCb}`);
+      this.send(command, optionsOrCb || {}, cb);
+    } else {
+      return this.send(command, optionsOrCb);
+    }
+  }
+
+  public httpEnumPayload(
+    args: HttpEnumPayloadCommandInput,
+    options?: __HttpHandlerOptions
+  ): Promise<HttpEnumPayloadCommandOutput>;
+  public httpEnumPayload(
+    args: HttpEnumPayloadCommandInput,
+    cb: (err: any, data?: HttpEnumPayloadCommandOutput) => void
+  ): void;
+  public httpEnumPayload(
+    args: HttpEnumPayloadCommandInput,
+    options: __HttpHandlerOptions,
+    cb: (err: any, data?: HttpEnumPayloadCommandOutput) => void
+  ): void;
+  public httpEnumPayload(
+    args: HttpEnumPayloadCommandInput,
+    optionsOrCb?: __HttpHandlerOptions | ((err: any, data?: HttpEnumPayloadCommandOutput) => void),
+    cb?: (err: any, data?: HttpEnumPayloadCommandOutput) => void
+  ): Promise<HttpEnumPayloadCommandOutput> | void {
+    const command = new HttpEnumPayloadCommand(args);
     if (typeof optionsOrCb === "function") {
       this.send(command, optionsOrCb);
     } else if (typeof cb === "function") {
@@ -698,6 +747,35 @@ export class RestJsonProtocol extends RestJsonProtocolClient {
     cb?: (err: any, data?: HttpResponseCodeCommandOutput) => void
   ): Promise<HttpResponseCodeCommandOutput> | void {
     const command = new HttpResponseCodeCommand(args);
+    if (typeof optionsOrCb === "function") {
+      this.send(command, optionsOrCb);
+    } else if (typeof cb === "function") {
+      if (typeof optionsOrCb !== "object") throw new Error(`Expect http options but get ${typeof optionsOrCb}`);
+      this.send(command, optionsOrCb || {}, cb);
+    } else {
+      return this.send(command, optionsOrCb);
+    }
+  }
+
+  public httpStringPayload(
+    args: HttpStringPayloadCommandInput,
+    options?: __HttpHandlerOptions
+  ): Promise<HttpStringPayloadCommandOutput>;
+  public httpStringPayload(
+    args: HttpStringPayloadCommandInput,
+    cb: (err: any, data?: HttpStringPayloadCommandOutput) => void
+  ): void;
+  public httpStringPayload(
+    args: HttpStringPayloadCommandInput,
+    options: __HttpHandlerOptions,
+    cb: (err: any, data?: HttpStringPayloadCommandOutput) => void
+  ): void;
+  public httpStringPayload(
+    args: HttpStringPayloadCommandInput,
+    optionsOrCb?: __HttpHandlerOptions | ((err: any, data?: HttpStringPayloadCommandOutput) => void),
+    cb?: (err: any, data?: HttpStringPayloadCommandOutput) => void
+  ): Promise<HttpStringPayloadCommandOutput> | void {
+    const command = new HttpStringPayloadCommand(args);
     if (typeof optionsOrCb === "function") {
       this.send(command, optionsOrCb);
     } else if (typeof cb === "function") {
@@ -1228,6 +1306,64 @@ export class RestJsonProtocol extends RestJsonProtocolClient {
     cb?: (err: any, data?: QueryIdempotencyTokenAutoFillCommandOutput) => void
   ): Promise<QueryIdempotencyTokenAutoFillCommandOutput> | void {
     const command = new QueryIdempotencyTokenAutoFillCommand(args);
+    if (typeof optionsOrCb === "function") {
+      this.send(command, optionsOrCb);
+    } else if (typeof cb === "function") {
+      if (typeof optionsOrCb !== "object") throw new Error(`Expect http options but get ${typeof optionsOrCb}`);
+      this.send(command, optionsOrCb || {}, cb);
+    } else {
+      return this.send(command, optionsOrCb);
+    }
+  }
+
+  public queryParamsAsStringListMap(
+    args: QueryParamsAsStringListMapCommandInput,
+    options?: __HttpHandlerOptions
+  ): Promise<QueryParamsAsStringListMapCommandOutput>;
+  public queryParamsAsStringListMap(
+    args: QueryParamsAsStringListMapCommandInput,
+    cb: (err: any, data?: QueryParamsAsStringListMapCommandOutput) => void
+  ): void;
+  public queryParamsAsStringListMap(
+    args: QueryParamsAsStringListMapCommandInput,
+    options: __HttpHandlerOptions,
+    cb: (err: any, data?: QueryParamsAsStringListMapCommandOutput) => void
+  ): void;
+  public queryParamsAsStringListMap(
+    args: QueryParamsAsStringListMapCommandInput,
+    optionsOrCb?: __HttpHandlerOptions | ((err: any, data?: QueryParamsAsStringListMapCommandOutput) => void),
+    cb?: (err: any, data?: QueryParamsAsStringListMapCommandOutput) => void
+  ): Promise<QueryParamsAsStringListMapCommandOutput> | void {
+    const command = new QueryParamsAsStringListMapCommand(args);
+    if (typeof optionsOrCb === "function") {
+      this.send(command, optionsOrCb);
+    } else if (typeof cb === "function") {
+      if (typeof optionsOrCb !== "object") throw new Error(`Expect http options but get ${typeof optionsOrCb}`);
+      this.send(command, optionsOrCb || {}, cb);
+    } else {
+      return this.send(command, optionsOrCb);
+    }
+  }
+
+  public queryPrecedence(
+    args: QueryPrecedenceCommandInput,
+    options?: __HttpHandlerOptions
+  ): Promise<QueryPrecedenceCommandOutput>;
+  public queryPrecedence(
+    args: QueryPrecedenceCommandInput,
+    cb: (err: any, data?: QueryPrecedenceCommandOutput) => void
+  ): void;
+  public queryPrecedence(
+    args: QueryPrecedenceCommandInput,
+    options: __HttpHandlerOptions,
+    cb: (err: any, data?: QueryPrecedenceCommandOutput) => void
+  ): void;
+  public queryPrecedence(
+    args: QueryPrecedenceCommandInput,
+    optionsOrCb?: __HttpHandlerOptions | ((err: any, data?: QueryPrecedenceCommandOutput) => void),
+    cb?: (err: any, data?: QueryPrecedenceCommandOutput) => void
+  ): Promise<QueryPrecedenceCommandOutput> | void {
+    const command = new QueryPrecedenceCommand(args);
     if (typeof optionsOrCb === "function") {
       this.send(command, optionsOrCb);
     } else if (typeof cb === "function") {

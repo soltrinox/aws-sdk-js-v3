@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RevokeDomainAccessCommandInput = RevokeDomainAccessRequest;
-export type RevokeDomainAccessCommandOutput = RevokeDomainAccessResponse & __MetadataBearer;
+export interface RevokeDomainAccessCommandInput extends RevokeDomainAccessRequest {}
+export interface RevokeDomainAccessCommandOutput extends RevokeDomainAccessResponse, __MetadataBearer {}
 
 /**
  * <p>Moves a domain to INACTIVE status if it was in the ACTIVE status.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkLinkClient, RevokeDomainAccessCommand } from "@aws-sdk/client-worklink"; // ES Modules import
+ * // const { WorkLinkClient, RevokeDomainAccessCommand } = require("@aws-sdk/client-worklink"); // CommonJS import
+ * const client = new WorkLinkClient(config);
+ * const command = new RevokeDomainAccessCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RevokeDomainAccessCommandInput} for command's `input` shape.
+ * @see {@link RevokeDomainAccessCommandOutput} for command's `response` shape.
+ * @see {@link WorkLinkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RevokeDomainAccessCommand extends $Command<
   RevokeDomainAccessCommandInput,

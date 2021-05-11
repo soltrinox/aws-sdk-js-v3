@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteQueryLoggingConfigCommandInput = DeleteQueryLoggingConfigRequest;
-export type DeleteQueryLoggingConfigCommandOutput = DeleteQueryLoggingConfigResponse & __MetadataBearer;
+export interface DeleteQueryLoggingConfigCommandInput extends DeleteQueryLoggingConfigRequest {}
+export interface DeleteQueryLoggingConfigCommandOutput extends DeleteQueryLoggingConfigResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a configuration for DNS query logging. If you delete a configuration, Amazon Route 53 stops sending query logs to CloudWatch Logs.
@@ -27,6 +27,20 @@ export type DeleteQueryLoggingConfigCommandOutput = DeleteQueryLoggingConfigResp
  *
  * 		       <p>For more information about DNS query logs, see
  * 			<a href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html">CreateQueryLoggingConfig</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, DeleteQueryLoggingConfigCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, DeleteQueryLoggingConfigCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new DeleteQueryLoggingConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteQueryLoggingConfigCommandInput} for command's `input` shape.
+ * @see {@link DeleteQueryLoggingConfigCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteQueryLoggingConfigCommand extends $Command<
   DeleteQueryLoggingConfigCommandInput,

@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDeliverabilityTestReportCommandInput = CreateDeliverabilityTestReportRequest;
-export type CreateDeliverabilityTestReportCommandOutput = CreateDeliverabilityTestReportResponse & __MetadataBearer;
+export interface CreateDeliverabilityTestReportCommandInput extends CreateDeliverabilityTestReportRequest {}
+export interface CreateDeliverabilityTestReportCommandOutput
+  extends CreateDeliverabilityTestReportResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Create a new predictive inbox placement test. Predictive inbox placement tests can help you predict how your messages will be handled
@@ -28,6 +30,20 @@ export type CreateDeliverabilityTestReportCommandOutput = CreateDeliverabilityTe
  *             providers. After about 24 hours, the test is complete, and you can use the
  *                 <code>GetDeliverabilityTestReport</code> operation to view the results of the
  *             test.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointEmailClient, CreateDeliverabilityTestReportCommand } from "@aws-sdk/client-pinpoint-email"; // ES Modules import
+ * // const { PinpointEmailClient, CreateDeliverabilityTestReportCommand } = require("@aws-sdk/client-pinpoint-email"); // CommonJS import
+ * const client = new PinpointEmailClient(config);
+ * const command = new CreateDeliverabilityTestReportCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDeliverabilityTestReportCommandInput} for command's `input` shape.
+ * @see {@link CreateDeliverabilityTestReportCommandOutput} for command's `response` shape.
+ * @see {@link PinpointEmailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDeliverabilityTestReportCommand extends $Command<
   CreateDeliverabilityTestReportCommandInput,

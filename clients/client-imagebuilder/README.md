@@ -7,7 +7,10 @@
 
 AWS SDK for JavaScript Imagebuilder Client for Node.js, Browser and React Native.
 
-<p>EC2 Image Builder is a fully managed AWS service that makes it easier to automate the creation, management, and deployment of customized, secure, and up-to-date “golden” server images that are pre-installed and pre-configured with software and settings to meet specific IT standards.</p>
+<p>EC2 Image Builder is a fully managed AWS service that makes it easier to automate the
+creation, management, and deployment of customized, secure, and up-to-date "golden" server
+images that are pre-installed and pre-configured with software and settings to meet specific
+IT standards.</p>
 
 ## Installing
 
@@ -46,7 +49,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new ImagebuilderClient({ region: "REGION" });
 
 const params = {
@@ -131,7 +134,7 @@ const client = new AWS.Imagebuilder({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.cancelImageCreation(params);
+  const data = await client.cancelImageCreation(params);
   // process data.
 } catch (error) {
   // error handling.

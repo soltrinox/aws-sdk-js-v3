@@ -1,5 +1,5 @@
 import { IAMClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../IAMClient";
-import { UpdateRoleRequest, UpdateRoleResponse } from "../models/models_0";
+import { UpdateRoleRequest, UpdateRoleResponse } from "../models/models_1";
 import { deserializeAws_queryUpdateRoleCommand, serializeAws_queryUpdateRoleCommand } from "../protocols/Aws_query";
 import { getSerdePlugin } from "@aws-sdk/middleware-serde";
 import { HttpRequest as __HttpRequest, HttpResponse as __HttpResponse } from "@aws-sdk/protocol-http";
@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateRoleCommandInput = UpdateRoleRequest;
-export type UpdateRoleCommandOutput = UpdateRoleResponse & __MetadataBearer;
+export interface UpdateRoleCommandInput extends UpdateRoleRequest {}
+export interface UpdateRoleCommandOutput extends UpdateRoleResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the description or maximum session duration setting of a role.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, UpdateRoleCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, UpdateRoleCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new UpdateRoleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateRoleCommandInput} for command's `input` shape.
+ * @see {@link UpdateRoleCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateRoleCommand extends $Command<
   UpdateRoleCommandInput,

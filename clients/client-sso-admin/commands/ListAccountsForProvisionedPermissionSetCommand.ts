@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAccountsForProvisionedPermissionSetCommandInput = ListAccountsForProvisionedPermissionSetRequest;
-export type ListAccountsForProvisionedPermissionSetCommandOutput = ListAccountsForProvisionedPermissionSetResponse &
-  __MetadataBearer;
+export interface ListAccountsForProvisionedPermissionSetCommandInput
+  extends ListAccountsForProvisionedPermissionSetRequest {}
+export interface ListAccountsForProvisionedPermissionSetCommandOutput
+  extends ListAccountsForProvisionedPermissionSetResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Lists all the AWS accounts where the specified permission set is provisioned.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSOAdminClient, ListAccountsForProvisionedPermissionSetCommand } from "@aws-sdk/client-sso-admin"; // ES Modules import
+ * // const { SSOAdminClient, ListAccountsForProvisionedPermissionSetCommand } = require("@aws-sdk/client-sso-admin"); // CommonJS import
+ * const client = new SSOAdminClient(config);
+ * const command = new ListAccountsForProvisionedPermissionSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAccountsForProvisionedPermissionSetCommandInput} for command's `input` shape.
+ * @see {@link ListAccountsForProvisionedPermissionSetCommandOutput} for command's `response` shape.
+ * @see {@link SSOAdminClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAccountsForProvisionedPermissionSetCommand extends $Command<
   ListAccountsForProvisionedPermissionSetCommandInput,

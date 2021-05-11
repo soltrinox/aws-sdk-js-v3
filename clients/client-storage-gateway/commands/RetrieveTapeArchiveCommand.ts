@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RetrieveTapeArchiveCommandInput = RetrieveTapeArchiveInput;
-export type RetrieveTapeArchiveCommandOutput = RetrieveTapeArchiveOutput & __MetadataBearer;
+export interface RetrieveTapeArchiveCommandInput extends RetrieveTapeArchiveInput {}
+export interface RetrieveTapeArchiveCommandOutput extends RetrieveTapeArchiveOutput, __MetadataBearer {}
 
 /**
  * <p>Retrieves an archived virtual tape from the virtual tape shelf (VTS) to a tape gateway.
@@ -29,6 +29,20 @@ export type RetrieveTapeArchiveCommandOutput = RetrieveTapeArchiveOutput & __Met
  *          <p>Once a tape is successfully retrieved to a gateway, it cannot be retrieved again to
  *          another gateway. You must archive the tape again before you can retrieve it to another
  *          gateway. This operation is only supported in the tape gateway type.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, RetrieveTapeArchiveCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, RetrieveTapeArchiveCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new RetrieveTapeArchiveCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RetrieveTapeArchiveCommandInput} for command's `input` shape.
+ * @see {@link RetrieveTapeArchiveCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RetrieveTapeArchiveCommand extends $Command<
   RetrieveTapeArchiveCommandInput,

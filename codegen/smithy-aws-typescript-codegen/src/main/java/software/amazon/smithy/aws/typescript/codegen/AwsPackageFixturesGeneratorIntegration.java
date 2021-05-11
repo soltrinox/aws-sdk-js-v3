@@ -15,6 +15,8 @@
 
 package software.amazon.smithy.aws.typescript.codegen;
 
+import static software.amazon.smithy.aws.typescript.codegen.AwsTraitsUtils.isAwsService;
+
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.function.BiConsumer;
@@ -32,8 +34,10 @@ import software.amazon.smithy.typescript.codegen.TypeScriptSettings;
 import software.amazon.smithy.typescript.codegen.TypeScriptWriter;
 import software.amazon.smithy.typescript.codegen.integration.TypeScriptIntegration;
 import software.amazon.smithy.utils.IoUtils;
+import software.amazon.smithy.utils.SmithyInternalApi;
 import software.amazon.smithy.utils.StringUtils;
 
+@SmithyInternalApi
 public final class AwsPackageFixturesGeneratorIntegration implements TypeScriptIntegration {
     @Override
     public void writeAdditionalFiles(
@@ -55,6 +59,12 @@ public final class AwsPackageFixturesGeneratorIntegration implements TypeScriptI
             resource = resource.replace("${year}", Integer.toString(Calendar.getInstance().get(Calendar.YEAR)));
             writer.write(resource);
         });
+
+        // TODO: May need to generate a different/modified README.md for these cases
+        if (!settings.generateClient() || !isAwsService(settings, model)) {
+            return;
+        }
+
         writerFactory.accept("README.md", writer -> {
             ServiceShape service = settings.getService(model);
             String resource =  IoUtils.readUtf8Resource(getClass(), "README.md.template");

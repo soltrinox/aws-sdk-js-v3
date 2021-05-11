@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListBulkDeploymentsCommandInput = ListBulkDeploymentsRequest;
-export type ListBulkDeploymentsCommandOutput = ListBulkDeploymentsResponse & __MetadataBearer;
+export interface ListBulkDeploymentsCommandInput extends ListBulkDeploymentsRequest {}
+export interface ListBulkDeploymentsCommandOutput extends ListBulkDeploymentsResponse, __MetadataBearer {}
 
 /**
  * Returns a list of bulk deployments.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, ListBulkDeploymentsCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, ListBulkDeploymentsCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new ListBulkDeploymentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListBulkDeploymentsCommandInput} for command's `input` shape.
+ * @see {@link ListBulkDeploymentsCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListBulkDeploymentsCommand extends $Command<
   ListBulkDeploymentsCommandInput,

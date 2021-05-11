@@ -7,15 +7,18 @@
 
 AWS SDK for JavaScript LexRuntimeService Client for Node.js, Browser and React Native.
 
-<p>Amazon Lex provides both build and runtime endpoints. Each endpoint provides a set of
-operations (API). Your conversational bot uses the runtime API to understand user utterances
-(user input text or voice). For example, suppose a user says "I want pizza", your bot sends
-this input to Amazon Lex using the runtime API. Amazon Lex recognizes that the user request is
-for the OrderPizza intent (one of the intents defined in the bot). Then Amazon Lex engages in
-user conversation on behalf of the bot to elicit required information (slot values, such as
-pizza size and crust type), and then performs fulfillment activity (that you configured when
-you created the bot). You use the build-time API to create and manage your Amazon Lex bot. For
-a list of build-time operations, see the build-time API, . </p>
+<p>Amazon Lex provides both build and runtime endpoints. Each endpoint
+provides a set of operations (API). Your conversational bot uses the
+runtime API to understand user utterances (user input text or voice). For
+example, suppose a user says "I want pizza", your bot sends this input to
+Amazon Lex using the runtime API. Amazon Lex recognizes that the user
+request is for the OrderPizza intent (one of the intents defined in the
+bot). Then Amazon Lex engages in user conversation on behalf of the bot to
+elicit required information (slot values, such as pizza size and crust
+type), and then performs fulfillment activity (that you configured when
+you created the bot). You use the build-time API to create and manage your
+Amazon Lex bot. For a list of build-time operations, see the build-time
+API, . </p>
 
 ## Installing
 
@@ -54,7 +57,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new LexRuntimeServiceClient({ region: "REGION" });
 
 const params = {
@@ -139,7 +142,7 @@ const client = new AWS.LexRuntimeService({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.deleteSession(params);
+  const data = await client.deleteSession(params);
   // process data.
 } catch (error) {
   // error handling.

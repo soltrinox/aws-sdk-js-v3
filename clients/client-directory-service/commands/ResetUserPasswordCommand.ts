@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ResetUserPasswordCommandInput = ResetUserPasswordRequest;
-export type ResetUserPasswordCommandOutput = ResetUserPasswordResult & __MetadataBearer;
+export interface ResetUserPasswordCommandInput extends ResetUserPasswordRequest {}
+export interface ResetUserPasswordCommandOutput extends ResetUserPasswordResult, __MetadataBearer {}
 
 /**
  * <p>Resets the password for any user in your AWS Managed Microsoft AD or Simple AD
@@ -40,6 +40,20 @@ export type ResetUserPasswordCommandOutput = ResetUserPasswordResult & __Metadat
  *             Guide</i>.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectoryServiceClient, ResetUserPasswordCommand } from "@aws-sdk/client-directory-service"; // ES Modules import
+ * // const { DirectoryServiceClient, ResetUserPasswordCommand } = require("@aws-sdk/client-directory-service"); // CommonJS import
+ * const client = new DirectoryServiceClient(config);
+ * const command = new ResetUserPasswordCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ResetUserPasswordCommandInput} for command's `input` shape.
+ * @see {@link ResetUserPasswordCommandOutput} for command's `response` shape.
+ * @see {@link DirectoryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ResetUserPasswordCommand extends $Command<
   ResetUserPasswordCommandInput,

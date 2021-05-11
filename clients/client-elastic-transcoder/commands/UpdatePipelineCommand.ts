@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdatePipelineCommandInput = UpdatePipelineRequest;
-export type UpdatePipelineCommandOutput = UpdatePipelineResponse & __MetadataBearer;
+export interface UpdatePipelineCommandInput extends UpdatePipelineRequest {}
+export interface UpdatePipelineCommandOutput extends UpdatePipelineResponse, __MetadataBearer {}
 
 /**
  * <p> Use the <code>UpdatePipeline</code> operation to update settings for a pipeline.</p>
@@ -31,6 +31,20 @@ export type UpdatePipelineCommandOutput = UpdatePipelineResponse & __MetadataBea
  *             Jobs that you have already submitted and that Elastic Transcoder has not started to process are
  *             affected in addition to jobs that you submit after you change settings. </p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticTranscoderClient, UpdatePipelineCommand } from "@aws-sdk/client-elastic-transcoder"; // ES Modules import
+ * // const { ElasticTranscoderClient, UpdatePipelineCommand } = require("@aws-sdk/client-elastic-transcoder"); // CommonJS import
+ * const client = new ElasticTranscoderClient(config);
+ * const command = new UpdatePipelineCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdatePipelineCommandInput} for command's `input` shape.
+ * @see {@link UpdatePipelineCommandOutput} for command's `response` shape.
+ * @see {@link ElasticTranscoderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdatePipelineCommand extends $Command<
   UpdatePipelineCommandInput,

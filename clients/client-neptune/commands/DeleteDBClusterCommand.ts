@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDBClusterCommandInput = DeleteDBClusterMessage;
-export type DeleteDBClusterCommandOutput = DeleteDBClusterResult & __MetadataBearer;
+export interface DeleteDBClusterCommandInput extends DeleteDBClusterMessage {}
+export interface DeleteDBClusterCommandOutput extends DeleteDBClusterResult, __MetadataBearer {}
 
 /**
  * <p>The DeleteDBCluster action deletes a previously provisioned DB cluster. When you delete a
@@ -28,6 +28,20 @@ export type DeleteDBClusterCommandOutput = DeleteDBClusterResult & __MetadataBea
  *          <p>Note that the DB Cluster cannot be deleted if deletion protection is enabled.  To
  *       delete it, you must first set its <code>DeletionProtection</code> field to
  *       <code>False</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, DeleteDBClusterCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, DeleteDBClusterCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new DeleteDBClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDBClusterCommandInput} for command's `input` shape.
+ * @see {@link DeleteDBClusterCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDBClusterCommand extends $Command<
   DeleteDBClusterCommandInput,

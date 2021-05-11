@@ -17,11 +17,33 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeMaintenanceWindowTasksCommandInput = DescribeMaintenanceWindowTasksRequest;
-export type DescribeMaintenanceWindowTasksCommandOutput = DescribeMaintenanceWindowTasksResult & __MetadataBearer;
+export interface DescribeMaintenanceWindowTasksCommandInput extends DescribeMaintenanceWindowTasksRequest {}
+export interface DescribeMaintenanceWindowTasksCommandOutput
+  extends DescribeMaintenanceWindowTasksResult,
+    __MetadataBearer {}
 
 /**
  * <p>Lists the tasks in a maintenance window.</p>
+ *          <note>
+ *             <p>For maintenance window tasks without a specified target, you cannot supply values for
+ *      <code>--max-errors</code> and <code>--max-concurrency</code>. Instead, the system inserts a
+ *     placeholder value of <code>1</code>, which may be reported in the response to this command.
+ *     These values do not affect the running of your task and can be ignored.</p>
+ *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DescribeMaintenanceWindowTasksCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DescribeMaintenanceWindowTasksCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DescribeMaintenanceWindowTasksCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeMaintenanceWindowTasksCommandInput} for command's `input` shape.
+ * @see {@link DescribeMaintenanceWindowTasksCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeMaintenanceWindowTasksCommand extends $Command<
   DescribeMaintenanceWindowTasksCommandInput,

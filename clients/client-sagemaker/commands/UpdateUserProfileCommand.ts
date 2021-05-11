@@ -1,5 +1,5 @@
 import { SageMakerClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SageMakerClient";
-import { UpdateUserProfileRequest, UpdateUserProfileResponse } from "../models/models_2";
+import { UpdateUserProfileRequest, UpdateUserProfileResponse } from "../models/models_3";
 import {
   deserializeAws_json1_1UpdateUserProfileCommand,
   serializeAws_json1_1UpdateUserProfileCommand,
@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateUserProfileCommandInput = UpdateUserProfileRequest;
-export type UpdateUserProfileCommandOutput = UpdateUserProfileResponse & __MetadataBearer;
+export interface UpdateUserProfileCommandInput extends UpdateUserProfileRequest {}
+export interface UpdateUserProfileCommandOutput extends UpdateUserProfileResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a user profile.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, UpdateUserProfileCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, UpdateUserProfileCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new UpdateUserProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateUserProfileCommandInput} for command's `input` shape.
+ * @see {@link UpdateUserProfileCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateUserProfileCommand extends $Command<
   UpdateUserProfileCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListMLTransformsCommandInput = ListMLTransformsRequest;
-export type ListMLTransformsCommandOutput = ListMLTransformsResponse & __MetadataBearer;
+export interface ListMLTransformsCommandInput extends ListMLTransformsRequest {}
+export interface ListMLTransformsCommandOutput extends ListMLTransformsResponse, __MetadataBearer {}
 
 /**
  * <p> Retrieves a sortable, filterable list of existing AWS Glue machine learning transforms in this AWS account,
@@ -26,6 +26,20 @@ export type ListMLTransformsCommandOutput = ListMLTransformsResponse & __Metadat
  *        a filter of the responses so that tagged resources can be retrieved as a group. If you choose to use tag
  *        filtering, only resources with the tags are retrieved.
  *      </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, ListMLTransformsCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, ListMLTransformsCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new ListMLTransformsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListMLTransformsCommandInput} for command's `input` shape.
+ * @see {@link ListMLTransformsCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListMLTransformsCommand extends $Command<
   ListMLTransformsCommandInput,

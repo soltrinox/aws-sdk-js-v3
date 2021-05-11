@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartWorkflowRunCommandInput = StartWorkflowRunRequest;
-export type StartWorkflowRunCommandOutput = StartWorkflowRunResponse & __MetadataBearer;
+export interface StartWorkflowRunCommandInput extends StartWorkflowRunRequest {}
+export interface StartWorkflowRunCommandOutput extends StartWorkflowRunResponse, __MetadataBearer {}
 
 /**
  * <p>Starts a new run of the specified workflow.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, StartWorkflowRunCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, StartWorkflowRunCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new StartWorkflowRunCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartWorkflowRunCommandInput} for command's `input` shape.
+ * @see {@link StartWorkflowRunCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartWorkflowRunCommand extends $Command<
   StartWorkflowRunCommandInput,

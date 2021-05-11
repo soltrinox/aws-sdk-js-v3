@@ -21,13 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeScalableTargetsCommandInput = DescribeScalableTargetsRequest;
-export type DescribeScalableTargetsCommandOutput = DescribeScalableTargetsResponse & __MetadataBearer;
+export interface DescribeScalableTargetsCommandInput extends DescribeScalableTargetsRequest {}
+export interface DescribeScalableTargetsCommandOutput extends DescribeScalableTargetsResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about the scalable targets in the specified namespace.</p>
  *          <p>You can filter the results using <code>ResourceIds</code> and
  *             <code>ScalableDimension</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationAutoScalingClient, DescribeScalableTargetsCommand } from "@aws-sdk/client-application-auto-scaling"; // ES Modules import
+ * // const { ApplicationAutoScalingClient, DescribeScalableTargetsCommand } = require("@aws-sdk/client-application-auto-scaling"); // CommonJS import
+ * const client = new ApplicationAutoScalingClient(config);
+ * const command = new DescribeScalableTargetsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeScalableTargetsCommandInput} for command's `input` shape.
+ * @see {@link DescribeScalableTargetsCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationAutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeScalableTargetsCommand extends $Command<
   DescribeScalableTargetsCommandInput,

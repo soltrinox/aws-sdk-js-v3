@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSchemaVersionCommandInput = GetSchemaVersionInput;
-export type GetSchemaVersionCommandOutput = GetSchemaVersionResponse & __MetadataBearer;
+export interface GetSchemaVersionCommandInput extends GetSchemaVersionInput {}
+export interface GetSchemaVersionCommandOutput extends GetSchemaVersionResponse, __MetadataBearer {}
 
 /**
  * <p>Get the specified schema by its unique ID assigned when a version of the schema is created or registered. Schema versions in Deleted status will not be included in the results.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetSchemaVersionCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetSchemaVersionCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetSchemaVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSchemaVersionCommandInput} for command's `input` shape.
+ * @see {@link GetSchemaVersionCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSchemaVersionCommand extends $Command<
   GetSchemaVersionCommandInput,

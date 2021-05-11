@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetGroupCommandInput = GetGroupRequest;
-export type GetGroupCommandOutput = GetGroupResponse & __MetadataBearer;
+export interface GetGroupCommandInput extends GetGroupRequest {}
+export interface GetGroupCommandOutput extends GetGroupResponse, __MetadataBearer {}
 
 /**
  * Retrieves information about a group.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, GetGroupCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, GetGroupCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new GetGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetGroupCommandInput} for command's `input` shape.
+ * @see {@link GetGroupCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetGroupCommand extends $Command<
   GetGroupCommandInput,

@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateContainerServiceDeploymentCommandInput = CreateContainerServiceDeploymentRequest;
-export type CreateContainerServiceDeploymentCommandOutput = CreateContainerServiceDeploymentResult & __MetadataBearer;
+export interface CreateContainerServiceDeploymentCommandInput extends CreateContainerServiceDeploymentRequest {}
+export interface CreateContainerServiceDeploymentCommandOutput
+  extends CreateContainerServiceDeploymentResult,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a deployment for your Amazon Lightsail container service.</p>
@@ -32,6 +34,20 @@ export type CreateContainerServiceDeploymentCommandOutput = CreateContainerServi
  *          <p>You can deploy containers to your container service using container images from a public
  *       registry like Docker Hub, or from your local machine. For more information, see <a href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-creating-container-images">Creating container images for your Amazon Lightsail container services</a> in the
  *         <i>Lightsail Dev Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, CreateContainerServiceDeploymentCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, CreateContainerServiceDeploymentCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new CreateContainerServiceDeploymentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateContainerServiceDeploymentCommandInput} for command's `input` shape.
+ * @see {@link CreateContainerServiceDeploymentCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateContainerServiceDeploymentCommand extends $Command<
   CreateContainerServiceDeploymentCommandInput,

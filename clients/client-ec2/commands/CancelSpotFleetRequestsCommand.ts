@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelSpotFleetRequestsCommandInput = CancelSpotFleetRequestsRequest;
-export type CancelSpotFleetRequestsCommandOutput = CancelSpotFleetRequestsResponse & __MetadataBearer;
+export interface CancelSpotFleetRequestsCommandInput extends CancelSpotFleetRequestsRequest {}
+export interface CancelSpotFleetRequestsCommandOutput extends CancelSpotFleetRequestsResponse, __MetadataBearer {}
 
 /**
  * <p>Cancels the specified Spot Fleet requests.</p>
@@ -27,6 +27,20 @@ export type CancelSpotFleetRequestsCommandOutput = CancelSpotFleetRequestsRespon
  *        If you terminate the instances, the Spot Fleet request enters the <code>cancelled_terminating</code> state.
  *        Otherwise, the Spot Fleet request enters the <code>cancelled_running</code> state and the instances
  *        continue to run until they are interrupted or you terminate them manually.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, CancelSpotFleetRequestsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, CancelSpotFleetRequestsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new CancelSpotFleetRequestsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelSpotFleetRequestsCommandInput} for command's `input` shape.
+ * @see {@link CancelSpotFleetRequestsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelSpotFleetRequestsCommand extends $Command<
   CancelSpotFleetRequestsCommandInput,

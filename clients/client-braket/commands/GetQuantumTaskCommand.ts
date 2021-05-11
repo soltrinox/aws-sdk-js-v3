@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetQuantumTaskCommandInput = GetQuantumTaskRequest;
-export type GetQuantumTaskCommandOutput = GetQuantumTaskResponse & __MetadataBearer;
+export interface GetQuantumTaskCommandInput extends GetQuantumTaskRequest {}
+export interface GetQuantumTaskCommandOutput extends GetQuantumTaskResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the specified quantum task.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BraketClient, GetQuantumTaskCommand } from "@aws-sdk/client-braket"; // ES Modules import
+ * // const { BraketClient, GetQuantumTaskCommand } = require("@aws-sdk/client-braket"); // CommonJS import
+ * const client = new BraketClient(config);
+ * const command = new GetQuantumTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetQuantumTaskCommandInput} for command's `input` shape.
+ * @see {@link GetQuantumTaskCommandOutput} for command's `response` shape.
+ * @see {@link BraketClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetQuantumTaskCommand extends $Command<
   GetQuantumTaskCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeImagesCommandInput = DescribeImagesRequest;
-export type DescribeImagesCommandOutput = DescribeImagesResponse & __MetadataBearer;
+export interface DescribeImagesCommandInput extends DescribeImagesRequest {}
+export interface DescribeImagesCommandOutput extends DescribeImagesResponse, __MetadataBearer {}
 
 /**
  * <p>Returns metadata about the images in a repository in a public registry.</p>
@@ -28,6 +28,20 @@ export type DescribeImagesCommandOutput = DescribeImagesResponse & __MetadataBea
  *             command shows the uncompressed image size, so it may return a larger image size than the
  *             image sizes returned by <a>DescribeImages</a>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECRPUBLICClient, DescribeImagesCommand } from "@aws-sdk/client-ecr-public"; // ES Modules import
+ * // const { ECRPUBLICClient, DescribeImagesCommand } = require("@aws-sdk/client-ecr-public"); // CommonJS import
+ * const client = new ECRPUBLICClient(config);
+ * const command = new DescribeImagesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeImagesCommandInput} for command's `input` shape.
+ * @see {@link DescribeImagesCommandOutput} for command's `response` shape.
+ * @see {@link ECRPUBLICClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeImagesCommand extends $Command<
   DescribeImagesCommandInput,

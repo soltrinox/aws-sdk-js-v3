@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RevokeClusterSecurityGroupIngressCommandInput = RevokeClusterSecurityGroupIngressMessage;
-export type RevokeClusterSecurityGroupIngressCommandOutput = RevokeClusterSecurityGroupIngressResult & __MetadataBearer;
+export interface RevokeClusterSecurityGroupIngressCommandInput extends RevokeClusterSecurityGroupIngressMessage {}
+export interface RevokeClusterSecurityGroupIngressCommandOutput
+  extends RevokeClusterSecurityGroupIngressResult,
+    __MetadataBearer {}
 
 /**
  * <p>Revokes an ingress rule in an Amazon Redshift security group for a previously authorized
@@ -26,6 +28,20 @@ export type RevokeClusterSecurityGroupIngressCommandOutput = RevokeClusterSecuri
  * For information about managing security groups, go to
  * <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">Amazon Redshift Cluster Security Groups</a> in the
  * <i>Amazon Redshift Cluster Management Guide</i>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, RevokeClusterSecurityGroupIngressCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, RevokeClusterSecurityGroupIngressCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new RevokeClusterSecurityGroupIngressCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RevokeClusterSecurityGroupIngressCommandInput} for command's `input` shape.
+ * @see {@link RevokeClusterSecurityGroupIngressCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RevokeClusterSecurityGroupIngressCommand extends $Command<
   RevokeClusterSecurityGroupIngressCommandInput,

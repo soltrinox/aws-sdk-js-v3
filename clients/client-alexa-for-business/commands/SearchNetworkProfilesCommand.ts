@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SearchNetworkProfilesCommandInput = SearchNetworkProfilesRequest;
-export type SearchNetworkProfilesCommandOutput = SearchNetworkProfilesResponse & __MetadataBearer;
+export interface SearchNetworkProfilesCommandInput extends SearchNetworkProfilesRequest {}
+export interface SearchNetworkProfilesCommandOutput extends SearchNetworkProfilesResponse, __MetadataBearer {}
 
 /**
  * <p>Searches network profiles and lists the ones that meet a set of filter and sort
  *          criteria.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, SearchNetworkProfilesCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, SearchNetworkProfilesCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new SearchNetworkProfilesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SearchNetworkProfilesCommandInput} for command's `input` shape.
+ * @see {@link SearchNetworkProfilesCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SearchNetworkProfilesCommand extends $Command<
   SearchNetworkProfilesCommandInput,

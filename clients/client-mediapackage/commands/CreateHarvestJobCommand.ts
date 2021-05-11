@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateHarvestJobCommandInput = CreateHarvestJobRequest;
-export type CreateHarvestJobCommandOutput = CreateHarvestJobResponse & __MetadataBearer;
+export interface CreateHarvestJobCommandInput extends CreateHarvestJobRequest {}
+export interface CreateHarvestJobCommandOutput extends CreateHarvestJobResponse, __MetadataBearer {}
 
 /**
  * Creates a new HarvestJob record.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaPackageClient, CreateHarvestJobCommand } from "@aws-sdk/client-mediapackage"; // ES Modules import
+ * // const { MediaPackageClient, CreateHarvestJobCommand } = require("@aws-sdk/client-mediapackage"); // CommonJS import
+ * const client = new MediaPackageClient(config);
+ * const command = new CreateHarvestJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateHarvestJobCommandInput} for command's `input` shape.
+ * @see {@link CreateHarvestJobCommandOutput} for command's `response` shape.
+ * @see {@link MediaPackageClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateHarvestJobCommand extends $Command<
   CreateHarvestJobCommandInput,

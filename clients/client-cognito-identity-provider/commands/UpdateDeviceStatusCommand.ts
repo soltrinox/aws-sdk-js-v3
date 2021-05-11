@@ -22,11 +22,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDeviceStatusCommandInput = UpdateDeviceStatusRequest;
-export type UpdateDeviceStatusCommandOutput = UpdateDeviceStatusResponse & __MetadataBearer;
+export interface UpdateDeviceStatusCommandInput extends UpdateDeviceStatusRequest {}
+export interface UpdateDeviceStatusCommandOutput extends UpdateDeviceStatusResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the device status.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, UpdateDeviceStatusCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, UpdateDeviceStatusCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new UpdateDeviceStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDeviceStatusCommandInput} for command's `input` shape.
+ * @see {@link UpdateDeviceStatusCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDeviceStatusCommand extends $Command<
   UpdateDeviceStatusCommandInput,

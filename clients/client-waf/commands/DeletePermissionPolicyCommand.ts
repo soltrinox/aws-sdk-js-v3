@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeletePermissionPolicyCommandInput = DeletePermissionPolicyRequest;
-export type DeletePermissionPolicyCommandOutput = DeletePermissionPolicyResponse & __MetadataBearer;
+export interface DeletePermissionPolicyCommandInput extends DeletePermissionPolicyRequest {}
+export interface DeletePermissionPolicyCommandOutput extends DeletePermissionPolicyResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -31,6 +31,20 @@ export type DeletePermissionPolicyCommandOutput = DeletePermissionPolicyResponse
  *          </note>
  *          <p>Permanently deletes an IAM policy from the specified RuleGroup.</p>
  *          <p>The user making the request must be the owner of the RuleGroup.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFClient, DeletePermissionPolicyCommand } from "@aws-sdk/client-waf"; // ES Modules import
+ * // const { WAFClient, DeletePermissionPolicyCommand } = require("@aws-sdk/client-waf"); // CommonJS import
+ * const client = new WAFClient(config);
+ * const command = new DeletePermissionPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeletePermissionPolicyCommandInput} for command's `input` shape.
+ * @see {@link DeletePermissionPolicyCommandOutput} for command's `response` shape.
+ * @see {@link WAFClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeletePermissionPolicyCommand extends $Command<
   DeletePermissionPolicyCommandInput,

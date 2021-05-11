@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateHITCommandInput = CreateHITRequest;
-export type CreateHITCommandOutput = CreateHITResponse & __MetadataBearer;
+export interface CreateHITCommandInput extends CreateHITRequest {}
+export interface CreateHITCommandOutput extends CreateHITResponse, __MetadataBearer {}
 
 /**
  * <p>The <code>CreateHIT</code> operation creates a new Human Intelligence Task (HIT).
@@ -35,6 +35,20 @@ export type CreateHITCommandOutput = CreateHITResponse & __MetadataBearer;
  *             <p> If a HIT is created with 10 or more maximum assignments, there is an additional fee. For more information, see
  *             <a href="https://requester.mturk.com/pricing">Amazon Mechanical Turk Pricing</a>.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, CreateHITCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, CreateHITCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new CreateHITCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateHITCommandInput} for command's `input` shape.
+ * @see {@link CreateHITCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateHITCommand extends $Command<
   CreateHITCommandInput,

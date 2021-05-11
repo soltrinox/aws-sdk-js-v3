@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopMatchmakingCommandInput = StopMatchmakingInput;
-export type StopMatchmakingCommandOutput = StopMatchmakingOutput & __MetadataBearer;
+export interface StopMatchmakingCommandInput extends StopMatchmakingInput {}
+export interface StopMatchmakingCommandOutput extends StopMatchmakingOutput, __MetadataBearer {}
 
 /**
  * <p>Cancels a matchmaking ticket or match backfill ticket that is currently being
@@ -38,38 +38,33 @@ export type StopMatchmakingCommandOutput = StopMatchmakingOutput & __MetadataBea
  *          </p>
  *         <p>
  *             <a href="https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html">
- *                 Add FlexMatch to a Game Client</a>
+ *                 Add FlexMatch to a game client</a>
  *          </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>StartMatchmaking</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeMatchmaking</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>StopMatchmaking</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>AcceptMatch</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>StartMatchBackfill</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>StartMatchmaking</a> |
+ *                     <a>DescribeMatchmaking</a> |
+ *                     <a>StopMatchmaking</a> |
+ *                     <a>AcceptMatch</a> |
+ *                     <a>StartMatchBackfill</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, StopMatchmakingCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, StopMatchmakingCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new StopMatchmakingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopMatchmakingCommandInput} for command's `input` shape.
+ * @see {@link StopMatchmakingCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopMatchmakingCommand extends $Command<
   StopMatchmakingCommandInput,

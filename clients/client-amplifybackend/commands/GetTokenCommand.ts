@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTokenCommandInput = GetTokenRequest;
-export type GetTokenCommandOutput = GetTokenResponse & __MetadataBearer;
+export interface GetTokenCommandInput extends GetTokenRequest {}
+export interface GetTokenCommandOutput extends GetTokenResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the challenge token based on the given appId and sessionId.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AmplifyBackendClient, GetTokenCommand } from "@aws-sdk/client-amplifybackend"; // ES Modules import
+ * // const { AmplifyBackendClient, GetTokenCommand } = require("@aws-sdk/client-amplifybackend"); // CommonJS import
+ * const client = new AmplifyBackendClient(config);
+ * const command = new GetTokenCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTokenCommandInput} for command's `input` shape.
+ * @see {@link GetTokenCommandOutput} for command's `response` shape.
+ * @see {@link AmplifyBackendClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTokenCommand extends $Command<
   GetTokenCommandInput,

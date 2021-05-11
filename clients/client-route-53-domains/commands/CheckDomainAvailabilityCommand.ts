@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CheckDomainAvailabilityCommandInput = CheckDomainAvailabilityRequest;
-export type CheckDomainAvailabilityCommandOutput = CheckDomainAvailabilityResponse & __MetadataBearer;
+export interface CheckDomainAvailabilityCommandInput extends CheckDomainAvailabilityRequest {}
+export interface CheckDomainAvailabilityCommandOutput extends CheckDomainAvailabilityResponse, __MetadataBearer {}
 
 /**
  * <p>This operation checks the availability of one domain name. Note that if the availability status of a domain is pending, you must
  * 			submit another request to determine the availability of the domain name.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53DomainsClient, CheckDomainAvailabilityCommand } from "@aws-sdk/client-route-53-domains"; // ES Modules import
+ * // const { Route53DomainsClient, CheckDomainAvailabilityCommand } = require("@aws-sdk/client-route-53-domains"); // CommonJS import
+ * const client = new Route53DomainsClient(config);
+ * const command = new CheckDomainAvailabilityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CheckDomainAvailabilityCommandInput} for command's `input` shape.
+ * @see {@link CheckDomainAvailabilityCommandOutput} for command's `response` shape.
+ * @see {@link Route53DomainsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CheckDomainAvailabilityCommand extends $Command<
   CheckDomainAvailabilityCommandInput,

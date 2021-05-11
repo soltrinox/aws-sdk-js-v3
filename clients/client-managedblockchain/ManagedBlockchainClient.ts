@@ -14,7 +14,13 @@ import { ListNetworksCommandInput, ListNetworksCommandOutput } from "./commands/
 import { ListNodesCommandInput, ListNodesCommandOutput } from "./commands/ListNodesCommand";
 import { ListProposalVotesCommandInput, ListProposalVotesCommandOutput } from "./commands/ListProposalVotesCommand";
 import { ListProposalsCommandInput, ListProposalsCommandOutput } from "./commands/ListProposalsCommand";
+import {
+  ListTagsForResourceCommandInput,
+  ListTagsForResourceCommandOutput,
+} from "./commands/ListTagsForResourceCommand";
 import { RejectInvitationCommandInput, RejectInvitationCommandOutput } from "./commands/RejectInvitationCommand";
+import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
+import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
 import { UpdateMemberCommandInput, UpdateMemberCommandOutput } from "./commands/UpdateMemberCommand";
 import { UpdateNodeCommandInput, UpdateNodeCommandOutput } from "./commands/UpdateNodeCommand";
 import { VoteOnProposalCommandInput, VoteOnProposalCommandOutput } from "./commands/VoteOnProposalCommand";
@@ -86,7 +92,10 @@ export type ServiceInputTypes =
   | ListNodesCommandInput
   | ListProposalVotesCommandInput
   | ListProposalsCommandInput
+  | ListTagsForResourceCommandInput
   | RejectInvitationCommandInput
+  | TagResourceCommandInput
+  | UntagResourceCommandInput
   | UpdateMemberCommandInput
   | UpdateNodeCommandInput
   | VoteOnProposalCommandInput;
@@ -108,7 +117,10 @@ export type ServiceOutputTypes =
   | ListNodesCommandOutput
   | ListProposalVotesCommandOutput
   | ListProposalsCommandOutput
+  | ListTagsForResourceCommandOutput
   | RejectInvitationCommandOutput
+  | TagResourceCommandOutput
+  | UntagResourceCommandOutput
   | UpdateMemberCommandOutput
   | UpdateNodeCommandOutput
   | VoteOnProposalCommandOutput;
@@ -178,7 +190,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -209,7 +221,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type ManagedBlockchainClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type ManagedBlockchainClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -217,8 +229,12 @@ export type ManagedBlockchainClientConfig = Partial<__SmithyConfiguration<__Http
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of ManagedBlockchainClient class constructor that set the region, credentials and other options.
+ */
+export interface ManagedBlockchainClientConfig extends ManagedBlockchainClientConfigType {}
 
-export type ManagedBlockchainClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type ManagedBlockchainClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -226,10 +242,16 @@ export type ManagedBlockchainClientResolvedConfig = __SmithyResolvedConfiguratio
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of ManagedBlockchainClient class. This is resolved and normalized from the {@link ManagedBlockchainClientConfig | constructor configuration interface}.
+ */
+export interface ManagedBlockchainClientResolvedConfig extends ManagedBlockchainClientResolvedConfigType {}
 
 /**
  * <p></p>
- *          <p>Amazon Managed Blockchain is a fully managed service for creating and managing blockchain networks using open source frameworks. Blockchain allows you to build applications where multiple parties can securely and transparently run transactions and share data without the need for a trusted, central authority. Currently, Managed Blockchain supports the Hyperledger Fabric open source framework. </p>
+ *          <p>Amazon Managed Blockchain is a fully managed service for creating and managing blockchain networks using open-source frameworks. Blockchain allows you to build applications where multiple parties can securely and transparently run transactions and share data without the need for a trusted, central authority.</p>
+ *         <p>Managed Blockchain supports the Hyperledger Fabric and Ethereum open-source frameworks. Because of fundamental differences between the frameworks, some API actions or data types may only apply in the context of one framework and not the other. For example, actions related to Hyperledger Fabric network members such as <code>CreateMember</code> and <code>DeleteMember</code> do not apply to Ethereum.</p>
+ *         <p>The description for each action indicates the framework or frameworks to which it applies. Data types and properties that apply only in the context of a particular framework are similarly indicated.</p>
  */
 export class ManagedBlockchainClient extends __Client<
   __HttpHandlerOptions,
@@ -237,6 +259,9 @@ export class ManagedBlockchainClient extends __Client<
   ServiceOutputTypes,
   ManagedBlockchainClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of ManagedBlockchainClient class. This is resolved and normalized from the {@link ManagedBlockchainClientConfig | constructor configuration interface}.
+   */
   readonly config: ManagedBlockchainClientResolvedConfig;
 
   constructor(configuration: ManagedBlockchainClientConfig) {

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAttachmentCommandInput = DescribeAttachmentRequest;
-export type DescribeAttachmentCommandOutput = DescribeAttachmentResponse & __MetadataBearer;
+export interface DescribeAttachmentCommandInput extends DescribeAttachmentRequest {}
+export interface DescribeAttachmentCommandOutput extends DescribeAttachmentResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the attachment that has the specified ID. Attachments can include screenshots,
@@ -40,6 +40,20 @@ export type DescribeAttachmentCommandOutput = DescribeAttachmentResponse & __Met
  *                 </li>
  *             </ul>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SupportClient, DescribeAttachmentCommand } from "@aws-sdk/client-support"; // ES Modules import
+ * // const { SupportClient, DescribeAttachmentCommand } = require("@aws-sdk/client-support"); // CommonJS import
+ * const client = new SupportClient(config);
+ * const command = new DescribeAttachmentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAttachmentCommandInput} for command's `input` shape.
+ * @see {@link DescribeAttachmentCommandOutput} for command's `response` shape.
+ * @see {@link SupportClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAttachmentCommand extends $Command<
   DescribeAttachmentCommandInput,

@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeRepositoryCommandInput = DescribeRepositoryRequest;
-export type DescribeRepositoryCommandOutput = DescribeRepositoryResult & __MetadataBearer;
+export interface DescribeRepositoryCommandInput extends DescribeRepositoryRequest {}
+export interface DescribeRepositoryCommandOutput extends DescribeRepositoryResult, __MetadataBearer {}
 
 /**
  * <p>
  *          Returns a <code>RepositoryDescription</code> object that contains detailed information
  *         about the requested repository.
  *        </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeartifactClient, DescribeRepositoryCommand } from "@aws-sdk/client-codeartifact"; // ES Modules import
+ * // const { CodeartifactClient, DescribeRepositoryCommand } = require("@aws-sdk/client-codeartifact"); // CommonJS import
+ * const client = new CodeartifactClient(config);
+ * const command = new DescribeRepositoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeRepositoryCommandInput} for command's `input` shape.
+ * @see {@link DescribeRepositoryCommandOutput} for command's `response` shape.
+ * @see {@link CodeartifactClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeRepositoryCommand extends $Command<
   DescribeRepositoryCommandInput,

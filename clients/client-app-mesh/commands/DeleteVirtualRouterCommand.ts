@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteVirtualRouterCommandInput = DeleteVirtualRouterInput;
-export type DeleteVirtualRouterCommandOutput = DeleteVirtualRouterOutput & __MetadataBearer;
+export interface DeleteVirtualRouterCommandInput extends DeleteVirtualRouterInput {}
+export interface DeleteVirtualRouterCommandOutput extends DeleteVirtualRouterOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes an existing virtual router.</p>
  *          <p>You must delete any routes associated with the virtual router before you can delete the
  *          router itself.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppMeshClient, DeleteVirtualRouterCommand } from "@aws-sdk/client-app-mesh"; // ES Modules import
+ * // const { AppMeshClient, DeleteVirtualRouterCommand } = require("@aws-sdk/client-app-mesh"); // CommonJS import
+ * const client = new AppMeshClient(config);
+ * const command = new DeleteVirtualRouterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteVirtualRouterCommandInput} for command's `input` shape.
+ * @see {@link DeleteVirtualRouterCommandOutput} for command's `response` shape.
+ * @see {@link AppMeshClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteVirtualRouterCommand extends $Command<
   DeleteVirtualRouterCommandInput,

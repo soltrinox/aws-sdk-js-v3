@@ -17,15 +17,35 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateMeetingWithAttendeesCommandInput = CreateMeetingWithAttendeesRequest;
-export type CreateMeetingWithAttendeesCommandOutput = CreateMeetingWithAttendeesResponse & __MetadataBearer;
+export interface CreateMeetingWithAttendeesCommandInput extends CreateMeetingWithAttendeesRequest {}
+export interface CreateMeetingWithAttendeesCommandOutput extends CreateMeetingWithAttendeesResponse, __MetadataBearer {}
 
 /**
- * <p>Creates a new Amazon Chime SDK meeting in the specified media Region, with attendees. For more information about specifying media Regions,
- *       see <a href="https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html">Amazon Chime SDK Media Regions</a> in the
- *       <i>Amazon Chime Developer Guide</i>. For more information about the Amazon Chime SDK, see
- *       <a href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using the Amazon Chime SDK</a> in the
- *       <i>Amazon Chime Developer Guide</i>.</p>
+ * <p>
+ * Creates a new Amazon Chime SDK meeting in the specified media Region, with attendees. For more information about specifying media Regions, see
+ * <a href="https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html">Amazon Chime SDK Media Regions</a>
+ * in the
+ * <i>Amazon Chime Developer Guide</i>
+ * . For more information about the Amazon Chime SDK, see
+ * <a href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using the Amazon Chime SDK</a>
+ * in the
+ * <i>Amazon Chime Developer Guide</i>
+ * .
+ * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, CreateMeetingWithAttendeesCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, CreateMeetingWithAttendeesCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new CreateMeetingWithAttendeesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateMeetingWithAttendeesCommandInput} for command's `input` shape.
+ * @see {@link CreateMeetingWithAttendeesCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateMeetingWithAttendeesCommand extends $Command<
   CreateMeetingWithAttendeesCommandInput,

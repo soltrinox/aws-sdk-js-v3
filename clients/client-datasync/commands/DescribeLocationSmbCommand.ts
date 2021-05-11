@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeLocationSmbCommandInput = DescribeLocationSmbRequest;
-export type DescribeLocationSmbCommandOutput = DescribeLocationSmbResponse & __MetadataBearer;
+export interface DescribeLocationSmbCommandInput extends DescribeLocationSmbRequest {}
+export interface DescribeLocationSmbCommandOutput extends DescribeLocationSmbResponse, __MetadataBearer {}
 
 /**
  * <p>Returns metadata, such as the path and user information about an SMB location.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataSyncClient, DescribeLocationSmbCommand } from "@aws-sdk/client-datasync"; // ES Modules import
+ * // const { DataSyncClient, DescribeLocationSmbCommand } = require("@aws-sdk/client-datasync"); // CommonJS import
+ * const client = new DataSyncClient(config);
+ * const command = new DescribeLocationSmbCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeLocationSmbCommandInput} for command's `input` shape.
+ * @see {@link DescribeLocationSmbCommandOutput} for command's `response` shape.
+ * @see {@link DataSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeLocationSmbCommand extends $Command<
   DescribeLocationSmbCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBandwidthRateLimitCommandInput = DeleteBandwidthRateLimitInput;
-export type DeleteBandwidthRateLimitCommandOutput = DeleteBandwidthRateLimitOutput & __MetadataBearer;
+export interface DeleteBandwidthRateLimitCommandInput extends DeleteBandwidthRateLimitInput {}
+export interface DeleteBandwidthRateLimitCommandOutput extends DeleteBandwidthRateLimitOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes the bandwidth rate limits of a gateway. You can delete either the upload and
@@ -26,6 +26,20 @@ export type DeleteBandwidthRateLimitCommandOutput = DeleteBandwidthRateLimitOutp
  *          limits, the other limit remains unchanged. To specify which gateway to work with, use the
  *          Amazon Resource Name (ARN) of the gateway in your request. This operation is supported for
  *          the stored volume, cached volume and tape gateway types.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, DeleteBandwidthRateLimitCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, DeleteBandwidthRateLimitCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new DeleteBandwidthRateLimitCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBandwidthRateLimitCommandInput} for command's `input` shape.
+ * @see {@link DeleteBandwidthRateLimitCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBandwidthRateLimitCommand extends $Command<
   DeleteBandwidthRateLimitCommandInput,

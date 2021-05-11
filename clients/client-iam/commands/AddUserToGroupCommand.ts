@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddUserToGroupCommandInput = AddUserToGroupRequest;
-export type AddUserToGroupCommandOutput = __MetadataBearer;
+export interface AddUserToGroupCommandInput extends AddUserToGroupRequest {}
+export interface AddUserToGroupCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Adds the specified user to the specified group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, AddUserToGroupCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, AddUserToGroupCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new AddUserToGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddUserToGroupCommandInput} for command's `input` shape.
+ * @see {@link AddUserToGroupCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddUserToGroupCommand extends $Command<
   AddUserToGroupCommandInput,

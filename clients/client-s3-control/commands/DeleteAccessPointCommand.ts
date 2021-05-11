@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAccessPointCommandInput = DeleteAccessPointRequest;
-export type DeleteAccessPointCommandOutput = __MetadataBearer;
+export interface DeleteAccessPointCommandInput extends DeleteAccessPointRequest {}
+export interface DeleteAccessPointCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified access point.</p>
@@ -43,6 +43,20 @@ export type DeleteAccessPointCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, DeleteAccessPointCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, DeleteAccessPointCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new DeleteAccessPointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAccessPointCommandInput} for command's `input` shape.
+ * @see {@link DeleteAccessPointCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAccessPointCommand extends $Command<
   DeleteAccessPointCommandInput,

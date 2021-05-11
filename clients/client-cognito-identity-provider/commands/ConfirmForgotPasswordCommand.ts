@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ConfirmForgotPasswordCommandInput = ConfirmForgotPasswordRequest;
-export type ConfirmForgotPasswordCommandOutput = ConfirmForgotPasswordResponse & __MetadataBearer;
+export interface ConfirmForgotPasswordCommandInput extends ConfirmForgotPasswordRequest {}
+export interface ConfirmForgotPasswordCommandOutput extends ConfirmForgotPasswordResponse, __MetadataBearer {}
 
 /**
  * <p>Allows a user to enter a confirmation code to reset a forgotten password.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, ConfirmForgotPasswordCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, ConfirmForgotPasswordCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new ConfirmForgotPasswordCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ConfirmForgotPasswordCommandInput} for command's `input` shape.
+ * @see {@link ConfirmForgotPasswordCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ConfirmForgotPasswordCommand extends $Command<
   ConfirmForgotPasswordCommandInput,

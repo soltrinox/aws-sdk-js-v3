@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateProxySessionCommandInput = UpdateProxySessionRequest;
-export type UpdateProxySessionCommandOutput = UpdateProxySessionResponse & __MetadataBearer;
+export interface UpdateProxySessionCommandInput extends UpdateProxySessionRequest {}
+export interface UpdateProxySessionCommandOutput extends UpdateProxySessionResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the specified proxy session details, such as voice or SMS capabilities.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, UpdateProxySessionCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, UpdateProxySessionCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new UpdateProxySessionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateProxySessionCommandInput} for command's `input` shape.
+ * @see {@link UpdateProxySessionCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateProxySessionCommand extends $Command<
   UpdateProxySessionCommandInput,

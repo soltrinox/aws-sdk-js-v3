@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateSipMediaApplicationCommandInput = UpdateSipMediaApplicationRequest;
-export type UpdateSipMediaApplicationCommandOutput = UpdateSipMediaApplicationResponse & __MetadataBearer;
+export interface UpdateSipMediaApplicationCommandInput extends UpdateSipMediaApplicationRequest {}
+export interface UpdateSipMediaApplicationCommandOutput extends UpdateSipMediaApplicationResponse, __MetadataBearer {}
 
 /**
- * <p>Updates the details for the specified SIP media application.</p>
+ * <p>Updates the details of the specified SIP media application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, UpdateSipMediaApplicationCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, UpdateSipMediaApplicationCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new UpdateSipMediaApplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateSipMediaApplicationCommandInput} for command's `input` shape.
+ * @see {@link UpdateSipMediaApplicationCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateSipMediaApplicationCommand extends $Command<
   UpdateSipMediaApplicationCommandInput,

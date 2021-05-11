@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAccountAssignmentDeletionStatusCommandInput = DescribeAccountAssignmentDeletionStatusRequest;
-export type DescribeAccountAssignmentDeletionStatusCommandOutput = DescribeAccountAssignmentDeletionStatusResponse &
-  __MetadataBearer;
+export interface DescribeAccountAssignmentDeletionStatusCommandInput
+  extends DescribeAccountAssignmentDeletionStatusRequest {}
+export interface DescribeAccountAssignmentDeletionStatusCommandOutput
+  extends DescribeAccountAssignmentDeletionStatusResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Describes the status of the assignment deletion request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSOAdminClient, DescribeAccountAssignmentDeletionStatusCommand } from "@aws-sdk/client-sso-admin"; // ES Modules import
+ * // const { SSOAdminClient, DescribeAccountAssignmentDeletionStatusCommand } = require("@aws-sdk/client-sso-admin"); // CommonJS import
+ * const client = new SSOAdminClient(config);
+ * const command = new DescribeAccountAssignmentDeletionStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAccountAssignmentDeletionStatusCommandInput} for command's `input` shape.
+ * @see {@link DescribeAccountAssignmentDeletionStatusCommandOutput} for command's `response` shape.
+ * @see {@link SSOAdminClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAccountAssignmentDeletionStatusCommand extends $Command<
   DescribeAccountAssignmentDeletionStatusCommandInput,

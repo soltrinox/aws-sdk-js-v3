@@ -1,5 +1,5 @@
 import { LightsailClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../LightsailClient";
-import { GetKeyPairRequest, GetKeyPairResult } from "../models/models_0";
+import { GetKeyPairRequest, GetKeyPairResult } from "../models/models_1";
 import {
   deserializeAws_json1_1GetKeyPairCommand,
   serializeAws_json1_1GetKeyPairCommand,
@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetKeyPairCommandInput = GetKeyPairRequest;
-export type GetKeyPairCommandOutput = GetKeyPairResult & __MetadataBearer;
+export interface GetKeyPairCommandInput extends GetKeyPairRequest {}
+export interface GetKeyPairCommandOutput extends GetKeyPairResult, __MetadataBearer {}
 
 /**
  * <p>Returns information about a specific key pair.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetKeyPairCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetKeyPairCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetKeyPairCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetKeyPairCommandInput} for command's `input` shape.
+ * @see {@link GetKeyPairCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetKeyPairCommand extends $Command<
   GetKeyPairCommandInput,

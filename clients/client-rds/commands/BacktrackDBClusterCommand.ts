@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BacktrackDBClusterCommandInput = BacktrackDBClusterMessage;
-export type BacktrackDBClusterCommandOutput = DBClusterBacktrack & __MetadataBearer;
+export interface BacktrackDBClusterCommandInput extends BacktrackDBClusterMessage {}
+export interface BacktrackDBClusterCommandOutput extends DBClusterBacktrack, __MetadataBearer {}
 
 /**
  * <p>Backtracks a DB cluster to a specific time, without creating a new DB cluster.</p>
@@ -30,6 +30,20 @@ export type BacktrackDBClusterCommandOutput = DBClusterBacktrack & __MetadataBea
  *         <note>
  *             <p>This action only applies to Aurora MySQL DB clusters.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, BacktrackDBClusterCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, BacktrackDBClusterCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new BacktrackDBClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BacktrackDBClusterCommandInput} for command's `input` shape.
+ * @see {@link BacktrackDBClusterCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BacktrackDBClusterCommand extends $Command<
   BacktrackDBClusterCommandInput,

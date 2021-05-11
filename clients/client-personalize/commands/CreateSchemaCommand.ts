@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSchemaCommandInput = CreateSchemaRequest;
-export type CreateSchemaCommandOutput = CreateSchemaResponse & __MetadataBearer;
+export interface CreateSchemaCommandInput extends CreateSchemaRequest {}
+export interface CreateSchemaCommandOutput extends CreateSchemaResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an Amazon Personalize schema from the specified schema string. The schema you create
@@ -47,6 +47,20 @@ export type CreateSchemaCommandOutput = CreateSchemaResponse & __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PersonalizeClient, CreateSchemaCommand } from "@aws-sdk/client-personalize"; // ES Modules import
+ * // const { PersonalizeClient, CreateSchemaCommand } = require("@aws-sdk/client-personalize"); // CommonJS import
+ * const client = new PersonalizeClient(config);
+ * const command = new CreateSchemaCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSchemaCommandInput} for command's `input` shape.
+ * @see {@link CreateSchemaCommandOutput} for command's `response` shape.
+ * @see {@link PersonalizeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSchemaCommand extends $Command<
   CreateSchemaCommandInput,

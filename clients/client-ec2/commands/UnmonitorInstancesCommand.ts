@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UnmonitorInstancesCommandInput = UnmonitorInstancesRequest;
-export type UnmonitorInstancesCommandOutput = UnmonitorInstancesResult & __MetadataBearer;
+export interface UnmonitorInstancesCommandInput extends UnmonitorInstancesRequest {}
+export interface UnmonitorInstancesCommandOutput extends UnmonitorInstancesResult, __MetadataBearer {}
 
 /**
  * <p>Disables detailed monitoring for a running instance. For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html">Monitoring
  *             your instances and volumes</a> in the <i>Amazon EC2 User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, UnmonitorInstancesCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, UnmonitorInstancesCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new UnmonitorInstancesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UnmonitorInstancesCommandInput} for command's `input` shape.
+ * @see {@link UnmonitorInstancesCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UnmonitorInstancesCommand extends $Command<
   UnmonitorInstancesCommandInput,

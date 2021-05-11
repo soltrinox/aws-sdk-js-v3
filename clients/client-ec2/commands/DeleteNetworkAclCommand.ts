@@ -1,5 +1,5 @@
 import { EC2ClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../EC2Client";
-import { DeleteNetworkAclRequest } from "../models/models_1";
+import { DeleteNetworkAclRequest } from "../models/models_2";
 import {
   deserializeAws_ec2DeleteNetworkAclCommand,
   serializeAws_ec2DeleteNetworkAclCommand,
@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteNetworkAclCommandInput = DeleteNetworkAclRequest;
-export type DeleteNetworkAclCommandOutput = __MetadataBearer;
+export interface DeleteNetworkAclCommandInput extends DeleteNetworkAclRequest {}
+export interface DeleteNetworkAclCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets. You can't delete the default network ACL.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DeleteNetworkAclCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DeleteNetworkAclCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DeleteNetworkAclCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteNetworkAclCommandInput} for command's `input` shape.
+ * @see {@link DeleteNetworkAclCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteNetworkAclCommand extends $Command<
   DeleteNetworkAclCommandInput,

@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ResetPersonalPINCommandInput = ResetPersonalPINRequest;
-export type ResetPersonalPINCommandOutput = ResetPersonalPINResponse & __MetadataBearer;
+export interface ResetPersonalPINCommandInput extends ResetPersonalPINRequest {}
+export interface ResetPersonalPINCommandOutput extends ResetPersonalPINResponse, __MetadataBearer {}
 
 /**
- * <p>Resets the personal meeting PIN for the specified user on an Amazon Chime account.
- *       Returns the <a>User</a> object with the updated personal meeting PIN.</p>
+ * <p>Resets the personal meeting PIN for the specified user on an Amazon Chime account. Returns
+ *             the <a>User</a> object with the updated personal meeting PIN.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, ResetPersonalPINCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, ResetPersonalPINCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new ResetPersonalPINCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ResetPersonalPINCommandInput} for command's `input` shape.
+ * @see {@link ResetPersonalPINCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ResetPersonalPINCommand extends $Command<
   ResetPersonalPINCommandInput,

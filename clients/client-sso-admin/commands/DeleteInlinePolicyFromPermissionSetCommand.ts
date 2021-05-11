@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteInlinePolicyFromPermissionSetCommandInput = DeleteInlinePolicyFromPermissionSetRequest;
-export type DeleteInlinePolicyFromPermissionSetCommandOutput = DeleteInlinePolicyFromPermissionSetResponse &
-  __MetadataBearer;
+export interface DeleteInlinePolicyFromPermissionSetCommandInput extends DeleteInlinePolicyFromPermissionSetRequest {}
+export interface DeleteInlinePolicyFromPermissionSetCommandOutput
+  extends DeleteInlinePolicyFromPermissionSetResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Deletes the inline policy from a specified permission set.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSOAdminClient, DeleteInlinePolicyFromPermissionSetCommand } from "@aws-sdk/client-sso-admin"; // ES Modules import
+ * // const { SSOAdminClient, DeleteInlinePolicyFromPermissionSetCommand } = require("@aws-sdk/client-sso-admin"); // CommonJS import
+ * const client = new SSOAdminClient(config);
+ * const command = new DeleteInlinePolicyFromPermissionSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteInlinePolicyFromPermissionSetCommandInput} for command's `input` shape.
+ * @see {@link DeleteInlinePolicyFromPermissionSetCommandOutput} for command's `response` shape.
+ * @see {@link SSOAdminClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteInlinePolicyFromPermissionSetCommand extends $Command<
   DeleteInlinePolicyFromPermissionSetCommandInput,

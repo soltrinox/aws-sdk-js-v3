@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAuthorizationTokenCommandInput = GetAuthorizationTokenRequest;
-export type GetAuthorizationTokenCommandOutput = GetAuthorizationTokenResult & __MetadataBearer;
+export interface GetAuthorizationTokenCommandInput extends GetAuthorizationTokenRequest {}
+export interface GetAuthorizationTokenCommandOutput extends GetAuthorizationTokenResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -42,6 +42,20 @@ export type GetAuthorizationTokenCommandOutput = GetAuthorizationTokenResult & _
  *          <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html">Using IAM Roles</a>
  *          for more information on controlling session duration. </p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeartifactClient, GetAuthorizationTokenCommand } from "@aws-sdk/client-codeartifact"; // ES Modules import
+ * // const { CodeartifactClient, GetAuthorizationTokenCommand } = require("@aws-sdk/client-codeartifact"); // CommonJS import
+ * const client = new CodeartifactClient(config);
+ * const command = new GetAuthorizationTokenCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAuthorizationTokenCommandInput} for command's `input` shape.
+ * @see {@link GetAuthorizationTokenCommandOutput} for command's `response` shape.
+ * @see {@link CodeartifactClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAuthorizationTokenCommand extends $Command<
   GetAuthorizationTokenCommandInput,

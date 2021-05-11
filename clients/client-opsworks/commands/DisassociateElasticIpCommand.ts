@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateElasticIpCommandInput = DisassociateElasticIpRequest;
-export type DisassociateElasticIpCommandOutput = __MetadataBearer;
+export interface DisassociateElasticIpCommandInput extends DisassociateElasticIpRequest {}
+export interface DisassociateElasticIpCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Disassociates an Elastic IP address from its instance. The address remains registered with
@@ -28,6 +28,20 @@ export type DisassociateElasticIpCommandOutput = __MetadataBearer;
  *       level for the stack, or an attached policy that explicitly grants permissions. For more
  *       information on user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, DisassociateElasticIpCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, DisassociateElasticIpCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new DisassociateElasticIpCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateElasticIpCommandInput} for command's `input` shape.
+ * @see {@link DisassociateElasticIpCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateElasticIpCommand extends $Command<
   DisassociateElasticIpCommandInput,

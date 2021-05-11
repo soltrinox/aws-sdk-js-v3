@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListStreamsCommandInput = ListStreamsInput;
-export type ListStreamsCommandOutput = ListStreamsOutput & __MetadataBearer;
+export interface ListStreamsCommandInput extends ListStreamsInput {}
+export interface ListStreamsCommandOutput extends ListStreamsOutput, __MetadataBearer {}
 
 /**
  * <p>Returns an array of stream ARNs associated with the current account and endpoint. If the
@@ -27,6 +27,20 @@ export type ListStreamsCommandOutput = ListStreamsOutput & __MetadataBearer;
  *          <note>
  *             <p>You can call <code>ListStreams</code> at a maximum rate of 5 times per second.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBStreamsClient, ListStreamsCommand } from "@aws-sdk/client-dynamodb-streams"; // ES Modules import
+ * // const { DynamoDBStreamsClient, ListStreamsCommand } = require("@aws-sdk/client-dynamodb-streams"); // CommonJS import
+ * const client = new DynamoDBStreamsClient(config);
+ * const command = new ListStreamsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListStreamsCommandInput} for command's `input` shape.
+ * @see {@link ListStreamsCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBStreamsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListStreamsCommand extends $Command<
   ListStreamsCommandInput,

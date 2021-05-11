@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type QueryIdempotencyTokenAutoFillCommandInput = QueryIdempotencyTokenAutoFillInput;
-export type QueryIdempotencyTokenAutoFillCommandOutput = __MetadataBearer;
+export interface QueryIdempotencyTokenAutoFillCommandInput extends QueryIdempotencyTokenAutoFillInput {}
+export interface QueryIdempotencyTokenAutoFillCommandOutput extends __MetadataBearer {}
 
 /**
  * Automatically adds idempotency tokens.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QueryProtocolClient, QueryIdempotencyTokenAutoFillCommand } from "@aws-sdk/aws-query"; // ES Modules import
+ * // const { QueryProtocolClient, QueryIdempotencyTokenAutoFillCommand } = require("@aws-sdk/aws-query"); // CommonJS import
+ * const client = new QueryProtocolClient(config);
+ * const command = new QueryIdempotencyTokenAutoFillCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link QueryIdempotencyTokenAutoFillCommandInput} for command's `input` shape.
+ * @see {@link QueryIdempotencyTokenAutoFillCommandOutput} for command's `response` shape.
+ * @see {@link QueryProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class QueryIdempotencyTokenAutoFillCommand extends $Command<
   QueryIdempotencyTokenAutoFillCommandInput,

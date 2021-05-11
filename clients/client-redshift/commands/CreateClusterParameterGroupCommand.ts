@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateClusterParameterGroupCommandInput = CreateClusterParameterGroupMessage;
-export type CreateClusterParameterGroupCommandOutput = CreateClusterParameterGroupResult & __MetadataBearer;
+export interface CreateClusterParameterGroupCommandInput extends CreateClusterParameterGroupMessage {}
+export interface CreateClusterParameterGroupCommandOutput extends CreateClusterParameterGroupResult, __MetadataBearer {}
 
 /**
  * <p>Creates an Amazon Redshift parameter group.</p>
@@ -30,6 +30,20 @@ export type CreateClusterParameterGroupCommandOutput = CreateClusterParameterGro
  * For more information about parameters and parameter groups, go to
  * <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift Parameter Groups</a>
  * in the <i>Amazon Redshift Cluster Management Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, CreateClusterParameterGroupCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, CreateClusterParameterGroupCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new CreateClusterParameterGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateClusterParameterGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateClusterParameterGroupCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateClusterParameterGroupCommand extends $Command<
   CreateClusterParameterGroupCommandInput,

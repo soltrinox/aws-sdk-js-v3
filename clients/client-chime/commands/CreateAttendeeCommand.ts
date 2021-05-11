@@ -17,11 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAttendeeCommandInput = CreateAttendeeRequest;
-export type CreateAttendeeCommandOutput = CreateAttendeeResponse & __MetadataBearer;
+export interface CreateAttendeeCommandInput extends CreateAttendeeRequest {}
+export interface CreateAttendeeCommandOutput extends CreateAttendeeResponse, __MetadataBearer {}
 
 /**
- * <p>Creates a new attendee for an active Amazon Chime SDK meeting. For more information about the Amazon Chime SDK, see <a href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using the Amazon Chime SDK</a> in the <i>Amazon Chime Developer Guide</i>.</p>
+ * <p>
+ * Creates a new attendee for an active Amazon Chime SDK meeting. For more information about the Amazon Chime SDK, see
+ * <a href="https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html">Using the Amazon Chime SDK</a>
+ * in the
+ * <i>Amazon Chime Developer Guide</i>.
+ * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, CreateAttendeeCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, CreateAttendeeCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new CreateAttendeeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAttendeeCommandInput} for command's `input` shape.
+ * @see {@link CreateAttendeeCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAttendeeCommand extends $Command<
   CreateAttendeeCommandInput,

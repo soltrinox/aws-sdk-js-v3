@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteCacheClusterCommandInput = DeleteCacheClusterMessage;
-export type DeleteCacheClusterCommandOutput = DeleteCacheClusterResult & __MetadataBearer;
+export interface DeleteCacheClusterCommandInput extends DeleteCacheClusterMessage {}
+export interface DeleteCacheClusterCommandOutput extends DeleteCacheClusterResult, __MetadataBearer {}
 
 /**
  * <p>Deletes a previously provisioned cluster.
@@ -32,7 +32,14 @@ export type DeleteCacheClusterCommandOutput = DeleteCacheClusterResult & __Metad
  *                 <p>Redis (cluster mode enabled) clusters</p>
  *             </li>
  *             <li>
+ *                 <p>Redis (cluster mode disabled) clusters</p>
+ *             </li>
+ *             <li>
+ *
  *                 <p>A cluster that is the last read replica of a replication group</p>
+ *             </li>
+ *             <li>
+ *                 <p>A cluster that is the primary node of a replication group</p>
  *             </li>
  *             <li>
  *                 <p>A node group (shard) that has Multi-AZ mode enabled</p>
@@ -44,6 +51,20 @@ export type DeleteCacheClusterCommandOutput = DeleteCacheClusterResult & __Metad
  *                 <p>A cluster that is not in the <code>available</code> state</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, DeleteCacheClusterCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, DeleteCacheClusterCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new DeleteCacheClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteCacheClusterCommandInput} for command's `input` shape.
+ * @see {@link DeleteCacheClusterCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteCacheClusterCommand extends $Command<
   DeleteCacheClusterCommandInput,

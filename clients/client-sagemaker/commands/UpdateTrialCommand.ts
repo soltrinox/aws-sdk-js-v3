@@ -1,5 +1,6 @@
 import { SageMakerClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SageMakerClient";
-import { UpdateTrialRequest, UpdateTrialResponse } from "../models/models_2";
+import { UpdateTrialRequest } from "../models/models_2";
+import { UpdateTrialResponse } from "../models/models_3";
 import {
   deserializeAws_json1_1UpdateTrialCommand,
   serializeAws_json1_1UpdateTrialCommand,
@@ -17,11 +18,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateTrialCommandInput = UpdateTrialRequest;
-export type UpdateTrialCommandOutput = UpdateTrialResponse & __MetadataBearer;
+export interface UpdateTrialCommandInput extends UpdateTrialRequest {}
+export interface UpdateTrialCommandOutput extends UpdateTrialResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the display name of a trial.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, UpdateTrialCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, UpdateTrialCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new UpdateTrialCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateTrialCommandInput} for command's `input` shape.
+ * @see {@link UpdateTrialCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateTrialCommand extends $Command<
   UpdateTrialCommandInput,

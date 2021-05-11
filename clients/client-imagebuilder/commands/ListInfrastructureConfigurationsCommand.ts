@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListInfrastructureConfigurationsCommandInput = ListInfrastructureConfigurationsRequest;
-export type ListInfrastructureConfigurationsCommandOutput = ListInfrastructureConfigurationsResponse & __MetadataBearer;
+export interface ListInfrastructureConfigurationsCommandInput extends ListInfrastructureConfigurationsRequest {}
+export interface ListInfrastructureConfigurationsCommandOutput
+  extends ListInfrastructureConfigurationsResponse,
+    __MetadataBearer {}
 
 /**
- * <p> Returns a list of infrastructure configurations. </p>
+ * <p> Returns a list of infrastructure configurations.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ImagebuilderClient, ListInfrastructureConfigurationsCommand } from "@aws-sdk/client-imagebuilder"; // ES Modules import
+ * // const { ImagebuilderClient, ListInfrastructureConfigurationsCommand } = require("@aws-sdk/client-imagebuilder"); // CommonJS import
+ * const client = new ImagebuilderClient(config);
+ * const command = new ListInfrastructureConfigurationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListInfrastructureConfigurationsCommandInput} for command's `input` shape.
+ * @see {@link ListInfrastructureConfigurationsCommandOutput} for command's `response` shape.
+ * @see {@link ImagebuilderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListInfrastructureConfigurationsCommand extends $Command<
   ListInfrastructureConfigurationsCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAgentCommandInput = CreateAgentRequest;
-export type CreateAgentCommandOutput = CreateAgentResponse & __MetadataBearer;
+export interface CreateAgentCommandInput extends CreateAgentRequest {}
+export interface CreateAgentCommandOutput extends CreateAgentResponse, __MetadataBearer {}
 
 /**
  * <p>Activates an AWS DataSync agent that you have deployed on your host. The activation
@@ -36,6 +36,20 @@ export type CreateAgentCommandOutput = CreateAgentResponse & __MetadataBearer;
  *          <p>Agents are automatically updated by AWS on a regular basis, using a mechanism that
  *       ensures minimal interruption to your tasks.</p>
  *          <p></p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataSyncClient, CreateAgentCommand } from "@aws-sdk/client-datasync"; // ES Modules import
+ * // const { DataSyncClient, CreateAgentCommand } = require("@aws-sdk/client-datasync"); // CommonJS import
+ * const client = new DataSyncClient(config);
+ * const command = new CreateAgentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAgentCommandInput} for command's `input` shape.
+ * @see {@link CreateAgentCommandOutput} for command's `response` shape.
+ * @see {@link DataSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAgentCommand extends $Command<
   CreateAgentCommandInput,

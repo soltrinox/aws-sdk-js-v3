@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDBClusterEndpointsCommandInput = DescribeDBClusterEndpointsMessage;
-export type DescribeDBClusterEndpointsCommandOutput = DBClusterEndpointMessage & __MetadataBearer;
+export interface DescribeDBClusterEndpointsCommandInput extends DescribeDBClusterEndpointsMessage {}
+export interface DescribeDBClusterEndpointsCommandOutput extends DBClusterEndpointMessage, __MetadataBearer {}
 
 /**
  * <p>Returns information about endpoints for an Amazon Aurora DB cluster.</p>
  *          <note>
  *            <p>This action only applies to Aurora DB clusters.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, DescribeDBClusterEndpointsCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, DescribeDBClusterEndpointsCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new DescribeDBClusterEndpointsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDBClusterEndpointsCommandInput} for command's `input` shape.
+ * @see {@link DescribeDBClusterEndpointsCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDBClusterEndpointsCommand extends $Command<
   DescribeDBClusterEndpointsCommandInput,

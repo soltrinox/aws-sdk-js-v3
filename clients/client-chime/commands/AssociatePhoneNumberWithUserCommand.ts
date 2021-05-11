@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociatePhoneNumberWithUserCommandInput = AssociatePhoneNumberWithUserRequest;
-export type AssociatePhoneNumberWithUserCommandOutput = AssociatePhoneNumberWithUserResponse & __MetadataBearer;
+export interface AssociatePhoneNumberWithUserCommandInput extends AssociatePhoneNumberWithUserRequest {}
+export interface AssociatePhoneNumberWithUserCommandOutput
+  extends AssociatePhoneNumberWithUserResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Associates a phone number with the specified Amazon Chime user.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, AssociatePhoneNumberWithUserCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, AssociatePhoneNumberWithUserCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new AssociatePhoneNumberWithUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociatePhoneNumberWithUserCommandInput} for command's `input` shape.
+ * @see {@link AssociatePhoneNumberWithUserCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociatePhoneNumberWithUserCommand extends $Command<
   AssociatePhoneNumberWithUserCommandInput,

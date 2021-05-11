@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListProjectsCommandInput = ListProjectsRequest;
-export type ListProjectsCommandOutput = ListProjectsResponse & __MetadataBearer;
+export interface ListProjectsCommandInput extends ListProjectsRequest {}
+export interface ListProjectsCommandOutput extends ListProjectsResponse, __MetadataBearer {}
 
 /**
- * <p>Lists all of the DataBrew projects in the current AWS account.</p>
+ * <p>Lists all of the DataBrew projects that are defined.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataBrewClient, ListProjectsCommand } from "@aws-sdk/client-databrew"; // ES Modules import
+ * // const { DataBrewClient, ListProjectsCommand } = require("@aws-sdk/client-databrew"); // CommonJS import
+ * const client = new DataBrewClient(config);
+ * const command = new ListProjectsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListProjectsCommandInput} for command's `input` shape.
+ * @see {@link ListProjectsCommandOutput} for command's `response` shape.
+ * @see {@link DataBrewClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListProjectsCommand extends $Command<
   ListProjectsCommandInput,

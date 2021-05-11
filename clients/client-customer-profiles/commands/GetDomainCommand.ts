@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDomainCommandInput = GetDomainRequest;
-export type GetDomainCommandOutput = GetDomainResponse & __MetadataBearer;
+export interface GetDomainCommandInput extends GetDomainRequest {}
+export interface GetDomainCommandOutput extends GetDomainResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information about a specific domain.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CustomerProfilesClient, GetDomainCommand } from "@aws-sdk/client-customer-profiles"; // ES Modules import
+ * // const { CustomerProfilesClient, GetDomainCommand } = require("@aws-sdk/client-customer-profiles"); // CommonJS import
+ * const client = new CustomerProfilesClient(config);
+ * const command = new GetDomainCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDomainCommandInput} for command's `input` shape.
+ * @see {@link GetDomainCommandOutput} for command's `response` shape.
+ * @see {@link CustomerProfilesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDomainCommand extends $Command<
   GetDomainCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDeploymentCommandInput = GetDeploymentRequest;
-export type GetDeploymentCommandOutput = Deployment & __MetadataBearer;
+export interface GetDeploymentCommandInput extends GetDeploymentRequest {}
+export interface GetDeploymentCommandOutput extends Deployment, __MetadataBearer {}
 
 /**
  * <p>Retrieve information about a configuration deployment.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppConfigClient, GetDeploymentCommand } from "@aws-sdk/client-appconfig"; // ES Modules import
+ * // const { AppConfigClient, GetDeploymentCommand } = require("@aws-sdk/client-appconfig"); // CommonJS import
+ * const client = new AppConfigClient(config);
+ * const command = new GetDeploymentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDeploymentCommandInput} for command's `input` shape.
+ * @see {@link GetDeploymentCommandOutput} for command's `response` shape.
+ * @see {@link AppConfigClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDeploymentCommand extends $Command<
   GetDeploymentCommandInput,

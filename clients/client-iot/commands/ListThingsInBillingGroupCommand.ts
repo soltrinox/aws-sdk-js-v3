@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListThingsInBillingGroupCommandInput = ListThingsInBillingGroupRequest;
-export type ListThingsInBillingGroupCommandOutput = ListThingsInBillingGroupResponse & __MetadataBearer;
+export interface ListThingsInBillingGroupCommandInput extends ListThingsInBillingGroupRequest {}
+export interface ListThingsInBillingGroupCommandOutput extends ListThingsInBillingGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the things you have added to the given billing group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, ListThingsInBillingGroupCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, ListThingsInBillingGroupCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new ListThingsInBillingGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListThingsInBillingGroupCommandInput} for command's `input` shape.
+ * @see {@link ListThingsInBillingGroupCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListThingsInBillingGroupCommand extends $Command<
   ListThingsInBillingGroupCommandInput,

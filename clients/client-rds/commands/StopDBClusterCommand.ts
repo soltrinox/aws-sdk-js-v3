@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopDBClusterCommandInput = StopDBClusterMessage;
-export type StopDBClusterCommandOutput = StopDBClusterResult & __MetadataBearer;
+export interface StopDBClusterCommandInput extends StopDBClusterMessage {}
+export interface StopDBClusterCommandOutput extends StopDBClusterResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -34,6 +34,20 @@ export type StopDBClusterCommandOutput = StopDBClusterResult & __MetadataBearer;
  *          <note>
  *            <p>This action only applies to Aurora DB clusters.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, StopDBClusterCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, StopDBClusterCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new StopDBClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopDBClusterCommandInput} for command's `input` shape.
+ * @see {@link StopDBClusterCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopDBClusterCommand extends $Command<
   StopDBClusterCommandInput,

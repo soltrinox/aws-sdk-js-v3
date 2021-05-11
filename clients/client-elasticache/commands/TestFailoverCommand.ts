@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TestFailoverCommandInput = TestFailoverMessage;
-export type TestFailoverCommandOutput = TestFailoverResult & __MetadataBearer;
+export interface TestFailoverCommandInput extends TestFailoverMessage {}
+export interface TestFailoverCommandOutput extends TestFailoverResult, __MetadataBearer {}
 
 /**
  * <p>Represents the input of a <code>TestFailover</code> operation which test automatic failover on
@@ -81,6 +81,20 @@ export type TestFailoverCommandOutput = TestFailoverResult & __MetadataBearer;
  *          </ul>
  *
  *         <p>Also see, <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test">Testing Multi-AZ </a> in the <i>ElastiCache User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, TestFailoverCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, TestFailoverCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new TestFailoverCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TestFailoverCommandInput} for command's `input` shape.
+ * @see {@link TestFailoverCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TestFailoverCommand extends $Command<
   TestFailoverCommandInput,

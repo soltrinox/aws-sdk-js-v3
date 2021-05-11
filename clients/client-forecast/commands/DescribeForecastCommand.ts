@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeForecastCommandInput = DescribeForecastRequest;
-export type DescribeForecastCommandOutput = DescribeForecastResponse & __MetadataBearer;
+export interface DescribeForecastCommandInput extends DescribeForecastRequest {}
+export interface DescribeForecastCommandOutput extends DescribeForecastResponse, __MetadataBearer {}
 
 /**
  * <p>Describes a forecast created using the <a>CreateForecast</a> operation.</p>
@@ -50,6 +50,20 @@ export type DescribeForecastCommandOutput = DescribeForecastResponse & __Metadat
  *                   <code>Message</code> - If an error occurred, information about the error.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ForecastClient, DescribeForecastCommand } from "@aws-sdk/client-forecast"; // ES Modules import
+ * // const { ForecastClient, DescribeForecastCommand } = require("@aws-sdk/client-forecast"); // CommonJS import
+ * const client = new ForecastClient(config);
+ * const command = new DescribeForecastCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeForecastCommandInput} for command's `input` shape.
+ * @see {@link DescribeForecastCommandOutput} for command's `response` shape.
+ * @see {@link ForecastClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeForecastCommand extends $Command<
   DescribeForecastCommandInput,

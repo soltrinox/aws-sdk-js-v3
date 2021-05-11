@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type NoInputAndOutputCommandInput = NoInputAndOutputOutput;
-export type NoInputAndOutputCommandOutput = __MetadataBearer;
+export interface NoInputAndOutputCommandInput extends NoInputAndOutputOutput {}
+export interface NoInputAndOutputCommandOutput extends __MetadataBearer {}
 
 /**
  * The example tests how requests and responses are serialized when there's
  * no request payload or response members.
  *
  * While this should be rare, code generators must support this.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QueryProtocolClient, NoInputAndOutputCommand } from "@aws-sdk/aws-query"; // ES Modules import
+ * // const { QueryProtocolClient, NoInputAndOutputCommand } = require("@aws-sdk/aws-query"); // CommonJS import
+ * const client = new QueryProtocolClient(config);
+ * const command = new NoInputAndOutputCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link NoInputAndOutputCommandInput} for command's `input` shape.
+ * @see {@link NoInputAndOutputCommandOutput} for command's `response` shape.
+ * @see {@link QueryProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class NoInputAndOutputCommand extends $Command<
   NoInputAndOutputCommandInput,

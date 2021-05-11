@@ -17,12 +17,31 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchUpdateUserCommandInput = BatchUpdateUserRequest;
-export type BatchUpdateUserCommandOutput = BatchUpdateUserResponse & __MetadataBearer;
+export interface BatchUpdateUserCommandInput extends BatchUpdateUserRequest {}
+export interface BatchUpdateUserCommandOutput extends BatchUpdateUserResponse, __MetadataBearer {}
 
 /**
- * <p>Updates user details within the <a>UpdateUserRequestItem</a> object for up to 20 users for the specified Amazon Chime account.
- *        Currently, only <code>LicenseType</code> updates are supported for this action.</p>
+ * <p>
+ * Updates user details within the
+ * <a>UpdateUserRequestItem</a>
+ * object for up to 20 users for the specified Amazon Chime account.
+ * Currently, only <code>LicenseType</code>
+ * updates are supported for this action.
+ * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, BatchUpdateUserCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, BatchUpdateUserCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new BatchUpdateUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchUpdateUserCommandInput} for command's `input` shape.
+ * @see {@link BatchUpdateUserCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchUpdateUserCommand extends $Command<
   BatchUpdateUserCommandInput,

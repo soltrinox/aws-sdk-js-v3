@@ -21,14 +21,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBuiltinIntentsCommandInput = GetBuiltinIntentsRequest;
-export type GetBuiltinIntentsCommandOutput = GetBuiltinIntentsResponse & __MetadataBearer;
+export interface GetBuiltinIntentsCommandInput extends GetBuiltinIntentsRequest {}
+export interface GetBuiltinIntentsCommandOutput extends GetBuiltinIntentsResponse, __MetadataBearer {}
 
 /**
  * <p>Gets a list of built-in intents that meet the specified
  *       criteria.</p>
  *          <p>This operation requires permission for the
  *         <code>lex:GetBuiltinIntents</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, GetBuiltinIntentsCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, GetBuiltinIntentsCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new GetBuiltinIntentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBuiltinIntentsCommandInput} for command's `input` shape.
+ * @see {@link GetBuiltinIntentsCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBuiltinIntentsCommand extends $Command<
   GetBuiltinIntentsCommandInput,

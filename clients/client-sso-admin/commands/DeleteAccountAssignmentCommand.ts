@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAccountAssignmentCommandInput = DeleteAccountAssignmentRequest;
-export type DeleteAccountAssignmentCommandOutput = DeleteAccountAssignmentResponse & __MetadataBearer;
+export interface DeleteAccountAssignmentCommandInput extends DeleteAccountAssignmentRequest {}
+export interface DeleteAccountAssignmentCommandOutput extends DeleteAccountAssignmentResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a principal's access from a specified AWS account using a specified permission
  *       set.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSOAdminClient, DeleteAccountAssignmentCommand } from "@aws-sdk/client-sso-admin"; // ES Modules import
+ * // const { SSOAdminClient, DeleteAccountAssignmentCommand } = require("@aws-sdk/client-sso-admin"); // CommonJS import
+ * const client = new SSOAdminClient(config);
+ * const command = new DeleteAccountAssignmentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAccountAssignmentCommandInput} for command's `input` shape.
+ * @see {@link DeleteAccountAssignmentCommandOutput} for command's `response` shape.
+ * @see {@link SSOAdminClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAccountAssignmentCommand extends $Command<
   DeleteAccountAssignmentCommandInput,

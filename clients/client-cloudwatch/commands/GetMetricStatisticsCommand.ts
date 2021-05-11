@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetMetricStatisticsCommandInput = GetMetricStatisticsInput;
-export type GetMetricStatisticsCommandOutput = GetMetricStatisticsOutput & __MetadataBearer;
+export interface GetMetricStatisticsCommandInput extends GetMetricStatisticsInput {}
+export interface GetMetricStatisticsCommandOutput extends GetMetricStatisticsOutput, __MetadataBearer {}
 
 /**
  * <p>Gets statistics for the specified metric.</p>
@@ -73,6 +73,20 @@ export type GetMetricStatisticsCommandOutput = GetMetricStatisticsOutput & __Met
  * 		       <p>For information about metrics and dimensions supported by AWS services, see the
  * 			<a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html">Amazon CloudWatch Metrics and Dimensions Reference</a> in the
  * 			<i>Amazon CloudWatch User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchClient, GetMetricStatisticsCommand } from "@aws-sdk/client-cloudwatch"; // ES Modules import
+ * // const { CloudWatchClient, GetMetricStatisticsCommand } = require("@aws-sdk/client-cloudwatch"); // CommonJS import
+ * const client = new CloudWatchClient(config);
+ * const command = new GetMetricStatisticsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetMetricStatisticsCommandInput} for command's `input` shape.
+ * @see {@link GetMetricStatisticsCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetMetricStatisticsCommand extends $Command<
   GetMetricStatisticsCommandInput,

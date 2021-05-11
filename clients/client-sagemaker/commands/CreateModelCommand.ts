@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateModelCommandInput = CreateModelInput;
-export type CreateModelCommandOutput = CreateModelOutput & __MetadataBearer;
+export interface CreateModelCommandInput extends CreateModelInput {}
+export interface CreateModelCommandOutput extends CreateModelOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a model in Amazon SageMaker. In the request, you name the model and describe a primary
@@ -47,6 +47,20 @@ export type CreateModelCommandOutput = CreateModelOutput & __MetadataBearer;
  *             transform jobs. In addition, you also use the IAM role to manage permissions the
  *             inference code needs. For example, if the inference code access any other AWS resources,
  *             you grant necessary permissions via this role.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, CreateModelCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, CreateModelCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new CreateModelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateModelCommandInput} for command's `input` shape.
+ * @see {@link CreateModelCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateModelCommand extends $Command<
   CreateModelCommandInput,

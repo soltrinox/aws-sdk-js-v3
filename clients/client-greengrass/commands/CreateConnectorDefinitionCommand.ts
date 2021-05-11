@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateConnectorDefinitionCommandInput = CreateConnectorDefinitionRequest;
-export type CreateConnectorDefinitionCommandOutput = CreateConnectorDefinitionResponse & __MetadataBearer;
+export interface CreateConnectorDefinitionCommandInput extends CreateConnectorDefinitionRequest {}
+export interface CreateConnectorDefinitionCommandOutput extends CreateConnectorDefinitionResponse, __MetadataBearer {}
 
 /**
  * Creates a connector definition. You may provide the initial version of the connector definition now or use ''CreateConnectorDefinitionVersion'' at a later time.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, CreateConnectorDefinitionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, CreateConnectorDefinitionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new CreateConnectorDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateConnectorDefinitionCommandInput} for command's `input` shape.
+ * @see {@link CreateConnectorDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateConnectorDefinitionCommand extends $Command<
   CreateConnectorDefinitionCommandInput,

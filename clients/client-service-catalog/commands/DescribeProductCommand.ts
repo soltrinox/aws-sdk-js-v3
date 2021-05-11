@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeProductCommandInput = DescribeProductInput;
-export type DescribeProductCommandOutput = DescribeProductOutput & __MetadataBearer;
+export interface DescribeProductCommandInput extends DescribeProductInput {}
+export interface DescribeProductCommandOutput extends DescribeProductOutput, __MetadataBearer {}
 
 /**
  * <p>Gets information about the specified product.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, DescribeProductCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, DescribeProductCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new DescribeProductCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeProductCommandInput} for command's `input` shape.
+ * @see {@link DescribeProductCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeProductCommand extends $Command<
   DescribeProductCommandInput,

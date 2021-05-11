@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ResolveCaseCommandInput = ResolveCaseRequest;
-export type ResolveCaseCommandOutput = ResolveCaseResponse & __MetadataBearer;
+export interface ResolveCaseCommandInput extends ResolveCaseRequest {}
+export interface ResolveCaseCommandOutput extends ResolveCaseResponse, __MetadataBearer {}
 
 /**
  * <p>Resolves a support case. This operation takes a <code>caseId</code> and returns the
@@ -37,6 +37,20 @@ export type ResolveCaseCommandOutput = ResolveCaseResponse & __MetadataBearer;
  *                 </li>
  *             </ul>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SupportClient, ResolveCaseCommand } from "@aws-sdk/client-support"; // ES Modules import
+ * // const { SupportClient, ResolveCaseCommand } = require("@aws-sdk/client-support"); // CommonJS import
+ * const client = new SupportClient(config);
+ * const command = new ResolveCaseCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ResolveCaseCommandInput} for command's `input` shape.
+ * @see {@link ResolveCaseCommandOutput} for command's `response` shape.
+ * @see {@link SupportClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ResolveCaseCommand extends $Command<
   ResolveCaseCommandInput,

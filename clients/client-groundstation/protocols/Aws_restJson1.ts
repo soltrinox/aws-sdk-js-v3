@@ -51,19 +51,23 @@ import {
   UpdateMissionProfileCommandOutput,
 } from "../commands/UpdateMissionProfileCommand";
 import {
+  AntennaDemodDecodeDetails,
   AntennaDownlinkConfig,
   AntennaDownlinkDemodDecodeConfig,
   AntennaUplinkConfig,
+  ConfigDetails,
   ConfigListItem,
   ConfigTypeData,
   ContactData,
   ContactStatus,
+  DataflowDetail,
   DataflowEndpoint,
   DataflowEndpointConfig,
   DataflowEndpointListItem,
   DecodeConfig,
   DemodulationConfig,
   DependencyException,
+  Destination,
   Eirp,
   Elevation,
   EndpointDetails,
@@ -74,9 +78,12 @@ import {
   MissionProfileListItem,
   ResourceLimitExceededException,
   ResourceNotFoundException,
+  S3RecordingConfig,
+  S3RecordingDetails,
   SatelliteListItem,
   SecurityDetails,
   SocketAddress,
+  Source,
   SpectrumConfig,
   TrackingConfig,
   UplinkEchoConfig,
@@ -580,9 +587,9 @@ export const serializeAws_restJson1ListGroundStationsCommand = async (
   const headers: any = {};
   let resolvedPath = "/groundstation";
   const query: any = {
+    ...(input.satelliteId !== undefined && { satelliteId: input.satelliteId }),
     ...(input.maxResults !== undefined && { maxResults: input.maxResults.toString() }),
     ...(input.nextToken !== undefined && { nextToken: input.nextToken }),
-    ...(input.satelliteId !== undefined && { satelliteId: input.satelliteId }),
   };
   let body: any;
   const { hostname, protocol = "https", port } = await context.endpoint();
@@ -1400,6 +1407,7 @@ export const deserializeAws_restJson1DescribeContactCommand = async (
     $metadata: deserializeMetadata(output),
     contactId: undefined,
     contactStatus: undefined,
+    dataflowList: undefined,
     endTime: undefined,
     errorMessage: undefined,
     groundStation: undefined,
@@ -1418,6 +1426,9 @@ export const deserializeAws_restJson1DescribeContactCommand = async (
   }
   if (data.contactStatus !== undefined && data.contactStatus !== null) {
     contents.contactStatus = data.contactStatus;
+  }
+  if (data.dataflowList !== undefined && data.dataflowList !== null) {
+    contents.dataflowList = deserializeAws_restJson1DataflowList(data.dataflowList, context);
   }
   if (data.endTime !== undefined && data.endTime !== null) {
     contents.endTime = new Date(Math.round(data.endTime * 1000));
@@ -2972,6 +2983,7 @@ const serializeAws_restJson1ConfigTypeData = (input: ConfigTypeData, context: __
     dataflowEndpointConfig: (value) => ({
       dataflowEndpointConfig: serializeAws_restJson1DataflowEndpointConfig(value, context),
     }),
+    s3RecordingConfig: (value) => ({ s3RecordingConfig: serializeAws_restJson1S3RecordingConfig(value, context) }),
     trackingConfig: (value) => ({ trackingConfig: serializeAws_restJson1TrackingConfig(value, context) }),
     uplinkEchoConfig: (value) => ({ uplinkEchoConfig: serializeAws_restJson1UplinkEchoConfig(value, context) }),
     _: (name, value) => ({ name: value } as any),
@@ -3076,6 +3088,14 @@ const serializeAws_restJson1FrequencyBandwidth = (input: FrequencyBandwidth, con
   };
 };
 
+const serializeAws_restJson1S3RecordingConfig = (input: S3RecordingConfig, context: __SerdeContext): any => {
+  return {
+    ...(input.bucketArn !== undefined && input.bucketArn !== null && { bucketArn: input.bucketArn }),
+    ...(input.prefix !== undefined && input.prefix !== null && { prefix: input.prefix }),
+    ...(input.roleArn !== undefined && input.roleArn !== null && { roleArn: input.roleArn }),
+  };
+};
+
 const serializeAws_restJson1SecurityDetails = (input: SecurityDetails, context: __SerdeContext): any => {
   return {
     ...(input.roleArn !== undefined && input.roleArn !== null && { roleArn: input.roleArn }),
@@ -3176,6 +3196,15 @@ const serializeAws_restJson1UplinkSpectrumConfig = (input: UplinkSpectrumConfig,
   };
 };
 
+const deserializeAws_restJson1AntennaDemodDecodeDetails = (
+  output: any,
+  context: __SerdeContext
+): AntennaDemodDecodeDetails => {
+  return {
+    outputNode: output.outputNode !== undefined && output.outputNode !== null ? output.outputNode : undefined,
+  } as any;
+};
+
 const deserializeAws_restJson1AntennaDownlinkConfig = (output: any, context: __SerdeContext): AntennaDownlinkConfig => {
   return {
     spectrumConfig:
@@ -3220,6 +3249,28 @@ const deserializeAws_restJson1AntennaUplinkConfig = (output: any, context: __Ser
   } as any;
 };
 
+const deserializeAws_restJson1ConfigDetails = (output: any, context: __SerdeContext): ConfigDetails => {
+  if (output.antennaDemodDecodeDetails !== undefined && output.antennaDemodDecodeDetails !== null) {
+    return {
+      antennaDemodDecodeDetails: deserializeAws_restJson1AntennaDemodDecodeDetails(
+        output.antennaDemodDecodeDetails,
+        context
+      ),
+    };
+  }
+  if (output.endpointDetails !== undefined && output.endpointDetails !== null) {
+    return {
+      endpointDetails: deserializeAws_restJson1EndpointDetails(output.endpointDetails, context),
+    };
+  }
+  if (output.s3RecordingDetails !== undefined && output.s3RecordingDetails !== null) {
+    return {
+      s3RecordingDetails: deserializeAws_restJson1S3RecordingDetails(output.s3RecordingDetails, context),
+    };
+  }
+  return { $unknown: Object.entries(output)[0] };
+};
+
 const deserializeAws_restJson1ConfigList = (output: any, context: __SerdeContext): ConfigListItem[] => {
   return (output || [])
     .filter((e: any) => e != null)
@@ -3262,6 +3313,11 @@ const deserializeAws_restJson1ConfigTypeData = (output: any, context: __SerdeCon
   if (output.dataflowEndpointConfig !== undefined && output.dataflowEndpointConfig !== null) {
     return {
       dataflowEndpointConfig: deserializeAws_restJson1DataflowEndpointConfig(output.dataflowEndpointConfig, context),
+    };
+  }
+  if (output.s3RecordingConfig !== undefined && output.s3RecordingConfig !== null) {
+    return {
+      s3RecordingConfig: deserializeAws_restJson1S3RecordingConfig(output.s3RecordingConfig, context),
     };
   }
   if (output.trackingConfig !== undefined && output.trackingConfig !== null) {
@@ -3325,6 +3381,20 @@ const deserializeAws_restJson1ContactList = (output: any, context: __SerdeContex
       }
       return deserializeAws_restJson1ContactData(entry, context);
     });
+};
+
+const deserializeAws_restJson1DataflowDetail = (output: any, context: __SerdeContext): DataflowDetail => {
+  return {
+    destination:
+      output.destination !== undefined && output.destination !== null
+        ? deserializeAws_restJson1Destination(output.destination, context)
+        : undefined,
+    errorMessage: output.errorMessage !== undefined && output.errorMessage !== null ? output.errorMessage : undefined,
+    source:
+      output.source !== undefined && output.source !== null
+        ? deserializeAws_restJson1Source(output.source, context)
+        : undefined,
+  } as any;
 };
 
 const deserializeAws_restJson1DataflowEdge = (output: any, context: __SerdeContext): string[] => {
@@ -3407,6 +3477,17 @@ const deserializeAws_restJson1DataflowEndpointListItem = (
   } as any;
 };
 
+const deserializeAws_restJson1DataflowList = (output: any, context: __SerdeContext): DataflowDetail[] => {
+  return (output || [])
+    .filter((e: any) => e != null)
+    .map((entry: any) => {
+      if (entry === null) {
+        return null as any;
+      }
+      return deserializeAws_restJson1DataflowDetail(entry, context);
+    });
+};
+
 const deserializeAws_restJson1DecodeConfig = (output: any, context: __SerdeContext): DecodeConfig => {
   return {
     unvalidatedJSON:
@@ -3418,6 +3499,21 @@ const deserializeAws_restJson1DemodulationConfig = (output: any, context: __Serd
   return {
     unvalidatedJSON:
       output.unvalidatedJSON !== undefined && output.unvalidatedJSON !== null ? output.unvalidatedJSON : undefined,
+  } as any;
+};
+
+const deserializeAws_restJson1Destination = (output: any, context: __SerdeContext): Destination => {
+  return {
+    configDetails:
+      output.configDetails !== undefined && output.configDetails !== null
+        ? deserializeAws_restJson1ConfigDetails(output.configDetails, context)
+        : undefined,
+    configId: output.configId !== undefined && output.configId !== null ? output.configId : undefined,
+    configType: output.configType !== undefined && output.configType !== null ? output.configType : undefined,
+    dataflowDestinationRegion:
+      output.dataflowDestinationRegion !== undefined && output.dataflowDestinationRegion !== null
+        ? output.dataflowDestinationRegion
+        : undefined,
   } as any;
 };
 
@@ -3534,6 +3630,21 @@ const deserializeAws_restJson1MissionProfileListItem = (
   } as any;
 };
 
+const deserializeAws_restJson1S3RecordingConfig = (output: any, context: __SerdeContext): S3RecordingConfig => {
+  return {
+    bucketArn: output.bucketArn !== undefined && output.bucketArn !== null ? output.bucketArn : undefined,
+    prefix: output.prefix !== undefined && output.prefix !== null ? output.prefix : undefined,
+    roleArn: output.roleArn !== undefined && output.roleArn !== null ? output.roleArn : undefined,
+  } as any;
+};
+
+const deserializeAws_restJson1S3RecordingDetails = (output: any, context: __SerdeContext): S3RecordingDetails => {
+  return {
+    bucketArn: output.bucketArn !== undefined && output.bucketArn !== null ? output.bucketArn : undefined,
+    keyTemplate: output.keyTemplate !== undefined && output.keyTemplate !== null ? output.keyTemplate : undefined,
+  } as any;
+};
+
 const deserializeAws_restJson1SatelliteList = (output: any, context: __SerdeContext): SatelliteListItem[] => {
   return (output || [])
     .filter((e: any) => e != null)
@@ -3587,6 +3698,21 @@ const deserializeAws_restJson1SocketAddress = (output: any, context: __SerdeCont
   return {
     name: output.name !== undefined && output.name !== null ? output.name : undefined,
     port: output.port !== undefined && output.port !== null ? output.port : undefined,
+  } as any;
+};
+
+const deserializeAws_restJson1Source = (output: any, context: __SerdeContext): Source => {
+  return {
+    configDetails:
+      output.configDetails !== undefined && output.configDetails !== null
+        ? deserializeAws_restJson1ConfigDetails(output.configDetails, context)
+        : undefined,
+    configId: output.configId !== undefined && output.configId !== null ? output.configId : undefined,
+    configType: output.configType !== undefined && output.configType !== null ? output.configType : undefined,
+    dataflowSourceRegion:
+      output.dataflowSourceRegion !== undefined && output.dataflowSourceRegion !== null
+        ? output.dataflowSourceRegion
+        : undefined,
   } as any;
 };
 

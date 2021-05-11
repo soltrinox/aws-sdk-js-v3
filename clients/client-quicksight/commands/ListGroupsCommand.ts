@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListGroupsCommandInput = ListGroupsRequest;
-export type ListGroupsCommandOutput = ListGroupsResponse & __MetadataBearer;
+export interface ListGroupsCommandInput extends ListGroupsRequest {}
+export interface ListGroupsCommandOutput extends ListGroupsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists all user groups in Amazon QuickSight. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, ListGroupsCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, ListGroupsCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new ListGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListGroupsCommandInput} for command's `input` shape.
+ * @see {@link ListGroupsCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListGroupsCommand extends $Command<
   ListGroupsCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetConfigurationSetCommandInput = GetConfigurationSetRequest;
-export type GetConfigurationSetCommandOutput = GetConfigurationSetResponse & __MetadataBearer;
+export interface GetConfigurationSetCommandInput extends GetConfigurationSetRequest {}
+export interface GetConfigurationSetCommandOutput extends GetConfigurationSetResponse, __MetadataBearer {}
 
 /**
  * <p>Get information about an existing configuration set, including the dedicated IP pool
@@ -29,6 +29,20 @@ export type GetConfigurationSetCommandOutput = GetConfigurationSetResponse & __M
  *             emails you send. You apply a configuration set to an email by including a reference to
  *             the configuration set in the headers of the email. When you apply a configuration set to
  *             an email, all of the rules in that configuration set are applied to the email.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, GetConfigurationSetCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, GetConfigurationSetCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new GetConfigurationSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetConfigurationSetCommandInput} for command's `input` shape.
+ * @see {@link GetConfigurationSetCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetConfigurationSetCommand extends $Command<
   GetConfigurationSetCommandInput,

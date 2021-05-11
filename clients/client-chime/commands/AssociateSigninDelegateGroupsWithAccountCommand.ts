@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateSigninDelegateGroupsWithAccountCommandInput = AssociateSigninDelegateGroupsWithAccountRequest;
-export type AssociateSigninDelegateGroupsWithAccountCommandOutput = AssociateSigninDelegateGroupsWithAccountResponse &
-  __MetadataBearer;
+export interface AssociateSigninDelegateGroupsWithAccountCommandInput
+  extends AssociateSigninDelegateGroupsWithAccountRequest {}
+export interface AssociateSigninDelegateGroupsWithAccountCommandOutput
+  extends AssociateSigninDelegateGroupsWithAccountResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Associates the specified sign-in delegate groups with the specified Amazon Chime account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, AssociateSigninDelegateGroupsWithAccountCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, AssociateSigninDelegateGroupsWithAccountCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new AssociateSigninDelegateGroupsWithAccountCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateSigninDelegateGroupsWithAccountCommandInput} for command's `input` shape.
+ * @see {@link AssociateSigninDelegateGroupsWithAccountCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateSigninDelegateGroupsWithAccountCommand extends $Command<
   AssociateSigninDelegateGroupsWithAccountCommandInput,

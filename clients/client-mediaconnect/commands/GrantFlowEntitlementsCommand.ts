@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GrantFlowEntitlementsCommandInput = GrantFlowEntitlementsRequest;
-export type GrantFlowEntitlementsCommandOutput = GrantFlowEntitlementsResponse & __MetadataBearer;
+export interface GrantFlowEntitlementsCommandInput extends GrantFlowEntitlementsRequest {}
+export interface GrantFlowEntitlementsCommandOutput extends GrantFlowEntitlementsResponse, __MetadataBearer {}
 
 /**
  * Grants entitlements to an existing flow.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaConnectClient, GrantFlowEntitlementsCommand } from "@aws-sdk/client-mediaconnect"; // ES Modules import
+ * // const { MediaConnectClient, GrantFlowEntitlementsCommand } = require("@aws-sdk/client-mediaconnect"); // CommonJS import
+ * const client = new MediaConnectClient(config);
+ * const command = new GrantFlowEntitlementsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GrantFlowEntitlementsCommandInput} for command's `input` shape.
+ * @see {@link GrantFlowEntitlementsCommandOutput} for command's `response` shape.
+ * @see {@link MediaConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GrantFlowEntitlementsCommand extends $Command<
   GrantFlowEntitlementsCommandInput,

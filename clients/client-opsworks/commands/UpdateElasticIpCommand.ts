@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateElasticIpCommandInput = UpdateElasticIpRequest;
-export type UpdateElasticIpCommandOutput = __MetadataBearer;
+export interface UpdateElasticIpCommandInput extends UpdateElasticIpRequest {}
+export interface UpdateElasticIpCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Updates a registered Elastic IP address's name. For more information, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html">Resource Management</a>.</p>
@@ -27,6 +27,20 @@ export type UpdateElasticIpCommandOutput = __MetadataBearer;
  *       level for the stack, or an attached policy that explicitly grants permissions. For more
  *       information on user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, UpdateElasticIpCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, UpdateElasticIpCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new UpdateElasticIpCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateElasticIpCommandInput} for command's `input` shape.
+ * @see {@link UpdateElasticIpCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateElasticIpCommand extends $Command<
   UpdateElasticIpCommandInput,

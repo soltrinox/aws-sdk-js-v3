@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeProjectVersionsCommandInput = DescribeProjectVersionsRequest;
-export type DescribeProjectVersionsCommandOutput = DescribeProjectVersionsResponse & __MetadataBearer;
+export interface DescribeProjectVersionsCommandInput extends DescribeProjectVersionsRequest {}
+export interface DescribeProjectVersionsCommandOutput extends DescribeProjectVersionsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists and describes the models in an Amazon Rekognition Custom Labels project. You
@@ -26,6 +26,20 @@ export type DescribeProjectVersionsCommandOutput = DescribeProjectVersionsRespon
  *          you don't specify a value, descriptions for all models are returned.</p>
  *          <p>This operation requires permissions to perform the <code>rekognition:DescribeProjectVersions</code>
  *             action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, DescribeProjectVersionsCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, DescribeProjectVersionsCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new DescribeProjectVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeProjectVersionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeProjectVersionsCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeProjectVersionsCommand extends $Command<
   DescribeProjectVersionsCommandInput,

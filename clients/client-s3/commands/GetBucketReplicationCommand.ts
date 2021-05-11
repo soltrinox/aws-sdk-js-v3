@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBucketReplicationCommandInput = GetBucketReplicationRequest;
-export type GetBucketReplicationCommandOutput = GetBucketReplicationOutput & __MetadataBearer;
+export interface GetBucketReplicationCommandInput extends GetBucketReplicationRequest {}
+export interface GetBucketReplicationCommandOutput extends GetBucketReplicationOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the replication configuration of a bucket.</p>
@@ -29,9 +29,9 @@ export type GetBucketReplicationCommandOutput = GetBucketReplicationOutput & __M
  *             result. </p>
  *          </note>
  *          <p> For information about replication configuration, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html">Replication</a> in the
- *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *             <i>Amazon S3 User Guide</i>.</p>
  *
- *          <p>This operation requires permissions for the <code>s3:GetReplicationConfiguration</code>
+ *          <p>This action requires permissions for the <code>s3:GetReplicationConfiguration</code>
  *          action. For more information about permissions, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html">Using Bucket Policies and User
  *             Policies</a>.</p>
  *
@@ -57,6 +57,20 @@ export type GetBucketReplicationCommandOutput = GetBucketReplicationOutput & __M
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetBucketReplicationCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetBucketReplicationCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetBucketReplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBucketReplicationCommandInput} for command's `input` shape.
+ * @see {@link GetBucketReplicationCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBucketReplicationCommand extends $Command<
   GetBucketReplicationCommandInput,

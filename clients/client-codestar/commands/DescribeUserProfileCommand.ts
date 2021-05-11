@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeUserProfileCommandInput = DescribeUserProfileRequest;
-export type DescribeUserProfileCommandOutput = DescribeUserProfileResult & __MetadataBearer;
+export interface DescribeUserProfileCommandInput extends DescribeUserProfileRequest {}
+export interface DescribeUserProfileCommandOutput extends DescribeUserProfileResult, __MetadataBearer {}
 
 /**
  * <p>Describes a user in AWS CodeStar and the user attributes across all projects.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeStarClient, DescribeUserProfileCommand } from "@aws-sdk/client-codestar"; // ES Modules import
+ * // const { CodeStarClient, DescribeUserProfileCommand } = require("@aws-sdk/client-codestar"); // CommonJS import
+ * const client = new CodeStarClient(config);
+ * const command = new DescribeUserProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeUserProfileCommandInput} for command's `input` shape.
+ * @see {@link DescribeUserProfileCommandOutput} for command's `response` shape.
+ * @see {@link CodeStarClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeUserProfileCommand extends $Command<
   DescribeUserProfileCommandInput,

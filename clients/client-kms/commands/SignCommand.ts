@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SignCommandInput = SignRequest;
-export type SignCommandOutput = SignResponse & __MetadataBearer;
+export interface SignCommandInput extends SignRequest {}
+export interface SignCommandOutput extends SignResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a <a href="https://en.wikipedia.org/wiki/Digital_signature">digital
@@ -56,6 +56,29 @@ export type SignCommandOutput = SignResponse & __MetadataBearer;
  *          <p>The CMK that you use for this operation must be in a compatible key state. For
  * details, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use
  * of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+ *          <p>
+ *             <b>Cross-account use</b>: Yes. To perform this operation with a CMK in a different AWS account, specify
+ *   the key ARN or alias ARN in the value of the <code>KeyId</code> parameter.</p>
+ *
+ *          <p>
+ *             <b>Required permissions</b>: <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:Sign</a> (key policy)</p>
+ *          <p>
+ *             <b>Related operations</b>: <a>Verify</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, SignCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, SignCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new SignCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SignCommandInput} for command's `input` shape.
+ * @see {@link SignCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SignCommand extends $Command<SignCommandInput, SignCommandOutput, KMSClientResolvedConfig> {
   // Start section: command_properties

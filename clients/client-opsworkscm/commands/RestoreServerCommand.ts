@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreServerCommandInput = RestoreServerRequest;
-export type RestoreServerCommandOutput = RestoreServerResponse & __MetadataBearer;
+export interface RestoreServerCommandInput extends RestoreServerRequest {}
+export interface RestoreServerCommandOutput extends RestoreServerResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -36,6 +36,20 @@ export type RestoreServerCommandOutput = RestoreServerResponse & __MetadataBeare
  *       An <code>InvalidStateException</code> is thrown when the server is not in a valid state. A <code>ResourceNotFoundException</code> is thrown
  *       when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksCMClient, RestoreServerCommand } from "@aws-sdk/client-opsworkscm"; // ES Modules import
+ * // const { OpsWorksCMClient, RestoreServerCommand } = require("@aws-sdk/client-opsworkscm"); // CommonJS import
+ * const client = new OpsWorksCMClient(config);
+ * const command = new RestoreServerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreServerCommandInput} for command's `input` shape.
+ * @see {@link RestoreServerCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksCMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreServerCommand extends $Command<
   RestoreServerCommandInput,

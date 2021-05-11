@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddApplicationInputCommandInput = AddApplicationInputRequest;
-export type AddApplicationInputCommandOutput = AddApplicationInputResponse & __MetadataBearer;
+export interface AddApplicationInputCommandInput extends AddApplicationInputRequest {}
+export interface AddApplicationInputCommandOutput extends AddApplicationInputResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -35,6 +35,20 @@ export type AddApplicationInputCommandOutput = AddApplicationInputResponse & __M
  *       results in a new version of the application. You can use the <a>DescribeApplication</a> operation
  *       to find the current application version.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisAnalyticsV2Client, AddApplicationInputCommand } from "@aws-sdk/client-kinesis-analytics-v2"; // ES Modules import
+ * // const { KinesisAnalyticsV2Client, AddApplicationInputCommand } = require("@aws-sdk/client-kinesis-analytics-v2"); // CommonJS import
+ * const client = new KinesisAnalyticsV2Client(config);
+ * const command = new AddApplicationInputCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddApplicationInputCommandInput} for command's `input` shape.
+ * @see {@link AddApplicationInputCommandOutput} for command's `response` shape.
+ * @see {@link KinesisAnalyticsV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddApplicationInputCommand extends $Command<
   AddApplicationInputCommandInput,

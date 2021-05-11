@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetUserDefinedFunctionCommandInput = GetUserDefinedFunctionRequest;
-export type GetUserDefinedFunctionCommandOutput = GetUserDefinedFunctionResponse & __MetadataBearer;
+export interface GetUserDefinedFunctionCommandInput extends GetUserDefinedFunctionRequest {}
+export interface GetUserDefinedFunctionCommandOutput extends GetUserDefinedFunctionResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a specified function definition from the Data Catalog.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetUserDefinedFunctionCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetUserDefinedFunctionCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetUserDefinedFunctionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetUserDefinedFunctionCommandInput} for command's `input` shape.
+ * @see {@link GetUserDefinedFunctionCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetUserDefinedFunctionCommand extends $Command<
   GetUserDefinedFunctionCommandInput,

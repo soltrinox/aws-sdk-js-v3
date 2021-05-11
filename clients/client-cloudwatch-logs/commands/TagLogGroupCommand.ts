@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagLogGroupCommandInput = TagLogGroupRequest;
-export type TagLogGroupCommandOutput = __MetadataBearer;
+export interface TagLogGroupCommandInput extends TagLogGroupRequest {}
+export interface TagLogGroupCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Adds or updates the specified tags for the specified log group.</p>
@@ -26,6 +26,20 @@ export type TagLogGroupCommandOutput = __MetadataBearer;
  *       To remove tags, use <a href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_UntagLogGroup.html">UntagLogGroup</a>.</p>
  *          <p>For more information about tags, see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#log-group-tagging">Tag Log Groups in Amazon CloudWatch Logs</a>
  *       in the <i>Amazon CloudWatch Logs User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, TagLogGroupCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, TagLogGroupCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new TagLogGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagLogGroupCommandInput} for command's `input` shape.
+ * @see {@link TagLogGroupCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagLogGroupCommand extends $Command<
   TagLogGroupCommandInput,

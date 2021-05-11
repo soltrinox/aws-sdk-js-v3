@@ -18,12 +18,12 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateJobPriorityCommandInput = UpdateJobPriorityRequest;
-export type UpdateJobPriorityCommandOutput = UpdateJobPriorityResult & __MetadataBearer;
+export interface UpdateJobPriorityCommandInput extends UpdateJobPriorityRequest {}
+export interface UpdateJobPriorityCommandOutput extends UpdateJobPriorityResult, __MetadataBearer {}
 
 /**
  * <p>Updates an existing S3 Batch Operations job's priority. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html">S3 Batch Operations</a> in the
- *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *             <i>Amazon Simple Storage Service User Guide</i>.</p>
  *          <p></p>
  *          <p>Related actions include:</p>
  *          <ul>
@@ -48,6 +48,20 @@ export type UpdateJobPriorityCommandOutput = UpdateJobPriorityResult & __Metadat
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, UpdateJobPriorityCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, UpdateJobPriorityCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new UpdateJobPriorityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateJobPriorityCommandInput} for command's `input` shape.
+ * @see {@link UpdateJobPriorityCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateJobPriorityCommand extends $Command<
   UpdateJobPriorityCommandInput,

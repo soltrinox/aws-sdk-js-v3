@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartPiiEntitiesDetectionJobCommandInput = StartPiiEntitiesDetectionJobRequest;
-export type StartPiiEntitiesDetectionJobCommandOutput = StartPiiEntitiesDetectionJobResponse & __MetadataBearer;
+export interface StartPiiEntitiesDetectionJobCommandInput extends StartPiiEntitiesDetectionJobRequest {}
+export interface StartPiiEntitiesDetectionJobCommandOutput
+  extends StartPiiEntitiesDetectionJobResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Starts an asynchronous PII entity detection job for a collection of documents.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ComprehendClient, StartPiiEntitiesDetectionJobCommand } from "@aws-sdk/client-comprehend"; // ES Modules import
+ * // const { ComprehendClient, StartPiiEntitiesDetectionJobCommand } = require("@aws-sdk/client-comprehend"); // CommonJS import
+ * const client = new ComprehendClient(config);
+ * const command = new StartPiiEntitiesDetectionJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartPiiEntitiesDetectionJobCommandInput} for command's `input` shape.
+ * @see {@link StartPiiEntitiesDetectionJobCommandOutput} for command's `response` shape.
+ * @see {@link ComprehendClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartPiiEntitiesDetectionJobCommand extends $Command<
   StartPiiEntitiesDetectionJobCommandInput,

@@ -17,10 +17,19 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StreamingTraitsRequireLengthCommandInput = Omit<StreamingTraitsRequireLengthInputOutput, "blob"> & {
+type StreamingTraitsRequireLengthCommandInputType = Omit<StreamingTraitsRequireLengthInputOutput, "blob"> & {
+  /**
+   * For *`StreamingTraitsRequireLengthInputOutput["blob"]`*, see {@link StreamingTraitsRequireLengthInputOutput.blob}.
+   */
   blob?: StreamingTraitsRequireLengthInputOutput["blob"] | string | Uint8Array | Buffer;
 };
-export type StreamingTraitsRequireLengthCommandOutput = StreamingTraitsRequireLengthInputOutput & __MetadataBearer;
+/**
+ * This interface extends from `StreamingTraitsRequireLengthInputOutput` interface. There are more parameters than `blob` defined in {@link StreamingTraitsRequireLengthInputOutput}
+ */
+export interface StreamingTraitsRequireLengthCommandInput extends StreamingTraitsRequireLengthCommandInputType {}
+export interface StreamingTraitsRequireLengthCommandOutput
+  extends StreamingTraitsRequireLengthInputOutput,
+    __MetadataBearer {}
 
 /**
  * This examples serializes a streaming blob shape with a required content
@@ -28,6 +37,20 @@ export type StreamingTraitsRequireLengthCommandOutput = StreamingTraitsRequireLe
  *
  * In this example, no JSON document is synthesized because the payload is
  * not a structure or a union type.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestJsonProtocolClient, StreamingTraitsRequireLengthCommand } from "@aws-sdk/aws-restjson"; // ES Modules import
+ * // const { RestJsonProtocolClient, StreamingTraitsRequireLengthCommand } = require("@aws-sdk/aws-restjson"); // CommonJS import
+ * const client = new RestJsonProtocolClient(config);
+ * const command = new StreamingTraitsRequireLengthCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StreamingTraitsRequireLengthCommandInput} for command's `input` shape.
+ * @see {@link StreamingTraitsRequireLengthCommandOutput} for command's `response` shape.
+ * @see {@link RestJsonProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StreamingTraitsRequireLengthCommand extends $Command<
   StreamingTraitsRequireLengthCommandInput,

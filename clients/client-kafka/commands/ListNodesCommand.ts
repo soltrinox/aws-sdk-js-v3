@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListNodesCommandInput = ListNodesRequest;
-export type ListNodesCommandOutput = ListNodesResponse & __MetadataBearer;
+export interface ListNodesCommandInput extends ListNodesRequest {}
+export interface ListNodesCommandOutput extends ListNodesResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of the broker nodes in the cluster.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, ListNodesCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, ListNodesCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new ListNodesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListNodesCommandInput} for command's `input` shape.
+ * @see {@link ListNodesCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListNodesCommand extends $Command<
   ListNodesCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSystemInstanceCommandInput = GetSystemInstanceRequest;
-export type GetSystemInstanceCommandOutput = GetSystemInstanceResponse & __MetadataBearer;
+export interface GetSystemInstanceCommandInput extends GetSystemInstanceRequest {}
+export interface GetSystemInstanceCommandOutput extends GetSystemInstanceResponse, __MetadataBearer {}
 
 /**
  * <p>Gets a system instance.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTThingsGraphClient, GetSystemInstanceCommand } from "@aws-sdk/client-iotthingsgraph"; // ES Modules import
+ * // const { IoTThingsGraphClient, GetSystemInstanceCommand } = require("@aws-sdk/client-iotthingsgraph"); // CommonJS import
+ * const client = new IoTThingsGraphClient(config);
+ * const command = new GetSystemInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSystemInstanceCommandInput} for command's `input` shape.
+ * @see {@link GetSystemInstanceCommandOutput} for command's `response` shape.
+ * @see {@link IoTThingsGraphClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSystemInstanceCommand extends $Command<
   GetSystemInstanceCommandInput,

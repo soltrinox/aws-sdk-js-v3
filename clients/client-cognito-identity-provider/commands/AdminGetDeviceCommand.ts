@@ -22,12 +22,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AdminGetDeviceCommandInput = AdminGetDeviceRequest;
-export type AdminGetDeviceCommandOutput = AdminGetDeviceResponse & __MetadataBearer;
+export interface AdminGetDeviceCommandInput extends AdminGetDeviceRequest {}
+export interface AdminGetDeviceCommandOutput extends AdminGetDeviceResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the device, as an administrator.</p>
  *         <p>Calling this action requires developer credentials.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, AdminGetDeviceCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, AdminGetDeviceCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new AdminGetDeviceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AdminGetDeviceCommandInput} for command's `input` shape.
+ * @see {@link AdminGetDeviceCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AdminGetDeviceCommand extends $Command<
   AdminGetDeviceCommandInput,

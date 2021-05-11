@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutBucketLoggingCommandInput = PutBucketLoggingRequest;
-export type PutBucketLoggingCommandOutput = __MetadataBearer;
+export interface PutBucketLoggingCommandInput extends PutBucketLoggingRequest {}
+export interface PutBucketLoggingCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Set the logging parameters for a bucket and to specify permissions for who can view and
@@ -102,6 +102,20 @@ export type PutBucketLoggingCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, PutBucketLoggingCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, PutBucketLoggingCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new PutBucketLoggingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutBucketLoggingCommandInput} for command's `input` shape.
+ * @see {@link PutBucketLoggingCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutBucketLoggingCommand extends $Command<
   PutBucketLoggingCommandInput,

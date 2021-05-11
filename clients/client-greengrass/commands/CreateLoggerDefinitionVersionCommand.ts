@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateLoggerDefinitionVersionCommandInput = CreateLoggerDefinitionVersionRequest;
-export type CreateLoggerDefinitionVersionCommandOutput = CreateLoggerDefinitionVersionResponse & __MetadataBearer;
+export interface CreateLoggerDefinitionVersionCommandInput extends CreateLoggerDefinitionVersionRequest {}
+export interface CreateLoggerDefinitionVersionCommandOutput
+  extends CreateLoggerDefinitionVersionResponse,
+    __MetadataBearer {}
 
 /**
  * Creates a version of a logger definition that has already been defined.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, CreateLoggerDefinitionVersionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, CreateLoggerDefinitionVersionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new CreateLoggerDefinitionVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateLoggerDefinitionVersionCommandInput} for command's `input` shape.
+ * @see {@link CreateLoggerDefinitionVersionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateLoggerDefinitionVersionCommand extends $Command<
   CreateLoggerDefinitionVersionCommandInput,

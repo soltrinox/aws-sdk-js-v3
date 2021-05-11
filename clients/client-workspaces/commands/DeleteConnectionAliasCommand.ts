@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteConnectionAliasCommandInput = DeleteConnectionAliasRequest;
-export type DeleteConnectionAliasCommandOutput = DeleteConnectionAliasResult & __MetadataBearer;
+export interface DeleteConnectionAliasCommandInput extends DeleteConnectionAliasRequest {}
+export interface DeleteConnectionAliasCommandOutput extends DeleteConnectionAliasResult, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified connection alias. For more information, see <a href="https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html">
@@ -39,6 +39,20 @@ export type DeleteConnectionAliasCommandOutput = DeleteConnectionAliasResult & _
  *             been shared with. You can delete a connection alias only after it is no longer shared with any accounts or
  *             associated with any directories.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, DeleteConnectionAliasCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, DeleteConnectionAliasCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new DeleteConnectionAliasCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteConnectionAliasCommandInput} for command's `input` shape.
+ * @see {@link DeleteConnectionAliasCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteConnectionAliasCommand extends $Command<
   DeleteConnectionAliasCommandInput,

@@ -14,13 +14,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListGroupsCommandInput = ListGroupsRequest;
-export type ListGroupsCommandOutput = ListGroupsResponse & __MetadataBearer;
+export interface ListGroupsCommandInput extends ListGroupsRequest {}
+export interface ListGroupsCommandOutput extends ListGroupsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the IAM groups that have the specified path prefix.</p>
- *          <p> You can paginate the results using the <code>MaxItems</code> and <code>Marker</code>
- *          parameters.</p>
+ *         <p> You can paginate the results using the <code>MaxItems</code> and <code>Marker</code>
+ *             parameters.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, ListGroupsCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, ListGroupsCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new ListGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListGroupsCommandInput} for command's `input` shape.
+ * @see {@link ListGroupsCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListGroupsCommand extends $Command<
   ListGroupsCommandInput,

@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateProjectCommandInput = UpdateProjectRequest;
-export type UpdateProjectCommandOutput = UpdateProjectResult & __MetadataBearer;
+export interface UpdateProjectCommandInput extends UpdateProjectRequest {}
+export interface UpdateProjectCommandOutput extends UpdateProjectResult, __MetadataBearer {}
 
 /**
  * <p>
  *             Update an existing project.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MobileClient, UpdateProjectCommand } from "@aws-sdk/client-mobile"; // ES Modules import
+ * // const { MobileClient, UpdateProjectCommand } = require("@aws-sdk/client-mobile"); // CommonJS import
+ * const client = new MobileClient(config);
+ * const command = new UpdateProjectCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateProjectCommandInput} for command's `input` shape.
+ * @see {@link UpdateProjectCommandOutput} for command's `response` shape.
+ * @see {@link MobileClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateProjectCommand extends $Command<
   UpdateProjectCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreatePlatformEndpointCommandInput = CreatePlatformEndpointInput;
-export type CreatePlatformEndpointCommandOutput = CreateEndpointResponse & __MetadataBearer;
+export interface CreatePlatformEndpointCommandInput extends CreatePlatformEndpointInput {}
+export interface CreatePlatformEndpointCommandOutput extends CreateEndpointResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an endpoint for a device and mobile app on one of the supported push
@@ -35,6 +35,20 @@ export type CreatePlatformEndpointCommandOutput = CreateEndpointResponse & __Met
  *             provided: ChannelId and UserId. The token field must also contain the ChannelId. For
  *             more information, see <a href="https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html">Creating an Amazon SNS Endpoint
  *                 for Baidu</a>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SNSClient, CreatePlatformEndpointCommand } from "@aws-sdk/client-sns"; // ES Modules import
+ * // const { SNSClient, CreatePlatformEndpointCommand } = require("@aws-sdk/client-sns"); // CommonJS import
+ * const client = new SNSClient(config);
+ * const command = new CreatePlatformEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreatePlatformEndpointCommandInput} for command's `input` shape.
+ * @see {@link CreatePlatformEndpointCommandOutput} for command's `response` shape.
+ * @see {@link SNSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreatePlatformEndpointCommand extends $Command<
   CreatePlatformEndpointCommandInput,

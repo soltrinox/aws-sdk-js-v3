@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDatasetCommandInput = CreateDatasetRequest;
-export type CreateDatasetCommandOutput = CreateDatasetResponse & __MetadataBearer;
+export interface CreateDatasetCommandInput extends CreateDatasetRequest {}
+export interface CreateDatasetCommandOutput extends CreateDatasetResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new dataset  in an Amazon Lookout for Vision project. <code>CreateDataset</code> can create a
@@ -28,9 +28,23 @@ export type CreateDatasetCommandOutput = CreateDatasetResponse & __MetadataBeare
  *         <p>To have a project with separate training and test datasets, call <code>CreateDataset</code> twice.
  *            On the first call, specify <code>train</code> for the value of
  *            <code>DatasetType</code>. On the second call, specify <code>test</code> for the value of
- *            <code>DatasetType</code>.
+ *            <code>DatasetType</code>. </p>
+ *         <p>This operation requires permissions to perform the
+ *            <code>lookoutvision:CreateDataset</code> operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LookoutVisionClient, CreateDatasetCommand } from "@aws-sdk/client-lookoutvision"; // ES Modules import
+ * // const { LookoutVisionClient, CreateDatasetCommand } = require("@aws-sdk/client-lookoutvision"); // CommonJS import
+ * const client = new LookoutVisionClient(config);
+ * const command = new CreateDatasetCommand(input);
+ * const response = await client.send(command);
+ * ```
  *
- *          of dataset with </p>
+ * @see {@link CreateDatasetCommandInput} for command's `input` shape.
+ * @see {@link CreateDatasetCommandOutput} for command's `response` shape.
+ * @see {@link LookoutVisionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDatasetCommand extends $Command<
   CreateDatasetCommandInput,

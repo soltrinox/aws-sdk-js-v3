@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteMetricFilterCommandInput = DeleteMetricFilterRequest;
-export type DeleteMetricFilterCommandOutput = __MetadataBearer;
+export interface DeleteMetricFilterCommandInput extends DeleteMetricFilterRequest {}
+export interface DeleteMetricFilterCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified metric filter.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, DeleteMetricFilterCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, DeleteMetricFilterCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new DeleteMetricFilterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteMetricFilterCommandInput} for command's `input` shape.
+ * @see {@link DeleteMetricFilterCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteMetricFilterCommand extends $Command<
   DeleteMetricFilterCommandInput,

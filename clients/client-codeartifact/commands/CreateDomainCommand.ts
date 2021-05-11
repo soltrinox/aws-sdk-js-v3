@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDomainCommandInput = CreateDomainRequest;
-export type CreateDomainCommandOutput = CreateDomainResult & __MetadataBearer;
+export interface CreateDomainCommandInput extends CreateDomainRequest {}
+export interface CreateDomainCommandOutput extends CreateDomainResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -32,6 +32,20 @@ export type CreateDomainCommandOutput = CreateDomainResult & __MetadataBearer;
  *         published artifacts so that your development teams can find and share packages. You can use a second
  *         pre-production domain to test changes to the production domain configuration.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeartifactClient, CreateDomainCommand } from "@aws-sdk/client-codeartifact"; // ES Modules import
+ * // const { CodeartifactClient, CreateDomainCommand } = require("@aws-sdk/client-codeartifact"); // CommonJS import
+ * const client = new CodeartifactClient(config);
+ * const command = new CreateDomainCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDomainCommandInput} for command's `input` shape.
+ * @see {@link CreateDomainCommandOutput} for command's `response` shape.
+ * @see {@link CodeartifactClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDomainCommand extends $Command<
   CreateDomainCommandInput,

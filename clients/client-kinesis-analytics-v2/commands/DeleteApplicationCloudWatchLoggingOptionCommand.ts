@@ -24,12 +24,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteApplicationCloudWatchLoggingOptionCommandInput = DeleteApplicationCloudWatchLoggingOptionRequest;
-export type DeleteApplicationCloudWatchLoggingOptionCommandOutput = DeleteApplicationCloudWatchLoggingOptionResponse &
-  __MetadataBearer;
+export interface DeleteApplicationCloudWatchLoggingOptionCommandInput
+  extends DeleteApplicationCloudWatchLoggingOptionRequest {}
+export interface DeleteApplicationCloudWatchLoggingOptionCommandOutput
+  extends DeleteApplicationCloudWatchLoggingOptionResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics application. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisAnalyticsV2Client, DeleteApplicationCloudWatchLoggingOptionCommand } from "@aws-sdk/client-kinesis-analytics-v2"; // ES Modules import
+ * // const { KinesisAnalyticsV2Client, DeleteApplicationCloudWatchLoggingOptionCommand } = require("@aws-sdk/client-kinesis-analytics-v2"); // CommonJS import
+ * const client = new KinesisAnalyticsV2Client(config);
+ * const command = new DeleteApplicationCloudWatchLoggingOptionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteApplicationCloudWatchLoggingOptionCommandInput} for command's `input` shape.
+ * @see {@link DeleteApplicationCloudWatchLoggingOptionCommandOutput} for command's `response` shape.
+ * @see {@link KinesisAnalyticsV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteApplicationCloudWatchLoggingOptionCommand extends $Command<
   DeleteApplicationCloudWatchLoggingOptionCommandInput,

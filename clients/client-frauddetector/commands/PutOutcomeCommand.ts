@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutOutcomeCommandInput = PutOutcomeRequest;
-export type PutOutcomeCommandOutput = PutOutcomeResult & __MetadataBearer;
+export interface PutOutcomeCommandInput extends PutOutcomeRequest {}
+export interface PutOutcomeCommandOutput extends PutOutcomeResult, __MetadataBearer {}
 
 /**
  * <p>Creates or updates an outcome. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FraudDetectorClient, PutOutcomeCommand } from "@aws-sdk/client-frauddetector"; // ES Modules import
+ * // const { FraudDetectorClient, PutOutcomeCommand } = require("@aws-sdk/client-frauddetector"); // CommonJS import
+ * const client = new FraudDetectorClient(config);
+ * const command = new PutOutcomeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutOutcomeCommandInput} for command's `input` shape.
+ * @see {@link PutOutcomeCommandOutput} for command's `response` shape.
+ * @see {@link FraudDetectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutOutcomeCommand extends $Command<
   PutOutcomeCommandInput,

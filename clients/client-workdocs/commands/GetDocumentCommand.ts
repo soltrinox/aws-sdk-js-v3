@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDocumentCommandInput = GetDocumentRequest;
-export type GetDocumentCommandOutput = GetDocumentResponse & __MetadataBearer;
+export interface GetDocumentCommandInput extends GetDocumentRequest {}
+export interface GetDocumentCommandOutput extends GetDocumentResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves details of a document.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkDocsClient, GetDocumentCommand } from "@aws-sdk/client-workdocs"; // ES Modules import
+ * // const { WorkDocsClient, GetDocumentCommand } = require("@aws-sdk/client-workdocs"); // CommonJS import
+ * const client = new WorkDocsClient(config);
+ * const command = new GetDocumentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDocumentCommandInput} for command's `input` shape.
+ * @see {@link GetDocumentCommandOutput} for command's `response` shape.
+ * @see {@link WorkDocsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDocumentCommand extends $Command<
   GetDocumentCommandInput,

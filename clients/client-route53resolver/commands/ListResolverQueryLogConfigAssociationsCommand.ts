@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListResolverQueryLogConfigAssociationsCommandInput = ListResolverQueryLogConfigAssociationsRequest;
-export type ListResolverQueryLogConfigAssociationsCommandOutput = ListResolverQueryLogConfigAssociationsResponse &
-  __MetadataBearer;
+export interface ListResolverQueryLogConfigAssociationsCommandInput
+  extends ListResolverQueryLogConfigAssociationsRequest {}
+export interface ListResolverQueryLogConfigAssociationsCommandOutput
+  extends ListResolverQueryLogConfigAssociationsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Lists information about associations between Amazon VPCs and query logging configurations.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53ResolverClient, ListResolverQueryLogConfigAssociationsCommand } from "@aws-sdk/client-route53resolver"; // ES Modules import
+ * // const { Route53ResolverClient, ListResolverQueryLogConfigAssociationsCommand } = require("@aws-sdk/client-route53resolver"); // CommonJS import
+ * const client = new Route53ResolverClient(config);
+ * const command = new ListResolverQueryLogConfigAssociationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListResolverQueryLogConfigAssociationsCommandInput} for command's `input` shape.
+ * @see {@link ListResolverQueryLogConfigAssociationsCommandOutput} for command's `response` shape.
+ * @see {@link Route53ResolverClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListResolverQueryLogConfigAssociationsCommand extends $Command<
   ListResolverQueryLogConfigAssociationsCommandInput,

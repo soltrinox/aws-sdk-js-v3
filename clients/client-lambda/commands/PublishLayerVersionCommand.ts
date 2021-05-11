@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PublishLayerVersionCommandInput = PublishLayerVersionRequest;
-export type PublishLayerVersionCommandOutput = PublishLayerVersionResponse & __MetadataBearer;
+export interface PublishLayerVersionCommandInput extends PublishLayerVersionRequest {}
+export interface PublishLayerVersionCommandOutput extends PublishLayerVersionResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda
  *         layer</a> from a ZIP archive. Each time you call <code>PublishLayerVersion</code> with the same
  *       layer name, a new version is created.</p>
  *          <p>Add layers to your function with <a>CreateFunction</a> or <a>UpdateFunctionConfiguration</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LambdaClient, PublishLayerVersionCommand } from "@aws-sdk/client-lambda"; // ES Modules import
+ * // const { LambdaClient, PublishLayerVersionCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+ * const client = new LambdaClient(config);
+ * const command = new PublishLayerVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PublishLayerVersionCommandInput} for command's `input` shape.
+ * @see {@link PublishLayerVersionCommandOutput} for command's `response` shape.
+ * @see {@link LambdaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PublishLayerVersionCommand extends $Command<
   PublishLayerVersionCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddJobFlowStepsCommandInput = AddJobFlowStepsInput;
-export type AddJobFlowStepsCommandOutput = AddJobFlowStepsOutput & __MetadataBearer;
+export interface AddJobFlowStepsCommandInput extends AddJobFlowStepsInput {}
+export interface AddJobFlowStepsCommandOutput extends AddJobFlowStepsOutput, __MetadataBearer {}
 
 /**
  * <p>AddJobFlowSteps adds new steps to a running cluster. A maximum of 256 steps are allowed
@@ -38,6 +38,20 @@ export type AddJobFlowStepsCommandOutput = AddJobFlowStepsOutput & __MetadataBea
  *          step was running must have completed and run successfully.</p>
  *          <p>You can only add steps to a cluster that is in one of the following states: STARTING,
  *          BOOTSTRAPPING, RUNNING, or WAITING.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EMRClient, AddJobFlowStepsCommand } from "@aws-sdk/client-emr"; // ES Modules import
+ * // const { EMRClient, AddJobFlowStepsCommand } = require("@aws-sdk/client-emr"); // CommonJS import
+ * const client = new EMRClient(config);
+ * const command = new AddJobFlowStepsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddJobFlowStepsCommandInput} for command's `input` shape.
+ * @see {@link AddJobFlowStepsCommandOutput} for command's `response` shape.
+ * @see {@link EMRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddJobFlowStepsCommand extends $Command<
   AddJobFlowStepsCommandInput,

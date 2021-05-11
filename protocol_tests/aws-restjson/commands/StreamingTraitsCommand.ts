@@ -17,16 +17,37 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StreamingTraitsCommandInput = Omit<StreamingTraitsInputOutput, "blob"> & {
+type StreamingTraitsCommandInputType = Omit<StreamingTraitsInputOutput, "blob"> & {
+  /**
+   * For *`StreamingTraitsInputOutput["blob"]`*, see {@link StreamingTraitsInputOutput.blob}.
+   */
   blob?: StreamingTraitsInputOutput["blob"] | string | Uint8Array | Buffer;
 };
-export type StreamingTraitsCommandOutput = StreamingTraitsInputOutput & __MetadataBearer;
+/**
+ * This interface extends from `StreamingTraitsInputOutput` interface. There are more parameters than `blob` defined in {@link StreamingTraitsInputOutput}
+ */
+export interface StreamingTraitsCommandInput extends StreamingTraitsCommandInputType {}
+export interface StreamingTraitsCommandOutput extends StreamingTraitsInputOutput, __MetadataBearer {}
 
 /**
  * This examples serializes a streaming blob shape in the request body.
  *
  * In this example, no JSON document is synthesized because the payload is
  * not a structure or a union type.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestJsonProtocolClient, StreamingTraitsCommand } from "@aws-sdk/aws-restjson"; // ES Modules import
+ * // const { RestJsonProtocolClient, StreamingTraitsCommand } = require("@aws-sdk/aws-restjson"); // CommonJS import
+ * const client = new RestJsonProtocolClient(config);
+ * const command = new StreamingTraitsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StreamingTraitsCommandInput} for command's `input` shape.
+ * @see {@link StreamingTraitsCommandOutput} for command's `response` shape.
+ * @see {@link RestJsonProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StreamingTraitsCommand extends $Command<
   StreamingTraitsCommandInput,

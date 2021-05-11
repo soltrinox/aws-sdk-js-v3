@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBuildCommandInput = DeleteBuildInput;
-export type DeleteBuildCommandOutput = __MetadataBearer;
+export interface DeleteBuildCommandInput extends DeleteBuildInput {}
+export interface DeleteBuildCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a build. This operation permanently deletes the build resource and any uploaded
@@ -33,35 +33,30 @@ export type DeleteBuildCommandOutput = __MetadataBearer;
  *                 Upload a Custom Server Build</a>
  *          </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateBuild</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ListBuilds</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeBuild</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateBuild</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteBuild</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>CreateBuild</a> |
+ *                     <a>ListBuilds</a> |
+ *                     <a>DescribeBuild</a> |
+ *                     <a>UpdateBuild</a> |
+ *                     <a>DeleteBuild</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, DeleteBuildCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, DeleteBuildCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new DeleteBuildCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBuildCommandInput} for command's `input` shape.
+ * @see {@link DeleteBuildCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBuildCommand extends $Command<
   DeleteBuildCommandInput,

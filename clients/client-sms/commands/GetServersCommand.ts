@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetServersCommandInput = GetServersRequest;
-export type GetServersCommandOutput = GetServersResponse & __MetadataBearer;
+export interface GetServersCommandInput extends GetServersRequest {}
+export interface GetServersCommandOutput extends GetServersResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the servers in your server catalog.</p>
  *         <p>Before you can describe your servers, you must import them using <a>ImportServerCatalog</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SMSClient, GetServersCommand } from "@aws-sdk/client-sms"; // ES Modules import
+ * // const { SMSClient, GetServersCommand } = require("@aws-sdk/client-sms"); // CommonJS import
+ * const client = new SMSClient(config);
+ * const command = new GetServersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetServersCommandInput} for command's `input` shape.
+ * @see {@link GetServersCommandOutput} for command's `response` shape.
+ * @see {@link SMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetServersCommand extends $Command<
   GetServersCommandInput,

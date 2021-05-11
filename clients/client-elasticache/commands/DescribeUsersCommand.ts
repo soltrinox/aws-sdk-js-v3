@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeUsersCommandInput = DescribeUsersMessage;
-export type DescribeUsersCommandOutput = DescribeUsersResult & __MetadataBearer;
+export interface DescribeUsersCommandInput extends DescribeUsersMessage {}
+export interface DescribeUsersCommandOutput extends DescribeUsersResult, __MetadataBearer {}
 
 /**
  * <p>Returns a list of users.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, DescribeUsersCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, DescribeUsersCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new DescribeUsersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeUsersCommandInput} for command's `input` shape.
+ * @see {@link DescribeUsersCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeUsersCommand extends $Command<
   DescribeUsersCommandInput,

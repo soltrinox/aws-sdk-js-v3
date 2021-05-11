@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeApplicationCommandInput = DescribeApplicationRequest;
-export type DescribeApplicationCommandOutput = DescribeApplicationResponse & __MetadataBearer;
+export interface DescribeApplicationCommandInput extends DescribeApplicationRequest {}
+export interface DescribeApplicationCommandOutput extends DescribeApplicationResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -31,6 +31,20 @@ export type DescribeApplicationCommandOutput = DescribeApplicationResponse & __M
  *             action. You can use <code>DescribeApplication</code> to get the current application versionId, which you need to call other
  *             operations such as <code>Update</code>.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisAnalyticsClient, DescribeApplicationCommand } from "@aws-sdk/client-kinesis-analytics"; // ES Modules import
+ * // const { KinesisAnalyticsClient, DescribeApplicationCommand } = require("@aws-sdk/client-kinesis-analytics"); // CommonJS import
+ * const client = new KinesisAnalyticsClient(config);
+ * const command = new DescribeApplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeApplicationCommandInput} for command's `input` shape.
+ * @see {@link DescribeApplicationCommandOutput} for command's `response` shape.
+ * @see {@link KinesisAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeApplicationCommand extends $Command<
   DescribeApplicationCommandInput,

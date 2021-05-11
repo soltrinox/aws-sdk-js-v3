@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ImportCatalogToGlueCommandInput = ImportCatalogToGlueRequest;
-export type ImportCatalogToGlueCommandOutput = ImportCatalogToGlueResponse & __MetadataBearer;
+export interface ImportCatalogToGlueCommandInput extends ImportCatalogToGlueRequest {}
+export interface ImportCatalogToGlueCommandOutput extends ImportCatalogToGlueResponse, __MetadataBearer {}
 
 /**
  * <p>Imports an existing Amazon Athena Data Catalog to AWS Glue</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, ImportCatalogToGlueCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, ImportCatalogToGlueCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new ImportCatalogToGlueCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ImportCatalogToGlueCommandInput} for command's `input` shape.
+ * @see {@link ImportCatalogToGlueCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ImportCatalogToGlueCommand extends $Command<
   ImportCatalogToGlueCommandInput,

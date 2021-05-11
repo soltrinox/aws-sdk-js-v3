@@ -1,5 +1,5 @@
 import { SecurityHubClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SecurityHubClient";
-import { DisassociateFromMasterAccountRequest, DisassociateFromMasterAccountResponse } from "../models/models_0";
+import { DisassociateFromMasterAccountRequest, DisassociateFromMasterAccountResponse } from "../models/models_1";
 import {
   deserializeAws_restJson1DisassociateFromMasterAccountCommand,
   serializeAws_restJson1DisassociateFromMasterAccountCommand,
@@ -17,15 +17,34 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateFromMasterAccountCommandInput = DisassociateFromMasterAccountRequest;
-export type DisassociateFromMasterAccountCommandOutput = DisassociateFromMasterAccountResponse & __MetadataBearer;
+export interface DisassociateFromMasterAccountCommandInput extends DisassociateFromMasterAccountRequest {}
+export interface DisassociateFromMasterAccountCommandOutput
+  extends DisassociateFromMasterAccountResponse,
+    __MetadataBearer {}
 
 /**
- * <p>Disassociates the current Security Hub member account from the associated master
+ * @deprecated
+ *
+ * <p>This method is deprecated. Instead, use <code>DisassociateFromAdministratorAccount</code>.</p>
+ *          <p>Disassociates the current Security Hub member account from the associated administrator
  *          account.</p>
  *          <p>This operation is only used by accounts that are not part of an organization. For
- *          organization accounts, only the master account (the designated Security Hub administrator) can
+ *          organization accounts, only the administrator account can
  *          disassociate a member account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecurityHubClient, DisassociateFromMasterAccountCommand } from "@aws-sdk/client-securityhub"; // ES Modules import
+ * // const { SecurityHubClient, DisassociateFromMasterAccountCommand } = require("@aws-sdk/client-securityhub"); // CommonJS import
+ * const client = new SecurityHubClient(config);
+ * const command = new DisassociateFromMasterAccountCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateFromMasterAccountCommandInput} for command's `input` shape.
+ * @see {@link DisassociateFromMasterAccountCommandOutput} for command's `response` shape.
+ * @see {@link SecurityHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateFromMasterAccountCommand extends $Command<
   DisassociateFromMasterAccountCommandInput,

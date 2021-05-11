@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RevokeCertificateCommandInput = RevokeCertificateRequest;
-export type RevokeCertificateCommandOutput = __MetadataBearer;
+export interface RevokeCertificateCommandInput extends RevokeCertificateRequest {}
+export interface RevokeCertificateCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Revokes a certificate that was issued inside ACM Private CA. If you enable a certificate
@@ -41,6 +41,20 @@ export type RevokeCertificateCommandOutput = __MetadataBearer;
  * 		       <note>
  * 			         <p>You cannot revoke a root CA self-signed certificate.</p>
  * 		       </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ACMPCAClient, RevokeCertificateCommand } from "@aws-sdk/client-acm-pca"; // ES Modules import
+ * // const { ACMPCAClient, RevokeCertificateCommand } = require("@aws-sdk/client-acm-pca"); // CommonJS import
+ * const client = new ACMPCAClient(config);
+ * const command = new RevokeCertificateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RevokeCertificateCommandInput} for command's `input` shape.
+ * @see {@link RevokeCertificateCommandOutput} for command's `response` shape.
+ * @see {@link ACMPCAClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RevokeCertificateCommand extends $Command<
   RevokeCertificateCommandInput,

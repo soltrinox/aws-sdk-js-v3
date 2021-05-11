@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAliasCommandInput = CreateAliasRequest;
-export type CreateAliasCommandOutput = CreateAliasResult & __MetadataBearer;
+export interface CreateAliasCommandInput extends CreateAliasRequest {}
+export interface CreateAliasCommandOutput extends CreateAliasResult, __MetadataBearer {}
 
 /**
  * <p>Creates an alias for a directory and assigns the alias to the directory. The alias is used
@@ -27,6 +27,20 @@ export type CreateAliasCommandOutput = CreateAliasResult & __MetadataBearer;
  *          <important>
  *             <p>After an alias has been created, it cannot be deleted or reused, so this operation should only be used when absolutely necessary.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectoryServiceClient, CreateAliasCommand } from "@aws-sdk/client-directory-service"; // ES Modules import
+ * // const { DirectoryServiceClient, CreateAliasCommand } = require("@aws-sdk/client-directory-service"); // CommonJS import
+ * const client = new DirectoryServiceClient(config);
+ * const command = new CreateAliasCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAliasCommandInput} for command's `input` shape.
+ * @see {@link CreateAliasCommandOutput} for command's `response` shape.
+ * @see {@link DirectoryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAliasCommand extends $Command<
   CreateAliasCommandInput,

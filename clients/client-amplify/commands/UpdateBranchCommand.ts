@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateBranchCommandInput = UpdateBranchRequest;
-export type UpdateBranchCommandOutput = UpdateBranchResult & __MetadataBearer;
+export interface UpdateBranchCommandInput extends UpdateBranchRequest {}
+export interface UpdateBranchCommandOutput extends UpdateBranchResult, __MetadataBearer {}
 
 /**
  * <p> Updates a branch for an Amplify app. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AmplifyClient, UpdateBranchCommand } from "@aws-sdk/client-amplify"; // ES Modules import
+ * // const { AmplifyClient, UpdateBranchCommand } = require("@aws-sdk/client-amplify"); // CommonJS import
+ * const client = new AmplifyClient(config);
+ * const command = new UpdateBranchCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateBranchCommandInput} for command's `input` shape.
+ * @see {@link UpdateBranchCommandOutput} for command's `response` shape.
+ * @see {@link AmplifyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateBranchCommand extends $Command<
   UpdateBranchCommandInput,

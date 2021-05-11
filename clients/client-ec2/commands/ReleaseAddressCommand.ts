@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ReleaseAddressCommandInput = ReleaseAddressRequest;
-export type ReleaseAddressCommandOutput = __MetadataBearer;
+export interface ReleaseAddressCommandInput extends ReleaseAddressRequest {}
+export interface ReleaseAddressCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Releases the specified Elastic IP address.</p>
@@ -30,6 +30,20 @@ export type ReleaseAddressCommandOutput = __MetadataBearer;
  *         <code>AuthFailure</code> error if the address is already allocated to another AWS account.</p>
  *          <p>[EC2-VPC] After you release an Elastic IP address for use in a VPC, you might be able to recover it.
  *         For more information, see <a>AllocateAddress</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, ReleaseAddressCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, ReleaseAddressCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new ReleaseAddressCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ReleaseAddressCommandInput} for command's `input` shape.
+ * @see {@link ReleaseAddressCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ReleaseAddressCommand extends $Command<
   ReleaseAddressCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateStackInstancesCommandInput = UpdateStackInstancesInput;
-export type UpdateStackInstancesCommandOutput = UpdateStackInstancesOutput & __MetadataBearer;
+export interface UpdateStackInstancesCommandInput extends UpdateStackInstancesInput {}
+export interface UpdateStackInstancesCommandOutput extends UpdateStackInstancesOutput, __MetadataBearer {}
 
 /**
  * <p>Updates the parameter values for stack instances for the specified accounts, within
@@ -34,6 +34,20 @@ export type UpdateStackInstancesCommandOutput = UpdateStackInstancesOutput & __M
  *          parameter value specified in the stack set. Once a stack instance has been updated with the
  *          new parameter, you can then override the parameter value using
  *             <code>UpdateStackInstances</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, UpdateStackInstancesCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, UpdateStackInstancesCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new UpdateStackInstancesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateStackInstancesCommandInput} for command's `input` shape.
+ * @see {@link UpdateStackInstancesCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateStackInstancesCommand extends $Command<
   UpdateStackInstancesCommandInput,

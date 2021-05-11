@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAttendeeTagsCommandInput = ListAttendeeTagsRequest;
-export type ListAttendeeTagsCommandOutput = ListAttendeeTagsResponse & __MetadataBearer;
+export interface ListAttendeeTagsCommandInput extends ListAttendeeTagsRequest {}
+export interface ListAttendeeTagsCommandOutput extends ListAttendeeTagsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the tags applied to an Amazon Chime SDK attendee resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, ListAttendeeTagsCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, ListAttendeeTagsCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new ListAttendeeTagsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAttendeeTagsCommandInput} for command's `input` shape.
+ * @see {@link ListAttendeeTagsCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAttendeeTagsCommand extends $Command<
   ListAttendeeTagsCommandInput,

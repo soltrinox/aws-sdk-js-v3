@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateCertificateAuthorityCommandInput = UpdateCertificateAuthorityRequest;
-export type UpdateCertificateAuthorityCommandOutput = __MetadataBearer;
+export interface UpdateCertificateAuthorityCommandInput extends UpdateCertificateAuthorityRequest {}
+export interface UpdateCertificateAuthorityCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Updates the status or configuration of a private certificate authority (CA). Your
@@ -32,6 +32,20 @@ export type UpdateCertificateAuthorityCommandOutput = __MetadataBearer;
  *                         thrown. For more information, see <a href="https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuthAccess.html">Configure
  *                         Access to ACM Private CA</a>.</p>
  *                 </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ACMPCAClient, UpdateCertificateAuthorityCommand } from "@aws-sdk/client-acm-pca"; // ES Modules import
+ * // const { ACMPCAClient, UpdateCertificateAuthorityCommand } = require("@aws-sdk/client-acm-pca"); // CommonJS import
+ * const client = new ACMPCAClient(config);
+ * const command = new UpdateCertificateAuthorityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateCertificateAuthorityCommandInput} for command's `input` shape.
+ * @see {@link UpdateCertificateAuthorityCommandOutput} for command's `response` shape.
+ * @see {@link ACMPCAClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateCertificateAuthorityCommand extends $Command<
   UpdateCertificateAuthorityCommandInput,

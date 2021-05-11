@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreTableFromBackupCommandInput = RestoreTableFromBackupInput;
-export type RestoreTableFromBackupCommandOutput = RestoreTableFromBackupOutput & __MetadataBearer;
+export interface RestoreTableFromBackupCommandInput extends RestoreTableFromBackupInput {}
+export interface RestoreTableFromBackupCommandOutput extends RestoreTableFromBackupOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores
@@ -46,6 +46,20 @@ export type RestoreTableFromBackupCommandOutput = RestoreTableFromBackupOutput &
  *                  <p>Time to Live (TTL) settings</p>
  *              </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, RestoreTableFromBackupCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, RestoreTableFromBackupCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new RestoreTableFromBackupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreTableFromBackupCommandInput} for command's `input` shape.
+ * @see {@link RestoreTableFromBackupCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreTableFromBackupCommand extends $Command<
   RestoreTableFromBackupCommandInput,

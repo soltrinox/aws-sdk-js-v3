@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDevicePoolCommandInput = DeleteDevicePoolRequest;
-export type DeleteDevicePoolCommandOutput = DeleteDevicePoolResult & __MetadataBearer;
+export interface DeleteDevicePoolCommandInput extends DeleteDevicePoolRequest {}
+export interface DeleteDevicePoolCommandOutput extends DeleteDevicePoolResult, __MetadataBearer {}
 
 /**
  * <p>Deletes a device pool given the pool ARN. Does not allow deletion of curated pools
  *             owned by the system.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, DeleteDevicePoolCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, DeleteDevicePoolCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new DeleteDevicePoolCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDevicePoolCommandInput} for command's `input` shape.
+ * @see {@link DeleteDevicePoolCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDevicePoolCommand extends $Command<
   DeleteDevicePoolCommandInput,

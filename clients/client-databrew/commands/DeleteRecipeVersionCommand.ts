@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteRecipeVersionCommandInput = DeleteRecipeVersionRequest;
-export type DeleteRecipeVersionCommandOutput = DeleteRecipeVersionResponse & __MetadataBearer;
+export interface DeleteRecipeVersionCommandInput extends DeleteRecipeVersionRequest {}
+export interface DeleteRecipeVersionCommandOutput extends DeleteRecipeVersionResponse, __MetadataBearer {}
 
 /**
- * <p>Deletes a single version of an AWS Glue DataBrew recipe.</p>
+ * <p>Deletes a single version of a DataBrew recipe.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataBrewClient, DeleteRecipeVersionCommand } from "@aws-sdk/client-databrew"; // ES Modules import
+ * // const { DataBrewClient, DeleteRecipeVersionCommand } = require("@aws-sdk/client-databrew"); // CommonJS import
+ * const client = new DataBrewClient(config);
+ * const command = new DeleteRecipeVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteRecipeVersionCommandInput} for command's `input` shape.
+ * @see {@link DeleteRecipeVersionCommandOutput} for command's `response` shape.
+ * @see {@link DataBrewClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteRecipeVersionCommand extends $Command<
   DeleteRecipeVersionCommandInput,

@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListFirewallsCommandInput = ListFirewallsRequest;
-export type ListFirewallsCommandOutput = ListFirewallsResponse & __MetadataBearer;
+export interface ListFirewallsCommandInput extends ListFirewallsRequest {}
+export interface ListFirewallsCommandOutput extends ListFirewallsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the metadata for the firewalls that you have defined. If you provide VPC
  *          identifiers in your request, this returns only the firewalls for those VPCs.</p>
  *          <p>Depending on your setting for max results and the number of firewalls, a single call
  *          might not return the full list. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkFirewallClient, ListFirewallsCommand } from "@aws-sdk/client-network-firewall"; // ES Modules import
+ * // const { NetworkFirewallClient, ListFirewallsCommand } = require("@aws-sdk/client-network-firewall"); // CommonJS import
+ * const client = new NetworkFirewallClient(config);
+ * const command = new ListFirewallsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListFirewallsCommandInput} for command's `input` shape.
+ * @see {@link ListFirewallsCommandOutput} for command's `response` shape.
+ * @see {@link NetworkFirewallClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListFirewallsCommand extends $Command<
   ListFirewallsCommandInput,

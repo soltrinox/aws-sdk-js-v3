@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteEndpointCommandInput = DeleteEndpointMessage;
-export type DeleteEndpointCommandOutput = DeleteEndpointResponse & __MetadataBearer;
+export interface DeleteEndpointCommandInput extends DeleteEndpointMessage {}
+export interface DeleteEndpointCommandOutput extends DeleteEndpointResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified endpoint.</p>
@@ -31,6 +31,20 @@ export type DeleteEndpointCommandOutput = DeleteEndpointResponse & __MetadataBea
  *             endpoint.</p>
  *          </note>
  *          <p></p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, DeleteEndpointCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, DeleteEndpointCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new DeleteEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteEndpointCommandInput} for command's `input` shape.
+ * @see {@link DeleteEndpointCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteEndpointCommand extends $Command<
   DeleteEndpointCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateBrokerCommandInput = UpdateBrokerRequest;
-export type UpdateBrokerCommandOutput = UpdateBrokerResponse & __MetadataBearer;
+export interface UpdateBrokerCommandInput extends UpdateBrokerRequest {}
+export interface UpdateBrokerCommandOutput extends UpdateBrokerResponse, __MetadataBearer {}
 
 /**
  * Adds a pending configuration change to a broker.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MqClient, UpdateBrokerCommand } from "@aws-sdk/client-mq"; // ES Modules import
+ * // const { MqClient, UpdateBrokerCommand } = require("@aws-sdk/client-mq"); // CommonJS import
+ * const client = new MqClient(config);
+ * const command = new UpdateBrokerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateBrokerCommandInput} for command's `input` shape.
+ * @see {@link UpdateBrokerCommandOutput} for command's `response` shape.
+ * @see {@link MqClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateBrokerCommand extends $Command<
   UpdateBrokerCommandInput,

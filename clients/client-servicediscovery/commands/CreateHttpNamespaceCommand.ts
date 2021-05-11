@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateHttpNamespaceCommandInput = CreateHttpNamespaceRequest;
-export type CreateHttpNamespaceCommandOutput = CreateHttpNamespaceResponse & __MetadataBearer;
+export interface CreateHttpNamespaceCommandInput extends CreateHttpNamespaceRequest {}
+export interface CreateHttpNamespaceCommandOutput extends CreateHttpNamespaceResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an HTTP namespace. Service instances that you register using an HTTP namespace can be discovered using a
  *     <code>DiscoverInstances</code> request but can't be discovered using DNS. </p>
  *          <p>For the current quota on the number of namespaces that you can create using the same AWS account, see <a href="https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html">AWS Cloud Map quotas</a> in the
  *     <i>AWS Cloud Map Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceDiscoveryClient, CreateHttpNamespaceCommand } from "@aws-sdk/client-servicediscovery"; // ES Modules import
+ * // const { ServiceDiscoveryClient, CreateHttpNamespaceCommand } = require("@aws-sdk/client-servicediscovery"); // CommonJS import
+ * const client = new ServiceDiscoveryClient(config);
+ * const command = new CreateHttpNamespaceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateHttpNamespaceCommandInput} for command's `input` shape.
+ * @see {@link CreateHttpNamespaceCommandOutput} for command's `response` shape.
+ * @see {@link ServiceDiscoveryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateHttpNamespaceCommand extends $Command<
   CreateHttpNamespaceCommandInput,

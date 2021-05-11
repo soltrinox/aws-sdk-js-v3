@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutDestinationCommandInput = PutDestinationRequest;
-export type PutDestinationCommandOutput = PutDestinationResponse & __MetadataBearer;
+export interface PutDestinationCommandInput extends PutDestinationRequest {}
+export interface PutDestinationCommandOutput extends PutDestinationResponse, __MetadataBearer {}
 
 /**
  * <p>Creates or updates a destination. This operation is used only to create destinations for cross-account subscriptions.</p>
@@ -31,6 +31,20 @@ export type PutDestinationCommandOutput = PutDestinationResponse & __MetadataBea
  *       this destination. To enable this, the destination owner must call <a href="https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestinationPolicy.html">PutDestinationPolicy</a> after <code>PutDestination</code>.</p>
  *          <p>To perform a <code>PutDestination</code> operation, you must also have the
  *     <code>iam:PassRole</code> permission.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, PutDestinationCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, PutDestinationCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new PutDestinationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutDestinationCommandInput} for command's `input` shape.
+ * @see {@link PutDestinationCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutDestinationCommand extends $Command<
   PutDestinationCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDatasetCommandInput = DeleteDatasetRequest;
-export type DeleteDatasetCommandOutput = DeleteDatasetResponse & __MetadataBearer;
+export interface DeleteDatasetCommandInput extends DeleteDatasetRequest {}
+export interface DeleteDatasetCommandOutput extends DeleteDatasetResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an existing Amazon Lookout for Vision <code>dataset</code>. </p>
@@ -34,8 +34,22 @@ export type DeleteDatasetCommandOutput = DeleteDatasetResponse & __MetadataBeare
  *                <p>If you delete the training dataset, you must create a training dataset before you can create a model.</p>
  *             </li>
  *          </ul>
- *          <p>It might take a while to delete the dataset. To check the current status, check the <code>Status</code> field
- *       in the response from a call to <a>DescribeDataset</a>. </p>
+ *          <p>This operation requires permissions to perform the
+ *          <code>lookoutvision:DeleteDataset</code> operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LookoutVisionClient, DeleteDatasetCommand } from "@aws-sdk/client-lookoutvision"; // ES Modules import
+ * // const { LookoutVisionClient, DeleteDatasetCommand } = require("@aws-sdk/client-lookoutvision"); // CommonJS import
+ * const client = new LookoutVisionClient(config);
+ * const command = new DeleteDatasetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDatasetCommandInput} for command's `input` shape.
+ * @see {@link DeleteDatasetCommandOutput} for command's `response` shape.
+ * @see {@link LookoutVisionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDatasetCommand extends $Command<
   DeleteDatasetCommandInput,

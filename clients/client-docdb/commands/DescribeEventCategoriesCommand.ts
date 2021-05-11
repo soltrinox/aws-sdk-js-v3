@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEventCategoriesCommandInput = DescribeEventCategoriesMessage;
-export type DescribeEventCategoriesCommandOutput = EventCategoriesMessage & __MetadataBearer;
+export interface DescribeEventCategoriesCommandInput extends DescribeEventCategoriesMessage {}
+export interface DescribeEventCategoriesCommandOutput extends EventCategoriesMessage, __MetadataBearer {}
 
 /**
  * <p>Displays a list of categories for all event source types, or, if specified, for a
  *             specified source type. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DocDBClient, DescribeEventCategoriesCommand } from "@aws-sdk/client-docdb"; // ES Modules import
+ * // const { DocDBClient, DescribeEventCategoriesCommand } = require("@aws-sdk/client-docdb"); // CommonJS import
+ * const client = new DocDBClient(config);
+ * const command = new DescribeEventCategoriesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEventCategoriesCommandInput} for command's `input` shape.
+ * @see {@link DescribeEventCategoriesCommandOutput} for command's `response` shape.
+ * @see {@link DocDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEventCategoriesCommand extends $Command<
   DescribeEventCategoriesCommandInput,

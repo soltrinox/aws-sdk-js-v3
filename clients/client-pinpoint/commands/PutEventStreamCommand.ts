@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutEventStreamCommandInput = PutEventStreamRequest;
-export type PutEventStreamCommandOutput = PutEventStreamResponse & __MetadataBearer;
+export interface PutEventStreamCommandInput extends PutEventStreamRequest {}
+export interface PutEventStreamCommandOutput extends PutEventStreamResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new event stream for an application or updates the settings of an existing event stream for an application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, PutEventStreamCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, PutEventStreamCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new PutEventStreamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutEventStreamCommandInput} for command's `input` shape.
+ * @see {@link PutEventStreamCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutEventStreamCommand extends $Command<
   PutEventStreamCommandInput,

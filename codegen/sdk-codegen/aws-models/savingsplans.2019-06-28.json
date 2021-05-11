@@ -174,10 +174,12 @@
       "traits": {
         "smithy.api#enum": [
           {
-            "value": "CNY"
+            "value": "CNY",
+            "name": "CNY"
           },
           {
-            "value": "USD"
+            "value": "USD",
+            "name": "USD"
           }
         ]
       }
@@ -1339,6 +1341,10 @@
           {
             "value": "Lambda",
             "name": "LAMBDA"
+          },
+          {
+            "value": "SageMaker",
+            "name": "SAGEMAKER"
           }
         ]
       }
@@ -1592,8 +1598,16 @@
             "name": "FARGATE"
           },
           {
+            "value": "AmazonEKS",
+            "name": "FARGATE_EKS"
+          },
+          {
             "value": "AWSLambda",
             "name": "LAMBDA"
+          },
+          {
+            "value": "AmazonSageMaker",
+            "name": "SAGEMAKER"
           }
         ]
       }
@@ -1703,6 +1717,10 @@
           {
             "value": "EC2Instance",
             "name": "EC2_INSTANCE"
+          },
+          {
+            "value": "SageMaker",
+            "name": "SAGEMAKER"
           }
         ]
       }

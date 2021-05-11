@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PurchaseProvisionedCapacityCommandInput = PurchaseProvisionedCapacityInput;
-export type PurchaseProvisionedCapacityCommandOutput = PurchaseProvisionedCapacityOutput & __MetadataBearer;
+export interface PurchaseProvisionedCapacityCommandInput extends PurchaseProvisionedCapacityInput {}
+export interface PurchaseProvisionedCapacityCommandOutput extends PurchaseProvisionedCapacityOutput, __MetadataBearer {}
 
 /**
  * <p>This operation purchases a provisioned capacity unit for an AWS account. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlacierClient, PurchaseProvisionedCapacityCommand } from "@aws-sdk/client-glacier"; // ES Modules import
+ * // const { GlacierClient, PurchaseProvisionedCapacityCommand } = require("@aws-sdk/client-glacier"); // CommonJS import
+ * const client = new GlacierClient(config);
+ * const command = new PurchaseProvisionedCapacityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PurchaseProvisionedCapacityCommandInput} for command's `input` shape.
+ * @see {@link PurchaseProvisionedCapacityCommandOutput} for command's `response` shape.
+ * @see {@link GlacierClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PurchaseProvisionedCapacityCommand extends $Command<
   PurchaseProvisionedCapacityCommandInput,

@@ -20,13 +20,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDeployablePatchSnapshotForInstanceCommandInput = GetDeployablePatchSnapshotForInstanceRequest;
-export type GetDeployablePatchSnapshotForInstanceCommandOutput = GetDeployablePatchSnapshotForInstanceResult &
-  __MetadataBearer;
+export interface GetDeployablePatchSnapshotForInstanceCommandInput
+  extends GetDeployablePatchSnapshotForInstanceRequest {}
+export interface GetDeployablePatchSnapshotForInstanceCommandOutput
+  extends GetDeployablePatchSnapshotForInstanceResult,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieves the current snapshot for the patch baseline the instance uses. This API is
  *    primarily used by the AWS-RunPatchBaseline Systems Manager document. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, GetDeployablePatchSnapshotForInstanceCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, GetDeployablePatchSnapshotForInstanceCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new GetDeployablePatchSnapshotForInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDeployablePatchSnapshotForInstanceCommandInput} for command's `input` shape.
+ * @see {@link GetDeployablePatchSnapshotForInstanceCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDeployablePatchSnapshotForInstanceCommand extends $Command<
   GetDeployablePatchSnapshotForInstanceCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAccountCommandInput = CreateAccountRequest;
-export type CreateAccountCommandOutput = CreateAccountResponse & __MetadataBearer;
+export interface CreateAccountCommandInput extends CreateAccountRequest {}
+export interface CreateAccountCommandOutput extends CreateAccountResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an AWS account that is automatically a member of the organization whose
@@ -34,8 +34,8 @@ export type CreateAccountCommandOutput = CreateAccountResponse & __MetadataBeare
  *             </li>
  *             <li>
  *                 <p>Check the AWS CloudTrail log for the <code>CreateAccountResult</code> event. For
- *                     information on using AWS CloudTrail with AWS Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html">Monitoring the Activity in Your
- *                         Organization</a> in the <i>AWS Organizations User Guide.</i>
+ *                     information on using AWS CloudTrail with AWS Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html#orgs_cloudtrail-integration">Logging and monitoring in AWS Organizations</a> in the
+ *                         <i>AWS Organizations User Guide.</i>
  *                </p>
  *             </li>
  *          </ul>
@@ -48,8 +48,8 @@ export type CreateAccountCommandOutput = CreateAccountResponse & __MetadataBeare
  *                 <code>organizations:TagResource</code> permission.</p>
  *         <p>AWS Organizations preconfigures the new member account with a role (named
  *                 <code>OrganizationAccountAccessRole</code> by default) that grants users in the
- *             management account administrator permissions in the new member account. Principals in the
- *             management account can assume the role. AWS Organizations clones the company name and address
+ *             management account administrator permissions in the new member account. Principals in
+ *             the management account can assume the role. AWS Organizations clones the company name and address
  *             information for the new account from the organization's management account.</p>
  *         <p>This operation can be called only from the organization's management account.</p>
  *         <p>For more information about creating accounts, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html">Creating
@@ -99,6 +99,20 @@ export type CreateAccountCommandOutput = CreateAccountResponse & __MetadataBeare
  *                     <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html">Granting
  *                     Access to Your Billing Information and Tools</a>.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, CreateAccountCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, CreateAccountCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new CreateAccountCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAccountCommandInput} for command's `input` shape.
+ * @see {@link CreateAccountCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAccountCommand extends $Command<
   CreateAccountCommandInput,

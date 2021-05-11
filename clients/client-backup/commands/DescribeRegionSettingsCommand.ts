@@ -17,14 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeRegionSettingsCommandInput = DescribeRegionSettingsInput;
-export type DescribeRegionSettingsCommandOutput = DescribeRegionSettingsOutput & __MetadataBearer;
+export interface DescribeRegionSettingsCommandInput extends DescribeRegionSettingsInput {}
+export interface DescribeRegionSettingsCommandOutput extends DescribeRegionSettingsOutput, __MetadataBearer {}
 
 /**
- * <p>Returns the current service opt-in settings for the Region. If service-opt-in is enabled for a service,
- *          AWS Backup tries to protect that service's resources in this Region, when the resource is included in an on-demand backup or scheduled backup plan.
- *          Otherwise, AWS Backup does not try to protect that service's resources in this Region, AWS Backup does not try to protect that service's
- *          resources in this Region.</p>
+ * <p>Returns the current service opt-in settings for the Region. If service-opt-in is enabled
+ *          for a service, AWS Backup tries to protect that service's resources in this Region, when
+ *          the resource is included in an on-demand backup or scheduled backup plan. Otherwise, AWS
+ *          Backup does not try to protect that service's resources in this Region, AWS Backup does not
+ *          try to protect that service's resources in this Region.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BackupClient, DescribeRegionSettingsCommand } from "@aws-sdk/client-backup"; // ES Modules import
+ * // const { BackupClient, DescribeRegionSettingsCommand } = require("@aws-sdk/client-backup"); // CommonJS import
+ * const client = new BackupClient(config);
+ * const command = new DescribeRegionSettingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeRegionSettingsCommandInput} for command's `input` shape.
+ * @see {@link DescribeRegionSettingsCommandOutput} for command's `response` shape.
+ * @see {@link BackupClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeRegionSettingsCommand extends $Command<
   DescribeRegionSettingsCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateResolverEndpointCommandInput = CreateResolverEndpointRequest;
-export type CreateResolverEndpointCommandOutput = CreateResolverEndpointResponse & __MetadataBearer;
+export interface CreateResolverEndpointCommandInput extends CreateResolverEndpointRequest {}
+export interface CreateResolverEndpointCommandOutput extends CreateResolverEndpointResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a Resolver endpoint. There are two types of Resolver endpoints, inbound and outbound:</p>
@@ -32,6 +32,20 @@ export type CreateResolverEndpointCommandOutput = CreateResolverEndpointResponse
  * 				to your network.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53ResolverClient, CreateResolverEndpointCommand } from "@aws-sdk/client-route53resolver"; // ES Modules import
+ * // const { Route53ResolverClient, CreateResolverEndpointCommand } = require("@aws-sdk/client-route53resolver"); // CommonJS import
+ * const client = new Route53ResolverClient(config);
+ * const command = new CreateResolverEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateResolverEndpointCommandInput} for command's `input` shape.
+ * @see {@link CreateResolverEndpointCommandOutput} for command's `response` shape.
+ * @see {@link Route53ResolverClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateResolverEndpointCommand extends $Command<
   CreateResolverEndpointCommandInput,

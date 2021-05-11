@@ -21,12 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type InvokeDeviceMethodCommandInput = InvokeDeviceMethodRequest;
-export type InvokeDeviceMethodCommandOutput = InvokeDeviceMethodResponse & __MetadataBearer;
+export interface InvokeDeviceMethodCommandInput extends InvokeDeviceMethodRequest {}
+export interface InvokeDeviceMethodCommandOutput extends InvokeDeviceMethodResponse, __MetadataBearer {}
 
 /**
  * <p>Given a device ID, issues a request to invoke a named device method (with possible
  *  parameters). See the "Example POST" code snippet below.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoT1ClickDevicesServiceClient, InvokeDeviceMethodCommand } from "@aws-sdk/client-iot-1click-devices-service"; // ES Modules import
+ * // const { IoT1ClickDevicesServiceClient, InvokeDeviceMethodCommand } = require("@aws-sdk/client-iot-1click-devices-service"); // CommonJS import
+ * const client = new IoT1ClickDevicesServiceClient(config);
+ * const command = new InvokeDeviceMethodCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link InvokeDeviceMethodCommandInput} for command's `input` shape.
+ * @see {@link InvokeDeviceMethodCommandOutput} for command's `response` shape.
+ * @see {@link IoT1ClickDevicesServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class InvokeDeviceMethodCommand extends $Command<
   InvokeDeviceMethodCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteTestGridProjectCommandInput = DeleteTestGridProjectRequest;
-export type DeleteTestGridProjectCommandOutput = DeleteTestGridProjectResult & __MetadataBearer;
+export interface DeleteTestGridProjectCommandInput extends DeleteTestGridProjectRequest {}
+export interface DeleteTestGridProjectCommandOutput extends DeleteTestGridProjectResult, __MetadataBearer {}
 
 /**
  * <p> Deletes a Selenium testing project and all content generated under it. </p>
@@ -28,6 +28,20 @@ export type DeleteTestGridProjectCommandOutput = DeleteTestGridProjectResult & _
  *          <note>
  *             <p>You cannot delete a project if it has active sessions.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, DeleteTestGridProjectCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, DeleteTestGridProjectCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new DeleteTestGridProjectCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteTestGridProjectCommandInput} for command's `input` shape.
+ * @see {@link DeleteTestGridProjectCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteTestGridProjectCommand extends $Command<
   DeleteTestGridProjectCommandInput,

@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddApplicationReferenceDataSourceCommandInput = AddApplicationReferenceDataSourceRequest;
-export type AddApplicationReferenceDataSourceCommandOutput = AddApplicationReferenceDataSourceResponse &
-  __MetadataBearer;
+export interface AddApplicationReferenceDataSourceCommandInput extends AddApplicationReferenceDataSourceRequest {}
+export interface AddApplicationReferenceDataSourceCommandOutput
+  extends AddApplicationReferenceDataSourceResponse,
+    __MetadataBearer {}
 
 /**
  * <note>
@@ -39,6 +40,20 @@ export type AddApplicationReferenceDataSourceCommandOutput = AddApplicationRefer
  *         <p>
  *             This operation requires permissions to perform the <code>kinesisanalytics:AddApplicationOutput</code> action.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisAnalyticsClient, AddApplicationReferenceDataSourceCommand } from "@aws-sdk/client-kinesis-analytics"; // ES Modules import
+ * // const { KinesisAnalyticsClient, AddApplicationReferenceDataSourceCommand } = require("@aws-sdk/client-kinesis-analytics"); // CommonJS import
+ * const client = new KinesisAnalyticsClient(config);
+ * const command = new AddApplicationReferenceDataSourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddApplicationReferenceDataSourceCommandInput} for command's `input` shape.
+ * @see {@link AddApplicationReferenceDataSourceCommandOutput} for command's `response` shape.
+ * @see {@link KinesisAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddApplicationReferenceDataSourceCommand extends $Command<
   AddApplicationReferenceDataSourceCommandInput,

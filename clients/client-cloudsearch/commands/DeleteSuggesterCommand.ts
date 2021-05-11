@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteSuggesterCommandInput = DeleteSuggesterRequest;
-export type DeleteSuggesterCommandOutput = DeleteSuggesterResponse & __MetadataBearer;
+export interface DeleteSuggesterCommandInput extends DeleteSuggesterRequest {}
+export interface DeleteSuggesterCommandOutput extends DeleteSuggesterResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a suggester. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudSearchClient, DeleteSuggesterCommand } from "@aws-sdk/client-cloudsearch"; // ES Modules import
+ * // const { CloudSearchClient, DeleteSuggesterCommand } = require("@aws-sdk/client-cloudsearch"); // CommonJS import
+ * const client = new CloudSearchClient(config);
+ * const command = new DeleteSuggesterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteSuggesterCommandInput} for command's `input` shape.
+ * @see {@link DeleteSuggesterCommandOutput} for command's `response` shape.
+ * @see {@link CloudSearchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteSuggesterCommand extends $Command<
   DeleteSuggesterCommandInput,

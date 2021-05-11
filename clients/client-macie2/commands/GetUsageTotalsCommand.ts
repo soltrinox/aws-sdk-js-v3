@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetUsageTotalsCommandInput = GetUsageTotalsRequest;
-export type GetUsageTotalsCommandOutput = GetUsageTotalsResponse & __MetadataBearer;
+export interface GetUsageTotalsCommandInput extends GetUsageTotalsRequest {}
+export interface GetUsageTotalsCommandOutput extends GetUsageTotalsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves (queries) aggregated usage data for an account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Macie2Client, GetUsageTotalsCommand } from "@aws-sdk/client-macie2"; // ES Modules import
+ * // const { Macie2Client, GetUsageTotalsCommand } = require("@aws-sdk/client-macie2"); // CommonJS import
+ * const client = new Macie2Client(config);
+ * const command = new GetUsageTotalsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetUsageTotalsCommandInput} for command's `input` shape.
+ * @see {@link GetUsageTotalsCommandOutput} for command's `response` shape.
+ * @see {@link Macie2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetUsageTotalsCommand extends $Command<
   GetUsageTotalsCommandInput,

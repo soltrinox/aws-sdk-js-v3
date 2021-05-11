@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type InitiateVaultLockCommandInput = InitiateVaultLockInput;
-export type InitiateVaultLockCommandOutput = InitiateVaultLockOutput & __MetadataBearer;
+export interface InitiateVaultLockCommandInput extends InitiateVaultLockInput {}
+export interface InitiateVaultLockCommandOutput extends InitiateVaultLockOutput, __MetadataBearer {}
 
 /**
  * <p>This operation initiates the vault locking process by doing the following:</p>
@@ -56,6 +56,20 @@ export type InitiateVaultLockCommandOutput = InitiateVaultLockOutput & __Metadat
  *          state, the operation returns an <code>AccessDeniedException</code> error. When the vault
  *          lock is in the <code>InProgress</code> state you must call <a>AbortVaultLock</a>
  *          before you can initiate a new vault lock policy. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlacierClient, InitiateVaultLockCommand } from "@aws-sdk/client-glacier"; // ES Modules import
+ * // const { GlacierClient, InitiateVaultLockCommand } = require("@aws-sdk/client-glacier"); // CommonJS import
+ * const client = new GlacierClient(config);
+ * const command = new InitiateVaultLockCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link InitiateVaultLockCommandInput} for command's `input` shape.
+ * @see {@link InitiateVaultLockCommandOutput} for command's `response` shape.
+ * @see {@link GlacierClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class InitiateVaultLockCommand extends $Command<
   InitiateVaultLockCommandInput,

@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdatePolicyCommandInput = UpdatePolicyRequest;
-export type UpdatePolicyCommandOutput = UpdatePolicyResponse & __MetadataBearer;
+export interface UpdatePolicyCommandInput extends UpdatePolicyRequest {}
+export interface UpdatePolicyCommandOutput extends UpdatePolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Updates an existing policy with a new name, description, or content. If you don't
  *             supply any parameter, that value remains unchanged. You can't change a policy's
  *             type.</p>
  *         <p>This operation can be called only from the organization's management account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, UpdatePolicyCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, UpdatePolicyCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new UpdatePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdatePolicyCommandInput} for command's `input` shape.
+ * @see {@link UpdatePolicyCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdatePolicyCommand extends $Command<
   UpdatePolicyCommandInput,

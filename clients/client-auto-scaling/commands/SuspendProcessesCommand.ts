@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SuspendProcessesCommandInput = ScalingProcessQuery;
-export type SuspendProcessesCommandOutput = __MetadataBearer;
+export interface SuspendProcessesCommandInput extends ScalingProcessQuery {}
+export interface SuspendProcessesCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Suspends the specified auto scaling processes, or all processes, for the specified
@@ -28,6 +28,20 @@ export type SuspendProcessesCommandOutput = __MetadataBearer;
  *                 <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html">Suspending and
  *                 resuming scaling processes</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>.</p>
  *         <p>To resume processes that have been suspended, call the <a>ResumeProcesses</a> API.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AutoScalingClient, SuspendProcessesCommand } from "@aws-sdk/client-auto-scaling"; // ES Modules import
+ * // const { AutoScalingClient, SuspendProcessesCommand } = require("@aws-sdk/client-auto-scaling"); // CommonJS import
+ * const client = new AutoScalingClient(config);
+ * const command = new SuspendProcessesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SuspendProcessesCommandInput} for command's `input` shape.
+ * @see {@link SuspendProcessesCommandOutput} for command's `response` shape.
+ * @see {@link AutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SuspendProcessesCommand extends $Command<
   SuspendProcessesCommandInput,

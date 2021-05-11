@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartNotebookExecutionCommandInput = StartNotebookExecutionInput;
-export type StartNotebookExecutionCommandOutput = StartNotebookExecutionOutput & __MetadataBearer;
+export interface StartNotebookExecutionCommandInput extends StartNotebookExecutionInput {}
+export interface StartNotebookExecutionCommandOutput extends StartNotebookExecutionOutput, __MetadataBearer {}
 
 /**
  * <p>Starts a notebook execution.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EMRClient, StartNotebookExecutionCommand } from "@aws-sdk/client-emr"; // ES Modules import
+ * // const { EMRClient, StartNotebookExecutionCommand } = require("@aws-sdk/client-emr"); // CommonJS import
+ * const client = new EMRClient(config);
+ * const command = new StartNotebookExecutionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartNotebookExecutionCommandInput} for command's `input` shape.
+ * @see {@link StartNotebookExecutionCommandOutput} for command's `response` shape.
+ * @see {@link EMRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartNotebookExecutionCommand extends $Command<
   StartNotebookExecutionCommandInput,

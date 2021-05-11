@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateProjectCommandInput = UpdateProjectRequest;
-export type UpdateProjectCommandOutput = UpdateProjectResult & __MetadataBearer;
+export interface UpdateProjectCommandInput extends UpdateProjectRequest {}
+export interface UpdateProjectCommandOutput extends UpdateProjectResult, __MetadataBearer {}
 
 /**
  * <p>Modifies the specified project name, given the project ARN and a new
  *             name.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, UpdateProjectCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, UpdateProjectCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new UpdateProjectCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateProjectCommandInput} for command's `input` shape.
+ * @see {@link UpdateProjectCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateProjectCommand extends $Command<
   UpdateProjectCommandInput,

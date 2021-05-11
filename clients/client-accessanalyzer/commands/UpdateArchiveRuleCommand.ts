@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateArchiveRuleCommandInput = UpdateArchiveRuleRequest;
-export type UpdateArchiveRuleCommandOutput = __MetadataBearer;
+export interface UpdateArchiveRuleCommandInput extends UpdateArchiveRuleRequest {}
+export interface UpdateArchiveRuleCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Updates the criteria and values for the specified archive rule.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AccessAnalyzerClient, UpdateArchiveRuleCommand } from "@aws-sdk/client-accessanalyzer"; // ES Modules import
+ * // const { AccessAnalyzerClient, UpdateArchiveRuleCommand } = require("@aws-sdk/client-accessanalyzer"); // CommonJS import
+ * const client = new AccessAnalyzerClient(config);
+ * const command = new UpdateArchiveRuleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateArchiveRuleCommandInput} for command's `input` shape.
+ * @see {@link UpdateArchiveRuleCommandOutput} for command's `response` shape.
+ * @see {@link AccessAnalyzerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateArchiveRuleCommand extends $Command<
   UpdateArchiveRuleCommandInput,

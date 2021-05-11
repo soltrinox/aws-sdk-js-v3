@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateConnectionAliasPermissionCommandInput = UpdateConnectionAliasPermissionRequest;
-export type UpdateConnectionAliasPermissionCommandOutput = UpdateConnectionAliasPermissionResult & __MetadataBearer;
+export interface UpdateConnectionAliasPermissionCommandInput extends UpdateConnectionAliasPermissionRequest {}
+export interface UpdateConnectionAliasPermissionCommandOutput
+  extends UpdateConnectionAliasPermissionResult,
+    __MetadataBearer {}
 
 /**
  * <p>Shares or unshares a connection alias with one account by specifying whether that account has permission to
@@ -41,6 +43,20 @@ export type UpdateConnectionAliasPermissionCommandOutput = UpdateConnectionAlias
  *                </li>
  *             </ul>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, UpdateConnectionAliasPermissionCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, UpdateConnectionAliasPermissionCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new UpdateConnectionAliasPermissionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateConnectionAliasPermissionCommandInput} for command's `input` shape.
+ * @see {@link UpdateConnectionAliasPermissionCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateConnectionAliasPermissionCommand extends $Command<
   UpdateConnectionAliasPermissionCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBatchPredictionCommandInput = DeleteBatchPredictionInput;
-export type DeleteBatchPredictionCommandOutput = DeleteBatchPredictionOutput & __MetadataBearer;
+export interface DeleteBatchPredictionCommandInput extends DeleteBatchPredictionInput {}
+export interface DeleteBatchPredictionCommandOutput extends DeleteBatchPredictionOutput, __MetadataBearer {}
 
 /**
  * <p>Assigns the DELETED status to a <code>BatchPrediction</code>, rendering it unusable.</p>
@@ -27,6 +27,20 @@ export type DeleteBatchPredictionCommandOutput = DeleteBatchPredictionOutput & _
  *
  *         <p>
  *             <b>Caution:</b> The result of the <code>DeleteBatchPrediction</code> operation is irreversible.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MachineLearningClient, DeleteBatchPredictionCommand } from "@aws-sdk/client-machine-learning"; // ES Modules import
+ * // const { MachineLearningClient, DeleteBatchPredictionCommand } = require("@aws-sdk/client-machine-learning"); // CommonJS import
+ * const client = new MachineLearningClient(config);
+ * const command = new DeleteBatchPredictionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBatchPredictionCommandInput} for command's `input` shape.
+ * @see {@link DeleteBatchPredictionCommandOutput} for command's `response` shape.
+ * @see {@link MachineLearningClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBatchPredictionCommand extends $Command<
   DeleteBatchPredictionCommandInput,

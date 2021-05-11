@@ -24,12 +24,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCustomRoutingAcceleratorAttributesCommandInput = DescribeCustomRoutingAcceleratorAttributesRequest;
-export type DescribeCustomRoutingAcceleratorAttributesCommandOutput = DescribeCustomRoutingAcceleratorAttributesResponse &
-  __MetadataBearer;
+export interface DescribeCustomRoutingAcceleratorAttributesCommandInput
+  extends DescribeCustomRoutingAcceleratorAttributesRequest {}
+export interface DescribeCustomRoutingAcceleratorAttributesCommandOutput
+  extends DescribeCustomRoutingAcceleratorAttributesResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Describe the attributes of a custom routing accelerator. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, DescribeCustomRoutingAcceleratorAttributesCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, DescribeCustomRoutingAcceleratorAttributesCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new DescribeCustomRoutingAcceleratorAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCustomRoutingAcceleratorAttributesCommandInput} for command's `input` shape.
+ * @see {@link DescribeCustomRoutingAcceleratorAttributesCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCustomRoutingAcceleratorAttributesCommand extends $Command<
   DescribeCustomRoutingAcceleratorAttributesCommandInput,

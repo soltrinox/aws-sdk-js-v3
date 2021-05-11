@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPredictorsCommandInput = ListPredictorsRequest;
-export type ListPredictorsCommandOutput = ListPredictorsResponse & __MetadataBearer;
+export interface ListPredictorsCommandInput extends ListPredictorsRequest {}
+export interface ListPredictorsCommandOutput extends ListPredictorsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of predictors created using the <a>CreatePredictor</a>
@@ -26,6 +26,20 @@ export type ListPredictorsCommandOutput = ListPredictorsResponse & __MetadataBea
  *       its Amazon Resource Name (ARN). You can retrieve the complete set of properties by using the
  *       ARN with the <a>DescribePredictor</a> operation. You can filter the list using an
  *       array of <a>Filter</a> objects.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ForecastClient, ListPredictorsCommand } from "@aws-sdk/client-forecast"; // ES Modules import
+ * // const { ForecastClient, ListPredictorsCommand } = require("@aws-sdk/client-forecast"); // CommonJS import
+ * const client = new ForecastClient(config);
+ * const command = new ListPredictorsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPredictorsCommandInput} for command's `input` shape.
+ * @see {@link ListPredictorsCommandOutput} for command's `response` shape.
+ * @see {@link ForecastClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPredictorsCommand extends $Command<
   ListPredictorsCommandInput,

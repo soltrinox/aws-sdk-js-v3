@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopQueryExecutionCommandInput = StopQueryExecutionInput;
-export type StopQueryExecutionCommandOutput = StopQueryExecutionOutput & __MetadataBearer;
+export interface StopQueryExecutionCommandInput extends StopQueryExecutionInput {}
+export interface StopQueryExecutionCommandOutput extends StopQueryExecutionOutput, __MetadataBearer {}
 
 /**
  * <p>Stops a query execution. Requires you to have access to the workgroup in which the
  *             query ran.</p>
  *         <p>For code samples using the AWS SDK for Java, see <a href="http://docs.aws.amazon.com/athena/latest/ug/code-samples.html">Examples and
  *                 Code Samples</a> in the <i>Amazon Athena User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AthenaClient, StopQueryExecutionCommand } from "@aws-sdk/client-athena"; // ES Modules import
+ * // const { AthenaClient, StopQueryExecutionCommand } = require("@aws-sdk/client-athena"); // CommonJS import
+ * const client = new AthenaClient(config);
+ * const command = new StopQueryExecutionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopQueryExecutionCommandInput} for command's `input` shape.
+ * @see {@link StopQueryExecutionCommandOutput} for command's `response` shape.
+ * @see {@link AthenaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopQueryExecutionCommand extends $Command<
   StopQueryExecutionCommandInput,

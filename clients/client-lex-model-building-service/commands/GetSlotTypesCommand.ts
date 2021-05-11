@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSlotTypesCommandInput = GetSlotTypesRequest;
-export type GetSlotTypesCommandOutput = GetSlotTypesResponse & __MetadataBearer;
+export interface GetSlotTypesCommandInput extends GetSlotTypesRequest {}
+export interface GetSlotTypesCommandOutput extends GetSlotTypesResponse, __MetadataBearer {}
 
 /**
  * <p>Returns slot type information as follows: </p>
@@ -40,6 +40,20 @@ export type GetSlotTypesCommandOutput = GetSlotTypesResponse & __MetadataBearer;
  *          </ul>
  *          <p> The operation requires permission for the
  *         <code>lex:GetSlotTypes</code> action. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, GetSlotTypesCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, GetSlotTypesCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new GetSlotTypesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSlotTypesCommandInput} for command's `input` shape.
+ * @see {@link GetSlotTypesCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSlotTypesCommand extends $Command<
   GetSlotTypesCommandInput,

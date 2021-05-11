@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetObjectAclCommandInput = GetObjectAclRequest;
-export type GetObjectAclCommandOutput = GetObjectAclOutput & __MetadataBearer;
+export interface GetObjectAclCommandInput extends GetObjectAclRequest {}
+export interface GetObjectAclCommandOutput extends GetObjectAclOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the access control list (ACL) of an object. To use this operation, you must have
@@ -49,6 +49,20 @@ export type GetObjectAclCommandOutput = GetObjectAclOutput & __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetObjectAclCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetObjectAclCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetObjectAclCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetObjectAclCommandInput} for command's `input` shape.
+ * @see {@link GetObjectAclCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetObjectAclCommand extends $Command<
   GetObjectAclCommandInput,

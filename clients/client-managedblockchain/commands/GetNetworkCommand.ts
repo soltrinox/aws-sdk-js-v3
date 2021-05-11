@@ -21,11 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetNetworkCommandInput = GetNetworkInput;
-export type GetNetworkCommandOutput = GetNetworkOutput & __MetadataBearer;
+export interface GetNetworkCommandInput extends GetNetworkInput {}
+export interface GetNetworkCommandOutput extends GetNetworkOutput, __MetadataBearer {}
 
 /**
  * <p>Returns detailed information about a network.</p>
+ *          <p>Applies to Hyperledger Fabric and Ethereum.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ManagedBlockchainClient, GetNetworkCommand } from "@aws-sdk/client-managedblockchain"; // ES Modules import
+ * // const { ManagedBlockchainClient, GetNetworkCommand } = require("@aws-sdk/client-managedblockchain"); // CommonJS import
+ * const client = new ManagedBlockchainClient(config);
+ * const command = new GetNetworkCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetNetworkCommandInput} for command's `input` shape.
+ * @see {@link GetNetworkCommandOutput} for command's `response` shape.
+ * @see {@link ManagedBlockchainClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetNetworkCommand extends $Command<
   GetNetworkCommandInput,

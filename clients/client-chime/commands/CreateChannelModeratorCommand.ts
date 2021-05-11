@@ -17,11 +17,12 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateChannelModeratorCommandInput = CreateChannelModeratorRequest;
-export type CreateChannelModeratorCommandOutput = CreateChannelModeratorResponse & __MetadataBearer;
+export interface CreateChannelModeratorCommandInput extends CreateChannelModeratorRequest {}
+export interface CreateChannelModeratorCommandOutput extends CreateChannelModeratorResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new <code>ChannelModerator</code>. A channel moderator can:</p>
+ *
  *          <ul>
  *             <li>
  *                <p>Add and remove other members of the channel.</p>
@@ -39,6 +40,25 @@ export type CreateChannelModeratorCommandOutput = CreateChannelModeratorResponse
  *                <p>List messages in the channel.</p>
  *             </li>
  *          </ul>
+ *
+ *          <note>
+ *             <p>The <code>x-amz-chime-bearer</code> request header is mandatory. Use the <code>AppInstanceUserArn</code> of the user that makes
+ *         the API call as the value in the header.</p>
+ *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, CreateChannelModeratorCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, CreateChannelModeratorCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new CreateChannelModeratorCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateChannelModeratorCommandInput} for command's `input` shape.
+ * @see {@link CreateChannelModeratorCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateChannelModeratorCommand extends $Command<
   CreateChannelModeratorCommandInput,

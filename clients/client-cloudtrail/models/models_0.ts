@@ -17,6 +17,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -41,6 +44,9 @@ export interface AddTagsRequest {
 }
 
 export namespace AddTagsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsRequest): any => ({
     ...obj,
   });
@@ -52,6 +58,9 @@ export namespace AddTagsRequest {
 export interface AddTagsResponse {}
 
 export namespace AddTagsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsResponse): any => ({
     ...obj,
   });
@@ -73,6 +82,9 @@ export interface CloudTrailARNInvalidException extends __SmithyException, $Metad
 }
 
 export namespace CloudTrailARNInvalidException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudTrailARNInvalidException): any => ({
     ...obj,
   });
@@ -92,6 +104,9 @@ export interface InvalidTagParameterException extends __SmithyException, $Metada
 }
 
 export namespace InvalidTagParameterException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTagParameterException): any => ({
     ...obj,
   });
@@ -128,6 +143,9 @@ export interface InvalidTrailNameException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidTrailNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTrailNameException): any => ({
     ...obj,
   });
@@ -148,6 +166,9 @@ export interface NotOrganizationMasterAccountException extends __SmithyException
 }
 
 export namespace NotOrganizationMasterAccountException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotOrganizationMasterAccountException): any => ({
     ...obj,
   });
@@ -166,6 +187,9 @@ export interface OperationNotPermittedException extends __SmithyException, $Meta
 }
 
 export namespace OperationNotPermittedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OperationNotPermittedException): any => ({
     ...obj,
   });
@@ -184,6 +208,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -202,6 +229,9 @@ export interface ResourceTypeNotSupportedException extends __SmithyException, $M
 }
 
 export namespace ResourceTypeNotSupportedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceTypeNotSupportedException): any => ({
     ...obj,
   });
@@ -220,6 +250,9 @@ export interface TagsLimitExceededException extends __SmithyException, $Metadata
 }
 
 export namespace TagsLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagsLimitExceededException): any => ({
     ...obj,
   });
@@ -238,6 +271,9 @@ export interface UnsupportedOperationException extends __SmithyException, $Metad
 }
 
 export namespace UnsupportedOperationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnsupportedOperationException): any => ({
     ...obj,
   });
@@ -289,8 +325,8 @@ export interface AdvancedFieldSelector {
    *                   <b>
    *                      <code>resources.type</code>
    *                   </b> - This ﬁeld is required. <code>resources.type</code>
-   *             can only use the <code>Equals</code> operator, and the value can be one of the following: <code>AWS::S3::Object</code>
-   *             or <code>AWS::Lambda::Function</code>. You can have only one <code>resources.type</code> ﬁeld per selector. To log
+   *             can only use the <code>Equals</code> operator, and the value can be one of the following: <code>AWS::S3::Object</code>,
+   *             <code>AWS::Lambda::Function</code>, or <code>AWS::S3Outposts::Object</code>. You can have only one <code>resources.type</code> ﬁeld per selector. To log
    *             data events on more than one resource type, add another selector.</p>
    *             </li>
    *             <li>
@@ -319,6 +355,15 @@ export interface AdvancedFieldSelector {
    *                   <li>
    *                      <p>
    *                         <code>arn:partition:lambda:region:account_ID:function:function_name</code>
+   *                      </p>
+   *                   </li>
+   *                </ul>
+   *                <p>When <code>resources.type</code> equals <code>AWS::S3Outposts::Object</code>, and the operator
+   *                is set to <code>Equals</code> or <code>NotEquals</code>, the ARN must be in the following format:</p>
+   *                <ul>
+   *                   <li>
+   *                      <p>
+   *                         <code>arn:partition:s3-outposts:region:>account_ID:object_path</code>
    *                      </p>
    *                   </li>
    *                </ul>
@@ -372,6 +417,9 @@ export interface AdvancedFieldSelector {
 }
 
 export namespace AdvancedFieldSelector {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AdvancedFieldSelector): any => ({
     ...obj,
   });
@@ -430,6 +478,9 @@ export interface AdvancedEventSelector {
 }
 
 export namespace AdvancedEventSelector {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AdvancedEventSelector): any => ({
     ...obj,
   });
@@ -450,6 +501,9 @@ export interface CloudTrailAccessNotEnabledException extends __SmithyException, 
 }
 
 export namespace CloudTrailAccessNotEnabledException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudTrailAccessNotEnabledException): any => ({
     ...obj,
   });
@@ -469,6 +523,9 @@ export interface CloudTrailInvalidClientTokenIdException extends __SmithyExcepti
 }
 
 export namespace CloudTrailInvalidClientTokenIdException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudTrailInvalidClientTokenIdException): any => ({
     ...obj,
   });
@@ -487,6 +544,9 @@ export interface CloudWatchLogsDeliveryUnavailableException extends __SmithyExce
 }
 
 export namespace CloudWatchLogsDeliveryUnavailableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudWatchLogsDeliveryUnavailableException): any => ({
     ...obj,
   });
@@ -601,6 +661,9 @@ export interface CreateTrailRequest {
 }
 
 export namespace CreateTrailRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateTrailRequest): any => ({
     ...obj,
   });
@@ -690,6 +753,9 @@ export interface CreateTrailResponse {
 }
 
 export namespace CreateTrailResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateTrailResponse): any => ({
     ...obj,
   });
@@ -710,6 +776,9 @@ export interface InsufficientDependencyServiceAccessPermissionException extends 
 }
 
 export namespace InsufficientDependencyServiceAccessPermissionException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsufficientDependencyServiceAccessPermissionException): any => ({
     ...obj,
   });
@@ -728,6 +797,9 @@ export interface InsufficientEncryptionPolicyException extends __SmithyException
 }
 
 export namespace InsufficientEncryptionPolicyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsufficientEncryptionPolicyException): any => ({
     ...obj,
   });
@@ -746,6 +818,9 @@ export interface InsufficientS3BucketPolicyException extends __SmithyException, 
 }
 
 export namespace InsufficientS3BucketPolicyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsufficientS3BucketPolicyException): any => ({
     ...obj,
   });
@@ -764,6 +839,9 @@ export interface InsufficientSnsTopicPolicyException extends __SmithyException, 
 }
 
 export namespace InsufficientSnsTopicPolicyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsufficientSnsTopicPolicyException): any => ({
     ...obj,
   });
@@ -782,6 +860,9 @@ export interface InvalidCloudWatchLogsLogGroupArnException extends __SmithyExcep
 }
 
 export namespace InvalidCloudWatchLogsLogGroupArnException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidCloudWatchLogsLogGroupArnException): any => ({
     ...obj,
   });
@@ -800,6 +881,9 @@ export interface InvalidCloudWatchLogsRoleArnException extends __SmithyException
 }
 
 export namespace InvalidCloudWatchLogsRoleArnException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidCloudWatchLogsRoleArnException): any => ({
     ...obj,
   });
@@ -818,6 +902,9 @@ export interface InvalidKmsKeyIdException extends __SmithyException, $MetadataBe
 }
 
 export namespace InvalidKmsKeyIdException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidKmsKeyIdException): any => ({
     ...obj,
   });
@@ -836,6 +923,9 @@ export interface InvalidParameterCombinationException extends __SmithyException,
 }
 
 export namespace InvalidParameterCombinationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidParameterCombinationException): any => ({
     ...obj,
   });
@@ -854,6 +944,9 @@ export interface InvalidS3BucketNameException extends __SmithyException, $Metada
 }
 
 export namespace InvalidS3BucketNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidS3BucketNameException): any => ({
     ...obj,
   });
@@ -872,6 +965,9 @@ export interface InvalidS3PrefixException extends __SmithyException, $MetadataBe
 }
 
 export namespace InvalidS3PrefixException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidS3PrefixException): any => ({
     ...obj,
   });
@@ -890,6 +986,9 @@ export interface InvalidSnsTopicNameException extends __SmithyException, $Metada
 }
 
 export namespace InvalidSnsTopicNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidSnsTopicNameException): any => ({
     ...obj,
   });
@@ -908,6 +1007,9 @@ export interface KmsException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace KmsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KmsException): any => ({
     ...obj,
   });
@@ -928,6 +1030,9 @@ export interface KmsKeyDisabledException extends __SmithyException, $MetadataBea
 }
 
 export namespace KmsKeyDisabledException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KmsKeyDisabledException): any => ({
     ...obj,
   });
@@ -948,6 +1053,9 @@ export interface KmsKeyNotFoundException extends __SmithyException, $MetadataBea
 }
 
 export namespace KmsKeyNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KmsKeyNotFoundException): any => ({
     ...obj,
   });
@@ -966,6 +1074,9 @@ export interface MaximumNumberOfTrailsExceededException extends __SmithyExceptio
 }
 
 export namespace MaximumNumberOfTrailsExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MaximumNumberOfTrailsExceededException): any => ({
     ...obj,
   });
@@ -986,6 +1097,9 @@ export interface OrganizationNotInAllFeaturesModeException extends __SmithyExcep
 }
 
 export namespace OrganizationNotInAllFeaturesModeException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationNotInAllFeaturesModeException): any => ({
     ...obj,
   });
@@ -1005,6 +1119,9 @@ export interface OrganizationsNotInUseException extends __SmithyException, $Meta
 }
 
 export namespace OrganizationsNotInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationsNotInUseException): any => ({
     ...obj,
   });
@@ -1023,6 +1140,9 @@ export interface S3BucketDoesNotExistException extends __SmithyException, $Metad
 }
 
 export namespace S3BucketDoesNotExistException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3BucketDoesNotExistException): any => ({
     ...obj,
   });
@@ -1041,6 +1161,9 @@ export interface TrailAlreadyExistsException extends __SmithyException, $Metadat
 }
 
 export namespace TrailAlreadyExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrailAlreadyExistsException): any => ({
     ...obj,
   });
@@ -1059,7 +1182,33 @@ export interface TrailNotProvidedException extends __SmithyException, $MetadataB
 }
 
 export namespace TrailNotProvidedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrailNotProvidedException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>This exception is thrown when the specified resource is not ready for an operation.
+ *          This can occur when you try to run an operation on a trail before CloudTrail has time to fully load the trail.
+ *          If this exception occurs, wait a few minutes, and then try the operation again.</p>
+ */
+export interface ConflictException extends __SmithyException, $MetadataBearer {
+  name: "ConflictException";
+  $fault: "client";
+  /**
+   * <p>Brief description of the exception returned by the request.</p>
+   */
+  Message?: string;
+}
+
+export namespace ConflictException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
 }
@@ -1078,6 +1227,9 @@ export interface DeleteTrailRequest {
 }
 
 export namespace DeleteTrailRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteTrailRequest): any => ({
     ...obj,
   });
@@ -1089,6 +1241,9 @@ export namespace DeleteTrailRequest {
 export interface DeleteTrailResponse {}
 
 export namespace DeleteTrailResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteTrailResponse): any => ({
     ...obj,
   });
@@ -1107,6 +1262,9 @@ export interface InvalidHomeRegionException extends __SmithyException, $Metadata
 }
 
 export namespace InvalidHomeRegionException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidHomeRegionException): any => ({
     ...obj,
   });
@@ -1125,6 +1283,9 @@ export interface TrailNotFoundException extends __SmithyException, $MetadataBear
 }
 
 export namespace TrailNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrailNotFoundException): any => ({
     ...obj,
   });
@@ -1165,6 +1326,9 @@ export interface DescribeTrailsRequest {
 }
 
 export namespace DescribeTrailsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeTrailsRequest): any => ({
     ...obj,
   });
@@ -1271,6 +1435,9 @@ export interface Trail {
 }
 
 export namespace Trail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Trail): any => ({
     ...obj,
   });
@@ -1289,6 +1456,9 @@ export interface DescribeTrailsResponse {
 }
 
 export namespace DescribeTrailsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeTrailsResponse): any => ({
     ...obj,
   });
@@ -1325,6 +1495,9 @@ export interface GetEventSelectorsRequest {
 }
 
 export namespace GetEventSelectorsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetEventSelectorsRequest): any => ({
     ...obj,
   });
@@ -1386,6 +1559,8 @@ export interface DataResource {
   /**
    * <p>The resource type in which you want to log data events. You can specify <code>AWS::S3::Object</code> or
    *          <code>AWS::Lambda::Function</code> resources.</p>
+   *          <p>The <code>AWS::S3Outposts::Object</code> resource type is not valid in basic event selectors. To log data events on this resource type,
+   *          use advanced event selectors.</p>
    */
   Type?: string;
 
@@ -1433,6 +1608,9 @@ export interface DataResource {
 }
 
 export namespace DataResource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataResource): any => ({
     ...obj,
   });
@@ -1492,6 +1670,9 @@ export interface EventSelector {
 }
 
 export namespace EventSelector {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EventSelector): any => ({
     ...obj,
   });
@@ -1517,6 +1698,9 @@ export interface GetEventSelectorsResponse {
 }
 
 export namespace GetEventSelectorsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetEventSelectorsResponse): any => ({
     ...obj,
   });
@@ -1553,6 +1737,9 @@ export interface GetInsightSelectorsRequest {
 }
 
 export namespace GetInsightSelectorsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetInsightSelectorsRequest): any => ({
     ...obj,
   });
@@ -1573,6 +1760,9 @@ export interface InsightSelector {
 }
 
 export namespace InsightSelector {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsightSelector): any => ({
     ...obj,
   });
@@ -1591,6 +1781,9 @@ export interface GetInsightSelectorsResponse {
 }
 
 export namespace GetInsightSelectorsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetInsightSelectorsResponse): any => ({
     ...obj,
   });
@@ -1609,6 +1802,9 @@ export interface InsightNotEnabledException extends __SmithyException, $Metadata
 }
 
 export namespace InsightNotEnabledException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsightNotEnabledException): any => ({
     ...obj,
   });
@@ -1622,6 +1818,9 @@ export interface GetTrailRequest {
 }
 
 export namespace GetTrailRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetTrailRequest): any => ({
     ...obj,
   });
@@ -1635,6 +1834,9 @@ export interface GetTrailResponse {
 }
 
 export namespace GetTrailResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetTrailResponse): any => ({
     ...obj,
   });
@@ -1654,6 +1856,9 @@ export interface GetTrailStatusRequest {
 }
 
 export namespace GetTrailStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetTrailStatusRequest): any => ({
     ...obj,
   });
@@ -1768,6 +1973,9 @@ export interface GetTrailStatusResponse {
 }
 
 export namespace GetTrailStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetTrailStatusResponse): any => ({
     ...obj,
   });
@@ -1786,6 +1994,9 @@ export interface InvalidTimeRangeException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidTimeRangeException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTimeRangeException): any => ({
     ...obj,
   });
@@ -1804,6 +2015,9 @@ export interface InvalidTokenException extends __SmithyException, $MetadataBeare
 }
 
 export namespace InvalidTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTokenException): any => ({
     ...obj,
   });
@@ -1830,6 +2044,9 @@ export interface ListPublicKeysRequest {
 }
 
 export namespace ListPublicKeysRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPublicKeysRequest): any => ({
     ...obj,
   });
@@ -1861,6 +2078,9 @@ export interface PublicKey {
 }
 
 export namespace PublicKey {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PublicKey): any => ({
     ...obj,
   });
@@ -1885,6 +2105,9 @@ export interface ListPublicKeysResponse {
 }
 
 export namespace ListPublicKeysResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPublicKeysResponse): any => ({
     ...obj,
   });
@@ -1909,6 +2132,9 @@ export interface ListTagsRequest {
 }
 
 export namespace ListTagsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsRequest): any => ({
     ...obj,
   });
@@ -1930,6 +2156,9 @@ export interface ResourceTag {
 }
 
 export namespace ResourceTag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceTag): any => ({
     ...obj,
   });
@@ -1951,6 +2180,9 @@ export interface ListTagsResponse {
 }
 
 export namespace ListTagsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsResponse): any => ({
     ...obj,
   });
@@ -1967,6 +2199,9 @@ export interface ListTrailsRequest {
 }
 
 export namespace ListTrailsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTrailsRequest): any => ({
     ...obj,
   });
@@ -1993,6 +2228,9 @@ export interface TrailInfo {
 }
 
 export namespace TrailInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrailInfo): any => ({
     ...obj,
   });
@@ -2014,6 +2252,9 @@ export interface ListTrailsResponse {
 }
 
 export namespace ListTrailsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTrailsResponse): any => ({
     ...obj,
   });
@@ -2032,6 +2273,9 @@ export interface InvalidEventCategoryException extends __SmithyException, $Metad
 }
 
 export namespace InvalidEventCategoryException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidEventCategoryException): any => ({
     ...obj,
   });
@@ -2050,6 +2294,9 @@ export interface InvalidLookupAttributesException extends __SmithyException, $Me
 }
 
 export namespace InvalidLookupAttributesException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidLookupAttributesException): any => ({
     ...obj,
   });
@@ -2068,6 +2315,9 @@ export interface InvalidMaxResultsException extends __SmithyException, $Metadata
 }
 
 export namespace InvalidMaxResultsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidMaxResultsException): any => ({
     ...obj,
   });
@@ -2086,6 +2336,9 @@ export interface InvalidNextTokenException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidNextTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextTokenException): any => ({
     ...obj,
   });
@@ -2122,6 +2375,9 @@ export interface LookupAttribute {
 }
 
 export namespace LookupAttribute {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LookupAttribute): any => ({
     ...obj,
   });
@@ -2165,6 +2421,9 @@ export interface LookupEventsRequest {
 }
 
 export namespace LookupEventsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LookupEventsRequest): any => ({
     ...obj,
   });
@@ -2189,6 +2448,9 @@ export interface Resource {
 }
 
 export namespace Resource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Resource): any => ({
     ...obj,
   });
@@ -2246,6 +2508,9 @@ export interface Event {
 }
 
 export namespace Event {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Event): any => ({
     ...obj,
   });
@@ -2270,6 +2535,9 @@ export interface LookupEventsResponse {
 }
 
 export namespace LookupEventsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LookupEventsResponse): any => ({
     ...obj,
   });
@@ -2310,6 +2578,9 @@ export interface InvalidEventSelectorsException extends __SmithyException, $Meta
 }
 
 export namespace InvalidEventSelectorsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidEventSelectorsException): any => ({
     ...obj,
   });
@@ -2366,6 +2637,9 @@ export interface PutEventSelectorsRequest {
 }
 
 export namespace PutEventSelectorsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutEventSelectorsRequest): any => ({
     ...obj,
   });
@@ -2393,6 +2667,9 @@ export interface PutEventSelectorsResponse {
 }
 
 export namespace PutEventSelectorsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutEventSelectorsResponse): any => ({
     ...obj,
   });
@@ -2412,6 +2689,9 @@ export interface InvalidInsightSelectorsException extends __SmithyException, $Me
 }
 
 export namespace InvalidInsightSelectorsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidInsightSelectorsException): any => ({
     ...obj,
   });
@@ -2430,6 +2710,9 @@ export interface PutInsightSelectorsRequest {
 }
 
 export namespace PutInsightSelectorsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutInsightSelectorsRequest): any => ({
     ...obj,
   });
@@ -2448,6 +2731,9 @@ export interface PutInsightSelectorsResponse {
 }
 
 export namespace PutInsightSelectorsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutInsightSelectorsResponse): any => ({
     ...obj,
   });
@@ -2472,6 +2758,9 @@ export interface RemoveTagsRequest {
 }
 
 export namespace RemoveTagsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveTagsRequest): any => ({
     ...obj,
   });
@@ -2483,6 +2772,9 @@ export namespace RemoveTagsRequest {
 export interface RemoveTagsResponse {}
 
 export namespace RemoveTagsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveTagsResponse): any => ({
     ...obj,
   });
@@ -2502,6 +2794,9 @@ export interface StartLoggingRequest {
 }
 
 export namespace StartLoggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartLoggingRequest): any => ({
     ...obj,
   });
@@ -2513,6 +2808,9 @@ export namespace StartLoggingRequest {
 export interface StartLoggingResponse {}
 
 export namespace StartLoggingResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartLoggingResponse): any => ({
     ...obj,
   });
@@ -2532,6 +2830,9 @@ export interface StopLoggingRequest {
 }
 
 export namespace StopLoggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopLoggingRequest): any => ({
     ...obj,
   });
@@ -2543,6 +2844,9 @@ export namespace StopLoggingRequest {
 export interface StopLoggingResponse {}
 
 export namespace StopLoggingResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopLoggingResponse): any => ({
     ...obj,
   });
@@ -2660,6 +2964,9 @@ export interface UpdateTrailRequest {
 }
 
 export namespace UpdateTrailRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTrailRequest): any => ({
     ...obj,
   });
@@ -2751,6 +3058,9 @@ export interface UpdateTrailResponse {
 }
 
 export namespace UpdateTrailResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTrailResponse): any => ({
     ...obj,
   });

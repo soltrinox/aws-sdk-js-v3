@@ -21,11 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateNetworkCommandInput = CreateNetworkInput;
-export type CreateNetworkCommandOutput = CreateNetworkOutput & __MetadataBearer;
+export interface CreateNetworkCommandInput extends CreateNetworkInput {}
+export interface CreateNetworkCommandOutput extends CreateNetworkOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a new blockchain network using Amazon Managed Blockchain.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ManagedBlockchainClient, CreateNetworkCommand } from "@aws-sdk/client-managedblockchain"; // ES Modules import
+ * // const { ManagedBlockchainClient, CreateNetworkCommand } = require("@aws-sdk/client-managedblockchain"); // CommonJS import
+ * const client = new ManagedBlockchainClient(config);
+ * const command = new CreateNetworkCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateNetworkCommandInput} for command's `input` shape.
+ * @see {@link CreateNetworkCommandOutput} for command's `response` shape.
+ * @see {@link ManagedBlockchainClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateNetworkCommand extends $Command<
   CreateNetworkCommandInput,

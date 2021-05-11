@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBucketLocationCommandInput = GetBucketLocationRequest;
-export type GetBucketLocationCommandOutput = GetBucketLocationOutput & __MetadataBearer;
+export interface GetBucketLocationCommandInput extends GetBucketLocationRequest {}
+export interface GetBucketLocationCommandOutput extends GetBucketLocationOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the Region the bucket resides in. You set the bucket's Region using the
@@ -41,6 +41,20 @@ export type GetBucketLocationCommandOutput = GetBucketLocationOutput & __Metadat
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetBucketLocationCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetBucketLocationCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetBucketLocationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBucketLocationCommandInput} for command's `input` shape.
+ * @see {@link GetBucketLocationCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBucketLocationCommand extends $Command<
   GetBucketLocationCommandInput,

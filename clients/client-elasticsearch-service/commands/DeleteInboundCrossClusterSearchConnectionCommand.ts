@@ -24,12 +24,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteInboundCrossClusterSearchConnectionCommandInput = DeleteInboundCrossClusterSearchConnectionRequest;
-export type DeleteInboundCrossClusterSearchConnectionCommandOutput = DeleteInboundCrossClusterSearchConnectionResponse &
-  __MetadataBearer;
+export interface DeleteInboundCrossClusterSearchConnectionCommandInput
+  extends DeleteInboundCrossClusterSearchConnectionRequest {}
+export interface DeleteInboundCrossClusterSearchConnectionCommandOutput
+  extends DeleteInboundCrossClusterSearchConnectionResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Allows the destination domain owner to delete an existing inbound cross-cluster search connection.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticsearchServiceClient, DeleteInboundCrossClusterSearchConnectionCommand } from "@aws-sdk/client-elasticsearch-service"; // ES Modules import
+ * // const { ElasticsearchServiceClient, DeleteInboundCrossClusterSearchConnectionCommand } = require("@aws-sdk/client-elasticsearch-service"); // CommonJS import
+ * const client = new ElasticsearchServiceClient(config);
+ * const command = new DeleteInboundCrossClusterSearchConnectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteInboundCrossClusterSearchConnectionCommandInput} for command's `input` shape.
+ * @see {@link DeleteInboundCrossClusterSearchConnectionCommandOutput} for command's `response` shape.
+ * @see {@link ElasticsearchServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteInboundCrossClusterSearchConnectionCommand extends $Command<
   DeleteInboundCrossClusterSearchConnectionCommandInput,

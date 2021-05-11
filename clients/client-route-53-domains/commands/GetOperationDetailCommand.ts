@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetOperationDetailCommandInput = GetOperationDetailRequest;
-export type GetOperationDetailCommandOutput = GetOperationDetailResponse & __MetadataBearer;
+export interface GetOperationDetailCommandInput extends GetOperationDetailRequest {}
+export interface GetOperationDetailCommandOutput extends GetOperationDetailResponse, __MetadataBearer {}
 
 /**
  * <p>This operation returns the current status of an operation that is not completed.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53DomainsClient, GetOperationDetailCommand } from "@aws-sdk/client-route-53-domains"; // ES Modules import
+ * // const { Route53DomainsClient, GetOperationDetailCommand } = require("@aws-sdk/client-route-53-domains"); // CommonJS import
+ * const client = new Route53DomainsClient(config);
+ * const command = new GetOperationDetailCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetOperationDetailCommandInput} for command's `input` shape.
+ * @see {@link GetOperationDetailCommandOutput} for command's `response` shape.
+ * @see {@link Route53DomainsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetOperationDetailCommand extends $Command<
   GetOperationDetailCommandInput,

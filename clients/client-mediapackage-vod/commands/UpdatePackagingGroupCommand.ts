@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdatePackagingGroupCommandInput = UpdatePackagingGroupRequest;
-export type UpdatePackagingGroupCommandOutput = UpdatePackagingGroupResponse & __MetadataBearer;
+export interface UpdatePackagingGroupCommandInput extends UpdatePackagingGroupRequest {}
+export interface UpdatePackagingGroupCommandOutput extends UpdatePackagingGroupResponse, __MetadataBearer {}
 
 /**
  * Updates a specific packaging group. You can't change the id attribute or any other system-generated attributes.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaPackageVodClient, UpdatePackagingGroupCommand } from "@aws-sdk/client-mediapackage-vod"; // ES Modules import
+ * // const { MediaPackageVodClient, UpdatePackagingGroupCommand } = require("@aws-sdk/client-mediapackage-vod"); // CommonJS import
+ * const client = new MediaPackageVodClient(config);
+ * const command = new UpdatePackagingGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdatePackagingGroupCommandInput} for command's `input` shape.
+ * @see {@link UpdatePackagingGroupCommandOutput} for command's `response` shape.
+ * @see {@link MediaPackageVodClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdatePackagingGroupCommand extends $Command<
   UpdatePackagingGroupCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteClusterCommandInput = DeleteClusterRequest;
-export type DeleteClusterCommandOutput = DeleteClusterResponse & __MetadataBearer;
+export interface DeleteClusterCommandInput extends DeleteClusterRequest {}
+export interface DeleteClusterCommandOutput extends DeleteClusterResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a previously provisioned DAX cluster.
@@ -26,6 +26,20 @@ export type DeleteClusterCommandOutput = DeleteClusterResponse & __MetadataBeare
  *             and the DAX cluster itself. When you receive a successful response from this action,
  *             DAX immediately begins deleting the cluster; you cannot cancel or revert this
  *             action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DAXClient, DeleteClusterCommand } from "@aws-sdk/client-dax"; // ES Modules import
+ * // const { DAXClient, DeleteClusterCommand } = require("@aws-sdk/client-dax"); // CommonJS import
+ * const client = new DAXClient(config);
+ * const command = new DeleteClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteClusterCommandInput} for command's `input` shape.
+ * @see {@link DeleteClusterCommandOutput} for command's `response` shape.
+ * @see {@link DAXClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteClusterCommand extends $Command<
   DeleteClusterCommandInput,

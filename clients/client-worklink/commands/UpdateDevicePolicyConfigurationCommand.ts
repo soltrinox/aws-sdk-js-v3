@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDevicePolicyConfigurationCommandInput = UpdateDevicePolicyConfigurationRequest;
-export type UpdateDevicePolicyConfigurationCommandOutput = UpdateDevicePolicyConfigurationResponse & __MetadataBearer;
+export interface UpdateDevicePolicyConfigurationCommandInput extends UpdateDevicePolicyConfigurationRequest {}
+export interface UpdateDevicePolicyConfigurationCommandOutput
+  extends UpdateDevicePolicyConfigurationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Updates the device policy configuration for the fleet.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkLinkClient, UpdateDevicePolicyConfigurationCommand } from "@aws-sdk/client-worklink"; // ES Modules import
+ * // const { WorkLinkClient, UpdateDevicePolicyConfigurationCommand } = require("@aws-sdk/client-worklink"); // CommonJS import
+ * const client = new WorkLinkClient(config);
+ * const command = new UpdateDevicePolicyConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDevicePolicyConfigurationCommandInput} for command's `input` shape.
+ * @see {@link UpdateDevicePolicyConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link WorkLinkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDevicePolicyConfigurationCommand extends $Command<
   UpdateDevicePolicyConfigurationCommandInput,

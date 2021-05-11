@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeClusterDbRevisionsCommandInput = DescribeClusterDbRevisionsMessage;
-export type DescribeClusterDbRevisionsCommandOutput = ClusterDbRevisionsMessage & __MetadataBearer;
+export interface DescribeClusterDbRevisionsCommandInput extends DescribeClusterDbRevisionsMessage {}
+export interface DescribeClusterDbRevisionsCommandOutput extends ClusterDbRevisionsMessage, __MetadataBearer {}
 
 /**
  * <p>Returns an array of <code>ClusterDbRevision</code> objects.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, DescribeClusterDbRevisionsCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, DescribeClusterDbRevisionsCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new DescribeClusterDbRevisionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeClusterDbRevisionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeClusterDbRevisionsCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeClusterDbRevisionsCommand extends $Command<
   DescribeClusterDbRevisionsCommandInput,

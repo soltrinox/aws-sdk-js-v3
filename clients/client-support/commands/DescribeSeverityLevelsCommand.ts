@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeSeverityLevelsCommandInput = DescribeSeverityLevelsRequest;
-export type DescribeSeverityLevelsCommandOutput = DescribeSeverityLevelsResponse & __MetadataBearer;
+export interface DescribeSeverityLevelsCommandInput extends DescribeSeverityLevelsRequest {}
+export interface DescribeSeverityLevelsCommandOutput extends DescribeSeverityLevelsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the list of severity levels that you can assign to an AWS Support case. The severity
@@ -38,6 +38,20 @@ export type DescribeSeverityLevelsCommandOutput = DescribeSeverityLevelsResponse
  *                 </li>
  *             </ul>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SupportClient, DescribeSeverityLevelsCommand } from "@aws-sdk/client-support"; // ES Modules import
+ * // const { SupportClient, DescribeSeverityLevelsCommand } = require("@aws-sdk/client-support"); // CommonJS import
+ * const client = new SupportClient(config);
+ * const command = new DescribeSeverityLevelsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeSeverityLevelsCommandInput} for command's `input` shape.
+ * @see {@link DescribeSeverityLevelsCommandOutput} for command's `response` shape.
+ * @see {@link SupportClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeSeverityLevelsCommand extends $Command<
   DescribeSeverityLevelsCommandInput,

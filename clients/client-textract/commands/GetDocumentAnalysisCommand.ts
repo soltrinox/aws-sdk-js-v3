@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDocumentAnalysisCommandInput = GetDocumentAnalysisRequest;
-export type GetDocumentAnalysisCommandOutput = GetDocumentAnalysisResponse & __MetadataBearer;
+export interface GetDocumentAnalysisCommandInput extends GetDocumentAnalysisRequest {}
+export interface GetDocumentAnalysisCommandOutput extends GetDocumentAnalysisResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the results for an Amazon Textract asynchronous operation that analyzes text in a document.</p>
@@ -66,6 +66,20 @@ export type GetDocumentAnalysisCommandOutput = GetDocumentAnalysisResponse & __M
  *          parameter with the token value that's returned from the previous call to
  *             <code>GetDocumentAnalysis</code>.</p>
  *          <p>For more information, see <a href="https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html">Document Text Analysis</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TextractClient, GetDocumentAnalysisCommand } from "@aws-sdk/client-textract"; // ES Modules import
+ * // const { TextractClient, GetDocumentAnalysisCommand } = require("@aws-sdk/client-textract"); // CommonJS import
+ * const client = new TextractClient(config);
+ * const command = new GetDocumentAnalysisCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDocumentAnalysisCommandInput} for command's `input` shape.
+ * @see {@link GetDocumentAnalysisCommandOutput} for command's `response` shape.
+ * @see {@link TextractClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDocumentAnalysisCommand extends $Command<
   GetDocumentAnalysisCommandInput,

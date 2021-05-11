@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteLicenseCommandInput = DeleteLicenseRequest;
-export type DeleteLicenseCommandOutput = DeleteLicenseResponse & __MetadataBearer;
+export interface DeleteLicenseCommandInput extends DeleteLicenseRequest {}
+export interface DeleteLicenseCommandOutput extends DeleteLicenseResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified license.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LicenseManagerClient, DeleteLicenseCommand } from "@aws-sdk/client-license-manager"; // ES Modules import
+ * // const { LicenseManagerClient, DeleteLicenseCommand } = require("@aws-sdk/client-license-manager"); // CommonJS import
+ * const client = new LicenseManagerClient(config);
+ * const command = new DeleteLicenseCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteLicenseCommandInput} for command's `input` shape.
+ * @see {@link DeleteLicenseCommandOutput} for command's `response` shape.
+ * @see {@link LicenseManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteLicenseCommand extends $Command<
   DeleteLicenseCommandInput,

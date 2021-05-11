@@ -22,11 +22,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddCustomAttributesCommandInput = AddCustomAttributesRequest;
-export type AddCustomAttributesCommandOutput = AddCustomAttributesResponse & __MetadataBearer;
+export interface AddCustomAttributesCommandInput extends AddCustomAttributesRequest {}
+export interface AddCustomAttributesCommandOutput extends AddCustomAttributesResponse, __MetadataBearer {}
 
 /**
  * <p>Adds additional user attributes to the user pool schema.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, AddCustomAttributesCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, AddCustomAttributesCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new AddCustomAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddCustomAttributesCommandInput} for command's `input` shape.
+ * @see {@link AddCustomAttributesCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddCustomAttributesCommand extends $Command<
   AddCustomAttributesCommandInput,

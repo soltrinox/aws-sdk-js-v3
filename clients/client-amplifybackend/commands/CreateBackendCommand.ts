@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateBackendCommandInput = CreateBackendRequest;
-export type CreateBackendCommandOutput = CreateBackendResponse & __MetadataBearer;
+export interface CreateBackendCommandInput extends CreateBackendRequest {}
+export interface CreateBackendCommandOutput extends CreateBackendResponse, __MetadataBearer {}
 
 /**
  * <p>This operation creates a backend for an Amplify app. Backends are automatically created at the time of app creation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AmplifyBackendClient, CreateBackendCommand } from "@aws-sdk/client-amplifybackend"; // ES Modules import
+ * // const { AmplifyBackendClient, CreateBackendCommand } = require("@aws-sdk/client-amplifybackend"); // CommonJS import
+ * const client = new AmplifyBackendClient(config);
+ * const command = new CreateBackendCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateBackendCommandInput} for command's `input` shape.
+ * @see {@link CreateBackendCommandOutput} for command's `response` shape.
+ * @see {@link AmplifyBackendClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateBackendCommand extends $Command<
   CreateBackendCommandInput,

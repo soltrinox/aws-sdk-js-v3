@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type XmlBlobsCommandInput = {};
-export type XmlBlobsCommandOutput = XmlBlobsOutput & __MetadataBearer;
+export interface XmlBlobsCommandInput {}
+export interface XmlBlobsCommandOutput extends XmlBlobsOutput, __MetadataBearer {}
 
 /**
  * Blobs are base64 encoded
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2ProtocolClient, XmlBlobsCommand } from "@aws-sdk/aws-ec2"; // ES Modules import
+ * // const { EC2ProtocolClient, XmlBlobsCommand } = require("@aws-sdk/aws-ec2"); // CommonJS import
+ * const client = new EC2ProtocolClient(config);
+ * const command = new XmlBlobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link XmlBlobsCommandInput} for command's `input` shape.
+ * @see {@link XmlBlobsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class XmlBlobsCommand extends $Command<
   XmlBlobsCommandInput,

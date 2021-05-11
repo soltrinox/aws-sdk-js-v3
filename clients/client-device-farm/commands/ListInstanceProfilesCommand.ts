@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListInstanceProfilesCommandInput = ListInstanceProfilesRequest;
-export type ListInstanceProfilesCommandOutput = ListInstanceProfilesResult & __MetadataBearer;
+export interface ListInstanceProfilesCommandInput extends ListInstanceProfilesRequest {}
+export interface ListInstanceProfilesCommandOutput extends ListInstanceProfilesResult, __MetadataBearer {}
 
 /**
  * <p>Returns information about all the instance profiles in an AWS account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, ListInstanceProfilesCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, ListInstanceProfilesCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new ListInstanceProfilesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListInstanceProfilesCommandInput} for command's `input` shape.
+ * @see {@link ListInstanceProfilesCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListInstanceProfilesCommand extends $Command<
   ListInstanceProfilesCommandInput,

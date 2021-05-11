@@ -20,14 +20,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchDeleteDelegationByAssessmentCommandInput = BatchDeleteDelegationByAssessmentRequest;
-export type BatchDeleteDelegationByAssessmentCommandOutput = BatchDeleteDelegationByAssessmentResponse &
-  __MetadataBearer;
+export interface BatchDeleteDelegationByAssessmentCommandInput extends BatchDeleteDelegationByAssessmentRequest {}
+export interface BatchDeleteDelegationByAssessmentCommandOutput
+  extends BatchDeleteDelegationByAssessmentResponse,
+    __MetadataBearer {}
 
 /**
  * <p>
  * Deletes the delegations in the specified AWS Audit Manager assessment.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AuditManagerClient, BatchDeleteDelegationByAssessmentCommand } from "@aws-sdk/client-auditmanager"; // ES Modules import
+ * // const { AuditManagerClient, BatchDeleteDelegationByAssessmentCommand } = require("@aws-sdk/client-auditmanager"); // CommonJS import
+ * const client = new AuditManagerClient(config);
+ * const command = new BatchDeleteDelegationByAssessmentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchDeleteDelegationByAssessmentCommandInput} for command's `input` shape.
+ * @see {@link BatchDeleteDelegationByAssessmentCommandOutput} for command's `response` shape.
+ * @see {@link AuditManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchDeleteDelegationByAssessmentCommand extends $Command<
   BatchDeleteDelegationByAssessmentCommandInput,

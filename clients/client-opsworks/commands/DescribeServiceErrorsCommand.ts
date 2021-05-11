@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeServiceErrorsCommandInput = DescribeServiceErrorsRequest;
-export type DescribeServiceErrorsCommandOutput = DescribeServiceErrorsResult & __MetadataBearer;
+export interface DescribeServiceErrorsCommandInput extends DescribeServiceErrorsRequest {}
+export interface DescribeServiceErrorsCommandOutput extends DescribeServiceErrorsResult, __MetadataBearer {}
 
 /**
  * <p>Describes AWS OpsWorks Stacks service errors.</p>
@@ -28,6 +28,20 @@ export type DescribeServiceErrorsCommandOutput = DescribeServiceErrorsResult & _
  *       permissions. For more information about user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
  *          <p>This call accepts only one resource-identifying parameter.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, DescribeServiceErrorsCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, DescribeServiceErrorsCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new DescribeServiceErrorsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeServiceErrorsCommandInput} for command's `input` shape.
+ * @see {@link DescribeServiceErrorsCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeServiceErrorsCommand extends $Command<
   DescribeServiceErrorsCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyClientPropertiesCommandInput = ModifyClientPropertiesRequest;
-export type ModifyClientPropertiesCommandOutput = ModifyClientPropertiesResult & __MetadataBearer;
+export interface ModifyClientPropertiesCommandInput extends ModifyClientPropertiesRequest {}
+export interface ModifyClientPropertiesCommandOutput extends ModifyClientPropertiesResult, __MetadataBearer {}
 
 /**
  * <p>Modifies the properties of the specified Amazon WorkSpaces clients.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, ModifyClientPropertiesCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, ModifyClientPropertiesCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new ModifyClientPropertiesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyClientPropertiesCommandInput} for command's `input` shape.
+ * @see {@link ModifyClientPropertiesCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyClientPropertiesCommand extends $Command<
   ModifyClientPropertiesCommandInput,

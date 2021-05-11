@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateInsightCommandInput = UpdateInsightRequest;
-export type UpdateInsightCommandOutput = UpdateInsightResponse & __MetadataBearer;
+export interface UpdateInsightCommandInput extends UpdateInsightRequest {}
+export interface UpdateInsightCommandOutput extends UpdateInsightResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the Security Hub insight identified by the specified insight ARN.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecurityHubClient, UpdateInsightCommand } from "@aws-sdk/client-securityhub"; // ES Modules import
+ * // const { SecurityHubClient, UpdateInsightCommand } = require("@aws-sdk/client-securityhub"); // CommonJS import
+ * const client = new SecurityHubClient(config);
+ * const command = new UpdateInsightCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateInsightCommandInput} for command's `input` shape.
+ * @see {@link UpdateInsightCommandOutput} for command's `response` shape.
+ * @see {@link SecurityHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateInsightCommand extends $Command<
   UpdateInsightCommandInput,

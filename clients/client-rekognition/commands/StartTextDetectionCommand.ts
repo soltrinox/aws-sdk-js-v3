@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartTextDetectionCommandInput = StartTextDetectionRequest;
-export type StartTextDetectionCommandOutput = StartTextDetectionResponse & __MetadataBearer;
+export interface StartTextDetectionCommandInput extends StartTextDetectionRequest {}
+export interface StartTextDetectionCommandOutput extends StartTextDetectionResponse, __MetadataBearer {}
 
 /**
  * <p>Starts asynchronous detection of text in a stored video.</p>
@@ -29,6 +29,20 @@ export type StartTextDetectionCommandOutput = StartTextDetectionResponse & __Met
  *          <p>To get the results of the text detection operation, first check that the status value published to the Amazon SNS
  *        topic is <code>SUCCEEDED</code>. if so, call <a>GetTextDetection</a> and pass the job identifier (<code>JobId</code>)
  *        from the initial call to <code>StartTextDetection</code>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, StartTextDetectionCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, StartTextDetectionCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new StartTextDetectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartTextDetectionCommandInput} for command's `input` shape.
+ * @see {@link StartTextDetectionCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartTextDetectionCommand extends $Command<
   StartTextDetectionCommandInput,

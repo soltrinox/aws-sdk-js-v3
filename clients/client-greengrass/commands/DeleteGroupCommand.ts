@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteGroupCommandInput = DeleteGroupRequest;
-export type DeleteGroupCommandOutput = DeleteGroupResponse & __MetadataBearer;
+export interface DeleteGroupCommandInput extends DeleteGroupRequest {}
+export interface DeleteGroupCommandOutput extends DeleteGroupResponse, __MetadataBearer {}
 
 /**
  * Deletes a group.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, DeleteGroupCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, DeleteGroupCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new DeleteGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteGroupCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteGroupCommand extends $Command<
   DeleteGroupCommandInput,

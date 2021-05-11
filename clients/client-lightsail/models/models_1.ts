@@ -12,6 +12,7 @@ import {
   ContainerServicePowerName,
   DomainEntry,
   InputOrigin,
+  IpAddressType,
   KeyPair,
   MetricDatapoint,
   MetricName,
@@ -26,6 +27,57 @@ import {
   TreatMissingData,
 } from "./models_0";
 import { SENSITIVE_STRING } from "@aws-sdk/smithy-client";
+
+export interface GetKeyPairRequest {
+  /**
+   * <p>The name of the key pair for which you are requesting information.</p>
+   */
+  keyPairName: string | undefined;
+}
+
+export namespace GetKeyPairRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetKeyPairRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetKeyPairResult {
+  /**
+   * <p>An array of key-value pairs containing information about the key pair.</p>
+   */
+  keyPair?: KeyPair;
+}
+
+export namespace GetKeyPairResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetKeyPairResult): any => ({
+    ...obj,
+  });
+}
+
+export interface GetKeyPairsRequest {
+  /**
+   * <p>The token to advance to the next page of results from your request.</p>
+   *          <p>To get a page token, perform an initial <code>GetKeyPairs</code> request. If your results
+   *       are paginated, the response will return a next page token that you can specify as the page
+   *       token in a subsequent request.</p>
+   */
+  pageToken?: string;
+}
+
+export namespace GetKeyPairsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetKeyPairsRequest): any => ({
+    ...obj,
+  });
+}
 
 export interface GetKeyPairsResult {
   /**
@@ -43,6 +95,9 @@ export interface GetKeyPairsResult {
 }
 
 export namespace GetKeyPairsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetKeyPairsResult): any => ({
     ...obj,
   });
@@ -56,6 +111,9 @@ export interface GetLoadBalancerRequest {
 }
 
 export namespace GetLoadBalancerRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetLoadBalancerRequest): any => ({
     ...obj,
   });
@@ -232,6 +290,9 @@ export interface InstanceHealthSummary {
 }
 
 export namespace InstanceHealthSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceHealthSummary): any => ({
     ...obj,
   });
@@ -267,6 +328,9 @@ export interface LoadBalancerTlsCertificateSummary {
 }
 
 export namespace LoadBalancerTlsCertificateSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoadBalancerTlsCertificateSummary): any => ({
     ...obj,
   });
@@ -369,9 +433,20 @@ export interface LoadBalancer {
    *       are listed below.</p>
    */
   configurationOptions?: { [key: string]: string };
+
+  /**
+   * <p>The IP address type of the load balancer.</p>
+   *
+   *          <p>The possible values are <code>ipv4</code> for IPv4 only, and <code>dualstack</code> for
+   *       IPv4 and IPv6.</p>
+   */
+  ipAddressType?: IpAddressType | string;
 }
 
 export namespace LoadBalancer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoadBalancer): any => ({
     ...obj,
   });
@@ -385,6 +460,9 @@ export interface GetLoadBalancerResult {
 }
 
 export namespace GetLoadBalancerResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetLoadBalancerResult): any => ({
     ...obj,
   });
@@ -643,6 +721,9 @@ export interface GetLoadBalancerMetricDataRequest {
 }
 
 export namespace GetLoadBalancerMetricDataRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetLoadBalancerMetricDataRequest): any => ({
     ...obj,
   });
@@ -661,6 +742,9 @@ export interface GetLoadBalancerMetricDataResult {
 }
 
 export namespace GetLoadBalancerMetricDataResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetLoadBalancerMetricDataResult): any => ({
     ...obj,
   });
@@ -677,6 +761,9 @@ export interface GetLoadBalancersRequest {
 }
 
 export namespace GetLoadBalancersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetLoadBalancersRequest): any => ({
     ...obj,
   });
@@ -698,6 +785,9 @@ export interface GetLoadBalancersResult {
 }
 
 export namespace GetLoadBalancersResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetLoadBalancersResult): any => ({
     ...obj,
   });
@@ -711,6 +801,9 @@ export interface GetLoadBalancerTlsCertificatesRequest {
 }
 
 export namespace GetLoadBalancerTlsCertificatesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetLoadBalancerTlsCertificatesRequest): any => ({
     ...obj,
   });
@@ -755,6 +848,9 @@ export interface LoadBalancerTlsCertificateDomainValidationRecord {
 }
 
 export namespace LoadBalancerTlsCertificateDomainValidationRecord {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoadBalancerTlsCertificateDomainValidationRecord): any => ({
     ...obj,
   });
@@ -785,6 +881,9 @@ export interface LoadBalancerTlsCertificateDomainValidationOption {
 }
 
 export namespace LoadBalancerTlsCertificateDomainValidationOption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoadBalancerTlsCertificateDomainValidationOption): any => ({
     ...obj,
   });
@@ -893,6 +992,9 @@ export interface LoadBalancerTlsCertificateRenewalSummary {
 }
 
 export namespace LoadBalancerTlsCertificateRenewalSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoadBalancerTlsCertificateRenewalSummary): any => ({
     ...obj,
   });
@@ -1095,8 +1197,8 @@ export interface LoadBalancerTlsCertificate {
    *                   </b> - One or more of the
    *           domain names in the certificate request was reported as an unsafe domain by <a href="https://www.virustotal.com/gui/home/url">VirusTotal</a>. To correct the
    *           problem, search for your domain name on the <a href="https://www.virustotal.com/gui/home/url">VirusTotal</a> website. If your domain
-   *           is reported as suspicious, see <a href="https://www.google.com/webmasters/hacked/?hl=en">Google Help for Hacked
-   *             Websites</a> to learn what you can do.</p>
+   *           is reported as suspicious, see <a href="https://developers.google.com/web/fundamentals/security/hacked">Google Help for
+   *             Hacked Websites</a> to learn what you can do.</p>
    *                <p>If you believe that the result is a false positive, notify the organization that is
    *           reporting the domain. VirusTotal is an aggregate of several antivirus and URL scanners and
    *           cannot remove your domain from a block list itself. After you correct the problem and the
@@ -1197,6 +1299,9 @@ export interface LoadBalancerTlsCertificate {
 }
 
 export namespace LoadBalancerTlsCertificate {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoadBalancerTlsCertificate): any => ({
     ...obj,
   });
@@ -1211,6 +1316,9 @@ export interface GetLoadBalancerTlsCertificatesResult {
 }
 
 export namespace GetLoadBalancerTlsCertificatesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetLoadBalancerTlsCertificatesResult): any => ({
     ...obj,
   });
@@ -1224,6 +1332,9 @@ export interface GetOperationRequest {
 }
 
 export namespace GetOperationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOperationRequest): any => ({
     ...obj,
   });
@@ -1238,6 +1349,9 @@ export interface GetOperationResult {
 }
 
 export namespace GetOperationResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOperationResult): any => ({
     ...obj,
   });
@@ -1254,6 +1368,9 @@ export interface GetOperationsRequest {
 }
 
 export namespace GetOperationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOperationsRequest): any => ({
     ...obj,
   });
@@ -1276,6 +1393,9 @@ export interface GetOperationsResult {
 }
 
 export namespace GetOperationsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOperationsResult): any => ({
     ...obj,
   });
@@ -1297,6 +1417,9 @@ export interface GetOperationsForResourceRequest {
 }
 
 export namespace GetOperationsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOperationsForResourceRequest): any => ({
     ...obj,
   });
@@ -1331,6 +1454,9 @@ export interface GetOperationsForResourceResult {
 }
 
 export namespace GetOperationsForResourceResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOperationsForResourceResult): any => ({
     ...obj,
   });
@@ -1352,6 +1478,9 @@ export interface GetRegionsRequest {
 }
 
 export namespace GetRegionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRegionsRequest): any => ({
     ...obj,
   });
@@ -1396,6 +1525,9 @@ export interface Region {
 }
 
 export namespace Region {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Region): any => ({
     ...obj,
   });
@@ -1409,6 +1541,9 @@ export interface GetRegionsResult {
 }
 
 export namespace GetRegionsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRegionsResult): any => ({
     ...obj,
   });
@@ -1422,6 +1557,9 @@ export interface GetRelationalDatabaseRequest {
 }
 
 export namespace GetRelationalDatabaseRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseRequest): any => ({
     ...obj,
   });
@@ -1448,6 +1586,9 @@ export interface RelationalDatabaseHardware {
 }
 
 export namespace RelationalDatabaseHardware {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RelationalDatabaseHardware): any => ({
     ...obj,
   });
@@ -1469,6 +1610,9 @@ export interface RelationalDatabaseEndpoint {
 }
 
 export namespace RelationalDatabaseEndpoint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RelationalDatabaseEndpoint): any => ({
     ...obj,
   });
@@ -1495,6 +1639,9 @@ export interface PendingMaintenanceAction {
 }
 
 export namespace PendingMaintenanceAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PendingMaintenanceAction): any => ({
     ...obj,
   });
@@ -1521,6 +1668,9 @@ export interface PendingModifiedRelationalDatabaseValues {
 }
 
 export namespace PendingModifiedRelationalDatabaseValues {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PendingModifiedRelationalDatabaseValues): any => ({
     ...obj,
   });
@@ -1677,6 +1827,9 @@ export interface RelationalDatabase {
 }
 
 export namespace RelationalDatabase {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RelationalDatabase): any => ({
     ...obj,
   });
@@ -1690,6 +1843,9 @@ export interface GetRelationalDatabaseResult {
 }
 
 export namespace GetRelationalDatabaseResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseResult): any => ({
     ...obj,
   });
@@ -1706,6 +1862,9 @@ export interface GetRelationalDatabaseBlueprintsRequest {
 }
 
 export namespace GetRelationalDatabaseBlueprintsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseBlueprintsRequest): any => ({
     ...obj,
   });
@@ -1754,6 +1913,9 @@ export interface RelationalDatabaseBlueprint {
 }
 
 export namespace RelationalDatabaseBlueprint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RelationalDatabaseBlueprint): any => ({
     ...obj,
   });
@@ -1776,6 +1938,9 @@ export interface GetRelationalDatabaseBlueprintsResult {
 }
 
 export namespace GetRelationalDatabaseBlueprintsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseBlueprintsResult): any => ({
     ...obj,
   });
@@ -1792,6 +1957,9 @@ export interface GetRelationalDatabaseBundlesRequest {
 }
 
 export namespace GetRelationalDatabaseBundlesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseBundlesRequest): any => ({
     ...obj,
   });
@@ -1849,6 +2017,9 @@ export interface RelationalDatabaseBundle {
 }
 
 export namespace RelationalDatabaseBundle {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RelationalDatabaseBundle): any => ({
     ...obj,
   });
@@ -1870,6 +2041,9 @@ export interface GetRelationalDatabaseBundlesResult {
 }
 
 export namespace GetRelationalDatabaseBundlesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseBundlesResult): any => ({
     ...obj,
   });
@@ -1900,6 +2074,9 @@ export interface GetRelationalDatabaseEventsRequest {
 }
 
 export namespace GetRelationalDatabaseEventsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseEventsRequest): any => ({
     ...obj,
   });
@@ -1931,6 +2108,9 @@ export interface RelationalDatabaseEvent {
 }
 
 export namespace RelationalDatabaseEvent {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RelationalDatabaseEvent): any => ({
     ...obj,
   });
@@ -1952,6 +2132,9 @@ export interface GetRelationalDatabaseEventsResult {
 }
 
 export namespace GetRelationalDatabaseEventsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseEventsResult): any => ({
     ...obj,
   });
@@ -2024,6 +2207,9 @@ export interface GetRelationalDatabaseLogEventsRequest {
 }
 
 export namespace GetRelationalDatabaseLogEventsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseLogEventsRequest): any => ({
     ...obj,
   });
@@ -2045,6 +2231,9 @@ export interface LogEvent {
 }
 
 export namespace LogEvent {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LogEvent): any => ({
     ...obj,
   });
@@ -2070,6 +2259,9 @@ export interface GetRelationalDatabaseLogEventsResult {
 }
 
 export namespace GetRelationalDatabaseLogEventsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseLogEventsResult): any => ({
     ...obj,
   });
@@ -2083,6 +2275,9 @@ export interface GetRelationalDatabaseLogStreamsRequest {
 }
 
 export namespace GetRelationalDatabaseLogStreamsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseLogStreamsRequest): any => ({
     ...obj,
   });
@@ -2097,6 +2292,9 @@ export interface GetRelationalDatabaseLogStreamsResult {
 }
 
 export namespace GetRelationalDatabaseLogStreamsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseLogStreamsResult): any => ({
     ...obj,
   });
@@ -2128,6 +2326,9 @@ export interface GetRelationalDatabaseMasterUserPasswordRequest {
 }
 
 export namespace GetRelationalDatabaseMasterUserPasswordRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseMasterUserPasswordRequest): any => ({
     ...obj,
   });
@@ -2146,6 +2347,9 @@ export interface GetRelationalDatabaseMasterUserPasswordResult {
 }
 
 export namespace GetRelationalDatabaseMasterUserPasswordResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseMasterUserPasswordResult): any => ({
     ...obj,
     ...(obj.masterUserPassword && { masterUserPassword: SENSITIVE_STRING }),
@@ -2333,6 +2537,9 @@ export interface GetRelationalDatabaseMetricDataRequest {
 }
 
 export namespace GetRelationalDatabaseMetricDataRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseMetricDataRequest): any => ({
     ...obj,
   });
@@ -2351,6 +2558,9 @@ export interface GetRelationalDatabaseMetricDataResult {
 }
 
 export namespace GetRelationalDatabaseMetricDataResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseMetricDataResult): any => ({
     ...obj,
   });
@@ -2372,6 +2582,9 @@ export interface GetRelationalDatabaseParametersRequest {
 }
 
 export namespace GetRelationalDatabaseParametersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseParametersRequest): any => ({
     ...obj,
   });
@@ -2424,6 +2637,9 @@ export interface RelationalDatabaseParameter {
 }
 
 export namespace RelationalDatabaseParameter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RelationalDatabaseParameter): any => ({
     ...obj,
   });
@@ -2446,6 +2662,9 @@ export interface GetRelationalDatabaseParametersResult {
 }
 
 export namespace GetRelationalDatabaseParametersResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseParametersResult): any => ({
     ...obj,
   });
@@ -2462,6 +2681,9 @@ export interface GetRelationalDatabasesRequest {
 }
 
 export namespace GetRelationalDatabasesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabasesRequest): any => ({
     ...obj,
   });
@@ -2483,6 +2705,9 @@ export interface GetRelationalDatabasesResult {
 }
 
 export namespace GetRelationalDatabasesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabasesResult): any => ({
     ...obj,
   });
@@ -2496,6 +2721,9 @@ export interface GetRelationalDatabaseSnapshotRequest {
 }
 
 export namespace GetRelationalDatabaseSnapshotRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseSnapshotRequest): any => ({
     ...obj,
   });
@@ -2590,6 +2818,9 @@ export interface RelationalDatabaseSnapshot {
 }
 
 export namespace RelationalDatabaseSnapshot {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RelationalDatabaseSnapshot): any => ({
     ...obj,
   });
@@ -2603,6 +2834,9 @@ export interface GetRelationalDatabaseSnapshotResult {
 }
 
 export namespace GetRelationalDatabaseSnapshotResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseSnapshotResult): any => ({
     ...obj,
   });
@@ -2619,6 +2853,9 @@ export interface GetRelationalDatabaseSnapshotsRequest {
 }
 
 export namespace GetRelationalDatabaseSnapshotsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseSnapshotsRequest): any => ({
     ...obj,
   });
@@ -2641,6 +2878,9 @@ export interface GetRelationalDatabaseSnapshotsResult {
 }
 
 export namespace GetRelationalDatabaseSnapshotsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRelationalDatabaseSnapshotsResult): any => ({
     ...obj,
   });
@@ -2654,6 +2894,9 @@ export interface GetStaticIpRequest {
 }
 
 export namespace GetStaticIpRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStaticIpRequest): any => ({
     ...obj,
   });
@@ -2714,6 +2957,9 @@ export interface StaticIp {
 }
 
 export namespace StaticIp {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StaticIp): any => ({
     ...obj,
   });
@@ -2727,6 +2973,9 @@ export interface GetStaticIpResult {
 }
 
 export namespace GetStaticIpResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStaticIpResult): any => ({
     ...obj,
   });
@@ -2743,6 +2992,9 @@ export interface GetStaticIpsRequest {
 }
 
 export namespace GetStaticIpsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStaticIpsRequest): any => ({
     ...obj,
   });
@@ -2765,6 +3017,9 @@ export interface GetStaticIpsResult {
 }
 
 export namespace GetStaticIpsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStaticIpsResult): any => ({
     ...obj,
   });
@@ -2783,6 +3038,9 @@ export interface ImportKeyPairRequest {
 }
 
 export namespace ImportKeyPairRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportKeyPairRequest): any => ({
     ...obj,
   });
@@ -2797,6 +3055,9 @@ export interface ImportKeyPairResult {
 }
 
 export namespace ImportKeyPairResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportKeyPairResult): any => ({
     ...obj,
   });
@@ -2805,6 +3066,9 @@ export namespace ImportKeyPairResult {
 export interface IsVpcPeeredRequest {}
 
 export namespace IsVpcPeeredRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IsVpcPeeredRequest): any => ({
     ...obj,
   });
@@ -2819,6 +3083,9 @@ export interface IsVpcPeeredResult {
 }
 
 export namespace IsVpcPeeredResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IsVpcPeeredResult): any => ({
     ...obj,
   });
@@ -2837,6 +3104,9 @@ export interface OpenInstancePublicPortsRequest {
 }
 
 export namespace OpenInstancePublicPortsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OpenInstancePublicPortsRequest): any => ({
     ...obj,
   });
@@ -2851,6 +3121,9 @@ export interface OpenInstancePublicPortsResult {
 }
 
 export namespace OpenInstancePublicPortsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OpenInstancePublicPortsResult): any => ({
     ...obj,
   });
@@ -2859,6 +3132,9 @@ export namespace OpenInstancePublicPortsResult {
 export interface PeerVpcRequest {}
 
 export namespace PeerVpcRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PeerVpcRequest): any => ({
     ...obj,
   });
@@ -2873,6 +3149,9 @@ export interface PeerVpcResult {
 }
 
 export namespace PeerVpcResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PeerVpcResult): any => ({
     ...obj,
   });
@@ -3050,6 +3329,9 @@ export interface PutAlarmRequest {
 }
 
 export namespace PutAlarmRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutAlarmRequest): any => ({
     ...obj,
   });
@@ -3064,6 +3346,9 @@ export interface PutAlarmResult {
 }
 
 export namespace PutAlarmResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutAlarmResult): any => ({
     ...obj,
   });
@@ -3082,6 +3367,9 @@ export interface PutInstancePublicPortsRequest {
 }
 
 export namespace PutInstancePublicPortsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutInstancePublicPortsRequest): any => ({
     ...obj,
   });
@@ -3096,6 +3384,9 @@ export interface PutInstancePublicPortsResult {
 }
 
 export namespace PutInstancePublicPortsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutInstancePublicPortsResult): any => ({
     ...obj,
   });
@@ -3109,6 +3400,9 @@ export interface RebootInstanceRequest {
 }
 
 export namespace RebootInstanceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RebootInstanceRequest): any => ({
     ...obj,
   });
@@ -3123,6 +3417,9 @@ export interface RebootInstanceResult {
 }
 
 export namespace RebootInstanceResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RebootInstanceResult): any => ({
     ...obj,
   });
@@ -3136,6 +3433,9 @@ export interface RebootRelationalDatabaseRequest {
 }
 
 export namespace RebootRelationalDatabaseRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RebootRelationalDatabaseRequest): any => ({
     ...obj,
   });
@@ -3150,6 +3450,9 @@ export interface RebootRelationalDatabaseResult {
 }
 
 export namespace RebootRelationalDatabaseResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RebootRelationalDatabaseResult): any => ({
     ...obj,
   });
@@ -3197,6 +3500,9 @@ export interface RegisterContainerImageRequest {
 }
 
 export namespace RegisterContainerImageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegisterContainerImageRequest): any => ({
     ...obj,
   });
@@ -3211,6 +3517,9 @@ export interface RegisterContainerImageResult {
 }
 
 export namespace RegisterContainerImageResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegisterContainerImageResult): any => ({
     ...obj,
   });
@@ -3224,6 +3533,9 @@ export interface ReleaseStaticIpRequest {
 }
 
 export namespace ReleaseStaticIpRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReleaseStaticIpRequest): any => ({
     ...obj,
   });
@@ -3238,6 +3550,9 @@ export interface ReleaseStaticIpResult {
 }
 
 export namespace ReleaseStaticIpResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReleaseStaticIpResult): any => ({
     ...obj,
   });
@@ -3253,6 +3568,9 @@ export interface ResetDistributionCacheRequest {
 }
 
 export namespace ResetDistributionCacheRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResetDistributionCacheRequest): any => ({
     ...obj,
   });
@@ -3278,6 +3596,9 @@ export interface ResetDistributionCacheResult {
 }
 
 export namespace ResetDistributionCacheResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResetDistributionCacheResult): any => ({
     ...obj,
   });
@@ -3292,6 +3613,9 @@ export interface SendContactMethodVerificationRequest {
 }
 
 export namespace SendContactMethodVerificationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendContactMethodVerificationRequest): any => ({
     ...obj,
   });
@@ -3306,7 +3630,63 @@ export interface SendContactMethodVerificationResult {
 }
 
 export namespace SendContactMethodVerificationResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendContactMethodVerificationResult): any => ({
+    ...obj,
+  });
+}
+
+export interface SetIpAddressTypeRequest {
+  /**
+   * <p>The resource type.</p>
+   *          <p>The possible values are <code>Distribution</code>, <code>Instance</code>, and
+   *         <code>LoadBalancer</code>.</p>
+   *          <note>
+   *             <p>Distribution-related APIs are available only in the N. Virginia (<code>us-east-1</code>)
+   *         AWS Region. Set your AWS Region configuration to <code>us-east-1</code> to create, view,
+   *         or edit distributions.</p>
+   *          </note>
+   */
+  resourceType: ResourceType | string | undefined;
+
+  /**
+   * <p>The name of the resource for which to set the IP address type.</p>
+   */
+  resourceName: string | undefined;
+
+  /**
+   * <p>The IP address type to set for the specified resource.</p>
+   *
+   *          <p>The possible values are <code>ipv4</code> for IPv4 only, and <code>dualstack</code> for
+   *       IPv4 and IPv6.</p>
+   */
+  ipAddressType: IpAddressType | string | undefined;
+}
+
+export namespace SetIpAddressTypeRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SetIpAddressTypeRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface SetIpAddressTypeResult {
+  /**
+   * <p>An array of objects that describe the result of the action, such as the status of the
+   *       request, the timestamp of the request, and the resources affected by the request.</p>
+   */
+  operations?: Operation[];
+}
+
+export namespace SetIpAddressTypeResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SetIpAddressTypeResult): any => ({
     ...obj,
   });
 }
@@ -3319,6 +3699,9 @@ export interface StartInstanceRequest {
 }
 
 export namespace StartInstanceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartInstanceRequest): any => ({
     ...obj,
   });
@@ -3333,6 +3716,9 @@ export interface StartInstanceResult {
 }
 
 export namespace StartInstanceResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartInstanceResult): any => ({
     ...obj,
   });
@@ -3346,6 +3732,9 @@ export interface StartRelationalDatabaseRequest {
 }
 
 export namespace StartRelationalDatabaseRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartRelationalDatabaseRequest): any => ({
     ...obj,
   });
@@ -3360,6 +3749,9 @@ export interface StartRelationalDatabaseResult {
 }
 
 export namespace StartRelationalDatabaseResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartRelationalDatabaseResult): any => ({
     ...obj,
   });
@@ -3384,6 +3776,9 @@ export interface StopInstanceRequest {
 }
 
 export namespace StopInstanceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopInstanceRequest): any => ({
     ...obj,
   });
@@ -3398,6 +3793,9 @@ export interface StopInstanceResult {
 }
 
 export namespace StopInstanceResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopInstanceResult): any => ({
     ...obj,
   });
@@ -3416,6 +3814,9 @@ export interface StopRelationalDatabaseRequest {
 }
 
 export namespace StopRelationalDatabaseRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopRelationalDatabaseRequest): any => ({
     ...obj,
   });
@@ -3430,6 +3831,9 @@ export interface StopRelationalDatabaseResult {
 }
 
 export namespace StopRelationalDatabaseResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopRelationalDatabaseResult): any => ({
     ...obj,
   });
@@ -3453,6 +3857,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -3467,6 +3874,9 @@ export interface TagResourceResult {
 }
 
 export namespace TagResourceResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResult): any => ({
     ...obj,
   });
@@ -3502,6 +3912,9 @@ export interface TestAlarmRequest {
 }
 
 export namespace TestAlarmRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestAlarmRequest): any => ({
     ...obj,
   });
@@ -3516,6 +3929,9 @@ export interface TestAlarmResult {
 }
 
 export namespace TestAlarmResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestAlarmResult): any => ({
     ...obj,
   });
@@ -3524,6 +3940,9 @@ export namespace TestAlarmResult {
 export interface UnpeerVpcRequest {}
 
 export namespace UnpeerVpcRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnpeerVpcRequest): any => ({
     ...obj,
   });
@@ -3538,6 +3957,9 @@ export interface UnpeerVpcResult {
 }
 
 export namespace UnpeerVpcResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnpeerVpcResult): any => ({
     ...obj,
   });
@@ -3561,6 +3983,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -3575,6 +4000,9 @@ export interface UntagResourceResult {
 }
 
 export namespace UntagResourceResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResult): any => ({
     ...obj,
   });
@@ -3640,6 +4068,9 @@ export interface UpdateContainerServiceRequest {
 }
 
 export namespace UpdateContainerServiceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateContainerServiceRequest): any => ({
     ...obj,
   });
@@ -3653,6 +4084,9 @@ export interface UpdateContainerServiceResult {
 }
 
 export namespace UpdateContainerServiceResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateContainerServiceResult): any => ({
     ...obj,
   });
@@ -3700,6 +4134,9 @@ export interface UpdateDistributionRequest {
 }
 
 export namespace UpdateDistributionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDistributionRequest): any => ({
     ...obj,
   });
@@ -3714,6 +4151,9 @@ export interface UpdateDistributionResult {
 }
 
 export namespace UpdateDistributionResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDistributionResult): any => ({
     ...obj,
   });
@@ -3736,6 +4176,9 @@ export interface UpdateDistributionBundleRequest {
 }
 
 export namespace UpdateDistributionBundleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDistributionBundleRequest): any => ({
     ...obj,
   });
@@ -3749,6 +4192,9 @@ export interface UpdateDistributionBundleResult {
 }
 
 export namespace UpdateDistributionBundleResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDistributionBundleResult): any => ({
     ...obj,
   });
@@ -3767,6 +4213,9 @@ export interface UpdateDomainEntryRequest {
 }
 
 export namespace UpdateDomainEntryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDomainEntryRequest): any => ({
     ...obj,
   });
@@ -3781,6 +4230,9 @@ export interface UpdateDomainEntryResult {
 }
 
 export namespace UpdateDomainEntryResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDomainEntryResult): any => ({
     ...obj,
   });
@@ -3805,6 +4257,9 @@ export interface UpdateLoadBalancerAttributeRequest {
 }
 
 export namespace UpdateLoadBalancerAttributeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateLoadBalancerAttributeRequest): any => ({
     ...obj,
   });
@@ -3819,6 +4274,9 @@ export interface UpdateLoadBalancerAttributeResult {
 }
 
 export namespace UpdateLoadBalancerAttributeResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateLoadBalancerAttributeResult): any => ({
     ...obj,
   });
@@ -3826,14 +4284,20 @@ export namespace UpdateLoadBalancerAttributeResult {
 
 export interface UpdateRelationalDatabaseRequest {
   /**
-   * <p>The name of your database to update.</p>
+   * <p>The name of your Lightsail database resource to update.</p>
    */
   relationalDatabaseName: string | undefined;
 
   /**
-   * <p>The password for the master user of your database. The password can include any printable
-   *       ASCII character except "/", """, or "@".</p>
-   *          <p>Constraints: Must contain 8 to 41 characters.</p>
+   * <p>The password for the master user. The password can include any printable ASCII character
+   *       except "/", """, or "@".</p>
+   *          <p>My<b>SQL</b>
+   *          </p>
+   *          <p>Constraints: Must contain from 8 to 41 characters.</p>
+   *          <p>
+   *             <b>PostgreSQL</b>
+   *          </p>
+   *          <p>Constraints: Must contain from 8 to 128 characters.</p>
    */
   masterUserPassword?: string;
 
@@ -3934,6 +4398,9 @@ export interface UpdateRelationalDatabaseRequest {
 }
 
 export namespace UpdateRelationalDatabaseRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRelationalDatabaseRequest): any => ({
     ...obj,
     ...(obj.masterUserPassword && { masterUserPassword: SENSITIVE_STRING }),
@@ -3949,6 +4416,9 @@ export interface UpdateRelationalDatabaseResult {
 }
 
 export namespace UpdateRelationalDatabaseResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRelationalDatabaseResult): any => ({
     ...obj,
   });
@@ -3967,6 +4437,9 @@ export interface UpdateRelationalDatabaseParametersRequest {
 }
 
 export namespace UpdateRelationalDatabaseParametersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRelationalDatabaseParametersRequest): any => ({
     ...obj,
   });
@@ -3981,6 +4454,9 @@ export interface UpdateRelationalDatabaseParametersResult {
 }
 
 export namespace UpdateRelationalDatabaseParametersResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRelationalDatabaseParametersResult): any => ({
     ...obj,
   });

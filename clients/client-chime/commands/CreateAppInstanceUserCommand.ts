@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAppInstanceUserCommandInput = CreateAppInstanceUserRequest;
-export type CreateAppInstanceUserCommandOutput = CreateAppInstanceUserResponse & __MetadataBearer;
+export interface CreateAppInstanceUserCommandInput extends CreateAppInstanceUserRequest {}
+export interface CreateAppInstanceUserCommandOutput extends CreateAppInstanceUserResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a user under an Amazon Chime <code>AppInstance</code>. The request consists of a unique <code>appInstanceUserId</code> and
- *            <code>Name</code> for that user.</p>
+ * <code>Name</code> for that user.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, CreateAppInstanceUserCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, CreateAppInstanceUserCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new CreateAppInstanceUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAppInstanceUserCommandInput} for command's `input` shape.
+ * @see {@link CreateAppInstanceUserCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAppInstanceUserCommand extends $Command<
   CreateAppInstanceUserCommandInput,

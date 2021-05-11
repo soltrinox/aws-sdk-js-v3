@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateEventSourceMappingCommandInput = CreateEventSourceMappingRequest;
-export type CreateEventSourceMappingCommandOutput = EventSourceMappingConfiguration & __MetadataBearer;
+export interface CreateEventSourceMappingCommandInput extends CreateEventSourceMappingRequest {}
+export interface CreateEventSourceMappingCommandOutput extends EventSourceMappingConfiguration, __MetadataBearer {}
 
 /**
  * <p>Creates a mapping between an event source and an AWS Lambda function. Lambda reads items from the event source
@@ -51,8 +51,12 @@ export type CreateEventSourceMappingCommandOutput = EventSourceMappingConfigurat
  *             </li>
  *             <li>
  *                <p>
- *                   <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html">Using AWS Lambda with Amazon
- *           MSK</a>
+ *                   <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html">Using AWS Lambda with Amazon MSK</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a href="https://docs.aws.amazon.com/lambda/latest/dg/kafka-smaa.html">Using AWS Lambda with Self-Managed Apache Kafka</a>
  *                </p>
  *             </li>
  *          </ul>
@@ -79,6 +83,20 @@ export type CreateEventSourceMappingCommandOutput = EventSourceMappingConfigurat
  *                   <code>ParallelizationFactor</code> - Process multiple batches from each shard concurrently.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LambdaClient, CreateEventSourceMappingCommand } from "@aws-sdk/client-lambda"; // ES Modules import
+ * // const { LambdaClient, CreateEventSourceMappingCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+ * const client = new LambdaClient(config);
+ * const command = new CreateEventSourceMappingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateEventSourceMappingCommandInput} for command's `input` shape.
+ * @see {@link CreateEventSourceMappingCommandOutput} for command's `response` shape.
+ * @see {@link LambdaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateEventSourceMappingCommand extends $Command<
   CreateEventSourceMappingCommandInput,

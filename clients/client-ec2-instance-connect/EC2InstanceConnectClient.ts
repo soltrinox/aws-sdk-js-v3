@@ -1,4 +1,8 @@
 import { SendSSHPublicKeyCommandInput, SendSSHPublicKeyCommandOutput } from "./commands/SendSSHPublicKeyCommand";
+import {
+  SendSerialConsoleSSHPublicKeyCommandInput,
+  SendSerialConsoleSSHPublicKeyCommandOutput,
+} from "./commands/SendSerialConsoleSSHPublicKeyCommand";
 import { ClientDefaultValues as __ClientDefaultValues } from "./runtimeConfig";
 import {
   EndpointsInputConfig,
@@ -50,9 +54,9 @@ import {
   UserAgent as __UserAgent,
 } from "@aws-sdk/types";
 
-export type ServiceInputTypes = SendSSHPublicKeyCommandInput;
+export type ServiceInputTypes = SendSSHPublicKeyCommandInput | SendSerialConsoleSSHPublicKeyCommandInput;
 
-export type ServiceOutputTypes = SendSSHPublicKeyCommandOutput;
+export type ServiceOutputTypes = SendSSHPublicKeyCommandOutput | SendSerialConsoleSSHPublicKeyCommandOutput;
 
 export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__HttpHandlerOptions>> {
   /**
@@ -119,7 +123,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -150,7 +154,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type EC2InstanceConnectClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type EC2InstanceConnectClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -158,8 +162,12 @@ export type EC2InstanceConnectClientConfig = Partial<__SmithyConfiguration<__Htt
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of EC2InstanceConnectClient class constructor that set the region, credentials and other options.
+ */
+export interface EC2InstanceConnectClientConfig extends EC2InstanceConnectClientConfigType {}
 
-export type EC2InstanceConnectClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type EC2InstanceConnectClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -167,11 +175,15 @@ export type EC2InstanceConnectClientResolvedConfig = __SmithyResolvedConfigurati
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of EC2InstanceConnectClient class. This is resolved and normalized from the {@link EC2InstanceConnectClientConfig | constructor configuration interface}.
+ */
+export interface EC2InstanceConnectClientResolvedConfig extends EC2InstanceConnectClientResolvedConfigType {}
 
 /**
- * <p>AWS EC2 Connect Service is a service that enables system administrators to publish
- *             temporary SSH keys to their EC2 instances in order to establish connections to their
- *             instances without leaving a permanent authentication option.</p>
+ * <p>Amazon EC2 Instance Connect enables system administrators to publish one-time use SSH
+ *             public keys to EC2, providing users a simple and secure way to connect to their
+ *             instances.</p>
  */
 export class EC2InstanceConnectClient extends __Client<
   __HttpHandlerOptions,
@@ -179,6 +191,9 @@ export class EC2InstanceConnectClient extends __Client<
   ServiceOutputTypes,
   EC2InstanceConnectClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of EC2InstanceConnectClient class. This is resolved and normalized from the {@link EC2InstanceConnectClientConfig | constructor configuration interface}.
+   */
   readonly config: EC2InstanceConnectClientResolvedConfig;
 
   constructor(configuration: EC2InstanceConnectClientConfig) {

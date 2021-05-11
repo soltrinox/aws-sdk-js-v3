@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteServiceSpecificCredentialCommandInput = DeleteServiceSpecificCredentialRequest;
-export type DeleteServiceSpecificCredentialCommandOutput = __MetadataBearer;
+export interface DeleteServiceSpecificCredentialCommandInput extends DeleteServiceSpecificCredentialRequest {}
+export interface DeleteServiceSpecificCredentialCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified service-specific credential.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, DeleteServiceSpecificCredentialCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, DeleteServiceSpecificCredentialCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new DeleteServiceSpecificCredentialCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteServiceSpecificCredentialCommandInput} for command's `input` shape.
+ * @see {@link DeleteServiceSpecificCredentialCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteServiceSpecificCredentialCommand extends $Command<
   DeleteServiceSpecificCredentialCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTriggersCommandInput = GetTriggersRequest;
-export type GetTriggersCommandOutput = GetTriggersResponse & __MetadataBearer;
+export interface GetTriggersCommandInput extends GetTriggersRequest {}
+export interface GetTriggersCommandOutput extends GetTriggersResponse, __MetadataBearer {}
 
 /**
  * <p>Gets all the triggers associated with a job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetTriggersCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetTriggersCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetTriggersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTriggersCommandInput} for command's `input` shape.
+ * @see {@link GetTriggersCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTriggersCommand extends $Command<
   GetTriggersCommandInput,

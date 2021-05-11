@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetScreenDataCommandInput = GetScreenDataRequest;
-export type GetScreenDataCommandOutput = GetScreenDataResult & __MetadataBearer;
+export interface GetScreenDataCommandInput extends GetScreenDataRequest {}
+export interface GetScreenDataCommandOutput extends GetScreenDataResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -26,6 +26,20 @@ export type GetScreenDataCommandOutput = GetScreenDataResult & __MetadataBearer;
  *             The API allows setting local variables in the screen to filter, sort or otherwise affect what will be
  *             displayed on the screen.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { HoneycodeClient, GetScreenDataCommand } from "@aws-sdk/client-honeycode"; // ES Modules import
+ * // const { HoneycodeClient, GetScreenDataCommand } = require("@aws-sdk/client-honeycode"); // CommonJS import
+ * const client = new HoneycodeClient(config);
+ * const command = new GetScreenDataCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetScreenDataCommandInput} for command's `input` shape.
+ * @see {@link GetScreenDataCommandOutput} for command's `response` shape.
+ * @see {@link HoneycodeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetScreenDataCommand extends $Command<
   GetScreenDataCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RetrieveDomainAuthCodeCommandInput = RetrieveDomainAuthCodeRequest;
-export type RetrieveDomainAuthCodeCommandOutput = RetrieveDomainAuthCodeResponse & __MetadataBearer;
+export interface RetrieveDomainAuthCodeCommandInput extends RetrieveDomainAuthCodeRequest {}
+export interface RetrieveDomainAuthCodeCommandOutput extends RetrieveDomainAuthCodeResponse, __MetadataBearer {}
 
 /**
  * <p>This operation returns the AuthCode for the domain. To transfer a domain to another registrar, you provide this value to the new registrar.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53DomainsClient, RetrieveDomainAuthCodeCommand } from "@aws-sdk/client-route-53-domains"; // ES Modules import
+ * // const { Route53DomainsClient, RetrieveDomainAuthCodeCommand } = require("@aws-sdk/client-route-53-domains"); // CommonJS import
+ * const client = new Route53DomainsClient(config);
+ * const command = new RetrieveDomainAuthCodeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RetrieveDomainAuthCodeCommandInput} for command's `input` shape.
+ * @see {@link RetrieveDomainAuthCodeCommandOutput} for command's `response` shape.
+ * @see {@link Route53DomainsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RetrieveDomainAuthCodeCommand extends $Command<
   RetrieveDomainAuthCodeCommandInput,

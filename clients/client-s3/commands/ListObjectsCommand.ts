@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListObjectsCommandInput = ListObjectsRequest;
-export type ListObjectsCommandOutput = ListObjectsOutput & __MetadataBearer;
+export interface ListObjectsCommandInput extends ListObjectsRequest {}
+export interface ListObjectsCommandOutput extends ListObjectsOutput, __MetadataBearer {}
 
 /**
  * <p>Returns some or all (up to 1,000) of the objects in a bucket. You can use the request
@@ -27,7 +27,7 @@ export type ListObjectsCommandOutput = ListObjectsOutput & __MetadataBearer;
  *          response can contain valid or invalid XML. Be sure to design your application to parse the
  *          contents of the response and handle it appropriately.</p>
  *          <important>
- *             <p>This API has been revised. We recommend that you use the newer version, <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html">ListObjectsV2</a>, when developing applications. For backward compatibility,
+ *             <p>This action has been revised. We recommend that you use the newer version, <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html">ListObjectsV2</a>, when developing applications. For backward compatibility,
  *             Amazon S3 continues to support <code>ListObjects</code>.</p>
  *          </important>
  *
@@ -60,6 +60,20 @@ export type ListObjectsCommandOutput = ListObjectsOutput & __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, ListObjectsCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, ListObjectsCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new ListObjectsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListObjectsCommandInput} for command's `input` shape.
+ * @see {@link ListObjectsCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListObjectsCommand extends $Command<
   ListObjectsCommandInput,

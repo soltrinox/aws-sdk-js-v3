@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartAccessLoggingCommandInput = StartAccessLoggingInput;
-export type StartAccessLoggingCommandOutput = StartAccessLoggingOutput & __MetadataBearer;
+export interface StartAccessLoggingCommandInput extends StartAccessLoggingInput {}
+export interface StartAccessLoggingCommandOutput extends StartAccessLoggingOutput, __MetadataBearer {}
 
 /**
  * <p>Starts access logging on the specified container. When you enable access logging on a container, MediaStore delivers access logs for objects stored in that container to Amazon CloudWatch Logs.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaStoreClient, StartAccessLoggingCommand } from "@aws-sdk/client-mediastore"; // ES Modules import
+ * // const { MediaStoreClient, StartAccessLoggingCommand } = require("@aws-sdk/client-mediastore"); // CommonJS import
+ * const client = new MediaStoreClient(config);
+ * const command = new StartAccessLoggingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartAccessLoggingCommandInput} for command's `input` shape.
+ * @see {@link StartAccessLoggingCommandOutput} for command's `response` shape.
+ * @see {@link MediaStoreClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartAccessLoggingCommand extends $Command<
   StartAccessLoggingCommandInput,

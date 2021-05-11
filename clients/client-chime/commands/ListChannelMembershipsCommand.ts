@@ -17,11 +17,31 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListChannelMembershipsCommandInput = ListChannelMembershipsRequest;
-export type ListChannelMembershipsCommandOutput = ListChannelMembershipsResponse & __MetadataBearer;
+export interface ListChannelMembershipsCommandInput extends ListChannelMembershipsRequest {}
+export interface ListChannelMembershipsCommandOutput extends ListChannelMembershipsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists all channel memberships in a channel.</p>
+ *
+ *          <note>
+ *
+ *             <p>The <code>x-amz-chime-bearer</code> request header is mandatory. Use the <code>AppInstanceUserArn</code> of the user that makes
+ *         the API call as the value in the header.</p>
+ *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, ListChannelMembershipsCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, ListChannelMembershipsCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new ListChannelMembershipsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListChannelMembershipsCommandInput} for command's `input` shape.
+ * @see {@link ListChannelMembershipsCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListChannelMembershipsCommand extends $Command<
   ListChannelMembershipsCommandInput,

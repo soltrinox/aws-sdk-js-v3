@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteEvaluationCommandInput = DeleteEvaluationInput;
-export type DeleteEvaluationCommandOutput = DeleteEvaluationOutput & __MetadataBearer;
+export interface DeleteEvaluationCommandInput extends DeleteEvaluationInput {}
+export interface DeleteEvaluationCommandOutput extends DeleteEvaluationOutput, __MetadataBearer {}
 
 /**
  * <p>Assigns the <code>DELETED</code> status to an <code>Evaluation</code>, rendering it unusable.</p>
@@ -27,6 +27,20 @@ export type DeleteEvaluationCommandOutput = DeleteEvaluationOutput & __MetadataB
  *           <code>GetEvaluation</code> operation to verify that the status of the <code>Evaluation</code> changed to <code>DELETED</code>.</p>
  *         <p>
  *             <b>Caution:</b> The results of the <code>DeleteEvaluation</code> operation are irreversible.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MachineLearningClient, DeleteEvaluationCommand } from "@aws-sdk/client-machine-learning"; // ES Modules import
+ * // const { MachineLearningClient, DeleteEvaluationCommand } = require("@aws-sdk/client-machine-learning"); // CommonJS import
+ * const client = new MachineLearningClient(config);
+ * const command = new DeleteEvaluationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteEvaluationCommandInput} for command's `input` shape.
+ * @see {@link DeleteEvaluationCommandOutput} for command's `response` shape.
+ * @see {@link MachineLearningClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteEvaluationCommand extends $Command<
   DeleteEvaluationCommandInput,

@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type QueryListsCommandInput = QueryListsInput;
-export type QueryListsCommandOutput = __MetadataBearer;
+export interface QueryListsCommandInput extends QueryListsInput {}
+export interface QueryListsCommandOutput extends __MetadataBearer {}
 
 /**
  * This test serializes simple and complex lists.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QueryProtocolClient, QueryListsCommand } from "@aws-sdk/aws-query"; // ES Modules import
+ * // const { QueryProtocolClient, QueryListsCommand } = require("@aws-sdk/aws-query"); // CommonJS import
+ * const client = new QueryProtocolClient(config);
+ * const command = new QueryListsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link QueryListsCommandInput} for command's `input` shape.
+ * @see {@link QueryListsCommandOutput} for command's `response` shape.
+ * @see {@link QueryProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class QueryListsCommand extends $Command<
   QueryListsCommandInput,

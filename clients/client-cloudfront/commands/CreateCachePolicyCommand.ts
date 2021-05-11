@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCachePolicyCommandInput = CreateCachePolicyRequest;
-export type CreateCachePolicyCommandOutput = CreateCachePolicyResult & __MetadataBearer;
+export interface CreateCachePolicyCommandInput extends CreateCachePolicyRequest {}
+export interface CreateCachePolicyCommandOutput extends CreateCachePolicyResult, __MetadataBearer {}
 
 /**
  * <p>Creates a cache policy.</p>
@@ -42,6 +42,20 @@ export type CreateCachePolicyCommandOutput = CreateCachePolicyResult & __Metadat
  * 			<code>OriginRequestPolicy</code>.</p>
  * 		       <p>For more information about cache policies, see <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html">Controlling the cache key</a> in the
  * 			<i>Amazon CloudFront Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, CreateCachePolicyCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, CreateCachePolicyCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new CreateCachePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCachePolicyCommandInput} for command's `input` shape.
+ * @see {@link CreateCachePolicyCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCachePolicyCommand extends $Command<
   CreateCachePolicyCommandInput,

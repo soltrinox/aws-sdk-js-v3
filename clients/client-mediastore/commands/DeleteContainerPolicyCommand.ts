@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteContainerPolicyCommandInput = DeleteContainerPolicyInput;
-export type DeleteContainerPolicyCommandOutput = DeleteContainerPolicyOutput & __MetadataBearer;
+export interface DeleteContainerPolicyCommandInput extends DeleteContainerPolicyInput {}
+export interface DeleteContainerPolicyCommandOutput extends DeleteContainerPolicyOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes the access policy that is associated with the specified container.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaStoreClient, DeleteContainerPolicyCommand } from "@aws-sdk/client-mediastore"; // ES Modules import
+ * // const { MediaStoreClient, DeleteContainerPolicyCommand } = require("@aws-sdk/client-mediastore"); // CommonJS import
+ * const client = new MediaStoreClient(config);
+ * const command = new DeleteContainerPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteContainerPolicyCommandInput} for command's `input` shape.
+ * @see {@link DeleteContainerPolicyCommandOutput} for command's `response` shape.
+ * @see {@link MediaStoreClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteContainerPolicyCommand extends $Command<
   DeleteContainerPolicyCommandInput,

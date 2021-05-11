@@ -23,8 +23,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartStreamTranscriptionCommandInput = StartStreamTranscriptionRequest;
-export type StartStreamTranscriptionCommandOutput = StartStreamTranscriptionResponse & __MetadataBearer;
+export interface StartStreamTranscriptionCommandInput extends StartStreamTranscriptionRequest {}
+export interface StartStreamTranscriptionCommandOutput extends StartStreamTranscriptionResponse, __MetadataBearer {}
 
 /**
  * <p>Starts a bidirectional HTTP2 stream where audio is streamed to Amazon Transcribe and the transcription
@@ -44,6 +44,20 @@ export type StartStreamTranscriptionCommandOutput = StartStreamTranscriptionResp
  *                <p>x-amzn-transcribe-session-id</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TranscribeStreamingClient, StartStreamTranscriptionCommand } from "@aws-sdk/client-transcribe-streaming"; // ES Modules import
+ * // const { TranscribeStreamingClient, StartStreamTranscriptionCommand } = require("@aws-sdk/client-transcribe-streaming"); // CommonJS import
+ * const client = new TranscribeStreamingClient(config);
+ * const command = new StartStreamTranscriptionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartStreamTranscriptionCommandInput} for command's `input` shape.
+ * @see {@link StartStreamTranscriptionCommandOutput} for command's `response` shape.
+ * @see {@link TranscribeStreamingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartStreamTranscriptionCommand extends $Command<
   StartStreamTranscriptionCommandInput,

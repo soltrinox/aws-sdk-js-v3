@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateResourceSharePermissionCommandInput = DisassociateResourceSharePermissionRequest;
-export type DisassociateResourceSharePermissionCommandOutput = DisassociateResourceSharePermissionResponse &
-  __MetadataBearer;
+export interface DisassociateResourceSharePermissionCommandInput extends DisassociateResourceSharePermissionRequest {}
+export interface DisassociateResourceSharePermissionCommandOutput
+  extends DisassociateResourceSharePermissionResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Disassociates an AWS RAM permission from a resource share.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RAMClient, DisassociateResourceSharePermissionCommand } from "@aws-sdk/client-ram"; // ES Modules import
+ * // const { RAMClient, DisassociateResourceSharePermissionCommand } = require("@aws-sdk/client-ram"); // CommonJS import
+ * const client = new RAMClient(config);
+ * const command = new DisassociateResourceSharePermissionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateResourceSharePermissionCommandInput} for command's `input` shape.
+ * @see {@link DisassociateResourceSharePermissionCommandOutput} for command's `response` shape.
+ * @see {@link RAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateResourceSharePermissionCommand extends $Command<
   DisassociateResourceSharePermissionCommandInput,

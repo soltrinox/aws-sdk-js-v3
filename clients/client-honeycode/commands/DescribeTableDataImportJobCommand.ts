@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeTableDataImportJobCommandInput = DescribeTableDataImportJobRequest;
-export type DescribeTableDataImportJobCommandOutput = DescribeTableDataImportJobResult & __MetadataBearer;
+export interface DescribeTableDataImportJobCommandInput extends DescribeTableDataImportJobRequest {}
+export interface DescribeTableDataImportJobCommandOutput extends DescribeTableDataImportJobResult, __MetadataBearer {}
 
 /**
  * <p>
  *             The DescribeTableDataImportJob API allows you to retrieve the status and details of a table data import job.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { HoneycodeClient, DescribeTableDataImportJobCommand } from "@aws-sdk/client-honeycode"; // ES Modules import
+ * // const { HoneycodeClient, DescribeTableDataImportJobCommand } = require("@aws-sdk/client-honeycode"); // CommonJS import
+ * const client = new HoneycodeClient(config);
+ * const command = new DescribeTableDataImportJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeTableDataImportJobCommandInput} for command's `input` shape.
+ * @see {@link DescribeTableDataImportJobCommandOutput} for command's `response` shape.
+ * @see {@link HoneycodeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeTableDataImportJobCommand extends $Command<
   DescribeTableDataImportJobCommandInput,

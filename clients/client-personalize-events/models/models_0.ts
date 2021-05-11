@@ -11,6 +11,9 @@ export interface InvalidInputException extends __SmithyException, $MetadataBeare
 }
 
 export namespace InvalidInputException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidInputException): any => ({
     ...obj,
   });
@@ -77,6 +80,9 @@ export interface Event {
 }
 
 export namespace Event {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Event): any => ({
     ...obj,
   });
@@ -97,7 +103,8 @@ export interface PutEventsRequest {
 
   /**
    * <p>The session ID associated with the user's visit. Your application generates the sessionId when a user first visits your website or uses your application.
-   *       Amazon Personalize uses the sessionId to associate events with the user before they log in. For more information see <a>event-record-api</a>.</p>
+   *       Amazon Personalize uses the sessionId to associate events with the user before they log in. For more information, see
+   *       <a href="https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html">Recording Events</a>.</p>
    */
   sessionId: string | undefined;
 
@@ -108,6 +115,9 @@ export interface PutEventsRequest {
 }
 
 export namespace PutEventsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutEventsRequest): any => ({
     ...obj,
   });
@@ -115,7 +125,9 @@ export namespace PutEventsRequest {
 
 /**
  * <p>Represents item metadata added to an Items dataset using the
- *       <code>PutItems</code> API.</p>
+ *       <code>PutItems</code> API. For more information see
+ *       <a href="https://docs.aws.amazon.com/personalize/latest/dg/importing-items.html">Importing Items Incrementally</a>.
+ *     </p>
  */
 export interface Item {
   /**
@@ -124,19 +136,20 @@ export interface Item {
   itemId: string | undefined;
 
   /**
-   * <p>A string map of item-specific metadata. Each element in the map consists of a key-value pair. For example,
-   *     </p>
-   *          <p>
-   *             <code>{"numberOfRatings": "12"}</code>
-   *          </p>
-   *          <p>The keys use camel case names that match the fields in the Items
-   *       schema. In the above example, the <code>numberOfRatings</code> would match the
-   *       'NUMBER_OF_RATINGS' field defined in the Items schema.</p>
+   * <p>A string map of item-specific metadata. Each element in the map consists of a key-value pair.
+   *       For example, <code>{"numberOfRatings": "12"}</code>.</p>
+   *          <p>The keys use camel case names that match the fields in the schema for the Items
+   *       dataset. In the previous example, the <code>numberOfRatings</code> matches the
+   *       'NUMBER_OF_RATINGS' field defined in the Items schema. For categorical string data, to include multiple categories for a single item,
+   *       separate each category with a pipe separator (<code>|</code>). For example, <code>\"Horror|Action\"</code>.</p>
    */
   properties?: __LazyJsonString | string;
 }
 
 export namespace Item {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Item): any => ({
     ...obj,
   });
@@ -144,7 +157,7 @@ export namespace Item {
 
 export interface PutItemsRequest {
   /**
-   * <p>The Amazon Resource Number (ARN) of the Items dataset you are adding the item or items to.</p>
+   * <p>The Amazon Resource Name (ARN) of the Items dataset you are adding the item or items to.</p>
    */
   datasetArn: string | undefined;
 
@@ -155,7 +168,28 @@ export interface PutItemsRequest {
 }
 
 export namespace PutItemsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutItemsRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The specified resource is in use.</p>
+ */
+export interface ResourceInUseException extends __SmithyException, $MetadataBearer {
+  name: "ResourceInUseException";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace ResourceInUseException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResourceInUseException): any => ({
     ...obj,
   });
 }
@@ -170,6 +204,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -177,7 +214,8 @@ export namespace ResourceNotFoundException {
 
 /**
  * <p>Represents user metadata added to a Users dataset using the
- *       <code>PutUsers</code> API.</p>
+ *       <code>PutUsers</code> API. For more information see
+ *       <a href="https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html">Importing Users Incrementally</a>.</p>
  */
 export interface User {
   /**
@@ -186,19 +224,21 @@ export interface User {
   userId: string | undefined;
 
   /**
-   * <p>A string map of user-specific metadata. Each element in the map consists of a key-value pair. For example,
-   *     </p>
-   *          <p>
-   *             <code>{"numberOfVideosWatched": "45"}</code>
-   *          </p>
-   *          <p>The keys use camel case names that match the fields in the Users
-   *       schema. In the above example, the <code>numberOfVideosWatched</code> would match the
-   *       'NUMBER_OF_VIDEOS_WATCHED' field defined in the Users schema.</p>
+   * <p>A string map of user-specific metadata. Each element in the map consists of a key-value pair.
+   *       For example, <code>{"numberOfVideosWatched": "45"}</code>.</p>
+   *          <p>The keys use camel case names that match the fields in the schema for the Users
+   *       dataset. In the previous example, the <code>numberOfVideosWatched</code> matches the
+   *       'NUMBER_OF_VIDEOS_WATCHED' field defined in the Users schema. For categorical string data,
+   *       to include multiple categories for a single user, separate each category with a pipe separator (<code>|</code>).
+   *       For example, <code>\"Member|Frequent shopper\"</code>.</p>
    */
   properties?: __LazyJsonString | string;
 }
 
 export namespace User {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: User): any => ({
     ...obj,
   });
@@ -206,7 +246,7 @@ export namespace User {
 
 export interface PutUsersRequest {
   /**
-   * <p>The Amazon Resource Number (ARN) of the Users dataset you are adding the user or users to.</p>
+   * <p>The Amazon Resource Name (ARN) of the Users dataset you are adding the user or users to.</p>
    */
   datasetArn: string | undefined;
 
@@ -217,6 +257,9 @@ export interface PutUsersRequest {
 }
 
 export namespace PutUsersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutUsersRequest): any => ({
     ...obj,
   });

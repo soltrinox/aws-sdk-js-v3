@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetPlanCommandInput = GetPlanRequest;
-export type GetPlanCommandOutput = GetPlanResponse & __MetadataBearer;
+export interface GetPlanCommandInput extends GetPlanRequest {}
+export interface GetPlanCommandOutput extends GetPlanResponse, __MetadataBearer {}
 
 /**
  * <p>Gets code to perform a specified mapping.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetPlanCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetPlanCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetPlanCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetPlanCommandInput} for command's `input` shape.
+ * @see {@link GetPlanCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetPlanCommand extends $Command<GetPlanCommandInput, GetPlanCommandOutput, GlueClientResolvedConfig> {
   // Start section: command_properties

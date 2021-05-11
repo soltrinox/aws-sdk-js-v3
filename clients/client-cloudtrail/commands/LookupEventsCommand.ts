@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type LookupEventsCommandInput = LookupEventsRequest;
-export type LookupEventsCommandOutput = LookupEventsResponse & __MetadataBearer;
+export interface LookupEventsCommandInput extends LookupEventsRequest {}
+export interface LookupEventsCommandOutput extends LookupEventsResponse, __MetadataBearer {}
 
 /**
  * <p>Looks up <a href="https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events">management events</a> or
@@ -69,6 +69,20 @@ export type LookupEventsCommandOutput = LookupEventsResponse & __MetadataBearer;
  *             <p>The rate of lookup requests is limited to two per second, per account, per region. If this
  *             limit is exceeded, a throttling error occurs.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudTrailClient, LookupEventsCommand } from "@aws-sdk/client-cloudtrail"; // ES Modules import
+ * // const { CloudTrailClient, LookupEventsCommand } = require("@aws-sdk/client-cloudtrail"); // CommonJS import
+ * const client = new CloudTrailClient(config);
+ * const command = new LookupEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link LookupEventsCommandInput} for command's `input` shape.
+ * @see {@link LookupEventsCommandOutput} for command's `response` shape.
+ * @see {@link CloudTrailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class LookupEventsCommand extends $Command<
   LookupEventsCommandInput,

@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SearchTransitGatewayMulticastGroupsCommandInput = SearchTransitGatewayMulticastGroupsRequest;
-export type SearchTransitGatewayMulticastGroupsCommandOutput = SearchTransitGatewayMulticastGroupsResult &
-  __MetadataBearer;
+export interface SearchTransitGatewayMulticastGroupsCommandInput extends SearchTransitGatewayMulticastGroupsRequest {}
+export interface SearchTransitGatewayMulticastGroupsCommandOutput
+  extends SearchTransitGatewayMulticastGroupsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Searches one or more  transit gateway multicast groups and returns the group membership information.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, SearchTransitGatewayMulticastGroupsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, SearchTransitGatewayMulticastGroupsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new SearchTransitGatewayMulticastGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SearchTransitGatewayMulticastGroupsCommandInput} for command's `input` shape.
+ * @see {@link SearchTransitGatewayMulticastGroupsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SearchTransitGatewayMulticastGroupsCommand extends $Command<
   SearchTransitGatewayMulticastGroupsCommandInput,

@@ -12,6 +12,7 @@ import { FlattenedXmlMapWithXmlNamespaceCommand } from "../../commands/Flattened
 import { GreetingWithErrorsCommand } from "../../commands/GreetingWithErrorsCommand";
 import { HttpPayloadTraitsCommand } from "../../commands/HttpPayloadTraitsCommand";
 import { HttpPayloadTraitsWithMediaTypeCommand } from "../../commands/HttpPayloadTraitsWithMediaTypeCommand";
+import { HttpPayloadWithMemberXmlNameCommand } from "../../commands/HttpPayloadWithMemberXmlNameCommand";
 import { HttpPayloadWithStructureCommand } from "../../commands/HttpPayloadWithStructureCommand";
 import { HttpPayloadWithXmlNameCommand } from "../../commands/HttpPayloadWithXmlNameCommand";
 import { HttpPayloadWithXmlNamespaceAndPrefixCommand } from "../../commands/HttpPayloadWithXmlNamespaceAndPrefixCommand";
@@ -23,11 +24,14 @@ import { HttpRequestWithLabelsCommand } from "../../commands/HttpRequestWithLabe
 import { HttpResponseCodeCommand } from "../../commands/HttpResponseCodeCommand";
 import { IgnoreQueryParamsInResponseCommand } from "../../commands/IgnoreQueryParamsInResponseCommand";
 import { InputAndOutputWithHeadersCommand } from "../../commands/InputAndOutputWithHeadersCommand";
+import { NestedXmlMapsCommand } from "../../commands/NestedXmlMapsCommand";
 import { NoInputAndNoOutputCommand } from "../../commands/NoInputAndNoOutputCommand";
 import { NoInputAndOutputCommand } from "../../commands/NoInputAndOutputCommand";
 import { NullAndEmptyHeadersClientCommand } from "../../commands/NullAndEmptyHeadersClientCommand";
 import { OmitsNullSerializesEmptyStringCommand } from "../../commands/OmitsNullSerializesEmptyStringCommand";
 import { QueryIdempotencyTokenAutoFillCommand } from "../../commands/QueryIdempotencyTokenAutoFillCommand";
+import { QueryParamsAsStringListMapCommand } from "../../commands/QueryParamsAsStringListMapCommand";
+import { QueryPrecedenceCommand } from "../../commands/QueryPrecedenceCommand";
 import { RecursiveShapesCommand } from "../../commands/RecursiveShapesCommand";
 import { SimpleScalarPropertiesCommand } from "../../commands/SimpleScalarPropertiesCommand";
 import { TimestampFormatHeadersCommand } from "../../commands/TimestampFormatHeadersCommand";
@@ -47,6 +51,7 @@ import { XmlTimestampsCommand } from "../../commands/XmlTimestampsCommand";
 import { XmlUnionsCommand } from "../../commands/XmlUnionsCommand";
 import { ComplexError, InvalidGreeting } from "../../models/models_0";
 import { buildQueryString } from "@aws-sdk/querystring-builder";
+import { Encoder as __Encoder } from "@aws-sdk/types";
 import { parse as xmlParse } from "fast-xml-parser";
 import { HttpHandlerOptions, HeaderBag } from "@aws-sdk/types";
 import { HttpHandler, HttpRequest, HttpResponse } from "@aws-sdk/protocol-http";
@@ -55,8 +60,10 @@ import { Readable } from "stream";
 /**
  * Throws an expected exception that contains the serialized request.
  */
-class EXPECTED_REQUEST_SERIALIZATION_ERROR {
-  constructor(readonly request: HttpRequest) {}
+class EXPECTED_REQUEST_SERIALIZATION_ERROR extends Error {
+  constructor(readonly request: HttpRequest) {
+    super();
+  }
 }
 
 /**
@@ -271,6 +278,43 @@ it("AllQueryStringTypes:Request", async () => {
     expect(queryString).toContain("EnumList=Foo");
     expect(queryString).toContain("EnumList=Baz");
     expect(queryString).toContain("EnumList=Bar");
+
+    expect(r.body).toBeFalsy();
+  }
+});
+
+/**
+ * Handles query string maps
+ */
+it("RestXmlQueryStringMap:Request", async () => {
+  const client = new RestXmlProtocolClient({
+    ...clientParams,
+    requestHandler: new RequestSerializationTestHandler(),
+  });
+
+  const command = new AllQueryStringTypesCommand({
+    queryParamsMapOfStrings: {
+      QueryParamsStringKeyA: "Foo",
+
+      QueryParamsStringKeyB: "Bar",
+    } as any,
+  } as any);
+  try {
+    await client.send(command);
+    fail("Expected an EXPECTED_REQUEST_SERIALIZATION_ERROR to be thrown");
+    return;
+  } catch (err) {
+    if (!(err instanceof EXPECTED_REQUEST_SERIALIZATION_ERROR)) {
+      fail(err);
+      return;
+    }
+    const r = err.request;
+    expect(r.method).toBe("GET");
+    expect(r.path).toBe("/AllQueryStringTypesInput");
+
+    const queryString = buildQueryString(r.query);
+    expect(queryString).toContain("QueryParamsStringKeyA=Foo");
+    expect(queryString).toContain("QueryParamsStringKeyB=Bar");
 
     expect(r.body).toBeFalsy();
   }
@@ -521,6 +565,7 @@ it("RestXmlEndpointTraitWithHostLabel:Request", async () => {
     expect(r.path).toBe("/EndpointWithHostLabelOperation");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<HostLabelInput>
         <label>bar</label>
     </HostLabelInput>
@@ -563,6 +608,7 @@ it("FlattenedXmlMap:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<FlattenedXmlMapInputOutput>
         <myMap>
             <key>foo</key>
@@ -662,6 +708,7 @@ it("FlattenedXmlMapWithXmlName:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<FlattenedXmlMapWithXmlNameInputOutput>
         <KVP>
             <K>a</K>
@@ -960,8 +1007,9 @@ it("HttpPayloadTraitsWithBlob:Request", async () => {
     expect(r.headers["x-foo"]).toBe("Foo");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `blobby blob blob`;
-    const unequalParts: any = compareEquivalentUnknownTypeBodies(client.config, bodyString, r.body);
+    const unequalParts: any = compareEquivalentUnknownTypeBodies(utf8Encoder, bodyString, r.body);
     expect(unequalParts).toBeUndefined();
   }
 });
@@ -1110,8 +1158,9 @@ it("HttpPayloadTraitsWithMediaTypeWithBlob:Request", async () => {
     expect(r.headers["x-foo"]).toBe("Foo");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `blobby blob blob`;
-    const unequalParts: any = compareEquivalentUnknownTypeBodies(client.config, bodyString, r.body);
+    const unequalParts: any = compareEquivalentUnknownTypeBodies(utf8Encoder, bodyString, r.body);
     expect(unequalParts).toBeUndefined();
   }
 });
@@ -1158,6 +1207,85 @@ it("HttpPayloadTraitsWithMediaTypeWithBlob:Response", async () => {
 });
 
 /**
+ * Serializes a structure in the payload using a wrapper name based on member xmlName
+ */
+it("HttpPayloadWithMemberXmlName:Request", async () => {
+  const client = new RestXmlProtocolClient({
+    ...clientParams,
+    requestHandler: new RequestSerializationTestHandler(),
+  });
+
+  const command = new HttpPayloadWithMemberXmlNameCommand({
+    nested: {
+      name: "Phreddy",
+    } as any,
+  } as any);
+  try {
+    await client.send(command);
+    fail("Expected an EXPECTED_REQUEST_SERIALIZATION_ERROR to be thrown");
+    return;
+  } catch (err) {
+    if (!(err instanceof EXPECTED_REQUEST_SERIALIZATION_ERROR)) {
+      fail(err);
+      return;
+    }
+    const r = err.request;
+    expect(r.method).toBe("PUT");
+    expect(r.path).toBe("/HttpPayloadWithMemberXmlName");
+    expect(r.headers["content-length"]).toBeDefined();
+
+    expect(r.headers["content-type"]).toBeDefined();
+    expect(r.headers["content-type"]).toBe("application/xml");
+
+    expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
+    const bodyString = `<Hola><name>Phreddy</name></Hola>`;
+    const unequalParts: any = compareEquivalentXmlBodies(bodyString, r.body.toString());
+    expect(unequalParts).toBeUndefined();
+  }
+});
+
+/**
+ * Serializes a structure in the payload using a wrapper name based on member xmlName
+ */
+it("HttpPayloadWithMemberXmlName:Response", async () => {
+  const client = new RestXmlProtocolClient({
+    ...clientParams,
+    requestHandler: new ResponseDeserializationTestHandler(
+      true,
+      200,
+      {
+        "content-type": "application/xml",
+      },
+      `<Hola><name>Phreddy</name></Hola>`
+    ),
+  });
+
+  const params: any = {};
+  const command = new HttpPayloadWithMemberXmlNameCommand(params);
+
+  let r: any;
+  try {
+    r = await client.send(command);
+  } catch (err) {
+    fail("Expected a valid response to be returned, got err.");
+    return;
+  }
+  expect(r["$metadata"].httpStatusCode).toBe(200);
+  const paramsToValidate: any = [
+    {
+      nested: {
+        name: "Phreddy",
+      },
+    },
+  ][0];
+  Object.keys(paramsToValidate).forEach((param) => {
+    expect(r[param]).toBeDefined();
+    expect(equivalentContents(r[param], paramsToValidate[param])).toBe(true);
+  });
+});
+
+/**
  * Serializes a structure in the payload
  */
 it("HttpPayloadWithStructure:Request", async () => {
@@ -1191,6 +1319,7 @@ it("HttpPayloadWithStructure:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<NestedPayload>
         <greeting>hello</greeting>
         <name>Phreddy</name>
@@ -1279,6 +1408,7 @@ it("HttpPayloadWithXmlName:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<Hello><name>Phreddy</name></Hello>`;
     const unequalParts: any = compareEquivalentXmlBodies(bodyString, r.body.toString());
     expect(unequalParts).toBeUndefined();
@@ -1357,6 +1487,7 @@ it("HttpPayloadWithXmlNamespace:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<PayloadWithXmlNamespace xmlns=\"http://foo.com\">
         <name>Phreddy</name>
     </PayloadWithXmlNamespace>`;
@@ -1439,6 +1570,7 @@ it("HttpPayloadWithXmlNamespaceAndPrefix:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<PayloadWithXmlNamespaceAndPrefix xmlns:baz=\"http://foo.com\">
         <name>Phreddy</name>
     </PayloadWithXmlNamespaceAndPrefix>`;
@@ -1818,7 +1950,7 @@ it("IgnoreQueryParamsInResponse:Response", async () => {
       {
         "content-type": "application/xml",
       },
-      `<IgnoreQueryParamsInResponseInputOutput><baz>bam</baz></IgnoreQueryParamsInResponseInputOutput>`
+      `<IgnoreQueryParamsInResponseOutput><baz>bam</baz></IgnoreQueryParamsInResponseOutput>`
     ),
   });
 
@@ -2272,6 +2404,216 @@ it("InputAndOutputWithEnumHeaders:Response", async () => {
 });
 
 /**
+ * Tests requests with nested maps.
+ */
+it("NestedXmlMapRequest:Request", async () => {
+  const client = new RestXmlProtocolClient({
+    ...clientParams,
+    requestHandler: new RequestSerializationTestHandler(),
+  });
+
+  const command = new NestedXmlMapsCommand({
+    nestedMap: {
+      foo: {
+        bar: "Bar",
+      } as any,
+    } as any,
+  } as any);
+  try {
+    await client.send(command);
+    fail("Expected an EXPECTED_REQUEST_SERIALIZATION_ERROR to be thrown");
+    return;
+  } catch (err) {
+    if (!(err instanceof EXPECTED_REQUEST_SERIALIZATION_ERROR)) {
+      fail(err);
+      return;
+    }
+    const r = err.request;
+    expect(r.method).toBe("POST");
+    expect(r.path).toBe("/NestedXmlMaps");
+
+    expect(r.headers["content-type"]).toBeDefined();
+    expect(r.headers["content-type"]).toBe("application/xml");
+
+    expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
+    const bodyString = `<NestedXmlMapsInputOutput>
+        <nestedMap>
+            <entry>
+                <key>foo</key>
+                <value>
+                    <entry>
+                        <key>bar</key>
+                        <value>Bar</value>
+                    </entry>
+                </value>
+            </entry>
+        </nestedMap>
+    </NestedXmlMapsInputOutput>`;
+    const unequalParts: any = compareEquivalentXmlBodies(bodyString, r.body.toString());
+    expect(unequalParts).toBeUndefined();
+  }
+});
+
+/**
+ * Tests requests with nested flat maps. Since maps can only be
+ * flattened when they're structure members, only the outer map is flat.
+ */
+it("FlatNestedXmlMapRequest:Request", async () => {
+  const client = new RestXmlProtocolClient({
+    ...clientParams,
+    requestHandler: new RequestSerializationTestHandler(),
+  });
+
+  const command = new NestedXmlMapsCommand({
+    flatNestedMap: {
+      foo: {
+        bar: "Bar",
+      } as any,
+    } as any,
+  } as any);
+  try {
+    await client.send(command);
+    fail("Expected an EXPECTED_REQUEST_SERIALIZATION_ERROR to be thrown");
+    return;
+  } catch (err) {
+    if (!(err instanceof EXPECTED_REQUEST_SERIALIZATION_ERROR)) {
+      fail(err);
+      return;
+    }
+    const r = err.request;
+    expect(r.method).toBe("POST");
+    expect(r.path).toBe("/NestedXmlMaps");
+
+    expect(r.headers["content-type"]).toBeDefined();
+    expect(r.headers["content-type"]).toBe("application/xml");
+
+    expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
+    const bodyString = `<NestedXmlMapsInputOutput>
+        <flatNestedMap>
+            <key>foo</key>
+            <value>
+                <entry>
+                    <key>bar</key>
+                    <value>Bar</value>
+                </entry>
+            </value>
+        </flatNestedMap>
+    </NestedXmlMapsInputOutput>`;
+    const unequalParts: any = compareEquivalentXmlBodies(bodyString, r.body.toString());
+    expect(unequalParts).toBeUndefined();
+  }
+});
+
+/**
+ * Tests responses with nested maps.
+ */
+it("NestedXmlMapResponse:Response", async () => {
+  const client = new RestXmlProtocolClient({
+    ...clientParams,
+    requestHandler: new ResponseDeserializationTestHandler(
+      true,
+      200,
+      {
+        "content-type": "application/xml",
+      },
+      `<NestedXmlMapsInputOutput>
+          <nestedMap>
+              <entry>
+                  <key>foo</key>
+                  <value>
+                      <entry>
+                          <key>bar</key>
+                          <value>Bar</value>
+                      </entry>
+                  </value>
+              </entry>
+          </nestedMap>
+      </NestedXmlMapsInputOutput>`
+    ),
+  });
+
+  const params: any = {};
+  const command = new NestedXmlMapsCommand(params);
+
+  let r: any;
+  try {
+    r = await client.send(command);
+  } catch (err) {
+    fail("Expected a valid response to be returned, got err.");
+    return;
+  }
+  expect(r["$metadata"].httpStatusCode).toBe(200);
+  const paramsToValidate: any = [
+    {
+      nestedMap: {
+        foo: {
+          bar: "Bar",
+        },
+      },
+    },
+  ][0];
+  Object.keys(paramsToValidate).forEach((param) => {
+    expect(r[param]).toBeDefined();
+    expect(equivalentContents(r[param], paramsToValidate[param])).toBe(true);
+  });
+});
+
+/**
+ * Tests responses with nested flat maps. Since maps can only be
+ * flattened when they're structure members, only the outer map is flat.
+ */
+it("FlatNestedXmlMapResponse:Response", async () => {
+  const client = new RestXmlProtocolClient({
+    ...clientParams,
+    requestHandler: new ResponseDeserializationTestHandler(
+      true,
+      200,
+      {
+        "content-type": "application/xml",
+      },
+      `<NestedXmlMapsInputOutput>
+          <flatNestedMap>
+              <key>foo</key>
+              <value>
+                  <entry>
+                      <key>bar</key>
+                      <value>Bar</value>
+                  </entry>
+              </value>
+          </flatNestedMap>
+      </NestedXmlMapsInputOutput>`
+    ),
+  });
+
+  const params: any = {};
+  const command = new NestedXmlMapsCommand(params);
+
+  let r: any;
+  try {
+    r = await client.send(command);
+  } catch (err) {
+    fail("Expected a valid response to be returned, got err.");
+    return;
+  }
+  expect(r["$metadata"].httpStatusCode).toBe(200);
+  const paramsToValidate: any = [
+    {
+      flatNestedMap: {
+        foo: {
+          bar: "Bar",
+        },
+      },
+    },
+  ][0];
+  Object.keys(paramsToValidate).forEach((param) => {
+    expect(r[param]).toBeDefined();
+    expect(equivalentContents(r[param], paramsToValidate[param])).toBe(true);
+  });
+});
+
+/**
  * No input serializes no payload
  */
 it("NoInputAndNoOutput:Request", async () => {
@@ -2407,9 +2749,9 @@ it("NullAndEmptyHeaders:Request", async () => {
 });
 
 /**
- * Serializes empty query strings but omits null
+ * Omits null query values
  */
-it("OmitsNullSerializesEmptyString:Request", async () => {
+it("RestXmlOmitsNullQuery:Request", async () => {
   const client = new RestXmlProtocolClient({
     ...clientParams,
     requestHandler: new RequestSerializationTestHandler(),
@@ -2417,7 +2759,34 @@ it("OmitsNullSerializesEmptyString:Request", async () => {
 
   const command = new OmitsNullSerializesEmptyStringCommand({
     nullValue: null,
+  } as any);
+  try {
+    await client.send(command);
+    fail("Expected an EXPECTED_REQUEST_SERIALIZATION_ERROR to be thrown");
+    return;
+  } catch (err) {
+    if (!(err instanceof EXPECTED_REQUEST_SERIALIZATION_ERROR)) {
+      fail(err);
+      return;
+    }
+    const r = err.request;
+    expect(r.method).toBe("GET");
+    expect(r.path).toBe("/OmitsNullSerializesEmptyString");
 
+    expect(r.body).toBeFalsy();
+  }
+});
+
+/**
+ * Serializes empty query strings
+ */
+it("RestXmlSerializesEmptyString:Request", async () => {
+  const client = new RestXmlProtocolClient({
+    ...clientParams,
+    requestHandler: new RequestSerializationTestHandler(),
+  });
+
+  const command = new OmitsNullSerializesEmptyStringCommand({
     emptyString: "",
   } as any);
   try {
@@ -2505,6 +2874,83 @@ it("QueryIdempotencyTokenAutoFillIsSet:Request", async () => {
 });
 
 /**
+ * Serialize query params from map of list strings
+ */
+it("RestXmlQueryParamsStringListMap:Request", async () => {
+  const client = new RestXmlProtocolClient({
+    ...clientParams,
+    requestHandler: new RequestSerializationTestHandler(),
+  });
+
+  const command = new QueryParamsAsStringListMapCommand({
+    qux: "named",
+
+    foo: {
+      baz: ["bar", "qux"],
+    } as any,
+  } as any);
+  try {
+    await client.send(command);
+    fail("Expected an EXPECTED_REQUEST_SERIALIZATION_ERROR to be thrown");
+    return;
+  } catch (err) {
+    if (!(err instanceof EXPECTED_REQUEST_SERIALIZATION_ERROR)) {
+      fail(err);
+      return;
+    }
+    const r = err.request;
+    expect(r.method).toBe("POST");
+    expect(r.path).toBe("/StringListMap");
+
+    const queryString = buildQueryString(r.query);
+    expect(queryString).toContain("corge=named");
+    expect(queryString).toContain("baz=bar");
+    expect(queryString).toContain("baz=qux");
+
+    expect(r.body).toBeFalsy();
+  }
+});
+
+/**
+ * Prefer named query parameters when serializing
+ */
+it("RestXmlQueryPrecedence:Request", async () => {
+  const client = new RestXmlProtocolClient({
+    ...clientParams,
+    requestHandler: new RequestSerializationTestHandler(),
+  });
+
+  const command = new QueryPrecedenceCommand({
+    foo: "named",
+
+    baz: {
+      bar: "fromMap",
+
+      qux: "alsoFromMap",
+    } as any,
+  } as any);
+  try {
+    await client.send(command);
+    fail("Expected an EXPECTED_REQUEST_SERIALIZATION_ERROR to be thrown");
+    return;
+  } catch (err) {
+    if (!(err instanceof EXPECTED_REQUEST_SERIALIZATION_ERROR)) {
+      fail(err);
+      return;
+    }
+    const r = err.request;
+    expect(r.method).toBe("POST");
+    expect(r.path).toBe("/Precedence");
+
+    const queryString = buildQueryString(r.query);
+    expect(queryString).toContain("bar=named");
+    expect(queryString).toContain("qux=alsoFromMap");
+
+    expect(r.body).toBeFalsy();
+  }
+});
+
+/**
  * Serializes recursive structures
  */
 it("RecursiveShapes:Request", async () => {
@@ -2547,6 +2993,7 @@ it("RecursiveShapes:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<RecursiveShapesInputOutput>
         <nested>
             <foo>Foo1</foo>
@@ -2682,6 +3129,7 @@ it("SimpleScalarProperties:Request", async () => {
     expect(r.headers["x-foo"]).toBe("Foo");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<SimpleScalarPropertiesInputOutput>
         <stringValue>string</stringValue>
         <trueBooleanValue>true</trueBooleanValue>
@@ -2732,6 +3180,7 @@ it("SimpleScalarPropertiesWithEscapedCharacter:Request", async () => {
     expect(r.headers["x-foo"]).toBe("Foo");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<SimpleScalarPropertiesInputOutput>
         <stringValue>&lt;string&gt;</stringValue>
     </SimpleScalarPropertiesInputOutput>
@@ -2774,6 +3223,7 @@ it("SimpleScalarPropertiesWithWhiteSpace:Request", async () => {
     expect(r.headers["x-foo"]).toBe("Foo");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<SimpleScalarPropertiesInputOutput>
         <stringValue>string with white    space</stringValue>
     </SimpleScalarPropertiesInputOutput>
@@ -3130,6 +3580,7 @@ it("XmlAttributes:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlAttributesInputOutput test=\"test\">
         <foo>hi</foo>
     </XmlAttributesInputOutput>
@@ -3170,6 +3621,7 @@ it("XmlAttributesWithEscaping:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlAttributesInputOutput test=\"&lt;test&amp;mock&gt;\">
         <foo>hi</foo>
     </XmlAttributesInputOutput>
@@ -3255,6 +3707,7 @@ it("XmlAttributesOnPayload:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlAttributesInputOutput test=\"test\">
         <foo>hi</foo>
     </XmlAttributesInputOutput>
@@ -3338,6 +3791,7 @@ it("XmlBlobs:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlBlobsInputOutput>
         <data>dmFsdWU=</data>
     </XmlBlobsInputOutput>
@@ -3501,6 +3955,7 @@ it("XmlEmptyLists:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlListsInputOutput>
             <stringList></stringList>
             <stringSet></stringSet>
@@ -3584,6 +4039,7 @@ it("XmlEmptyMaps:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlMapsInputOutput>
         <myMap></myMap>
     </XmlMapsInputOutput>
@@ -3704,6 +4160,7 @@ it("XmlEmptyStrings:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlEmptyStringsInputOutput>
         <emptyString></emptyString>
     </XmlEmptyStringsInputOutput>
@@ -3838,6 +4295,7 @@ it("XmlEnums:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlEnumsInputOutput>
         <fooEnum1>Foo</fooEnum1>
         <fooEnum2>0</fooEnum2>
@@ -4007,6 +4465,7 @@ it("XmlLists:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlListsInputOutput>
         <stringList>
             <member>foo</member>
@@ -4240,6 +4699,7 @@ it("XmlMaps:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlMapsInputOutput>
         <myMap>
             <entry>
@@ -4361,6 +4821,7 @@ it("XmlMapsXmlName:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlMapsXmlNameInputOutput>
         <myMap>
             <entry>
@@ -4478,6 +4939,7 @@ it("XmlNamespaces:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlNamespacesInputOutput xmlns=\"http://foo.com\">
         <nested>
             <foo xmlns:baz=\"http://baz.com\">Foo</foo>
@@ -4573,6 +5035,7 @@ it("XmlTimestamps:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlTimestampsInputOutput>
         <normal>2014-04-29T18:30:38Z</normal>
     </XmlTimestampsInputOutput>
@@ -4611,6 +5074,7 @@ it("XmlTimestampsWithDateTimeFormat:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlTimestampsInputOutput>
         <dateTime>2014-04-29T18:30:38Z</dateTime>
     </XmlTimestampsInputOutput>
@@ -4649,6 +5113,7 @@ it("XmlTimestampsWithEpochSecondsFormat:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlTimestampsInputOutput>
         <epochSeconds>1398796238</epochSeconds>
     </XmlTimestampsInputOutput>
@@ -4687,6 +5152,7 @@ it("XmlTimestampsWithHttpDateFormat:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlTimestampsInputOutput>
         <httpDate>Tue, 29 Apr 2014 18:30:38 GMT</httpDate>
     </XmlTimestampsInputOutput>
@@ -4907,6 +5373,7 @@ it("XmlUnionsWithStructMember:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlUnionsInputOutput>
         <unionValue>
            <structValue>
@@ -4958,6 +5425,7 @@ it("XmlUnionsWithStringMember:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlUnionsInputOutput>
        <unionValue>
           <stringValue>some string</stringValue>
@@ -5000,6 +5468,7 @@ it("XmlUnionsWithBooleanMember:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlUnionsInputOutput>
        <unionValue>
           <booleanValue>true</booleanValue>
@@ -5044,6 +5513,7 @@ it("XmlUnionsWithUnionMember:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/xml");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `<XmlUnionsInputOutput>
        <unionValue>
           <unionValue>
@@ -5271,13 +5741,13 @@ it("XmlUnionsWithUnionMember:Response", async () => {
  * discrepancies between the components.
  */
 const compareEquivalentUnknownTypeBodies = (
-  config: any,
+  utf8Encoder: __Encoder,
   expectedBody: string,
   generatedBody: string | Uint8Array
 ): Object => {
   const expectedParts = { Value: expectedBody };
   const generatedParts = {
-    Value: generatedBody instanceof Uint8Array ? config.utf8Encoder(generatedBody) : generatedBody,
+    Value: generatedBody instanceof Uint8Array ? utf8Encoder(generatedBody) : generatedBody,
   };
 
   return compareParts(expectedParts, generatedParts);

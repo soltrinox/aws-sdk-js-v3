@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAppsListCommandInput = GetAppsListRequest;
-export type GetAppsListCommandOutput = GetAppsListResponse & __MetadataBearer;
+export interface GetAppsListCommandInput extends GetAppsListRequest {}
+export interface GetAppsListCommandOutput extends GetAppsListResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information about the specified AWS Firewall Manager applications list.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FMSClient, GetAppsListCommand } from "@aws-sdk/client-fms"; // ES Modules import
+ * // const { FMSClient, GetAppsListCommand } = require("@aws-sdk/client-fms"); // CommonJS import
+ * const client = new FMSClient(config);
+ * const command = new GetAppsListCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAppsListCommandInput} for command's `input` shape.
+ * @see {@link GetAppsListCommandOutput} for command's `response` shape.
+ * @see {@link FMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAppsListCommand extends $Command<
   GetAppsListCommandInput,

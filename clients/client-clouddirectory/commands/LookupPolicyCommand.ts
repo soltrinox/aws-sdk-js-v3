@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type LookupPolicyCommandInput = LookupPolicyRequest;
-export type LookupPolicyCommandOutput = LookupPolicyResponse & __MetadataBearer;
+export interface LookupPolicyCommandInput extends LookupPolicyRequest {}
+export interface LookupPolicyCommandOutput extends LookupPolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Lists all policies from the root of the <a>Directory</a> to the object
@@ -27,6 +27,20 @@ export type LookupPolicyCommandOutput = LookupPolicyResponse & __MetadataBearer;
  *       for such objects. If policies are present, it returns <code>ObjectIdentifier</code>, <code>policyId</code>, and
  *       <code>policyType</code>. Paths that don't lead to the root from the target object are ignored. For more
  *       information, see <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directory.html#key_concepts_policies">Policies</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, LookupPolicyCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, LookupPolicyCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new LookupPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link LookupPolicyCommandInput} for command's `input` shape.
+ * @see {@link LookupPolicyCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class LookupPolicyCommand extends $Command<
   LookupPolicyCommandInput,

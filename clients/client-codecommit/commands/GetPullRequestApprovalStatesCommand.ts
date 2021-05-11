@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetPullRequestApprovalStatesCommandInput = GetPullRequestApprovalStatesInput;
-export type GetPullRequestApprovalStatesCommandOutput = GetPullRequestApprovalStatesOutput & __MetadataBearer;
+export interface GetPullRequestApprovalStatesCommandInput extends GetPullRequestApprovalStatesInput {}
+export interface GetPullRequestApprovalStatesCommandOutput
+  extends GetPullRequestApprovalStatesOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Gets information about the approval states for a specified pull request. Approval states only apply to pull requests that have one or more
  *         approval rules applied to them.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeCommitClient, GetPullRequestApprovalStatesCommand } from "@aws-sdk/client-codecommit"; // ES Modules import
+ * // const { CodeCommitClient, GetPullRequestApprovalStatesCommand } = require("@aws-sdk/client-codecommit"); // CommonJS import
+ * const client = new CodeCommitClient(config);
+ * const command = new GetPullRequestApprovalStatesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetPullRequestApprovalStatesCommandInput} for command's `input` shape.
+ * @see {@link GetPullRequestApprovalStatesCommandOutput} for command's `response` shape.
+ * @see {@link CodeCommitClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetPullRequestApprovalStatesCommand extends $Command<
   GetPullRequestApprovalStatesCommandInput,

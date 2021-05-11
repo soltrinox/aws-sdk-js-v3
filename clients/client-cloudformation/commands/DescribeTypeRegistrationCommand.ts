@@ -17,11 +17,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeTypeRegistrationCommandInput = DescribeTypeRegistrationInput;
-export type DescribeTypeRegistrationCommandOutput = DescribeTypeRegistrationOutput & __MetadataBearer;
+export interface DescribeTypeRegistrationCommandInput extends DescribeTypeRegistrationInput {}
+export interface DescribeTypeRegistrationCommandOutput extends DescribeTypeRegistrationOutput, __MetadataBearer {}
 
 /**
- * <p>Returns information about a type's registration, including its current status and type and version identifiers.</p>
+ * <p>Returns information about an extension's registration, including its current status and type and version identifiers.</p>
  *          <p>When you initiate a registration request using <code>
  *                <a>RegisterType</a>
  *             </code>, you can then use <code>
@@ -29,7 +29,21 @@ export type DescribeTypeRegistrationCommandOutput = DescribeTypeRegistrationOutp
  *             </code> to monitor the progress of that registration request.</p>
  *          <p>Once the registration request has completed, use <code>
  *                <a>DescribeType</a>
- *             </code> to return detailed informaiton about a type.</p>
+ *             </code> to return detailed information about an extension.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, DescribeTypeRegistrationCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, DescribeTypeRegistrationCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new DescribeTypeRegistrationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeTypeRegistrationCommandInput} for command's `input` shape.
+ * @see {@link DescribeTypeRegistrationCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeTypeRegistrationCommand extends $Command<
   DescribeTypeRegistrationCommandInput,

@@ -17,12 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteJobCommandInput = DeleteJobRequest;
-export type DeleteJobCommandOutput = DeleteJobResponse & __MetadataBearer;
+export interface DeleteJobCommandInput extends DeleteJobRequest {}
+export interface DeleteJobCommandOutput extends DeleteJobResponse, __MetadataBearer {}
 
 /**
- * <p>Deletes the specified AWS Glue DataBrew job from the current AWS account. The job can
- *             be for a recipe or for a profile.</p>
+ * <p>Deletes the specified DataBrew job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataBrewClient, DeleteJobCommand } from "@aws-sdk/client-databrew"; // ES Modules import
+ * // const { DataBrewClient, DeleteJobCommand } = require("@aws-sdk/client-databrew"); // CommonJS import
+ * const client = new DataBrewClient(config);
+ * const command = new DeleteJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteJobCommandInput} for command's `input` shape.
+ * @see {@link DeleteJobCommandOutput} for command's `response` shape.
+ * @see {@link DataBrewClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteJobCommand extends $Command<
   DeleteJobCommandInput,

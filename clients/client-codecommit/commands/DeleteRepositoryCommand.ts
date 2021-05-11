@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteRepositoryCommandInput = DeleteRepositoryInput;
-export type DeleteRepositoryCommandOutput = DeleteRepositoryOutput & __MetadataBearer;
+export interface DeleteRepositoryCommandInput extends DeleteRepositoryInput {}
+export interface DeleteRepositoryCommandOutput extends DeleteRepositoryOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes a repository. If a specified repository was already deleted, a null repository
@@ -27,6 +27,20 @@ export type DeleteRepositoryCommandOutput = DeleteRepositoryOutput & __MetadataB
  *             <p>Deleting a repository also deletes all associated objects and metadata. After a repository is
  *                 deleted, all future push calls to the deleted repository fail.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeCommitClient, DeleteRepositoryCommand } from "@aws-sdk/client-codecommit"; // ES Modules import
+ * // const { CodeCommitClient, DeleteRepositoryCommand } = require("@aws-sdk/client-codecommit"); // CommonJS import
+ * const client = new CodeCommitClient(config);
+ * const command = new DeleteRepositoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteRepositoryCommandInput} for command's `input` shape.
+ * @see {@link DeleteRepositoryCommandOutput} for command's `response` shape.
+ * @see {@link CodeCommitClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteRepositoryCommand extends $Command<
   DeleteRepositoryCommandInput,

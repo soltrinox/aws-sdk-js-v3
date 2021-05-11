@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDeploymentGroupCommandInput = CreateDeploymentGroupInput;
-export type CreateDeploymentGroupCommandOutput = CreateDeploymentGroupOutput & __MetadataBearer;
+export interface CreateDeploymentGroupCommandInput extends CreateDeploymentGroupInput {}
+export interface CreateDeploymentGroupCommandOutput extends CreateDeploymentGroupOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a deployment group to which application revisions are deployed.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeDeployClient, CreateDeploymentGroupCommand } from "@aws-sdk/client-codedeploy"; // ES Modules import
+ * // const { CodeDeployClient, CreateDeploymentGroupCommand } = require("@aws-sdk/client-codedeploy"); // CommonJS import
+ * const client = new CodeDeployClient(config);
+ * const command = new CreateDeploymentGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDeploymentGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateDeploymentGroupCommandOutput} for command's `response` shape.
+ * @see {@link CodeDeployClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDeploymentGroupCommand extends $Command<
   CreateDeploymentGroupCommandInput,

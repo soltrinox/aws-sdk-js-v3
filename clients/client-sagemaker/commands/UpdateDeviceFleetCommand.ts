@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDeviceFleetCommandInput = UpdateDeviceFleetRequest;
-export type UpdateDeviceFleetCommandOutput = __MetadataBearer;
+export interface UpdateDeviceFleetCommandInput extends UpdateDeviceFleetRequest {}
+export interface UpdateDeviceFleetCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Updates a fleet of devices.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, UpdateDeviceFleetCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, UpdateDeviceFleetCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new UpdateDeviceFleetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDeviceFleetCommandInput} for command's `input` shape.
+ * @see {@link UpdateDeviceFleetCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDeviceFleetCommand extends $Command<
   UpdateDeviceFleetCommandInput,

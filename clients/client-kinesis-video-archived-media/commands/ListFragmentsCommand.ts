@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListFragmentsCommandInput = ListFragmentsInput;
-export type ListFragmentsCommandOutput = ListFragmentsOutput & __MetadataBearer;
+export interface ListFragmentsCommandInput extends ListFragmentsInput {}
+export interface ListFragmentsCommandOutput extends ListFragmentsOutput, __MetadataBearer {}
 
 /**
  * <p>Returns a list of <a>Fragment</a> objects from the specified stream and
@@ -44,14 +44,14 @@ export type ListFragmentsCommandOutput = ListFragmentsOutput & __MetadataBearer;
  *             <ul>
  *                <li>
  *                     <p>
- *                      <code>x-amz-ErrorType</code> HTTP header – contains a more specific error
+ *                         <code>x-amz-ErrorType</code> HTTP header – contains a more specific error
  *                         type in addition to what the HTTP status code provides. </p>
  *                 </li>
  *                <li>
  *                     <p>
- *                      <code>x-amz-RequestId</code> HTTP header – if you want to report an issue
- *                         to AWS, the support team can better diagnose the problem if given the
- *                         Request Id.</p>
+ *                         <code>x-amz-RequestId</code> HTTP header – if you want to report an issue to
+ *                         AWS, the support team can better diagnose the problem if given the Request
+ *                         Id.</p>
  *                 </li>
  *             </ul>
  *             <p>Both the HTTP status code and the ErrorType header can be utilized to make
@@ -62,6 +62,20 @@ export type ListFragmentsCommandOutput = ListFragmentsOutput & __MetadataBearer;
  *                 the bottom of this topic, as well as <a href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html">Common Errors</a>.
  *             </p>
  *         </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisVideoArchivedMediaClient, ListFragmentsCommand } from "@aws-sdk/client-kinesis-video-archived-media"; // ES Modules import
+ * // const { KinesisVideoArchivedMediaClient, ListFragmentsCommand } = require("@aws-sdk/client-kinesis-video-archived-media"); // CommonJS import
+ * const client = new KinesisVideoArchivedMediaClient(config);
+ * const command = new ListFragmentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListFragmentsCommandInput} for command's `input` shape.
+ * @see {@link ListFragmentsCommandOutput} for command's `response` shape.
+ * @see {@link KinesisVideoArchivedMediaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListFragmentsCommand extends $Command<
   ListFragmentsCommandInput,

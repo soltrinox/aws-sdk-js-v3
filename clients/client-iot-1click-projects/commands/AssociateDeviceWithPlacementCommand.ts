@@ -21,11 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateDeviceWithPlacementCommandInput = AssociateDeviceWithPlacementRequest;
-export type AssociateDeviceWithPlacementCommandOutput = AssociateDeviceWithPlacementResponse & __MetadataBearer;
+export interface AssociateDeviceWithPlacementCommandInput extends AssociateDeviceWithPlacementRequest {}
+export interface AssociateDeviceWithPlacementCommandOutput
+  extends AssociateDeviceWithPlacementResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Associates a physical device with a placement.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoT1ClickProjectsClient, AssociateDeviceWithPlacementCommand } from "@aws-sdk/client-iot-1click-projects"; // ES Modules import
+ * // const { IoT1ClickProjectsClient, AssociateDeviceWithPlacementCommand } = require("@aws-sdk/client-iot-1click-projects"); // CommonJS import
+ * const client = new IoT1ClickProjectsClient(config);
+ * const command = new AssociateDeviceWithPlacementCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateDeviceWithPlacementCommandInput} for command's `input` shape.
+ * @see {@link AssociateDeviceWithPlacementCommandOutput} for command's `response` shape.
+ * @see {@link IoT1ClickProjectsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateDeviceWithPlacementCommand extends $Command<
   AssociateDeviceWithPlacementCommandInput,

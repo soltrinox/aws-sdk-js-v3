@@ -1,5 +1,5 @@
 import { SSMClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SSMClient";
-import { UpdateResourceDataSyncRequest, UpdateResourceDataSyncResult } from "../models/models_1";
+import { UpdateResourceDataSyncRequest, UpdateResourceDataSyncResult } from "../models/models_2";
 import {
   deserializeAws_json1_1UpdateResourceDataSyncCommand,
   serializeAws_json1_1UpdateResourceDataSyncCommand,
@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateResourceDataSyncCommandInput = UpdateResourceDataSyncRequest;
-export type UpdateResourceDataSyncCommandOutput = UpdateResourceDataSyncResult & __MetadataBearer;
+export interface UpdateResourceDataSyncCommandInput extends UpdateResourceDataSyncRequest {}
+export interface UpdateResourceDataSyncCommandOutput extends UpdateResourceDataSyncResult, __MetadataBearer {}
 
 /**
  * <p>Update a resource data sync. After you create a resource data sync for a Region, you can't
@@ -30,6 +30,20 @@ export type UpdateResourceDataSyncCommandOutput = UpdateResourceDataSyncResult &
  *             <p>This API action only supports a resource data sync that was created with a SyncFromSource
  *      <code>SyncType</code>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, UpdateResourceDataSyncCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, UpdateResourceDataSyncCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new UpdateResourceDataSyncCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateResourceDataSyncCommandInput} for command's `input` shape.
+ * @see {@link UpdateResourceDataSyncCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateResourceDataSyncCommand extends $Command<
   UpdateResourceDataSyncCommandInput,

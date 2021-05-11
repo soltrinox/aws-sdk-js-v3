@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisableDirectoryCommandInput = DisableDirectoryRequest;
-export type DisableDirectoryCommandOutput = DisableDirectoryResponse & __MetadataBearer;
+export interface DisableDirectoryCommandInput extends DisableDirectoryRequest {}
+export interface DisableDirectoryCommandOutput extends DisableDirectoryResponse, __MetadataBearer {}
 
 /**
  * <p>Disables the specified directory. Disabled directories cannot be read or written to.
  *       Only enabled directories can be disabled. Disabled directories may be reenabled.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, DisableDirectoryCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, DisableDirectoryCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new DisableDirectoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisableDirectoryCommandInput} for command's `input` shape.
+ * @see {@link DisableDirectoryCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisableDirectoryCommand extends $Command<
   DisableDirectoryCommandInput,

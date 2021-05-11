@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreatePhoneNumberOrderCommandInput = CreatePhoneNumberOrderRequest;
-export type CreatePhoneNumberOrderCommandOutput = CreatePhoneNumberOrderResponse & __MetadataBearer;
+export interface CreatePhoneNumberOrderCommandInput extends CreatePhoneNumberOrderRequest {}
+export interface CreatePhoneNumberOrderCommandOutput extends CreatePhoneNumberOrderResponse, __MetadataBearer {}
 
 /**
- * <p>Creates an order for phone numbers to be provisioned. Choose from Amazon Chime Business
- *       Calling and Amazon Chime Voice Connector product types. For toll-free numbers, you must use
- *       the Amazon Chime Voice Connector product type.</p>
+ * <p>Creates an order for phone numbers to be provisioned. Choose from Amazon Chime Business Calling
+ *             and Amazon Chime Voice Connector product types. For toll-free numbers, you must use the
+ *             Amazon Chime Voice Connector product type.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, CreatePhoneNumberOrderCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, CreatePhoneNumberOrderCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new CreatePhoneNumberOrderCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreatePhoneNumberOrderCommandInput} for command's `input` shape.
+ * @see {@link CreatePhoneNumberOrderCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreatePhoneNumberOrderCommand extends $Command<
   CreatePhoneNumberOrderCommandInput,

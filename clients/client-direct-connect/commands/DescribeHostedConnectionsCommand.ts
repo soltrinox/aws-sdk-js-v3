@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeHostedConnectionsCommandInput = DescribeHostedConnectionsRequest;
-export type DescribeHostedConnectionsCommandOutput = Connections & __MetadataBearer;
+export interface DescribeHostedConnectionsCommandInput extends DescribeHostedConnectionsRequest {}
+export interface DescribeHostedConnectionsCommandOutput extends Connections, __MetadataBearer {}
 
 /**
  * <p>Lists the hosted connections that have been provisioned on the specified
@@ -26,6 +26,20 @@ export type DescribeHostedConnectionsCommandOutput = Connections & __MetadataBea
  *          <note>
  *             <p>Intended for use by AWS Direct Connect Partners only.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectConnectClient, DescribeHostedConnectionsCommand } from "@aws-sdk/client-direct-connect"; // ES Modules import
+ * // const { DirectConnectClient, DescribeHostedConnectionsCommand } = require("@aws-sdk/client-direct-connect"); // CommonJS import
+ * const client = new DirectConnectClient(config);
+ * const command = new DescribeHostedConnectionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeHostedConnectionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeHostedConnectionsCommandOutput} for command's `response` shape.
+ * @see {@link DirectConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeHostedConnectionsCommand extends $Command<
   DescribeHostedConnectionsCommandInput,

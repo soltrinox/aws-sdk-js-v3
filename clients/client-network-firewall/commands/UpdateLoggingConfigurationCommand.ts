@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateLoggingConfigurationCommandInput = UpdateLoggingConfigurationRequest;
-export type UpdateLoggingConfigurationCommandOutput = UpdateLoggingConfigurationResponse & __MetadataBearer;
+export interface UpdateLoggingConfigurationCommandInput extends UpdateLoggingConfigurationRequest {}
+export interface UpdateLoggingConfigurationCommandOutput extends UpdateLoggingConfigurationResponse, __MetadataBearer {}
 
 /**
  * <p>Sets the logging configuration for the specified firewall. </p>
@@ -47,6 +47,20 @@ export type UpdateLoggingConfigurationCommandOutput = UpdateLoggingConfiguration
  *             <code>LogDestinationConfig</code>. To change these settings, delete the existing
  *             <code>LogDestinationConfig</code> object and create a new one, using two separate calls
  *          to this update operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkFirewallClient, UpdateLoggingConfigurationCommand } from "@aws-sdk/client-network-firewall"; // ES Modules import
+ * // const { NetworkFirewallClient, UpdateLoggingConfigurationCommand } = require("@aws-sdk/client-network-firewall"); // CommonJS import
+ * const client = new NetworkFirewallClient(config);
+ * const command = new UpdateLoggingConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateLoggingConfigurationCommandInput} for command's `input` shape.
+ * @see {@link UpdateLoggingConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link NetworkFirewallClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateLoggingConfigurationCommand extends $Command<
   UpdateLoggingConfigurationCommandInput,

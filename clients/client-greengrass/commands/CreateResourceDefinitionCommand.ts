@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateResourceDefinitionCommandInput = CreateResourceDefinitionRequest;
-export type CreateResourceDefinitionCommandOutput = CreateResourceDefinitionResponse & __MetadataBearer;
+export interface CreateResourceDefinitionCommandInput extends CreateResourceDefinitionRequest {}
+export interface CreateResourceDefinitionCommandOutput extends CreateResourceDefinitionResponse, __MetadataBearer {}
 
 /**
  * Creates a resource definition which contains a list of resources to be used in a group. You can create an initial version of the definition by providing a list of resources now, or use ''CreateResourceDefinitionVersion'' later.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, CreateResourceDefinitionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, CreateResourceDefinitionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new CreateResourceDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateResourceDefinitionCommandInput} for command's `input` shape.
+ * @see {@link CreateResourceDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateResourceDefinitionCommand extends $Command<
   CreateResourceDefinitionCommandInput,

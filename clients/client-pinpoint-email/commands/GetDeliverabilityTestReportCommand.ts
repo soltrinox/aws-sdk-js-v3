@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDeliverabilityTestReportCommandInput = GetDeliverabilityTestReportRequest;
-export type GetDeliverabilityTestReportCommandOutput = GetDeliverabilityTestReportResponse & __MetadataBearer;
+export interface GetDeliverabilityTestReportCommandInput extends GetDeliverabilityTestReportRequest {}
+export interface GetDeliverabilityTestReportCommandOutput
+  extends GetDeliverabilityTestReportResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieve the results of a predictive inbox placement test.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointEmailClient, GetDeliverabilityTestReportCommand } from "@aws-sdk/client-pinpoint-email"; // ES Modules import
+ * // const { PinpointEmailClient, GetDeliverabilityTestReportCommand } = require("@aws-sdk/client-pinpoint-email"); // CommonJS import
+ * const client = new PinpointEmailClient(config);
+ * const command = new GetDeliverabilityTestReportCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDeliverabilityTestReportCommandInput} for command's `input` shape.
+ * @see {@link GetDeliverabilityTestReportCommandOutput} for command's `response` shape.
+ * @see {@link PinpointEmailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDeliverabilityTestReportCommand extends $Command<
   GetDeliverabilityTestReportCommandInput,

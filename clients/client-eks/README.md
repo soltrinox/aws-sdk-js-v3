@@ -33,16 +33,16 @@ using your favorite package manager:
 
 The AWS SDK is modulized by clients and commands.
 To send a request, you only need to import the `EKSClient` and
-the commands you need, for example `CreateAddonCommand`:
+the commands you need, for example `AssociateEncryptionConfigCommand`:
 
 ```js
 // ES5 example
-const { EKSClient, CreateAddonCommand } = require("@aws-sdk/client-eks");
+const { EKSClient, AssociateEncryptionConfigCommand } = require("@aws-sdk/client-eks");
 ```
 
 ```ts
 // ES6+ example
-import { EKSClient, CreateAddonCommand } from "@aws-sdk/client-eks";
+import { EKSClient, AssociateEncryptionConfigCommand } from "@aws-sdk/client-eks";
 ```
 
 ### Usage
@@ -55,13 +55,13 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new EKSClient({ region: "REGION" });
 
 const params = {
   /** input parameters */
 };
-const command = new CreateAddonCommand(params);
+const command = new AssociateEncryptionConfigCommand(params);
 ```
 
 #### Async/await
@@ -140,7 +140,7 @@ const client = new AWS.EKS({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.createAddon(params);
+  const data = await client.associateEncryptionConfig(params);
   // process data.
 } catch (error) {
   // error handling.
@@ -148,7 +148,7 @@ try {
 
 // Promises.
 client
-  .createAddon(params)
+  .associateEncryptionConfig(params)
   .then((data) => {
     // process data.
   })
@@ -157,7 +157,7 @@ client
   });
 
 // callbacks.
-client.createAddon(params, (err, data) => {
+client.associateEncryptionConfig(params, (err, data) => {
   // proccess err and data.
 });
 ```

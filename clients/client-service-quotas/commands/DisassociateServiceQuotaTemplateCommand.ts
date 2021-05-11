@@ -17,26 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateServiceQuotaTemplateCommandInput = DisassociateServiceQuotaTemplateRequest;
-export type DisassociateServiceQuotaTemplateCommandOutput = DisassociateServiceQuotaTemplateResponse & __MetadataBearer;
+export interface DisassociateServiceQuotaTemplateCommandInput extends DisassociateServiceQuotaTemplateRequest {}
+export interface DisassociateServiceQuotaTemplateCommandOutput
+  extends DisassociateServiceQuotaTemplateResponse,
+    __MetadataBearer {}
 
 /**
- * <p>Disables the Service Quotas template. Once the template is disabled, it does not request
- *       quota increases for new accounts in your organization. Disabling the quota template does not
- *       apply the quota increase requests from the template. </p>
+ * <p>Disables your quota request template. After a template is disabled, the quota increase
+ *       requests in the template are not applied to new accounts in your organization. Disabling a
+ *       quota request template does not apply its quota increase requests.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceQuotasClient, DisassociateServiceQuotaTemplateCommand } from "@aws-sdk/client-service-quotas"; // ES Modules import
+ * // const { ServiceQuotasClient, DisassociateServiceQuotaTemplateCommand } = require("@aws-sdk/client-service-quotas"); // CommonJS import
+ * const client = new ServiceQuotasClient(config);
+ * const command = new DisassociateServiceQuotaTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
  *
- *          <p>
- *             <b>Related operations</b>
- *          </p>
- *          <ul>
- *             <li>
- *                <p>To enable the quota template, call <a>AssociateServiceQuotaTemplate</a>.
- *         </p>
- *             </li>
- *             <li>
- *                <p>To delete a specific service quota from the template, use <a>DeleteServiceQuotaIncreaseRequestFromTemplate</a>.</p>
- *             </li>
- *          </ul>
+ * @see {@link DisassociateServiceQuotaTemplateCommandInput} for command's `input` shape.
+ * @see {@link DisassociateServiceQuotaTemplateCommandOutput} for command's `response` shape.
+ * @see {@link ServiceQuotasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateServiceQuotaTemplateCommand extends $Command<
   DisassociateServiceQuotaTemplateCommandInput,

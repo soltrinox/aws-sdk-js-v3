@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteResourcePolicyCommandInput = DeleteResourcePolicyRequest;
-export type DeleteResourcePolicyCommandOutput = DeleteResourcePolicyResponse & __MetadataBearer;
+export interface DeleteResourcePolicyCommandInput extends DeleteResourcePolicyRequest {}
+export interface DeleteResourcePolicyCommandOutput extends DeleteResourcePolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a specified policy.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, DeleteResourcePolicyCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, DeleteResourcePolicyCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new DeleteResourcePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteResourcePolicyCommandInput} for command's `input` shape.
+ * @see {@link DeleteResourcePolicyCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteResourcePolicyCommand extends $Command<
   DeleteResourcePolicyCommandInput,

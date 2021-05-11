@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateRoleToGroupCommandInput = AssociateRoleToGroupRequest;
-export type AssociateRoleToGroupCommandOutput = AssociateRoleToGroupResponse & __MetadataBearer;
+export interface AssociateRoleToGroupCommandInput extends AssociateRoleToGroupRequest {}
+export interface AssociateRoleToGroupCommandOutput extends AssociateRoleToGroupResponse, __MetadataBearer {}
 
 /**
  * Associates a role with a group. Your Greengrass core will use the role to access AWS cloud services. The role's permissions should allow Greengrass core Lambda functions to perform actions against the cloud.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, AssociateRoleToGroupCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, AssociateRoleToGroupCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new AssociateRoleToGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateRoleToGroupCommandInput} for command's `input` shape.
+ * @see {@link AssociateRoleToGroupCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateRoleToGroupCommand extends $Command<
   AssociateRoleToGroupCommandInput,

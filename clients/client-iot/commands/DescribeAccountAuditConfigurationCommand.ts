@@ -2,7 +2,7 @@ import { IoTClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "
 import {
   DescribeAccountAuditConfigurationRequest,
   DescribeAccountAuditConfigurationResponse,
-} from "../models/models_0";
+} from "../models/models_1";
 import {
   deserializeAws_restJson1DescribeAccountAuditConfigurationCommand,
   serializeAws_restJson1DescribeAccountAuditConfigurationCommand,
@@ -20,14 +20,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAccountAuditConfigurationCommandInput = DescribeAccountAuditConfigurationRequest;
-export type DescribeAccountAuditConfigurationCommandOutput = DescribeAccountAuditConfigurationResponse &
-  __MetadataBearer;
+export interface DescribeAccountAuditConfigurationCommandInput extends DescribeAccountAuditConfigurationRequest {}
+export interface DescribeAccountAuditConfigurationCommandOutput
+  extends DescribeAccountAuditConfigurationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Gets information about the Device Defender audit settings for this account.
  *           Settings include how audit notifications are sent and which audit checks are
  *           enabled or disabled.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DescribeAccountAuditConfigurationCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DescribeAccountAuditConfigurationCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DescribeAccountAuditConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAccountAuditConfigurationCommandInput} for command's `input` shape.
+ * @see {@link DescribeAccountAuditConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAccountAuditConfigurationCommand extends $Command<
   DescribeAccountAuditConfigurationCommandInput,

@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteConnectionCommandInput = DeleteConnectionInput;
-export type DeleteConnectionCommandOutput = DeleteConnectionOutput & __MetadataBearer;
+export interface DeleteConnectionCommandInput extends DeleteConnectionInput {}
+export interface DeleteConnectionCommandOutput extends DeleteConnectionOutput, __MetadataBearer {}
 
 /**
  * <p>The connection to be deleted.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeStarConnectionsClient, DeleteConnectionCommand } from "@aws-sdk/client-codestar-connections"; // ES Modules import
+ * // const { CodeStarConnectionsClient, DeleteConnectionCommand } = require("@aws-sdk/client-codestar-connections"); // CommonJS import
+ * const client = new CodeStarConnectionsClient(config);
+ * const command = new DeleteConnectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteConnectionCommandInput} for command's `input` shape.
+ * @see {@link DeleteConnectionCommandOutput} for command's `response` shape.
+ * @see {@link CodeStarConnectionsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteConnectionCommand extends $Command<
   DeleteConnectionCommandInput,

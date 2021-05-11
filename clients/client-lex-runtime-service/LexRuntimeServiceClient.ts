@@ -133,7 +133,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -164,7 +164,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type LexRuntimeServiceClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type LexRuntimeServiceClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -172,8 +172,12 @@ export type LexRuntimeServiceClientConfig = Partial<__SmithyConfiguration<__Http
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of LexRuntimeServiceClient class constructor that set the region, credentials and other options.
+ */
+export interface LexRuntimeServiceClientConfig extends LexRuntimeServiceClientConfigType {}
 
-export type LexRuntimeServiceClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type LexRuntimeServiceClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -181,17 +185,24 @@ export type LexRuntimeServiceClientResolvedConfig = __SmithyResolvedConfiguratio
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of LexRuntimeServiceClient class. This is resolved and normalized from the {@link LexRuntimeServiceClientConfig | constructor configuration interface}.
+ */
+export interface LexRuntimeServiceClientResolvedConfig extends LexRuntimeServiceClientResolvedConfigType {}
 
 /**
- * <p>Amazon Lex provides both build and runtime endpoints. Each endpoint provides a set of
- *       operations (API). Your conversational bot uses the runtime API to understand user utterances
- *       (user input text or voice). For example, suppose a user says "I want pizza", your bot sends
- *       this input to Amazon Lex using the runtime API. Amazon Lex recognizes that the user request is
- *       for the OrderPizza intent (one of the intents defined in the bot). Then Amazon Lex engages in
- *       user conversation on behalf of the bot to elicit required information (slot values, such as
- *       pizza size and crust type), and then performs fulfillment activity (that you configured when
- *       you created the bot). You use the build-time API to create and manage your Amazon Lex bot. For
- *       a list of build-time operations, see the build-time API, . </p>
+ * <p>Amazon Lex provides both build and runtime endpoints. Each endpoint
+ *       provides a set of operations (API). Your conversational bot uses the
+ *       runtime API to understand user utterances (user input text or voice). For
+ *       example, suppose a user says "I want pizza", your bot sends this input to
+ *       Amazon Lex using the runtime API. Amazon Lex recognizes that the user
+ *       request is for the OrderPizza intent (one of the intents defined in the
+ *       bot). Then Amazon Lex engages in user conversation on behalf of the bot to
+ *       elicit required information (slot values, such as pizza size and crust
+ *       type), and then performs fulfillment activity (that you configured when
+ *       you created the bot). You use the build-time API to create and manage your
+ *       Amazon Lex bot. For a list of build-time operations, see the build-time
+ *       API, . </p>
  */
 export class LexRuntimeServiceClient extends __Client<
   __HttpHandlerOptions,
@@ -199,6 +210,9 @@ export class LexRuntimeServiceClient extends __Client<
   ServiceOutputTypes,
   LexRuntimeServiceClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of LexRuntimeServiceClient class. This is resolved and normalized from the {@link LexRuntimeServiceClientConfig | constructor configuration interface}.
+   */
   readonly config: LexRuntimeServiceClientResolvedConfig;
 
   constructor(configuration: LexRuntimeServiceClientConfig) {

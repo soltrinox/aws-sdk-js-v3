@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetPartitionCommandInput = GetPartitionRequest;
-export type GetPartitionCommandOutput = GetPartitionResponse & __MetadataBearer;
+export interface GetPartitionCommandInput extends GetPartitionRequest {}
+export interface GetPartitionCommandOutput extends GetPartitionResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about a specified partition.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetPartitionCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetPartitionCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetPartitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetPartitionCommandInput} for command's `input` shape.
+ * @see {@link GetPartitionCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetPartitionCommand extends $Command<
   GetPartitionCommandInput,

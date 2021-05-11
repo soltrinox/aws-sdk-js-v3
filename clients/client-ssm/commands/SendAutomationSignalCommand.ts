@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SendAutomationSignalCommandInput = SendAutomationSignalRequest;
-export type SendAutomationSignalCommandOutput = SendAutomationSignalResult & __MetadataBearer;
+export interface SendAutomationSignalCommandInput extends SendAutomationSignalRequest {}
+export interface SendAutomationSignalCommandOutput extends SendAutomationSignalResult, __MetadataBearer {}
 
 /**
  * <p>Sends a signal to an Automation execution to change the current behavior or status of the
  *    execution. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, SendAutomationSignalCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, SendAutomationSignalCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new SendAutomationSignalCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SendAutomationSignalCommandInput} for command's `input` shape.
+ * @see {@link SendAutomationSignalCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SendAutomationSignalCommand extends $Command<
   SendAutomationSignalCommandInput,

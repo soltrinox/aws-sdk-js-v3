@@ -1,6 +1,5 @@
 import { IoTClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../IoTClient";
-import { DescribeAuditTaskRequest } from "../models/models_0";
-import { DescribeAuditTaskResponse } from "../models/models_1";
+import { DescribeAuditTaskRequest, DescribeAuditTaskResponse } from "../models/models_1";
 import {
   deserializeAws_restJson1DescribeAuditTaskCommand,
   serializeAws_restJson1DescribeAuditTaskCommand,
@@ -18,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAuditTaskCommandInput = DescribeAuditTaskRequest;
-export type DescribeAuditTaskCommandOutput = DescribeAuditTaskResponse & __MetadataBearer;
+export interface DescribeAuditTaskCommandInput extends DescribeAuditTaskRequest {}
+export interface DescribeAuditTaskCommandOutput extends DescribeAuditTaskResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about a Device Defender audit.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DescribeAuditTaskCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DescribeAuditTaskCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DescribeAuditTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAuditTaskCommandInput} for command's `input` shape.
+ * @see {@link DescribeAuditTaskCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAuditTaskCommand extends $Command<
   DescribeAuditTaskCommandInput,

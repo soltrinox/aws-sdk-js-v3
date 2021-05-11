@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateServiceActionCommandInput = CreateServiceActionInput;
-export type CreateServiceActionCommandOutput = CreateServiceActionOutput & __MetadataBearer;
+export interface CreateServiceActionCommandInput extends CreateServiceActionInput {}
+export interface CreateServiceActionCommandOutput extends CreateServiceActionOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a self-service action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, CreateServiceActionCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, CreateServiceActionCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new CreateServiceActionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateServiceActionCommandInput} for command's `input` shape.
+ * @see {@link CreateServiceActionCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateServiceActionCommand extends $Command<
   CreateServiceActionCommandInput,

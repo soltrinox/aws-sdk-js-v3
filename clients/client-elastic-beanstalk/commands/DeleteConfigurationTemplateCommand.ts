@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteConfigurationTemplateCommandInput = DeleteConfigurationTemplateMessage;
-export type DeleteConfigurationTemplateCommandOutput = __MetadataBearer;
+export interface DeleteConfigurationTemplateCommandInput extends DeleteConfigurationTemplateMessage {}
+export interface DeleteConfigurationTemplateCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified configuration template.</p>
@@ -27,6 +27,20 @@ export type DeleteConfigurationTemplateCommandOutput = __MetadataBearer;
  *         copy of the template. You can delete or modify the environment's copy of the template
  *         without affecting the running environment.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticBeanstalkClient, DeleteConfigurationTemplateCommand } from "@aws-sdk/client-elastic-beanstalk"; // ES Modules import
+ * // const { ElasticBeanstalkClient, DeleteConfigurationTemplateCommand } = require("@aws-sdk/client-elastic-beanstalk"); // CommonJS import
+ * const client = new ElasticBeanstalkClient(config);
+ * const command = new DeleteConfigurationTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteConfigurationTemplateCommandInput} for command's `input` shape.
+ * @see {@link DeleteConfigurationTemplateCommandOutput} for command's `response` shape.
+ * @see {@link ElasticBeanstalkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteConfigurationTemplateCommand extends $Command<
   DeleteConfigurationTemplateCommandInput,

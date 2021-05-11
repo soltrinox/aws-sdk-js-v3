@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetMediaCommandInput = GetMediaInput;
-export type GetMediaCommandOutput = GetMediaOutput & __MetadataBearer;
+export interface GetMediaCommandInput extends GetMediaInput {}
+export interface GetMediaCommandOutput extends GetMediaOutput, __MetadataBearer {}
 
 /**
  * <p> Use this API to retrieve media content from a Kinesis video stream. In the request,
@@ -71,6 +71,20 @@ export type GetMediaCommandOutput = GetMediaOutput & __MetadataBearer;
  *             <p>For more information, see the <b>Errors</b> section at the
  *         bottom of this topic, as well as <a href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html">Common Errors</a>. </p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisVideoMediaClient, GetMediaCommand } from "@aws-sdk/client-kinesis-video-media"; // ES Modules import
+ * // const { KinesisVideoMediaClient, GetMediaCommand } = require("@aws-sdk/client-kinesis-video-media"); // CommonJS import
+ * const client = new KinesisVideoMediaClient(config);
+ * const command = new GetMediaCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetMediaCommandInput} for command's `input` shape.
+ * @see {@link GetMediaCommandOutput} for command's `response` shape.
+ * @see {@link KinesisVideoMediaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetMediaCommand extends $Command<
   GetMediaCommandInput,

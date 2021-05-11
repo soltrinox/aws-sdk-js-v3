@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetResourcePolicyCommandInput = GetResourcePolicyInput;
-export type GetResourcePolicyCommandOutput = GetResourcePolicyOutput & __MetadataBearer;
+export interface GetResourcePolicyCommandInput extends GetResourcePolicyInput {}
+export interface GetResourcePolicyCommandOutput extends GetResourcePolicyOutput, __MetadataBearer {}
 
 /**
  * <p> Gets a resource policy that is identified by its resource ARN. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeBuildClient, GetResourcePolicyCommand } from "@aws-sdk/client-codebuild"; // ES Modules import
+ * // const { CodeBuildClient, GetResourcePolicyCommand } = require("@aws-sdk/client-codebuild"); // CommonJS import
+ * const client = new CodeBuildClient(config);
+ * const command = new GetResourcePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetResourcePolicyCommandInput} for command's `input` shape.
+ * @see {@link GetResourcePolicyCommandOutput} for command's `response` shape.
+ * @see {@link CodeBuildClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetResourcePolicyCommand extends $Command<
   GetResourcePolicyCommandInput,

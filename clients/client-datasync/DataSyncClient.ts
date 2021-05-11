@@ -58,6 +58,12 @@ import { StartTaskExecutionCommandInput, StartTaskExecutionCommandOutput } from 
 import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
 import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
 import { UpdateAgentCommandInput, UpdateAgentCommandOutput } from "./commands/UpdateAgentCommand";
+import { UpdateLocationNfsCommandInput, UpdateLocationNfsCommandOutput } from "./commands/UpdateLocationNfsCommand";
+import {
+  UpdateLocationObjectStorageCommandInput,
+  UpdateLocationObjectStorageCommandOutput,
+} from "./commands/UpdateLocationObjectStorageCommand";
+import { UpdateLocationSmbCommandInput, UpdateLocationSmbCommandOutput } from "./commands/UpdateLocationSmbCommand";
 import { UpdateTaskCommandInput, UpdateTaskCommandOutput } from "./commands/UpdateTaskCommand";
 import {
   UpdateTaskExecutionCommandInput,
@@ -145,6 +151,9 @@ export type ServiceInputTypes =
   | TagResourceCommandInput
   | UntagResourceCommandInput
   | UpdateAgentCommandInput
+  | UpdateLocationNfsCommandInput
+  | UpdateLocationObjectStorageCommandInput
+  | UpdateLocationSmbCommandInput
   | UpdateTaskCommandInput
   | UpdateTaskExecutionCommandInput;
 
@@ -179,6 +188,9 @@ export type ServiceOutputTypes =
   | TagResourceCommandOutput
   | UntagResourceCommandOutput
   | UpdateAgentCommandOutput
+  | UpdateLocationNfsCommandOutput
+  | UpdateLocationObjectStorageCommandOutput
+  | UpdateLocationSmbCommandOutput
   | UpdateTaskCommandOutput
   | UpdateTaskExecutionCommandOutput;
 
@@ -247,7 +259,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -278,7 +290,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type DataSyncClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type DataSyncClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -286,8 +298,12 @@ export type DataSyncClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOp
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of DataSyncClient class constructor that set the region, credentials and other options.
+ */
+export interface DataSyncClientConfig extends DataSyncClientConfigType {}
 
-export type DataSyncClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type DataSyncClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -295,6 +311,10 @@ export type DataSyncClientResolvedConfig = __SmithyResolvedConfiguration<__HttpH
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of DataSyncClient class. This is resolved and normalized from the {@link DataSyncClientConfig | constructor configuration interface}.
+ */
+export interface DataSyncClientResolvedConfig extends DataSyncClientResolvedConfigType {}
 
 /**
  * <fullname>AWS DataSync</fullname>
@@ -311,6 +331,9 @@ export class DataSyncClient extends __Client<
   ServiceOutputTypes,
   DataSyncClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of DataSyncClient class. This is resolved and normalized from the {@link DataSyncClientConfig | constructor configuration interface}.
+   */
   readonly config: DataSyncClientResolvedConfig;
 
   constructor(configuration: DataSyncClientConfig) {

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type FlushApiCacheCommandInput = FlushApiCacheRequest;
-export type FlushApiCacheCommandOutput = FlushApiCacheResponse & __MetadataBearer;
+export interface FlushApiCacheCommandInput extends FlushApiCacheRequest {}
+export interface FlushApiCacheCommandOutput extends FlushApiCacheResponse, __MetadataBearer {}
 
 /**
  * <p>Flushes an <code>ApiCache</code> object.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppSyncClient, FlushApiCacheCommand } from "@aws-sdk/client-appsync"; // ES Modules import
+ * // const { AppSyncClient, FlushApiCacheCommand } = require("@aws-sdk/client-appsync"); // CommonJS import
+ * const client = new AppSyncClient(config);
+ * const command = new FlushApiCacheCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link FlushApiCacheCommandInput} for command's `input` shape.
+ * @see {@link FlushApiCacheCommandOutput} for command's `response` shape.
+ * @see {@link AppSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class FlushApiCacheCommand extends $Command<
   FlushApiCacheCommandInput,

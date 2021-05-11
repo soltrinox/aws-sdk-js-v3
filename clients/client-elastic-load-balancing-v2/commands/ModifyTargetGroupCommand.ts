@@ -21,12 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyTargetGroupCommandInput = ModifyTargetGroupInput;
-export type ModifyTargetGroupCommandOutput = ModifyTargetGroupOutput & __MetadataBearer;
+export interface ModifyTargetGroupCommandInput extends ModifyTargetGroupInput {}
+export interface ModifyTargetGroupCommandOutput extends ModifyTargetGroupOutput, __MetadataBearer {}
 
 /**
  * <p>Modifies the health checks used when evaluating the health state of the targets in the
  *       specified target group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingV2Client, ModifyTargetGroupCommand } from "@aws-sdk/client-elastic-load-balancing-v2"; // ES Modules import
+ * // const { ElasticLoadBalancingV2Client, ModifyTargetGroupCommand } = require("@aws-sdk/client-elastic-load-balancing-v2"); // CommonJS import
+ * const client = new ElasticLoadBalancingV2Client(config);
+ * const command = new ModifyTargetGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyTargetGroupCommandInput} for command's `input` shape.
+ * @see {@link ModifyTargetGroupCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyTargetGroupCommand extends $Command<
   ModifyTargetGroupCommandInput,

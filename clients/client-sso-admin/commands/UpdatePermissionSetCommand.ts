@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdatePermissionSetCommandInput = UpdatePermissionSetRequest;
-export type UpdatePermissionSetCommandOutput = UpdatePermissionSetResponse & __MetadataBearer;
+export interface UpdatePermissionSetCommandInput extends UpdatePermissionSetRequest {}
+export interface UpdatePermissionSetCommandOutput extends UpdatePermissionSetResponse, __MetadataBearer {}
 
 /**
  * <p>Updates an existing permission set.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSOAdminClient, UpdatePermissionSetCommand } from "@aws-sdk/client-sso-admin"; // ES Modules import
+ * // const { SSOAdminClient, UpdatePermissionSetCommand } = require("@aws-sdk/client-sso-admin"); // CommonJS import
+ * const client = new SSOAdminClient(config);
+ * const command = new UpdatePermissionSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdatePermissionSetCommandInput} for command's `input` shape.
+ * @see {@link UpdatePermissionSetCommandOutput} for command's `response` shape.
+ * @see {@link SSOAdminClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdatePermissionSetCommand extends $Command<
   UpdatePermissionSetCommandInput,

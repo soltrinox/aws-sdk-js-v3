@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyDBClusterParameterGroupCommandInput = ModifyDBClusterParameterGroupMessage;
-export type ModifyDBClusterParameterGroupCommandOutput = DBClusterParameterGroupNameMessage & __MetadataBearer;
+export interface ModifyDBClusterParameterGroupCommandInput extends ModifyDBClusterParameterGroupMessage {}
+export interface ModifyDBClusterParameterGroupCommandOutput
+  extends DBClusterParameterGroupNameMessage,
+    __MetadataBearer {}
 
 /**
  * <p> Modifies the parameters of a DB cluster parameter group. To modify more than one
@@ -42,6 +44,20 @@ export type ModifyDBClusterParameterGroupCommandOutput = DBClusterParameterGroup
  *         Groups</i> option of the Amazon Neptune console or the <a>DescribeDBClusterParameters</a> command to verify that your DB cluster parameter
  *         group has been created or modified.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, ModifyDBClusterParameterGroupCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, ModifyDBClusterParameterGroupCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new ModifyDBClusterParameterGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyDBClusterParameterGroupCommandInput} for command's `input` shape.
+ * @see {@link ModifyDBClusterParameterGroupCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyDBClusterParameterGroupCommand extends $Command<
   ModifyDBClusterParameterGroupCommandInput,

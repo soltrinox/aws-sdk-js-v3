@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisableEnhancedMonitoringCommandInput = DisableEnhancedMonitoringInput;
-export type DisableEnhancedMonitoringCommandOutput = EnhancedMonitoringOutput & __MetadataBearer;
+export interface DisableEnhancedMonitoringCommandInput extends DisableEnhancedMonitoringInput {}
+export interface DisableEnhancedMonitoringCommandOutput extends EnhancedMonitoringOutput, __MetadataBearer {}
 
 /**
  * <p>Disables enhanced monitoring.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisClient, DisableEnhancedMonitoringCommand } from "@aws-sdk/client-kinesis"; // ES Modules import
+ * // const { KinesisClient, DisableEnhancedMonitoringCommand } = require("@aws-sdk/client-kinesis"); // CommonJS import
+ * const client = new KinesisClient(config);
+ * const command = new DisableEnhancedMonitoringCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisableEnhancedMonitoringCommandInput} for command's `input` shape.
+ * @see {@link DisableEnhancedMonitoringCommandOutput} for command's `response` shape.
+ * @see {@link KinesisClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisableEnhancedMonitoringCommand extends $Command<
   DisableEnhancedMonitoringCommandInput,

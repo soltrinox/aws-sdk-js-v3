@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateEnvironmentCommandInput = UpdateEnvironmentRequest;
-export type UpdateEnvironmentCommandOutput = Environment & __MetadataBearer;
+export interface UpdateEnvironmentCommandInput extends UpdateEnvironmentRequest {}
+export interface UpdateEnvironmentCommandOutput extends Environment, __MetadataBearer {}
 
 /**
  * <p>Updates an environment.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppConfigClient, UpdateEnvironmentCommand } from "@aws-sdk/client-appconfig"; // ES Modules import
+ * // const { AppConfigClient, UpdateEnvironmentCommand } = require("@aws-sdk/client-appconfig"); // CommonJS import
+ * const client = new AppConfigClient(config);
+ * const command = new UpdateEnvironmentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateEnvironmentCommandInput} for command's `input` shape.
+ * @see {@link UpdateEnvironmentCommandOutput} for command's `response` shape.
+ * @see {@link AppConfigClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateEnvironmentCommand extends $Command<
   UpdateEnvironmentCommandInput,

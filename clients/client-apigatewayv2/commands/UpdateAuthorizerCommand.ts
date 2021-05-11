@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateAuthorizerCommandInput = UpdateAuthorizerRequest;
-export type UpdateAuthorizerCommandOutput = UpdateAuthorizerResponse & __MetadataBearer;
+export interface UpdateAuthorizerCommandInput extends UpdateAuthorizerRequest {}
+export interface UpdateAuthorizerCommandOutput extends UpdateAuthorizerResponse, __MetadataBearer {}
 
 /**
  * <p>Updates an Authorizer.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApiGatewayV2Client, UpdateAuthorizerCommand } from "@aws-sdk/client-apigatewayv2"; // ES Modules import
+ * // const { ApiGatewayV2Client, UpdateAuthorizerCommand } = require("@aws-sdk/client-apigatewayv2"); // CommonJS import
+ * const client = new ApiGatewayV2Client(config);
+ * const command = new UpdateAuthorizerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateAuthorizerCommandInput} for command's `input` shape.
+ * @see {@link UpdateAuthorizerCommandOutput} for command's `response` shape.
+ * @see {@link ApiGatewayV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateAuthorizerCommand extends $Command<
   UpdateAuthorizerCommandInput,

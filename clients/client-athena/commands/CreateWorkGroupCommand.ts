@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateWorkGroupCommandInput = CreateWorkGroupInput;
-export type CreateWorkGroupCommandOutput = CreateWorkGroupOutput & __MetadataBearer;
+export interface CreateWorkGroupCommandInput extends CreateWorkGroupInput {}
+export interface CreateWorkGroupCommandOutput extends CreateWorkGroupOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a workgroup with the specified name.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AthenaClient, CreateWorkGroupCommand } from "@aws-sdk/client-athena"; // ES Modules import
+ * // const { AthenaClient, CreateWorkGroupCommand } = require("@aws-sdk/client-athena"); // CommonJS import
+ * const client = new AthenaClient(config);
+ * const command = new CreateWorkGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateWorkGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateWorkGroupCommandOutput} for command's `response` shape.
+ * @see {@link AthenaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateWorkGroupCommand extends $Command<
   CreateWorkGroupCommandInput,

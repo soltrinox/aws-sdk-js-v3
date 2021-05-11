@@ -14,9 +14,21 @@ export interface ActiveDirectoryBackupAttributes {
    * <p>The ID of the AWS Managed Microsoft Active Directory instance to which the file system is joined.</p>
    */
   ActiveDirectoryId?: string;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) for a given resource. ARNs uniquely identify AWS
+   *             resources. We require an ARN when you need to specify a resource unambiguously across
+   *             all of AWS. For more information, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)
+   *                 and AWS Service Namespaces</a> in the <i>AWS General
+   *             Reference</i>.</p>
+   */
+  ResourceARN?: string;
 }
 
 export namespace ActiveDirectoryBackupAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActiveDirectoryBackupAttributes): any => ({
     ...obj,
   });
@@ -52,6 +64,9 @@ export interface ActiveDirectoryError extends __SmithyException, $MetadataBearer
 }
 
 export namespace ActiveDirectoryError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActiveDirectoryError): any => ({
     ...obj,
   });
@@ -75,6 +90,9 @@ export interface AdministrativeActionFailureDetails {
 }
 
 export namespace AdministrativeActionFailureDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AdministrativeActionFailureDetails): any => ({
     ...obj,
   });
@@ -100,6 +118,9 @@ export interface FileSystemFailureDetails {
 }
 
 export namespace FileSystemFailureDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FileSystemFailureDetails): any => ({
     ...obj,
   });
@@ -137,6 +158,9 @@ export interface DataRepositoryFailureDetails {
 }
 
 export namespace DataRepositoryFailureDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataRepositoryFailureDetails): any => ({
     ...obj,
   });
@@ -248,6 +272,9 @@ export interface DataRepositoryConfiguration {
 }
 
 export namespace DataRepositoryConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataRepositoryConfiguration): any => ({
     ...obj,
   });
@@ -349,6 +376,9 @@ export interface LustreFileSystemConfiguration {
 }
 
 export namespace LustreFileSystemConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LustreFileSystemConfiguration): any => ({
     ...obj,
   });
@@ -379,6 +409,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -396,7 +429,8 @@ export enum AliasLifecycle {
  * <p>A DNS alias that is associated with the file system. You can use a DNS alias to access a file system using
  *             user-defined DNS names, in addition to the default DNS name
  *             that Amazon FSx assigns to the file system. For more information, see
- *             <a href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html">DNS aliases</a> in the <i>FSx for Windows File Server User Guide</i>.</p>
+ *             <a href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html">DNS aliases</a>
+ *             in the <i>FSx for Windows File Server User Guide</i>.</p>
  */
 export interface Alias {
   /**
@@ -406,7 +440,7 @@ export interface Alias {
    *                <p>Formatted as a fully-qualified domain name (FQDN), <code>hostname.domain</code>, for example, <code>accounting.example.com</code>.</p>
    *             </li>
    *             <li>
-   *                <p>Can contain alphanumeric characters and the hyphen (-).</p>
+   *                <p>Can contain alphanumeric characters, the underscore (_), and the hyphen (-).</p>
    *             </li>
    *             <li>
    *                <p>Cannot start or end with a hyphen.</p>
@@ -444,6 +478,9 @@ export interface Alias {
 }
 
 export namespace Alias {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Alias): any => ({
     ...obj,
   });
@@ -496,6 +533,9 @@ export interface SelfManagedActiveDirectoryAttributes {
 }
 
 export namespace SelfManagedActiveDirectoryAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SelfManagedActiveDirectoryAttributes): any => ({
     ...obj,
   });
@@ -506,8 +546,7 @@ export namespace SelfManagedActiveDirectoryAttributes {
  */
 export interface WindowsFileSystemConfiguration {
   /**
-   * <p>The ID for an existing Microsoft Active Directory instance that the file system should join when
-   *             it's created.</p>
+   * <p>The ID for an existing AWS Managed Microsoft Active Directory instance that the file system is joined to.</p>
    */
   ActiveDirectoryId?: string;
 
@@ -555,8 +594,7 @@ export interface WindowsFileSystemConfiguration {
    *             Amazon FSx serves traffic from this subnet except in the event of a failover to the secondary file server.</p>
    *         <p>For <code>SINGLE_AZ_1</code> and <code>SINGLE_AZ_2</code> deployment types, this value is the same as that for <code>SubnetIDs</code>.
    *             For more information, see
-   *             <a href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html#single-multi-az-resources">Availability and Durability: Single-AZ and Multi-AZ File Systems</a>
-   *          </p>
+   *             <a href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html#single-multi-az-resources">Availability and durability: Single-AZ and Multi-AZ file systems</a>.</p>
    */
   PreferredSubnetId?: string;
 
@@ -574,7 +612,7 @@ export interface WindowsFileSystemConfiguration {
   PreferredFileServerIp?: string;
 
   /**
-   * <p>The throughput of an Amazon FSx file system, measured in megabytes per
+   * <p>The throughput of the Amazon FSx file system, measured in megabytes per
    *             second.</p>
    */
   ThroughputCapacity?: number;
@@ -625,6 +663,9 @@ export interface WindowsFileSystemConfiguration {
 }
 
 export namespace WindowsFileSystemConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WindowsFileSystemConfiguration): any => ({
     ...obj,
   });
@@ -673,6 +714,9 @@ export interface AssociateFileSystemAliasesRequest {
 }
 
 export namespace AssociateFileSystemAliasesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateFileSystemAliasesRequest): any => ({
     ...obj,
   });
@@ -694,6 +738,9 @@ export interface AssociateFileSystemAliasesResponse {
 }
 
 export namespace AssociateFileSystemAliasesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateFileSystemAliasesResponse): any => ({
     ...obj,
   });
@@ -712,6 +759,9 @@ export interface BadRequest extends __SmithyException, $MetadataBearer {
 }
 
 export namespace BadRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BadRequest): any => ({
     ...obj,
   });
@@ -730,6 +780,9 @@ export interface FileSystemNotFound extends __SmithyException, $MetadataBearer {
 }
 
 export namespace FileSystemNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FileSystemNotFound): any => ({
     ...obj,
   });
@@ -748,6 +801,9 @@ export interface InternalServerError extends __SmithyException, $MetadataBearer 
 }
 
 export namespace InternalServerError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerError): any => ({
     ...obj,
   });
@@ -764,6 +820,9 @@ export interface CancelDataRepositoryTaskRequest {
 }
 
 export namespace CancelDataRepositoryTaskRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelDataRepositoryTaskRequest): any => ({
     ...obj,
   });
@@ -818,6 +877,9 @@ export interface CancelDataRepositoryTaskResponse {
 }
 
 export namespace CancelDataRepositoryTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelDataRepositoryTaskResponse): any => ({
     ...obj,
   });
@@ -836,6 +898,9 @@ export interface DataRepositoryTaskEnded extends __SmithyException, $MetadataBea
 }
 
 export namespace DataRepositoryTaskEnded {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataRepositoryTaskEnded): any => ({
     ...obj,
   });
@@ -854,6 +919,9 @@ export interface DataRepositoryTaskNotFound extends __SmithyException, $Metadata
 }
 
 export namespace DataRepositoryTaskNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataRepositoryTaskNotFound): any => ({
     ...obj,
   });
@@ -872,17 +940,19 @@ export interface UnsupportedOperation extends __SmithyException, $MetadataBearer
 }
 
 export namespace UnsupportedOperation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnsupportedOperation): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Another backup is already under way. Wait for completion before initiating
- *             additional backups of this file system.</p>
+ * <p>No Amazon FSx backups were found based upon the supplied parameters.</p>
  */
-export interface BackupInProgress extends __SmithyException, $MetadataBearer {
-  name: "BackupInProgress";
+export interface BackupNotFound extends __SmithyException, $MetadataBearer {
+  name: "BackupNotFound";
   $fault: "client";
   /**
    * <p>A detailed error message.</p>
@@ -890,38 +960,70 @@ export interface BackupInProgress extends __SmithyException, $MetadataBearer {
   Message?: string;
 }
 
-export namespace BackupInProgress {
-  export const filterSensitiveLog = (obj: BackupInProgress): any => ({
+export namespace BackupNotFound {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: BackupNotFound): any => ({
     ...obj,
   });
 }
 
-/**
- * <p>The request object for the <code>CreateBackup</code> operation.</p>
- */
-export interface CreateBackupRequest {
+export interface CopyBackupRequest {
   /**
-   * <p>The ID of the file system to back up.</p>
-   */
-  FileSystemId: string | undefined;
-
-  /**
-   * <p>(Optional) A string of up to 64 ASCII characters that Amazon FSx uses to ensure
-   *             idempotent creation. This string is automatically filled on your behalf when you use the
-   *             AWS Command Line Interface (AWS CLI) or an AWS SDK.</p>
+   * <p>(Optional) An idempotency token for resource creation, in a string of up to 64
+   *             ASCII characters. This token is automatically filled on your behalf when you use the AWS
+   *             Command Line Interface (AWS CLI) or an AWS SDK.</p>
    */
   ClientRequestToken?: string;
 
   /**
-   * <p>(Optional) The tags to apply to the backup at backup creation. The key value of the
-   *             <code>Name</code> tag appears in the console as the backup name. If you have set <code>CopyTagsToBackups</code> to true, and
-   *             you specify one or more tags using the <code>CreateBackup</code> action, no existing file system tags are copied from the file system to the backup.</p>
+   * <p>The ID of the source backup. Specifies the ID of the backup that is
+   *          being copied.</p>
+   */
+  SourceBackupId: string | undefined;
+
+  /**
+   * <p>The source AWS Region of the backup. Specifies the AWS Region from which
+   *          the backup is being copied. The source and destination Regions must be in
+   *          the same AWS partition. If you don't specify a Region, it defaults to
+   *          the Region where the request is sent from (in-Region copy).</p>
+   */
+  SourceRegion?: string;
+
+  /**
+   * <p>The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data
+   *             for Amazon FSx for Windows File Server file systems and Amazon FSx for Lustre <code>PERSISTENT_1</code> file
+   *             systems at rest. In either case, if not specified, the Amazon FSx managed key
+   *             is used. The Amazon FSx for Lustre <code>SCRATCH_1</code> and <code>SCRATCH_2</code> file systems are always encrypted at rest using
+   *             Amazon FSx managed keys. For more information, see <a href="https://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.html">Encrypt</a>
+   *             in the <i>AWS Key Management Service API Reference</i>.</p>
+   */
+  KmsKeyId?: string;
+
+  /**
+   * <p>A boolean flag indicating whether tags from the source backup
+   *          should be copied to the backup copy. This value defaults to false.</p>
+   *          <p>If you set <code>CopyTags</code> to true and the source backup has
+   *          existing tags, you can use the <code>Tags</code> parameter to create new
+   *          tags, provided that the sum of the source backup tags and the new tags
+   *          doesn't exceed 50. Both sets of tags are merged. If there are tag
+   *          conflicts (for example, two tags with the same key but different values),
+   *          the tags created with the <code>Tags</code> parameter take precedence.</p>
+   */
+  CopyTags?: boolean;
+
+  /**
+   * <p>A list of <code>Tag</code> values, with a maximum of 50 elements.</p>
    */
   Tags?: Tag[];
 }
 
-export namespace CreateBackupRequest {
-  export const filterSensitiveLog = (obj: CreateBackupRequest): any => ({
+export namespace CopyBackupRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CopyBackupRequest): any => ({
     ...obj,
   });
 }
@@ -938,6 +1040,9 @@ export interface BackupFailureDetails {
 }
 
 export namespace BackupFailureDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupFailureDetails): any => ({
     ...obj,
   });
@@ -945,6 +1050,7 @@ export namespace BackupFailureDetails {
 
 export enum BackupLifecycle {
   AVAILABLE = "AVAILABLE",
+  COPYING = "COPYING",
   CREATING = "CREATING",
   DELETED = "DELETED",
   FAILED = "FAILED",
@@ -978,16 +1084,110 @@ export interface IncompatibleParameterError extends __SmithyException, $Metadata
 }
 
 export namespace IncompatibleParameterError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IncompatibleParameterError): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Amazon FSx doesn't support Multi-AZ Windows File Server
+ *          copy backup in the destination Region, so the copied backup
+ *          can't be restored.</p>
+ */
+export interface IncompatibleRegionForMultiAZ extends __SmithyException, $MetadataBearer {
+  name: "IncompatibleRegionForMultiAZ";
+  $fault: "client";
+  /**
+   * <p>A detailed error message.</p>
+   */
+  Message?: string;
+}
+
+export namespace IncompatibleRegionForMultiAZ {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: IncompatibleRegionForMultiAZ): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The AWS Key Management Service (AWS KMS) key of the destination
+ *          backup is invalid.</p>
+ */
+export interface InvalidDestinationKmsKey extends __SmithyException, $MetadataBearer {
+  name: "InvalidDestinationKmsKey";
+  $fault: "client";
+  /**
+   * <p>A detailed error message.</p>
+   */
+  Message?: string;
+}
+
+export namespace InvalidDestinationKmsKey {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidDestinationKmsKey): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The Region provided for <code>Source Region</code> is invalid or
+ *          is in a different AWS partition.</p>
+ */
+export interface InvalidRegion extends __SmithyException, $MetadataBearer {
+  name: "InvalidRegion";
+  $fault: "client";
+  /**
+   * <p>A detailed error message.</p>
+   */
+  Message?: string;
+}
+
+export namespace InvalidRegion {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidRegion): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The AWS Key Management Service (AWS KMS) key of the source backup
+ *          is invalid.</p>
+ */
+export interface InvalidSourceKmsKey extends __SmithyException, $MetadataBearer {
+  name: "InvalidSourceKmsKey";
+  $fault: "client";
+  /**
+   * <p>A detailed error message.</p>
+   */
+  Message?: string;
+}
+
+export namespace InvalidSourceKmsKey {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidSourceKmsKey): any => ({
     ...obj,
   });
 }
 
 export enum ServiceLimit {
   FILE_SYSTEM_COUNT = "FILE_SYSTEM_COUNT",
+  TOTAL_IN_PROGRESS_COPY_BACKUPS = "TOTAL_IN_PROGRESS_COPY_BACKUPS",
   TOTAL_STORAGE = "TOTAL_STORAGE",
   TOTAL_THROUGHPUT_CAPACITY = "TOTAL_THROUGHPUT_CAPACITY",
   TOTAL_USER_INITIATED_BACKUPS = "TOTAL_USER_INITIATED_BACKUPS",
+  TOTAL_USER_TAGS = "TOTAL_USER_TAGS",
 }
 
 /**
@@ -1010,7 +1210,92 @@ export interface ServiceLimitExceeded extends __SmithyException, $MetadataBearer
 }
 
 export namespace ServiceLimitExceeded {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceLimitExceeded): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The request was rejected because the lifecycle status of the
+ *          source backup is not <code>AVAILABLE</code>.</p>
+ */
+export interface SourceBackupUnavailable extends __SmithyException, $MetadataBearer {
+  name: "SourceBackupUnavailable";
+  $fault: "client";
+  /**
+   * <p>A detailed error message.</p>
+   */
+  Message?: string;
+
+  /**
+   * <p>The ID of the source backup. Specifies the backup you are copying.</p>
+   */
+  BackupId?: string;
+}
+
+export namespace SourceBackupUnavailable {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SourceBackupUnavailable): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Another backup is already under way. Wait for completion before initiating
+ *             additional backups of this file system.</p>
+ */
+export interface BackupInProgress extends __SmithyException, $MetadataBearer {
+  name: "BackupInProgress";
+  $fault: "client";
+  /**
+   * <p>A detailed error message.</p>
+   */
+  Message?: string;
+}
+
+export namespace BackupInProgress {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: BackupInProgress): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The request object for the <code>CreateBackup</code> operation.</p>
+ */
+export interface CreateBackupRequest {
+  /**
+   * <p>The ID of the file system to back up.</p>
+   */
+  FileSystemId: string | undefined;
+
+  /**
+   * <p>(Optional) A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+   *             idempotent creation. This string is automatically filled on your behalf when you use the
+   *             AWS Command Line Interface (AWS CLI) or an AWS SDK.</p>
+   */
+  ClientRequestToken?: string;
+
+  /**
+   * <p>(Optional) The tags to apply to the backup at backup creation. The key value of the
+   *             <code>Name</code> tag appears in the console as the backup name. If you have set <code>CopyTagsToBackups</code> to true, and
+   *             you specify one or more tags using the <code>CreateBackup</code> action, no existing file system tags are copied from the file system to the backup.</p>
+   */
+  Tags?: Tag[];
+}
+
+export namespace CreateBackupRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateBackupRequest): any => ({
     ...obj,
   });
 }
@@ -1062,6 +1347,9 @@ export interface CompletionReport {
 }
 
 export namespace CompletionReport {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompletionReport): any => ({
     ...obj,
   });
@@ -1113,6 +1401,9 @@ export interface CreateDataRepositoryTaskRequest {
 }
 
 export namespace CreateDataRepositoryTaskRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDataRepositoryTaskRequest): any => ({
     ...obj,
   });
@@ -1129,6 +1420,9 @@ export interface DataRepositoryTaskFailureDetails {
 }
 
 export namespace DataRepositoryTaskFailureDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataRepositoryTaskFailureDetails): any => ({
     ...obj,
   });
@@ -1163,6 +1457,9 @@ export interface DataRepositoryTaskStatus {
 }
 
 export namespace DataRepositoryTaskStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataRepositoryTaskStatus): any => ({
     ...obj,
   });
@@ -1284,6 +1581,9 @@ export interface DataRepositoryTask {
 }
 
 export namespace DataRepositoryTask {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataRepositoryTask): any => ({
     ...obj,
   });
@@ -1297,6 +1597,9 @@ export interface CreateDataRepositoryTaskResponse {
 }
 
 export namespace CreateDataRepositoryTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDataRepositoryTaskResponse): any => ({
     ...obj,
   });
@@ -1316,6 +1619,9 @@ export interface DataRepositoryTaskExecuting extends __SmithyException, $Metadat
 }
 
 export namespace DataRepositoryTaskExecuting {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataRepositoryTaskExecuting): any => ({
     ...obj,
   });
@@ -1478,6 +1784,9 @@ export interface CreateFileSystemLustreConfiguration {
 }
 
 export namespace CreateFileSystemLustreConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFileSystemLustreConfiguration): any => ({
     ...obj,
   });
@@ -1486,7 +1795,9 @@ export namespace CreateFileSystemLustreConfiguration {
 /**
  * <p>The configuration that Amazon FSx uses to join the Windows File Server instance to
  *             your self-managed (including on-premises) Microsoft Active Directory (AD)
- *             directory.</p>
+ *             directory. For more information, see
+ *             <a href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/self-managed-AD.html">
+ *                 Using Amazon FSx with your self-managed Microsoft Active Directory</a>.</p>
  */
 export interface SelfManagedActiveDirectoryConfiguration {
   /**
@@ -1535,25 +1846,15 @@ export interface SelfManagedActiveDirectoryConfiguration {
 
   /**
    * <p>A list of up to two IP addresses of DNS servers or domain controllers in the
-   *             self-managed AD directory. The IP addresses need to be either in the same VPC CIDR range
-   *             as the one in which your Amazon FSx file system is being created, or in the private IP version 4
-   *             (IPv4) address ranges, as specified in <a href="http://www.faqs.org/rfcs/rfc1918.html">RFC 1918</a>:</p>
-   *         <ul>
-   *             <li>
-   *                 <p>10.0.0.0 - 10.255.255.255 (10/8 prefix)</p>
-   *             </li>
-   *             <li>
-   *                 <p>172.16.0.0 - 172.31.255.255 (172.16/12 prefix)</p>
-   *             </li>
-   *             <li>
-   *                 <p>192.168.0.0 - 192.168.255.255 (192.168/16 prefix)</p>
-   *             </li>
-   *          </ul>
+   *             self-managed AD directory. </p>
    */
   DnsIps: string[] | undefined;
 }
 
 export namespace SelfManagedActiveDirectoryConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SelfManagedActiveDirectoryConfiguration): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -1575,7 +1876,9 @@ export interface CreateFileSystemWindowsConfiguration {
   /**
    * <p>The configuration that Amazon FSx uses to join the Windows File Server instance to
    *             your self-managed (including on-premises) Microsoft Active Directory (AD)
-   *             directory.</p>
+   *             directory. For more information, see
+   *             <a href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/self-managed-AD.html">
+   *                 Using Amazon FSx with your self-managed Microsoft Active Directory</a>.</p>
    */
   SelfManagedActiveDirectoryConfiguration?: SelfManagedActiveDirectoryConfiguration;
 
@@ -1664,7 +1967,7 @@ export interface CreateFileSystemWindowsConfiguration {
    *                <p>Formatted as a fully-qualified domain name (FQDN), <code>hostname.domain</code>, for example, <code>accounting.example.com</code>.</p>
    *             </li>
    *             <li>
-   *                <p>Can contain alphanumeric characters and the hyphen (-).</p>
+   *                <p>Can contain alphanumeric characters, the underscore (_), and the hyphen (-).</p>
    *             </li>
    *             <li>
    *                <p>Cannot start or end with a hyphen.</p>
@@ -1680,6 +1983,9 @@ export interface CreateFileSystemWindowsConfiguration {
 }
 
 export namespace CreateFileSystemWindowsConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFileSystemWindowsConfiguration): any => ({
     ...obj,
     ...(obj.SelfManagedActiveDirectoryConfiguration && {
@@ -1764,7 +2070,9 @@ export interface CreateFileSystemRequest {
    * <p>Specifies the IDs of the subnets that the file system will be accessible from. For Windows <code>MULTI_AZ_1</code>
    *             file system deployment types, provide exactly two subnet IDs, one for the preferred file server
    *             and one for the standby file server. You specify one of these subnets as the preferred subnet
-   *             using the <code>WindowsConfiguration > PreferredSubnetID</code> property.</p>
+   *             using the <code>WindowsConfiguration > PreferredSubnetID</code> property. For more information,
+   *             see <a href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/high-availability-multiAZ.html">
+   *                 Availability and durability: Single-AZ and Multi-AZ file systems</a>.</p>
    *         <p>For Windows <code>SINGLE_AZ_1</code> and <code>SINGLE_AZ_2</code> file system deployment types and Lustre file systems, provide exactly one subnet ID.
    *            The file server is launched in that subnet's Availability Zone.</p>
    */
@@ -1807,6 +2115,9 @@ export interface CreateFileSystemRequest {
 }
 
 export namespace CreateFileSystemRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFileSystemRequest): any => ({
     ...obj,
     ...(obj.WindowsConfiguration && {
@@ -1828,6 +2139,9 @@ export interface InvalidExportPath extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidExportPath {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidExportPath): any => ({
     ...obj,
   });
@@ -1846,6 +2160,9 @@ export interface InvalidImportPath extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidImportPath {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidImportPath): any => ({
     ...obj,
   });
@@ -1886,6 +2203,9 @@ export interface InvalidNetworkSettings extends __SmithyException, $MetadataBear
 }
 
 export namespace InvalidNetworkSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNetworkSettings): any => ({
     ...obj,
   });
@@ -1904,6 +2224,9 @@ export interface InvalidPerUnitStorageThroughput extends __SmithyException, $Met
 }
 
 export namespace InvalidPerUnitStorageThroughput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidPerUnitStorageThroughput): any => ({
     ...obj,
   });
@@ -1922,25 +2245,10 @@ export interface MissingFileSystemConfiguration extends __SmithyException, $Meta
 }
 
 export namespace MissingFileSystemConfiguration {
-  export const filterSensitiveLog = (obj: MissingFileSystemConfiguration): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>No Amazon FSx backups were found based upon the supplied parameters.</p>
- */
-export interface BackupNotFound extends __SmithyException, $MetadataBearer {
-  name: "BackupNotFound";
-  $fault: "client";
   /**
-   * <p>A detailed error message.</p>
+   * @internal
    */
-  Message?: string;
-}
-
-export namespace BackupNotFound {
-  export const filterSensitiveLog = (obj: BackupNotFound): any => ({
+  export const filterSensitiveLog = (obj: MissingFileSystemConfiguration): any => ({
     ...obj,
   });
 }
@@ -1951,7 +2259,7 @@ export namespace BackupNotFound {
  */
 export interface CreateFileSystemFromBackupRequest {
   /**
-   * <p>The ID of the backup. Specifies the backup to use if you're creating a file system from an existing backup.</p>
+   * <p>The ID of the source backup. Specifies the backup you are copying.</p>
    */
   BackupId: string | undefined;
 
@@ -2024,14 +2332,53 @@ export interface CreateFileSystemFromBackupRequest {
    *          </note>
    */
   StorageType?: StorageType | string;
+
+  /**
+   * <p>The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the file system's data
+   *             for Amazon FSx for Windows File Server file systems and Amazon FSx for Lustre <code>PERSISTENT_1</code> file
+   *             systems at rest. In either case, if not specified, the Amazon FSx managed key
+   *             is used. The Amazon FSx for Lustre <code>SCRATCH_1</code> and <code>SCRATCH_2</code> file systems are always encrypted at rest using
+   *             Amazon FSx managed keys. For more information, see <a href="https://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.html">Encrypt</a>
+   *             in the <i>AWS Key Management Service API Reference</i>.</p>
+   */
+  KmsKeyId?: string;
 }
 
 export namespace CreateFileSystemFromBackupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFileSystemFromBackupRequest): any => ({
     ...obj,
     ...(obj.WindowsConfiguration && {
       WindowsConfiguration: CreateFileSystemWindowsConfiguration.filterSensitiveLog(obj.WindowsConfiguration),
     }),
+  });
+}
+
+/**
+ * <p>You can't delete a backup while it's being copied.</p>
+ */
+export interface BackupBeingCopied extends __SmithyException, $MetadataBearer {
+  name: "BackupBeingCopied";
+  $fault: "client";
+  /**
+   * <p>A detailed error message.</p>
+   */
+  Message?: string;
+
+  /**
+   * <p>The ID of the source backup. Specifies the backup you are copying.</p>
+   */
+  BackupId?: string;
+}
+
+export namespace BackupBeingCopied {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: BackupBeingCopied): any => ({
+    ...obj,
   });
 }
 
@@ -2054,6 +2401,9 @@ export interface BackupRestoring extends __SmithyException, $MetadataBearer {
 }
 
 export namespace BackupRestoring {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BackupRestoring): any => ({
     ...obj,
   });
@@ -2077,6 +2427,9 @@ export interface DeleteBackupRequest {
 }
 
 export namespace DeleteBackupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBackupRequest): any => ({
     ...obj,
   });
@@ -2098,6 +2451,9 @@ export interface DeleteBackupResponse {
 }
 
 export namespace DeleteBackupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBackupResponse): any => ({
     ...obj,
   });
@@ -2125,6 +2481,9 @@ export interface DeleteFileSystemLustreConfiguration {
 }
 
 export namespace DeleteFileSystemLustreConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFileSystemLustreConfiguration): any => ({
     ...obj,
   });
@@ -2150,6 +2509,9 @@ export interface DeleteFileSystemWindowsConfiguration {
 }
 
 export namespace DeleteFileSystemWindowsConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFileSystemWindowsConfiguration): any => ({
     ...obj,
   });
@@ -2185,6 +2547,9 @@ export interface DeleteFileSystemRequest {
 }
 
 export namespace DeleteFileSystemRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFileSystemRequest): any => ({
     ...obj,
   });
@@ -2207,6 +2572,9 @@ export interface DeleteFileSystemLustreResponse {
 }
 
 export namespace DeleteFileSystemLustreResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFileSystemLustreResponse): any => ({
     ...obj,
   });
@@ -2229,6 +2597,9 @@ export interface DeleteFileSystemWindowsResponse {
 }
 
 export namespace DeleteFileSystemWindowsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFileSystemWindowsResponse): any => ({
     ...obj,
   });
@@ -2263,6 +2634,9 @@ export interface DeleteFileSystemResponse {
 }
 
 export namespace DeleteFileSystemResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFileSystemResponse): any => ({
     ...obj,
   });
@@ -2292,6 +2666,9 @@ export interface Filter {
 }
 
 export namespace Filter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Filter): any => ({
     ...obj,
   });
@@ -2330,6 +2707,9 @@ export interface DescribeBackupsRequest {
 }
 
 export namespace DescribeBackupsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeBackupsRequest): any => ({
     ...obj,
   });
@@ -2368,6 +2748,9 @@ export interface DataRepositoryTaskFilter {
 }
 
 export namespace DataRepositoryTaskFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataRepositoryTaskFilter): any => ({
     ...obj,
   });
@@ -2401,6 +2784,9 @@ export interface DescribeDataRepositoryTasksRequest {
 }
 
 export namespace DescribeDataRepositoryTasksRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDataRepositoryTasksRequest): any => ({
     ...obj,
   });
@@ -2421,6 +2807,9 @@ export interface DescribeDataRepositoryTasksResponse {
 }
 
 export namespace DescribeDataRepositoryTasksResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDataRepositoryTasksResponse): any => ({
     ...obj,
   });
@@ -2460,6 +2849,9 @@ export interface DescribeFileSystemAliasesRequest {
 }
 
 export namespace DescribeFileSystemAliasesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFileSystemAliasesRequest): any => ({
     ...obj,
   });
@@ -2483,6 +2875,9 @@ export interface DescribeFileSystemAliasesResponse {
 }
 
 export namespace DescribeFileSystemAliasesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFileSystemAliasesResponse): any => ({
     ...obj,
   });
@@ -2515,6 +2910,9 @@ export interface DescribeFileSystemsRequest {
 }
 
 export namespace DescribeFileSystemsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFileSystemsRequest): any => ({
     ...obj,
   });
@@ -2543,6 +2941,9 @@ export interface DisassociateFileSystemAliasesRequest {
 }
 
 export namespace DisassociateFileSystemAliasesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateFileSystemAliasesRequest): any => ({
     ...obj,
   });
@@ -2560,6 +2961,9 @@ export interface DisassociateFileSystemAliasesResponse {
 }
 
 export namespace DisassociateFileSystemAliasesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateFileSystemAliasesResponse): any => ({
     ...obj,
   });
@@ -2591,6 +2995,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -2614,6 +3021,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -2638,6 +3048,9 @@ export interface NotServiceResourceError extends __SmithyException, $MetadataBea
 }
 
 export namespace NotServiceResourceError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotServiceResourceError): any => ({
     ...obj,
   });
@@ -2662,6 +3075,9 @@ export interface ResourceDoesNotSupportTagging extends __SmithyException, $Metad
 }
 
 export namespace ResourceDoesNotSupportTagging {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceDoesNotSupportTagging): any => ({
     ...obj,
   });
@@ -2685,6 +3101,9 @@ export interface ResourceNotFound extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ResourceNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFound): any => ({
     ...obj,
   });
@@ -2708,6 +3127,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -2719,6 +3141,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -2741,6 +3166,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -2752,6 +3180,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
@@ -2814,6 +3245,9 @@ export interface UpdateFileSystemLustreConfiguration {
 }
 
 export namespace UpdateFileSystemLustreConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFileSystemLustreConfiguration): any => ({
     ...obj,
   });
@@ -2846,6 +3280,9 @@ export interface SelfManagedActiveDirectoryConfigurationUpdates {
 }
 
 export namespace SelfManagedActiveDirectoryConfigurationUpdates {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SelfManagedActiveDirectoryConfigurationUpdates): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -2892,6 +3329,9 @@ export interface UpdateFileSystemWindowsConfiguration {
 }
 
 export namespace UpdateFileSystemWindowsConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFileSystemWindowsConfiguration): any => ({
     ...obj,
     ...(obj.SelfManagedActiveDirectoryConfiguration && {
@@ -2961,6 +3401,9 @@ export interface UpdateFileSystemRequest {
 }
 
 export namespace UpdateFileSystemRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFileSystemRequest): any => ({
     ...obj,
     ...(obj.WindowsConfiguration && {
@@ -3083,6 +3526,9 @@ export interface AdministrativeAction {
 }
 
 export namespace AdministrativeAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AdministrativeAction): any => ({
     ...obj,
   });
@@ -3242,25 +3688,16 @@ export interface FileSystem {
 }
 
 export namespace FileSystem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FileSystem): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A backup of an Amazon FSx file system. For more information see:</p>
- *             <ul>
- *             <li>
- *                <p>
- *                   <a href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html">Working with backups for Windows file systems</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a href="https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html">Working with backups for Lustre file systems</a>
- *                </p>
- *             </li>
- *          </ul>
+ * <p>A backup of an Amazon FSx file system.</p>
  */
 export interface Backup {
   /**
@@ -3286,6 +3723,10 @@ export interface Backup {
    *             <li>
    *                <p>
    *                   <code>TRANSFERRING</code> - For user-initiated backups on Lustre file systems only; Amazon FSx is transferring the backup to S3.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>COPYING</code> - Amazon FSx is copying the backup.</p>
    *             </li>
    *             <li>
    *                <p>
@@ -3346,9 +3787,29 @@ export interface Backup {
    * <p>The configuration of the self-managed Microsoft Active Directory (AD) to which the Windows File Server instance is joined.</p>
    */
   DirectoryInformation?: ActiveDirectoryBackupAttributes;
+
+  /**
+   * <p>An AWS account ID. This ID is a 12-digit number that you use to construct Amazon
+   *             Resource Names (ARNs) for resources.</p>
+   */
+  OwnerId?: string;
+
+  /**
+   * <p>The ID of the source backup. Specifies the backup you are copying.</p>
+   */
+  SourceBackupId?: string;
+
+  /**
+   * <p>The source Region of the backup. Specifies the Region from where this backup
+   *             is copied.</p>
+   */
+  SourceBackupRegion?: string;
 }
 
 export namespace Backup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Backup): any => ({
     ...obj,
   });
@@ -3366,6 +3827,9 @@ export interface CreateFileSystemFromBackupResponse {
 }
 
 export namespace CreateFileSystemFromBackupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFileSystemFromBackupResponse): any => ({
     ...obj,
   });
@@ -3382,6 +3846,9 @@ export interface CreateFileSystemResponse {
 }
 
 export namespace CreateFileSystemResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFileSystemResponse): any => ({
     ...obj,
   });
@@ -3398,7 +3865,26 @@ export interface UpdateFileSystemResponse {
 }
 
 export namespace UpdateFileSystemResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFileSystemResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface CopyBackupResponse {
+  /**
+   * <p>A backup of an Amazon FSx file system.</p>
+   */
+  Backup?: Backup;
+}
+
+export namespace CopyBackupResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CopyBackupResponse): any => ({
     ...obj,
   });
 }
@@ -3414,6 +3900,9 @@ export interface CreateBackupResponse {
 }
 
 export namespace CreateBackupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBackupResponse): any => ({
     ...obj,
   });
@@ -3437,6 +3926,9 @@ export interface DescribeFileSystemsResponse {
 }
 
 export namespace DescribeFileSystemsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFileSystemsResponse): any => ({
     ...obj,
   });
@@ -3447,7 +3939,7 @@ export namespace DescribeFileSystemsResponse {
  */
 export interface DescribeBackupsResponse {
   /**
-   * <p>Any array of backups.</p>
+   * <p>An array of backups.</p>
    */
   Backups?: Backup[];
 
@@ -3460,6 +3952,9 @@ export interface DescribeBackupsResponse {
 }
 
 export namespace DescribeBackupsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeBackupsResponse): any => ({
     ...obj,
   });

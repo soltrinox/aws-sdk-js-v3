@@ -15,15 +15,18 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBucketCommandInput = GetBucketRequest;
-export type GetBucketCommandOutput = GetBucketResult & __MetadataBearer;
+export interface GetBucketCommandInput extends GetBucketRequest {}
+export interface GetBucketCommandOutput extends GetBucketResult, __MetadataBearer {}
 
 /**
- * <p>Gets an Amazon S3 on Outposts bucket. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">
- *          Using Amazon S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
- *          <p>If you are using an identity other than the root user of the AWS account that owns the bucket, the calling identity
- *          must have the <code>s3-outposts:GetBucket</code> permissions on the specified bucket and belong to the bucket owner's account
- *          in order to use this operation. Only users from Outposts bucket owner account with the right permissions can perform actions on an Outposts bucket.
+ * <p>Gets an Amazon S3 on Outposts bucket. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">
+ *          Using Amazon S3 on Outposts</a> in the <i>Amazon Simple Storage Service User Guide</i>.</p>
+ *          <p>If you are using an identity other than the root user of the AWS account
+ *          that owns the Outposts bucket, the calling identity must have the
+ *          <code>s3-outposts:GetBucket</code> permissions on the specified Outposts bucket and
+ *          belong to the Outposts bucket owner's account in order to use this action. Only
+ *          users from Outposts bucket owner account with the right permissions can perform
+ *          actions on an Outposts bucket.
  *       </p>
  *          <p>
  *          If you don't have <code>s3-outposts:GetBucket</code> permissions or you're not using an identity that belongs to the bucket owner's
@@ -47,6 +50,20 @@ export type GetBucketCommandOutput = GetBucketResult & __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, GetBucketCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, GetBucketCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new GetBucketCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBucketCommandInput} for command's `input` shape.
+ * @see {@link GetBucketCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBucketCommand extends $Command<
   GetBucketCommandInput,

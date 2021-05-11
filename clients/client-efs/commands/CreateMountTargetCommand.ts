@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateMountTargetCommandInput = CreateMountTargetRequest;
-export type CreateMountTargetCommandOutput = MountTargetDescription & __MetadataBearer;
+export interface CreateMountTargetCommandInput extends CreateMountTargetRequest {}
+export interface CreateMountTargetCommandOutput extends MountTargetDescription, __MetadataBearer {}
 
 /**
  * <p>Creates a mount target for a file system. You can then mount the file system on EC2
@@ -27,21 +27,36 @@ export type CreateMountTargetCommandOutput = MountTargetDescription & __Metadata
  *       instances in a VPC within a given Availability Zone share a single mount target for a given
  *       file system. If you have multiple subnets in an Availability Zone, you create a mount target
  *       in one of the subnets. EC2 instances do not need to be in the same subnet as the mount target
- *       in order to access their file system. For more information, see <a href="https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html">Amazon EFS: How it Works</a>. </p>
- *          <p>In the request, you also specify a file system ID for which you are creating the mount
- *       target and the file system's lifecycle state must be <code>available</code>. For more
- *       information, see <a>DescribeFileSystems</a>.</p>
- *          <p>In the request, you also provide a subnet ID, which determines the following:</p>
+ *       in order to access their file system.</p>
+ *          <p>You can create only one mount target for an EFS file system using One Zone storage
+ *       classes. You must create that mount target in the same Availability Zone in which the file
+ *       system is located. Use the <code>AvailabilityZoneName</code> and
+ *         <code>AvailabiltyZoneId</code> properties in the <a>DescribeFileSystems</a>
+ *       response object to get this information. Use the <code>subnetId</code> associated with the
+ *       file system's Availability Zone when creating the mount target.</p>
+ *          <p>For more information, see <a href="https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html">Amazon EFS: How it Works</a>. </p>
+ *          <p>To create a mount target for a file system, the file system's lifecycle state must be
+ *         <code>available</code>. For more information, see <a>DescribeFileSystems</a>.</p>
+ *          <p>In the request, provide the following:</p>
  *          <ul>
  *             <li>
- *                <p>VPC in which Amazon EFS creates the mount target</p>
+ *                <p>The file system ID for which you are creating the mount
+ *         target.</p>
  *             </li>
  *             <li>
- *                <p>Availability Zone in which Amazon EFS creates the mount target</p>
- *             </li>
- *             <li>
- *                <p>IP address range from which Amazon EFS selects the IP address of the mount target
- *           (if you don't specify an IP address in the request)</p>
+ *                <p>A subnet ID, which determines the following:</p>
+ *                <ul>
+ *                   <li>
+ *                      <p>The VPC in which Amazon EFS creates the mount target</p>
+ *                   </li>
+ *                   <li>
+ *                      <p>The Availability Zone in which Amazon EFS creates the mount target</p>
+ *                   </li>
+ *                   <li>
+ *                      <p>The IP address range from which Amazon EFS selects the IP address of the mount target
+ *               (if you don't specify an IP address in the request)</p>
+ *                   </li>
+ *                </ul>
  *             </li>
  *          </ul>
  *
@@ -148,6 +163,20 @@ export type CreateMountTargetCommandOutput = MountTargetDescription & __Metadata
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EFSClient, CreateMountTargetCommand } from "@aws-sdk/client-efs"; // ES Modules import
+ * // const { EFSClient, CreateMountTargetCommand } = require("@aws-sdk/client-efs"); // CommonJS import
+ * const client = new EFSClient(config);
+ * const command = new CreateMountTargetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateMountTargetCommandInput} for command's `input` shape.
+ * @see {@link CreateMountTargetCommandOutput} for command's `response` shape.
+ * @see {@link EFSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateMountTargetCommand extends $Command<
   CreateMountTargetCommandInput,

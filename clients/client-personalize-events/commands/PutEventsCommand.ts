@@ -21,11 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutEventsCommandInput = PutEventsRequest;
-export type PutEventsCommandOutput = __MetadataBearer;
+export interface PutEventsCommandInput extends PutEventsRequest {}
+export interface PutEventsCommandOutput extends __MetadataBearer {}
 
 /**
- * <p>Records user interaction event data. For more information see <a>event-record-api</a>.</p>
+ * <p>Records user interaction event data. For more information see
+ *       <a href="https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html">Recording Events</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PersonalizeEventsClient, PutEventsCommand } from "@aws-sdk/client-personalize-events"; // ES Modules import
+ * // const { PersonalizeEventsClient, PutEventsCommand } = require("@aws-sdk/client-personalize-events"); // CommonJS import
+ * const client = new PersonalizeEventsClient(config);
+ * const command = new PutEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutEventsCommandInput} for command's `input` shape.
+ * @see {@link PutEventsCommandOutput} for command's `response` shape.
+ * @see {@link PersonalizeEventsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutEventsCommand extends $Command<
   PutEventsCommandInput,

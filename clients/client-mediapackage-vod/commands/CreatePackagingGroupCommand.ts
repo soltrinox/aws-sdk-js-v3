@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreatePackagingGroupCommandInput = CreatePackagingGroupRequest;
-export type CreatePackagingGroupCommandOutput = CreatePackagingGroupResponse & __MetadataBearer;
+export interface CreatePackagingGroupCommandInput extends CreatePackagingGroupRequest {}
+export interface CreatePackagingGroupCommandOutput extends CreatePackagingGroupResponse, __MetadataBearer {}
 
 /**
  * Creates a new MediaPackage VOD PackagingGroup resource.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaPackageVodClient, CreatePackagingGroupCommand } from "@aws-sdk/client-mediapackage-vod"; // ES Modules import
+ * // const { MediaPackageVodClient, CreatePackagingGroupCommand } = require("@aws-sdk/client-mediapackage-vod"); // CommonJS import
+ * const client = new MediaPackageVodClient(config);
+ * const command = new CreatePackagingGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreatePackagingGroupCommandInput} for command's `input` shape.
+ * @see {@link CreatePackagingGroupCommandOutput} for command's `response` shape.
+ * @see {@link MediaPackageVodClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreatePackagingGroupCommand extends $Command<
   CreatePackagingGroupCommandInput,

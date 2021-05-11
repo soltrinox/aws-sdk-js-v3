@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteTriggerCommandInput = DeleteTriggerRequest;
-export type DeleteTriggerCommandOutput = DeleteTriggerResponse & __MetadataBearer;
+export interface DeleteTriggerCommandInput extends DeleteTriggerRequest {}
+export interface DeleteTriggerCommandOutput extends DeleteTriggerResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a specified trigger. If the trigger is not found, no
  *       exception is thrown.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, DeleteTriggerCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, DeleteTriggerCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new DeleteTriggerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteTriggerCommandInput} for command's `input` shape.
+ * @see {@link DeleteTriggerCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteTriggerCommand extends $Command<
   DeleteTriggerCommandInput,

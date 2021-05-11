@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListResourcesCommandInput = ListResourcesRequest;
-export type ListResourcesCommandOutput = ListResourcesResponse & __MetadataBearer;
+export interface ListResourcesCommandInput extends ListResourcesRequest {}
+export interface ListResourcesCommandOutput extends ListResourcesResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the resources that you added to a resource shares or the resources that are shared with you.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RAMClient, ListResourcesCommand } from "@aws-sdk/client-ram"; // ES Modules import
+ * // const { RAMClient, ListResourcesCommand } = require("@aws-sdk/client-ram"); // CommonJS import
+ * const client = new RAMClient(config);
+ * const command = new ListResourcesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListResourcesCommandInput} for command's `input` shape.
+ * @see {@link ListResourcesCommandOutput} for command's `response` shape.
+ * @see {@link RAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListResourcesCommand extends $Command<
   ListResourcesCommandInput,

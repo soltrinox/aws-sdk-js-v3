@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDiscovererCommandInput = DeleteDiscovererRequest;
-export type DeleteDiscovererCommandOutput = __MetadataBearer;
+export interface DeleteDiscovererCommandInput extends DeleteDiscovererRequest {}
+export interface DeleteDiscovererCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a discoverer.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SchemasClient, DeleteDiscovererCommand } from "@aws-sdk/client-schemas"; // ES Modules import
+ * // const { SchemasClient, DeleteDiscovererCommand } = require("@aws-sdk/client-schemas"); // CommonJS import
+ * const client = new SchemasClient(config);
+ * const command = new DeleteDiscovererCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDiscovererCommandInput} for command's `input` shape.
+ * @see {@link DeleteDiscovererCommandOutput} for command's `response` shape.
+ * @see {@link SchemasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDiscovererCommand extends $Command<
   DeleteDiscovererCommandInput,

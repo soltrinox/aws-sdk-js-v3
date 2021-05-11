@@ -20,13 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeRemediationExecutionStatusCommandInput = DescribeRemediationExecutionStatusRequest;
-export type DescribeRemediationExecutionStatusCommandOutput = DescribeRemediationExecutionStatusResponse &
-  __MetadataBearer;
+export interface DescribeRemediationExecutionStatusCommandInput extends DescribeRemediationExecutionStatusRequest {}
+export interface DescribeRemediationExecutionStatusCommandOutput
+  extends DescribeRemediationExecutionStatusResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when steps for the remediation execution occur, and any error messages for steps that have failed.
  * 			When you specify the limit and the next token, you receive a paginated response.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DescribeRemediationExecutionStatusCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DescribeRemediationExecutionStatusCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DescribeRemediationExecutionStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeRemediationExecutionStatusCommandInput} for command's `input` shape.
+ * @see {@link DescribeRemediationExecutionStatusCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeRemediationExecutionStatusCommand extends $Command<
   DescribeRemediationExecutionStatusCommandInput,

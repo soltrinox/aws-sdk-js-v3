@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateMemberDetectorsCommandInput = UpdateMemberDetectorsRequest;
-export type UpdateMemberDetectorsCommandOutput = UpdateMemberDetectorsResponse & __MetadataBearer;
+export interface UpdateMemberDetectorsCommandInput extends UpdateMemberDetectorsRequest {}
+export interface UpdateMemberDetectorsCommandOutput extends UpdateMemberDetectorsResponse, __MetadataBearer {}
 
 /**
  * <p>Contains information on member accounts to be updated.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GuardDutyClient, UpdateMemberDetectorsCommand } from "@aws-sdk/client-guardduty"; // ES Modules import
+ * // const { GuardDutyClient, UpdateMemberDetectorsCommand } = require("@aws-sdk/client-guardduty"); // CommonJS import
+ * const client = new GuardDutyClient(config);
+ * const command = new UpdateMemberDetectorsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateMemberDetectorsCommandInput} for command's `input` shape.
+ * @see {@link UpdateMemberDetectorsCommandOutput} for command's `response` shape.
+ * @see {@link GuardDutyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateMemberDetectorsCommand extends $Command<
   UpdateMemberDetectorsCommandInput,

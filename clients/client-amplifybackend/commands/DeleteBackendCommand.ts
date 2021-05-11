@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBackendCommandInput = DeleteBackendRequest;
-export type DeleteBackendCommandOutput = DeleteBackendResponse & __MetadataBearer;
+export interface DeleteBackendCommandInput extends DeleteBackendRequest {}
+export interface DeleteBackendCommandOutput extends DeleteBackendResponse, __MetadataBearer {}
 
 /**
  * <p>Removes an existing environment from your Amplify project.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AmplifyBackendClient, DeleteBackendCommand } from "@aws-sdk/client-amplifybackend"; // ES Modules import
+ * // const { AmplifyBackendClient, DeleteBackendCommand } = require("@aws-sdk/client-amplifybackend"); // CommonJS import
+ * const client = new AmplifyBackendClient(config);
+ * const command = new DeleteBackendCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBackendCommandInput} for command's `input` shape.
+ * @see {@link DeleteBackendCommandOutput} for command's `response` shape.
+ * @see {@link AmplifyBackendClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBackendCommand extends $Command<
   DeleteBackendCommandInput,

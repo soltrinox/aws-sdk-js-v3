@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ConfirmSubscriptionCommandInput = ConfirmSubscriptionInput;
-export type ConfirmSubscriptionCommandOutput = ConfirmSubscriptionResponse & __MetadataBearer;
+export interface ConfirmSubscriptionCommandInput extends ConfirmSubscriptionInput {}
+export interface ConfirmSubscriptionCommandOutput extends ConfirmSubscriptionResponse, __MetadataBearer {}
 
 /**
  * <p>Verifies an endpoint owner's intent to receive messages by validating the token sent
@@ -26,6 +26,20 @@ export type ConfirmSubscriptionCommandOutput = ConfirmSubscriptionResponse & __M
  *             action creates a new subscription and returns its Amazon Resource Name (ARN). This call
  *             requires an AWS signature only when the <code>AuthenticateOnUnsubscribe</code> flag is
  *             set to "true".</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SNSClient, ConfirmSubscriptionCommand } from "@aws-sdk/client-sns"; // ES Modules import
+ * // const { SNSClient, ConfirmSubscriptionCommand } = require("@aws-sdk/client-sns"); // CommonJS import
+ * const client = new SNSClient(config);
+ * const command = new ConfirmSubscriptionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ConfirmSubscriptionCommandInput} for command's `input` shape.
+ * @see {@link ConfirmSubscriptionCommandOutput} for command's `response` shape.
+ * @see {@link SNSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ConfirmSubscriptionCommand extends $Command<
   ConfirmSubscriptionCommandInput,

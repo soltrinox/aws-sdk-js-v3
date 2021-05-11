@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetPolicyVersionCommandInput = GetPolicyVersionRequest;
-export type GetPolicyVersionCommandOutput = GetPolicyVersionResponse & __MetadataBearer;
+export interface GetPolicyVersionCommandInput extends GetPolicyVersionRequest {}
+export interface GetPolicyVersionCommandOutput extends GetPolicyVersionResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about the specified policy version.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, GetPolicyVersionCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, GetPolicyVersionCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new GetPolicyVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetPolicyVersionCommandInput} for command's `input` shape.
+ * @see {@link GetPolicyVersionCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetPolicyVersionCommand extends $Command<
   GetPolicyVersionCommandInput,

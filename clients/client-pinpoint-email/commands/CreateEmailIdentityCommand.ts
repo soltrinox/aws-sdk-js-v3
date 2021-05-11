@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateEmailIdentityCommandInput = CreateEmailIdentityRequest;
-export type CreateEmailIdentityCommandOutput = CreateEmailIdentityResponse & __MetadataBearer;
+export interface CreateEmailIdentityCommandInput extends CreateEmailIdentityRequest {}
+export interface CreateEmailIdentityCommandOutput extends CreateEmailIdentityResponse, __MetadataBearer {}
 
 /**
  * <p>Verifies an email identity for use with Amazon Pinpoint. In Amazon Pinpoint, an identity is an email
@@ -35,6 +35,20 @@ export type CreateEmailIdentityCommandOutput = CreateEmailIdentityResponse & __M
  *             domain. Your domain is verified when Amazon Pinpoint detects these records in the DNS
  *             configuration for your domain. It usually takes around 72 hours to complete the domain
  *             verification process.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointEmailClient, CreateEmailIdentityCommand } from "@aws-sdk/client-pinpoint-email"; // ES Modules import
+ * // const { PinpointEmailClient, CreateEmailIdentityCommand } = require("@aws-sdk/client-pinpoint-email"); // CommonJS import
+ * const client = new PinpointEmailClient(config);
+ * const command = new CreateEmailIdentityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateEmailIdentityCommandInput} for command's `input` shape.
+ * @see {@link CreateEmailIdentityCommandOutput} for command's `response` shape.
+ * @see {@link PinpointEmailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateEmailIdentityCommand extends $Command<
   CreateEmailIdentityCommandInput,

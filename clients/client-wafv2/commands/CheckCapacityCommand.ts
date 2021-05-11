@@ -17,14 +17,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CheckCapacityCommandInput = CheckCapacityRequest;
-export type CheckCapacityCommandOutput = CheckCapacityResponse & __MetadataBearer;
+export interface CheckCapacityCommandInput extends CheckCapacityRequest {}
+export interface CheckCapacityCommandOutput extends CheckCapacityResponse, __MetadataBearer {}
 
 /**
- * <note>
- *             <p>This is the latest version of <b>AWS WAF</b>, named AWS WAFV2, released in November, 2019. For information, including how to migrate your AWS WAF resources from the prior release, see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>.  </p>
- *          </note>
- *          <p>Returns the web ACL capacity unit (WCU) requirements for a specified scope and set of rules.
+ * <p>Returns the web ACL capacity unit (WCU) requirements for a specified scope and set of rules.
  *          You can use this to check the capacity requirements for the rules you want to use in a
  *          <a>RuleGroup</a> or <a>WebACL</a>.
  *          </p>
@@ -36,6 +33,20 @@ export type CheckCapacityCommandOutput = CheckCapacityResponse & __MetadataBeare
  * 				Rule group capacity is fixed at creation, which helps users plan their
  *          web ACL WCU usage when they use a rule group.
  *          The WCU limit for web ACLs is 1,500.  </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFV2Client, CheckCapacityCommand } from "@aws-sdk/client-wafv2"; // ES Modules import
+ * // const { WAFV2Client, CheckCapacityCommand } = require("@aws-sdk/client-wafv2"); // CommonJS import
+ * const client = new WAFV2Client(config);
+ * const command = new CheckCapacityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CheckCapacityCommandInput} for command's `input` shape.
+ * @see {@link CheckCapacityCommandOutput} for command's `response` shape.
+ * @see {@link WAFV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CheckCapacityCommand extends $Command<
   CheckCapacityCommandInput,

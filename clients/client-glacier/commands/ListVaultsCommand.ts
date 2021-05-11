@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListVaultsCommandInput = ListVaultsInput;
-export type ListVaultsCommandOutput = ListVaultsOutput & __MetadataBearer;
+export interface ListVaultsCommandInput extends ListVaultsInput {}
+export interface ListVaultsCommandOutput extends ListVaultsOutput, __MetadataBearer {}
 
 /**
  * <p>This operation lists all vaults owned by the calling user's account. The list
@@ -40,6 +40,20 @@ export type ListVaultsCommandOutput = ListVaultsOutput & __MetadataBearer;
  *          <p>For conceptual information and underlying REST API, see <a href="https://docs.aws.amazon.com/amazonglacier/latest/dev/retrieving-vault-info.html">Retrieving Vault Metadata in
  *             Amazon S3 Glacier</a> and <a href="https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vaults-get.html">List Vaults </a> in the
  *             <i>Amazon Glacier Developer Guide</i>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlacierClient, ListVaultsCommand } from "@aws-sdk/client-glacier"; // ES Modules import
+ * // const { GlacierClient, ListVaultsCommand } = require("@aws-sdk/client-glacier"); // CommonJS import
+ * const client = new GlacierClient(config);
+ * const command = new ListVaultsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListVaultsCommandInput} for command's `input` shape.
+ * @see {@link ListVaultsCommandOutput} for command's `response` shape.
+ * @see {@link GlacierClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListVaultsCommand extends $Command<
   ListVaultsCommandInput,

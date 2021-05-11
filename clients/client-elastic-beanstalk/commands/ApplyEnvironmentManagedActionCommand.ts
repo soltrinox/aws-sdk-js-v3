@@ -17,13 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ApplyEnvironmentManagedActionCommandInput = ApplyEnvironmentManagedActionRequest;
-export type ApplyEnvironmentManagedActionCommandOutput = ApplyEnvironmentManagedActionResult & __MetadataBearer;
+export interface ApplyEnvironmentManagedActionCommandInput extends ApplyEnvironmentManagedActionRequest {}
+export interface ApplyEnvironmentManagedActionCommandOutput
+  extends ApplyEnvironmentManagedActionResult,
+    __MetadataBearer {}
 
 /**
  * <p>Applies a scheduled managed action immediately. A managed action can be applied only if
  *       its status is <code>Scheduled</code>. Get the status and action ID of a managed action with
  *         <a>DescribeEnvironmentManagedActions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticBeanstalkClient, ApplyEnvironmentManagedActionCommand } from "@aws-sdk/client-elastic-beanstalk"; // ES Modules import
+ * // const { ElasticBeanstalkClient, ApplyEnvironmentManagedActionCommand } = require("@aws-sdk/client-elastic-beanstalk"); // CommonJS import
+ * const client = new ElasticBeanstalkClient(config);
+ * const command = new ApplyEnvironmentManagedActionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ApplyEnvironmentManagedActionCommandInput} for command's `input` shape.
+ * @see {@link ApplyEnvironmentManagedActionCommandOutput} for command's `response` shape.
+ * @see {@link ElasticBeanstalkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ApplyEnvironmentManagedActionCommand extends $Command<
   ApplyEnvironmentManagedActionCommandInput,

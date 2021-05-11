@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetObjectInformationCommandInput = GetObjectInformationRequest;
-export type GetObjectInformationCommandOutput = GetObjectInformationResponse & __MetadataBearer;
+export interface GetObjectInformationCommandInput extends GetObjectInformationRequest {}
+export interface GetObjectInformationCommandOutput extends GetObjectInformationResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves metadata about an object.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, GetObjectInformationCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, GetObjectInformationCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new GetObjectInformationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetObjectInformationCommandInput} for command's `input` shape.
+ * @see {@link GetObjectInformationCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetObjectInformationCommand extends $Command<
   GetObjectInformationCommandInput,

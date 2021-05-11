@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeregisterRobotCommandInput = DeregisterRobotRequest;
-export type DeregisterRobotCommandOutput = DeregisterRobotResponse & __MetadataBearer;
+export interface DeregisterRobotCommandInput extends DeregisterRobotRequest {}
+export interface DeregisterRobotCommandOutput extends DeregisterRobotResponse, __MetadataBearer {}
 
 /**
  * <p>Deregisters a robot.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RoboMakerClient, DeregisterRobotCommand } from "@aws-sdk/client-robomaker"; // ES Modules import
+ * // const { RoboMakerClient, DeregisterRobotCommand } = require("@aws-sdk/client-robomaker"); // CommonJS import
+ * const client = new RoboMakerClient(config);
+ * const command = new DeregisterRobotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeregisterRobotCommandInput} for command's `input` shape.
+ * @see {@link DeregisterRobotCommandOutput} for command's `response` shape.
+ * @see {@link RoboMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeregisterRobotCommand extends $Command<
   DeregisterRobotCommandInput,

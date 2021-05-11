@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteClusterCommandInput = DeleteClusterRequest;
-export type DeleteClusterCommandOutput = DeleteClusterResponse & __MetadataBearer;
+export interface DeleteClusterCommandInput extends DeleteClusterRequest {}
+export interface DeleteClusterCommandOutput extends DeleteClusterResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, DeleteClusterCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, DeleteClusterCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new DeleteClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteClusterCommandInput} for command's `input` shape.
+ * @see {@link DeleteClusterCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteClusterCommand extends $Command<
   DeleteClusterCommandInput,

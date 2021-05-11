@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetLoggerDefinitionVersionCommandInput = GetLoggerDefinitionVersionRequest;
-export type GetLoggerDefinitionVersionCommandOutput = GetLoggerDefinitionVersionResponse & __MetadataBearer;
+export interface GetLoggerDefinitionVersionCommandInput extends GetLoggerDefinitionVersionRequest {}
+export interface GetLoggerDefinitionVersionCommandOutput extends GetLoggerDefinitionVersionResponse, __MetadataBearer {}
 
 /**
  * Retrieves information about a logger definition version.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, GetLoggerDefinitionVersionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, GetLoggerDefinitionVersionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new GetLoggerDefinitionVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetLoggerDefinitionVersionCommandInput} for command's `input` shape.
+ * @see {@link GetLoggerDefinitionVersionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetLoggerDefinitionVersionCommand extends $Command<
   GetLoggerDefinitionVersionCommandInput,

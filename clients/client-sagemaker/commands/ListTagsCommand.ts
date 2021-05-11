@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTagsCommandInput = ListTagsInput;
-export type ListTagsCommandOutput = ListTagsOutput & __MetadataBearer;
+export interface ListTagsCommandInput extends ListTagsInput {}
+export interface ListTagsCommandOutput extends ListTagsOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the tags for the specified Amazon SageMaker resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, ListTagsCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, ListTagsCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new ListTagsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTagsCommandInput} for command's `input` shape.
+ * @see {@link ListTagsCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTagsCommand extends $Command<
   ListTagsCommandInput,

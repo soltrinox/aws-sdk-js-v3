@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreTableToPointInTimeCommandInput = RestoreTableToPointInTimeInput;
-export type RestoreTableToPointInTimeCommandOutput = RestoreTableToPointInTimeOutput & __MetadataBearer;
+export interface RestoreTableToPointInTimeCommandInput extends RestoreTableToPointInTimeInput {}
+export interface RestoreTableToPointInTimeCommandOutput extends RestoreTableToPointInTimeOutput, __MetadataBearer {}
 
 /**
  * <p>Restores the specified table to the specified point in time within
@@ -77,6 +77,20 @@ export type RestoreTableToPointInTimeCommandOutput = RestoreTableToPointInTimeOu
  *                  <p>Point in time recovery settings</p>
  *              </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, RestoreTableToPointInTimeCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, RestoreTableToPointInTimeCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new RestoreTableToPointInTimeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreTableToPointInTimeCommandInput} for command's `input` shape.
+ * @see {@link RestoreTableToPointInTimeCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreTableToPointInTimeCommand extends $Command<
   RestoreTableToPointInTimeCommandInput,

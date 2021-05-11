@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetLifecyclePolicyCommandInput = GetLifecyclePolicyRequest;
-export type GetLifecyclePolicyCommandOutput = GetLifecyclePolicyResponse & __MetadataBearer;
+export interface GetLifecyclePolicyCommandInput extends GetLifecyclePolicyRequest {}
+export interface GetLifecyclePolicyCommandOutput extends GetLifecyclePolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the lifecycle policy for the specified repository.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECRClient, GetLifecyclePolicyCommand } from "@aws-sdk/client-ecr"; // ES Modules import
+ * // const { ECRClient, GetLifecyclePolicyCommand } = require("@aws-sdk/client-ecr"); // CommonJS import
+ * const client = new ECRClient(config);
+ * const command = new GetLifecyclePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetLifecyclePolicyCommandInput} for command's `input` shape.
+ * @see {@link GetLifecyclePolicyCommandOutput} for command's `response` shape.
+ * @see {@link ECRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetLifecyclePolicyCommand extends $Command<
   GetLifecyclePolicyCommandInput,

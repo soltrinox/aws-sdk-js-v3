@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartExecutionCommandInput = StartExecutionInput;
-export type StartExecutionCommandOutput = StartExecutionOutput & __MetadataBearer;
+export interface StartExecutionCommandInput extends StartExecutionInput {}
+export interface StartExecutionCommandOutput extends StartExecutionOutput, __MetadataBearer {}
 
 /**
  * <p>Starts a state machine execution.</p>
@@ -30,6 +30,20 @@ export type StartExecutionCommandOutput = StartExecutionOutput & __MetadataBeare
  *         it will return a 400 <code>ExecutionAlreadyExists</code> error. Names can be reused after 90
  *         days. </p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SFNClient, StartExecutionCommand } from "@aws-sdk/client-sfn"; // ES Modules import
+ * // const { SFNClient, StartExecutionCommand } = require("@aws-sdk/client-sfn"); // CommonJS import
+ * const client = new SFNClient(config);
+ * const command = new StartExecutionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartExecutionCommandInput} for command's `input` shape.
+ * @see {@link StartExecutionCommandOutput} for command's `response` shape.
+ * @see {@link SFNClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartExecutionCommand extends $Command<
   StartExecutionCommandInput,

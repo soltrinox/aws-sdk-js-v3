@@ -17,14 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetWebACLForResourceCommandInput = GetWebACLForResourceRequest;
-export type GetWebACLForResourceCommandOutput = GetWebACLForResourceResponse & __MetadataBearer;
+export interface GetWebACLForResourceCommandInput extends GetWebACLForResourceRequest {}
+export interface GetWebACLForResourceCommandOutput extends GetWebACLForResourceResponse, __MetadataBearer {}
 
 /**
- * <note>
- *             <p>This is the latest version of <b>AWS WAF</b>, named AWS WAFV2, released in November, 2019. For information, including how to migrate your AWS WAF resources from the prior release, see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>.  </p>
- *          </note>
- *          <p>Retrieves the <a>WebACL</a> for the specified resource. </p>
+ * <p>Retrieves the <a>WebACL</a> for the specified resource. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFV2Client, GetWebACLForResourceCommand } from "@aws-sdk/client-wafv2"; // ES Modules import
+ * // const { WAFV2Client, GetWebACLForResourceCommand } = require("@aws-sdk/client-wafv2"); // CommonJS import
+ * const client = new WAFV2Client(config);
+ * const command = new GetWebACLForResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetWebACLForResourceCommandInput} for command's `input` shape.
+ * @see {@link GetWebACLForResourceCommandOutput} for command's `response` shape.
+ * @see {@link WAFV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetWebACLForResourceCommand extends $Command<
   GetWebACLForResourceCommandInput,

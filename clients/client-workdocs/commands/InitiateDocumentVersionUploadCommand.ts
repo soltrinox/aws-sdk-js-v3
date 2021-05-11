@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type InitiateDocumentVersionUploadCommandInput = InitiateDocumentVersionUploadRequest;
-export type InitiateDocumentVersionUploadCommandOutput = InitiateDocumentVersionUploadResponse & __MetadataBearer;
+export interface InitiateDocumentVersionUploadCommandInput extends InitiateDocumentVersionUploadRequest {}
+export interface InitiateDocumentVersionUploadCommandOutput
+  extends InitiateDocumentVersionUploadResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a new document object and version object.</p>
@@ -27,6 +29,20 @@ export type InitiateDocumentVersionUploadCommandOutput = InitiateDocumentVersion
  *             the first step to upload a document. Next, upload the document to the URL returned from
  *             the call, and then call <a>UpdateDocumentVersion</a>.</p>
  *         <p>To cancel the document upload, call <a>AbortDocumentVersionUpload</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkDocsClient, InitiateDocumentVersionUploadCommand } from "@aws-sdk/client-workdocs"; // ES Modules import
+ * // const { WorkDocsClient, InitiateDocumentVersionUploadCommand } = require("@aws-sdk/client-workdocs"); // CommonJS import
+ * const client = new WorkDocsClient(config);
+ * const command = new InitiateDocumentVersionUploadCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link InitiateDocumentVersionUploadCommandInput} for command's `input` shape.
+ * @see {@link InitiateDocumentVersionUploadCommandOutput} for command's `response` shape.
+ * @see {@link WorkDocsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class InitiateDocumentVersionUploadCommand extends $Command<
   InitiateDocumentVersionUploadCommandInput,

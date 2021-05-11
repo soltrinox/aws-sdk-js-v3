@@ -17,14 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateIPSetCommandInput = CreateIPSetRequest;
-export type CreateIPSetCommandOutput = CreateIPSetResponse & __MetadataBearer;
+export interface CreateIPSetCommandInput extends CreateIPSetRequest {}
+export interface CreateIPSetCommandOutput extends CreateIPSetResponse, __MetadataBearer {}
 
 /**
- * <note>
- *             <p>This is the latest version of <b>AWS WAF</b>, named AWS WAFV2, released in November, 2019. For information, including how to migrate your AWS WAF resources from the prior release, see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>.  </p>
- *          </note>
- *          <p>Creates an <a>IPSet</a>, which you use to identify web requests that originate from specific IP addresses or ranges of IP addresses. For example, if you're receiving a lot of requests from a ranges of IP addresses, you can configure AWS WAF to block them using an IPSet that lists those IP addresses. </p>
+ * <p>Creates an <a>IPSet</a>, which you use to identify web requests that originate from specific IP addresses or ranges of IP addresses. For example, if you're receiving a lot of requests from a ranges of IP addresses, you can configure AWS WAF to block them using an IPSet that lists those IP addresses. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFV2Client, CreateIPSetCommand } from "@aws-sdk/client-wafv2"; // ES Modules import
+ * // const { WAFV2Client, CreateIPSetCommand } = require("@aws-sdk/client-wafv2"); // CommonJS import
+ * const client = new WAFV2Client(config);
+ * const command = new CreateIPSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateIPSetCommandInput} for command's `input` shape.
+ * @see {@link CreateIPSetCommandOutput} for command's `response` shape.
+ * @see {@link WAFV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateIPSetCommand extends $Command<
   CreateIPSetCommandInput,

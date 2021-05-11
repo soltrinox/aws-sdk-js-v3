@@ -17,14 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAvailableManagedRuleGroupsCommandInput = ListAvailableManagedRuleGroupsRequest;
-export type ListAvailableManagedRuleGroupsCommandOutput = ListAvailableManagedRuleGroupsResponse & __MetadataBearer;
+export interface ListAvailableManagedRuleGroupsCommandInput extends ListAvailableManagedRuleGroupsRequest {}
+export interface ListAvailableManagedRuleGroupsCommandOutput
+  extends ListAvailableManagedRuleGroupsResponse,
+    __MetadataBearer {}
 
 /**
- * <note>
- *             <p>This is the latest version of <b>AWS WAF</b>, named AWS WAFV2, released in November, 2019. For information, including how to migrate your AWS WAF resources from the prior release, see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>.  </p>
- *          </note>
- *          <p>Retrieves an array of managed rule groups that are available for you to use. This list includes all AWS Managed Rules rule groups and the AWS Marketplace managed rule groups that you're subscribed to.</p>
+ * <p>Retrieves an array of managed rule groups that are available for you to use. This list includes all AWS Managed Rules rule groups and the AWS Marketplace managed rule groups that you're subscribed to.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFV2Client, ListAvailableManagedRuleGroupsCommand } from "@aws-sdk/client-wafv2"; // ES Modules import
+ * // const { WAFV2Client, ListAvailableManagedRuleGroupsCommand } = require("@aws-sdk/client-wafv2"); // CommonJS import
+ * const client = new WAFV2Client(config);
+ * const command = new ListAvailableManagedRuleGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAvailableManagedRuleGroupsCommandInput} for command's `input` shape.
+ * @see {@link ListAvailableManagedRuleGroupsCommandOutput} for command's `response` shape.
+ * @see {@link WAFV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAvailableManagedRuleGroupsCommand extends $Command<
   ListAvailableManagedRuleGroupsCommandInput,

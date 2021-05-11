@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateBuildCommandInput = UpdateBuildInput;
-export type UpdateBuildCommandOutput = UpdateBuildOutput & __MetadataBearer;
+export interface UpdateBuildCommandInput extends UpdateBuildInput {}
+export interface UpdateBuildCommandOutput extends UpdateBuildOutput, __MetadataBearer {}
 
 /**
  * <p>Updates metadata in a build resource, including the build name and version. To update
@@ -32,35 +32,30 @@ export type UpdateBuildCommandOutput = UpdateBuildOutput & __MetadataBearer;
  *             Upload a Custom Server Build</a>
  *          </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateBuild</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ListBuilds</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeBuild</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateBuild</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteBuild</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>CreateBuild</a> |
+ *                     <a>ListBuilds</a> |
+ *                     <a>DescribeBuild</a> |
+ *                     <a>UpdateBuild</a> |
+ *                     <a>DeleteBuild</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, UpdateBuildCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, UpdateBuildCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new UpdateBuildCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateBuildCommandInput} for command's `input` shape.
+ * @see {@link UpdateBuildCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateBuildCommand extends $Command<
   UpdateBuildCommandInput,

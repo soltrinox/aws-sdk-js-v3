@@ -21,11 +21,32 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTagKeysCommandInput = GetTagKeysInput;
-export type GetTagKeysCommandOutput = GetTagKeysOutput & __MetadataBearer;
+export interface GetTagKeysCommandInput extends GetTagKeysInput {}
+export interface GetTagKeysCommandOutput extends GetTagKeysOutput, __MetadataBearer {}
 
 /**
- * <p>Returns all tag keys in the specified Region for the AWS account.</p>
+ * <p>Returns all tag keys currently in use in the specified Region for the calling AWS
+ *             account.</p>
+ *          <p>This operation supports pagination, where the response can be sent in
+ *     multiple pages. You should check the <code>PaginationToken</code> response parameter to determine
+ *     if there are additional results available to return. Repeat the query, passing the
+ *     <code>PaginationToken</code> response parameter value as an input to the next request until you
+ *     recieve a <code>null</code> value. A null value for <code>PaginationToken</code> indicates that
+ *     there are no more results waiting to be returned.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ResourceGroupsTaggingAPIClient, GetTagKeysCommand } from "@aws-sdk/client-resource-groups-tagging-api"; // ES Modules import
+ * // const { ResourceGroupsTaggingAPIClient, GetTagKeysCommand } = require("@aws-sdk/client-resource-groups-tagging-api"); // CommonJS import
+ * const client = new ResourceGroupsTaggingAPIClient(config);
+ * const command = new GetTagKeysCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTagKeysCommandInput} for command's `input` shape.
+ * @see {@link GetTagKeysCommandOutput} for command's `response` shape.
+ * @see {@link ResourceGroupsTaggingAPIClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTagKeysCommand extends $Command<
   GetTagKeysCommandInput,

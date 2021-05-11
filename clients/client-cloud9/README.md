@@ -104,7 +104,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new Cloud9Client({ region: "REGION" });
 
 const params = {
@@ -189,7 +189,7 @@ const client = new AWS.Cloud9({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.createEnvironmentEC2(params);
+  const data = await client.createEnvironmentEC2(params);
   // process data.
 } catch (error) {
   // error handling.

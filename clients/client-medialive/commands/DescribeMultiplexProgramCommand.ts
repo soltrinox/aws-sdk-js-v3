@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeMultiplexProgramCommandInput = DescribeMultiplexProgramRequest;
-export type DescribeMultiplexProgramCommandOutput = DescribeMultiplexProgramResponse & __MetadataBearer;
+export interface DescribeMultiplexProgramCommandInput extends DescribeMultiplexProgramRequest {}
+export interface DescribeMultiplexProgramCommandOutput extends DescribeMultiplexProgramResponse, __MetadataBearer {}
 
 /**
  * Get the details for a program in a multiplex.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, DescribeMultiplexProgramCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, DescribeMultiplexProgramCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new DescribeMultiplexProgramCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeMultiplexProgramCommandInput} for command's `input` shape.
+ * @see {@link DescribeMultiplexProgramCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeMultiplexProgramCommand extends $Command<
   DescribeMultiplexProgramCommandInput,

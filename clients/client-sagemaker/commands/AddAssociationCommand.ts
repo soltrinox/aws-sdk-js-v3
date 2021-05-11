@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddAssociationCommandInput = AddAssociationRequest;
-export type AddAssociationCommandOutput = AddAssociationResponse & __MetadataBearer;
+export interface AddAssociationCommandInput extends AddAssociationRequest {}
+export interface AddAssociationCommandOutput extends AddAssociationResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an <i>association</i> between the source and the destination. A
@@ -26,6 +26,20 @@ export type AddAssociationCommandOutput = AddAssociationResponse & __MetadataBea
  *         with multiple sources. An association is a lineage tracking entity. For more information, see
  *         <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html">Amazon SageMaker
  *           ML Lineage Tracking</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, AddAssociationCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, AddAssociationCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new AddAssociationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddAssociationCommandInput} for command's `input` shape.
+ * @see {@link AddAssociationCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddAssociationCommand extends $Command<
   AddAssociationCommandInput,

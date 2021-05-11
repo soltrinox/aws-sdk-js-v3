@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateRoleAliasCommandInput = CreateRoleAliasRequest;
-export type CreateRoleAliasCommandOutput = CreateRoleAliasResponse & __MetadataBearer;
+export interface CreateRoleAliasCommandInput extends CreateRoleAliasRequest {}
+export interface CreateRoleAliasCommandOutput extends CreateRoleAliasResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a role alias.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, CreateRoleAliasCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, CreateRoleAliasCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new CreateRoleAliasCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateRoleAliasCommandInput} for command's `input` shape.
+ * @see {@link CreateRoleAliasCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateRoleAliasCommand extends $Command<
   CreateRoleAliasCommandInput,

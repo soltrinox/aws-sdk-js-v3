@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RebootInstancesCommandInput = RebootInstancesRequest;
-export type RebootInstancesCommandOutput = __MetadataBearer;
+export interface RebootInstancesCommandInput extends RebootInstancesRequest {}
+export interface RebootInstancesCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Requests a reboot of the specified instances. This operation is asynchronous; it only
@@ -26,6 +26,20 @@ export type RebootInstancesCommandOutput = __MetadataBearer;
  *             hard reboot.</p>
  *         <p>For more information about troubleshooting, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html">Getting console output and
  *             rebooting instances</a> in the <i>Amazon EC2 User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, RebootInstancesCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, RebootInstancesCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new RebootInstancesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RebootInstancesCommandInput} for command's `input` shape.
+ * @see {@link RebootInstancesCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RebootInstancesCommand extends $Command<
   RebootInstancesCommandInput,

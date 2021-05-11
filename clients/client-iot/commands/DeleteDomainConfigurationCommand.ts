@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDomainConfigurationCommandInput = DeleteDomainConfigurationRequest;
-export type DeleteDomainConfigurationCommandOutput = DeleteDomainConfigurationResponse & __MetadataBearer;
+export interface DeleteDomainConfigurationCommandInput extends DeleteDomainConfigurationRequest {}
+export interface DeleteDomainConfigurationCommandOutput extends DeleteDomainConfigurationResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified domain configuration.</p>
  *          <note>
  *             <p>The domain configuration feature is in public preview and is subject to change.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DeleteDomainConfigurationCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DeleteDomainConfigurationCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DeleteDomainConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDomainConfigurationCommandInput} for command's `input` shape.
+ * @see {@link DeleteDomainConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDomainConfigurationCommand extends $Command<
   DeleteDomainConfigurationCommandInput,

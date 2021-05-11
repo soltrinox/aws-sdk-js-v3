@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type EnableOrganizationAdminAccountCommandInput = EnableOrganizationAdminAccountRequest;
-export type EnableOrganizationAdminAccountCommandOutput = EnableOrganizationAdminAccountResponse & __MetadataBearer;
+export interface EnableOrganizationAdminAccountCommandInput extends EnableOrganizationAdminAccountRequest {}
+export interface EnableOrganizationAdminAccountCommandOutput
+  extends EnableOrganizationAdminAccountResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Designates an account as the delegated Amazon Macie administrator account for an AWS organization.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Macie2Client, EnableOrganizationAdminAccountCommand } from "@aws-sdk/client-macie2"; // ES Modules import
+ * // const { Macie2Client, EnableOrganizationAdminAccountCommand } = require("@aws-sdk/client-macie2"); // CommonJS import
+ * const client = new Macie2Client(config);
+ * const command = new EnableOrganizationAdminAccountCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link EnableOrganizationAdminAccountCommandInput} for command's `input` shape.
+ * @see {@link EnableOrganizationAdminAccountCommandOutput} for command's `response` shape.
+ * @see {@link Macie2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class EnableOrganizationAdminAccountCommand extends $Command<
   EnableOrganizationAdminAccountCommandInput,

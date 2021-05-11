@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDomainContactPrivacyCommandInput = UpdateDomainContactPrivacyRequest;
-export type UpdateDomainContactPrivacyCommandOutput = UpdateDomainContactPrivacyResponse & __MetadataBearer;
+export interface UpdateDomainContactPrivacyCommandInput extends UpdateDomainContactPrivacyRequest {}
+export interface UpdateDomainContactPrivacyCommandOutput extends UpdateDomainContactPrivacyResponse, __MetadataBearer {}
 
 /**
  * <p>This operation updates the specified domain contact's privacy setting. When privacy protection is enabled,
@@ -36,6 +36,20 @@ export type UpdateDomainContactPrivacyCommandOutput = UpdateDomainContactPrivacy
  * 			For more information on our privacy practices, see
  * 			<a href="https://aws.amazon.com/privacy/">https://aws.amazon.com/privacy/</a>.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53DomainsClient, UpdateDomainContactPrivacyCommand } from "@aws-sdk/client-route-53-domains"; // ES Modules import
+ * // const { Route53DomainsClient, UpdateDomainContactPrivacyCommand } = require("@aws-sdk/client-route-53-domains"); // CommonJS import
+ * const client = new Route53DomainsClient(config);
+ * const command = new UpdateDomainContactPrivacyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDomainContactPrivacyCommandInput} for command's `input` shape.
+ * @see {@link UpdateDomainContactPrivacyCommandOutput} for command's `response` shape.
+ * @see {@link Route53DomainsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDomainContactPrivacyCommand extends $Command<
   UpdateDomainContactPrivacyCommandInput,

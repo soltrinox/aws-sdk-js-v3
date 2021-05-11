@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateUserSettingsCommandInput = UpdateUserSettingsRequest;
-export type UpdateUserSettingsCommandOutput = __MetadataBearer;
+export interface UpdateUserSettingsCommandInput extends UpdateUserSettingsRequest {}
+export interface UpdateUserSettingsCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Updates the settings for the specified user, such as phone number settings.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, UpdateUserSettingsCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, UpdateUserSettingsCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new UpdateUserSettingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateUserSettingsCommandInput} for command's `input` shape.
+ * @see {@link UpdateUserSettingsCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateUserSettingsCommand extends $Command<
   UpdateUserSettingsCommandInput,

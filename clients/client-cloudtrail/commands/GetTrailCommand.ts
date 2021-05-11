@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTrailCommandInput = GetTrailRequest;
-export type GetTrailCommandOutput = GetTrailResponse & __MetadataBearer;
+export interface GetTrailCommandInput extends GetTrailRequest {}
+export interface GetTrailCommandOutput extends GetTrailResponse, __MetadataBearer {}
 
 /**
  * <p>Returns settings information for a specified trail.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudTrailClient, GetTrailCommand } from "@aws-sdk/client-cloudtrail"; // ES Modules import
+ * // const { CloudTrailClient, GetTrailCommand } = require("@aws-sdk/client-cloudtrail"); // CommonJS import
+ * const client = new CloudTrailClient(config);
+ * const command = new GetTrailCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTrailCommandInput} for command's `input` shape.
+ * @see {@link GetTrailCommandOutput} for command's `response` shape.
+ * @see {@link CloudTrailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTrailCommand extends $Command<
   GetTrailCommandInput,

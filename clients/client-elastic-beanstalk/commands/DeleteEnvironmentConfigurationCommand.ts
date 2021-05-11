@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteEnvironmentConfigurationCommandInput = DeleteEnvironmentConfigurationMessage;
-export type DeleteEnvironmentConfigurationCommandOutput = __MetadataBearer;
+export interface DeleteEnvironmentConfigurationCommandInput extends DeleteEnvironmentConfigurationMessage {}
+export interface DeleteEnvironmentConfigurationCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the draft configuration associated with the running environment.</p>
@@ -27,6 +27,20 @@ export type DeleteEnvironmentConfigurationCommandOutput = __MetadataBearer;
  *       fails. The <code>DeploymentStatus</code> for the draft configuration indicates whether the
  *       deployment is in process or has failed. The draft configuration remains in existence until it
  *       is deleted with this action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticBeanstalkClient, DeleteEnvironmentConfigurationCommand } from "@aws-sdk/client-elastic-beanstalk"; // ES Modules import
+ * // const { ElasticBeanstalkClient, DeleteEnvironmentConfigurationCommand } = require("@aws-sdk/client-elastic-beanstalk"); // CommonJS import
+ * const client = new ElasticBeanstalkClient(config);
+ * const command = new DeleteEnvironmentConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteEnvironmentConfigurationCommandInput} for command's `input` shape.
+ * @see {@link DeleteEnvironmentConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link ElasticBeanstalkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteEnvironmentConfigurationCommand extends $Command<
   DeleteEnvironmentConfigurationCommandInput,

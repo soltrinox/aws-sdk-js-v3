@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateServiceCommandInput = UpdateServiceRequest;
-export type UpdateServiceCommandOutput = UpdateServiceResponse & __MetadataBearer;
+export interface UpdateServiceCommandInput extends UpdateServiceRequest {}
+export interface UpdateServiceCommandOutput extends UpdateServiceResponse, __MetadataBearer {}
 
 /**
  * <important>
@@ -130,6 +130,20 @@ export type UpdateServiceCommandOutput = UpdateServiceResponse & __MetadataBeare
  * 					running tasks for this service.</p>
  * 			         </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, UpdateServiceCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, UpdateServiceCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new UpdateServiceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateServiceCommandInput} for command's `input` shape.
+ * @see {@link UpdateServiceCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateServiceCommand extends $Command<
   UpdateServiceCommandInput,

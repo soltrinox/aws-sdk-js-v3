@@ -22,11 +22,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeRiskConfigurationCommandInput = DescribeRiskConfigurationRequest;
-export type DescribeRiskConfigurationCommandOutput = DescribeRiskConfigurationResponse & __MetadataBearer;
+export interface DescribeRiskConfigurationCommandInput extends DescribeRiskConfigurationRequest {}
+export interface DescribeRiskConfigurationCommandOutput extends DescribeRiskConfigurationResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the risk configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, DescribeRiskConfigurationCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, DescribeRiskConfigurationCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new DescribeRiskConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeRiskConfigurationCommandInput} for command's `input` shape.
+ * @see {@link DescribeRiskConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeRiskConfigurationCommand extends $Command<
   DescribeRiskConfigurationCommandInput,

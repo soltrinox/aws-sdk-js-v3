@@ -20,13 +20,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeMaintenanceWindowExecutionTaskInvocationsCommandInput = DescribeMaintenanceWindowExecutionTaskInvocationsRequest;
-export type DescribeMaintenanceWindowExecutionTaskInvocationsCommandOutput = DescribeMaintenanceWindowExecutionTaskInvocationsResult &
-  __MetadataBearer;
+export interface DescribeMaintenanceWindowExecutionTaskInvocationsCommandInput
+  extends DescribeMaintenanceWindowExecutionTaskInvocationsRequest {}
+export interface DescribeMaintenanceWindowExecutionTaskInvocationsCommandOutput
+  extends DescribeMaintenanceWindowExecutionTaskInvocationsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieves the individual task executions (one per target) for a particular task run as part
  *    of a maintenance window execution.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DescribeMaintenanceWindowExecutionTaskInvocationsCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DescribeMaintenanceWindowExecutionTaskInvocationsCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DescribeMaintenanceWindowExecutionTaskInvocationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeMaintenanceWindowExecutionTaskInvocationsCommandInput} for command's `input` shape.
+ * @see {@link DescribeMaintenanceWindowExecutionTaskInvocationsCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeMaintenanceWindowExecutionTaskInvocationsCommand extends $Command<
   DescribeMaintenanceWindowExecutionTaskInvocationsCommandInput,

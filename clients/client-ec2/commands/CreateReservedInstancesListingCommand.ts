@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateReservedInstancesListingCommandInput = CreateReservedInstancesListingRequest;
-export type CreateReservedInstancesListingCommandOutput = CreateReservedInstancesListingResult & __MetadataBearer;
+export interface CreateReservedInstancesListingCommandInput extends CreateReservedInstancesListingRequest {}
+export interface CreateReservedInstancesListingCommandOutput
+  extends CreateReservedInstancesListingResult,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance
@@ -37,6 +39,20 @@ export type CreateReservedInstancesListingCommandOutput = CreateReservedInstance
  *         <a>DescribeReservedInstancesListings</a> operation.</p>
  *          <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html">Reserved Instance Marketplace</a> in the
  * 				<i>Amazon EC2 User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, CreateReservedInstancesListingCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, CreateReservedInstancesListingCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new CreateReservedInstancesListingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateReservedInstancesListingCommandInput} for command's `input` shape.
+ * @see {@link CreateReservedInstancesListingCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateReservedInstancesListingCommand extends $Command<
   CreateReservedInstancesListingCommandInput,

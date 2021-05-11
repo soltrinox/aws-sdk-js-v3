@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CopyPackageVersionsCommandInput = CopyPackageVersionsRequest;
-export type CopyPackageVersionsCommandOutput = CopyPackageVersionsResult & __MetadataBearer;
+export interface CopyPackageVersionsCommandInput extends CopyPackageVersionsRequest {}
+export interface CopyPackageVersionsCommandOutput extends CopyPackageVersionsResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -29,6 +29,20 @@ export type CopyPackageVersionsCommandOutput = CopyPackageVersionsResult & __Met
  *         You must specify <code>versions</code> or <code>versionRevisions</code>. You cannot specify both.
  *       </p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeartifactClient, CopyPackageVersionsCommand } from "@aws-sdk/client-codeartifact"; // ES Modules import
+ * // const { CodeartifactClient, CopyPackageVersionsCommand } = require("@aws-sdk/client-codeartifact"); // CommonJS import
+ * const client = new CodeartifactClient(config);
+ * const command = new CopyPackageVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CopyPackageVersionsCommandInput} for command's `input` shape.
+ * @see {@link CopyPackageVersionsCommandOutput} for command's `response` shape.
+ * @see {@link CodeartifactClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CopyPackageVersionsCommand extends $Command<
   CopyPackageVersionsCommandInput,

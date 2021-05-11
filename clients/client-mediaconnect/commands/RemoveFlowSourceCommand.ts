@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveFlowSourceCommandInput = RemoveFlowSourceRequest;
-export type RemoveFlowSourceCommandOutput = RemoveFlowSourceResponse & __MetadataBearer;
+export interface RemoveFlowSourceCommandInput extends RemoveFlowSourceRequest {}
+export interface RemoveFlowSourceCommandOutput extends RemoveFlowSourceResponse, __MetadataBearer {}
 
 /**
  * Removes a source from an existing flow. This request can be made only if there is more than one source on the flow.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaConnectClient, RemoveFlowSourceCommand } from "@aws-sdk/client-mediaconnect"; // ES Modules import
+ * // const { MediaConnectClient, RemoveFlowSourceCommand } = require("@aws-sdk/client-mediaconnect"); // CommonJS import
+ * const client = new MediaConnectClient(config);
+ * const command = new RemoveFlowSourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveFlowSourceCommandInput} for command's `input` shape.
+ * @see {@link RemoveFlowSourceCommandOutput} for command's `response` shape.
+ * @see {@link MediaConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveFlowSourceCommand extends $Command<
   RemoveFlowSourceCommandInput,

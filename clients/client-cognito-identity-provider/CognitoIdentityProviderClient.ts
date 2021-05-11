@@ -581,7 +581,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -612,7 +612,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type CognitoIdentityProviderClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type CognitoIdentityProviderClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -620,8 +620,12 @@ export type CognitoIdentityProviderClientConfig = Partial<__SmithyConfiguration<
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of CognitoIdentityProviderClient class constructor that set the region, credentials and other options.
+ */
+export interface CognitoIdentityProviderClientConfig extends CognitoIdentityProviderClientConfigType {}
 
-export type CognitoIdentityProviderClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type CognitoIdentityProviderClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -629,6 +633,10 @@ export type CognitoIdentityProviderClientResolvedConfig = __SmithyResolvedConfig
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of CognitoIdentityProviderClient class. This is resolved and normalized from the {@link CognitoIdentityProviderClientConfig | constructor configuration interface}.
+ */
+export interface CognitoIdentityProviderClientResolvedConfig extends CognitoIdentityProviderClientResolvedConfigType {}
 
 /**
  * <p>Using the Amazon Cognito User Pools API, you can create a user pool to manage
@@ -636,7 +644,7 @@ export type CognitoIdentityProviderClientResolvedConfig = __SmithyResolvedConfig
  *             identity and access policies.</p>
  *         <p>This API reference provides information about user pools in Amazon Cognito User
  *             Pools.</p>
- *         <p>For more information, see the Amazon Cognito Documentation.</p>
+ *         <p>For more information, see the <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html">Amazon Cognito Documentation</a>.</p>
  */
 export class CognitoIdentityProviderClient extends __Client<
   __HttpHandlerOptions,
@@ -644,6 +652,9 @@ export class CognitoIdentityProviderClient extends __Client<
   ServiceOutputTypes,
   CognitoIdentityProviderClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of CognitoIdentityProviderClient class. This is resolved and normalized from the {@link CognitoIdentityProviderClientConfig | constructor configuration interface}.
+   */
   readonly config: CognitoIdentityProviderClientResolvedConfig;
 
   constructor(configuration: CognitoIdentityProviderClientConfig) {

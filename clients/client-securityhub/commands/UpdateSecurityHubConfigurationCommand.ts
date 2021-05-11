@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateSecurityHubConfigurationCommandInput = UpdateSecurityHubConfigurationRequest;
-export type UpdateSecurityHubConfigurationCommandOutput = UpdateSecurityHubConfigurationResponse & __MetadataBearer;
+export interface UpdateSecurityHubConfigurationCommandInput extends UpdateSecurityHubConfigurationRequest {}
+export interface UpdateSecurityHubConfigurationCommandOutput
+  extends UpdateSecurityHubConfigurationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Updates configuration options for Security Hub.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecurityHubClient, UpdateSecurityHubConfigurationCommand } from "@aws-sdk/client-securityhub"; // ES Modules import
+ * // const { SecurityHubClient, UpdateSecurityHubConfigurationCommand } = require("@aws-sdk/client-securityhub"); // CommonJS import
+ * const client = new SecurityHubClient(config);
+ * const command = new UpdateSecurityHubConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateSecurityHubConfigurationCommandInput} for command's `input` shape.
+ * @see {@link UpdateSecurityHubConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link SecurityHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateSecurityHubConfigurationCommand extends $Command<
   UpdateSecurityHubConfigurationCommandInput,

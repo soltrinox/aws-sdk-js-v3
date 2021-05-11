@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteResourceShareCommandInput = DeleteResourceShareRequest;
-export type DeleteResourceShareCommandOutput = DeleteResourceShareResponse & __MetadataBearer;
+export interface DeleteResourceShareCommandInput extends DeleteResourceShareRequest {}
+export interface DeleteResourceShareCommandOutput extends DeleteResourceShareResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified resource share.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RAMClient, DeleteResourceShareCommand } from "@aws-sdk/client-ram"; // ES Modules import
+ * // const { RAMClient, DeleteResourceShareCommand } = require("@aws-sdk/client-ram"); // CommonJS import
+ * const client = new RAMClient(config);
+ * const command = new DeleteResourceShareCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteResourceShareCommandInput} for command's `input` shape.
+ * @see {@link DeleteResourceShareCommandOutput} for command's `response` shape.
+ * @see {@link RAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteResourceShareCommand extends $Command<
   DeleteResourceShareCommandInput,

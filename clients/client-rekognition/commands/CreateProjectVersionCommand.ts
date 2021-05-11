@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateProjectVersionCommandInput = CreateProjectVersionRequest;
-export type CreateProjectVersionCommandOutput = CreateProjectVersionResponse & __MetadataBearer;
+export interface CreateProjectVersionCommandInput extends CreateProjectVersionRequest {}
+export interface CreateProjectVersionCommandOutput extends CreateProjectVersionResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new version of a model and begins training.
@@ -33,6 +33,20 @@ export type CreateProjectVersionCommandOutput = CreateProjectVersionResponse & _
  *          <p>After evaluating the model, you start the model
  *        by calling <a>StartProjectVersion</a>.</p>
  *          <p>This operation requires permissions to perform the <code>rekognition:CreateProjectVersion</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, CreateProjectVersionCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, CreateProjectVersionCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new CreateProjectVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateProjectVersionCommandInput} for command's `input` shape.
+ * @see {@link CreateProjectVersionCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateProjectVersionCommand extends $Command<
   CreateProjectVersionCommandInput,

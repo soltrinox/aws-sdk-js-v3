@@ -17,16 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CompareFacesCommandInput = CompareFacesRequest;
-export type CompareFacesCommandOutput = CompareFacesResponse & __MetadataBearer;
+export interface CompareFacesCommandInput extends CompareFacesRequest {}
+export interface CompareFacesCommandOutput extends CompareFacesResponse, __MetadataBearer {}
 
 /**
  * <p>Compares a face in the <i>source</i> input image with
  *       each of the 100 largest faces detected in the <i>target</i> input image.
  *     </p>
- *          <note>
- *             <p> If the source image contains multiple faces, the service detects the largest face
+ *
+ *          <p> If the source image contains multiple faces, the service detects the largest face
  *         and compares it with each face detected in the target image. </p>
+ *
+ *
+ *          <note>
+ *             <p>CompareFaces uses machine learning algorithms, which are probabilistic.
+ *       A false negative is an incorrect prediction that
+ *       a face in the target image has a low similarity confidence score when compared to the face
+ *       in the source image. To reduce the probability of false negatives,
+ *       we recommend that you compare the target image against multiple source images.
+ *       If you plan to use <code>CompareFaces</code> to make a decision that impacts an individual's rights,
+ *       privacy, or access to services, we recommend that you pass the result to a human for review and further
+ *       validation before taking action.</p>
  *          </note>
  *
  *
@@ -73,6 +84,20 @@ export type CompareFacesCommandOutput = CompareFacesResponse & __MetadataBearer;
  *          <p>For an example, see Comparing Faces in Images in the Amazon Rekognition Developer Guide.</p>
  *          <p>This operation requires permissions to perform the <code>rekognition:CompareFaces</code>
  *       action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, CompareFacesCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, CompareFacesCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new CompareFacesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CompareFacesCommandInput} for command's `input` shape.
+ * @see {@link CompareFacesCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CompareFacesCommand extends $Command<
   CompareFacesCommandInput,

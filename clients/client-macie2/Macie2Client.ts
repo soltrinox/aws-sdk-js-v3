@@ -47,6 +47,10 @@ import {
   DisableOrganizationAdminAccountCommandOutput,
 } from "./commands/DisableOrganizationAdminAccountCommand";
 import {
+  DisassociateFromAdministratorAccountCommandInput,
+  DisassociateFromAdministratorAccountCommandOutput,
+} from "./commands/DisassociateFromAdministratorAccountCommand";
+import {
   DisassociateFromMasterAccountCommandInput,
   DisassociateFromMasterAccountCommandOutput,
 } from "./commands/DisassociateFromMasterAccountCommand";
@@ -56,6 +60,10 @@ import {
   EnableOrganizationAdminAccountCommandInput,
   EnableOrganizationAdminAccountCommandOutput,
 } from "./commands/EnableOrganizationAdminAccountCommand";
+import {
+  GetAdministratorAccountCommandInput,
+  GetAdministratorAccountCommandOutput,
+} from "./commands/GetAdministratorAccountCommand";
 import {
   GetBucketStatisticsCommandInput,
   GetBucketStatisticsCommandOutput,
@@ -74,6 +82,10 @@ import {
 } from "./commands/GetFindingStatisticsCommand";
 import { GetFindingsCommandInput, GetFindingsCommandOutput } from "./commands/GetFindingsCommand";
 import { GetFindingsFilterCommandInput, GetFindingsFilterCommandOutput } from "./commands/GetFindingsFilterCommand";
+import {
+  GetFindingsPublicationConfigurationCommandInput,
+  GetFindingsPublicationConfigurationCommandOutput,
+} from "./commands/GetFindingsPublicationConfigurationCommand";
 import {
   GetInvitationsCountCommandInput,
   GetInvitationsCountCommandOutput,
@@ -110,6 +122,10 @@ import {
   PutClassificationExportConfigurationCommandInput,
   PutClassificationExportConfigurationCommandOutput,
 } from "./commands/PutClassificationExportConfigurationCommand";
+import {
+  PutFindingsPublicationConfigurationCommandInput,
+  PutFindingsPublicationConfigurationCommandOutput,
+} from "./commands/PutFindingsPublicationConfigurationCommand";
 import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
 import {
   TestCustomDataIdentifierCommandInput,
@@ -203,16 +219,19 @@ export type ServiceInputTypes =
   | DescribeOrganizationConfigurationCommandInput
   | DisableMacieCommandInput
   | DisableOrganizationAdminAccountCommandInput
+  | DisassociateFromAdministratorAccountCommandInput
   | DisassociateFromMasterAccountCommandInput
   | DisassociateMemberCommandInput
   | EnableMacieCommandInput
   | EnableOrganizationAdminAccountCommandInput
+  | GetAdministratorAccountCommandInput
   | GetBucketStatisticsCommandInput
   | GetClassificationExportConfigurationCommandInput
   | GetCustomDataIdentifierCommandInput
   | GetFindingStatisticsCommandInput
   | GetFindingsCommandInput
   | GetFindingsFilterCommandInput
+  | GetFindingsPublicationConfigurationCommandInput
   | GetInvitationsCountCommandInput
   | GetMacieSessionCommandInput
   | GetMasterAccountCommandInput
@@ -228,6 +247,7 @@ export type ServiceInputTypes =
   | ListOrganizationAdminAccountsCommandInput
   | ListTagsForResourceCommandInput
   | PutClassificationExportConfigurationCommandInput
+  | PutFindingsPublicationConfigurationCommandInput
   | TagResourceCommandInput
   | TestCustomDataIdentifierCommandInput
   | UntagResourceCommandInput
@@ -256,16 +276,19 @@ export type ServiceOutputTypes =
   | DescribeOrganizationConfigurationCommandOutput
   | DisableMacieCommandOutput
   | DisableOrganizationAdminAccountCommandOutput
+  | DisassociateFromAdministratorAccountCommandOutput
   | DisassociateFromMasterAccountCommandOutput
   | DisassociateMemberCommandOutput
   | EnableMacieCommandOutput
   | EnableOrganizationAdminAccountCommandOutput
+  | GetAdministratorAccountCommandOutput
   | GetBucketStatisticsCommandOutput
   | GetClassificationExportConfigurationCommandOutput
   | GetCustomDataIdentifierCommandOutput
   | GetFindingStatisticsCommandOutput
   | GetFindingsCommandOutput
   | GetFindingsFilterCommandOutput
+  | GetFindingsPublicationConfigurationCommandOutput
   | GetInvitationsCountCommandOutput
   | GetMacieSessionCommandOutput
   | GetMasterAccountCommandOutput
@@ -281,6 +304,7 @@ export type ServiceOutputTypes =
   | ListOrganizationAdminAccountsCommandOutput
   | ListTagsForResourceCommandOutput
   | PutClassificationExportConfigurationCommandOutput
+  | PutFindingsPublicationConfigurationCommandOutput
   | TagResourceCommandOutput
   | TestCustomDataIdentifierCommandOutput
   | UntagResourceCommandOutput
@@ -355,7 +379,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -386,7 +410,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type Macie2ClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type Macie2ClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -394,8 +418,12 @@ export type Macie2ClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOpti
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of Macie2Client class constructor that set the region, credentials and other options.
+ */
+export interface Macie2ClientConfig extends Macie2ClientConfigType {}
 
-export type Macie2ClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type Macie2ClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -403,6 +431,10 @@ export type Macie2ClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHan
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of Macie2Client class. This is resolved and normalized from the {@link Macie2ClientConfig | constructor configuration interface}.
+ */
+export interface Macie2ClientResolvedConfig extends Macie2ClientResolvedConfigType {}
 
 /**
  * <p>Amazon Macie is a fully managed data security and data privacy service that uses machine learning and pattern matching to discover and protect your sensitive data in AWS. Macie automates the discovery of sensitive data, such as PII and intellectual property, to provide you with insight into the data that your organization stores in AWS. Macie also provides an inventory of your Amazon S3 buckets, which it continually monitors for you. If Macie detects sensitive data or potential data access issues, it generates detailed findings for you to review and act upon as necessary.</p>
@@ -413,6 +445,9 @@ export class Macie2Client extends __Client<
   ServiceOutputTypes,
   Macie2ClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of Macie2Client class. This is resolved and normalized from the {@link Macie2ClientConfig | constructor configuration interface}.
+   */
   readonly config: Macie2ClientResolvedConfig;
 
   constructor(configuration: Macie2ClientConfig) {

@@ -17,12 +17,31 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListSecurityProfilesCommandInput = ListSecurityProfilesRequest;
-export type ListSecurityProfilesCommandOutput = ListSecurityProfilesResponse & __MetadataBearer;
+export interface ListSecurityProfilesCommandInput extends ListSecurityProfilesRequest {}
+export interface ListSecurityProfilesCommandOutput extends ListSecurityProfilesResponse, __MetadataBearer {}
 
 /**
- * <p>Lists the Device Defender security profiles you have created. You can use filters to list only those security
- *       profiles associated with a thing group or only those associated with your account.</p>
+ * <p>Lists the Device Defender security profiles
+ *       you've
+ *       created. You can filter security profiles by dimension or custom metric.</p>
+ *          <note>
+ *             <p>
+ *                <code>dimensionName</code> and <code>metricName</code> cannot be used in the same request.</p>
+ *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, ListSecurityProfilesCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, ListSecurityProfilesCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new ListSecurityProfilesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListSecurityProfilesCommandInput} for command's `input` shape.
+ * @see {@link ListSecurityProfilesCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListSecurityProfilesCommand extends $Command<
   ListSecurityProfilesCommandInput,

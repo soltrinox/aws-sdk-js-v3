@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTestGridSessionsCommandInput = ListTestGridSessionsRequest;
-export type ListTestGridSessionsCommandOutput = ListTestGridSessionsResult & __MetadataBearer;
+export interface ListTestGridSessionsCommandInput extends ListTestGridSessionsRequest {}
+export interface ListTestGridSessionsCommandOutput extends ListTestGridSessionsResult, __MetadataBearer {}
 
 /**
  * <p>Retrieves a list of sessions for a <a>TestGridProject</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, ListTestGridSessionsCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, ListTestGridSessionsCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new ListTestGridSessionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTestGridSessionsCommandInput} for command's `input` shape.
+ * @see {@link ListTestGridSessionsCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTestGridSessionsCommand extends $Command<
   ListTestGridSessionsCommandInput,

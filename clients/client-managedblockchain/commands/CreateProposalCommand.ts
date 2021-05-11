@@ -21,11 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateProposalCommandInput = CreateProposalInput;
-export type CreateProposalCommandOutput = CreateProposalOutput & __MetadataBearer;
+export interface CreateProposalCommandInput extends CreateProposalInput {}
+export interface CreateProposalCommandOutput extends CreateProposalOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a proposal for a change to the network that other members of the network can vote on, for example, a proposal to add a new member to the network. Any member can create a proposal.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ManagedBlockchainClient, CreateProposalCommand } from "@aws-sdk/client-managedblockchain"; // ES Modules import
+ * // const { ManagedBlockchainClient, CreateProposalCommand } = require("@aws-sdk/client-managedblockchain"); // CommonJS import
+ * const client = new ManagedBlockchainClient(config);
+ * const command = new CreateProposalCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateProposalCommandInput} for command's `input` shape.
+ * @see {@link CreateProposalCommandOutput} for command's `response` shape.
+ * @see {@link ManagedBlockchainClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateProposalCommand extends $Command<
   CreateProposalCommandInput,

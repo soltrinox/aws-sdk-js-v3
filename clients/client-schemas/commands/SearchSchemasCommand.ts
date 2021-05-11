@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SearchSchemasCommandInput = SearchSchemasRequest;
-export type SearchSchemasCommandOutput = SearchSchemasResponse & __MetadataBearer;
+export interface SearchSchemasCommandInput extends SearchSchemasRequest {}
+export interface SearchSchemasCommandOutput extends SearchSchemasResponse, __MetadataBearer {}
 
 /**
  * <p>Search the schemas</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SchemasClient, SearchSchemasCommand } from "@aws-sdk/client-schemas"; // ES Modules import
+ * // const { SchemasClient, SearchSchemasCommand } = require("@aws-sdk/client-schemas"); // CommonJS import
+ * const client = new SchemasClient(config);
+ * const command = new SearchSchemasCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SearchSchemasCommandInput} for command's `input` shape.
+ * @see {@link SearchSchemasCommandOutput} for command's `response` shape.
+ * @see {@link SchemasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SearchSchemasCommand extends $Command<
   SearchSchemasCommandInput,

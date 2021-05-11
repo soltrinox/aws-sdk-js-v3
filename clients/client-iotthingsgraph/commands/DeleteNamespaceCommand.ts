@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteNamespaceCommandInput = DeleteNamespaceRequest;
-export type DeleteNamespaceCommandOutput = DeleteNamespaceResponse & __MetadataBearer;
+export interface DeleteNamespaceCommandInput extends DeleteNamespaceRequest {}
+export interface DeleteNamespaceCommandOutput extends DeleteNamespaceResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified namespace. This action deletes all of the entities in the namespace. Delete the systems and flows that use entities in the namespace before performing this action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTThingsGraphClient, DeleteNamespaceCommand } from "@aws-sdk/client-iotthingsgraph"; // ES Modules import
+ * // const { IoTThingsGraphClient, DeleteNamespaceCommand } = require("@aws-sdk/client-iotthingsgraph"); // CommonJS import
+ * const client = new IoTThingsGraphClient(config);
+ * const command = new DeleteNamespaceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteNamespaceCommandInput} for command's `input` shape.
+ * @see {@link DeleteNamespaceCommandOutput} for command's `response` shape.
+ * @see {@link IoTThingsGraphClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteNamespaceCommand extends $Command<
   DeleteNamespaceCommandInput,

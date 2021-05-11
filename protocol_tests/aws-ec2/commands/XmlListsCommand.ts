@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type XmlListsCommandInput = {};
-export type XmlListsCommandOutput = XmlListsOutput & __MetadataBearer;
+export interface XmlListsCommandInput {}
+export interface XmlListsCommandOutput extends XmlListsOutput, __MetadataBearer {}
 
 /**
  * This test case serializes XML lists for the following cases for both
@@ -29,6 +29,20 @@ export type XmlListsCommandOutput = XmlListsOutput & __MetadataBearer;
  * 6. Flattened XML lists with @xmlName.
  * 7. Flattened XML lists with @xmlNamespace.
  * 8. Lists of structures.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2ProtocolClient, XmlListsCommand } from "@aws-sdk/aws-ec2"; // ES Modules import
+ * // const { EC2ProtocolClient, XmlListsCommand } = require("@aws-sdk/aws-ec2"); // CommonJS import
+ * const client = new EC2ProtocolClient(config);
+ * const command = new XmlListsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link XmlListsCommandInput} for command's `input` shape.
+ * @see {@link XmlListsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class XmlListsCommand extends $Command<
   XmlListsCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListApplicationsCommandInput = ListApplicationsRequest;
-export type ListApplicationsCommandOutput = ListApplicationsResponse & __MetadataBearer;
+export interface ListApplicationsCommandInput extends ListApplicationsRequest {}
+export interface ListApplicationsCommandOutput extends ListApplicationsResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -38,6 +38,20 @@ export type ListApplicationsCommandOutput = ListApplicationsResponse & __Metadat
  *             <a href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html">DescribeApplication</a>.</p>
  *         <p>This operation requires permissions to perform the
  *             <code>kinesisanalytics:ListApplications</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisAnalyticsClient, ListApplicationsCommand } from "@aws-sdk/client-kinesis-analytics"; // ES Modules import
+ * // const { KinesisAnalyticsClient, ListApplicationsCommand } = require("@aws-sdk/client-kinesis-analytics"); // CommonJS import
+ * const client = new KinesisAnalyticsClient(config);
+ * const command = new ListApplicationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListApplicationsCommandInput} for command's `input` shape.
+ * @see {@link ListApplicationsCommandOutput} for command's `response` shape.
+ * @see {@link KinesisAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListApplicationsCommand extends $Command<
   ListApplicationsCommandInput,

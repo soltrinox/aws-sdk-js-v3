@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UntagResourceCommandInput = UntagResourceInput;
-export type UntagResourceCommandOutput = __MetadataBearer;
+export interface UntagResourceCommandInput extends UntagResourceInput {}
+export interface UntagResourceCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Removes a set of key-value pairs from a recovery point, backup plan, or backup vault
  *          identified by an Amazon Resource Name (ARN)</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BackupClient, UntagResourceCommand } from "@aws-sdk/client-backup"; // ES Modules import
+ * // const { BackupClient, UntagResourceCommand } = require("@aws-sdk/client-backup"); // CommonJS import
+ * const client = new BackupClient(config);
+ * const command = new UntagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UntagResourceCommandInput} for command's `input` shape.
+ * @see {@link UntagResourceCommandOutput} for command's `response` shape.
+ * @see {@link BackupClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UntagResourceCommand extends $Command<
   UntagResourceCommandInput,

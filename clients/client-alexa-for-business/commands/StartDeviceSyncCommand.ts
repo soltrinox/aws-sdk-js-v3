@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartDeviceSyncCommandInput = StartDeviceSyncRequest;
-export type StartDeviceSyncCommandOutput = StartDeviceSyncResponse & __MetadataBearer;
+export interface StartDeviceSyncCommandInput extends StartDeviceSyncRequest {}
+export interface StartDeviceSyncCommandOutput extends StartDeviceSyncResponse, __MetadataBearer {}
 
 /**
  * <p>Resets a device and its account to the known default settings. This clears all
@@ -43,6 +43,20 @@ export type StartDeviceSyncCommandOutput = StartDeviceSyncResponse & __MetadataB
  *                communications (if enabled on the room profile).</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, StartDeviceSyncCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, StartDeviceSyncCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new StartDeviceSyncCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartDeviceSyncCommandInput} for command's `input` shape.
+ * @see {@link StartDeviceSyncCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartDeviceSyncCommand extends $Command<
   StartDeviceSyncCommandInput,

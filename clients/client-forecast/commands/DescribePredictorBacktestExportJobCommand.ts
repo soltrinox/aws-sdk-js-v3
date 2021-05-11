@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribePredictorBacktestExportJobCommandInput = DescribePredictorBacktestExportJobRequest;
-export type DescribePredictorBacktestExportJobCommandOutput = DescribePredictorBacktestExportJobResponse &
-  __MetadataBearer;
+export interface DescribePredictorBacktestExportJobCommandInput extends DescribePredictorBacktestExportJobRequest {}
+export interface DescribePredictorBacktestExportJobCommandOutput
+  extends DescribePredictorBacktestExportJobResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Describes a predictor backtest export job created using the <a>CreatePredictorBacktestExportJob</a> operation.</p>
@@ -50,6 +51,20 @@ export type DescribePredictorBacktestExportJobCommandOutput = DescribePredictorB
  *                   <code>Message</code> (if an error occurred)</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ForecastClient, DescribePredictorBacktestExportJobCommand } from "@aws-sdk/client-forecast"; // ES Modules import
+ * // const { ForecastClient, DescribePredictorBacktestExportJobCommand } = require("@aws-sdk/client-forecast"); // CommonJS import
+ * const client = new ForecastClient(config);
+ * const command = new DescribePredictorBacktestExportJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribePredictorBacktestExportJobCommandInput} for command's `input` shape.
+ * @see {@link DescribePredictorBacktestExportJobCommandOutput} for command's `response` shape.
+ * @see {@link ForecastClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribePredictorBacktestExportJobCommand extends $Command<
   DescribePredictorBacktestExportJobCommandInput,

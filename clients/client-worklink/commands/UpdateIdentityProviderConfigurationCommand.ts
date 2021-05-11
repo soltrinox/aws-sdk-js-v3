@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateIdentityProviderConfigurationCommandInput = UpdateIdentityProviderConfigurationRequest;
-export type UpdateIdentityProviderConfigurationCommandOutput = UpdateIdentityProviderConfigurationResponse &
-  __MetadataBearer;
+export interface UpdateIdentityProviderConfigurationCommandInput extends UpdateIdentityProviderConfigurationRequest {}
+export interface UpdateIdentityProviderConfigurationCommandOutput
+  extends UpdateIdentityProviderConfigurationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Updates the identity provider configuration for the fleet.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkLinkClient, UpdateIdentityProviderConfigurationCommand } from "@aws-sdk/client-worklink"; // ES Modules import
+ * // const { WorkLinkClient, UpdateIdentityProviderConfigurationCommand } = require("@aws-sdk/client-worklink"); // CommonJS import
+ * const client = new WorkLinkClient(config);
+ * const command = new UpdateIdentityProviderConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateIdentityProviderConfigurationCommandInput} for command's `input` shape.
+ * @see {@link UpdateIdentityProviderConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link WorkLinkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateIdentityProviderConfigurationCommand extends $Command<
   UpdateIdentityProviderConfigurationCommandInput,

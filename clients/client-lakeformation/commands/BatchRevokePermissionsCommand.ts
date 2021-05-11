@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchRevokePermissionsCommandInput = BatchRevokePermissionsRequest;
-export type BatchRevokePermissionsCommandOutput = BatchRevokePermissionsResponse & __MetadataBearer;
+export interface BatchRevokePermissionsCommandInput extends BatchRevokePermissionsRequest {}
+export interface BatchRevokePermissionsCommandOutput extends BatchRevokePermissionsResponse, __MetadataBearer {}
 
 /**
  * <p>Batch operation to revoke permissions from the principal.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LakeFormationClient, BatchRevokePermissionsCommand } from "@aws-sdk/client-lakeformation"; // ES Modules import
+ * // const { LakeFormationClient, BatchRevokePermissionsCommand } = require("@aws-sdk/client-lakeformation"); // CommonJS import
+ * const client = new LakeFormationClient(config);
+ * const command = new BatchRevokePermissionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchRevokePermissionsCommandInput} for command's `input` shape.
+ * @see {@link BatchRevokePermissionsCommandOutput} for command's `response` shape.
+ * @see {@link LakeFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchRevokePermissionsCommand extends $Command<
   BatchRevokePermissionsCommandInput,

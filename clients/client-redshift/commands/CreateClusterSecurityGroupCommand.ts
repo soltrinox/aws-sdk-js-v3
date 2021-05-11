@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateClusterSecurityGroupCommandInput = CreateClusterSecurityGroupMessage;
-export type CreateClusterSecurityGroupCommandOutput = CreateClusterSecurityGroupResult & __MetadataBearer;
+export interface CreateClusterSecurityGroupCommandInput extends CreateClusterSecurityGroupMessage {}
+export interface CreateClusterSecurityGroupCommandOutput extends CreateClusterSecurityGroupResult, __MetadataBearer {}
 
 /**
  * <p>Creates a new Amazon Redshift security group. You use security groups to control access
@@ -27,6 +27,20 @@ export type CreateClusterSecurityGroupCommandOutput = CreateClusterSecurityGroup
  * For information about managing security groups, go to
  * <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html">Amazon Redshift Cluster Security Groups</a> in the
  * <i>Amazon Redshift Cluster Management Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, CreateClusterSecurityGroupCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, CreateClusterSecurityGroupCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new CreateClusterSecurityGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateClusterSecurityGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateClusterSecurityGroupCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateClusterSecurityGroupCommand extends $Command<
   CreateClusterSecurityGroupCommandInput,

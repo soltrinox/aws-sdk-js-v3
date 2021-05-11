@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RecursiveXmlShapesCommandInput = {};
-export type RecursiveXmlShapesCommandOutput = RecursiveXmlShapesOutput & __MetadataBearer;
+export interface RecursiveXmlShapesCommandInput {}
+export interface RecursiveXmlShapesCommandOutput extends RecursiveXmlShapesOutput, __MetadataBearer {}
 
 /**
  * Recursive shapes
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QueryProtocolClient, RecursiveXmlShapesCommand } from "@aws-sdk/aws-query"; // ES Modules import
+ * // const { QueryProtocolClient, RecursiveXmlShapesCommand } = require("@aws-sdk/aws-query"); // CommonJS import
+ * const client = new QueryProtocolClient(config);
+ * const command = new RecursiveXmlShapesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RecursiveXmlShapesCommandInput} for command's `input` shape.
+ * @see {@link RecursiveXmlShapesCommandOutput} for command's `response` shape.
+ * @see {@link QueryProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RecursiveXmlShapesCommand extends $Command<
   RecursiveXmlShapesCommandInput,

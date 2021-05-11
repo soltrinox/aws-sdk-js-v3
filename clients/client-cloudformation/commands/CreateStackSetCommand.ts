@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateStackSetCommandInput = CreateStackSetInput;
-export type CreateStackSetCommandOutput = CreateStackSetOutput & __MetadataBearer;
+export interface CreateStackSetCommandInput extends CreateStackSetInput {}
+export interface CreateStackSetCommandOutput extends CreateStackSetOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a stack set.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, CreateStackSetCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, CreateStackSetCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new CreateStackSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateStackSetCommandInput} for command's `input` shape.
+ * @see {@link CreateStackSetCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateStackSetCommand extends $Command<
   CreateStackSetCommandInput,

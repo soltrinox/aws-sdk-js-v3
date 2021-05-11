@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeLimitsCommandInput = DescribeLimitsInput;
-export type DescribeLimitsCommandOutput = DescribeLimitsOutput & __MetadataBearer;
+export interface DescribeLimitsCommandInput extends DescribeLimitsInput {}
+export interface DescribeLimitsCommandOutput extends DescribeLimitsOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the current provisioned-capacity quotas for your AWS account in a Region, both
@@ -85,6 +85,20 @@ export type DescribeLimitsCommandOutput = DescribeLimitsOutput & __MetadataBeare
  *         errors if you call it more than once in a minute.</p>
  *          </note>
  *          <p>The <code>DescribeLimits</code> Request element has no content.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, DescribeLimitsCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, DescribeLimitsCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new DescribeLimitsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeLimitsCommandInput} for command's `input` shape.
+ * @see {@link DescribeLimitsCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeLimitsCommand extends $Command<
   DescribeLimitsCommandInput,

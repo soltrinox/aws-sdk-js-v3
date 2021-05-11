@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateTransitGatewayRouteTableCommandInput = AssociateTransitGatewayRouteTableRequest;
-export type AssociateTransitGatewayRouteTableCommandOutput = AssociateTransitGatewayRouteTableResult & __MetadataBearer;
+export interface AssociateTransitGatewayRouteTableCommandInput extends AssociateTransitGatewayRouteTableRequest {}
+export interface AssociateTransitGatewayRouteTableCommandOutput
+  extends AssociateTransitGatewayRouteTableResult,
+    __MetadataBearer {}
 
 /**
  * <p>Associates the specified attachment with the specified transit gateway route table. You can
  *         associate only one route table with an attachment.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, AssociateTransitGatewayRouteTableCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, AssociateTransitGatewayRouteTableCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new AssociateTransitGatewayRouteTableCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateTransitGatewayRouteTableCommandInput} for command's `input` shape.
+ * @see {@link AssociateTransitGatewayRouteTableCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateTransitGatewayRouteTableCommand extends $Command<
   AssociateTransitGatewayRouteTableCommandInput,

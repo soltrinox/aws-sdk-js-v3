@@ -1,6 +1,5 @@
 import { EC2ClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../EC2Client";
-import { DescribeInstanceTypesRequest } from "../models/models_2";
-import { DescribeInstanceTypesResult } from "../models/models_3";
+import { DescribeInstanceTypesRequest, DescribeInstanceTypesResult } from "../models/models_3";
 import {
   deserializeAws_ec2DescribeInstanceTypesCommand,
   serializeAws_ec2DescribeInstanceTypesCommand,
@@ -18,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeInstanceTypesCommandInput = DescribeInstanceTypesRequest;
-export type DescribeInstanceTypesCommandOutput = DescribeInstanceTypesResult & __MetadataBearer;
+export interface DescribeInstanceTypesCommandInput extends DescribeInstanceTypesRequest {}
+export interface DescribeInstanceTypesCommandOutput extends DescribeInstanceTypesResult, __MetadataBearer {}
 
 /**
  * <p>Describes the details of the instance types that are offered in a location. The results can be filtered by the
  *    attributes of the instance types.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeInstanceTypesCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeInstanceTypesCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeInstanceTypesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeInstanceTypesCommandInput} for command's `input` shape.
+ * @see {@link DescribeInstanceTypesCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeInstanceTypesCommand extends $Command<
   DescribeInstanceTypesCommandInput,

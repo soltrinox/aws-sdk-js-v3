@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DetectLabelsCommandInput = DetectLabelsRequest;
-export type DetectLabelsCommandOutput = DetectLabelsResponse & __MetadataBearer;
+export interface DetectLabelsCommandInput extends DetectLabelsRequest {}
+export interface DetectLabelsCommandOutput extends DetectLabelsResponse, __MetadataBearer {}
 
 /**
  * <p>Detects instances of real-world entities within an image (JPEG or PNG)
@@ -95,6 +95,20 @@ export type DetectLabelsCommandOutput = DetectLabelsResponse & __MetadataBearer;
  *       data.</p>
  *          <p>This operation requires permissions to perform the
  *         <code>rekognition:DetectLabels</code> action. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, DetectLabelsCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, DetectLabelsCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new DetectLabelsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DetectLabelsCommandInput} for command's `input` shape.
+ * @see {@link DetectLabelsCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DetectLabelsCommand extends $Command<
   DetectLabelsCommandInput,

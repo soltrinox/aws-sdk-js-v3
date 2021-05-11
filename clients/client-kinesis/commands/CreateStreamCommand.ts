@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateStreamCommandInput = CreateStreamInput;
-export type CreateStreamCommandOutput = __MetadataBearer;
+export interface CreateStreamCommandInput extends CreateStreamInput {}
+export interface CreateStreamCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Creates a Kinesis data stream. A stream captures and transports data records that
@@ -62,6 +62,20 @@ export type CreateStreamCommandOutput = __MetadataBearer;
  *         <p>
  *             <a>CreateStream</a> has a limit of five transactions per second per
  *             account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisClient, CreateStreamCommand } from "@aws-sdk/client-kinesis"; // ES Modules import
+ * // const { KinesisClient, CreateStreamCommand } = require("@aws-sdk/client-kinesis"); // CommonJS import
+ * const client = new KinesisClient(config);
+ * const command = new CreateStreamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateStreamCommandInput} for command's `input` shape.
+ * @see {@link CreateStreamCommandOutput} for command's `response` shape.
+ * @see {@link KinesisClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateStreamCommand extends $Command<
   CreateStreamCommandInput,

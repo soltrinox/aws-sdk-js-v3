@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDomainsCommandInput = ListDomainsRequest;
-export type ListDomainsCommandOutput = ListDomainsResponse & __MetadataBearer;
+export interface ListDomainsCommandInput extends ListDomainsRequest {}
+export interface ListDomainsCommandOutput extends ListDomainsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a list of domains associated to a specified fleet.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkLinkClient, ListDomainsCommand } from "@aws-sdk/client-worklink"; // ES Modules import
+ * // const { WorkLinkClient, ListDomainsCommand } = require("@aws-sdk/client-worklink"); // CommonJS import
+ * const client = new WorkLinkClient(config);
+ * const command = new ListDomainsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDomainsCommandInput} for command's `input` shape.
+ * @see {@link ListDomainsCommandOutput} for command's `response` shape.
+ * @see {@link WorkLinkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDomainsCommand extends $Command<
   ListDomainsCommandInput,

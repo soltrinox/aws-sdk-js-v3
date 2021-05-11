@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetChannelsCommandInput = GetChannelsRequest;
-export type GetChannelsCommandOutput = GetChannelsResponse & __MetadataBearer;
+export interface GetChannelsCommandInput extends GetChannelsRequest {}
+export interface GetChannelsCommandOutput extends GetChannelsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about the history and status of each channel for an application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, GetChannelsCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, GetChannelsCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new GetChannelsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetChannelsCommandInput} for command's `input` shape.
+ * @see {@link GetChannelsCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetChannelsCommand extends $Command<
   GetChannelsCommandInput,

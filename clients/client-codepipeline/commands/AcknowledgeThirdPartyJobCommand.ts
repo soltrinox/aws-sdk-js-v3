@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AcknowledgeThirdPartyJobCommandInput = AcknowledgeThirdPartyJobInput;
-export type AcknowledgeThirdPartyJobCommandOutput = AcknowledgeThirdPartyJobOutput & __MetadataBearer;
+export interface AcknowledgeThirdPartyJobCommandInput extends AcknowledgeThirdPartyJobInput {}
+export interface AcknowledgeThirdPartyJobCommandOutput extends AcknowledgeThirdPartyJobOutput, __MetadataBearer {}
 
 /**
  * <p>Confirms a job worker has received the specified job. Used for partner actions
  *             only.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodePipelineClient, AcknowledgeThirdPartyJobCommand } from "@aws-sdk/client-codepipeline"; // ES Modules import
+ * // const { CodePipelineClient, AcknowledgeThirdPartyJobCommand } = require("@aws-sdk/client-codepipeline"); // CommonJS import
+ * const client = new CodePipelineClient(config);
+ * const command = new AcknowledgeThirdPartyJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AcknowledgeThirdPartyJobCommandInput} for command's `input` shape.
+ * @see {@link AcknowledgeThirdPartyJobCommandOutput} for command's `response` shape.
+ * @see {@link CodePipelineClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AcknowledgeThirdPartyJobCommand extends $Command<
   AcknowledgeThirdPartyJobCommandInput,

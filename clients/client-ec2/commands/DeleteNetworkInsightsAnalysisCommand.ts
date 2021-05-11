@@ -1,5 +1,5 @@
 import { EC2ClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../EC2Client";
-import { DeleteNetworkInsightsAnalysisRequest, DeleteNetworkInsightsAnalysisResult } from "../models/models_1";
+import { DeleteNetworkInsightsAnalysisRequest, DeleteNetworkInsightsAnalysisResult } from "../models/models_2";
 import {
   deserializeAws_ec2DeleteNetworkInsightsAnalysisCommand,
   serializeAws_ec2DeleteNetworkInsightsAnalysisCommand,
@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteNetworkInsightsAnalysisCommandInput = DeleteNetworkInsightsAnalysisRequest;
-export type DeleteNetworkInsightsAnalysisCommandOutput = DeleteNetworkInsightsAnalysisResult & __MetadataBearer;
+export interface DeleteNetworkInsightsAnalysisCommandInput extends DeleteNetworkInsightsAnalysisRequest {}
+export interface DeleteNetworkInsightsAnalysisCommandOutput
+  extends DeleteNetworkInsightsAnalysisResult,
+    __MetadataBearer {}
 
 /**
  * <p>Deletes the specified network insights analysis.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DeleteNetworkInsightsAnalysisCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DeleteNetworkInsightsAnalysisCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DeleteNetworkInsightsAnalysisCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteNetworkInsightsAnalysisCommandInput} for command's `input` shape.
+ * @see {@link DeleteNetworkInsightsAnalysisCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteNetworkInsightsAnalysisCommand extends $Command<
   DeleteNetworkInsightsAnalysisCommandInput,

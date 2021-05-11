@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateTopicRuleDestinationCommandInput = UpdateTopicRuleDestinationRequest;
-export type UpdateTopicRuleDestinationCommandOutput = UpdateTopicRuleDestinationResponse & __MetadataBearer;
+export interface UpdateTopicRuleDestinationCommandInput extends UpdateTopicRuleDestinationRequest {}
+export interface UpdateTopicRuleDestinationCommandOutput extends UpdateTopicRuleDestinationResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a topic rule destination. You use this to change the status, endpoint URL, or
  *          confirmation URL of the destination.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, UpdateTopicRuleDestinationCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, UpdateTopicRuleDestinationCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new UpdateTopicRuleDestinationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateTopicRuleDestinationCommandInput} for command's `input` shape.
+ * @see {@link UpdateTopicRuleDestinationCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateTopicRuleDestinationCommand extends $Command<
   UpdateTopicRuleDestinationCommandInput,

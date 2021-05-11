@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeStatementCommandInput = DescribeStatementRequest;
-export type DescribeStatementCommandOutput = DescribeStatementResponse & __MetadataBearer;
+export interface DescribeStatementCommandInput extends DescribeStatementRequest {}
+export interface DescribeStatementCommandOutput extends DescribeStatementResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the details about a specific instance when a query was run by the Amazon Redshift Data API. The information
  *       includes when the query started, when it finished, the query status, the number of rows returned, and the SQL
  *       statement. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftDataClient, DescribeStatementCommand } from "@aws-sdk/client-redshift-data"; // ES Modules import
+ * // const { RedshiftDataClient, DescribeStatementCommand } = require("@aws-sdk/client-redshift-data"); // CommonJS import
+ * const client = new RedshiftDataClient(config);
+ * const command = new DescribeStatementCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeStatementCommandInput} for command's `input` shape.
+ * @see {@link DescribeStatementCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftDataClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeStatementCommand extends $Command<
   DescribeStatementCommandInput,

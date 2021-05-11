@@ -21,14 +21,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeScalingActivitiesCommandInput = DescribeScalingActivitiesRequest;
-export type DescribeScalingActivitiesCommandOutput = DescribeScalingActivitiesResponse & __MetadataBearer;
+export interface DescribeScalingActivitiesCommandInput extends DescribeScalingActivitiesRequest {}
+export interface DescribeScalingActivitiesCommandOutput extends DescribeScalingActivitiesResponse, __MetadataBearer {}
 
 /**
  * <p>Provides descriptive information about the scaling activities in the specified namespace
  *          from the previous six weeks.</p>
  *          <p>You can filter the results using <code>ResourceId</code> and
  *             <code>ScalableDimension</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationAutoScalingClient, DescribeScalingActivitiesCommand } from "@aws-sdk/client-application-auto-scaling"; // ES Modules import
+ * // const { ApplicationAutoScalingClient, DescribeScalingActivitiesCommand } = require("@aws-sdk/client-application-auto-scaling"); // CommonJS import
+ * const client = new ApplicationAutoScalingClient(config);
+ * const command = new DescribeScalingActivitiesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeScalingActivitiesCommandInput} for command's `input` shape.
+ * @see {@link DescribeScalingActivitiesCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationAutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeScalingActivitiesCommand extends $Command<
   DescribeScalingActivitiesCommandInput,

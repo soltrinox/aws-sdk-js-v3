@@ -17,9 +17,32 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeResourceCollectionHealthCommandInput = DescribeResourceCollectionHealthRequest;
-export type DescribeResourceCollectionHealthCommandOutput = DescribeResourceCollectionHealthResponse & __MetadataBearer;
+export interface DescribeResourceCollectionHealthCommandInput extends DescribeResourceCollectionHealthRequest {}
+export interface DescribeResourceCollectionHealthCommandOutput
+  extends DescribeResourceCollectionHealthResponse,
+    __MetadataBearer {}
 
+/**
+ * <p>
+ *    		Returns the number of open proactive insights, open reactive insights, and the Mean Time to Recover (MTTR) for all closed insights in
+ *    		resource collections in your account. You specify the type of AWS resources collection. The one type of AWS resource collection supported is AWS CloudFormation stacks. DevOps Guru can be configured to analyze
+ *       	only the AWS resources that are defined in the stacks.
+ *    	</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DevOpsGuruClient, DescribeResourceCollectionHealthCommand } from "@aws-sdk/client-devops-guru"; // ES Modules import
+ * // const { DevOpsGuruClient, DescribeResourceCollectionHealthCommand } = require("@aws-sdk/client-devops-guru"); // CommonJS import
+ * const client = new DevOpsGuruClient(config);
+ * const command = new DescribeResourceCollectionHealthCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeResourceCollectionHealthCommandInput} for command's `input` shape.
+ * @see {@link DescribeResourceCollectionHealthCommandOutput} for command's `response` shape.
+ * @see {@link DevOpsGuruClientResolvedConfig | config} for command's `input` shape.
+ *
+ */
 export class DescribeResourceCollectionHealthCommand extends $Command<
   DescribeResourceCollectionHealthCommandInput,
   DescribeResourceCollectionHealthCommandOutput,

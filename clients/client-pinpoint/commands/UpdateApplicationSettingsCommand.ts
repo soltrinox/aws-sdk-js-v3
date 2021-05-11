@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateApplicationSettingsCommandInput = UpdateApplicationSettingsRequest;
-export type UpdateApplicationSettingsCommandOutput = UpdateApplicationSettingsResponse & __MetadataBearer;
+export interface UpdateApplicationSettingsCommandInput extends UpdateApplicationSettingsRequest {}
+export interface UpdateApplicationSettingsCommandOutput extends UpdateApplicationSettingsResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the settings for an application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, UpdateApplicationSettingsCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, UpdateApplicationSettingsCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new UpdateApplicationSettingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateApplicationSettingsCommandInput} for command's `input` shape.
+ * @see {@link UpdateApplicationSettingsCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateApplicationSettingsCommand extends $Command<
   UpdateApplicationSettingsCommandInput,

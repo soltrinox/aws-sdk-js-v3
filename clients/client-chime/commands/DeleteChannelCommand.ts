@@ -17,11 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteChannelCommandInput = DeleteChannelRequest;
-export type DeleteChannelCommandOutput = __MetadataBearer;
+export interface DeleteChannelCommandInput extends DeleteChannelRequest {}
+export interface DeleteChannelCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Immediately makes a channel and its memberships inaccessible and marks them for deletion. This is an irreversible process.</p>
+ *
+ *          <note>
+ *             <p>The <code>x-amz-chime-bearer</code> request header is mandatory. Use the <code>AppInstanceUserArn</code> of the user that makes
+ *         the API call as the value in the header.</p>
+ *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, DeleteChannelCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, DeleteChannelCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new DeleteChannelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteChannelCommandInput} for command's `input` shape.
+ * @see {@link DeleteChannelCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteChannelCommand extends $Command<
   DeleteChannelCommandInput,

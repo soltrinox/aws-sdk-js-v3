@@ -2,7 +2,7 @@ import { RedshiftClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } f
 import {
   GetReservedNodeExchangeOfferingsInputMessage,
   GetReservedNodeExchangeOfferingsOutputMessage,
-} from "../models/models_0";
+} from "../models/models_1";
 import {
   deserializeAws_queryGetReservedNodeExchangeOfferingsCommand,
   serializeAws_queryGetReservedNodeExchangeOfferingsCommand,
@@ -20,13 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetReservedNodeExchangeOfferingsCommandInput = GetReservedNodeExchangeOfferingsInputMessage;
-export type GetReservedNodeExchangeOfferingsCommandOutput = GetReservedNodeExchangeOfferingsOutputMessage &
-  __MetadataBearer;
+export interface GetReservedNodeExchangeOfferingsCommandInput extends GetReservedNodeExchangeOfferingsInputMessage {}
+export interface GetReservedNodeExchangeOfferingsCommandOutput
+  extends GetReservedNodeExchangeOfferingsOutputMessage,
+    __MetadataBearer {}
 
 /**
  * <p>Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term,
  *             and usage price of the given DC1 reserved node.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, GetReservedNodeExchangeOfferingsCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, GetReservedNodeExchangeOfferingsCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new GetReservedNodeExchangeOfferingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetReservedNodeExchangeOfferingsCommandInput} for command's `input` shape.
+ * @see {@link GetReservedNodeExchangeOfferingsCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetReservedNodeExchangeOfferingsCommand extends $Command<
   GetReservedNodeExchangeOfferingsCommandInput,

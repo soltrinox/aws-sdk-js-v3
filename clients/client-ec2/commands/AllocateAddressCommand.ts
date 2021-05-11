@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AllocateAddressCommandInput = AllocateAddressRequest;
-export type AllocateAddressCommandOutput = AllocateAddressResult & __MetadataBearer;
+export interface AllocateAddressCommandInput extends AllocateAddressRequest {}
+export interface AllocateAddressCommandOutput extends AllocateAddressResult, __MetadataBearer {}
 
 /**
  * <p>Allocates an Elastic IP address to your AWS account. After you allocate the Elastic IP address you can associate
@@ -31,6 +31,20 @@ export type AllocateAddressCommandOutput = AllocateAddressResult & __MetadataBea
  *          5 Elastic IP addresses for EC2-Classic per Region and 5 Elastic IP addresses for EC2-VPC per Region.</p>
  *          <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP Addresses</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
  *          <p>You can allocate a carrier IP address which is a public IP address from a telecommunication carrier, to a network interface which resides in a subnet in a Wavelength Zone (for example an EC2 instance). </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, AllocateAddressCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, AllocateAddressCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new AllocateAddressCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AllocateAddressCommandInput} for command's `input` shape.
+ * @see {@link AllocateAddressCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AllocateAddressCommand extends $Command<
   AllocateAddressCommandInput,

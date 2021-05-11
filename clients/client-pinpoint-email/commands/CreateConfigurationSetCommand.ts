@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateConfigurationSetCommandInput = CreateConfigurationSetRequest;
-export type CreateConfigurationSetCommandOutput = CreateConfigurationSetResponse & __MetadataBearer;
+export interface CreateConfigurationSetCommandInput extends CreateConfigurationSetRequest {}
+export interface CreateConfigurationSetCommandOutput extends CreateConfigurationSetResponse, __MetadataBearer {}
 
 /**
  * <p>Create a configuration set. <i>Configuration sets</i> are groups of
@@ -26,6 +26,20 @@ export type CreateConfigurationSetCommandOutput = CreateConfigurationSetResponse
  *             set to an email by including a reference to the configuration set in the headers of the
  *             email. When you apply a configuration set to an email, all of the rules in that
  *             configuration set are applied to the email. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointEmailClient, CreateConfigurationSetCommand } from "@aws-sdk/client-pinpoint-email"; // ES Modules import
+ * // const { PinpointEmailClient, CreateConfigurationSetCommand } = require("@aws-sdk/client-pinpoint-email"); // CommonJS import
+ * const client = new PinpointEmailClient(config);
+ * const command = new CreateConfigurationSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateConfigurationSetCommandInput} for command's `input` shape.
+ * @see {@link CreateConfigurationSetCommandOutput} for command's `response` shape.
+ * @see {@link PinpointEmailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateConfigurationSetCommand extends $Command<
   CreateConfigurationSetCommandInput,

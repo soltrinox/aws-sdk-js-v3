@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PromoteReadReplicaCommandInput = PromoteReadReplicaMessage;
-export type PromoteReadReplicaCommandOutput = PromoteReadReplicaResult & __MetadataBearer;
+export interface PromoteReadReplicaCommandInput extends PromoteReadReplicaMessage {}
+export interface PromoteReadReplicaCommandOutput extends PromoteReadReplicaResult, __MetadataBearer {}
 
 /**
  * <p>Promotes a read replica DB instance to a standalone DB instance.</p>
@@ -40,6 +40,20 @@ export type PromoteReadReplicaCommandOutput = PromoteReadReplicaResult & __Metad
  *             </ul>
  *
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, PromoteReadReplicaCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, PromoteReadReplicaCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new PromoteReadReplicaCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PromoteReadReplicaCommandInput} for command's `input` shape.
+ * @see {@link PromoteReadReplicaCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PromoteReadReplicaCommand extends $Command<
   PromoteReadReplicaCommandInput,

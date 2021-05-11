@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListGlobalTablesCommandInput = ListGlobalTablesInput;
-export type ListGlobalTablesCommandOutput = ListGlobalTablesOutput & __MetadataBearer;
+export interface ListGlobalTablesCommandInput extends ListGlobalTablesInput {}
+export interface ListGlobalTablesCommandOutput extends ListGlobalTablesOutput, __MetadataBearer {}
 
 /**
  * <p>Lists all global tables that have a replica in the specified Region.</p>
  *           <note>
  *             <p>This operation only applies to <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html">Version 2017.11.29</a> of global tables.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, ListGlobalTablesCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, ListGlobalTablesCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new ListGlobalTablesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListGlobalTablesCommandInput} for command's `input` shape.
+ * @see {@link ListGlobalTablesCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListGlobalTablesCommand extends $Command<
   ListGlobalTablesCommandInput,

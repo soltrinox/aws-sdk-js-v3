@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateRemoteAccessSessionCommandInput = CreateRemoteAccessSessionRequest;
-export type CreateRemoteAccessSessionCommandOutput = CreateRemoteAccessSessionResult & __MetadataBearer;
+export interface CreateRemoteAccessSessionCommandInput extends CreateRemoteAccessSessionRequest {}
+export interface CreateRemoteAccessSessionCommandOutput extends CreateRemoteAccessSessionResult, __MetadataBearer {}
 
 /**
  * <p>Specifies and starts a remote access session.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, CreateRemoteAccessSessionCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, CreateRemoteAccessSessionCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new CreateRemoteAccessSessionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateRemoteAccessSessionCommandInput} for command's `input` shape.
+ * @see {@link CreateRemoteAccessSessionCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateRemoteAccessSessionCommand extends $Command<
   CreateRemoteAccessSessionCommandInput,

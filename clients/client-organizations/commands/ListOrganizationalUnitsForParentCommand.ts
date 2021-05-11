@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListOrganizationalUnitsForParentCommandInput = ListOrganizationalUnitsForParentRequest;
-export type ListOrganizationalUnitsForParentCommandOutput = ListOrganizationalUnitsForParentResponse & __MetadataBearer;
+export interface ListOrganizationalUnitsForParentCommandInput extends ListOrganizationalUnitsForParentRequest {}
+export interface ListOrganizationalUnitsForParentCommandOutput
+  extends ListOrganizationalUnitsForParentResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Lists the organizational units (OUs) in a parent organizational unit or root.</p>
@@ -30,8 +32,22 @@ export type ListOrganizationalUnitsForParentCommandOutput = ListOrganizationalUn
  *                <i>only</i>
  * when there are no more results to display.</p>
  *          </note>
- *          <p>This operation can be called only from the organization's
+ *         <p>This operation can be called only from the organization's
  * management account or by a member account that is a delegated administrator for an AWS service.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, ListOrganizationalUnitsForParentCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, ListOrganizationalUnitsForParentCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new ListOrganizationalUnitsForParentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListOrganizationalUnitsForParentCommandInput} for command's `input` shape.
+ * @see {@link ListOrganizationalUnitsForParentCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListOrganizationalUnitsForParentCommand extends $Command<
   ListOrganizationalUnitsForParentCommandInput,

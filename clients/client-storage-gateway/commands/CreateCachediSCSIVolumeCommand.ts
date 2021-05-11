@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCachediSCSIVolumeCommandInput = CreateCachediSCSIVolumeInput;
-export type CreateCachediSCSIVolumeCommandOutput = CreateCachediSCSIVolumeOutput & __MetadataBearer;
+export interface CreateCachediSCSIVolumeCommandInput extends CreateCachediSCSIVolumeInput {}
+export interface CreateCachediSCSIVolumeCommandOutput extends CreateCachediSCSIVolumeOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a cached volume on a specified cached volume gateway. This operation is only
@@ -39,6 +39,20 @@ export type CreateCachediSCSIVolumeCommandOutput = CreateCachediSCSIVolumeOutput
  *             <code>SourceVolumeARN</code> for this cached volume, which creates an exact copy of the
  *          existing volume’s latest recovery point. The <code>VolumeSizeInBytes</code> value must be
  *          equal to or larger than the size of the copied volume, in bytes.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, CreateCachediSCSIVolumeCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, CreateCachediSCSIVolumeCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new CreateCachediSCSIVolumeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCachediSCSIVolumeCommandInput} for command's `input` shape.
+ * @see {@link CreateCachediSCSIVolumeCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCachediSCSIVolumeCommand extends $Command<
   CreateCachediSCSIVolumeCommandInput,

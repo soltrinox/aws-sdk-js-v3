@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeQueryDefinitionsCommandInput = DescribeQueryDefinitionsRequest;
-export type DescribeQueryDefinitionsCommandOutput = DescribeQueryDefinitionsResponse & __MetadataBearer;
+export interface DescribeQueryDefinitionsCommandInput extends DescribeQueryDefinitionsRequest {}
+export interface DescribeQueryDefinitionsCommandOutput extends DescribeQueryDefinitionsResponse, __MetadataBearer {}
 
 /**
  * <p>This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions.</p>
  *          <p>You can use the <code>queryDefinitionNamePrefix</code> parameter to limit the results to only the
  *       query definitions that have names that start with a certain string.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, DescribeQueryDefinitionsCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, DescribeQueryDefinitionsCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new DescribeQueryDefinitionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeQueryDefinitionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeQueryDefinitionsCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeQueryDefinitionsCommand extends $Command<
   DescribeQueryDefinitionsCommandInput,

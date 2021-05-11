@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeLaunchTemplatesCommandInput = DescribeLaunchTemplatesRequest;
-export type DescribeLaunchTemplatesCommandOutput = DescribeLaunchTemplatesResult & __MetadataBearer;
+export interface DescribeLaunchTemplatesCommandInput extends DescribeLaunchTemplatesRequest {}
+export interface DescribeLaunchTemplatesCommandOutput extends DescribeLaunchTemplatesResult, __MetadataBearer {}
 
 /**
  * <p>Describes one or more launch templates.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeLaunchTemplatesCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeLaunchTemplatesCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeLaunchTemplatesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeLaunchTemplatesCommandInput} for command's `input` shape.
+ * @see {@link DescribeLaunchTemplatesCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeLaunchTemplatesCommand extends $Command<
   DescribeLaunchTemplatesCommandInput,

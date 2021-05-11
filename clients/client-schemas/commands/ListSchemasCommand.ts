@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListSchemasCommandInput = ListSchemasRequest;
-export type ListSchemasCommandOutput = ListSchemasResponse & __MetadataBearer;
+export interface ListSchemasCommandInput extends ListSchemasRequest {}
+export interface ListSchemasCommandOutput extends ListSchemasResponse, __MetadataBearer {}
 
 /**
  * <p>List the schemas.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SchemasClient, ListSchemasCommand } from "@aws-sdk/client-schemas"; // ES Modules import
+ * // const { SchemasClient, ListSchemasCommand } = require("@aws-sdk/client-schemas"); // CommonJS import
+ * const client = new SchemasClient(config);
+ * const command = new ListSchemasCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListSchemasCommandInput} for command's `input` shape.
+ * @see {@link ListSchemasCommandOutput} for command's `response` shape.
+ * @see {@link SchemasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListSchemasCommand extends $Command<
   ListSchemasCommandInput,

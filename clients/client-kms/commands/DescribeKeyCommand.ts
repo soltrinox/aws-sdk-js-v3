@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeKeyCommandInput = DescribeKeyRequest;
-export type DescribeKeyCommandOutput = DescribeKeyResponse & __MetadataBearer;
+export interface DescribeKeyCommandInput extends DescribeKeyRequest {}
+export interface DescribeKeyCommandOutput extends DescribeKeyResponse, __MetadataBearer {}
 
 /**
  * <p>Provides detailed information about a customer master key (CMK). You can run
@@ -54,8 +54,66 @@ export type DescribeKeyCommandOutput = DescribeKeyResponse & __MetadataBearer;
  *         alias</i>, that is, an AWS alias with no key ID, AWS KMS creates an <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys">AWS managed CMK</a>.
  *       Then, it associates the alias with the new CMK, and returns the <code>KeyId</code> and
  *         <code>Arn</code> of the new CMK in the response.</p>
- *          <p>To perform this operation on a CMK in a different AWS account, specify
- *   the key ARN or alias ARN in the value of the KeyId parameter.</p>
+ *          <p>
+ *             <b>Cross-account use</b>: Yes. To perform this operation with a CMK in a different AWS account, specify
+ *   the key ARN or alias ARN in the value of the <code>KeyId</code> parameter.</p>
+ *
+ *          <p>
+ *             <b>Required permissions</b>: <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:DescribeKey</a> (key policy)</p>
+ *          <p>
+ *             <b>Related operations:</b>
+ *          </p>
+ *          <ul>
+ *             <li>
+ *                <p>
+ *                   <a>GetKeyPolicy</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>GetKeyRotationStatus</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>ListAliases</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>ListGrants</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>ListKeys</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>ListResourceTags</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>ListRetirableGrants</a>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, DescribeKeyCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, DescribeKeyCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new DescribeKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeKeyCommandInput} for command's `input` shape.
+ * @see {@link DescribeKeyCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeKeyCommand extends $Command<
   DescribeKeyCommandInput,

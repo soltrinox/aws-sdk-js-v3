@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeClusterOperationCommandInput = DescribeClusterOperationRequest;
-export type DescribeClusterOperationCommandOutput = DescribeClusterOperationResponse & __MetadataBearer;
+export interface DescribeClusterOperationCommandInput extends DescribeClusterOperationRequest {}
+export interface DescribeClusterOperationCommandOutput extends DescribeClusterOperationResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a description of the cluster operation specified by the ARN.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, DescribeClusterOperationCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, DescribeClusterOperationCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new DescribeClusterOperationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeClusterOperationCommandInput} for command's `input` shape.
+ * @see {@link DescribeClusterOperationCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeClusterOperationCommand extends $Command<
   DescribeClusterOperationCommandInput,

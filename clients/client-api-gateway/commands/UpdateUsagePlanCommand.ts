@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateUsagePlanCommandInput = UpdateUsagePlanRequest;
-export type UpdateUsagePlanCommandOutput = UsagePlan & __MetadataBearer;
+export interface UpdateUsagePlanCommandInput extends UpdateUsagePlanRequest {}
+export interface UpdateUsagePlanCommandOutput extends UsagePlan, __MetadataBearer {}
 
 /**
  * <p>Updates a usage plan of a given plan Id.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, UpdateUsagePlanCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, UpdateUsagePlanCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new UpdateUsagePlanCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateUsagePlanCommandInput} for command's `input` shape.
+ * @see {@link UpdateUsagePlanCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateUsagePlanCommand extends $Command<
   UpdateUsagePlanCommandInput,

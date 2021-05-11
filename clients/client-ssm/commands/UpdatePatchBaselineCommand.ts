@@ -1,5 +1,6 @@
 import { SSMClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SSMClient";
-import { UpdatePatchBaselineRequest, UpdatePatchBaselineResult } from "../models/models_1";
+import { UpdatePatchBaselineRequest } from "../models/models_1";
+import { UpdatePatchBaselineResult } from "../models/models_2";
 import {
   deserializeAws_json1_1UpdatePatchBaselineCommand,
   serializeAws_json1_1UpdatePatchBaselineCommand,
@@ -17,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdatePatchBaselineCommandInput = UpdatePatchBaselineRequest;
-export type UpdatePatchBaselineCommandOutput = UpdatePatchBaselineResult & __MetadataBearer;
+export interface UpdatePatchBaselineCommandInput extends UpdatePatchBaselineRequest {}
+export interface UpdatePatchBaselineCommandOutput extends UpdatePatchBaselineResult, __MetadataBearer {}
 
 /**
  * <p>Modifies an existing patch baseline. Fields not specified in the request are left
@@ -27,6 +28,20 @@ export type UpdatePatchBaselineCommandOutput = UpdatePatchBaselineResult & __Met
  *             <p>For information about valid key and value pairs in <code>PatchFilters</code> for each
  *     supported operating system type, see <a href="http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html">PatchFilter</a>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, UpdatePatchBaselineCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, UpdatePatchBaselineCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new UpdatePatchBaselineCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdatePatchBaselineCommandInput} for command's `input` shape.
+ * @see {@link UpdatePatchBaselineCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdatePatchBaselineCommand extends $Command<
   UpdatePatchBaselineCommandInput,

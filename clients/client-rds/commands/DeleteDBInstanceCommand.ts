@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDBInstanceCommandInput = DeleteDBInstanceMessage;
-export type DeleteDBInstanceCommandOutput = DeleteDBInstanceResult & __MetadataBearer;
+export interface DeleteDBInstanceCommandInput extends DeleteDBInstanceMessage {}
+export interface DeleteDBInstanceCommandOutput extends DeleteDBInstanceResult, __MetadataBearer {}
 
 /**
  * <p>The DeleteDBInstance action deletes a previously provisioned DB instance.
@@ -47,6 +47,20 @@ export type DeleteDBInstanceCommandOutput = DeleteDBInstanceResult & __MetadataB
  *             it's no longer a read replica. After the promotion completes, then call the
  *                 <code>DeleteDBInstance</code> API action to delete the final instance in the DB
  *             cluster.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, DeleteDBInstanceCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, DeleteDBInstanceCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new DeleteDBInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDBInstanceCommandInput} for command's `input` shape.
+ * @see {@link DeleteDBInstanceCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDBInstanceCommand extends $Command<
   DeleteDBInstanceCommandInput,

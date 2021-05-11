@@ -20,6 +20,9 @@ export interface AcknowledgeJobInput {
 }
 
 export namespace AcknowledgeJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AcknowledgeJobInput): any => ({
     ...obj,
   });
@@ -46,6 +49,9 @@ export interface AcknowledgeJobOutput {
 }
 
 export namespace AcknowledgeJobOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AcknowledgeJobOutput): any => ({
     ...obj,
   });
@@ -64,6 +70,9 @@ export interface InvalidNonceException extends __SmithyException, $MetadataBeare
 }
 
 export namespace InvalidNonceException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNonceException): any => ({
     ...obj,
   });
@@ -82,6 +91,9 @@ export interface JobNotFoundException extends __SmithyException, $MetadataBearer
 }
 
 export namespace JobNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobNotFoundException): any => ({
     ...obj,
   });
@@ -100,6 +112,9 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
@@ -128,6 +143,9 @@ export interface AcknowledgeThirdPartyJobInput {
 }
 
 export namespace AcknowledgeThirdPartyJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AcknowledgeThirdPartyJobInput): any => ({
     ...obj,
   });
@@ -144,6 +162,9 @@ export interface AcknowledgeThirdPartyJobOutput {
 }
 
 export namespace AcknowledgeThirdPartyJobOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AcknowledgeThirdPartyJobOutput): any => ({
     ...obj,
   });
@@ -162,6 +183,9 @@ export interface InvalidClientTokenException extends __SmithyException, $Metadat
 }
 
 export namespace InvalidClientTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidClientTokenException): any => ({
     ...obj,
   });
@@ -187,6 +211,9 @@ export interface ActionConfiguration {
 }
 
 export namespace ActionConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionConfiguration): any => ({
     ...obj,
   });
@@ -250,6 +277,9 @@ export interface ActionConfigurationProperty {
 }
 
 export namespace ActionConfigurationProperty {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionConfigurationProperty): any => ({
     ...obj,
   });
@@ -272,6 +302,9 @@ export interface ActionContext {
 }
 
 export namespace ActionContext {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionContext): any => ({
     ...obj,
   });
@@ -337,6 +370,9 @@ export interface ActionTypeId {
 }
 
 export namespace ActionTypeId {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionTypeId): any => ({
     ...obj,
   });
@@ -359,6 +395,9 @@ export interface InputArtifact {
 }
 
 export namespace InputArtifact {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputArtifact): any => ({
     ...obj,
   });
@@ -381,6 +420,9 @@ export interface OutputArtifact {
 }
 
 export namespace OutputArtifact {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OutputArtifact): any => ({
     ...obj,
   });
@@ -454,6 +496,9 @@ export interface ActionDeclaration {
 }
 
 export namespace ActionDeclaration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionDeclaration): any => ({
     ...obj,
   });
@@ -475,6 +520,9 @@ export interface ErrorDetails {
 }
 
 export namespace ErrorDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ErrorDetails): any => ({
     ...obj,
   });
@@ -492,10 +540,11 @@ export enum ActionExecutionStatus {
  */
 export interface ActionExecution {
   /**
-   * <p>ID of the workflow action execution in the current stage. Use the <a>GetPipelineState</a> action to retrieve the current action execution details of
-   *             the current stage.</p>
+   * <p>ID of the workflow action execution in the current stage. Use the <a>GetPipelineState</a> action to retrieve the current action execution details
+   *             of the current stage.</p>
    *         <note>
-   *             <p>For older executions, this field might be empty. The action execution ID is available for executions run on or after March 2020.</p>
+   *             <p>For older executions, this field might be empty. The action execution ID is
+   *                 available for executions run on or after March 2020.</p>
    *         </note>
    */
   actionExecutionId?: string;
@@ -552,6 +601,9 @@ export interface ActionExecution {
 }
 
 export namespace ActionExecution {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionExecution): any => ({
     ...obj,
   });
@@ -573,6 +625,9 @@ export interface S3Location {
 }
 
 export namespace S3Location {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Location): any => ({
     ...obj,
   });
@@ -594,6 +649,9 @@ export interface ArtifactDetail {
 }
 
 export namespace ArtifactDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ArtifactDetail): any => ({
     ...obj,
   });
@@ -644,6 +702,9 @@ export interface ActionExecutionInput {
 }
 
 export namespace ActionExecutionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionExecutionInput): any => ({
     ...obj,
   });
@@ -671,6 +732,9 @@ export interface ActionExecutionResult {
 }
 
 export namespace ActionExecutionResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionExecutionResult): any => ({
     ...obj,
   });
@@ -701,6 +765,9 @@ export interface ActionExecutionOutput {
 }
 
 export namespace ActionExecutionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionExecutionOutput): any => ({
     ...obj,
   });
@@ -765,6 +832,9 @@ export interface ActionExecutionDetail {
 }
 
 export namespace ActionExecutionDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionExecutionDetail): any => ({
     ...obj,
   });
@@ -781,6 +851,9 @@ export interface ActionExecutionFilter {
 }
 
 export namespace ActionExecutionFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionExecutionFilter): any => ({
     ...obj,
   });
@@ -799,6 +872,9 @@ export interface ActionNotFoundException extends __SmithyException, $MetadataBea
 }
 
 export namespace ActionNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionNotFoundException): any => ({
     ...obj,
   });
@@ -828,6 +904,9 @@ export interface ActionRevision {
 }
 
 export namespace ActionRevision {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionRevision): any => ({
     ...obj,
   });
@@ -866,6 +945,9 @@ export interface ActionState {
 }
 
 export namespace ActionState {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionState): any => ({
     ...obj,
   });
@@ -887,6 +969,9 @@ export interface ArtifactDetails {
 }
 
 export namespace ArtifactDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ArtifactDetails): any => ({
     ...obj,
   });
@@ -926,6 +1011,9 @@ export interface ActionTypeSettings {
 }
 
 export namespace ActionTypeSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionTypeSettings): any => ({
     ...obj,
   });
@@ -962,7 +1050,403 @@ export interface ActionType {
 }
 
 export namespace ActionType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionType): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Information about parameters for artifacts associated with the action type, such as
+ *             the minimum and maximum artifacts allowed.</p>
+ */
+export interface ActionTypeArtifactDetails {
+  /**
+   * <p>The minimum number of artifacts that can be used with the action type. For example,
+   *             you should specify a minimum and maximum of zero input artifacts for an action type with
+   *             a category of <code>source</code>.</p>
+   */
+  minimumCount: number | undefined;
+
+  /**
+   * <p>The maximum number of artifacts that can be used with the actiontype. For example, you
+   *             should specify a minimum and maximum of zero input artifacts for an action type with a
+   *             category of <code>source</code>.</p>
+   */
+  maximumCount: number | undefined;
+}
+
+export namespace ActionTypeArtifactDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ActionTypeArtifactDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details about the polling configuration for the <code>JobWorker</code> action engine,
+ *             or executor.</p>
+ */
+export interface JobWorkerExecutorConfiguration {
+  /**
+   * <p>The accounts in which the job worker is configured and might poll for jobs as part of
+   *             the action execution.</p>
+   */
+  pollingAccounts?: string[];
+
+  /**
+   * <p>The service Principals in which the job worker is configured and might poll for jobs
+   *             as part of the action execution.</p>
+   */
+  pollingServicePrincipals?: string[];
+}
+
+export namespace JobWorkerExecutorConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: JobWorkerExecutorConfiguration): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details about the configuration for the <code>Lambda</code> action engine, or
+ *             executor.</p>
+ */
+export interface LambdaExecutorConfiguration {
+  /**
+   * <p>The ARN of the Lambda function used by the action engine.</p>
+   */
+  lambdaFunctionArn: string | undefined;
+}
+
+export namespace LambdaExecutorConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: LambdaExecutorConfiguration): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The action engine, or executor, related to the supported integration model used to
+ *             create and update the action type. The available executor types are <code>Lambda</code>
+ *             and <code>JobWorker</code>.</p>
+ */
+export interface ExecutorConfiguration {
+  /**
+   * <p>Details about the <code>Lambda</code> executor of the action type.</p>
+   */
+  lambdaExecutorConfiguration?: LambdaExecutorConfiguration;
+
+  /**
+   * <p>Details about the <code>JobWorker</code> executor of the action type.</p>
+   */
+  jobWorkerExecutorConfiguration?: JobWorkerExecutorConfiguration;
+}
+
+export namespace ExecutorConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ExecutorConfiguration): any => ({
+    ...obj,
+  });
+}
+
+export enum ExecutorType {
+  JobWorker = "JobWorker",
+  Lambda = "Lambda",
+}
+
+/**
+ * <p>The action engine, or executor, for an action type created for a provider, where the
+ *             action is to be used by customers of the provider. The action engine is associated with
+ *             the model used to create and update the action, such as the Lambda integration
+ *             model.</p>
+ */
+export interface ActionTypeExecutor {
+  /**
+   * <p>The action configuration properties for the action type. These properties are
+   *             specified in the action definition when the action type is created.</p>
+   */
+  configuration: ExecutorConfiguration | undefined;
+
+  /**
+   * <p>The integration model used to create and update the action type, <code>Lambda</code>
+   *             or <code>JobWorker</code>. </p>
+   */
+  type: ExecutorType | string | undefined;
+
+  /**
+   * <p>The policy statement that specifies the permissions in the CodePipeline customer’s
+   *             account that are needed to successfully run an action.</p>
+   *         <p>To grant permission to another account, specify the account ID as the Principal, a
+   *             domain-style identifier defined by the service, for example
+   *                 <code>codepipeline.amazonaws.com</code>.</p>
+   *         <note>
+   *             <p>The size of the passed JSON policy document cannot exceed 2048 characters.</p>
+   *         </note>
+   */
+  policyStatementsTemplate?: string;
+
+  /**
+   * <p>The timeout in seconds for the job. An action execution can have multiple jobs. This
+   *             is the timeout for a single job, not the entire action execution.</p>
+   */
+  jobTimeout?: number;
+}
+
+export namespace ActionTypeExecutor {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ActionTypeExecutor): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Specifies the category, owner, provider, and version of the action type.</p>
+ */
+export interface ActionTypeIdentifier {
+  /**
+   * <p>Defines what kind of action can be taken in the stage, one of the following:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                   <code>Source</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>Build</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>Test</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>Deploy</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>Approval</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>Invoke</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   */
+  category: ActionCategory | string | undefined;
+
+  /**
+   * <p>The creator of the action type being called: <code>AWS</code> or
+   *                 <code>ThirdParty</code>.</p>
+   */
+  owner: string | undefined;
+
+  /**
+   * <p>The provider of the action type being called. The provider name is supplied when the
+   *             action type is created.</p>
+   */
+  provider: string | undefined;
+
+  /**
+   * <p>A string that describes the action type version.</p>
+   */
+  version: string | undefined;
+}
+
+export namespace ActionTypeIdentifier {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ActionTypeIdentifier): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details identifying the users with permissions to use the action type.</p>
+ */
+export interface ActionTypePermissions {
+  /**
+   * <p>A list of AWS account IDs with access to use the action type in their
+   *             pipelines.</p>
+   */
+  allowedAccounts: string[] | undefined;
+}
+
+export namespace ActionTypePermissions {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ActionTypePermissions): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Represents information about each property specified in the action configuration, such
+ *             as the description and key name that display for the customer using the action
+ *             type.</p>
+ */
+export interface ActionTypeProperty {
+  /**
+   * <p>The property name that is displayed to users.</p>
+   */
+  name: string | undefined;
+
+  /**
+   * <p>Whether the configuration property is an optional value.</p>
+   */
+  optional: boolean | undefined;
+
+  /**
+   * <p>Whether the configuration property is a key.</p>
+   */
+  key: boolean | undefined;
+
+  /**
+   * <p>Whether to omit the field value entered by the customer in the log. If
+   *                 <code>true</code>, the value is not saved in CloudTrail logs for the action
+   *             execution.</p>
+   */
+  noEcho: boolean | undefined;
+
+  /**
+   * <p>Indicates that the property is used with polling. An action type can have up to one
+   *             queryable property. If it has one, that property must be both required and not
+   *             secret.</p>
+   */
+  queryable?: boolean;
+
+  /**
+   * <p>The description of the property that is displayed to users.</p>
+   */
+  description?: string;
+}
+
+export namespace ActionTypeProperty {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ActionTypeProperty): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Returns information about URLs for web pages that display to customers as links on the
+ *             pipeline view, such as an external configuration page for the action type.</p>
+ */
+export interface ActionTypeUrls {
+  /**
+   * <p>The URL returned to the CodePipeline console that contains a link to the page where
+   *             customers can configure the external action.</p>
+   */
+  configurationUrl?: string;
+
+  /**
+   * <p>The URL returned to the CodePipeline console that provides a deep link to the
+   *             resources of the external system, such as a status page. This link is provided as part
+   *             of the action display in the pipeline.</p>
+   */
+  entityUrlTemplate?: string;
+
+  /**
+   * <p>The link to an execution page for the action type in progress. For example, for a
+   *             CodeDeploy action, this link is shown on the pipeline view page in the CodePipeline
+   *             console, and it links to a CodeDeploy status page.</p>
+   */
+  executionUrlTemplate?: string;
+
+  /**
+   * <p>The URL returned to the CodePipeline console that contains a link to the page where
+   *             customers can update or change the configuration of the external action.</p>
+   */
+  revisionUrlTemplate?: string;
+}
+
+export namespace ActionTypeUrls {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ActionTypeUrls): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The parameters for the action type definition that are provided when the action type
+ *             is created or updated.</p>
+ */
+export interface ActionTypeDeclaration {
+  /**
+   * <p>The description for the action type to be updated.</p>
+   */
+  description?: string;
+
+  /**
+   * <p>Information about the executor for an action type that was created with any supported
+   *             integration model.</p>
+   */
+  executor: ActionTypeExecutor | undefined;
+
+  /**
+   * <p>The action category, owner, provider, and version of the action type to be
+   *             updated.</p>
+   */
+  id: ActionTypeIdentifier | undefined;
+
+  /**
+   * <p>Details for the artifacts, such as application files, to be worked on by the action.
+   *             For example, the minimum and maximum number of input artifacts allowed.</p>
+   */
+  inputArtifactDetails: ActionTypeArtifactDetails | undefined;
+
+  /**
+   * <p>Details for the output artifacts, such as a built application, that are the result of
+   *             the action. For example, the minimum and maximum number of output artifacts
+   *             allowed.</p>
+   */
+  outputArtifactDetails: ActionTypeArtifactDetails | undefined;
+
+  /**
+   * <p>Details identifying the accounts with permissions to use the action type.</p>
+   */
+  permissions?: ActionTypePermissions;
+
+  /**
+   * <p>The properties of the action type to be updated.</p>
+   */
+  properties?: ActionTypeProperty[];
+
+  /**
+   * <p>The links associated with the action type to be updated.</p>
+   */
+  urls?: ActionTypeUrls;
+}
+
+export namespace ActionTypeDeclaration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ActionTypeDeclaration): any => ({
     ...obj,
   });
 }
@@ -980,6 +1464,9 @@ export interface ActionTypeNotFoundException extends __SmithyException, $Metadat
 }
 
 export namespace ActionTypeNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActionTypeNotFoundException): any => ({
     ...obj,
   });
@@ -998,6 +1485,9 @@ export interface ApprovalAlreadyCompletedException extends __SmithyException, $M
 }
 
 export namespace ApprovalAlreadyCompletedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ApprovalAlreadyCompletedException): any => ({
     ...obj,
   });
@@ -1025,6 +1515,9 @@ export interface ApprovalResult {
 }
 
 export namespace ApprovalResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ApprovalResult): any => ({
     ...obj,
   });
@@ -1047,6 +1540,9 @@ export interface S3ArtifactLocation {
 }
 
 export namespace S3ArtifactLocation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3ArtifactLocation): any => ({
     ...obj,
   });
@@ -1072,6 +1568,9 @@ export interface ArtifactLocation {
 }
 
 export namespace ArtifactLocation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ArtifactLocation): any => ({
     ...obj,
   });
@@ -1100,6 +1599,9 @@ export interface Artifact {
 }
 
 export namespace Artifact {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Artifact): any => ({
     ...obj,
   });
@@ -1148,6 +1650,9 @@ export interface ArtifactRevision {
 }
 
 export namespace ArtifactRevision {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ArtifactRevision): any => ({
     ...obj,
   });
@@ -1181,6 +1686,9 @@ export interface EncryptionKey {
 }
 
 export namespace EncryptionKey {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EncryptionKey): any => ({
     ...obj,
   });
@@ -1223,6 +1731,9 @@ export interface ArtifactStore {
 }
 
 export namespace ArtifactStore {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ArtifactStore): any => ({
     ...obj,
   });
@@ -1252,8 +1763,14 @@ export interface AWSSessionCredentials {
 }
 
 export namespace AWSSessionCredentials {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AWSSessionCredentials): any => ({
     ...obj,
+    ...(obj.accessKeyId && { accessKeyId: SENSITIVE_STRING }),
+    ...(obj.secretAccessKey && { secretAccessKey: SENSITIVE_STRING }),
+    ...(obj.sessionToken && { sessionToken: SENSITIVE_STRING }),
   });
 }
 
@@ -1277,6 +1794,9 @@ export interface BlockerDeclaration {
 }
 
 export namespace BlockerDeclaration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BlockerDeclaration): any => ({
     ...obj,
   });
@@ -1292,6 +1812,9 @@ export interface ConcurrentModificationException extends __SmithyException, $Met
 }
 
 export namespace ConcurrentModificationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConcurrentModificationException): any => ({
     ...obj,
   });
@@ -1313,6 +1836,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -1373,6 +1899,9 @@ export interface CreateCustomActionTypeInput {
 }
 
 export namespace CreateCustomActionTypeInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCustomActionTypeInput): any => ({
     ...obj,
   });
@@ -1394,6 +1923,9 @@ export interface CreateCustomActionTypeOutput {
 }
 
 export namespace CreateCustomActionTypeOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCustomActionTypeOutput): any => ({
     ...obj,
   });
@@ -1409,6 +1941,9 @@ export interface InvalidTagsException extends __SmithyException, $MetadataBearer
 }
 
 export namespace InvalidTagsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTagsException): any => ({
     ...obj,
   });
@@ -1428,6 +1963,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -1443,6 +1981,9 @@ export interface TooManyTagsException extends __SmithyException, $MetadataBearer
 }
 
 export namespace TooManyTagsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyTagsException): any => ({
     ...obj,
   });
@@ -1469,6 +2010,9 @@ export interface StageDeclaration {
 }
 
 export namespace StageDeclaration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StageDeclaration): any => ({
     ...obj,
   });
@@ -1529,6 +2073,9 @@ export interface PipelineDeclaration {
 }
 
 export namespace PipelineDeclaration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineDeclaration): any => ({
     ...obj,
   });
@@ -1551,6 +2098,9 @@ export interface CreatePipelineInput {
 }
 
 export namespace CreatePipelineInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePipelineInput): any => ({
     ...obj,
   });
@@ -1573,6 +2123,9 @@ export interface CreatePipelineOutput {
 }
 
 export namespace CreatePipelineOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePipelineOutput): any => ({
     ...obj,
   });
@@ -1591,6 +2144,9 @@ export interface InvalidActionDeclarationException extends __SmithyException, $M
 }
 
 export namespace InvalidActionDeclarationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidActionDeclarationException): any => ({
     ...obj,
   });
@@ -1609,6 +2165,9 @@ export interface InvalidBlockerDeclarationException extends __SmithyException, $
 }
 
 export namespace InvalidBlockerDeclarationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidBlockerDeclarationException): any => ({
     ...obj,
   });
@@ -1627,6 +2186,9 @@ export interface InvalidStageDeclarationException extends __SmithyException, $Me
 }
 
 export namespace InvalidStageDeclarationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidStageDeclarationException): any => ({
     ...obj,
   });
@@ -1645,6 +2207,9 @@ export interface InvalidStructureException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidStructureException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidStructureException): any => ({
     ...obj,
   });
@@ -1663,6 +2228,9 @@ export interface PipelineNameInUseException extends __SmithyException, $Metadata
 }
 
 export namespace PipelineNameInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineNameInUseException): any => ({
     ...obj,
   });
@@ -1692,6 +2260,9 @@ export interface DeleteCustomActionTypeInput {
 }
 
 export namespace DeleteCustomActionTypeInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCustomActionTypeInput): any => ({
     ...obj,
   });
@@ -1708,6 +2279,9 @@ export interface DeletePipelineInput {
 }
 
 export namespace DeletePipelineInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePipelineInput): any => ({
     ...obj,
   });
@@ -1721,6 +2295,9 @@ export interface DeleteWebhookInput {
 }
 
 export namespace DeleteWebhookInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteWebhookInput): any => ({
     ...obj,
   });
@@ -1729,6 +2306,9 @@ export namespace DeleteWebhookInput {
 export interface DeleteWebhookOutput {}
 
 export namespace DeleteWebhookOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteWebhookOutput): any => ({
     ...obj,
   });
@@ -1742,6 +2322,9 @@ export interface DeregisterWebhookWithThirdPartyInput {
 }
 
 export namespace DeregisterWebhookWithThirdPartyInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeregisterWebhookWithThirdPartyInput): any => ({
     ...obj,
   });
@@ -1750,6 +2333,9 @@ export namespace DeregisterWebhookWithThirdPartyInput {
 export interface DeregisterWebhookWithThirdPartyOutput {}
 
 export namespace DeregisterWebhookWithThirdPartyOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeregisterWebhookWithThirdPartyOutput): any => ({
     ...obj,
   });
@@ -1765,6 +2351,9 @@ export interface WebhookNotFoundException extends __SmithyException, $MetadataBe
 }
 
 export namespace WebhookNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WebhookNotFoundException): any => ({
     ...obj,
   });
@@ -1808,6 +2397,9 @@ export interface DisableStageTransitionInput {
 }
 
 export namespace DisableStageTransitionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisableStageTransitionInput): any => ({
     ...obj,
   });
@@ -1826,6 +2418,9 @@ export interface PipelineNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace PipelineNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineNotFoundException): any => ({
     ...obj,
   });
@@ -1844,6 +2439,9 @@ export interface StageNotFoundException extends __SmithyException, $MetadataBear
 }
 
 export namespace StageNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StageNotFoundException): any => ({
     ...obj,
   });
@@ -1874,7 +2472,93 @@ export interface EnableStageTransitionInput {
 }
 
 export namespace EnableStageTransitionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableStageTransitionInput): any => ({
+    ...obj,
+  });
+}
+
+export interface GetActionTypeInput {
+  /**
+   * <p>Defines what kind of action can be taken in the stage. The following are the valid
+   *             values:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                   <code>Source</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>Build</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>Test</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>Deploy</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>Approval</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>Invoke</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   */
+  category: ActionCategory | string | undefined;
+
+  /**
+   * <p>The creator of an action type that was created with any supported integration model.
+   *             There are two valid values: <code>AWS</code> and <code>ThirdParty</code>.</p>
+   */
+  owner: string | undefined;
+
+  /**
+   * <p>The provider of the action type being called. The provider name is specified when the
+   *             action type is created.</p>
+   */
+  provider: string | undefined;
+
+  /**
+   * <p>A string that describes the action type version.</p>
+   */
+  version: string | undefined;
+}
+
+export namespace GetActionTypeInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetActionTypeInput): any => ({
+    ...obj,
+  });
+}
+
+export interface GetActionTypeOutput {
+  /**
+   * <p>The action type information for the requested action type, such as the action type
+   *             ID.</p>
+   */
+  actionType?: ActionTypeDeclaration;
+}
+
+export namespace GetActionTypeOutput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetActionTypeOutput): any => ({
     ...obj,
   });
 }
@@ -1890,6 +2574,9 @@ export interface GetJobDetailsInput {
 }
 
 export namespace GetJobDetailsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetJobDetailsInput): any => ({
     ...obj,
   });
@@ -1906,6 +2593,9 @@ export interface StageContext {
 }
 
 export namespace StageContext {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StageContext): any => ({
     ...obj,
   });
@@ -1949,6 +2639,9 @@ export interface PipelineContext {
 }
 
 export namespace PipelineContext {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineContext): any => ({
     ...obj,
   });
@@ -2010,6 +2703,9 @@ export interface JobData {
 }
 
 export namespace JobData {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobData): any => ({
     ...obj,
     ...(obj.artifactCredentials && { artifactCredentials: SENSITIVE_STRING }),
@@ -2038,6 +2734,9 @@ export interface JobDetails {
 }
 
 export namespace JobDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobDetails): any => ({
     ...obj,
     ...(obj.data && { data: JobData.filterSensitiveLog(obj.data) }),
@@ -2059,6 +2758,9 @@ export interface GetJobDetailsOutput {
 }
 
 export namespace GetJobDetailsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetJobDetailsOutput): any => ({
     ...obj,
     ...(obj.jobDetails && { jobDetails: JobDetails.filterSensitiveLog(obj.jobDetails) }),
@@ -2083,6 +2785,9 @@ export interface GetPipelineInput {
 }
 
 export namespace GetPipelineInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPipelineInput): any => ({
     ...obj,
   });
@@ -2109,6 +2814,9 @@ export interface PipelineMetadata {
 }
 
 export namespace PipelineMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineMetadata): any => ({
     ...obj,
   });
@@ -2132,6 +2840,9 @@ export interface GetPipelineOutput {
 }
 
 export namespace GetPipelineOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPipelineOutput): any => ({
     ...obj,
   });
@@ -2151,6 +2862,9 @@ export interface PipelineVersionNotFoundException extends __SmithyException, $Me
 }
 
 export namespace PipelineVersionNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineVersionNotFoundException): any => ({
     ...obj,
   });
@@ -2173,12 +2887,16 @@ export interface GetPipelineExecutionInput {
 }
 
 export namespace GetPipelineExecutionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPipelineExecutionInput): any => ({
     ...obj,
   });
 }
 
 export enum PipelineExecutionStatus {
+  Cancelled = "Cancelled",
   Failed = "Failed",
   InProgress = "InProgress",
   Stopped = "Stopped",
@@ -2210,6 +2928,10 @@ export interface PipelineExecution {
    * <p>The status of the pipeline execution.</p>
    *         <ul>
    *             <li>
+   *                 <p>Cancelled: The pipeline’s definition was updated before the pipeline
+   *                     execution could be completed.</p>
+   *             </li>
+   *             <li>
    *                 <p>InProgress: The pipeline execution is currently running.</p>
    *             </li>
    *             <li>
@@ -2237,6 +2959,11 @@ export interface PipelineExecution {
   status?: PipelineExecutionStatus | string;
 
   /**
+   * <p>A summary that contains a description of the pipeline execution status.</p>
+   */
+  statusSummary?: string;
+
+  /**
    * <p>A list of <code>ArtifactRevision</code> objects included in a pipeline
    *             execution.</p>
    */
@@ -2244,6 +2971,9 @@ export interface PipelineExecution {
 }
 
 export namespace PipelineExecution {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineExecution): any => ({
     ...obj,
   });
@@ -2260,6 +2990,9 @@ export interface GetPipelineExecutionOutput {
 }
 
 export namespace GetPipelineExecutionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPipelineExecutionOutput): any => ({
     ...obj,
   });
@@ -2279,6 +3012,9 @@ export interface PipelineExecutionNotFoundException extends __SmithyException, $
 }
 
 export namespace PipelineExecutionNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineExecutionNotFoundException): any => ({
     ...obj,
   });
@@ -2295,12 +3031,16 @@ export interface GetPipelineStateInput {
 }
 
 export namespace GetPipelineStateInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPipelineStateInput): any => ({
     ...obj,
   });
 }
 
 export enum StageExecutionStatus {
+  Cancelled = "Cancelled",
   Failed = "Failed",
   InProgress = "InProgress",
   Stopped = "Stopped",
@@ -2320,11 +3060,18 @@ export interface StageExecution {
   /**
    * <p>The status of the stage, or for a completed stage, the last status of the
    *             stage.</p>
+   *         <note>
+   *             <p>A status of cancelled means that the pipeline’s definition was updated before the
+   *                 stage execution could be completed.</p>
+   *         </note>
    */
   status: StageExecutionStatus | string | undefined;
 }
 
 export namespace StageExecution {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StageExecution): any => ({
     ...obj,
   });
@@ -2359,6 +3106,9 @@ export interface TransitionState {
 }
 
 export namespace TransitionState {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TransitionState): any => ({
     ...obj,
   });
@@ -2396,6 +3146,9 @@ export interface StageState {
 }
 
 export namespace StageState {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StageState): any => ({
     ...obj,
   });
@@ -2437,6 +3190,9 @@ export interface GetPipelineStateOutput {
 }
 
 export namespace GetPipelineStateOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPipelineStateOutput): any => ({
     ...obj,
   });
@@ -2459,6 +3215,9 @@ export interface GetThirdPartyJobDetailsInput {
 }
 
 export namespace GetThirdPartyJobDetailsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetThirdPartyJobDetailsInput): any => ({
     ...obj,
   });
@@ -2525,6 +3284,9 @@ export interface ThirdPartyJobData {
 }
 
 export namespace ThirdPartyJobData {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThirdPartyJobData): any => ({
     ...obj,
     ...(obj.artifactCredentials && { artifactCredentials: SENSITIVE_STRING }),
@@ -2554,6 +3316,9 @@ export interface ThirdPartyJobDetails {
 }
 
 export namespace ThirdPartyJobDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThirdPartyJobDetails): any => ({
     ...obj,
     ...(obj.data && { data: ThirdPartyJobData.filterSensitiveLog(obj.data) }),
@@ -2572,6 +3337,9 @@ export interface GetThirdPartyJobDetailsOutput {
 }
 
 export namespace GetThirdPartyJobDetailsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetThirdPartyJobDetailsOutput): any => ({
     ...obj,
     ...(obj.jobDetails && { jobDetails: ThirdPartyJobDetails.filterSensitiveLog(obj.jobDetails) }),
@@ -2591,6 +3359,9 @@ export interface InvalidJobException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace InvalidJobException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidJobException): any => ({
     ...obj,
   });
@@ -2610,6 +3381,9 @@ export interface InvalidNextTokenException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidNextTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextTokenException): any => ({
     ...obj,
   });
@@ -2646,6 +3420,9 @@ export interface ListActionExecutionsInput {
 }
 
 export namespace ListActionExecutionsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListActionExecutionsInput): any => ({
     ...obj,
   });
@@ -2666,6 +3443,9 @@ export interface ListActionExecutionsOutput {
 }
 
 export namespace ListActionExecutionsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListActionExecutionsOutput): any => ({
     ...obj,
   });
@@ -2685,9 +3465,17 @@ export interface ListActionTypesInput {
    *             be used to return the next set of action types in the list.</p>
    */
   nextToken?: string;
+
+  /**
+   * <p>The Region to filter on for the list of action types.</p>
+   */
+  regionFilter?: string;
 }
 
 export namespace ListActionTypesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListActionTypesInput): any => ({
     ...obj,
   });
@@ -2711,6 +3499,9 @@ export interface ListActionTypesOutput {
 }
 
 export namespace ListActionTypesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListActionTypesOutput): any => ({
     ...obj,
   });
@@ -2743,6 +3534,9 @@ export interface ListPipelineExecutionsInput {
 }
 
 export namespace ListPipelineExecutionsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPipelineExecutionsInput): any => ({
     ...obj,
   });
@@ -2781,6 +3575,9 @@ export interface SourceRevision {
 }
 
 export namespace SourceRevision {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SourceRevision): any => ({
     ...obj,
   });
@@ -2797,6 +3594,9 @@ export interface StopExecutionTrigger {
 }
 
 export namespace StopExecutionTrigger {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopExecutionTrigger): any => ({
     ...obj,
   });
@@ -2830,6 +3630,9 @@ export interface ExecutionTrigger {
 }
 
 export namespace ExecutionTrigger {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExecutionTrigger): any => ({
     ...obj,
   });
@@ -2904,6 +3707,9 @@ export interface PipelineExecutionSummary {
 }
 
 export namespace PipelineExecutionSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineExecutionSummary): any => ({
     ...obj,
   });
@@ -2927,6 +3733,9 @@ export interface ListPipelineExecutionsOutput {
 }
 
 export namespace ListPipelineExecutionsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPipelineExecutionsOutput): any => ({
     ...obj,
   });
@@ -2941,9 +3750,19 @@ export interface ListPipelinesInput {
    *             used to return the next set of pipelines in the list.</p>
    */
   nextToken?: string;
+
+  /**
+   * <p>The maximum number of pipelines to return in a single call. To retrieve the remaining
+   *             pipelines, make another call with the returned nextToken value. The minimum value you
+   *             can specify is 1. The maximum accepted value is 1000.</p>
+   */
+  maxResults?: number;
 }
 
 export namespace ListPipelinesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPipelinesInput): any => ({
     ...obj,
   });
@@ -2976,6 +3795,9 @@ export interface PipelineSummary {
 }
 
 export namespace PipelineSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineSummary): any => ({
     ...obj,
   });
@@ -2999,6 +3821,9 @@ export interface ListPipelinesOutput {
 }
 
 export namespace ListPipelinesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPipelinesOutput): any => ({
     ...obj,
   });
@@ -3014,6 +3839,9 @@ export interface InvalidArnException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace InvalidArnException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidArnException): any => ({
     ...obj,
   });
@@ -3039,6 +3867,9 @@ export interface ListTagsForResourceInput {
 }
 
 export namespace ListTagsForResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceInput): any => ({
     ...obj,
   });
@@ -3060,6 +3891,9 @@ export interface ListTagsForResourceOutput {
 }
 
 export namespace ListTagsForResourceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceOutput): any => ({
     ...obj,
   });
@@ -3078,6 +3912,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -3098,6 +3935,9 @@ export interface ListWebhooksInput {
 }
 
 export namespace ListWebhooksInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListWebhooksInput): any => ({
     ...obj,
   });
@@ -3128,6 +3968,9 @@ export interface WebhookAuthConfiguration {
 }
 
 export namespace WebhookAuthConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WebhookAuthConfiguration): any => ({
     ...obj,
   });
@@ -3161,6 +4004,9 @@ export interface WebhookFilterRule {
 }
 
 export namespace WebhookFilterRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WebhookFilterRule): any => ({
     ...obj,
   });
@@ -3225,6 +4071,9 @@ export interface WebhookDefinition {
 }
 
 export namespace WebhookDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WebhookDefinition): any => ({
     ...obj,
   });
@@ -3277,6 +4126,9 @@ export interface ListWebhookItem {
 }
 
 export namespace ListWebhookItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListWebhookItem): any => ({
     ...obj,
   });
@@ -3298,6 +4150,9 @@ export interface ListWebhooksOutput {
 }
 
 export namespace ListWebhooksOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListWebhooksOutput): any => ({
     ...obj,
   });
@@ -3327,6 +4182,9 @@ export interface PollForJobsInput {
 }
 
 export namespace PollForJobsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PollForJobsInput): any => ({
     ...obj,
   });
@@ -3359,6 +4217,9 @@ export interface Job {
 }
 
 export namespace Job {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Job): any => ({
     ...obj,
     ...(obj.data && { data: JobData.filterSensitiveLog(obj.data) }),
@@ -3376,6 +4237,9 @@ export interface PollForJobsOutput {
 }
 
 export namespace PollForJobsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PollForJobsOutput): any => ({
     ...obj,
     ...(obj.jobs && { jobs: obj.jobs.map((item) => Job.filterSensitiveLog(item)) }),
@@ -3398,6 +4262,9 @@ export interface PollForThirdPartyJobsInput {
 }
 
 export namespace PollForThirdPartyJobsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PollForThirdPartyJobsInput): any => ({
     ...obj,
   });
@@ -3422,6 +4289,9 @@ export interface ThirdPartyJob {
 }
 
 export namespace ThirdPartyJob {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThirdPartyJob): any => ({
     ...obj,
   });
@@ -3438,6 +4308,9 @@ export interface PollForThirdPartyJobsOutput {
 }
 
 export namespace PollForThirdPartyJobsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PollForThirdPartyJobsOutput): any => ({
     ...obj,
   });
@@ -3470,6 +4343,9 @@ export interface PutActionRevisionInput {
 }
 
 export namespace PutActionRevisionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutActionRevisionInput): any => ({
     ...obj,
   });
@@ -3492,6 +4368,9 @@ export interface PutActionRevisionOutput {
 }
 
 export namespace PutActionRevisionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutActionRevisionOutput): any => ({
     ...obj,
   });
@@ -3510,6 +4389,9 @@ export interface InvalidApprovalTokenException extends __SmithyException, $Metad
 }
 
 export namespace InvalidApprovalTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidApprovalTokenException): any => ({
     ...obj,
   });
@@ -3548,6 +4430,9 @@ export interface PutApprovalResultInput {
 }
 
 export namespace PutApprovalResultInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutApprovalResultInput): any => ({
     ...obj,
   });
@@ -3564,6 +4449,9 @@ export interface PutApprovalResultOutput {
 }
 
 export namespace PutApprovalResultOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutApprovalResultOutput): any => ({
     ...obj,
   });
@@ -3582,6 +4470,9 @@ export interface InvalidJobStateException extends __SmithyException, $MetadataBe
 }
 
 export namespace InvalidJobStateException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidJobStateException): any => ({
     ...obj,
   });
@@ -3617,6 +4508,9 @@ export interface FailureDetails {
 }
 
 export namespace FailureDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FailureDetails): any => ({
     ...obj,
   });
@@ -3639,6 +4533,9 @@ export interface PutJobFailureResultInput {
 }
 
 export namespace PutJobFailureResultInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutJobFailureResultInput): any => ({
     ...obj,
   });
@@ -3654,6 +4551,9 @@ export interface OutputVariablesSizeExceededException extends __SmithyException,
 }
 
 export namespace OutputVariablesSizeExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OutputVariablesSizeExceededException): any => ({
     ...obj,
   });
@@ -3686,6 +4586,9 @@ export interface CurrentRevision {
 }
 
 export namespace CurrentRevision {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CurrentRevision): any => ({
     ...obj,
   });
@@ -3715,6 +4618,9 @@ export interface ExecutionDetails {
 }
 
 export namespace ExecutionDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExecutionDetails): any => ({
     ...obj,
   });
@@ -3760,6 +4666,9 @@ export interface PutJobSuccessResultInput {
 }
 
 export namespace PutJobSuccessResultInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutJobSuccessResultInput): any => ({
     ...obj,
   });
@@ -3789,6 +4698,9 @@ export interface PutThirdPartyJobFailureResultInput {
 }
 
 export namespace PutThirdPartyJobFailureResultInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutThirdPartyJobFailureResultInput): any => ({
     ...obj,
   });
@@ -3833,6 +4745,9 @@ export interface PutThirdPartyJobSuccessResultInput {
 }
 
 export namespace PutThirdPartyJobSuccessResultInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutThirdPartyJobSuccessResultInput): any => ({
     ...obj,
   });
@@ -3851,6 +4766,9 @@ export interface InvalidWebhookAuthenticationParametersException extends __Smith
 }
 
 export namespace InvalidWebhookAuthenticationParametersException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidWebhookAuthenticationParametersException): any => ({
     ...obj,
   });
@@ -3869,6 +4787,9 @@ export interface InvalidWebhookFilterPatternException extends __SmithyException,
 }
 
 export namespace InvalidWebhookFilterPatternException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidWebhookFilterPatternException): any => ({
     ...obj,
   });
@@ -3890,6 +4811,9 @@ export interface PutWebhookInput {
 }
 
 export namespace PutWebhookInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutWebhookInput): any => ({
     ...obj,
   });
@@ -3904,6 +4828,9 @@ export interface PutWebhookOutput {
 }
 
 export namespace PutWebhookOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutWebhookOutput): any => ({
     ...obj,
   });
@@ -3918,6 +4845,9 @@ export interface RegisterWebhookWithThirdPartyInput {
 }
 
 export namespace RegisterWebhookWithThirdPartyInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegisterWebhookWithThirdPartyInput): any => ({
     ...obj,
   });
@@ -3926,13 +4856,17 @@ export namespace RegisterWebhookWithThirdPartyInput {
 export interface RegisterWebhookWithThirdPartyOutput {}
 
 export namespace RegisterWebhookWithThirdPartyOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegisterWebhookWithThirdPartyOutput): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Your request cannot be handled because the pipeline is busy handling ongoing activities. Try again later.</p>
+ * <p>Your request cannot be handled because the pipeline is busy handling ongoing
+ *             activities. Try again later.</p>
  */
 export interface ConflictException extends __SmithyException, $MetadataBearer {
   name: "ConflictException";
@@ -3941,6 +4875,9 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
@@ -3960,6 +4897,9 @@ export interface NotLatestPipelineExecutionException extends __SmithyException, 
 }
 
 export namespace NotLatestPipelineExecutionException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotLatestPipelineExecutionException): any => ({
     ...obj,
   });
@@ -3997,6 +4937,9 @@ export interface RetryStageExecutionInput {
 }
 
 export namespace RetryStageExecutionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RetryStageExecutionInput): any => ({
     ...obj,
   });
@@ -4013,6 +4956,9 @@ export interface RetryStageExecutionOutput {
 }
 
 export namespace RetryStageExecutionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RetryStageExecutionOutput): any => ({
     ...obj,
   });
@@ -4033,6 +4979,9 @@ export interface StageNotRetryableException extends __SmithyException, $Metadata
 }
 
 export namespace StageNotRetryableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StageNotRetryableException): any => ({
     ...obj,
   });
@@ -4055,6 +5004,9 @@ export interface StartPipelineExecutionInput {
 }
 
 export namespace StartPipelineExecutionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartPipelineExecutionInput): any => ({
     ...obj,
   });
@@ -4072,6 +5024,9 @@ export interface StartPipelineExecutionOutput {
 }
 
 export namespace StartPipelineExecutionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartPipelineExecutionOutput): any => ({
     ...obj,
   });
@@ -4091,6 +5046,9 @@ export interface DuplicatedStopRequestException extends __SmithyException, $Meta
 }
 
 export namespace DuplicatedStopRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DuplicatedStopRequestException): any => ({
     ...obj,
   });
@@ -4107,6 +5065,9 @@ export interface PipelineExecutionNotStoppableException extends __SmithyExceptio
 }
 
 export namespace PipelineExecutionNotStoppableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineExecutionNotStoppableException): any => ({
     ...obj,
   });
@@ -4141,6 +5102,9 @@ export interface StopPipelineExecutionInput {
 }
 
 export namespace StopPipelineExecutionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopPipelineExecutionInput): any => ({
     ...obj,
   });
@@ -4154,6 +5118,9 @@ export interface StopPipelineExecutionOutput {
 }
 
 export namespace StopPipelineExecutionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopPipelineExecutionOutput): any => ({
     ...obj,
   });
@@ -4172,6 +5139,9 @@ export interface TagResourceInput {
 }
 
 export namespace TagResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceInput): any => ({
     ...obj,
   });
@@ -4180,6 +5150,9 @@ export namespace TagResourceInput {
 export interface TagResourceOutput {}
 
 export namespace TagResourceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceOutput): any => ({
     ...obj,
   });
@@ -4198,6 +5171,9 @@ export interface UntagResourceInput {
 }
 
 export namespace UntagResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceInput): any => ({
     ...obj,
   });
@@ -4206,7 +5182,44 @@ export namespace UntagResourceInput {
 export interface UntagResourceOutput {}
 
 export namespace UntagResourceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceOutput): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The request failed because of an unknown error, exception, or failure.</p>
+ */
+export interface RequestFailedException extends __SmithyException, $MetadataBearer {
+  name: "RequestFailedException";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace RequestFailedException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RequestFailedException): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateActionTypeInput {
+  /**
+   * <p>The action type definition for the action type to be updated.</p>
+   */
+  actionType: ActionTypeDeclaration | undefined;
+}
+
+export namespace UpdateActionTypeInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateActionTypeInput): any => ({
     ...obj,
   });
 }
@@ -4222,6 +5235,9 @@ export interface UpdatePipelineInput {
 }
 
 export namespace UpdatePipelineInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdatePipelineInput): any => ({
     ...obj,
   });
@@ -4238,6 +5254,9 @@ export interface UpdatePipelineOutput {
 }
 
 export namespace UpdatePipelineOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdatePipelineOutput): any => ({
     ...obj,
   });

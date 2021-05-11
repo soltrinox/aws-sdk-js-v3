@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreatePortfolioCommandInput = CreatePortfolioInput;
-export type CreatePortfolioCommandOutput = CreatePortfolioOutput & __MetadataBearer;
+export interface CreatePortfolioCommandInput extends CreatePortfolioInput {}
+export interface CreatePortfolioCommandOutput extends CreatePortfolioOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a portfolio.</p>
  *          <p>A delegated admin is authorized to invoke this command.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, CreatePortfolioCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, CreatePortfolioCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new CreatePortfolioCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreatePortfolioCommandInput} for command's `input` shape.
+ * @see {@link CreatePortfolioCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreatePortfolioCommand extends $Command<
   CreatePortfolioCommandInput,

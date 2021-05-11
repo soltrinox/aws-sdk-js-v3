@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AcceptQualificationRequestCommandInput = AcceptQualificationRequestRequest;
-export type AcceptQualificationRequestCommandOutput = AcceptQualificationRequestResponse & __MetadataBearer;
+export interface AcceptQualificationRequestCommandInput extends AcceptQualificationRequestRequest {}
+export interface AcceptQualificationRequestCommandOutput extends AcceptQualificationRequestResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -31,6 +31,20 @@ export type AcceptQualificationRequestCommandOutput = AcceptQualificationRequest
  *             A successful request for the <code>AcceptQualificationRequest</code> operation
  *             returns with no errors and an empty body.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, AcceptQualificationRequestCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, AcceptQualificationRequestCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new AcceptQualificationRequestCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AcceptQualificationRequestCommandInput} for command's `input` shape.
+ * @see {@link AcceptQualificationRequestCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AcceptQualificationRequestCommand extends $Command<
   AcceptQualificationRequestCommandInput,

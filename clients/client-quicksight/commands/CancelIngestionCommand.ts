@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelIngestionCommandInput = CancelIngestionRequest;
-export type CancelIngestionCommandOutput = CancelIngestionResponse & __MetadataBearer;
+export interface CancelIngestionCommandInput extends CancelIngestionRequest {}
+export interface CancelIngestionCommandOutput extends CancelIngestionResponse, __MetadataBearer {}
 
 /**
  * <p>Cancels an ongoing ingestion of data into SPICE.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, CancelIngestionCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, CancelIngestionCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new CancelIngestionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelIngestionCommandInput} for command's `input` shape.
+ * @see {@link CancelIngestionCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelIngestionCommand extends $Command<
   CancelIngestionCommandInput,

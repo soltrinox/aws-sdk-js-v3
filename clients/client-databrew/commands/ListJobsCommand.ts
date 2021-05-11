@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListJobsCommandInput = ListJobsRequest;
-export type ListJobsCommandOutput = ListJobsResponse & __MetadataBearer;
+export interface ListJobsCommandInput extends ListJobsRequest {}
+export interface ListJobsCommandOutput extends ListJobsResponse, __MetadataBearer {}
 
 /**
- * <p>Lists the AWS Glue DataBrew jobs in the current AWS account.</p>
+ * <p>Lists all of the DataBrew jobs that are defined.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataBrewClient, ListJobsCommand } from "@aws-sdk/client-databrew"; // ES Modules import
+ * // const { DataBrewClient, ListJobsCommand } = require("@aws-sdk/client-databrew"); // CommonJS import
+ * const client = new DataBrewClient(config);
+ * const command = new ListJobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListJobsCommandInput} for command's `input` shape.
+ * @see {@link ListJobsCommandOutput} for command's `response` shape.
+ * @see {@link DataBrewClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListJobsCommand extends $Command<
   ListJobsCommandInput,

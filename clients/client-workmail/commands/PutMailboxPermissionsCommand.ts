@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutMailboxPermissionsCommandInput = PutMailboxPermissionsRequest;
-export type PutMailboxPermissionsCommandOutput = PutMailboxPermissionsResponse & __MetadataBearer;
+export interface PutMailboxPermissionsCommandInput extends PutMailboxPermissionsRequest {}
+export interface PutMailboxPermissionsCommandOutput extends PutMailboxPermissionsResponse, __MetadataBearer {}
 
 /**
  * <p>Sets permissions for a user, group, or resource. This replaces any pre-existing
  *          permissions.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkMailClient, PutMailboxPermissionsCommand } from "@aws-sdk/client-workmail"; // ES Modules import
+ * // const { WorkMailClient, PutMailboxPermissionsCommand } = require("@aws-sdk/client-workmail"); // CommonJS import
+ * const client = new WorkMailClient(config);
+ * const command = new PutMailboxPermissionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutMailboxPermissionsCommandInput} for command's `input` shape.
+ * @see {@link PutMailboxPermissionsCommandOutput} for command's `response` shape.
+ * @see {@link WorkMailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutMailboxPermissionsCommand extends $Command<
   PutMailboxPermissionsCommandInput,

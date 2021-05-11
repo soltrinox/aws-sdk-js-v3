@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDeploymentCommandInput = UpdateDeploymentRequest;
-export type UpdateDeploymentCommandOutput = Deployment & __MetadataBearer;
+export interface UpdateDeploymentCommandInput extends UpdateDeploymentRequest {}
+export interface UpdateDeploymentCommandOutput extends Deployment, __MetadataBearer {}
 
 /**
  * <p>Changes information about a <a>Deployment</a> resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, UpdateDeploymentCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, UpdateDeploymentCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new UpdateDeploymentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDeploymentCommandInput} for command's `input` shape.
+ * @see {@link UpdateDeploymentCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDeploymentCommand extends $Command<
   UpdateDeploymentCommandInput,

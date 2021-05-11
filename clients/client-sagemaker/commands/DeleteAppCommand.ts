@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAppCommandInput = DeleteAppRequest;
-export type DeleteAppCommandOutput = __MetadataBearer;
+export interface DeleteAppCommandInput extends DeleteAppRequest {}
+export interface DeleteAppCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Used to stop and delete an app.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DeleteAppCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DeleteAppCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DeleteAppCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAppCommandInput} for command's `input` shape.
+ * @see {@link DeleteAppCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAppCommand extends $Command<
   DeleteAppCommandInput,

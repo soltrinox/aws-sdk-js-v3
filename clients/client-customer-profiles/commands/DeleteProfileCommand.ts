@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteProfileCommandInput = DeleteProfileRequest;
-export type DeleteProfileCommandOutput = DeleteProfileResponse & __MetadataBearer;
+export interface DeleteProfileCommandInput extends DeleteProfileRequest {}
+export interface DeleteProfileCommandOutput extends DeleteProfileResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the standard customer profile and all data pertaining to the profile.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CustomerProfilesClient, DeleteProfileCommand } from "@aws-sdk/client-customer-profiles"; // ES Modules import
+ * // const { CustomerProfilesClient, DeleteProfileCommand } = require("@aws-sdk/client-customer-profiles"); // CommonJS import
+ * const client = new CustomerProfilesClient(config);
+ * const command = new DeleteProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteProfileCommandInput} for command's `input` shape.
+ * @see {@link DeleteProfileCommandOutput} for command's `response` shape.
+ * @see {@link CustomerProfilesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteProfileCommand extends $Command<
   DeleteProfileCommandInput,

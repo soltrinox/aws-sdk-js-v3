@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagQueueCommandInput = TagQueueRequest;
-export type TagQueueCommandOutput = __MetadataBearer;
+export interface TagQueueCommandInput extends TagQueueRequest {}
+export interface TagQueueCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Add cost allocation tags to the specified Amazon SQS queue. For an overview, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html">Tagging Your Amazon SQS Queues</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
@@ -37,8 +37,22 @@ export type TagQueueCommandOutput = __MetadataBearer;
  *          </ul>
  *          <p>For a full list of tag restrictions, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues">Limits Related to Queues</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
  *         <note>
- *             <p>Cross-account permissions don't apply to this action. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name">Grant Cross-Account Permissions to a Role and a User Name</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+ *             <p>Cross-account permissions don't apply to this action. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name">Grant cross-account permissions to a role and a user name</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SQSClient, TagQueueCommand } from "@aws-sdk/client-sqs"; // ES Modules import
+ * // const { SQSClient, TagQueueCommand } = require("@aws-sdk/client-sqs"); // CommonJS import
+ * const client = new SQSClient(config);
+ * const command = new TagQueueCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagQueueCommandInput} for command's `input` shape.
+ * @see {@link TagQueueCommandOutput} for command's `response` shape.
+ * @see {@link SQSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagQueueCommand extends $Command<TagQueueCommandInput, TagQueueCommandOutput, SQSClientResolvedConfig> {
   // Start section: command_properties

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDataRetentionCommandInput = UpdateDataRetentionInput;
-export type UpdateDataRetentionCommandOutput = UpdateDataRetentionOutput & __MetadataBearer;
+export interface UpdateDataRetentionCommandInput extends UpdateDataRetentionInput {}
+export interface UpdateDataRetentionCommandOutput extends UpdateDataRetentionOutput, __MetadataBearer {}
 
 /**
  * <p> Increases or decreases the stream's data retention period by the value that you
@@ -48,6 +48,20 @@ export type UpdateDataRetentionCommandOutput = UpdateDataRetentionOutput & __Met
  *                     any data older than one hour is deleted immediately.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisVideoClient, UpdateDataRetentionCommand } from "@aws-sdk/client-kinesis-video"; // ES Modules import
+ * // const { KinesisVideoClient, UpdateDataRetentionCommand } = require("@aws-sdk/client-kinesis-video"); // CommonJS import
+ * const client = new KinesisVideoClient(config);
+ * const command = new UpdateDataRetentionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDataRetentionCommandInput} for command's `input` shape.
+ * @see {@link UpdateDataRetentionCommandOutput} for command's `response` shape.
+ * @see {@link KinesisVideoClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDataRetentionCommand extends $Command<
   UpdateDataRetentionCommandInput,

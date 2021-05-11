@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteInstanceCommandInput = DeleteInstanceRequest;
-export type DeleteInstanceCommandOutput = __MetadataBearer;
+export interface DeleteInstanceCommandInput extends DeleteInstanceRequest {}
+export interface DeleteInstanceCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a specified instance, which terminates the associated Amazon EC2 instance. You must stop an instance before you can delete it.</p>
@@ -29,6 +29,20 @@ export type DeleteInstanceCommandOutput = __MetadataBearer;
  *       level for the stack, or an attached policy that explicitly grants permissions. For more
  *       information on user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, DeleteInstanceCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, DeleteInstanceCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new DeleteInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteInstanceCommandInput} for command's `input` shape.
+ * @see {@link DeleteInstanceCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteInstanceCommand extends $Command<
   DeleteInstanceCommandInput,

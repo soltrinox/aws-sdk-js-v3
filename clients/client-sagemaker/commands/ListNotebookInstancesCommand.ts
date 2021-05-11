@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListNotebookInstancesCommandInput = ListNotebookInstancesInput;
-export type ListNotebookInstancesCommandOutput = ListNotebookInstancesOutput & __MetadataBearer;
+export interface ListNotebookInstancesCommandInput extends ListNotebookInstancesInput {}
+export interface ListNotebookInstancesCommandOutput extends ListNotebookInstancesOutput, __MetadataBearer {}
 
 /**
  * <p>Returns a list of the Amazon SageMaker notebook instances in the requester's account in an AWS
  *             Region. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, ListNotebookInstancesCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, ListNotebookInstancesCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new ListNotebookInstancesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListNotebookInstancesCommandInput} for command's `input` shape.
+ * @see {@link ListNotebookInstancesCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListNotebookInstancesCommand extends $Command<
   ListNotebookInstancesCommandInput,

@@ -11,6 +11,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -24,6 +27,9 @@ export interface GetDeviceRequest {
 }
 
 export namespace GetDeviceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDeviceRequest): any => ({
     ...obj,
   });
@@ -72,13 +78,16 @@ export interface GetDeviceResponse {
 }
 
 export namespace GetDeviceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDeviceResponse): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The request processing has failed because of an unknown error, exception or failure.</p>
+ * <p>The request processing has failed because of an unknown error, exception, or failure.</p>
  */
 export interface InternalServiceException extends __SmithyException, $MetadataBearer {
   name: "InternalServiceException";
@@ -87,6 +96,9 @@ export interface InternalServiceException extends __SmithyException, $MetadataBe
 }
 
 export namespace InternalServiceException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServiceException): any => ({
     ...obj,
   });
@@ -102,6 +114,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -117,6 +132,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -132,6 +150,9 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
@@ -153,6 +174,9 @@ export interface SearchDevicesFilter {
 }
 
 export namespace SearchDevicesFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchDevicesFilter): any => ({
     ...obj,
   });
@@ -176,6 +200,9 @@ export interface SearchDevicesRequest {
 }
 
 export namespace SearchDevicesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchDevicesRequest): any => ({
     ...obj,
   });
@@ -212,6 +239,9 @@ export interface DeviceSummary {
 }
 
 export namespace DeviceSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeviceSummary): any => ({
     ...obj,
   });
@@ -230,7 +260,42 @@ export interface SearchDevicesResponse {
 }
 
 export namespace SearchDevicesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchDevicesResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListTagsForResourceRequest {
+  /**
+   * <p>Specify the <code>resourceArn</code> for the resource whose tags to display.</p>
+   */
+  resourceArn: string | undefined;
+}
+
+export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListTagsForResourceResponse {
+  /**
+   * <p>Displays the key, value pairs of tags associated with this resource.</p>
+   */
+  tags?: { [key: string]: string };
+}
+
+export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
 }
@@ -248,6 +313,9 @@ export interface CancelQuantumTaskRequest {
 }
 
 export namespace CancelQuantumTaskRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelQuantumTaskRequest): any => ({
     ...obj,
   });
@@ -271,6 +339,9 @@ export interface CancelQuantumTaskResponse {
 }
 
 export namespace CancelQuantumTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelQuantumTaskResponse): any => ({
     ...obj,
   });
@@ -286,6 +357,9 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
@@ -326,9 +400,17 @@ export interface CreateQuantumTaskRequest {
    * <p>The action associated with the task.</p>
    */
   action: __LazyJsonString | string | undefined;
+
+  /**
+   * <p>Tags to be added to the quantum task you're creating.</p>
+   */
+  tags?: { [key: string]: string };
 }
 
 export namespace CreateQuantumTaskRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateQuantumTaskRequest): any => ({
     ...obj,
   });
@@ -342,6 +424,9 @@ export interface CreateQuantumTaskResponse {
 }
 
 export namespace CreateQuantumTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateQuantumTaskResponse): any => ({
     ...obj,
   });
@@ -357,13 +442,16 @@ export interface DeviceOfflineException extends __SmithyException, $MetadataBear
 }
 
 export namespace DeviceOfflineException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeviceOfflineException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The request failed because a service quota is met.</p>
+ * <p>The request failed because a service quota is exceeded.</p>
  */
 export interface ServiceQuotaExceededException extends __SmithyException, $MetadataBearer {
   name: "ServiceQuotaExceededException";
@@ -372,6 +460,9 @@ export interface ServiceQuotaExceededException extends __SmithyException, $Metad
 }
 
 export namespace ServiceQuotaExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceQuotaExceededException): any => ({
     ...obj,
   });
@@ -385,6 +476,9 @@ export interface GetQuantumTaskRequest {
 }
 
 export namespace GetQuantumTaskRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetQuantumTaskRequest): any => ({
     ...obj,
   });
@@ -450,9 +544,17 @@ export interface GetQuantumTaskResponse {
    * <p>The time at which the task ended.</p>
    */
   endedAt?: Date;
+
+  /**
+   * <p>The tags that belong to this task.</p>
+   */
+  tags?: { [key: string]: string };
 }
 
 export namespace GetQuantumTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetQuantumTaskResponse): any => ({
     ...obj,
   });
@@ -488,6 +590,9 @@ export interface SearchQuantumTasksFilter {
 }
 
 export namespace SearchQuantumTasksFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchQuantumTasksFilter): any => ({
     ...obj,
   });
@@ -511,6 +616,9 @@ export interface SearchQuantumTasksRequest {
 }
 
 export namespace SearchQuantumTasksRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchQuantumTasksRequest): any => ({
     ...obj,
   });
@@ -559,9 +667,17 @@ export interface QuantumTaskSummary {
    * <p>The time at which the task finished.</p>
    */
   endedAt?: Date;
+
+  /**
+   * <p>Displays the key, value pairs of tags associated with this quantum task.</p>
+   */
+  tags?: { [key: string]: string };
 }
 
 export namespace QuantumTaskSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QuantumTaskSummary): any => ({
     ...obj,
   });
@@ -580,7 +696,74 @@ export interface SearchQuantumTasksResponse {
 }
 
 export namespace SearchQuantumTasksResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchQuantumTasksResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface TagResourceRequest {
+  /**
+   * <p>Specify the <code>resourceArn</code> of the resource to which a tag will be added.</p>
+   */
+  resourceArn: string | undefined;
+
+  /**
+   * <p>Specify the tags to add to the resource.</p>
+   */
+  tags: { [key: string]: string } | undefined;
+}
+
+export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagResourceResponse {}
+
+export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface UntagResourceRequest {
+  /**
+   * <p>Specify the <code>resourceArn</code> for the resource from which to remove the tags.</p>
+   */
+  resourceArn: string | undefined;
+
+  /**
+   * <p>pecify the keys for the tags to remove from the resource.</p>
+   */
+  tagKeys: string[] | undefined;
+}
+
+export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface UntagResourceResponse {}
+
+export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
 }

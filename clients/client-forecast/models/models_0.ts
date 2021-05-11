@@ -37,6 +37,9 @@ export interface EncryptionConfig {
 }
 
 export namespace EncryptionConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EncryptionConfig): any => ({
     ...obj,
   });
@@ -68,6 +71,9 @@ export interface SchemaAttribute {
 }
 
 export namespace SchemaAttribute {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SchemaAttribute): any => ({
     ...obj,
   });
@@ -84,6 +90,9 @@ export interface Schema {
 }
 
 export namespace Schema {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Schema): any => ({
     ...obj,
   });
@@ -129,6 +138,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
     ...(obj.Key && { Key: SENSITIVE_STRING }),
@@ -212,6 +224,9 @@ export interface CreateDatasetRequest {
 }
 
 export namespace CreateDatasetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetRequest): any => ({
     ...obj,
     ...(obj.Tags && { Tags: obj.Tags.map((item) => Tag.filterSensitiveLog(item)) }),
@@ -226,6 +241,9 @@ export interface CreateDatasetResponse {
 }
 
 export namespace CreateDatasetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetResponse): any => ({
     ...obj,
   });
@@ -242,6 +260,9 @@ export interface InvalidInputException extends __SmithyException, $MetadataBeare
 }
 
 export namespace InvalidInputException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidInputException): any => ({
     ...obj,
   });
@@ -257,6 +278,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -272,6 +296,9 @@ export interface ResourceAlreadyExistsException extends __SmithyException, $Meta
 }
 
 export namespace ResourceAlreadyExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceAlreadyExistsException): any => ({
     ...obj,
   });
@@ -332,6 +359,9 @@ export interface CreateDatasetGroupRequest {
 }
 
 export namespace CreateDatasetGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetGroupRequest): any => ({
     ...obj,
     ...(obj.Tags && { Tags: obj.Tags.map((item) => Tag.filterSensitiveLog(item)) }),
@@ -346,6 +376,9 @@ export interface CreateDatasetGroupResponse {
 }
 
 export namespace CreateDatasetGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetGroupResponse): any => ({
     ...obj,
   });
@@ -361,6 +394,9 @@ export interface ResourceInUseException extends __SmithyException, $MetadataBear
 }
 
 export namespace ResourceInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceInUseException): any => ({
     ...obj,
   });
@@ -377,6 +413,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -409,6 +448,9 @@ export interface S3Config {
 }
 
 export namespace S3Config {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Config): any => ({
     ...obj,
   });
@@ -428,6 +470,9 @@ export interface DataSource {
 }
 
 export namespace DataSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataSource): any => ({
     ...obj,
   });
@@ -539,6 +584,9 @@ export interface CreateDatasetImportJobRequest {
 }
 
 export namespace CreateDatasetImportJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetImportJobRequest): any => ({
     ...obj,
     ...(obj.Tags && { Tags: obj.Tags.map((item) => Tag.filterSensitiveLog(item)) }),
@@ -553,6 +601,9 @@ export interface CreateDatasetImportJobResponse {
 }
 
 export namespace CreateDatasetImportJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetImportJobResponse): any => ({
     ...obj,
   });
@@ -609,6 +660,9 @@ export interface CreateForecastRequest {
 }
 
 export namespace CreateForecastRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateForecastRequest): any => ({
     ...obj,
     ...(obj.Tags && { Tags: obj.Tags.map((item) => Tag.filterSensitiveLog(item)) }),
@@ -623,6 +677,9 @@ export interface CreateForecastResponse {
 }
 
 export namespace CreateForecastResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateForecastResponse): any => ({
     ...obj,
   });
@@ -641,6 +698,9 @@ export interface DataDestination {
 }
 
 export namespace DataDestination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataDestination): any => ({
     ...obj,
   });
@@ -697,6 +757,9 @@ export interface CreateForecastExportJobRequest {
 }
 
 export namespace CreateForecastExportJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateForecastExportJobRequest): any => ({
     ...obj,
     ...(obj.Tags && { Tags: obj.Tags.map((item) => Tag.filterSensitiveLog(item)) }),
@@ -711,6 +774,9 @@ export interface CreateForecastExportJobResponse {
 }
 
 export namespace CreateForecastExportJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateForecastExportJobResponse): any => ({
     ...obj,
   });
@@ -742,6 +808,9 @@ export interface EvaluationParameters {
 }
 
 export namespace EvaluationParameters {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EvaluationParameters): any => ({
     ...obj,
   });
@@ -830,6 +899,9 @@ export interface FeaturizationMethod {
 }
 
 export namespace FeaturizationMethod {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FeaturizationMethod): any => ({
     ...obj,
   });
@@ -880,6 +952,9 @@ export interface Featurization {
 }
 
 export namespace Featurization {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Featurization): any => ({
     ...obj,
   });
@@ -931,6 +1006,9 @@ export interface FeaturizationConfig {
 }
 
 export namespace FeaturizationConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FeaturizationConfig): any => ({
     ...obj,
   });
@@ -953,6 +1031,9 @@ export interface CategoricalParameterRange {
 }
 
 export namespace CategoricalParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CategoricalParameterRange): any => ({
     ...obj,
   });
@@ -1020,6 +1101,9 @@ export interface ContinuousParameterRange {
 }
 
 export namespace ContinuousParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ContinuousParameterRange): any => ({
     ...obj,
   });
@@ -1079,6 +1163,9 @@ export interface IntegerParameterRange {
 }
 
 export namespace IntegerParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IntegerParameterRange): any => ({
     ...obj,
   });
@@ -1108,6 +1195,9 @@ export interface ParameterRanges {
 }
 
 export namespace ParameterRanges {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ParameterRanges): any => ({
     ...obj,
   });
@@ -1132,6 +1222,9 @@ export interface HyperParameterTuningJobConfig {
 }
 
 export namespace HyperParameterTuningJobConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HyperParameterTuningJobConfig): any => ({
     ...obj,
   });
@@ -1377,6 +1470,9 @@ export interface SupplementaryFeature {
 }
 
 export namespace SupplementaryFeature {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SupplementaryFeature): any => ({
     ...obj,
   });
@@ -1401,6 +1497,9 @@ export interface InputDataConfig {
 }
 
 export namespace InputDataConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputDataConfig): any => ({
     ...obj,
   });
@@ -1577,6 +1676,9 @@ export interface CreatePredictorRequest {
 }
 
 export namespace CreatePredictorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePredictorRequest): any => ({
     ...obj,
     ...(obj.Tags && { Tags: obj.Tags.map((item) => Tag.filterSensitiveLog(item)) }),
@@ -1591,6 +1693,9 @@ export interface CreatePredictorResponse {
 }
 
 export namespace CreatePredictorResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePredictorResponse): any => ({
     ...obj,
   });
@@ -1651,6 +1756,9 @@ export interface CreatePredictorBacktestExportJobRequest {
 }
 
 export namespace CreatePredictorBacktestExportJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePredictorBacktestExportJobRequest): any => ({
     ...obj,
     ...(obj.Tags && { Tags: obj.Tags.map((item) => Tag.filterSensitiveLog(item)) }),
@@ -1666,6 +1774,9 @@ export interface CreatePredictorBacktestExportJobResponse {
 }
 
 export namespace CreatePredictorBacktestExportJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePredictorBacktestExportJobResponse): any => ({
     ...obj,
   });
@@ -1679,6 +1790,9 @@ export interface DeleteDatasetRequest {
 }
 
 export namespace DeleteDatasetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDatasetRequest): any => ({
     ...obj,
   });
@@ -1692,6 +1806,9 @@ export interface DeleteDatasetGroupRequest {
 }
 
 export namespace DeleteDatasetGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDatasetGroupRequest): any => ({
     ...obj,
   });
@@ -1705,6 +1822,9 @@ export interface DeleteDatasetImportJobRequest {
 }
 
 export namespace DeleteDatasetImportJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDatasetImportJobRequest): any => ({
     ...obj,
   });
@@ -1718,6 +1838,9 @@ export interface DeleteForecastRequest {
 }
 
 export namespace DeleteForecastRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteForecastRequest): any => ({
     ...obj,
   });
@@ -1731,6 +1854,9 @@ export interface DeleteForecastExportJobRequest {
 }
 
 export namespace DeleteForecastExportJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteForecastExportJobRequest): any => ({
     ...obj,
   });
@@ -1744,6 +1870,9 @@ export interface DeletePredictorRequest {
 }
 
 export namespace DeletePredictorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePredictorRequest): any => ({
     ...obj,
   });
@@ -1757,6 +1886,9 @@ export interface DeletePredictorBacktestExportJobRequest {
 }
 
 export namespace DeletePredictorBacktestExportJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePredictorBacktestExportJobRequest): any => ({
     ...obj,
   });
@@ -1770,6 +1902,9 @@ export interface DescribeDatasetRequest {
 }
 
 export namespace DescribeDatasetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetRequest): any => ({
     ...obj,
   });
@@ -1870,6 +2005,9 @@ export interface DescribeDatasetResponse {
 }
 
 export namespace DescribeDatasetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetResponse): any => ({
     ...obj,
   });
@@ -1883,6 +2021,9 @@ export interface DescribeDatasetGroupRequest {
 }
 
 export namespace DescribeDatasetGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetGroupRequest): any => ({
     ...obj,
   });
@@ -1959,6 +2100,9 @@ export interface DescribeDatasetGroupResponse {
 }
 
 export namespace DescribeDatasetGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetGroupResponse): any => ({
     ...obj,
   });
@@ -1972,6 +2116,9 @@ export interface DescribeDatasetImportJobRequest {
 }
 
 export namespace DescribeDatasetImportJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetImportJobRequest): any => ({
     ...obj,
   });
@@ -2024,6 +2171,9 @@ export interface Statistics {
 }
 
 export namespace Statistics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Statistics): any => ({
     ...obj,
   });
@@ -2089,6 +2239,11 @@ export interface DescribeDatasetImportJobResponse {
   DataSource?: DataSource;
 
   /**
+   * <p>The estimated time in minutes for the dataset import job to complete.</p>
+   */
+  EstimatedTimeRemainingInMinutes?: number;
+
+  /**
    * <p>Statistical information about each field in the input data.</p>
    */
   FieldStatistics?: { [key: string]: Statistics };
@@ -2099,9 +2254,7 @@ export interface DescribeDatasetImportJobResponse {
   DataSize?: number;
 
   /**
-   * <p>The status of the dataset import job. The status is reflected in the status of the
-   *       dataset. For example, when the import job status is <code>CREATE_IN_PROGRESS</code>, the
-   *       status of the dataset is <code>UPDATE_IN_PROGRESS</code>. States include:</p>
+   * <p>The status of the dataset import job. States include:</p>
    *          <ul>
    *             <li>
    *                <p>
@@ -2120,6 +2273,11 @@ export interface DescribeDatasetImportJobResponse {
    *             <code>DELETE_FAILED</code>
    *                </p>
    *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code>
+   *                </p>
+   *             </li>
    *          </ul>
    */
   Status?: string;
@@ -2135,16 +2293,23 @@ export interface DescribeDatasetImportJobResponse {
   CreationTime?: Date;
 
   /**
-   * <p>The last time that the dataset was modified. The time depends on the status of the job, as
-   *       follows:</p>
+   * <p>The last time the resource was modified. The timestamp depends on the status of the job:</p>
    *          <ul>
    *             <li>
    *                <p>
-   *                   <code>CREATE_PENDING</code> - The same time as <code>CreationTime</code>.</p>
+   *                   <code>CREATE_PENDING</code> - The <code>CreationTime</code>.</p>
    *             </li>
    *             <li>
    *                <p>
    *                   <code>CREATE_IN_PROGRESS</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPED</code> - When the job stopped.</p>
    *             </li>
    *             <li>
    *                <p>
@@ -2157,6 +2322,9 @@ export interface DescribeDatasetImportJobResponse {
 }
 
 export namespace DescribeDatasetImportJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetImportJobResponse): any => ({
     ...obj,
   });
@@ -2170,6 +2338,9 @@ export interface DescribeForecastRequest {
 }
 
 export namespace DescribeForecastRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeForecastRequest): any => ({
     ...obj,
   });
@@ -2202,6 +2373,11 @@ export interface DescribeForecastResponse {
   DatasetGroupArn?: string;
 
   /**
+   * <p>The estimated time in minutes for the forecast job to complete.</p>
+   */
+  EstimatedTimeRemainingInMinutes?: number;
+
+  /**
    * <p>The status of the forecast. States include:</p>
    *          <ul>
    *             <li>
@@ -2212,13 +2388,18 @@ export interface DescribeForecastResponse {
    *             <li>
    *                <p>
    *                   <code>CREATE_PENDING</code>, <code>CREATE_IN_PROGRESS</code>,
-   *             <code>CREATE_FAILED</code>
+   *           <code>CREATE_FAILED</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code>
    *                </p>
    *             </li>
    *             <li>
    *                <p>
    *                   <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-   *             <code>DELETE_FAILED</code>
+   *           <code>DELETE_FAILED</code>
    *                </p>
    *             </li>
    *          </ul>
@@ -2240,15 +2421,38 @@ export interface DescribeForecastResponse {
   CreationTime?: Date;
 
   /**
-   * <p>Initially, the same as <code>CreationTime</code> (status is <code>CREATE_PENDING</code>).
-   *       Updated when inference (creating the forecast) starts (status changed to
-   *         <code>CREATE_IN_PROGRESS</code>), and when inference is complete (status changed to
-   *         <code>ACTIVE</code>) or fails (status changed to <code>CREATE_FAILED</code>).</p>
+   * <p>The last time the resource was modified. The timestamp depends on the status of the job:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_PENDING</code> - The <code>CreationTime</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_IN_PROGRESS</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPED</code> - When the job stopped.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>ACTIVE</code> or <code>CREATE_FAILED</code> - When the job finished or
+   *           failed.</p>
+   *             </li>
+   *          </ul>
    */
   LastModificationTime?: Date;
 }
 
 export namespace DescribeForecastResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeForecastResponse): any => ({
     ...obj,
   });
@@ -2262,6 +2466,9 @@ export interface DescribeForecastExportJobRequest {
 }
 
 export namespace DescribeForecastExportJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeForecastExportJobRequest): any => ({
     ...obj,
   });
@@ -2304,13 +2511,18 @@ export interface DescribeForecastExportJobResponse {
    *             <li>
    *                <p>
    *                   <code>CREATE_PENDING</code>, <code>CREATE_IN_PROGRESS</code>,
-   *             <code>CREATE_FAILED</code>
+   *           <code>CREATE_FAILED</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code>
    *                </p>
    *             </li>
    *             <li>
    *                <p>
    *                   <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-   *             <code>DELETE_FAILED</code>
+   *           <code>DELETE_FAILED</code>
    *                </p>
    *             </li>
    *          </ul>
@@ -2327,12 +2539,38 @@ export interface DescribeForecastExportJobResponse {
   CreationTime?: Date;
 
   /**
-   * <p>When the last successful export job finished.</p>
+   * <p>The last time the resource was modified. The timestamp depends on the status of the job:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_PENDING</code> - The <code>CreationTime</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_IN_PROGRESS</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPED</code> - When the job stopped.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>ACTIVE</code> or <code>CREATE_FAILED</code> - When the job finished or
+   *           failed.</p>
+   *             </li>
+   *          </ul>
    */
   LastModificationTime?: Date;
 }
 
 export namespace DescribeForecastExportJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeForecastExportJobResponse): any => ({
     ...obj,
   });
@@ -2346,6 +2584,9 @@ export interface DescribePredictorRequest {
 }
 
 export namespace DescribePredictorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePredictorRequest): any => ({
     ...obj,
   });
@@ -2395,6 +2636,9 @@ export interface TestWindowSummary {
 }
 
 export namespace TestWindowSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestWindowSummary): any => ({
     ...obj,
   });
@@ -2418,6 +2662,9 @@ export interface PredictorExecution {
 }
 
 export namespace PredictorExecution {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PredictorExecution): any => ({
     ...obj,
   });
@@ -2438,6 +2685,9 @@ export interface PredictorExecutionDetails {
 }
 
 export namespace PredictorExecutionDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PredictorExecutionDetails): any => ({
     ...obj,
   });
@@ -2523,6 +2773,11 @@ export interface DescribePredictorResponse {
   PredictorExecutionDetails?: PredictorExecutionDetails;
 
   /**
+   * <p>The estimated time in minutes for the predictor training job to complete.</p>
+   */
+  EstimatedTimeRemainingInMinutes?: number;
+
+  /**
    * <p>An array of the ARNs of the dataset import jobs used to import training data for the
    *       predictor.</p>
    */
@@ -2544,19 +2799,18 @@ export interface DescribePredictorResponse {
    *             <li>
    *                <p>
    *                   <code>CREATE_PENDING</code>, <code>CREATE_IN_PROGRESS</code>,
-   *             <code>CREATE_FAILED</code>
+   *           <code>CREATE_FAILED</code>
    *                </p>
    *             </li>
    *             <li>
    *                <p>
    *                   <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-   *             <code>DELETE_FAILED</code>
+   *           <code>DELETE_FAILED</code>
    *                </p>
    *             </li>
    *             <li>
    *                <p>
-   *                   <code>UPDATE_PENDING</code>, <code>UPDATE_IN_PROGRESS</code>,
-   *             <code>UPDATE_FAILED</code>
+   *                   <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code>
    *                </p>
    *             </li>
    *          </ul>
@@ -2578,16 +2832,38 @@ export interface DescribePredictorResponse {
   CreationTime?: Date;
 
   /**
-   * <p>Initially, the same as <code>CreationTime</code> (when the status is
-   *         <code>CREATE_PENDING</code>). This value is updated when training starts (when the status
-   *       changes to <code>CREATE_IN_PROGRESS</code>), and when training has completed (when the status
-   *       changes to <code>ACTIVE</code>) or fails (when the status changes to
-   *         <code>CREATE_FAILED</code>).</p>
+   * <p>The last time the resource was modified. The timestamp depends on the status of the job:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_PENDING</code> - The <code>CreationTime</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_IN_PROGRESS</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPED</code> - When the job stopped.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>ACTIVE</code> or <code>CREATE_FAILED</code> - When the job finished or
+   *           failed.</p>
+   *             </li>
+   *          </ul>
    */
   LastModificationTime?: Date;
 }
 
 export namespace DescribePredictorResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePredictorResponse): any => ({
     ...obj,
   });
@@ -2601,6 +2877,9 @@ export interface DescribePredictorBacktestExportJobRequest {
 }
 
 export namespace DescribePredictorBacktestExportJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePredictorBacktestExportJobRequest): any => ({
     ...obj,
   });
@@ -2638,38 +2917,25 @@ export interface DescribePredictorBacktestExportJobResponse {
    *         <ul>
    *             <li>
    *                 <p>
-   *                     <code>ACTIVE</code>
-   *                 </p>
+   *                   <code>ACTIVE</code>
+   *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                     <code>CREATE_PENDING</code>
-   *                 </p>
-   *             </li>
-   *             <li>
-   *                 <p>
-   *                     <code>CREATE_IN_PROGRESS</code>
-   *                 </p>
-   *             </li>
-   *             <li>
-   *                 <p>
+   *                   <code>CREATE_PENDING</code>, <code>CREATE_IN_PROGRESS</code>,
    *                     <code>CREATE_FAILED</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code>
    *                 </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                     <code>DELETE_PENDING</code>
-   *                 </p>
-   *             </li>
-   *             <li>
-   *                 <p>
-   *                     <code>DELETE_IN_PROGRESS</code>
-   *                 </p>
-   *             </li>
-   *             <li>
-   *                 <p>
+   *                   <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
    *                     <code>DELETE_FAILED</code>
-   *                 </p>
+   *                </p>
    *             </li>
    *          </ul>
    */
@@ -2681,12 +2947,38 @@ export interface DescribePredictorBacktestExportJobResponse {
   CreationTime?: Date;
 
   /**
-   * <p>When the last successful export job finished.</p>
+   * <p>The last time the resource was modified. The timestamp depends on the status of the job:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                   <code>CREATE_PENDING</code> - The <code>CreationTime</code>.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>CREATE_IN_PROGRESS</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>CREATE_STOPPING</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>CREATE_STOPPED</code> - When the job stopped.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>ACTIVE</code> or <code>CREATE_FAILED</code> - When the job finished or
+   *                     failed.</p>
+   *             </li>
+   *          </ul>
    */
   LastModificationTime?: Date;
 }
 
 export namespace DescribePredictorBacktestExportJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePredictorBacktestExportJobResponse): any => ({
     ...obj,
   });
@@ -2700,6 +2992,9 @@ export interface GetAccuracyMetricsRequest {
 }
 
 export namespace GetAccuracyMetricsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccuracyMetricsRequest): any => ({
     ...obj,
   });
@@ -2740,6 +3035,9 @@ export interface ErrorMetric {
 }
 
 export namespace ErrorMetric {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ErrorMetric): any => ({
     ...obj,
   });
@@ -2765,6 +3063,9 @@ export interface WeightedQuantileLoss {
 }
 
 export namespace WeightedQuantileLoss {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WeightedQuantileLoss): any => ({
     ...obj,
   });
@@ -2798,6 +3099,9 @@ export interface Metrics {
 }
 
 export namespace Metrics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Metrics): any => ({
     ...obj,
   });
@@ -2848,6 +3152,9 @@ export interface WindowSummary {
 }
 
 export namespace WindowSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WindowSummary): any => ({
     ...obj,
   });
@@ -2872,6 +3179,9 @@ export interface EvaluationResult {
 }
 
 export namespace EvaluationResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EvaluationResult): any => ({
     ...obj,
   });
@@ -2885,6 +3195,9 @@ export interface GetAccuracyMetricsResponse {
 }
 
 export namespace GetAccuracyMetricsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccuracyMetricsResponse): any => ({
     ...obj,
   });
@@ -2900,6 +3213,9 @@ export interface InvalidNextTokenException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidNextTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextTokenException): any => ({
     ...obj,
   });
@@ -2920,6 +3236,9 @@ export interface ListDatasetGroupsRequest {
 }
 
 export namespace ListDatasetGroupsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetGroupsRequest): any => ({
     ...obj,
   });
@@ -2955,6 +3274,9 @@ export interface DatasetGroupSummary {
 }
 
 export namespace DatasetGroupSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetGroupSummary): any => ({
     ...obj,
   });
@@ -2974,6 +3296,9 @@ export interface ListDatasetGroupsResponse {
 }
 
 export namespace ListDatasetGroupsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetGroupsResponse): any => ({
     ...obj,
   });
@@ -3010,6 +3335,9 @@ export interface Filter {
 }
 
 export namespace Filter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Filter): any => ({
     ...obj,
   });
@@ -3064,6 +3392,9 @@ export interface ListDatasetImportJobsRequest {
 }
 
 export namespace ListDatasetImportJobsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetImportJobsRequest): any => ({
     ...obj,
   });
@@ -3093,9 +3424,7 @@ export interface DatasetImportJobSummary {
   DataSource?: DataSource;
 
   /**
-   * <p>The status of the dataset import job. The status is reflected in the status of the
-   *       dataset. For example, when the import job status is <code>CREATE_IN_PROGRESS</code>, the
-   *       status of the dataset is <code>UPDATE_IN_PROGRESS</code>. States include:</p>
+   * <p>The status of the dataset import job. States include:</p>
    *          <ul>
    *             <li>
    *                <p>
@@ -3105,13 +3434,18 @@ export interface DatasetImportJobSummary {
    *             <li>
    *                <p>
    *                   <code>CREATE_PENDING</code>, <code>CREATE_IN_PROGRESS</code>,
-   *             <code>CREATE_FAILED</code>
+   *           <code>CREATE_FAILED</code>
    *                </p>
    *             </li>
    *             <li>
    *                <p>
    *                   <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-   *             <code>DELETE_FAILED</code>
+   *           <code>DELETE_FAILED</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code>
    *                </p>
    *             </li>
    *          </ul>
@@ -3129,16 +3463,23 @@ export interface DatasetImportJobSummary {
   CreationTime?: Date;
 
   /**
-   * <p>The last time that the dataset was modified. The time depends on the status of the job, as
-   *       follows:</p>
+   * <p>The last time the resource was modified. The timestamp depends on the status of the job:</p>
    *          <ul>
    *             <li>
    *                <p>
-   *                   <code>CREATE_PENDING</code> - The same time as <code>CreationTime</code>.</p>
+   *                   <code>CREATE_PENDING</code> - The <code>CreationTime</code>.</p>
    *             </li>
    *             <li>
    *                <p>
    *                   <code>CREATE_IN_PROGRESS</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPED</code> - When the job stopped.</p>
    *             </li>
    *             <li>
    *                <p>
@@ -3151,6 +3492,9 @@ export interface DatasetImportJobSummary {
 }
 
 export namespace DatasetImportJobSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetImportJobSummary): any => ({
     ...obj,
   });
@@ -3170,6 +3514,9 @@ export interface ListDatasetImportJobsResponse {
 }
 
 export namespace ListDatasetImportJobsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetImportJobsResponse): any => ({
     ...obj,
   });
@@ -3190,6 +3537,9 @@ export interface ListDatasetsRequest {
 }
 
 export namespace ListDatasetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetsRequest): any => ({
     ...obj,
   });
@@ -3237,6 +3587,9 @@ export interface DatasetSummary {
 }
 
 export namespace DatasetSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetSummary): any => ({
     ...obj,
   });
@@ -3256,6 +3609,9 @@ export interface ListDatasetsResponse {
 }
 
 export namespace ListDatasetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetsResponse): any => ({
     ...obj,
   });
@@ -3311,6 +3667,9 @@ export interface ListForecastExportJobsRequest {
 }
 
 export namespace ListForecastExportJobsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListForecastExportJobsRequest): any => ({
     ...obj,
   });
@@ -3348,13 +3707,18 @@ export interface ForecastExportJobSummary {
    *             <li>
    *                <p>
    *                   <code>CREATE_PENDING</code>, <code>CREATE_IN_PROGRESS</code>,
-   *             <code>CREATE_FAILED</code>
+   *           <code>CREATE_FAILED</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code>
    *                </p>
    *             </li>
    *             <li>
    *                <p>
    *                   <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-   *             <code>DELETE_FAILED</code>
+   *           <code>DELETE_FAILED</code>
    *                </p>
    *             </li>
    *          </ul>
@@ -3376,12 +3740,38 @@ export interface ForecastExportJobSummary {
   CreationTime?: Date;
 
   /**
-   * <p>When the last successful export job finished.</p>
+   * <p>The last time the resource was modified. The timestamp depends on the status of the job:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_PENDING</code> - The <code>CreationTime</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_IN_PROGRESS</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPED</code> - When the job stopped.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>ACTIVE</code> or <code>CREATE_FAILED</code> - When the job finished or
+   *           failed.</p>
+   *             </li>
+   *          </ul>
    */
   LastModificationTime?: Date;
 }
 
 export namespace ForecastExportJobSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ForecastExportJobSummary): any => ({
     ...obj,
   });
@@ -3401,6 +3791,9 @@ export interface ListForecastExportJobsResponse {
 }
 
 export namespace ListForecastExportJobsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListForecastExportJobsResponse): any => ({
     ...obj,
   });
@@ -3454,6 +3847,9 @@ export interface ListForecastsRequest {
 }
 
 export namespace ListForecastsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListForecastsRequest): any => ({
     ...obj,
   });
@@ -3497,13 +3893,18 @@ export interface ForecastSummary {
    *             <li>
    *                <p>
    *                   <code>CREATE_PENDING</code>, <code>CREATE_IN_PROGRESS</code>,
-   *             <code>CREATE_FAILED</code>
+   *           <code>CREATE_FAILED</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code>
    *                </p>
    *             </li>
    *             <li>
    *                <p>
    *                   <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-   *             <code>DELETE_FAILED</code>
+   *           <code>DELETE_FAILED</code>
    *                </p>
    *             </li>
    *          </ul>
@@ -3525,15 +3926,38 @@ export interface ForecastSummary {
   CreationTime?: Date;
 
   /**
-   * <p>Initially, the same as <code>CreationTime</code> (status is <code>CREATE_PENDING</code>).
-   *       Updated when inference (creating the forecast) starts (status changed to
-   *         <code>CREATE_IN_PROGRESS</code>), and when inference is complete (status changed to
-   *         <code>ACTIVE</code>) or fails (status changed to <code>CREATE_FAILED</code>).</p>
+   * <p>The last time the resource was modified. The timestamp depends on the status of the job:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_PENDING</code> - The <code>CreationTime</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_IN_PROGRESS</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPED</code> - When the job stopped.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>ACTIVE</code> or <code>CREATE_FAILED</code> - When the job finished or
+   *           failed.</p>
+   *             </li>
+   *          </ul>
    */
   LastModificationTime?: Date;
 }
 
 export namespace ForecastSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ForecastSummary): any => ({
     ...obj,
   });
@@ -3553,6 +3977,9 @@ export interface ListForecastsResponse {
 }
 
 export namespace ListForecastsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListForecastsResponse): any => ({
     ...obj,
   });
@@ -3590,7 +4017,7 @@ export interface ListPredictorBacktestExportJobsRequest {
    *             <li>
    *                     <p>
    *                   <code>Key</code> - The name of the parameter to filter on. Valid values are
-   *                         <code>PredictorBacktestExportJobArn</code> and <code>Status</code>.</p>
+   *                         <code>PredictorArn</code> and <code>Status</code>.</p>
    *                 </li>
    *             <li>
    *                     <p>
@@ -3602,6 +4029,9 @@ export interface ListPredictorBacktestExportJobsRequest {
 }
 
 export namespace ListPredictorBacktestExportJobsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPredictorBacktestExportJobsRequest): any => ({
     ...obj,
   });
@@ -3634,38 +4064,25 @@ export interface PredictorBacktestExportJobSummary {
    *         <ul>
    *             <li>
    *                 <p>
-   *                     <code>ACTIVE</code>
-   *                 </p>
+   *                   <code>ACTIVE</code>
+   *                </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                     <code>CREATE_PENDING</code>
-   *                 </p>
-   *             </li>
-   *             <li>
-   *                 <p>
-   *                     <code>CREATE_IN_PROGRESS</code>
-   *                 </p>
-   *             </li>
-   *             <li>
-   *                 <p>
+   *                   <code>CREATE_PENDING</code>, <code>CREATE_IN_PROGRESS</code>,
    *                     <code>CREATE_FAILED</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                     <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code>
    *                 </p>
    *             </li>
    *             <li>
    *                 <p>
-   *                     <code>DELETE_PENDING</code>
-   *                 </p>
-   *             </li>
-   *             <li>
-   *                 <p>
-   *                     <code>DELETE_IN_PROGRESS</code>
-   *                 </p>
-   *             </li>
-   *             <li>
-   *                 <p>
+   *                   <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
    *                     <code>DELETE_FAILED</code>
-   *                 </p>
+   *                </p>
    *             </li>
    *          </ul>
    */
@@ -3682,12 +4099,38 @@ export interface PredictorBacktestExportJobSummary {
   CreationTime?: Date;
 
   /**
-   * <p>When the last successful export job finished.</p>
+   * <p>The last time the resource was modified. The timestamp depends on the status of the job:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                   <code>CREATE_PENDING</code> - The <code>CreationTime</code>.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>CREATE_IN_PROGRESS</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>CREATE_STOPPING</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>CREATE_STOPPED</code> - When the job stopped.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>ACTIVE</code> or <code>CREATE_FAILED</code> - When the job finished or
+   *                     failed.</p>
+   *             </li>
+   *          </ul>
    */
   LastModificationTime?: Date;
 }
 
 export namespace PredictorBacktestExportJobSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PredictorBacktestExportJobSummary): any => ({
     ...obj,
   });
@@ -3708,6 +4151,9 @@ export interface ListPredictorBacktestExportJobsResponse {
 }
 
 export namespace ListPredictorBacktestExportJobsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPredictorBacktestExportJobsResponse): any => ({
     ...obj,
   });
@@ -3761,6 +4207,9 @@ export interface ListPredictorsRequest {
 }
 
 export namespace ListPredictorsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPredictorsRequest): any => ({
     ...obj,
   });
@@ -3798,19 +4247,18 @@ export interface PredictorSummary {
    *             <li>
    *                <p>
    *                   <code>CREATE_PENDING</code>, <code>CREATE_IN_PROGRESS</code>,
-   *             <code>CREATE_FAILED</code>
+   *           <code>CREATE_FAILED</code>
    *                </p>
    *             </li>
    *             <li>
    *                <p>
    *                   <code>DELETE_PENDING</code>, <code>DELETE_IN_PROGRESS</code>,
-   *             <code>DELETE_FAILED</code>
+   *           <code>DELETE_FAILED</code>
    *                </p>
    *             </li>
    *             <li>
    *                <p>
-   *                   <code>UPDATE_PENDING</code>, <code>UPDATE_IN_PROGRESS</code>,
-   *             <code>UPDATE_FAILED</code>
+   *                   <code>CREATE_STOPPING</code>, <code>CREATE_STOPPED</code>
    *                </p>
    *             </li>
    *          </ul>
@@ -3832,15 +4280,38 @@ export interface PredictorSummary {
   CreationTime?: Date;
 
   /**
-   * <p>Initially, the same as <code>CreationTime</code> (status is <code>CREATE_PENDING</code>).
-   *       Updated when training starts (status changed to <code>CREATE_IN_PROGRESS</code>), and when
-   *       training is complete (status changed to <code>ACTIVE</code>) or fails (status changed to
-   *         <code>CREATE_FAILED</code>).</p>
+   * <p>The last time the resource was modified. The timestamp depends on the status of the job:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_PENDING</code> - The <code>CreationTime</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_IN_PROGRESS</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPING</code> - The current timestamp.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CREATE_STOPPED</code> - When the job stopped.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>ACTIVE</code> or <code>CREATE_FAILED</code> - When the job finished or
+   *           failed.</p>
+   *             </li>
+   *          </ul>
    */
   LastModificationTime?: Date;
 }
 
 export namespace PredictorSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PredictorSummary): any => ({
     ...obj,
   });
@@ -3860,6 +4331,9 @@ export interface ListPredictorsResponse {
 }
 
 export namespace ListPredictorsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPredictorsResponse): any => ({
     ...obj,
   });
@@ -3873,6 +4347,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -3886,9 +4363,31 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
     ...(obj.Tags && { Tags: obj.Tags.map((item) => Tag.filterSensitiveLog(item)) }),
+  });
+}
+
+export interface StopResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) that identifies the resource to stop. The supported ARNs
+   *          are <code>DatasetImportJobArn</code>, <code>PredictorArn</code>,
+   *             <code>PredictorBacktestExportJobArn</code>, <code>ForecastArn</code>, and
+   *             <code>ForecastExportJobArn</code>. </p>
+   */
+  ResourceArn: string | undefined;
+}
+
+export namespace StopResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: StopResourceRequest): any => ({
+    ...obj,
   });
 }
 
@@ -3929,6 +4428,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
     ...(obj.Tags && { Tags: obj.Tags.map((item) => Tag.filterSensitiveLog(item)) }),
@@ -3938,6 +4440,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -3956,6 +4461,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
     ...(obj.TagKeys && { TagKeys: SENSITIVE_STRING }),
@@ -3965,6 +4473,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
@@ -3984,6 +4495,9 @@ export interface UpdateDatasetGroupRequest {
 }
 
 export namespace UpdateDatasetGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDatasetGroupRequest): any => ({
     ...obj,
   });
@@ -3992,6 +4506,9 @@ export namespace UpdateDatasetGroupRequest {
 export interface UpdateDatasetGroupResponse {}
 
 export namespace UpdateDatasetGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDatasetGroupResponse): any => ({
     ...obj,
   });

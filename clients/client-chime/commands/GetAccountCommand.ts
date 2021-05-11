@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAccountCommandInput = GetAccountRequest;
-export type GetAccountCommandOutput = GetAccountResponse & __MetadataBearer;
+export interface GetAccountCommandInput extends GetAccountRequest {}
+export interface GetAccountCommandOutput extends GetAccountResponse, __MetadataBearer {}
 
 /**
- * <p>Retrieves details for the specified Amazon Chime account, such as account type and
- *        supported licenses.</p>
+ * <p>Retrieves details for the specified Amazon Chime account, such as account type and supported
+ *             licenses.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, GetAccountCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, GetAccountCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new GetAccountCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAccountCommandInput} for command's `input` shape.
+ * @see {@link GetAccountCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAccountCommand extends $Command<
   GetAccountCommandInput,

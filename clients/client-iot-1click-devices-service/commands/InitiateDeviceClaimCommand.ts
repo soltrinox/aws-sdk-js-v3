@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type InitiateDeviceClaimCommandInput = InitiateDeviceClaimRequest;
-export type InitiateDeviceClaimCommandOutput = InitiateDeviceClaimResponse & __MetadataBearer;
+export interface InitiateDeviceClaimCommandInput extends InitiateDeviceClaimRequest {}
+export interface InitiateDeviceClaimCommandOutput extends InitiateDeviceClaimResponse, __MetadataBearer {}
 
 /**
  * <p>Given a device ID, initiates a claim request for the associated device.</p><note>
@@ -30,6 +30,20 @@ export type InitiateDeviceClaimCommandOutput = InitiateDeviceClaimResponse & __M
  *  and finalizing the claim. For a device of type button, a device event can
  *  be published by simply clicking the device.</p>
  *  </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoT1ClickDevicesServiceClient, InitiateDeviceClaimCommand } from "@aws-sdk/client-iot-1click-devices-service"; // ES Modules import
+ * // const { IoT1ClickDevicesServiceClient, InitiateDeviceClaimCommand } = require("@aws-sdk/client-iot-1click-devices-service"); // CommonJS import
+ * const client = new IoT1ClickDevicesServiceClient(config);
+ * const command = new InitiateDeviceClaimCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link InitiateDeviceClaimCommandInput} for command's `input` shape.
+ * @see {@link InitiateDeviceClaimCommandOutput} for command's `response` shape.
+ * @see {@link IoT1ClickDevicesServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class InitiateDeviceClaimCommand extends $Command<
   InitiateDeviceClaimCommandInput,

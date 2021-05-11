@@ -17,13 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateTrafficMirrorFilterRuleCommandInput = CreateTrafficMirrorFilterRuleRequest;
-export type CreateTrafficMirrorFilterRuleCommandOutput = CreateTrafficMirrorFilterRuleResult & __MetadataBearer;
+export interface CreateTrafficMirrorFilterRuleCommandInput extends CreateTrafficMirrorFilterRuleRequest {}
+export interface CreateTrafficMirrorFilterRuleCommandOutput
+  extends CreateTrafficMirrorFilterRuleResult,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a Traffic Mirror filter rule. </p>
  *          <p>A Traffic Mirror rule defines the Traffic Mirror source traffic to mirror.</p>
  *          <p>You need the Traffic Mirror filter ID when you create the rule.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, CreateTrafficMirrorFilterRuleCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, CreateTrafficMirrorFilterRuleCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new CreateTrafficMirrorFilterRuleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateTrafficMirrorFilterRuleCommandInput} for command's `input` shape.
+ * @see {@link CreateTrafficMirrorFilterRuleCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateTrafficMirrorFilterRuleCommand extends $Command<
   CreateTrafficMirrorFilterRuleCommandInput,

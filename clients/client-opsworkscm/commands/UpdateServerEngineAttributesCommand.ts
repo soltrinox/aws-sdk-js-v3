@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateServerEngineAttributesCommandInput = UpdateServerEngineAttributesRequest;
-export type UpdateServerEngineAttributesCommandOutput = UpdateServerEngineAttributesResponse & __MetadataBearer;
+export interface UpdateServerEngineAttributesCommandInput extends UpdateServerEngineAttributesRequest {}
+export interface UpdateServerEngineAttributesCommandOutput
+  extends UpdateServerEngineAttributesResponse,
+    __MetadataBearer {}
 
 /**
  * <p>
@@ -35,6 +37,20 @@ export type UpdateServerEngineAttributesCommandOutput = UpdateServerEngineAttrib
  *       This operation can only be called for servers in <code>HEALTHY</code> or <code>UNHEALTHY</code> states. Otherwise, an <code>InvalidStateException</code> is raised.
  *       A <code>ResourceNotFoundException</code> is thrown when the server does not exist. A <code>ValidationException</code> is raised when parameters of the request are not valid.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksCMClient, UpdateServerEngineAttributesCommand } from "@aws-sdk/client-opsworkscm"; // ES Modules import
+ * // const { OpsWorksCMClient, UpdateServerEngineAttributesCommand } = require("@aws-sdk/client-opsworkscm"); // CommonJS import
+ * const client = new OpsWorksCMClient(config);
+ * const command = new UpdateServerEngineAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateServerEngineAttributesCommandInput} for command's `input` shape.
+ * @see {@link UpdateServerEngineAttributesCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksCMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateServerEngineAttributesCommand extends $Command<
   UpdateServerEngineAttributesCommandInput,

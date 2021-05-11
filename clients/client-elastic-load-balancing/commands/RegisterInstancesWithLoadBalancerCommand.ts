@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RegisterInstancesWithLoadBalancerCommandInput = RegisterEndPointsInput;
-export type RegisterInstancesWithLoadBalancerCommandOutput = RegisterEndPointsOutput & __MetadataBearer;
+export interface RegisterInstancesWithLoadBalancerCommandInput extends RegisterEndPointsInput {}
+export interface RegisterInstancesWithLoadBalancerCommandOutput extends RegisterEndPointsOutput, __MetadataBearer {}
 
 /**
  * <p>Adds the specified instances to the specified load balancer.</p>
@@ -44,6 +44,20 @@ export type RegisterInstancesWithLoadBalancerCommandOutput = RegisterEndPointsOu
  *
  *         <p>For more information, see <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html">Register or De-Register EC2 Instances</a>
  *             in the <i>Classic Load Balancers Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingClient, RegisterInstancesWithLoadBalancerCommand } from "@aws-sdk/client-elastic-load-balancing"; // ES Modules import
+ * // const { ElasticLoadBalancingClient, RegisterInstancesWithLoadBalancerCommand } = require("@aws-sdk/client-elastic-load-balancing"); // CommonJS import
+ * const client = new ElasticLoadBalancingClient(config);
+ * const command = new RegisterInstancesWithLoadBalancerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RegisterInstancesWithLoadBalancerCommandInput} for command's `input` shape.
+ * @see {@link RegisterInstancesWithLoadBalancerCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RegisterInstancesWithLoadBalancerCommand extends $Command<
   RegisterInstancesWithLoadBalancerCommandInput,

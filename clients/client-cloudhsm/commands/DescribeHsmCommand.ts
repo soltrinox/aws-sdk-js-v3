@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeHsmCommandInput = DescribeHsmRequest;
-export type DescribeHsmCommandOutput = DescribeHsmResponse & __MetadataBearer;
+export interface DescribeHsmCommandInput extends DescribeHsmRequest {}
+export interface DescribeHsmCommandOutput extends DescribeHsmResponse, __MetadataBearer {}
 
 /**
  * <p>This is documentation for <b>AWS CloudHSM Classic</b>. For
@@ -33,6 +33,20 @@ export type DescribeHsmCommandOutput = DescribeHsmResponse & __MetadataBearer;
  *       Reference</a>.</p>
  *          <p>Retrieves information about an HSM. You can identify the HSM by its ARN or its serial
  *       number.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudHSMClient, DescribeHsmCommand } from "@aws-sdk/client-cloudhsm"; // ES Modules import
+ * // const { CloudHSMClient, DescribeHsmCommand } = require("@aws-sdk/client-cloudhsm"); // CommonJS import
+ * const client = new CloudHSMClient(config);
+ * const command = new DescribeHsmCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeHsmCommandInput} for command's `input` shape.
+ * @see {@link DescribeHsmCommandOutput} for command's `response` shape.
+ * @see {@link CloudHSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeHsmCommand extends $Command<
   DescribeHsmCommandInput,

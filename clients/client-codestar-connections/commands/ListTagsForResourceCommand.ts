@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTagsForResourceCommandInput = ListTagsForResourceInput;
-export type ListTagsForResourceCommandOutput = ListTagsForResourceOutput & __MetadataBearer;
+export interface ListTagsForResourceCommandInput extends ListTagsForResourceInput {}
+export interface ListTagsForResourceCommandOutput extends ListTagsForResourceOutput, __MetadataBearer {}
 
 /**
  * <p>Gets the set of key-value pairs (metadata) that are used to manage the resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeStarConnectionsClient, ListTagsForResourceCommand } from "@aws-sdk/client-codestar-connections"; // ES Modules import
+ * // const { CodeStarConnectionsClient, ListTagsForResourceCommand } = require("@aws-sdk/client-codestar-connections"); // CommonJS import
+ * const client = new CodeStarConnectionsClient(config);
+ * const command = new ListTagsForResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTagsForResourceCommandInput} for command's `input` shape.
+ * @see {@link ListTagsForResourceCommandOutput} for command's `response` shape.
+ * @see {@link CodeStarConnectionsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTagsForResourceCommand extends $Command<
   ListTagsForResourceCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDeploymentsCommandInput = ListDeploymentsRequest;
-export type ListDeploymentsCommandOutput = ListDeploymentsResponse & __MetadataBearer;
+export interface ListDeploymentsCommandInput extends ListDeploymentsRequest {}
+export interface ListDeploymentsCommandOutput extends ListDeploymentsResponse, __MetadataBearer {}
 
 /**
  * Returns a history of deployments for the group.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, ListDeploymentsCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, ListDeploymentsCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new ListDeploymentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDeploymentsCommandInput} for command's `input` shape.
+ * @see {@link ListDeploymentsCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDeploymentsCommand extends $Command<
   ListDeploymentsCommandInput,

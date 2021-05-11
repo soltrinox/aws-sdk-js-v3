@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SendUsersMessagesCommandInput = SendUsersMessagesRequest;
-export type SendUsersMessagesCommandOutput = SendUsersMessagesResponse & __MetadataBearer;
+export interface SendUsersMessagesCommandInput extends SendUsersMessagesRequest {}
+export interface SendUsersMessagesCommandOutput extends SendUsersMessagesResponse, __MetadataBearer {}
 
 /**
  * <p>Creates and sends a message to a list of users.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, SendUsersMessagesCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, SendUsersMessagesCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new SendUsersMessagesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SendUsersMessagesCommandInput} for command's `input` shape.
+ * @see {@link SendUsersMessagesCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SendUsersMessagesCommand extends $Command<
   SendUsersMessagesCommandInput,

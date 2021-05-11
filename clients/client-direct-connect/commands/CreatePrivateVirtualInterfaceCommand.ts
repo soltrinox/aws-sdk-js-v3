@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreatePrivateVirtualInterfaceCommandInput = CreatePrivateVirtualInterfaceRequest;
-export type CreatePrivateVirtualInterfaceCommandOutput = VirtualInterface & __MetadataBearer;
+export interface CreatePrivateVirtualInterfaceCommandInput extends CreatePrivateVirtualInterfaceRequest {}
+export interface CreatePrivateVirtualInterfaceCommandOutput extends VirtualInterface, __MetadataBearer {}
 
 /**
  * <p>Creates a private virtual interface. A virtual interface is the VLAN that transports AWS Direct Connect traffic.
@@ -32,6 +32,20 @@ export type CreatePrivateVirtualInterfaceCommandOutput = VirtualInterface & __Me
  *       the connection for up to 30 seconds. To check whether your connection supports jumbo
  *       frames, call <a>DescribeConnections</a>. To check whether your virtual
  *       interface supports jumbo frames, call <a>DescribeVirtualInterfaces</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectConnectClient, CreatePrivateVirtualInterfaceCommand } from "@aws-sdk/client-direct-connect"; // ES Modules import
+ * // const { DirectConnectClient, CreatePrivateVirtualInterfaceCommand } = require("@aws-sdk/client-direct-connect"); // CommonJS import
+ * const client = new DirectConnectClient(config);
+ * const command = new CreatePrivateVirtualInterfaceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreatePrivateVirtualInterfaceCommandInput} for command's `input` shape.
+ * @see {@link CreatePrivateVirtualInterfaceCommandOutput} for command's `response` shape.
+ * @see {@link DirectConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreatePrivateVirtualInterfaceCommand extends $Command<
   CreatePrivateVirtualInterfaceCommandInput,

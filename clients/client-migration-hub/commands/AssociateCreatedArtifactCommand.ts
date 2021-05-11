@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateCreatedArtifactCommandInput = AssociateCreatedArtifactRequest;
-export type AssociateCreatedArtifactCommandOutput = AssociateCreatedArtifactResult & __MetadataBearer;
+export interface AssociateCreatedArtifactCommandInput extends AssociateCreatedArtifactRequest {}
+export interface AssociateCreatedArtifactCommandOutput extends AssociateCreatedArtifactResult, __MetadataBearer {}
 
 /**
  * <p>Associates a created artifact of an AWS cloud resource, the target receiving the
@@ -39,6 +39,20 @@ export type AssociateCreatedArtifactCommandOutput = AssociateCreatedArtifactResu
  *                or DMS endpoint, etc.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MigrationHubClient, AssociateCreatedArtifactCommand } from "@aws-sdk/client-migration-hub"; // ES Modules import
+ * // const { MigrationHubClient, AssociateCreatedArtifactCommand } = require("@aws-sdk/client-migration-hub"); // CommonJS import
+ * const client = new MigrationHubClient(config);
+ * const command = new AssociateCreatedArtifactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateCreatedArtifactCommandInput} for command's `input` shape.
+ * @see {@link AssociateCreatedArtifactCommandOutput} for command's `response` shape.
+ * @see {@link MigrationHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateCreatedArtifactCommand extends $Command<
   AssociateCreatedArtifactCommandInput,

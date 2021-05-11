@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeConfigurationRevisionCommandInput = DescribeConfigurationRevisionRequest;
-export type DescribeConfigurationRevisionCommandOutput = DescribeConfigurationRevisionResponse & __MetadataBearer;
+export interface DescribeConfigurationRevisionCommandInput extends DescribeConfigurationRevisionRequest {}
+export interface DescribeConfigurationRevisionCommandOutput
+  extends DescribeConfigurationRevisionResponse,
+    __MetadataBearer {}
 
 /**
  * Returns the specified configuration revision for the specified configuration.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MqClient, DescribeConfigurationRevisionCommand } from "@aws-sdk/client-mq"; // ES Modules import
+ * // const { MqClient, DescribeConfigurationRevisionCommand } = require("@aws-sdk/client-mq"); // CommonJS import
+ * const client = new MqClient(config);
+ * const command = new DescribeConfigurationRevisionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeConfigurationRevisionCommandInput} for command's `input` shape.
+ * @see {@link DescribeConfigurationRevisionCommandOutput} for command's `response` shape.
+ * @see {@link MqClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeConfigurationRevisionCommand extends $Command<
   DescribeConfigurationRevisionCommandInput,

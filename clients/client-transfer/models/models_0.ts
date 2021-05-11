@@ -11,6 +11,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -28,9 +31,17 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
+}
+
+export enum Domain {
+  EFS = "EFS",
+  S3 = "S3",
 }
 
 /**
@@ -100,6 +111,9 @@ export interface EndpointDetails {
 }
 
 export namespace EndpointDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EndpointDetails): any => ({
     ...obj,
   });
@@ -130,6 +144,9 @@ export interface IdentityProviderDetails {
 }
 
 export namespace IdentityProviderDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IdentityProviderDetails): any => ({
     ...obj,
   });
@@ -166,6 +183,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -214,6 +234,7 @@ export interface CreateServerRequest {
    */
   Certificate?: string;
 
+  Domain?: Domain | string;
   /**
    * <p>The virtual private cloud (VPC) endpoint settings that are configured for your server.
    *       When you host your endpoint within your VPC, you can make it accessible only to resources
@@ -331,6 +352,9 @@ export interface CreateServerRequest {
 }
 
 export namespace CreateServerRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateServerRequest): any => ({
     ...obj,
     ...(obj.HostKey && { HostKey: SENSITIVE_STRING }),
@@ -345,6 +369,9 @@ export interface CreateServerResponse {
 }
 
 export namespace CreateServerResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateServerResponse): any => ({
     ...obj,
   });
@@ -360,6 +387,9 @@ export interface InternalServiceError extends __SmithyException, $MetadataBearer
 }
 
 export namespace InternalServiceError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServiceError): any => ({
     ...obj,
   });
@@ -375,6 +405,9 @@ export interface InvalidRequestException extends __SmithyException, $MetadataBea
 }
 
 export namespace InvalidRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRequestException): any => ({
     ...obj,
   });
@@ -392,6 +425,9 @@ export interface ResourceExistsException extends __SmithyException, $MetadataBea
 }
 
 export namespace ResourceExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceExistsException): any => ({
     ...obj,
   });
@@ -407,6 +443,9 @@ export interface ServiceUnavailableException extends __SmithyException, $Metadat
 }
 
 export namespace ServiceUnavailableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceUnavailableException): any => ({
     ...obj,
   });
@@ -424,6 +463,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -446,6 +488,9 @@ export interface HomeDirectoryMapEntry {
 }
 
 export namespace HomeDirectoryMapEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HomeDirectoryMapEntry): any => ({
     ...obj,
   });
@@ -454,6 +499,21 @@ export namespace HomeDirectoryMapEntry {
 export enum HomeDirectoryType {
   LOGICAL = "LOGICAL",
   PATH = "PATH",
+}
+
+export interface PosixProfile {
+  Uid: number | undefined;
+  Gid: number | undefined;
+  SecondaryGids?: number[];
+}
+
+export namespace PosixProfile {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PosixProfile): any => ({
+    ...obj,
+  });
 }
 
 export interface CreateUserRequest {
@@ -531,6 +591,7 @@ export interface CreateUserRequest {
    */
   Policy?: string;
 
+  PosixProfile?: PosixProfile;
   /**
    * <p>The IAM role that controls your users' access to your Amazon S3 bucket. The policies
    *       attached to this role will determine the level of access you want to provide your users when
@@ -569,6 +630,9 @@ export interface CreateUserRequest {
 }
 
 export namespace CreateUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateUserRequest): any => ({
     ...obj,
   });
@@ -587,6 +651,9 @@ export interface CreateUserResponse {
 }
 
 export namespace CreateUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateUserResponse): any => ({
     ...obj,
   });
@@ -605,6 +672,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -618,6 +688,9 @@ export interface DeleteServerRequest {
 }
 
 export namespace DeleteServerRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteServerRequest): any => ({
     ...obj,
   });
@@ -642,6 +715,9 @@ export interface DeleteSshPublicKeyRequest {
 }
 
 export namespace DeleteSshPublicKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSshPublicKeyRequest): any => ({
     ...obj,
   });
@@ -661,6 +737,9 @@ export interface DeleteUserRequest {
 }
 
 export namespace DeleteUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteUserRequest): any => ({
     ...obj,
   });
@@ -709,6 +788,9 @@ export interface DescribedSecurityPolicy {
 }
 
 export namespace DescribedSecurityPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribedSecurityPolicy): any => ({
     ...obj,
   });
@@ -739,6 +821,7 @@ export interface DescribedServer {
    */
   Certificate?: string;
 
+  Domain?: Domain | string;
   /**
    * <p>Specifies the virtual private cloud (VPC) endpoint settings that you configured for your
    *       server.</p>
@@ -841,6 +924,9 @@ export interface DescribedServer {
 }
 
 export namespace DescribedServer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribedServer): any => ({
     ...obj,
   });
@@ -873,6 +959,9 @@ export interface SshPublicKey {
 }
 
 export namespace SshPublicKey {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SshPublicKey): any => ({
     ...obj,
   });
@@ -926,6 +1015,7 @@ export interface DescribedUser {
    */
   Policy?: string;
 
+  PosixProfile?: PosixProfile;
   /**
    * <p>Specifies the IAM role that controls your users' access to your Amazon S3 bucket. The
    *       policies attached to this role will determine the level of access you want to provide your
@@ -956,6 +1046,9 @@ export interface DescribedUser {
 }
 
 export namespace DescribedUser {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribedUser): any => ({
     ...obj,
   });
@@ -969,6 +1062,9 @@ export interface DescribeSecurityPolicyRequest {
 }
 
 export namespace DescribeSecurityPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSecurityPolicyRequest): any => ({
     ...obj,
   });
@@ -982,6 +1078,9 @@ export interface DescribeSecurityPolicyResponse {
 }
 
 export namespace DescribeSecurityPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSecurityPolicyResponse): any => ({
     ...obj,
   });
@@ -995,6 +1094,9 @@ export interface DescribeServerRequest {
 }
 
 export namespace DescribeServerRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeServerRequest): any => ({
     ...obj,
   });
@@ -1009,6 +1111,9 @@ export interface DescribeServerResponse {
 }
 
 export namespace DescribeServerResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeServerResponse): any => ({
     ...obj,
   });
@@ -1028,6 +1133,9 @@ export interface DescribeUserRequest {
 }
 
 export namespace DescribeUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeUserRequest): any => ({
     ...obj,
   });
@@ -1047,6 +1155,9 @@ export interface DescribeUserResponse {
 }
 
 export namespace DescribeUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeUserResponse): any => ({
     ...obj,
   });
@@ -1070,6 +1181,9 @@ export interface ImportSshPublicKeyRequest {
 }
 
 export namespace ImportSshPublicKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportSshPublicKeyRequest): any => ({
     ...obj,
   });
@@ -1098,6 +1212,9 @@ export interface ImportSshPublicKeyResponse {
 }
 
 export namespace ImportSshPublicKeyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportSshPublicKeyResponse): any => ({
     ...obj,
   });
@@ -1113,6 +1230,9 @@ export interface InvalidNextTokenException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidNextTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextTokenException): any => ({
     ...obj,
   });
@@ -1127,6 +1247,7 @@ export interface ListedServer {
    */
   Arn: string | undefined;
 
+  Domain?: Domain | string;
   /**
    * <p>Specifies the authentication method used to validate a user for a server that was
    *       specified. This can include Secure Shell (SSH), user name and password combinations, or your
@@ -1174,6 +1295,9 @@ export interface ListedServer {
 }
 
 export namespace ListedServer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListedServer): any => ({
     ...obj,
   });
@@ -1226,6 +1350,9 @@ export interface ListedUser {
 }
 
 export namespace ListedUser {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListedUser): any => ({
     ...obj,
   });
@@ -1248,6 +1375,9 @@ export interface ListSecurityPoliciesRequest {
 }
 
 export namespace ListSecurityPoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSecurityPoliciesRequest): any => ({
     ...obj,
   });
@@ -1268,6 +1398,9 @@ export interface ListSecurityPoliciesResponse {
 }
 
 export namespace ListSecurityPoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSecurityPoliciesResponse): any => ({
     ...obj,
   });
@@ -1290,6 +1423,9 @@ export interface ListServersRequest {
 }
 
 export namespace ListServersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListServersRequest): any => ({
     ...obj,
   });
@@ -1310,6 +1446,9 @@ export interface ListServersResponse {
 }
 
 export namespace ListServersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListServersResponse): any => ({
     ...obj,
   });
@@ -1337,6 +1476,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -1364,6 +1506,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -1391,6 +1536,9 @@ export interface ListUsersRequest {
 }
 
 export namespace ListUsersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUsersRequest): any => ({
     ...obj,
   });
@@ -1418,6 +1566,9 @@ export interface ListUsersResponse {
 }
 
 export namespace ListUsersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUsersResponse): any => ({
     ...obj,
   });
@@ -1431,6 +1582,9 @@ export interface StartServerRequest {
 }
 
 export namespace StartServerRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartServerRequest): any => ({
     ...obj,
   });
@@ -1444,6 +1598,9 @@ export interface StopServerRequest {
 }
 
 export namespace StopServerRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopServerRequest): any => ({
     ...obj,
   });
@@ -1464,6 +1621,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -1512,6 +1672,9 @@ export interface TestIdentityProviderRequest {
 }
 
 export namespace TestIdentityProviderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestIdentityProviderRequest): any => ({
     ...obj,
     ...(obj.UserPassword && { UserPassword: SENSITIVE_STRING }),
@@ -1541,6 +1704,9 @@ export interface TestIdentityProviderResponse {
 }
 
 export namespace TestIdentityProviderResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestIdentityProviderResponse): any => ({
     ...obj,
   });
@@ -1561,6 +1727,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -1709,6 +1878,9 @@ export interface UpdateServerRequest {
 }
 
 export namespace UpdateServerRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateServerRequest): any => ({
     ...obj,
     ...(obj.HostKey && { HostKey: SENSITIVE_STRING }),
@@ -1724,6 +1896,9 @@ export interface UpdateServerResponse {
 }
 
 export namespace UpdateServerResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateServerResponse): any => ({
     ...obj,
   });
@@ -1799,6 +1974,7 @@ export interface UpdateUserRequest {
    */
   Policy?: string;
 
+  PosixProfile?: PosixProfile;
   /**
    * <p>The IAM role that controls your users' access to your Amazon S3 bucket. The policies
    *       attached to this role will determine the level of access you want to provide your users when
@@ -1825,6 +2001,9 @@ export interface UpdateUserRequest {
 }
 
 export namespace UpdateUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateUserRequest): any => ({
     ...obj,
   });
@@ -1850,6 +2029,9 @@ export interface UpdateUserResponse {
 }
 
 export namespace UpdateUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateUserResponse): any => ({
     ...obj,
   });

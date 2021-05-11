@@ -20,14 +20,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetVoiceConnectorStreamingConfigurationCommandInput = GetVoiceConnectorStreamingConfigurationRequest;
-export type GetVoiceConnectorStreamingConfigurationCommandOutput = GetVoiceConnectorStreamingConfigurationResponse &
-  __MetadataBearer;
+export interface GetVoiceConnectorStreamingConfigurationCommandInput
+  extends GetVoiceConnectorStreamingConfigurationRequest {}
+export interface GetVoiceConnectorStreamingConfigurationCommandOutput
+  extends GetVoiceConnectorStreamingConfigurationResponse,
+    __MetadataBearer {}
 
 /**
- * <p>Retrieves the streaming configuration details for the specified Amazon Chime Voice
- *       Connector. Shows whether media streaming is enabled for sending to Amazon Kinesis. It also
- *       shows the retention period, in hours, for the Amazon Kinesis data.</p>
+ * <p>Retrieves the streaming configuration details for the specified Amazon Chime Voice Connector.
+ *             Shows whether media streaming is enabled for sending to Amazon Kinesis. It also shows
+ *             the retention period, in hours, for the Amazon Kinesis data.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, GetVoiceConnectorStreamingConfigurationCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, GetVoiceConnectorStreamingConfigurationCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new GetVoiceConnectorStreamingConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetVoiceConnectorStreamingConfigurationCommandInput} for command's `input` shape.
+ * @see {@link GetVoiceConnectorStreamingConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetVoiceConnectorStreamingConfigurationCommand extends $Command<
   GetVoiceConnectorStreamingConfigurationCommandInput,

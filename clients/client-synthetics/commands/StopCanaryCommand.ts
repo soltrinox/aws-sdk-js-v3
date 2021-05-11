@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopCanaryCommandInput = StopCanaryRequest;
-export type StopCanaryCommandOutput = StopCanaryResponse & __MetadataBearer;
+export interface StopCanaryCommandInput extends StopCanaryRequest {}
+export interface StopCanaryCommandOutput extends StopCanaryResponse, __MetadataBearer {}
 
 /**
  * <p>Stops the canary to prevent all future runs. If the canary is currently running,
@@ -27,6 +27,20 @@ export type StopCanaryCommandOutput = StopCanaryResponse & __MetadataBearer;
  *          it is not recorded in Synthetics as a completed run.</p>
  *          <p>You can use <code>StartCanary</code> to start it running again
  *          with the canary’s current schedule at any point in the future.  </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SyntheticsClient, StopCanaryCommand } from "@aws-sdk/client-synthetics"; // ES Modules import
+ * // const { SyntheticsClient, StopCanaryCommand } = require("@aws-sdk/client-synthetics"); // CommonJS import
+ * const client = new SyntheticsClient(config);
+ * const command = new StopCanaryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopCanaryCommandInput} for command's `input` shape.
+ * @see {@link StopCanaryCommandOutput} for command's `response` shape.
+ * @see {@link SyntheticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopCanaryCommand extends $Command<
   StopCanaryCommandInput,

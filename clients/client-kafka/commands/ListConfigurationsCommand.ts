@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListConfigurationsCommandInput = ListConfigurationsRequest;
-export type ListConfigurationsCommandOutput = ListConfigurationsResponse & __MetadataBearer;
+export interface ListConfigurationsCommandInput extends ListConfigurationsRequest {}
+export interface ListConfigurationsCommandOutput extends ListConfigurationsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of all the MSK configurations in this Region.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, ListConfigurationsCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, ListConfigurationsCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new ListConfigurationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListConfigurationsCommandInput} for command's `input` shape.
+ * @see {@link ListConfigurationsCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListConfigurationsCommand extends $Command<
   ListConfigurationsCommandInput,

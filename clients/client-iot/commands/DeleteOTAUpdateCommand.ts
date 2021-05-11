@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteOTAUpdateCommandInput = DeleteOTAUpdateRequest;
-export type DeleteOTAUpdateCommandOutput = DeleteOTAUpdateResponse & __MetadataBearer;
+export interface DeleteOTAUpdateCommandInput extends DeleteOTAUpdateRequest {}
+export interface DeleteOTAUpdateCommandOutput extends DeleteOTAUpdateResponse, __MetadataBearer {}
 
 /**
  * <p>Delete an OTA update.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DeleteOTAUpdateCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DeleteOTAUpdateCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DeleteOTAUpdateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteOTAUpdateCommandInput} for command's `input` shape.
+ * @see {@link DeleteOTAUpdateCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteOTAUpdateCommand extends $Command<
   DeleteOTAUpdateCommandInput,

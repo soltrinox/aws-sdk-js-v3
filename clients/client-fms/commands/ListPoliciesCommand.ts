@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPoliciesCommandInput = ListPoliciesRequest;
-export type ListPoliciesCommandOutput = ListPoliciesResponse & __MetadataBearer;
+export interface ListPoliciesCommandInput extends ListPoliciesRequest {}
+export interface ListPoliciesCommandOutput extends ListPoliciesResponse, __MetadataBearer {}
 
 /**
  * <p>Returns an array of <code>PolicySummary</code> objects.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FMSClient, ListPoliciesCommand } from "@aws-sdk/client-fms"; // ES Modules import
+ * // const { FMSClient, ListPoliciesCommand } = require("@aws-sdk/client-fms"); // CommonJS import
+ * const client = new FMSClient(config);
+ * const command = new ListPoliciesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPoliciesCommandInput} for command's `input` shape.
+ * @see {@link ListPoliciesCommandOutput} for command's `response` shape.
+ * @see {@link FMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPoliciesCommand extends $Command<
   ListPoliciesCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDomainCommandInput = CreateDomainRequest;
-export type CreateDomainCommandOutput = CreateDomainResponse & __MetadataBearer;
+export interface CreateDomainCommandInput extends CreateDomainRequest {}
+export interface CreateDomainCommandOutput extends CreateDomainResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a <code>Domain</code> used by Amazon SageMaker Studio. A domain consists of an associated
@@ -64,6 +64,20 @@ export type CreateDomainCommandOutput = CreateDomainResponse & __MetadataBearer;
  *          <p>For more information, see
  *     <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-and-internet-access.html">Connect
  *       SageMaker Studio Notebooks to Resources in a VPC</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, CreateDomainCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, CreateDomainCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new CreateDomainCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDomainCommandInput} for command's `input` shape.
+ * @see {@link CreateDomainCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDomainCommand extends $Command<
   CreateDomainCommandInput,

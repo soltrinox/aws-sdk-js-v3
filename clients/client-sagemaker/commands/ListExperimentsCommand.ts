@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListExperimentsCommandInput = ListExperimentsRequest;
-export type ListExperimentsCommandOutput = ListExperimentsResponse & __MetadataBearer;
+export interface ListExperimentsCommandInput extends ListExperimentsRequest {}
+export interface ListExperimentsCommandOutput extends ListExperimentsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists all the experiments in your account. The list can be filtered to show only
  *       experiments that were created in a specific time range. The list can be sorted by experiment
  *       name or creation time.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, ListExperimentsCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, ListExperimentsCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new ListExperimentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListExperimentsCommandInput} for command's `input` shape.
+ * @see {@link ListExperimentsCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListExperimentsCommand extends $Command<
   ListExperimentsCommandInput,

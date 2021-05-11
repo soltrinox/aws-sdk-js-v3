@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAssessmentFrameworkCommandInput = CreateAssessmentFrameworkRequest;
-export type CreateAssessmentFrameworkCommandOutput = CreateAssessmentFrameworkResponse & __MetadataBearer;
+export interface CreateAssessmentFrameworkCommandInput extends CreateAssessmentFrameworkRequest {}
+export interface CreateAssessmentFrameworkCommandOutput extends CreateAssessmentFrameworkResponse, __MetadataBearer {}
 
 /**
  * <p>
  * Creates a custom framework in AWS Audit Manager.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AuditManagerClient, CreateAssessmentFrameworkCommand } from "@aws-sdk/client-auditmanager"; // ES Modules import
+ * // const { AuditManagerClient, CreateAssessmentFrameworkCommand } = require("@aws-sdk/client-auditmanager"); // CommonJS import
+ * const client = new AuditManagerClient(config);
+ * const command = new CreateAssessmentFrameworkCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAssessmentFrameworkCommandInput} for command's `input` shape.
+ * @see {@link CreateAssessmentFrameworkCommandOutput} for command's `response` shape.
+ * @see {@link AuditManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAssessmentFrameworkCommand extends $Command<
   CreateAssessmentFrameworkCommandInput,

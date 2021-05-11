@@ -17,12 +17,12 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateLabelingJobCommandInput = CreateLabelingJobRequest;
-export type CreateLabelingJobCommandOutput = CreateLabelingJobResponse & __MetadataBearer;
+export interface CreateLabelingJobCommandInput extends CreateLabelingJobRequest {}
+export interface CreateLabelingJobCommandOutput extends CreateLabelingJobResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a job that uses workers to label the data objects in your input dataset. You
- *             can use the labeled data to train machine learning models.</p>
+ *             can use the labeled data to train machine learning models. </p>
  *         <p>You can select your workforce from one of three providers:</p>
  *         <ul>
  *             <li>
@@ -50,6 +50,29 @@ export type CreateLabelingJobCommandOutput = CreateLabelingJobResponse & __Metad
  *             more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-data.html">Using Input and Output Data</a>.</p>
  *         <p>The output can be used as the manifest file for another labeling job or as training
  *             data for your machine learning models.</p>
+ *         <p>You can use this operation to create a static labeling job or a streaming labeling
+ *             job. A static labeling job stops if all data objects in the input manifest file
+ *             identified in <code>ManifestS3Uri</code> have been labeled. A streaming labeling job
+ *             runs perpetually until it is manually stopped, or remains idle for 10 days. You can send
+ *             new data objects to an active (<code>InProgress</code>) streaming labeling job in real
+ *             time. To learn how to create a static labeling job, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-create-labeling-job-api.html">Create a Labeling Job
+ *                 (API) </a> in the Amazon SageMaker Developer Guide. To learn how to create a streaming
+ *             labeling job, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sms-streaming-create-job.html">Create a Streaming Labeling
+ *                 Job</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, CreateLabelingJobCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, CreateLabelingJobCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new CreateLabelingJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateLabelingJobCommandInput} for command's `input` shape.
+ * @see {@link CreateLabelingJobCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateLabelingJobCommand extends $Command<
   CreateLabelingJobCommandInput,

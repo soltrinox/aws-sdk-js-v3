@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDistributionCommandInput = CreateDistributionRequest;
-export type CreateDistributionCommandOutput = CreateDistributionResult & __MetadataBearer;
+export interface CreateDistributionCommandInput extends CreateDistributionRequest {}
+export interface CreateDistributionCommandOutput extends CreateDistributionResult, __MetadataBearer {}
 
 /**
  * <p>Creates a new web distribution. You create a CloudFront distribution to tell CloudFront where you
@@ -34,6 +34,20 @@ export type CreateDistributionCommandOutput = CreateDistributionResult & __Metad
  * 			see <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html">Required
  * 				Fields for Create Distribution and Update Distribution</a> in the <i>Amazon CloudFront Developer Guide</i>.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, CreateDistributionCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, CreateDistributionCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new CreateDistributionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDistributionCommandInput} for command's `input` shape.
+ * @see {@link CreateDistributionCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDistributionCommand extends $Command<
   CreateDistributionCommandInput,

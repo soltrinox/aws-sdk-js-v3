@@ -17,12 +17,12 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RegisterGameServerCommandInput = RegisterGameServerInput;
-export type RegisterGameServerCommandOutput = RegisterGameServerOutput & __MetadataBearer;
+export interface RegisterGameServerCommandInput extends RegisterGameServerInput {}
+export interface RegisterGameServerCommandOutput extends RegisterGameServerOutput, __MetadataBearer {}
 
 /**
  * <p>
- *             <b>This operation is used with the Amazon GameLift FleetIQ solution and game server groups.</b>
+ *             <b>This operation is used with the GameLift FleetIQ solution and game server groups.</b>
  *          </p>
  *         <p>Creates a new game server resource and notifies GameLift FleetIQ that the game server is ready to
  *             host gameplay and players. This operation is called by a game server process that is
@@ -45,40 +45,31 @@ export type RegisterGameServerCommandOutput = RegisterGameServerOutput & __Metad
  *             <a href="https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html">GameLift FleetIQ Guide</a>
  *         </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>RegisterGameServer</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ListGameServers</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ClaimGameServer</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeGameServer</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateGameServer</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeregisterGameServer</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>RegisterGameServer</a> |
+ *                     <a>ListGameServers</a> |
+ *                     <a>ClaimGameServer</a> |
+ *                     <a>DescribeGameServer</a> |
+ *                     <a>UpdateGameServer</a> |
+ *                     <a>DeregisterGameServer</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/reference-awssdk-fleetiq.html">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, RegisterGameServerCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, RegisterGameServerCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new RegisterGameServerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RegisterGameServerCommandInput} for command's `input` shape.
+ * @see {@link RegisterGameServerCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RegisterGameServerCommand extends $Command<
   RegisterGameServerCommandInput,

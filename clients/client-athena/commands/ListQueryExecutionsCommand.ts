@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListQueryExecutionsCommandInput = ListQueryExecutionsInput;
-export type ListQueryExecutionsCommandOutput = ListQueryExecutionsOutput & __MetadataBearer;
+export interface ListQueryExecutionsCommandInput extends ListQueryExecutionsInput {}
+export interface ListQueryExecutionsCommandOutput extends ListQueryExecutionsOutput, __MetadataBearer {}
 
 /**
  * <p>Provides a list of available query execution IDs for the queries in the specified
@@ -27,6 +27,20 @@ export type ListQueryExecutionsCommandOutput = ListQueryExecutionsOutput & __Met
  *             ran.</p>
  *         <p>For code samples using the AWS SDK for Java, see <a href="http://docs.aws.amazon.com/athena/latest/ug/code-samples.html">Examples and
  *                 Code Samples</a> in the <i>Amazon Athena User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AthenaClient, ListQueryExecutionsCommand } from "@aws-sdk/client-athena"; // ES Modules import
+ * // const { AthenaClient, ListQueryExecutionsCommand } = require("@aws-sdk/client-athena"); // CommonJS import
+ * const client = new AthenaClient(config);
+ * const command = new ListQueryExecutionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListQueryExecutionsCommandInput} for command's `input` shape.
+ * @see {@link ListQueryExecutionsCommandOutput} for command's `response` shape.
+ * @see {@link AthenaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListQueryExecutionsCommand extends $Command<
   ListQueryExecutionsCommandInput,

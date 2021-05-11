@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDatasetCommandInput = CreateDatasetRequest;
-export type CreateDatasetCommandOutput = CreateDatasetResponse & __MetadataBearer;
+export interface CreateDatasetCommandInput extends CreateDatasetRequest {}
+export interface CreateDatasetCommandOutput extends CreateDatasetResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an Amazon Forecast dataset. The information about the dataset that you provide helps
@@ -63,6 +63,20 @@ export type CreateDatasetCommandOutput = CreateDatasetResponse & __MetadataBeare
  *             <p>The <code>Status</code> of a dataset must be <code>ACTIVE</code> before you can import
  *         training data. Use the <a>DescribeDataset</a> operation to get the status.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ForecastClient, CreateDatasetCommand } from "@aws-sdk/client-forecast"; // ES Modules import
+ * // const { ForecastClient, CreateDatasetCommand } = require("@aws-sdk/client-forecast"); // CommonJS import
+ * const client = new ForecastClient(config);
+ * const command = new CreateDatasetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDatasetCommandInput} for command's `input` shape.
+ * @see {@link CreateDatasetCommandOutput} for command's `response` shape.
+ * @see {@link ForecastClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDatasetCommand extends $Command<
   CreateDatasetCommandInput,

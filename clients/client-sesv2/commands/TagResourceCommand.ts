@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceRequest;
-export type TagResourceCommandOutput = TagResourceResponse & __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceRequest {}
+export interface TagResourceCommandOutput extends TagResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Add one or more tags (keys and values) to a specified resource. A
@@ -30,6 +30,20 @@ export type TagResourceCommandOutput = TagResourceResponse & __MetadataBearer;
  *                 associated <i>tag value</i>, both of which you define. A tag key is a
  *             general label that acts as a category for more specific tag values. A tag value acts as
  *             a descriptor within a tag key.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, TagResourceCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, TagResourceCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteNotificationRuleCommandInput = DeleteNotificationRuleRequest;
-export type DeleteNotificationRuleCommandOutput = DeleteNotificationRuleResult & __MetadataBearer;
+export interface DeleteNotificationRuleCommandInput extends DeleteNotificationRuleRequest {}
+export interface DeleteNotificationRuleCommandOutput extends DeleteNotificationRuleResult, __MetadataBearer {}
 
 /**
  * <p>Deletes a notification rule for a resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodestarNotificationsClient, DeleteNotificationRuleCommand } from "@aws-sdk/client-codestar-notifications"; // ES Modules import
+ * // const { CodestarNotificationsClient, DeleteNotificationRuleCommand } = require("@aws-sdk/client-codestar-notifications"); // CommonJS import
+ * const client = new CodestarNotificationsClient(config);
+ * const command = new DeleteNotificationRuleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteNotificationRuleCommandInput} for command's `input` shape.
+ * @see {@link DeleteNotificationRuleCommandOutput} for command's `response` shape.
+ * @see {@link CodestarNotificationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteNotificationRuleCommand extends $Command<
   DeleteNotificationRuleCommandInput,

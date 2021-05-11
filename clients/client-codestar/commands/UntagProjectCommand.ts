@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UntagProjectCommandInput = UntagProjectRequest;
-export type UntagProjectCommandOutput = UntagProjectResult & __MetadataBearer;
+export interface UntagProjectCommandInput extends UntagProjectRequest {}
+export interface UntagProjectCommandOutput extends UntagProjectResult, __MetadataBearer {}
 
 /**
  * <p>Removes tags from a project.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeStarClient, UntagProjectCommand } from "@aws-sdk/client-codestar"; // ES Modules import
+ * // const { CodeStarClient, UntagProjectCommand } = require("@aws-sdk/client-codestar"); // CommonJS import
+ * const client = new CodeStarClient(config);
+ * const command = new UntagProjectCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UntagProjectCommandInput} for command's `input` shape.
+ * @see {@link UntagProjectCommandOutput} for command's `response` shape.
+ * @see {@link CodeStarClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UntagProjectCommand extends $Command<
   UntagProjectCommandInput,

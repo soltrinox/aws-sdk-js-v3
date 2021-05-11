@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetOTAUpdateCommandInput = GetOTAUpdateRequest;
-export type GetOTAUpdateCommandOutput = GetOTAUpdateResponse & __MetadataBearer;
+export interface GetOTAUpdateCommandInput extends GetOTAUpdateRequest {}
+export interface GetOTAUpdateCommandOutput extends GetOTAUpdateResponse, __MetadataBearer {}
 
 /**
  * <p>Gets an OTA update.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, GetOTAUpdateCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, GetOTAUpdateCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new GetOTAUpdateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetOTAUpdateCommandInput} for command's `input` shape.
+ * @see {@link GetOTAUpdateCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetOTAUpdateCommand extends $Command<
   GetOTAUpdateCommandInput,

@@ -20,9 +20,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PromoteResourceShareCreatedFromPolicyCommandInput = PromoteResourceShareCreatedFromPolicyRequest;
-export type PromoteResourceShareCreatedFromPolicyCommandOutput = PromoteResourceShareCreatedFromPolicyResponse &
-  __MetadataBearer;
+export interface PromoteResourceShareCreatedFromPolicyCommandInput
+  extends PromoteResourceShareCreatedFromPolicyRequest {}
+export interface PromoteResourceShareCreatedFromPolicyCommandOutput
+  extends PromoteResourceShareCreatedFromPolicyResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Resource shares that were created by attaching a policy to a resource are visible only to
@@ -38,6 +40,20 @@ export type PromoteResourceShareCreatedFromPolicyCommandOutput = PromoteResource
  *     			        <p>Modifiable in AWS RAM.</p>
  *     		      </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RAMClient, PromoteResourceShareCreatedFromPolicyCommand } from "@aws-sdk/client-ram"; // ES Modules import
+ * // const { RAMClient, PromoteResourceShareCreatedFromPolicyCommand } = require("@aws-sdk/client-ram"); // CommonJS import
+ * const client = new RAMClient(config);
+ * const command = new PromoteResourceShareCreatedFromPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PromoteResourceShareCreatedFromPolicyCommandInput} for command's `input` shape.
+ * @see {@link PromoteResourceShareCreatedFromPolicyCommandOutput} for command's `response` shape.
+ * @see {@link RAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PromoteResourceShareCreatedFromPolicyCommand extends $Command<
   PromoteResourceShareCreatedFromPolicyCommandInput,

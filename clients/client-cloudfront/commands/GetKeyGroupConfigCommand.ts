@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetKeyGroupConfigCommandInput = GetKeyGroupConfigRequest;
-export type GetKeyGroupConfigCommandOutput = GetKeyGroupConfigResult & __MetadataBearer;
+export interface GetKeyGroupConfigCommandInput extends GetKeyGroupConfigRequest {}
+export interface GetKeyGroupConfigCommandOutput extends GetKeyGroupConfigResult, __MetadataBearer {}
 
 /**
  * <p>Gets a key group configuration.</p>
@@ -27,6 +27,20 @@ export type GetKeyGroupConfigCommandOutput = GetKeyGroupConfigResult & __Metadat
  * 			identifier using <code>ListDistributions</code> or <code>GetDistribution</code>. If the
  * 			key group is not referenced in a cache behavior, you can get the identifier using
  * 			<code>ListKeyGroups</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, GetKeyGroupConfigCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, GetKeyGroupConfigCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new GetKeyGroupConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetKeyGroupConfigCommandInput} for command's `input` shape.
+ * @see {@link GetKeyGroupConfigCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetKeyGroupConfigCommand extends $Command<
   GetKeyGroupConfigCommandInput,

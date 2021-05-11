@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetContainerImagesCommandInput = GetContainerImagesRequest;
-export type GetContainerImagesCommandOutput = GetContainerImagesResult & __MetadataBearer;
+export interface GetContainerImagesCommandInput extends GetContainerImagesRequest {}
+export interface GetContainerImagesCommandOutput extends GetContainerImagesResult, __MetadataBearer {}
 
 /**
  * <p>Returns the container images that are registered to your Amazon Lightsail container
@@ -29,6 +29,20 @@ export type GetContainerImagesCommandOutput = GetContainerImagesResult & __Metad
  *         images from a public registry like Docker Hub, those images are not returned as part of this
  *         action. Those images are not registered to your Lightsail container service.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetContainerImagesCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetContainerImagesCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetContainerImagesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetContainerImagesCommandInput} for command's `input` shape.
+ * @see {@link GetContainerImagesCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetContainerImagesCommand extends $Command<
   GetContainerImagesCommandInput,

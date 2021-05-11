@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ResizeClusterCommandInput = ResizeClusterMessage;
-export type ResizeClusterCommandOutput = ResizeClusterResult & __MetadataBearer;
+export interface ResizeClusterCommandInput extends ResizeClusterMessage {}
+export interface ResizeClusterCommandOutput extends ResizeClusterResult, __MetadataBearer {}
 
 /**
  * <p>Changes the size of the cluster. You can change the cluster's type, or change the
@@ -65,6 +65,20 @@ export type ResizeClusterCommandOutput = ResizeClusterResult & __MetadataBearer;
  *                     cluster.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, ResizeClusterCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, ResizeClusterCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new ResizeClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ResizeClusterCommandInput} for command's `input` shape.
+ * @see {@link ResizeClusterCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ResizeClusterCommand extends $Command<
   ResizeClusterCommandInput,

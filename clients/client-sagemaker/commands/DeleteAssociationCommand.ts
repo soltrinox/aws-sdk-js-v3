@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAssociationCommandInput = DeleteAssociationRequest;
-export type DeleteAssociationCommandOutput = DeleteAssociationResponse & __MetadataBearer;
+export interface DeleteAssociationCommandInput extends DeleteAssociationRequest {}
+export interface DeleteAssociationCommandOutput extends DeleteAssociationResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an association.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DeleteAssociationCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DeleteAssociationCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DeleteAssociationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAssociationCommandInput} for command's `input` shape.
+ * @see {@link DeleteAssociationCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAssociationCommand extends $Command<
   DeleteAssociationCommandInput,

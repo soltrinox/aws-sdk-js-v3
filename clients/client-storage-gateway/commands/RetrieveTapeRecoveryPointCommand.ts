@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RetrieveTapeRecoveryPointCommandInput = RetrieveTapeRecoveryPointInput;
-export type RetrieveTapeRecoveryPointCommandOutput = RetrieveTapeRecoveryPointOutput & __MetadataBearer;
+export interface RetrieveTapeRecoveryPointCommandInput extends RetrieveTapeRecoveryPointInput {}
+export interface RetrieveTapeRecoveryPointCommandOutput extends RetrieveTapeRecoveryPointOutput, __MetadataBearer {}
 
 /**
  * <p>Retrieves the recovery point for the specified virtual tape. This operation is only
@@ -33,6 +33,20 @@ export type RetrieveTapeRecoveryPointCommandOutput = RetrieveTapeRecoveryPointOu
  *             read-only. The virtual tape can be retrieved to only a tape gateway. There is no charge
  *             for retrieving recovery points.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, RetrieveTapeRecoveryPointCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, RetrieveTapeRecoveryPointCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new RetrieveTapeRecoveryPointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RetrieveTapeRecoveryPointCommandInput} for command's `input` shape.
+ * @see {@link RetrieveTapeRecoveryPointCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RetrieveTapeRecoveryPointCommand extends $Command<
   RetrieveTapeRecoveryPointCommandInput,

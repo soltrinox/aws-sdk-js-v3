@@ -17,12 +17,12 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateGameSessionQueueCommandInput = UpdateGameSessionQueueInput;
-export type UpdateGameSessionQueueCommandOutput = UpdateGameSessionQueueOutput & __MetadataBearer;
+export interface UpdateGameSessionQueueCommandInput extends UpdateGameSessionQueueInput {}
+export interface UpdateGameSessionQueueCommandOutput extends UpdateGameSessionQueueOutput, __MetadataBearer {}
 
 /**
- * <p>Updates settings for a game session queue, which determines how new game session
- *             requests in the queue are processed. To update settings, specify the queue name to be
+ * <p>Updates the configuration of a game session queue, which determines how the queue
+ *             processes new game session requests. To update settings, specify the queue name to be
  *             updated and provide the new settings. When updating destinations, provide a complete
  *             list of destinations. </p>
  *         <p>
@@ -33,30 +33,29 @@ export type UpdateGameSessionQueueCommandOutput = UpdateGameSessionQueueOutput &
  *             Using Multi-Region Queues</a>
  *         </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateGameSessionQueue</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeGameSessionQueues</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateGameSessionQueue</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteGameSessionQueue</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>CreateGameSessionQueue</a> |
+ *                     <a>DescribeGameSessionQueues</a> |
+ *                     <a>UpdateGameSessionQueue</a> |
+ *                     <a>DeleteGameSessionQueue</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, UpdateGameSessionQueueCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, UpdateGameSessionQueueCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new UpdateGameSessionQueueCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateGameSessionQueueCommandInput} for command's `input` shape.
+ * @see {@link UpdateGameSessionQueueCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateGameSessionQueueCommand extends $Command<
   UpdateGameSessionQueueCommandInput,

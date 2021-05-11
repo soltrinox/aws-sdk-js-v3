@@ -2,7 +2,7 @@ import { SmithyException as __SmithyException } from "@aws-sdk/smithy-client";
 import { MetadataBearer as $MetadataBearer } from "@aws-sdk/types";
 
 /**
- * <p>You do not have sufficient access to perform this action.</p>
+ * <p>You do not have sufficient permission to perform this action.</p>
  */
 export interface AccessDeniedException extends __SmithyException, $MetadataBearer {
   name: "AccessDeniedException";
@@ -11,6 +11,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -19,6 +22,9 @@ export namespace AccessDeniedException {
 export interface AssociateServiceQuotaTemplateRequest {}
 
 export namespace AssociateServiceQuotaTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateServiceQuotaTemplateRequest): any => ({
     ...obj,
   });
@@ -27,6 +33,9 @@ export namespace AssociateServiceQuotaTemplateRequest {
 export interface AssociateServiceQuotaTemplateResponse {}
 
 export namespace AssociateServiceQuotaTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateServiceQuotaTemplateResponse): any => ({
     ...obj,
   });
@@ -34,7 +43,7 @@ export namespace AssociateServiceQuotaTemplateResponse {
 
 /**
  * <p>The action you attempted is not allowed unless Service Access with Service Quotas is
- *       enabled in your organization. To enable, call <a>AssociateServiceQuotaTemplate</a>.</p>
+ *       enabled in your organization.</p>
  */
 export interface AWSServiceAccessNotEnabledException extends __SmithyException, $MetadataBearer {
   name: "AWSServiceAccessNotEnabledException";
@@ -43,6 +52,9 @@ export interface AWSServiceAccessNotEnabledException extends __SmithyException, 
 }
 
 export namespace AWSServiceAccessNotEnabledException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AWSServiceAccessNotEnabledException): any => ({
     ...obj,
   });
@@ -58,6 +70,9 @@ export interface DependencyAccessDeniedException extends __SmithyException, $Met
 }
 
 export namespace DependencyAccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DependencyAccessDeniedException): any => ({
     ...obj,
   });
@@ -73,14 +88,16 @@ export interface NoAvailableOrganizationException extends __SmithyException, $Me
 }
 
 export namespace NoAvailableOrganizationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoAvailableOrganizationException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The organization that your account belongs to, is not in All Features mode. To enable all
- *       features mode, see <a href="https://docs.aws.amazon.com/organizations/latest/APIReference/API_EnableAllFeatures.html">EnableAllFeatures</a>.</p>
+ * <p>The organization that your account belongs to is not in All Features mode.</p>
  */
 export interface OrganizationNotInAllFeaturesModeException extends __SmithyException, $MetadataBearer {
   name: "OrganizationNotInAllFeaturesModeException";
@@ -89,13 +106,16 @@ export interface OrganizationNotInAllFeaturesModeException extends __SmithyExcep
 }
 
 export namespace OrganizationNotInAllFeaturesModeException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationNotInAllFeaturesModeException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Something went wrong. </p>
+ * <p>Something went wrong.</p>
  */
 export interface ServiceException extends __SmithyException, $MetadataBearer {
   name: "ServiceException";
@@ -104,14 +124,16 @@ export interface ServiceException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ServiceException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The Service Quotas template is not available in the Region where you are making the
- *       request. Please make the request in us-east-1. </p>
+ * <p>The Service Quotas template is not available in this AWS Region.</p>
  */
 export interface TemplatesNotAvailableInRegionException extends __SmithyException, $MetadataBearer {
   name: "TemplatesNotAvailableInRegionException";
@@ -120,6 +142,9 @@ export interface TemplatesNotAvailableInRegionException extends __SmithyExceptio
 }
 
 export namespace TemplatesNotAvailableInRegionException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TemplatesNotAvailableInRegionException): any => ({
     ...obj,
   });
@@ -127,7 +152,7 @@ export namespace TemplatesNotAvailableInRegionException {
 
 /**
  * <p>Due to throttling, the request was denied. Slow down the rate of request calls, or request
- *       an increase for this quota. </p>
+ *       an increase for this quota.</p>
  */
 export interface TooManyRequestsException extends __SmithyException, $MetadataBearer {
   name: "TooManyRequestsException";
@@ -136,6 +161,9 @@ export interface TooManyRequestsException extends __SmithyException, $MetadataBe
 }
 
 export namespace TooManyRequestsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyRequestsException): any => ({
     ...obj,
   });
@@ -143,22 +171,25 @@ export namespace TooManyRequestsException {
 
 export interface DeleteServiceQuotaIncreaseRequestFromTemplateRequest {
   /**
-   * <p>Specifies the code for the service that you want to delete.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode: string | undefined;
 
   /**
-   * <p>Specifies the code for the quota that you want to delete.</p>
+   * <p>The quota identifier.</p>
    */
   QuotaCode: string | undefined;
 
   /**
-   * <p>Specifies the AWS Region for the quota that you want to delete.</p>
+   * <p>The AWS Region.</p>
    */
   AwsRegion: string | undefined;
 }
 
 export namespace DeleteServiceQuotaIncreaseRequestFromTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteServiceQuotaIncreaseRequestFromTemplateRequest): any => ({
     ...obj,
   });
@@ -167,13 +198,16 @@ export namespace DeleteServiceQuotaIncreaseRequestFromTemplateRequest {
 export interface DeleteServiceQuotaIncreaseRequestFromTemplateResponse {}
 
 export namespace DeleteServiceQuotaIncreaseRequestFromTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteServiceQuotaIncreaseRequestFromTemplateResponse): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Invalid input was provided. </p>
+ * <p>Invalid input was provided.</p>
  */
 export interface IllegalArgumentException extends __SmithyException, $MetadataBearer {
   name: "IllegalArgumentException";
@@ -182,6 +216,9 @@ export interface IllegalArgumentException extends __SmithyException, $MetadataBe
 }
 
 export namespace IllegalArgumentException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IllegalArgumentException): any => ({
     ...obj,
   });
@@ -197,6 +234,9 @@ export interface NoSuchResourceException extends __SmithyException, $MetadataBea
 }
 
 export namespace NoSuchResourceException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchResourceException): any => ({
     ...obj,
   });
@@ -205,6 +245,9 @@ export namespace NoSuchResourceException {
 export interface DisassociateServiceQuotaTemplateRequest {}
 
 export namespace DisassociateServiceQuotaTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateServiceQuotaTemplateRequest): any => ({
     ...obj,
   });
@@ -213,14 +256,16 @@ export namespace DisassociateServiceQuotaTemplateRequest {
 export interface DisassociateServiceQuotaTemplateResponse {}
 
 export namespace DisassociateServiceQuotaTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateServiceQuotaTemplateResponse): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The quota request template is not associated with your organization. </p>
- *          <p>To use the template, call <a>AssociateServiceQuotaTemplate</a>. </p>
+ * <p>The quota request template is not associated with your organization.</p>
  */
 export interface ServiceQuotaTemplateNotInUseException extends __SmithyException, $MetadataBearer {
   name: "ServiceQuotaTemplateNotInUseException";
@@ -229,6 +274,9 @@ export interface ServiceQuotaTemplateNotInUseException extends __SmithyException
 }
 
 export namespace ServiceQuotaTemplateNotInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceQuotaTemplateNotInUseException): any => ({
     ...obj,
   });
@@ -242,35 +290,46 @@ export enum ErrorCode {
 }
 
 /**
- * <p>Returns an error that explains why the action did not succeed.</p>
+ * <p>An error that explains why an action did not succeed.</p>
  */
 export interface ErrorReason {
   /**
-   * <p>Service Quotas returns the following error values.
-   *     </p>
-   *          <p>
-   *             <code>DEPENDENCY_ACCESS_DENIED_ERROR</code> is returned when the caller does not have
-   *       permission to call the service or service quota. To resolve the error, you need permission to
-   *       access the service or service quota.</p>
-   *          <p>
-   *             <code>DEPENDENCY_THROTTLING_ERROR</code> is returned when the service being called is
-   *       throttling Service Quotas.</p>
-   *          <p>
-   *             <code>DEPENDENCY_SERVICE_ERROR</code> is returned when the service being called has
-   *       availability issues.</p>
-   *          <p>
-   *             <code>SERVICE_QUOTA_NOT_AVAILABLE_ERROR</code> is returned when there was an error in
-   *       Service Quotas.</p>
+   * <p>Service Quotas returns the following error values:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>DEPENDENCY_ACCESS_DENIED_ERROR</code> - The caller does not have the required
+   *           permissions to complete the action. To resolve the error, you must have permission to
+   *           access the service or quota.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>DEPENDENCY_THROTTLING_ERROR</code> - The service is throttling Service
+   *           Quotas.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>DEPENDENCY_SERVICE_ERROR</code> - The service is not available.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>SERVICE_QUOTA_NOT_AVAILABLE_ERROR</code> - There was an error in Service
+   *           Quotas.</p>
+   *             </li>
+   *          </ul>
    */
   ErrorCode?: ErrorCode | string;
 
   /**
-   * <p>The error message that provides more detail.</p>
+   * <p>The error message.</p>
    */
   ErrorMessage?: string;
 }
 
 export namespace ErrorReason {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ErrorReason): any => ({
     ...obj,
   });
@@ -279,6 +338,9 @@ export namespace ErrorReason {
 export interface GetAssociationForServiceQuotaTemplateRequest {}
 
 export namespace GetAssociationForServiceQuotaTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAssociationForServiceQuotaTemplateRequest): any => ({
     ...obj,
   });
@@ -291,14 +353,17 @@ export enum ServiceQuotaTemplateAssociationStatus {
 
 export interface GetAssociationForServiceQuotaTemplateResponse {
   /**
-   * <p>Specifies whether the template is <code>ASSOCIATED</code> or <code>DISASSOCIATED</code>.
-   *       If the template is <code>ASSOCIATED</code>, then it requests service quota increases for all
-   *       new accounts created in your organization. </p>
+   * <p>The association status. If the status is <code>ASSOCIATED</code>, the quota increase
+   *       requests in the template are automatically applied to new accounts in your
+   *       organization.</p>
    */
   ServiceQuotaTemplateAssociationStatus?: ServiceQuotaTemplateAssociationStatus | string;
 }
 
 export namespace GetAssociationForServiceQuotaTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAssociationForServiceQuotaTemplateResponse): any => ({
     ...obj,
   });
@@ -306,17 +371,20 @@ export namespace GetAssociationForServiceQuotaTemplateResponse {
 
 export interface GetAWSDefaultServiceQuotaRequest {
   /**
-   * <p>Specifies the service that you want to use.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode: string | undefined;
 
   /**
-   * <p>Identifies the service quota you want to select.</p>
+   * <p>The quota identifier.</p>
    */
   QuotaCode: string | undefined;
 }
 
 export namespace GetAWSDefaultServiceQuotaRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAWSDefaultServiceQuotaRequest): any => ({
     ...obj,
   });
@@ -333,131 +401,133 @@ export enum PeriodUnit {
 }
 
 /**
- * <p>A structure that contains information about the quota period.</p>
+ * <p>Information about the quota period.</p>
  */
 export interface QuotaPeriod {
   /**
-   * <p>The value of a period.</p>
+   * <p>The value.</p>
    */
   PeriodValue?: number;
 
   /**
-   * <p>The time unit of a period.</p>
+   * <p>The time unit.</p>
    */
   PeriodUnit?: PeriodUnit | string;
 }
 
 export namespace QuotaPeriod {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QuotaPeriod): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A structure that uses CloudWatch metrics to gather data about the service quota.</p>
+ * <p>Information about the CloudWatch metric that reflects quota usage.</p>
  */
 export interface MetricInfo {
   /**
-   * <p>The namespace of the metric. The namespace is a container for CloudWatch metrics. You can
-   *       specify a name for the namespace when you create a metric.</p>
+   * <p>The namespace of the metric.</p>
    */
   MetricNamespace?: string;
 
   /**
-   * <p>The name of the CloudWatch metric that measures usage of a service quota. This is a
-   *       required field.</p>
+   * <p>The name of the metric.</p>
    */
   MetricName?: string;
 
   /**
-   * <p>A dimension is a name/value pair that is part of the identity of a metric. Every metric
-   *       has specific characteristics that describe it, and you can think of dimensions as categories
-   *       for those characteristics. These dimensions are part of the CloudWatch Metric Identity that
-   *       measures usage against a particular service quota.</p>
+   * <p>The metric dimension. This is a name/value pair that is part of the identity of a
+   *       metric.</p>
    */
   MetricDimensions?: { [key: string]: string };
 
   /**
-   * <p>Statistics are metric data aggregations over specified periods of time. This is the
-   *       recommended statistic to use when comparing usage in the CloudWatch Metric against your
-   *       Service Quota.</p>
+   * <p>The metric statistic that we recommend you use when determining quota usage.</p>
    */
   MetricStatisticRecommendation?: string;
 }
 
 export namespace MetricInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricInfo): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A structure that contains the full set of details that define the service quota.</p>
+ * <p>Information about a quota.</p>
  */
 export interface ServiceQuota {
   /**
-   * <p>Specifies the service that you want to use.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode?: string;
 
   /**
-   * <p>The name of the AWS service specified in the increase request. </p>
+   * <p>The service name.</p>
    */
   ServiceName?: string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of the service quota.</p>
+   * <p>The Amazon Resource Name (ARN) of the quota.</p>
    */
   QuotaArn?: string;
 
   /**
-   * <p>The code identifier for the service quota specified.</p>
+   * <p>The quota identifier.</p>
    */
   QuotaCode?: string;
 
   /**
-   * <p>The name identifier of the service quota.</p>
+   * <p>The quota name.</p>
    */
   QuotaName?: string;
 
   /**
-   * <p>The value of service quota.</p>
+   * <p>The quota value.</p>
    */
   Value?: number;
 
   /**
-   * <p>The unit of measurement for the value of the service quota.</p>
+   * <p>The unit of measurement.</p>
    */
   Unit?: string;
 
   /**
-   * <p>Specifies if the quota value can be increased.</p>
+   * <p>Indicates whether the quota value can be increased.</p>
    */
   Adjustable?: boolean;
 
   /**
-   * <p>Specifies if the quota is global.</p>
+   * <p>Indicates whether the quota is global.</p>
    */
   GlobalQuota?: boolean;
 
   /**
-   * <p>Specifies the details about the measurement. </p>
+   * <p>Information about the measurement.</p>
    */
   UsageMetric?: MetricInfo;
 
   /**
-   * <p>Identifies the unit and value of how time is measured.</p>
+   * <p>The period of time.</p>
    */
   Period?: QuotaPeriod;
 
   /**
-   * <p>Specifies the <code>ErrorCode</code> and <code>ErrorMessage</code> when success isn't
-   *       achieved.</p>
+   * <p>The error code and error reason.</p>
    */
   ErrorReason?: ErrorReason;
 }
 
 export namespace ServiceQuota {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceQuota): any => ({
     ...obj,
   });
@@ -465,13 +535,15 @@ export namespace ServiceQuota {
 
 export interface GetAWSDefaultServiceQuotaResponse {
   /**
-   * <p>Returns the <a>ServiceQuota</a> object which contains all values for a
-   *       quota.</p>
+   * <p>Information about the quota.</p>
    */
   Quota?: ServiceQuota;
 }
 
 export namespace GetAWSDefaultServiceQuotaResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAWSDefaultServiceQuotaResponse): any => ({
     ...obj,
   });
@@ -479,12 +551,15 @@ export namespace GetAWSDefaultServiceQuotaResponse {
 
 export interface GetRequestedServiceQuotaChangeRequest {
   /**
-   * <p>Identifies the quota increase request.</p>
+   * <p>The ID of the quota increase request.</p>
    */
   RequestId: string | undefined;
 }
 
 export namespace GetRequestedServiceQuotaChangeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRequestedServiceQuotaChangeRequest): any => ({
     ...obj,
   });
@@ -499,82 +574,85 @@ export enum RequestStatus {
 }
 
 /**
- * <p>A structure that contains information about a requested change for a quota.</p>
+ * <p>Information about a quota increase request.</p>
  */
 export interface RequestedServiceQuotaChange {
   /**
-   * <p>The unique identifier of a requested service quota change.</p>
+   * <p>The unique identifier.</p>
    */
   Id?: string;
 
   /**
-   * <p>The case Id for the service quota increase request.</p>
+   * <p>The case ID.</p>
    */
   CaseId?: string;
 
   /**
-   * <p>Specifies the service that you want to use.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode?: string;
 
   /**
-   * <p>The name of the AWS service specified in the increase request. </p>
+   * <p>The service name.</p>
    */
   ServiceName?: string;
 
   /**
-   * <p>Specifies the service quota that you want to use.</p>
+   * <p>The quota identifier.</p>
    */
   QuotaCode?: string;
 
   /**
-   * <p>Name of the service quota.</p>
+   * <p>The quota name.</p>
    */
   QuotaName?: string;
 
   /**
-   * <p>New increased value for the service quota.</p>
+   * <p>The new, increased value for the quota.</p>
    */
   DesiredValue?: number;
 
   /**
-   * <p>State of the service quota increase request.</p>
+   * <p>The state of the quota increase request.</p>
    */
   Status?: RequestStatus | string;
 
   /**
-   * <p>The date and time when the service quota increase request was received and the case Id was
-   *       created. </p>
+   * <p>The date and time when the quota increase request was received and the case ID was
+   *       created.</p>
    */
   Created?: Date;
 
   /**
-   * <p>The date and time of the most recent change in the service quota increase request.</p>
+   * <p>The date and time of the most recent change.</p>
    */
   LastUpdated?: Date;
 
   /**
-   * <p>The IAM identity who submitted the service quota increase request.</p>
+   * <p>The IAM identity of the requester.</p>
    */
   Requester?: string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of the service quota.</p>
+   * <p>The Amazon Resource Name (ARN) of the quota.</p>
    */
   QuotaArn?: string;
 
   /**
-   * <p>Identifies if the quota is global.</p>
+   * <p>Indicates whether the quota is global.</p>
    */
   GlobalQuota?: boolean;
 
   /**
-   * <p>Specifies the unit used for the quota.</p>
+   * <p>The unit of measurement.</p>
    */
   Unit?: string;
 }
 
 export namespace RequestedServiceQuotaChange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RequestedServiceQuotaChange): any => ({
     ...obj,
   });
@@ -582,13 +660,15 @@ export namespace RequestedServiceQuotaChange {
 
 export interface GetRequestedServiceQuotaChangeResponse {
   /**
-   * <p>Returns the <code>RequestedServiceQuotaChange</code> object for the specific increase
-   *       request.</p>
+   * <p>Information about the quota increase request.</p>
    */
   RequestedQuota?: RequestedServiceQuotaChange;
 }
 
 export namespace GetRequestedServiceQuotaChangeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRequestedServiceQuotaChangeResponse): any => ({
     ...obj,
   });
@@ -596,17 +676,20 @@ export namespace GetRequestedServiceQuotaChangeResponse {
 
 export interface GetServiceQuotaRequest {
   /**
-   * <p>Specifies the service that you want to use.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode: string | undefined;
 
   /**
-   * <p>Identifies the service quota you want to select.</p>
+   * <p>The quota identifier.</p>
    */
   QuotaCode: string | undefined;
 }
 
 export namespace GetServiceQuotaRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetServiceQuotaRequest): any => ({
     ...obj,
   });
@@ -614,13 +697,15 @@ export namespace GetServiceQuotaRequest {
 
 export interface GetServiceQuotaResponse {
   /**
-   * <p>Returns the <a>ServiceQuota</a> object which contains all values for a
-   *       quota.</p>
+   * <p>Information about the quota.</p>
    */
   Quota?: ServiceQuota;
 }
 
 export namespace GetServiceQuotaResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetServiceQuotaResponse): any => ({
     ...obj,
   });
@@ -628,73 +713,79 @@ export namespace GetServiceQuotaResponse {
 
 export interface GetServiceQuotaIncreaseRequestFromTemplateRequest {
   /**
-   * <p>Specifies the service that you want to use.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode: string | undefined;
 
   /**
-   * <p>Specifies the quota you want.</p>
+   * <p>The quota identifier.</p>
    */
   QuotaCode: string | undefined;
 
   /**
-   * <p>Specifies the AWS Region for the quota that you want to use.</p>
+   * <p>The AWS Region.</p>
    */
   AwsRegion: string | undefined;
 }
 
 export namespace GetServiceQuotaIncreaseRequestFromTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetServiceQuotaIncreaseRequestFromTemplateRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A structure that contains information about one service quota increase request.</p>
+ * <p>Information about a quota increase request.</p>
  */
 export interface ServiceQuotaIncreaseRequestInTemplate {
   /**
-   * <p>The code identifier for the AWS service specified in the increase request.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode?: string;
 
   /**
-   * <p>The name of the AWS service specified in the increase request. </p>
+   * <p>The service name.</p>
    */
   ServiceName?: string;
 
   /**
-   * <p>The code identifier for the service quota specified in the increase request.</p>
+   * <p>The quota identifier.</p>
    */
   QuotaCode?: string;
 
   /**
-   * <p>The name of the service quota in the increase request.</p>
+   * <p>The quota name.</p>
    */
   QuotaName?: string;
 
   /**
-   * <p>Identifies the new, increased value of the service quota in the increase request. </p>
+   * <p>The new, increased value of the quota.</p>
    */
   DesiredValue?: number;
 
   /**
-   * <p>The AWS Region where the increase request occurs.</p>
+   * <p>The AWS Region.</p>
    */
   AwsRegion?: string;
 
   /**
-   * <p>The unit of measure for the increase request.</p>
+   * <p>The unit of measurement.</p>
    */
   Unit?: string;
 
   /**
-   * <p>Specifies if the quota is a global quota.</p>
+   * <p>Indicates whether the quota is global.</p>
    */
   GlobalQuota?: boolean;
 }
 
 export namespace ServiceQuotaIncreaseRequestInTemplate {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceQuotaIncreaseRequestInTemplate): any => ({
     ...obj,
   });
@@ -702,13 +793,44 @@ export namespace ServiceQuotaIncreaseRequestInTemplate {
 
 export interface GetServiceQuotaIncreaseRequestFromTemplateResponse {
   /**
-   * <p>This object contains the details about the quota increase request.</p>
+   * <p>Information about the quota increase request.</p>
    */
   ServiceQuotaIncreaseRequestInTemplate?: ServiceQuotaIncreaseRequestInTemplate;
 }
 
 export namespace GetServiceQuotaIncreaseRequestFromTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetServiceQuotaIncreaseRequestFromTemplateResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>A complex data type that contains a tag key and tag value.</p>
+ */
+export interface Tag {
+  /**
+   * <p>A string that contains a tag key. The string length should be between 1 and 128
+   *       characters. Valid characters include a-z, A-Z, 0-9, space, and the special characters _ - . :
+   *       / = + @.</p>
+   */
+  Key: string | undefined;
+
+  /**
+   * <p>A string that contains an optional tag value. The string length should be between 0 and
+   *       256 characters. Valid characters include a-z, A-Z, 0-9, space, and the special characters _ -
+   *       . : / = + @.</p>
+   */
+  Value: string | undefined;
+}
+
+export namespace Tag {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
 }
@@ -723,13 +845,16 @@ export interface InvalidPaginationTokenException extends __SmithyException, $Met
 }
 
 export namespace InvalidPaginationTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidPaginationTokenException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Invalid input was provided for the . </p>
+ * <p>The resource is in an invalid state.</p>
  */
 export interface InvalidResourceStateException extends __SmithyException, $MetadataBearer {
   name: "InvalidResourceStateException";
@@ -738,6 +863,9 @@ export interface InvalidResourceStateException extends __SmithyException, $Metad
 }
 
 export namespace InvalidResourceStateException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidResourceStateException): any => ({
     ...obj,
   });
@@ -745,35 +873,26 @@ export namespace InvalidResourceStateException {
 
 export interface ListAWSDefaultServiceQuotasRequest {
   /**
-   * <p>Specifies the service that you want to use.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode: string | undefined;
 
   /**
-   * <p>(Optional) Use this parameter in a request if you receive a <code>NextToken</code>
-   *       response in a previous request that indicates that there's more output available. In a
-   *       subsequent call, set it to the value of the previous call's <code>NextToken</code> response to
-   *       indicate where the output should continue from. If additional items exist beyond the specified
-   *       maximum, the <code>NextToken</code> element is present and has a value (isn't null). Include
-   *       that value as the <code>NextToken</code> request parameter in the call to the operation to get
-   *       the next part of the results. You should check <code>NextToken</code> after every operation to
-   *       ensure that you receive all of the results.</p>
+   * <p>The token for the next page of results.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>(Optional) Limits the number of results that you want to include in the response. If you
-   *       don't include this parameter, the response defaults to a value that's specific to the
-   *       operation. If additional items exist beyond the specified maximum, the <code>NextToken</code>
-   *       element is present and has a value (isn't null). Include that value as the
-   *         <code>NextToken</code> request parameter in the call to the operation to get the next part
-   *       of the results. You should check <code>NextToken</code> after every operation to ensure that
-   *       you receive all of the results.</p>
+   * <p>The maximum number of results to return with a single call. To retrieve the remaining
+   *       results, if any, make another call with the token returned from this call.</p>
    */
   MaxResults?: number;
 }
 
 export namespace ListAWSDefaultServiceQuotasRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAWSDefaultServiceQuotasRequest): any => ({
     ...obj,
   });
@@ -781,20 +900,21 @@ export namespace ListAWSDefaultServiceQuotasRequest {
 
 export interface ListAWSDefaultServiceQuotasResponse {
   /**
-   * <p>(Optional) Use this parameter in a request if you receive a <code>NextToken</code>
-   *       response in a previous request that indicates that there's more output available. In a
-   *       subsequent call, set it to the value of the previous call's <code>NextToken</code> response to
-   *       indicate where the output should continue from.</p>
+   * <p>The token to use to retrieve the next page of results. This value is null when there are
+   *       no more results to return.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>A list of the quotas in the account with the AWS default values. </p>
+   * <p>Information about the quotas.</p>
    */
   Quotas?: ServiceQuota[];
 }
 
 export namespace ListAWSDefaultServiceQuotasResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAWSDefaultServiceQuotasResponse): any => ({
     ...obj,
   });
@@ -802,36 +922,31 @@ export namespace ListAWSDefaultServiceQuotasResponse {
 
 export interface ListRequestedServiceQuotaChangeHistoryRequest {
   /**
-   * <p>Specifies the service that you want to use.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode?: string;
 
   /**
-   * <p>Specifies the status value of the quota increase request.</p>
+   * <p>The status of the quota increase request.</p>
    */
   Status?: RequestStatus | string;
 
   /**
-   * <p>(Optional) Use this parameter in a request if you receive a <code>NextToken</code>
-   *       response in a previous request that indicates that there's more output available. In a
-   *       subsequent call, set it to the value of the previous call's <code>NextToken</code> response to
-   *       indicate where the output should continue from.</p>
+   * <p>The token for the next page of results.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>(Optional) Limits the number of results that you want to include in the response. If you
-   *       don't include this parameter, the response defaults to a value that's specific to the
-   *       operation. If additional items exist beyond the specified maximum, the <code>NextToken</code>
-   *       element is present and has a value (isn't null). Include that value as the
-   *         <code>NextToken</code> request parameter in the call to the operation to get the next part
-   *       of the results. You should check <code>NextToken</code> after every operation to ensure that
-   *       you receive all of the results.</p>
+   * <p>The maximum number of results to return with a single call. To retrieve the remaining
+   *       results, if any, make another call with the token returned from this call.</p>
    */
   MaxResults?: number;
 }
 
 export namespace ListRequestedServiceQuotaChangeHistoryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRequestedServiceQuotaChangeHistoryRequest): any => ({
     ...obj,
   });
@@ -839,22 +954,21 @@ export namespace ListRequestedServiceQuotaChangeHistoryRequest {
 
 export interface ListRequestedServiceQuotaChangeHistoryResponse {
   /**
-   * <p>If present in the response, this value indicates there's more output available that what's
-   *       included in the current response. This can occur even when the response includes no values at
-   *       all, such as when you ask for a filtered view of a very long list. Use this value in the
-   *         <code>NextToken</code> request parameter in a subsequent call to the operation to continue
-   *       processing and get the next part of the output. You should repeat this until the
-   *         <code>NextToken</code> response element comes back empty (as <code>null</code>).</p>
+   * <p>The token to use to retrieve the next page of results. This value is null when there are
+   *       no more results to return.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>Returns a list of service quota requests.</p>
+   * <p>Information about the quota increase requests.</p>
    */
   RequestedQuotas?: RequestedServiceQuotaChange[];
 }
 
 export namespace ListRequestedServiceQuotaChangeHistoryResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRequestedServiceQuotaChangeHistoryResponse): any => ({
     ...obj,
   });
@@ -862,41 +976,36 @@ export namespace ListRequestedServiceQuotaChangeHistoryResponse {
 
 export interface ListRequestedServiceQuotaChangeHistoryByQuotaRequest {
   /**
-   * <p>Specifies the service that you want to use.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode: string | undefined;
 
   /**
-   * <p>Specifies the service quota that you want to use</p>
+   * <p>The quota identifier.</p>
    */
   QuotaCode: string | undefined;
 
   /**
-   * <p>Specifies the status value of the quota increase request.</p>
+   * <p>The status value of the quota increase request.</p>
    */
   Status?: RequestStatus | string;
 
   /**
-   * <p>(Optional) Use this parameter in a request if you receive a <code>NextToken</code>
-   *       response in a previous request that indicates that there's more output available. In a
-   *       subsequent call, set it to the value of the previous call's <code>NextToken</code> response to
-   *       indicate where the output should continue from.</p>
+   * <p>The token for the next page of results.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>(Optional) Limits the number of results that you want to include in the response. If you
-   *       don't include this parameter, the response defaults to a value that's specific to the
-   *       operation. If additional items exist beyond the specified maximum, the <code>NextToken</code>
-   *       element is present and has a value (isn't null). Include that value as the
-   *         <code>NextToken</code> request parameter in the call to the operation to get the next part
-   *       of the results. You should check <code>NextToken</code> after every operation to ensure that
-   *       you receive all of the results.</p>
+   * <p>The maximum number of results to return with a single call. To retrieve the remaining
+   *       results, if any, make another call with the token returned from this call.</p>
    */
   MaxResults?: number;
 }
 
 export namespace ListRequestedServiceQuotaChangeHistoryByQuotaRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRequestedServiceQuotaChangeHistoryByQuotaRequest): any => ({
     ...obj,
   });
@@ -904,22 +1013,21 @@ export namespace ListRequestedServiceQuotaChangeHistoryByQuotaRequest {
 
 export interface ListRequestedServiceQuotaChangeHistoryByQuotaResponse {
   /**
-   * <p>If present in the response, this value indicates there's more output available that what's
-   *       included in the current response. This can occur even when the response includes no values at
-   *       all, such as when you ask for a filtered view of a very long list. Use this value in the
-   *         <code>NextToken</code> request parameter in a subsequent call to the operation to continue
-   *       processing and get the next part of the output. You should repeat this until the
-   *         <code>NextToken</code> response element comes back empty (as <code>null</code>).</p>
+   * <p>The token to use to retrieve the next page of results. This value is null when there are
+   *       no more results to return.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>Returns a list of service quota requests.</p>
+   * <p>Information about the quota increase requests.</p>
    */
   RequestedQuotas?: RequestedServiceQuotaChange[];
 }
 
 export namespace ListRequestedServiceQuotaChangeHistoryByQuotaResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRequestedServiceQuotaChangeHistoryByQuotaResponse): any => ({
     ...obj,
   });
@@ -927,37 +1035,31 @@ export namespace ListRequestedServiceQuotaChangeHistoryByQuotaResponse {
 
 export interface ListServiceQuotaIncreaseRequestsInTemplateRequest {
   /**
-   * <p>The identifier for a service. When performing an operation, use the
-   *         <code>ServiceCode</code> to specify a particular service. </p>
+   * <p>The service identifier.</p>
    */
   ServiceCode?: string;
 
   /**
-   * <p>Specifies the AWS Region for the quota that you want to use.</p>
+   * <p>The AWS Region.</p>
    */
   AwsRegion?: string;
 
   /**
-   * <p>(Optional) Use this parameter in a request if you receive a <code>NextToken</code>
-   *       response in a previous request that indicates that there's more output available. In a
-   *       subsequent call, set it to the value of the previous call's <code>NextToken</code> response to
-   *       indicate where the output should continue from.</p>
+   * <p>The token for the next page of results.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>(Optional) Limits the number of results that you want to include in the response. If you
-   *       don't include this parameter, the response defaults to a value that's specific to the
-   *       operation. If additional items exist beyond the specified maximum, the <code>NextToken</code>
-   *       element is present and has a value (isn't null). Include that value as the
-   *         <code>NextToken</code> request parameter in the call to the operation to get the next part
-   *       of the results. You should check <code>NextToken</code> after every operation to ensure that
-   *       you receive all of the results.</p>
+   * <p>The maximum number of results to return with a single call. To retrieve the remaining
+   *       results, if any, make another call with the token returned from this call.</p>
    */
   MaxResults?: number;
 }
 
 export namespace ListServiceQuotaIncreaseRequestsInTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListServiceQuotaIncreaseRequestsInTemplateRequest): any => ({
     ...obj,
   });
@@ -965,22 +1067,21 @@ export namespace ListServiceQuotaIncreaseRequestsInTemplateRequest {
 
 export interface ListServiceQuotaIncreaseRequestsInTemplateResponse {
   /**
-   * <p>Returns the list of values of the quota increase request in the template.</p>
+   * <p>Information about the quota increase requests.</p>
    */
   ServiceQuotaIncreaseRequestInTemplateList?: ServiceQuotaIncreaseRequestInTemplate[];
 
   /**
-   * <p>If present in the response, this value indicates there's more output available that what's
-   *       included in the current response. This can occur even when the response includes no values at
-   *       all, such as when you ask for a filtered view of a very long list. Use this value in the
-   *         <code>NextToken</code> request parameter in a subsequent call to the operation to continue
-   *       processing and get the next part of the output. You should repeat this until the
-   *         <code>NextToken</code> response element comes back empty (as <code>null</code>).</p>
+   * <p>The token to use to retrieve the next page of results. This value is null when there are
+   *       no more results to return.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListServiceQuotaIncreaseRequestsInTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListServiceQuotaIncreaseRequestsInTemplateResponse): any => ({
     ...obj,
   });
@@ -988,32 +1089,26 @@ export namespace ListServiceQuotaIncreaseRequestsInTemplateResponse {
 
 export interface ListServiceQuotasRequest {
   /**
-   * <p>The identifier for a service. When performing an operation, use the
-   *         <code>ServiceCode</code> to specify a particular service. </p>
+   * <p>The service identifier.</p>
    */
   ServiceCode: string | undefined;
 
   /**
-   * <p>(Optional) Use this parameter in a request if you receive a <code>NextToken</code>
-   *       response in a previous request that indicates that there's more output available. In a
-   *       subsequent call, set it to the value of the previous call's <code>NextToken</code> response to
-   *       indicate where the output should continue from.</p>
+   * <p>The token for the next page of results.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>(Optional) Limits the number of results that you want to include in the response. If you
-   *       don't include this parameter, the response defaults to a value that's specific to the
-   *       operation. If additional items exist beyond the specified maximum, the <code>NextToken</code>
-   *       element is present and has a value (isn't null). Include that value as the
-   *         <code>NextToken</code> request parameter in the call to the operation to get the next part
-   *       of the results. You should check <code>NextToken</code> after every operation to ensure that
-   *       you receive all of the results.</p>
+   * <p>The maximum number of results to return with a single call. To retrieve the remaining
+   *       results, if any, make another call with the token returned from this call.</p>
    */
   MaxResults?: number;
 }
 
 export namespace ListServiceQuotasRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListServiceQuotasRequest): any => ({
     ...obj,
   });
@@ -1021,23 +1116,21 @@ export namespace ListServiceQuotasRequest {
 
 export interface ListServiceQuotasResponse {
   /**
-   * <p>If present in the response, this value indicates there's more output available that what's
-   *       included in the current response. This can occur even when the response includes no values at
-   *       all, such as when you ask for a filtered view of a very long list. Use this value in the
-   *         <code>NextToken</code> request parameter in a subsequent call to the operation to continue
-   *       processing and get the next part of the output. You should repeat this until the
-   *         <code>NextToken</code> response element comes back empty (as <code>null</code>).</p>
+   * <p>The token to use to retrieve the next page of results. This value is null when there are
+   *       no more results to return.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>The response information for a quota lists all attribute information for the quota.
-   *     </p>
+   * <p>Information about the quotas.</p>
    */
   Quotas?: ServiceQuota[];
 }
 
 export namespace ListServiceQuotasResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListServiceQuotasResponse): any => ({
     ...obj,
   });
@@ -1045,48 +1138,45 @@ export namespace ListServiceQuotasResponse {
 
 export interface ListServicesRequest {
   /**
-   * <p>(Optional) Use this parameter in a request if you receive a <code>NextToken</code>
-   *       response in a previous request that indicates that there's more output available. In a
-   *       subsequent call, set it to the value of the previous call's <code>NextToken</code> response to
-   *       indicate where the output should continue from.</p>
+   * <p>The token for the next page of results.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>(Optional) Limits the number of results that you want to include in the response. If you
-   *       don't include this parameter, the response defaults to a value that's specific to the
-   *       operation. If additional items exist beyond the specified maximum, the <code>NextToken</code>
-   *       element is present and has a value (isn't null). Include that value as the
-   *         <code>NextToken</code> request parameter in the call to the operation to get the next part
-   *       of the results. You should check <code>NextToken</code> after every operation to ensure that
-   *       you receive all of the results.</p>
+   * <p>The maximum number of results to return with a single call. To retrieve the remaining
+   *       results, if any, make another call with the token returned from this call.</p>
    */
   MaxResults?: number;
 }
 
 export namespace ListServicesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListServicesRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A structure that contains the <code>ServiceName</code> and <code>ServiceCode</code>. It
- *       does not include all details of the service quota. To get those values, use the <a>ListServiceQuotas</a> operation. </p>
+ * <p>Information about a service.</p>
  */
 export interface ServiceInfo {
   /**
-   * <p>Specifies the service that you want to use.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode?: string;
 
   /**
-   * <p>The name of the AWS service specified in the increase request. </p>
+   * <p>The service name.</p>
    */
   ServiceName?: string;
 }
 
 export namespace ServiceInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceInfo): any => ({
     ...obj,
   });
@@ -1094,50 +1184,86 @@ export namespace ServiceInfo {
 
 export interface ListServicesResponse {
   /**
-   * <p>If present in the response, this value indicates there's more output available that what's
-   *       included in the current response. This can occur even when the response includes no values at
-   *       all, such as when you ask for a filtered view of a very long list. Use this value in the
-   *         <code>NextToken</code> request parameter in a subsequent call to the operation to continue
-   *       processing and get the next part of the output. You should repeat this until the
-   *         <code>NextToken</code> response element comes back empty (as <code>null</code>).</p>
+   * <p>The token to use to retrieve the next page of results. This value is null when there are
+   *       no more results to return.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>Returns a list of services. </p>
+   * <p>Information about the services.</p>
    */
   Services?: ServiceInfo[];
 }
 
 export namespace ListServicesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListServicesResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListTagsForResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) for the applied quota for which you want to list tags. You
+   *       can get this information by using the Service Quotas console, or by listing the quotas using the
+   *         <a href="https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html">list-service-quotas</a> AWS CLI command or the <a href="https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_ListServiceQuotas.html">ListServiceQuotas</a> AWS API operation.</p>
+   */
+  ResourceARN: string | undefined;
+}
+
+export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListTagsForResourceResponse {
+  /**
+   * <p>A complex data type that contains zero or more tag elements.</p>
+   */
+  Tags?: Tag[];
+}
+
+export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
 }
 
 export interface PutServiceQuotaIncreaseRequestIntoTemplateRequest {
   /**
-   * <p>Specifies the service quota that you want to use.</p>
+   * <p>The quota identifier.</p>
    */
   QuotaCode: string | undefined;
 
   /**
-   * <p>Specifies the service that you want to use.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode: string | undefined;
 
   /**
-   * <p>Specifies the AWS Region for the quota. </p>
+   * <p>The AWS Region.</p>
    */
   AwsRegion: string | undefined;
 
   /**
-   * <p>Specifies the new, increased value for the quota. </p>
+   * <p>The new, increased value for the quota.</p>
    */
   DesiredValue: number | undefined;
 }
 
 export namespace PutServiceQuotaIncreaseRequestIntoTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutServiceQuotaIncreaseRequestIntoTemplateRequest): any => ({
     ...obj,
   });
@@ -1145,12 +1271,15 @@ export namespace PutServiceQuotaIncreaseRequestIntoTemplateRequest {
 
 export interface PutServiceQuotaIncreaseRequestIntoTemplateResponse {
   /**
-   * <p>A structure that contains information about one service quota increase request.</p>
+   * <p>Information about the quota increase request.</p>
    */
   ServiceQuotaIncreaseRequestInTemplate?: ServiceQuotaIncreaseRequestInTemplate;
 }
 
 export namespace PutServiceQuotaIncreaseRequestIntoTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutServiceQuotaIncreaseRequestIntoTemplateResponse): any => ({
     ...obj,
   });
@@ -1167,6 +1296,9 @@ export interface QuotaExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace QuotaExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QuotaExceededException): any => ({
     ...obj,
   });
@@ -1174,22 +1306,25 @@ export namespace QuotaExceededException {
 
 export interface RequestServiceQuotaIncreaseRequest {
   /**
-   * <p>Specifies the service that you want to use.</p>
+   * <p>The service identifier.</p>
    */
   ServiceCode: string | undefined;
 
   /**
-   * <p>Specifies the service quota that you want to use.</p>
+   * <p>The quota identifier.</p>
    */
   QuotaCode: string | undefined;
 
   /**
-   * <p>Specifies the value submitted in the service quota increase request. </p>
+   * <p>The new, increased value for the quota.</p>
    */
   DesiredValue: number | undefined;
 }
 
 export namespace RequestServiceQuotaIncreaseRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RequestServiceQuotaIncreaseRequest): any => ({
     ...obj,
   });
@@ -1197,12 +1332,15 @@ export namespace RequestServiceQuotaIncreaseRequest {
 
 export interface RequestServiceQuotaIncreaseResponse {
   /**
-   * <p>Returns a list of service quota requests.</p>
+   * <p>Information about the quota increase request.</p>
    */
   RequestedQuota?: RequestedServiceQuotaChange;
 }
 
 export namespace RequestServiceQuotaIncreaseResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RequestServiceQuotaIncreaseResponse): any => ({
     ...obj,
   });
@@ -1218,7 +1356,114 @@ export interface ResourceAlreadyExistsException extends __SmithyException, $Meta
 }
 
 export namespace ResourceAlreadyExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceAlreadyExistsException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The specified tag is a reserved word and cannot be used.</p>
+ */
+export interface TagPolicyViolationException extends __SmithyException, $MetadataBearer {
+  name: "TagPolicyViolationException";
+  $fault: "client";
+  Message?: string;
+}
+
+export namespace TagPolicyViolationException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagPolicyViolationException): any => ({
+    ...obj,
+  });
+}
+
+export interface TagResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) for the applied quota. You can get this information by
+   *       using the Service Quotas console, or by listing the quotas using the <a href="https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html">list-service-quotas</a> AWS CLI command or the <a href="https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_ListServiceQuotas.html">ListServiceQuotas</a> AWS API operation.</p>
+   */
+  ResourceARN: string | undefined;
+
+  /**
+   * <p>The tags that you want to add to the resource.</p>
+   */
+  Tags: Tag[] | undefined;
+}
+
+export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagResourceResponse {}
+
+export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>You've exceeded the number of tags allowed for a resource. For more information, see
+ *         <a href="https://docs.aws.amazon.com/servicequotas/latest/userguide/sq-tagging.html#sq-tagging-restrictions">Tag
+ *         restrictions</a> in the <i>Service Quotas User Guide</i>.</p>
+ */
+export interface TooManyTagsException extends __SmithyException, $MetadataBearer {
+  name: "TooManyTagsException";
+  $fault: "client";
+  Message?: string;
+}
+
+export namespace TooManyTagsException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TooManyTagsException): any => ({
+    ...obj,
+  });
+}
+
+export interface UntagResourceRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) for the applied quota that you want to untag. You can get
+   *       this information by using the Service Quotas console, or by listing the quotas using the <a href="https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html">list-service-quotas</a> AWS CLI command or the <a href="https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_ListServiceQuotas.html">ListServiceQuotas</a> AWS API operation.</p>
+   */
+  ResourceARN: string | undefined;
+
+  /**
+   * <p>The keys of the tags that you want to remove from the resource.</p>
+   */
+  TagKeys: string[] | undefined;
+}
+
+export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface UntagResourceResponse {}
+
+export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
 }

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DetectFacesCommandInput = DetectFacesRequest;
-export type DetectFacesCommandOutput = DetectFacesResponse & __MetadataBearer;
+export interface DetectFacesCommandInput extends DetectFacesRequest {}
+export interface DetectFacesCommandOutput extends DetectFacesResponse, __MetadataBearer {}
 
 /**
  * <p>Detects faces within an image that is provided as input.</p>
@@ -44,6 +44,20 @@ export type DetectFacesCommandOutput = DetectFacesResponse & __MetadataBearer;
  *
  *          <p>This operation requires permissions to perform the
  *       <code>rekognition:DetectFaces</code> action. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, DetectFacesCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, DetectFacesCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new DetectFacesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DetectFacesCommandInput} for command's `input` shape.
+ * @see {@link DetectFacesCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DetectFacesCommand extends $Command<
   DetectFacesCommandInput,

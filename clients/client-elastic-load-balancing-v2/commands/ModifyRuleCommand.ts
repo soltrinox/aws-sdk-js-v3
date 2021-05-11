@@ -18,15 +18,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyRuleCommandInput = ModifyRuleInput;
-export type ModifyRuleCommandOutput = ModifyRuleOutput & __MetadataBearer;
+export interface ModifyRuleCommandInput extends ModifyRuleInput {}
+export interface ModifyRuleCommandOutput extends ModifyRuleOutput, __MetadataBearer {}
 
 /**
  * <p>Replaces the specified properties of the specified rule. Any properties that you do not
  *       specify are unchanged.</p>
- *          <p>To add an item to a list, remove an item from a list, or update an item in a list,
- *       you must provide the entire list. For example, to add an action, specify a list with the
- *       current actions plus the new action.</p>
+ *          <p>To add an item to a list, remove an item from a list, or update an item in a list, you
+ *       must provide the entire list. For example, to add an action, specify a list with the current
+ *       actions plus the new action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingV2Client, ModifyRuleCommand } from "@aws-sdk/client-elastic-load-balancing-v2"; // ES Modules import
+ * // const { ElasticLoadBalancingV2Client, ModifyRuleCommand } = require("@aws-sdk/client-elastic-load-balancing-v2"); // CommonJS import
+ * const client = new ElasticLoadBalancingV2Client(config);
+ * const command = new ModifyRuleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyRuleCommandInput} for command's `input` shape.
+ * @see {@link ModifyRuleCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyRuleCommand extends $Command<
   ModifyRuleCommandInput,

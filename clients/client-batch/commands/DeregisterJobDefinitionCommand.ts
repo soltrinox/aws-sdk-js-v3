@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeregisterJobDefinitionCommandInput = DeregisterJobDefinitionRequest;
-export type DeregisterJobDefinitionCommandOutput = DeregisterJobDefinitionResponse & __MetadataBearer;
+export interface DeregisterJobDefinitionCommandInput extends DeregisterJobDefinitionRequest {}
+export interface DeregisterJobDefinitionCommandOutput extends DeregisterJobDefinitionResponse, __MetadataBearer {}
 
 /**
  * <p>Deregisters an AWS Batch job definition. Job definitions are permanently deleted after 180 days.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BatchClient, DeregisterJobDefinitionCommand } from "@aws-sdk/client-batch"; // ES Modules import
+ * // const { BatchClient, DeregisterJobDefinitionCommand } = require("@aws-sdk/client-batch"); // CommonJS import
+ * const client = new BatchClient(config);
+ * const command = new DeregisterJobDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeregisterJobDefinitionCommandInput} for command's `input` shape.
+ * @see {@link DeregisterJobDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link BatchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeregisterJobDefinitionCommand extends $Command<
   DeregisterJobDefinitionCommandInput,

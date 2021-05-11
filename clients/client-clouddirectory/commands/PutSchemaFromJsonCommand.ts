@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutSchemaFromJsonCommandInput = PutSchemaFromJsonRequest;
-export type PutSchemaFromJsonCommandOutput = PutSchemaFromJsonResponse & __MetadataBearer;
+export interface PutSchemaFromJsonCommandInput extends PutSchemaFromJsonRequest {}
+export interface PutSchemaFromJsonCommandOutput extends PutSchemaFromJsonResponse, __MetadataBearer {}
 
 /**
  * <p>Allows a schema to be updated using JSON upload. Only available for development schemas. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json">JSON Schema Format</a> for more information.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, PutSchemaFromJsonCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, PutSchemaFromJsonCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new PutSchemaFromJsonCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutSchemaFromJsonCommandInput} for command's `input` shape.
+ * @see {@link PutSchemaFromJsonCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutSchemaFromJsonCommand extends $Command<
   PutSchemaFromJsonCommandInput,

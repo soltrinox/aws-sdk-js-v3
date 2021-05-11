@@ -17,15 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateContainerServiceCommandInput = CreateContainerServiceRequest;
-export type CreateContainerServiceCommandOutput = CreateContainerServiceResult & __MetadataBearer;
+export interface CreateContainerServiceCommandInput extends CreateContainerServiceRequest {}
+export interface CreateContainerServiceCommandOutput extends CreateContainerServiceResult, __MetadataBearer {}
 
 /**
  * <p>Creates an Amazon Lightsail container service.</p>
  *
  *          <p>A Lightsail container service is a compute resource to which you can deploy containers.
- *       For more information, see <a href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-containers">Container services in Amazon Lightsail</a> in the <i>Lightsail Dev
+ *       For more information, see <a href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-container-services">Container services in Amazon Lightsail</a> in the <i>Lightsail Dev
  *         Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, CreateContainerServiceCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, CreateContainerServiceCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new CreateContainerServiceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateContainerServiceCommandInput} for command's `input` shape.
+ * @see {@link CreateContainerServiceCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateContainerServiceCommand extends $Command<
   CreateContainerServiceCommandInput,

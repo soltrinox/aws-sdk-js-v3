@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateInstanceProfileCommandInput = CreateInstanceProfileRequest;
-export type CreateInstanceProfileCommandOutput = CreateInstanceProfileResult & __MetadataBearer;
+export interface CreateInstanceProfileCommandInput extends CreateInstanceProfileRequest {}
+export interface CreateInstanceProfileCommandOutput extends CreateInstanceProfileResult, __MetadataBearer {}
 
 /**
  * <p>Creates a profile that can be applied to one or more private fleet device
  *             instances.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, CreateInstanceProfileCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, CreateInstanceProfileCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new CreateInstanceProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateInstanceProfileCommandInput} for command's `input` shape.
+ * @see {@link CreateInstanceProfileCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateInstanceProfileCommand extends $Command<
   CreateInstanceProfileCommandInput,

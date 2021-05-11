@@ -3,6 +3,7 @@ import { MetadataBearer as $MetadataBearer } from "@aws-sdk/types";
 
 export enum AddonIssueCode {
   ACCESS_DENIED = "AccessDenied",
+  ADMISSION_REQUEST_DENIED = "AdmissionRequestDenied",
   CLUSTER_UNREACHABLE = "ClusterUnreachable",
   CONFIGURATION_CONFLICT = "ConfigurationConflict",
   INSUFFICIENT_NUMBER_OF_REPLICAS = "InsufficientNumberOfReplicas",
@@ -30,6 +31,9 @@ export interface AddonIssue {
 }
 
 export namespace AddonIssue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddonIssue): any => ({
     ...obj,
   });
@@ -46,6 +50,9 @@ export interface AddonHealth {
 }
 
 export namespace AddonHealth {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddonHealth): any => ({
     ...obj,
   });
@@ -120,6 +127,9 @@ export interface Addon {
 }
 
 export namespace Addon {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Addon): any => ({
     ...obj,
   });
@@ -146,6 +156,9 @@ export interface Compatibility {
 }
 
 export namespace Compatibility {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Compatibility): any => ({
     ...obj,
   });
@@ -172,6 +185,9 @@ export interface AddonVersionInfo {
 }
 
 export namespace AddonVersionInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddonVersionInfo): any => ({
     ...obj,
   });
@@ -199,25 +215,296 @@ export interface AddonInfo {
 }
 
 export namespace AddonInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddonInfo): any => ({
     ...obj,
   });
 }
 
-export type AMITypes = "AL2_ARM_64" | "AL2_x86_64" | "AL2_x86_64_GPU";
+export type AMITypes = "AL2_ARM_64" | "AL2_x86_64" | "AL2_x86_64_GPU" | "CUSTOM";
 
 /**
- * <p>An Auto Scaling group that is associated with an Amazon EKS managed node group.</p>
+ * <p>Identifies the AWS Key Management Service (AWS KMS) customer master key (CMK) used to encrypt the
+ *             secrets.</p>
  */
-export interface AutoScalingGroup {
+export interface Provider {
   /**
-   * <p>The name of the Auto Scaling group associated with an Amazon EKS managed node group.</p>
+   * <p>Amazon Resource Name (ARN) or alias of the customer master key (CMK). The CMK must be symmetric,
+   *             created in the same region as the cluster, and if the CMK was created in a different
+   *             account, the user must have access to the CMK. For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html">Allowing
+   *                 Users in Other Accounts to Use a CMK</a> in the <i>AWS Key Management Service Developer
+   *                 Guide</i>.</p>
    */
-  name?: string;
+  keyArn?: string;
 }
 
-export namespace AutoScalingGroup {
-  export const filterSensitiveLog = (obj: AutoScalingGroup): any => ({
+export namespace Provider {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: Provider): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The encryption configuration for the cluster.</p>
+ */
+export interface EncryptionConfig {
+  /**
+   * <p>Specifies the resources to be encrypted. The only supported value is "secrets".</p>
+   */
+  resources?: string[];
+
+  /**
+   * <p>AWS Key Management Service (AWS KMS) customer master key (CMK). Either the ARN or the alias can be
+   *             used.</p>
+   */
+  provider?: Provider;
+}
+
+export namespace EncryptionConfig {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: EncryptionConfig): any => ({
+    ...obj,
+  });
+}
+
+export interface AssociateEncryptionConfigRequest {
+  /**
+   * <p>The name of the cluster that you are associating with encryption configuration.</p>
+   */
+  clusterName: string | undefined;
+
+  /**
+   * <p>The configuration you are using for encryption.</p>
+   */
+  encryptionConfig: EncryptionConfig[] | undefined;
+
+  /**
+   * <p>The client request token you are using with the encryption configuration.</p>
+   */
+  clientRequestToken?: string;
+}
+
+export namespace AssociateEncryptionConfigRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AssociateEncryptionConfigRequest): any => ({
+    ...obj,
+  });
+}
+
+export enum ErrorCode {
+  ACCESS_DENIED = "AccessDenied",
+  ADMISSION_REQUEST_DENIED = "AdmissionRequestDenied",
+  CLUSTER_UNREACHABLE = "ClusterUnreachable",
+  CONFIGURATION_CONFLICT = "ConfigurationConflict",
+  ENI_LIMIT_REACHED = "EniLimitReached",
+  INSUFFICIENT_FREE_ADDRESSES = "InsufficientFreeAddresses",
+  INSUFFICIENT_NUMBER_OF_REPLICAS = "InsufficientNumberOfReplicas",
+  IP_NOT_AVAILABLE = "IpNotAvailable",
+  NODE_CREATION_FAILURE = "NodeCreationFailure",
+  OPERATION_NOT_PERMITTED = "OperationNotPermitted",
+  POD_EVICTION_FAILURE = "PodEvictionFailure",
+  SECURITY_GROUP_NOT_FOUND = "SecurityGroupNotFound",
+  SUBNET_NOT_FOUND = "SubnetNotFound",
+  UNKNOWN = "Unknown",
+  VPC_ID_NOT_FOUND = "VpcIdNotFound",
+}
+
+/**
+ * <p>An object representing an error when an asynchronous operation fails.</p>
+ */
+export interface ErrorDetail {
+  /**
+   * <p>A brief description of the error. </p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                   <b>SubnetNotFound</b>: We couldn't find one of the
+   *                     subnets associated with the cluster.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <b>SecurityGroupNotFound</b>: We couldn't find one
+   *                     of the security groups associated with the cluster.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <b>EniLimitReached</b>: You have reached the elastic
+   *                     network interface limit for your account.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <b>IpNotAvailable</b>: A subnet associated with the
+   *                     cluster doesn't have any free IP addresses.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <b>AccessDenied</b>: You don't have permissions to
+   *                     perform the specified operation.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <b>OperationNotPermitted</b>: The service role
+   *                     associated with the cluster doesn't have the required access permissions for
+   *                     Amazon EKS.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <b>VpcIdNotFound</b>: We couldn't find the VPC
+   *                     associated with the cluster.</p>
+   *             </li>
+   *          </ul>
+   */
+  errorCode?: ErrorCode | string;
+
+  /**
+   * <p>A more complete description of the error.</p>
+   */
+  errorMessage?: string;
+
+  /**
+   * <p>An optional field that contains the resource IDs associated with the error.</p>
+   */
+  resourceIds?: string[];
+}
+
+export namespace ErrorDetail {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ErrorDetail): any => ({
+    ...obj,
+  });
+}
+
+export enum UpdateParamType {
+  ADDON_VERSION = "AddonVersion",
+  CLUSTER_LOGGING = "ClusterLogging",
+  DESIRED_SIZE = "DesiredSize",
+  ENCRYPTION_CONFIG = "EncryptionConfig",
+  ENDPOINT_PRIVATE_ACCESS = "EndpointPrivateAccess",
+  ENDPOINT_PUBLIC_ACCESS = "EndpointPublicAccess",
+  IDENTITY_PROVIDER_CONFIG = "IdentityProviderConfig",
+  LABELS_TO_ADD = "LabelsToAdd",
+  LABELS_TO_REMOVE = "LabelsToRemove",
+  LAUNCH_TEMPLATE_NAME = "LaunchTemplateName",
+  LAUNCH_TEMPLATE_VERSION = "LaunchTemplateVersion",
+  MAX_SIZE = "MaxSize",
+  MIN_SIZE = "MinSize",
+  PLATFORM_VERSION = "PlatformVersion",
+  PUBLIC_ACCESS_CIDRS = "PublicAccessCidrs",
+  RELEASE_VERSION = "ReleaseVersion",
+  RESOLVE_CONFLICTS = "ResolveConflicts",
+  SERVICE_ACCOUNT_ROLE_ARN = "ServiceAccountRoleArn",
+  VERSION = "Version",
+}
+
+/**
+ * <p>An object representing the details of an update request.</p>
+ */
+export interface UpdateParam {
+  /**
+   * <p>The keys associated with an update request.</p>
+   */
+  type?: UpdateParamType | string;
+
+  /**
+   * <p>The value of the keys submitted as part of an update request.</p>
+   */
+  value?: string;
+}
+
+export namespace UpdateParam {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateParam): any => ({
+    ...obj,
+  });
+}
+
+export enum UpdateStatus {
+  CANCELLED = "Cancelled",
+  FAILED = "Failed",
+  IN_PROGRESS = "InProgress",
+  SUCCESSFUL = "Successful",
+}
+
+export enum UpdateType {
+  ADDON_UPDATE = "AddonUpdate",
+  ASSOCIATE_ENCRYPTION_CONFIG = "AssociateEncryptionConfig",
+  ASSOCIATE_IDENTITY_PROVIDER_CONFIG = "AssociateIdentityProviderConfig",
+  CONFIG_UPDATE = "ConfigUpdate",
+  DISASSOCIATE_IDENTITY_PROVIDER_CONFIG = "DisassociateIdentityProviderConfig",
+  ENDPOINT_ACCESS_UPDATE = "EndpointAccessUpdate",
+  LOGGING_UPDATE = "LoggingUpdate",
+  VERSION_UPDATE = "VersionUpdate",
+}
+
+/**
+ * <p>An object representing an asynchronous update.</p>
+ */
+export interface Update {
+  /**
+   * <p>A UUID that is used to track the update.</p>
+   */
+  id?: string;
+
+  /**
+   * <p>The current status of the update.</p>
+   */
+  status?: UpdateStatus | string;
+
+  /**
+   * <p>The type of the update.</p>
+   */
+  type?: UpdateType | string;
+
+  /**
+   * <p>A key-value map that contains the parameters associated with the update.</p>
+   */
+  params?: UpdateParam[];
+
+  /**
+   * <p>The Unix epoch timestamp in seconds for when the update was created.</p>
+   */
+  createdAt?: Date;
+
+  /**
+   * <p>Any errors associated with a <code>Failed</code> update.</p>
+   */
+  errors?: ErrorDetail[];
+}
+
+export namespace Update {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: Update): any => ({
+    ...obj,
+  });
+}
+
+export interface AssociateEncryptionConfigResponse {
+  /**
+   * <p>An object representing an asynchronous update.</p>
+   */
+  update?: Update;
+}
+
+export namespace AssociateEncryptionConfigResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AssociateEncryptionConfigResponse): any => ({
     ...obj,
   });
 }
@@ -245,7 +532,323 @@ export interface ClientException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ClientException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClientException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The specified parameter is invalid. Review the available parameters for the API
+ *             request.</p>
+ */
+export interface InvalidParameterException extends __SmithyException, $MetadataBearer {
+  name: "InvalidParameterException";
+  $fault: "client";
+  /**
+   * <p>The Amazon EKS cluster associated with the exception.</p>
+   */
+  clusterName?: string;
+
+  /**
+   * <p>The Amazon EKS managed node group associated with the exception.</p>
+   */
+  nodegroupName?: string;
+
+  /**
+   * <p>The Fargate profile associated with the exception.</p>
+   */
+  fargateProfileName?: string;
+
+  addonName?: string;
+  message?: string;
+}
+
+export namespace InvalidParameterException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidParameterException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The request is invalid given the state of the cluster. Check the state of the cluster
+ *             and the associated operations.</p>
+ */
+export interface InvalidRequestException extends __SmithyException, $MetadataBearer {
+  name: "InvalidRequestException";
+  $fault: "client";
+  /**
+   * <p>The Amazon EKS cluster associated with the exception.</p>
+   */
+  clusterName?: string;
+
+  /**
+   * <p>The Amazon EKS managed node group associated with the exception.</p>
+   */
+  nodegroupName?: string;
+
+  addonName?: string;
+  message?: string;
+}
+
+export namespace InvalidRequestException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidRequestException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The specified resource is in use.</p>
+ */
+export interface ResourceInUseException extends __SmithyException, $MetadataBearer {
+  name: "ResourceInUseException";
+  $fault: "client";
+  /**
+   * <p>The Amazon EKS cluster associated with the exception.</p>
+   */
+  clusterName?: string;
+
+  /**
+   * <p>The Amazon EKS managed node group associated with the exception.</p>
+   */
+  nodegroupName?: string;
+
+  addonName?: string;
+  message?: string;
+}
+
+export namespace ResourceInUseException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResourceInUseException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The specified resource could not be found. You can view your available clusters with
+ *                 <a>ListClusters</a>. You can view your available managed node groups with
+ *                 <a>ListNodegroups</a>. Amazon EKS clusters and node groups are
+ *             Region-specific.</p>
+ */
+export interface ResourceNotFoundException extends __SmithyException, $MetadataBearer {
+  name: "ResourceNotFoundException";
+  $fault: "client";
+  /**
+   * <p>The Amazon EKS cluster associated with the exception.</p>
+   */
+  clusterName?: string;
+
+  /**
+   * <p>The Amazon EKS managed node group associated with the exception.</p>
+   */
+  nodegroupName?: string;
+
+  /**
+   * <p>The Fargate profile associated with the exception.</p>
+   */
+  fargateProfileName?: string;
+
+  addonName?: string;
+  message?: string;
+}
+
+export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>These errors are usually caused by a server-side issue.</p>
+ */
+export interface ServerException extends __SmithyException, $MetadataBearer {
+  name: "ServerException";
+  $fault: "server";
+  /**
+   * <p>The Amazon EKS cluster associated with the exception.</p>
+   */
+  clusterName?: string;
+
+  /**
+   * <p>The Amazon EKS managed node group associated with the exception.</p>
+   */
+  nodegroupName?: string;
+
+  addonName?: string;
+  message?: string;
+}
+
+export namespace ServerException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ServerException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>An object representing an OpenID Connect (OIDC) configuration. Before associating an
+ *             OIDC identity provider to your cluster, review the considerations in <a href="https://docs.aws.amazon.com/eks/latest/userguide/authenticate-oidc-identity-provider.html">Authenticating
+ *                 users for your cluster from an OpenID Connect identity provider</a> in the
+ *             <i>Amazon EKS User Guide</i>.</p>
+ */
+export interface OidcIdentityProviderConfigRequest {
+  /**
+   * <p>The name of the OIDC provider configuration.</p>
+   */
+  identityProviderConfigName: string | undefined;
+
+  /**
+   * <p>The URL of the OpenID identity provider that allows the API server to discover public
+   *             signing keys for verifying tokens. The URL must begin with <code>https://</code> and
+   *             should correspond to the <code>iss</code> claim in the provider's OIDC ID tokens. Per
+   *             the OIDC standard, path components are allowed but query parameters are not. Typically
+   *             the URL consists of only a hostname, like <code>https://server.example.org</code> or
+   *                 <code>https://example.com</code>. This URL should point to the level below
+   *                 <code>.well-known/openid-configuration</code> and must be publicly accessible over
+   *             the internet.</p>
+   */
+  issuerUrl: string | undefined;
+
+  /**
+   * <p>This is also known as <i>audience</i>. The ID for the client application
+   *             that makes authentication requests to the OpenID identity provider.</p>
+   */
+  clientId: string | undefined;
+
+  /**
+   * <p>The JSON Web Token (JWT) claim to use as the username. The default is
+   *             <code>sub</code>, which is expected to be a unique identifier of the end user. You can
+   *             choose other claims, such as <code>email</code> or <code>name</code>, depending on the
+   *             OpenID identity provider. Claims other than <code>email</code> are prefixed with the
+   *             issuer URL to prevent naming clashes with other plug-ins.</p>
+   */
+  usernameClaim?: string;
+
+  /**
+   * <p>The prefix that is prepended to username claims to prevent clashes with existing
+   *             names. If you do not provide this field, and <code>username</code> is a value other than
+   *                 <code>email</code>, the prefix defaults to <code>issuerurl#</code>. You can use the
+   *             value <code>-</code> to disable all prefixing.</p>
+   */
+  usernamePrefix?: string;
+
+  /**
+   * <p>The JWT claim that the provider uses to return your groups.</p>
+   */
+  groupsClaim?: string;
+
+  /**
+   * <p>The prefix that is prepended to group claims to prevent clashes with existing names
+   *             (such as <code>system:</code> groups). For example, the value<code> oidc:</code> will
+   *             create group names like <code>oidc:engineering</code> and
+   *             <code>oidc:infra</code>.</p>
+   */
+  groupsPrefix?: string;
+
+  /**
+   * <p>The key value pairs that describe required claims in the identity token. If set, each
+   *             claim is verified to be present in the token with a matching value. For the maximum
+   *             number of claims that you can require, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/service-quotas.html">Amazon EKS service quotas</a> in the
+   *             <i>Amazon EKS User Guide</i>.</p>
+   */
+  requiredClaims?: { [key: string]: string };
+}
+
+export namespace OidcIdentityProviderConfigRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: OidcIdentityProviderConfigRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface AssociateIdentityProviderConfigRequest {
+  /**
+   * <p>The name of the cluster to associate the configuration to.</p>
+   */
+  clusterName: string | undefined;
+
+  /**
+   * <p>An object that represents an OpenID Connect (OIDC) identity provider
+   *             configuration.</p>
+   */
+  oidc: OidcIdentityProviderConfigRequest | undefined;
+
+  /**
+   * <p>The metadata to apply to the configuration to assist with categorization and
+   *             organization. Each tag consists of a key and an optional value, both of which you
+   *             define.</p>
+   */
+  tags?: { [key: string]: string };
+
+  /**
+   * <p>Unique, case-sensitive identifier that you provide to ensure the idempotency of the
+   *             request.</p>
+   */
+  clientRequestToken?: string;
+}
+
+export namespace AssociateIdentityProviderConfigRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AssociateIdentityProviderConfigRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface AssociateIdentityProviderConfigResponse {
+  /**
+   * <p>An object representing an asynchronous update.</p>
+   */
+  update?: Update;
+
+  /**
+   * <p>The tags for the resource.</p>
+   */
+  tags?: { [key: string]: string };
+}
+
+export namespace AssociateIdentityProviderConfigResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AssociateIdentityProviderConfigResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>An Auto Scaling group that is associated with an Amazon EKS managed node group.</p>
+ */
+export interface AutoScalingGroup {
+  /**
+   * <p>The name of the Auto Scaling group associated with an Amazon EKS managed node group.</p>
+   */
+  name?: string;
+}
+
+export namespace AutoScalingGroup {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AutoScalingGroup): any => ({
     ...obj,
   });
 }
@@ -285,8 +888,8 @@ export interface CreateAddonRequest {
   serviceAccountRoleArn?: string;
 
   /**
-   * <p>How to resolve parameter value conflicts when migrating an existing add-on to an
-   *             Amazon EKS add-on.</p>
+   * <p>How to resolve parameter value conflicts when migrating an existing add-on to an Amazon EKS
+   *             add-on.</p>
    */
   resolveConflicts?: ResolveConflicts | string;
 
@@ -304,6 +907,9 @@ export interface CreateAddonRequest {
 }
 
 export namespace CreateAddonRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAddonRequest): any => ({
     ...obj,
   });
@@ -317,195 +923,10 @@ export interface CreateAddonResponse {
 }
 
 export namespace CreateAddonResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAddonResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The specified parameter is invalid. Review the available parameters for the API
- *             request.</p>
- */
-export interface InvalidParameterException extends __SmithyException, $MetadataBearer {
-  name: "InvalidParameterException";
-  $fault: "client";
-  /**
-   * <p>The Amazon EKS cluster associated with the exception.</p>
-   */
-  clusterName?: string;
-
-  /**
-   * <p>The Amazon EKS managed node group associated with the exception.</p>
-   */
-  nodegroupName?: string;
-
-  /**
-   * <p>The Fargate profile associated with the exception.</p>
-   */
-  fargateProfileName?: string;
-
-  addonName?: string;
-  message?: string;
-}
-
-export namespace InvalidParameterException {
-  export const filterSensitiveLog = (obj: InvalidParameterException): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The request is invalid given the state of the cluster. Check the state of the cluster
- *             and the associated operations.</p>
- */
-export interface InvalidRequestException extends __SmithyException, $MetadataBearer {
-  name: "InvalidRequestException";
-  $fault: "client";
-  /**
-   * <p>The Amazon EKS cluster associated with the exception.</p>
-   */
-  clusterName?: string;
-
-  /**
-   * <p>The Amazon EKS managed node group associated with the exception.</p>
-   */
-  nodegroupName?: string;
-
-  addonName?: string;
-  message?: string;
-}
-
-export namespace InvalidRequestException {
-  export const filterSensitiveLog = (obj: InvalidRequestException): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The specified resource is in use.</p>
- */
-export interface ResourceInUseException extends __SmithyException, $MetadataBearer {
-  name: "ResourceInUseException";
-  $fault: "client";
-  /**
-   * <p>The Amazon EKS cluster associated with the exception.</p>
-   */
-  clusterName?: string;
-
-  /**
-   * <p>The Amazon EKS managed node group associated with the exception.</p>
-   */
-  nodegroupName?: string;
-
-  addonName?: string;
-  message?: string;
-}
-
-export namespace ResourceInUseException {
-  export const filterSensitiveLog = (obj: ResourceInUseException): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The specified resource could not be found. You can view your available clusters with
- *                 <a>ListClusters</a>. You can view your available managed node groups with
- *                 <a>ListNodegroups</a>. Amazon EKS clusters and node groups are
- *             Region-specific.</p>
- */
-export interface ResourceNotFoundException extends __SmithyException, $MetadataBearer {
-  name: "ResourceNotFoundException";
-  $fault: "client";
-  /**
-   * <p>The Amazon EKS cluster associated with the exception.</p>
-   */
-  clusterName?: string;
-
-  /**
-   * <p>The Amazon EKS managed node group associated with the exception.</p>
-   */
-  nodegroupName?: string;
-
-  /**
-   * <p>The Fargate profile associated with the exception.</p>
-   */
-  fargateProfileName?: string;
-
-  addonName?: string;
-  message?: string;
-}
-
-export namespace ResourceNotFoundException {
-  export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>These errors are usually caused by a server-side issue.</p>
- */
-export interface ServerException extends __SmithyException, $MetadataBearer {
-  name: "ServerException";
-  $fault: "server";
-  /**
-   * <p>The Amazon EKS cluster associated with the exception.</p>
-   */
-  clusterName?: string;
-
-  /**
-   * <p>The Amazon EKS managed node group associated with the exception.</p>
-   */
-  nodegroupName?: string;
-
-  addonName?: string;
-  message?: string;
-}
-
-export namespace ServerException {
-  export const filterSensitiveLog = (obj: ServerException): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Identifies the AWS Key Management Service (AWS KMS) customer master key (CMK) used to encrypt the
- *             secrets.</p>
- */
-export interface Provider {
-  /**
-   * <p>Amazon Resource Name (ARN) or alias of the customer master key (CMK). The CMK must be symmetric,
-   *             created in the same region as the cluster, and if the CMK was created in a different
-   *             account, the user must have access to the CMK. For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html">Allowing
-   *                 Users in Other Accounts to Use a CMK</a> in the <i>AWS Key Management Service Developer
-   *                 Guide</i>.</p>
-   */
-  keyArn?: string;
-}
-
-export namespace Provider {
-  export const filterSensitiveLog = (obj: Provider): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The encryption configuration for the cluster.</p>
- */
-export interface EncryptionConfig {
-  /**
-   * <p>Specifies the resources to be encrypted. The only supported value is "secrets".</p>
-   */
-  resources?: string[];
-
-  /**
-   * <p>AWS Key Management Service (AWS KMS) customer master key (CMK). Either the ARN or the alias can be
-   *             used.</p>
-   */
-  provider?: Provider;
-}
-
-export namespace EncryptionConfig {
-  export const filterSensitiveLog = (obj: EncryptionConfig): any => ({
     ...obj,
   });
 }
@@ -542,6 +963,9 @@ export interface KubernetesNetworkConfigRequest {
 }
 
 export namespace KubernetesNetworkConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KubernetesNetworkConfigRequest): any => ({
     ...obj,
   });
@@ -574,6 +998,9 @@ export interface LogSetup {
 }
 
 export namespace LogSetup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LogSetup): any => ({
     ...obj,
   });
@@ -590,6 +1017,9 @@ export interface Logging {
 }
 
 export namespace Logging {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Logging): any => ({
     ...obj,
   });
@@ -600,18 +1030,17 @@ export namespace Logging {
  */
 export interface VpcConfigRequest {
   /**
-   * <p>Specify subnets for your Amazon EKS worker nodes. Amazon EKS creates cross-account elastic
-   *             network interfaces in these subnets to allow communication between your worker nodes and
-   *             the Kubernetes control plane.</p>
+   * <p>Specify subnets for your Amazon EKS nodes. Amazon EKS creates cross-account elastic network
+   *             interfaces in these subnets to allow communication between your nodes and the Kubernetes
+   *             control plane.</p>
    */
   subnetIds?: string[];
 
   /**
    * <p>Specify one or more security groups for the cross-account elastic network interfaces
-   *             that Amazon EKS creates to use to allow communication between your worker nodes and the
-   *             Kubernetes control plane. If you don't specify any security groups, then familiarize
-   *             yourself with the difference between Amazon EKS defaults for clusters deployed with
-   *             Kubernetes:</p>
+   *             that Amazon EKS creates to use to allow communication between your nodes and the Kubernetes
+   *             control plane. If you don't specify any security groups, then familiarize yourself with
+   *             the difference between Amazon EKS defaults for clusters deployed with Kubernetes:</p>
    *         <ul>
    *             <li>
    *                 <p>1.14 Amazon EKS platform version <code>eks.2</code> and earlier</p>
@@ -644,12 +1073,10 @@ export interface VpcConfigRequest {
    *             Kubernetes API server endpoint. If you enable private access, Kubernetes API requests
    *             from within your cluster's VPC use the private VPC endpoint. The default value for this
    *             parameter is <code>false</code>, which disables private access for your Kubernetes API
-   *             server. If you disable private access and you have worker nodes or AWS Fargate pods in the
+   *             server. If you disable private access and you have nodes or AWS Fargate pods in the
    *             cluster, then ensure that <code>publicAccessCidrs</code> includes the necessary CIDR
-   *             blocks for communication with the worker nodes or Fargate pods. For more information, see
-   *                 <a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon EKS
-   *                 Cluster Endpoint Access Control</a> in the
-   *             <i>
+   *             blocks for communication with the nodes or Fargate pods. For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon EKS Cluster
+   *                 Endpoint Access Control</a> in the <i>
    *                <i>Amazon EKS User Guide</i>
    *             </i>.</p>
    */
@@ -659,8 +1086,8 @@ export interface VpcConfigRequest {
    * <p>The CIDR blocks that are allowed access to your cluster's public Kubernetes API server
    *             endpoint. Communication to the endpoint from addresses outside of the CIDR blocks that
    *             you specify is denied. The default value is <code>0.0.0.0/0</code>. If you've disabled
-   *             private endpoint access and you have worker nodes or AWS Fargate pods in the cluster, then
-   *             ensure that you specify the necessary CIDR blocks. For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon EKS Cluster
+   *             private endpoint access and you have nodes or AWS Fargate pods in the cluster, then ensure
+   *             that you specify the necessary CIDR blocks. For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon EKS Cluster
    *                 Endpoint Access Control</a> in the <i>
    *                <i>Amazon EKS User Guide</i>
    *             </i>.</p>
@@ -669,6 +1096,9 @@ export interface VpcConfigRequest {
 }
 
 export namespace VpcConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VpcConfigRequest): any => ({
     ...obj,
   });
@@ -744,6 +1174,9 @@ export interface CreateClusterRequest {
 }
 
 export namespace CreateClusterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateClusterRequest): any => ({
     ...obj,
   });
@@ -763,6 +1196,9 @@ export interface Certificate {
 }
 
 export namespace Certificate {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Certificate): any => ({
     ...obj,
   });
@@ -770,33 +1206,39 @@ export namespace Certificate {
 
 /**
  * <p>An object representing the <a href="https://openid.net/connect/">OpenID
- *                 Connect</a> identity provider information for the cluster.</p>
+ *                 Connect</a> (OIDC) identity provider information for the cluster.</p>
  */
 export interface OIDC {
   /**
-   * <p>The issuer URL for the OpenID Connect identity provider.</p>
+   * <p>The issuer URL for the OIDC identity provider.</p>
    */
   issuer?: string;
 }
 
 export namespace OIDC {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OIDC): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>An object representing an identity provider for authentication credentials.</p>
+ * <p>An object representing an identity provider.</p>
  */
 export interface Identity {
   /**
-   * <p>The <a href="https://openid.net/connect/">OpenID Connect</a> identity provider
-   *             information for the cluster.</p>
+   * <p>An object representing the <a href="https://openid.net/connect/">OpenID
+   *                 Connect</a> identity provider information.</p>
    */
   oidc?: OIDC;
 }
 
 export namespace Identity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Identity): any => ({
     ...obj,
   });
@@ -816,6 +1258,9 @@ export interface KubernetesNetworkConfigResponse {
 }
 
 export namespace KubernetesNetworkConfigResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KubernetesNetworkConfigResponse): any => ({
     ...obj,
   });
@@ -832,7 +1277,7 @@ export interface VpcConfigResponse {
 
   /**
    * <p>The security groups associated with the cross-account elastic network interfaces that
-   *             are used to allow communication between your worker nodes and the Kubernetes control
+   *             are used to allow communication between your nodes and the Kubernetes control
    *             plane.</p>
    */
   securityGroupIds?: string[];
@@ -859,12 +1304,10 @@ export interface VpcConfigResponse {
    * <p>This parameter indicates whether the Amazon EKS private API server endpoint is enabled. If
    *             the Amazon EKS private API server endpoint is enabled, Kubernetes API requests that originate
    *             from within your cluster's VPC use the private VPC endpoint instead of traversing the
-   *             internet. If this value is disabled and you have worker nodes or AWS Fargate pods in the
-   *             cluster, then ensure that <code>publicAccessCidrs</code> includes the necessary CIDR
-   *             blocks for communication with the worker nodes or Fargate pods. For more information, see
-   *                 <a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon EKS
-   *                 Cluster Endpoint Access Control</a> in the
-   *             <i>
+   *             internet. If this value is disabled and you have nodes or AWS Fargate pods in the cluster,
+   *             then ensure that <code>publicAccessCidrs</code> includes the necessary CIDR blocks for
+   *             communication with the nodes or Fargate pods. For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon EKS Cluster
+   *                 Endpoint Access Control</a> in the <i>
    *                <i>Amazon EKS User Guide</i>
    *             </i>.</p>
    */
@@ -874,8 +1317,8 @@ export interface VpcConfigResponse {
    * <p>The CIDR blocks that are allowed access to your cluster's public Kubernetes API server
    *             endpoint. Communication to the endpoint from addresses outside of the listed CIDR blocks
    *             is denied. The default value is <code>0.0.0.0/0</code>. If you've disabled private
-   *             endpoint access and you have worker nodes or AWS Fargate pods in the cluster, then ensure
-   *             that the necessary CIDR blocks are listed. For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon EKS Cluster
+   *             endpoint access and you have nodes or AWS Fargate pods in the cluster, then ensure that the
+   *             necessary CIDR blocks are listed. For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon EKS Cluster
    *                 Endpoint Access Control</a> in the <i>
    *                <i>Amazon EKS User Guide</i>
    *             </i>.</p>
@@ -884,6 +1327,9 @@ export interface VpcConfigResponse {
 }
 
 export namespace VpcConfigResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VpcConfigResponse): any => ({
     ...obj,
   });
@@ -988,6 +1434,9 @@ export interface Cluster {
 }
 
 export namespace Cluster {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Cluster): any => ({
     ...obj,
   });
@@ -1001,6 +1450,9 @@ export interface CreateClusterResponse {
 }
 
 export namespace CreateClusterResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateClusterResponse): any => ({
     ...obj,
   });
@@ -1026,6 +1478,9 @@ export interface ResourceLimitExceededException extends __SmithyException, $Meta
 }
 
 export namespace ResourceLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceLimitExceededException): any => ({
     ...obj,
   });
@@ -1041,6 +1496,9 @@ export interface ServiceUnavailableException extends __SmithyException, $Metadat
 }
 
 export namespace ServiceUnavailableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceUnavailableException): any => ({
     ...obj,
   });
@@ -1073,6 +1531,9 @@ export interface UnsupportedAvailabilityZoneException extends __SmithyException,
 }
 
 export namespace UnsupportedAvailabilityZoneException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnsupportedAvailabilityZoneException): any => ({
     ...obj,
   });
@@ -1095,6 +1556,9 @@ export interface FargateProfileSelector {
 }
 
 export namespace FargateProfileSelector {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FargateProfileSelector): any => ({
     ...obj,
   });
@@ -1150,6 +1614,9 @@ export interface CreateFargateProfileRequest {
 }
 
 export namespace CreateFargateProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFargateProfileRequest): any => ({
     ...obj,
   });
@@ -1213,6 +1680,9 @@ export interface FargateProfile {
 }
 
 export namespace FargateProfile {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FargateProfile): any => ({
     ...obj,
   });
@@ -1226,6 +1696,9 @@ export interface CreateFargateProfileResponse {
 }
 
 export namespace CreateFargateProfileResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFargateProfileResponse): any => ({
     ...obj,
   });
@@ -1271,6 +1744,9 @@ export interface LaunchTemplateSpecification {
 }
 
 export namespace LaunchTemplateSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LaunchTemplateSpecification): any => ({
     ...obj,
   });
@@ -1282,23 +1758,26 @@ export namespace LaunchTemplateSpecification {
  */
 export interface RemoteAccessConfig {
   /**
-   * <p>The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes in
-   *             the managed node group. For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon EC2 Key
+   * <p>The Amazon EC2 SSH key that provides access for SSH communication with the nodes in the
+   *             managed node group. For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Amazon EC2 Key
    *                 Pairs</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>.</p>
    */
   ec2SshKey?: string;
 
   /**
-   * <p>The security groups that are allowed SSH access (port 22) to the worker nodes. If you
-   *             specify an Amazon EC2 SSH key but do not specify a source security group when you create a
-   *             managed node group, then port 22 on the worker nodes is opened to the internet
-   *             (0.0.0.0/0). For more information, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html">Security
-   *                 Groups for Your VPC</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+   * <p>The security groups that are allowed SSH access (port 22) to the nodes. If you specify
+   *             an Amazon EC2 SSH key but do not specify a source security group when you create a managed
+   *             node group, then port 22 on the nodes is opened to the internet (0.0.0.0/0). For more
+   *             information, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html">Security Groups for Your VPC</a> in the
+   *             <i>Amazon Virtual Private Cloud User Guide</i>.</p>
    */
   sourceSecurityGroups?: string[];
 }
 
 export namespace RemoteAccessConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoteAccessConfig): any => ({
     ...obj,
   });
@@ -1311,24 +1790,28 @@ export namespace RemoteAccessConfig {
  */
 export interface NodegroupScalingConfig {
   /**
-   * <p>The minimum number of worker nodes that the managed node group can scale in to. This
-   *             number must be greater than zero.</p>
+   * <p>The minimum number of nodes that the managed node group can scale in to. This number
+   *             must be greater than zero.</p>
    */
   minSize?: number;
 
   /**
-   * <p>The maximum number of worker nodes that the managed node group can scale out to.
-   *             Managed node groups can support up to 100 nodes by default.</p>
+   * <p>The maximum number of nodes that the managed node group can scale out to. For
+   *             information about the maximum number that you can specify, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/service-quotas.html">Amazon EKS service
+   *                 quotas</a> in the <i>Amazon EKS User Guide</i>.</p>
    */
   maxSize?: number;
 
   /**
-   * <p>The current number of worker nodes that the managed node group should maintain.</p>
+   * <p>The current number of nodes that the managed node group should maintain.</p>
    */
   desiredSize?: number;
 }
 
 export namespace NodegroupScalingConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodegroupScalingConfig): any => ({
     ...obj,
   });
@@ -1379,8 +1862,7 @@ export interface CreateNodegroupRequest {
    *             deployment will fail. If you don't specify an instance type in a launch template or for
    *                 <code>instanceTypes</code>, then <code>t3.medium</code> is used, by default. If you
    *             specify <code>Spot</code> for <code>capacityType</code>, then we recommend specifying
-   *             multiple values for <code>instanceTypes</code>. For more information, see <a href="https://docs.aws.amazon.com/managed-node-groups.html#managed-node-group-capacity-types">Managed node group
-   *                 capacity types</a> and <a href="https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html">Launch template support</a> in
+   *             multiple values for <code>instanceTypes</code>. For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html#managed-node-group-capacity-types">Managed node group capacity types</a> and <a href="https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html">Launch template support</a> in
    *             the <i>Amazon EKS User Guide</i>.</p>
    */
   instanceTypes?: string[];
@@ -1404,15 +1886,14 @@ export interface CreateNodegroupRequest {
 
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM role to associate with your node group. The Amazon EKS worker
-   *             node <code>kubelet</code> daemon makes calls to AWS APIs on your behalf. Worker nodes
-   *             receive permissions for these API calls through an IAM instance profile and associated
-   *             policies. Before you can launch worker nodes and register them into a cluster, you must
-   *             create an IAM role for those worker nodes to use when they are launched. For more
-   *             information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html">Amazon EKS Worker Node IAM Role</a> in the
-   *                 <i>
+   *             node <code>kubelet</code> daemon makes calls to AWS APIs on your behalf. Nodes receive
+   *             permissions for these API calls through an IAM instance profile and associated
+   *             policies. Before you can launch nodes and register them into a cluster, you must create
+   *             an IAM role for those nodes to use when they are launched. For more information, see
+   *                 <a href="https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html">Amazon EKS node IAM role</a> in the <i>
    *                <i>Amazon EKS User Guide</i>
-   *             </i>. If you specify <code>launchTemplate</code>, then don't specify
-   *                 <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IamInstanceProfile.html">
+   *             </i>.
+   *             If you specify <code>launchTemplate</code>, then don't specify  <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IamInstanceProfile.html">
    *                <code>IamInstanceProfile</code>
    *             </a> in your launch template,
    *             or the node group  deployment will fail. For more information about using launch templates with Amazon EKS, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html">Launch template support</a> in the Amazon EKS User Guide.</p>
@@ -1472,6 +1953,9 @@ export interface CreateNodegroupRequest {
 }
 
 export namespace CreateNodegroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateNodegroupRequest): any => ({
     ...obj,
   });
@@ -1597,9 +2081,8 @@ export interface Issue {
    *                 <p>
    *                   <b>NodeCreationFailure</b>: Your launched instances
    *                     are unable to register with your Amazon EKS cluster. Common causes of this failure
-   *                     are insufficient <a href="https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html">worker node IAM
-   *                         role</a> permissions or lack of outbound internet access for the nodes.
-   *                 </p>
+   *                     are insufficient <a href="https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html">node IAM role</a>
+   *                     permissions or lack of outbound internet access for the nodes. </p>
    *             </li>
    *          </ul>
    */
@@ -1617,6 +2100,9 @@ export interface Issue {
 }
 
 export namespace Issue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Issue): any => ({
     ...obj,
   });
@@ -1633,6 +2119,9 @@ export interface NodegroupHealth {
 }
 
 export namespace NodegroupHealth {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodegroupHealth): any => ({
     ...obj,
   });
@@ -1650,12 +2139,15 @@ export interface NodegroupResources {
 
   /**
    * <p>The remote access security group associated with the node group. This security group
-   *             controls SSH access to the worker nodes.</p>
+   *             controls SSH access to the nodes.</p>
    */
   remoteAccessSecurityGroup?: string;
 }
 
 export namespace NodegroupResources {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodegroupResources): any => ({
     ...obj,
   });
@@ -1758,10 +2250,9 @@ export interface Nodegroup {
   amiType?: AMITypes | string;
 
   /**
-   * <p>The IAM role associated with your node group. The Amazon EKS worker node
-   *                 <code>kubelet</code> daemon makes calls to AWS APIs on your behalf. Worker nodes
-   *             receive permissions for these API calls through an IAM instance profile and associated
-   *             policies.</p>
+   * <p>The IAM role associated with your node group. The Amazon EKS node <code>kubelet</code>
+   *             daemon makes calls to AWS APIs on your behalf. Nodes receive permissions for these API
+   *             calls through an IAM instance profile and associated policies.</p>
    */
   nodeRole?: string;
 
@@ -1809,6 +2300,9 @@ export interface Nodegroup {
 }
 
 export namespace Nodegroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Nodegroup): any => ({
     ...obj,
   });
@@ -1822,6 +2316,9 @@ export interface CreateNodegroupResponse {
 }
 
 export namespace CreateNodegroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateNodegroupResponse): any => ({
     ...obj,
   });
@@ -1842,6 +2339,9 @@ export interface DeleteAddonRequest {
 }
 
 export namespace DeleteAddonRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAddonRequest): any => ({
     ...obj,
   });
@@ -1855,6 +2355,9 @@ export interface DeleteAddonResponse {
 }
 
 export namespace DeleteAddonResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAddonResponse): any => ({
     ...obj,
   });
@@ -1868,6 +2371,9 @@ export interface DeleteClusterRequest {
 }
 
 export namespace DeleteClusterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteClusterRequest): any => ({
     ...obj,
   });
@@ -1881,6 +2387,9 @@ export interface DeleteClusterResponse {
 }
 
 export namespace DeleteClusterResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteClusterResponse): any => ({
     ...obj,
   });
@@ -1899,6 +2408,9 @@ export interface DeleteFargateProfileRequest {
 }
 
 export namespace DeleteFargateProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFargateProfileRequest): any => ({
     ...obj,
   });
@@ -1912,6 +2424,9 @@ export interface DeleteFargateProfileResponse {
 }
 
 export namespace DeleteFargateProfileResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFargateProfileResponse): any => ({
     ...obj,
   });
@@ -1930,6 +2445,9 @@ export interface DeleteNodegroupRequest {
 }
 
 export namespace DeleteNodegroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteNodegroupRequest): any => ({
     ...obj,
   });
@@ -1943,6 +2461,9 @@ export interface DeleteNodegroupResponse {
 }
 
 export namespace DeleteNodegroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteNodegroupResponse): any => ({
     ...obj,
   });
@@ -1963,6 +2484,9 @@ export interface DescribeAddonRequest {
 }
 
 export namespace DescribeAddonRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAddonRequest): any => ({
     ...obj,
   });
@@ -1976,6 +2500,9 @@ export interface DescribeAddonResponse {
 }
 
 export namespace DescribeAddonResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAddonResponse): any => ({
     ...obj,
   });
@@ -2013,6 +2540,9 @@ export interface DescribeAddonVersionsRequest {
 }
 
 export namespace DescribeAddonVersionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAddonVersionsRequest): any => ({
     ...obj,
   });
@@ -2038,6 +2568,9 @@ export interface DescribeAddonVersionsResponse {
 }
 
 export namespace DescribeAddonVersionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAddonVersionsResponse): any => ({
     ...obj,
   });
@@ -2051,6 +2584,9 @@ export interface DescribeClusterRequest {
 }
 
 export namespace DescribeClusterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeClusterRequest): any => ({
     ...obj,
   });
@@ -2064,6 +2600,9 @@ export interface DescribeClusterResponse {
 }
 
 export namespace DescribeClusterResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeClusterResponse): any => ({
     ...obj,
   });
@@ -2082,6 +2621,9 @@ export interface DescribeFargateProfileRequest {
 }
 
 export namespace DescribeFargateProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFargateProfileRequest): any => ({
     ...obj,
   });
@@ -2095,7 +2637,184 @@ export interface DescribeFargateProfileResponse {
 }
 
 export namespace DescribeFargateProfileResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFargateProfileResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>An object representing an identity provider configuration.</p>
+ */
+export interface IdentityProviderConfig {
+  /**
+   * <p>The type of the identity provider configuration.</p>
+   */
+  type: string | undefined;
+
+  /**
+   * <p>The name of the identity provider configuration.</p>
+   */
+  name: string | undefined;
+}
+
+export namespace IdentityProviderConfig {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: IdentityProviderConfig): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeIdentityProviderConfigRequest {
+  /**
+   * <p>The cluster name that the identity provider configuration is associated to.</p>
+   */
+  clusterName: string | undefined;
+
+  /**
+   * <p>An object that represents an identity provider configuration.</p>
+   */
+  identityProviderConfig: IdentityProviderConfig | undefined;
+}
+
+export namespace DescribeIdentityProviderConfigRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeIdentityProviderConfigRequest): any => ({
+    ...obj,
+  });
+}
+
+export enum ConfigStatus {
+  ACTIVE = "ACTIVE",
+  CREATING = "CREATING",
+  DELETING = "DELETING",
+}
+
+/**
+ * <p>An object that represents the configuration for an OpenID Connect (OIDC) identity
+ *             provider. </p>
+ */
+export interface OidcIdentityProviderConfig {
+  /**
+   * <p>The name of the configuration.</p>
+   */
+  identityProviderConfigName?: string;
+
+  /**
+   * <p>The ARN of the configuration.</p>
+   */
+  identityProviderConfigArn?: string;
+
+  /**
+   * <p>The cluster that the configuration is associated to.</p>
+   */
+  clusterName?: string;
+
+  /**
+   * <p>The URL of the OIDC identity provider that allows the API server to discover public
+   *             signing keys for verifying tokens.</p>
+   */
+  issuerUrl?: string;
+
+  /**
+   * <p>This is also known as <i>audience</i>. The ID of the client application
+   *             that makes authentication requests to the OIDC identity provider.</p>
+   */
+  clientId?: string;
+
+  /**
+   * <p>The JSON Web token (JWT) claim that is used as the username.</p>
+   */
+  usernameClaim?: string;
+
+  /**
+   * <p>The prefix that is prepended to username claims to prevent clashes with existing
+   *             names. The prefix can't contain <code>system:</code>
+   *          </p>
+   */
+  usernamePrefix?: string;
+
+  /**
+   * <p>The JSON web token (JWT) claim that the provider uses to return your groups.</p>
+   */
+  groupsClaim?: string;
+
+  /**
+   * <p>The prefix that is prepended to group claims to prevent clashes with existing names
+   *             (such as <code>system:</code> groups). For example, the value<code> oidc:</code> creates
+   *             group names like <code>oidc:engineering</code> and <code>oidc:infra</code>. The prefix
+   *             can't contain <code>system:</code>
+   *          </p>
+   */
+  groupsPrefix?: string;
+
+  /**
+   * <p>The key-value pairs that describe required claims in the identity token. If set, each
+   *             claim is verified to be present in the token with a matching value.</p>
+   */
+  requiredClaims?: { [key: string]: string };
+
+  /**
+   * <p>The metadata to apply to the provider configuration to assist with categorization and
+   *             organization. Each tag consists of a key and an optional value, both of which you
+   *             defined.</p>
+   */
+  tags?: { [key: string]: string };
+
+  /**
+   * <p>The status of the OIDC identity provider.</p>
+   */
+  status?: ConfigStatus | string;
+}
+
+export namespace OidcIdentityProviderConfig {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: OidcIdentityProviderConfig): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>An object that represents an identity configuration.</p>
+ */
+export interface IdentityProviderConfigResponse {
+  /**
+   * <p>An object that represents an OpenID Connect (OIDC) identity provider
+   *             configuration.</p>
+   */
+  oidc?: OidcIdentityProviderConfig;
+}
+
+export namespace IdentityProviderConfigResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: IdentityProviderConfigResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeIdentityProviderConfigResponse {
+  /**
+   * <p>The object that represents an OpenID Connect (OIDC) identity provider
+   *             configuration.</p>
+   */
+  identityProviderConfig?: IdentityProviderConfigResponse;
+}
+
+export namespace DescribeIdentityProviderConfigResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeIdentityProviderConfigResponse): any => ({
     ...obj,
   });
 }
@@ -2113,6 +2832,9 @@ export interface DescribeNodegroupRequest {
 }
 
 export namespace DescribeNodegroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeNodegroupRequest): any => ({
     ...obj,
   });
@@ -2126,6 +2848,9 @@ export interface DescribeNodegroupResponse {
 }
 
 export namespace DescribeNodegroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeNodegroupResponse): any => ({
     ...obj,
   });
@@ -2156,183 +2881,10 @@ export interface DescribeUpdateRequest {
 }
 
 export namespace DescribeUpdateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeUpdateRequest): any => ({
-    ...obj,
-  });
-}
-
-export enum ErrorCode {
-  ACCESS_DENIED = "AccessDenied",
-  CLUSTER_UNREACHABLE = "ClusterUnreachable",
-  CONFIGURATION_CONFLICT = "ConfigurationConflict",
-  ENI_LIMIT_REACHED = "EniLimitReached",
-  INSUFFICIENT_FREE_ADDRESSES = "InsufficientFreeAddresses",
-  INSUFFICIENT_NUMBER_OF_REPLICAS = "InsufficientNumberOfReplicas",
-  IP_NOT_AVAILABLE = "IpNotAvailable",
-  NODE_CREATION_FAILURE = "NodeCreationFailure",
-  OPERATION_NOT_PERMITTED = "OperationNotPermitted",
-  POD_EVICTION_FAILURE = "PodEvictionFailure",
-  SECURITY_GROUP_NOT_FOUND = "SecurityGroupNotFound",
-  SUBNET_NOT_FOUND = "SubnetNotFound",
-  UNKNOWN = "Unknown",
-  VPC_ID_NOT_FOUND = "VpcIdNotFound",
-}
-
-/**
- * <p>An object representing an error when an asynchronous operation fails.</p>
- */
-export interface ErrorDetail {
-  /**
-   * <p>A brief description of the error. </p>
-   *         <ul>
-   *             <li>
-   *                 <p>
-   *                   <b>SubnetNotFound</b>: We couldn't find one of the
-   *                     subnets associated with the cluster.</p>
-   *             </li>
-   *             <li>
-   *                 <p>
-   *                   <b>SecurityGroupNotFound</b>: We couldn't find one
-   *                     of the security groups associated with the cluster.</p>
-   *             </li>
-   *             <li>
-   *                 <p>
-   *                   <b>EniLimitReached</b>: You have reached the elastic
-   *                     network interface limit for your account.</p>
-   *             </li>
-   *             <li>
-   *                 <p>
-   *                   <b>IpNotAvailable</b>: A subnet associated with the
-   *                     cluster doesn't have any free IP addresses.</p>
-   *             </li>
-   *             <li>
-   *                 <p>
-   *                   <b>AccessDenied</b>: You don't have permissions to
-   *                     perform the specified operation.</p>
-   *             </li>
-   *             <li>
-   *                 <p>
-   *                   <b>OperationNotPermitted</b>: The service role
-   *                     associated with the cluster doesn't have the required access permissions for
-   *                     Amazon EKS.</p>
-   *             </li>
-   *             <li>
-   *                 <p>
-   *                   <b>VpcIdNotFound</b>: We couldn't find the VPC
-   *                     associated with the cluster.</p>
-   *             </li>
-   *          </ul>
-   */
-  errorCode?: ErrorCode | string;
-
-  /**
-   * <p>A more complete description of the error.</p>
-   */
-  errorMessage?: string;
-
-  /**
-   * <p>An optional field that contains the resource IDs associated with the error.</p>
-   */
-  resourceIds?: string[];
-}
-
-export namespace ErrorDetail {
-  export const filterSensitiveLog = (obj: ErrorDetail): any => ({
-    ...obj,
-  });
-}
-
-export enum UpdateParamType {
-  ADDON_VERSION = "AddonVersion",
-  CLUSTER_LOGGING = "ClusterLogging",
-  DESIRED_SIZE = "DesiredSize",
-  ENDPOINT_PRIVATE_ACCESS = "EndpointPrivateAccess",
-  ENDPOINT_PUBLIC_ACCESS = "EndpointPublicAccess",
-  LABELS_TO_ADD = "LabelsToAdd",
-  LABELS_TO_REMOVE = "LabelsToRemove",
-  MAX_SIZE = "MaxSize",
-  MIN_SIZE = "MinSize",
-  PLATFORM_VERSION = "PlatformVersion",
-  PUBLIC_ACCESS_CIDRS = "PublicAccessCidrs",
-  RELEASE_VERSION = "ReleaseVersion",
-  RESOLVE_CONFLICTS = "ResolveConflicts",
-  SERVICE_ACCOUNT_ROLE_ARN = "ServiceAccountRoleArn",
-  VERSION = "Version",
-}
-
-/**
- * <p>An object representing the details of an update request.</p>
- */
-export interface UpdateParam {
-  /**
-   * <p>The keys associated with an update request.</p>
-   */
-  type?: UpdateParamType | string;
-
-  /**
-   * <p>The value of the keys submitted as part of an update request.</p>
-   */
-  value?: string;
-}
-
-export namespace UpdateParam {
-  export const filterSensitiveLog = (obj: UpdateParam): any => ({
-    ...obj,
-  });
-}
-
-export enum UpdateStatus {
-  CANCELLED = "Cancelled",
-  FAILED = "Failed",
-  IN_PROGRESS = "InProgress",
-  SUCCESSFUL = "Successful",
-}
-
-export enum UpdateType {
-  ADDON_UPDATE = "AddonUpdate",
-  CONFIG_UPDATE = "ConfigUpdate",
-  ENDPOINT_ACCESS_UPDATE = "EndpointAccessUpdate",
-  LOGGING_UPDATE = "LoggingUpdate",
-  VERSION_UPDATE = "VersionUpdate",
-}
-
-/**
- * <p>An object representing an asynchronous update.</p>
- */
-export interface Update {
-  /**
-   * <p>A UUID that is used to track the update.</p>
-   */
-  id?: string;
-
-  /**
-   * <p>The current status of the update.</p>
-   */
-  status?: UpdateStatus | string;
-
-  /**
-   * <p>The type of the update.</p>
-   */
-  type?: UpdateType | string;
-
-  /**
-   * <p>A key-value map that contains the parameters associated with the update.</p>
-   */
-  params?: UpdateParam[];
-
-  /**
-   * <p>The Unix epoch timestamp in seconds for when the update was created.</p>
-   */
-  createdAt?: Date;
-
-  /**
-   * <p>Any errors associated with a <code>Failed</code> update.</p>
-   */
-  errors?: ErrorDetail[];
-}
-
-export namespace Update {
-  export const filterSensitiveLog = (obj: Update): any => ({
     ...obj,
   });
 }
@@ -2345,7 +2897,53 @@ export interface DescribeUpdateResponse {
 }
 
 export namespace DescribeUpdateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeUpdateResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface DisassociateIdentityProviderConfigRequest {
+  /**
+   * <p>The name of the cluster to disassociate an identity provider from.</p>
+   */
+  clusterName: string | undefined;
+
+  /**
+   * <p>An object that represents an identity provider configuration.</p>
+   */
+  identityProviderConfig: IdentityProviderConfig | undefined;
+
+  /**
+   * <p>A unique, case-sensitive identifier that you provide to ensure the idempotency of the
+   *             request.</p>
+   */
+  clientRequestToken?: string;
+}
+
+export namespace DisassociateIdentityProviderConfigRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DisassociateIdentityProviderConfigRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DisassociateIdentityProviderConfigResponse {
+  /**
+   * <p>An object representing an asynchronous update.</p>
+   */
+  update?: Update;
+}
+
+export namespace DisassociateIdentityProviderConfigResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DisassociateIdentityProviderConfigResponse): any => ({
     ...obj,
   });
 }
@@ -2383,6 +2981,9 @@ export interface ListAddonsRequest {
 }
 
 export namespace ListAddonsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAddonsRequest): any => ({
     ...obj,
   });
@@ -2408,6 +3009,9 @@ export interface ListAddonsResponse {
 }
 
 export namespace ListAddonsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAddonsResponse): any => ({
     ...obj,
   });
@@ -2440,6 +3044,9 @@ export interface ListClustersRequest {
 }
 
 export namespace ListClustersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListClustersRequest): any => ({
     ...obj,
   });
@@ -2462,6 +3069,9 @@ export interface ListClustersResponse {
 }
 
 export namespace ListClustersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListClustersResponse): any => ({
     ...obj,
   });
@@ -2496,6 +3106,9 @@ export interface ListFargateProfilesRequest {
 }
 
 export namespace ListFargateProfilesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListFargateProfilesRequest): any => ({
     ...obj,
   });
@@ -2518,7 +3131,72 @@ export interface ListFargateProfilesResponse {
 }
 
 export namespace ListFargateProfilesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListFargateProfilesResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListIdentityProviderConfigsRequest {
+  /**
+   * <p>The cluster name that you want to list identity provider configurations for.</p>
+   */
+  clusterName: string | undefined;
+
+  /**
+   * <p>The maximum number of identity provider configurations returned by
+   *                 <code>ListIdentityProviderConfigs</code> in paginated output. When you use this
+   *             parameter, <code>ListIdentityProviderConfigs</code> returns only <code>maxResults</code>
+   *             results in a single page along with a <code>nextToken</code> response element. You can
+   *             see the remaining results of the initial request by sending another
+   *                 <code>ListIdentityProviderConfigs</code> request with the returned
+   *                 <code>nextToken</code> value. This value can be between 1 and
+   *             100. If you don't use this parameter,
+   *                 <code>ListIdentityProviderConfigs</code> returns up to 100 results
+   *             and a <code>nextToken</code> value, if applicable.</p>
+   */
+  maxResults?: number;
+
+  /**
+   * <p>The <code>nextToken</code> value returned from a previous paginated
+   *                 <code>IdentityProviderConfigsRequest</code> where <code>maxResults</code> was used
+   *             and the results exceeded the value of that parameter. Pagination continues from the end
+   *             of the previous results that returned the <code>nextToken</code> value.</p>
+   */
+  nextToken?: string;
+}
+
+export namespace ListIdentityProviderConfigsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListIdentityProviderConfigsRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListIdentityProviderConfigsResponse {
+  /**
+   * <p>The identity provider configurations for the cluster.</p>
+   */
+  identityProviderConfigs?: IdentityProviderConfig[];
+
+  /**
+   * <p>The <code>nextToken</code> value returned from a previous paginated
+   *                 <code>ListIdentityProviderConfigsResponse</code> where <code>maxResults</code> was
+   *             used and the results exceeded the value of that parameter. Pagination continues from the
+   *             end of the previous results that returned the <code>nextToken</code> value.</p>
+   */
+  nextToken?: string;
+}
+
+export namespace ListIdentityProviderConfigsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListIdentityProviderConfigsResponse): any => ({
     ...obj,
   });
 }
@@ -2551,6 +3229,9 @@ export interface ListNodegroupsRequest {
 }
 
 export namespace ListNodegroupsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListNodegroupsRequest): any => ({
     ...obj,
   });
@@ -2573,6 +3254,9 @@ export interface ListNodegroupsResponse {
 }
 
 export namespace ListNodegroupsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListNodegroupsResponse): any => ({
     ...obj,
   });
@@ -2589,6 +3273,9 @@ export interface BadRequestException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace BadRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BadRequestException): any => ({
     ...obj,
   });
@@ -2603,6 +3290,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -2616,6 +3306,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -2632,6 +3325,9 @@ export interface NotFoundException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotFoundException): any => ({
     ...obj,
   });
@@ -2675,6 +3371,9 @@ export interface ListUpdatesRequest {
 }
 
 export namespace ListUpdatesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUpdatesRequest): any => ({
     ...obj,
   });
@@ -2697,6 +3396,9 @@ export interface ListUpdatesResponse {
 }
 
 export namespace ListUpdatesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUpdatesResponse): any => ({
     ...obj,
   });
@@ -2716,6 +3418,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -2724,6 +3429,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -2743,6 +3451,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -2751,6 +3462,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
@@ -2802,6 +3516,9 @@ export interface UpdateAddonRequest {
 }
 
 export namespace UpdateAddonRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAddonRequest): any => ({
     ...obj,
   });
@@ -2815,6 +3532,9 @@ export interface UpdateAddonResponse {
 }
 
 export namespace UpdateAddonResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAddonResponse): any => ({
     ...obj,
   });
@@ -2853,6 +3573,9 @@ export interface UpdateClusterConfigRequest {
 }
 
 export namespace UpdateClusterConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateClusterConfigRequest): any => ({
     ...obj,
   });
@@ -2866,6 +3589,9 @@ export interface UpdateClusterConfigResponse {
 }
 
 export namespace UpdateClusterConfigResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateClusterConfigResponse): any => ({
     ...obj,
   });
@@ -2890,6 +3616,9 @@ export interface UpdateClusterVersionRequest {
 }
 
 export namespace UpdateClusterVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateClusterVersionRequest): any => ({
     ...obj,
   });
@@ -2903,6 +3632,9 @@ export interface UpdateClusterVersionResponse {
 }
 
 export namespace UpdateClusterVersionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateClusterVersionResponse): any => ({
     ...obj,
   });
@@ -2924,6 +3656,9 @@ export interface UpdateLabelsPayload {
 }
 
 export namespace UpdateLabelsPayload {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateLabelsPayload): any => ({
     ...obj,
   });
@@ -2959,6 +3694,9 @@ export interface UpdateNodegroupConfigRequest {
 }
 
 export namespace UpdateNodegroupConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateNodegroupConfigRequest): any => ({
     ...obj,
   });
@@ -2972,6 +3710,9 @@ export interface UpdateNodegroupConfigResponse {
 }
 
 export namespace UpdateNodegroupConfigResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateNodegroupConfigResponse): any => ({
     ...obj,
   });
@@ -3032,6 +3773,9 @@ export interface UpdateNodegroupVersionRequest {
 }
 
 export namespace UpdateNodegroupVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateNodegroupVersionRequest): any => ({
     ...obj,
   });
@@ -3045,6 +3789,9 @@ export interface UpdateNodegroupVersionResponse {
 }
 
 export namespace UpdateNodegroupVersionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateNodegroupVersionResponse): any => ({
     ...obj,
   });

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeletePatchBaselineCommandInput = DeletePatchBaselineRequest;
-export type DeletePatchBaselineCommandOutput = DeletePatchBaselineResult & __MetadataBearer;
+export interface DeletePatchBaselineCommandInput extends DeletePatchBaselineRequest {}
+export interface DeletePatchBaselineCommandOutput extends DeletePatchBaselineResult, __MetadataBearer {}
 
 /**
  * <p>Deletes a patch baseline.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DeletePatchBaselineCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DeletePatchBaselineCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DeletePatchBaselineCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeletePatchBaselineCommandInput} for command's `input` shape.
+ * @see {@link DeletePatchBaselineCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeletePatchBaselineCommand extends $Command<
   DeletePatchBaselineCommandInput,

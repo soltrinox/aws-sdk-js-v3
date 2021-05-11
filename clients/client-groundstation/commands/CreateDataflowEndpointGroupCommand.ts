@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDataflowEndpointGroupCommandInput = CreateDataflowEndpointGroupRequest;
-export type CreateDataflowEndpointGroupCommandOutput = DataflowEndpointGroupIdResponse & __MetadataBearer;
+export interface CreateDataflowEndpointGroupCommandInput extends CreateDataflowEndpointGroupRequest {}
+export interface CreateDataflowEndpointGroupCommandOutput extends DataflowEndpointGroupIdResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a <code>DataflowEndpoint</code> group containing the specified list of <code>DataflowEndpoint</code> objects.</p>
@@ -26,6 +26,20 @@ export type CreateDataflowEndpointGroupCommandOutput = DataflowEndpointGroupIdRe
  *          to specify which endpoints to use during a contact.</p>
  *          <p>When a contact uses multiple <code>DataflowEndpointConfig</code> objects, each <code>Config</code>
  *          must match a <code>DataflowEndpoint</code> in the same group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GroundStationClient, CreateDataflowEndpointGroupCommand } from "@aws-sdk/client-groundstation"; // ES Modules import
+ * // const { GroundStationClient, CreateDataflowEndpointGroupCommand } = require("@aws-sdk/client-groundstation"); // CommonJS import
+ * const client = new GroundStationClient(config);
+ * const command = new CreateDataflowEndpointGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDataflowEndpointGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateDataflowEndpointGroupCommandOutput} for command's `response` shape.
+ * @see {@link GroundStationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDataflowEndpointGroupCommand extends $Command<
   CreateDataflowEndpointGroupCommandInput,

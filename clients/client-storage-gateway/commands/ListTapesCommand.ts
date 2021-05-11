@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTapesCommandInput = ListTapesInput;
-export type ListTapesCommandOutput = ListTapesOutput & __MetadataBearer;
+export interface ListTapesCommandInput extends ListTapesInput {}
+export interface ListTapesCommandOutput extends ListTapesOutput, __MetadataBearer {}
 
 /**
  * <p>Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf
@@ -29,6 +29,20 @@ export type ListTapesCommandOutput = ListTapesOutput & __MetadataBearer;
  *          truncated, the response includes a <code>Marker</code> element that you can use in your
  *          subsequent request to retrieve the next set of tapes. This operation is only supported in
  *          the tape gateway type.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, ListTapesCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, ListTapesCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new ListTapesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTapesCommandInput} for command's `input` shape.
+ * @see {@link ListTapesCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTapesCommand extends $Command<
   ListTapesCommandInput,

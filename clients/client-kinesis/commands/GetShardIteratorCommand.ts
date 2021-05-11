@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetShardIteratorCommandInput = GetShardIteratorInput;
-export type GetShardIteratorCommandOutput = GetShardIteratorOutput & __MetadataBearer;
+export interface GetShardIteratorCommandInput extends GetShardIteratorInput {}
+export interface GetShardIteratorCommandOutput extends GetShardIteratorOutput, __MetadataBearer {}
 
 /**
  * <p>Gets an Amazon Kinesis shard iterator. A shard iterator expires 5 minutes after it
@@ -55,6 +55,20 @@ export type GetShardIteratorCommandOutput = GetShardIteratorOutput & __MetadataB
  *         <p>
  *             <a>GetShardIterator</a> has a limit of five transactions per second per
  *             account per open shard.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisClient, GetShardIteratorCommand } from "@aws-sdk/client-kinesis"; // ES Modules import
+ * // const { KinesisClient, GetShardIteratorCommand } = require("@aws-sdk/client-kinesis"); // CommonJS import
+ * const client = new KinesisClient(config);
+ * const command = new GetShardIteratorCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetShardIteratorCommandInput} for command's `input` shape.
+ * @see {@link GetShardIteratorCommandOutput} for command's `response` shape.
+ * @see {@link KinesisClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetShardIteratorCommand extends $Command<
   GetShardIteratorCommandInput,

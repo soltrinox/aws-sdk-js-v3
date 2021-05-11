@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteRegistrationCodeCommandInput = DeleteRegistrationCodeRequest;
-export type DeleteRegistrationCodeCommandOutput = DeleteRegistrationCodeResponse & __MetadataBearer;
+export interface DeleteRegistrationCodeCommandInput extends DeleteRegistrationCodeRequest {}
+export interface DeleteRegistrationCodeCommandOutput extends DeleteRegistrationCodeResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a CA certificate registration code.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DeleteRegistrationCodeCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DeleteRegistrationCodeCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DeleteRegistrationCodeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteRegistrationCodeCommandInput} for command's `input` shape.
+ * @see {@link DeleteRegistrationCodeCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteRegistrationCodeCommand extends $Command<
   DeleteRegistrationCodeCommandInput,

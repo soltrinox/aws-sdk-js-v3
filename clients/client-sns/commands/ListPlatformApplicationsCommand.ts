@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPlatformApplicationsCommandInput = ListPlatformApplicationsInput;
-export type ListPlatformApplicationsCommandOutput = ListPlatformApplicationsResponse & __MetadataBearer;
+export interface ListPlatformApplicationsCommandInput extends ListPlatformApplicationsInput {}
+export interface ListPlatformApplicationsCommandOutput extends ListPlatformApplicationsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the platform application objects for the supported push notification services,
@@ -31,6 +31,20 @@ export type ListPlatformApplicationsCommandOutput = ListPlatformApplicationsResp
  *             null. For more information, see <a href="https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html">Using Amazon SNS Mobile Push
  *             Notifications</a>. </p>
  *         <p>This action is throttled at 15 transactions per second (TPS).</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SNSClient, ListPlatformApplicationsCommand } from "@aws-sdk/client-sns"; // ES Modules import
+ * // const { SNSClient, ListPlatformApplicationsCommand } = require("@aws-sdk/client-sns"); // CommonJS import
+ * const client = new SNSClient(config);
+ * const command = new ListPlatformApplicationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPlatformApplicationsCommandInput} for command's `input` shape.
+ * @see {@link ListPlatformApplicationsCommandOutput} for command's `response` shape.
+ * @see {@link SNSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPlatformApplicationsCommand extends $Command<
   ListPlatformApplicationsCommandInput,

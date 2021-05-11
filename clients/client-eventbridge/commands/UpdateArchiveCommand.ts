@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateArchiveCommandInput = UpdateArchiveRequest;
-export type UpdateArchiveCommandOutput = UpdateArchiveResponse & __MetadataBearer;
+export interface UpdateArchiveCommandInput extends UpdateArchiveRequest {}
+export interface UpdateArchiveCommandOutput extends UpdateArchiveResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the specified archive.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EventBridgeClient, UpdateArchiveCommand } from "@aws-sdk/client-eventbridge"; // ES Modules import
+ * // const { EventBridgeClient, UpdateArchiveCommand } = require("@aws-sdk/client-eventbridge"); // CommonJS import
+ * const client = new EventBridgeClient(config);
+ * const command = new UpdateArchiveCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateArchiveCommandInput} for command's `input` shape.
+ * @see {@link UpdateArchiveCommandOutput} for command's `response` shape.
+ * @see {@link EventBridgeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateArchiveCommand extends $Command<
   UpdateArchiveCommandInput,

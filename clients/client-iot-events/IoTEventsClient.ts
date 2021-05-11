@@ -9,6 +9,10 @@ import {
 } from "./commands/DeleteDetectorModelCommand";
 import { DeleteInputCommandInput, DeleteInputCommandOutput } from "./commands/DeleteInputCommand";
 import {
+  DescribeDetectorModelAnalysisCommandInput,
+  DescribeDetectorModelAnalysisCommandOutput,
+} from "./commands/DescribeDetectorModelAnalysisCommand";
+import {
   DescribeDetectorModelCommandInput,
   DescribeDetectorModelCommandOutput,
 } from "./commands/DescribeDetectorModelCommand";
@@ -17,6 +21,10 @@ import {
   DescribeLoggingOptionsCommandInput,
   DescribeLoggingOptionsCommandOutput,
 } from "./commands/DescribeLoggingOptionsCommand";
+import {
+  GetDetectorModelAnalysisResultsCommandInput,
+  GetDetectorModelAnalysisResultsCommandOutput,
+} from "./commands/GetDetectorModelAnalysisResultsCommand";
 import {
   ListDetectorModelVersionsCommandInput,
   ListDetectorModelVersionsCommandOutput,
@@ -28,6 +36,10 @@ import {
   ListTagsForResourceCommandOutput,
 } from "./commands/ListTagsForResourceCommand";
 import { PutLoggingOptionsCommandInput, PutLoggingOptionsCommandOutput } from "./commands/PutLoggingOptionsCommand";
+import {
+  StartDetectorModelAnalysisCommandInput,
+  StartDetectorModelAnalysisCommandOutput,
+} from "./commands/StartDetectorModelAnalysisCommand";
 import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
 import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
 import {
@@ -91,14 +103,17 @@ export type ServiceInputTypes =
   | CreateInputCommandInput
   | DeleteDetectorModelCommandInput
   | DeleteInputCommandInput
+  | DescribeDetectorModelAnalysisCommandInput
   | DescribeDetectorModelCommandInput
   | DescribeInputCommandInput
   | DescribeLoggingOptionsCommandInput
+  | GetDetectorModelAnalysisResultsCommandInput
   | ListDetectorModelVersionsCommandInput
   | ListDetectorModelsCommandInput
   | ListInputsCommandInput
   | ListTagsForResourceCommandInput
   | PutLoggingOptionsCommandInput
+  | StartDetectorModelAnalysisCommandInput
   | TagResourceCommandInput
   | UntagResourceCommandInput
   | UpdateDetectorModelCommandInput
@@ -109,14 +124,17 @@ export type ServiceOutputTypes =
   | CreateInputCommandOutput
   | DeleteDetectorModelCommandOutput
   | DeleteInputCommandOutput
+  | DescribeDetectorModelAnalysisCommandOutput
   | DescribeDetectorModelCommandOutput
   | DescribeInputCommandOutput
   | DescribeLoggingOptionsCommandOutput
+  | GetDetectorModelAnalysisResultsCommandOutput
   | ListDetectorModelVersionsCommandOutput
   | ListDetectorModelsCommandOutput
   | ListInputsCommandOutput
   | ListTagsForResourceCommandOutput
   | PutLoggingOptionsCommandOutput
+  | StartDetectorModelAnalysisCommandOutput
   | TagResourceCommandOutput
   | UntagResourceCommandOutput
   | UpdateDetectorModelCommandOutput
@@ -187,7 +205,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -218,7 +236,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type IoTEventsClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type IoTEventsClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -226,8 +244,12 @@ export type IoTEventsClientConfig = Partial<__SmithyConfiguration<__HttpHandlerO
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of IoTEventsClient class constructor that set the region, credentials and other options.
+ */
+export interface IoTEventsClientConfig extends IoTEventsClientConfigType {}
 
-export type IoTEventsClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type IoTEventsClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -235,6 +257,10 @@ export type IoTEventsClientResolvedConfig = __SmithyResolvedConfiguration<__Http
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of IoTEventsClient class. This is resolved and normalized from the {@link IoTEventsClientConfig | constructor configuration interface}.
+ */
+export interface IoTEventsClientResolvedConfig extends IoTEventsClientResolvedConfigType {}
 
 /**
  * <p>AWS IoT Events monitors your equipment or device fleets for failures or changes in operation, and
@@ -247,6 +273,9 @@ export class IoTEventsClient extends __Client<
   ServiceOutputTypes,
   IoTEventsClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of IoTEventsClient class. This is resolved and normalized from the {@link IoTEventsClientConfig | constructor configuration interface}.
+   */
   readonly config: IoTEventsClientResolvedConfig;
 
   constructor(configuration: IoTEventsClientConfig) {

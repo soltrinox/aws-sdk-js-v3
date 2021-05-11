@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreDBClusterFromSnapshotCommandInput = RestoreDBClusterFromSnapshotMessage;
-export type RestoreDBClusterFromSnapshotCommandOutput = RestoreDBClusterFromSnapshotResult & __MetadataBearer;
+export interface RestoreDBClusterFromSnapshotCommandInput extends RestoreDBClusterFromSnapshotMessage {}
+export interface RestoreDBClusterFromSnapshotCommandOutput
+  extends RestoreDBClusterFromSnapshotResult,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a new cluster from a snapshot or cluster snapshot.</p>
@@ -28,6 +30,20 @@ export type RestoreDBClusterFromSnapshotCommandOutput = RestoreDBClusterFromSnap
  *             source cluster restore point with the same configuration as the original source DB
  *             cluster, except that the new cluster is created with the default security
  *             group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DocDBClient, RestoreDBClusterFromSnapshotCommand } from "@aws-sdk/client-docdb"; // ES Modules import
+ * // const { DocDBClient, RestoreDBClusterFromSnapshotCommand } = require("@aws-sdk/client-docdb"); // CommonJS import
+ * const client = new DocDBClient(config);
+ * const command = new RestoreDBClusterFromSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreDBClusterFromSnapshotCommandInput} for command's `input` shape.
+ * @see {@link RestoreDBClusterFromSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link DocDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreDBClusterFromSnapshotCommand extends $Command<
   RestoreDBClusterFromSnapshotCommandInput,

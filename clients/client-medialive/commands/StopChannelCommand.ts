@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopChannelCommandInput = StopChannelRequest;
-export type StopChannelCommandOutput = StopChannelResponse & __MetadataBearer;
+export interface StopChannelCommandInput extends StopChannelRequest {}
+export interface StopChannelCommandOutput extends StopChannelResponse, __MetadataBearer {}
 
 /**
  * Stops a running channel
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, StopChannelCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, StopChannelCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new StopChannelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopChannelCommandInput} for command's `input` shape.
+ * @see {@link StopChannelCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopChannelCommand extends $Command<
   StopChannelCommandInput,

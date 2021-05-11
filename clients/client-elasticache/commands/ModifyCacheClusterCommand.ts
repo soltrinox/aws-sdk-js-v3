@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyCacheClusterCommandInput = ModifyCacheClusterMessage;
-export type ModifyCacheClusterCommandOutput = ModifyCacheClusterResult & __MetadataBearer;
+export interface ModifyCacheClusterCommandInput extends ModifyCacheClusterMessage {}
+export interface ModifyCacheClusterCommandOutput extends ModifyCacheClusterResult, __MetadataBearer {}
 
 /**
  * <p>Modifies the settings for a cluster. You
  *             can use this operation to change one or more cluster configuration parameters by
  *             specifying the parameters and the new values.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, ModifyCacheClusterCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, ModifyCacheClusterCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new ModifyCacheClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyCacheClusterCommandInput} for command's `input` shape.
+ * @see {@link ModifyCacheClusterCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyCacheClusterCommand extends $Command<
   ModifyCacheClusterCommandInput,

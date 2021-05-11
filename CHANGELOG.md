@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.15.0](https://github.com/aws/aws-sdk-js-v3/compare/v3.14.0...v3.15.0) (2021-05-10)
+
+
+### Bug Fixes
+
+* **client-sts:** make role assumer source creds refreshable ([#2353](https://github.com/aws/aws-sdk-js-v3/issues/2353)) ([9756954](https://github.com/aws/aws-sdk-js-v3/commit/9756954e071c32b62906be63c9431c5602062468))
+* **middleware-retry:** defaultStrategy handles any error ([#2349](https://github.com/aws/aws-sdk-js-v3/issues/2349)) ([e5b876f](https://github.com/aws/aws-sdk-js-v3/commit/e5b876f56eb97698d7ed9a6b29c3cbedd0187cba))
+* **node-http-handler:** handle NodeHttp2Handler session failure ([#2289](https://github.com/aws/aws-sdk-js-v3/issues/2289)) ([e97e357](https://github.com/aws/aws-sdk-js-v3/commit/e97e357630f6bd7ea565f182330315d01484b1cc))
+
+
+### Features
+
+* **clients:** adding throwable waiters WaitUntil[operationState] ([#2302](https://github.com/aws/aws-sdk-js-v3/issues/2302)) ([f01d5ae](https://github.com/aws/aws-sdk-js-v3/commit/f01d5ae5e0e81ecc122dba2d2883352c1b86c3bb))
+* **credential-provider-node:** add web identity provider to credential provider chain ([#2260](https://github.com/aws/aws-sdk-js-v3/issues/2260)) ([3dd31c4](https://github.com/aws/aws-sdk-js-v3/commit/3dd31c4a8838e4cda8dbc532d78feb937a48183b))
+
+
+
+
+
+# [3.14.0](https://github.com/aws/aws-sdk-js-v3/compare/v3.13.1...v3.14.0) (2021-04-30)
+
+
+### Bug Fixes
+
+* **clients:** typo in README difference -> different ([#2314](https://github.com/aws/aws-sdk-js-v3/issues/2314)) ([9ac1f40](https://github.com/aws/aws-sdk-js-v3/commit/9ac1f40eea78075e6b301df50cfae17c19ad77c3))
+* **middleware-user-agent-header:** swap user agent headers for non-browser environments ([#2313](https://github.com/aws/aws-sdk-js-v3/issues/2313)) ([d8c1dc2](https://github.com/aws/aws-sdk-js-v3/commit/d8c1dc2b203ae6c42659a75c4a161420824c0504))
+* **xml-builder:** xml entity encoding for more characters ([#2309](https://github.com/aws/aws-sdk-js-v3/issues/2309)) ([96ff164](https://github.com/aws/aws-sdk-js-v3/commit/96ff1641f678bb0ead81a4b4ea30f75236dfc7d1))
+
+
+### Features
+
+* **clients:** update clients as of 04/29/2021 ([#2329](https://github.com/aws/aws-sdk-js-v3/issues/2329)) ([48ab750](https://github.com/aws/aws-sdk-js-v3/commit/48ab75045d1a94adfae94ac638a0dd882ebd05ac))
+
+
+
+
+
+## [3.13.1](https://github.com/aws/aws-sdk-js-v3/compare/v3.13.0...v3.13.1) (2021-04-22)
+
+
+### Bug Fixes
+
+* **e2e:** explicitly use ChromeHeadless with no-sandbox ([#2266](https://github.com/aws/aws-sdk-js-v3/issues/2266)) ([7371971](https://github.com/aws/aws-sdk-js-v3/commit/7371971d8182f1b3d10d02fb4162b057c9f80d2d))
+
+
+
+
+
+# [3.13.0](https://github.com/aws/aws-sdk-js-v3/compare/v3.12.0...v3.13.0) (2021-04-15)
+
+
+### Bug Fixes
+
+* **client-s3:** return GetBucketPolicyOutput without parsing ([#2236](https://github.com/aws/aws-sdk-js-v3/issues/2236)) ([3a031d9](https://github.com/aws/aws-sdk-js-v3/commit/3a031d972f07dd88215256a1509f4222709957cf))
+* **lib-dynamodb:** remove stripInternal=true from tsconfig ([#2264](https://github.com/aws/aws-sdk-js-v3/issues/2264)) ([81f5ccd](https://github.com/aws/aws-sdk-js-v3/commit/81f5ccd086f5166a04a30c258fa4e3591583eb4e))
+
+
+### Features
+
+* **client-lex-runtime-v2:** add http2 support ([#2127](https://github.com/aws/aws-sdk-js-v3/issues/2127)) ([7135cd6](https://github.com/aws/aws-sdk-js-v3/commit/7135cd6266101c9dfc4893f4fe18b5d85e2dbd8c))
+* **clients:** update clients as of 04/14/2021 ([#2258](https://github.com/aws/aws-sdk-js-v3/issues/2258)) ([4f9f4a7](https://github.com/aws/aws-sdk-js-v3/commit/4f9f4a79b019c1c35530e05c4138fde88a6fb547))
+* **credential-provider-ini:** support credential_source in shared file ([#2237](https://github.com/aws/aws-sdk-js-v3/issues/2237)) ([135a12c](https://github.com/aws/aws-sdk-js-v3/commit/135a12c5554ef75cef21a6b5e4b496b55afedfe2))
+* remove @aws-sdk/url-parser-native in favor of react-native-url-polyfill ([#2229](https://github.com/aws/aws-sdk-js-v3/issues/2229)) ([d6a67d7](https://github.com/aws/aws-sdk-js-v3/commit/d6a67d7cd471e3440fa7b23ba00b11c00b10a566))
+
+
+
+
+
 # [3.12.0](https://github.com/aws/aws-sdk-js-v3/compare/v3.11.0...v3.12.0) (2021-04-09)
 
 

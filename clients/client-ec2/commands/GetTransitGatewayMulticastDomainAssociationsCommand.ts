@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTransitGatewayMulticastDomainAssociationsCommandInput = GetTransitGatewayMulticastDomainAssociationsRequest;
-export type GetTransitGatewayMulticastDomainAssociationsCommandOutput = GetTransitGatewayMulticastDomainAssociationsResult &
-  __MetadataBearer;
+export interface GetTransitGatewayMulticastDomainAssociationsCommandInput
+  extends GetTransitGatewayMulticastDomainAssociationsRequest {}
+export interface GetTransitGatewayMulticastDomainAssociationsCommandOutput
+  extends GetTransitGatewayMulticastDomainAssociationsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Gets information about the associations for the transit gateway multicast domain.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, GetTransitGatewayMulticastDomainAssociationsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, GetTransitGatewayMulticastDomainAssociationsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new GetTransitGatewayMulticastDomainAssociationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTransitGatewayMulticastDomainAssociationsCommandInput} for command's `input` shape.
+ * @see {@link GetTransitGatewayMulticastDomainAssociationsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTransitGatewayMulticastDomainAssociationsCommand extends $Command<
   GetTransitGatewayMulticastDomainAssociationsCommandInput,

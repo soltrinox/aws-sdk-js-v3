@@ -17,12 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateProfileJobCommandInput = CreateProfileJobRequest;
-export type CreateProfileJobCommandOutput = CreateProfileJobResponse & __MetadataBearer;
+export interface CreateProfileJobCommandInput extends CreateProfileJobRequest {}
+export interface CreateProfileJobCommandOutput extends CreateProfileJobResponse, __MetadataBearer {}
 
 /**
- * <p>Creates a new job to profile an AWS Glue DataBrew dataset that exists in the current AWS
- *             account.</p>
+ * <p>Creates a new job to analyze a dataset and create its data profile.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataBrewClient, CreateProfileJobCommand } from "@aws-sdk/client-databrew"; // ES Modules import
+ * // const { DataBrewClient, CreateProfileJobCommand } = require("@aws-sdk/client-databrew"); // CommonJS import
+ * const client = new DataBrewClient(config);
+ * const command = new CreateProfileJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateProfileJobCommandInput} for command's `input` shape.
+ * @see {@link CreateProfileJobCommandOutput} for command's `response` shape.
+ * @see {@link DataBrewClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateProfileJobCommand extends $Command<
   CreateProfileJobCommandInput,

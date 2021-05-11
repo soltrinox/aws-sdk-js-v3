@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListEndpointsCommandInput = ListEndpointsRequest;
-export type ListEndpointsCommandOutput = ListEndpointsResult & __MetadataBearer;
+export interface ListEndpointsCommandInput extends ListEndpointsRequest {}
+export interface ListEndpointsCommandOutput extends ListEndpointsResult, __MetadataBearer {}
 
 /**
  * <p>S3 on Outposts access points simplify managing data access at scale for shared datasets
@@ -40,6 +40,20 @@ export type ListEndpointsCommandOutput = ListEndpointsResult & __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3OutpostsClient, ListEndpointsCommand } from "@aws-sdk/client-s3outposts"; // ES Modules import
+ * // const { S3OutpostsClient, ListEndpointsCommand } = require("@aws-sdk/client-s3outposts"); // CommonJS import
+ * const client = new S3OutpostsClient(config);
+ * const command = new ListEndpointsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListEndpointsCommandInput} for command's `input` shape.
+ * @see {@link ListEndpointsCommandOutput} for command's `response` shape.
+ * @see {@link S3OutpostsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListEndpointsCommand extends $Command<
   ListEndpointsCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutLoggingOptionsCommandInput = PutLoggingOptionsRequest;
-export type PutLoggingOptionsCommandOutput = PutLoggingOptionsResponse & __MetadataBearer;
+export interface PutLoggingOptionsCommandInput extends PutLoggingOptionsRequest {}
+export interface PutLoggingOptionsCommandOutput extends PutLoggingOptionsResponse, __MetadataBearer {}
 
 /**
  * <p>Sets logging options for AWS IoT SiteWise.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTSiteWiseClient, PutLoggingOptionsCommand } from "@aws-sdk/client-iotsitewise"; // ES Modules import
+ * // const { IoTSiteWiseClient, PutLoggingOptionsCommand } = require("@aws-sdk/client-iotsitewise"); // CommonJS import
+ * const client = new IoTSiteWiseClient(config);
+ * const command = new PutLoggingOptionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutLoggingOptionsCommandInput} for command's `input` shape.
+ * @see {@link PutLoggingOptionsCommandOutput} for command's `response` shape.
+ * @see {@link IoTSiteWiseClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutLoggingOptionsCommand extends $Command<
   PutLoggingOptionsCommandInput,

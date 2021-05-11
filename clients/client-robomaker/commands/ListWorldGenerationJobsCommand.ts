@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListWorldGenerationJobsCommandInput = ListWorldGenerationJobsRequest;
-export type ListWorldGenerationJobsCommandOutput = ListWorldGenerationJobsResponse & __MetadataBearer;
+export interface ListWorldGenerationJobsCommandInput extends ListWorldGenerationJobsRequest {}
+export interface ListWorldGenerationJobsCommandOutput extends ListWorldGenerationJobsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists world generator jobs.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RoboMakerClient, ListWorldGenerationJobsCommand } from "@aws-sdk/client-robomaker"; // ES Modules import
+ * // const { RoboMakerClient, ListWorldGenerationJobsCommand } = require("@aws-sdk/client-robomaker"); // CommonJS import
+ * const client = new RoboMakerClient(config);
+ * const command = new ListWorldGenerationJobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListWorldGenerationJobsCommandInput} for command's `input` shape.
+ * @see {@link ListWorldGenerationJobsCommandOutput} for command's `response` shape.
+ * @see {@link RoboMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListWorldGenerationJobsCommand extends $Command<
   ListWorldGenerationJobsCommandInput,

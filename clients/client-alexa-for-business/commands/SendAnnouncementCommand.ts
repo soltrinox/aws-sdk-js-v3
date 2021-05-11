@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SendAnnouncementCommandInput = SendAnnouncementRequest;
-export type SendAnnouncementCommandOutput = SendAnnouncementResponse & __MetadataBearer;
+export interface SendAnnouncementCommandInput extends SendAnnouncementRequest {}
+export interface SendAnnouncementCommandOutput extends SendAnnouncementResponse, __MetadataBearer {}
 
 /**
  * <p>Triggers an asynchronous flow to send text, SSML, or audio announcements to rooms that
  *          are identified by a search or filter. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, SendAnnouncementCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, SendAnnouncementCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new SendAnnouncementCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SendAnnouncementCommandInput} for command's `input` shape.
+ * @see {@link SendAnnouncementCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SendAnnouncementCommand extends $Command<
   SendAnnouncementCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListSigningPlatformsCommandInput = ListSigningPlatformsRequest;
-export type ListSigningPlatformsCommandOutput = ListSigningPlatformsResponse & __MetadataBearer;
+export interface ListSigningPlatformsCommandInput extends ListSigningPlatformsRequest {}
+export interface ListSigningPlatformsCommandOutput extends ListSigningPlatformsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists all signing platforms available in code signing that match the request parameters. If
@@ -28,6 +28,20 @@ export type ListSigningPlatformsCommandOutput = ListSigningPlatformsResponse & _
  * 				<code>maxResults</code> parameter and with new values that code signing returns in the
  * 				<code>nextToken</code> parameter until all of your signing jobs have been
  * 			returned.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SignerClient, ListSigningPlatformsCommand } from "@aws-sdk/client-signer"; // ES Modules import
+ * // const { SignerClient, ListSigningPlatformsCommand } = require("@aws-sdk/client-signer"); // CommonJS import
+ * const client = new SignerClient(config);
+ * const command = new ListSigningPlatformsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListSigningPlatformsCommandInput} for command's `input` shape.
+ * @see {@link ListSigningPlatformsCommandOutput} for command's `response` shape.
+ * @see {@link SignerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListSigningPlatformsCommand extends $Command<
   ListSigningPlatformsCommandInput,

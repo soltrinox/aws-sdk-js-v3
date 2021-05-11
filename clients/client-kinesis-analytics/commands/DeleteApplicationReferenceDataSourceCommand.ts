@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteApplicationReferenceDataSourceCommandInput = DeleteApplicationReferenceDataSourceRequest;
-export type DeleteApplicationReferenceDataSourceCommandOutput = DeleteApplicationReferenceDataSourceResponse &
-  __MetadataBearer;
+export interface DeleteApplicationReferenceDataSourceCommandInput extends DeleteApplicationReferenceDataSourceRequest {}
+export interface DeleteApplicationReferenceDataSourceCommandOutput
+  extends DeleteApplicationReferenceDataSourceResponse,
+    __MetadataBearer {}
 
 /**
  * <note>
@@ -34,6 +35,20 @@ export type DeleteApplicationReferenceDataSourceCommandOutput = DeleteApplicatio
  *
  *         <p>This operation requires permissions to perform the <code>kinesisanalytics.DeleteApplicationReferenceDataSource</code>
  *         action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisAnalyticsClient, DeleteApplicationReferenceDataSourceCommand } from "@aws-sdk/client-kinesis-analytics"; // ES Modules import
+ * // const { KinesisAnalyticsClient, DeleteApplicationReferenceDataSourceCommand } = require("@aws-sdk/client-kinesis-analytics"); // CommonJS import
+ * const client = new KinesisAnalyticsClient(config);
+ * const command = new DeleteApplicationReferenceDataSourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteApplicationReferenceDataSourceCommandInput} for command's `input` shape.
+ * @see {@link DeleteApplicationReferenceDataSourceCommandOutput} for command's `response` shape.
+ * @see {@link KinesisAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteApplicationReferenceDataSourceCommand extends $Command<
   DeleteApplicationReferenceDataSourceCommandInput,

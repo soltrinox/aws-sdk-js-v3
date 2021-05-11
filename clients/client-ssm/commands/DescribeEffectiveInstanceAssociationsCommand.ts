@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEffectiveInstanceAssociationsCommandInput = DescribeEffectiveInstanceAssociationsRequest;
-export type DescribeEffectiveInstanceAssociationsCommandOutput = DescribeEffectiveInstanceAssociationsResult &
-  __MetadataBearer;
+export interface DescribeEffectiveInstanceAssociationsCommandInput
+  extends DescribeEffectiveInstanceAssociationsRequest {}
+export interface DescribeEffectiveInstanceAssociationsCommandOutput
+  extends DescribeEffectiveInstanceAssociationsResult,
+    __MetadataBearer {}
 
 /**
  * <p>All associations for the instance(s).</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DescribeEffectiveInstanceAssociationsCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DescribeEffectiveInstanceAssociationsCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DescribeEffectiveInstanceAssociationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEffectiveInstanceAssociationsCommandInput} for command's `input` shape.
+ * @see {@link DescribeEffectiveInstanceAssociationsCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEffectiveInstanceAssociationsCommand extends $Command<
   DescribeEffectiveInstanceAssociationsCommandInput,

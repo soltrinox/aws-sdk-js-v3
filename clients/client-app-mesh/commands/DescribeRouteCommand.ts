@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeRouteCommandInput = DescribeRouteInput;
-export type DescribeRouteCommandOutput = DescribeRouteOutput & __MetadataBearer;
+export interface DescribeRouteCommandInput extends DescribeRouteInput {}
+export interface DescribeRouteCommandOutput extends DescribeRouteOutput, __MetadataBearer {}
 
 /**
  * <p>Describes an existing route.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppMeshClient, DescribeRouteCommand } from "@aws-sdk/client-app-mesh"; // ES Modules import
+ * // const { AppMeshClient, DescribeRouteCommand } = require("@aws-sdk/client-app-mesh"); // CommonJS import
+ * const client = new AppMeshClient(config);
+ * const command = new DescribeRouteCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeRouteCommandInput} for command's `input` shape.
+ * @see {@link DescribeRouteCommandOutput} for command's `response` shape.
+ * @see {@link AppMeshClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeRouteCommand extends $Command<
   DescribeRouteCommandInput,

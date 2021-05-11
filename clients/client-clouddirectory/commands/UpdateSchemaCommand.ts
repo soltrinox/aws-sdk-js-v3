@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateSchemaCommandInput = UpdateSchemaRequest;
-export type UpdateSchemaCommandOutput = UpdateSchemaResponse & __MetadataBearer;
+export interface UpdateSchemaCommandInput extends UpdateSchemaRequest {}
+export interface UpdateSchemaCommandOutput extends UpdateSchemaResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the schema name with a new name. Only development schema names can be
  *       updated.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, UpdateSchemaCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, UpdateSchemaCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new UpdateSchemaCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateSchemaCommandInput} for command's `input` shape.
+ * @see {@link UpdateSchemaCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateSchemaCommand extends $Command<
   UpdateSchemaCommandInput,

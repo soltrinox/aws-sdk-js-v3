@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListProtectedResourcesCommandInput = ListProtectedResourcesInput;
-export type ListProtectedResourcesCommandOutput = ListProtectedResourcesOutput & __MetadataBearer;
+export interface ListProtectedResourcesCommandInput extends ListProtectedResourcesInput {}
+export interface ListProtectedResourcesCommandOutput extends ListProtectedResourcesOutput, __MetadataBearer {}
 
 /**
  * <p>Returns an array of resources successfully backed up by AWS Backup, including the time
  *          the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource
  *          type.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BackupClient, ListProtectedResourcesCommand } from "@aws-sdk/client-backup"; // ES Modules import
+ * // const { BackupClient, ListProtectedResourcesCommand } = require("@aws-sdk/client-backup"); // CommonJS import
+ * const client = new BackupClient(config);
+ * const command = new ListProtectedResourcesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListProtectedResourcesCommandInput} for command's `input` shape.
+ * @see {@link ListProtectedResourcesCommandOutput} for command's `response` shape.
+ * @see {@link BackupClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListProtectedResourcesCommand extends $Command<
   ListProtectedResourcesCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RollbackTransactionCommandInput = RollbackTransactionRequest;
-export type RollbackTransactionCommandOutput = RollbackTransactionResponse & __MetadataBearer;
+export interface RollbackTransactionCommandInput extends RollbackTransactionRequest {}
+export interface RollbackTransactionCommandOutput extends RollbackTransactionResponse, __MetadataBearer {}
 
 /**
  * <p>Performs a rollback of a transaction. Rolling back a transaction cancels its changes.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSDataClient, RollbackTransactionCommand } from "@aws-sdk/client-rds-data"; // ES Modules import
+ * // const { RDSDataClient, RollbackTransactionCommand } = require("@aws-sdk/client-rds-data"); // CommonJS import
+ * const client = new RDSDataClient(config);
+ * const command = new RollbackTransactionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RollbackTransactionCommandInput} for command's `input` shape.
+ * @see {@link RollbackTransactionCommandOutput} for command's `response` shape.
+ * @see {@link RDSDataClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RollbackTransactionCommand extends $Command<
   RollbackTransactionCommandInput,

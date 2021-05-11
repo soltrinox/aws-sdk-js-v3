@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateFileSystemAliasesCommandInput = AssociateFileSystemAliasesRequest;
-export type AssociateFileSystemAliasesCommandOutput = AssociateFileSystemAliasesResponse & __MetadataBearer;
+export interface AssociateFileSystemAliasesCommandInput extends AssociateFileSystemAliasesRequest {}
+export interface AssociateFileSystemAliasesCommandOutput extends AssociateFileSystemAliasesResponse, __MetadataBearer {}
 
 /**
  * <p>Use this action to associate one or more Domain Name Server (DNS) aliases with an existing Amazon FSx for Windows File Server file system.
@@ -32,6 +32,20 @@ export type AssociateFileSystemAliasesCommandOutput = AssociateFileSystemAliases
  *             Use the  API
  *             operation to monitor the status of the aliases Amazon FSx is
  *             associating with the file system.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FSxClient, AssociateFileSystemAliasesCommand } from "@aws-sdk/client-fsx"; // ES Modules import
+ * // const { FSxClient, AssociateFileSystemAliasesCommand } = require("@aws-sdk/client-fsx"); // CommonJS import
+ * const client = new FSxClient(config);
+ * const command = new AssociateFileSystemAliasesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateFileSystemAliasesCommandInput} for command's `input` shape.
+ * @see {@link AssociateFileSystemAliasesCommandOutput} for command's `response` shape.
+ * @see {@link FSxClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateFileSystemAliasesCommand extends $Command<
   AssociateFileSystemAliasesCommandInput,

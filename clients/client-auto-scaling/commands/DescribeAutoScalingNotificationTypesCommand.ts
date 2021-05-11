@@ -17,12 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAutoScalingNotificationTypesCommandInput = {};
-export type DescribeAutoScalingNotificationTypesCommandOutput = DescribeAutoScalingNotificationTypesAnswer &
-  __MetadataBearer;
+export interface DescribeAutoScalingNotificationTypesCommandInput {}
+export interface DescribeAutoScalingNotificationTypesCommandOutput
+  extends DescribeAutoScalingNotificationTypesAnswer,
+    __MetadataBearer {}
 
 /**
  * <p>Describes the notification types that are supported by Amazon EC2 Auto Scaling.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AutoScalingClient, DescribeAutoScalingNotificationTypesCommand } from "@aws-sdk/client-auto-scaling"; // ES Modules import
+ * // const { AutoScalingClient, DescribeAutoScalingNotificationTypesCommand } = require("@aws-sdk/client-auto-scaling"); // CommonJS import
+ * const client = new AutoScalingClient(config);
+ * const command = new DescribeAutoScalingNotificationTypesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAutoScalingNotificationTypesCommandInput} for command's `input` shape.
+ * @see {@link DescribeAutoScalingNotificationTypesCommandOutput} for command's `response` shape.
+ * @see {@link AutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAutoScalingNotificationTypesCommand extends $Command<
   DescribeAutoScalingNotificationTypesCommandInput,

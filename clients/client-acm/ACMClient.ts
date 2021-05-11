@@ -8,6 +8,10 @@ import {
   DescribeCertificateCommandOutput,
 } from "./commands/DescribeCertificateCommand";
 import { ExportCertificateCommandInput, ExportCertificateCommandOutput } from "./commands/ExportCertificateCommand";
+import {
+  GetAccountConfigurationCommandInput,
+  GetAccountConfigurationCommandOutput,
+} from "./commands/GetAccountConfigurationCommand";
 import { GetCertificateCommandInput, GetCertificateCommandOutput } from "./commands/GetCertificateCommand";
 import { ImportCertificateCommandInput, ImportCertificateCommandOutput } from "./commands/ImportCertificateCommand";
 import { ListCertificatesCommandInput, ListCertificatesCommandOutput } from "./commands/ListCertificatesCommand";
@@ -15,6 +19,10 @@ import {
   ListTagsForCertificateCommandInput,
   ListTagsForCertificateCommandOutput,
 } from "./commands/ListTagsForCertificateCommand";
+import {
+  PutAccountConfigurationCommandInput,
+  PutAccountConfigurationCommandOutput,
+} from "./commands/PutAccountConfigurationCommand";
 import {
   RemoveTagsFromCertificateCommandInput,
   RemoveTagsFromCertificateCommandOutput,
@@ -85,10 +93,12 @@ export type ServiceInputTypes =
   | DeleteCertificateCommandInput
   | DescribeCertificateCommandInput
   | ExportCertificateCommandInput
+  | GetAccountConfigurationCommandInput
   | GetCertificateCommandInput
   | ImportCertificateCommandInput
   | ListCertificatesCommandInput
   | ListTagsForCertificateCommandInput
+  | PutAccountConfigurationCommandInput
   | RemoveTagsFromCertificateCommandInput
   | RenewCertificateCommandInput
   | RequestCertificateCommandInput
@@ -100,10 +110,12 @@ export type ServiceOutputTypes =
   | DeleteCertificateCommandOutput
   | DescribeCertificateCommandOutput
   | ExportCertificateCommandOutput
+  | GetAccountConfigurationCommandOutput
   | GetCertificateCommandOutput
   | ImportCertificateCommandOutput
   | ListCertificatesCommandOutput
   | ListTagsForCertificateCommandOutput
+  | PutAccountConfigurationCommandOutput
   | RemoveTagsFromCertificateCommandOutput
   | RenewCertificateCommandOutput
   | RequestCertificateCommandOutput
@@ -175,7 +187,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -206,7 +218,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type ACMClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type ACMClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -214,8 +226,12 @@ export type ACMClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of ACMClient class constructor that set the region, credentials and other options.
+ */
+export interface ACMClientConfig extends ACMClientConfigType {}
 
-export type ACMClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type ACMClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -223,14 +239,15 @@ export type ACMClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandle
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of ACMClient class. This is resolved and normalized from the {@link ACMClientConfig | constructor configuration interface}.
+ */
+export interface ACMClientResolvedConfig extends ACMClientResolvedConfigType {}
 
 /**
  * <fullname>AWS Certificate Manager</fullname>
- *          <p>Welcome to the AWS Certificate Manager (ACM) API documentation.</p>
- *          <p>You can use ACM to manage SSL/TLS certificates for your AWS-based websites and
- *       applications. For general information about using ACM, see the <a href="https://docs.aws.amazon.com/acm/latest/userguide/">
- *                <i>AWS Certificate Manager User Guide</i>
- *             </a>.</p>
+ *          <p>You can use AWS Certificate Manager (ACM) to manage SSL/TLS certificates for your AWS-based websites
+ *       and applications. For more information about using ACM, see the <a href="https://docs.aws.amazon.com/acm/latest/userguide/">AWS Certificate Manager User Guide</a>.</p>
  */
 export class ACMClient extends __Client<
   __HttpHandlerOptions,
@@ -238,6 +255,9 @@ export class ACMClient extends __Client<
   ServiceOutputTypes,
   ACMClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of ACMClient class. This is resolved and normalized from the {@link ACMClientConfig | constructor configuration interface}.
+   */
   readonly config: ACMClientResolvedConfig;
 
   constructor(configuration: ACMClientConfig) {

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreatePortfolioShareCommandInput = CreatePortfolioShareInput;
-export type CreatePortfolioShareCommandOutput = CreatePortfolioShareOutput & __MetadataBearer;
+export interface CreatePortfolioShareCommandInput extends CreatePortfolioShareInput {}
+export interface CreatePortfolioShareCommandOutput extends CreatePortfolioShareOutput, __MetadataBearer {}
 
 /**
  * <p>Shares the specified portfolio with the specified account or organization node.
@@ -28,7 +28,22 @@ export type CreatePortfolioShareCommandOutput = CreatePortfolioShareOutput & __M
  *          <p>Note that if a delegated admin is de-registered, they can no longer create portfolio shares.</p>
  *         <p>
  *             <code>AWSOrganizationsAccess</code> must be enabled in order to create a portfolio share to an organization node.</p>
- *          <p>You can't share a shared resource. This includes portfolios that contain a shared product.</p>
+ *          <p>You can't share a shared resource, including portfolios that contain a shared product.</p>
+ *          <p>If the portfolio share with the specified account or organization node already exists, this action will have no effect and will not return an error. To update an existing share, you must use the <code> UpdatePortfolioShare</code> API instead.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, CreatePortfolioShareCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, CreatePortfolioShareCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new CreatePortfolioShareCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreatePortfolioShareCommandInput} for command's `input` shape.
+ * @see {@link CreatePortfolioShareCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreatePortfolioShareCommand extends $Command<
   CreatePortfolioShareCommandInput,

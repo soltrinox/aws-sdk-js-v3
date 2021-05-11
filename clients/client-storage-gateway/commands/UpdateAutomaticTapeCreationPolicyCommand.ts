@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateAutomaticTapeCreationPolicyCommandInput = UpdateAutomaticTapeCreationPolicyInput;
-export type UpdateAutomaticTapeCreationPolicyCommandOutput = UpdateAutomaticTapeCreationPolicyOutput & __MetadataBearer;
+export interface UpdateAutomaticTapeCreationPolicyCommandInput extends UpdateAutomaticTapeCreationPolicyInput {}
+export interface UpdateAutomaticTapeCreationPolicyCommandOutput
+  extends UpdateAutomaticTapeCreationPolicyOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Updates the automatic tape creation policy of a gateway. Use this to update the policy
@@ -30,6 +32,20 @@ export type UpdateAutomaticTapeCreationPolicyCommandOutput = UpdateAutomaticTape
  *          <note>
  *             <p>A gateway can have only one automatic tape creation policy.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, UpdateAutomaticTapeCreationPolicyCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, UpdateAutomaticTapeCreationPolicyCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new UpdateAutomaticTapeCreationPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateAutomaticTapeCreationPolicyCommandInput} for command's `input` shape.
+ * @see {@link UpdateAutomaticTapeCreationPolicyCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateAutomaticTapeCreationPolicyCommand extends $Command<
   UpdateAutomaticTapeCreationPolicyCommandInput,

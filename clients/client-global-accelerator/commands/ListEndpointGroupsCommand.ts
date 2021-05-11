@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListEndpointGroupsCommandInput = ListEndpointGroupsRequest;
-export type ListEndpointGroupsCommandOutput = ListEndpointGroupsResponse & __MetadataBearer;
+export interface ListEndpointGroupsCommandInput extends ListEndpointGroupsRequest {}
+export interface ListEndpointGroupsCommandOutput extends ListEndpointGroupsResponse, __MetadataBearer {}
 
 /**
  * <p>List the endpoint groups that are associated with a listener. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, ListEndpointGroupsCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, ListEndpointGroupsCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new ListEndpointGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListEndpointGroupsCommandInput} for command's `input` shape.
+ * @see {@link ListEndpointGroupsCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListEndpointGroupsCommand extends $Command<
   ListEndpointGroupsCommandInput,

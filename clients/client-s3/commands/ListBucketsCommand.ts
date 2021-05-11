@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListBucketsCommandInput = {};
-export type ListBucketsCommandOutput = ListBucketsOutput & __MetadataBearer;
+export interface ListBucketsCommandInput {}
+export interface ListBucketsCommandOutput extends ListBucketsOutput, __MetadataBearer {}
 
 /**
  * <p>Returns a list of all buckets owned by the authenticated sender of the request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, ListBucketsCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, ListBucketsCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new ListBucketsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListBucketsCommandInput} for command's `input` shape.
+ * @see {@link ListBucketsCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListBucketsCommand extends $Command<
   ListBucketsCommandInput,

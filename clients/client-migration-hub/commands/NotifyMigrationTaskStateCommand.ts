@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type NotifyMigrationTaskStateCommandInput = NotifyMigrationTaskStateRequest;
-export type NotifyMigrationTaskStateCommandOutput = NotifyMigrationTaskStateResult & __MetadataBearer;
+export interface NotifyMigrationTaskStateCommandInput extends NotifyMigrationTaskStateRequest {}
+export interface NotifyMigrationTaskStateCommandOutput extends NotifyMigrationTaskStateResult, __MetadataBearer {}
 
 /**
  * <p>Notifies Migration Hub of the current status, progress, or other detail regarding a
@@ -39,6 +39,20 @@ export type NotifyMigrationTaskStateCommandOutput = NotifyMigrationTaskStateResu
  *                namespace for each migration tool.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MigrationHubClient, NotifyMigrationTaskStateCommand } from "@aws-sdk/client-migration-hub"; // ES Modules import
+ * // const { MigrationHubClient, NotifyMigrationTaskStateCommand } = require("@aws-sdk/client-migration-hub"); // CommonJS import
+ * const client = new MigrationHubClient(config);
+ * const command = new NotifyMigrationTaskStateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link NotifyMigrationTaskStateCommandInput} for command's `input` shape.
+ * @see {@link NotifyMigrationTaskStateCommandOutput} for command's `response` shape.
+ * @see {@link MigrationHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class NotifyMigrationTaskStateCommand extends $Command<
   NotifyMigrationTaskStateCommandInput,

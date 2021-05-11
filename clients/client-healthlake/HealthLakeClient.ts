@@ -11,10 +11,15 @@ import {
   DescribeFHIRDatastoreCommandOutput,
 } from "./commands/DescribeFHIRDatastoreCommand";
 import {
+  DescribeFHIRExportJobCommandInput,
+  DescribeFHIRExportJobCommandOutput,
+} from "./commands/DescribeFHIRExportJobCommand";
+import {
   DescribeFHIRImportJobCommandInput,
   DescribeFHIRImportJobCommandOutput,
 } from "./commands/DescribeFHIRImportJobCommand";
 import { ListFHIRDatastoresCommandInput, ListFHIRDatastoresCommandOutput } from "./commands/ListFHIRDatastoresCommand";
+import { StartFHIRExportJobCommandInput, StartFHIRExportJobCommandOutput } from "./commands/StartFHIRExportJobCommand";
 import { StartFHIRImportJobCommandInput, StartFHIRImportJobCommandOutput } from "./commands/StartFHIRImportJobCommand";
 import { ClientDefaultValues as __ClientDefaultValues } from "./runtimeConfig";
 import {
@@ -71,16 +76,20 @@ export type ServiceInputTypes =
   | CreateFHIRDatastoreCommandInput
   | DeleteFHIRDatastoreCommandInput
   | DescribeFHIRDatastoreCommandInput
+  | DescribeFHIRExportJobCommandInput
   | DescribeFHIRImportJobCommandInput
   | ListFHIRDatastoresCommandInput
+  | StartFHIRExportJobCommandInput
   | StartFHIRImportJobCommandInput;
 
 export type ServiceOutputTypes =
   | CreateFHIRDatastoreCommandOutput
   | DeleteFHIRDatastoreCommandOutput
   | DescribeFHIRDatastoreCommandOutput
+  | DescribeFHIRExportJobCommandOutput
   | DescribeFHIRImportJobCommandOutput
   | ListFHIRDatastoresCommandOutput
+  | StartFHIRExportJobCommandOutput
   | StartFHIRImportJobCommandOutput;
 
 export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__HttpHandlerOptions>> {
@@ -148,7 +157,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -179,7 +188,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type HealthLakeClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type HealthLakeClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -187,8 +196,12 @@ export type HealthLakeClientConfig = Partial<__SmithyConfiguration<__HttpHandler
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of HealthLakeClient class constructor that set the region, credentials and other options.
+ */
+export interface HealthLakeClientConfig extends HealthLakeClientConfigType {}
 
-export type HealthLakeClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type HealthLakeClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -196,10 +209,14 @@ export type HealthLakeClientResolvedConfig = __SmithyResolvedConfiguration<__Htt
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of HealthLakeClient class. This is resolved and normalized from the {@link HealthLakeClientConfig | constructor configuration interface}.
+ */
+export interface HealthLakeClientResolvedConfig extends HealthLakeClientResolvedConfigType {}
 
 /**
  * <p>Amazon HealthLake is a HIPAA eligibile service that allows customers to store,
- *          transform, query, and analyze their data in a consistent fashion in the cloud.</p>
+ *          transform, query, and analyze their FHIR-formatted data in a consistent fashion in the cloud.</p>
  */
 export class HealthLakeClient extends __Client<
   __HttpHandlerOptions,
@@ -207,6 +224,9 @@ export class HealthLakeClient extends __Client<
   ServiceOutputTypes,
   HealthLakeClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of HealthLakeClient class. This is resolved and normalized from the {@link HealthLakeClientConfig | constructor configuration interface}.
+   */
   readonly config: HealthLakeClientResolvedConfig;
 
   constructor(configuration: HealthLakeClientConfig) {

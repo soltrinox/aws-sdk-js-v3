@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListRoutingProfileQueuesCommandInput = ListRoutingProfileQueuesRequest;
-export type ListRoutingProfileQueuesCommandOutput = ListRoutingProfileQueuesResponse & __MetadataBearer;
+export interface ListRoutingProfileQueuesCommandInput extends ListRoutingProfileQueuesRequest {}
+export interface ListRoutingProfileQueuesCommandOutput extends ListRoutingProfileQueuesResponse, __MetadataBearer {}
 
 /**
- * <p>List the queues associated with a routing profile.</p>
+ * <p>Lists the queues associated with a routing profile.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, ListRoutingProfileQueuesCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, ListRoutingProfileQueuesCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new ListRoutingProfileQueuesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListRoutingProfileQueuesCommandInput} for command's `input` shape.
+ * @see {@link ListRoutingProfileQueuesCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListRoutingProfileQueuesCommand extends $Command<
   ListRoutingProfileQueuesCommandInput,

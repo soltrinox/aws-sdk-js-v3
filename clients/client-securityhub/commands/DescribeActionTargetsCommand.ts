@@ -1,5 +1,6 @@
 import { SecurityHubClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SecurityHubClient";
-import { DescribeActionTargetsRequest, DescribeActionTargetsResponse } from "../models/models_0";
+import { DescribeActionTargetsRequest } from "../models/models_0";
+import { DescribeActionTargetsResponse } from "../models/models_1";
 import {
   deserializeAws_restJson1DescribeActionTargetsCommand,
   serializeAws_restJson1DescribeActionTargetsCommand,
@@ -17,11 +18,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeActionTargetsCommandInput = DescribeActionTargetsRequest;
-export type DescribeActionTargetsCommandOutput = DescribeActionTargetsResponse & __MetadataBearer;
+export interface DescribeActionTargetsCommandInput extends DescribeActionTargetsRequest {}
+export interface DescribeActionTargetsCommandOutput extends DescribeActionTargetsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of the custom action targets in Security Hub in your account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecurityHubClient, DescribeActionTargetsCommand } from "@aws-sdk/client-securityhub"; // ES Modules import
+ * // const { SecurityHubClient, DescribeActionTargetsCommand } = require("@aws-sdk/client-securityhub"); // CommonJS import
+ * const client = new SecurityHubClient(config);
+ * const command = new DescribeActionTargetsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeActionTargetsCommandInput} for command's `input` shape.
+ * @see {@link DescribeActionTargetsCommandOutput} for command's `response` shape.
+ * @see {@link SecurityHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeActionTargetsCommand extends $Command<
   DescribeActionTargetsCommandInput,

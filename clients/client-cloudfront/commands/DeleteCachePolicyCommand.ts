@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteCachePolicyCommandInput = DeleteCachePolicyRequest;
-export type DeleteCachePolicyCommandOutput = __MetadataBearer;
+export interface DeleteCachePolicyCommandInput extends DeleteCachePolicyRequest {}
+export interface DeleteCachePolicyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a cache policy.</p>
@@ -28,6 +28,20 @@ export type DeleteCachePolicyCommandOutput = __MetadataBearer;
  * 		       <p>To delete a cache policy, you must provide the policy’s identifier and version. To get these
  * 			values, you can use <code>ListCachePolicies</code> or
  * 			<code>GetCachePolicy</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, DeleteCachePolicyCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, DeleteCachePolicyCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new DeleteCachePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteCachePolicyCommandInput} for command's `input` shape.
+ * @see {@link DeleteCachePolicyCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteCachePolicyCommand extends $Command<
   DeleteCachePolicyCommandInput,

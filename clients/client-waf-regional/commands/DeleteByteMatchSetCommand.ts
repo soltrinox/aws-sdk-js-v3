@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteByteMatchSetCommandInput = DeleteByteMatchSetRequest;
-export type DeleteByteMatchSetCommandOutput = DeleteByteMatchSetResponse & __MetadataBearer;
+export interface DeleteByteMatchSetCommandInput extends DeleteByteMatchSetRequest {}
+export interface DeleteByteMatchSetCommandOutput extends DeleteByteMatchSetResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -45,6 +45,20 @@ export type DeleteByteMatchSetCommandOutput = DeleteByteMatchSetResponse & __Met
  *                <p>Submit a <code>DeleteByteMatchSet</code> request.</p>
  *             </li>
  *          </ol>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFRegionalClient, DeleteByteMatchSetCommand } from "@aws-sdk/client-waf-regional"; // ES Modules import
+ * // const { WAFRegionalClient, DeleteByteMatchSetCommand } = require("@aws-sdk/client-waf-regional"); // CommonJS import
+ * const client = new WAFRegionalClient(config);
+ * const command = new DeleteByteMatchSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteByteMatchSetCommandInput} for command's `input` shape.
+ * @see {@link DeleteByteMatchSetCommandOutput} for command's `response` shape.
+ * @see {@link WAFRegionalClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteByteMatchSetCommand extends $Command<
   DeleteByteMatchSetCommandInput,

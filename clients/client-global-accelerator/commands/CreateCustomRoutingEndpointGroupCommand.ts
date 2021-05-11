@@ -21,13 +21,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCustomRoutingEndpointGroupCommandInput = CreateCustomRoutingEndpointGroupRequest;
-export type CreateCustomRoutingEndpointGroupCommandOutput = CreateCustomRoutingEndpointGroupResponse & __MetadataBearer;
+export interface CreateCustomRoutingEndpointGroupCommandInput extends CreateCustomRoutingEndpointGroupRequest {}
+export interface CreateCustomRoutingEndpointGroupCommandOutput
+  extends CreateCustomRoutingEndpointGroupResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Create an endpoint group for the specified listener for a custom routing accelerator.
  * 		An endpoint group is a collection of endpoints in one AWS
  * 		Region. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, CreateCustomRoutingEndpointGroupCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, CreateCustomRoutingEndpointGroupCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new CreateCustomRoutingEndpointGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCustomRoutingEndpointGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateCustomRoutingEndpointGroupCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCustomRoutingEndpointGroupCommand extends $Command<
   CreateCustomRoutingEndpointGroupCommandInput,

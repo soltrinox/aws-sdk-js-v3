@@ -8,7 +8,7 @@
 AWS SDK for JavaScript HealthLake Client for Node.js, Browser and React Native.
 
 <p>Amazon HealthLake is a HIPAA eligibile service that allows customers to store,
-transform, query, and analyze their data in a consistent fashion in the cloud.</p>
+transform, query, and analyze their FHIR-formatted data in a consistent fashion in the cloud.</p>
 
 ## Installing
 
@@ -47,7 +47,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new HealthLakeClient({ region: "REGION" });
 
 const params = {
@@ -132,7 +132,7 @@ const client = new AWS.HealthLake({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.createFHIRDatastore(params);
+  const data = await client.createFHIRDatastore(params);
   // process data.
 } catch (error) {
   // error handling.

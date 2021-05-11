@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddApplicationOutputCommandInput = AddApplicationOutputRequest;
-export type AddApplicationOutputCommandOutput = AddApplicationOutputResponse & __MetadataBearer;
+export interface AddApplicationOutputCommandInput extends AddApplicationOutputRequest {}
+export interface AddApplicationOutputCommandOutput extends AddApplicationOutputResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -41,6 +41,20 @@ export type AddApplicationOutputCommandOutput = AddApplicationOutputResponse & _
  *         <p>For the limits on the number of application inputs and outputs
  *             you can configure, see <a href="https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>.</p>
  *         <p>This operation requires permissions to perform the <code>kinesisanalytics:AddApplicationOutput</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisAnalyticsClient, AddApplicationOutputCommand } from "@aws-sdk/client-kinesis-analytics"; // ES Modules import
+ * // const { KinesisAnalyticsClient, AddApplicationOutputCommand } = require("@aws-sdk/client-kinesis-analytics"); // CommonJS import
+ * const client = new KinesisAnalyticsClient(config);
+ * const command = new AddApplicationOutputCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddApplicationOutputCommandInput} for command's `input` shape.
+ * @see {@link AddApplicationOutputCommandOutput} for command's `response` shape.
+ * @see {@link KinesisAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddApplicationOutputCommand extends $Command<
   AddApplicationOutputCommandInput,

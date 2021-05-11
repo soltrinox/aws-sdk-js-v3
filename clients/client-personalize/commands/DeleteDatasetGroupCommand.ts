@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDatasetGroupCommandInput = DeleteDatasetGroupRequest;
-export type DeleteDatasetGroupCommandOutput = __MetadataBearer;
+export interface DeleteDatasetGroupCommandInput extends DeleteDatasetGroupRequest {}
+export interface DeleteDatasetGroupCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a dataset group. Before you delete a dataset group, you must delete the
@@ -34,6 +34,20 @@ export type DeleteDatasetGroupCommandOutput = __MetadataBearer;
  *                <p>All datasets in the dataset group.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PersonalizeClient, DeleteDatasetGroupCommand } from "@aws-sdk/client-personalize"; // ES Modules import
+ * // const { PersonalizeClient, DeleteDatasetGroupCommand } = require("@aws-sdk/client-personalize"); // CommonJS import
+ * const client = new PersonalizeClient(config);
+ * const command = new DeleteDatasetGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDatasetGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteDatasetGroupCommandOutput} for command's `response` shape.
+ * @see {@link PersonalizeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDatasetGroupCommand extends $Command<
   DeleteDatasetGroupCommandInput,

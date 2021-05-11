@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteResourcePolicyCommandInput = DeleteResourcePolicyRequest;
-export type DeleteResourcePolicyCommandOutput = DeleteResourcePolicyResponse & __MetadataBearer;
+export interface DeleteResourcePolicyCommandInput extends DeleteResourcePolicyRequest {}
+export interface DeleteResourcePolicyCommandOutput extends DeleteResourcePolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the resource-based permission policy attached to the secret.</p>
@@ -39,12 +39,26 @@ export type DeleteResourcePolicyCommandOutput = DeleteResourcePolicyResponse & _
  *                <p>To attach a resource policy to a secret, use <a>PutResourcePolicy</a>.</p>
  *             </li>
  *             <li>
- *                <p>To retrieve the current resource-based policy that's attached to a secret, use <a>GetResourcePolicy</a>.</p>
+ *                <p>To retrieve the current resource-based policy attached to a secret, use <a>GetResourcePolicy</a>.</p>
  *             </li>
  *             <li>
  *                <p>To list all of the currently available secrets, use <a>ListSecrets</a>.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecretsManagerClient, DeleteResourcePolicyCommand } from "@aws-sdk/client-secrets-manager"; // ES Modules import
+ * // const { SecretsManagerClient, DeleteResourcePolicyCommand } = require("@aws-sdk/client-secrets-manager"); // CommonJS import
+ * const client = new SecretsManagerClient(config);
+ * const command = new DeleteResourcePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteResourcePolicyCommandInput} for command's `input` shape.
+ * @see {@link DeleteResourcePolicyCommandOutput} for command's `response` shape.
+ * @see {@link SecretsManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteResourcePolicyCommand extends $Command<
   DeleteResourcePolicyCommandInput,

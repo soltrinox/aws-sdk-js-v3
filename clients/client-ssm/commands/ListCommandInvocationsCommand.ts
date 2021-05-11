@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListCommandInvocationsCommandInput = ListCommandInvocationsRequest;
-export type ListCommandInvocationsCommandOutput = ListCommandInvocationsResult & __MetadataBearer;
+export interface ListCommandInvocationsCommandInput extends ListCommandInvocationsRequest {}
+export interface ListCommandInvocationsCommandOutput extends ListCommandInvocationsResult, __MetadataBearer {}
 
 /**
  * <p>An invocation is copy of a command sent to a specific instance. A command can apply to one
  *    or more instances. A command invocation applies to one instance. For example, if a user runs
  *    SendCommand against three instances, then a command invocation is created for each requested
  *    instance ID. ListCommandInvocations provide status about command execution.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, ListCommandInvocationsCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, ListCommandInvocationsCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new ListCommandInvocationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListCommandInvocationsCommandInput} for command's `input` shape.
+ * @see {@link ListCommandInvocationsCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListCommandInvocationsCommand extends $Command<
   ListCommandInvocationsCommandInput,

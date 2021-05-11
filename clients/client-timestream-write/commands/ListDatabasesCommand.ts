@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDatabasesCommandInput = ListDatabasesRequest;
-export type ListDatabasesCommandOutput = ListDatabasesResponse & __MetadataBearer;
+export interface ListDatabasesCommandInput extends ListDatabasesRequest {}
+export interface ListDatabasesCommandOutput extends ListDatabasesResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of your Timestream databases.
  *          Service quotas apply. For more information, see <a href="https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html">Access Management</a> in the Timestream Developer Guide.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TimestreamWriteClient, ListDatabasesCommand } from "@aws-sdk/client-timestream-write"; // ES Modules import
+ * // const { TimestreamWriteClient, ListDatabasesCommand } = require("@aws-sdk/client-timestream-write"); // CommonJS import
+ * const client = new TimestreamWriteClient(config);
+ * const command = new ListDatabasesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDatabasesCommandInput} for command's `input` shape.
+ * @see {@link ListDatabasesCommandOutput} for command's `response` shape.
+ * @see {@link TimestreamWriteClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDatabasesCommand extends $Command<
   ListDatabasesCommandInput,

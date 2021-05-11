@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteServiceActionCommandInput = DeleteServiceActionInput;
-export type DeleteServiceActionCommandOutput = DeleteServiceActionOutput & __MetadataBearer;
+export interface DeleteServiceActionCommandInput extends DeleteServiceActionInput {}
+export interface DeleteServiceActionCommandOutput extends DeleteServiceActionOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes a self-service action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, DeleteServiceActionCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, DeleteServiceActionCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new DeleteServiceActionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteServiceActionCommandInput} for command's `input` shape.
+ * @see {@link DeleteServiceActionCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteServiceActionCommand extends $Command<
   DeleteServiceActionCommandInput,

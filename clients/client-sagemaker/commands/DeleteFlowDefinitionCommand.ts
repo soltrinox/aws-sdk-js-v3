@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteFlowDefinitionCommandInput = DeleteFlowDefinitionRequest;
-export type DeleteFlowDefinitionCommandOutput = DeleteFlowDefinitionResponse & __MetadataBearer;
+export interface DeleteFlowDefinitionCommandInput extends DeleteFlowDefinitionRequest {}
+export interface DeleteFlowDefinitionCommandOutput extends DeleteFlowDefinitionResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified flow definition.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DeleteFlowDefinitionCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DeleteFlowDefinitionCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DeleteFlowDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteFlowDefinitionCommandInput} for command's `input` shape.
+ * @see {@link DeleteFlowDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteFlowDefinitionCommand extends $Command<
   DeleteFlowDefinitionCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeClusterSnapshotsCommandInput = DescribeClusterSnapshotsMessage;
-export type DescribeClusterSnapshotsCommandOutput = SnapshotMessage & __MetadataBearer;
+export interface DescribeClusterSnapshotsCommandInput extends DescribeClusterSnapshotsMessage {}
+export interface DescribeClusterSnapshotsCommandOutput extends SnapshotMessage, __MetadataBearer {}
 
 /**
  * <p>Returns one or more snapshot objects, which contain metadata about your cluster
@@ -34,6 +34,20 @@ export type DescribeClusterSnapshotsCommandOutput = SnapshotMessage & __Metadata
  *             parameters.</p>
  *         <p>If both tag keys and values are omitted from the request, snapshots are returned
  *             regardless of whether they have tag keys or values associated with them.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, DescribeClusterSnapshotsCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, DescribeClusterSnapshotsCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new DescribeClusterSnapshotsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeClusterSnapshotsCommandInput} for command's `input` shape.
+ * @see {@link DescribeClusterSnapshotsCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeClusterSnapshotsCommand extends $Command<
   DescribeClusterSnapshotsCommandInput,

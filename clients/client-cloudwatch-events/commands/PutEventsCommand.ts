@@ -14,12 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutEventsCommandInput = PutEventsRequest;
-export type PutEventsCommandOutput = PutEventsResponse & __MetadataBearer;
+export interface PutEventsCommandInput extends PutEventsRequest {}
+export interface PutEventsCommandOutput extends PutEventsResponse, __MetadataBearer {}
 
 /**
- * <p>Sends custom events to Amazon EventBridge so that they can be matched to
- *             rules.</p>
+ * <p>Sends custom events to Amazon EventBridge so that they can be matched to rules.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchEventsClient, PutEventsCommand } from "@aws-sdk/client-cloudwatch-events"; // ES Modules import
+ * // const { CloudWatchEventsClient, PutEventsCommand } = require("@aws-sdk/client-cloudwatch-events"); // CommonJS import
+ * const client = new CloudWatchEventsClient(config);
+ * const command = new PutEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutEventsCommandInput} for command's `input` shape.
+ * @see {@link PutEventsCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchEventsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutEventsCommand extends $Command<
   PutEventsCommandInput,

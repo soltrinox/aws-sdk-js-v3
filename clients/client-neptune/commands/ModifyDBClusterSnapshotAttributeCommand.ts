@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyDBClusterSnapshotAttributeCommandInput = ModifyDBClusterSnapshotAttributeMessage;
-export type ModifyDBClusterSnapshotAttributeCommandOutput = ModifyDBClusterSnapshotAttributeResult & __MetadataBearer;
+export interface ModifyDBClusterSnapshotAttributeCommandInput extends ModifyDBClusterSnapshotAttributeMessage {}
+export interface ModifyDBClusterSnapshotAttributeCommandOutput
+  extends ModifyDBClusterSnapshotAttributeResult,
+    __MetadataBearer {}
 
 /**
  * <p>Adds an attribute and values to, or removes an attribute and values from, a manual DB
@@ -35,6 +37,20 @@ export type ModifyDBClusterSnapshotAttributeCommandOutput = ModifyDBClusterSnaps
  *       parameter in this case.</p>
  *          <p>To view which AWS accounts have access to copy or restore a manual DB cluster snapshot, or
  *       whether a manual DB cluster snapshot public or private, use the <a>DescribeDBClusterSnapshotAttributes</a> API action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, ModifyDBClusterSnapshotAttributeCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, ModifyDBClusterSnapshotAttributeCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new ModifyDBClusterSnapshotAttributeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyDBClusterSnapshotAttributeCommandInput} for command's `input` shape.
+ * @see {@link ModifyDBClusterSnapshotAttributeCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyDBClusterSnapshotAttributeCommand extends $Command<
   ModifyDBClusterSnapshotAttributeCommandInput,

@@ -34,14 +34,15 @@ stored.</p>
 <p>Managing resources</p>
 </li>
 </ul>
-<p>All WorkMail API operations are Amazon-authenticated and certificate-signed. They not only
-require the use of the AWS SDK, but also allow for the exclusive use of AWS Identity and Access Management users and roles
-to help facilitate access, trust, and permission policies. By creating a role and allowing
-an IAM user to access the WorkMail site, the IAM user gains full administrative visibility into
-the entire WorkMail organization (or as set in the IAM policy). This includes, but is not
-limited to, the ability to create, update, and delete users, groups, and resources. This
-allows developers to perform the scenarios listed above, as well as give users the ability
-to grant access on a selective basis using the IAM model.</p>
+<p>All WorkMail API operations are Amazon-authenticated and certificate-signed. They not
+only require the use of the AWS SDK, but also allow for the exclusive use of AWS Identity and Access Management
+users and roles to help facilitate access, trust, and permission policies. By creating a
+role and allowing an IAM user to access the WorkMail site, the IAM user gains full
+administrative visibility into the entire WorkMail organization (or as set in the IAM
+policy). This includes, but is not limited to, the ability to create, update, and delete
+users, groups, and resources. This allows developers to perform the scenarios listed above,
+as well as give users the ability to grant access on a selective basis using the IAM
+model.</p>
 
 ## Installing
 
@@ -80,7 +81,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new WorkMailClient({ region: "REGION" });
 
 const params = {
@@ -165,7 +166,7 @@ const client = new AWS.WorkMail({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.associateDelegateToResource(params);
+  const data = await client.associateDelegateToResource(params);
   // process data.
 } catch (error) {
   // error handling.

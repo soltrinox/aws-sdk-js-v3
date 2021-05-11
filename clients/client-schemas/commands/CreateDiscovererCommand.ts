@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDiscovererCommandInput = CreateDiscovererRequest;
-export type CreateDiscovererCommandOutput = CreateDiscovererResponse & __MetadataBearer;
+export interface CreateDiscovererCommandInput extends CreateDiscovererRequest {}
+export interface CreateDiscovererCommandOutput extends CreateDiscovererResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a discoverer.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SchemasClient, CreateDiscovererCommand } from "@aws-sdk/client-schemas"; // ES Modules import
+ * // const { SchemasClient, CreateDiscovererCommand } = require("@aws-sdk/client-schemas"); // CommonJS import
+ * const client = new SchemasClient(config);
+ * const command = new CreateDiscovererCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDiscovererCommandInput} for command's `input` shape.
+ * @see {@link CreateDiscovererCommandOutput} for command's `response` shape.
+ * @see {@link SchemasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDiscovererCommand extends $Command<
   CreateDiscovererCommandInput,

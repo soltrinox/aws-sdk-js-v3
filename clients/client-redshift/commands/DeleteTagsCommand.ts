@@ -14,12 +14,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteTagsCommandInput = DeleteTagsMessage;
-export type DeleteTagsCommandOutput = __MetadataBearer;
+export interface DeleteTagsCommandInput extends DeleteTagsMessage {}
+export interface DeleteTagsCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes tags from a resource. You must provide the ARN of the resource
  *             from which you want to delete the tag or tags.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, DeleteTagsCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, DeleteTagsCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new DeleteTagsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteTagsCommandInput} for command's `input` shape.
+ * @see {@link DeleteTagsCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteTagsCommand extends $Command<
   DeleteTagsCommandInput,

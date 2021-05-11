@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchDeleteImageCommandInput = BatchDeleteImageRequest;
-export type BatchDeleteImageCommandOutput = BatchDeleteImageResponse & __MetadataBearer;
+export interface BatchDeleteImageCommandInput extends BatchDeleteImageRequest {}
+export interface BatchDeleteImageCommandOutput extends BatchDeleteImageResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a list of specified images within a repository in a public registry. Images are
@@ -27,6 +27,20 @@ export type BatchDeleteImageCommandOutput = BatchDeleteImageResponse & __Metadat
  *          you remove the last tag from an image, the image is deleted from your repository.</p>
  *          <p>You can completely delete an image (and all of its tags) by specifying the image's
  *          digest in your request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECRPUBLICClient, BatchDeleteImageCommand } from "@aws-sdk/client-ecr-public"; // ES Modules import
+ * // const { ECRPUBLICClient, BatchDeleteImageCommand } = require("@aws-sdk/client-ecr-public"); // CommonJS import
+ * const client = new ECRPUBLICClient(config);
+ * const command = new BatchDeleteImageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchDeleteImageCommandInput} for command's `input` shape.
+ * @see {@link BatchDeleteImageCommandOutput} for command's `response` shape.
+ * @see {@link ECRPUBLICClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchDeleteImageCommand extends $Command<
   BatchDeleteImageCommandInput,

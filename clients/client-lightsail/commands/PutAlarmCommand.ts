@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutAlarmCommandInput = PutAlarmRequest;
-export type PutAlarmCommandOutput = PutAlarmResult & __MetadataBearer;
+export interface PutAlarmCommandInput extends PutAlarmRequest {}
+export interface PutAlarmCommandOutput extends PutAlarmResult, __MetadataBearer {}
 
 /**
  * <p>Creates or updates an alarm, and associates it with the specified metric.</p>
@@ -29,6 +29,20 @@ export type PutAlarmCommandOutput = PutAlarmResult & __MetadataBearer;
  *          <p>When you update an existing alarm, its state is left unchanged, but the update completely
  *       overwrites the previous configuration of the alarm. The alarm is then evaluated with the
  *       updated configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, PutAlarmCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, PutAlarmCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new PutAlarmCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutAlarmCommandInput} for command's `input` shape.
+ * @see {@link PutAlarmCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutAlarmCommand extends $Command<
   PutAlarmCommandInput,

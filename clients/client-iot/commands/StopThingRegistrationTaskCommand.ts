@@ -1,5 +1,5 @@
 import { IoTClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../IoTClient";
-import { StopThingRegistrationTaskRequest, StopThingRegistrationTaskResponse } from "../models/models_1";
+import { StopThingRegistrationTaskRequest, StopThingRegistrationTaskResponse } from "../models/models_2";
 import {
   deserializeAws_restJson1StopThingRegistrationTaskCommand,
   serializeAws_restJson1StopThingRegistrationTaskCommand,
@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopThingRegistrationTaskCommandInput = StopThingRegistrationTaskRequest;
-export type StopThingRegistrationTaskCommandOutput = StopThingRegistrationTaskResponse & __MetadataBearer;
+export interface StopThingRegistrationTaskCommandInput extends StopThingRegistrationTaskRequest {}
+export interface StopThingRegistrationTaskCommandOutput extends StopThingRegistrationTaskResponse, __MetadataBearer {}
 
 /**
  * <p>Cancels a bulk thing provisioning task.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, StopThingRegistrationTaskCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, StopThingRegistrationTaskCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new StopThingRegistrationTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopThingRegistrationTaskCommandInput} for command's `input` shape.
+ * @see {@link StopThingRegistrationTaskCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopThingRegistrationTaskCommand extends $Command<
   StopThingRegistrationTaskCommandInput,

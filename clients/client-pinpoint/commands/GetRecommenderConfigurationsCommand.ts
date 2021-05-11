@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRecommenderConfigurationsCommandInput = GetRecommenderConfigurationsRequest;
-export type GetRecommenderConfigurationsCommandOutput = GetRecommenderConfigurationsResponse & __MetadataBearer;
+export interface GetRecommenderConfigurationsCommandInput extends GetRecommenderConfigurationsRequest {}
+export interface GetRecommenderConfigurationsCommandOutput
+  extends GetRecommenderConfigurationsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieves information about all the recommender model configurations that are associated with your Amazon Pinpoint account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, GetRecommenderConfigurationsCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, GetRecommenderConfigurationsCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new GetRecommenderConfigurationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRecommenderConfigurationsCommandInput} for command's `input` shape.
+ * @see {@link GetRecommenderConfigurationsCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRecommenderConfigurationsCommand extends $Command<
   GetRecommenderConfigurationsCommandInput,

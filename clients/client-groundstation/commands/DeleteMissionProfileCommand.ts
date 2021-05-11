@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteMissionProfileCommandInput = DeleteMissionProfileRequest;
-export type DeleteMissionProfileCommandOutput = MissionProfileIdResponse & __MetadataBearer;
+export interface DeleteMissionProfileCommandInput extends DeleteMissionProfileRequest {}
+export interface DeleteMissionProfileCommandOutput extends MissionProfileIdResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a mission profile.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GroundStationClient, DeleteMissionProfileCommand } from "@aws-sdk/client-groundstation"; // ES Modules import
+ * // const { GroundStationClient, DeleteMissionProfileCommand } = require("@aws-sdk/client-groundstation"); // CommonJS import
+ * const client = new GroundStationClient(config);
+ * const command = new DeleteMissionProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteMissionProfileCommandInput} for command's `input` shape.
+ * @see {@link DeleteMissionProfileCommandOutput} for command's `response` shape.
+ * @see {@link GroundStationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteMissionProfileCommand extends $Command<
   DeleteMissionProfileCommandInput,

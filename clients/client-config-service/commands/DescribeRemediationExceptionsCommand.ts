@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeRemediationExceptionsCommandInput = DescribeRemediationExceptionsRequest;
-export type DescribeRemediationExceptionsCommandOutput = DescribeRemediationExceptionsResponse & __MetadataBearer;
+export interface DescribeRemediationExceptionsCommandInput extends DescribeRemediationExceptionsRequest {}
+export interface DescribeRemediationExceptionsCommandOutput
+  extends DescribeRemediationExceptionsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the details of one or more remediation exceptions. A detailed view of a remediation exception for a set of resources that includes an explanation of an exception and the time when the exception will be deleted.
@@ -29,6 +31,20 @@ export type DescribeRemediationExceptionsCommandOutput = DescribeRemediationExce
  * 			         <p>When you specify the limit and the next token, you receive a paginated response. </p>
  * 			         <p>Limit and next token are not applicable if you request resources in batch. It is only applicable, when you request all resources.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DescribeRemediationExceptionsCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DescribeRemediationExceptionsCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DescribeRemediationExceptionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeRemediationExceptionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeRemediationExceptionsCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeRemediationExceptionsCommand extends $Command<
   DescribeRemediationExceptionsCommandInput,

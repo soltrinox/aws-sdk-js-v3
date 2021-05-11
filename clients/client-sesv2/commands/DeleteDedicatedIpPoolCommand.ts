@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDedicatedIpPoolCommandInput = DeleteDedicatedIpPoolRequest;
-export type DeleteDedicatedIpPoolCommandOutput = DeleteDedicatedIpPoolResponse & __MetadataBearer;
+export interface DeleteDedicatedIpPoolCommandInput extends DeleteDedicatedIpPoolRequest {}
+export interface DeleteDedicatedIpPoolCommandOutput extends DeleteDedicatedIpPoolResponse, __MetadataBearer {}
 
 /**
  * <p>Delete a dedicated IP pool.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, DeleteDedicatedIpPoolCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, DeleteDedicatedIpPoolCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new DeleteDedicatedIpPoolCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDedicatedIpPoolCommandInput} for command's `input` shape.
+ * @see {@link DeleteDedicatedIpPoolCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDedicatedIpPoolCommand extends $Command<
   DeleteDedicatedIpPoolCommandInput,

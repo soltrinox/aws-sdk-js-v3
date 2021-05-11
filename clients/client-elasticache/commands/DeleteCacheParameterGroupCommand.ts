@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteCacheParameterGroupCommandInput = DeleteCacheParameterGroupMessage;
-export type DeleteCacheParameterGroupCommandOutput = __MetadataBearer;
+export interface DeleteCacheParameterGroupCommandInput extends DeleteCacheParameterGroupMessage {}
+export interface DeleteCacheParameterGroupCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified cache parameter
  *             group. You cannot delete a cache parameter group if it is associated with any cache
- *             clusters.</p>
+ *             clusters. You cannot delete the default cache parameter groups in your account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, DeleteCacheParameterGroupCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, DeleteCacheParameterGroupCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new DeleteCacheParameterGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteCacheParameterGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteCacheParameterGroupCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteCacheParameterGroupCommand extends $Command<
   DeleteCacheParameterGroupCommandInput,

@@ -16,10 +16,17 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutObjectCommandInput = Omit<PutObjectRequest, "Body"> & {
+type PutObjectCommandInputType = Omit<PutObjectRequest, "Body"> & {
+  /**
+   * For *`PutObjectRequest["Body"]`*, see {@link PutObjectRequest.Body}.
+   */
   Body?: PutObjectRequest["Body"] | string | Uint8Array | Buffer;
 };
-export type PutObjectCommandOutput = PutObjectOutput & __MetadataBearer;
+/**
+ * This interface extends from `PutObjectRequest` interface. There are more parameters than `Body` defined in {@link PutObjectRequest}
+ */
+export interface PutObjectCommandInput extends PutObjectCommandInputType {}
+export interface PutObjectCommandOutput extends PutObjectOutput, __MetadataBearer {}
 
 /**
  * <p>Adds an object to a bucket. You must have WRITE permissions on a bucket to add an object
@@ -43,18 +50,21 @@ export type PutObjectCommandOutput = PutObjectOutput & __MetadataBearer;
  *             <p> The <code>Content-MD5</code> header is required for any request to upload an object
  *             with a retention period configured using Amazon S3 Object Lock. For more information about
  *             Amazon S3 Object Lock, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock-overview.html">Amazon S3 Object Lock Overview</a>
- *             in the <i>Amazon Simple Storage Service Developer Guide</i>. </p>
+ *             in the <i>Amazon S3 User Guide</i>. </p>
  *          </note>
  *
  *
  *          <p>
  *             <b>Server-side Encryption</b>
  *          </p>
- *          <p>You can optionally request server-side encryption. With server-side encryption, Amazon S3 encrypts your data as it writes it to disks in its data centers and decrypts the data
+ *          <p>You can optionally request server-side encryption. With server-side encryption, Amazon S3 encrypts
+ *          your data as it writes it to disks in its data centers and decrypts the data
  *          when you access it. You have the option to provide your own encryption key or use AWS
  *          managed encryption keys (SSE-S3 or SSE-KMS). For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html">Using Server-Side
  *             Encryption</a>.</p>
- *          <p>If you request server-side encryption using AWS Key Management Service (SSE-KMS), you can enable an S3 Bucket Key at the object-level. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html">Amazon S3 Bucket Keys</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *          <p>If you request server-side encryption using AWS Key Management Service (SSE-KMS), you can enable
+ *          an S3 Bucket Key at the object-level. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html">Amazon S3 Bucket Keys</a> in the
+ *          <i>Amazon S3 User Guide</i>.</p>
  *          <p>
  *             <b>Access Control List (ACL)-Specific Request
  *          Headers</b>
@@ -103,6 +113,20 @@ export type PutObjectCommandOutput = PutObjectOutput & __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new PutObjectCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutObjectCommandInput} for command's `input` shape.
+ * @see {@link PutObjectCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutObjectCommand extends $Command<PutObjectCommandInput, PutObjectCommandOutput, S3ClientResolvedConfig> {
   // Start section: command_properties

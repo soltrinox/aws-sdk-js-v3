@@ -21,11 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RejectInvitationCommandInput = RejectInvitationInput;
-export type RejectInvitationCommandOutput = RejectInvitationOutput & __MetadataBearer;
+export interface RejectInvitationCommandInput extends RejectInvitationInput {}
+export interface RejectInvitationCommandOutput extends RejectInvitationOutput, __MetadataBearer {}
 
 /**
  * <p>Rejects an invitation to join a network. This action can be called by a principal in an AWS account that has received an invitation to create a member and join a network.</p>
+ *          <p>Applies only to Hyperledger Fabric.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ManagedBlockchainClient, RejectInvitationCommand } from "@aws-sdk/client-managedblockchain"; // ES Modules import
+ * // const { ManagedBlockchainClient, RejectInvitationCommand } = require("@aws-sdk/client-managedblockchain"); // CommonJS import
+ * const client = new ManagedBlockchainClient(config);
+ * const command = new RejectInvitationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RejectInvitationCommandInput} for command's `input` shape.
+ * @see {@link RejectInvitationCommandOutput} for command's `response` shape.
+ * @see {@link ManagedBlockchainClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RejectInvitationCommand extends $Command<
   RejectInvitationCommandInput,

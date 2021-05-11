@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteRealtimeLogConfigCommandInput = DeleteRealtimeLogConfigRequest;
-export type DeleteRealtimeLogConfigCommandOutput = __MetadataBearer;
+export interface DeleteRealtimeLogConfigCommandInput extends DeleteRealtimeLogConfigRequest {}
+export interface DeleteRealtimeLogConfigCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a real-time log configuration.</p>
@@ -28,6 +28,20 @@ export type DeleteRealtimeLogConfigCommandOutput = __MetadataBearer;
  * 		       <p>To delete a real-time log configuration, you can provide the configuration’s name or its
  * 			Amazon Resource Name (ARN). You must provide at least one. If you provide both, CloudFront
  * 			uses the name to identify the real-time log configuration to delete.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, DeleteRealtimeLogConfigCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, DeleteRealtimeLogConfigCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new DeleteRealtimeLogConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteRealtimeLogConfigCommandInput} for command's `input` shape.
+ * @see {@link DeleteRealtimeLogConfigCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteRealtimeLogConfigCommand extends $Command<
   DeleteRealtimeLogConfigCommandInput,

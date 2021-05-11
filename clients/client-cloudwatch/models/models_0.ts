@@ -41,6 +41,9 @@ export interface AlarmHistoryItem {
 }
 
 export namespace AlarmHistoryItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlarmHistoryItem): any => ({
     ...obj,
   });
@@ -65,6 +68,9 @@ export interface Range {
 }
 
 export namespace Range {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Range): any => ({
     ...obj,
   });
@@ -94,6 +100,9 @@ export interface AnomalyDetectorConfiguration {
 }
 
 export namespace AnomalyDetectorConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AnomalyDetectorConfiguration): any => ({
     ...obj,
   });
@@ -120,6 +129,9 @@ export interface Dimension {
 }
 
 export namespace Dimension {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Dimension): any => ({
     ...obj,
   });
@@ -169,6 +181,9 @@ export interface AnomalyDetector {
 }
 
 export namespace AnomalyDetector {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AnomalyDetector): any => ({
     ...obj,
   });
@@ -201,6 +216,9 @@ export interface PartialFailure {
 }
 
 export namespace PartialFailure {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PartialFailure): any => ({
     ...obj,
   });
@@ -288,6 +306,9 @@ export interface CompositeAlarm {
 }
 
 export namespace CompositeAlarm {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompositeAlarm): any => ({
     ...obj,
   });
@@ -303,6 +324,9 @@ export interface ConcurrentModificationException extends __SmithyException, $Met
 }
 
 export namespace ConcurrentModificationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConcurrentModificationException): any => ({
     ...obj,
   });
@@ -335,6 +359,9 @@ export interface DashboardEntry {
 }
 
 export namespace DashboardEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DashboardEntry): any => ({
     ...obj,
   });
@@ -356,6 +383,9 @@ export interface DashboardValidationMessage {
 }
 
 export namespace DashboardValidationMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DashboardValidationMessage): any => ({
     ...obj,
   });
@@ -372,6 +402,9 @@ export interface DashboardInvalidInputError extends __SmithyException, $Metadata
 }
 
 export namespace DashboardInvalidInputError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DashboardInvalidInputError): any => ({
     ...obj,
   });
@@ -387,6 +420,9 @@ export interface DashboardNotFoundError extends __SmithyException, $MetadataBear
 }
 
 export namespace DashboardNotFoundError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DashboardNotFoundError): any => ({
     ...obj,
   });
@@ -468,6 +504,9 @@ export interface Datapoint {
 }
 
 export namespace Datapoint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Datapoint): any => ({
     ...obj,
   });
@@ -481,6 +520,9 @@ export interface DeleteAlarmsInput {
 }
 
 export namespace DeleteAlarmsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAlarmsInput): any => ({
     ...obj,
   });
@@ -499,6 +541,9 @@ export interface ResourceNotFound extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ResourceNotFound {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFound): any => ({
     ...obj,
   });
@@ -527,6 +572,9 @@ export interface DeleteAnomalyDetectorInput {
 }
 
 export namespace DeleteAnomalyDetectorInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAnomalyDetectorInput): any => ({
     ...obj,
   });
@@ -535,6 +583,9 @@ export namespace DeleteAnomalyDetectorInput {
 export interface DeleteAnomalyDetectorOutput {}
 
 export namespace DeleteAnomalyDetectorOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAnomalyDetectorOutput): any => ({
     ...obj,
   });
@@ -553,6 +604,9 @@ export interface InternalServiceFault extends __SmithyException, $MetadataBearer
 }
 
 export namespace InternalServiceFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServiceFault): any => ({
     ...obj,
   });
@@ -571,6 +625,9 @@ export interface InvalidParameterValueException extends __SmithyException, $Meta
 }
 
 export namespace InvalidParameterValueException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidParameterValueException): any => ({
     ...obj,
   });
@@ -589,6 +646,9 @@ export interface MissingRequiredParameterException extends __SmithyException, $M
 }
 
 export namespace MissingRequiredParameterException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MissingRequiredParameterException): any => ({
     ...obj,
   });
@@ -606,6 +666,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -619,6 +682,9 @@ export interface DeleteDashboardsInput {
 }
 
 export namespace DeleteDashboardsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDashboardsInput): any => ({
     ...obj,
   });
@@ -627,6 +693,9 @@ export namespace DeleteDashboardsInput {
 export interface DeleteDashboardsOutput {}
 
 export namespace DeleteDashboardsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDashboardsOutput): any => ({
     ...obj,
   });
@@ -640,6 +709,9 @@ export interface DeleteInsightRulesInput {
 }
 
 export namespace DeleteInsightRulesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteInsightRulesInput): any => ({
     ...obj,
   });
@@ -653,7 +725,37 @@ export interface DeleteInsightRulesOutput {
 }
 
 export namespace DeleteInsightRulesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteInsightRulesOutput): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteMetricStreamInput {
+  /**
+   * <p>The name of the metric stream to delete.</p>
+   */
+  Name: string | undefined;
+}
+
+export namespace DeleteMetricStreamInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteMetricStreamInput): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteMetricStreamOutput {}
+
+export namespace DeleteMetricStreamOutput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteMetricStreamOutput): any => ({
     ...obj,
   });
 }
@@ -709,6 +811,9 @@ export interface DescribeAlarmHistoryInput {
 }
 
 export namespace DescribeAlarmHistoryInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAlarmHistoryInput): any => ({
     ...obj,
   });
@@ -727,6 +832,9 @@ export interface DescribeAlarmHistoryOutput {
 }
 
 export namespace DescribeAlarmHistoryOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAlarmHistoryOutput): any => ({
     ...obj,
   });
@@ -745,6 +853,9 @@ export interface InvalidNextToken extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidNextToken {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextToken): any => ({
     ...obj,
   });
@@ -834,6 +945,9 @@ export interface DescribeAlarmsInput {
 }
 
 export namespace DescribeAlarmsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAlarmsInput): any => ({
     ...obj,
   });
@@ -860,6 +974,9 @@ export interface Metric {
 }
 
 export namespace Metric {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Metric): any => ({
     ...obj,
   });
@@ -910,6 +1027,9 @@ export interface MetricStat {
 }
 
 export namespace MetricStat {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricStat): any => ({
     ...obj,
   });
@@ -969,9 +1089,13 @@ export interface MetricDataQuery {
   Expression?: string;
 
   /**
-   * <p>A human-readable label for this metric or expression. This is especially useful if this is an expression, so that you know
-   * 			what the value represents. If the metric or expression is shown in a CloudWatch dashboard widget, the label is shown. If Label is omitted, CloudWatch
+   * <p>A human-readable label for this metric or expression. This is especially useful
+   * 			if this is an expression, so that you know
+   * 			what the value represents. If the metric or expression is shown in a
+   * 			CloudWatch dashboard widget, the label is shown. If Label is omitted, CloudWatch
    * 			generates a default.</p>
+   * 		       <p>You can put dynamic expressions into a label, so that it is more descriptive.
+   * 			For more information, see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/graph-dynamic-labels.html">Using Dynamic Labels</a>.</p>
    */
   Label?: string;
 
@@ -997,6 +1121,9 @@ export interface MetricDataQuery {
 }
 
 export namespace MetricDataQuery {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricDataQuery): any => ({
     ...obj,
   });
@@ -1163,6 +1290,9 @@ export interface MetricAlarm {
 }
 
 export namespace MetricAlarm {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricAlarm): any => ({
     ...obj,
   });
@@ -1186,6 +1316,9 @@ export interface DescribeAlarmsOutput {
 }
 
 export namespace DescribeAlarmsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAlarmsOutput): any => ({
     ...obj,
   });
@@ -1232,6 +1365,9 @@ export interface DescribeAlarmsForMetricInput {
 }
 
 export namespace DescribeAlarmsForMetricInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAlarmsForMetricInput): any => ({
     ...obj,
   });
@@ -1245,6 +1381,9 @@ export interface DescribeAlarmsForMetricOutput {
 }
 
 export namespace DescribeAlarmsForMetricOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAlarmsForMetricOutput): any => ({
     ...obj,
   });
@@ -1286,6 +1425,9 @@ export interface DescribeAnomalyDetectorsInput {
 }
 
 export namespace DescribeAnomalyDetectorsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAnomalyDetectorsInput): any => ({
     ...obj,
   });
@@ -1305,6 +1447,9 @@ export interface DescribeAnomalyDetectorsOutput {
 }
 
 export namespace DescribeAnomalyDetectorsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAnomalyDetectorsOutput): any => ({
     ...obj,
   });
@@ -1324,6 +1469,9 @@ export interface DescribeInsightRulesInput {
 }
 
 export namespace DescribeInsightRulesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeInsightRulesInput): any => ({
     ...obj,
   });
@@ -1360,6 +1508,9 @@ export interface InsightRule {
 }
 
 export namespace InsightRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsightRule): any => ({
     ...obj,
   });
@@ -1378,6 +1529,9 @@ export interface DescribeInsightRulesOutput {
 }
 
 export namespace DescribeInsightRulesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeInsightRulesOutput): any => ({
     ...obj,
   });
@@ -1399,6 +1553,9 @@ export interface DimensionFilter {
 }
 
 export namespace DimensionFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DimensionFilter): any => ({
     ...obj,
   });
@@ -1412,6 +1569,9 @@ export interface DisableAlarmActionsInput {
 }
 
 export namespace DisableAlarmActionsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisableAlarmActionsInput): any => ({
     ...obj,
   });
@@ -1425,6 +1585,9 @@ export interface DisableInsightRulesInput {
 }
 
 export namespace DisableInsightRulesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisableInsightRulesInput): any => ({
     ...obj,
   });
@@ -1438,6 +1601,9 @@ export interface DisableInsightRulesOutput {
 }
 
 export namespace DisableInsightRulesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisableInsightRulesOutput): any => ({
     ...obj,
   });
@@ -1451,6 +1617,9 @@ export interface EnableAlarmActionsInput {
 }
 
 export namespace EnableAlarmActionsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableAlarmActionsInput): any => ({
     ...obj,
   });
@@ -1464,6 +1633,9 @@ export interface EnableInsightRulesInput {
 }
 
 export namespace EnableInsightRulesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableInsightRulesInput): any => ({
     ...obj,
   });
@@ -1477,6 +1649,9 @@ export interface EnableInsightRulesOutput {
 }
 
 export namespace EnableInsightRulesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableInsightRulesOutput): any => ({
     ...obj,
   });
@@ -1492,6 +1667,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -1505,6 +1683,9 @@ export interface GetDashboardInput {
 }
 
 export namespace GetDashboardInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDashboardInput): any => ({
     ...obj,
   });
@@ -1530,6 +1711,9 @@ export interface GetDashboardOutput {
 }
 
 export namespace GetDashboardOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDashboardOutput): any => ({
     ...obj,
   });
@@ -1612,6 +1796,9 @@ export interface GetInsightRuleReportInput {
 }
 
 export namespace GetInsightRuleReportInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetInsightRuleReportInput): any => ({
     ...obj,
   });
@@ -1635,6 +1822,9 @@ export interface InsightRuleContributorDatapoint {
 }
 
 export namespace InsightRuleContributorDatapoint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsightRuleContributorDatapoint): any => ({
     ...obj,
   });
@@ -1664,6 +1854,9 @@ export interface InsightRuleContributor {
 }
 
 export namespace InsightRuleContributor {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsightRuleContributor): any => ({
     ...obj,
   });
@@ -1725,6 +1918,9 @@ export interface InsightRuleMetricDatapoint {
 }
 
 export namespace InsightRuleMetricDatapoint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsightRuleMetricDatapoint): any => ({
     ...obj,
   });
@@ -1765,7 +1961,39 @@ export interface GetInsightRuleReportOutput {
 }
 
 export namespace GetInsightRuleReportOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetInsightRuleReportOutput): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>This structure includes the <code>Timezone</code> parameter, which you can use
+ * 			to specify your time zone so that the labels that are associated with returned metrics display the
+ * 			correct time
+ * 			for your time zone. </p>
+ * 		       <p>The <code>Timezone</code> value affects a label only if you have a time-based
+ * 		dynamic expression in the label. For more information about dynamic expressions in labels,
+ * 		see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/graph-dynamic-labels.html">Using Dynamic Labels</a>.</p>
+ */
+export interface LabelOptions {
+  /**
+   * <p>The time zone to use for metric data return in this operation.
+   * 			The format is <code>+</code> or <code>-</code> followed by four digits.
+   * 			The first two digits indicate the number of hours ahead or behind of UTC, and
+   * 			the final two digits are the number of minutes. For example, +0130 indicates a time zone that is 1 hour
+   * 			and 30 minutes ahead of UTC. The default is +0000. </p>
+   */
+  Timezone?: string;
+}
+
+export namespace LabelOptions {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: LabelOptions): any => ({
     ...obj,
   });
 }
@@ -1840,9 +2068,20 @@ export interface GetMetricDataInput {
    * 			this, the default of 100,800 is used.</p>
    */
   MaxDatapoints?: number;
+
+  /**
+   * <p>This structure includes the <code>Timezone</code> parameter, which you can use
+   * 			to specify your time zone so that the labels of returned data display the
+   * 			correct time
+   * 			for your time zone. </p>
+   */
+  LabelOptions?: LabelOptions;
 }
 
 export namespace GetMetricDataInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMetricDataInput): any => ({
     ...obj,
   });
@@ -1864,6 +2103,9 @@ export interface MessageData {
 }
 
 export namespace MessageData {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MessageData): any => ({
     ...obj,
   });
@@ -1921,6 +2163,9 @@ export interface MetricDataResult {
 }
 
 export namespace MetricDataResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricDataResult): any => ({
     ...obj,
   });
@@ -1949,6 +2194,9 @@ export interface GetMetricDataOutput {
 }
 
 export namespace GetMetricDataOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMetricDataOutput): any => ({
     ...obj,
   });
@@ -2057,6 +2305,9 @@ export interface GetMetricStatisticsInput {
 }
 
 export namespace GetMetricStatisticsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMetricStatisticsInput): any => ({
     ...obj,
   });
@@ -2075,6 +2326,9 @@ export interface GetMetricStatisticsOutput {
 }
 
 export namespace GetMetricStatisticsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMetricStatisticsOutput): any => ({
     ...obj,
   });
@@ -2093,7 +2347,118 @@ export interface InvalidParameterCombinationException extends __SmithyException,
 }
 
 export namespace InvalidParameterCombinationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidParameterCombinationException): any => ({
+    ...obj,
+  });
+}
+
+export interface GetMetricStreamInput {
+  /**
+   * <p>The name of the metric stream to retrieve information about.</p>
+   */
+  Name: string | undefined;
+}
+
+export namespace GetMetricStreamInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetMetricStreamInput): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>This structure contains the name of one of the metric namespaces that is listed in
+ * 		a filter of a metric stream.</p>
+ */
+export interface MetricStreamFilter {
+  /**
+   * <p>The name of the metric namespace in the filter.</p>
+   */
+  Namespace?: string;
+}
+
+export namespace MetricStreamFilter {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: MetricStreamFilter): any => ({
+    ...obj,
+  });
+}
+
+export enum MetricStreamOutputFormat {
+  JSON = "json",
+  OPEN_TELEMETRY_0_7 = "opentelemetry0.7",
+}
+
+export interface GetMetricStreamOutput {
+  /**
+   * <p>The ARN of the metric stream.</p>
+   */
+  Arn?: string;
+
+  /**
+   * <p>The name of the metric stream.</p>
+   */
+  Name?: string;
+
+  /**
+   * <p>If this array of metric namespaces is present, then these
+   * 			namespaces are the only
+   * 		metric namespaces that are streamed by this metric stream.</p>
+   */
+  IncludeFilters?: MetricStreamFilter[];
+
+  /**
+   * <p>If this array of metric namespaces is present, then these namespaces are the only
+   * 			metric namespaces that are not streamed by this metric stream. In this case, all other metric namespaces in
+   * 		the account are streamed by this metric stream.</p>
+   */
+  ExcludeFilters?: MetricStreamFilter[];
+
+  /**
+   * <p>The ARN of the Amazon Kinesis Firehose delivery stream that is used by
+   * 		this metric stream.</p>
+   */
+  FirehoseArn?: string;
+
+  /**
+   * <p>The ARN of the IAM role that is used by this metric stream.</p>
+   */
+  RoleArn?: string;
+
+  /**
+   * <p>The state of the metric stream. The possible values are <code>running</code>
+   * 		and <code>stopped</code>.</p>
+   */
+  State?: string;
+
+  /**
+   * <p>The date that the metric stream was created.</p>
+   */
+  CreationDate?: Date;
+
+  /**
+   * <p>The date of the most recent update to the metric stream's configuration.</p>
+   */
+  LastUpdateDate?: Date;
+
+  /**
+   * <p></p>
+   */
+  OutputFormat?: MetricStreamOutputFormat | string;
+}
+
+export namespace GetMetricStreamOutput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetMetricStreamOutput): any => ({
     ...obj,
   });
 }
@@ -2159,6 +2524,9 @@ export interface GetMetricWidgetImageInput {
 }
 
 export namespace GetMetricWidgetImageInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMetricWidgetImageInput): any => ({
     ...obj,
   });
@@ -2172,6 +2540,9 @@ export interface GetMetricWidgetImageOutput {
 }
 
 export namespace GetMetricWidgetImageOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMetricWidgetImageOutput): any => ({
     ...obj,
   });
@@ -2194,6 +2565,9 @@ export interface ListDashboardsInput {
 }
 
 export namespace ListDashboardsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDashboardsInput): any => ({
     ...obj,
   });
@@ -2212,6 +2586,9 @@ export interface ListDashboardsOutput {
 }
 
 export namespace ListDashboardsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDashboardsOutput): any => ({
     ...obj,
   });
@@ -2259,6 +2636,9 @@ export interface ListMetricsInput {
 }
 
 export namespace ListMetricsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMetricsInput): any => ({
     ...obj,
   });
@@ -2277,7 +2657,104 @@ export interface ListMetricsOutput {
 }
 
 export namespace ListMetricsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMetricsOutput): any => ({
+    ...obj,
+  });
+}
+
+export interface ListMetricStreamsInput {
+  /**
+   * <p>Include this value, if it was returned by the previous call, to get the next set of metric streams.</p>
+   */
+  NextToken?: string;
+
+  /**
+   * <p>The maximum number of results to return in one operation.</p>
+   */
+  MaxResults?: number;
+}
+
+export namespace ListMetricStreamsInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListMetricStreamsInput): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>This structure contains the configuration information about one metric stream.</p>
+ */
+export interface MetricStreamEntry {
+  /**
+   * <p>The ARN of the metric stream.</p>
+   */
+  Arn?: string;
+
+  /**
+   * <p>The date that the metric stream was originally created.</p>
+   */
+  CreationDate?: Date;
+
+  /**
+   * <p>The date that the configuration of this metric stream was most recently updated.</p>
+   */
+  LastUpdateDate?: Date;
+
+  /**
+   * <p>The name of the metric stream.</p>
+   */
+  Name?: string;
+
+  /**
+   * <p>The ARN of the Kinesis Firehose devlivery stream that is used for this metric stream.</p>
+   */
+  FirehoseArn?: string;
+
+  /**
+   * <p>The current state of this stream. Valid values are <code>running</code> and <code>stopped</code>.</p>
+   */
+  State?: string;
+
+  /**
+   * <p>The output format of this metric stream. Valid values are
+   * 			<code>json</code>
+   * 			and <code>opentelemetry0.7</code>.</p>
+   */
+  OutputFormat?: MetricStreamOutputFormat | string;
+}
+
+export namespace MetricStreamEntry {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: MetricStreamEntry): any => ({
+    ...obj,
+  });
+}
+
+export interface ListMetricStreamsOutput {
+  /**
+   * <p>The token that marks the start of the next batch of returned results. You can use this
+   * 		token in a subsequent operation to get the next batch of results.</p>
+   */
+  NextToken?: string;
+
+  /**
+   * <p>The array of metric stream information.</p>
+   */
+  Entries?: MetricStreamEntry[];
+}
+
+export namespace ListMetricStreamsOutput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListMetricStreamsOutput): any => ({
     ...obj,
   });
 }
@@ -2301,6 +2778,9 @@ export interface ListTagsForResourceInput {
 }
 
 export namespace ListTagsForResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceInput): any => ({
     ...obj,
   });
@@ -2323,6 +2803,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -2336,6 +2819,9 @@ export interface ListTagsForResourceOutput {
 }
 
 export namespace ListTagsForResourceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceOutput): any => ({
     ...obj,
   });
@@ -2374,6 +2860,9 @@ export interface PutAnomalyDetectorInput {
 }
 
 export namespace PutAnomalyDetectorInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutAnomalyDetectorInput): any => ({
     ...obj,
   });
@@ -2382,6 +2871,9 @@ export namespace PutAnomalyDetectorInput {
 export interface PutAnomalyDetectorOutput {}
 
 export namespace PutAnomalyDetectorOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutAnomalyDetectorOutput): any => ({
     ...obj,
   });
@@ -2400,6 +2892,9 @@ export interface LimitExceededFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace LimitExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededFault): any => ({
     ...obj,
   });
@@ -2532,6 +3027,9 @@ export interface PutCompositeAlarmInput {
 }
 
 export namespace PutCompositeAlarmInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutCompositeAlarmInput): any => ({
     ...obj,
   });
@@ -2555,6 +3053,9 @@ export interface PutDashboardInput {
 }
 
 export namespace PutDashboardInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutDashboardInput): any => ({
     ...obj,
   });
@@ -2572,6 +3073,9 @@ export interface PutDashboardOutput {
 }
 
 export namespace PutDashboardOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutDashboardOutput): any => ({
     ...obj,
   });
@@ -2612,6 +3116,9 @@ export interface PutInsightRuleInput {
 }
 
 export namespace PutInsightRuleInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutInsightRuleInput): any => ({
     ...obj,
   });
@@ -2620,6 +3127,9 @@ export namespace PutInsightRuleInput {
 export interface PutInsightRuleOutput {}
 
 export namespace PutInsightRuleOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutInsightRuleOutput): any => ({
     ...obj,
   });
@@ -2659,7 +3169,8 @@ export interface PutMetricAlarmInput {
    * 		       <p>Valid Values (for use with IAM roles):
    * 			<code>arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0</code> |
    * 				<code>arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Terminate/1.0</code> |
-   * 				<code>arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Reboot/1.0</code>
+   * 				<code>arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Reboot/1.0</code> |
+   * 			    <code>arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Recover/1.0</code>
    *          </p>
    */
   OKActions?: string[];
@@ -2875,6 +3386,9 @@ export interface PutMetricAlarmInput {
 }
 
 export namespace PutMetricAlarmInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutMetricAlarmInput): any => ({
     ...obj,
   });
@@ -2906,6 +3420,9 @@ export interface StatisticSet {
 }
 
 export namespace StatisticSet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StatisticSet): any => ({
     ...obj,
   });
@@ -2984,6 +3501,9 @@ export interface MetricDatum {
 }
 
 export namespace MetricDatum {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricDatum): any => ({
     ...obj,
   });
@@ -3005,7 +3525,101 @@ export interface PutMetricDataInput {
 }
 
 export namespace PutMetricDataInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutMetricDataInput): any => ({
+    ...obj,
+  });
+}
+
+export interface PutMetricStreamInput {
+  /**
+   * <p>If you are creating a new metric stream, this is the name for the new stream. The name
+   * 		must be different than the names of other metric streams in this account and Region.</p>
+   * 		       <p>If you are updating a metric stream, specify the name of that stream here.</p>
+   * 		       <p>Valid characters are A-Z, a-z, 0-9, "-" and "_".</p>
+   */
+  Name: string | undefined;
+
+  /**
+   * <p>If you specify this parameter, the stream sends only the
+   * 		metrics from the metric namespaces that you specify here.</p>
+   * 		       <p>You cannot include <code>IncludeFilters</code> and <code>ExcludeFilters</code>
+   * 		in the same operation.</p>
+   */
+  IncludeFilters?: MetricStreamFilter[];
+
+  /**
+   * <p>If you specify this parameter, the stream sends metrics from all
+   * 			metric namespaces except for the namespaces that you specify here.</p>
+   * 		       <p>You cannot include <code>ExcludeFilters</code> and <code>IncludeFilters</code> in
+   * 			the same operation.</p>
+   */
+  ExcludeFilters?: MetricStreamFilter[];
+
+  /**
+   * <p>The ARN of the Amazon Kinesis Firehose delivery stream to use for this metric stream.
+   * 		This Amazon Kinesis Firehose delivery stream must already exist and must be in the same
+   * 		account as the metric stream.</p>
+   */
+  FirehoseArn: string | undefined;
+
+  /**
+   * <p>The ARN of an IAM role that this metric stream will use to access
+   * 			Amazon Kinesis Firehose resources. This IAM role must already
+   * 		exist and must be in the same account as the metric stream. This IAM role must include the following permissions:</p>
+   * 		       <ul>
+   *             <li>
+   *                <p>firehose:PutRecord</p>
+   *             </li>
+   *             <li>
+   *                <p>firehose:PutRecordBatch</p>
+   *             </li>
+   *          </ul>
+   */
+  RoleArn: string | undefined;
+
+  /**
+   * <p>The output format for the stream. Valid values are <code>json</code>
+   * 		and <code>opentelemetry0.7</code>. For more information about metric stream
+   * 		output formats, see
+   * 			<a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-formats.html">
+   * 				Metric streams output formats</a>.</p>
+   */
+  OutputFormat: MetricStreamOutputFormat | string | undefined;
+
+  /**
+   * <p>A list of key-value pairs to associate with the metric stream. You can associate as
+   * 			many as 50 tags with a metric stream.</p>
+   * 		       <p>Tags can help you organize and categorize your resources. You can also use them to scope user
+   * 			permissions by granting a user
+   * 			permission to access or change only resources with certain tag values.</p>
+   */
+  Tags?: Tag[];
+}
+
+export namespace PutMetricStreamInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PutMetricStreamInput): any => ({
+    ...obj,
+  });
+}
+
+export interface PutMetricStreamOutput {
+  /**
+   * <p>The ARN of the metric stream.</p>
+   */
+  Arn?: string;
+}
+
+export namespace PutMetricStreamOutput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PutMetricStreamOutput): any => ({
     ...obj,
   });
 }
@@ -3023,6 +3637,9 @@ export interface InvalidFormatFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidFormatFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidFormatFault): any => ({
     ...obj,
   });
@@ -3053,7 +3670,70 @@ export interface SetAlarmStateInput {
 }
 
 export namespace SetAlarmStateInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetAlarmStateInput): any => ({
+    ...obj,
+  });
+}
+
+export interface StartMetricStreamsInput {
+  /**
+   * <p>The array of the names of metric streams to start streaming.</p>
+   * 		       <p>This is an "all or nothing" operation. If you do not have
+   * 		permission to access all of the metric streams that you list here, then none of the streams that you list
+   * 		in the operation will start streaming.</p>
+   */
+  Names: string[] | undefined;
+}
+
+export namespace StartMetricStreamsInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: StartMetricStreamsInput): any => ({
+    ...obj,
+  });
+}
+
+export interface StartMetricStreamsOutput {}
+
+export namespace StartMetricStreamsOutput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: StartMetricStreamsOutput): any => ({
+    ...obj,
+  });
+}
+
+export interface StopMetricStreamsInput {
+  /**
+   * <p>The array of the names of metric streams to stop streaming.</p>
+   * 		       <p>This is an "all or nothing" operation. If you do not have
+   * 			permission to access all of the metric streams that you list here, then none of the streams that you list
+   * 			in the operation will stop streaming.</p>
+   */
+  Names: string[] | undefined;
+}
+
+export namespace StopMetricStreamsInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: StopMetricStreamsInput): any => ({
+    ...obj,
+  });
+}
+
+export interface StopMetricStreamsOutput {}
+
+export namespace StopMetricStreamsOutput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: StopMetricStreamsOutput): any => ({
     ...obj,
   });
 }
@@ -3082,6 +3762,9 @@ export interface TagResourceInput {
 }
 
 export namespace TagResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceInput): any => ({
     ...obj,
   });
@@ -3090,6 +3773,9 @@ export namespace TagResourceInput {
 export interface TagResourceOutput {}
 
 export namespace TagResourceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceOutput): any => ({
     ...obj,
   });
@@ -3119,6 +3805,9 @@ export interface UntagResourceInput {
 }
 
 export namespace UntagResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceInput): any => ({
     ...obj,
   });
@@ -3127,6 +3816,9 @@ export namespace UntagResourceInput {
 export interface UntagResourceOutput {}
 
 export namespace UntagResourceOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceOutput): any => ({
     ...obj,
   });

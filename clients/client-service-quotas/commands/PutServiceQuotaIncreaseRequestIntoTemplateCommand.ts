@@ -20,15 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutServiceQuotaIncreaseRequestIntoTemplateCommandInput = PutServiceQuotaIncreaseRequestIntoTemplateRequest;
-export type PutServiceQuotaIncreaseRequestIntoTemplateCommandOutput = PutServiceQuotaIncreaseRequestIntoTemplateResponse &
-  __MetadataBearer;
+export interface PutServiceQuotaIncreaseRequestIntoTemplateCommandInput
+  extends PutServiceQuotaIncreaseRequestIntoTemplateRequest {}
+export interface PutServiceQuotaIncreaseRequestIntoTemplateCommandOutput
+  extends PutServiceQuotaIncreaseRequestIntoTemplateResponse,
+    __MetadataBearer {}
 
 /**
- * <p>Defines and adds a quota to the service quota template. To add a quota to the template,
- *       you must provide the <code>ServiceCode</code>, <code>QuotaCode</code>, <code>AwsRegion</code>,
- *       and <code>DesiredValue</code>. Once you add a quota to the template, use <a>ListServiceQuotaIncreaseRequestsInTemplate</a> to see the list of quotas in the
- *       template.</p>
+ * <p>Adds a quota increase request to your quota request template.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceQuotasClient, PutServiceQuotaIncreaseRequestIntoTemplateCommand } from "@aws-sdk/client-service-quotas"; // ES Modules import
+ * // const { ServiceQuotasClient, PutServiceQuotaIncreaseRequestIntoTemplateCommand } = require("@aws-sdk/client-service-quotas"); // CommonJS import
+ * const client = new ServiceQuotasClient(config);
+ * const command = new PutServiceQuotaIncreaseRequestIntoTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutServiceQuotaIncreaseRequestIntoTemplateCommandInput} for command's `input` shape.
+ * @see {@link PutServiceQuotaIncreaseRequestIntoTemplateCommandOutput} for command's `response` shape.
+ * @see {@link ServiceQuotasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutServiceQuotaIncreaseRequestIntoTemplateCommand extends $Command<
   PutServiceQuotaIncreaseRequestIntoTemplateCommandInput,

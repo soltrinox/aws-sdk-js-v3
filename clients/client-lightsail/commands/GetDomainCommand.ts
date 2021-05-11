@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDomainCommandInput = GetDomainRequest;
-export type GetDomainCommandOutput = GetDomainResult & __MetadataBearer;
+export interface GetDomainCommandInput extends GetDomainRequest {}
+export interface GetDomainCommandOutput extends GetDomainResult, __MetadataBearer {}
 
 /**
  * <p>Returns information about a specific domain recordset.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetDomainCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetDomainCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetDomainCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDomainCommandInput} for command's `input` shape.
+ * @see {@link GetDomainCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDomainCommand extends $Command<
   GetDomainCommandInput,

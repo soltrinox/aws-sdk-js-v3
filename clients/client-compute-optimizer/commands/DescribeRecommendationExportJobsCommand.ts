@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeRecommendationExportJobsCommandInput = DescribeRecommendationExportJobsRequest;
-export type DescribeRecommendationExportJobsCommandOutput = DescribeRecommendationExportJobsResponse & __MetadataBearer;
+export interface DescribeRecommendationExportJobsCommandInput extends DescribeRecommendationExportJobsRequest {}
+export interface DescribeRecommendationExportJobsCommandOutput
+  extends DescribeRecommendationExportJobsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Describes recommendation export jobs created in the last seven days.</p>
@@ -27,6 +29,20 @@ export type DescribeRecommendationExportJobsCommandOutput = DescribeRecommendati
  *                 <code>ExportEC2InstanceRecommendations</code> actions to request an export of your
  *             recommendations. Then use the <code>DescribeRecommendationExportJobs</code> action to
  *             view your export jobs.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ComputeOptimizerClient, DescribeRecommendationExportJobsCommand } from "@aws-sdk/client-compute-optimizer"; // ES Modules import
+ * // const { ComputeOptimizerClient, DescribeRecommendationExportJobsCommand } = require("@aws-sdk/client-compute-optimizer"); // CommonJS import
+ * const client = new ComputeOptimizerClient(config);
+ * const command = new DescribeRecommendationExportJobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeRecommendationExportJobsCommandInput} for command's `input` shape.
+ * @see {@link DescribeRecommendationExportJobsCommandOutput} for command's `response` shape.
+ * @see {@link ComputeOptimizerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeRecommendationExportJobsCommand extends $Command<
   DescribeRecommendationExportJobsCommandInput,

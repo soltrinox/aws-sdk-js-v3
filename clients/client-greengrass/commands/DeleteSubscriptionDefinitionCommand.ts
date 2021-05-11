@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteSubscriptionDefinitionCommandInput = DeleteSubscriptionDefinitionRequest;
-export type DeleteSubscriptionDefinitionCommandOutput = DeleteSubscriptionDefinitionResponse & __MetadataBearer;
+export interface DeleteSubscriptionDefinitionCommandInput extends DeleteSubscriptionDefinitionRequest {}
+export interface DeleteSubscriptionDefinitionCommandOutput
+  extends DeleteSubscriptionDefinitionResponse,
+    __MetadataBearer {}
 
 /**
  * Deletes a subscription definition.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, DeleteSubscriptionDefinitionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, DeleteSubscriptionDefinitionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new DeleteSubscriptionDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteSubscriptionDefinitionCommandInput} for command's `input` shape.
+ * @see {@link DeleteSubscriptionDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteSubscriptionDefinitionCommand extends $Command<
   DeleteSubscriptionDefinitionCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteScheduledAuditCommandInput = DeleteScheduledAuditRequest;
-export type DeleteScheduledAuditCommandOutput = DeleteScheduledAuditResponse & __MetadataBearer;
+export interface DeleteScheduledAuditCommandInput extends DeleteScheduledAuditRequest {}
+export interface DeleteScheduledAuditCommandOutput extends DeleteScheduledAuditResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a scheduled audit.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DeleteScheduledAuditCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DeleteScheduledAuditCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DeleteScheduledAuditCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteScheduledAuditCommandInput} for command's `input` shape.
+ * @see {@link DeleteScheduledAuditCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteScheduledAuditCommand extends $Command<
   DeleteScheduledAuditCommandInput,

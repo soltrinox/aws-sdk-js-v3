@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAvailableManagementCidrRangesCommandInput = ListAvailableManagementCidrRangesRequest;
-export type ListAvailableManagementCidrRangesCommandOutput = ListAvailableManagementCidrRangesResult & __MetadataBearer;
+export interface ListAvailableManagementCidrRangesCommandInput extends ListAvailableManagementCidrRangesRequest {}
+export interface ListAvailableManagementCidrRangesCommandOutput
+  extends ListAvailableManagementCidrRangesResult,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use
@@ -30,6 +32,20 @@ export type ListAvailableManagementCidrRangesCommandOutput = ListAvailableManage
  *          <p>The management network interface is connected to a secure Amazon WorkSpaces management
  *          network. It is used for interactive streaming of the WorkSpace desktop to Amazon WorkSpaces
  *          clients, and to allow Amazon WorkSpaces to manage the WorkSpace.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, ListAvailableManagementCidrRangesCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, ListAvailableManagementCidrRangesCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new ListAvailableManagementCidrRangesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAvailableManagementCidrRangesCommandInput} for command's `input` shape.
+ * @see {@link ListAvailableManagementCidrRangesCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAvailableManagementCidrRangesCommand extends $Command<
   ListAvailableManagementCidrRangesCommandInput,

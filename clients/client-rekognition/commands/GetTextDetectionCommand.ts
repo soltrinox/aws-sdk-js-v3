@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTextDetectionCommandInput = GetTextDetectionRequest;
-export type GetTextDetectionCommandOutput = GetTextDetectionResponse & __MetadataBearer;
+export interface GetTextDetectionCommandInput extends GetTextDetectionRequest {}
+export interface GetTextDetectionCommandOutput extends GetTextDetectionResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the text detection results of a Amazon Rekognition Video analysis started by <a>StartTextDetection</a>.</p>
@@ -40,6 +40,20 @@ export type GetTextDetectionCommandOutput = GetTextDetectionResponse & __Metadat
  *      a pagination token for getting the next set of results. To get the next page of results, call <code>GetTextDetection</code>
  *      and populate the <code>NextToken</code> request parameter with the token value returned from the previous
  *      call to <code>GetTextDetection</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, GetTextDetectionCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, GetTextDetectionCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new GetTextDetectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTextDetectionCommandInput} for command's `input` shape.
+ * @see {@link GetTextDetectionCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTextDetectionCommand extends $Command<
   GetTextDetectionCommandInput,

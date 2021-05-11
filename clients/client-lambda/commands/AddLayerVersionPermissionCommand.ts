@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddLayerVersionPermissionCommandInput = AddLayerVersionPermissionRequest;
-export type AddLayerVersionPermissionCommandOutput = AddLayerVersionPermissionResponse & __MetadataBearer;
+export interface AddLayerVersionPermissionCommandInput extends AddLayerVersionPermissionRequest {}
+export interface AddLayerVersionPermissionCommandOutput extends AddLayerVersionPermissionResponse, __MetadataBearer {}
 
 /**
  * <p>Adds permissions to the resource-based policy of a version of an <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html">AWS Lambda
@@ -27,6 +27,20 @@ export type AddLayerVersionPermissionCommandOutput = AddLayerVersionPermissionRe
  *       accounts in an organization.</p>
  *          <p>To revoke permission, call <a>RemoveLayerVersionPermission</a> with the statement ID that you
  *       specified when you added it.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LambdaClient, AddLayerVersionPermissionCommand } from "@aws-sdk/client-lambda"; // ES Modules import
+ * // const { LambdaClient, AddLayerVersionPermissionCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+ * const client = new LambdaClient(config);
+ * const command = new AddLayerVersionPermissionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddLayerVersionPermissionCommandInput} for command's `input` shape.
+ * @see {@link AddLayerVersionPermissionCommandOutput} for command's `response` shape.
+ * @see {@link LambdaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddLayerVersionPermissionCommand extends $Command<
   AddLayerVersionPermissionCommandInput,

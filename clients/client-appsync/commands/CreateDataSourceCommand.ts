@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDataSourceCommandInput = CreateDataSourceRequest;
-export type CreateDataSourceCommandOutput = CreateDataSourceResponse & __MetadataBearer;
+export interface CreateDataSourceCommandInput extends CreateDataSourceRequest {}
+export interface CreateDataSourceCommandOutput extends CreateDataSourceResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a <code>DataSource</code> object.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppSyncClient, CreateDataSourceCommand } from "@aws-sdk/client-appsync"; // ES Modules import
+ * // const { AppSyncClient, CreateDataSourceCommand } = require("@aws-sdk/client-appsync"); // CommonJS import
+ * const client = new AppSyncClient(config);
+ * const command = new CreateDataSourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDataSourceCommandInput} for command's `input` shape.
+ * @see {@link CreateDataSourceCommandOutput} for command's `response` shape.
+ * @see {@link AppSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDataSourceCommand extends $Command<
   CreateDataSourceCommandInput,

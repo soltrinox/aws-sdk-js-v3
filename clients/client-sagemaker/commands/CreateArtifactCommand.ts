@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateArtifactCommandInput = CreateArtifactRequest;
-export type CreateArtifactCommandOutput = CreateArtifactResponse & __MetadataBearer;
+export interface CreateArtifactCommandInput extends CreateArtifactRequest {}
+export interface CreateArtifactCommandOutput extends CreateArtifactResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an <i>artifact</i>. An artifact is a lineage tracking entity that
@@ -26,6 +26,20 @@ export type CreateArtifactCommandOutput = CreateArtifactResponse & __MetadataBea
  *         the ECR registry path of an image. For more information, see
  *         <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html">Amazon SageMaker
  *           ML Lineage Tracking</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, CreateArtifactCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, CreateArtifactCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new CreateArtifactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateArtifactCommandInput} for command's `input` shape.
+ * @see {@link CreateArtifactCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateArtifactCommand extends $Command<
   CreateArtifactCommandInput,

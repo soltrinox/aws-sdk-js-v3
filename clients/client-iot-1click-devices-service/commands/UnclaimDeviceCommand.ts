@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UnclaimDeviceCommandInput = UnclaimDeviceRequest;
-export type UnclaimDeviceCommandOutput = UnclaimDeviceResponse & __MetadataBearer;
+export interface UnclaimDeviceCommandInput extends UnclaimDeviceRequest {}
+export interface UnclaimDeviceCommandOutput extends UnclaimDeviceResponse, __MetadataBearer {}
 
 /**
  * <p>Disassociates a device from your AWS account using its device ID.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoT1ClickDevicesServiceClient, UnclaimDeviceCommand } from "@aws-sdk/client-iot-1click-devices-service"; // ES Modules import
+ * // const { IoT1ClickDevicesServiceClient, UnclaimDeviceCommand } = require("@aws-sdk/client-iot-1click-devices-service"); // CommonJS import
+ * const client = new IoT1ClickDevicesServiceClient(config);
+ * const command = new UnclaimDeviceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UnclaimDeviceCommandInput} for command's `input` shape.
+ * @see {@link UnclaimDeviceCommandOutput} for command's `response` shape.
+ * @see {@link IoT1ClickDevicesServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UnclaimDeviceCommand extends $Command<
   UnclaimDeviceCommandInput,

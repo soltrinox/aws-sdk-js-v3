@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCopyProductStatusCommandInput = DescribeCopyProductStatusInput;
-export type DescribeCopyProductStatusCommandOutput = DescribeCopyProductStatusOutput & __MetadataBearer;
+export interface DescribeCopyProductStatusCommandInput extends DescribeCopyProductStatusInput {}
+export interface DescribeCopyProductStatusCommandOutput extends DescribeCopyProductStatusOutput, __MetadataBearer {}
 
 /**
  * <p>Gets the status of the specified copy product operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, DescribeCopyProductStatusCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, DescribeCopyProductStatusCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new DescribeCopyProductStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCopyProductStatusCommandInput} for command's `input` shape.
+ * @see {@link DescribeCopyProductStatusCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCopyProductStatusCommand extends $Command<
   DescribeCopyProductStatusCommandInput,

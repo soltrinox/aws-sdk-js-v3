@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateUserRoutingProfileCommandInput = UpdateUserRoutingProfileRequest;
-export type UpdateUserRoutingProfileCommandOutput = __MetadataBearer;
+export interface UpdateUserRoutingProfileCommandInput extends UpdateUserRoutingProfileRequest {}
+export interface UpdateUserRoutingProfileCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Assigns the specified routing profile to the specified user.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, UpdateUserRoutingProfileCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, UpdateUserRoutingProfileCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new UpdateUserRoutingProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateUserRoutingProfileCommandInput} for command's `input` shape.
+ * @see {@link UpdateUserRoutingProfileCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateUserRoutingProfileCommand extends $Command<
   UpdateUserRoutingProfileCommandInput,

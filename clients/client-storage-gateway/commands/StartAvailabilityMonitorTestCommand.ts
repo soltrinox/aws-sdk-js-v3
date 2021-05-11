@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartAvailabilityMonitorTestCommandInput = StartAvailabilityMonitorTestInput;
-export type StartAvailabilityMonitorTestCommandOutput = StartAvailabilityMonitorTestOutput & __MetadataBearer;
+export interface StartAvailabilityMonitorTestCommandInput extends StartAvailabilityMonitorTestInput {}
+export interface StartAvailabilityMonitorTestCommandOutput
+  extends StartAvailabilityMonitorTestOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Start a test that verifies that the specified gateway is configured for High
@@ -29,6 +31,20 @@ export type StartAvailabilityMonitorTestCommandOutput = StartAvailabilityMonitor
  *          <note>
  *             <p>Starting this test will cause your gateway to go offline for a brief period.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, StartAvailabilityMonitorTestCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, StartAvailabilityMonitorTestCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new StartAvailabilityMonitorTestCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartAvailabilityMonitorTestCommandInput} for command's `input` shape.
+ * @see {@link StartAvailabilityMonitorTestCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartAvailabilityMonitorTestCommand extends $Command<
   StartAvailabilityMonitorTestCommandInput,

@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateConnectionCommandInput = UpdateConnectionRequest;
-export type UpdateConnectionCommandOutput = UpdateConnectionResponse & __MetadataBearer;
+export interface UpdateConnectionCommandInput extends UpdateConnectionRequest {}
+export interface UpdateConnectionCommandOutput extends UpdateConnectionResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the information for an existing connection. To remove information for any of the parameters,
  *             specify an empty string.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkManagerClient, UpdateConnectionCommand } from "@aws-sdk/client-networkmanager"; // ES Modules import
+ * // const { NetworkManagerClient, UpdateConnectionCommand } = require("@aws-sdk/client-networkmanager"); // CommonJS import
+ * const client = new NetworkManagerClient(config);
+ * const command = new UpdateConnectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateConnectionCommandInput} for command's `input` shape.
+ * @see {@link UpdateConnectionCommandOutput} for command's `response` shape.
+ * @see {@link NetworkManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateConnectionCommand extends $Command<
   UpdateConnectionCommandInput,

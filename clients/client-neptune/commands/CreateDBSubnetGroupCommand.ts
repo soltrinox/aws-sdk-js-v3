@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDBSubnetGroupCommandInput = CreateDBSubnetGroupMessage;
-export type CreateDBSubnetGroupCommandOutput = CreateDBSubnetGroupResult & __MetadataBearer;
+export interface CreateDBSubnetGroupCommandInput extends CreateDBSubnetGroupMessage {}
+export interface CreateDBSubnetGroupCommandOutput extends CreateDBSubnetGroupResult, __MetadataBearer {}
 
 /**
  * <p>Creates a new DB subnet group. DB subnet groups must contain at least one subnet in at
  *       least two AZs in the AWS Region.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, CreateDBSubnetGroupCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, CreateDBSubnetGroupCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new CreateDBSubnetGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDBSubnetGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateDBSubnetGroupCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDBSubnetGroupCommand extends $Command<
   CreateDBSubnetGroupCommandInput,

@@ -17,16 +17,15 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartChatContactCommandInput = StartChatContactRequest;
-export type StartChatContactCommandOutput = StartChatContactResponse & __MetadataBearer;
+export interface StartChatContactCommandInput extends StartChatContactRequest {}
+export interface StartChatContactCommandOutput extends StartChatContactResponse, __MetadataBearer {}
 
 /**
  * <p>Initiates a contact flow to start a new chat for the customer. Response of this API provides
  *    a token required to obtain credentials from the <a href="https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html">CreateParticipantConnection</a> API in the Amazon Connect Participant Service.</p>
  *
- *          <p>When a new chat contact is successfully created, clients need to subscribe to the
- *    participant’s connection for the created chat within 5 minutes. This is achieved by invoking
- *     <a href="https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html">CreateParticipantConnection</a> with WEBSOCKET and CONNECTION_CREDENTIALS. </p>
+ *          <p>When a new chat contact is successfully created, clients must subscribe to the participant’s
+ *    connection for the created chat within 5 minutes. This is achieved by invoking <a href="https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html">CreateParticipantConnection</a> with WEBSOCKET and CONNECTION_CREDENTIALS. </p>
  *
  *          <p>A 429 error occurs in two situations:</p>
  *          <ul>
@@ -41,8 +40,22 @@ export type StartChatContactCommandOutput = StartChatContactResponse & __Metadat
  *             </li>
  *          </ul>
  *
- *          <p>For more information about how chat works, see <a href="https://docs.aws.amazon.com/connect/latest/adminguide/chat.html">Chat</a> in the <i>Amazon Connect Administrator
+ *          <p>For more information about chat, see <a href="https://docs.aws.amazon.com/connect/latest/adminguide/chat.html">Chat</a> in the <i>Amazon Connect Administrator
  *     Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, StartChatContactCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, StartChatContactCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new StartChatContactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartChatContactCommandInput} for command's `input` shape.
+ * @see {@link StartChatContactCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartChatContactCommand extends $Command<
   StartChatContactCommandInput,

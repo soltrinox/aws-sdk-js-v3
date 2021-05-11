@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type XmlBlobsCommandInput = XmlBlobsInputOutput;
-export type XmlBlobsCommandOutput = XmlBlobsInputOutput & __MetadataBearer;
+export interface XmlBlobsCommandInput extends XmlBlobsInputOutput {}
+export interface XmlBlobsCommandOutput extends XmlBlobsInputOutput, __MetadataBearer {}
 
 /**
  * Blobs are base64 encoded
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestXmlProtocolClient, XmlBlobsCommand } from "@aws-sdk/aws-restxml"; // ES Modules import
+ * // const { RestXmlProtocolClient, XmlBlobsCommand } = require("@aws-sdk/aws-restxml"); // CommonJS import
+ * const client = new RestXmlProtocolClient(config);
+ * const command = new XmlBlobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link XmlBlobsCommandInput} for command's `input` shape.
+ * @see {@link XmlBlobsCommandOutput} for command's `response` shape.
+ * @see {@link RestXmlProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class XmlBlobsCommand extends $Command<
   XmlBlobsCommandInput,

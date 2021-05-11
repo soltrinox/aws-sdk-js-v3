@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTrafficPolicyInstanceCommandInput = GetTrafficPolicyInstanceRequest;
-export type GetTrafficPolicyInstanceCommandOutput = GetTrafficPolicyInstanceResponse & __MetadataBearer;
+export interface GetTrafficPolicyInstanceCommandInput extends GetTrafficPolicyInstanceRequest {}
+export interface GetTrafficPolicyInstanceCommandOutput extends GetTrafficPolicyInstanceResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about a specified traffic policy instance.</p>
@@ -31,6 +31,20 @@ export type GetTrafficPolicyInstanceCommandOutput = GetTrafficPolicyInstanceResp
  * 		       <note>
  * 			         <p>In the Route 53 console, traffic policy instances are known as policy records.</p>
  * 		       </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, GetTrafficPolicyInstanceCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, GetTrafficPolicyInstanceCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new GetTrafficPolicyInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTrafficPolicyInstanceCommandInput} for command's `input` shape.
+ * @see {@link GetTrafficPolicyInstanceCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTrafficPolicyInstanceCommand extends $Command<
   GetTrafficPolicyInstanceCommandInput,

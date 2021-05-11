@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetThingRuntimeConfigurationCommandInput = GetThingRuntimeConfigurationRequest;
-export type GetThingRuntimeConfigurationCommandOutput = GetThingRuntimeConfigurationResponse & __MetadataBearer;
+export interface GetThingRuntimeConfigurationCommandInput extends GetThingRuntimeConfigurationRequest {}
+export interface GetThingRuntimeConfigurationCommandOutput
+  extends GetThingRuntimeConfigurationResponse,
+    __MetadataBearer {}
 
 /**
  * Get the runtime configuration of a thing.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, GetThingRuntimeConfigurationCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, GetThingRuntimeConfigurationCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new GetThingRuntimeConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetThingRuntimeConfigurationCommandInput} for command's `input` shape.
+ * @see {@link GetThingRuntimeConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetThingRuntimeConfigurationCommand extends $Command<
   GetThingRuntimeConfigurationCommandInput,

@@ -11,6 +11,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -42,6 +45,9 @@ export interface AutoScalingGroupConfiguration {
 }
 
 export namespace AutoScalingGroupConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingGroupConfiguration): any => ({
     ...obj,
   });
@@ -132,21 +138,17 @@ export interface UtilizationMetric {
 
   /**
    * <p>The statistic of the utilization metric.</p>
-   *         <p>The following statistics are available:</p>
-   *         <ul>
-   *             <li>
-   *                 <p>
-   *                   <code>Average</code> - This is the value of Sum / SampleCount during the
-   *                     specified period, or the average value observed during the specified
-   *                     period.</p>
-   *             </li>
-   *             <li>
-   *                 <p>
-   *                   <code>Maximum</code> - The highest value observed during the specified period.
-   *                     Use this value to determine high volumes of activity for your
-   *                     application.</p>
-   *             </li>
-   *          </ul>
+   *         <p>The Compute Optimizer API, AWS Command Line Interface (AWS CLI), and SDKs return utilization metrics using only the
+   *                 <code>Maximum</code> statistic, which is the highest value observed during the
+   *             specified period.</p>
+   *         <p>The Compute Optimizer console displays graphs for some utilization metrics using the
+   *                 <code>Average</code> statistic, which is the value of <code>Sum</code> /
+   *                 <code>SampleCount</code> during the specified period. For more information, see
+   *                 <a href="https://docs.aws.amazon.com/compute-optimizer/latest/ug/viewing-recommendations.html">Viewing resource
+   *                 recommendations</a> in the <i>AWS Compute Optimizer User Guide</i>. You can
+   *             also get averaged utilization metric data for your resources using Amazon CloudWatch. For more
+   *             information, see the <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html">Amazon CloudWatch User
+   *                 Guide</a>.</p>
    */
   statistic?: MetricStatistic | string;
 
@@ -157,6 +159,9 @@ export interface UtilizationMetric {
 }
 
 export namespace UtilizationMetric {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UtilizationMetric): any => ({
     ...obj,
   });
@@ -202,6 +207,9 @@ export interface AutoScalingGroupRecommendationOption {
 }
 
 export namespace AutoScalingGroupRecommendationOption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingGroupRecommendationOption): any => ({
     ...obj,
   });
@@ -280,6 +288,9 @@ export interface AutoScalingGroupRecommendation {
 }
 
 export namespace AutoScalingGroupRecommendation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingGroupRecommendation): any => ({
     ...obj,
   });
@@ -333,6 +344,9 @@ export interface JobFilter {
 }
 
 export namespace JobFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobFilter): any => ({
     ...obj,
   });
@@ -371,6 +385,9 @@ export interface DescribeRecommendationExportJobsRequest {
 }
 
 export namespace DescribeRecommendationExportJobsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRecommendationExportJobsRequest): any => ({
     ...obj,
   });
@@ -400,6 +417,9 @@ export interface S3Destination {
 }
 
 export namespace S3Destination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Destination): any => ({
     ...obj,
   });
@@ -417,6 +437,9 @@ export interface ExportDestination {
 }
 
 export namespace ExportDestination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportDestination): any => ({
     ...obj,
   });
@@ -484,6 +507,9 @@ export interface RecommendationExportJob {
 }
 
 export namespace RecommendationExportJob {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecommendationExportJob): any => ({
     ...obj,
   });
@@ -503,6 +529,9 @@ export interface DescribeRecommendationExportJobsResponse {
 }
 
 export namespace DescribeRecommendationExportJobsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRecommendationExportJobsResponse): any => ({
     ...obj,
   });
@@ -518,6 +547,9 @@ export interface InternalServerException extends __SmithyException, $MetadataBea
 }
 
 export namespace InternalServerException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerException): any => ({
     ...obj,
   });
@@ -533,6 +565,9 @@ export interface InvalidParameterValueException extends __SmithyException, $Meta
 }
 
 export namespace InvalidParameterValueException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidParameterValueException): any => ({
     ...obj,
   });
@@ -549,6 +584,9 @@ export interface MissingAuthenticationToken extends __SmithyException, $Metadata
 }
 
 export namespace MissingAuthenticationToken {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MissingAuthenticationToken): any => ({
     ...obj,
   });
@@ -564,6 +602,9 @@ export interface OptInRequiredException extends __SmithyException, $MetadataBear
 }
 
 export namespace OptInRequiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OptInRequiredException): any => ({
     ...obj,
   });
@@ -579,6 +620,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -594,6 +638,9 @@ export interface ServiceUnavailableException extends __SmithyException, $Metadat
 }
 
 export namespace ServiceUnavailableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceUnavailableException): any => ({
     ...obj,
   });
@@ -609,6 +656,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -711,6 +761,9 @@ export interface Filter {
 }
 
 export namespace Filter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Filter): any => ({
     ...obj,
   });
@@ -740,6 +793,9 @@ export interface S3DestinationConfig {
 }
 
 export namespace S3DestinationConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3DestinationConfig): any => ({
     ...obj,
   });
@@ -749,7 +805,7 @@ export interface ExportAutoScalingGroupRecommendationsRequest {
   /**
    * <p>The IDs of the AWS accounts for which to export Auto Scaling group recommendations.</p>
    *         <p>If your account is the management account of an organization, use this parameter to
-   *             specify the member accounts for which you want to export recommendations.</p>
+   *             specify the member account for which you want to export recommendations.</p>
    *         <p>This parameter cannot be specified together with the include member accounts
    *             parameter. The parameters are mutually exclusive.</p>
    *         <p>Recommendations for member accounts are not included in the export if this parameter,
@@ -804,6 +860,9 @@ export interface ExportAutoScalingGroupRecommendationsRequest {
 }
 
 export namespace ExportAutoScalingGroupRecommendationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportAutoScalingGroupRecommendationsRequest): any => ({
     ...obj,
   });
@@ -825,6 +884,9 @@ export interface ExportAutoScalingGroupRecommendationsResponse {
 }
 
 export namespace ExportAutoScalingGroupRecommendationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportAutoScalingGroupRecommendationsResponse): any => ({
     ...obj,
   });
@@ -840,6 +902,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -885,7 +950,7 @@ export interface ExportEC2InstanceRecommendationsRequest {
   /**
    * <p>The IDs of the AWS accounts for which to export instance recommendations.</p>
    *         <p>If your account is the management account of an organization, use this parameter to
-   *             specify the member accounts for which you want to export recommendations.</p>
+   *             specify the member account for which you want to export recommendations.</p>
    *         <p>This parameter cannot be specified together with the include member accounts
    *             parameter. The parameters are mutually exclusive.</p>
    *         <p>Recommendations for member accounts are not included in the export if this parameter,
@@ -938,6 +1003,9 @@ export interface ExportEC2InstanceRecommendationsRequest {
 }
 
 export namespace ExportEC2InstanceRecommendationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportEC2InstanceRecommendationsRequest): any => ({
     ...obj,
   });
@@ -959,6 +1027,9 @@ export interface ExportEC2InstanceRecommendationsResponse {
 }
 
 export namespace ExportEC2InstanceRecommendationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportEC2InstanceRecommendationsResponse): any => ({
     ...obj,
   });
@@ -966,9 +1037,9 @@ export namespace ExportEC2InstanceRecommendationsResponse {
 
 export interface GetAutoScalingGroupRecommendationsRequest {
   /**
-   * <p>The IDs of the AWS accounts for which to return Auto Scaling group recommendations.</p>
+   * <p>The ID of the AWS account for which to return Auto Scaling group recommendations.</p>
    *         <p>If your account is the management account of an organization, use this parameter to
-   *             specify the member accounts for which you want to return Auto Scaling group
+   *             specify the member account for which you want to return Auto Scaling group
    *             recommendations.</p>
    *         <p>Only one account ID can be specified per request.</p>
    */
@@ -1001,6 +1072,9 @@ export interface GetAutoScalingGroupRecommendationsRequest {
 }
 
 export namespace GetAutoScalingGroupRecommendationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAutoScalingGroupRecommendationsRequest): any => ({
     ...obj,
   });
@@ -1030,6 +1104,9 @@ export interface GetRecommendationError {
 }
 
 export namespace GetRecommendationError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRecommendationError): any => ({
     ...obj,
   });
@@ -1057,6 +1134,9 @@ export interface GetAutoScalingGroupRecommendationsResponse {
 }
 
 export namespace GetAutoScalingGroupRecommendationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAutoScalingGroupRecommendationsResponse): any => ({
     ...obj,
   });
@@ -1090,6 +1170,9 @@ export interface EBSFilter {
 }
 
 export namespace EBSFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EBSFilter): any => ({
     ...obj,
   });
@@ -1121,15 +1204,18 @@ export interface GetEBSVolumeRecommendationsRequest {
   filters?: EBSFilter[];
 
   /**
-   * <p>The IDs of the AWS accounts for which to return volume recommendations.</p>
+   * <p>The ID of the AWS account for which to return volume recommendations.</p>
    *         <p>If your account is the management account of an organization, use this parameter to
-   *             specify the member accounts for which you want to return volume recommendations.</p>
+   *             specify the member account for which you want to return volume recommendations.</p>
    *         <p>Only one account ID can be specified per request.</p>
    */
   accountIds?: string[];
 }
 
 export namespace GetEBSVolumeRecommendationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetEBSVolumeRecommendationsRequest): any => ({
     ...obj,
   });
@@ -1175,6 +1261,9 @@ export interface VolumeConfiguration {
 }
 
 export namespace VolumeConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VolumeConfiguration): any => ({
     ...obj,
   });
@@ -1234,21 +1323,17 @@ export interface EBSUtilizationMetric {
 
   /**
    * <p>The statistic of the utilization metric.</p>
-   *         <p>The following statistics are available:</p>
-   *         <ul>
-   *             <li>
-   *                 <p>
-   *                   <code>Average</code> - This is the value of Sum / SampleCount during the
-   *                     specified period, or the average value observed during the specified
-   *                     period.</p>
-   *             </li>
-   *             <li>
-   *                 <p>
-   *                   <code>Maximum</code> - The highest value observed during the specified period.
-   *                     Use this value to determine high volumes of activity for your
-   *                     application.</p>
-   *             </li>
-   *          </ul>
+   *         <p>The Compute Optimizer API, AWS Command Line Interface (AWS CLI), and SDKs return utilization metrics using only the
+   *                 <code>Maximum</code> statistic, which is the highest value observed during the
+   *             specified period.</p>
+   *         <p>The Compute Optimizer console displays graphs for some utilization metrics using the
+   *                 <code>Average</code> statistic, which is the value of <code>Sum</code> /
+   *                 <code>SampleCount</code> during the specified period. For more information, see
+   *                 <a href="https://docs.aws.amazon.com/compute-optimizer/latest/ug/viewing-recommendations.html">Viewing resource
+   *                 recommendations</a> in the <i>AWS Compute Optimizer User Guide</i>. You can
+   *             also get averaged utilization metric data for your resources using Amazon CloudWatch. For more
+   *             information, see the <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html">Amazon CloudWatch User
+   *                 Guide</a>.</p>
    */
   statistic?: MetricStatistic | string;
 
@@ -1259,6 +1344,9 @@ export interface EBSUtilizationMetric {
 }
 
 export namespace EBSUtilizationMetric {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EBSUtilizationMetric): any => ({
     ...obj,
   });
@@ -1290,6 +1378,9 @@ export interface VolumeRecommendationOption {
 }
 
 export namespace VolumeRecommendationOption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VolumeRecommendationOption): any => ({
     ...obj,
   });
@@ -1363,6 +1454,9 @@ export interface VolumeRecommendation {
 }
 
 export namespace VolumeRecommendation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VolumeRecommendation): any => ({
     ...obj,
   });
@@ -1390,6 +1484,9 @@ export interface GetEBSVolumeRecommendationsResponse {
 }
 
 export namespace GetEBSVolumeRecommendationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetEBSVolumeRecommendationsResponse): any => ({
     ...obj,
   });
@@ -1421,16 +1518,18 @@ export interface GetEC2InstanceRecommendationsRequest {
   filters?: Filter[];
 
   /**
-   * <p>The IDs of the AWS accounts for which to return instance recommendations.</p>
+   * <p>The ID of the AWS account for which to return instance recommendations.</p>
    *         <p>If your account is the management account of an organization, use this parameter to
-   *             specify the member accounts for which you want to return instance
-   *             recommendations.</p>
+   *             specify the member account for which you want to return instance recommendations.</p>
    *         <p>Only one account ID can be specified per request.</p>
    */
   accountIds?: string[];
 }
 
 export namespace GetEC2InstanceRecommendationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetEC2InstanceRecommendationsRequest): any => ({
     ...obj,
   });
@@ -1476,6 +1575,9 @@ export interface InstanceRecommendationOption {
 }
 
 export namespace InstanceRecommendationOption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceRecommendationOption): any => ({
     ...obj,
   });
@@ -1485,6 +1587,7 @@ export enum RecommendationSourceType {
   AUTO_SCALING_GROUP = "AutoScalingGroup",
   EBS_VOLUME = "EbsVolume",
   EC2_INSTANCE = "Ec2Instance",
+  LAMBDA_FUNCTION = "LambdaFunction",
 }
 
 /**
@@ -1504,6 +1607,9 @@ export interface RecommendationSource {
 }
 
 export namespace RecommendationSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecommendationSource): any => ({
     ...obj,
   });
@@ -1601,6 +1707,9 @@ export interface InstanceRecommendation {
 }
 
 export namespace InstanceRecommendation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceRecommendation): any => ({
     ...obj,
   });
@@ -1628,6 +1737,9 @@ export interface GetEC2InstanceRecommendationsResponse {
 }
 
 export namespace GetEC2InstanceRecommendationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetEC2InstanceRecommendationsResponse): any => ({
     ...obj,
   });
@@ -1662,6 +1774,9 @@ export interface GetEC2RecommendationProjectedMetricsRequest {
 }
 
 export namespace GetEC2RecommendationProjectedMetricsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetEC2RecommendationProjectedMetricsRequest): any => ({
     ...obj,
   });
@@ -1730,6 +1845,9 @@ export interface ProjectedMetric {
 }
 
 export namespace ProjectedMetric {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProjectedMetric): any => ({
     ...obj,
   });
@@ -1769,6 +1887,9 @@ export interface RecommendedOptionProjectedMetric {
 }
 
 export namespace RecommendedOptionProjectedMetric {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecommendedOptionProjectedMetric): any => ({
     ...obj,
   });
@@ -1782,6 +1903,9 @@ export interface GetEC2RecommendationProjectedMetricsResponse {
 }
 
 export namespace GetEC2RecommendationProjectedMetricsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetEC2RecommendationProjectedMetricsResponse): any => ({
     ...obj,
   });
@@ -1790,6 +1914,9 @@ export namespace GetEC2RecommendationProjectedMetricsResponse {
 export interface GetEnrollmentStatusRequest {}
 
 export namespace GetEnrollmentStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetEnrollmentStatusRequest): any => ({
     ...obj,
   });
@@ -1823,17 +1950,458 @@ export interface GetEnrollmentStatusResponse {
 }
 
 export namespace GetEnrollmentStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetEnrollmentStatusResponse): any => ({
+    ...obj,
+  });
+}
+
+export enum LambdaFunctionRecommendationFilterName {
+  FINDING = "Finding",
+  FINDING_REASON_CODE = "FindingReasonCode",
+}
+
+/**
+ * <p>Describes a filter that returns a more specific list of AWS Lambda function
+ *             recommendations.</p>
+ */
+export interface LambdaFunctionRecommendationFilter {
+  /**
+   * <p>The name of the filter.</p>
+   *
+   *         <p>Specify <code>Finding</code> to return recommendations with a specific finding
+   *             classification (e.g., <code>NotOptimized</code>).</p>
+   *
+   *         <p>Specify <code>FindingReasonCode</code> to return recommendations with a specific
+   *             finding reason code (e.g., <code>MemoryUnderprovisioned</code>).</p>
+   */
+  name?: LambdaFunctionRecommendationFilterName | string;
+
+  /**
+   * <p>The value of the filter.</p>
+   *
+   *         <p>The valid values for this parameter are as follows, depending on what you specify for
+   *             the <code>name</code> parameter:</p>
+   *
+   *         <ul>
+   *             <li>
+   *                 <p>Specify <code>Optimized</code>, <code>NotOptimized</code>, or
+   *                         <code>Unavailable</code> if you specified the <code>name</code> parameter as
+   *                         <code>Finding</code>.</p>
+   *             </li>
+   *             <li>
+   *                 <p>Specify <code>MemoryOverprovisioned</code>,
+   *                         <code>MemoryUnderprovisioned</code>, <code>InsufficientData</code>, or
+   *                         <code>Inconclusive</code> if you specified the <code>name</code> parameter
+   *                     as <code>FindingReasonCode</code>.</p>
+   *             </li>
+   *          </ul>
+   */
+  values?: string[];
+}
+
+export namespace LambdaFunctionRecommendationFilter {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: LambdaFunctionRecommendationFilter): any => ({
+    ...obj,
+  });
+}
+
+export interface GetLambdaFunctionRecommendationsRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the functions for which to return
+   *             recommendations.</p>
+   *
+   *         <p>You can specify a qualified or unqualified ARN. If you specify an unqualified ARN
+   *             without a function version suffix, Compute Optimizer will return recommendations for the latest
+   *                 (<code>$LATEST</code>) version of the function. If you specify a qualified ARN with
+   *             a version suffix, Compute Optimizer will return recommendations for the specified function version.
+   *             For more information about using function versions, see <a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html#versioning-versions-using">Using
+   *                 versions</a> in the <i>AWS Lambda Developer Guide</i>.</p>
+   */
+  functionArns?: string[];
+
+  /**
+   * <p>The ID of the AWS account for which to return function recommendations.</p>
+   *
+   *         <p>If your account is the management account of an organization, use this parameter to
+   *             specify the member account for which you want to return function recommendations.</p>
+   *
+   *         <p>Only one account ID can be specified per request.</p>
+   */
+  accountIds?: string[];
+
+  /**
+   * <p>An array of objects that describe a filter that returns a more specific list of
+   *             function recommendations.</p>
+   */
+  filters?: LambdaFunctionRecommendationFilter[];
+
+  /**
+   * <p>The token to advance to the next page of function recommendations.</p>
+   */
+  nextToken?: string;
+
+  /**
+   * <p>The maximum number of function recommendations to return with a single request.</p>
+   *
+   *         <p>To retrieve the remaining results, make another request with the returned
+   *                 <code>NextToken</code> value.</p>
+   */
+  maxResults?: number;
+}
+
+export namespace GetLambdaFunctionRecommendationsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetLambdaFunctionRecommendationsRequest): any => ({
+    ...obj,
+  });
+}
+
+export enum LambdaFunctionRecommendationFinding {
+  NOT_OPTIMIZED = "NotOptimized",
+  OPTIMIZED = "Optimized",
+  UNAVAILABLE = "Unavailable",
+}
+
+export enum LambdaFunctionRecommendationFindingReasonCode {
+  INCONCLUSIVE = "Inconclusive",
+  INSUFFICIENT_DATA = "InsufficientData",
+  MEMORY_OVER_PROVISIONED = "MemoryOverprovisioned",
+  MEMORY_UNDER_PROVISIONED = "MemoryUnderprovisioned",
+}
+
+export enum LambdaFunctionMemoryMetricName {
+  DURATION = "Duration",
+}
+
+export enum LambdaFunctionMemoryMetricStatistic {
+  EXPECTED = "Expected",
+  LOWER_BOUND = "LowerBound",
+  UPPER_BOUND = "UpperBound",
+}
+
+/**
+ * <p>Describes a projected utilization metric of an AWS Lambda function recommendation
+ *             option.</p>
+ */
+export interface LambdaFunctionMemoryProjectedMetric {
+  /**
+   * <p>The name of the projected utilization metric.</p>
+   */
+  name?: LambdaFunctionMemoryMetricName | string;
+
+  /**
+   * <p>The statistic of the projected utilization metric.</p>
+   */
+  statistic?: LambdaFunctionMemoryMetricStatistic | string;
+
+  /**
+   * <p>The values of the projected utilization metrics.</p>
+   */
+  value?: number;
+}
+
+export namespace LambdaFunctionMemoryProjectedMetric {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: LambdaFunctionMemoryProjectedMetric): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Describes a recommendation option for an AWS Lambda function.</p>
+ */
+export interface LambdaFunctionMemoryRecommendationOption {
+  /**
+   * <p>The rank of the function recommendation option.</p>
+   *
+   *         <p>The top recommendation option is ranked as <code>1</code>.</p>
+   */
+  rank?: number;
+
+  /**
+   * <p>The memory size, in MB, of the function recommendation option.</p>
+   */
+  memorySize?: number;
+
+  /**
+   * <p>An array of objects that describe the projected utilization metrics of the function
+   *             recommendation option.</p>
+   */
+  projectedUtilizationMetrics?: LambdaFunctionMemoryProjectedMetric[];
+}
+
+export namespace LambdaFunctionMemoryRecommendationOption {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: LambdaFunctionMemoryRecommendationOption): any => ({
+    ...obj,
+  });
+}
+
+export enum LambdaFunctionMetricName {
+  DURATION = "Duration",
+  MEMORY = "Memory",
+}
+
+export enum LambdaFunctionMetricStatistic {
+  AVERAGE = "Average",
+  MAXIMUM = "Maximum",
+}
+
+/**
+ * <p>Describes a utilization metric of an AWS Lambda function.</p>
+ */
+export interface LambdaFunctionUtilizationMetric {
+  /**
+   * <p>The name of the utilization metric.</p>
+   *         <p>The following utilization metrics are available:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                   <code>Duration</code> - The amount of time that your function code spends
+   *                     processing an event.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>Memory</code> - The amount of memory used per invocation.</p>
+   *             </li>
+   *          </ul>
+   */
+  name?: LambdaFunctionMetricName | string;
+
+  /**
+   * <p>The statistic of the utilization metric.</p>
+   *         <p>The Compute Optimizer API, AWS Command Line Interface (AWS CLI), and SDKs return utilization metrics using only the
+   *                 <code>Maximum</code> statistic, which is the highest value observed during the
+   *             specified period.</p>
+   *         <p>The Compute Optimizer console displays graphs for some utilization metrics using the
+   *                 <code>Average</code> statistic, which is the value of <code>Sum</code> /
+   *                 <code>SampleCount</code> during the specified period. For more information, see
+   *                 <a href="https://docs.aws.amazon.com/compute-optimizer/latest/ug/viewing-recommendations.html">Viewing resource
+   *                 recommendations</a> in the <i>AWS Compute Optimizer User Guide</i>. You can
+   *             also get averaged utilization metric data for your resources using Amazon CloudWatch. For more
+   *             information, see the <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html">Amazon CloudWatch User
+   *                 Guide</a>.</p>
+   */
+  statistic?: LambdaFunctionMetricStatistic | string;
+
+  /**
+   * <p>The value of the utilization metric.</p>
+   */
+  value?: number;
+}
+
+export namespace LambdaFunctionUtilizationMetric {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: LambdaFunctionUtilizationMetric): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Describes an AWS Lambda function recommendation.</p>
+ */
+export interface LambdaFunctionRecommendation {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the current function.</p>
+   */
+  functionArn?: string;
+
+  /**
+   * <p>The version number of the current function.</p>
+   */
+  functionVersion?: string;
+
+  /**
+   * <p>The AWS account ID of the function.</p>
+   */
+  accountId?: string;
+
+  /**
+   * <p>The amount of memory, in MB, that's allocated to the current function.</p>
+   */
+  currentMemorySize?: number;
+
+  /**
+   * <p>The number of times your function code was executed during the look-back
+   *             period.</p>
+   */
+  numberOfInvocations?: number;
+
+  /**
+   * <p>An array of objects that describe the utilization metrics of the function.</p>
+   */
+  utilizationMetrics?: LambdaFunctionUtilizationMetric[];
+
+  /**
+   * <p>The number of days for which utilization metrics were analyzed for the
+   *             function.</p>
+   */
+  lookbackPeriodInDays?: number;
+
+  /**
+   * <p>The time stamp of when the function recommendation was last refreshed.</p>
+   */
+  lastRefreshTimestamp?: Date;
+
+  /**
+   * <p>The finding classification for the function.</p>
+   *         <p>Findings for functions include:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                   <b>
+   *                      <code>Optimized</code>
+   *                   </b> — The function is
+   *                     correctly provisioned to run your workload based on its current configuration
+   *                     and its utilization history. This finding classification does not include
+   *                     finding reason codes.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <b>
+   *                      <code>NotOptimized</code>
+   *                   </b> — The function is
+   *                     performing at a higher level (over-provisioned) or at a lower level
+   *                     (under-provisioned) than required for your workload because its current
+   *                     configuration is not optimal. Over-provisioned resources might lead to
+   *                     unnecessary infrastructure cost, and under-provisioned resources might lead to
+   *                     poor application performance. This finding classification can include the
+   *                         <code>MemoryUnderprovisioned</code> and <code>MemoryUnderprovisioned</code>
+   *                     finding reason codes.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <b>
+   *                      <code>Unavailable</code>
+   *                   </b> — Compute Optimizer was unable to
+   *                     generate a recommendation for the function. This could be because the function
+   *                     has not accumulated sufficient metric data, or the function does not qualify for
+   *                     a recommendation. This finding classification can include the
+   *                         <code>InsufficientData</code> and <code>Inconclusive</code> finding reason
+   *                     codes.</p>
+   *                 <note>
+   *                     <p>Functions with a finding of unavailable are not returned unless you
+   *                         specify the <code>filter</code> parameter with a value of
+   *                             <code>Unavailable</code> in your
+   *                             <code>GetLambdaFunctionRecommendations</code> request.</p>
+   *                 </note>
+   *             </li>
+   *          </ul>
+   */
+  finding?: LambdaFunctionRecommendationFinding | string;
+
+  /**
+   * <p>The reason for the finding classification of the function.</p>
+   *         <note>
+   *             <p>Functions that have a finding classification of <code>Optimized</code> don't have
+   *                 a finding reason code.</p>
+   *         </note>
+   *         <p>Reason codes include:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                   <b>
+   *                      <code>MemoryOverprovisioned</code>
+   *                   </b> — The
+   *                     function is over-provisioned when its memory configuration can be sized down
+   *                     while still meeting the performance requirements of your workload. An
+   *                     over-provisioned function might lead to unnecessary infrastructure cost. This
+   *                     finding reason code is part of the <code>NotOptimized</code> finding
+   *                     classification.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <b>
+   *                      <code>MemoryUnderprovisioned</code>
+   *                   </b> — The
+   *                     function is under-provisioned when its memory configuration doesn't meet the
+   *                     performance requirements of the workload. An under-provisioned function might
+   *                     lead to poor application performance. This finding reason code is part of the
+   *                         <code>NotOptimized</code> finding classification.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <b>
+   *                      <code>InsufficientData</code>
+   *                   </b> — The function
+   *                     does not have sufficient metric data for Compute Optimizer to generate a recommendation. For
+   *                     more information, see the <a href="https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html">Supported resources and
+   *                         requirements</a> in the <i>AWS Compute Optimizer User Guide</i>. This
+   *                     finding reason code is part of the <code>Unavailable</code> finding
+   *                     classification.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <b>
+   *                      <code>Inconclusive</code>
+   *                   </b> — The function does
+   *                     not qualify for a recommendation because Compute Optimizer cannot generate a recommendation
+   *                     with a high degree of confidence. This finding reason code is part of the
+   *                         <code>Unavailable</code> finding classification.</p>
+   *             </li>
+   *          </ul>
+   */
+  findingReasonCodes?: (LambdaFunctionRecommendationFindingReasonCode | string)[];
+
+  /**
+   * <p>An array of objects that describe the memory configuration recommendation options for
+   *             the function.</p>
+   */
+  memorySizeRecommendationOptions?: LambdaFunctionMemoryRecommendationOption[];
+}
+
+export namespace LambdaFunctionRecommendation {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: LambdaFunctionRecommendation): any => ({
+    ...obj,
+  });
+}
+
+export interface GetLambdaFunctionRecommendationsResponse {
+  /**
+   * <p>The token to use to advance to the next page of function recommendations.</p>
+   *
+   *         <p>This value is null when there are no more pages of function recommendations to
+   *             return.</p>
+   */
+  nextToken?: string;
+
+  /**
+   * <p>An array of objects that describe function recommendations.</p>
+   */
+  lambdaFunctionRecommendations?: LambdaFunctionRecommendation[];
+}
+
+export namespace GetLambdaFunctionRecommendationsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetLambdaFunctionRecommendationsResponse): any => ({
     ...obj,
   });
 }
 
 export interface GetRecommendationSummariesRequest {
   /**
-   * <p>The IDs of the AWS accounts for which to return recommendation summaries.</p>
+   * <p>The ID of the AWS account for which to return recommendation summaries.</p>
    *         <p>If your account is the management account of an organization, use this parameter to
-   *             specify the member accounts for which you want to return recommendation
-   *             summaries.</p>
+   *             specify the member account for which you want to return recommendation summaries.</p>
    *         <p>Only one account ID can be specified per request.</p>
    */
   accountIds?: string[];
@@ -1852,7 +2420,39 @@ export interface GetRecommendationSummariesRequest {
 }
 
 export namespace GetRecommendationSummariesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRecommendationSummariesRequest): any => ({
+    ...obj,
+  });
+}
+
+export enum FindingReasonCode {
+  MEMORY_OVER_PROVISIONED = "MemoryOverprovisioned",
+  MEMORY_UNDER_PROVISIONED = "MemoryUnderprovisioned",
+}
+
+/**
+ * <p>A summary of a finding reason code.</p>
+ */
+export interface ReasonCodeSummary {
+  /**
+   * <p>The name of the finding reason code.</p>
+   */
+  name?: FindingReasonCode | string;
+
+  /**
+   * <p>The value of the finding reason code summary.</p>
+   */
+  value?: number;
+}
+
+export namespace ReasonCodeSummary {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReasonCodeSummary): any => ({
     ...obj,
   });
 }
@@ -1870,9 +2470,17 @@ export interface Summary {
    * <p>The value of the recommendation summary.</p>
    */
   value?: number;
+
+  /**
+   * <p>An array of objects that summarize a finding reason code.</p>
+   */
+  reasonCodeSummaries?: ReasonCodeSummary[];
 }
 
 export namespace Summary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Summary): any => ({
     ...obj,
   });
@@ -1899,6 +2507,9 @@ export interface RecommendationSummary {
 }
 
 export namespace RecommendationSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecommendationSummary): any => ({
     ...obj,
   });
@@ -1919,6 +2530,9 @@ export interface GetRecommendationSummariesResponse {
 }
 
 export namespace GetRecommendationSummariesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRecommendationSummariesResponse): any => ({
     ...obj,
   });
@@ -1927,19 +2541,41 @@ export namespace GetRecommendationSummariesResponse {
 export interface UpdateEnrollmentStatusRequest {
   /**
    * <p>The new enrollment status of the account.</p>
-   *         <p>Accepted options are <code>Active</code> or <code>Inactive</code>. You will get an
-   *             error if <code>Pending</code> or <code>Failed</code> are specified.</p>
+   *         <p>The following status options are available:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>
+   *                   <code>Active</code> - Opts in your account to the Compute Optimizer service. Compute Optimizer begins
+   *                     analyzing the configuration and utilization metrics of your AWS resources
+   *                     after you opt in. For more information, see <a href="https://docs.aws.amazon.com/compute-optimizer/ug/metrics.html">Metrics analyzed by AWS Compute Optimizer</a>
+   *                     in the <i>Compute Optimizer User Guide</i>.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>Inactive</code> - Opts out your account from the Compute Optimizer service. Your
+   *                     account's recommendations and related metrics data will be deleted from Compute Optimizer
+   *                     after you opt out.</p>
+   *             </li>
+   *          </ul>
+   *         <note>
+   *             <p>The <code>Pending</code> and <code>Failed</code> options cannot be used to update
+   *                 the enrollment status of an account. They are returned in the response of a request
+   *                 to update the enrollment status of an account.</p>
+   *         </note>
    */
   status: Status | string | undefined;
 
   /**
-   * <p>Indicates whether to enroll member accounts of the organization if the your account is
-   *             the management account of an organization.</p>
+   * <p>Indicates whether to enroll member accounts of the organization if the account is the
+   *             management account of an organization.</p>
    */
   includeMemberAccounts?: boolean;
 }
 
 export namespace UpdateEnrollmentStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateEnrollmentStatusRequest): any => ({
     ...obj,
   });
@@ -1960,6 +2596,9 @@ export interface UpdateEnrollmentStatusResponse {
 }
 
 export namespace UpdateEnrollmentStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateEnrollmentStatusResponse): any => ({
     ...obj,
   });

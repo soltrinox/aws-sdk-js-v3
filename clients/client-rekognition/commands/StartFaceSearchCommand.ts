@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartFaceSearchCommandInput = StartFaceSearchRequest;
-export type StartFaceSearchCommandOutput = StartFaceSearchResponse & __MetadataBearer;
+export interface StartFaceSearchCommandInput extends StartFaceSearchRequest {}
+export interface StartFaceSearchCommandOutput extends StartFaceSearchResponse, __MetadataBearer {}
 
 /**
  * <p>Starts the asynchronous search for faces in a collection that match the faces of persons detected in a stored video.</p>
@@ -31,6 +31,20 @@ export type StartFaceSearchCommandOutput = StartFaceSearchResponse & __MetadataB
  *       topic is <code>SUCCEEDED</code>. If so, call <a>GetFaceSearch</a> and pass the job identifier
  *       (<code>JobId</code>) from the initial call to <code>StartFaceSearch</code>. For more information, see
  *       <a>procedure-person-search-videos</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, StartFaceSearchCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, StartFaceSearchCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new StartFaceSearchCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartFaceSearchCommandInput} for command's `input` shape.
+ * @see {@link StartFaceSearchCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartFaceSearchCommand extends $Command<
   StartFaceSearchCommandInput,

@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SetSMBGuestPasswordCommandInput = SetSMBGuestPasswordInput;
-export type SetSMBGuestPasswordCommandOutput = SetSMBGuestPasswordOutput & __MetadataBearer;
+export interface SetSMBGuestPasswordCommandInput extends SetSMBGuestPasswordInput {}
+export interface SetSMBGuestPasswordCommandOutput extends SetSMBGuestPasswordOutput, __MetadataBearer {}
 
 /**
  * <p>Sets the password for the guest user <code>smbguest</code>. The <code>smbguest</code>
  *          user is the user when the authentication method for the file share is set to
  *             <code>GuestAccess</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, SetSMBGuestPasswordCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, SetSMBGuestPasswordCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new SetSMBGuestPasswordCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SetSMBGuestPasswordCommandInput} for command's `input` shape.
+ * @see {@link SetSMBGuestPasswordCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SetSMBGuestPasswordCommand extends $Command<
   SetSMBGuestPasswordCommandInput,

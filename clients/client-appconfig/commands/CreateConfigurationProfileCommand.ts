@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateConfigurationProfileCommandInput = CreateConfigurationProfileRequest;
-export type CreateConfigurationProfileCommandOutput = ConfigurationProfile & __MetadataBearer;
+export interface CreateConfigurationProfileCommandInput extends CreateConfigurationProfileRequest {}
+export interface CreateConfigurationProfileCommandOutput extends ConfigurationProfile, __MetadataBearer {}
 
 /**
  * <p>Information that enables AppConfig to access the configuration source. Valid
@@ -39,6 +39,20 @@ export type CreateConfigurationProfileCommandOutput = ConfigurationProfile & __M
  *          <p>For more information, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-creating-configuration-and-profile.html">Create a
  *             Configuration and a Configuration Profile</a> in the
  *             <i>AWS AppConfig User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppConfigClient, CreateConfigurationProfileCommand } from "@aws-sdk/client-appconfig"; // ES Modules import
+ * // const { AppConfigClient, CreateConfigurationProfileCommand } = require("@aws-sdk/client-appconfig"); // CommonJS import
+ * const client = new AppConfigClient(config);
+ * const command = new CreateConfigurationProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateConfigurationProfileCommandInput} for command's `input` shape.
+ * @see {@link CreateConfigurationProfileCommandOutput} for command's `response` shape.
+ * @see {@link AppConfigClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateConfigurationProfileCommand extends $Command<
   CreateConfigurationProfileCommandInput,

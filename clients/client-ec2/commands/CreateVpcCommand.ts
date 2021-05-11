@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateVpcCommandInput = CreateVpcRequest;
-export type CreateVpcCommandOutput = CreateVpcResult & __MetadataBearer;
+export interface CreateVpcCommandInput extends CreateVpcRequest {}
+export interface CreateVpcCommandOutput extends CreateVpcResult, __MetadataBearer {}
 
 /**
  * <p>Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you can create
@@ -29,6 +29,20 @@ export type CreateVpcCommandOutput = CreateVpcResult & __MetadataBearer;
  *          <p>You can specify the instance tenancy value for the VPC when you create it. You can't change
  *       this value for the VPC after you create it. For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html">Dedicated Instances</a> in the
  *           <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, CreateVpcCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, CreateVpcCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new CreateVpcCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateVpcCommandInput} for command's `input` shape.
+ * @see {@link CreateVpcCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateVpcCommand extends $Command<CreateVpcCommandInput, CreateVpcCommandOutput, EC2ClientResolvedConfig> {
   // Start section: command_properties

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeInstancesCommandInput = DescribeInstancesRequest;
-export type DescribeInstancesCommandOutput = DescribeInstancesResult & __MetadataBearer;
+export interface DescribeInstancesCommandInput extends DescribeInstancesRequest {}
+export interface DescribeInstancesCommandOutput extends DescribeInstancesResult, __MetadataBearer {}
 
 /**
  * <p>Describes the specified instances or all instances.</p>
@@ -36,6 +36,20 @@ export type DescribeInstancesCommandOutput = DescribeInstancesResult & __Metadat
  *             not specify any instance IDs at all, the call fails. If you describe instances and
  *             specify only instance IDs that are in an unaffected zone, the call works
  *             normally.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeInstancesCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeInstancesCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeInstancesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeInstancesCommandInput} for command's `input` shape.
+ * @see {@link DescribeInstancesCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeInstancesCommand extends $Command<
   DescribeInstancesCommandInput,

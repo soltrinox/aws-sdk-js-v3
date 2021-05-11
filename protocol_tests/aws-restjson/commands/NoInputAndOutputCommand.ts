@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type NoInputAndOutputCommandInput = {};
-export type NoInputAndOutputCommandOutput = NoInputAndOutputOutput & __MetadataBearer;
+export interface NoInputAndOutputCommandInput {}
+export interface NoInputAndOutputCommandOutput extends NoInputAndOutputOutput, __MetadataBearer {}
 
 /**
  * The example tests how requests and responses are serialized when there's
  * no request or response payload because the operation has no input and the
  * output is empty. While this should be rare, code generators must support
  * this.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestJsonProtocolClient, NoInputAndOutputCommand } from "@aws-sdk/aws-restjson"; // ES Modules import
+ * // const { RestJsonProtocolClient, NoInputAndOutputCommand } = require("@aws-sdk/aws-restjson"); // CommonJS import
+ * const client = new RestJsonProtocolClient(config);
+ * const command = new NoInputAndOutputCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link NoInputAndOutputCommandInput} for command's `input` shape.
+ * @see {@link NoInputAndOutputCommandOutput} for command's `response` shape.
+ * @see {@link RestJsonProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class NoInputAndOutputCommand extends $Command<
   NoInputAndOutputCommandInput,

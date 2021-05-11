@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRecommendationsCommandInput = GetRecommendationsRequest;
-export type GetRecommendationsCommandOutput = GetRecommendationsResponse & __MetadataBearer;
+export interface GetRecommendationsCommandInput extends GetRecommendationsRequest {}
+export interface GetRecommendationsCommandOutput extends GetRecommendationsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of recommended items. The required input depends on the recipe type used to
@@ -40,6 +40,20 @@ export type GetRecommendationsCommandOutput = GetRecommendationsResponse & __Met
  *             <p>Campaigns that are backed by a solution created using a recipe of type
  *         PERSONALIZED_RANKING use the  API.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PersonalizeRuntimeClient, GetRecommendationsCommand } from "@aws-sdk/client-personalize-runtime"; // ES Modules import
+ * // const { PersonalizeRuntimeClient, GetRecommendationsCommand } = require("@aws-sdk/client-personalize-runtime"); // CommonJS import
+ * const client = new PersonalizeRuntimeClient(config);
+ * const command = new GetRecommendationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRecommendationsCommandInput} for command's `input` shape.
+ * @see {@link GetRecommendationsCommandOutput} for command's `response` shape.
+ * @see {@link PersonalizeRuntimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRecommendationsCommand extends $Command<
   GetRecommendationsCommandInput,

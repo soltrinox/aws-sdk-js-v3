@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDatasetContentsCommandInput = ListDatasetContentsRequest;
-export type ListDatasetContentsCommandOutput = ListDatasetContentsResponse & __MetadataBearer;
+export interface ListDatasetContentsCommandInput extends ListDatasetContentsRequest {}
+export interface ListDatasetContentsCommandOutput extends ListDatasetContentsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists information about data set contents that have been created.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTAnalyticsClient, ListDatasetContentsCommand } from "@aws-sdk/client-iotanalytics"; // ES Modules import
+ * // const { IoTAnalyticsClient, ListDatasetContentsCommand } = require("@aws-sdk/client-iotanalytics"); // CommonJS import
+ * const client = new IoTAnalyticsClient(config);
+ * const command = new ListDatasetContentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDatasetContentsCommandInput} for command's `input` shape.
+ * @see {@link ListDatasetContentsCommandOutput} for command's `response` shape.
+ * @see {@link IoTAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDatasetContentsCommand extends $Command<
   ListDatasetContentsCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeInputDeviceCommandInput = DescribeInputDeviceRequest;
-export type DescribeInputDeviceCommandOutput = DescribeInputDeviceResponse & __MetadataBearer;
+export interface DescribeInputDeviceCommandInput extends DescribeInputDeviceRequest {}
+export interface DescribeInputDeviceCommandOutput extends DescribeInputDeviceResponse, __MetadataBearer {}
 
 /**
  * Gets the details for the input device
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, DescribeInputDeviceCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, DescribeInputDeviceCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new DescribeInputDeviceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeInputDeviceCommandInput} for command's `input` shape.
+ * @see {@link DescribeInputDeviceCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeInputDeviceCommand extends $Command<
   DescribeInputDeviceCommandInput,

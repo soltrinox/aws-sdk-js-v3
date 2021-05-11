@@ -20,13 +20,12 @@ export interface AccessDetail {
 
   /**
    * <p>The namespace of the service in which access was attempted.</p>
-   *          <p>To learn the service namespace of a service, go to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html">Actions,
-   *             Resources, and Condition Keys for AWS Services</a> in the
-   *             <i>IAM User Guide</i>. Choose the name of the service to view details
-   *          for that service. In the first paragraph, find the service prefix. For example,
-   *             <code>(service prefix: a4b)</code>. For more information about service namespaces, see
-   *             <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *          <p>To learn the service namespace of a service, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html">Actions, resources, and condition keys for AWS services</a> in the
+   *             <i>Service Authorization Reference</i>. Choose the name of the service to
+   *          view details for that service. In the first paragraph, find the service prefix. For
+   *          example, <code>(service prefix: a4b)</code>. For more information about service namespaces,
+   *          see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
+   *             service namespaces</a> in the <i>AWS General Reference</i>.</p>
    */
   ServiceNamespace: string | undefined;
 
@@ -63,6 +62,9 @@ export interface AccessDetail {
 }
 
 export namespace AccessDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDetail): any => ({
     ...obj,
   });
@@ -109,6 +111,9 @@ export interface AccessKey {
 }
 
 export namespace AccessKey {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessKey): any => ({
     ...obj,
     ...(obj.SecretAccessKey && { SecretAccessKey: SENSITIVE_STRING }),
@@ -173,13 +178,16 @@ export interface AccessKeyLastUsed {
    *                <p>There is no sign-in data associated with the user.</p>
    *             </li>
    *          </ul>
-   *          <p>For more information about AWS Regions, see <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and Endpoints</a> in the Amazon Web Services
+   *          <p>For more information about AWS Regions, see <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html">Regions and endpoints</a> in the Amazon Web Services
    *          General Reference.</p>
    */
   Region: string | undefined;
 }
 
 export namespace AccessKeyLastUsed {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessKeyLastUsed): any => ({
     ...obj,
   });
@@ -214,6 +222,9 @@ export interface AccessKeyMetadata {
 }
 
 export namespace AccessKeyMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessKeyMetadata): any => ({
     ...obj,
   });
@@ -222,18 +233,21 @@ export namespace AccessKeyMetadata {
 export interface AddClientIDToOpenIDConnectProviderRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC) provider resource to
-   *          add the client ID to. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p>
+   *             add the client ID to. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p>
    */
   OpenIDConnectProviderArn: string | undefined;
 
   /**
    * <p>The client ID (also known as audience) to add to the IAM OpenID Connect provider
-   *          resource.</p>
+   *             resource.</p>
    */
   ClientID: string | undefined;
 }
 
 export namespace AddClientIDToOpenIDConnectProviderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddClientIDToOpenIDConnectProviderRequest): any => ({
     ...obj,
   });
@@ -250,14 +264,17 @@ export interface InvalidInputException extends __SmithyException, $MetadataBeare
 }
 
 export namespace InvalidInputException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidInputException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The request was rejected because it attempted to create resources beyond the current
- *       AWS account limitations. The error message describes the limit exceeded.</p>
+ * <p>The request was rejected because it attempted to create resources beyond the current AWS
+ *       account limits. The error message describes the limit exceeded.</p>
  */
 export interface LimitExceededException extends __SmithyException, $MetadataBearer {
   name: "LimitExceededException";
@@ -266,14 +283,17 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The request was rejected because it referenced a resource entity that does not exist. The error
- *       message describes the resource.</p>
+ * <p>The request was rejected because it referenced a resource entity that does not exist. The
+ *       error message describes the resource.</p>
  */
 export interface NoSuchEntityException extends __SmithyException, $MetadataBearer {
   name: "NoSuchEntityException";
@@ -282,6 +302,9 @@ export interface NoSuchEntityException extends __SmithyException, $MetadataBeare
 }
 
 export namespace NoSuchEntityException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchEntityException): any => ({
     ...obj,
   });
@@ -298,6 +321,9 @@ export interface ServiceFailureException extends __SmithyException, $MetadataBea
 }
 
 export namespace ServiceFailureException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceFailureException): any => ({
     ...obj,
   });
@@ -306,20 +332,23 @@ export namespace ServiceFailureException {
 export interface AddRoleToInstanceProfileRequest {
   /**
    * <p>The name of the instance profile to update.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   InstanceProfileName: string | undefined;
 
   /**
    * <p>The name of the role to add.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
 }
 
 export namespace AddRoleToInstanceProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddRoleToInstanceProfileRequest): any => ({
     ...obj,
   });
@@ -336,14 +365,17 @@ export interface EntityAlreadyExistsException extends __SmithyException, $Metada
 }
 
 export namespace EntityAlreadyExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EntityAlreadyExistsException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The request was rejected because only the service that depends on the service-linked
- *       role can modify or delete the role on your behalf. The error message includes the name of the
+ * <p>The request was rejected because only the service that depends on the service-linked role
+ *       can modify or delete the role on your behalf. The error message includes the name of the
  *       service that depends on this service-linked role. You must request the change through that
  *       service.</p>
  */
@@ -354,6 +386,9 @@ export interface UnmodifiableEntityException extends __SmithyException, $Metadat
 }
 
 export namespace UnmodifiableEntityException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnmodifiableEntityException): any => ({
     ...obj,
   });
@@ -362,20 +397,23 @@ export namespace UnmodifiableEntityException {
 export interface AddUserToGroupRequest {
   /**
    * <p>The name of the group to update.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   GroupName: string | undefined;
 
   /**
    * <p>The name of the user to add.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 }
 
 export namespace AddUserToGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddUserToGroupRequest): any => ({
     ...obj,
   });
@@ -391,8 +429,8 @@ export enum PermissionsBoundaryAttachmentType {
  * <p>Contains information about an attached permissions boundary.</p>
  *          <p>An attached permissions boundary is a managed policy that has been attached to a user or
  *          role to set the permissions boundary.</p>
- *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM
- *             Identities </a> in the <i>IAM User Guide</i>.</p>
+ *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions boundaries for IAM
+ *             identities </a> in the <i>IAM User Guide</i>.</p>
  */
 export interface AttachedPermissionsBoundary {
   /**
@@ -409,6 +447,9 @@ export interface AttachedPermissionsBoundary {
 }
 
 export namespace AttachedPermissionsBoundary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AttachedPermissionsBoundary): any => ({
     ...obj,
   });
@@ -418,8 +459,8 @@ export namespace AttachedPermissionsBoundary {
  * <p>Contains information about an attached policy.</p>
  *          <p>An attached policy is a managed policy that has been attached to a user, group, or role.
  *          This data type is used as a response element in the <a>ListAttachedGroupPolicies</a>, <a>ListAttachedRolePolicies</a>, <a>ListAttachedUserPolicies</a>, and <a>GetAccountAuthorizationDetails</a> operations. </p>
- *          <p>For more information about managed policies, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline
- *             Policies</a> in the <i>IAM User Guide</i>. </p>
+ *          <p>For more information about managed policies, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed policies and inline
+ *             policies</a> in the <i>IAM User Guide</i>. </p>
  */
 export interface AttachedPolicy {
   /**
@@ -429,13 +470,16 @@ export interface AttachedPolicy {
 
   /**
    * <p>The Amazon Resource Name (ARN). ARNs are unique identifiers for AWS resources.</p>
-   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>. </p>
+   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in
+   *          the <i>AWS General Reference</i>. </p>
    */
   PolicyArn?: string;
 }
 
 export namespace AttachedPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AttachedPolicy): any => ({
     ...obj,
   });
@@ -444,20 +488,22 @@ export namespace AttachedPolicy {
 export interface AttachGroupPolicyRequest {
   /**
    * <p>The name (friendly name, not ARN) of the group to attach the policy to.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   GroupName: string | undefined;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM policy you want to attach.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 }
 
 export namespace AttachGroupPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AttachGroupPolicyRequest): any => ({
     ...obj,
   });
@@ -474,6 +520,9 @@ export interface PolicyNotAttachableException extends __SmithyException, $Metada
 }
 
 export namespace PolicyNotAttachableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyNotAttachableException): any => ({
     ...obj,
   });
@@ -482,20 +531,22 @@ export namespace PolicyNotAttachableException {
 export interface AttachRolePolicyRequest {
   /**
    * <p>The name (friendly name, not ARN) of the role to attach the policy to.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM policy you want to attach.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 }
 
 export namespace AttachRolePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AttachRolePolicyRequest): any => ({
     ...obj,
   });
@@ -504,20 +555,22 @@ export namespace AttachRolePolicyRequest {
 export interface AttachUserPolicyRequest {
   /**
    * <p>The name (friendly name, not ARN) of the IAM user to attach the policy to.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM policy you want to attach.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 }
 
 export namespace AttachUserPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AttachUserPolicyRequest): any => ({
     ...obj,
   });
@@ -530,9 +583,9 @@ export interface ChangePasswordRequest {
   OldPassword: string | undefined;
 
   /**
-   * <p>The new password. The new password must conform to the AWS account's password policy,
-   *          if one exists.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   * <p>The new password. The new password must conform to the AWS account's password
+   *             policy, if one exists.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     that is used to validate this parameter is a string of characters. That string can include almost any printable
    *     ASCII character from the space (<code>\u0020</code>) through the end of the ASCII character range (<code>\u00FF</code>).
    *     You can also include the tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and carriage return (<code>\u000D</code>)
@@ -544,6 +597,9 @@ export interface ChangePasswordRequest {
 }
 
 export namespace ChangePasswordRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChangePasswordRequest): any => ({
     ...obj,
     ...(obj.OldPassword && { OldPassword: SENSITIVE_STRING }),
@@ -552,10 +608,10 @@ export namespace ChangePasswordRequest {
 }
 
 /**
- * <p>The request was rejected because it referenced an entity that is temporarily
- *       unmodifiable, such as a user name that was deleted and then recreated. The error indicates
- *       that the request is likely to succeed if you try again after waiting several minutes. The
- *       error message describes the entity.</p>
+ * <p>The request was rejected because it referenced an entity that is temporarily unmodifiable,
+ *       such as a user name that was deleted and then recreated. The error indicates that the request
+ *       is likely to succeed if you try again after waiting several minutes. The error message
+ *       describes the entity.</p>
  */
 export interface EntityTemporarilyUnmodifiableException extends __SmithyException, $MetadataBearer {
   name: "EntityTemporarilyUnmodifiableException";
@@ -564,6 +620,9 @@ export interface EntityTemporarilyUnmodifiableException extends __SmithyExceptio
 }
 
 export namespace EntityTemporarilyUnmodifiableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EntityTemporarilyUnmodifiableException): any => ({
     ...obj,
   });
@@ -580,6 +639,9 @@ export interface InvalidUserTypeException extends __SmithyException, $MetadataBe
 }
 
 export namespace InvalidUserTypeException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidUserTypeException): any => ({
     ...obj,
   });
@@ -596,6 +658,9 @@ export interface PasswordPolicyViolationException extends __SmithyException, $Me
 }
 
 export namespace PasswordPolicyViolationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PasswordPolicyViolationException): any => ({
     ...obj,
   });
@@ -604,13 +669,16 @@ export namespace PasswordPolicyViolationException {
 export interface CreateAccessKeyRequest {
   /**
    * <p>The name of the IAM user that the new key will belong to.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName?: string;
 }
 
 export namespace CreateAccessKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccessKeyRequest): any => ({
     ...obj,
   });
@@ -628,6 +696,9 @@ export interface CreateAccessKeyResponse {
 }
 
 export namespace CreateAccessKeyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccessKeyResponse): any => ({
     ...obj,
     ...(obj.AccessKey && { AccessKey: AccessKey.filterSensitiveLog(obj.AccessKey) }),
@@ -637,7 +708,7 @@ export namespace CreateAccessKeyResponse {
 export interface CreateAccountAliasRequest {
   /**
    * <p>The account alias to create.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of
    *     lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have
    *     two dashes in a row.</p>
    */
@@ -645,6 +716,9 @@ export interface CreateAccountAliasRequest {
 }
 
 export namespace CreateAccountAliasRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccountAliasRequest): any => ({
     ...obj,
   });
@@ -653,9 +727,9 @@ export namespace CreateAccountAliasRequest {
 export interface CreateGroupRequest {
   /**
    * <p> The path to the group. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>.</p>
-   *          <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *                 identifiers</a> in the <i>IAM User Guide</i>.</p>
+   *         <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -664,14 +738,17 @@ export interface CreateGroupRequest {
 
   /**
    * <p>The name of the group to create. Do not include the path in this value.</p>
-   *          <p>IAM user, group, role, and policy names must be unique within the account. Names are
-   *          not distinguished by case. For example, you cannot create resources named both "MyResource"
-   *          and "myresource".</p>
+   *         <p>IAM user, group, role, and policy names must be unique within the account. Names are
+   *             not distinguished by case. For example, you cannot create resources named both
+   *             "MyResource" and "myresource".</p>
    */
   GroupName: string | undefined;
 }
 
 export namespace CreateGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateGroupRequest): any => ({
     ...obj,
   });
@@ -700,7 +777,7 @@ export namespace CreateGroupRequest {
  */
 export interface Group {
   /**
-   * <p>The path to the group. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   * <p>The path to the group. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>. </p>
    */
   Path: string | undefined;
@@ -713,13 +790,13 @@ export interface Group {
   /**
    * <p> The stable and unique string identifying the group. For more information about IDs, see
    *             <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>. </p>
+   *             identifiers</a> in the <i>IAM User Guide</i>. </p>
    */
   GroupId: string | undefined;
 
   /**
    * <p> The Amazon Resource Name (ARN) specifying the group. For more information about ARNs
-   *          and how to use them in policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   *          and how to use them in policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>. </p>
    */
   Arn: string | undefined;
@@ -732,6 +809,9 @@ export interface Group {
 }
 
 export namespace Group {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Group): any => ({
     ...obj,
   });
@@ -748,73 +828,37 @@ export interface CreateGroupResponse {
 }
 
 export namespace CreateGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateGroupResponse): any => ({
     ...obj,
   });
 }
 
-export interface CreateInstanceProfileRequest {
-  /**
-   * <p>The name of the instance profile to create.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
-   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
-   */
-  InstanceProfileName: string | undefined;
-
-  /**
-   * <p> The path to the instance profile. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>.</p>
-   *          <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
-   *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
-   *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
-   *     most punctuation characters, digits, and upper and lowercased letters.</p>
-   */
-  Path?: string;
-}
-
-export namespace CreateInstanceProfileRequest {
-  export const filterSensitiveLog = (obj: CreateInstanceProfileRequest): any => ({
-    ...obj,
-  });
-}
-
 /**
- * <p>Contains information about the last time that an IAM role was used. This includes the
- *          date and time and the Region in which the role was last used. Activity is only reported for
- *          the trailing 400 days. This period can be shorter if your Region began supporting these
- *          features within the last year. The role might have been used more than 400 days ago. For
- *          more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period">Regions Where Data Is Tracked</a> in the <i>IAM User
- *          Guide</i>.</p>
- *          <p>This data type is returned as a response element in the <a>GetRole</a> and
- *             <a>GetAccountAuthorizationDetails</a> operations.</p>
+ * <p>The request was rejected because multiple requests to change this object were submitted
+ *       simultaneously. Wait a few minutes and submit your request again.</p>
  */
-export interface RoleLastUsed {
-  /**
-   * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time
-   *             format</a> that the role was last used.</p>
-   *          <p>This field is null if the role has not been used within the IAM tracking period. For
-   *          more information about the tracking period, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period">Regions Where Data Is Tracked</a> in the <i>IAM User Guide</i>.
-   *       </p>
-   */
-  LastUsedDate?: Date;
-
-  /**
-   * <p>The name of the AWS Region in which the role was last used.</p>
-   */
-  Region?: string;
+export interface ConcurrentModificationException extends __SmithyException, $MetadataBearer {
+  name: "ConcurrentModificationException";
+  $fault: "client";
+  message?: string;
 }
 
-export namespace RoleLastUsed {
-  export const filterSensitiveLog = (obj: RoleLastUsed): any => ({
+export namespace ConcurrentModificationException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ConcurrentModificationException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A structure that represents user-provided metadata that can be associated with a
- *       resource such as an IAM user or role. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM Identities</a> in the
- *         <i>IAM User Guide</i>.</p>
+ * <p>A structure that represents user-provided metadata that can be associated with an IAM
+ *       resource. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+ *       <i>IAM User Guide</i>.</p>
  */
 export interface Tag {
   /**
@@ -840,7 +884,84 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateInstanceProfileRequest {
+  /**
+   * <p>The name of the instance profile to create.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+   */
+  InstanceProfileName: string | undefined;
+
+  /**
+   * <p> The path to the instance profile. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
+   *                 Identifiers</a> in the <i>IAM User Guide</i>.</p>
+   *         <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
+   *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
+   *     most punctuation characters, digits, and upper and lowercased letters.</p>
+   */
+  Path?: string;
+
+  /**
+   * <p>A list of tags that you want to attach to the newly created IAM instance profile.
+   *       Each tag consists of a key name and an associated value. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   *          <note>
+   *             <p>If any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request
+   *    fails and the resource is not created.</p>
+   *          </note>
+   */
+  Tags?: Tag[];
+}
+
+export namespace CreateInstanceProfileRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateInstanceProfileRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains information about the last time that an IAM role was used. This includes the
+ *          date and time and the Region in which the role was last used. Activity is only reported for
+ *          the trailing 400 days. This period can be shorter if your Region began supporting these
+ *          features within the last year. The role might have been used more than 400 days ago. For
+ *          more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period">Regions where data is tracked</a> in the <i>IAM User
+ *          Guide</i>.</p>
+ *          <p>This data type is returned as a response element in the <a>GetRole</a> and
+ *             <a>GetAccountAuthorizationDetails</a> operations.</p>
+ */
+export interface RoleLastUsed {
+  /**
+   * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time
+   *             format</a> that the role was last used.</p>
+   *          <p>This field is null if the role has not been used within the IAM tracking period. For
+   *          more information about the tracking period, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period">Regions where data is tracked</a> in the <i>IAM User Guide</i>. </p>
+   */
+  LastUsedDate?: Date;
+
+  /**
+   * <p>The name of the AWS Region in which the role was last used.</p>
+   */
+  Region?: string;
+}
+
+export namespace RoleLastUsed {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RoleLastUsed): any => ({
     ...obj,
   });
 }
@@ -851,7 +972,7 @@ export namespace Tag {
  */
 export interface Role {
   /**
-   * <p> The path to the role. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   * <p> The path to the role. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>. </p>
    */
   Path: string | undefined;
@@ -864,13 +985,13 @@ export interface Role {
   /**
    * <p> The stable and unique string identifying the role. For more information about IDs, see
    *             <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>. </p>
+   *             identifiers</a> in the <i>IAM User Guide</i>. </p>
    */
   RoleId: string | undefined;
 
   /**
    * <p> The Amazon Resource Name (ARN) specifying the role. For more information about ARNs and
-   *          how to use them in policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   *          how to use them in policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i> guide. </p>
    */
   Arn: string | undefined;
@@ -901,15 +1022,14 @@ export interface Role {
 
   /**
    * <p>The ARN of the policy used to set the permissions boundary for the role.</p>
-   *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM
-   *             Identities </a> in the <i>IAM User Guide</i>.</p>
+   *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions boundaries for IAM
+   *             identities </a> in the <i>IAM User Guide</i>.</p>
    */
   PermissionsBoundary?: AttachedPermissionsBoundary;
 
   /**
-   * <p>A list of tags that are attached to the specified role. For more information about
-   *       tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM
-   *         Identities</a> in the <i>IAM User Guide</i>.</p>
+   * <p>A list of tags that are attached to the role. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
    */
   Tags?: Tag[];
 
@@ -918,13 +1038,16 @@ export interface Role {
    *          date and time and the Region in which the role was last used. Activity is only reported for
    *          the trailing 400 days. This period can be shorter if your Region began supporting these
    *          features within the last year. The role might have been used more than 400 days ago. For
-   *          more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period">Regions Where Data Is Tracked</a> in the <i>IAM User
+   *          more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period">Regions where data is tracked</a> in the <i>IAM User
    *          Guide</i>.</p>
    */
   RoleLastUsed?: RoleLastUsed;
 }
 
 export namespace Role {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Role): any => ({
     ...obj,
   });
@@ -959,7 +1082,7 @@ export namespace Role {
 export interface InstanceProfile {
   /**
    * <p> The path to the instance profile. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>. </p>
+   *             identifiers</a> in the <i>IAM User Guide</i>. </p>
    */
   Path: string | undefined;
 
@@ -970,13 +1093,13 @@ export interface InstanceProfile {
 
   /**
    * <p> The stable and unique string identifying the instance profile. For more information
-   *          about IDs, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>. </p>
+   *          about IDs, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the <i>IAM User Guide</i>. </p>
    */
   InstanceProfileId: string | undefined;
 
   /**
    * <p> The Amazon Resource Name (ARN) specifying the instance profile. For more information
-   *          about ARNs and how to use them in policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   *          about ARNs and how to use them in policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>. </p>
    */
   Arn: string | undefined;
@@ -990,9 +1113,18 @@ export interface InstanceProfile {
    * <p>The role associated with the instance profile.</p>
    */
   Roles: Role[] | undefined;
+
+  /**
+   * <p>A list of tags that are attached to the instance profile. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace InstanceProfile {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceProfile): any => ({
     ...obj,
   });
@@ -1010,6 +1142,9 @@ export interface CreateInstanceProfileResponse {
 }
 
 export namespace CreateInstanceProfileResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateInstanceProfileResponse): any => ({
     ...obj,
   });
@@ -1017,15 +1152,16 @@ export namespace CreateInstanceProfileResponse {
 
 export interface CreateLoginProfileRequest {
   /**
-   * <p>The name of the IAM user to create a password for. The user must already exist.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   * <p>The name of the IAM user to create a password for. The user must already
+   *             exist.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
    * <p>The new password for the user.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     that is used to validate this parameter is a string of characters. That string can include almost any printable
    *     ASCII character from the space (<code>\u0020</code>) through the end of the ASCII character range (<code>\u00FF</code>).
    *     You can also include the tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and carriage return (<code>\u000D</code>)
@@ -1042,6 +1178,9 @@ export interface CreateLoginProfileRequest {
 }
 
 export namespace CreateLoginProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLoginProfileRequest): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -1071,6 +1210,9 @@ export interface LoginProfile {
 }
 
 export namespace LoginProfile {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoginProfile): any => ({
     ...obj,
   });
@@ -1088,6 +1230,9 @@ export interface CreateLoginProfileResponse {
 }
 
 export namespace CreateLoginProfileResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLoginProfileResponse): any => ({
     ...obj,
   });
@@ -1096,49 +1241,65 @@ export namespace CreateLoginProfileResponse {
 export interface CreateOpenIDConnectProviderRequest {
   /**
    * <p>The URL of the identity provider. The URL must begin with <code>https://</code> and
-   *          should correspond to the <code>iss</code> claim in the provider's OpenID Connect ID tokens.
-   *          Per the OIDC standard, path components are allowed but query parameters are not. Typically
-   *          the URL consists of only a hostname, like <code>https://server.example.org</code> or
-   *             <code>https://example.com</code>.</p>
-   *          <p>You cannot register the same provider multiple times in a single AWS account. If you
-   *          try to submit a URL that has already been used for an OpenID Connect provider in the AWS
-   *          account, you will get an error.</p>
+   *             should correspond to the <code>iss</code> claim in the provider's OpenID Connect ID
+   *             tokens. Per the OIDC standard, path components are allowed but query parameters are not.
+   *             Typically the URL consists of only a hostname, like
+   *                 <code>https://server.example.org</code> or <code>https://example.com</code>.</p>
+   *         <p>You cannot register the same provider multiple times in a single AWS account. If you
+   *             try to submit a URL that has already been used for an OpenID Connect provider in the
+   *             AWS account, you will get an error.</p>
    */
   Url: string | undefined;
 
   /**
-   * <p>A list of client IDs (also known as audiences). When a mobile or web app registers with
-   *          an OpenID Connect provider, they establish a value that identifies the application. (This
-   *          is the value that's sent as the <code>client_id</code> parameter on OAuth requests.)</p>
-   *          <p>You can register multiple client IDs with the same provider. For example, you might have
-   *          multiple applications that use the same OIDC provider. You cannot register more than 100
-   *          client IDs with a single IAM OIDC provider.</p>
-   *          <p>There is no defined format for a client ID. The
-   *             <code>CreateOpenIDConnectProviderRequest</code> operation accepts client IDs up to 255
-   *          characters long.</p>
+   * <p>A list of client IDs (also known as audiences). When a mobile or web app registers
+   *             with an OpenID Connect provider, they establish a value that identifies the application.
+   *             (This is the value that's sent as the <code>client_id</code> parameter on OAuth
+   *             requests.)</p>
+   *         <p>You can register multiple client IDs with the same provider. For example, you might
+   *             have multiple applications that use the same OIDC provider. You cannot register more
+   *             than 100 client IDs with a single IAM OIDC provider.</p>
+   *         <p>There is no defined format for a client ID. The
+   *                 <code>CreateOpenIDConnectProviderRequest</code> operation accepts client IDs up to
+   *             255 characters long.</p>
    */
   ClientIDList?: string[];
 
   /**
    * <p>A list of server certificate thumbprints for the OpenID Connect (OIDC) identity
-   *          provider's server certificates. Typically this list includes only one entry. However, IAM
-   *          lets you have up to five thumbprints for an OIDC provider. This lets you maintain multiple
-   *          thumbprints if the identity provider is rotating certificates.</p>
-   *          <p>The server certificate thumbprint is the hex-encoded SHA-1 hash value of the X.509
-   *          certificate used by the domain where the OpenID Connect provider makes its keys available.
-   *          It is always a 40-character string.</p>
-   *          <p>You must provide at least one thumbprint when creating an IAM OIDC provider. For
-   *          example, assume that the OIDC provider is <code>server.example.com</code> and the provider
-   *          stores its keys at https://keys.server.example.com/openid-connect. In that case, the
-   *          thumbprint string would be the hex-encoded SHA-1 hash value of the certificate used by
-   *          https://keys.server.example.com.</p>
-   *          <p>For more information about obtaining the OIDC provider's thumbprint, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html">Obtaining the Thumbprint for an OpenID Connect Provider</a> in the <i>IAM
-   *             User Guide</i>.</p>
+   *             provider's server certificates. Typically this list includes only one entry. However,
+   *             IAM lets you have up to five thumbprints for an OIDC provider. This lets you maintain
+   *             multiple thumbprints if the identity provider is rotating certificates.</p>
+   *         <p>The server certificate thumbprint is the hex-encoded SHA-1 hash value of the X.509
+   *             certificate used by the domain where the OpenID Connect provider makes its keys
+   *             available. It is always a 40-character string.</p>
+   *         <p>You must provide at least one thumbprint when creating an IAM OIDC provider. For
+   *             example, assume that the OIDC provider is <code>server.example.com</code> and the
+   *             provider stores its keys at https://keys.server.example.com/openid-connect. In that
+   *             case, the thumbprint string would be the hex-encoded SHA-1 hash value of the certificate
+   *             used by https://keys.server.example.com.</p>
+   *         <p>For more information about obtaining the OIDC provider's thumbprint, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html">Obtaining the
+   *                 thumbprint for an OpenID Connect provider</a> in the <i>IAM User
+   *                 Guide</i>.</p>
    */
   ThumbprintList: string[] | undefined;
+
+  /**
+   * <p>A list of tags that you want to attach to the new IAM OpenID Connect (OIDC) provider.
+   *       Each tag consists of a key name and an associated value. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   *          <note>
+   *             <p>If any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request
+   *    fails and the resource is not created.</p>
+   *          </note>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateOpenIDConnectProviderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateOpenIDConnectProviderRequest): any => ({
     ...obj,
   });
@@ -1150,13 +1311,24 @@ export namespace CreateOpenIDConnectProviderRequest {
  */
 export interface CreateOpenIDConnectProviderResponse {
   /**
-   * <p>The Amazon Resource Name (ARN) of the new IAM OpenID Connect provider that is created.
-   *          For more information, see <a>OpenIDConnectProviderListEntry</a>. </p>
+   * <p>The Amazon Resource Name (ARN) of the new IAM OpenID Connect provider that is
+   *             created. For more information, see <a>OpenIDConnectProviderListEntry</a>.
+   *         </p>
    */
   OpenIDConnectProviderArn?: string;
+
+  /**
+   * <p>A list of tags that are attached to the new IAM OIDC provider. The returned list of
+   *       tags is sorted by tag key. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateOpenIDConnectProviderResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateOpenIDConnectProviderResponse): any => ({
     ...obj,
   });
@@ -1165,18 +1337,18 @@ export namespace CreateOpenIDConnectProviderResponse {
 export interface CreatePolicyRequest {
   /**
    * <p>The friendly name of the policy.</p>
-   *          <p>IAM user, group, role, and policy names must be unique within the account. Names are
-   *          not distinguished by case. For example, you cannot create resources named both "MyResource"
-   *          and "myresource".</p>
+   *         <p>IAM user, group, role, and policy names must be unique within the account. Names are
+   *             not distinguished by case. For example, you cannot create resources named both
+   *             "MyResource" and "myresource".</p>
    */
   PolicyName: string | undefined;
 
   /**
    * <p>The path for the policy.</p>
-   *          <p>For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
-   *             <i>IAM User Guide</i>.</p>
-   *          <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *         <p>For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
+   *                 <i>IAM User Guide</i>.</p>
+   *         <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -1184,12 +1356,13 @@ export interface CreatePolicyRequest {
   Path?: string;
 
   /**
-   * <p>The JSON policy document that you want to use as the content for the new policy.</p>
-   *          <p>You must provide policies in JSON format in IAM. However, for AWS CloudFormation
-   *          templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS
-   *          CloudFormation always converts a YAML policy to JSON format before submitting it to
-   *          IAM.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   * <p>The JSON policy document that you want to use as the content for the new
+   *             policy.</p>
+   *         <p>You must provide policies in JSON format in IAM. However, for AWS CloudFormation
+   *             templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS
+   *             CloudFormation always converts a YAML policy to JSON format before submitting it to
+   *             IAM.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -1210,15 +1383,29 @@ export interface CreatePolicyRequest {
 
   /**
    * <p>A friendly description of the policy.</p>
-   *          <p>Typically used to store information about the permissions defined in the policy. For
-   *          example, "Grants access to production DynamoDB tables."</p>
-   *          <p>The policy description is immutable. After a value is assigned, it cannot be
-   *          changed.</p>
+   *         <p>Typically used to store information about the permissions defined in the policy. For
+   *             example, "Grants access to production DynamoDB tables."</p>
+   *         <p>The policy description is immutable. After a value is assigned, it cannot be
+   *             changed.</p>
    */
   Description?: string;
+
+  /**
+   * <p>A list of tags that you want to attach to the new IAM customer managed policy.
+   *       Each tag consists of a key name and an associated value. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   *          <note>
+   *             <p>If any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request
+   *    fails and the resource is not created.</p>
+   *          </note>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreatePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePolicyRequest): any => ({
     ...obj,
   });
@@ -1228,8 +1415,8 @@ export namespace CreatePolicyRequest {
  * <p>Contains information about a managed policy.</p>
  *          <p>This data type is used as a response element in the <a>CreatePolicy</a>,
  *             <a>GetPolicy</a>, and <a>ListPolicies</a> operations. </p>
- *          <p>For more information about managed policies, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline
- *             Policies</a> in the <i>IAM User Guide</i>. </p>
+ *          <p>For more information about managed policies, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed policies and inline
+ *             policies</a> in the <i>IAM User Guide</i>. </p>
  */
 export interface Policy {
   /**
@@ -1239,21 +1426,21 @@ export interface Policy {
 
   /**
    * <p>The stable and unique string identifying the policy.</p>
-   *          <p>For more information about IDs, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   *          <p>For more information about IDs, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>.</p>
    */
   PolicyId?: string;
 
   /**
    * <p>The Amazon Resource Name (ARN). ARNs are unique identifiers for AWS resources.</p>
-   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>. </p>
+   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in
+   *          the <i>AWS General Reference</i>. </p>
    */
   Arn?: string;
 
   /**
    * <p>The path to the policy.</p>
-   *          <p>For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   *          <p>For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>.</p>
    */
   Path?: string;
@@ -1271,8 +1458,8 @@ export interface Policy {
   /**
    * <p>The number of entities (users and roles) for which the policy is used to set the
    *          permissions boundary. </p>
-   *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM
-   *             Identities </a> in the <i>IAM User Guide</i>.</p>
+   *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions boundaries for IAM
+   *             identities </a> in the <i>IAM User Guide</i>.</p>
    */
   PermissionsBoundaryUsageCount?: number;
 
@@ -1302,9 +1489,18 @@ export interface Policy {
    *          and time when the most recent policy version was created.</p>
    */
   UpdateDate?: Date;
+
+  /**
+   * <p>A list of tags that are attached to the instance profile. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace Policy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Policy): any => ({
     ...obj,
   });
@@ -1322,6 +1518,9 @@ export interface CreatePolicyResponse {
 }
 
 export namespace CreatePolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePolicyResponse): any => ({
     ...obj,
   });
@@ -1338,6 +1537,9 @@ export interface MalformedPolicyDocumentException extends __SmithyException, $Me
 }
 
 export namespace MalformedPolicyDocumentException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MalformedPolicyDocumentException): any => ({
     ...obj,
   });
@@ -1346,20 +1548,19 @@ export namespace MalformedPolicyDocumentException {
 export interface CreatePolicyVersionRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM policy to which you want to add a new
-   *          version.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *             version.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 
   /**
-   * <p>The JSON policy document that you want to use as the content for this new version of the
-   *          policy.</p>
-   *          <p>You must provide policies in JSON format in IAM. However, for AWS CloudFormation
-   *          templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS
-   *          CloudFormation always converts a YAML policy to JSON format before submitting it to
-   *          IAM.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   * <p>The JSON policy document that you want to use as the content for this new version of
+   *             the policy.</p>
+   *         <p>You must provide policies in JSON format in IAM. However, for AWS CloudFormation
+   *             templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS
+   *             CloudFormation always converts a YAML policy to JSON format before submitting it to
+   *             IAM.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -1380,16 +1581,19 @@ export interface CreatePolicyVersionRequest {
 
   /**
    * <p>Specifies whether to set this version as the policy's default version.</p>
-   *          <p>When this parameter is <code>true</code>, the new policy version becomes the operative
-   *          version. That is, it becomes the version that is in effect for the IAM users, groups, and
-   *          roles that the policy is attached to.</p>
-   *          <p>For more information about managed policy versions, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed
-   *             Policies</a> in the <i>IAM User Guide</i>.</p>
+   *         <p>When this parameter is <code>true</code>, the new policy version becomes the operative
+   *             version. That is, it becomes the version that is in effect for the IAM users, groups,
+   *             and roles that the policy is attached to.</p>
+   *         <p>For more information about managed policy versions, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for managed
+   *                 policies</a> in the <i>IAM User Guide</i>.</p>
    */
   SetAsDefault?: boolean;
 }
 
 export namespace CreatePolicyVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePolicyVersionRequest): any => ({
     ...obj,
   });
@@ -1398,8 +1602,8 @@ export namespace CreatePolicyVersionRequest {
 /**
  * <p>Contains information about a version of a managed policy.</p>
  *          <p>This data type is used as a response element in the <a>CreatePolicyVersion</a>, <a>GetPolicyVersion</a>, <a>ListPolicyVersions</a>, and <a>GetAccountAuthorizationDetails</a> operations. </p>
- *          <p>For more information about managed policies, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline
- *             Policies</a> in the <i>IAM User Guide</i>. </p>
+ *          <p>For more information about managed policies, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed policies and inline
+ *             policies</a> in the <i>IAM User Guide</i>. </p>
  */
 export interface PolicyVersion {
   /**
@@ -1433,6 +1637,9 @@ export interface PolicyVersion {
 }
 
 export namespace PolicyVersion {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyVersion): any => ({
     ...obj,
   });
@@ -1450,32 +1657,20 @@ export interface CreatePolicyVersionResponse {
 }
 
 export namespace CreatePolicyVersionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePolicyVersionResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The request was rejected because multiple requests to change this object were submitted simultaneously. Wait a few minutes and submit your request again.</p>
- */
-export interface ConcurrentModificationException extends __SmithyException, $MetadataBearer {
-  name: "ConcurrentModificationException";
-  $fault: "client";
-  message?: string;
-}
-
-export namespace ConcurrentModificationException {
-  export const filterSensitiveLog = (obj: ConcurrentModificationException): any => ({
     ...obj,
   });
 }
 
 export interface CreateRoleRequest {
   /**
-   * <p> The path to the role. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
-   *             <i>IAM User Guide</i>.</p>
-   *          <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   * <p> The path to the role. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
+   *                 Identifiers</a> in the <i>IAM User Guide</i>.</p>
+   *         <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -1484,21 +1679,20 @@ export interface CreateRoleRequest {
 
   /**
    * <p>The name of the role to create.</p>
-   *          <p>IAM user, group, role, and policy names must be unique within the account. Names are
-   *          not distinguished by case. For example, you cannot create resources named both "MyResource"
-   *          and "myresource".</p>
+   *         <p>IAM user, group, role, and policy names must be unique within the account. Names are
+   *             not distinguished by case. For example, you cannot create resources named both
+   *             "MyResource" and "myresource".</p>
    */
   RoleName: string | undefined;
 
   /**
    * <p>The trust relationship policy document that grants an entity permission to assume the
-   *          role.</p>
-   *
-   *          <p>In IAM, you must provide a JSON policy that has been converted to a string. However,
-   *          for AWS CloudFormation templates formatted in YAML, you can provide the policy in JSON or
-   *          YAML format. AWS CloudFormation always converts a YAML policy to JSON format before
-   *          submitting it to IAM.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   *             role.</p>
+   *         <p>In IAM, you must provide a JSON policy that has been converted to a string. However,
+   *             for AWS CloudFormation templates formatted in YAML, you can provide the policy in JSON
+   *             or YAML format. AWS CloudFormation always converts a YAML policy to JSON format before
+   *             submitting it to IAM.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -1514,8 +1708,7 @@ export interface CreateRoleRequest {
    *     carriage return (<code>\u000D</code>)</p>
    *             </li>
    *          </ul>
-   *          <p> Upon success, the response includes
-   *          the same trust policy in JSON format.</p>
+   *         <p> Upon success, the response includes the same trust policy in JSON format.</p>
    */
   AssumeRolePolicyDocument: string | undefined;
 
@@ -1526,39 +1719,43 @@ export interface CreateRoleRequest {
 
   /**
    * <p>The maximum session duration (in seconds) that you want to set for the specified role.
-   *          If you do not specify a value for this setting, the default maximum of one hour is applied.
-   *          This setting can have a value from 1 hour to 12 hours.</p>
-   *          <p>Anyone who assumes the role from the AWS CLI or API can use the
-   *             <code>DurationSeconds</code> API parameter or the <code>duration-seconds</code> CLI
-   *          parameter to request a longer session. The <code>MaxSessionDuration</code> setting
-   *          determines the maximum duration that can be requested using the
-   *             <code>DurationSeconds</code> parameter. If users don't specify a value for the
-   *             <code>DurationSeconds</code> parameter, their security credentials are valid for one
-   *          hour by default. This applies when you use the <code>AssumeRole*</code> API operations or
-   *          the <code>assume-role*</code> CLI operations but does not apply when you use those
-   *          operations to create a console URL. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html">Using IAM Roles</a> in the
-   *             <i>IAM User Guide</i>.</p>
+   *             If you do not specify a value for this setting, the default maximum of one hour is
+   *             applied. This setting can have a value from 1 hour to 12 hours.</p>
+   *         <p>Anyone who assumes the role from the AWS CLI or API can use the
+   *                 <code>DurationSeconds</code> API parameter or the <code>duration-seconds</code> CLI
+   *             parameter to request a longer session. The <code>MaxSessionDuration</code> setting
+   *             determines the maximum duration that can be requested using the
+   *                 <code>DurationSeconds</code> parameter. If users don't specify a value for the
+   *                 <code>DurationSeconds</code> parameter, their security credentials are valid for one
+   *             hour by default. This applies when you use the <code>AssumeRole*</code> API operations
+   *             or the <code>assume-role*</code> CLI operations but does not apply when you use those
+   *             operations to create a console URL. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html">Using IAM
+   *                 roles</a> in the <i>IAM User Guide</i>.</p>
    */
   MaxSessionDuration?: number;
 
   /**
-   * <p>The ARN of the policy that is used to set the permissions boundary for the role.</p>
+   * <p>The ARN of the policy that is used to set the permissions boundary for the
+   *             role.</p>
    */
   PermissionsBoundary?: string;
 
   /**
-   * <p>A list of tags that you want to attach to the newly created role. Each tag consists of
-   *       a key name and an associated value. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM Identities</a> in the
-   *         <i>IAM User Guide</i>.</p>
+   * <p>A list of tags that you want to attach to the new role. Each tag consists of a key name and an associated value.
+   *       For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
    *          <note>
-   *             <p>If any one of the tags is invalid or if you exceed the allowed number of tags per
-   *         role, then the entire request fails and the role is not created.</p>
+   *             <p>If any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request
+   *    fails and the resource is not created.</p>
    *          </note>
    */
   Tags?: Tag[];
 }
 
 export namespace CreateRoleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateRoleRequest): any => ({
     ...obj,
   });
@@ -1575,6 +1772,9 @@ export interface CreateRoleResponse {
 }
 
 export namespace CreateRoleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateRoleResponse): any => ({
     ...obj,
   });
@@ -1583,25 +1783,39 @@ export namespace CreateRoleResponse {
 export interface CreateSAMLProviderRequest {
   /**
    * <p>An XML document generated by an identity provider (IdP) that supports SAML 2.0. The
-   *          document includes the issuer's name, expiration information, and keys that can be used to
-   *          validate the SAML authentication response (assertions) that are received from the IdP. You
-   *          must generate the metadata document using the identity management software that is used as
-   *          your organization's IdP.</p>
-   *          <p>For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html">About SAML 2.0-based
-   *             Federation</a> in the <i>IAM User Guide</i>
-   *          </p>
+   *             document includes the issuer's name, expiration information, and keys that can be used
+   *             to validate the SAML authentication response (assertions) that are received from the
+   *             IdP. You must generate the metadata document using the identity management software that
+   *             is used as your organization's IdP.</p>
+   *         <p>For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html">About SAML 2.0-based
+   *                 federation</a> in the <i>IAM User Guide</i>
+   *         </p>
    */
   SAMLMetadataDocument: string | undefined;
 
   /**
    * <p>The name of the provider to create.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   Name: string | undefined;
+
+  /**
+   * <p>A list of tags that you want to attach to the new IAM SAML provider.
+   *       Each tag consists of a key name and an associated value. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   *          <note>
+   *             <p>If any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request
+   *    fails and the resource is not created.</p>
+   *          </note>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateSAMLProviderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSAMLProviderRequest): any => ({
     ...obj,
   });
@@ -1616,9 +1830,19 @@ export interface CreateSAMLProviderResponse {
    * <p>The Amazon Resource Name (ARN) of the new SAML provider resource in IAM.</p>
    */
   SAMLProviderArn?: string;
+
+  /**
+   * <p>A list of tags that are attached to the new IAM SAML provider. The returned list of tags is sorted by tag key.
+   *       For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateSAMLProviderResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSAMLProviderResponse): any => ({
     ...obj,
   });
@@ -1627,13 +1851,13 @@ export namespace CreateSAMLProviderResponse {
 export interface CreateServiceLinkedRoleRequest {
   /**
    * <p>The service principal for the AWS service to which this role is attached. You use a
-   *          string similar to a URL but without the http:// in front. For example:
-   *             <code>elasticbeanstalk.amazonaws.com</code>. </p>
-   *          <p>Service principals are unique and case-sensitive. To find the exact service principal
-   *          for your service-linked role, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html">AWS Services That
-   *             Work with IAM</a> in the <i>IAM User Guide</i>. Look for the
-   *          services that have <b>Yes </b>in the <b>Service-Linked Role</b> column. Choose the <b>Yes</b>
-   *          link to view the service-linked role documentation for that service.</p>
+   *             string similar to a URL but without the http:// in front. For example:
+   *                 <code>elasticbeanstalk.amazonaws.com</code>. </p>
+   *         <p>Service principals are unique and case-sensitive. To find the exact service principal
+   *             for your service-linked role, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html">AWS services
+   *                 that work with IAM</a> in the <i>IAM User Guide</i>. Look for
+   *             the services that have <b>Yes </b>in the <b>Service-Linked Role</b> column. Choose the <b>Yes</b> link to view the service-linked role documentation for that
+   *             service.</p>
    */
   AWSServiceName: string | undefined;
 
@@ -1644,18 +1868,22 @@ export interface CreateServiceLinkedRoleRequest {
 
   /**
    * <p></p>
-   *          <p>A string that you provide, which is combined with the service-provided prefix to form
-   *          the complete role name. If you make multiple requests for the same service, then you must
-   *          supply a different <code>CustomSuffix</code> for each request. Otherwise the request fails
-   *          with a duplicate role name error. For example, you could add <code>-1</code> or
-   *             <code>-debug</code> to the suffix.</p>
-   *          <p>Some services do not support the <code>CustomSuffix</code> parameter. If you provide an
-   *          optional suffix and the operation fails, try the operation again without the suffix.</p>
+   *         <p>A string that you provide, which is combined with the service-provided prefix to form
+   *             the complete role name. If you make multiple requests for the same service, then you
+   *             must supply a different <code>CustomSuffix</code> for each request. Otherwise the
+   *             request fails with a duplicate role name error. For example, you could add
+   *                 <code>-1</code> or <code>-debug</code> to the suffix.</p>
+   *         <p>Some services do not support the <code>CustomSuffix</code> parameter. If you provide
+   *             an optional suffix and the operation fails, try the operation again without the
+   *             suffix.</p>
    */
   CustomSuffix?: string;
 }
 
 export namespace CreateServiceLinkedRoleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateServiceLinkedRoleRequest): any => ({
     ...obj,
   });
@@ -1664,12 +1892,15 @@ export namespace CreateServiceLinkedRoleRequest {
 export interface CreateServiceLinkedRoleResponse {
   /**
    * <p>A <a>Role</a> object that contains details about the newly created
-   *          role.</p>
+   *             role.</p>
    */
   Role?: Role;
 }
 
 export namespace CreateServiceLinkedRoleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateServiceLinkedRoleResponse): any => ({
     ...obj,
   });
@@ -1678,21 +1909,25 @@ export namespace CreateServiceLinkedRoleResponse {
 export interface CreateServiceSpecificCredentialRequest {
   /**
    * <p>The name of the IAM user that is to be associated with the credentials. The new
-   *          service-specific credentials have the same permissions as the associated user except that
-   *          they can be used only to access the specified service.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *             service-specific credentials have the same permissions as the associated user except
+   *             that they can be used only to access the specified service.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
-   * <p>The name of the AWS service that is to be associated with the credentials. The service
-   *          you specify here is the only service that can be accessed using these credentials.</p>
+   * <p>The name of the AWS service that is to be associated with the credentials. The
+   *             service you specify here is the only service that can be accessed using these
+   *             credentials.</p>
    */
   ServiceName: string | undefined;
 }
 
 export namespace CreateServiceSpecificCredentialRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateServiceSpecificCredentialRequest): any => ({
     ...obj,
   });
@@ -1744,6 +1979,9 @@ export interface ServiceSpecificCredential {
 }
 
 export namespace ServiceSpecificCredential {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceSpecificCredential): any => ({
     ...obj,
     ...(obj.ServicePassword && { ServicePassword: SENSITIVE_STRING }),
@@ -1753,16 +1991,19 @@ export namespace ServiceSpecificCredential {
 export interface CreateServiceSpecificCredentialResponse {
   /**
    * <p>A structure that contains information about the newly created service-specific
-   *          credential.</p>
-   *          <important>
+   *             credential.</p>
+   *         <important>
    *             <p>This is the only time that the password for this credential set is available. It
-   *             cannot be recovered later. Instead, you must reset the password with <a>ResetServiceSpecificCredential</a>.</p>
-   *          </important>
+   *                 cannot be recovered later. Instead, you must reset the password with <a>ResetServiceSpecificCredential</a>.</p>
+   *         </important>
    */
   ServiceSpecificCredential?: ServiceSpecificCredential;
 }
 
 export namespace CreateServiceSpecificCredentialResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateServiceSpecificCredentialResponse): any => ({
     ...obj,
     ...(obj.ServiceSpecificCredential && {
@@ -1781,6 +2022,9 @@ export interface ServiceNotSupportedException extends __SmithyException, $Metada
 }
 
 export namespace ServiceNotSupportedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceNotSupportedException): any => ({
     ...obj,
   });
@@ -1789,9 +2033,9 @@ export namespace ServiceNotSupportedException {
 export interface CreateUserRequest {
   /**
    * <p> The path for the user name. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>.</p>
-   *          <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *                 identifiers</a> in the <i>IAM User Guide</i>.</p>
+   *         <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -1800,30 +2044,34 @@ export interface CreateUserRequest {
 
   /**
    * <p>The name of the user to create.</p>
-   *          <p>IAM user, group, role, and policy names must be unique within the account. Names are
-   *          not distinguished by case. For example, you cannot create resources named both "MyResource"
-   *          and "myresource".</p>
+   *         <p>IAM user, group, role, and policy names must be unique within the account. Names are
+   *             not distinguished by case. For example, you cannot create resources named both
+   *             "MyResource" and "myresource".</p>
    */
   UserName: string | undefined;
 
   /**
-   * <p>The ARN of the policy that is used to set the permissions boundary for the user.</p>
+   * <p>The ARN of the policy that is used to set the permissions boundary for the
+   *             user.</p>
    */
   PermissionsBoundary?: string;
 
   /**
-   * <p>A list of tags that you want to attach to the newly created user. Each tag consists of
-   *       a key name and an associated value. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM Identities</a> in the
-   *         <i>IAM User Guide</i>.</p>
+   * <p>A list of tags that you want to attach to the new user. Each tag consists of a key name and an associated value.
+   *       For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
    *          <note>
-   *             <p>If any one of the tags is invalid or if you exceed the allowed number of tags per
-   *         user, then the entire request fails and the user is not created.</p>
+   *             <p>If any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request
+   *    fails and the resource is not created.</p>
    *          </note>
    */
   Tags?: Tag[];
 }
 
 export namespace CreateUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateUserRequest): any => ({
     ...obj,
   });
@@ -1852,8 +2100,9 @@ export namespace CreateUserRequest {
  */
 export interface User {
   /**
-   * <p>The path to the user. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   * <p>The path to the user. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>.</p>
+   *          <p>The ARN of the policy used to set the permissions boundary for the user.</p>
    */
   Path: string | undefined;
 
@@ -1865,7 +2114,7 @@ export interface User {
   /**
    * <p>The stable and unique string identifying the user. For more information about IDs, see
    *             <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>.</p>
+   *             identifiers</a> in the <i>IAM User Guide</i>.</p>
    */
   UserId: string | undefined;
 
@@ -1886,7 +2135,7 @@ export interface User {
    * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time
    *             format</a>, when the user's password was last used to sign in to an AWS website. For
    *          a list of AWS websites that capture a user's last sign-in time, see the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html">Credential
-   *             Reports</a> topic in the <i>IAM User Guide</i>. If a password is
+   *             reports</a> topic in the <i>IAM User Guide</i>. If a password is
    *          used more than once in a five-minute span, only the first use is returned in this field. If
    *          the field is null (no value), then it indicates that they never signed in with a password.
    *          This can be because:</p>
@@ -1907,21 +2156,22 @@ export interface User {
   PasswordLastUsed?: Date;
 
   /**
-   * <p>The ARN of the policy used to set the permissions boundary for the user.</p>
-   *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM
-   *             Identities </a> in the <i>IAM User Guide</i>.</p>
+   * <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions boundaries for IAM
+   *             identities </a> in the <i>IAM User Guide</i>.</p>
    */
   PermissionsBoundary?: AttachedPermissionsBoundary;
 
   /**
-   * <p>A list of tags that are associated with the specified user. For more information about
-   *       tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM
-   *         Identities</a> in the <i>IAM User Guide</i>.</p>
+   * <p>A list of tags that are associated with the user. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
    */
   Tags?: Tag[];
 }
 
 export namespace User {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: User): any => ({
     ...obj,
   });
@@ -1938,6 +2188,9 @@ export interface CreateUserResponse {
 }
 
 export namespace CreateUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateUserResponse): any => ({
     ...obj,
   });
@@ -1946,9 +2199,9 @@ export namespace CreateUserResponse {
 export interface CreateVirtualMFADeviceRequest {
   /**
    * <p> The path for the virtual MFA device. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>.</p>
-   *          <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *                 identifiers</a> in the <i>IAM User Guide</i>.</p>
+   *         <p>This parameter is optional. If it is not included, it defaults to a slash (/).</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -1957,14 +2210,28 @@ export interface CreateVirtualMFADeviceRequest {
 
   /**
    * <p>The name of the virtual MFA device. Use with path to uniquely identify a virtual MFA
-   *          device.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *             device.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   VirtualMFADeviceName: string | undefined;
+
+  /**
+   * <p>A list of tags that you want to attach to the new IAM virtual MFA device.
+   *       Each tag consists of a key name and an associated value. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   *          <note>
+   *             <p>If any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request
+   *    fails and the resource is not created.</p>
+   *          </note>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateVirtualMFADeviceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateVirtualMFADeviceRequest): any => ({
     ...obj,
   });
@@ -2003,9 +2270,18 @@ export interface VirtualMFADevice {
    * <p>The date and time on which the virtual MFA device was enabled.</p>
    */
   EnableDate?: Date;
+
+  /**
+   * <p>A list of tags that are attached to the virtual MFA device. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace VirtualMFADevice {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VirtualMFADevice): any => ({
     ...obj,
     ...(obj.Base32StringSeed && { Base32StringSeed: SENSITIVE_STRING }),
@@ -2025,6 +2301,9 @@ export interface CreateVirtualMFADeviceResponse {
 }
 
 export namespace CreateVirtualMFADeviceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateVirtualMFADeviceResponse): any => ({
     ...obj,
     ...(obj.VirtualMFADevice && { VirtualMFADevice: VirtualMFADevice.filterSensitiveLog(obj.VirtualMFADevice) }),
@@ -2034,15 +2313,15 @@ export namespace CreateVirtualMFADeviceResponse {
 export interface DeactivateMFADeviceRequest {
   /**
    * <p>The name of the user whose MFA device you want to deactivate.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
-   * <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the
-   *          serial number is the device ARN.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   * <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices,
+   *             the serial number is the device ARN.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of upper and lowercase alphanumeric characters with no spaces. You can also include any of the
    *     following characters: =,.@:/-</p>
    */
@@ -2050,6 +2329,9 @@ export interface DeactivateMFADeviceRequest {
 }
 
 export namespace DeactivateMFADeviceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeactivateMFADeviceRequest): any => ({
     ...obj,
   });
@@ -2058,20 +2340,24 @@ export namespace DeactivateMFADeviceRequest {
 export interface DeleteAccessKeyRequest {
   /**
    * <p>The name of the user whose access key pair you want to delete.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName?: string;
 
   /**
-   * <p>The access key ID for the access key ID and secret access key you want to delete.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
+   * <p>The access key ID for the access key ID and secret access key you want to
+   *             delete.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
    *     consist of any upper or lowercased letter or digit.</p>
    */
   AccessKeyId: string | undefined;
 }
 
 export namespace DeleteAccessKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAccessKeyRequest): any => ({
     ...obj,
   });
@@ -2080,7 +2366,7 @@ export namespace DeleteAccessKeyRequest {
 export interface DeleteAccountAliasRequest {
   /**
    * <p>The name of the account alias to delete.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of
    *     lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have
    *     two dashes in a row.</p>
    */
@@ -2088,6 +2374,9 @@ export interface DeleteAccountAliasRequest {
 }
 
 export namespace DeleteAccountAliasRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAccountAliasRequest): any => ({
     ...obj,
   });
@@ -2104,6 +2393,9 @@ export interface DeleteConflictException extends __SmithyException, $MetadataBea
 }
 
 export namespace DeleteConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteConflictException): any => ({
     ...obj,
   });
@@ -2112,13 +2404,16 @@ export namespace DeleteConflictException {
 export interface DeleteGroupRequest {
   /**
    * <p>The name of the IAM group to delete.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   GroupName: string | undefined;
 }
 
 export namespace DeleteGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteGroupRequest): any => ({
     ...obj,
   });
@@ -2127,21 +2422,24 @@ export namespace DeleteGroupRequest {
 export interface DeleteGroupPolicyRequest {
   /**
    * <p>The name (friendly name, not ARN) identifying the group that the policy is embedded
-   *          in.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *             in.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   GroupName: string | undefined;
 
   /**
    * <p>The name identifying the policy document to delete.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   PolicyName: string | undefined;
 }
 
 export namespace DeleteGroupPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteGroupPolicyRequest): any => ({
     ...obj,
   });
@@ -2150,13 +2448,16 @@ export namespace DeleteGroupPolicyRequest {
 export interface DeleteInstanceProfileRequest {
   /**
    * <p>The name of the instance profile to delete.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   InstanceProfileName: string | undefined;
 }
 
 export namespace DeleteInstanceProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteInstanceProfileRequest): any => ({
     ...obj,
   });
@@ -2165,13 +2466,16 @@ export namespace DeleteInstanceProfileRequest {
 export interface DeleteLoginProfileRequest {
   /**
    * <p>The name of the user whose password you want to delete.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 }
 
 export namespace DeleteLoginProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteLoginProfileRequest): any => ({
     ...obj,
   });
@@ -2180,12 +2484,15 @@ export namespace DeleteLoginProfileRequest {
 export interface DeleteOpenIDConnectProviderRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM OpenID Connect provider resource object to
-   *          delete. You can get a list of OpenID Connect provider resource ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p>
+   *             delete. You can get a list of OpenID Connect provider resource ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p>
    */
   OpenIDConnectProviderArn: string | undefined;
 }
 
 export namespace DeleteOpenIDConnectProviderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteOpenIDConnectProviderRequest): any => ({
     ...obj,
   });
@@ -2194,13 +2501,15 @@ export namespace DeleteOpenIDConnectProviderRequest {
 export interface DeletePolicyRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM policy you want to delete.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 }
 
 export namespace DeletePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePolicyRequest): any => ({
     ...obj,
   });
@@ -2209,24 +2518,26 @@ export namespace DeletePolicyRequest {
 export interface DeletePolicyVersionRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM policy from which you want to delete a
-   *          version.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *             version.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 
   /**
    * <p>The policy version to delete.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that
    *     consists of the lowercase letter 'v' followed by one or two digits, and optionally
    *     followed by a period '.' and a string of letters and digits.</p>
-   *          <p>For more information about managed policy versions, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed
-   *             Policies</a> in the <i>IAM User Guide</i>.</p>
+   *         <p>For more information about managed policy versions, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for managed
+   *                 policies</a> in the <i>IAM User Guide</i>.</p>
    */
   VersionId: string | undefined;
 }
 
 export namespace DeletePolicyVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePolicyVersionRequest): any => ({
     ...obj,
   });
@@ -2235,13 +2546,16 @@ export namespace DeletePolicyVersionRequest {
 export interface DeleteRoleRequest {
   /**
    * <p>The name of the role to delete.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
 }
 
 export namespace DeleteRoleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRoleRequest): any => ({
     ...obj,
   });
@@ -2250,12 +2564,15 @@ export namespace DeleteRoleRequest {
 export interface DeleteRolePermissionsBoundaryRequest {
   /**
    * <p>The name (friendly name, not ARN) of the IAM role from which you want to remove the
-   *          permissions boundary.</p>
+   *             permissions boundary.</p>
    */
   RoleName: string | undefined;
 }
 
 export namespace DeleteRolePermissionsBoundaryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRolePermissionsBoundaryRequest): any => ({
     ...obj,
   });
@@ -2264,21 +2581,24 @@ export namespace DeleteRolePermissionsBoundaryRequest {
 export interface DeleteRolePolicyRequest {
   /**
    * <p>The name (friendly name, not ARN) identifying the role that the policy is embedded
-   *          in.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *             in.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
 
   /**
    * <p>The name of the inline policy to delete from the specified IAM role.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   PolicyName: string | undefined;
 }
 
 export namespace DeleteRolePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRolePolicyRequest): any => ({
     ...obj,
   });
@@ -2292,6 +2612,9 @@ export interface DeleteSAMLProviderRequest {
 }
 
 export namespace DeleteSAMLProviderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSAMLProviderRequest): any => ({
     ...obj,
   });
@@ -2300,13 +2623,16 @@ export namespace DeleteSAMLProviderRequest {
 export interface DeleteServerCertificateRequest {
   /**
    * <p>The name of the server certificate you want to delete.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   ServerCertificateName: string | undefined;
 }
 
 export namespace DeleteServerCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteServerCertificateRequest): any => ({
     ...obj,
   });
@@ -2320,6 +2646,9 @@ export interface DeleteServiceLinkedRoleRequest {
 }
 
 export namespace DeleteServiceLinkedRoleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteServiceLinkedRoleRequest): any => ({
     ...obj,
   });
@@ -2327,14 +2656,17 @@ export namespace DeleteServiceLinkedRoleRequest {
 
 export interface DeleteServiceLinkedRoleResponse {
   /**
-   * <p>The deletion task identifier that you can use to check the status of the deletion. This
-   *          identifier is returned in the format
-   *             <code>task/aws-service-role/<service-principal-name>/<role-name>/<task-uuid></code>.</p>
+   * <p>The deletion task identifier that you can use to check the status of the deletion.
+   *             This identifier is returned in the format
+   *                 <code>task/aws-service-role/<service-principal-name>/<role-name>/<task-uuid></code>.</p>
    */
   DeletionTaskId: string | undefined;
 }
 
 export namespace DeleteServiceLinkedRoleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteServiceLinkedRoleResponse): any => ({
     ...obj,
   });
@@ -2343,23 +2675,26 @@ export namespace DeleteServiceLinkedRoleResponse {
 export interface DeleteServiceSpecificCredentialRequest {
   /**
    * <p>The name of the IAM user associated with the service-specific credential. If this
-   *          value is not specified, then the operation assumes the user whose credentials are used to
-   *          call the operation.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *             value is not specified, then the operation assumes the user whose credentials are used
+   *             to call the operation.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName?: string;
 
   /**
    * <p>The unique identifier of the service-specific credential. You can get this value by
-   *          calling <a>ListServiceSpecificCredentials</a>.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
+   *             calling <a>ListServiceSpecificCredentials</a>.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
    *     consist of any upper or lowercased letter or digit.</p>
    */
   ServiceSpecificCredentialId: string | undefined;
 }
 
 export namespace DeleteServiceSpecificCredentialRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteServiceSpecificCredentialRequest): any => ({
     ...obj,
   });
@@ -2368,20 +2703,23 @@ export namespace DeleteServiceSpecificCredentialRequest {
 export interface DeleteSigningCertificateRequest {
   /**
    * <p>The name of the user the signing certificate belongs to.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName?: string;
 
   /**
    * <p>The ID of the signing certificate to delete.</p>
-   *          <p>The format of this parameter, as described by its <a href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of characters
-   *          that can be upper- or lower-cased letters or digits.</p>
+   *         <p>The format of this parameter, as described by its <a href="http://wikipedia.org/wiki/regex">regex</a> pattern, is a string of
+   *             characters that can be upper- or lower-cased letters or digits.</p>
    */
   CertificateId: string | undefined;
 }
 
 export namespace DeleteSigningCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSigningCertificateRequest): any => ({
     ...obj,
   });
@@ -2390,20 +2728,23 @@ export namespace DeleteSigningCertificateRequest {
 export interface DeleteSSHPublicKeyRequest {
   /**
    * <p>The name of the IAM user associated with the SSH public key.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
    * <p>The unique identifier for the SSH public key.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
    *     consist of any upper or lowercased letter or digit.</p>
    */
   SSHPublicKeyId: string | undefined;
 }
 
 export namespace DeleteSSHPublicKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSSHPublicKeyRequest): any => ({
     ...obj,
   });
@@ -2412,13 +2753,16 @@ export namespace DeleteSSHPublicKeyRequest {
 export interface DeleteUserRequest {
   /**
    * <p>The name of the user to delete.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 }
 
 export namespace DeleteUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteUserRequest): any => ({
     ...obj,
   });
@@ -2427,12 +2771,15 @@ export namespace DeleteUserRequest {
 export interface DeleteUserPermissionsBoundaryRequest {
   /**
    * <p>The name (friendly name, not ARN) of the IAM user from which you want to remove the
-   *          permissions boundary.</p>
+   *             permissions boundary.</p>
    */
   UserName: string | undefined;
 }
 
 export namespace DeleteUserPermissionsBoundaryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteUserPermissionsBoundaryRequest): any => ({
     ...obj,
   });
@@ -2441,21 +2788,24 @@ export namespace DeleteUserPermissionsBoundaryRequest {
 export interface DeleteUserPolicyRequest {
   /**
    * <p>The name (friendly name, not ARN) identifying the user that the policy is embedded
-   *          in.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *             in.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
    * <p>The name identifying the policy document to delete.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   PolicyName: string | undefined;
 }
 
 export namespace DeleteUserPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteUserPolicyRequest): any => ({
     ...obj,
   });
@@ -2463,9 +2813,9 @@ export namespace DeleteUserPolicyRequest {
 
 export interface DeleteVirtualMFADeviceRequest {
   /**
-   * <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the
-   *          serial number is the same as the ARN.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   * <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices,
+   *             the serial number is the same as the ARN.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of upper and lowercase alphanumeric characters with no spaces. You can also include any of the
    *     following characters: =,.@:/-</p>
    */
@@ -2473,6 +2823,9 @@ export interface DeleteVirtualMFADeviceRequest {
 }
 
 export namespace DeleteVirtualMFADeviceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteVirtualMFADeviceRequest): any => ({
     ...obj,
   });
@@ -2481,20 +2834,22 @@ export namespace DeleteVirtualMFADeviceRequest {
 export interface DetachGroupPolicyRequest {
   /**
    * <p>The name (friendly name, not ARN) of the IAM group to detach the policy from.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   GroupName: string | undefined;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM policy you want to detach.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 }
 
 export namespace DetachGroupPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetachGroupPolicyRequest): any => ({
     ...obj,
   });
@@ -2503,20 +2858,22 @@ export namespace DetachGroupPolicyRequest {
 export interface DetachRolePolicyRequest {
   /**
    * <p>The name (friendly name, not ARN) of the IAM role to detach the policy from.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM policy you want to detach.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 }
 
 export namespace DetachRolePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetachRolePolicyRequest): any => ({
     ...obj,
   });
@@ -2525,20 +2882,22 @@ export namespace DetachRolePolicyRequest {
 export interface DetachUserPolicyRequest {
   /**
    * <p>The name (friendly name, not ARN) of the IAM user to detach the policy from.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM policy you want to detach.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 }
 
 export namespace DetachUserPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetachUserPolicyRequest): any => ({
     ...obj,
   });
@@ -2547,15 +2906,15 @@ export namespace DetachUserPolicyRequest {
 export interface EnableMFADeviceRequest {
   /**
    * <p>The name of the IAM user for whom you want to enable the MFA device.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
-   * <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices, the
-   *          serial number is the device ARN.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   * <p>The serial number that uniquely identifies the MFA device. For virtual MFA devices,
+   *             the serial number is the device ARN.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of upper and lowercase alphanumeric characters with no spaces. You can also include any of the
    *     following characters: =,.@:/-</p>
    */
@@ -2563,32 +2922,37 @@ export interface EnableMFADeviceRequest {
 
   /**
    * <p>An authentication code emitted by the device. </p>
-   *          <p>The format for this parameter is a string of six digits.</p>
-   *          <important>
+   *         <p>The format for this parameter is a string of six digits.</p>
+   *         <important>
    *             <p>Submit your request immediately after generating the authentication codes. If you
-   *             generate the codes and then wait too long to submit the request, the MFA device
-   *             successfully associates with the user but the MFA device becomes out of sync. This
-   *             happens because time-based one-time passwords (TOTP) expire after a short period of
-   *             time. If this happens, you can <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html">resync the device</a>.</p>
-   *          </important>
+   *                 generate the codes and then wait too long to submit the request, the MFA device
+   *                 successfully associates with the user but the MFA device becomes out of sync. This
+   *                 happens because time-based one-time passwords (TOTP) expire after a short period of
+   *                 time. If this happens, you can <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html">resync the
+   *                 device</a>.</p>
+   *         </important>
    */
   AuthenticationCode1: string | undefined;
 
   /**
    * <p>A subsequent authentication code emitted by the device.</p>
-   *          <p>The format for this parameter is a string of six digits.</p>
-   *          <important>
+   *         <p>The format for this parameter is a string of six digits.</p>
+   *         <important>
    *             <p>Submit your request immediately after generating the authentication codes. If you
-   *             generate the codes and then wait too long to submit the request, the MFA device
-   *             successfully associates with the user but the MFA device becomes out of sync. This
-   *             happens because time-based one-time passwords (TOTP) expire after a short period of
-   *             time. If this happens, you can <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html">resync the device</a>.</p>
-   *          </important>
+   *                 generate the codes and then wait too long to submit the request, the MFA device
+   *                 successfully associates with the user but the MFA device becomes out of sync. This
+   *                 happens because time-based one-time passwords (TOTP) expire after a short period of
+   *                 time. If this happens, you can <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_sync.html">resync the
+   *                 device</a>.</p>
+   *         </important>
    */
   AuthenticationCode2: string | undefined;
 }
 
 export namespace EnableMFADeviceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableMFADeviceRequest): any => ({
     ...obj,
   });
@@ -2605,6 +2969,9 @@ export interface InvalidAuthenticationCodeException extends __SmithyException, $
 }
 
 export namespace InvalidAuthenticationCodeException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidAuthenticationCodeException): any => ({
     ...obj,
   });
@@ -2633,6 +3000,9 @@ export interface GenerateCredentialReportResponse {
 }
 
 export namespace GenerateCredentialReportResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateCredentialReportResponse): any => ({
     ...obj,
   });
@@ -2641,24 +3011,27 @@ export namespace GenerateCredentialReportResponse {
 export interface GenerateOrganizationsAccessReportRequest {
   /**
    * <p>The path of the AWS Organizations entity (root, OU, or account). You can build an entity path using
-   *          the known structure of your organization. For example, assume that your account ID is
-   *             <code>123456789012</code> and its parent OU ID is <code>ou-rge0-awsabcde</code>. The
-   *          organization root ID is <code>r-f6g7h8i9j0example</code> and your organization ID is
-   *             <code>o-a1b2c3d4e5</code>. Your entity path is
-   *             <code>o-a1b2c3d4e5/r-f6g7h8i9j0example/ou-rge0-awsabcde/123456789012</code>.</p>
+   *             the known structure of your organization. For example, assume that your account ID is
+   *                 <code>123456789012</code> and its parent OU ID is <code>ou-rge0-awsabcde</code>. The
+   *             organization root ID is <code>r-f6g7h8i9j0example</code> and your organization ID is
+   *                 <code>o-a1b2c3d4e5</code>. Your entity path is
+   *                 <code>o-a1b2c3d4e5/r-f6g7h8i9j0example/ou-rge0-awsabcde/123456789012</code>.</p>
    */
   EntityPath: string | undefined;
 
   /**
    * <p>The identifier of the AWS Organizations service control policy (SCP). This parameter is
-   *          optional.</p>
-   *          <p>This ID is used to generate information about when an account principal that is limited
-   *          by the SCP attempted to access an AWS service.</p>
+   *             optional.</p>
+   *         <p>This ID is used to generate information about when an account principal that is
+   *             limited by the SCP attempted to access an AWS service.</p>
    */
   OrganizationsPolicyId?: string;
 }
 
 export namespace GenerateOrganizationsAccessReportRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateOrganizationsAccessReportRequest): any => ({
     ...obj,
   });
@@ -2672,14 +3045,17 @@ export interface GenerateOrganizationsAccessReportResponse {
 }
 
 export namespace GenerateOrganizationsAccessReportResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateOrganizationsAccessReportResponse): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The request failed because the maximum number of concurrent requests for this
- *     account are already running.</p>
+ * <p>The request failed because the maximum number of concurrent requests for this account are
+ *       already running.</p>
  */
 export interface ReportGenerationLimitExceededException extends __SmithyException, $MetadataBearer {
   name: "ReportGenerationLimitExceededException";
@@ -2688,6 +3064,9 @@ export interface ReportGenerationLimitExceededException extends __SmithyExceptio
 }
 
 export namespace ReportGenerationLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReportGenerationLimitExceededException): any => ({
     ...obj,
   });
@@ -2696,22 +3075,25 @@ export namespace ReportGenerationLimitExceededException {
 export interface GenerateServiceLastAccessedDetailsRequest {
   /**
    * <p>The ARN of the IAM resource (user, group, role, or managed policy) used to generate
-   *          information about when the resource was last used in an attempt to access an AWS
-   *          service.</p>
+   *             information about when the resource was last used in an attempt to access an AWS
+   *             service.</p>
    */
   Arn: string | undefined;
 
   /**
    * <p>The level of detail that you want to generate. You can specify whether you want to
-   *          generate information about the last attempt to access services or actions. If you specify
-   *          service-level granularity, this operation generates only service data. If you specify
-   *          action-level granularity, it generates service and action data. If you don't include this
-   *          optional parameter, the operation generates service data.</p>
+   *             generate information about the last attempt to access services or actions. If you
+   *             specify service-level granularity, this operation generates only service data. If you
+   *             specify action-level granularity, it generates service and action data. If you don't
+   *             include this optional parameter, the operation generates service data.</p>
    */
   Granularity?: AccessAdvisorUsageGranularityType | string;
 }
 
 export namespace GenerateServiceLastAccessedDetailsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateServiceLastAccessedDetailsRequest): any => ({
     ...obj,
   });
@@ -2719,15 +3101,18 @@ export namespace GenerateServiceLastAccessedDetailsRequest {
 
 export interface GenerateServiceLastAccessedDetailsResponse {
   /**
-   * <p>The <code>JobId</code> that you can use in the <a>GetServiceLastAccessedDetails</a> or <a>GetServiceLastAccessedDetailsWithEntities</a> operations. The <code>JobId</code>
-   *          returned by <code>GenerateServiceLastAccessedDetail</code> must be used by the same role
-   *          within a session, or by the same user when used to call
-   *             <code>GetServiceLastAccessedDetail</code>.</p>
+   * <p>The <code>JobId</code> that you can use in the <a>GetServiceLastAccessedDetails</a> or <a>GetServiceLastAccessedDetailsWithEntities</a> operations. The
+   *                 <code>JobId</code> returned by <code>GenerateServiceLastAccessedDetail</code> must
+   *             be used by the same role within a session, or by the same user when used to call
+   *                 <code>GetServiceLastAccessedDetail</code>.</p>
    */
   JobId?: string;
 }
 
 export namespace GenerateServiceLastAccessedDetailsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateServiceLastAccessedDetailsResponse): any => ({
     ...obj,
   });
@@ -2736,13 +3121,16 @@ export namespace GenerateServiceLastAccessedDetailsResponse {
 export interface GetAccessKeyLastUsedRequest {
   /**
    * <p>The identifier of an access key.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
    *     consist of any upper or lowercased letter or digit.</p>
    */
   AccessKeyId: string | undefined;
 }
 
 export namespace GetAccessKeyLastUsedRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccessKeyLastUsedRequest): any => ({
     ...obj,
   });
@@ -2756,7 +3144,7 @@ export namespace GetAccessKeyLastUsedRequest {
 export interface GetAccessKeyLastUsedResponse {
   /**
    * <p>The name of the AWS IAM user that owns this access key.</p>
-   *          <p></p>
+   *         <p></p>
    */
   UserName?: string;
 
@@ -2767,6 +3155,9 @@ export interface GetAccessKeyLastUsedResponse {
 }
 
 export namespace GetAccessKeyLastUsedResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccessKeyLastUsedResponse): any => ({
     ...obj,
   });
@@ -2783,10 +3174,10 @@ export enum EntityType {
 export interface GetAccountAuthorizationDetailsRequest {
   /**
    * <p>A list of entity types used to filter the results. Only the entities that match the
-   *          types you specify are included in the output. Use the value <code>LocalManagedPolicy</code>
-   *          to include customer managed policies.</p>
-   *          <p>The format for this parameter is a comma-separated (if more than one) list of strings.
-   *          Each string value in the list must be one of the valid values listed below.</p>
+   *             types you specify are included in the output. Use the value
+   *                 <code>LocalManagedPolicy</code> to include customer managed policies.</p>
+   *         <p>The format for this parameter is a comma-separated (if more than one) list of strings.
+   *             Each string value in the list must be one of the valid values listed below.</p>
    */
   Filter?: (EntityType | string)[];
 
@@ -2812,6 +3203,9 @@ export interface GetAccountAuthorizationDetailsRequest {
 }
 
 export namespace GetAccountAuthorizationDetailsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccountAuthorizationDetailsRequest): any => ({
     ...obj,
   });
@@ -2834,6 +3228,9 @@ export interface PolicyDetail {
 }
 
 export namespace PolicyDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyDetail): any => ({
     ...obj,
   });
@@ -2845,7 +3242,7 @@ export namespace PolicyDetail {
  */
 export interface GroupDetail {
   /**
-   * <p>The path to the group. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   * <p>The path to the group. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>.</p>
    */
   Path?: string;
@@ -2858,14 +3255,14 @@ export interface GroupDetail {
   /**
    * <p>The stable and unique string identifying the group. For more information about IDs, see
    *             <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>.</p>
+   *             identifiers</a> in the <i>IAM User Guide</i>.</p>
    */
   GroupId?: string;
 
   /**
    * <p>The Amazon Resource Name (ARN). ARNs are unique identifiers for AWS resources.</p>
-   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>. </p>
+   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in
+   *          the <i>AWS General Reference</i>. </p>
    */
   Arn?: string;
 
@@ -2887,6 +3284,9 @@ export interface GroupDetail {
 }
 
 export namespace GroupDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GroupDetail): any => ({
     ...obj,
   });
@@ -2897,8 +3297,8 @@ export namespace GroupDetail {
  *          the number of principal entities (users, groups, and roles) that the policy is attached
  *          to.</p>
  *          <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> operation.</p>
- *          <p>For more information about managed policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline
- *             Policies</a> in the <i>IAM User Guide</i>. </p>
+ *          <p>For more information about managed policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed policies and inline
+ *             policies</a> in the <i>IAM User Guide</i>. </p>
  */
 export interface ManagedPolicyDetail {
   /**
@@ -2908,21 +3308,21 @@ export interface ManagedPolicyDetail {
 
   /**
    * <p>The stable and unique string identifying the policy.</p>
-   *          <p>For more information about IDs, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   *          <p>For more information about IDs, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>.</p>
    */
   PolicyId?: string;
 
   /**
    * <p>The Amazon Resource Name (ARN). ARNs are unique identifiers for AWS resources.</p>
-   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>. </p>
+   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in
+   *          the <i>AWS General Reference</i>. </p>
    */
   Arn?: string;
 
   /**
    * <p>The path to the policy.</p>
-   *          <p>For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   *          <p>For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>.</p>
    */
   Path?: string;
@@ -2930,8 +3330,8 @@ export interface ManagedPolicyDetail {
   /**
    * <p>The identifier for the version of the policy that is set as the default (operative)
    *          version.</p>
-   *          <p>For more information about policy versions, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed
-   *             Policies</a> in the <i>IAM User Guide</i>. </p>
+   *          <p>For more information about policy versions, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for managed
+   *             policies</a> in the <i>IAM User Guide</i>. </p>
    */
   DefaultVersionId?: string;
 
@@ -2944,8 +3344,8 @@ export interface ManagedPolicyDetail {
   /**
    * <p>The number of entities (users and roles) for which the policy is used as the permissions
    *          boundary. </p>
-   *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM
-   *             Identities </a> in the <i>IAM User Guide</i>.</p>
+   *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions boundaries for IAM
+   *             identities </a> in the <i>IAM User Guide</i>.</p>
    */
   PermissionsBoundaryUsageCount?: number;
 
@@ -2981,6 +3381,9 @@ export interface ManagedPolicyDetail {
 }
 
 export namespace ManagedPolicyDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ManagedPolicyDetail): any => ({
     ...obj,
   });
@@ -2992,7 +3395,7 @@ export namespace ManagedPolicyDetail {
  */
 export interface RoleDetail {
   /**
-   * <p>The path to the role. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   * <p>The path to the role. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>.</p>
    */
   Path?: string;
@@ -3005,14 +3408,14 @@ export interface RoleDetail {
   /**
    * <p>The stable and unique string identifying the role. For more information about IDs, see
    *             <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>.</p>
+   *             identifiers</a> in the <i>IAM User Guide</i>.</p>
    */
   RoleId?: string;
 
   /**
    * <p>The Amazon Resource Name (ARN). ARNs are unique identifiers for AWS resources.</p>
-   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>. </p>
+   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in
+   *          the <i>AWS General Reference</i>. </p>
    */
   Arn?: string;
 
@@ -3046,15 +3449,14 @@ export interface RoleDetail {
 
   /**
    * <p>The ARN of the policy used to set the permissions boundary for the role.</p>
-   *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM
-   *             Identities </a> in the <i>IAM User Guide</i>.</p>
+   *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions boundaries for IAM
+   *             identities </a> in the <i>IAM User Guide</i>.</p>
    */
   PermissionsBoundary?: AttachedPermissionsBoundary;
 
   /**
-   * <p>A list of tags that are attached to the specified role. For more information about
-   *       tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM
-   *         Identities</a> in the <i>IAM User Guide</i>.</p>
+   * <p>A list of tags that are attached to the role. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
    */
   Tags?: Tag[];
 
@@ -3063,13 +3465,16 @@ export interface RoleDetail {
    *          date and time and the Region in which the role was last used. Activity is only reported for
    *          the trailing 400 days. This period can be shorter if your Region began supporting these
    *          features within the last year. The role might have been used more than 400 days ago. For
-   *          more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period">Regions Where Data Is Tracked</a> in the <i>IAM User
+   *          more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period">Regions where data is tracked</a> in the <i>IAM User
    *          Guide</i>.</p>
    */
   RoleLastUsed?: RoleLastUsed;
 }
 
 export namespace RoleDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RoleDetail): any => ({
     ...obj,
   });
@@ -3082,7 +3487,7 @@ export namespace RoleDetail {
  */
 export interface UserDetail {
   /**
-   * <p>The path to the user. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   * <p>The path to the user. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>.</p>
    */
   Path?: string;
@@ -3095,14 +3500,14 @@ export interface UserDetail {
   /**
    * <p>The stable and unique string identifying the user. For more information about IDs, see
    *             <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>.</p>
+   *             identifiers</a> in the <i>IAM User Guide</i>.</p>
    */
   UserId?: string;
 
   /**
    * <p>The Amazon Resource Name (ARN). ARNs are unique identifiers for AWS resources.</p>
-   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>. </p>
+   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in
+   *          the <i>AWS General Reference</i>. </p>
    */
   Arn?: string;
 
@@ -3129,20 +3534,22 @@ export interface UserDetail {
 
   /**
    * <p>The ARN of the policy used to set the permissions boundary for the user.</p>
-   *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM
-   *             Identities </a> in the <i>IAM User Guide</i>.</p>
+   *          <p>For more information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions boundaries for IAM
+   *             identities </a> in the <i>IAM User Guide</i>.</p>
    */
   PermissionsBoundary?: AttachedPermissionsBoundary;
 
   /**
-   * <p>A list of tags that are associated with the specified user. For more information about
-   *       tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM
-   *         Identities</a> in the <i>IAM User Guide</i>.</p>
+   * <p>A list of tags that are associated with the user. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
    */
   Tags?: Tag[];
 }
 
 export namespace UserDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserDetail): any => ({
     ...obj,
   });
@@ -3192,6 +3599,9 @@ export interface GetAccountAuthorizationDetailsResponse {
 }
 
 export namespace GetAccountAuthorizationDetailsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccountAuthorizationDetailsResponse): any => ({
     ...obj,
   });
@@ -3208,22 +3618,23 @@ export interface PasswordPolicy {
   MinimumPasswordLength?: number;
 
   /**
-   * <p>Specifies whether to require symbols for IAM user passwords.</p>
+   * <p>Specifies whether IAM user passwords must contain at least one of the following symbols:</p>
+   *          <p>! @ # $ % ^ & * ( ) _ + - = [ ] { } | '</p>
    */
   RequireSymbols?: boolean;
 
   /**
-   * <p>Specifies whether to require numbers for IAM user passwords.</p>
+   * <p>Specifies whether IAM user passwords must contain at least one numeric character (0 to 9).</p>
    */
   RequireNumbers?: boolean;
 
   /**
-   * <p>Specifies whether to require uppercase characters for IAM user passwords.</p>
+   * <p>Specifies whether IAM user passwords must contain at least one uppercase character (A to Z).</p>
    */
   RequireUppercaseCharacters?: boolean;
 
   /**
-   * <p>Specifies whether to require lowercase characters for IAM user passwords.</p>
+   * <p>Specifies whether IAM user passwords must contain at least one lowercase character (a to z).</p>
    */
   RequireLowercaseCharacters?: boolean;
 
@@ -3258,6 +3669,9 @@ export interface PasswordPolicy {
 }
 
 export namespace PasswordPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PasswordPolicy): any => ({
     ...obj,
   });
@@ -3275,6 +3689,9 @@ export interface GetAccountPasswordPolicyResponse {
 }
 
 export namespace GetAccountPasswordPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccountPasswordPolicyResponse): any => ({
     ...obj,
   });
@@ -3315,12 +3732,15 @@ export type SummaryKeyType =
 export interface GetAccountSummaryResponse {
   /**
    * <p>A set of key–value pairs containing information about IAM entity usage and
-   *          IAM quotas.</p>
+   *             IAM quotas.</p>
    */
   SummaryMap?: { [key: string]: number };
 }
 
 export namespace GetAccountSummaryResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccountSummaryResponse): any => ({
     ...obj,
   });
@@ -3329,9 +3749,9 @@ export namespace GetAccountSummaryResponse {
 export interface GetContextKeysForCustomPolicyRequest {
   /**
    * <p>A list of policies for which you want the list of context keys referenced in those
-   *          policies. Each document is specified as a string containing the complete, valid JSON text
-   *          of an IAM policy.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   *             policies. Each document is specified as a string containing the complete, valid JSON
+   *             text of an IAM policy.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -3352,6 +3772,9 @@ export interface GetContextKeysForCustomPolicyRequest {
 }
 
 export namespace GetContextKeysForCustomPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetContextKeysForCustomPolicyRequest): any => ({
     ...obj,
   });
@@ -3368,6 +3791,9 @@ export interface GetContextKeysForPolicyResponse {
 }
 
 export namespace GetContextKeysForPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetContextKeysForPolicyResponse): any => ({
     ...obj,
   });
@@ -3375,22 +3801,21 @@ export namespace GetContextKeysForPolicyResponse {
 
 export interface GetContextKeysForPrincipalPolicyRequest {
   /**
-   * <p>The ARN of a user, group, or role whose policies contain the context keys that you want
-   *          listed. If you specify a user, the list includes context keys that are found in all
-   *          policies that are attached to the user. The list also includes all groups that the user is
-   *          a member of. If you pick a group or a role, then it includes only those context keys that
-   *          are found in policies attached to that entity. Note that all parameters are shown in
-   *          unencoded form here for clarity, but must be URL encoded to be included as a part of a real
-   *          HTML request.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   * <p>The ARN of a user, group, or role whose policies contain the context keys that you
+   *             want listed. If you specify a user, the list includes context keys that are found in all
+   *             policies that are attached to the user. The list also includes all groups that the user
+   *             is a member of. If you pick a group or a role, then it includes only those context keys
+   *             that are found in policies attached to that entity. Note that all parameters are shown
+   *             in unencoded form here for clarity, but must be URL encoded to be included as a part of
+   *             a real HTML request.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicySourceArn: string | undefined;
 
   /**
-   * <p>An optional list of additional policies for which you want the list of context keys that
-   *          are referenced.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   * <p>An optional list of additional policies for which you want the list of context keys
+   *             that are referenced.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -3411,6 +3836,9 @@ export interface GetContextKeysForPrincipalPolicyRequest {
 }
 
 export namespace GetContextKeysForPrincipalPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetContextKeysForPrincipalPolicyRequest): any => ({
     ...obj,
   });
@@ -3419,7 +3847,7 @@ export namespace GetContextKeysForPrincipalPolicyRequest {
 /**
  * <p>The request was rejected because the most recent credential report has expired. To
  *       generate a new credential report, use <a>GenerateCredentialReport</a>. For more
- *       information about credential report expiration, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html">Getting Credential Reports</a> in the
+ *       information about credential report expiration, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html">Getting credential reports</a> in the
  *         <i>IAM User Guide</i>.</p>
  */
 export interface CredentialReportExpiredException extends __SmithyException, $MetadataBearer {
@@ -3429,6 +3857,9 @@ export interface CredentialReportExpiredException extends __SmithyException, $Me
 }
 
 export namespace CredentialReportExpiredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CredentialReportExpiredException): any => ({
     ...obj,
   });
@@ -3445,14 +3876,16 @@ export interface CredentialReportNotPresentException extends __SmithyException, 
 }
 
 export namespace CredentialReportNotPresentException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CredentialReportNotPresentException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The request was rejected because the credential report is still being
- *       generated.</p>
+ * <p>The request was rejected because the credential report is still being generated.</p>
  */
 export interface CredentialReportNotReadyException extends __SmithyException, $MetadataBearer {
   name: "CredentialReportNotReadyException";
@@ -3461,6 +3894,9 @@ export interface CredentialReportNotReadyException extends __SmithyException, $M
 }
 
 export namespace CredentialReportNotReadyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CredentialReportNotReadyException): any => ({
     ...obj,
   });
@@ -3490,6 +3926,9 @@ export interface GetCredentialReportResponse {
 }
 
 export namespace GetCredentialReportResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCredentialReportResponse): any => ({
     ...obj,
   });
@@ -3498,7 +3937,7 @@ export namespace GetCredentialReportResponse {
 export interface GetGroupRequest {
   /**
    * <p>The name of the group.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   GroupName: string | undefined;
@@ -3525,6 +3964,9 @@ export interface GetGroupRequest {
 }
 
 export namespace GetGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetGroupRequest): any => ({
     ...obj,
   });
@@ -3563,6 +4005,9 @@ export interface GetGroupResponse {
 }
 
 export namespace GetGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetGroupResponse): any => ({
     ...obj,
   });
@@ -3571,20 +4016,23 @@ export namespace GetGroupResponse {
 export interface GetGroupPolicyRequest {
   /**
    * <p>The name of the group the policy is associated with.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   GroupName: string | undefined;
 
   /**
    * <p>The name of the policy document to get.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   PolicyName: string | undefined;
 }
 
 export namespace GetGroupPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetGroupPolicyRequest): any => ({
     ...obj,
   });
@@ -3607,14 +4055,17 @@ export interface GetGroupPolicyResponse {
 
   /**
    * <p>The policy document.</p>
-   *          <p>IAM stores policies in JSON format. However, resources that were created using AWS
-   *          CloudFormation templates can be formatted in YAML. AWS CloudFormation always converts a
-   *          YAML policy to JSON format before submitting it to IAM.</p>
+   *         <p>IAM stores policies in JSON format. However, resources that were created using AWS
+   *             CloudFormation templates can be formatted in YAML. AWS CloudFormation always converts
+   *             a YAML policy to JSON format before submitting it to IAM.</p>
    */
   PolicyDocument: string | undefined;
 }
 
 export namespace GetGroupPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetGroupPolicyResponse): any => ({
     ...obj,
   });
@@ -3623,13 +4074,16 @@ export namespace GetGroupPolicyResponse {
 export interface GetInstanceProfileRequest {
   /**
    * <p>The name of the instance profile to get information about.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   InstanceProfileName: string | undefined;
 }
 
 export namespace GetInstanceProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetInstanceProfileRequest): any => ({
     ...obj,
   });
@@ -3647,6 +4101,9 @@ export interface GetInstanceProfileResponse {
 }
 
 export namespace GetInstanceProfileResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetInstanceProfileResponse): any => ({
     ...obj,
   });
@@ -3655,13 +4112,16 @@ export namespace GetInstanceProfileResponse {
 export interface GetLoginProfileRequest {
   /**
    * <p>The name of the user whose login profile you want to retrieve.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 }
 
 export namespace GetLoginProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetLoginProfileRequest): any => ({
     ...obj,
   });
@@ -3679,6 +4139,9 @@ export interface GetLoginProfileResponse {
 }
 
 export namespace GetLoginProfileResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetLoginProfileResponse): any => ({
     ...obj,
   });
@@ -3687,14 +4150,16 @@ export namespace GetLoginProfileResponse {
 export interface GetOpenIDConnectProviderRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get
-   *          information for. You can get a list of OIDC provider resource ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *             information for. You can get a list of OIDC provider resource ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   OpenIDConnectProviderArn: string | undefined;
 }
 
 export namespace GetOpenIDConnectProviderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOpenIDConnectProviderRequest): any => ({
     ...obj,
   });
@@ -3707,30 +4172,40 @@ export namespace GetOpenIDConnectProviderRequest {
 export interface GetOpenIDConnectProviderResponse {
   /**
    * <p>The URL that the IAM OIDC provider resource object is associated with. For more
-   *          information, see <a>CreateOpenIDConnectProvider</a>.</p>
+   *             information, see <a>CreateOpenIDConnectProvider</a>.</p>
    */
   Url?: string;
 
   /**
    * <p>A list of client IDs (also known as audiences) that are associated with the specified
-   *          IAM OIDC provider resource object. For more information, see <a>CreateOpenIDConnectProvider</a>.</p>
+   *             IAM OIDC provider resource object. For more information, see <a>CreateOpenIDConnectProvider</a>.</p>
    */
   ClientIDList?: string[];
 
   /**
    * <p>A list of certificate thumbprints that are associated with the specified IAM OIDC
-   *          provider resource object. For more information, see <a>CreateOpenIDConnectProvider</a>. </p>
+   *             provider resource object. For more information, see <a>CreateOpenIDConnectProvider</a>. </p>
    */
   ThumbprintList?: string[];
 
   /**
-   * <p>The date and time when the IAM OIDC provider resource object was created in the AWS
-   *          account.</p>
+   * <p>The date and time when the IAM OIDC provider resource object was created in the
+   *             AWS account.</p>
    */
   CreateDate?: Date;
+
+  /**
+   * <p>A list of tags that are attached to the specified IAM OIDC provider. The returned list of tags is sorted by tag key.
+   *       For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace GetOpenIDConnectProviderResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOpenIDConnectProviderResponse): any => ({
     ...obj,
   });
@@ -3771,13 +4246,16 @@ export interface GetOrganizationsAccessReportRequest {
 
   /**
    * <p>The key that is used to sort the results. If you choose the namespace key, the results
-   *          are returned in alphabetical order. If you choose the time key, the results are sorted
-   *          numerically by the date and time.</p>
+   *             are returned in alphabetical order. If you choose the time key, the results are sorted
+   *             numerically by the date and time.</p>
    */
   SortKey?: SortKeyType | string;
 }
 
 export namespace GetOrganizationsAccessReportRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOrganizationsAccessReportRequest): any => ({
     ...obj,
   });
@@ -3800,6 +4278,9 @@ export interface ErrorDetails {
 }
 
 export namespace ErrorDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ErrorDetails): any => ({
     ...obj,
   });
@@ -3815,33 +4296,33 @@ export interface GetOrganizationsAccessReportResponse {
 
   /**
    * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time
-   *             format</a>, when the report job was created.</p>
+   *                 format</a>, when the report job was created.</p>
    */
   JobCreationDate: Date | undefined;
 
   /**
    * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time
-   *             format</a>, when the generated report job was completed or failed.</p>
-   *          <p>This field is null if the job is still in progress, as indicated by a job status value
-   *          of <code>IN_PROGRESS</code>.</p>
+   *                 format</a>, when the generated report job was completed or failed.</p>
+   *         <p>This field is null if the job is still in progress, as indicated by a job status value
+   *             of <code>IN_PROGRESS</code>.</p>
    */
   JobCompletionDate?: Date;
 
   /**
    * <p>The number of services that the applicable SCPs allow account principals to
-   *          access.</p>
+   *             access.</p>
    */
   NumberOfServicesAccessible?: number;
 
   /**
    * <p>The number of services that account principals are allowed but did not attempt to
-   *          access.</p>
+   *             access.</p>
    */
   NumberOfServicesNotAccessed?: number;
 
   /**
    * <p>An object that contains details about the most recent attempt to access the
-   *          service.</p>
+   *             service.</p>
    */
   AccessDetails?: AccessDetail[];
 
@@ -3870,6 +4351,9 @@ export interface GetOrganizationsAccessReportResponse {
 }
 
 export namespace GetOrganizationsAccessReportResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOrganizationsAccessReportResponse): any => ({
     ...obj,
   });
@@ -3878,14 +4362,16 @@ export namespace GetOrganizationsAccessReportResponse {
 export interface GetPolicyRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of the managed policy that you want information
-   *          about.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *             about.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 }
 
 export namespace GetPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPolicyRequest): any => ({
     ...obj,
   });
@@ -3902,6 +4388,9 @@ export interface GetPolicyResponse {
 }
 
 export namespace GetPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPolicyResponse): any => ({
     ...obj,
   });
@@ -3910,15 +4399,14 @@ export namespace GetPolicyResponse {
 export interface GetPolicyVersionRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of the managed policy that you want information
-   *          about.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *             about.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 
   /**
    * <p>Identifies the policy version to retrieve.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that
    *     consists of the lowercase letter 'v' followed by one or two digits, and optionally
    *     followed by a period '.' and a string of letters and digits.</p>
    */
@@ -3926,6 +4414,9 @@ export interface GetPolicyVersionRequest {
 }
 
 export namespace GetPolicyVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPolicyVersionRequest): any => ({
     ...obj,
   });
@@ -3943,6 +4434,9 @@ export interface GetPolicyVersionResponse {
 }
 
 export namespace GetPolicyVersionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPolicyVersionResponse): any => ({
     ...obj,
   });
@@ -3951,13 +4445,16 @@ export namespace GetPolicyVersionResponse {
 export interface GetRoleRequest {
   /**
    * <p>The name of the IAM role to get information about.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
 }
 
 export namespace GetRoleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRoleRequest): any => ({
     ...obj,
   });
@@ -3974,6 +4471,9 @@ export interface GetRoleResponse {
 }
 
 export namespace GetRoleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRoleResponse): any => ({
     ...obj,
   });
@@ -3982,20 +4482,23 @@ export namespace GetRoleResponse {
 export interface GetRolePolicyRequest {
   /**
    * <p>The name of the role associated with the policy.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
 
   /**
    * <p>The name of the policy document to get.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   PolicyName: string | undefined;
 }
 
 export namespace GetRolePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRolePolicyRequest): any => ({
     ...obj,
   });
@@ -4018,14 +4521,17 @@ export interface GetRolePolicyResponse {
 
   /**
    * <p>The policy document.</p>
-   *          <p>IAM stores policies in JSON format. However, resources that were created using AWS
-   *          CloudFormation templates can be formatted in YAML. AWS CloudFormation always converts a
-   *          YAML policy to JSON format before submitting it to IAM.</p>
+   *         <p>IAM stores policies in JSON format. However, resources that were created using AWS
+   *             CloudFormation templates can be formatted in YAML. AWS CloudFormation always converts
+   *             a YAML policy to JSON format before submitting it to IAM.</p>
    */
   PolicyDocument: string | undefined;
 }
 
 export namespace GetRolePolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRolePolicyResponse): any => ({
     ...obj,
   });
@@ -4034,14 +4540,16 @@ export namespace GetRolePolicyResponse {
 export interface GetSAMLProviderRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of the SAML provider resource object in IAM to get
-   *          information about.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *             information about.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   SAMLProviderArn: string | undefined;
 }
 
 export namespace GetSAMLProviderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSAMLProviderRequest): any => ({
     ...obj,
   });
@@ -4066,9 +4574,19 @@ export interface GetSAMLProviderResponse {
    * <p>The expiration date and time for the SAML provider.</p>
    */
   ValidUntil?: Date;
+
+  /**
+   * <p>A list of tags that are attached to the specified IAM SAML provider. The returned list of tags is sorted by tag key.
+   *       For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace GetSAMLProviderResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSAMLProviderResponse): any => ({
     ...obj,
   });
@@ -4077,13 +4595,16 @@ export namespace GetSAMLProviderResponse {
 export interface GetServerCertificateRequest {
   /**
    * <p>The name of the server certificate you want to retrieve information about.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   ServerCertificateName: string | undefined;
 }
 
 export namespace GetServerCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetServerCertificateRequest): any => ({
     ...obj,
   });
@@ -4098,7 +4619,7 @@ export namespace GetServerCertificateRequest {
 export interface ServerCertificateMetadata {
   /**
    * <p> The path to the server certificate. For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>. </p>
+   *             identifiers</a> in the <i>IAM User Guide</i>. </p>
    */
   Path: string | undefined;
 
@@ -4109,13 +4630,13 @@ export interface ServerCertificateMetadata {
 
   /**
    * <p> The stable and unique string identifying the server certificate. For more information
-   *          about IDs, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>. </p>
+   *          about IDs, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the <i>IAM User Guide</i>. </p>
    */
   ServerCertificateId: string | undefined;
 
   /**
    * <p> The Amazon Resource Name (ARN) specifying the server certificate. For more information
-   *          about ARNs and how to use them in policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM Identifiers</a> in the
+   *          about ARNs and how to use them in policies, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM identifiers</a> in the
    *             <i>IAM User Guide</i>. </p>
    */
   Arn: string | undefined;
@@ -4132,6 +4653,9 @@ export interface ServerCertificateMetadata {
 }
 
 export namespace ServerCertificateMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServerCertificateMetadata): any => ({
     ...obj,
   });
@@ -4157,9 +4681,18 @@ export interface ServerCertificate {
    * <p>The contents of the public key certificate chain.</p>
    */
   CertificateChain?: string;
+
+  /**
+   * <p>A list of tags that are attached to the server certificate. For more information about tagging, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace ServerCertificate {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServerCertificate): any => ({
     ...obj,
   });
@@ -4177,6 +4710,9 @@ export interface GetServerCertificateResponse {
 }
 
 export namespace GetServerCertificateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetServerCertificateResponse): any => ({
     ...obj,
   });
@@ -4185,9 +4721,9 @@ export namespace GetServerCertificateResponse {
 export interface GetServiceLastAccessedDetailsRequest {
   /**
    * <p>The ID of the request generated by the <a>GenerateServiceLastAccessedDetails</a> operation. The <code>JobId</code>
-   *          returned by <code>GenerateServiceLastAccessedDetail</code> must be used by the same role
-   *          within a session, or by the same user when used to call
-   *             <code>GetServiceLastAccessedDetail</code>.</p>
+   *             returned by <code>GenerateServiceLastAccessedDetail</code> must be used by the same role
+   *             within a session, or by the same user when used to call
+   *                 <code>GetServiceLastAccessedDetail</code>.</p>
    */
   JobId: string | undefined;
 
@@ -4213,6 +4749,9 @@ export interface GetServiceLastAccessedDetailsRequest {
 }
 
 export namespace GetServiceLastAccessedDetailsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetServiceLastAccessedDetailsRequest): any => ({
     ...obj,
   });
@@ -4231,8 +4770,8 @@ export interface TrackedActionLastAccessed {
 
   /**
    * <p>The Amazon Resource Name (ARN). ARNs are unique identifiers for AWS resources.</p>
-   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>. </p>
+   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in
+   *          the <i>AWS General Reference</i>. </p>
    */
   LastAccessedEntity?: string;
 
@@ -4255,6 +4794,9 @@ export interface TrackedActionLastAccessed {
 }
 
 export namespace TrackedActionLastAccessed {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrackedActionLastAccessed): any => ({
     ...obj,
   });
@@ -4281,12 +4823,11 @@ export interface ServiceLastAccessed {
 
   /**
    * <p>The namespace of the service in which access was attempted.</p>
-   *          <p>To learn the service namespace of a service, go to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html">Actions,
-   *             Resources, and Condition Keys for AWS Services</a> in the
-   *             <i>IAM User Guide</i>. Choose the name of the service to view details
-   *          for that service. In the first paragraph, find the service prefix. For example,
-   *             <code>(service prefix: a4b)</code>. For more information about service namespaces, see
-   *             <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
+   *          <p>To learn the service namespace of a service, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html">Actions, resources, and condition keys for AWS services</a> in the
+   *             <i>Service Authorization Reference</i>. Choose the name of the service to
+   *          view details for that service. In the first paragraph, find the service prefix. For
+   *          example, <code>(service prefix: a4b)</code>. For more information about service namespaces,
+   *          see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
    *             Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
    */
   ServiceNamespace: string | undefined;
@@ -4326,6 +4867,9 @@ export interface ServiceLastAccessed {
 }
 
 export namespace ServiceLastAccessed {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceLastAccessed): any => ({
     ...obj,
   });
@@ -4339,28 +4883,28 @@ export interface GetServiceLastAccessedDetailsResponse {
 
   /**
    * <p>The type of job. Service jobs return information about when each service was last
-   *          accessed. Action jobs also include information about when tracked actions within the
-   *          service were last accessed.</p>
+   *             accessed. Action jobs also include information about when tracked actions within the
+   *             service were last accessed.</p>
    */
   JobType?: AccessAdvisorUsageGranularityType | string;
 
   /**
    * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time
-   *             format</a>, when the report job was created.</p>
+   *                 format</a>, when the report job was created.</p>
    */
   JobCreationDate: Date | undefined;
 
   /**
    * <p> A <code>ServiceLastAccessed</code> object that contains details about the most recent
-   *          attempt to access the service.</p>
+   *             attempt to access the service.</p>
    */
   ServicesLastAccessed: ServiceLastAccessed[] | undefined;
 
   /**
    * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time
-   *             format</a>, when the generated report job was completed or failed.</p>
-   *          <p>This field is null if the job is still in progress, as indicated by a job status value
-   *          of <code>IN_PROGRESS</code>.</p>
+   *                 format</a>, when the generated report job was completed or failed.</p>
+   *         <p>This field is null if the job is still in progress, as indicated by a job status value
+   *             of <code>IN_PROGRESS</code>.</p>
    */
   JobCompletionDate: Date | undefined;
 
@@ -4388,6 +4932,9 @@ export interface GetServiceLastAccessedDetailsResponse {
 }
 
 export namespace GetServiceLastAccessedDetailsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetServiceLastAccessedDetailsResponse): any => ({
     ...obj,
   });
@@ -4396,20 +4943,19 @@ export namespace GetServiceLastAccessedDetailsResponse {
 export interface GetServiceLastAccessedDetailsWithEntitiesRequest {
   /**
    * <p>The ID of the request generated by the <code>GenerateServiceLastAccessedDetails</code>
-   *          operation.</p>
+   *             operation.</p>
    */
   JobId: string | undefined;
 
   /**
-   * <p>The service namespace for an AWS service. Provide the service namespace to learn when
-   *          the IAM entity last attempted to access the specified service.</p>
-   *          <p>To learn the service namespace for a service, go to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html">Actions,
-   *             Resources, and Condition Keys for AWS Services</a> in the
-   *             <i>IAM User Guide</i>. Choose the name of the service to view details
-   *          for that service. In the first paragraph, find the service prefix. For example,
-   *             <code>(service prefix: a4b)</code>. For more information about service namespaces, see
-   *             <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   * <p>The service namespace for an AWS service. Provide the service namespace to learn
+   *             when the IAM entity last attempted to access the specified service.</p>
+   *         <p>To learn the service namespace for a service, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html">Actions, resources, and condition keys for AWS services</a> in the
+   *                 <i>IAM User Guide</i>. Choose the name of the service to view
+   *             details for that service. In the first paragraph, find the service prefix. For example,
+   *                 <code>(service prefix: a4b)</code>. For more information about service namespaces,
+   *             see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
+   *                 service namespaces</a> in the <i>AWS General Reference</i>.</p>
    */
   ServiceNamespace: string | undefined;
 
@@ -4435,6 +4981,9 @@ export interface GetServiceLastAccessedDetailsWithEntitiesRequest {
 }
 
 export namespace GetServiceLastAccessedDetailsWithEntitiesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetServiceLastAccessedDetailsWithEntitiesRequest): any => ({
     ...obj,
   });
@@ -4453,8 +5002,8 @@ export enum PolicyOwnerEntityType {
 export interface EntityInfo {
   /**
    * <p>The Amazon Resource Name (ARN). ARNs are unique identifiers for AWS resources.</p>
-   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>. </p>
+   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in
+   *          the <i>AWS General Reference</i>. </p>
    */
   Arn: string | undefined;
 
@@ -4475,12 +5024,15 @@ export interface EntityInfo {
 
   /**
    * <p>The path to the entity (user or role). For more information about paths, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>. </p>
+   *             identifiers</a> in the <i>IAM User Guide</i>. </p>
    */
   Path?: string;
 }
 
 export namespace EntityInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EntityInfo): any => ({
     ...obj,
   });
@@ -4509,6 +5061,9 @@ export interface EntityDetails {
 }
 
 export namespace EntityDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EntityDetails): any => ({
     ...obj,
   });
@@ -4522,22 +5077,22 @@ export interface GetServiceLastAccessedDetailsWithEntitiesResponse {
 
   /**
    * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time
-   *             format</a>, when the report job was created.</p>
+   *                 format</a>, when the report job was created.</p>
    */
   JobCreationDate: Date | undefined;
 
   /**
    * <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time
-   *             format</a>, when the generated report job was completed or failed.</p>
-   *          <p>This field is null if the job is still in progress, as indicated by a job status value
-   *          of <code>IN_PROGRESS</code>.</p>
+   *                 format</a>, when the generated report job was completed or failed.</p>
+   *         <p>This field is null if the job is still in progress, as indicated by a job status value
+   *             of <code>IN_PROGRESS</code>.</p>
    */
   JobCompletionDate: Date | undefined;
 
   /**
    * <p>An <code>EntityDetailsList</code> object that contains details about when an IAM
-   *          entity (user or role) used group or policy permissions in an attempt to access the
-   *          specified AWS service.</p>
+   *             entity (user or role) used group or policy permissions in an attempt to access the
+   *             specified AWS service.</p>
    */
   EntityDetailsList: EntityDetails[] | undefined;
 
@@ -4565,6 +5120,9 @@ export interface GetServiceLastAccessedDetailsWithEntitiesResponse {
 }
 
 export namespace GetServiceLastAccessedDetailsWithEntitiesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetServiceLastAccessedDetailsWithEntitiesResponse): any => ({
     ...obj,
   });
@@ -4573,12 +5131,15 @@ export namespace GetServiceLastAccessedDetailsWithEntitiesResponse {
 export interface GetServiceLinkedRoleDeletionStatusRequest {
   /**
    * <p>The deletion task identifier. This identifier is returned by the <a>DeleteServiceLinkedRole</a> operation in the format
-   *             <code>task/aws-service-role/<service-principal-name>/<role-name>/<task-uuid></code>.</p>
+   *                 <code>task/aws-service-role/<service-principal-name>/<role-name>/<task-uuid></code>.</p>
    */
   DeletionTaskId: string | undefined;
 }
 
 export namespace GetServiceLinkedRoleDeletionStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetServiceLinkedRoleDeletionStatusRequest): any => ({
     ...obj,
   });
@@ -4602,6 +5163,9 @@ export interface RoleUsageType {
 }
 
 export namespace RoleUsageType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RoleUsageType): any => ({
     ...obj,
   });
@@ -4629,6 +5193,9 @@ export interface DeletionTaskFailureReasonType {
 }
 
 export namespace DeletionTaskFailureReasonType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletionTaskFailureReasonType): any => ({
     ...obj,
   });
@@ -4654,6 +5221,9 @@ export interface GetServiceLinkedRoleDeletionStatusResponse {
 }
 
 export namespace GetServiceLinkedRoleDeletionStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetServiceLinkedRoleDeletionStatusResponse): any => ({
     ...obj,
   });
@@ -4664,27 +5234,30 @@ export type EncodingType = "PEM" | "SSH";
 export interface GetSSHPublicKeyRequest {
   /**
    * <p>The name of the IAM user associated with the SSH public key.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
    * <p>The unique identifier for the SSH public key.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
    *     consist of any upper or lowercased letter or digit.</p>
    */
   SSHPublicKeyId: string | undefined;
 
   /**
-   * <p>Specifies the public key encoding format to use in the response. To retrieve the public
-   *          key in ssh-rsa format, use <code>SSH</code>. To retrieve the public key in PEM format, use
-   *             <code>PEM</code>.</p>
+   * <p>Specifies the public key encoding format to use in the response. To retrieve the
+   *             public key in ssh-rsa format, use <code>SSH</code>. To retrieve the public key in PEM
+   *             format, use <code>PEM</code>.</p>
    */
   Encoding: EncodingType | string | undefined;
 }
 
 export namespace GetSSHPublicKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSSHPublicKeyRequest): any => ({
     ...obj,
   });
@@ -4731,6 +5304,9 @@ export interface SSHPublicKey {
 }
 
 export namespace SSHPublicKey {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SSHPublicKey): any => ({
     ...obj,
   });
@@ -4748,6 +5324,9 @@ export interface GetSSHPublicKeyResponse {
 }
 
 export namespace GetSSHPublicKeyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSSHPublicKeyResponse): any => ({
     ...obj,
   });
@@ -4764,6 +5343,9 @@ export interface UnrecognizedPublicKeyEncodingException extends __SmithyExceptio
 }
 
 export namespace UnrecognizedPublicKeyEncodingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnrecognizedPublicKeyEncodingException): any => ({
     ...obj,
   });
@@ -4772,14 +5354,17 @@ export namespace UnrecognizedPublicKeyEncodingException {
 export interface GetUserRequest {
   /**
    * <p>The name of the user to get information about.</p>
-   *          <p>This parameter is optional. If it is not included, it defaults to the user making the
-   *          request. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter is optional. If it is not included, it defaults to the user making the
+   *             request. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName?: string;
 }
 
 export namespace GetUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUserRequest): any => ({
     ...obj,
   });
@@ -4791,26 +5376,29 @@ export namespace GetUserRequest {
 export interface GetUserResponse {
   /**
    * <p>A structure containing details about the IAM user.</p>
-   *          <important>
+   *         <important>
    *             <p>Due to a service issue, password last used data does not include password use from
-   *             May 3, 2018 22:50 PDT to May 23, 2018 14:08 PDT. This affects <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_finding-unused.html">last
-   *                sign-in</a> dates shown in the IAM console and password last used dates in the
-   *                <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html">IAM credential report</a>, and returned by this GetUser API. If users signed in
-   *             during the affected time, the password last used date that is returned is the date the
-   *             user last signed in before May 3, 2018. For users that signed in after May 23, 2018
-   *             14:08 PDT, the returned password last used date is accurate.</p>
+   *                 May 3, 2018 22:50 PDT to May 23, 2018 14:08 PDT. This affects <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_finding-unused.html">last sign-in</a> dates shown in the IAM console and password last used
+   *                 dates in the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html">IAM credential
+   *                     report</a>, and returned by this operation. If users signed in during the
+   *                 affected time, the password last used date that is returned is the date the user
+   *                 last signed in before May 3, 2018. For users that signed in after May 23, 2018 14:08
+   *                 PDT, the returned password last used date is accurate.</p>
    *             <p>You can use password last used information to identify unused credentials for
-   *             deletion. For example, you might delete users who did not sign in to AWS in the last 90
-   *             days. In cases like this, we recommend that you adjust your evaluation window to include
-   *             dates after May 23, 2018. Alternatively, if your users use access keys to access AWS
-   *             programmatically you can refer to access key last used information because it is
-   *             accurate for all dates. </p>
-   *          </important>
+   *                 deletion. For example, you might delete users who did not sign in to AWS in the last
+   *                 90 days. In cases like this, we recommend that you adjust your evaluation window to
+   *                 include dates after May 23, 2018. Alternatively, if your users use access keys to
+   *                 access AWS programmatically you can refer to access key last used information
+   *                 because it is accurate for all dates. </p>
+   *         </important>
    */
   User: User | undefined;
 }
 
 export namespace GetUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUserResponse): any => ({
     ...obj,
   });
@@ -4819,20 +5407,23 @@ export namespace GetUserResponse {
 export interface GetUserPolicyRequest {
   /**
    * <p>The name of the user who the policy is associated with.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
    * <p>The name of the policy document to get.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   PolicyName: string | undefined;
 }
 
 export namespace GetUserPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUserPolicyRequest): any => ({
     ...obj,
   });
@@ -4855,14 +5446,17 @@ export interface GetUserPolicyResponse {
 
   /**
    * <p>The policy document.</p>
-   *          <p>IAM stores policies in JSON format. However, resources that were created using AWS
-   *          CloudFormation templates can be formatted in YAML. AWS CloudFormation always converts a
-   *          YAML policy to JSON format before submitting it to IAM.</p>
+   *         <p>IAM stores policies in JSON format. However, resources that were created using AWS
+   *             CloudFormation templates can be formatted in YAML. AWS CloudFormation always converts
+   *             a YAML policy to JSON format before submitting it to IAM.</p>
    */
   PolicyDocument: string | undefined;
 }
 
 export namespace GetUserPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUserPolicyResponse): any => ({
     ...obj,
   });
@@ -4871,7 +5465,7 @@ export namespace GetUserPolicyResponse {
 export interface ListAccessKeysRequest {
   /**
    * <p>The name of the user.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName?: string;
@@ -4898,6 +5492,9 @@ export interface ListAccessKeysRequest {
 }
 
 export namespace ListAccessKeysRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccessKeysRequest): any => ({
     ...obj,
   });
@@ -4932,6 +5529,9 @@ export interface ListAccessKeysResponse {
 }
 
 export namespace ListAccessKeysResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccessKeysResponse): any => ({
     ...obj,
   });
@@ -4960,6 +5560,9 @@ export interface ListAccountAliasesRequest {
 }
 
 export namespace ListAccountAliasesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccountAliasesRequest): any => ({
     ...obj,
   });
@@ -4972,7 +5575,7 @@ export namespace ListAccountAliasesRequest {
 export interface ListAccountAliasesResponse {
   /**
    * <p>A list of aliases associated with the account. AWS supports only one alias per
-   *          account.</p>
+   *             account.</p>
    */
   AccountAliases: string[] | undefined;
 
@@ -4995,6 +5598,9 @@ export interface ListAccountAliasesResponse {
 }
 
 export namespace ListAccountAliasesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccountAliasesResponse): any => ({
     ...obj,
   });
@@ -5003,15 +5609,15 @@ export namespace ListAccountAliasesResponse {
 export interface ListAttachedGroupPoliciesRequest {
   /**
    * <p>The name (friendly name, not ARN) of the group to list attached policies for.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   GroupName: string | undefined;
 
   /**
    * <p>The path prefix for filtering the results. This parameter is optional. If it is not
-   *          included, it defaults to a slash (/), listing all policies.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *             included, it defaults to a slash (/), listing all policies.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -5040,6 +5646,9 @@ export interface ListAttachedGroupPoliciesRequest {
 }
 
 export namespace ListAttachedGroupPoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAttachedGroupPoliciesRequest): any => ({
     ...obj,
   });
@@ -5074,6 +5683,9 @@ export interface ListAttachedGroupPoliciesResponse {
 }
 
 export namespace ListAttachedGroupPoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAttachedGroupPoliciesResponse): any => ({
     ...obj,
   });
@@ -5082,15 +5694,15 @@ export namespace ListAttachedGroupPoliciesResponse {
 export interface ListAttachedRolePoliciesRequest {
   /**
    * <p>The name (friendly name, not ARN) of the role to list attached policies for.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
 
   /**
    * <p>The path prefix for filtering the results. This parameter is optional. If it is not
-   *          included, it defaults to a slash (/), listing all policies.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *             included, it defaults to a slash (/), listing all policies.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -5119,6 +5731,9 @@ export interface ListAttachedRolePoliciesRequest {
 }
 
 export namespace ListAttachedRolePoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAttachedRolePoliciesRequest): any => ({
     ...obj,
   });
@@ -5153,6 +5768,9 @@ export interface ListAttachedRolePoliciesResponse {
 }
 
 export namespace ListAttachedRolePoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAttachedRolePoliciesResponse): any => ({
     ...obj,
   });
@@ -5161,15 +5779,15 @@ export namespace ListAttachedRolePoliciesResponse {
 export interface ListAttachedUserPoliciesRequest {
   /**
    * <p>The name (friendly name, not ARN) of the user to list attached policies for.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
    * <p>The path prefix for filtering the results. This parameter is optional. If it is not
-   *          included, it defaults to a slash (/), listing all policies.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *             included, it defaults to a slash (/), listing all policies.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -5198,6 +5816,9 @@ export interface ListAttachedUserPoliciesRequest {
 }
 
 export namespace ListAttachedUserPoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAttachedUserPoliciesRequest): any => ({
     ...obj,
   });
@@ -5232,6 +5853,9 @@ export interface ListAttachedUserPoliciesResponse {
 }
 
 export namespace ListAttachedUserPoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAttachedUserPoliciesResponse): any => ({
     ...obj,
   });
@@ -5242,25 +5866,24 @@ export type PolicyUsageType = "PermissionsBoundary" | "PermissionsPolicy";
 export interface ListEntitiesForPolicyRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
-   *          versions.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *             versions.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 
   /**
    * <p>The entity type to use for filtering the results.</p>
-   *          <p>For example, when <code>EntityFilter</code> is <code>Role</code>, only the roles that
-   *          are attached to the specified policy are returned. This parameter is optional. If it is not
-   *          included, all attached entities (users, groups, and roles) are returned. The argument for
-   *          this parameter must be one of the valid values listed below.</p>
+   *         <p>For example, when <code>EntityFilter</code> is <code>Role</code>, only the roles that
+   *             are attached to the specified policy are returned. This parameter is optional. If it is
+   *             not included, all attached entities (users, groups, and roles) are returned. The
+   *             argument for this parameter must be one of the valid values listed below.</p>
    */
   EntityFilter?: EntityType | string;
 
   /**
    * <p>The path prefix for filtering the results. This parameter is optional. If it is not
-   *          included, it defaults to a slash (/), listing all entities.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *             included, it defaults to a slash (/), listing all entities.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -5269,11 +5892,11 @@ export interface ListEntitiesForPolicyRequest {
 
   /**
    * <p>The policy usage method to use for filtering the results.</p>
-   *          <p>To list only permissions policies,
-   *             set <code>PolicyUsageFilter</code> to <code>PermissionsPolicy</code>. To list only the
-   *          policies used to set permissions boundaries, set the value
-   *             to <code>PermissionsBoundary</code>.</p>
-   *          <p>This parameter is optional. If it is not included, all policies are returned. </p>
+   *         <p>To list only permissions policies,
+   *                 set <code>PolicyUsageFilter</code> to <code>PermissionsPolicy</code>. To list only
+   *             the policies used to set permissions boundaries, set the value
+   *                 to <code>PermissionsBoundary</code>.</p>
+   *         <p>This parameter is optional. If it is not included, all policies are returned. </p>
    */
   PolicyUsageFilter?: PolicyUsageType | string;
 
@@ -5299,6 +5922,9 @@ export interface ListEntitiesForPolicyRequest {
 }
 
 export namespace ListEntitiesForPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListEntitiesForPolicyRequest): any => ({
     ...obj,
   });
@@ -5307,8 +5933,8 @@ export namespace ListEntitiesForPolicyRequest {
 /**
  * <p>Contains information about a group that a managed policy is attached to.</p>
  *          <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> operation. </p>
- *          <p>For more information about managed policies, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline
- *             Policies</a> in the <i>IAM User Guide</i>. </p>
+ *          <p>For more information about managed policies, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed policies and inline
+ *             policies</a> in the <i>IAM User Guide</i>. </p>
  */
 export interface PolicyGroup {
   /**
@@ -5319,12 +5945,15 @@ export interface PolicyGroup {
   /**
    * <p>The stable and unique string identifying the group. For more information about IDs, see
    *             <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>.</p>
+   *             identifiers</a> in the <i>IAM User Guide</i>.</p>
    */
   GroupId?: string;
 }
 
 export namespace PolicyGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyGroup): any => ({
     ...obj,
   });
@@ -5333,8 +5962,8 @@ export namespace PolicyGroup {
 /**
  * <p>Contains information about a role that a managed policy is attached to.</p>
  *          <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> operation. </p>
- *          <p>For more information about managed policies, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline
- *             Policies</a> in the <i>IAM User Guide</i>. </p>
+ *          <p>For more information about managed policies, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed policies and inline
+ *             policies</a> in the <i>IAM User Guide</i>. </p>
  */
 export interface PolicyRole {
   /**
@@ -5345,12 +5974,15 @@ export interface PolicyRole {
   /**
    * <p>The stable and unique string identifying the role. For more information about IDs, see
    *             <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>.</p>
+   *             identifiers</a> in the <i>IAM User Guide</i>.</p>
    */
   RoleId?: string;
 }
 
 export namespace PolicyRole {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyRole): any => ({
     ...obj,
   });
@@ -5359,8 +5991,8 @@ export namespace PolicyRole {
 /**
  * <p>Contains information about a user that a managed policy is attached to.</p>
  *          <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> operation. </p>
- *          <p>For more information about managed policies, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed Policies and Inline
- *             Policies</a> in the <i>IAM User Guide</i>. </p>
+ *          <p>For more information about managed policies, refer to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html">Managed policies and inline
+ *             policies</a> in the <i>IAM User Guide</i>. </p>
  */
 export interface PolicyUser {
   /**
@@ -5371,12 +6003,15 @@ export interface PolicyUser {
   /**
    * <p>The stable and unique string identifying the user. For more information about IDs, see
    *             <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM
-   *             Identifiers</a> in the <i>IAM User Guide</i>.</p>
+   *             identifiers</a> in the <i>IAM User Guide</i>.</p>
    */
   UserId?: string;
 }
 
 export namespace PolicyUser {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyUser): any => ({
     ...obj,
   });
@@ -5421,6 +6056,9 @@ export interface ListEntitiesForPolicyResponse {
 }
 
 export namespace ListEntitiesForPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListEntitiesForPolicyResponse): any => ({
     ...obj,
   });
@@ -5429,7 +6067,7 @@ export namespace ListEntitiesForPolicyResponse {
 export interface ListGroupPoliciesRequest {
   /**
    * <p>The name of the group to list policies for.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   GroupName: string | undefined;
@@ -5456,6 +6094,9 @@ export interface ListGroupPoliciesRequest {
 }
 
 export namespace ListGroupPoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGroupPoliciesRequest): any => ({
     ...obj,
   });
@@ -5468,7 +6109,7 @@ export namespace ListGroupPoliciesRequest {
 export interface ListGroupPoliciesResponse {
   /**
    * <p>A list of policy names.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   PolicyNames: string[] | undefined;
@@ -5492,6 +6133,9 @@ export interface ListGroupPoliciesResponse {
 }
 
 export namespace ListGroupPoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGroupPoliciesResponse): any => ({
     ...obj,
   });
@@ -5500,10 +6144,10 @@ export namespace ListGroupPoliciesResponse {
 export interface ListGroupsRequest {
   /**
    * <p> The path prefix for filtering the results. For example, the prefix
-   *             <code>/division_abc/subdivision_xyz/</code> gets all groups whose path starts with
-   *             <code>/division_abc/subdivision_xyz/</code>.</p>
-   *          <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing
-   *          all groups. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *                 <code>/division_abc/subdivision_xyz/</code> gets all groups whose path starts with
+   *                 <code>/division_abc/subdivision_xyz/</code>.</p>
+   *         <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing
+   *             all groups. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -5532,6 +6176,9 @@ export interface ListGroupsRequest {
 }
 
 export namespace ListGroupsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGroupsRequest): any => ({
     ...obj,
   });
@@ -5565,6 +6212,9 @@ export interface ListGroupsResponse {
 }
 
 export namespace ListGroupsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGroupsResponse): any => ({
     ...obj,
   });
@@ -5573,7 +6223,7 @@ export namespace ListGroupsResponse {
 export interface ListGroupsForUserRequest {
   /**
    * <p>The name of the user to list groups for.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
@@ -5600,6 +6250,9 @@ export interface ListGroupsForUserRequest {
 }
 
 export namespace ListGroupsForUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGroupsForUserRequest): any => ({
     ...obj,
   });
@@ -5634,6 +6287,9 @@ export interface ListGroupsForUserResponse {
 }
 
 export namespace ListGroupsForUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGroupsForUserResponse): any => ({
     ...obj,
   });
@@ -5642,10 +6298,10 @@ export namespace ListGroupsForUserResponse {
 export interface ListInstanceProfilesRequest {
   /**
    * <p> The path prefix for filtering the results. For example, the prefix
-   *             <code>/application_abc/component_xyz/</code> gets all instance profiles whose path
-   *          starts with <code>/application_abc/component_xyz/</code>.</p>
-   *          <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing
-   *          all instance profiles. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *                 <code>/application_abc/component_xyz/</code> gets all instance profiles whose path
+   *             starts with <code>/application_abc/component_xyz/</code>.</p>
+   *         <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing
+   *             all instance profiles. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -5674,6 +6330,9 @@ export interface ListInstanceProfilesRequest {
 }
 
 export namespace ListInstanceProfilesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInstanceProfilesRequest): any => ({
     ...obj,
   });
@@ -5708,6 +6367,9 @@ export interface ListInstanceProfilesResponse {
 }
 
 export namespace ListInstanceProfilesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInstanceProfilesResponse): any => ({
     ...obj,
   });
@@ -5716,7 +6378,7 @@ export namespace ListInstanceProfilesResponse {
 export interface ListInstanceProfilesForRoleRequest {
   /**
    * <p>The name of the role to list instance profiles for.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
@@ -5743,6 +6405,9 @@ export interface ListInstanceProfilesForRoleRequest {
 }
 
 export namespace ListInstanceProfilesForRoleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInstanceProfilesForRoleRequest): any => ({
     ...obj,
   });
@@ -5777,7 +6442,78 @@ export interface ListInstanceProfilesForRoleResponse {
 }
 
 export namespace ListInstanceProfilesForRoleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInstanceProfilesForRoleResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListInstanceProfileTagsRequest {
+  /**
+   * <p>The name of the IAM instance profile whose tags you want to see.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
+   */
+  InstanceProfileName: string | undefined;
+
+  /**
+   * <p>Use this parameter only when paginating results and only after
+   *     you receive a response indicating that the results are truncated. Set it to the value of the
+   *     <code>Marker</code> element in the response that you received to indicate where the next call
+   *     should start.</p>
+   */
+  Marker?: string;
+
+  /**
+   * <p>(Optional) Use this only when paginating results to indicate the
+   *     maximum number of items that you want in the response. If additional items exist beyond the maximum that you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
+   *          <p>If you do not include this parameter, it defaults to 100. Note that
+   *     IAM might return fewer results, even when more results are available. In that case, the
+   *     <code>IsTruncated</code> response element returns <code>true</code>, and <code>Marker</code>
+   *     contains a value to include in the subsequent call that tells the service where to continue
+   *     from.</p>
+   */
+  MaxItems?: number;
+}
+
+export namespace ListInstanceProfileTagsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListInstanceProfileTagsRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListInstanceProfileTagsResponse {
+  /**
+   * <p>The list of tags that are currently attached to the IAM instance profile. Each tag consists of a key name and an associated value. If no tags are attached to the specified resource, the response contains an empty list.</p>
+   */
+  Tags: Tag[] | undefined;
+
+  /**
+   * <p>A flag that indicates whether there are more items to return. If your
+   *     results were truncated, you can use the <code>Marker</code> request parameter to make a subsequent pagination request that retrieves more items. Note that IAM might return fewer than the
+   *     <code>MaxItems</code> number of results even when more results are available. Check <code>IsTruncated</code> after every call to ensure that you receive all of your
+   *     results.</p>
+   */
+  IsTruncated?: boolean;
+
+  /**
+   * <p>When <code>IsTruncated</code> is <code>true</code>, this element
+   *     is present and contains the value to use for the <code>Marker</code> parameter in a subsequent
+   *     pagination request.</p>
+   */
+  Marker?: string;
+}
+
+export namespace ListInstanceProfileTagsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListInstanceProfileTagsResponse): any => ({
     ...obj,
   });
 }
@@ -5785,7 +6521,7 @@ export namespace ListInstanceProfilesForRoleResponse {
 export interface ListMFADevicesRequest {
   /**
    * <p>The name of the user whose MFA devices you want to list.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName?: string;
@@ -5812,6 +6548,9 @@ export interface ListMFADevicesRequest {
 }
 
 export namespace ListMFADevicesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMFADevicesRequest): any => ({
     ...obj,
   });
@@ -5841,6 +6580,9 @@ export interface MFADevice {
 }
 
 export namespace MFADevice {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MFADevice): any => ({
     ...obj,
   });
@@ -5875,7 +6617,79 @@ export interface ListMFADevicesResponse {
 }
 
 export namespace ListMFADevicesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMFADevicesResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListMFADeviceTagsRequest {
+  /**
+   * <p>The unique identifier for the IAM virtual MFA device whose tags you want to see.
+   *       For virtual MFA devices, the serial number is the same as the ARN.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
+   */
+  SerialNumber: string | undefined;
+
+  /**
+   * <p>Use this parameter only when paginating results and only after
+   *     you receive a response indicating that the results are truncated. Set it to the value of the
+   *     <code>Marker</code> element in the response that you received to indicate where the next call
+   *     should start.</p>
+   */
+  Marker?: string;
+
+  /**
+   * <p>(Optional) Use this only when paginating results to indicate the
+   *     maximum number of items that you want in the response. If additional items exist beyond the maximum that you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
+   *          <p>If you do not include this parameter, it defaults to 100. Note that
+   *     IAM might return fewer results, even when more results are available. In that case, the
+   *     <code>IsTruncated</code> response element returns <code>true</code>, and <code>Marker</code>
+   *     contains a value to include in the subsequent call that tells the service where to continue
+   *     from.</p>
+   */
+  MaxItems?: number;
+}
+
+export namespace ListMFADeviceTagsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListMFADeviceTagsRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListMFADeviceTagsResponse {
+  /**
+   * <p>The list of tags that are currently attached to the virtual MFA device. Each tag consists of a key name and an associated value. If no tags are attached to the specified resource, the response contains an empty list.</p>
+   */
+  Tags: Tag[] | undefined;
+
+  /**
+   * <p>A flag that indicates whether there are more items to return. If your
+   *     results were truncated, you can use the <code>Marker</code> request parameter to make a subsequent pagination request that retrieves more items. Note that IAM might return fewer than the
+   *     <code>MaxItems</code> number of results even when more results are available. Check <code>IsTruncated</code> after every call to ensure that you receive all of your
+   *     results.</p>
+   */
+  IsTruncated?: boolean;
+
+  /**
+   * <p>When <code>IsTruncated</code> is <code>true</code>, this element
+   *     is present and contains the value to use for the <code>Marker</code> parameter in a subsequent
+   *     pagination request.</p>
+   */
+  Marker?: string;
+}
+
+export namespace ListMFADeviceTagsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListMFADeviceTagsResponse): any => ({
     ...obj,
   });
 }
@@ -5883,6 +6697,9 @@ export namespace ListMFADevicesResponse {
 export interface ListOpenIDConnectProvidersRequest {}
 
 export namespace ListOpenIDConnectProvidersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListOpenIDConnectProvidersRequest): any => ({
     ...obj,
   });
@@ -5894,13 +6711,16 @@ export namespace ListOpenIDConnectProvidersRequest {
 export interface OpenIDConnectProviderListEntry {
   /**
    * <p>The Amazon Resource Name (ARN). ARNs are unique identifiers for AWS resources.</p>
-   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>. </p>
+   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in
+   *          the <i>AWS General Reference</i>. </p>
    */
   Arn?: string;
 }
 
 export namespace OpenIDConnectProviderListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OpenIDConnectProviderListEntry): any => ({
     ...obj,
   });
@@ -5918,7 +6738,80 @@ export interface ListOpenIDConnectProvidersResponse {
 }
 
 export namespace ListOpenIDConnectProvidersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListOpenIDConnectProvidersResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListOpenIDConnectProviderTagsRequest {
+  /**
+   * <p>The ARN of the OpenID Connect (OIDC) identity provider whose tags you want to
+   *       see.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
+   */
+  OpenIDConnectProviderArn: string | undefined;
+
+  /**
+   * <p>Use this parameter only when paginating results and only after
+   *     you receive a response indicating that the results are truncated. Set it to the value of the
+   *     <code>Marker</code> element in the response that you received to indicate where the next call
+   *     should start.</p>
+   */
+  Marker?: string;
+
+  /**
+   * <p>(Optional) Use this only when paginating results to indicate the
+   *     maximum number of items that you want in the response. If additional items exist beyond the maximum that you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
+   *          <p>If you do not include this parameter, it defaults to 100. Note that
+   *     IAM might return fewer results, even when more results are available. In that case, the
+   *     <code>IsTruncated</code> response element returns <code>true</code>, and <code>Marker</code>
+   *     contains a value to include in the subsequent call that tells the service where to continue
+   *     from.</p>
+   */
+  MaxItems?: number;
+}
+
+export namespace ListOpenIDConnectProviderTagsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListOpenIDConnectProviderTagsRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListOpenIDConnectProviderTagsResponse {
+  /**
+   * <p>The list of tags that are currently attached to the OpenID Connect (OIDC) identity
+   *       provider. Each tag consists of a key name and an associated value. If no tags are attached to the specified resource, the response contains an empty list.</p>
+   */
+  Tags: Tag[] | undefined;
+
+  /**
+   * <p>A flag that indicates whether there are more items to return. If your
+   *     results were truncated, you can use the <code>Marker</code> request parameter to make a subsequent pagination request that retrieves more items. Note that IAM might return fewer than the
+   *     <code>MaxItems</code> number of results even when more results are available. Check <code>IsTruncated</code> after every call to ensure that you receive all of your
+   *     results.</p>
+   */
+  IsTruncated?: boolean;
+
+  /**
+   * <p>When <code>IsTruncated</code> is <code>true</code>, this element
+   *     is present and contains the value to use for the <code>Marker</code> parameter in a subsequent
+   *     pagination request.</p>
+   */
+  Marker?: string;
+}
+
+export namespace ListOpenIDConnectProviderTagsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListOpenIDConnectProviderTagsResponse): any => ({
     ...obj,
   });
 }
@@ -5932,26 +6825,26 @@ export enum PolicyScopeType {
 export interface ListPoliciesRequest {
   /**
    * <p>The scope to use for filtering the results.</p>
-   *          <p>To list only AWS managed policies, set <code>Scope</code> to <code>AWS</code>. To list
-   *          only the customer managed policies in your AWS account, set <code>Scope</code> to
-   *             <code>Local</code>.</p>
-   *          <p>This parameter is optional. If it is not included, or if it is set to <code>All</code>,
-   *          all policies are returned.</p>
+   *         <p>To list only AWS managed policies, set <code>Scope</code> to <code>AWS</code>. To
+   *             list only the customer managed policies in your AWS account, set <code>Scope</code> to
+   *                 <code>Local</code>.</p>
+   *         <p>This parameter is optional. If it is not included, or if it is set to
+   *             <code>All</code>, all policies are returned.</p>
    */
   Scope?: PolicyScopeType | string;
 
   /**
    * <p>A flag to filter the results to only the attached policies.</p>
-   *          <p>When <code>OnlyAttached</code> is <code>true</code>, the returned list contains only the
-   *          policies that are attached to an IAM user, group, or role. When <code>OnlyAttached</code>
-   *          is <code>false</code>, or when the parameter is not included, all policies are
-   *          returned.</p>
+   *         <p>When <code>OnlyAttached</code> is <code>true</code>, the returned list contains only
+   *             the policies that are attached to an IAM user, group, or role. When
+   *                 <code>OnlyAttached</code> is <code>false</code>, or when the parameter is not
+   *             included, all policies are returned.</p>
    */
   OnlyAttached?: boolean;
 
   /**
    * <p>The path prefix for filtering the results. This parameter is optional. If it is not
-   *          included, it defaults to a slash (/), listing all policies. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *             included, it defaults to a slash (/), listing all policies. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -5960,11 +6853,11 @@ export interface ListPoliciesRequest {
 
   /**
    * <p>The policy usage method to use for filtering the results.</p>
-   *          <p>To list only permissions policies,
-   *             set <code>PolicyUsageFilter</code> to <code>PermissionsPolicy</code>. To list only the
-   *          policies used to set permissions boundaries, set the value
-   *             to <code>PermissionsBoundary</code>.</p>
-   *          <p>This parameter is optional. If it is not included, all policies are returned. </p>
+   *         <p>To list only permissions policies,
+   *                 set <code>PolicyUsageFilter</code> to <code>PermissionsPolicy</code>. To list only
+   *             the policies used to set permissions boundaries, set the value
+   *                 to <code>PermissionsBoundary</code>.</p>
+   *         <p>This parameter is optional. If it is not included, all policies are returned. </p>
    */
   PolicyUsageFilter?: PolicyUsageType | string;
 
@@ -5990,6 +6883,9 @@ export interface ListPoliciesRequest {
 }
 
 export namespace ListPoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPoliciesRequest): any => ({
     ...obj,
   });
@@ -6024,6 +6920,9 @@ export interface ListPoliciesResponse {
 }
 
 export namespace ListPoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPoliciesResponse): any => ({
     ...obj,
   });
@@ -6040,24 +6939,26 @@ export interface ListPoliciesGrantingServiceAccessRequest {
 
   /**
    * <p>The ARN of the IAM identity (user, group, or role) whose policies you want to
-   *          list.</p>
+   *             list.</p>
    */
   Arn: string | undefined;
 
   /**
    * <p>The service namespace for the AWS services whose policies you want to list.</p>
-   *          <p>To learn the service namespace for a service, go to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html">Actions,
-   *             Resources, and Condition Keys for AWS Services</a> in the
-   *             <i>IAM User Guide</i>. Choose the name of the service to view details
-   *          for that service. In the first paragraph, find the service prefix. For example,
-   *             <code>(service prefix: a4b)</code>. For more information about service namespaces, see
-   *             <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *         <p>To learn the service namespace for a service, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html">Actions, resources, and condition keys for AWS services</a> in the
+   *                 <i>IAM User Guide</i>. Choose the name of the service to view
+   *             details for that service. In the first paragraph, find the service prefix. For example,
+   *                 <code>(service prefix: a4b)</code>. For more information about service namespaces,
+   *             see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
+   *                 service namespaces</a> in the <i>AWS General Reference</i>.</p>
    */
   ServiceNamespaces: string[] | undefined;
 }
 
 export namespace ListPoliciesGrantingServiceAccessRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPoliciesGrantingServiceAccessRequest): any => ({
     ...obj,
   });
@@ -6081,15 +6982,15 @@ export interface PolicyGrantingServiceAccess {
 
   /**
    * <p>The policy type. For more information about these policy types, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html">Managed
-   *             Policies and Inline Policies</a> in the
+   *             policies and inline policies</a> in the
    *          <i>IAM User Guide</i>.</p>
    */
   PolicyType: PolicyType | string | undefined;
 
   /**
    * <p>The Amazon Resource Name (ARN). ARNs are unique identifiers for AWS resources.</p>
-   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>. </p>
+   *          <p>For more information about ARNs, go to <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in
+   *          the <i>AWS General Reference</i>. </p>
    */
   PolicyArn?: string;
 
@@ -6097,7 +6998,7 @@ export interface PolicyGrantingServiceAccess {
    * <p>The type of entity (user or role) that used the policy to access the service to which
    *          the inline policy is attached.</p>
    *          <p>This field is null for managed policies. For more information about these policy types,
-   *          see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html">Managed Policies and Inline Policies</a> in the
+   *          see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html">Managed policies and inline policies</a> in the
    *             <i>IAM User Guide</i>.</p>
    */
   EntityType?: PolicyOwnerEntityType | string;
@@ -6105,13 +7006,16 @@ export interface PolicyGrantingServiceAccess {
   /**
    * <p>The name of the entity (user or role) to which the inline policy is attached.</p>
    *          <p>This field is null for managed policies. For more information about these policy types,
-   *          see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html">Managed Policies and Inline Policies</a> in the
+   *          see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html">Managed policies and inline policies</a> in the
    *             <i>IAM User Guide</i>.</p>
    */
   EntityName?: string;
 }
 
 export namespace PolicyGrantingServiceAccess {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyGrantingServiceAccess): any => ({
     ...obj,
   });
@@ -6125,13 +7029,12 @@ export namespace PolicyGrantingServiceAccess {
 export interface ListPoliciesGrantingServiceAccessEntry {
   /**
    * <p>The namespace of the service that was accessed.</p>
-   *          <p>To learn the service namespace of a service, go to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html">Actions,
-   *             Resources, and Condition Keys for AWS Services</a> in the
-   *             <i>IAM User Guide</i>. Choose the name of the service to view details
-   *          for that service. In the first paragraph, find the service prefix. For example,
-   *             <code>(service prefix: a4b)</code>. For more information about service namespaces, see
-   *             <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
-   *             Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *          <p>To learn the service namespace of a service, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html">Actions, resources, and condition keys for AWS services</a> in the
+   *             <i>Service Authorization Reference</i>. Choose the name of the service to
+   *          view details for that service. In the first paragraph, find the service prefix. For
+   *          example, <code>(service prefix: a4b)</code>. For more information about service namespaces,
+   *          see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS
+   *             service namespaces</a> in the <i>AWS General Reference</i>.</p>
    */
   ServiceNamespace?: string;
 
@@ -6143,6 +7046,9 @@ export interface ListPoliciesGrantingServiceAccessEntry {
 }
 
 export namespace ListPoliciesGrantingServiceAccessEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPoliciesGrantingServiceAccessEntry): any => ({
     ...obj,
   });
@@ -6150,17 +7056,18 @@ export namespace ListPoliciesGrantingServiceAccessEntry {
 
 export interface ListPoliciesGrantingServiceAccessResponse {
   /**
-   * <p>A <code>ListPoliciesGrantingServiceAccess</code> object that contains details about the
-   *          permissions policies attached to the specified identity (user, group, or role).</p>
+   * <p>A <code>ListPoliciesGrantingServiceAccess</code> object that contains details about
+   *             the permissions policies attached to the specified identity (user, group, or
+   *             role).</p>
    */
   PoliciesGrantingServiceAccess: ListPoliciesGrantingServiceAccessEntry[] | undefined;
 
   /**
    * <p>A flag that indicates whether there are more items to return. If your results were
-   *          truncated, you can make a subsequent pagination request using the <code>Marker</code>
-   *          request parameter to retrieve more items. We recommend that you check
-   *             <code>IsTruncated</code> after every call to ensure that you receive all your
-   *          results.</p>
+   *             truncated, you can make a subsequent pagination request using the <code>Marker</code>
+   *             request parameter to retrieve more items. We recommend that you check
+   *                 <code>IsTruncated</code> after every call to ensure that you receive all your
+   *             results.</p>
    */
   IsTruncated?: boolean;
 
@@ -6173,7 +7080,79 @@ export interface ListPoliciesGrantingServiceAccessResponse {
 }
 
 export namespace ListPoliciesGrantingServiceAccessResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPoliciesGrantingServiceAccessResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListPolicyTagsRequest {
+  /**
+   * <p>The ARN of the IAM customer managed policy whose tags you want to see.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
+   */
+  PolicyArn: string | undefined;
+
+  /**
+   * <p>Use this parameter only when paginating results and only after
+   *     you receive a response indicating that the results are truncated. Set it to the value of the
+   *     <code>Marker</code> element in the response that you received to indicate where the next call
+   *     should start.</p>
+   */
+  Marker?: string;
+
+  /**
+   * <p>(Optional) Use this only when paginating results to indicate the
+   *     maximum number of items that you want in the response. If additional items exist beyond the maximum that you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
+   *          <p>If you do not include this parameter, it defaults to 100. Note that
+   *     IAM might return fewer results, even when more results are available. In that case, the
+   *     <code>IsTruncated</code> response element returns <code>true</code>, and <code>Marker</code>
+   *     contains a value to include in the subsequent call that tells the service where to continue
+   *     from.</p>
+   */
+  MaxItems?: number;
+}
+
+export namespace ListPolicyTagsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListPolicyTagsRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListPolicyTagsResponse {
+  /**
+   * <p>The list of tags that are currently attached to the IAM customer managed policy.
+   *       Each tag consists of a key name and an associated value. If no tags are attached to the specified resource, the response contains an empty list.</p>
+   */
+  Tags: Tag[] | undefined;
+
+  /**
+   * <p>A flag that indicates whether there are more items to return. If your
+   *     results were truncated, you can use the <code>Marker</code> request parameter to make a subsequent pagination request that retrieves more items. Note that IAM might return fewer than the
+   *     <code>MaxItems</code> number of results even when more results are available. Check <code>IsTruncated</code> after every call to ensure that you receive all of your
+   *     results.</p>
+   */
+  IsTruncated?: boolean;
+
+  /**
+   * <p>When <code>IsTruncated</code> is <code>true</code>, this element
+   *     is present and contains the value to use for the <code>Marker</code> parameter in a subsequent
+   *     pagination request.</p>
+   */
+  Marker?: string;
+}
+
+export namespace ListPolicyTagsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListPolicyTagsResponse): any => ({
     ...obj,
   });
 }
@@ -6181,9 +7160,8 @@ export namespace ListPoliciesGrantingServiceAccessResponse {
 export interface ListPolicyVersionsRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM policy for which you want the
-   *          versions.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *             versions.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 
@@ -6209,6 +7187,9 @@ export interface ListPolicyVersionsRequest {
 }
 
 export namespace ListPolicyVersionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPolicyVersionsRequest): any => ({
     ...obj,
   });
@@ -6221,8 +7202,8 @@ export namespace ListPolicyVersionsRequest {
 export interface ListPolicyVersionsResponse {
   /**
    * <p>A list of policy versions.</p>
-   *          <p>For more information about managed policy versions, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed
-   *             Policies</a> in the <i>IAM User Guide</i>.</p>
+   *         <p>For more information about managed policy versions, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for managed
+   *                 policies</a> in the <i>IAM User Guide</i>.</p>
    */
   Versions?: PolicyVersion[];
 
@@ -6245,6 +7226,9 @@ export interface ListPolicyVersionsResponse {
 }
 
 export namespace ListPolicyVersionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPolicyVersionsResponse): any => ({
     ...obj,
   });
@@ -6253,7 +7237,7 @@ export namespace ListPolicyVersionsResponse {
 export interface ListRolePoliciesRequest {
   /**
    * <p>The name of the role to list policies for.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
@@ -6280,6 +7264,9 @@ export interface ListRolePoliciesRequest {
 }
 
 export namespace ListRolePoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRolePoliciesRequest): any => ({
     ...obj,
   });
@@ -6314,6 +7301,9 @@ export interface ListRolePoliciesResponse {
 }
 
 export namespace ListRolePoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRolePoliciesResponse): any => ({
     ...obj,
   });
@@ -6322,10 +7312,10 @@ export namespace ListRolePoliciesResponse {
 export interface ListRolesRequest {
   /**
    * <p> The path prefix for filtering the results. For example, the prefix
-   *             <code>/application_abc/component_xyz/</code> gets all roles whose path starts with
-   *             <code>/application_abc/component_xyz/</code>.</p>
-   *          <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing
-   *          all roles. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *                 <code>/application_abc/component_xyz/</code> gets all roles whose path starts with
+   *                 <code>/application_abc/component_xyz/</code>.</p>
+   *         <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing
+   *             all roles. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -6354,6 +7344,9 @@ export interface ListRolesRequest {
 }
 
 export namespace ListRolesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRolesRequest): any => ({
     ...obj,
   });
@@ -6387,6 +7380,9 @@ export interface ListRolesResponse {
 }
 
 export namespace ListRolesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRolesResponse): any => ({
     ...obj,
   });
@@ -6421,6 +7417,9 @@ export interface ListRoleTagsRequest {
 }
 
 export namespace ListRoleTagsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRoleTagsRequest): any => ({
     ...obj,
   });
@@ -6428,9 +7427,7 @@ export namespace ListRoleTagsRequest {
 
 export interface ListRoleTagsResponse {
   /**
-   * <p>The list of tags currently that is attached to the role. Each tag consists of a key
-   *       name and an associated value. If no tags are attached to the specified role, the response
-   *       contains an empty list.</p>
+   * <p>The list of tags that are currently attached to the role. Each tag consists of a key name and an associated value. If no tags are attached to the specified resource, the response contains an empty list.</p>
    */
   Tags: Tag[] | undefined;
 
@@ -6451,6 +7448,9 @@ export interface ListRoleTagsResponse {
 }
 
 export namespace ListRoleTagsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRoleTagsResponse): any => ({
     ...obj,
   });
@@ -6459,6 +7459,9 @@ export namespace ListRoleTagsResponse {
 export interface ListSAMLProvidersRequest {}
 
 export namespace ListSAMLProvidersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSAMLProvidersRequest): any => ({
     ...obj,
   });
@@ -6485,6 +7488,9 @@ export interface SAMLProviderListEntry {
 }
 
 export namespace SAMLProviderListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SAMLProviderListEntry): any => ({
     ...obj,
   });
@@ -6497,13 +7503,86 @@ export namespace SAMLProviderListEntry {
 export interface ListSAMLProvidersResponse {
   /**
    * <p>The list of SAML provider resource objects defined in IAM for this AWS
-   *          account.</p>
+   *             account.</p>
    */
   SAMLProviderList?: SAMLProviderListEntry[];
 }
 
 export namespace ListSAMLProvidersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSAMLProvidersResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListSAMLProviderTagsRequest {
+  /**
+   * <p>The ARN of the Security Assertion Markup Language (SAML) identity provider whose tags
+   *       you want to see.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
+   */
+  SAMLProviderArn: string | undefined;
+
+  /**
+   * <p>Use this parameter only when paginating results and only after
+   *     you receive a response indicating that the results are truncated. Set it to the value of the
+   *     <code>Marker</code> element in the response that you received to indicate where the next call
+   *     should start.</p>
+   */
+  Marker?: string;
+
+  /**
+   * <p>(Optional) Use this only when paginating results to indicate the
+   *     maximum number of items that you want in the response. If additional items exist beyond the maximum that you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
+   *          <p>If you do not include this parameter, it defaults to 100. Note that
+   *     IAM might return fewer results, even when more results are available. In that case, the
+   *     <code>IsTruncated</code> response element returns <code>true</code>, and <code>Marker</code>
+   *     contains a value to include in the subsequent call that tells the service where to continue
+   *     from.</p>
+   */
+  MaxItems?: number;
+}
+
+export namespace ListSAMLProviderTagsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListSAMLProviderTagsRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListSAMLProviderTagsResponse {
+  /**
+   * <p>The list of tags that are currently attached to the Security Assertion Markup Language
+   *       (SAML) identity provider. Each tag consists of a key name and an associated value. If no tags are attached to the specified resource, the response contains an empty list.</p>
+   */
+  Tags: Tag[] | undefined;
+
+  /**
+   * <p>A flag that indicates whether there are more items to return. If your
+   *     results were truncated, you can use the <code>Marker</code> request parameter to make a subsequent pagination request that retrieves more items. Note that IAM might return fewer than the
+   *     <code>MaxItems</code> number of results even when more results are available. Check <code>IsTruncated</code> after every call to ensure that you receive all of your
+   *     results.</p>
+   */
+  IsTruncated?: boolean;
+
+  /**
+   * <p>When <code>IsTruncated</code> is <code>true</code>, this element
+   *     is present and contains the value to use for the <code>Marker</code> parameter in a subsequent
+   *     pagination request.</p>
+   */
+  Marker?: string;
+}
+
+export namespace ListSAMLProviderTagsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListSAMLProviderTagsResponse): any => ({
     ...obj,
   });
 }
@@ -6511,10 +7590,10 @@ export namespace ListSAMLProvidersResponse {
 export interface ListServerCertificatesRequest {
   /**
    * <p> The path prefix for filtering the results. For example:
-   *             <code>/company/servercerts</code> would get all server certificates for which the path
-   *          starts with <code>/company/servercerts</code>.</p>
-   *          <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing
-   *          all server certificates. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *                 <code>/company/servercerts</code> would get all server certificates for which the
+   *             path starts with <code>/company/servercerts</code>.</p>
+   *         <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing
+   *             all server certificates. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -6543,6 +7622,9 @@ export interface ListServerCertificatesRequest {
 }
 
 export namespace ListServerCertificatesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListServerCertificatesRequest): any => ({
     ...obj,
   });
@@ -6577,7 +7659,79 @@ export interface ListServerCertificatesResponse {
 }
 
 export namespace ListServerCertificatesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListServerCertificatesResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListServerCertificateTagsRequest {
+  /**
+   * <p>The name of the IAM server certificate whose tags you want to see.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
+   */
+  ServerCertificateName: string | undefined;
+
+  /**
+   * <p>Use this parameter only when paginating results and only after
+   *     you receive a response indicating that the results are truncated. Set it to the value of the
+   *     <code>Marker</code> element in the response that you received to indicate where the next call
+   *     should start.</p>
+   */
+  Marker?: string;
+
+  /**
+   * <p>(Optional) Use this only when paginating results to indicate the
+   *     maximum number of items that you want in the response. If additional items exist beyond the maximum that you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p>
+   *          <p>If you do not include this parameter, it defaults to 100. Note that
+   *     IAM might return fewer results, even when more results are available. In that case, the
+   *     <code>IsTruncated</code> response element returns <code>true</code>, and <code>Marker</code>
+   *     contains a value to include in the subsequent call that tells the service where to continue
+   *     from.</p>
+   */
+  MaxItems?: number;
+}
+
+export namespace ListServerCertificateTagsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListServerCertificateTagsRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ListServerCertificateTagsResponse {
+  /**
+   * <p>The list of tags that are currently attached to the IAM server certificate.
+   *       Each tag consists of a key name and an associated value. If no tags are attached to the specified resource, the response contains an empty list.</p>
+   */
+  Tags: Tag[] | undefined;
+
+  /**
+   * <p>A flag that indicates whether there are more items to return. If your
+   *     results were truncated, you can use the <code>Marker</code> request parameter to make a subsequent pagination request that retrieves more items. Note that IAM might return fewer than the
+   *     <code>MaxItems</code> number of results even when more results are available. Check <code>IsTruncated</code> after every call to ensure that you receive all of your
+   *     results.</p>
+   */
+  IsTruncated?: boolean;
+
+  /**
+   * <p>When <code>IsTruncated</code> is <code>true</code>, this element
+   *     is present and contains the value to use for the <code>Marker</code> parameter in a subsequent
+   *     pagination request.</p>
+   */
+  Marker?: string;
+}
+
+export namespace ListServerCertificateTagsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListServerCertificateTagsResponse): any => ({
     ...obj,
   });
 }
@@ -6585,21 +7739,24 @@ export namespace ListServerCertificatesResponse {
 export interface ListServiceSpecificCredentialsRequest {
   /**
    * <p>The name of the user whose service-specific credentials you want information about. If
-   *          this value is not specified, then the operation assumes the user whose credentials are used
-   *          to call the operation.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *             this value is not specified, then the operation assumes the user whose credentials are
+   *             used to call the operation.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName?: string;
 
   /**
    * <p>Filters the returned results to only those for the specified AWS service. If not
-   *          specified, then AWS returns service-specific credentials for all services.</p>
+   *             specified, then AWS returns service-specific credentials for all services.</p>
    */
   ServiceName?: string;
 }
 
 export namespace ListServiceSpecificCredentialsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListServiceSpecificCredentialsRequest): any => ({
     ...obj,
   });
@@ -6643,6 +7800,9 @@ export interface ServiceSpecificCredentialMetadata {
 }
 
 export namespace ServiceSpecificCredentialMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceSpecificCredentialMetadata): any => ({
     ...obj,
   });
@@ -6651,12 +7811,15 @@ export namespace ServiceSpecificCredentialMetadata {
 export interface ListServiceSpecificCredentialsResponse {
   /**
    * <p>A list of structures that each contain details about a service-specific
-   *          credential.</p>
+   *             credential.</p>
    */
   ServiceSpecificCredentials?: ServiceSpecificCredentialMetadata[];
 }
 
 export namespace ListServiceSpecificCredentialsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListServiceSpecificCredentialsResponse): any => ({
     ...obj,
   });
@@ -6665,7 +7828,7 @@ export namespace ListServiceSpecificCredentialsResponse {
 export interface ListSigningCertificatesRequest {
   /**
    * <p>The name of the IAM user whose signing certificates you want to examine.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName?: string;
@@ -6692,6 +7855,9 @@ export interface ListSigningCertificatesRequest {
 }
 
 export namespace ListSigningCertificatesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSigningCertificatesRequest): any => ({
     ...obj,
   });
@@ -6731,6 +7897,9 @@ export interface SigningCertificate {
 }
 
 export namespace SigningCertificate {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SigningCertificate): any => ({
     ...obj,
   });
@@ -6765,6 +7934,9 @@ export interface ListSigningCertificatesResponse {
 }
 
 export namespace ListSigningCertificatesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSigningCertificatesResponse): any => ({
     ...obj,
   });
@@ -6773,9 +7945,9 @@ export namespace ListSigningCertificatesResponse {
 export interface ListSSHPublicKeysRequest {
   /**
    * <p>The name of the IAM user to list SSH public keys for. If none is specified, the
-   *             <code>UserName</code> field is determined implicitly based on the AWS access key used
-   *          to sign the request.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *                 <code>UserName</code> field is determined implicitly based on the AWS access key
+   *             used to sign the request.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName?: string;
@@ -6802,6 +7974,9 @@ export interface ListSSHPublicKeysRequest {
 }
 
 export namespace ListSSHPublicKeysRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSSHPublicKeysRequest): any => ({
     ...obj,
   });
@@ -6839,6 +8014,9 @@ export interface SSHPublicKeyMetadata {
 }
 
 export namespace SSHPublicKeyMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SSHPublicKeyMetadata): any => ({
     ...obj,
   });
@@ -6873,6 +8051,9 @@ export interface ListSSHPublicKeysResponse {
 }
 
 export namespace ListSSHPublicKeysResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSSHPublicKeysResponse): any => ({
     ...obj,
   });
@@ -6881,7 +8062,7 @@ export namespace ListSSHPublicKeysResponse {
 export interface ListUserPoliciesRequest {
   /**
    * <p>The name of the user to list policies for.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
@@ -6908,6 +8089,9 @@ export interface ListUserPoliciesRequest {
 }
 
 export namespace ListUserPoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUserPoliciesRequest): any => ({
     ...obj,
   });
@@ -6942,6 +8126,9 @@ export interface ListUserPoliciesResponse {
 }
 
 export namespace ListUserPoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUserPoliciesResponse): any => ({
     ...obj,
   });
@@ -6950,10 +8137,10 @@ export namespace ListUserPoliciesResponse {
 export interface ListUsersRequest {
   /**
    * <p> The path prefix for filtering the results. For example:
-   *             <code>/division_abc/subdivision_xyz/</code>, which would get all user names whose path
-   *          starts with <code>/division_abc/subdivision_xyz/</code>.</p>
-   *          <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing
-   *          all user names. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
+   *                 <code>/division_abc/subdivision_xyz/</code>, which would get all user names whose
+   *             path starts with <code>/division_abc/subdivision_xyz/</code>.</p>
+   *         <p>This parameter is optional. If it is not included, it defaults to a slash (/), listing
+   *             all user names. This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
    *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
    *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
    *     most punctuation characters, digits, and upper and lowercased letters.</p>
@@ -6982,6 +8169,9 @@ export interface ListUsersRequest {
 }
 
 export namespace ListUsersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUsersRequest): any => ({
     ...obj,
   });
@@ -7015,6 +8205,9 @@ export interface ListUsersResponse {
 }
 
 export namespace ListUsersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUsersResponse): any => ({
     ...obj,
   });
@@ -7049,6 +8242,9 @@ export interface ListUserTagsRequest {
 }
 
 export namespace ListUserTagsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUserTagsRequest): any => ({
     ...obj,
   });
@@ -7056,9 +8252,7 @@ export namespace ListUserTagsRequest {
 
 export interface ListUserTagsResponse {
   /**
-   * <p>The list of tags that are currently attached to the user. Each tag consists of a key
-   *       name and an associated value. If no tags are attached to the specified user, the response
-   *       contains an empty list.</p>
+   * <p>The list of tags that are currently attached to the user. Each tag consists of a key name and an associated value. If no tags are attached to the specified resource, the response contains an empty list.</p>
    */
   Tags: Tag[] | undefined;
 
@@ -7079,6 +8273,9 @@ export interface ListUserTagsResponse {
 }
 
 export namespace ListUserTagsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUserTagsResponse): any => ({
     ...obj,
   });
@@ -7087,8 +8284,9 @@ export namespace ListUserTagsResponse {
 export interface ListVirtualMFADevicesRequest {
   /**
    * <p> The status (<code>Unassigned</code> or <code>Assigned</code>) of the devices to list.
-   *          If you do not specify an <code>AssignmentStatus</code>, the operation defaults to
-   *             <code>Any</code>, which lists both assigned and unassigned virtual MFA devices.,</p>
+   *             If you do not specify an <code>AssignmentStatus</code>, the operation defaults to
+   *                 <code>Any</code>, which lists both assigned and unassigned virtual MFA
+   *             devices.,</p>
    */
   AssignmentStatus?: AssignmentStatusType | string;
 
@@ -7114,6 +8312,9 @@ export interface ListVirtualMFADevicesRequest {
 }
 
 export namespace ListVirtualMFADevicesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListVirtualMFADevicesRequest): any => ({
     ...obj,
   });
@@ -7126,7 +8327,7 @@ export namespace ListVirtualMFADevicesRequest {
 export interface ListVirtualMFADevicesResponse {
   /**
    * <p> The list of virtual MFA devices in the current account that match the
-   *             <code>AssignmentStatus</code> value that was passed in the request.</p>
+   *                 <code>AssignmentStatus</code> value that was passed in the request.</p>
    */
   VirtualMFADevices: VirtualMFADevice[] | undefined;
 
@@ -7141,14 +8342,17 @@ export interface ListVirtualMFADevicesResponse {
   IsTruncated?: boolean;
 
   /**
-   * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and contains
-   *          the value to use for the <code>Marker</code> parameter in a subsequent pagination
-   *          request.</p>
+   * <p>When <code>IsTruncated</code> is <code>true</code>, this element is present and
+   *             contains the value to use for the <code>Marker</code> parameter in a subsequent
+   *             pagination request.</p>
    */
   Marker?: string;
 }
 
 export namespace ListVirtualMFADevicesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListVirtualMFADevicesResponse): any => ({
     ...obj,
     ...(obj.VirtualMFADevices && {
@@ -7160,25 +8364,25 @@ export namespace ListVirtualMFADevicesResponse {
 export interface PutGroupPolicyRequest {
   /**
    * <p>The name of the group to associate the policy with.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-.</p>
    */
   GroupName: string | undefined;
 
   /**
    * <p>The name of the policy document.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   PolicyName: string | undefined;
 
   /**
    * <p>The policy document.</p>
-   *          <p>You must provide policies in JSON format in IAM. However, for AWS CloudFormation
-   *          templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS
-   *          CloudFormation always converts a YAML policy to JSON format before submitting it to
-   *          IAM.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   *         <p>You must provide policies in JSON format in IAM. However, for AWS CloudFormation
+   *             templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS
+   *             CloudFormation always converts a YAML policy to JSON format before submitting it to
+   *             IAM.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -7199,6 +8403,9 @@ export interface PutGroupPolicyRequest {
 }
 
 export namespace PutGroupPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutGroupPolicyRequest): any => ({
     ...obj,
   });
@@ -7207,17 +8414,21 @@ export namespace PutGroupPolicyRequest {
 export interface PutRolePermissionsBoundaryRequest {
   /**
    * <p>The name (friendly name, not ARN) of the IAM role for which you want to set the
-   *          permissions boundary.</p>
+   *             permissions boundary.</p>
    */
   RoleName: string | undefined;
 
   /**
-   * <p>The ARN of the policy that is used to set the permissions boundary for the role.</p>
+   * <p>The ARN of the policy that is used to set the permissions boundary for the
+   *             role.</p>
    */
   PermissionsBoundary: string | undefined;
 }
 
 export namespace PutRolePermissionsBoundaryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutRolePermissionsBoundaryRequest): any => ({
     ...obj,
   });
@@ -7226,25 +8437,25 @@ export namespace PutRolePermissionsBoundaryRequest {
 export interface PutRolePolicyRequest {
   /**
    * <p>The name of the role to associate the policy with.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
 
   /**
    * <p>The name of the policy document.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   PolicyName: string | undefined;
 
   /**
    * <p>The policy document.</p>
-   *          <p>You must provide policies in JSON format in IAM. However, for AWS CloudFormation
-   *          templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS
-   *          CloudFormation always converts a YAML policy to JSON format before submitting it to
-   *          IAM.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   *         <p>You must provide policies in JSON format in IAM. However, for AWS CloudFormation
+   *             templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS
+   *             CloudFormation always converts a YAML policy to JSON format before submitting it to
+   *             IAM.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -7265,6 +8476,9 @@ export interface PutRolePolicyRequest {
 }
 
 export namespace PutRolePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutRolePolicyRequest): any => ({
     ...obj,
   });
@@ -7273,17 +8487,21 @@ export namespace PutRolePolicyRequest {
 export interface PutUserPermissionsBoundaryRequest {
   /**
    * <p>The name (friendly name, not ARN) of the IAM user for which you want to set the
-   *          permissions boundary.</p>
+   *             permissions boundary.</p>
    */
   UserName: string | undefined;
 
   /**
-   * <p>The ARN of the policy that is used to set the permissions boundary for the user.</p>
+   * <p>The ARN of the policy that is used to set the permissions boundary for the
+   *             user.</p>
    */
   PermissionsBoundary: string | undefined;
 }
 
 export namespace PutUserPermissionsBoundaryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutUserPermissionsBoundaryRequest): any => ({
     ...obj,
   });
@@ -7292,25 +8510,25 @@ export namespace PutUserPermissionsBoundaryRequest {
 export interface PutUserPolicyRequest {
   /**
    * <p>The name of the user to associate the policy with.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
    * <p>The name of the policy document.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   PolicyName: string | undefined;
 
   /**
    * <p>The policy document.</p>
-   *          <p>You must provide policies in JSON format in IAM. However, for AWS CloudFormation
-   *          templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS
-   *          CloudFormation always converts a YAML policy to JSON format before submitting it to
-   *          IAM.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   *         <p>You must provide policies in JSON format in IAM. However, for AWS CloudFormation
+   *             templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS
+   *             CloudFormation always converts a YAML policy to JSON format before submitting it to
+   *             IAM.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -7331,6 +8549,9 @@ export interface PutUserPolicyRequest {
 }
 
 export namespace PutUserPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutUserPolicyRequest): any => ({
     ...obj,
   });
@@ -7338,21 +8559,23 @@ export namespace PutUserPolicyRequest {
 
 export interface RemoveClientIDFromOpenIDConnectProviderRequest {
   /**
-   * <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client
-   *          ID from. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   * <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the
+   *             client ID from. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   OpenIDConnectProviderArn: string | undefined;
 
   /**
-   * <p>The client ID (also known as audience) to remove from the IAM OIDC provider resource.
-   *          For more information about client IDs, see <a>CreateOpenIDConnectProvider</a>.</p>
+   * <p>The client ID (also known as audience) to remove from the IAM OIDC provider
+   *             resource. For more information about client IDs, see <a>CreateOpenIDConnectProvider</a>.</p>
    */
   ClientID: string | undefined;
 }
 
 export namespace RemoveClientIDFromOpenIDConnectProviderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveClientIDFromOpenIDConnectProviderRequest): any => ({
     ...obj,
   });
@@ -7361,20 +8584,23 @@ export namespace RemoveClientIDFromOpenIDConnectProviderRequest {
 export interface RemoveRoleFromInstanceProfileRequest {
   /**
    * <p>The name of the instance profile to update.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   InstanceProfileName: string | undefined;
 
   /**
    * <p>The name of the role to remove.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
 }
 
 export namespace RemoveRoleFromInstanceProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveRoleFromInstanceProfileRequest): any => ({
     ...obj,
   });
@@ -7383,20 +8609,23 @@ export namespace RemoveRoleFromInstanceProfileRequest {
 export interface RemoveUserFromGroupRequest {
   /**
    * <p>The name of the group to update.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   GroupName: string | undefined;
 
   /**
    * <p>The name of the user to remove.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 }
 
 export namespace RemoveUserFromGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveUserFromGroupRequest): any => ({
     ...obj,
   });
@@ -7405,22 +8634,25 @@ export namespace RemoveUserFromGroupRequest {
 export interface ResetServiceSpecificCredentialRequest {
   /**
    * <p>The name of the IAM user associated with the service-specific credential. If this
-   *          value is not specified, then the operation assumes the user whose credentials are used to
-   *          call the operation.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *             value is not specified, then the operation assumes the user whose credentials are used
+   *             to call the operation.</p>
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName?: string;
 
   /**
    * <p>The unique identifier of the service-specific credential.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
    *     consist of any upper or lowercased letter or digit.</p>
    */
   ServiceSpecificCredentialId: string | undefined;
 }
 
 export namespace ResetServiceSpecificCredentialRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResetServiceSpecificCredentialRequest): any => ({
     ...obj,
   });
@@ -7429,16 +8661,19 @@ export namespace ResetServiceSpecificCredentialRequest {
 export interface ResetServiceSpecificCredentialResponse {
   /**
    * <p>A structure with details about the updated service-specific credential, including the
-   *          new password.</p>
-   *          <important>
+   *             new password.</p>
+   *         <important>
    *             <p>This is the <b>only</b> time that you can access the
-   *             password. You cannot recover the password later, but you can reset it again.</p>
-   *          </important>
+   *                 password. You cannot recover the password later, but you can reset it again.</p>
+   *         </important>
    */
   ServiceSpecificCredential?: ServiceSpecificCredential;
 }
 
 export namespace ResetServiceSpecificCredentialResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResetServiceSpecificCredentialResponse): any => ({
     ...obj,
     ...(obj.ServiceSpecificCredential && {
@@ -7450,32 +8685,35 @@ export namespace ResetServiceSpecificCredentialResponse {
 export interface ResyncMFADeviceRequest {
   /**
    * <p>The name of the user whose MFA device you want to resynchronize.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   UserName: string | undefined;
 
   /**
    * <p>Serial number that uniquely identifies the MFA device.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
+   *         <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   SerialNumber: string | undefined;
 
   /**
    * <p>An authentication code emitted by the device.</p>
-   *          <p>The format for this parameter is a sequence of six digits.</p>
+   *         <p>The format for this parameter is a sequence of six digits.</p>
    */
   AuthenticationCode1: string | undefined;
 
   /**
    * <p>A subsequent authentication code emitted by the device.</p>
-   *          <p>The format for this parameter is a sequence of six digits.</p>
+   *         <p>The format for this parameter is a sequence of six digits.</p>
    */
   AuthenticationCode2: string | undefined;
 }
 
 export namespace ResyncMFADeviceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResyncMFADeviceRequest): any => ({
     ...obj,
   });
@@ -7484,21 +8722,23 @@ export namespace ResyncMFADeviceRequest {
 export interface SetDefaultPolicyVersionRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of the IAM policy whose default version you want to
-   *          set.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *             set.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicyArn: string | undefined;
 
   /**
    * <p>The version of the policy to set as the default (operative) version.</p>
-   *          <p>For more information about managed policy versions, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed
-   *             Policies</a> in the <i>IAM User Guide</i>.</p>
+   *         <p>For more information about managed policy versions, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for managed
+   *                 policies</a> in the <i>IAM User Guide</i>.</p>
    */
   VersionId: string | undefined;
 }
 
 export namespace SetDefaultPolicyVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetDefaultPolicyVersionRequest): any => ({
     ...obj,
   });
@@ -7512,17 +8752,21 @@ export enum GlobalEndpointTokenVersion {
 export interface SetSecurityTokenServicePreferencesRequest {
   /**
    * <p>The version of the global endpoint token. Version 1 tokens are valid only in AWS
-   *          Regions that are available by default. These tokens do not work in manually enabled
-   *          Regions, such as Asia Pacific (Hong Kong). Version 2 tokens are valid in all Regions.
-   *          However, version 2 tokens are longer and might affect systems where you temporarily store
-   *          tokens.</p>
-   *          <p>For information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">Activating and Deactivating
-   *             STS in an AWS Region</a> in the <i>IAM User Guide</i>.</p>
+   *             Regions that are available by default. These tokens do not work in manually enabled
+   *             Regions, such as Asia Pacific (Hong Kong). Version 2 tokens are valid in all Regions.
+   *             However, version 2 tokens are longer and might affect systems where you temporarily
+   *             store tokens.</p>
+   *         <p>For information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html">Activating and
+   *                 deactivating STS in an AWS region</a> in the
+   *                 <i>IAM User Guide</i>.</p>
    */
   GlobalEndpointTokenVersion: GlobalEndpointTokenVersion | string | undefined;
 }
 
 export namespace SetSecurityTokenServicePreferencesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetSecurityTokenServicePreferencesRequest): any => ({
     ...obj,
   });
@@ -7539,6 +8783,9 @@ export interface PolicyEvaluationException extends __SmithyException, $MetadataB
 }
 
 export namespace PolicyEvaluationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyEvaluationException): any => ({
     ...obj,
   });
@@ -7588,6 +8835,9 @@ export interface ContextEntry {
 }
 
 export namespace ContextEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ContextEntry): any => ({
     ...obj,
   });
@@ -7595,15 +8845,14 @@ export namespace ContextEntry {
 
 export interface SimulateCustomPolicyRequest {
   /**
-   * <p>A list of policy documents to include in the simulation. Each document is specified as a
-   *          string containing the complete, valid JSON text of an IAM policy. Do not include any
-   *          resource-based policies in this parameter. Any resource-based policy must be submitted with
-   *          the <code>ResourcePolicy</code> parameter. The policies cannot be "scope-down" policies,
-   *          such as you could include in a call to <a href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html">GetFederationToken</a> or one of the
-   *             <a href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html">AssumeRole</a>
-   *          API operations. In other words, do not use policies designed to restrict what a user can do
-   *          while using the temporary credentials.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   * <p>A list of policy documents to include in the simulation. Each document is specified as
+   *             a string containing the complete, valid JSON text of an IAM policy. Do not include any
+   *             resource-based policies in this parameter. Any resource-based policy must be submitted
+   *             with the <code>ResourcePolicy</code> parameter. The policies cannot be "scope-down"
+   *             policies, such as you could include in a call to <a href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html">GetFederationToken</a> or one of
+   *             the <a href="https://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html">AssumeRole</a> API operations. In other words, do not use policies designed to
+   *             restrict what a user can do while using the temporary credentials.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -7624,13 +8873,13 @@ export interface SimulateCustomPolicyRequest {
 
   /**
    * <p>The IAM permissions boundary policy to simulate. The permissions boundary sets the
-   *          maximum permissions that an IAM entity can have. You can input only one permissions
-   *          boundary when you pass a policy to this operation. For more information about permissions
-   *          boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM
-   *             Entities</a> in the <i>IAM User Guide</i>. The policy input is
-   *          specified as a string that contains the complete, valid JSON text of a permissions boundary
-   *          policy.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   *             maximum permissions that an IAM entity can have. You can input only one permissions
+   *             boundary when you pass a policy to this operation. For more information about
+   *             permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions boundaries for IAM
+   *                 entities</a> in the <i>IAM User Guide</i>. The policy input is
+   *             specified as a string that contains the complete, valid JSON text of a permissions
+   *             boundary policy.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -7651,33 +8900,33 @@ export interface SimulateCustomPolicyRequest {
 
   /**
    * <p>A list of names of API operations to evaluate in the simulation. Each operation is
-   *          evaluated against each resource. Each operation must include the service identifier, such
-   *          as <code>iam:CreateUser</code>. This operation does not support using wildcards (*) in an
-   *          action name.</p>
+   *             evaluated against each resource. Each operation must include the service identifier,
+   *             such as <code>iam:CreateUser</code>. This operation does not support using wildcards (*)
+   *             in an action name.</p>
    */
   ActionNames: string[] | undefined;
 
   /**
-   * <p>A list of ARNs of AWS resources to include in the simulation. If this parameter is not
-   *          provided, then the value defaults to <code>*</code> (all resources). Each API in the
-   *             <code>ActionNames</code> parameter is evaluated for each resource in this list. The
-   *          simulation determines the access result (allowed or denied) of each combination and reports
-   *          it in the response.</p>
-   *          <p>The simulation does not automatically retrieve policies for the specified resources. If
-   *          you want to include a resource policy in the simulation, then you must include the policy
-   *          as a string in the <code>ResourcePolicy</code> parameter.</p>
-   *          <p>If you include a <code>ResourcePolicy</code>, then it must be applicable to all of the
-   *          resources included in the simulation or you receive an invalid input error.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   * <p>A list of ARNs of AWS resources to include in the simulation. If this parameter is
+   *             not provided, then the value defaults to <code>*</code> (all resources). Each API in the
+   *                 <code>ActionNames</code> parameter is evaluated for each resource in this list. The
+   *             simulation determines the access result (allowed or denied) of each combination and
+   *             reports it in the response. You can simulate resources that don't exist in your
+   *             account.</p>
+   *         <p>The simulation does not automatically retrieve policies for the specified resources.
+   *             If you want to include a resource policy in the simulation, then you must include the
+   *             policy as a string in the <code>ResourcePolicy</code> parameter.</p>
+   *         <p>If you include a <code>ResourcePolicy</code>, then it must be applicable to all of the
+   *             resources included in the simulation or you receive an invalid input error.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   ResourceArns?: string[];
 
   /**
-   * <p>A resource-based policy to include in the simulation provided as a string. Each resource
-   *          in the simulation is treated as if it had this policy attached. You can include only one
-   *          resource-based policy in a simulation.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   * <p>A resource-based policy to include in the simulation provided as a string. Each
+   *             resource in the simulation is treated as if it had this policy attached. You can include
+   *             only one resource-based policy in a simulation.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -7698,88 +8947,88 @@ export interface SimulateCustomPolicyRequest {
 
   /**
    * <p>An ARN representing the AWS account ID that specifies the owner of any simulated
-   *          resource that does not identify its owner in the resource ARN. Examples of resource ARNs
-   *          include an S3 bucket or object. If <code>ResourceOwner</code> is specified, it is also used
-   *          as the account owner of any <code>ResourcePolicy</code> included in the simulation. If the
-   *             <code>ResourceOwner</code> parameter is not specified, then the owner of the resources
-   *          and the resource policy defaults to the account of the identity provided in
-   *             <code>CallerArn</code>. This parameter is required only if you specify a resource-based
-   *          policy and account that owns the resource is different from the account that owns the
-   *          simulated calling user <code>CallerArn</code>.</p>
-   *          <p>The ARN for an account uses the following syntax:
-   *                <code>arn:aws:iam::<i>AWS-account-ID</i>:root</code>. For example, to
-   *          represent the account with the 112233445566 ID, use the following ARN:
-   *             <code>arn:aws:iam::112233445566-ID:root</code>. </p>
+   *             resource that does not identify its owner in the resource ARN. Examples of resource ARNs
+   *             include an S3 bucket or object. If <code>ResourceOwner</code> is specified, it is also
+   *             used as the account owner of any <code>ResourcePolicy</code> included in the simulation.
+   *             If the <code>ResourceOwner</code> parameter is not specified, then the owner of the
+   *             resources and the resource policy defaults to the account of the identity provided in
+   *                 <code>CallerArn</code>. This parameter is required only if you specify a
+   *             resource-based policy and account that owns the resource is different from the account
+   *             that owns the simulated calling user <code>CallerArn</code>.</p>
+   *         <p>The ARN for an account uses the following syntax:
+   *                     <code>arn:aws:iam::<i>AWS-account-ID</i>:root</code>. For example,
+   *             to represent the account with the 112233445566 ID, use the following ARN:
+   *                 <code>arn:aws:iam::112233445566-ID:root</code>. </p>
    */
   ResourceOwner?: string;
 
   /**
    * <p>The ARN of the IAM user that you want to use as the simulated caller of the API
-   *          operations. <code>CallerArn</code> is required if you include a <code>ResourcePolicy</code>
-   *          so that the policy's <code>Principal</code> element has a value to use in evaluating the
-   *          policy.</p>
-   *          <p>You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed
-   *          role, federated user, or a service principal.</p>
+   *             operations. <code>CallerArn</code> is required if you include a
+   *                 <code>ResourcePolicy</code> so that the policy's <code>Principal</code> element has
+   *             a value to use in evaluating the policy.</p>
+   *         <p>You can specify only the ARN of an IAM user. You cannot specify the ARN of an
+   *             assumed role, federated user, or a service principal.</p>
    */
   CallerArn?: string;
 
   /**
    * <p>A list of context keys and corresponding values for the simulation to use. Whenever a
-   *          context key is evaluated in one of the simulated IAM permissions policies, the
-   *          corresponding value is supplied.</p>
+   *             context key is evaluated in one of the simulated IAM permissions policies, the
+   *             corresponding value is supplied.</p>
    */
   ContextEntries?: ContextEntry[];
 
   /**
    * <p>Specifies the type of simulation to run. Different API operations that support
-   *          resource-based policies require different combinations of resources. By specifying the type
-   *          of simulation to run, you enable the policy simulator to enforce the presence of the
-   *          required resources to ensure reliable simulation results. If your simulation does not match
-   *          one of the following scenarios, then you can omit this parameter. The following list shows
-   *          each of the supported scenario values and the resources that you must define to run the
-   *          simulation.</p>
-   *          <p>Each of the EC2 scenarios requires that you specify instance, image, and security-group
-   *          resources. If your scenario includes an EBS volume, then you must specify that volume as a
-   *          resource. If the EC2 scenario includes VPC, then you must supply the network-interface
-   *          resource. If it includes an IP subnet, then you must specify the subnet resource. For more
-   *          information on the EC2 scenario options, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>
-   *          in the <i>Amazon EC2 User Guide</i>.</p>
-   *          <ul>
+   *             resource-based policies require different combinations of resources. By specifying the
+   *             type of simulation to run, you enable the policy simulator to enforce the presence of
+   *             the required resources to ensure reliable simulation results. If your simulation does
+   *             not match one of the following scenarios, then you can omit this parameter. The
+   *             following list shows each of the supported scenario values and the resources that you
+   *             must define to run the simulation.</p>
+   *         <p>Each of the EC2 scenarios requires that you specify instance, image, and
+   *             security-group resources. If your scenario includes an EBS volume, then you must specify
+   *             that volume as a resource. If the EC2 scenario includes VPC, then you must supply the
+   *             network-interface resource. If it includes an IP subnet, then you must specify the
+   *             subnet resource. For more information on the EC2 scenario options, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported platforms</a> in the <i>Amazon EC2 User
+   *             Guide</i>.</p>
+   *         <ul>
    *             <li>
-   *                <p>
-   *                   <b>EC2-Classic-InstanceStore</b>
-   *                </p>
-   *                <p>instance, image, security-group</p>
+   *                 <p>
+   *                     <b>EC2-Classic-InstanceStore</b>
+   *                 </p>
+   *                 <p>instance, image, security-group</p>
    *             </li>
    *             <li>
-   *                <p>
-   *                   <b>EC2-Classic-EBS</b>
-   *                </p>
-   *                <p>instance, image, security-group, volume</p>
+   *                 <p>
+   *                     <b>EC2-Classic-EBS</b>
+   *                 </p>
+   *                 <p>instance, image, security-group, volume</p>
    *             </li>
    *             <li>
-   *                <p>
-   *                   <b>EC2-VPC-InstanceStore</b>
-   *                </p>
-   *                <p>instance, image, security-group, network-interface</p>
+   *                 <p>
+   *                     <b>EC2-VPC-InstanceStore</b>
+   *                 </p>
+   *                 <p>instance, image, security-group, network-interface</p>
    *             </li>
    *             <li>
-   *                <p>
-   *                   <b>EC2-VPC-InstanceStore-Subnet</b>
-   *                </p>
-   *                <p>instance, image, security-group, network-interface, subnet</p>
+   *                 <p>
+   *                     <b>EC2-VPC-InstanceStore-Subnet</b>
+   *                 </p>
+   *                 <p>instance, image, security-group, network-interface, subnet</p>
    *             </li>
    *             <li>
-   *                <p>
-   *                   <b>EC2-VPC-EBS</b>
-   *                </p>
-   *                <p>instance, image, security-group, network-interface, volume</p>
+   *                 <p>
+   *                     <b>EC2-VPC-EBS</b>
+   *                 </p>
+   *                 <p>instance, image, security-group, network-interface, volume</p>
    *             </li>
    *             <li>
-   *                <p>
-   *                   <b>EC2-VPC-EBS-Subnet</b>
-   *                </p>
-   *                <p>instance, image, security-group, network-interface, subnet, volume</p>
+   *                 <p>
+   *                     <b>EC2-VPC-EBS-Subnet</b>
+   *                 </p>
+   *                 <p>instance, image, security-group, network-interface, subnet, volume</p>
    *             </li>
    *          </ul>
    */
@@ -7807,6 +9056,9 @@ export interface SimulateCustomPolicyRequest {
 }
 
 export namespace SimulateCustomPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SimulateCustomPolicyRequest): any => ({
     ...obj,
   });
@@ -7838,6 +9090,9 @@ export interface Position {
 }
 
 export namespace Position {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Position): any => ({
     ...obj,
   });
@@ -7884,6 +9139,9 @@ export interface Statement {
 }
 
 export namespace Statement {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Statement): any => ({
     ...obj,
   });
@@ -7901,6 +9159,9 @@ export interface OrganizationsDecisionDetail {
 }
 
 export namespace OrganizationsDecisionDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationsDecisionDetail): any => ({
     ...obj,
   });
@@ -7925,6 +9186,9 @@ export interface PermissionsBoundaryDecisionDetail {
 }
 
 export namespace PermissionsBoundaryDecisionDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PermissionsBoundaryDecisionDetail): any => ({
     ...obj,
   });
@@ -7984,6 +9248,9 @@ export interface ResourceSpecificResult {
 }
 
 export namespace ResourceSpecificResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceSpecificResult): any => ({
     ...obj,
   });
@@ -8054,7 +9321,7 @@ export interface EvaluationResult {
    *          parameter is not returned.</p>
    *          <p>When you make a cross-account request, AWS evaluates the request in the trusting
    *          account and the trusted account. The request is allowed only if both evaluations return
-   *             <code>true</code>. For more information about how policies are evaluated, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics">Evaluating Policies Within a Single Account</a>.</p>
+   *             <code>true</code>. For more information about how policies are evaluated, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics">Evaluating policies within a single account</a>.</p>
    *          <p>If an AWS Organizations SCP included in the evaluation denies access, the simulation ends. In
    *          this case, policy evaluation does not proceed any further and this parameter is not
    *          returned.</p>
@@ -8069,6 +9336,9 @@ export interface EvaluationResult {
 }
 
 export namespace EvaluationResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EvaluationResult): any => ({
     ...obj,
   });
@@ -8103,6 +9373,9 @@ export interface SimulatePolicyResponse {
 }
 
 export namespace SimulatePolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SimulatePolicyResponse): any => ({
     ...obj,
   });
@@ -8111,19 +9384,19 @@ export namespace SimulatePolicyResponse {
 export interface SimulatePrincipalPolicyRequest {
   /**
    * <p>The Amazon Resource Name (ARN) of a user, group, or role whose policies you want to
-   *          include in the simulation. If you specify a user, group, or role, the simulation includes
-   *          all policies that are associated with that entity. If you specify a user, the simulation
-   *          also includes all policies that are attached to any groups the user belongs to.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *             include in the simulation. If you specify a user, group, or role, the simulation
+   *             includes all policies that are associated with that entity. If you specify a user, the
+   *             simulation also includes all policies that are attached to any groups the user belongs
+   *             to.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   PolicySourceArn: string | undefined;
 
   /**
    * <p>An optional list of additional policy documents to include in the simulation. Each
-   *          document is specified as a string containing the complete, valid JSON text of an IAM
-   *          policy.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   *             document is specified as a string containing the complete, valid JSON text of an IAM
+   *             policy.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -8144,16 +9417,16 @@ export interface SimulatePrincipalPolicyRequest {
 
   /**
    * <p>The IAM permissions boundary policy to simulate. The permissions boundary sets the
-   *          maximum permissions that the entity can have. You can input only one permissions boundary
-   *          when you pass a policy to this operation. An IAM entity can only have one permissions
-   *          boundary in effect at a time. For example, if a permissions boundary is attached to an
-   *          entity and you pass in a different permissions boundary policy using this parameter, then
-   *          the new permissions boundary policy is used for the simulation. For more information about
-   *          permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions Boundaries for IAM
-   *             Entities</a> in the <i>IAM User Guide</i>. The policy input is
-   *          specified as a string containing the complete, valid JSON text of a permissions boundary
-   *          policy.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   *             maximum permissions that the entity can have. You can input only one permissions
+   *             boundary when you pass a policy to this operation. An IAM entity can only have one
+   *             permissions boundary in effect at a time. For example, if a permissions boundary is
+   *             attached to an entity and you pass in a different permissions boundary policy using this
+   *             parameter, then the new permissions boundary policy is used for the simulation. For more
+   *             information about permissions boundaries, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">Permissions boundaries for IAM
+   *                 entities</a> in the <i>IAM User Guide</i>. The policy input is
+   *             specified as a string containing the complete, valid JSON text of a permissions boundary
+   *             policy.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -8174,30 +9447,30 @@ export interface SimulatePrincipalPolicyRequest {
 
   /**
    * <p>A list of names of API operations to evaluate in the simulation. Each operation is
-   *          evaluated for each resource. Each operation must include the service identifier, such as
-   *             <code>iam:CreateUser</code>.</p>
+   *             evaluated for each resource. Each operation must include the service identifier, such as
+   *                 <code>iam:CreateUser</code>.</p>
    */
   ActionNames: string[] | undefined;
 
   /**
-   * <p>A list of ARNs of AWS resources to include in the simulation. If this parameter is not
-   *          provided, then the value defaults to <code>*</code> (all resources). Each API in the
-   *             <code>ActionNames</code> parameter is evaluated for each resource in this list. The
-   *          simulation determines the access result (allowed or denied) of each combination and reports
-   *          it in the response.</p>
-   *          <p>The simulation does not automatically retrieve policies for the specified resources. If
-   *          you want to include a resource policy in the simulation, then you must include the policy
-   *          as a string in the <code>ResourcePolicy</code> parameter.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   * <p>A list of ARNs of AWS resources to include in the simulation. If this parameter is
+   *             not provided, then the value defaults to <code>*</code> (all resources). Each API in the
+   *                 <code>ActionNames</code> parameter is evaluated for each resource in this list. The
+   *             simulation determines the access result (allowed or denied) of each combination and
+   *             reports it in the response. You can simulate resources that don't exist in your
+   *             account.</p>
+   *         <p>The simulation does not automatically retrieve policies for the specified resources.
+   *             If you want to include a resource policy in the simulation, then you must include the
+   *             policy as a string in the <code>ResourcePolicy</code> parameter.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   ResourceArns?: string[];
 
   /**
-   * <p>A resource-based policy to include in the simulation provided as a string. Each resource
-   *          in the simulation is treated as if it had this policy attached. You can include only one
-   *          resource-based policy in a simulation.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
+   * <p>A resource-based policy to include in the simulation provided as a string. Each
+   *             resource in the simulation is treated as if it had this policy attached. You can include
+   *             only one resource-based policy in a simulation.</p>
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
    *     used to validate this parameter is a string of characters consisting of the following:</p>
    *          <ul>
    *             <li>
@@ -8218,94 +9491,93 @@ export interface SimulatePrincipalPolicyRequest {
 
   /**
    * <p>An AWS account ID that specifies the owner of any simulated resource that does not
-   *          identify its owner in the resource ARN. Examples of resource ARNs include an S3 bucket or
-   *          object. If <code>ResourceOwner</code> is specified, it is also used as the account owner of
-   *          any <code>ResourcePolicy</code> included in the simulation. If the
-   *             <code>ResourceOwner</code> parameter is not specified, then the owner of the resources
-   *          and the resource policy defaults to the account of the identity provided in
-   *             <code>CallerArn</code>. This parameter is required only if you specify a resource-based
-   *          policy and account that owns the resource is different from the account that owns the
-   *          simulated calling user <code>CallerArn</code>.</p>
+   *             identify its owner in the resource ARN. Examples of resource ARNs include an S3 bucket
+   *             or object. If <code>ResourceOwner</code> is specified, it is also used as the account
+   *             owner of any <code>ResourcePolicy</code> included in the simulation. If the
+   *                 <code>ResourceOwner</code> parameter is not specified, then the owner of the
+   *             resources and the resource policy defaults to the account of the identity provided in
+   *                 <code>CallerArn</code>. This parameter is required only if you specify a
+   *             resource-based policy and account that owns the resource is different from the account
+   *             that owns the simulated calling user <code>CallerArn</code>.</p>
    */
   ResourceOwner?: string;
 
   /**
    * <p>The ARN of the IAM user that you want to specify as the simulated caller of the API
-   *          operations. If you do not specify a <code>CallerArn</code>, it defaults to the ARN of the
-   *          user that you specify in <code>PolicySourceArn</code>, if you specified a user. If you
-   *          include both a <code>PolicySourceArn</code> (for example,
-   *             <code>arn:aws:iam::123456789012:user/David</code>) and a <code>CallerArn</code> (for
-   *          example, <code>arn:aws:iam::123456789012:user/Bob</code>), the result is that you simulate
-   *          calling the API operations as Bob, as if Bob had David's policies.</p>
-   *          <p>You can specify only the ARN of an IAM user. You cannot specify the ARN of an assumed
-   *          role, federated user, or a service principal.</p>
-   *          <p>
-   *             <code>CallerArn</code> is required if you include a <code>ResourcePolicy</code> and the
-   *             <code>PolicySourceArn</code> is not the ARN for an IAM user. This is required so that
-   *          the resource-based policy's <code>Principal</code> element has a value to use in evaluating
-   *          the policy.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *             operations. If you do not specify a <code>CallerArn</code>, it defaults to the ARN of
+   *             the user that you specify in <code>PolicySourceArn</code>, if you specified a user. If
+   *             you include both a <code>PolicySourceArn</code> (for example,
+   *                 <code>arn:aws:iam::123456789012:user/David</code>) and a <code>CallerArn</code> (for
+   *             example, <code>arn:aws:iam::123456789012:user/Bob</code>), the result is that you
+   *             simulate calling the API operations as Bob, as if Bob had David's policies.</p>
+   *         <p>You can specify only the ARN of an IAM user. You cannot specify the ARN of an
+   *             assumed role, federated user, or a service principal.</p>
+   *         <p>
+   *             <code>CallerArn</code> is required if you include a <code>ResourcePolicy</code> and
+   *             the <code>PolicySourceArn</code> is not the ARN for an IAM user. This is required so
+   *             that the resource-based policy's <code>Principal</code> element has a value to use in
+   *             evaluating the policy.</p>
+   *         <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in the <i>AWS General Reference</i>.</p>
    */
   CallerArn?: string;
 
   /**
    * <p>A list of context keys and corresponding values for the simulation to use. Whenever a
-   *          context key is evaluated in one of the simulated IAM permissions policies, the
-   *          corresponding value is supplied.</p>
+   *             context key is evaluated in one of the simulated IAM permissions policies, the
+   *             corresponding value is supplied.</p>
    */
   ContextEntries?: ContextEntry[];
 
   /**
    * <p>Specifies the type of simulation to run. Different API operations that support
-   *          resource-based policies require different combinations of resources. By specifying the type
-   *          of simulation to run, you enable the policy simulator to enforce the presence of the
-   *          required resources to ensure reliable simulation results. If your simulation does not match
-   *          one of the following scenarios, then you can omit this parameter. The following list shows
-   *          each of the supported scenario values and the resources that you must define to run the
-   *          simulation.</p>
-   *          <p>Each of the EC2 scenarios requires that you specify instance, image, and security group
-   *          resources. If your scenario includes an EBS volume, then you must specify that volume as a
-   *          resource. If the EC2 scenario includes VPC, then you must supply the network interface
-   *          resource. If it includes an IP subnet, then you must specify the subnet resource. For more
-   *          information on the EC2 scenario options, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported Platforms</a>
-   *          in the <i>Amazon EC2 User Guide</i>.</p>
-   *          <ul>
+   *             resource-based policies require different combinations of resources. By specifying the
+   *             type of simulation to run, you enable the policy simulator to enforce the presence of
+   *             the required resources to ensure reliable simulation results. If your simulation does
+   *             not match one of the following scenarios, then you can omit this parameter. The
+   *             following list shows each of the supported scenario values and the resources that you
+   *             must define to run the simulation.</p>
+   *         <p>Each of the EC2 scenarios requires that you specify instance, image, and security
+   *             group resources. If your scenario includes an EBS volume, then you must specify that
+   *             volume as a resource. If the EC2 scenario includes VPC, then you must supply the network
+   *             interface resource. If it includes an IP subnet, then you must specify the subnet
+   *             resource. For more information on the EC2 scenario options, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html">Supported platforms</a> in the <i>Amazon EC2 User
+   *             Guide</i>.</p>
+   *         <ul>
    *             <li>
-   *                <p>
-   *                   <b>EC2-Classic-InstanceStore</b>
-   *                </p>
-   *                <p>instance, image, security group</p>
+   *                 <p>
+   *                     <b>EC2-Classic-InstanceStore</b>
+   *                 </p>
+   *                 <p>instance, image, security group</p>
    *             </li>
    *             <li>
-   *                <p>
-   *                   <b>EC2-Classic-EBS</b>
-   *                </p>
-   *                <p>instance, image, security group, volume</p>
+   *                 <p>
+   *                     <b>EC2-Classic-EBS</b>
+   *                 </p>
+   *                 <p>instance, image, security group, volume</p>
    *             </li>
    *             <li>
-   *                <p>
-   *                   <b>EC2-VPC-InstanceStore</b>
-   *                </p>
-   *                <p>instance, image, security group, network interface</p>
+   *                 <p>
+   *                     <b>EC2-VPC-InstanceStore</b>
+   *                 </p>
+   *                 <p>instance, image, security group, network interface</p>
    *             </li>
    *             <li>
-   *                <p>
-   *                   <b>EC2-VPC-InstanceStore-Subnet</b>
-   *                </p>
-   *                <p>instance, image, security group, network interface, subnet</p>
+   *                 <p>
+   *                     <b>EC2-VPC-InstanceStore-Subnet</b>
+   *                 </p>
+   *                 <p>instance, image, security group, network interface, subnet</p>
    *             </li>
    *             <li>
-   *                <p>
-   *                   <b>EC2-VPC-EBS</b>
-   *                </p>
-   *                <p>instance, image, security group, network interface, volume</p>
+   *                 <p>
+   *                     <b>EC2-VPC-EBS</b>
+   *                 </p>
+   *                 <p>instance, image, security group, network interface, volume</p>
    *             </li>
    *             <li>
-   *                <p>
-   *                   <b>EC2-VPC-EBS-Subnet</b>
-   *                </p>
-   *                <p>instance, image, security group, network interface, subnet, volume</p>
+   *                 <p>
+   *                     <b>EC2-VPC-EBS-Subnet</b>
+   *                 </p>
+   *                 <p>instance, image, security group, network interface, subnet, volume</p>
    *             </li>
    *          </ul>
    */
@@ -8333,651 +9605,274 @@ export interface SimulatePrincipalPolicyRequest {
 }
 
 export namespace SimulatePrincipalPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SimulatePrincipalPolicyRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagInstanceProfileRequest {
+  /**
+   * <p>The name of the IAM instance profile to which you want to add tags.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
+   */
+  InstanceProfileName: string | undefined;
+
+  /**
+   * <p>The list of tags that you want to attach to the IAM instance profile.
+   *       Each tag consists of a key name and an associated value.</p>
+   */
+  Tags: Tag[] | undefined;
+}
+
+export namespace TagInstanceProfileRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagInstanceProfileRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagMFADeviceRequest {
+  /**
+   * <p>The unique identifier for the IAM virtual MFA device to which you want to add tags.
+   *       For virtual MFA devices, the serial number is the same as the ARN.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
+   */
+  SerialNumber: string | undefined;
+
+  /**
+   * <p>The list of tags that you want to attach to the IAM virtual MFA device.
+   *       Each tag consists of a key name and an associated value.</p>
+   */
+  Tags: Tag[] | undefined;
+}
+
+export namespace TagMFADeviceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagMFADeviceRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagOpenIDConnectProviderRequest {
+  /**
+   * <p>The ARN of the OIDC identity provider in IAM to which you want to add tags.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
+   */
+  OpenIDConnectProviderArn: string | undefined;
+
+  /**
+   * <p>The list of tags that you want to attach to the OIDC identity provider in IAM.
+   *       Each tag consists of a key name and an associated value.</p>
+   */
+  Tags: Tag[] | undefined;
+}
+
+export namespace TagOpenIDConnectProviderRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagOpenIDConnectProviderRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagPolicyRequest {
+  /**
+   * <p>The ARN of the IAM customer managed policy to which you want to add tags.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
+   */
+  PolicyArn: string | undefined;
+
+  /**
+   * <p>The list of tags that you want to attach to the IAM customer managed policy.
+   *       Each tag consists of a key name and an associated value.</p>
+   */
+  Tags: Tag[] | undefined;
+}
+
+export namespace TagPolicyRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagPolicyRequest): any => ({
     ...obj,
   });
 }
 
 export interface TagRoleRequest {
   /**
-   * <p>The name of the role that you want to add tags to.</p>
+   * <p>The name of the IAM role to which you want to add tags.</p>
    *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
    */
   RoleName: string | undefined;
 
   /**
-   * <p>The list of tags that you want to attach to the role. Each tag consists of a key name
-   *       and an associated value. You can specify this with a JSON string.</p>
+   * <p>The list of tags that you want to attach to the IAM role. Each tag consists of a key name and an associated value.</p>
    */
   Tags: Tag[] | undefined;
 }
 
 export namespace TagRoleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagRoleRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagSAMLProviderRequest {
+  /**
+   * <p>The ARN of the SAML identity provider in IAM to which you want to add tags.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
+   */
+  SAMLProviderArn: string | undefined;
+
+  /**
+   * <p>The list of tags that you want to attach to the SAML identity provider in IAM.
+   *       Each tag consists of a key name and an associated value.</p>
+   */
+  Tags: Tag[] | undefined;
+}
+
+export namespace TagSAMLProviderRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagSAMLProviderRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface TagServerCertificateRequest {
+  /**
+   * <p>The name of the IAM server certificate to which you want to add tags.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
+   */
+  ServerCertificateName: string | undefined;
+
+  /**
+   * <p>The list of tags that you want to attach to the IAM server certificate.
+   *       Each tag consists of a key name and an associated value.</p>
+   */
+  Tags: Tag[] | undefined;
+}
+
+export namespace TagServerCertificateRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TagServerCertificateRequest): any => ({
     ...obj,
   });
 }
 
 export interface TagUserRequest {
   /**
-   * <p>The name of the user that you want to add tags to.</p>
+   * <p>The name of the IAM user to which you want to add tags.</p>
    *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
    */
   UserName: string | undefined;
 
   /**
-   * <p>The list of tags that you want to attach to the user. Each tag consists of a key name
-   *       and an associated value.</p>
+   * <p>The list of tags that you want to attach to the IAM user. Each tag consists of a key name and an associated value.</p>
    */
   Tags: Tag[] | undefined;
 }
 
 export namespace TagUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagUserRequest): any => ({
     ...obj,
   });
 }
 
-export interface UntagRoleRequest {
+export interface UntagInstanceProfileRequest {
   /**
-   * <p>The name of the IAM role from which you want to remove tags.</p>
-   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
-   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
-   */
-  RoleName: string | undefined;
-
-  /**
-   * <p>A list of key names as a simple array of strings. The tags with matching keys are
-   *       removed from the specified role.</p>
-   */
-  TagKeys: string[] | undefined;
-}
-
-export namespace UntagRoleRequest {
-  export const filterSensitiveLog = (obj: UntagRoleRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UntagUserRequest {
-  /**
-   * <p>The name of the IAM user from which you want to remove tags.</p>
+   * <p>The name of the IAM instance profile from which you want to remove tags.</p>
    *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
    *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
    */
-  UserName: string | undefined;
+  InstanceProfileName: string | undefined;
 
   /**
    * <p>A list of key names as a simple array of strings. The tags with matching keys are
-   *       removed from the specified user.</p>
+   *       removed from the specified instance profile.</p>
    */
   TagKeys: string[] | undefined;
 }
 
-export namespace UntagUserRequest {
-  export const filterSensitiveLog = (obj: UntagUserRequest): any => ({
+export namespace UntagInstanceProfileRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagInstanceProfileRequest): any => ({
     ...obj,
   });
 }
 
-export interface UpdateAccessKeyRequest {
+export interface UntagMFADeviceRequest {
   /**
-   * <p>The name of the user whose key you want to update.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
-   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
+   * <p>The unique identifier for the IAM virtual MFA device from which you want to remove
+   *       tags. For virtual MFA devices, the serial number is the same as the ARN.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
    */
-  UserName?: string;
+  SerialNumber: string | undefined;
 
   /**
-   * <p>The access key ID of the secret access key you want to update.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
-   *     consist of any upper or lowercased letter or digit.</p>
+   * <p>A list of key names as a simple array of strings. The tags with matching keys are
+   *       removed from the specified instance profile.</p>
    */
-  AccessKeyId: string | undefined;
-
-  /**
-   * <p> The status you want to assign to the secret access key. <code>Active</code> means that
-   *          the key can be used for API calls to AWS, while <code>Inactive</code> means that the key
-   *          cannot be used.</p>
-   */
-  Status: StatusType | string | undefined;
+  TagKeys: string[] | undefined;
 }
 
-export namespace UpdateAccessKeyRequest {
-  export const filterSensitiveLog = (obj: UpdateAccessKeyRequest): any => ({
+export namespace UntagMFADeviceRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UntagMFADeviceRequest): any => ({
     ...obj,
   });
 }
 
-export interface UpdateAccountPasswordPolicyRequest {
+export interface UntagOpenIDConnectProviderRequest {
   /**
-   * <p>The minimum number of characters allowed in an IAM user password.</p>
-   *          <p>If you do not specify a value for this parameter, then the operation uses the default
-   *          value of <code>6</code>.</p>
-   */
-  MinimumPasswordLength?: number;
-
-  /**
-   * <p>Specifies whether IAM user passwords must contain at least one of the following
-   *          non-alphanumeric characters:</p>
-   *          <p>! @ # $ % ^ & * ( ) _ + - = [ ] { } | '</p>
-   *          <p>If you do not specify a value for this parameter, then the operation uses the default
-   *          value of <code>false</code>. The result is that passwords do not require at least one
-   *          symbol character.</p>
-   */
-  RequireSymbols?: boolean;
-
-  /**
-   * <p>Specifies whether IAM user passwords must contain at least one numeric character (0 to
-   *          9).</p>
-   *          <p>If you do not specify a value for this parameter, then the operation uses the default
-   *          value of <code>false</code>. The result is that passwords do not require at least one
-   *          numeric character.</p>
-   */
-  RequireNumbers?: boolean;
-
-  /**
-   * <p>Specifies whether IAM user passwords must contain at least one uppercase character
-   *          from the ISO basic Latin alphabet (A to Z).</p>
-   *          <p>If you do not specify a value for this parameter, then the operation uses the default
-   *          value of <code>false</code>. The result is that passwords do not require at least one
-   *          uppercase character.</p>
-   */
-  RequireUppercaseCharacters?: boolean;
-
-  /**
-   * <p>Specifies whether IAM user passwords must contain at least one lowercase character
-   *          from the ISO basic Latin alphabet (a to z).</p>
-   *          <p>If you do not specify a value for this parameter, then the operation uses the default
-   *          value of <code>false</code>. The result is that passwords do not require at least one
-   *          lowercase character.</p>
-   */
-  RequireLowercaseCharacters?: boolean;
-
-  /**
-   * <p> Allows all IAM users in your account to use the AWS Management Console to change their own
-   *          passwords. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html">Letting IAM Users Change Their Own
-   *             Passwords</a> in the <i>IAM User Guide</i>.</p>
-   *          <p>If you do not specify a value for this parameter, then the operation uses the default
-   *          value of <code>false</code>. The result is that IAM users in the account do not
-   *          automatically have permissions to change their own password.</p>
-   */
-  AllowUsersToChangePassword?: boolean;
-
-  /**
-   * <p>The number of days that an IAM user password is valid.</p>
-   *          <p>If you do not specify a value for this parameter, then the operation uses the default
-   *          value of <code>0</code>. The result is that IAM user passwords never expire.</p>
-   */
-  MaxPasswordAge?: number;
-
-  /**
-   * <p>Specifies the number of previous passwords that IAM users are prevented from
-   *          reusing.</p>
-   *          <p>If you do not specify a value for this parameter, then the operation uses the default
-   *          value of <code>0</code>. The result is that IAM users are not prevented from reusing
-   *          previous passwords.</p>
-   */
-  PasswordReusePrevention?: number;
-
-  /**
-   * <p>Prevents IAM users from setting a new password after their password has expired. The
-   *          IAM user cannot be accessed until an administrator resets the password.</p>
-   *          <p>If you do not specify a value for this parameter, then the operation uses the default
-   *          value of <code>false</code>. The result is that IAM users can change their passwords
-   *          after they expire and continue to sign in as the user.</p>
-   */
-  HardExpiry?: boolean;
-}
-
-export namespace UpdateAccountPasswordPolicyRequest {
-  export const filterSensitiveLog = (obj: UpdateAccountPasswordPolicyRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateAssumeRolePolicyRequest {
-  /**
-   * <p>The name of the role to update with the new policy.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
-   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
-   */
-  RoleName: string | undefined;
-
-  /**
-   * <p>The policy that grants an entity permission to assume the role.</p>
-   *          <p>You must provide policies in JSON format in IAM. However, for AWS CloudFormation
-   *          templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS
-   *          CloudFormation always converts a YAML policy to JSON format before submitting it to
-   *          IAM.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-   *     used to validate this parameter is a string of characters consisting of the following:</p>
-   *          <ul>
-   *             <li>
-   *                <p>Any printable ASCII
-   *     character ranging from the space character (<code>\u0020</code>) through the end of the ASCII character range</p>
-   *             </li>
-   *             <li>
-   *                <p>The printable characters in the Basic Latin and  Latin-1 Supplement character set
-   *     (through <code>\u00FF</code>)</p>
-   *             </li>
-   *             <li>
-   *                <p>The special characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and
-   *     carriage return (<code>\u000D</code>)</p>
-   *             </li>
-   *          </ul>
-   */
-  PolicyDocument: string | undefined;
-}
-
-export namespace UpdateAssumeRolePolicyRequest {
-  export const filterSensitiveLog = (obj: UpdateAssumeRolePolicyRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateGroupRequest {
-  /**
-   * <p>Name of the IAM group to update. If you're changing the name of the group, this is the
-   *          original name.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
-   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
-   */
-  GroupName: string | undefined;
-
-  /**
-   * <p>New path for the IAM group. Only include this if changing the group's path.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
-   *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
-   *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
-   *     most punctuation characters, digits, and upper and lowercased letters.</p>
-   */
-  NewPath?: string;
-
-  /**
-   * <p>New name for the IAM group. Only include this if changing the group's name.</p>
-   *          <p>IAM user, group, role, and policy names must be unique within the account. Names are
-   *          not distinguished by case. For example, you cannot create resources named both "MyResource"
-   *          and "myresource".</p>
-   */
-  NewGroupName?: string;
-}
-
-export namespace UpdateGroupRequest {
-  export const filterSensitiveLog = (obj: UpdateGroupRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateLoginProfileRequest {
-  /**
-   * <p>The name of the user whose password you want to update.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
-   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
-   */
-  UserName: string | undefined;
-
-  /**
-   * <p>The new password for the specified IAM user.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a>
-   *     used to validate this parameter is a string of characters consisting of the following:</p>
-   *          <ul>
-   *             <li>
-   *                <p>Any printable ASCII
-   *     character ranging from the space character (<code>\u0020</code>) through the end of the ASCII character range</p>
-   *             </li>
-   *             <li>
-   *                <p>The printable characters in the Basic Latin and  Latin-1 Supplement character set
-   *     (through <code>\u00FF</code>)</p>
-   *             </li>
-   *             <li>
-   *                <p>The special characters tab (<code>\u0009</code>), line feed (<code>\u000A</code>), and
-   *     carriage return (<code>\u000D</code>)</p>
-   *             </li>
-   *          </ul>
-   *          <p>However,
-   *          the format can be further restricted by the account administrator by setting a password
-   *          policy on the AWS account. For more information, see <a>UpdateAccountPasswordPolicy</a>.</p>
-   */
-  Password?: string;
-
-  /**
-   * <p>Allows this new password to be used only once by requiring the specified IAM user to
-   *          set a new password on next sign-in.</p>
-   */
-  PasswordResetRequired?: boolean;
-}
-
-export namespace UpdateLoginProfileRequest {
-  export const filterSensitiveLog = (obj: UpdateLoginProfileRequest): any => ({
-    ...obj,
-    ...(obj.Password && { Password: SENSITIVE_STRING }),
-  });
-}
-
-export interface UpdateOpenIDConnectProviderThumbprintRequest {
-  /**
-   * <p>The Amazon Resource Name (ARN) of the IAM OIDC provider resource object for which you
-   *          want to update the thumbprint. You can get a list of OIDC provider ARNs by using the <a>ListOpenIDConnectProviders</a> operation.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   * <p>The ARN of the OIDC provider in IAM from which you want to remove tags.</p>
+   *          <p>This parameter accepts (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that consist of upper and lowercase alphanumeric
+   *     characters with no spaces. You can also include any of the following characters: =,.@-</p>
    */
   OpenIDConnectProviderArn: string | undefined;
 
   /**
-   * <p>A list of certificate thumbprints that are associated with the specified IAM OpenID
-   *          Connect provider. For more information, see <a>CreateOpenIDConnectProvider</a>.
-   *       </p>
+   * <p>A list of key names as a simple array of strings. The tags with matching keys are
+   *       removed from the specified OIDC provider.</p>
    */
-  ThumbprintList: string[] | undefined;
+  TagKeys: string[] | undefined;
 }
 
-export namespace UpdateOpenIDConnectProviderThumbprintRequest {
-  export const filterSensitiveLog = (obj: UpdateOpenIDConnectProviderThumbprintRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateRoleRequest {
+export namespace UntagOpenIDConnectProviderRequest {
   /**
-   * <p>The name of the role that you want to modify.</p>
+   * @internal
    */
-  RoleName: string | undefined;
-
-  /**
-   * <p>The new description that you want to apply to the specified role.</p>
-   */
-  Description?: string;
-
-  /**
-   * <p>The maximum session duration (in seconds) that you want to set for the specified role.
-   *          If you do not specify a value for this setting, the default maximum of one hour is applied.
-   *          This setting can have a value from 1 hour to 12 hours.</p>
-   *          <p>Anyone who assumes the role from the AWS CLI or API can use the
-   *             <code>DurationSeconds</code> API parameter or the <code>duration-seconds</code> CLI
-   *          parameter to request a longer session. The <code>MaxSessionDuration</code> setting
-   *          determines the maximum duration that can be requested using the
-   *             <code>DurationSeconds</code> parameter. If users don't specify a value for the
-   *             <code>DurationSeconds</code> parameter, their security credentials are valid for one
-   *          hour by default. This applies when you use the <code>AssumeRole*</code> API operations or
-   *          the <code>assume-role*</code> CLI operations but does not apply when you use those
-   *          operations to create a console URL. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html">Using IAM Roles</a> in the
-   *             <i>IAM User Guide</i>.</p>
-   */
-  MaxSessionDuration?: number;
-}
-
-export namespace UpdateRoleRequest {
-  export const filterSensitiveLog = (obj: UpdateRoleRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateRoleResponse {}
-
-export namespace UpdateRoleResponse {
-  export const filterSensitiveLog = (obj: UpdateRoleResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateRoleDescriptionRequest {
-  /**
-   * <p>The name of the role that you want to modify.</p>
-   */
-  RoleName: string | undefined;
-
-  /**
-   * <p>The new description that you want to apply to the specified role.</p>
-   */
-  Description: string | undefined;
-}
-
-export namespace UpdateRoleDescriptionRequest {
-  export const filterSensitiveLog = (obj: UpdateRoleDescriptionRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateRoleDescriptionResponse {
-  /**
-   * <p>A structure that contains details about the modified role.</p>
-   */
-  Role?: Role;
-}
-
-export namespace UpdateRoleDescriptionResponse {
-  export const filterSensitiveLog = (obj: UpdateRoleDescriptionResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateSAMLProviderRequest {
-  /**
-   * <p>An XML document generated by an identity provider (IdP) that supports SAML 2.0. The
-   *          document includes the issuer's name, expiration information, and keys that can be used to
-   *          validate the SAML authentication response (assertions) that are received from the IdP. You
-   *          must generate the metadata document using the identity management software that is used as
-   *          your organization's IdP.</p>
-   */
-  SAMLMetadataDocument: string | undefined;
-
-  /**
-   * <p>The Amazon Resource Name (ARN) of the SAML provider to update.</p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service
-   *     Namespaces</a> in the <i>AWS General Reference</i>.</p>
-   */
-  SAMLProviderArn: string | undefined;
-}
-
-export namespace UpdateSAMLProviderRequest {
-  export const filterSensitiveLog = (obj: UpdateSAMLProviderRequest): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Contains the response to a successful <a>UpdateSAMLProvider</a> request.
- *     </p>
- */
-export interface UpdateSAMLProviderResponse {
-  /**
-   * <p>The Amazon Resource Name (ARN) of the SAML provider that was updated.</p>
-   */
-  SAMLProviderArn?: string;
-}
-
-export namespace UpdateSAMLProviderResponse {
-  export const filterSensitiveLog = (obj: UpdateSAMLProviderResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateServerCertificateRequest {
-  /**
-   * <p>The name of the server certificate that you want to update.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
-   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
-   */
-  ServerCertificateName: string | undefined;
-
-  /**
-   * <p>The new path for the server certificate. Include this only if you are updating the
-   *          server certificate's path.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
-   *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
-   *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
-   *     most punctuation characters, digits, and upper and lowercased letters.</p>
-   */
-  NewPath?: string;
-
-  /**
-   * <p>The new name for the server certificate. Include this only if you are updating the
-   *          server certificate's name. The name of the certificate cannot contain any spaces.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
-   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
-   */
-  NewServerCertificateName?: string;
-}
-
-export namespace UpdateServerCertificateRequest {
-  export const filterSensitiveLog = (obj: UpdateServerCertificateRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateServiceSpecificCredentialRequest {
-  /**
-   * <p>The name of the IAM user associated with the service-specific credential. If you do
-   *          not specify this value, then the operation assumes the user whose credentials are used to
-   *          call the operation.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
-   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
-   */
-  UserName?: string;
-
-  /**
-   * <p>The unique identifier of the service-specific credential.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
-   *     consist of any upper or lowercased letter or digit.</p>
-   */
-  ServiceSpecificCredentialId: string | undefined;
-
-  /**
-   * <p>The status to be assigned to the service-specific credential.</p>
-   */
-  Status: StatusType | string | undefined;
-}
-
-export namespace UpdateServiceSpecificCredentialRequest {
-  export const filterSensitiveLog = (obj: UpdateServiceSpecificCredentialRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateSigningCertificateRequest {
-  /**
-   * <p>The name of the IAM user the signing certificate belongs to.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
-   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
-   */
-  UserName?: string;
-
-  /**
-   * <p>The ID of the signing certificate you want to update.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
-   *     consist of any upper or lowercased letter or digit.</p>
-   */
-  CertificateId: string | undefined;
-
-  /**
-   * <p> The status you want to assign to the certificate. <code>Active</code> means that the
-   *          certificate can be used for API calls to AWS <code>Inactive</code> means that the
-   *          certificate cannot be used.</p>
-   */
-  Status: StatusType | string | undefined;
-}
-
-export namespace UpdateSigningCertificateRequest {
-  export const filterSensitiveLog = (obj: UpdateSigningCertificateRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateSSHPublicKeyRequest {
-  /**
-   * <p>The name of the IAM user associated with the SSH public key.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
-   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
-   */
-  UserName: string | undefined;
-
-  /**
-   * <p>The unique identifier for the SSH public key.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters that can
-   *     consist of any upper or lowercased letter or digit.</p>
-   */
-  SSHPublicKeyId: string | undefined;
-
-  /**
-   * <p>The status to assign to the SSH public key. <code>Active</code> means that the key can
-   *          be used for authentication with an AWS CodeCommit repository. <code>Inactive</code> means that the
-   *          key cannot be used.</p>
-   */
-  Status: StatusType | string | undefined;
-}
-
-export namespace UpdateSSHPublicKeyRequest {
-  export const filterSensitiveLog = (obj: UpdateSSHPublicKeyRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateUserRequest {
-  /**
-   * <p>Name of the user to update. If you're changing the name of the user, this is the
-   *          original user name.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric
-   *     characters with no spaces. You can also include any of the following characters: _+=,.@-</p>
-   */
-  UserName: string | undefined;
-
-  /**
-   * <p>New path for the IAM user. Include this parameter only if you're changing the user's
-   *          path.</p>
-   *          <p>This parameter allows (through its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting
-   *     of either a forward slash (/) by itself or a string that must begin and end with forward slashes.
-   *     In addition, it can contain any ASCII character from the ! (<code>\u0021</code>) through the DEL character (<code>\u007F</code>), including
-   *     most punctuation characters, digits, and upper and lowercased letters.</p>
-   */
-  NewPath?: string;
-
-  /**
-   * <p>New name for the user. Include this parameter only if you're changing the user's
-   *          name.</p>
-   *          <p>IAM user, group, role, and policy names must be unique within the account. Names are
-   *          not distinguished by case. For example, you cannot create resources named both "MyResource"
-   *          and "myresource".</p>
-   */
-  NewUserName?: string;
-}
-
-export namespace UpdateUserRequest {
-  export const filterSensitiveLog = (obj: UpdateUserRequest): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The request was rejected because the public key certificate and the private key do not
- *       match.</p>
- */
-export interface KeyPairMismatchException extends __SmithyException, $MetadataBearer {
-  name: "KeyPairMismatchException";
-  $fault: "client";
-  message?: string;
-}
-
-export namespace KeyPairMismatchException {
-  export const filterSensitiveLog = (obj: KeyPairMismatchException): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The request was rejected because the certificate was malformed or expired. The error
- *       message describes the specific error.</p>
- */
-export interface MalformedCertificateException extends __SmithyException, $MetadataBearer {
-  name: "MalformedCertificateException";
-  $fault: "client";
-  message?: string;
-}
-
-export namespace MalformedCertificateException {
-  export const filterSensitiveLog = (obj: MalformedCertificateException): any => ({
+  export const filterSensitiveLog = (obj: UntagOpenIDConnectProviderRequest): any => ({
     ...obj,
   });
 }

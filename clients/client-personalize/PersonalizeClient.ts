@@ -4,6 +4,10 @@ import {
 } from "./commands/CreateBatchInferenceJobCommand";
 import { CreateCampaignCommandInput, CreateCampaignCommandOutput } from "./commands/CreateCampaignCommand";
 import { CreateDatasetCommandInput, CreateDatasetCommandOutput } from "./commands/CreateDatasetCommand";
+import {
+  CreateDatasetExportJobCommandInput,
+  CreateDatasetExportJobCommandOutput,
+} from "./commands/CreateDatasetExportJobCommand";
 import { CreateDatasetGroupCommandInput, CreateDatasetGroupCommandOutput } from "./commands/CreateDatasetGroupCommand";
 import {
   CreateDatasetImportJobCommandInput,
@@ -31,6 +35,10 @@ import {
 } from "./commands/DescribeBatchInferenceJobCommand";
 import { DescribeCampaignCommandInput, DescribeCampaignCommandOutput } from "./commands/DescribeCampaignCommand";
 import { DescribeDatasetCommandInput, DescribeDatasetCommandOutput } from "./commands/DescribeDatasetCommand";
+import {
+  DescribeDatasetExportJobCommandInput,
+  DescribeDatasetExportJobCommandOutput,
+} from "./commands/DescribeDatasetExportJobCommand";
 import {
   DescribeDatasetGroupCommandInput,
   DescribeDatasetGroupCommandOutput,
@@ -61,6 +69,10 @@ import {
   ListBatchInferenceJobsCommandOutput,
 } from "./commands/ListBatchInferenceJobsCommand";
 import { ListCampaignsCommandInput, ListCampaignsCommandOutput } from "./commands/ListCampaignsCommand";
+import {
+  ListDatasetExportJobsCommandInput,
+  ListDatasetExportJobsCommandOutput,
+} from "./commands/ListDatasetExportJobsCommand";
 import { ListDatasetGroupsCommandInput, ListDatasetGroupsCommandOutput } from "./commands/ListDatasetGroupsCommand";
 import {
   ListDatasetImportJobsCommandInput,
@@ -132,6 +144,7 @@ export type ServiceInputTypes =
   | CreateBatchInferenceJobCommandInput
   | CreateCampaignCommandInput
   | CreateDatasetCommandInput
+  | CreateDatasetExportJobCommandInput
   | CreateDatasetGroupCommandInput
   | CreateDatasetImportJobCommandInput
   | CreateEventTrackerCommandInput
@@ -150,6 +163,7 @@ export type ServiceInputTypes =
   | DescribeBatchInferenceJobCommandInput
   | DescribeCampaignCommandInput
   | DescribeDatasetCommandInput
+  | DescribeDatasetExportJobCommandInput
   | DescribeDatasetGroupCommandInput
   | DescribeDatasetImportJobCommandInput
   | DescribeEventTrackerCommandInput
@@ -162,6 +176,7 @@ export type ServiceInputTypes =
   | GetSolutionMetricsCommandInput
   | ListBatchInferenceJobsCommandInput
   | ListCampaignsCommandInput
+  | ListDatasetExportJobsCommandInput
   | ListDatasetGroupsCommandInput
   | ListDatasetImportJobsCommandInput
   | ListDatasetsCommandInput
@@ -177,6 +192,7 @@ export type ServiceOutputTypes =
   | CreateBatchInferenceJobCommandOutput
   | CreateCampaignCommandOutput
   | CreateDatasetCommandOutput
+  | CreateDatasetExportJobCommandOutput
   | CreateDatasetGroupCommandOutput
   | CreateDatasetImportJobCommandOutput
   | CreateEventTrackerCommandOutput
@@ -195,6 +211,7 @@ export type ServiceOutputTypes =
   | DescribeBatchInferenceJobCommandOutput
   | DescribeCampaignCommandOutput
   | DescribeDatasetCommandOutput
+  | DescribeDatasetExportJobCommandOutput
   | DescribeDatasetGroupCommandOutput
   | DescribeDatasetImportJobCommandOutput
   | DescribeEventTrackerCommandOutput
@@ -207,6 +224,7 @@ export type ServiceOutputTypes =
   | GetSolutionMetricsCommandOutput
   | ListBatchInferenceJobsCommandOutput
   | ListCampaignsCommandOutput
+  | ListDatasetExportJobsCommandOutput
   | ListDatasetGroupsCommandOutput
   | ListDatasetImportJobsCommandOutput
   | ListDatasetsCommandOutput
@@ -283,7 +301,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -314,7 +332,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type PersonalizeClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type PersonalizeClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -322,8 +340,12 @@ export type PersonalizeClientConfig = Partial<__SmithyConfiguration<__HttpHandle
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of PersonalizeClient class constructor that set the region, credentials and other options.
+ */
+export interface PersonalizeClientConfig extends PersonalizeClientConfigType {}
 
-export type PersonalizeClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type PersonalizeClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -331,6 +353,10 @@ export type PersonalizeClientResolvedConfig = __SmithyResolvedConfiguration<__Ht
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of PersonalizeClient class. This is resolved and normalized from the {@link PersonalizeClientConfig | constructor configuration interface}.
+ */
+export interface PersonalizeClientResolvedConfig extends PersonalizeClientResolvedConfigType {}
 
 /**
  * <p>Amazon Personalize is a machine learning service that makes it easy to add individualized
@@ -342,6 +368,9 @@ export class PersonalizeClient extends __Client<
   ServiceOutputTypes,
   PersonalizeClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of PersonalizeClient class. This is resolved and normalized from the {@link PersonalizeClientConfig | constructor configuration interface}.
+   */
   readonly config: PersonalizeClientResolvedConfig;
 
   constructor(configuration: PersonalizeClientConfig) {

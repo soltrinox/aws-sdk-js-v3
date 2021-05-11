@@ -1,5 +1,5 @@
 import { EC2ClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../EC2Client";
-import { RevokeSecurityGroupIngressRequest, RevokeSecurityGroupIngressResult } from "../models/models_4";
+import { RevokeSecurityGroupIngressRequest, RevokeSecurityGroupIngressResult } from "../models/models_5";
 import {
   deserializeAws_ec2RevokeSecurityGroupIngressCommand,
   serializeAws_ec2RevokeSecurityGroupIngressCommand,
@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RevokeSecurityGroupIngressCommandInput = RevokeSecurityGroupIngressRequest;
-export type RevokeSecurityGroupIngressCommandOutput = RevokeSecurityGroupIngressResult & __MetadataBearer;
+export interface RevokeSecurityGroupIngressCommandInput extends RevokeSecurityGroupIngressRequest {}
+export interface RevokeSecurityGroupIngressCommandOutput extends RevokeSecurityGroupIngressResult, __MetadataBearer {}
 
 /**
  * <p>Removes the specified ingress rules from a security group. To remove a rule, the values
@@ -34,6 +34,20 @@ export type RevokeSecurityGroupIngressCommandOutput = RevokeSecurityGroupIngress
  *
  *          <p>Each rule consists of the protocol and the CIDR range or source security group. For the TCP and UDP protocols, you must also specify the destination port or range of ports. For the ICMP protocol, you must also specify the ICMP type and code. If the security group rule has a description, you do not have to specify the description to revoke the rule.</p>
  *          <p>Rule changes are propagated to instances within the security group as quickly as possible. However, a small delay might occur.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, RevokeSecurityGroupIngressCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, RevokeSecurityGroupIngressCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new RevokeSecurityGroupIngressCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RevokeSecurityGroupIngressCommandInput} for command's `input` shape.
+ * @see {@link RevokeSecurityGroupIngressCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RevokeSecurityGroupIngressCommand extends $Command<
   RevokeSecurityGroupIngressCommandInput,

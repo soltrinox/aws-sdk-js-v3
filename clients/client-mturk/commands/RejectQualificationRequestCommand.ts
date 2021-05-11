@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RejectQualificationRequestCommandInput = RejectQualificationRequestRequest;
-export type RejectQualificationRequestCommandOutput = RejectQualificationRequestResponse & __MetadataBearer;
+export interface RejectQualificationRequestCommandInput extends RejectQualificationRequestRequest {}
+export interface RejectQualificationRequestCommandOutput extends RejectQualificationRequestResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -28,6 +28,20 @@ export type RejectQualificationRequestCommandOutput = RejectQualificationRequest
  *         </p>
  *         <p> You can provide a text message explaining why the request was
  *             rejected. The Worker who made the request can see this message.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, RejectQualificationRequestCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, RejectQualificationRequestCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new RejectQualificationRequestCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RejectQualificationRequestCommandInput} for command's `input` shape.
+ * @see {@link RejectQualificationRequestCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RejectQualificationRequestCommand extends $Command<
   RejectQualificationRequestCommandInput,

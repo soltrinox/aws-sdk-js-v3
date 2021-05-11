@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeFaqCommandInput = DescribeFaqRequest;
-export type DescribeFaqCommandOutput = DescribeFaqResponse & __MetadataBearer;
+export interface DescribeFaqCommandInput extends DescribeFaqRequest {}
+export interface DescribeFaqCommandOutput extends DescribeFaqResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about an FAQ list.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KendraClient, DescribeFaqCommand } from "@aws-sdk/client-kendra"; // ES Modules import
+ * // const { KendraClient, DescribeFaqCommand } = require("@aws-sdk/client-kendra"); // CommonJS import
+ * const client = new KendraClient(config);
+ * const command = new DescribeFaqCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeFaqCommandInput} for command's `input` shape.
+ * @see {@link DescribeFaqCommandOutput} for command's `response` shape.
+ * @see {@link KendraClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeFaqCommand extends $Command<
   DescribeFaqCommandInput,

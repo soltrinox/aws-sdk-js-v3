@@ -17,19 +17,33 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeOrganizationConfigRulesCommandInput = DescribeOrganizationConfigRulesRequest;
-export type DescribeOrganizationConfigRulesCommandOutput = DescribeOrganizationConfigRulesResponse & __MetadataBearer;
+export interface DescribeOrganizationConfigRulesCommandInput extends DescribeOrganizationConfigRulesRequest {}
+export interface DescribeOrganizationConfigRulesCommandOutput
+  extends DescribeOrganizationConfigRulesResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns a list of organization config rules. </p>
- * 			      <p>Only a master account and a delegated administrator account can call this API.
- * 				When calling this API with a delegated administrator, you must ensure AWS Organizations
- * 			<code>ListDelegatedAdministrator</code> permissions are added. </p>
+ *
  * 		       <note>
  *             <p>When you specify the limit and the next token, you receive a paginated response.
  * 			Limit and next token are not applicable if you specify organization config rule names.
  * 			It is only applicable, when you request all the organization config rules.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DescribeOrganizationConfigRulesCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DescribeOrganizationConfigRulesCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DescribeOrganizationConfigRulesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeOrganizationConfigRulesCommandInput} for command's `input` shape.
+ * @see {@link DescribeOrganizationConfigRulesCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeOrganizationConfigRulesCommand extends $Command<
   DescribeOrganizationConfigRulesCommandInput,

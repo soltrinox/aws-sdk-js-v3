@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListV2LoggingLevelsCommandInput = ListV2LoggingLevelsRequest;
-export type ListV2LoggingLevelsCommandOutput = ListV2LoggingLevelsResponse & __MetadataBearer;
+export interface ListV2LoggingLevelsCommandInput extends ListV2LoggingLevelsRequest {}
+export interface ListV2LoggingLevelsCommandOutput extends ListV2LoggingLevelsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists logging levels.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, ListV2LoggingLevelsCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, ListV2LoggingLevelsCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new ListV2LoggingLevelsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListV2LoggingLevelsCommandInput} for command's `input` shape.
+ * @see {@link ListV2LoggingLevelsCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListV2LoggingLevelsCommand extends $Command<
   ListV2LoggingLevelsCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteInputSecurityGroupCommandInput = DeleteInputSecurityGroupRequest;
-export type DeleteInputSecurityGroupCommandOutput = DeleteInputSecurityGroupResponse & __MetadataBearer;
+export interface DeleteInputSecurityGroupCommandInput extends DeleteInputSecurityGroupRequest {}
+export interface DeleteInputSecurityGroupCommandOutput extends DeleteInputSecurityGroupResponse, __MetadataBearer {}
 
 /**
  * Deletes an Input Security Group
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, DeleteInputSecurityGroupCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, DeleteInputSecurityGroupCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new DeleteInputSecurityGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteInputSecurityGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteInputSecurityGroupCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteInputSecurityGroupCommand extends $Command<
   DeleteInputSecurityGroupCommandInput,

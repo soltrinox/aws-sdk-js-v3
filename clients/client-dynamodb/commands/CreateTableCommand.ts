@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateTableCommandInput = CreateTableInput;
-export type CreateTableCommandOutput = CreateTableOutput & __MetadataBearer;
+export interface CreateTableCommandInput extends CreateTableInput {}
+export interface CreateTableCommandOutput extends CreateTableOutput, __MetadataBearer {}
 
 /**
  * <p>The <code>CreateTable</code> operation adds a new table to your account. In an AWS
@@ -34,6 +34,20 @@ export type CreateTableCommandOutput = CreateTableOutput & __MetadataBearer;
  *       tables sequentially. Only one table with secondary indexes can be in the <code>CREATING</code> state at
  *       any given time.</p>
  *          <p>You can use the <code>DescribeTable</code> action to check the table status.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, CreateTableCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, CreateTableCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new CreateTableCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateTableCommandInput} for command's `input` shape.
+ * @see {@link CreateTableCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateTableCommand extends $Command<
   CreateTableCommandInput,

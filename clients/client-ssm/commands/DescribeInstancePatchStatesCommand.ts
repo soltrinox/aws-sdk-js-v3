@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeInstancePatchStatesCommandInput = DescribeInstancePatchStatesRequest;
-export type DescribeInstancePatchStatesCommandOutput = DescribeInstancePatchStatesResult & __MetadataBearer;
+export interface DescribeInstancePatchStatesCommandInput extends DescribeInstancePatchStatesRequest {}
+export interface DescribeInstancePatchStatesCommandOutput extends DescribeInstancePatchStatesResult, __MetadataBearer {}
 
 /**
  * <p>Retrieves the high-level patch state of one or more instances.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DescribeInstancePatchStatesCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DescribeInstancePatchStatesCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DescribeInstancePatchStatesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeInstancePatchStatesCommandInput} for command's `input` shape.
+ * @see {@link DescribeInstancePatchStatesCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeInstancePatchStatesCommand extends $Command<
   DescribeInstancePatchStatesCommandInput,

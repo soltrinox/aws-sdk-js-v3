@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeclineInvitationsCommandInput = DeclineInvitationsRequest;
-export type DeclineInvitationsCommandOutput = DeclineInvitationsResponse & __MetadataBearer;
+export interface DeclineInvitationsCommandInput extends DeclineInvitationsRequest {}
+export interface DeclineInvitationsCommandOutput extends DeclineInvitationsResponse, __MetadataBearer {}
 
 /**
  * <p>Declines Amazon Macie membership invitations that were received from specific accounts.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Macie2Client, DeclineInvitationsCommand } from "@aws-sdk/client-macie2"; // ES Modules import
+ * // const { Macie2Client, DeclineInvitationsCommand } = require("@aws-sdk/client-macie2"); // CommonJS import
+ * const client = new Macie2Client(config);
+ * const command = new DeclineInvitationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeclineInvitationsCommandInput} for command's `input` shape.
+ * @see {@link DeclineInvitationsCommandOutput} for command's `response` shape.
+ * @see {@link Macie2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeclineInvitationsCommand extends $Command<
   DeclineInvitationsCommandInput,

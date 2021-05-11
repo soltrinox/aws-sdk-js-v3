@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDhcpOptionsCommandInput = CreateDhcpOptionsRequest;
-export type CreateDhcpOptionsCommandOutput = CreateDhcpOptionsResult & __MetadataBearer;
+export interface CreateDhcpOptionsCommandInput extends CreateDhcpOptionsRequest {}
+export interface CreateDhcpOptionsCommandOutput extends CreateDhcpOptionsResult, __MetadataBearer {}
 
 /**
  * <p>Creates a set of DHCP options for your VPC. After creating the set, you must
@@ -74,6 +74,20 @@ export type CreateDhcpOptionsCommandOutput = CreateDhcpOptionsResult & __Metadat
  * 			option either to <code>AmazonProvidedDNS</code> or to a domain name server of your
  * 			choice. For more information, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html">DHCP Options Sets</a> in the
  * 			<i>Amazon Virtual Private Cloud User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, CreateDhcpOptionsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, CreateDhcpOptionsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new CreateDhcpOptionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDhcpOptionsCommandInput} for command's `input` shape.
+ * @see {@link CreateDhcpOptionsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDhcpOptionsCommand extends $Command<
   CreateDhcpOptionsCommandInput,

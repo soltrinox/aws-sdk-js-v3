@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteWebhookCommandInput = DeleteWebhookInput;
-export type DeleteWebhookCommandOutput = DeleteWebhookOutput & __MetadataBearer;
+export interface DeleteWebhookCommandInput extends DeleteWebhookInput {}
+export interface DeleteWebhookCommandOutput extends DeleteWebhookOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes a previously created webhook by name. Deleting the webhook stops AWS
@@ -26,6 +26,20 @@ export type DeleteWebhookCommandOutput = DeleteWebhookOutput & __MetadataBearer;
  *             returns successfully when trying to delete a webhook that is already deleted. If a
  *             deleted webhook is re-created by calling PutWebhook with the same name, it will have a
  *             different URL.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodePipelineClient, DeleteWebhookCommand } from "@aws-sdk/client-codepipeline"; // ES Modules import
+ * // const { CodePipelineClient, DeleteWebhookCommand } = require("@aws-sdk/client-codepipeline"); // CommonJS import
+ * const client = new CodePipelineClient(config);
+ * const command = new DeleteWebhookCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteWebhookCommandInput} for command's `input` shape.
+ * @see {@link DeleteWebhookCommandOutput} for command's `response` shape.
+ * @see {@link CodePipelineClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteWebhookCommand extends $Command<
   DeleteWebhookCommandInput,

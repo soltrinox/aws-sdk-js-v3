@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListProxySessionsCommandInput = ListProxySessionsRequest;
-export type ListProxySessionsCommandOutput = ListProxySessionsResponse & __MetadataBearer;
+export interface ListProxySessionsCommandInput extends ListProxySessionsRequest {}
+export interface ListProxySessionsCommandOutput extends ListProxySessionsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the proxy sessions for the specified Amazon Chime Voice Connector.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, ListProxySessionsCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, ListProxySessionsCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new ListProxySessionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListProxySessionsCommandInput} for command's `input` shape.
+ * @see {@link ListProxySessionsCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListProxySessionsCommand extends $Command<
   ListProxySessionsCommandInput,

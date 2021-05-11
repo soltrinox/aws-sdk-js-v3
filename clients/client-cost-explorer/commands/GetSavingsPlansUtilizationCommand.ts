@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSavingsPlansUtilizationCommandInput = GetSavingsPlansUtilizationRequest;
-export type GetSavingsPlansUtilizationCommandOutput = GetSavingsPlansUtilizationResponse & __MetadataBearer;
+export interface GetSavingsPlansUtilizationCommandInput extends GetSavingsPlansUtilizationRequest {}
+export interface GetSavingsPlansUtilizationCommandOutput extends GetSavingsPlansUtilizationResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the Savings Plans utilization for your account across date ranges with daily or monthly granularity. Management account in an organization have access to member accounts. You can use <code>GetDimensionValues</code> in <code>SAVINGS_PLANS</code> to determine the possible dimension values.</p>
  * 	        <note>
  *             <p>You cannot group by any dimension values for <code>GetSavingsPlansUtilization</code>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CostExplorerClient, GetSavingsPlansUtilizationCommand } from "@aws-sdk/client-cost-explorer"; // ES Modules import
+ * // const { CostExplorerClient, GetSavingsPlansUtilizationCommand } = require("@aws-sdk/client-cost-explorer"); // CommonJS import
+ * const client = new CostExplorerClient(config);
+ * const command = new GetSavingsPlansUtilizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSavingsPlansUtilizationCommandInput} for command's `input` shape.
+ * @see {@link GetSavingsPlansUtilizationCommandOutput} for command's `response` shape.
+ * @see {@link CostExplorerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSavingsPlansUtilizationCommand extends $Command<
   GetSavingsPlansUtilizationCommandInput,

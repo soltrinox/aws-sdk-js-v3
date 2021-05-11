@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListSnapshotBlocksCommandInput = ListSnapshotBlocksRequest;
-export type ListSnapshotBlocksCommandOutput = ListSnapshotBlocksResponse & __MetadataBearer;
+export interface ListSnapshotBlocksCommandInput extends ListSnapshotBlocksRequest {}
+export interface ListSnapshotBlocksCommandOutput extends ListSnapshotBlocksResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information about the blocks in an Amazon Elastic Block Store snapshot.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EBSClient, ListSnapshotBlocksCommand } from "@aws-sdk/client-ebs"; // ES Modules import
+ * // const { EBSClient, ListSnapshotBlocksCommand } = require("@aws-sdk/client-ebs"); // CommonJS import
+ * const client = new EBSClient(config);
+ * const command = new ListSnapshotBlocksCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListSnapshotBlocksCommandInput} for command's `input` shape.
+ * @see {@link ListSnapshotBlocksCommandOutput} for command's `response` shape.
+ * @see {@link EBSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListSnapshotBlocksCommand extends $Command<
   ListSnapshotBlocksCommandInput,

@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SendBonusCommandInput = SendBonusRequest;
-export type SendBonusCommandOutput = SendBonusResponse & __MetadataBearer;
+export interface SendBonusCommandInput extends SendBonusRequest {}
+export interface SendBonusCommandOutput extends SendBonusResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -32,6 +32,20 @@ export type SendBonusCommandOutput = SendBonusResponse & __MetadataBearer;
  *             if your account does not have enough funds to pay for both the bonus
  *             and the fees.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, SendBonusCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, SendBonusCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new SendBonusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SendBonusCommandInput} for command's `input` shape.
+ * @see {@link SendBonusCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SendBonusCommand extends $Command<
   SendBonusCommandInput,

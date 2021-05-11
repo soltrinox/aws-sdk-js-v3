@@ -50,6 +50,7 @@ import {
   DashEncryption,
   DashPackage,
   EgressAccessLogs,
+  EncryptionContractConfiguration,
   ForbiddenException,
   HarvestJob,
   HlsEncryption,
@@ -2914,6 +2915,10 @@ const serializeAws_restJson1Authorization = (input: Authorization, context: __Se
 
 const serializeAws_restJson1CmafEncryption = (input: CmafEncryption, context: __SerdeContext): any => {
   return {
+    ...(input.ConstantInitializationVector !== undefined &&
+      input.ConstantInitializationVector !== null && {
+        constantInitializationVector: input.ConstantInitializationVector,
+      }),
     ...(input.KeyRotationIntervalSeconds !== undefined &&
       input.KeyRotationIntervalSeconds !== null && { keyRotationIntervalSeconds: input.KeyRotationIntervalSeconds }),
     ...(input.SpekeKeyProvider !== undefined &&
@@ -2996,6 +3001,18 @@ const serializeAws_restJson1DashPackage = (input: DashPackage, context: __SerdeC
 const serializeAws_restJson1EgressAccessLogs = (input: EgressAccessLogs, context: __SerdeContext): any => {
   return {
     ...(input.LogGroupName !== undefined && input.LogGroupName !== null && { logGroupName: input.LogGroupName }),
+  };
+};
+
+const serializeAws_restJson1EncryptionContractConfiguration = (
+  input: EncryptionContractConfiguration,
+  context: __SerdeContext
+): any => {
+  return {
+    ...(input.PresetSpeke20Audio !== undefined &&
+      input.PresetSpeke20Audio !== null && { presetSpeke20Audio: input.PresetSpeke20Audio }),
+    ...(input.PresetSpeke20Video !== undefined &&
+      input.PresetSpeke20Video !== null && { presetSpeke20Video: input.PresetSpeke20Video }),
   };
 };
 
@@ -3112,6 +3129,13 @@ const serializeAws_restJson1SpekeKeyProvider = (input: SpekeKeyProvider, context
   return {
     ...(input.CertificateArn !== undefined &&
       input.CertificateArn !== null && { certificateArn: input.CertificateArn }),
+    ...(input.EncryptionContractConfiguration !== undefined &&
+      input.EncryptionContractConfiguration !== null && {
+        encryptionContractConfiguration: serializeAws_restJson1EncryptionContractConfiguration(
+          input.EncryptionContractConfiguration,
+          context
+        ),
+      }),
     ...(input.ResourceId !== undefined && input.ResourceId !== null && { resourceId: input.ResourceId }),
     ...(input.RoleArn !== undefined && input.RoleArn !== null && { roleArn: input.RoleArn }),
     ...(input.SystemIds !== undefined &&
@@ -3282,6 +3306,10 @@ const deserializeAws_restJson1Channel = (output: any, context: __SerdeContext): 
 
 const deserializeAws_restJson1CmafEncryption = (output: any, context: __SerdeContext): CmafEncryption => {
   return {
+    ConstantInitializationVector:
+      output.constantInitializationVector !== undefined && output.constantInitializationVector !== null
+        ? output.constantInitializationVector
+        : undefined,
     KeyRotationIntervalSeconds:
       output.keyRotationIntervalSeconds !== undefined && output.keyRotationIntervalSeconds !== null
         ? output.keyRotationIntervalSeconds
@@ -3386,6 +3414,22 @@ const deserializeAws_restJson1DashPackage = (output: any, context: __SerdeContex
 const deserializeAws_restJson1EgressAccessLogs = (output: any, context: __SerdeContext): EgressAccessLogs => {
   return {
     LogGroupName: output.logGroupName !== undefined && output.logGroupName !== null ? output.logGroupName : undefined,
+  } as any;
+};
+
+const deserializeAws_restJson1EncryptionContractConfiguration = (
+  output: any,
+  context: __SerdeContext
+): EncryptionContractConfiguration => {
+  return {
+    PresetSpeke20Audio:
+      output.presetSpeke20Audio !== undefined && output.presetSpeke20Audio !== null
+        ? output.presetSpeke20Audio
+        : undefined,
+    PresetSpeke20Video:
+      output.presetSpeke20Video !== undefined && output.presetSpeke20Video !== null
+        ? output.presetSpeke20Video
+        : undefined,
   } as any;
 };
 
@@ -3605,6 +3649,10 @@ const deserializeAws_restJson1SpekeKeyProvider = (output: any, context: __SerdeC
   return {
     CertificateArn:
       output.certificateArn !== undefined && output.certificateArn !== null ? output.certificateArn : undefined,
+    EncryptionContractConfiguration:
+      output.encryptionContractConfiguration !== undefined && output.encryptionContractConfiguration !== null
+        ? deserializeAws_restJson1EncryptionContractConfiguration(output.encryptionContractConfiguration, context)
+        : undefined,
     ResourceId: output.resourceId !== undefined && output.resourceId !== null ? output.resourceId : undefined,
     RoleArn: output.roleArn !== undefined && output.roleArn !== null ? output.roleArn : undefined,
     SystemIds:

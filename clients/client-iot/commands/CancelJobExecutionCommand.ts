@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelJobExecutionCommandInput = CancelJobExecutionRequest;
-export type CancelJobExecutionCommandOutput = __MetadataBearer;
+export interface CancelJobExecutionCommandInput extends CancelJobExecutionRequest {}
+export interface CancelJobExecutionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Cancels the execution of a job for a given thing.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, CancelJobExecutionCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, CancelJobExecutionCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new CancelJobExecutionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelJobExecutionCommandInput} for command's `input` shape.
+ * @see {@link CancelJobExecutionCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelJobExecutionCommand extends $Command<
   CancelJobExecutionCommandInput,

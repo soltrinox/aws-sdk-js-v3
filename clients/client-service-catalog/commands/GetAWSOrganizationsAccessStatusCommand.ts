@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAWSOrganizationsAccessStatusCommandInput = GetAWSOrganizationsAccessStatusInput;
-export type GetAWSOrganizationsAccessStatusCommandOutput = GetAWSOrganizationsAccessStatusOutput & __MetadataBearer;
+export interface GetAWSOrganizationsAccessStatusCommandInput extends GetAWSOrganizationsAccessStatusInput {}
+export interface GetAWSOrganizationsAccessStatusCommandOutput
+  extends GetAWSOrganizationsAccessStatusOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Get the Access Status for AWS Organization portfolio share feature. This API can only be
  *          called by the management account in the organization or by a delegated admin.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, GetAWSOrganizationsAccessStatusCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, GetAWSOrganizationsAccessStatusCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new GetAWSOrganizationsAccessStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAWSOrganizationsAccessStatusCommandInput} for command's `input` shape.
+ * @see {@link GetAWSOrganizationsAccessStatusCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAWSOrganizationsAccessStatusCommand extends $Command<
   GetAWSOrganizationsAccessStatusCommandInput,

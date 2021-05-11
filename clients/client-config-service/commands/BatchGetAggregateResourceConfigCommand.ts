@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchGetAggregateResourceConfigCommandInput = BatchGetAggregateResourceConfigRequest;
-export type BatchGetAggregateResourceConfigCommandOutput = BatchGetAggregateResourceConfigResponse & __MetadataBearer;
+export interface BatchGetAggregateResourceConfigCommandInput extends BatchGetAggregateResourceConfigRequest {}
+export interface BatchGetAggregateResourceConfigCommandOutput
+  extends BatchGetAggregateResourceConfigResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the current configuration items for resources that are present in your AWS Config aggregator. The operation also returns a list of resources that are not processed in the current request.
@@ -34,6 +36,20 @@ export type BatchGetAggregateResourceConfigCommandOutput = BatchGetAggregateReso
  *                </li>
  *             </ul>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, BatchGetAggregateResourceConfigCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, BatchGetAggregateResourceConfigCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new BatchGetAggregateResourceConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchGetAggregateResourceConfigCommandInput} for command's `input` shape.
+ * @see {@link BatchGetAggregateResourceConfigCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchGetAggregateResourceConfigCommand extends $Command<
   BatchGetAggregateResourceConfigCommandInput,

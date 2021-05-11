@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AcceptHandshakeCommandInput = AcceptHandshakeRequest;
-export type AcceptHandshakeCommandOutput = AcceptHandshakeResponse & __MetadataBearer;
+export interface AcceptHandshakeCommandInput extends AcceptHandshakeRequest {}
+export interface AcceptHandshakeCommandOutput extends AcceptHandshakeResponse, __MetadataBearer {}
 
 /**
  * <p>Sends a response to the originator of a handshake agreeing to the action proposed by
@@ -51,6 +51,20 @@ export type AcceptHandshakeCommandOutput = AcceptHandshakeResponse & __MetadataB
  *          </ul>
  *         <p>After you accept a handshake, it continues to appear in the results of relevant APIs
  *             for only 30 days. After that, it's deleted.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, AcceptHandshakeCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, AcceptHandshakeCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new AcceptHandshakeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AcceptHandshakeCommandInput} for command's `input` shape.
+ * @see {@link AcceptHandshakeCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AcceptHandshakeCommand extends $Command<
   AcceptHandshakeCommandInput,

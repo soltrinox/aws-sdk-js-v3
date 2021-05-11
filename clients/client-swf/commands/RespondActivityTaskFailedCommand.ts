@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RespondActivityTaskFailedCommandInput = RespondActivityTaskFailedInput;
-export type RespondActivityTaskFailedCommandOutput = __MetadataBearer;
+export interface RespondActivityTaskFailedCommandInput extends RespondActivityTaskFailedInput {}
+export interface RespondActivityTaskFailedCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Used by workers to tell the service that the <a>ActivityTask</a> identified
@@ -54,6 +54,20 @@ export type RespondActivityTaskFailedCommandOutput = __MetadataBearer;
  *       event attribute's <code>cause</code> parameter is set to <code>OPERATION_NOT_PERMITTED</code>.
  *       For details and example IAM policies, see <a href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF
  *         Workflows</a> in the <i>Amazon SWF Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SWFClient, RespondActivityTaskFailedCommand } from "@aws-sdk/client-swf"; // ES Modules import
+ * // const { SWFClient, RespondActivityTaskFailedCommand } = require("@aws-sdk/client-swf"); // CommonJS import
+ * const client = new SWFClient(config);
+ * const command = new RespondActivityTaskFailedCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RespondActivityTaskFailedCommandInput} for command's `input` shape.
+ * @see {@link RespondActivityTaskFailedCommandOutput} for command's `response` shape.
+ * @see {@link SWFClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RespondActivityTaskFailedCommand extends $Command<
   RespondActivityTaskFailedCommandInput,

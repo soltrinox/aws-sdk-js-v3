@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateUserHierarchyStructureCommandInput = UpdateUserHierarchyStructureRequest;
-export type UpdateUserHierarchyStructureCommandOutput = __MetadataBearer;
+export interface UpdateUserHierarchyStructureCommandInput extends UpdateUserHierarchyStructureRequest {}
+export interface UpdateUserHierarchyStructureCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Updates the user hierarchy structure: add, remove, and rename user hierarchy levels.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, UpdateUserHierarchyStructureCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, UpdateUserHierarchyStructureCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new UpdateUserHierarchyStructureCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateUserHierarchyStructureCommandInput} for command's `input` shape.
+ * @see {@link UpdateUserHierarchyStructureCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateUserHierarchyStructureCommand extends $Command<
   UpdateUserHierarchyStructureCommandInput,

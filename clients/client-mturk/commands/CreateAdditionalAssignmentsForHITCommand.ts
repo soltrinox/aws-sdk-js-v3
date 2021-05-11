@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAdditionalAssignmentsForHITCommandInput = CreateAdditionalAssignmentsForHITRequest;
-export type CreateAdditionalAssignmentsForHITCommandOutput = CreateAdditionalAssignmentsForHITResponse &
-  __MetadataBearer;
+export interface CreateAdditionalAssignmentsForHITCommandInput extends CreateAdditionalAssignmentsForHITRequest {}
+export interface CreateAdditionalAssignmentsForHITCommandOutput
+  extends CreateAdditionalAssignmentsForHITResponse,
+    __MetadataBearer {}
 
 /**
  * <p>
@@ -48,6 +49,20 @@ export type CreateAdditionalAssignmentsForHITCommandOutput = CreateAdditionalAss
  *                 </li>
  *             </ul>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, CreateAdditionalAssignmentsForHITCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, CreateAdditionalAssignmentsForHITCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new CreateAdditionalAssignmentsForHITCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAdditionalAssignmentsForHITCommandInput} for command's `input` shape.
+ * @see {@link CreateAdditionalAssignmentsForHITCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAdditionalAssignmentsForHITCommand extends $Command<
   CreateAdditionalAssignmentsForHITCommandInput,

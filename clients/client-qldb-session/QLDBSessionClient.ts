@@ -119,7 +119,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -150,7 +150,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type QLDBSessionClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type QLDBSessionClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -158,8 +158,12 @@ export type QLDBSessionClientConfig = Partial<__SmithyConfiguration<__HttpHandle
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of QLDBSessionClient class constructor that set the region, credentials and other options.
+ */
+export interface QLDBSessionClientConfig extends QLDBSessionClientConfigType {}
 
-export type QLDBSessionClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type QLDBSessionClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -167,26 +171,30 @@ export type QLDBSessionClientResolvedConfig = __SmithyResolvedConfiguration<__Ht
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of QLDBSessionClient class. This is resolved and normalized from the {@link QLDBSessionClientConfig | constructor configuration interface}.
+ */
+export interface QLDBSessionClientResolvedConfig extends QLDBSessionClientResolvedConfigType {}
 
 /**
  * <p>The transactional data APIs for Amazon QLDB</p>
  *          <note>
- *             <p>Instead of interacting directly with this API, we recommend that you use the
- *             Amazon QLDB Driver or the QLDB Shell to execute data transactions on a ledger.</p>
+ *             <p>Instead of interacting directly with this API, we recommend using the QLDB driver
+ *             or the QLDB shell to execute data transactions on a ledger.</p>
  *             <ul>
  *                <li>
- *                   <p>If you are working with an AWS SDK, use the QLDB Driver. The driver provides
- *                   a high-level abstraction layer above this <code>qldbsession</code> data plane and
- *                   manages <code>SendCommand</code> API calls for you. For information and a list of
- *                   supported programming languages, see <a href="https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html">Getting started
+ *                   <p>If you are working with an AWS SDK, use the QLDB driver. The driver provides
+ *                   a high-level abstraction layer above this <i>QLDB Session</i> data
+ *                   plane and manages <code>SendCommand</code> API calls for you. For information and
+ *                   a list of supported programming languages, see <a href="https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html">Getting started
  *                      with the driver</a> in the <i>Amazon QLDB Developer
  *                   Guide</i>.</p>
  *                </li>
  *                <li>
  *                   <p>If you are working with the AWS Command Line Interface (AWS CLI), use the
- *                   QLDB Shell. The shell is a command line interface that uses the QLDB Driver to
+ *                   QLDB shell. The shell is a command line interface that uses the QLDB driver to
  *                   interact with a ledger. For information, see <a href="https://docs.aws.amazon.com/qldb/latest/developerguide/data-shell.html">Accessing Amazon QLDB using the
- *                      QLDB Shell</a>.</p>
+ *                      QLDB shell</a>.</p>
  *                </li>
  *             </ul>
  *          </note>
@@ -197,6 +205,9 @@ export class QLDBSessionClient extends __Client<
   ServiceOutputTypes,
   QLDBSessionClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of QLDBSessionClient class. This is resolved and normalized from the {@link QLDBSessionClientConfig | constructor configuration interface}.
+   */
   readonly config: QLDBSessionClientResolvedConfig;
 
   constructor(configuration: QLDBSessionClientConfig) {

@@ -21,9 +21,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateVPCAssociationAuthorizationCommandInput = CreateVPCAssociationAuthorizationRequest;
-export type CreateVPCAssociationAuthorizationCommandOutput = CreateVPCAssociationAuthorizationResponse &
-  __MetadataBearer;
+export interface CreateVPCAssociationAuthorizationCommandInput extends CreateVPCAssociationAuthorizationRequest {}
+export interface CreateVPCAssociationAuthorizationCommandOutput
+  extends CreateVPCAssociationAuthorizationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Authorizes the AWS account that created a specified VPC to submit an <code>AssociateVPCWithHostedZone</code>
@@ -35,6 +36,20 @@ export type CreateVPCAssociationAuthorizationCommandOutput = CreateVPCAssociatio
  *             <p>If you want to associate multiple VPCs that you created by using one account with a hosted zone
  * 			that you created by using a different account, you must submit one authorization request for each VPC.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, CreateVPCAssociationAuthorizationCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, CreateVPCAssociationAuthorizationCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new CreateVPCAssociationAuthorizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateVPCAssociationAuthorizationCommandInput} for command's `input` shape.
+ * @see {@link CreateVPCAssociationAuthorizationCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateVPCAssociationAuthorizationCommand extends $Command<
   CreateVPCAssociationAuthorizationCommandInput,

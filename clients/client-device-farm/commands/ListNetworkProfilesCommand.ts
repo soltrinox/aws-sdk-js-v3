@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListNetworkProfilesCommandInput = ListNetworkProfilesRequest;
-export type ListNetworkProfilesCommandOutput = ListNetworkProfilesResult & __MetadataBearer;
+export interface ListNetworkProfilesCommandInput extends ListNetworkProfilesRequest {}
+export interface ListNetworkProfilesCommandOutput extends ListNetworkProfilesResult, __MetadataBearer {}
 
 /**
  * <p>Returns the list of available network profiles.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, ListNetworkProfilesCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, ListNetworkProfilesCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new ListNetworkProfilesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListNetworkProfilesCommandInput} for command's `input` shape.
+ * @see {@link ListNetworkProfilesCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListNetworkProfilesCommand extends $Command<
   ListNetworkProfilesCommandInput,

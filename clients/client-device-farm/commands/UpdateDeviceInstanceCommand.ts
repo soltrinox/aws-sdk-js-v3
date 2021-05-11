@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDeviceInstanceCommandInput = UpdateDeviceInstanceRequest;
-export type UpdateDeviceInstanceCommandOutput = UpdateDeviceInstanceResult & __MetadataBearer;
+export interface UpdateDeviceInstanceCommandInput extends UpdateDeviceInstanceRequest {}
+export interface UpdateDeviceInstanceCommandOutput extends UpdateDeviceInstanceResult, __MetadataBearer {}
 
 /**
  * <p>Updates information about a private device instance.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, UpdateDeviceInstanceCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, UpdateDeviceInstanceCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new UpdateDeviceInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDeviceInstanceCommandInput} for command's `input` shape.
+ * @see {@link UpdateDeviceInstanceCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDeviceInstanceCommand extends $Command<
   UpdateDeviceInstanceCommandInput,

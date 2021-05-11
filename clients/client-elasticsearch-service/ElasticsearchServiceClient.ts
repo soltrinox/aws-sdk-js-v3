@@ -35,6 +35,10 @@ import {
 } from "./commands/DeleteOutboundCrossClusterSearchConnectionCommand";
 import { DeletePackageCommandInput, DeletePackageCommandOutput } from "./commands/DeletePackageCommand";
 import {
+  DescribeDomainAutoTunesCommandInput,
+  DescribeDomainAutoTunesCommandOutput,
+} from "./commands/DescribeDomainAutoTunesCommand";
+import {
   DescribeElasticsearchDomainCommandInput,
   DescribeElasticsearchDomainCommandOutput,
 } from "./commands/DescribeElasticsearchDomainCommand";
@@ -182,6 +186,7 @@ export type ServiceInputTypes =
   | DeleteInboundCrossClusterSearchConnectionCommandInput
   | DeleteOutboundCrossClusterSearchConnectionCommandInput
   | DeletePackageCommandInput
+  | DescribeDomainAutoTunesCommandInput
   | DescribeElasticsearchDomainCommandInput
   | DescribeElasticsearchDomainConfigCommandInput
   | DescribeElasticsearchDomainsCommandInput
@@ -223,6 +228,7 @@ export type ServiceOutputTypes =
   | DeleteInboundCrossClusterSearchConnectionCommandOutput
   | DeleteOutboundCrossClusterSearchConnectionCommandOutput
   | DeletePackageCommandOutput
+  | DescribeDomainAutoTunesCommandOutput
   | DescribeElasticsearchDomainCommandOutput
   | DescribeElasticsearchDomainConfigCommandOutput
   | DescribeElasticsearchDomainsCommandOutput
@@ -316,7 +322,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -347,7 +353,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type ElasticsearchServiceClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type ElasticsearchServiceClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -355,8 +361,12 @@ export type ElasticsearchServiceClientConfig = Partial<__SmithyConfiguration<__H
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of ElasticsearchServiceClient class constructor that set the region, credentials and other options.
+ */
+export interface ElasticsearchServiceClientConfig extends ElasticsearchServiceClientConfigType {}
 
-export type ElasticsearchServiceClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type ElasticsearchServiceClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -364,6 +374,10 @@ export type ElasticsearchServiceClientResolvedConfig = __SmithyResolvedConfigura
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of ElasticsearchServiceClient class. This is resolved and normalized from the {@link ElasticsearchServiceClientConfig | constructor configuration interface}.
+ */
+export interface ElasticsearchServiceClientResolvedConfig extends ElasticsearchServiceClientResolvedConfigType {}
 
 /**
  * <fullname>Amazon Elasticsearch Configuration Service</fullname>
@@ -380,6 +394,9 @@ export class ElasticsearchServiceClient extends __Client<
   ServiceOutputTypes,
   ElasticsearchServiceClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of ElasticsearchServiceClient class. This is resolved and normalized from the {@link ElasticsearchServiceClientConfig | constructor configuration interface}.
+   */
   readonly config: ElasticsearchServiceClientResolvedConfig;
 
   constructor(configuration: ElasticsearchServiceClientConfig) {

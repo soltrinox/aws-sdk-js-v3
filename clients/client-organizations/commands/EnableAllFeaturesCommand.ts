@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type EnableAllFeaturesCommandInput = EnableAllFeaturesRequest;
-export type EnableAllFeaturesCommandOutput = EnableAllFeaturesResponse & __MetadataBearer;
+export interface EnableAllFeaturesCommandInput extends EnableAllFeaturesRequest {}
+export interface EnableAllFeaturesCommandOutput extends EnableAllFeaturesResponse, __MetadataBearer {}
 
 /**
  * <p>Enables all features in an organization. This enables the use of organization policies
@@ -47,6 +47,20 @@ export type EnableAllFeaturesCommandOutput = EnableAllFeaturesResponse & __Metad
  *             policies that prevent accounts from leaving the organization. Ensure that your account
  *             administrators are aware of this.</p>
  *         <p>This operation can be called only from the organization's management account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, EnableAllFeaturesCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, EnableAllFeaturesCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new EnableAllFeaturesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link EnableAllFeaturesCommandInput} for command's `input` shape.
+ * @see {@link EnableAllFeaturesCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class EnableAllFeaturesCommand extends $Command<
   EnableAllFeaturesCommandInput,

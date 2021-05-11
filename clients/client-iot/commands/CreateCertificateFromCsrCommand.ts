@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCertificateFromCsrCommandInput = CreateCertificateFromCsrRequest;
-export type CreateCertificateFromCsrCommandOutput = CreateCertificateFromCsrResponse & __MetadataBearer;
+export interface CreateCertificateFromCsrCommandInput extends CreateCertificateFromCsrRequest {}
+export interface CreateCertificateFromCsrCommandOutput extends CreateCertificateFromCsrResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an X.509 certificate using the specified certificate signing
@@ -56,6 +56,20 @@ export type CreateCertificateFromCsrCommandOutput = CreateCertificateFromCsrResp
  *          my-csr-directory is:</p>
  *          <p>> forfiles /p my-csr-directory /c "cmd /c aws iot create-certificate-from-csr
  *          --certificate-signing-request file://@path"</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, CreateCertificateFromCsrCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, CreateCertificateFromCsrCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new CreateCertificateFromCsrCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCertificateFromCsrCommandInput} for command's `input` shape.
+ * @see {@link CreateCertificateFromCsrCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCertificateFromCsrCommand extends $Command<
   CreateCertificateFromCsrCommandInput,

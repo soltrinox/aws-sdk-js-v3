@@ -20,14 +20,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchDisassociateAssessmentReportEvidenceCommandInput = BatchDisassociateAssessmentReportEvidenceRequest;
-export type BatchDisassociateAssessmentReportEvidenceCommandOutput = BatchDisassociateAssessmentReportEvidenceResponse &
-  __MetadataBearer;
+export interface BatchDisassociateAssessmentReportEvidenceCommandInput
+  extends BatchDisassociateAssessmentReportEvidenceRequest {}
+export interface BatchDisassociateAssessmentReportEvidenceCommandOutput
+  extends BatchDisassociateAssessmentReportEvidenceResponse,
+    __MetadataBearer {}
 
 /**
  * <p>
  *          Disassociates a list of evidence from the specified assessment report in AWS Audit Manager.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AuditManagerClient, BatchDisassociateAssessmentReportEvidenceCommand } from "@aws-sdk/client-auditmanager"; // ES Modules import
+ * // const { AuditManagerClient, BatchDisassociateAssessmentReportEvidenceCommand } = require("@aws-sdk/client-auditmanager"); // CommonJS import
+ * const client = new AuditManagerClient(config);
+ * const command = new BatchDisassociateAssessmentReportEvidenceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchDisassociateAssessmentReportEvidenceCommandInput} for command's `input` shape.
+ * @see {@link BatchDisassociateAssessmentReportEvidenceCommandOutput} for command's `response` shape.
+ * @see {@link AuditManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchDisassociateAssessmentReportEvidenceCommand extends $Command<
   BatchDisassociateAssessmentReportEvidenceCommandInput,

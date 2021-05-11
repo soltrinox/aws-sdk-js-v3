@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateVariableCommandInput = UpdateVariableRequest;
-export type UpdateVariableCommandOutput = UpdateVariableResult & __MetadataBearer;
+export interface UpdateVariableCommandInput extends UpdateVariableRequest {}
+export interface UpdateVariableCommandOutput extends UpdateVariableResult, __MetadataBearer {}
 
 /**
  * <p>Updates a variable.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FraudDetectorClient, UpdateVariableCommand } from "@aws-sdk/client-frauddetector"; // ES Modules import
+ * // const { FraudDetectorClient, UpdateVariableCommand } = require("@aws-sdk/client-frauddetector"); // CommonJS import
+ * const client = new FraudDetectorClient(config);
+ * const command = new UpdateVariableCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateVariableCommandInput} for command's `input` shape.
+ * @see {@link UpdateVariableCommandOutput} for command's `response` shape.
+ * @see {@link FraudDetectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateVariableCommand extends $Command<
   UpdateVariableCommandInput,

@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateSecurityKeyCommandInput = AssociateSecurityKeyRequest;
-export type AssociateSecurityKeyCommandOutput = AssociateSecurityKeyResponse & __MetadataBearer;
+export interface AssociateSecurityKeyCommandInput extends AssociateSecurityKeyRequest {}
+export interface AssociateSecurityKeyCommandOutput extends AssociateSecurityKeyResponse, __MetadataBearer {}
 
 /**
- * <p>Associates a security key to the instance.</p>
+ * <p>This API is in preview release for Amazon Connect and is subject to change.</p>
+ *          <p>Associates a security key to the instance.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, AssociateSecurityKeyCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, AssociateSecurityKeyCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new AssociateSecurityKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateSecurityKeyCommandInput} for command's `input` shape.
+ * @see {@link AssociateSecurityKeyCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateSecurityKeyCommand extends $Command<
   AssociateSecurityKeyCommandInput,

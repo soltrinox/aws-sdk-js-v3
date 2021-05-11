@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeGameSessionQueuesCommandInput = DescribeGameSessionQueuesInput;
-export type DescribeGameSessionQueuesCommandOutput = DescribeGameSessionQueuesOutput & __MetadataBearer;
+export interface DescribeGameSessionQueuesCommandInput extends DescribeGameSessionQueuesInput {}
+export interface DescribeGameSessionQueuesCommandOutput extends DescribeGameSessionQueuesOutput, __MetadataBearer {}
 
 /**
  * <p>Retrieves the properties for one or more game session queues. When requesting
@@ -34,30 +34,29 @@ export type DescribeGameSessionQueuesCommandOutput = DescribeGameSessionQueuesOu
  *            View Your Queues</a>
  *         </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateGameSessionQueue</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeGameSessionQueues</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateGameSessionQueue</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteGameSessionQueue</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>CreateGameSessionQueue</a> |
+ *                     <a>DescribeGameSessionQueues</a> |
+ *                     <a>UpdateGameSessionQueue</a> |
+ *                     <a>DeleteGameSessionQueue</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, DescribeGameSessionQueuesCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, DescribeGameSessionQueuesCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new DescribeGameSessionQueuesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeGameSessionQueuesCommandInput} for command's `input` shape.
+ * @see {@link DescribeGameSessionQueuesCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeGameSessionQueuesCommand extends $Command<
   DescribeGameSessionQueuesCommandInput,

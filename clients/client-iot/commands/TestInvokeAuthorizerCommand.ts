@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TestInvokeAuthorizerCommandInput = TestInvokeAuthorizerRequest;
-export type TestInvokeAuthorizerCommandOutput = TestInvokeAuthorizerResponse & __MetadataBearer;
+export interface TestInvokeAuthorizerCommandInput extends TestInvokeAuthorizerRequest {}
+export interface TestInvokeAuthorizerCommandOutput extends TestInvokeAuthorizerResponse, __MetadataBearer {}
 
 /**
  * <p>Tests a custom authorization behavior by invoking a specified custom authorizer. Use
  *          this to test and debug the custom authorization behavior of devices that connect to the AWS
  *          IoT device gateway.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, TestInvokeAuthorizerCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, TestInvokeAuthorizerCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new TestInvokeAuthorizerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TestInvokeAuthorizerCommandInput} for command's `input` shape.
+ * @see {@link TestInvokeAuthorizerCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TestInvokeAuthorizerCommand extends $Command<
   TestInvokeAuthorizerCommandInput,

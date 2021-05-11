@@ -82,6 +82,10 @@ import {
   DescribePortfolioShareStatusCommandOutput,
 } from "./commands/DescribePortfolioShareStatusCommand";
 import {
+  DescribePortfolioSharesCommandInput,
+  DescribePortfolioSharesCommandOutput,
+} from "./commands/DescribePortfolioSharesCommand";
+import {
   DescribeProductAsAdminCommandInput,
   DescribeProductAsAdminCommandOutput,
 } from "./commands/DescribeProductAsAdminCommand";
@@ -245,6 +249,10 @@ import {
 } from "./commands/TerminateProvisionedProductCommand";
 import { UpdateConstraintCommandInput, UpdateConstraintCommandOutput } from "./commands/UpdateConstraintCommand";
 import { UpdatePortfolioCommandInput, UpdatePortfolioCommandOutput } from "./commands/UpdatePortfolioCommand";
+import {
+  UpdatePortfolioShareCommandInput,
+  UpdatePortfolioShareCommandOutput,
+} from "./commands/UpdatePortfolioShareCommand";
 import { UpdateProductCommandInput, UpdateProductCommandOutput } from "./commands/UpdateProductCommand";
 import {
   UpdateProvisionedProductCommandInput,
@@ -344,6 +352,7 @@ export type ServiceInputTypes =
   | DescribeCopyProductStatusCommandInput
   | DescribePortfolioCommandInput
   | DescribePortfolioShareStatusCommandInput
+  | DescribePortfolioSharesCommandInput
   | DescribeProductAsAdminCommandInput
   | DescribeProductCommandInput
   | DescribeProductViewCommandInput
@@ -394,6 +403,7 @@ export type ServiceInputTypes =
   | TerminateProvisionedProductCommandInput
   | UpdateConstraintCommandInput
   | UpdatePortfolioCommandInput
+  | UpdatePortfolioShareCommandInput
   | UpdateProductCommandInput
   | UpdateProvisionedProductCommandInput
   | UpdateProvisionedProductPropertiesCommandInput
@@ -431,6 +441,7 @@ export type ServiceOutputTypes =
   | DescribeCopyProductStatusCommandOutput
   | DescribePortfolioCommandOutput
   | DescribePortfolioShareStatusCommandOutput
+  | DescribePortfolioSharesCommandOutput
   | DescribeProductAsAdminCommandOutput
   | DescribeProductCommandOutput
   | DescribeProductViewCommandOutput
@@ -481,6 +492,7 @@ export type ServiceOutputTypes =
   | TerminateProvisionedProductCommandOutput
   | UpdateConstraintCommandOutput
   | UpdatePortfolioCommandOutput
+  | UpdatePortfolioShareCommandOutput
   | UpdateProductCommandOutput
   | UpdateProvisionedProductCommandOutput
   | UpdateProvisionedProductPropertiesCommandOutput
@@ -553,7 +565,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -584,7 +596,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type ServiceCatalogClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type ServiceCatalogClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -592,8 +604,12 @@ export type ServiceCatalogClientConfig = Partial<__SmithyConfiguration<__HttpHan
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of ServiceCatalogClient class constructor that set the region, credentials and other options.
+ */
+export interface ServiceCatalogClientConfig extends ServiceCatalogClientConfigType {}
 
-export type ServiceCatalogClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type ServiceCatalogClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -601,6 +617,10 @@ export type ServiceCatalogClientResolvedConfig = __SmithyResolvedConfiguration<_
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of ServiceCatalogClient class. This is resolved and normalized from the {@link ServiceCatalogClientConfig | constructor configuration interface}.
+ */
+export interface ServiceCatalogClientResolvedConfig extends ServiceCatalogClientResolvedConfigType {}
 
 /**
  * <fullname>AWS Service Catalog</fullname>
@@ -617,6 +637,9 @@ export class ServiceCatalogClient extends __Client<
   ServiceOutputTypes,
   ServiceCatalogClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of ServiceCatalogClient class. This is resolved and normalized from the {@link ServiceCatalogClientConfig | constructor configuration interface}.
+   */
   readonly config: ServiceCatalogClientResolvedConfig;
 
   constructor(configuration: ServiceCatalogClientConfig) {

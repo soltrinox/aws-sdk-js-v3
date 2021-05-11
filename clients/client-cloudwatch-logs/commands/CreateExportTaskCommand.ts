@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateExportTaskCommandInput = CreateExportTaskRequest;
-export type CreateExportTaskCommandOutput = CreateExportTaskResponse & __MetadataBearer;
+export interface CreateExportTaskCommandInput extends CreateExportTaskRequest {}
+export interface CreateExportTaskCommandOutput extends CreateExportTaskResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an export task, which allows you to efficiently export data from a
@@ -35,6 +35,20 @@ export type CreateExportTaskCommandOutput = CreateExportTaskResponse & __Metadat
  *       the Amazon S3 key prefix for all exported objects.</p>
  *          <p>Exporting to S3 buckets that are encrypted with AES-256 is supported. Exporting to S3 buckets
  *       encrypted with SSE-KMS is not supported. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, CreateExportTaskCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, CreateExportTaskCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new CreateExportTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateExportTaskCommandInput} for command's `input` shape.
+ * @see {@link CreateExportTaskCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateExportTaskCommand extends $Command<
   CreateExportTaskCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDatasetCommandInput = CreateDatasetRequest;
-export type CreateDatasetCommandOutput = CreateDatasetResponse & __MetadataBearer;
+export interface CreateDatasetCommandInput extends CreateDatasetRequest {}
+export interface CreateDatasetCommandOutput extends CreateDatasetResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an empty dataset and adds it to the specified dataset group. Use <a>CreateDatasetImportJob</a> to import your training data to a dataset.</p>
@@ -72,6 +72,20 @@ export type CreateDatasetCommandOutput = CreateDatasetResponse & __MetadataBeare
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PersonalizeClient, CreateDatasetCommand } from "@aws-sdk/client-personalize"; // ES Modules import
+ * // const { PersonalizeClient, CreateDatasetCommand } = require("@aws-sdk/client-personalize"); // CommonJS import
+ * const client = new PersonalizeClient(config);
+ * const command = new CreateDatasetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDatasetCommandInput} for command's `input` shape.
+ * @see {@link CreateDatasetCommandOutput} for command's `response` shape.
+ * @see {@link PersonalizeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDatasetCommand extends $Command<
   CreateDatasetCommandInput,

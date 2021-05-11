@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopHyperParameterTuningJobCommandInput = StopHyperParameterTuningJobRequest;
-export type StopHyperParameterTuningJobCommandOutput = __MetadataBearer;
+export interface StopHyperParameterTuningJobCommandInput extends StopHyperParameterTuningJobRequest {}
+export interface StopHyperParameterTuningJobCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Stops a running hyperparameter tuning job and all running training jobs that the
@@ -28,6 +28,20 @@ export type StopHyperParameterTuningJobCommandOutput = __MetadataBearer;
  *             tuning job moves to the <code>Stopped</code> state, it releases all
  *             reserved
  *             resources for the tuning job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, StopHyperParameterTuningJobCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, StopHyperParameterTuningJobCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new StopHyperParameterTuningJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopHyperParameterTuningJobCommandInput} for command's `input` shape.
+ * @see {@link StopHyperParameterTuningJobCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopHyperParameterTuningJobCommand extends $Command<
   StopHyperParameterTuningJobCommandInput,

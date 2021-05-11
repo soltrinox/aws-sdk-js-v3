@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetResourceDefinitionCommandInput = GetResourceDefinitionRequest;
-export type GetResourceDefinitionCommandOutput = GetResourceDefinitionResponse & __MetadataBearer;
+export interface GetResourceDefinitionCommandInput extends GetResourceDefinitionRequest {}
+export interface GetResourceDefinitionCommandOutput extends GetResourceDefinitionResponse, __MetadataBearer {}
 
 /**
  * Retrieves information about a resource definition, including its creation time and latest version.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, GetResourceDefinitionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, GetResourceDefinitionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new GetResourceDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetResourceDefinitionCommandInput} for command's `input` shape.
+ * @see {@link GetResourceDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetResourceDefinitionCommand extends $Command<
   GetResourceDefinitionCommandInput,

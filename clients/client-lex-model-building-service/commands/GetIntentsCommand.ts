@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetIntentsCommandInput = GetIntentsRequest;
-export type GetIntentsCommandOutput = GetIntentsResponse & __MetadataBearer;
+export interface GetIntentsCommandInput extends GetIntentsRequest {}
+export interface GetIntentsCommandOutput extends GetIntentsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns intent information as follows: </p>
@@ -40,6 +40,20 @@ export type GetIntentsCommandOutput = GetIntentsResponse & __MetadataBearer;
  *          </ul>
  *          <p> The operation requires permission for the
  *         <code>lex:GetIntents</code> action. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, GetIntentsCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, GetIntentsCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new GetIntentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetIntentsCommandInput} for command's `input` shape.
+ * @see {@link GetIntentsCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetIntentsCommand extends $Command<
   GetIntentsCommandInput,

@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDirectConnectGatewaysCommandInput = DescribeDirectConnectGatewaysRequest;
-export type DescribeDirectConnectGatewaysCommandOutput = DescribeDirectConnectGatewaysResult & __MetadataBearer;
+export interface DescribeDirectConnectGatewaysCommandInput extends DescribeDirectConnectGatewaysRequest {}
+export interface DescribeDirectConnectGatewaysCommandOutput
+  extends DescribeDirectConnectGatewaysResult,
+    __MetadataBearer {}
 
 /**
  * <p>Lists all your Direct Connect gateways or only the specified Direct Connect gateway. Deleted Direct Connect gateways are not returned.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectConnectClient, DescribeDirectConnectGatewaysCommand } from "@aws-sdk/client-direct-connect"; // ES Modules import
+ * // const { DirectConnectClient, DescribeDirectConnectGatewaysCommand } = require("@aws-sdk/client-direct-connect"); // CommonJS import
+ * const client = new DirectConnectClient(config);
+ * const command = new DescribeDirectConnectGatewaysCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDirectConnectGatewaysCommandInput} for command's `input` shape.
+ * @see {@link DescribeDirectConnectGatewaysCommandOutput} for command's `response` shape.
+ * @see {@link DirectConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDirectConnectGatewaysCommand extends $Command<
   DescribeDirectConnectGatewaysCommandInput,

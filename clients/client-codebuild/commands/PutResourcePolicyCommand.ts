@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutResourcePolicyCommandInput = PutResourcePolicyInput;
-export type PutResourcePolicyCommandOutput = PutResourcePolicyOutput & __MetadataBearer;
+export interface PutResourcePolicyCommandInput extends PutResourcePolicyInput {}
+export interface PutResourcePolicyCommandOutput extends PutResourcePolicyOutput, __MetadataBearer {}
 
 /**
  * <p> Stores a resource policy for the ARN of a <code>Project</code> or
  *                 <code>ReportGroup</code> object. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeBuildClient, PutResourcePolicyCommand } from "@aws-sdk/client-codebuild"; // ES Modules import
+ * // const { CodeBuildClient, PutResourcePolicyCommand } = require("@aws-sdk/client-codebuild"); // CommonJS import
+ * const client = new CodeBuildClient(config);
+ * const command = new PutResourcePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutResourcePolicyCommandInput} for command's `input` shape.
+ * @see {@link PutResourcePolicyCommandOutput} for command's `response` shape.
+ * @see {@link CodeBuildClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutResourcePolicyCommand extends $Command<
   PutResourcePolicyCommandInput,

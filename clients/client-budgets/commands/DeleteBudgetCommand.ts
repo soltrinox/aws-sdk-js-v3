@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBudgetCommandInput = DeleteBudgetRequest;
-export type DeleteBudgetCommandOutput = DeleteBudgetResponse & __MetadataBearer;
+export interface DeleteBudgetCommandInput extends DeleteBudgetRequest {}
+export interface DeleteBudgetCommandOutput extends DeleteBudgetResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a budget. You can delete your budget at any time.</p>
  * 		       <important>
  * 			         <p>Deleting a budget also deletes the notifications and subscribers that are associated with that budget.</p>
  * 		       </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BudgetsClient, DeleteBudgetCommand } from "@aws-sdk/client-budgets"; // ES Modules import
+ * // const { BudgetsClient, DeleteBudgetCommand } = require("@aws-sdk/client-budgets"); // CommonJS import
+ * const client = new BudgetsClient(config);
+ * const command = new DeleteBudgetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBudgetCommandInput} for command's `input` shape.
+ * @see {@link DeleteBudgetCommandOutput} for command's `response` shape.
+ * @see {@link BudgetsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBudgetCommand extends $Command<
   DeleteBudgetCommandInput,

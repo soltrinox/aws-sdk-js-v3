@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListBranchesCommandInput = ListBranchesRequest;
-export type ListBranchesCommandOutput = ListBranchesResult & __MetadataBearer;
+export interface ListBranchesCommandInput extends ListBranchesRequest {}
+export interface ListBranchesCommandOutput extends ListBranchesResult, __MetadataBearer {}
 
 /**
  * <p> Lists the branches of an Amplify app. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AmplifyClient, ListBranchesCommand } from "@aws-sdk/client-amplify"; // ES Modules import
+ * // const { AmplifyClient, ListBranchesCommand } = require("@aws-sdk/client-amplify"); // CommonJS import
+ * const client = new AmplifyClient(config);
+ * const command = new ListBranchesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListBranchesCommandInput} for command's `input` shape.
+ * @see {@link ListBranchesCommandOutput} for command's `response` shape.
+ * @see {@link AmplifyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListBranchesCommand extends $Command<
   ListBranchesCommandInput,

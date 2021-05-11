@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateEventSubscriptionCommandInput = CreateEventSubscriptionMessage;
-export type CreateEventSubscriptionCommandOutput = CreateEventSubscriptionResult & __MetadataBearer;
+export interface CreateEventSubscriptionCommandInput extends CreateEventSubscriptionMessage {}
+export interface CreateEventSubscriptionCommandOutput extends CreateEventSubscriptionResult, __MetadataBearer {}
 
 /**
  * <p>Creates an Amazon Redshift event notification subscription. This action requires an ARN
@@ -39,6 +39,20 @@ export type CreateEventSubscriptionCommandOutput = CreateEventSubscriptionResult
  *             AWS account. If you do not specify either the SourceType nor the SourceIdentifier, you
  *             will be notified of events generated from all Amazon Redshift sources belonging to your AWS
  *             account. You must specify a source type if you specify a source ID.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, CreateEventSubscriptionCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, CreateEventSubscriptionCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new CreateEventSubscriptionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateEventSubscriptionCommandInput} for command's `input` shape.
+ * @see {@link CreateEventSubscriptionCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateEventSubscriptionCommand extends $Command<
   CreateEventSubscriptionCommandInput,

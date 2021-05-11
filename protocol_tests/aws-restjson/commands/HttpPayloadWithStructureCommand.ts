@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type HttpPayloadWithStructureCommandInput = HttpPayloadWithStructureInputOutput;
-export type HttpPayloadWithStructureCommandOutput = HttpPayloadWithStructureInputOutput & __MetadataBearer;
+export interface HttpPayloadWithStructureCommandInput extends HttpPayloadWithStructureInputOutput {}
+export interface HttpPayloadWithStructureCommandOutput extends HttpPayloadWithStructureInputOutput, __MetadataBearer {}
 
 /**
  * This examples serializes a structure in the payload.
  *
  * Note that serializing a structure changes the wrapper element name
  * to match the targeted structure.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestJsonProtocolClient, HttpPayloadWithStructureCommand } from "@aws-sdk/aws-restjson"; // ES Modules import
+ * // const { RestJsonProtocolClient, HttpPayloadWithStructureCommand } = require("@aws-sdk/aws-restjson"); // CommonJS import
+ * const client = new RestJsonProtocolClient(config);
+ * const command = new HttpPayloadWithStructureCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link HttpPayloadWithStructureCommandInput} for command's `input` shape.
+ * @see {@link HttpPayloadWithStructureCommandOutput} for command's `response` shape.
+ * @see {@link RestJsonProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class HttpPayloadWithStructureCommand extends $Command<
   HttpPayloadWithStructureCommandInput,

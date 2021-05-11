@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDBInstanceAutomatedBackupsCommandInput = DescribeDBInstanceAutomatedBackupsMessage;
-export type DescribeDBInstanceAutomatedBackupsCommandOutput = DBInstanceAutomatedBackupMessage & __MetadataBearer;
+export interface DescribeDBInstanceAutomatedBackupsCommandInput extends DescribeDBInstanceAutomatedBackupsMessage {}
+export interface DescribeDBInstanceAutomatedBackupsCommandOutput
+  extends DBInstanceAutomatedBackupMessage,
+    __MetadataBearer {}
 
 /**
  * <p>Displays backups for both current and deleted
@@ -28,6 +30,20 @@ export type DescribeDBInstanceAutomatedBackupsCommandOutput = DBInstanceAutomate
  *             <code>DescribeDBInstanceAutomatedBackups</code> and
  *             <code>DescribeDBInstances</code> operations.</p>
  * 	        <p>All parameters are optional.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, DescribeDBInstanceAutomatedBackupsCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, DescribeDBInstanceAutomatedBackupsCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new DescribeDBInstanceAutomatedBackupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDBInstanceAutomatedBackupsCommandInput} for command's `input` shape.
+ * @see {@link DescribeDBInstanceAutomatedBackupsCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDBInstanceAutomatedBackupsCommand extends $Command<
   DescribeDBInstanceAutomatedBackupsCommandInput,

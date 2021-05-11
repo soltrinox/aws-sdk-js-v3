@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyVpcEndpointCommandInput = ModifyVpcEndpointRequest;
-export type ModifyVpcEndpointCommandOutput = ModifyVpcEndpointResult & __MetadataBearer;
+export interface ModifyVpcEndpointCommandInput extends ModifyVpcEndpointRequest {}
+export interface ModifyVpcEndpointCommandOutput extends ModifyVpcEndpointResult, __MetadataBearer {}
 
 /**
  * <p>Modifies attributes of a specified VPC endpoint. The attributes that you can modify
  *             depend on the type of VPC endpoint (interface, gateway, or Gateway Load Balancer). For more information, see
  *             <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html">VPC
  *                 Endpoints</a> in the <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, ModifyVpcEndpointCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, ModifyVpcEndpointCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new ModifyVpcEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyVpcEndpointCommandInput} for command's `input` shape.
+ * @see {@link ModifyVpcEndpointCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyVpcEndpointCommand extends $Command<
   ModifyVpcEndpointCommandInput,

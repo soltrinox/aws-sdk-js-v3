@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteServiceCommandInput = DeleteServiceRequest;
-export type DeleteServiceCommandOutput = DeleteServiceResponse & __MetadataBearer;
+export interface DeleteServiceCommandInput extends DeleteServiceRequest {}
+export interface DeleteServiceCommandOutput extends DeleteServiceResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a specified service within a cluster. You can delete a service if you have no
@@ -42,6 +42,20 @@ export type DeleteServiceCommandOutput = DeleteServiceResponse & __MetadataBeare
  * 				in either <code>ACTIVE</code> or <code>DRAINING</code> status, you receive an
  * 				error.</p>
  * 		       </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, DeleteServiceCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, DeleteServiceCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new DeleteServiceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteServiceCommandInput} for command's `input` shape.
+ * @see {@link DeleteServiceCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteServiceCommand extends $Command<
   DeleteServiceCommandInput,

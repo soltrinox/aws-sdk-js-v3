@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeConfigurationSettingsCommandInput = DescribeConfigurationSettingsMessage;
-export type DescribeConfigurationSettingsCommandOutput = ConfigurationSettingsDescriptions & __MetadataBearer;
+export interface DescribeConfigurationSettingsCommandInput extends DescribeConfigurationSettingsMessage {}
+export interface DescribeConfigurationSettingsCommandOutput
+  extends ConfigurationSettingsDescriptions,
+    __MetadataBearer {}
 
 /**
  * <p>Returns a description of the settings for the specified configuration set, that is,
@@ -36,6 +38,20 @@ export type DescribeConfigurationSettingsCommandOutput = ConfigurationSettingsDe
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticBeanstalkClient, DescribeConfigurationSettingsCommand } from "@aws-sdk/client-elastic-beanstalk"; // ES Modules import
+ * // const { ElasticBeanstalkClient, DescribeConfigurationSettingsCommand } = require("@aws-sdk/client-elastic-beanstalk"); // CommonJS import
+ * const client = new ElasticBeanstalkClient(config);
+ * const command = new DescribeConfigurationSettingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeConfigurationSettingsCommandInput} for command's `input` shape.
+ * @see {@link DescribeConfigurationSettingsCommandOutput} for command's `response` shape.
+ * @see {@link ElasticBeanstalkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeConfigurationSettingsCommand extends $Command<
   DescribeConfigurationSettingsCommandInput,

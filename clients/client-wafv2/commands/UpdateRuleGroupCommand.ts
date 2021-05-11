@@ -17,15 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateRuleGroupCommandInput = UpdateRuleGroupRequest;
-export type UpdateRuleGroupCommandOutput = UpdateRuleGroupResponse & __MetadataBearer;
+export interface UpdateRuleGroupCommandInput extends UpdateRuleGroupRequest {}
+export interface UpdateRuleGroupCommandOutput extends UpdateRuleGroupResponse, __MetadataBearer {}
 
 /**
- * <note>
- *             <p>This is the latest version of <b>AWS WAF</b>, named AWS WAFV2, released in November, 2019. For information, including how to migrate your AWS WAF resources from the prior release, see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>.  </p>
- *          </note>
- *          <p>Updates the specified <a>RuleGroup</a>.</p>
+ * <p>Updates the specified <a>RuleGroup</a>.</p>
  *          <p> A rule group defines a collection of rules to inspect and control web requests that you can use in a <a>WebACL</a>. When you create a rule group, you define an immutable capacity limit. If you update a rule group, you must stay within the capacity. This allows others to reuse the rule group with confidence in its capacity requirements. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFV2Client, UpdateRuleGroupCommand } from "@aws-sdk/client-wafv2"; // ES Modules import
+ * // const { WAFV2Client, UpdateRuleGroupCommand } = require("@aws-sdk/client-wafv2"); // CommonJS import
+ * const client = new WAFV2Client(config);
+ * const command = new UpdateRuleGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateRuleGroupCommandInput} for command's `input` shape.
+ * @see {@link UpdateRuleGroupCommandOutput} for command's `response` shape.
+ * @see {@link WAFV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateRuleGroupCommand extends $Command<
   UpdateRuleGroupCommandInput,

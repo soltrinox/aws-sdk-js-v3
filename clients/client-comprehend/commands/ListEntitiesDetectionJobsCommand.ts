@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListEntitiesDetectionJobsCommandInput = ListEntitiesDetectionJobsRequest;
-export type ListEntitiesDetectionJobsCommandOutput = ListEntitiesDetectionJobsResponse & __MetadataBearer;
+export interface ListEntitiesDetectionJobsCommandInput extends ListEntitiesDetectionJobsRequest {}
+export interface ListEntitiesDetectionJobsCommandOutput extends ListEntitiesDetectionJobsResponse, __MetadataBearer {}
 
 /**
  * <p>Gets a list of the entity detection jobs that you have submitted.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ComprehendClient, ListEntitiesDetectionJobsCommand } from "@aws-sdk/client-comprehend"; // ES Modules import
+ * // const { ComprehendClient, ListEntitiesDetectionJobsCommand } = require("@aws-sdk/client-comprehend"); // CommonJS import
+ * const client = new ComprehendClient(config);
+ * const command = new ListEntitiesDetectionJobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListEntitiesDetectionJobsCommandInput} for command's `input` shape.
+ * @see {@link ListEntitiesDetectionJobsCommandOutput} for command's `response` shape.
+ * @see {@link ComprehendClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListEntitiesDetectionJobsCommand extends $Command<
   ListEntitiesDetectionJobsCommandInput,

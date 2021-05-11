@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateModelCommandInput = CreateModelRequest;
-export type CreateModelCommandOutput = Model & __MetadataBearer;
+export interface CreateModelCommandInput extends CreateModelRequest {}
+export interface CreateModelCommandOutput extends Model, __MetadataBearer {}
 
 /**
  * <p>Adds a new <a>Model</a> resource to an existing <a>RestApi</a> resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, CreateModelCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, CreateModelCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new CreateModelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateModelCommandInput} for command's `input` shape.
+ * @see {@link CreateModelCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateModelCommand extends $Command<
   CreateModelCommandInput,

@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateImagePipelineCommandInput = CreateImagePipelineRequest;
-export type CreateImagePipelineCommandOutput = CreateImagePipelineResponse & __MetadataBearer;
+export interface CreateImagePipelineCommandInput extends CreateImagePipelineRequest {}
+export interface CreateImagePipelineCommandOutput extends CreateImagePipelineResponse, __MetadataBearer {}
 
 /**
- * <p> Creates a new image pipeline. Image pipelines enable you to automate the creation and distribution of images. </p>
+ * <p> Creates a new image pipeline. Image pipelines enable you to automate the creation and
+ *       distribution of images.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ImagebuilderClient, CreateImagePipelineCommand } from "@aws-sdk/client-imagebuilder"; // ES Modules import
+ * // const { ImagebuilderClient, CreateImagePipelineCommand } = require("@aws-sdk/client-imagebuilder"); // CommonJS import
+ * const client = new ImagebuilderClient(config);
+ * const command = new CreateImagePipelineCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateImagePipelineCommandInput} for command's `input` shape.
+ * @see {@link CreateImagePipelineCommandOutput} for command's `response` shape.
+ * @see {@link ImagebuilderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateImagePipelineCommand extends $Command<
   CreateImagePipelineCommandInput,

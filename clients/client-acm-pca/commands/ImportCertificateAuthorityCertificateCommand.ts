@@ -17,8 +17,9 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ImportCertificateAuthorityCertificateCommandInput = ImportCertificateAuthorityCertificateRequest;
-export type ImportCertificateAuthorityCertificateCommandOutput = __MetadataBearer;
+export interface ImportCertificateAuthorityCertificateCommandInput
+  extends ImportCertificateAuthorityCertificateRequest {}
+export interface ImportCertificateAuthorityCertificateCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Imports a signed private CA certificate into ACM Private CA. This action is used when you are
@@ -26,8 +27,8 @@ export type ImportCertificateAuthorityCertificateCommandOutput = __MetadataBeare
  * 			action, the following preparations must in place:</p>
  * 		       <ol>
  *             <li>
- * 				           <p>In ACM Private CA, call the <a href="https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html">CreateCertificateAuthority</a> action to create the private CA that
- * 					that you plan to back with the imported certificate.</p>
+ * 				           <p>In ACM Private CA, call the <a href="https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html">CreateCertificateAuthority</a> action to create the private CA that you
+ * 					plan to back with the imported certificate.</p>
  * 			         </li>
  *             <li>
  * 				           <p>Call the <a href="https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificateAuthorityCsr.html">GetCertificateAuthorityCsr</a> action to generate a certificate signing
@@ -42,24 +43,37 @@ export type ImportCertificateAuthorityCertificateCommandOutput = __MetadataBeare
  * 					chain to your working directory.</p>
  * 			         </li>
  *          </ol>
- * 		       <p>The following requirements apply when you import a CA certificate.</p>
+ * 		       <p>ACM Private CA supports three scenarios for installing a CA certificate:</p>
  * 		       <ul>
  *             <li>
- * 				           <p>You cannot import a non-self-signed certificate for use as a root CA.</p>
+ * 				           <p>Installing a certificate for a root CA hosted by ACM Private CA.</p>
  * 			         </li>
  *             <li>
- * 				           <p>You cannot import a self-signed certificate for use as a subordinate
- * 					CA.</p>
+ * 				           <p>Installing a subordinate CA certificate whose parent authority is hosted by
+ * 					ACM Private CA.</p>
+ * 			         </li>
+ *             <li>
+ * 				           <p>Installing a subordinate CA certificate whose parent authority is externally
+ * 					hosted.</p>
+ * 			         </li>
+ *          </ul>
+ * 		       <p>The following additional requirements apply when you import a CA certificate.</p>
+ * 		       <ul>
+ *             <li>
+ * 				           <p>Only a self-signed certificate can be imported as a root CA.</p>
+ * 			         </li>
+ *             <li>
+ * 				           <p>A self-signed certificate cannot be imported as a subordinate CA.</p>
  * 			         </li>
  *             <li>
  * 				           <p>Your certificate chain must not include the private CA certificate that you
  * 					are importing.</p>
  * 			         </li>
  *             <li>
- * 				           <p>Your ACM Private CA-hosted or on-premises CA certificate must be the last certificate
- * 					in your chain. The subordinate certificate, if any, that your root CA signed
- * 					must be next to last. The subordinate certificate signed by the preceding
- * 					subordinate CA must come next, and so on until your chain is built. </p>
+ * 				           <p>Your root CA must be the last certificate in your chain. The subordinate
+ * 					certificate, if any, that your root CA signed must be next to last. The
+ * 					subordinate certificate signed by the preceding subordinate CA must come next,
+ * 					and so on until your chain is built. </p>
  * 			         </li>
  *             <li>
  * 				           <p>The chain must be PEM-encoded.</p>
@@ -136,6 +150,20 @@ export type ImportCertificateAuthorityCertificateCommandOutput = __MetadataBeare
  * 				           <p>Any other extension</p>
  * 			         </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ACMPCAClient, ImportCertificateAuthorityCertificateCommand } from "@aws-sdk/client-acm-pca"; // ES Modules import
+ * // const { ACMPCAClient, ImportCertificateAuthorityCertificateCommand } = require("@aws-sdk/client-acm-pca"); // CommonJS import
+ * const client = new ACMPCAClient(config);
+ * const command = new ImportCertificateAuthorityCertificateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ImportCertificateAuthorityCertificateCommandInput} for command's `input` shape.
+ * @see {@link ImportCertificateAuthorityCertificateCommandOutput} for command's `response` shape.
+ * @see {@link ACMPCAClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ImportCertificateAuthorityCertificateCommand extends $Command<
   ImportCertificateAuthorityCertificateCommandInput,

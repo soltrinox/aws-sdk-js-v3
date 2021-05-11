@@ -18,17 +18,17 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBucketWebsiteCommandInput = DeleteBucketWebsiteRequest;
-export type DeleteBucketWebsiteCommandOutput = __MetadataBearer;
+export interface DeleteBucketWebsiteCommandInput extends DeleteBucketWebsiteRequest {}
+export interface DeleteBucketWebsiteCommandOutput extends __MetadataBearer {}
 
 /**
- * <p>This operation removes the website configuration for a bucket. Amazon S3 returns a <code>200
+ * <p>This action removes the website configuration for a bucket. Amazon S3 returns a <code>200
  *             OK</code> response upon successfully deleting a website configuration on the specified
  *          bucket. You will get a <code>200 OK</code> response if the website configuration you are
  *          trying to delete does not exist on the bucket. Amazon S3 returns a <code>404</code> response if
  *          the bucket specified in the request does not exist.</p>
  *
- *          <p>This DELETE operation requires the <code>S3:DeleteBucketWebsite</code> permission. By
+ *          <p>This DELETE action requires the <code>S3:DeleteBucketWebsite</code> permission. By
  *          default, only the bucket owner can delete the website configuration attached to a bucket.
  *          However, bucket owners can grant other users permission to delete the website configuration
  *          by writing a bucket policy granting them the <code>S3:DeleteBucketWebsite</code>
@@ -49,6 +49,20 @@ export type DeleteBucketWebsiteCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, DeleteBucketWebsiteCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, DeleteBucketWebsiteCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new DeleteBucketWebsiteCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBucketWebsiteCommandInput} for command's `input` shape.
+ * @see {@link DeleteBucketWebsiteCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBucketWebsiteCommand extends $Command<
   DeleteBucketWebsiteCommandInput,

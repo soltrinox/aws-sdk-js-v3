@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEndpointsCommandInput = DescribeEndpointsRequest;
-export type DescribeEndpointsCommandOutput = DescribeEndpointsResponse & __MetadataBearer;
+export interface DescribeEndpointsCommandInput extends DescribeEndpointsRequest {}
+export interface DescribeEndpointsCommandOutput extends DescribeEndpointsResponse, __MetadataBearer {}
 
 /**
  * Send an request with an empty body to the regional API endpoint to get your account API endpoint.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaConvertClient, DescribeEndpointsCommand } from "@aws-sdk/client-mediaconvert"; // ES Modules import
+ * // const { MediaConvertClient, DescribeEndpointsCommand } = require("@aws-sdk/client-mediaconvert"); // CommonJS import
+ * const client = new MediaConvertClient(config);
+ * const command = new DescribeEndpointsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEndpointsCommandInput} for command's `input` shape.
+ * @see {@link DescribeEndpointsCommandOutput} for command's `response` shape.
+ * @see {@link MediaConvertClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEndpointsCommand extends $Command<
   DescribeEndpointsCommandInput,

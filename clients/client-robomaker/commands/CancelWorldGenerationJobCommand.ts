@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelWorldGenerationJobCommandInput = CancelWorldGenerationJobRequest;
-export type CancelWorldGenerationJobCommandOutput = CancelWorldGenerationJobResponse & __MetadataBearer;
+export interface CancelWorldGenerationJobCommandInput extends CancelWorldGenerationJobRequest {}
+export interface CancelWorldGenerationJobCommandOutput extends CancelWorldGenerationJobResponse, __MetadataBearer {}
 
 /**
  * <p>Cancels the specified world generator job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RoboMakerClient, CancelWorldGenerationJobCommand } from "@aws-sdk/client-robomaker"; // ES Modules import
+ * // const { RoboMakerClient, CancelWorldGenerationJobCommand } = require("@aws-sdk/client-robomaker"); // CommonJS import
+ * const client = new RoboMakerClient(config);
+ * const command = new CancelWorldGenerationJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelWorldGenerationJobCommandInput} for command's `input` shape.
+ * @see {@link CancelWorldGenerationJobCommandOutput} for command's `response` shape.
+ * @see {@link RoboMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelWorldGenerationJobCommand extends $Command<
   CancelWorldGenerationJobCommandInput,

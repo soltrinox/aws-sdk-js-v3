@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRepositoryEndpointCommandInput = GetRepositoryEndpointRequest;
-export type GetRepositoryEndpointCommandOutput = GetRepositoryEndpointResult & __MetadataBearer;
+export interface GetRepositoryEndpointCommandInput extends GetRepositoryEndpointRequest {}
+export interface GetRepositoryEndpointCommandOutput extends GetRepositoryEndpointResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -41,12 +41,21 @@ export type GetRepositoryEndpointCommandOutput = GetRepositoryEndpointResult & _
  *                   <code>maven</code>
  *                </p>
  *             </li>
- *             <li>
- *                <p>
- *                   <code>nuget</code>
- *                </p>
- *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeartifactClient, GetRepositoryEndpointCommand } from "@aws-sdk/client-codeartifact"; // ES Modules import
+ * // const { CodeartifactClient, GetRepositoryEndpointCommand } = require("@aws-sdk/client-codeartifact"); // CommonJS import
+ * const client = new CodeartifactClient(config);
+ * const command = new GetRepositoryEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRepositoryEndpointCommandInput} for command's `input` shape.
+ * @see {@link GetRepositoryEndpointCommandOutput} for command's `response` shape.
+ * @see {@link CodeartifactClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRepositoryEndpointCommand extends $Command<
   GetRepositoryEndpointCommandInput,

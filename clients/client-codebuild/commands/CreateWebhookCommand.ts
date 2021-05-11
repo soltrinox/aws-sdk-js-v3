@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateWebhookCommandInput = CreateWebhookInput;
-export type CreateWebhookCommandOutput = CreateWebhookOutput & __MetadataBearer;
+export interface CreateWebhookCommandInput extends CreateWebhookInput {}
+export interface CreateWebhookCommandOutput extends CreateWebhookOutput, __MetadataBearer {}
 
 /**
  * <p>For an existing AWS CodeBuild build project that has its source code stored in a GitHub or
@@ -32,6 +32,20 @@ export type CreateWebhookCommandOutput = CreateWebhookOutput & __MetadataBearer;
  *         recommend that you disable webhooks in AWS CodeBuild. In the AWS CodeBuild console, clear the
  *         Webhook box. For more information, see step 5 in <a href="https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console">Change a Build Project's Settings</a>.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeBuildClient, CreateWebhookCommand } from "@aws-sdk/client-codebuild"; // ES Modules import
+ * // const { CodeBuildClient, CreateWebhookCommand } = require("@aws-sdk/client-codebuild"); // CommonJS import
+ * const client = new CodeBuildClient(config);
+ * const command = new CreateWebhookCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateWebhookCommandInput} for command's `input` shape.
+ * @see {@link CreateWebhookCommandOutput} for command's `response` shape.
+ * @see {@link CodeBuildClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateWebhookCommand extends $Command<
   CreateWebhookCommandInput,

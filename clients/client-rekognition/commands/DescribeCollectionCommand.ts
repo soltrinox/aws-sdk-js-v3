@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCollectionCommandInput = DescribeCollectionRequest;
-export type DescribeCollectionCommandOutput = DescribeCollectionResponse & __MetadataBearer;
+export interface DescribeCollectionCommandInput extends DescribeCollectionRequest {}
+export interface DescribeCollectionCommandOutput extends DescribeCollectionResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the specified collection. You can use <code>DescribeCollection</code> to get
@@ -27,6 +27,20 @@ export type DescribeCollectionCommandOutput = DescribeCollectionResponse & __Met
  *
  *          <p>For more information, see Describing a Collection in the
  *      Amazon Rekognition Developer Guide.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, DescribeCollectionCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, DescribeCollectionCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new DescribeCollectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCollectionCommandInput} for command's `input` shape.
+ * @see {@link DescribeCollectionCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCollectionCommand extends $Command<
   DescribeCollectionCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeArtifactCommandInput = DescribeArtifactRequest;
-export type DescribeArtifactCommandOutput = DescribeArtifactResponse & __MetadataBearer;
+export interface DescribeArtifactCommandInput extends DescribeArtifactRequest {}
+export interface DescribeArtifactCommandOutput extends DescribeArtifactResponse, __MetadataBearer {}
 
 /**
  * <p>Describes an artifact.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DescribeArtifactCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DescribeArtifactCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DescribeArtifactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeArtifactCommandInput} for command's `input` shape.
+ * @see {@link DescribeArtifactCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeArtifactCommand extends $Command<
   DescribeArtifactCommandInput,

@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyReplicationInstanceCommandInput = ModifyReplicationInstanceMessage;
-export type ModifyReplicationInstanceCommandOutput = ModifyReplicationInstanceResponse & __MetadataBearer;
+export interface ModifyReplicationInstanceCommandInput extends ModifyReplicationInstanceMessage {}
+export interface ModifyReplicationInstanceCommandOutput extends ModifyReplicationInstanceResponse, __MetadataBearer {}
 
 /**
  * <p>Modifies the replication instance to apply new settings. You can change one or more
@@ -30,6 +30,20 @@ export type ModifyReplicationInstanceCommandOutput = ModifyReplicationInstanceRe
  *          <p>Some settings are applied during the maintenance window.</p>
  *
  *          <p></p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, ModifyReplicationInstanceCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, ModifyReplicationInstanceCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new ModifyReplicationInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyReplicationInstanceCommandInput} for command's `input` shape.
+ * @see {@link ModifyReplicationInstanceCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyReplicationInstanceCommand extends $Command<
   ModifyReplicationInstanceCommandInput,

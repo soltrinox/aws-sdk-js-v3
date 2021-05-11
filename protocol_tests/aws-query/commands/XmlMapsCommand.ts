@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type XmlMapsCommandInput = {};
-export type XmlMapsCommandOutput = XmlMapsOutput & __MetadataBearer;
+export interface XmlMapsCommandInput {}
+export interface XmlMapsCommandOutput extends XmlMapsOutput, __MetadataBearer {}
 
 /**
  * The example tests basic map serialization.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QueryProtocolClient, XmlMapsCommand } from "@aws-sdk/aws-query"; // ES Modules import
+ * // const { QueryProtocolClient, XmlMapsCommand } = require("@aws-sdk/aws-query"); // CommonJS import
+ * const client = new QueryProtocolClient(config);
+ * const command = new XmlMapsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link XmlMapsCommandInput} for command's `input` shape.
+ * @see {@link XmlMapsCommandOutput} for command's `response` shape.
+ * @see {@link QueryProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class XmlMapsCommand extends $Command<
   XmlMapsCommandInput,

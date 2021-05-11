@@ -22,11 +22,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateIdentityProviderCommandInput = UpdateIdentityProviderRequest;
-export type UpdateIdentityProviderCommandOutput = UpdateIdentityProviderResponse & __MetadataBearer;
+export interface UpdateIdentityProviderCommandInput extends UpdateIdentityProviderRequest {}
+export interface UpdateIdentityProviderCommandOutput extends UpdateIdentityProviderResponse, __MetadataBearer {}
 
 /**
  * <p>Updates identity provider information for a user pool.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, UpdateIdentityProviderCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, UpdateIdentityProviderCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new UpdateIdentityProviderCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateIdentityProviderCommandInput} for command's `input` shape.
+ * @see {@link UpdateIdentityProviderCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateIdentityProviderCommand extends $Command<
   UpdateIdentityProviderCommandInput,

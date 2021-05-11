@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateVPCEConfigurationCommandInput = UpdateVPCEConfigurationRequest;
-export type UpdateVPCEConfigurationCommandOutput = UpdateVPCEConfigurationResult & __MetadataBearer;
+export interface UpdateVPCEConfigurationCommandInput extends UpdateVPCEConfigurationRequest {}
+export interface UpdateVPCEConfigurationCommandOutput extends UpdateVPCEConfigurationResult, __MetadataBearer {}
 
 /**
  * <p>Updates information about an Amazon Virtual Private Cloud (VPC) endpoint configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, UpdateVPCEConfigurationCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, UpdateVPCEConfigurationCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new UpdateVPCEConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateVPCEConfigurationCommandInput} for command's `input` shape.
+ * @see {@link UpdateVPCEConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateVPCEConfigurationCommand extends $Command<
   UpdateVPCEConfigurationCommandInput,

@@ -18,11 +18,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBucketAclCommandInput = GetBucketAclRequest;
-export type GetBucketAclCommandOutput = GetBucketAclOutput & __MetadataBearer;
+export interface GetBucketAclCommandInput extends GetBucketAclRequest {}
+export interface GetBucketAclCommandOutput extends GetBucketAclOutput, __MetadataBearer {}
 
 /**
- * <p>This implementation of the <code>GET</code> operation uses the <code>acl</code>
+ * <p>This implementation of the <code>GET</code> action uses the <code>acl</code>
  *          subresource to return the access control list (ACL) of a bucket. To use <code>GET</code> to
  *          return the ACL of the bucket, you must have <code>READ_ACP</code> access to the bucket. If
  *             <code>READ_ACP</code> permission is granted to the anonymous user, you can return the
@@ -38,6 +38,20 @@ export type GetBucketAclCommandOutput = GetBucketAclOutput & __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetBucketAclCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetBucketAclCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetBucketAclCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBucketAclCommandInput} for command's `input` shape.
+ * @see {@link GetBucketAclCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBucketAclCommand extends $Command<
   GetBucketAclCommandInput,

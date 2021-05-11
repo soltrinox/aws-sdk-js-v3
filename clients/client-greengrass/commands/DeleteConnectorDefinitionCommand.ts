@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteConnectorDefinitionCommandInput = DeleteConnectorDefinitionRequest;
-export type DeleteConnectorDefinitionCommandOutput = DeleteConnectorDefinitionResponse & __MetadataBearer;
+export interface DeleteConnectorDefinitionCommandInput extends DeleteConnectorDefinitionRequest {}
+export interface DeleteConnectorDefinitionCommandOutput extends DeleteConnectorDefinitionResponse, __MetadataBearer {}
 
 /**
  * Deletes a connector definition.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, DeleteConnectorDefinitionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, DeleteConnectorDefinitionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new DeleteConnectorDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteConnectorDefinitionCommandInput} for command's `input` shape.
+ * @see {@link DeleteConnectorDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteConnectorDefinitionCommand extends $Command<
   DeleteConnectorDefinitionCommandInput,

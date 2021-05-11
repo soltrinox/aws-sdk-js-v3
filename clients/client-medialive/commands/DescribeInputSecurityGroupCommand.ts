@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeInputSecurityGroupCommandInput = DescribeInputSecurityGroupRequest;
-export type DescribeInputSecurityGroupCommandOutput = DescribeInputSecurityGroupResponse & __MetadataBearer;
+export interface DescribeInputSecurityGroupCommandInput extends DescribeInputSecurityGroupRequest {}
+export interface DescribeInputSecurityGroupCommandOutput extends DescribeInputSecurityGroupResponse, __MetadataBearer {}
 
 /**
  * Produces a summary of an Input Security Group
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, DescribeInputSecurityGroupCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, DescribeInputSecurityGroupCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new DescribeInputSecurityGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeInputSecurityGroupCommandInput} for command's `input` shape.
+ * @see {@link DescribeInputSecurityGroupCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeInputSecurityGroupCommand extends $Command<
   DescribeInputSecurityGroupCommandInput,

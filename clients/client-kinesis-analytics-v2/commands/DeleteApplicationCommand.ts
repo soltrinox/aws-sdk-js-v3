@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteApplicationCommandInput = DeleteApplicationRequest;
-export type DeleteApplicationCommandOutput = DeleteApplicationResponse & __MetadataBearer;
+export interface DeleteApplicationCommandInput extends DeleteApplicationRequest {}
+export interface DeleteApplicationCommandOutput extends DeleteApplicationResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified application. Kinesis Data Analytics halts application execution and deletes the application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisAnalyticsV2Client, DeleteApplicationCommand } from "@aws-sdk/client-kinesis-analytics-v2"; // ES Modules import
+ * // const { KinesisAnalyticsV2Client, DeleteApplicationCommand } = require("@aws-sdk/client-kinesis-analytics-v2"); // CommonJS import
+ * const client = new KinesisAnalyticsV2Client(config);
+ * const command = new DeleteApplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteApplicationCommandInput} for command's `input` shape.
+ * @see {@link DeleteApplicationCommandOutput} for command's `response` shape.
+ * @see {@link KinesisAnalyticsV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteApplicationCommand extends $Command<
   DeleteApplicationCommandInput,

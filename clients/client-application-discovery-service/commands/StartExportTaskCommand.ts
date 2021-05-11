@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartExportTaskCommandInput = StartExportTaskRequest;
-export type StartExportTaskCommandOutput = StartExportTaskResponse & __MetadataBearer;
+export interface StartExportTaskCommandInput extends StartExportTaskRequest {}
+export interface StartExportTaskCommandOutput extends StartExportTaskResponse, __MetadataBearer {}
 
 /**
  * <p> Begins the export of discovered data to an S3 bucket.</p>
@@ -34,6 +34,20 @@ export type StartExportTaskCommandOutput = StartExportTaskResponse & __MetadataB
  *          <p> If you do not include an <code>agentIds</code> filter, summary data is exported that
  *       includes both AWS Agentless Discovery Connector data and summary data from AWS Discovery
  *       Agents. Export of summary data is limited to two exports per day. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationDiscoveryServiceClient, StartExportTaskCommand } from "@aws-sdk/client-application-discovery-service"; // ES Modules import
+ * // const { ApplicationDiscoveryServiceClient, StartExportTaskCommand } = require("@aws-sdk/client-application-discovery-service"); // CommonJS import
+ * const client = new ApplicationDiscoveryServiceClient(config);
+ * const command = new StartExportTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartExportTaskCommandInput} for command's `input` shape.
+ * @see {@link StartExportTaskCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationDiscoveryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartExportTaskCommand extends $Command<
   StartExportTaskCommandInput,

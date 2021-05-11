@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateGlobalReplicationGroupCommandInput = CreateGlobalReplicationGroupMessage;
-export type CreateGlobalReplicationGroupCommandOutput = CreateGlobalReplicationGroupResult & __MetadataBearer;
+export interface CreateGlobalReplicationGroupCommandInput extends CreateGlobalReplicationGroupMessage {}
+export interface CreateGlobalReplicationGroupCommandOutput
+  extends CreateGlobalReplicationGroupResult,
+    __MetadataBearer {}
 
 /**
  * <p>Global Datastore for Redis offers fully managed, fast,
@@ -26,15 +28,31 @@ export type CreateGlobalReplicationGroupCommandOutput = CreateGlobalReplicationG
  *             Using Global Datastore for Redis, you can create cross-region
  *             read replica clusters for ElastiCache for Redis to enable low-latency reads
  *             and disaster recovery across regions. For more information,
- *             see <a href="/AmazonElastiCache/latest/red-ug/Redis-Global-Clusters.html">Replication Across Regions Using Global Datastore</a>. </p>
+ *
+ *             see <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html">Replication Across Regions Using Global Datastore</a>. </p>
+ *
  *          <ul>
  *             <li>
- *                <p>The <b>GlobalReplicationGroupIdSuffix</b> is the name of the Global Datastore.</p>
+ *                <p>The <b>GlobalReplicationGroupIdSuffix</b> is the name of the Global datastore.</p>
  *             </li>
  *             <li>
  *                <p>The <b>PrimaryReplicationGroupId</b> represents the name of the primary cluster that accepts writes and will replicate updates to the secondary cluster.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, CreateGlobalReplicationGroupCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, CreateGlobalReplicationGroupCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new CreateGlobalReplicationGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateGlobalReplicationGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateGlobalReplicationGroupCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateGlobalReplicationGroupCommand extends $Command<
   CreateGlobalReplicationGroupCommandInput,

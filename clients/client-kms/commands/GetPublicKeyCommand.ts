@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetPublicKeyCommandInput = GetPublicKeyRequest;
-export type GetPublicKeyCommandOutput = GetPublicKeyResponse & __MetadataBearer;
+export interface GetPublicKeyCommandInput extends GetPublicKeyRequest {}
+export interface GetPublicKeyCommandOutput extends GetPublicKeyResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the public key of an asymmetric CMK. Unlike the private key of a asymmetric CMK,
@@ -33,7 +33,6 @@ export type GetPublicKeyCommandOutput = GetPublicKeyResponse & __MetadataBearer;
  *         for Downloading Public Keys</a>.</p>
  *          <p>To help you use the public key safely outside of AWS KMS, <code>GetPublicKey</code> returns
  *       important information about the public key in the response, including:</p>
- *
  *          <ul>
  *             <li>
  *                <p>
@@ -59,6 +58,29 @@ export type GetPublicKeyCommandOutput = GetPublicKeyResponse & __MetadataBearer;
  *          <p>The CMK that you use for this operation must be in a compatible key state. For
  * details, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use
  * of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+ *          <p>
+ *             <b>Cross-account use</b>: Yes. To perform this operation with a CMK in a different AWS account, specify
+ *   the key ARN or alias ARN in the value of the <code>KeyId</code> parameter.</p>
+ *
+ *          <p>
+ *             <b>Required permissions</b>: <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:GetPublicKey</a> (key policy)</p>
+ *          <p>
+ *             <b>Related operations</b>: <a>CreateKey</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, GetPublicKeyCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, GetPublicKeyCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new GetPublicKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetPublicKeyCommandInput} for command's `input` shape.
+ * @see {@link GetPublicKeyCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetPublicKeyCommand extends $Command<
   GetPublicKeyCommandInput,

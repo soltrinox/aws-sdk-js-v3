@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetPolicyCommandInput = GetPolicyRequest;
-export type GetPolicyCommandOutput = GetPolicyResponse & __MetadataBearer;
+export interface GetPolicyCommandInput extends GetPolicyRequest {}
+export interface GetPolicyCommandOutput extends GetPolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information about the specified AWS Firewall Manager policy.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FMSClient, GetPolicyCommand } from "@aws-sdk/client-fms"; // ES Modules import
+ * // const { FMSClient, GetPolicyCommand } = require("@aws-sdk/client-fms"); // CommonJS import
+ * const client = new FMSClient(config);
+ * const command = new GetPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetPolicyCommandInput} for command's `input` shape.
+ * @see {@link GetPolicyCommandOutput} for command's `response` shape.
+ * @see {@link FMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetPolicyCommand extends $Command<GetPolicyCommandInput, GetPolicyCommandOutput, FMSClientResolvedConfig> {
   // Start section: command_properties

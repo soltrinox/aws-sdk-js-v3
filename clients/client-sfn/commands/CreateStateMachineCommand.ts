@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateStateMachineCommandInput = CreateStateMachineInput;
-export type CreateStateMachineCommandOutput = CreateStateMachineOutput & __MetadataBearer;
+export interface CreateStateMachineCommandInput extends CreateStateMachineInput {}
+export interface CreateStateMachineCommandOutput extends CreateStateMachineOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a state machine. A state machine consists of a collection of states that can do
@@ -40,6 +40,20 @@ export type CreateStateMachineCommandOutput = CreateStateMachineOutput & __Metad
  *         treat it as an idempotent request of the previous. In this case, <code>roleArn</code> and
  *           <code>tags</code> will not be updated, even if they are different.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SFNClient, CreateStateMachineCommand } from "@aws-sdk/client-sfn"; // ES Modules import
+ * // const { SFNClient, CreateStateMachineCommand } = require("@aws-sdk/client-sfn"); // CommonJS import
+ * const client = new SFNClient(config);
+ * const command = new CreateStateMachineCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateStateMachineCommandInput} for command's `input` shape.
+ * @see {@link CreateStateMachineCommandOutput} for command's `response` shape.
+ * @see {@link SFNClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateStateMachineCommand extends $Command<
   CreateStateMachineCommandInput,

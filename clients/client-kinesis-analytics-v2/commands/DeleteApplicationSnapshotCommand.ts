@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteApplicationSnapshotCommandInput = DeleteApplicationSnapshotRequest;
-export type DeleteApplicationSnapshotCommandOutput = DeleteApplicationSnapshotResponse & __MetadataBearer;
+export interface DeleteApplicationSnapshotCommandInput extends DeleteApplicationSnapshotRequest {}
+export interface DeleteApplicationSnapshotCommandOutput extends DeleteApplicationSnapshotResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a snapshot of application state.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisAnalyticsV2Client, DeleteApplicationSnapshotCommand } from "@aws-sdk/client-kinesis-analytics-v2"; // ES Modules import
+ * // const { KinesisAnalyticsV2Client, DeleteApplicationSnapshotCommand } = require("@aws-sdk/client-kinesis-analytics-v2"); // CommonJS import
+ * const client = new KinesisAnalyticsV2Client(config);
+ * const command = new DeleteApplicationSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteApplicationSnapshotCommandInput} for command's `input` shape.
+ * @see {@link DeleteApplicationSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link KinesisAnalyticsV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteApplicationSnapshotCommand extends $Command<
   DeleteApplicationSnapshotCommandInput,

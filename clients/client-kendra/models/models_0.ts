@@ -14,6 +14,9 @@ export interface AccessControlListConfiguration {
 }
 
 export namespace AccessControlListConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessControlListConfiguration): any => ({
     ...obj,
   });
@@ -29,6 +32,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -43,13 +49,16 @@ export interface AclConfiguration {
    * <p>A list of groups, separated by semi-colons, that filters a query
    *             response based on user context. The document is only returned to
    *             users that are in one of the groups specified in the
-   *                 <code>UserContext</code> field of the <a>Query</a>
+   *                 <code>UserContext</code> field of the <code>Query</code>
    *             operation.</p>
    */
   AllowedGroupsColumnName: string | undefined;
 }
 
 export namespace AclConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AclConfiguration): any => ({
     ...obj,
   });
@@ -91,6 +100,9 @@ export interface Highlight {
 }
 
 export namespace Highlight {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Highlight): any => ({
     ...obj,
   });
@@ -114,6 +126,9 @@ export interface TextWithHighlights {
 }
 
 export namespace TextWithHighlights {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TextWithHighlights): any => ({
     ...obj,
   });
@@ -131,6 +146,9 @@ export interface AdditionalResultAttributeValue {
 }
 
 export namespace AdditionalResultAttributeValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AdditionalResultAttributeValue): any => ({
     ...obj,
   });
@@ -161,6 +179,9 @@ export interface AdditionalResultAttribute {
 }
 
 export namespace AdditionalResultAttribute {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AdditionalResultAttribute): any => ({
     ...obj,
   });
@@ -246,6 +267,9 @@ export namespace DocumentAttributeValue {
     return visitor._(value.$unknown[0], value.$unknown[1]);
   };
 
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DocumentAttributeValue): any => {
     if (obj.StringValue !== undefined) return { StringValue: obj.StringValue };
     if (obj.StringListValue !== undefined) return { StringListValue: obj.StringListValue };
@@ -271,6 +295,9 @@ export interface DocumentAttribute {
 }
 
 export namespace DocumentAttribute {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DocumentAttribute): any => ({
     ...obj,
     ...(obj.Value && { Value: DocumentAttributeValue.filterSensitiveLog(obj.Value) }),
@@ -294,6 +321,9 @@ export interface DataSourceSyncJobMetricTarget {
 }
 
 export namespace DataSourceSyncJobMetricTarget {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataSourceSyncJobMetricTarget): any => ({
     ...obj,
   });
@@ -301,7 +331,8 @@ export namespace DataSourceSyncJobMetricTarget {
 
 export interface BatchDeleteDocumentRequest {
   /**
-   * <p>The identifier of the index that contains the documents to delete.</p>
+   * <p>The identifier of the index that contains the documents to
+   *       delete.</p>
    */
   IndexId: string | undefined;
 
@@ -318,6 +349,9 @@ export interface BatchDeleteDocumentRequest {
 }
 
 export namespace BatchDeleteDocumentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDeleteDocumentRequest): any => ({
     ...obj,
   });
@@ -330,7 +364,7 @@ export enum ErrorCode {
 
 /**
  * <p>Provides information about documents that could not be removed
- *             from an index by the <a>BatchDeleteDocument</a>
+ *             from an index by the <code>BatchDeleteDocument</code>
  *             operation.</p>
  */
 export interface BatchDeleteDocumentResponseFailedDocument {
@@ -354,6 +388,9 @@ export interface BatchDeleteDocumentResponseFailedDocument {
 }
 
 export namespace BatchDeleteDocumentResponseFailedDocument {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDeleteDocumentResponseFailedDocument): any => ({
     ...obj,
   });
@@ -361,13 +398,17 @@ export namespace BatchDeleteDocumentResponseFailedDocument {
 
 export interface BatchDeleteDocumentResponse {
   /**
-   * <p>A list of documents that could not be removed from the index. Each entry contains an error
-   *       message that indicates why the document couldn't be removed from the index.</p>
+   * <p>A list of documents that could not be removed from the index. Each
+   *       entry contains an error message that indicates why the document couldn't
+   *       be removed from the index.</p>
    */
   FailedDocuments?: BatchDeleteDocumentResponseFailedDocument[];
 }
 
 export namespace BatchDeleteDocumentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDeleteDocumentResponse): any => ({
     ...obj,
   });
@@ -383,6 +424,9 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
@@ -398,6 +442,9 @@ export interface InternalServerException extends __SmithyException, $MetadataBea
 }
 
 export namespace InternalServerException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerException): any => ({
     ...obj,
   });
@@ -413,6 +460,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -428,6 +478,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -443,6 +496,9 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
@@ -480,6 +536,9 @@ export interface Principal {
 }
 
 export namespace Principal {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Principal): any => ({
     ...obj,
   });
@@ -510,6 +569,9 @@ export interface S3Path {
 }
 
 export namespace S3Path {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Path): any => ({
     ...obj,
   });
@@ -566,6 +628,9 @@ export interface Document {
 }
 
 export namespace Document {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Document): any => ({
     ...obj,
     ...(obj.Attributes && { Attributes: obj.Attributes.map((item) => DocumentAttribute.filterSensitiveLog(item)) }),
@@ -574,15 +639,17 @@ export namespace Document {
 
 export interface BatchPutDocumentRequest {
   /**
-   * <p>The identifier of the index to add the documents to. You need to create the index first
-   *       using the <a>CreateIndex</a> operation.</p>
+   * <p>The identifier of the index to add the documents to. You need to
+   *       create the index first using the <code>CreateIndex</code>
+   *       operation.</p>
    */
   IndexId: string | undefined;
 
   /**
    * <p>The Amazon Resource Name (ARN) of a role that is allowed to run the
-   *         <code>BatchPutDocument</code> operation. For more information, see <a href="https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html">IAM Roles for
-   *         Amazon Kendra</a>.</p>
+   *         <code>BatchPutDocument</code> operation. For more information, see
+   *         <a href="https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html">IAM
+   *         Roles for Amazon Kendra</a>.</p>
    */
   RoleArn?: string;
 
@@ -600,13 +667,16 @@ export interface BatchPutDocumentRequest {
    *                <p>5 MB extracted text for any file</p>
    *             </li>
    *          </ul>
-   *          <p>For more information about file size and transaction per second quotas,
-   *       see <a href="https://docs.aws.amazon.com/kendra/latest/dg/quotas.html">Quotas</a>.</p>
+   *          <p>For more information about file size and transaction per second
+   *       quotas, see <a href="https://docs.aws.amazon.com/kendra/latest/dg/quotas.html">Quotas</a>.</p>
    */
   Documents: Document[] | undefined;
 }
 
 export namespace BatchPutDocumentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchPutDocumentRequest): any => ({
     ...obj,
   });
@@ -636,6 +706,9 @@ export interface BatchPutDocumentResponseFailedDocument {
 }
 
 export namespace BatchPutDocumentResponseFailedDocument {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchPutDocumentResponseFailedDocument): any => ({
     ...obj,
   });
@@ -643,18 +716,22 @@ export namespace BatchPutDocumentResponseFailedDocument {
 
 export interface BatchPutDocumentResponse {
   /**
-   * <p>A list of documents that were not added to the index because the document failed a
-   *       validation check. Each document contains an error message that indicates why the document
-   *       couldn't be added to the index.</p>
-   *          <p>If there was an error adding a document to an index the error is reported in your AWS
-   *       CloudWatch log. For more information, see <a href="https://docs.aws.amazon.com/kendra/latest/dg/cloudwatch-logs.html">Monitoring Amazon Kendra with
-   *         Amazon CloudWatch Logs</a>
+   * <p>A list of documents that were not added to the index because the
+   *       document failed a validation check. Each document contains an error
+   *       message that indicates why the document couldn't be added to the
+   *       index.</p>
+   *          <p>If there was an error adding a document to an index the error is
+   *       reported in your AWS CloudWatch log. For more information, see <a href="https://docs.aws.amazon.com/kendra/latest/dg/cloudwatch-logs.html">Monitoring
+   *         Amazon Kendra with Amazon CloudWatch Logs</a>
    *          </p>
    */
   FailedDocuments?: BatchPutDocumentResponseFailedDocument[];
 }
 
 export namespace BatchPutDocumentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchPutDocumentResponse): any => ({
     ...obj,
   });
@@ -670,6 +747,9 @@ export interface ServiceQuotaExceededException extends __SmithyException, $Metad
 }
 
 export namespace ServiceQuotaExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceQuotaExceededException): any => ({
     ...obj,
   });
@@ -692,12 +772,14 @@ export enum ConfluenceAttachmentFieldName {
 /**
  * <p>Defines the mapping between a field in the Confluence data source
  *             to a Amazon Kendra index field.</p>
- *         <p>You must first create the index field using the  operation. </p>
+ *         <p>You must first create the index field using the
+ *                 <code>UpdateIndex</code> operation. </p>
  */
 export interface ConfluenceAttachmentToIndexFieldMapping {
   /**
    * <p>The name of the field in the data source. </p>
-   *         <p>You must first create the index field using the  operation. </p>
+   *         <p>You must first create the index field using the
+   *                 <code>UpdateIndex</code> operation. </p>
    */
   DataSourceFieldName?: ConfluenceAttachmentFieldName | string;
 
@@ -718,6 +800,9 @@ export interface ConfluenceAttachmentToIndexFieldMapping {
 }
 
 export namespace ConfluenceAttachmentToIndexFieldMapping {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfluenceAttachmentToIndexFieldMapping): any => ({
     ...obj,
   });
@@ -747,6 +832,9 @@ export interface ConfluenceAttachmentConfiguration {
 }
 
 export namespace ConfluenceAttachmentConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfluenceAttachmentConfiguration): any => ({
     ...obj,
   });
@@ -767,7 +855,8 @@ export enum ConfluenceBlogFieldName {
 /**
  * <p>Defines the mapping between a blog field in the Confluence data
  *             source to a Amazon Kendra index field.</p>
- *         <p>You must first create the index field using the  operation. </p>
+ *         <p>You must first create the index field using the
+ *                 <code>UpdateIndex</code> operation. </p>
  */
 export interface ConfluenceBlogToIndexFieldMapping {
   /**
@@ -792,6 +881,9 @@ export interface ConfluenceBlogToIndexFieldMapping {
 }
 
 export namespace ConfluenceBlogToIndexFieldMapping {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfluenceBlogToIndexFieldMapping): any => ({
     ...obj,
   });
@@ -801,8 +893,7 @@ export namespace ConfluenceBlogToIndexFieldMapping {
  * <p>Specifies the blog settings for the Confluence data source. Blogs
  *             are always indexed unless filtered from the index by the
  *                 <code>ExclusionPatterns</code> or <code>InclusionPatterns</code>
- *             fields in the  data
- *             type.</p>
+ *             fields in the <code>ConfluenceConfiguration</code> type.</p>
  */
 export interface ConfluenceBlogConfiguration {
   /**
@@ -817,6 +908,9 @@ export interface ConfluenceBlogConfiguration {
 }
 
 export namespace ConfluenceBlogConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfluenceBlogConfiguration): any => ({
     ...obj,
   });
@@ -840,7 +934,8 @@ export enum ConfluencePageFieldName {
 /**
  * <p>Defines the mapping between a field in the Confluence data source
  *             to a Amazon Kendra index field.</p>
- *         <p>You must first create the index field using the  operation. </p>
+ *         <p>You must first create the index field using the
+ *                 <code>UpdateIndex</code> operation. </p>
  */
 export interface ConfluencePageToIndexFieldMapping {
   /**
@@ -865,6 +960,9 @@ export interface ConfluencePageToIndexFieldMapping {
 }
 
 export namespace ConfluencePageToIndexFieldMapping {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfluencePageToIndexFieldMapping): any => ({
     ...obj,
   });
@@ -886,6 +984,9 @@ export interface ConfluencePageConfiguration {
 }
 
 export namespace ConfluencePageConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfluencePageConfiguration): any => ({
     ...obj,
   });
@@ -901,7 +1002,8 @@ export enum ConfluenceSpaceFieldName {
 /**
  * <p>Defines the mapping between a field in the Confluence data source
  *             to a Amazon Kendra index field.</p>
- *         <p>You must first create the index field using the  operation. </p>
+ *         <p>You must first create the index field using the
+ *                 <code>UpdateIndex</code> operation. </p>
  */
 export interface ConfluenceSpaceToIndexFieldMapping {
   /**
@@ -926,6 +1028,9 @@ export interface ConfluenceSpaceToIndexFieldMapping {
 }
 
 export namespace ConfluenceSpaceToIndexFieldMapping {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfluenceSpaceToIndexFieldMapping): any => ({
     ...obj,
   });
@@ -981,6 +1086,9 @@ export interface ConfluenceSpaceConfiguration {
 }
 
 export namespace ConfluenceSpaceConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfluenceSpaceConfiguration): any => ({
     ...obj,
   });
@@ -1012,6 +1120,9 @@ export interface DataSourceVpcConfiguration {
 }
 
 export namespace DataSourceVpcConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataSourceVpcConfiguration): any => ({
     ...obj,
   });
@@ -1107,6 +1218,9 @@ export interface ConfluenceConfiguration {
 }
 
 export namespace ConfluenceConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfluenceConfiguration): any => ({
     ...obj,
   });
@@ -1114,7 +1228,8 @@ export namespace ConfluenceConfiguration {
 
 /**
  * <p>Maps a column or attribute in the data source to an index field.
- *             You must first create the fields in the index using the <a>UpdateIndex</a> operation.</p>
+ *             You must first create the fields in the index using the
+ *                 <code>UpdateIndex</code> operation.</p>
  */
 export interface DataSourceToIndexFieldMapping {
   /**
@@ -1134,6 +1249,9 @@ export interface DataSourceToIndexFieldMapping {
 }
 
 export namespace DataSourceToIndexFieldMapping {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataSourceToIndexFieldMapping): any => ({
     ...obj,
   });
@@ -1162,8 +1280,7 @@ export interface ColumnConfiguration {
   /**
    * <p>An array of objects that map database column names to the
    *             corresponding fields in an index. You must first create the fields
-   *             in the index using the <a>UpdateIndex</a>
-   *             operation.</p>
+   *             in the index using the <code>UpdateIndex</code> operation.</p>
    */
   FieldMappings?: DataSourceToIndexFieldMapping[];
 
@@ -1175,6 +1292,9 @@ export interface ColumnConfiguration {
 }
 
 export namespace ColumnConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ColumnConfiguration): any => ({
     ...obj,
   });
@@ -1219,6 +1339,9 @@ export interface ConnectionConfiguration {
 }
 
 export namespace ConnectionConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConnectionConfiguration): any => ({
     ...obj,
   });
@@ -1259,6 +1382,9 @@ export interface SqlConfiguration {
 }
 
 export namespace SqlConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SqlConfiguration): any => ({
     ...obj,
   });
@@ -1304,6 +1430,9 @@ export interface DatabaseConfiguration {
 }
 
 export namespace DatabaseConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatabaseConfiguration): any => ({
     ...obj,
   });
@@ -1347,7 +1476,7 @@ export interface GoogleDriveConfiguration {
    *             index field.</p>
    *         <p>If you are using the console, you can define index fields when
    *             creating the mapping. If you are using the API, you must first
-   *             create the field using the <a>UpdateIndex</a>
+   *             create the field using the <code>UpdateIndex</code>
    *             operation.</p>
    */
   FieldMappings?: DataSourceToIndexFieldMapping[];
@@ -1376,6 +1505,9 @@ export interface GoogleDriveConfiguration {
 }
 
 export namespace GoogleDriveConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GoogleDriveConfiguration): any => ({
     ...obj,
   });
@@ -1403,6 +1535,9 @@ export interface OneDriveUsers {
 }
 
 export namespace OneDriveUsers {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OneDriveUsers): any => ({
     ...obj,
   });
@@ -1468,6 +1603,9 @@ export interface OneDriveConfiguration {
 }
 
 export namespace OneDriveConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OneDriveConfiguration): any => ({
     ...obj,
   });
@@ -1490,6 +1628,9 @@ export interface DocumentsMetadataConfiguration {
 }
 
 export namespace DocumentsMetadataConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DocumentsMetadataConfiguration): any => ({
     ...obj,
   });
@@ -1547,6 +1688,9 @@ export interface S3DataSourceConfiguration {
 }
 
 export namespace S3DataSourceConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3DataSourceConfiguration): any => ({
     ...obj,
   });
@@ -1594,6 +1738,9 @@ export interface SalesforceChatterFeedConfiguration {
 }
 
 export namespace SalesforceChatterFeedConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SalesforceChatterFeedConfiguration): any => ({
     ...obj,
   });
@@ -1629,6 +1776,9 @@ export interface SalesforceCustomKnowledgeArticleTypeConfiguration {
 }
 
 export namespace SalesforceCustomKnowledgeArticleTypeConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SalesforceCustomKnowledgeArticleTypeConfiguration): any => ({
     ...obj,
   });
@@ -1665,16 +1815,19 @@ export interface SalesforceStandardKnowledgeArticleTypeConfiguration {
 }
 
 export namespace SalesforceStandardKnowledgeArticleTypeConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SalesforceStandardKnowledgeArticleTypeConfiguration): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Specifies configuration information for the knowlege article types
- *             that Amazon Kendra indexes. Amazon Kendra indexes standard knowledge articles
- *             and the standard fields of knowledge articles, or the custom fields
- *             of custom knowledge articles, but not both </p>
+ * <p>Specifies configuration information for the knowledge article
+ *             types that Amazon Kendra indexes. Amazon Kendra indexes standard knowledge
+ *             articles and the standard fields of knowledge articles, or the
+ *             custom fields of custom knowledge articles, but not both </p>
  */
 export interface SalesforceKnowledgeArticleConfiguration {
   /**
@@ -1698,6 +1851,9 @@ export interface SalesforceKnowledgeArticleConfiguration {
 }
 
 export namespace SalesforceKnowledgeArticleConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SalesforceKnowledgeArticleConfiguration): any => ({
     ...obj,
   });
@@ -1721,6 +1877,9 @@ export interface SalesforceStandardObjectAttachmentConfiguration {
 }
 
 export namespace SalesforceStandardObjectAttachmentConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SalesforceStandardObjectAttachmentConfiguration): any => ({
     ...obj,
   });
@@ -1747,7 +1906,7 @@ export enum SalesforceStandardObjectName {
 }
 
 /**
- * <p>Specifies confguration information for indexing a single standard
+ * <p>Specifies configuration information for indexing a single standard
  *             object.</p>
  */
 export interface SalesforceStandardObjectConfiguration {
@@ -1764,7 +1923,7 @@ export interface SalesforceStandardObjectConfiguration {
 
   /**
    * <p>The name of the field in the standard object table that contains
-   *             the document titleB.</p>
+   *             the document title.</p>
    */
   DocumentTitleFieldName?: string;
 
@@ -1777,6 +1936,9 @@ export interface SalesforceStandardObjectConfiguration {
 }
 
 export namespace SalesforceStandardObjectConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SalesforceStandardObjectConfiguration): any => ({
     ...obj,
   });
@@ -1834,10 +1996,10 @@ export interface SalesforceConfiguration {
   StandardObjectConfigurations?: SalesforceStandardObjectConfiguration[];
 
   /**
-   * <p>Specifies configuration information for the knowlege article types
-   *             that Amazon Kendra indexes. Amazon Kendra indexes standard knowledge articles
-   *             and the standard fields of knowledge articles, or the custom fields
-   *             of custom knowledge articles, but not both.</p>
+   * <p>Specifies configuration information for the knowledge article
+   *             types that Amazon Kendra indexes. Amazon Kendra indexes standard knowledge
+   *             articles and the standard fields of knowledge articles, or the
+   *             custom fields of custom knowledge articles, but not both.</p>
    */
   KnowledgeArticleConfiguration?: SalesforceKnowledgeArticleConfiguration;
 
@@ -1881,9 +2043,17 @@ export interface SalesforceConfiguration {
 }
 
 export namespace SalesforceConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SalesforceConfiguration): any => ({
     ...obj,
   });
+}
+
+export enum ServiceNowAuthenticationType {
+  HTTP_BASIC = "HTTP_BASIC",
+  OAUTH2 = "OAUTH2",
 }
 
 /**
@@ -1931,9 +2101,22 @@ export interface ServiceNowKnowledgeArticleConfiguration {
    *             must create the index field before you map the field.</p>
    */
   FieldMappings?: DataSourceToIndexFieldMapping[];
+
+  /**
+   * <p>A query that selects the knowledge articles to index. The query
+   *             can return articles from multiple knowledge bases, and the knowledge
+   *             bases can be public or private.</p>
+   *         <p>The query string must be one generated by the ServiceNow console.
+   *             For more information, see <a href="https://docs.aws.amazon.com/kendra/latest/dg/servicenow-query.html">Specifying
+   *                 documents to index with a query</a>. </p>
+   */
+  FilterQuery?: string;
 }
 
 export namespace ServiceNowKnowledgeArticleConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceNowKnowledgeArticleConfiguration): any => ({
     ...obj,
   });
@@ -1951,14 +2134,22 @@ export interface ServiceNowServiceCatalogConfiguration {
   CrawlAttachments?: boolean;
 
   /**
-   * <p>Determines the types of file attachments that are included in the
-   *             index. </p>
+   * <p>A list of regular expression patterns. Documents that match the
+   *             patterns are included in the index. Documents that don't match the
+   *             patterns are excluded from the index. If a document matches both an
+   *             exclusion pattern and an inclusion pattern, the document is not
+   *             included in the index.</p>
+   *         <p>The regex is applied to the file name of the attachment.</p>
    */
   IncludeAttachmentFilePatterns?: string[];
 
   /**
-   * <p>Determines the types of file attachments that are excluded from
-   *             the index.</p>
+   * <p>A list of regular expression patterns. Documents that match the
+   *             patterns are excluded from the index. Documents that don't match the
+   *             patterns are included in the index. If a document matches both an
+   *             exclusion pattern and an inclusion pattern, the document is not
+   *             included in the index.</p>
+   *         <p>The regex is applied to the file name of the attachment.</p>
    */
   ExcludeAttachmentFilePatterns?: string[];
 
@@ -1982,6 +2173,9 @@ export interface ServiceNowServiceCatalogConfiguration {
 }
 
 export namespace ServiceNowServiceCatalogConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceNowServiceCatalogConfiguration): any => ({
     ...obj,
   });
@@ -2030,9 +2224,28 @@ export interface ServiceNowConfiguration {
    *             in the ServiceNow site.</p>
    */
   ServiceCatalogConfiguration?: ServiceNowServiceCatalogConfiguration;
+
+  /**
+   * <p>Determines the type of authentication used to connect to the
+   *             ServiceNow instance. If you choose <code>HTTP_BASIC</code>, Amazon Kendra is
+   *             authenticated using the user name and password provided in the AWS
+   *             Secrets Manager secret in the <code>SecretArn</code> field. When you
+   *             choose <code>OAUTH2</code>, Amazon Kendra is authenticated using the OAuth
+   *             token and secret provided in the Secrets Manager secret, and the
+   *             user name and password are used to determine which information Amazon Kendra
+   *             has access to.</p>
+   *         <p>When you use <code>OAUTH2</code> authentication, you must generate
+   *             a token and a client secret using the ServiceNow console. For more
+   *             information, see <a href="https://docs.aws.amazon.com/kendra/latest/dg/data-source-servicenow.html">Using a
+   *                 ServiceNow data source</a>.</p>
+   */
+  AuthenticationType?: ServiceNowAuthenticationType | string;
 }
 
 export namespace ServiceNowConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceNowConfiguration): any => ({
     ...obj,
   });
@@ -2118,7 +2331,8 @@ export interface SharePointConfiguration {
   /**
    * <p>A list of <code>DataSourceToIndexFieldMapping</code> objects that
    *             map Microsoft SharePoint attributes to custom fields in the Amazon Kendra
-   *             index. You must first create the index fields using the  operation before you map SharePoint
+   *             index. You must first create the index fields using the
+   *                 <code>UpdateIndex</code> operation before you map SharePoint
    *             attributes. For more information, see <a href="https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html">Mapping Data Source
    *                 Fields</a>.</p>
    */
@@ -2139,6 +2353,9 @@ export interface SharePointConfiguration {
 }
 
 export namespace SharePointConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SharePointConfiguration): any => ({
     ...obj,
   });
@@ -2173,7 +2390,8 @@ export interface DataSourceConfiguration {
   SalesforceConfiguration?: SalesforceConfiguration;
 
   /**
-   * <p>Provides configuration for data sources that connect to Microsoft OneDrive.</p>
+   * <p>Provides configuration for data sources that connect to Microsoft
+   *             OneDrive.</p>
    */
   OneDriveConfiguration?: OneDriveConfiguration;
 
@@ -2190,38 +2408,44 @@ export interface DataSourceConfiguration {
   ConfluenceConfiguration?: ConfluenceConfiguration;
 
   /**
-   * <p>Provides configuration for data sources that connect to
-   *         Google Drive. </p>
+   * <p>Provides configuration for data sources that connect to Google
+   *             Drive. </p>
    */
   GoogleDriveConfiguration?: GoogleDriveConfiguration;
 }
 
 export namespace DataSourceConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataSourceConfiguration): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A list of key/value pairs that identify an index, FAQ, or data source. Tag keys and values
- *       can consist of Unicode letters, digits, white space, and any of the following symbols: _ . : /
- *       = + - @.</p>
+ * <p>A list of key/value pairs that identify an index, FAQ, or data source.
+ *       Tag keys and values can consist of Unicode letters, digits, white space,
+ *       and any of the following symbols: _ . : / = + - @.</p>
  */
 export interface Tag {
   /**
-   * <p>The key for the tag. Keys are not case sensitive and must be unique for the index, FAQ, or
-   *       data source.</p>
+   * <p>The key for the tag. Keys are not case sensitive and must be unique
+   *       for the index, FAQ, or data source.</p>
    */
   Key: string | undefined;
 
   /**
-   * <p>The value associated with the tag. The value may be an empty string but it can't be
-   *       null.</p>
+   * <p>The value associated with the tag. The value may be an empty string
+   *       but it can't be null.</p>
    */
   Value: string | undefined;
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -2241,13 +2465,14 @@ export enum DataSourceType {
 
 export interface CreateDataSourceRequest {
   /**
-   * <p>A unique name for the data source. A data source name can't be changed without deleting
-   *       and recreating the data source.</p>
+   * <p>A unique name for the data source. A data source name can't be changed
+   *       without deleting and recreating the data source.</p>
    */
   Name: string | undefined;
 
   /**
-   * <p>The identifier of the index that should be associated with this data source.</p>
+   * <p>The identifier of the index that should be associated with this data
+   *       source.</p>
    */
   IndexId: string | undefined;
 
@@ -2257,11 +2482,13 @@ export interface CreateDataSourceRequest {
   Type: DataSourceType | string | undefined;
 
   /**
-   * <p>The connector configuration information that is required to access the repository.</p>
-   *          <p>You can't specify the <code>Configuration</code> parameter when the <code>Type</code>
-   *     parameter is set to <code>CUSTOM</code>. If you do, you receive a <code>ValidationException</code>
-   *     exception.</p>
-   *          <p>The <code>Configuration</code> parameter is required for all other data sources.</p>
+   * <p>The connector configuration information that is required to access the
+   *       repository.</p>
+   *          <p>You can't specify the <code>Configuration</code> parameter when the
+   *         <code>Type</code> parameter is set to <code>CUSTOM</code>. If you do,
+   *       you receive a <code>ValidationException</code> exception.</p>
+   *          <p>The <code>Configuration</code> parameter is required for all other
+   *       data sources.</p>
    */
   Configuration?: DataSourceConfiguration;
 
@@ -2271,42 +2498,48 @@ export interface CreateDataSourceRequest {
   Description?: string;
 
   /**
-   * <p>Sets the frequency that Amazon Kendra will check the documents in your repository and
-   *       update the index. If you don't set a schedule Amazon Kendra will not periodically update the
-   *       index. You can call the <code>StartDataSourceSyncJob</code> operation to update the
+   * <p>Sets the frequency that Amazon Kendra will check the documents in your
+   *       repository and update the index. If you don't set a schedule Amazon Kendra
+   *       will not periodically update the index. You can call the
+   *         <code>StartDataSourceSyncJob</code> operation to update the
    *       index.</p>
-   *          <p>You can't specify the <code>Schedule</code> parameter when the <code>Type</code>
-   *       parameter is set to <code>CUSTOM</code>. If you do, you receive a <code>ValidationException</code>
-   *       exception.</p>
+   *          <p>You can't specify the <code>Schedule</code> parameter when the
+   *         <code>Type</code> parameter is set to <code>CUSTOM</code>. If you do,
+   *       you receive a <code>ValidationException</code> exception.</p>
    */
   Schedule?: string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of a role with permission to access the data source. For
-   *       more information, see <a href="https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html">IAM
-   *         Roles for Amazon Kendra</a>.</p>
-   *          <p>You can't specify the <code>RoleArn</code> parameter when the <code>Type</code>
-   *       parameter is set to <code>CUSTOM</code>. If you do, you receive a <code>ValidationException</code>
-   *       exception.</p>
-   *          <p>The <code>RoleArn</code> parameter is required for all other data sources.</p>
+   * <p>The Amazon Resource Name (ARN) of a role with permission to access the
+   *       data source. For more information, see <a href="https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html">IAM Roles for
+   *         Amazon Kendra</a>.</p>
+   *          <p>You can't specify the <code>RoleArn</code> parameter when the
+   *         <code>Type</code> parameter is set to <code>CUSTOM</code>. If you do,
+   *       you receive a <code>ValidationException</code> exception.</p>
+   *          <p>The <code>RoleArn</code> parameter is required for all other data
+   *       sources.</p>
    */
   RoleArn?: string;
 
   /**
-   * <p>A list of key-value pairs that identify the data source. You can use the tags to identify
-   *       and organize your resources and to control access to resources.</p>
+   * <p>A list of key-value pairs that identify the data source. You can use
+   *       the tags to identify and organize your resources and to control access to
+   *       resources.</p>
    */
   Tags?: Tag[];
 
   /**
-   * <p>A token that you provide to identify the request to create a data source. Multiple calls
-   *       to the <code>CreateDataSource</code> operation with the same client token will create only one
-   *       data source.</p>
+   * <p>A token that you provide to identify the request to create a data
+   *       source. Multiple calls to the <code>CreateDataSource</code> operation with
+   *       the same client token will create only one data source.</p>
    */
   ClientToken?: string;
 }
 
 export namespace CreateDataSourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDataSourceRequest): any => ({
     ...obj,
   });
@@ -2320,6 +2553,9 @@ export interface CreateDataSourceResponse {
 }
 
 export namespace CreateDataSourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDataSourceResponse): any => ({
     ...obj,
   });
@@ -2335,6 +2571,9 @@ export interface ResourceAlreadyExistException extends __SmithyException, $Metad
 }
 
 export namespace ResourceAlreadyExistException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceAlreadyExistException): any => ({
     ...obj,
   });
@@ -2399,6 +2638,9 @@ export interface CreateFaqRequest {
 }
 
 export namespace CreateFaqRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFaqRequest): any => ({
     ...obj,
   });
@@ -2412,6 +2654,9 @@ export interface CreateFaqResponse {
 }
 
 export namespace CreateFaqResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFaqResponse): any => ({
     ...obj,
   });
@@ -2436,6 +2681,9 @@ export interface ServerSideEncryptionConfiguration {
 }
 
 export namespace ServerSideEncryptionConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServerSideEncryptionConfiguration): any => ({
     ...obj,
     ...(obj.KmsKeyId && { KmsKeyId: SENSITIVE_STRING }),
@@ -2463,6 +2711,9 @@ export interface JsonTokenTypeConfiguration {
 }
 
 export namespace JsonTokenTypeConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JsonTokenTypeConfiguration): any => ({
     ...obj,
   });
@@ -2514,6 +2765,9 @@ export interface JwtTokenTypeConfiguration {
 }
 
 export namespace JwtTokenTypeConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JwtTokenTypeConfiguration): any => ({
     ...obj,
   });
@@ -2535,6 +2789,9 @@ export interface UserTokenConfiguration {
 }
 
 export namespace UserTokenConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserTokenConfiguration): any => ({
     ...obj,
   });
@@ -2547,25 +2804,29 @@ export interface CreateIndexRequest {
   Name: string | undefined;
 
   /**
-   * <p>The Amazon Kendra edition to use for the index. Choose <code>DEVELOPER_EDITION</code> for
-   *       indexes intended for development, testing, or proof of concept. Use
-   *         <code>ENTERPRISE_EDITION</code> for your production databases. Once you set the edition for
-   *       an index, it can't be changed. </p>
-   *          <p>The <code>Edition</code> parameter is optional. If you don't supply a value, the default
-   *       is <code>ENTERPRISE_EDITION</code>.</p>
+   * <p>The Amazon Kendra edition to use for the index. Choose
+   *         <code>DEVELOPER_EDITION</code> for indexes intended for development,
+   *       testing, or proof of concept. Use <code>ENTERPRISE_EDITION</code> for your
+   *       production databases. Once you set the edition for an index, it can't be
+   *       changed. </p>
+   *          <p>The <code>Edition</code> parameter is optional. If you don't supply a
+   *       value, the default is <code>ENTERPRISE_EDITION</code>.</p>
    */
   Edition?: IndexEdition | string;
 
   /**
-   * <p>An AWS Identity and Access Management (IAM) role that gives Amazon Kendra permissions to
-   *       access your Amazon CloudWatch logs and metrics. This is also the role used when you use the
-   *         <code>BatchPutDocument</code> operation to index documents from an Amazon S3 bucket.</p>
+   * <p>An AWS Identity and Access Management (IAM) role that gives
+   *       Amazon Kendra permissions to access your Amazon CloudWatch logs and
+   *       metrics. This is also the role used when you use the
+   *         <code>BatchPutDocument</code> operation to index documents from an
+   *       Amazon S3 bucket.</p>
    */
   RoleArn: string | undefined;
 
   /**
-   * <p>The identifier of the AWS KMS customer managed key (CMK) to use to encrypt data indexed by
-   *       Amazon Kendra. Amazon Kendra doesn't support asymmetric CMKs.</p>
+   * <p>The identifier of the AWS KMS customer managed key (CMK) to use to
+   *       encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support
+   *       asymmetric CMKs.</p>
    */
   ServerSideEncryptionConfiguration?: ServerSideEncryptionConfiguration;
 
@@ -2575,15 +2836,16 @@ export interface CreateIndexRequest {
   Description?: string;
 
   /**
-   * <p>A token that you provide to identify the request to create an index. Multiple calls to the
-   *         <code>CreateIndex</code> operation with the same client token will create only one
-   *       index.</p>
+   * <p>A token that you provide to identify the request to create an index.
+   *       Multiple calls to the <code>CreateIndex</code> operation with the same
+   *       client token will create only one index.</p>
    */
   ClientToken?: string;
 
   /**
-   * <p>A list of key-value pairs that identify the index. You can use the tags to identify and
-   *       organize your resources and to control access to resources.</p>
+   * <p>A list of key-value pairs that identify the index. You can use the
+   *       tags to identify and organize your resources and to control access to
+   *       resources.</p>
    */
   Tags?: Tag[];
 
@@ -2616,6 +2878,9 @@ export interface CreateIndexRequest {
 }
 
 export namespace CreateIndexRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateIndexRequest): any => ({
     ...obj,
     ...(obj.ServerSideEncryptionConfiguration && {
@@ -2628,13 +2893,16 @@ export namespace CreateIndexRequest {
 
 export interface CreateIndexResponse {
   /**
-   * <p>The unique identifier of the index. Use this identifier when you query an index, set up a
-   *       data source, or index a document.</p>
+   * <p>The unique identifier of the index. Use this identifier when you query
+   *       an index, set up a data source, or index a document.</p>
    */
   Id?: string;
 }
 
 export namespace CreateIndexResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateIndexResponse): any => ({
     ...obj,
   });
@@ -2688,6 +2956,9 @@ export interface CreateThesaurusRequest {
 }
 
 export namespace CreateThesaurusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateThesaurusRequest): any => ({
     ...obj,
   });
@@ -2702,6 +2973,9 @@ export interface CreateThesaurusResponse {
 }
 
 export namespace CreateThesaurusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateThesaurusResponse): any => ({
     ...obj,
   });
@@ -2714,12 +2988,16 @@ export interface DeleteDataSourceRequest {
   Id: string | undefined;
 
   /**
-   * <p>The unique identifier of the index associated with the data source.</p>
+   * <p>The unique identifier of the index associated with the data
+   *       source.</p>
    */
   IndexId: string | undefined;
 }
 
 export namespace DeleteDataSourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDataSourceRequest): any => ({
     ...obj,
   });
@@ -2738,6 +3016,9 @@ export interface DeleteFaqRequest {
 }
 
 export namespace DeleteFaqRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFaqRequest): any => ({
     ...obj,
   });
@@ -2751,6 +3032,9 @@ export interface DeleteIndexRequest {
 }
 
 export namespace DeleteIndexRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteIndexRequest): any => ({
     ...obj,
   });
@@ -2769,6 +3053,9 @@ export interface DeleteThesaurusRequest {
 }
 
 export namespace DeleteThesaurusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteThesaurusRequest): any => ({
     ...obj,
   });
@@ -2787,6 +3074,9 @@ export interface DescribeDataSourceRequest {
 }
 
 export namespace DescribeDataSourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDataSourceRequest): any => ({
     ...obj,
   });
@@ -2822,9 +3112,9 @@ export interface DescribeDataSourceResponse {
   Type?: DataSourceType | string;
 
   /**
-   * <p>Information that describes where the data source is located and how the data source is
-   *       configured. The specific information in the description depends on the data source
-   *       provider.</p>
+   * <p>Information that describes where the data source is located and how
+   *       the data source is configured. The specific information in the description
+   *       depends on the data source provider.</p>
    */
   Configuration?: DataSourceConfiguration;
 
@@ -2844,9 +3134,10 @@ export interface DescribeDataSourceResponse {
   Description?: string;
 
   /**
-   * <p>The current status of the data source. When the status is <code>ACTIVE</code> the data
-   *       source is ready to use. When the status is <code>FAILED</code>, the <code>ErrorMessage</code>
-   *       field contains the reason that the data source failed.</p>
+   * <p>The current status of the data source. When the status is
+   *         <code>ACTIVE</code> the data source is ready to use. When the status is
+   *         <code>FAILED</code>, the <code>ErrorMessage</code> field contains the
+   *       reason that the data source failed.</p>
    */
   Status?: DataSourceStatus | string;
 
@@ -2856,20 +3147,23 @@ export interface DescribeDataSourceResponse {
   Schedule?: string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of the role that enables the data source to access its
-   *       resources.</p>
+   * <p>The Amazon Resource Name (ARN) of the role that enables the data
+   *       source to access its resources.</p>
    */
   RoleArn?: string;
 
   /**
    * <p>When the <code>Status</code> field value is <code>FAILED</code>, the
-   *         <code>ErrorMessage</code> field contains a description of the error that caused the data
-   *       source to fail.</p>
+   *         <code>ErrorMessage</code> field contains a description of the error that
+   *       caused the data source to fail.</p>
    */
   ErrorMessage?: string;
 }
 
 export namespace DescribeDataSourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDataSourceResponse): any => ({
     ...obj,
   });
@@ -2888,6 +3182,9 @@ export interface DescribeFaqRequest {
 }
 
 export namespace DescribeFaqRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFaqRequest): any => ({
     ...obj,
   });
@@ -2963,6 +3260,9 @@ export interface DescribeFaqResponse {
 }
 
 export namespace DescribeFaqResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFaqResponse): any => ({
     ...obj,
   });
@@ -2976,6 +3276,9 @@ export interface DescribeIndexRequest {
 }
 
 export namespace DescribeIndexRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeIndexRequest): any => ({
     ...obj,
   });
@@ -3003,6 +3306,9 @@ export interface CapacityUnitsConfiguration {
 }
 
 export namespace CapacityUnitsConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CapacityUnitsConfiguration): any => ({
     ...obj,
   });
@@ -3080,6 +3386,9 @@ export interface Relevance {
 }
 
 export namespace Relevance {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Relevance): any => ({
     ...obj,
   });
@@ -3122,6 +3431,9 @@ export interface Search {
 }
 
 export namespace Search {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Search): any => ({
     ...obj,
   });
@@ -3162,6 +3474,9 @@ export interface DocumentMetadataConfiguration {
 }
 
 export namespace DocumentMetadataConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DocumentMetadataConfiguration): any => ({
     ...obj,
   });
@@ -3180,6 +3495,9 @@ export interface FaqStatistics {
 }
 
 export namespace FaqStatistics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FaqStatistics): any => ({
     ...obj,
   });
@@ -3202,6 +3520,9 @@ export interface TextDocumentStatistics {
 }
 
 export namespace TextDocumentStatistics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TextDocumentStatistics): any => ({
     ...obj,
   });
@@ -3224,6 +3545,9 @@ export interface IndexStatistics {
 }
 
 export namespace IndexStatistics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IndexStatistics): any => ({
     ...obj,
   });
@@ -3250,27 +3574,29 @@ export interface DescribeIndexResponse {
   Id?: string;
 
   /**
-   * <p>The Amazon Kendra edition used for the index. You decide the edition when you create the
-   *       index.</p>
+   * <p>The Amazon Kendra edition used for the index. You decide the edition
+   *       when you create the index.</p>
    */
   Edition?: IndexEdition | string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of the IAM role that gives Amazon Kendra permission to write
-   *       to your Amazon Cloudwatch logs.</p>
+   * <p>The Amazon Resource Name (ARN) of the IAM role that gives Amazon Kendra
+   *       permission to write to your Amazon Cloudwatch logs.</p>
    */
   RoleArn?: string;
 
   /**
-   * <p>The identifier of the AWS KMS customer master key (CMK) used to encrypt your data.
-   *       Amazon Kendra doesn't support asymmetric CMKs.</p>
+   * <p>The identifier of the AWS KMS customer master key (CMK) used to
+   *       encrypt your data. Amazon Kendra doesn't support asymmetric CMKs.</p>
    */
   ServerSideEncryptionConfiguration?: ServerSideEncryptionConfiguration;
 
   /**
-   * <p>The current status of the index. When the value is <code>ACTIVE</code>, the index is ready
-   *       for use. If the <code>Status</code> field value is <code>FAILED</code>, the
-   *         <code>ErrorMessage</code> field contains a message that explains why.</p>
+   * <p>The current status of the index. When the value is
+   *       <code>ACTIVE</code>, the index is ready for use. If the
+   *         <code>Status</code> field value is <code>FAILED</code>, the
+   *         <code>ErrorMessage</code> field contains a message that explains
+   *       why.</p>
    */
   Status?: IndexStatus | string;
 
@@ -3290,27 +3616,30 @@ export interface DescribeIndexResponse {
   UpdatedAt?: Date;
 
   /**
-   * <p>Configuration settings for any metadata applied to the documents in the index.</p>
+   * <p>Configuration settings for any metadata applied to the documents in
+   *       the index.</p>
    */
   DocumentMetadataConfigurations?: DocumentMetadataConfiguration[];
 
   /**
-   * <p>Provides information about the number of FAQ questions and answers and the number of text
-   *       documents indexed.</p>
+   * <p>Provides information about the number of FAQ questions and answers and
+   *       the number of text documents indexed.</p>
    */
   IndexStatistics?: IndexStatistics;
 
   /**
    * <p>When th e<code>Status</code> field value is <code>FAILED</code>, the
-   *         <code>ErrorMessage</code> field contains a message that explains why.</p>
+   *         <code>ErrorMessage</code> field contains a message that explains
+   *       why.</p>
    */
   ErrorMessage?: string;
 
   /**
-   * <p>For enterprise edtion indexes, you can choose to use additional capacity to meet the needs
-   *       of your application. This contains the capacity units used for the index. A 0 for the query
-   *       capacity or the storage capacity indicates that the index is using the default capacity for
-   *       the index.</p>
+   * <p>For Enterprise edition indexes, you can choose to use additional
+   *       capacity to meet the needs of your application. This contains the capacity
+   *       units used for the index. A 0 for the query capacity or the storage
+   *       capacity indicates that the index is using the default capacity for the
+   *       index.</p>
    */
   CapacityUnits?: CapacityUnitsConfiguration;
 
@@ -3326,6 +3655,9 @@ export interface DescribeIndexResponse {
 }
 
 export namespace DescribeIndexResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeIndexResponse): any => ({
     ...obj,
     ...(obj.ServerSideEncryptionConfiguration && {
@@ -3349,6 +3681,9 @@ export interface DescribeThesaurusRequest {
 }
 
 export namespace DescribeThesaurusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeThesaurusRequest): any => ({
     ...obj,
   });
@@ -3447,6 +3782,9 @@ export interface DescribeThesaurusResponse {
 }
 
 export namespace DescribeThesaurusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeThesaurusResponse): any => ({
     ...obj,
   });
@@ -3459,9 +3797,10 @@ export interface ListDataSourcesRequest {
   IndexId: string | undefined;
 
   /**
-   * <p>If the previous response was incomplete (because there is more data to retrieve),
-   *       Amazon Kendra returns a pagination token in the response. You can use this pagination token to
-   *       retrieve the next set of data sources (<code>DataSourceSummaryItems</code>). </p>
+   * <p>If the previous response was incomplete (because there is more data to
+   *       retrieve), Amazon Kendra returns a pagination token in the response. You
+   *       can use this pagination token to retrieve the next set of data sources
+   *         (<code>DataSourceSummaryItems</code>). </p>
    */
   NextToken?: string;
 
@@ -3472,6 +3811,9 @@ export interface ListDataSourcesRequest {
 }
 
 export namespace ListDataSourcesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDataSourcesRequest): any => ({
     ...obj,
   });
@@ -3479,7 +3821,7 @@ export namespace ListDataSourcesRequest {
 
 /**
  * <p>Summary information for a Amazon Kendra data source. Returned in a call
- *             to .</p>
+ *             to the <code>DescribeDataSource</code> operation.</p>
  */
 export interface DataSourceSummary {
   /**
@@ -3509,12 +3851,15 @@ export interface DataSourceSummary {
 
   /**
    * <p>The status of the data source. When the status is
-   *                 <code>ATIVE</code> the data source is ready to use.</p>
+   *                 <code>ACTIVE</code> the data source is ready to use.</p>
    */
   Status?: DataSourceStatus | string;
 }
 
 export namespace DataSourceSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataSourceSummary): any => ({
     ...obj,
   });
@@ -3527,13 +3872,17 @@ export interface ListDataSourcesResponse {
   SummaryItems?: DataSourceSummary[];
 
   /**
-   * <p>If the response is truncated, Amazon Kendra returns this token that you can use in the
-   *       subsequent request to retrieve the next set of data sources. </p>
+   * <p>If the response is truncated, Amazon Kendra returns this token that you
+   *       can use in the subsequent request to retrieve the next set of data
+   *       sources. </p>
    */
   NextToken?: string;
 }
 
 export namespace ListDataSourcesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDataSourcesResponse): any => ({
     ...obj,
   });
@@ -3555,6 +3904,9 @@ export interface TimeRange {
 }
 
 export namespace TimeRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TimeRange): any => ({
     ...obj,
   });
@@ -3582,31 +3934,36 @@ export interface ListDataSourceSyncJobsRequest {
   IndexId: string | undefined;
 
   /**
-   * <p>If the result of the previous request to <code>GetDataSourceSyncJobHistory</code> was
-   *       truncated, include the <code>NextToken</code> to fetch the next set of jobs.</p>
+   * <p>If the result of the previous request to
+   *         <code>GetDataSourceSyncJobHistory</code> was truncated, include the
+   *         <code>NextToken</code> to fetch the next set of jobs.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>The maximum number of synchronization jobs to return in the response. If there are fewer
-   *       results in the list, this response contains only the actual results.</p>
+   * <p>The maximum number of synchronization jobs to return in the response.
+   *       If there are fewer results in the list, this response contains only the
+   *       actual results.</p>
    */
   MaxResults?: number;
 
   /**
-   * <p>When specified, the synchronization jobs returned in the list are limited to jobs between
-   *       the specified dates. </p>
+   * <p>When specified, the synchronization jobs returned in the list are
+   *       limited to jobs between the specified dates. </p>
    */
   StartTimeFilter?: TimeRange;
 
   /**
-   * <p>When specified, only returns synchronization jobs with the <code>Status</code> field equal
-   *       to the specified status.</p>
+   * <p>When specified, only returns synchronization jobs with the
+   *         <code>Status</code> field equal to the specified status.</p>
    */
   StatusFilter?: DataSourceSyncJobStatus | string;
 }
 
 export namespace ListDataSourceSyncJobsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDataSourceSyncJobsRequest): any => ({
     ...obj,
   });
@@ -3650,6 +4007,9 @@ export interface DataSourceSyncJobMetrics {
 }
 
 export namespace DataSourceSyncJobMetrics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataSourceSyncJobMetrics): any => ({
     ...obj,
   });
@@ -3715,6 +4075,9 @@ export interface DataSourceSyncJob {
 }
 
 export namespace DataSourceSyncJob {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataSourceSyncJob): any => ({
     ...obj,
   });
@@ -3727,16 +4090,20 @@ export interface ListDataSourceSyncJobsResponse {
   History?: DataSourceSyncJob[];
 
   /**
-   * <p>The <code>GetDataSourceSyncJobHistory</code> operation returns a page of vocabularies at a
-   *       time. The maximum size of the page is set by the <code>MaxResults</code> parameter. If there
-   *       are more jobs in the list than the page size, Amazon Kendra returns the NextPage token. Include
-   *       the token in the next request to the <code>GetDataSourceSyncJobHistory</code> operation to
-   *       return in the next page of jobs.</p>
+   * <p>The <code>GetDataSourceSyncJobHistory</code> operation returns a page
+   *       of vocabularies at a time. The maximum size of the page is set by the
+   *         <code>MaxResults</code> parameter. If there are more jobs in the list
+   *       than the page size, Amazon Kendra returns the NextPage token. Include the
+   *       token in the next request to the <code>GetDataSourceSyncJobHistory</code>
+   *       operation to return in the next page of jobs.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListDataSourceSyncJobsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDataSourceSyncJobsResponse): any => ({
     ...obj,
   });
@@ -3762,6 +4129,9 @@ export interface ListFaqsRequest {
 }
 
 export namespace ListFaqsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListFaqsRequest): any => ({
     ...obj,
   });
@@ -3806,6 +4176,9 @@ export interface FaqSummary {
 }
 
 export namespace FaqSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FaqSummary): any => ({
     ...obj,
   });
@@ -3828,6 +4201,9 @@ export interface ListFaqsResponse {
 }
 
 export namespace ListFaqsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListFaqsResponse): any => ({
     ...obj,
   });
@@ -3835,9 +4211,10 @@ export namespace ListFaqsResponse {
 
 export interface ListIndicesRequest {
   /**
-   * <p>If the previous response was incomplete (because there is more data to retrieve),
-   *       Amazon Kendra returns a pagination token in the response. You can use this pagination token to
-   *       retrieve the next set of indexes (<code>DataSourceSummaryItems</code>). </p>
+   * <p>If the previous response was incomplete (because there is more data to
+   *       retrieve), Amazon Kendra returns a pagination token in the response. You
+   *       can use this pagination token to retrieve the next set of indexes
+   *         (<code>DataSourceSummaryItems</code>). </p>
    */
   NextToken?: string;
 
@@ -3848,6 +4225,9 @@ export interface ListIndicesRequest {
 }
 
 export namespace ListIndicesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListIndicesRequest): any => ({
     ...obj,
   });
@@ -3895,6 +4275,9 @@ export interface IndexConfigurationSummary {
 }
 
 export namespace IndexConfigurationSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IndexConfigurationSummary): any => ({
     ...obj,
   });
@@ -3907,13 +4290,17 @@ export interface ListIndicesResponse {
   IndexConfigurationSummaryItems?: IndexConfigurationSummary[];
 
   /**
-   * <p>If the response is truncated, Amazon Kendra returns this token that you can use in the
-   *       subsequent request to retrieve the next set of indexes.</p>
+   * <p>If the response is truncated, Amazon Kendra returns this token that you
+   *       can use in the subsequent request to retrieve the next set of
+   *       indexes.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListIndicesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListIndicesResponse): any => ({
     ...obj,
   });
@@ -3921,13 +4308,16 @@ export namespace ListIndicesResponse {
 
 export interface ListTagsForResourceRequest {
   /**
-   * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to get a list of tags
-   *       for.</p>
+   * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to
+   *       get a list of tags for.</p>
    */
   ResourceARN: string | undefined;
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -3941,6 +4331,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -3956,6 +4349,9 @@ export interface ResourceUnavailableException extends __SmithyException, $Metada
 }
 
 export namespace ResourceUnavailableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceUnavailableException): any => ({
     ...obj,
   });
@@ -3982,6 +4378,9 @@ export interface ListThesauriRequest {
 }
 
 export namespace ListThesauriRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListThesauriRequest): any => ({
     ...obj,
   });
@@ -4018,6 +4417,9 @@ export interface ThesaurusSummary {
 }
 
 export namespace ThesaurusSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThesaurusSummary): any => ({
     ...obj,
   });
@@ -4039,7 +4441,38 @@ export interface ListThesauriResponse {
 }
 
 export namespace ListThesauriResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListThesauriResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Overrides the document relevance properties of a custom index field.</p>
+ */
+export interface DocumentRelevanceConfiguration {
+  /**
+   * <p>The name of the tuning configuration to override document relevance
+   *          at the index level.</p>
+   */
+  Name: string | undefined;
+
+  /**
+   * <p>Provides information for manually tuning the relevance of a field
+   *             in a search. When a query includes terms that match the field, the
+   *             results are given a boost in the response based on these tuning
+   *             parameters.</p>
+   */
+  Relevance: Relevance | undefined;
+}
+
+export namespace DocumentRelevanceConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DocumentRelevanceConfiguration): any => ({
     ...obj,
   });
 }
@@ -4055,6 +4488,9 @@ export interface Facet {
 }
 
 export namespace Facet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Facet): any => ({
     ...obj,
   });
@@ -4131,6 +4567,9 @@ export interface SortingConfiguration {
 }
 
 export namespace SortingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SortingConfiguration): any => ({
     ...obj,
   });
@@ -4147,6 +4586,9 @@ export interface UserContext {
 }
 
 export namespace UserContext {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserContext): any => ({
     ...obj,
   });
@@ -4170,6 +4612,9 @@ export interface DocumentAttributeValueCountPair {
 }
 
 export namespace DocumentAttributeValueCountPair {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DocumentAttributeValueCountPair): any => ({
     ...obj,
     ...(obj.DocumentAttributeValue && {
@@ -4203,6 +4648,9 @@ export interface FacetResult {
 }
 
 export namespace FacetResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FacetResult): any => ({
     ...obj,
     ...(obj.DocumentAttributeValueCountPairs && {
@@ -4233,6 +4681,9 @@ export interface ScoreAttributes {
 }
 
 export namespace ScoreAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScoreAttributes): any => ({
     ...obj,
   });
@@ -4314,6 +4765,9 @@ export interface QueryResultItem {
 }
 
 export namespace QueryResultItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QueryResultItem): any => ({
     ...obj,
     ...(obj.DocumentAttributes && {
@@ -4324,8 +4778,8 @@ export namespace QueryResultItem {
 
 export interface QueryResult {
   /**
-   * <p>The unique identifier for the search. You use <code>QueryId</code> to identify the
-   *          search when using the feedback API.</p>
+   * <p>The unique identifier for the search. You use <code>QueryId</code>
+   *          to identify the search when using the feedback API.</p>
    */
   QueryId?: string;
 
@@ -4335,20 +4789,24 @@ export interface QueryResult {
   ResultItems?: QueryResultItem[];
 
   /**
-   * <p>Contains the facet results. A <code>FacetResult</code> contains the counts for each
-   *          attribute key that was specified in the <code>Facets</code> input parameter.</p>
+   * <p>Contains the facet results. A <code>FacetResult</code> contains the
+   *          counts for each attribute key that was specified in the
+   *             <code>Facets</code> input parameter.</p>
    */
   FacetResults?: FacetResult[];
 
   /**
-   * <p>The total number of items found by the search; however, you can only retrieve up to 100
-   *          items. For example, if the search found 192 items, you can only retrieve the first 100 of
-   *          the items.</p>
+   * <p>The total number of items found by the search; however, you can only
+   *          retrieve up to 100 items. For example, if the search found 192 items,
+   *          you can only retrieve the first 100 of the items.</p>
    */
   TotalNumberOfResults?: number;
 }
 
 export namespace QueryResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QueryResult): any => ({
     ...obj,
   });
@@ -4364,6 +4822,9 @@ export interface ResourceInUseException extends __SmithyException, $MetadataBear
 }
 
 export namespace ResourceInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceInUseException): any => ({
     ...obj,
   });
@@ -4382,6 +4843,9 @@ export interface StartDataSourceSyncJobRequest {
 }
 
 export namespace StartDataSourceSyncJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartDataSourceSyncJobRequest): any => ({
     ...obj,
   });
@@ -4395,6 +4859,9 @@ export interface StartDataSourceSyncJobResponse {
 }
 
 export namespace StartDataSourceSyncJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartDataSourceSyncJobResponse): any => ({
     ...obj,
   });
@@ -4402,7 +4869,8 @@ export namespace StartDataSourceSyncJobResponse {
 
 export interface StopDataSourceSyncJobRequest {
   /**
-   * <p>The identifier of the data source for which to stop the synchronization jobs.</p>
+   * <p>The identifier of the data source for which to stop the
+   *       synchronization jobs.</p>
    */
   Id: string | undefined;
 
@@ -4413,6 +4881,9 @@ export interface StopDataSourceSyncJobRequest {
 }
 
 export namespace StopDataSourceSyncJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopDataSourceSyncJobRequest): any => ({
     ...obj,
   });
@@ -4420,7 +4891,7 @@ export namespace StopDataSourceSyncJobRequest {
 
 /**
  * <p>Gathers information about when a particular result was clicked by
- *             a user. Your application uses the <a>SubmitFeedback</a>
+ *             a user. Your application uses the <code>SubmitFeedback</code>
  *             operation to provide click information.</p>
  */
 export interface ClickFeedback {
@@ -4438,6 +4909,9 @@ export interface ClickFeedback {
 }
 
 export namespace ClickFeedback {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClickFeedback): any => ({
     ...obj,
   });
@@ -4450,7 +4924,7 @@ export enum RelevanceType {
 
 /**
  * <p>Provides feedback on how relevant a document is to a search. Your
- *             application uses the <a>SubmitFeedback</a> operation to
+ *             application uses the <code>SubmitFeedback</code> operation to
  *             provide relevance information.</p>
  */
 export interface RelevanceFeedback {
@@ -4468,6 +4942,9 @@ export interface RelevanceFeedback {
 }
 
 export namespace RelevanceFeedback {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RelevanceFeedback): any => ({
     ...obj,
   });
@@ -4480,25 +4957,29 @@ export interface SubmitFeedbackRequest {
   IndexId: string | undefined;
 
   /**
-   * <p>The identifier of the specific query for which you are submitting feedback. The
-   *         query ID is returned in the response to the  operation.</p>
+   * <p>The identifier of the specific query for which you are submitting
+   *             feedback. The query ID is returned in the response to the
+   *                 <code>Query</code> operation.</p>
    */
   QueryId: string | undefined;
 
   /**
-   * <p>Tells Amazon Kendra that a particular search result link was chosen by
-   *         the user. </p>
+   * <p>Tells Amazon Kendra that a particular search result link was chosen
+   *             by the user. </p>
    */
   ClickFeedbackItems?: ClickFeedback[];
 
   /**
-   * <p>Provides Amazon Kendra with relevant or not relevant feedback for whether a particular
-   *         item was relevant to the search.</p>
+   * <p>Provides Amazon Kendra with relevant or not relevant feedback for
+   *             whether a particular item was relevant to the search.</p>
    */
   RelevanceFeedbackItems?: RelevanceFeedback[];
 }
 
 export namespace SubmitFeedbackRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SubmitFeedbackRequest): any => ({
     ...obj,
   });
@@ -4506,18 +4987,22 @@ export namespace SubmitFeedbackRequest {
 
 export interface TagResourceRequest {
   /**
-   * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.</p>
+   * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to
+   *       tag.</p>
    */
   ResourceARN: string | undefined;
 
   /**
-   * <p>A list of tag keys to add to the index, FAQ, or data source. If a tag already exists, the
-   *       existing value is replaced with the new value.</p>
+   * <p>A list of tag keys to add to the index, FAQ, or data source. If a tag
+   *       already exists, the existing value is replaced with the new value.</p>
    */
   Tags: Tag[] | undefined;
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -4526,6 +5011,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -4533,19 +5021,22 @@ export namespace TagResourceResponse {
 
 export interface UntagResourceRequest {
   /**
-   * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to remove the tag
-   *       from.</p>
+   * <p>The Amazon Resource Name (ARN) of the index, FAQ, or data source to
+   *       remove the tag from.</p>
    */
   ResourceARN: string | undefined;
 
   /**
-   * <p>A list of tag keys to remove from the index, FAQ, or data source. If a tag key does not
-   *       exist on the resource, it is ignored.</p>
+   * <p>A list of tag keys to remove from the index, FAQ, or data source. If a
+   *       tag key does not exist on the resource, it is ignored.</p>
    */
   TagKeys: string[] | undefined;
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -4554,6 +5045,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
@@ -4566,13 +5060,15 @@ export interface UpdateDataSourceRequest {
   Id: string | undefined;
 
   /**
-   * <p>The name of the data source to update. The name of the data source can't be updated. To
-   *       rename a data source you must delete the data source and re-create it.</p>
+   * <p>The name of the data source to update. The name of the data source
+   *       can't be updated. To rename a data source you must delete the data source
+   *       and re-create it.</p>
    */
   Name?: string;
 
   /**
-   * <p>The identifier of the index that contains the data source to update.</p>
+   * <p>The identifier of the index that contains the data source to
+   *       update.</p>
    */
   IndexId: string | undefined;
 
@@ -4592,13 +5088,16 @@ export interface UpdateDataSourceRequest {
   Schedule?: string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of the new role to use when the data source is accessing
-   *       resources on your behalf.</p>
+   * <p>The Amazon Resource Name (ARN) of the new role to use when the data
+   *       source is accessing resources on your behalf.</p>
    */
   RoleArn?: string;
 }
 
 export namespace UpdateDataSourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDataSourceRequest): any => ({
     ...obj,
   });
@@ -4616,8 +5115,8 @@ export interface UpdateIndexRequest {
   Name?: string;
 
   /**
-   * <p>A new IAM role that gives Amazon Kendra permission to access your Amazon CloudWatch
-   *       logs.</p>
+   * <p>A new IAM role that gives Amazon Kendra permission to access your
+   *       Amazon CloudWatch logs.</p>
    */
   RoleArn?: string;
 
@@ -4632,10 +5131,12 @@ export interface UpdateIndexRequest {
   DocumentMetadataConfigurationUpdates?: DocumentMetadataConfiguration[];
 
   /**
-   * <p>Sets the number of addtional storage and query capacity units that should be used by the
-   *       index. You can change the capacity of the index up to 5 times per day.</p>
-   *          <p>If you are using extra storage units, you can't reduce the storage capacity below that
-   *       required to meet the storage needs for your index.</p>
+   * <p>Sets the number of additional storage and query capacity units that
+   *       should be used by the index. You can change the capacity of the index up
+   *       to 5 times per day.</p>
+   *          <p>If you are using extra storage units, you can't reduce the storage
+   *       capacity below that required to meet the storage needs for your
+   *       index.</p>
    */
   CapacityUnits?: CapacityUnitsConfiguration;
 
@@ -4651,6 +5152,9 @@ export interface UpdateIndexRequest {
 }
 
 export namespace UpdateIndexRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateIndexRequest): any => ({
     ...obj,
   });
@@ -4690,6 +5194,9 @@ export interface UpdateThesaurusRequest {
 }
 
 export namespace UpdateThesaurusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateThesaurusRequest): any => ({
     ...obj,
   });
@@ -4789,6 +5296,9 @@ export interface AttributeFilter {
 }
 
 export namespace AttributeFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AttributeFilter): any => ({
     ...obj,
     ...(obj.AndAllFilters && {
@@ -4810,8 +5320,9 @@ export namespace AttributeFilter {
 
 export interface QueryRequest {
   /**
-   * <p>The unique identifier of the index to search. The identifier is returned in the response
-   *          from the  operation.</p>
+   * <p>The unique identifier of the index to search. The identifier is
+   *          returned in the response from the <code>CreateIndex</code>
+   *          operation.</p>
    */
   IndexId: string | undefined;
 
@@ -4821,53 +5332,72 @@ export interface QueryRequest {
   QueryText: string | undefined;
 
   /**
-   * <p>Enables filtered searches based on document attributes. You can only provide one
-   *          attribute filter; however, the <code>AndAllFilters</code>, <code>NotFilter</code>, and
-   *             <code>OrAllFilters</code> parameters contain a list of other filters.</p>
-   *          <p>The <code>AttributeFilter</code> parameter enables you to create a set of filtering
-   *          rules that a document must satisfy to be included in the query results.</p>
+   * <p>Enables filtered searches based on document attributes. You can only
+   *          provide one attribute filter; however, the <code>AndAllFilters</code>,
+   *             <code>NotFilter</code>, and <code>OrAllFilters</code> parameters
+   *          contain a list of other filters.</p>
+   *          <p>The <code>AttributeFilter</code> parameter enables you to create a
+   *          set of filtering rules that a document must satisfy to be included in
+   *          the query results.</p>
    */
   AttributeFilter?: AttributeFilter;
 
   /**
-   * <p>An array of documents attributes. Amazon Kendra returns a count for each attribute key
-   *          specified. You can use this information to help narrow the search for your user.</p>
+   * <p>An array of documents attributes. Amazon Kendra returns a count for
+   *          each attribute key specified. You can use this information to help
+   *          narrow the search for your user.</p>
    */
   Facets?: Facet[];
 
   /**
-   * <p>An array of document attributes to include in the response. No other document attributes
-   *          are included in the response. By default all document attributes are included in the
-   *          response. </p>
+   * <p>An array of document attributes to include in the response. No other
+   *          document attributes are included in the response. By default all
+   *          document attributes are included in the response. </p>
    */
   RequestedDocumentAttributes?: string[];
 
   /**
-   * <p>Sets the type of query. Only results for the specified query type are returned.</p>
+   * <p>Sets the type of query. Only results for the specified query type
+   *          are returned.</p>
    */
   QueryResultTypeFilter?: QueryResultType | string;
 
   /**
-   * <p>Query results are returned in pages the size of the <code>PageSize</code> parameter. By
-   *          default, Amazon Kendra returns the first page of results. Use this parameter to get result
-   *          pages after the first one.</p>
+   * <p>Overrides relevance tuning configurations of fields or attributes set at the index level.</p>
+   *          <p>If you use this API to override the relevance tuning configured at the index
+   *          level, but there is no relevance tuning configured at the index level, then Amazon Kendra does not apply any relevance tuning.</p>
+   *          <p>If there is relevance tuning configured at the index level, but you do not use this API
+   *          to override any relevance tuning in the index, then Amazon Kendra uses the relevance tuning that is configured at the index level.</p>
+   *          <p>If there is relevance tuning configured for fields at the index level,
+   *          but you use this API to override only some of these fields, then for the fields you did not override,
+   *          the importance is set to 1.</p>
+   */
+  DocumentRelevanceOverrideConfigurations?: DocumentRelevanceConfiguration[];
+
+  /**
+   * <p>Query results are returned in pages the size of the
+   *             <code>PageSize</code> parameter. By default, Amazon Kendra returns
+   *          the first page of results. Use this parameter to get result pages after
+   *          the first one.</p>
    */
   PageNumber?: number;
 
   /**
-   * <p>Sets the number of results that are returned in each page of results. The default page
-   *          size is 10. The maximum number of results returned is 100. If you ask for more than 100
-   *          results, only 100 are returned.</p>
+   * <p>Sets the number of results that are returned in each page of
+   *          results. The default page size is 10. The maximum number of results
+   *          returned is 100. If you ask for more than 100 results, only 100 are
+   *          returned.</p>
    */
   PageSize?: number;
 
   /**
-   * <p>Provides information that determines how the results of the query are sorted. You can
-   *          set the field that Amazon Kendra should sort the results on, and specify whether the results should
-   *          be sorted in ascending or descending order. In the case of ties in sorting the results, the
+   * <p>Provides information that determines how the results of the query
+   *          are sorted. You can set the field that Amazon Kendra should sort the results
+   *          on, and specify whether the results should be sorted in ascending or
+   *          descending order. In the case of ties in sorting the results, the
    *          results are sorted by relevance.</p>
-   *          <p>If you don't provide sorting configuration, the results are sorted by the relevance that
-   *          Amazon Kendra determines for the result.</p>
+   *          <p>If you don't provide sorting configuration, the results are sorted
+   *          by the relevance that Amazon Kendra determines for the result.</p>
    */
   SortingConfiguration?: SortingConfiguration;
 
@@ -4877,15 +5407,18 @@ export interface QueryRequest {
   UserContext?: UserContext;
 
   /**
-   * <p>Provides an identifier for a specific user. The <code>VisitorId</code>
-   *       should be a unique identifier, such as a GUID. Don't use personally
-   *       identifiable information, such as the user's email address, as the
-   *       <code>VisitorId</code>.</p>
+   * <p>Provides an identifier for a specific user. The
+   *             <code>VisitorId</code> should be a unique identifier, such as a
+   *          GUID. Don't use personally identifiable information, such as the user's
+   *          email address, as the <code>VisitorId</code>.</p>
    */
   VisitorId?: string;
 }
 
 export namespace QueryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QueryRequest): any => ({
     ...obj,
     ...(obj.AttributeFilter && { AttributeFilter: AttributeFilter.filterSensitiveLog(obj.AttributeFilter) }),

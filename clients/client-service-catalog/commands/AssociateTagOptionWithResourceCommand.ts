@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateTagOptionWithResourceCommandInput = AssociateTagOptionWithResourceInput;
-export type AssociateTagOptionWithResourceCommandOutput = AssociateTagOptionWithResourceOutput & __MetadataBearer;
+export interface AssociateTagOptionWithResourceCommandInput extends AssociateTagOptionWithResourceInput {}
+export interface AssociateTagOptionWithResourceCommandOutput
+  extends AssociateTagOptionWithResourceOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Associate the specified TagOption with the specified portfolio or product.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, AssociateTagOptionWithResourceCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, AssociateTagOptionWithResourceCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new AssociateTagOptionWithResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateTagOptionWithResourceCommandInput} for command's `input` shape.
+ * @see {@link AssociateTagOptionWithResourceCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateTagOptionWithResourceCommand extends $Command<
   AssociateTagOptionWithResourceCommandInput,

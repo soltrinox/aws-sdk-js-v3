@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateGeoMatchSetCommandInput = CreateGeoMatchSetRequest;
-export type CreateGeoMatchSetCommandOutput = CreateGeoMatchSetResponse & __MetadataBearer;
+export interface CreateGeoMatchSetCommandInput extends CreateGeoMatchSetRequest {}
+export interface CreateGeoMatchSetCommandOutput extends CreateGeoMatchSetResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -50,6 +50,20 @@ export type CreateGeoMatchSetCommandOutput = CreateGeoMatchSetResponse & __Metad
  *          </ol>
  * 		       <p>For more information about how to use the AWS WAF API to allow or block HTTP requests, see the
  * 			<a href="https://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF Developer Guide</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFClient, CreateGeoMatchSetCommand } from "@aws-sdk/client-waf"; // ES Modules import
+ * // const { WAFClient, CreateGeoMatchSetCommand } = require("@aws-sdk/client-waf"); // CommonJS import
+ * const client = new WAFClient(config);
+ * const command = new CreateGeoMatchSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateGeoMatchSetCommandInput} for command's `input` shape.
+ * @see {@link CreateGeoMatchSetCommandOutput} for command's `response` shape.
+ * @see {@link WAFClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateGeoMatchSetCommand extends $Command<
   CreateGeoMatchSetCommandInput,

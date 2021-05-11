@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TransactGetItemsCommandInput = TransactGetItemsInput;
-export type TransactGetItemsCommandOutput = TransactGetItemsOutput & __MetadataBearer;
+export interface TransactGetItemsCommandInput extends TransactGetItemsInput {}
+export interface TransactGetItemsCommandOutput extends TransactGetItemsOutput, __MetadataBearer {}
 
 /**
  * <p>
@@ -47,6 +47,20 @@ export type TransactGetItemsCommandOutput = TransactGetItemsOutput & __MetadataB
  *                <p>The aggregate size of the items in the transaction cannot exceed 4 MB.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, TransactGetItemsCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, TransactGetItemsCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new TransactGetItemsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TransactGetItemsCommandInput} for command's `input` shape.
+ * @see {@link TransactGetItemsCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TransactGetItemsCommand extends $Command<
   TransactGetItemsCommandInput,

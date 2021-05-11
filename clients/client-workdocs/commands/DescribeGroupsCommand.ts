@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeGroupsCommandInput = DescribeGroupsRequest;
-export type DescribeGroupsCommandOutput = DescribeGroupsResponse & __MetadataBearer;
+export interface DescribeGroupsCommandInput extends DescribeGroupsRequest {}
+export interface DescribeGroupsCommandOutput extends DescribeGroupsResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the groups specified by the query. Groups are defined by the underlying
  *             Active Directory.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkDocsClient, DescribeGroupsCommand } from "@aws-sdk/client-workdocs"; // ES Modules import
+ * // const { WorkDocsClient, DescribeGroupsCommand } = require("@aws-sdk/client-workdocs"); // CommonJS import
+ * const client = new WorkDocsClient(config);
+ * const command = new DescribeGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeGroupsCommandInput} for command's `input` shape.
+ * @see {@link DescribeGroupsCommandOutput} for command's `response` shape.
+ * @see {@link WorkDocsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeGroupsCommand extends $Command<
   DescribeGroupsCommandInput,

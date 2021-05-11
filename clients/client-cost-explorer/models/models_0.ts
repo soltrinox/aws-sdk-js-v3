@@ -26,6 +26,9 @@ export interface AnomalyScore {
 }
 
 export namespace AnomalyScore {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AnomalyScore): any => ({
     ...obj,
   });
@@ -59,6 +62,9 @@ export interface Impact {
 }
 
 export namespace Impact {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Impact): any => ({
     ...obj,
   });
@@ -100,6 +106,9 @@ export interface RootCause {
 }
 
 export namespace RootCause {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RootCause): any => ({
     ...obj,
   });
@@ -174,6 +183,9 @@ export interface Anomaly {
 }
 
 export namespace Anomaly {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Anomaly): any => ({
     ...obj,
   });
@@ -201,6 +213,9 @@ export interface AnomalyDateInterval {
 }
 
 export namespace AnomalyDateInterval {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AnomalyDateInterval): any => ({
     ...obj,
   });
@@ -211,6 +226,7 @@ export enum MonitorDimension {
 }
 
 export enum MatchOption {
+  ABSENT = "ABSENT",
   CASE_INSENSITIVE = "CASE_INSENSITIVE",
   CASE_SENSITIVE = "CASE_SENSITIVE",
   CONTAINS = "CONTAINS",
@@ -221,6 +237,10 @@ export enum MatchOption {
 
 /**
  * <p>The Cost Categories values used for filtering the costs.</p>
+ * 		       <p>If <code>Values</code> and <code>Key</code> are not specified, the <code>ABSENT</code>
+ *             <code>MatchOption</code> is applied to all Cost Categories. That is, filtering on resources that are not mapped to any Cost Categories.</p>
+ *          <p>If <code>Values</code> is provided and <code>Key</code> is not specified, the <code>ABSENT</code>
+ *             <code>MatchOption</code> is applied to the Cost Categories <code>Key</code> only. That is, filtering on resources without the given Cost Categories key.</p>
  */
 export interface CostCategoryValues {
   /**
@@ -235,19 +255,24 @@ export interface CostCategoryValues {
 
   /**
    * <p>
-   *             The match options that you can use to filter your results. MatchOptions is only applicable for only applicable for actions related to cost category. The default values for <code>MatchOptions</code> is <code>EQUALS</code> and <code>CASE_SENSITIVE</code>.
+   *             The match options that you can use to filter your results. MatchOptions is only applicable for actions related to cost category. The default values for <code>MatchOptions</code> is <code>EQUALS</code> and <code>CASE_SENSITIVE</code>.
    *         </p>
    */
   MatchOptions?: (MatchOption | string)[];
 }
 
 export namespace CostCategoryValues {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CostCategoryValues): any => ({
     ...obj,
   });
 }
 
 export enum Dimension {
+  AGREEMENT_END_DATE_TIME_AFTER = "AGREEMENT_END_DATE_TIME_AFTER",
+  AGREEMENT_END_DATE_TIME_BEFORE = "AGREEMENT_END_DATE_TIME_BEFORE",
   AZ = "AZ",
   BILLING_ENTITY = "BILLING_ENTITY",
   CACHE_ENGINE = "CACHE_ENGINE",
@@ -306,6 +331,9 @@ export interface DimensionValues {
 }
 
 export namespace DimensionValues {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DimensionValues): any => ({
     ...obj,
   });
@@ -313,6 +341,10 @@ export namespace DimensionValues {
 
 /**
  * <p>The values that are available for a tag.</p>
+ * 		       <p>If <code>Values</code> and <code>Key</code> are not specified, the <code>ABSENT</code>
+ *             <code>MatchOption</code> is applied to all tags. That is, filtering on resources with no tags.</p>
+ *          <p>If <code>Values</code> is provided and <code>Key</code> is not specified, the <code>ABSENT</code>
+ *             <code>MatchOption</code> is applied to the tag <code>Key</code> only. That is, filtering on resources without the given tag key.</p>
  */
 export interface TagValues {
   /**
@@ -335,6 +367,9 @@ export interface TagValues {
 }
 
 export namespace TagValues {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagValues): any => ({
     ...obj,
   });
@@ -386,6 +421,9 @@ export interface Subscriber {
 }
 
 export namespace Subscriber {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Subscriber): any => ({
     ...obj,
   });
@@ -446,6 +484,9 @@ export interface AnomalySubscription {
 }
 
 export namespace AnomalySubscription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AnomalySubscription): any => ({
     ...obj,
   });
@@ -459,6 +500,9 @@ export interface CreateAnomalyMonitorResponse {
 }
 
 export namespace CreateAnomalyMonitorResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAnomalyMonitorResponse): any => ({
     ...obj,
   });
@@ -474,6 +518,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -489,6 +536,9 @@ export interface CreateAnomalySubscriptionRequest {
 }
 
 export namespace CreateAnomalySubscriptionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAnomalySubscriptionRequest): any => ({
     ...obj,
   });
@@ -504,6 +554,9 @@ export interface CreateAnomalySubscriptionResponse {
 }
 
 export namespace CreateAnomalySubscriptionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAnomalySubscriptionResponse): any => ({
     ...obj,
   });
@@ -520,9 +573,47 @@ export interface UnknownMonitorException extends __SmithyException, $MetadataBea
 }
 
 export namespace UnknownMonitorException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnknownMonitorException): any => ({
     ...obj,
   });
+}
+
+export enum CostCategoryInheritedValueDimensionName {
+  LINKED_ACCOUNT_NAME = "LINKED_ACCOUNT_NAME",
+  TAG = "TAG",
+}
+
+/**
+ * <p>When creating or updating a cost category, you can define the <code>CostCategoryRule</code> rule type as <code>INHERITED_VALUE</code>. This rule type adds the flexibility of defining a rule that dynamically inherits the cost category value from the dimension value defined by <code>CostCategoryInheritedValueDimension</code>. For example, if you wanted to dynamically group costs based on the value of a specific tag key, you would first choose an inherited value rule type, then choose the tag dimension and specify the tag key to use.</p>
+ */
+export interface CostCategoryInheritedValueDimension {
+  /**
+   * <p>The name of dimension for which to group costs.</p>
+   * 	        <p>If you specify <code>LINKED_ACCOUNT_NAME</code>, the cost category value will be based on account name. If you specify <code>TAG</code>, the cost category value will be based on the value of the specified tag key.</p>
+   */
+  DimensionName?: CostCategoryInheritedValueDimensionName | string;
+
+  /**
+   * <p>The key to extract cost category values.</p>
+   */
+  DimensionKey?: string;
+}
+
+export namespace CostCategoryInheritedValueDimension {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CostCategoryInheritedValueDimension): any => ({
+    ...obj,
+  });
+}
+
+export enum CostCategoryRuleType {
+  INHERITED_VALUE = "INHERITED_VALUE",
+  REGULAR = "REGULAR",
 }
 
 export enum CostCategoryRuleVersion {
@@ -546,6 +637,9 @@ export interface CreateCostCategoryDefinitionResponse {
 }
 
 export namespace CreateCostCategoryDefinitionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCostCategoryDefinitionResponse): any => ({
     ...obj,
   });
@@ -562,6 +656,9 @@ export interface ServiceQuotaExceededException extends __SmithyException, $Metad
 }
 
 export namespace ServiceQuotaExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceQuotaExceededException): any => ({
     ...obj,
   });
@@ -575,6 +672,9 @@ export interface DeleteAnomalyMonitorRequest {
 }
 
 export namespace DeleteAnomalyMonitorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAnomalyMonitorRequest): any => ({
     ...obj,
   });
@@ -583,6 +683,9 @@ export namespace DeleteAnomalyMonitorRequest {
 export interface DeleteAnomalyMonitorResponse {}
 
 export namespace DeleteAnomalyMonitorResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAnomalyMonitorResponse): any => ({
     ...obj,
   });
@@ -596,6 +699,9 @@ export interface DeleteAnomalySubscriptionRequest {
 }
 
 export namespace DeleteAnomalySubscriptionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAnomalySubscriptionRequest): any => ({
     ...obj,
   });
@@ -604,6 +710,9 @@ export namespace DeleteAnomalySubscriptionRequest {
 export interface DeleteAnomalySubscriptionResponse {}
 
 export namespace DeleteAnomalySubscriptionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAnomalySubscriptionResponse): any => ({
     ...obj,
   });
@@ -620,6 +729,9 @@ export interface UnknownSubscriptionException extends __SmithyException, $Metada
 }
 
 export namespace UnknownSubscriptionException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnknownSubscriptionException): any => ({
     ...obj,
   });
@@ -635,6 +747,9 @@ export interface DeleteCostCategoryDefinitionRequest {
 }
 
 export namespace DeleteCostCategoryDefinitionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCostCategoryDefinitionRequest): any => ({
     ...obj,
   });
@@ -657,6 +772,9 @@ export interface DeleteCostCategoryDefinitionResponse {
 }
 
 export namespace DeleteCostCategoryDefinitionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCostCategoryDefinitionResponse): any => ({
     ...obj,
   });
@@ -674,6 +792,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -696,6 +817,9 @@ export interface DescribeCostCategoryDefinitionRequest {
 }
 
 export namespace DescribeCostCategoryDefinitionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCostCategoryDefinitionRequest): any => ({
     ...obj,
   });
@@ -732,6 +856,9 @@ export interface CostCategoryProcessingStatus {
 }
 
 export namespace CostCategoryProcessingStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CostCategoryProcessingStatus): any => ({
     ...obj,
   });
@@ -771,6 +898,9 @@ export interface TotalImpactFilter {
 }
 
 export namespace TotalImpactFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TotalImpactFilter): any => ({
     ...obj,
   });
@@ -817,6 +947,9 @@ export interface GetAnomaliesRequest {
 }
 
 export namespace GetAnomaliesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAnomaliesRequest): any => ({
     ...obj,
   });
@@ -839,6 +972,9 @@ export interface GetAnomaliesResponse {
 }
 
 export namespace GetAnomaliesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAnomaliesResponse): any => ({
     ...obj,
   });
@@ -854,6 +990,9 @@ export interface InvalidNextTokenException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidNextTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextTokenException): any => ({
     ...obj,
   });
@@ -883,6 +1022,9 @@ export interface GetAnomalyMonitorsRequest {
 }
 
 export namespace GetAnomalyMonitorsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAnomalyMonitorsRequest): any => ({
     ...obj,
   });
@@ -919,6 +1061,9 @@ export interface GetAnomalySubscriptionsRequest {
 }
 
 export namespace GetAnomalySubscriptionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAnomalySubscriptionsRequest): any => ({
     ...obj,
   });
@@ -941,6 +1086,9 @@ export interface GetAnomalySubscriptionsResponse {
 }
 
 export namespace GetAnomalySubscriptionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAnomalySubscriptionsResponse): any => ({
     ...obj,
   });
@@ -956,6 +1104,9 @@ export interface BillExpirationException extends __SmithyException, $MetadataBea
 }
 
 export namespace BillExpirationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BillExpirationException): any => ({
     ...obj,
   });
@@ -971,6 +1122,9 @@ export interface DataUnavailableException extends __SmithyException, $MetadataBe
 }
 
 export namespace DataUnavailableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataUnavailableException): any => ({
     ...obj,
   });
@@ -1005,26 +1159,29 @@ export interface GroupDefinition {
 }
 
 export namespace GroupDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GroupDefinition): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The time period that you want the usage and costs for.
+ * <p>The time period of the request.
  *         </p>
  */
 export interface DateInterval {
   /**
-   * <p>The beginning of the time period that you want the usage and costs for. The start
+   * <p>The beginning of the time period. The start
    *             date is inclusive. For example, if <code>start</code> is <code>2017-01-01</code>, AWS
    *             retrieves cost and usage data starting at <code>2017-01-01</code> up to the end
-   *             date.</p>
+   *             date. The start date must be equal to or no later than the current date to avoid a validation error.</p>
    */
   Start: string | undefined;
 
   /**
-   * <p>The end of the time period that you want the usage and costs for. The end date is
+   * <p>The end of the time period. The end date is
    *             exclusive. For example, if <code>end</code> is <code>2017-05-01</code>, AWS retrieves
    *             cost and usage data from the start date up to, but not including,
    *                 <code>2017-05-01</code>.</p>
@@ -1033,7 +1190,35 @@ export interface DateInterval {
 }
 
 export namespace DateInterval {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DateInterval): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The metadata of a specific type that you can use to filter and group your results.
+ *             You can use <code>GetDimensionValues</code> to find specific values.</p>
+ */
+export interface DimensionValuesWithAttributes {
+  /**
+   * <p>The value of a dimension with a specific attribute.</p>
+   */
+  Value?: string;
+
+  /**
+   * <p>The attribute that applies to a specific <code>Dimension</code>.</p>
+   */
+  Attributes?: { [key: string]: string };
+}
+
+export namespace DimensionValuesWithAttributes {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DimensionValuesWithAttributes): any => ({
     ...obj,
   });
 }
@@ -1054,6 +1239,9 @@ export interface MetricValue {
 }
 
 export namespace MetricValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricValue): any => ({
     ...obj,
   });
@@ -1075,6 +1263,9 @@ export interface Group {
 }
 
 export namespace Group {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Group): any => ({
     ...obj,
   });
@@ -1107,6 +1298,9 @@ export interface ResultByTime {
 }
 
 export namespace ResultByTime {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResultByTime): any => ({
     ...obj,
   });
@@ -1127,9 +1321,17 @@ export interface GetCostAndUsageResponse {
    * <p>The time period that is covered by the results in the response.</p>
    */
   ResultsByTime?: ResultByTime[];
+
+  /**
+   * <p>The attributes that apply to a specific dimension value. For example, if the value is a linked account, the attribute is that account name.</p>
+   */
+  DimensionValueAttributes?: DimensionValuesWithAttributes[];
 }
 
 export namespace GetCostAndUsageResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCostAndUsageResponse): any => ({
     ...obj,
   });
@@ -1146,6 +1348,9 @@ export interface RequestChangedException extends __SmithyException, $MetadataBea
 }
 
 export namespace RequestChangedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RequestChangedException): any => ({
     ...obj,
   });
@@ -1167,10 +1372,85 @@ export interface GetCostAndUsageWithResourcesResponse {
    * <p>The time period that is covered by the results in the response.</p>
    */
   ResultsByTime?: ResultByTime[];
+
+  /**
+   * <p>The attributes that apply to a specific dimension value. For example, if the value is a linked account, the attribute is that account name.</p>
+   */
+  DimensionValueAttributes?: DimensionValuesWithAttributes[];
 }
 
 export namespace GetCostAndUsageWithResourcesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCostAndUsageWithResourcesResponse): any => ({
+    ...obj,
+  });
+}
+
+export enum SortOrder {
+  ASCENDING = "ASCENDING",
+  DESCENDING = "DESCENDING",
+}
+
+/**
+ * <p>The details of how to sort the data.</p>
+ */
+export interface SortDefinition {
+  /**
+   * <p>The key by which to sort the data.</p>
+   */
+  Key: string | undefined;
+
+  /**
+   * <p>The order in which to sort the data.</p>
+   */
+  SortOrder?: SortOrder | string;
+}
+
+export namespace SortDefinition {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SortDefinition): any => ({
+    ...obj,
+  });
+}
+
+export interface GetCostCategoriesResponse {
+  /**
+   * <p>If the number of objects that are still available for retrieval exceeds the limit, AWS returns a NextPageToken value in the response. To retrieve the next batch of objects, provide the marker from the prior call in your next request.</p>
+   */
+  NextPageToken?: string;
+
+  /**
+   * <p>The names of the Cost Categories.</p>
+   */
+  CostCategoryNames?: string[];
+
+  /**
+   * <p>The Cost Category values.</p>
+   * 	        <p>
+   *             <code>CostCategoryValues</code> are not returned if <code>CostCategoryName</code> is not specified in the request. </p>
+   */
+  CostCategoryValues?: string[];
+
+  /**
+   * <p>The number of objects returned.</p>
+   */
+  ReturnSize: number | undefined;
+
+  /**
+   * <p>The total number of objects.</p>
+   */
+  TotalSize: number | undefined;
+}
+
+export namespace GetCostCategoriesResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetCostCategoriesResponse): any => ({
     ...obj,
   });
 }
@@ -1211,6 +1491,9 @@ export interface ForecastResult {
 }
 
 export namespace ForecastResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ForecastResult): any => ({
     ...obj,
   });
@@ -1230,6 +1513,9 @@ export interface GetCostForecastResponse {
 }
 
 export namespace GetCostForecastResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCostForecastResponse): any => ({
     ...obj,
   });
@@ -1239,6 +1525,3431 @@ export enum Context {
   COST_AND_USAGE = "COST_AND_USAGE",
   RESERVATIONS = "RESERVATIONS",
   SAVINGS_PLANS = "SAVINGS_PLANS",
+}
+
+export interface GetDimensionValuesResponse {
+  /**
+   * <p>The filters that you used to filter your request. Some dimensions are available only for a specific context.</p>
+   * 		       <p>If you set the context to <code>COST_AND_USAGE</code>, you can use the following
+   *            dimensions for searching:</p>
+   *            <ul>
+   *             <li>
+   *                <p>AZ - The Availability Zone. An example is <code>us-east-1a</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>DATABASE_ENGINE - The Amazon Relational Database Service database. Examples are Aurora or MySQL.</p>
+   *             </li>
+   *             <li>
+   *                <p>INSTANCE_TYPE - The type of Amazon EC2 instance. An example is <code>m4.xlarge</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>LEGAL_ENTITY_NAME - The name of the organization that sells you AWS services, such as Amazon Web Services.</p>
+   *             </li>
+   *             <li>
+   *                <p>LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account. The value
+   *                field contains the AWS ID of the member account.</p>
+   *             </li>
+   *             <li>
+   *                <p>OPERATING_SYSTEM - The operating system. Examples are Windows or Linux.</p>
+   *             </li>
+   *             <li>
+   *                <p>OPERATION - The action performed. Examples include <code>RunInstance</code> and <code>CreateBucket</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>PLATFORM - The Amazon EC2 operating system. Examples are Windows or Linux.</p>
+   *             </li>
+   *             <li>
+   *                <p>PURCHASE_TYPE - The reservation type of the purchase to which this usage is related. Examples include On-Demand
+   *                Instances and Standard Reserved Instances.</p>
+   *             </li>
+   *             <li>
+   *                <p>SERVICE - The AWS service such as Amazon DynamoDB.</p>
+   *             </li>
+   *             <li>
+   *                <p>USAGE_TYPE - The type of usage. An example is DataTransfer-In-Bytes. The response for the <code>GetDimensionValues</code> operation
+   *            includes a unit attribute. Examples include GB and Hrs.</p>
+   *             </li>
+   *             <li>
+   *                <p>USAGE_TYPE_GROUP - The grouping of common usage types. An example is Amazon EC2: CloudWatch – Alarms. The response for this
+   *                operation includes a unit attribute.</p>
+   *             </li>
+   *             <li>
+   *                <p>RECORD_TYPE - The different types of charges such as RI fees, usage costs, tax refunds, and credits.</p>
+   *             </li>
+   *             <li>
+   *                <p>RESOURCE_ID - The unique identifier of the resource. ResourceId is an opt-in feature only available for last 14 days for EC2-Compute Service.</p>
+   *             </li>
+   *          </ul>
+   *          <p>If you set the context to <code>RESERVATIONS</code>, you can use the following
+   *            dimensions for searching:</p>
+   *          <ul>
+   *             <li>
+   *                <p>AZ - The Availability Zone. An example is <code>us-east-1a</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>CACHE_ENGINE - The Amazon ElastiCache operating system. Examples are Windows or Linux.</p>
+   *             </li>
+   *             <li>
+   *                <p>DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service deployments. Valid values are <code>SingleAZ</code> and <code>MultiAZ</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>INSTANCE_TYPE - The type of Amazon EC2 instance. An example is <code>m4.xlarge</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account. The value
+   *                field contains the AWS ID of the member account.</p>
+   *             </li>
+   *             <li>
+   *                <p>PLATFORM - The Amazon EC2 operating system. Examples are Windows or Linux.</p>
+   *             </li>
+   *             <li>
+   *                <p>REGION - The AWS Region.</p>
+   *             </li>
+   *             <li>
+   *                <p>SCOPE (Utilization only) - The scope of a Reserved Instance (RI). Values are regional or a single Availability Zone.</p>
+   *             </li>
+   *             <li>
+   *                <p>TAG (Coverage only) - The tags that are associated with a Reserved Instance (RI).</p>
+   *             </li>
+   *             <li>
+   *                <p>TENANCY - The tenancy of a resource. Examples are shared or dedicated.</p>
+   *             </li>
+   *          </ul>
+   *          <p>If you set the context to <code>SAVINGS_PLANS</code>, you can use the following dimensions for searching:</p>
+   *          <ul>
+   *             <li>
+   *                <p>SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)</p>
+   *             </li>
+   *             <li>
+   *                <p>PAYMENT_OPTION - Payment option for the given Savings Plans (for example, All Upfront)</p>
+   *             </li>
+   *             <li>
+   *                <p>REGION - The AWS Region.</p>
+   *             </li>
+   *             <li>
+   *                <p>INSTANCE_TYPE_FAMILY - The family of instances (For example, <code>m5</code>)</p>
+   *             </li>
+   *             <li>
+   *                <p>LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account. The value
+   *                field contains the AWS ID of the member account.</p>
+   *             </li>
+   *             <li>
+   *                <p>SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan</p>
+   *             </li>
+   *          </ul>
+   */
+  DimensionValues: DimensionValuesWithAttributes[] | undefined;
+
+  /**
+   * <p>The number of results that AWS returned at one time.</p>
+   */
+  ReturnSize: number | undefined;
+
+  /**
+   * <p>The total number of search results.</p>
+   */
+  TotalSize: number | undefined;
+
+  /**
+   * <p>The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
+   */
+  NextPageToken?: string;
+}
+
+export namespace GetDimensionValuesResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetDimensionValuesResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>How much it costs to run an instance.</p>
+ */
+export interface CoverageCost {
+  /**
+   * <p>How much an On-Demand Instance costs.</p>
+   */
+  OnDemandCost?: string;
+}
+
+export namespace CoverageCost {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CoverageCost): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>How long a running instance either used a reservation or was On-Demand.</p>
+ */
+export interface CoverageHours {
+  /**
+   * <p>The number of instance running hours that On-Demand Instances covered.</p>
+   */
+  OnDemandHours?: string;
+
+  /**
+   * <p>The number of instance running hours that reservations covered.</p>
+   */
+  ReservedHours?: string;
+
+  /**
+   * <p>The total instance usage, in hours.</p>
+   */
+  TotalRunningHours?: string;
+
+  /**
+   * <p>The percentage of instance hours that a reservation covered.</p>
+   */
+  CoverageHoursPercentage?: string;
+}
+
+export namespace CoverageHours {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CoverageHours): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The amount of instance usage, in normalized units. Normalized units enable you to
+ *             see your EC2 usage for multiple sizes of instances in a uniform way. For example,
+ *             suppose you run an xlarge instance and a 2xlarge instance. If you run both instances for
+ *             the same amount of time, the 2xlarge instance uses twice as much of your reservation as
+ *             the xlarge instance, even though both instances show only one instance-hour. Using
+ *             normalized units instead of instance-hours, the xlarge instance used 8 normalized units,
+ *             and the 2xlarge instance used 16 normalized units.</p>
+ *         <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html">Modifying Reserved Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide for
+ *                 Linux Instances</i>.</p>
+ */
+export interface CoverageNormalizedUnits {
+  /**
+   * <p>The number of normalized units that are covered by On-Demand Instances instead of a
+   *             reservation.</p>
+   */
+  OnDemandNormalizedUnits?: string;
+
+  /**
+   * <p>The number of normalized units that a reservation covers.</p>
+   */
+  ReservedNormalizedUnits?: string;
+
+  /**
+   * <p>The total number of normalized units that you used.</p>
+   */
+  TotalRunningNormalizedUnits?: string;
+
+  /**
+   * <p>The percentage of your used instance normalized units that a reservation
+   *             covers.</p>
+   */
+  CoverageNormalizedUnitsPercentage?: string;
+}
+
+export namespace CoverageNormalizedUnits {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CoverageNormalizedUnits): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The amount of instance usage that a reservation covered.</p>
+ */
+export interface Coverage {
+  /**
+   * <p>The amount of instance usage that the reservation covered, in hours.</p>
+   */
+  CoverageHours?: CoverageHours;
+
+  /**
+   * <p>The amount of instance usage that the reservation covered, in normalized
+   *             units.</p>
+   */
+  CoverageNormalizedUnits?: CoverageNormalizedUnits;
+
+  /**
+   * <p>The amount of cost that the reservation covered.</p>
+   */
+  CoverageCost?: CoverageCost;
+}
+
+export namespace Coverage {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: Coverage): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>A
+ *             group of reservations that share a set of attributes.</p>
+ */
+export interface ReservationCoverageGroup {
+  /**
+   * <p>The attributes for this group of reservations.</p>
+   */
+  Attributes?: { [key: string]: string };
+
+  /**
+   * <p>How much instance usage this group of reservations covered.</p>
+   */
+  Coverage?: Coverage;
+}
+
+export namespace ReservationCoverageGroup {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReservationCoverageGroup): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Reservation
+ *             coverage for a specified period, in
+ *             hours.</p>
+ */
+export interface CoverageByTime {
+  /**
+   * <p>The period that this coverage was used over.</p>
+   */
+  TimePeriod?: DateInterval;
+
+  /**
+   * <p>The groups of instances that the reservation covered.</p>
+   */
+  Groups?: ReservationCoverageGroup[];
+
+  /**
+   * <p>The total reservation coverage, in hours.</p>
+   */
+  Total?: Coverage;
+}
+
+export namespace CoverageByTime {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CoverageByTime): any => ({
+    ...obj,
+  });
+}
+
+export interface GetReservationCoverageResponse {
+  /**
+   * <p>The amount of time that your reservations covered.</p>
+   */
+  CoveragesByTime: CoverageByTime[] | undefined;
+
+  /**
+   * <p>The total amount of instance usage that a reservation covered.</p>
+   */
+  Total?: Coverage;
+
+  /**
+   * <p>The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
+   */
+  NextPageToken?: string;
+}
+
+export namespace GetReservationCoverageResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetReservationCoverageResponse): any => ({
+    ...obj,
+  });
+}
+
+export enum LookbackPeriodInDays {
+  SEVEN_DAYS = "SEVEN_DAYS",
+  SIXTY_DAYS = "SIXTY_DAYS",
+  THIRTY_DAYS = "THIRTY_DAYS",
+}
+
+export enum PaymentOption {
+  ALL_UPFRONT = "ALL_UPFRONT",
+  HEAVY_UTILIZATION = "HEAVY_UTILIZATION",
+  LIGHT_UTILIZATION = "LIGHT_UTILIZATION",
+  MEDIUM_UTILIZATION = "MEDIUM_UTILIZATION",
+  NO_UPFRONT = "NO_UPFRONT",
+  PARTIAL_UPFRONT = "PARTIAL_UPFRONT",
+}
+
+export enum OfferingClass {
+  CONVERTIBLE = "CONVERTIBLE",
+  STANDARD = "STANDARD",
+}
+
+/**
+ * <p>The Amazon EC2 hardware specifications that you want AWS to provide recommendations
+ *             for.</p>
+ */
+export interface EC2Specification {
+  /**
+   * <p>Whether you want a recommendation for standard or convertible
+   *             reservations.</p>
+   */
+  OfferingClass?: OfferingClass | string;
+}
+
+export namespace EC2Specification {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: EC2Specification): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Hardware specifications for the service that you want recommendations
+ *             for.</p>
+ */
+export interface ServiceSpecification {
+  /**
+   * <p>The Amazon EC2 hardware specifications that you want AWS to provide recommendations
+   *             for.</p>
+   */
+  EC2Specification?: EC2Specification;
+}
+
+export namespace ServiceSpecification {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ServiceSpecification): any => ({
+    ...obj,
+  });
+}
+
+export enum TermInYears {
+  ONE_YEAR = "ONE_YEAR",
+  THREE_YEARS = "THREE_YEARS",
+}
+
+/**
+ * <p>Information about this specific recommendation, such as the timestamp for when AWS
+ *             made a specific recommendation.</p>
+ */
+export interface ReservationPurchaseRecommendationMetadata {
+  /**
+   * <p>The ID for this specific recommendation.</p>
+   */
+  RecommendationId?: string;
+
+  /**
+   * <p>The timestamp for when AWS made this recommendation.</p>
+   */
+  GenerationTimestamp?: string;
+}
+
+export namespace ReservationPurchaseRecommendationMetadata {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReservationPurchaseRecommendationMetadata): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details about the Amazon EC2 instances that AWS recommends that you purchase.</p>
+ */
+export interface EC2InstanceDetails {
+  /**
+   * <p>The instance family of the recommended reservation.</p>
+   */
+  Family?: string;
+
+  /**
+   * <p>The type of instance that AWS recommends.</p>
+   */
+  InstanceType?: string;
+
+  /**
+   * <p>The AWS Region of the recommended reservation.</p>
+   */
+  Region?: string;
+
+  /**
+   * <p>The Availability Zone of the recommended reservation.</p>
+   */
+  AvailabilityZone?: string;
+
+  /**
+   * <p>The platform of the recommended reservation. The platform is the specific
+   *             combination of operating system, license model, and software on an instance.</p>
+   */
+  Platform?: string;
+
+  /**
+   * <p>Whether the recommended reservation is dedicated or shared.</p>
+   */
+  Tenancy?: string;
+
+  /**
+   * <p>Whether the recommendation is for a current-generation instance. </p>
+   */
+  CurrentGeneration?: boolean;
+
+  /**
+   * <p>Whether the recommended reservation is size flexible.</p>
+   */
+  SizeFlexEligible?: boolean;
+}
+
+export namespace EC2InstanceDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: EC2InstanceDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details about the Amazon ElastiCache instances that AWS recommends that you
+ *             purchase.</p>
+ */
+export interface ElastiCacheInstanceDetails {
+  /**
+   * <p>The instance family of the recommended reservation.</p>
+   */
+  Family?: string;
+
+  /**
+   * <p>The type of node that AWS recommends.</p>
+   */
+  NodeType?: string;
+
+  /**
+   * <p>The AWS Region of the recommended reservation.</p>
+   */
+  Region?: string;
+
+  /**
+   * <p>The description of the recommended reservation.</p>
+   */
+  ProductDescription?: string;
+
+  /**
+   * <p>Whether the recommendation is for a current generation instance.</p>
+   */
+  CurrentGeneration?: boolean;
+
+  /**
+   * <p>Whether the recommended reservation is size flexible.</p>
+   */
+  SizeFlexEligible?: boolean;
+}
+
+export namespace ElastiCacheInstanceDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ElastiCacheInstanceDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details about the Amazon ES instances that AWS recommends that you
+ *             purchase.</p>
+ */
+export interface ESInstanceDetails {
+  /**
+   * <p>The class of instance that AWS recommends.</p>
+   */
+  InstanceClass?: string;
+
+  /**
+   * <p>The size of instance that AWS recommends.</p>
+   */
+  InstanceSize?: string;
+
+  /**
+   * <p>The AWS Region of the recommended reservation.</p>
+   */
+  Region?: string;
+
+  /**
+   * <p>Whether the recommendation is for a current-generation instance.</p>
+   */
+  CurrentGeneration?: boolean;
+
+  /**
+   * <p>Whether the recommended reservation is size flexible.</p>
+   */
+  SizeFlexEligible?: boolean;
+}
+
+export namespace ESInstanceDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ESInstanceDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details about the Amazon RDS instances that AWS recommends that you
+ *             purchase.</p>
+ */
+export interface RDSInstanceDetails {
+  /**
+   * <p>The instance family of the recommended reservation.</p>
+   */
+  Family?: string;
+
+  /**
+   * <p>The type of instance that AWS recommends.</p>
+   */
+  InstanceType?: string;
+
+  /**
+   * <p>The AWS Region of the recommended reservation.</p>
+   */
+  Region?: string;
+
+  /**
+   * <p>The database engine that the recommended reservation supports.</p>
+   */
+  DatabaseEngine?: string;
+
+  /**
+   * <p>The database edition that the recommended reservation supports.</p>
+   */
+  DatabaseEdition?: string;
+
+  /**
+   * <p>Whether the recommendation is for a reservation in a single Availability Zone or a
+   *             reservation with a backup in a second Availability Zone.</p>
+   */
+  DeploymentOption?: string;
+
+  /**
+   * <p>The license model that the recommended reservation supports.</p>
+   */
+  LicenseModel?: string;
+
+  /**
+   * <p>Whether the recommendation is for a current-generation instance. </p>
+   */
+  CurrentGeneration?: boolean;
+
+  /**
+   * <p>Whether the recommended reservation is size flexible.</p>
+   */
+  SizeFlexEligible?: boolean;
+}
+
+export namespace RDSInstanceDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RDSInstanceDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details about the Amazon Redshift instances that AWS recommends that you
+ *             purchase.</p>
+ */
+export interface RedshiftInstanceDetails {
+  /**
+   * <p>The instance family of the recommended reservation.</p>
+   */
+  Family?: string;
+
+  /**
+   * <p>The type of node that AWS recommends.</p>
+   */
+  NodeType?: string;
+
+  /**
+   * <p>The AWS Region of the recommended reservation.</p>
+   */
+  Region?: string;
+
+  /**
+   * <p>Whether the recommendation is for a current-generation instance.</p>
+   */
+  CurrentGeneration?: boolean;
+
+  /**
+   * <p>Whether the recommended reservation is size flexible.</p>
+   */
+  SizeFlexEligible?: boolean;
+}
+
+export namespace RedshiftInstanceDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RedshiftInstanceDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details about the instances that AWS recommends that you purchase.</p>
+ */
+export interface InstanceDetails {
+  /**
+   * <p>The Amazon EC2 instances that AWS recommends that you purchase.</p>
+   */
+  EC2InstanceDetails?: EC2InstanceDetails;
+
+  /**
+   * <p>The Amazon RDS instances that AWS recommends that you purchase.</p>
+   */
+  RDSInstanceDetails?: RDSInstanceDetails;
+
+  /**
+   * <p>The Amazon Redshift instances that AWS recommends that you purchase.</p>
+   */
+  RedshiftInstanceDetails?: RedshiftInstanceDetails;
+
+  /**
+   * <p>The ElastiCache instances that AWS recommends that you purchase.</p>
+   */
+  ElastiCacheInstanceDetails?: ElastiCacheInstanceDetails;
+
+  /**
+   * <p>The Amazon ES instances that AWS recommends that you purchase.</p>
+   */
+  ESInstanceDetails?: ESInstanceDetails;
+}
+
+export namespace InstanceDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InstanceDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details about your recommended reservation purchase.</p>
+ */
+export interface ReservationPurchaseRecommendationDetail {
+  /**
+   * <p>The account that this RI recommendation is for.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>Details about the instances that AWS recommends that you purchase.</p>
+   */
+  InstanceDetails?: InstanceDetails;
+
+  /**
+   * <p>The number of instances that AWS recommends that you purchase.</p>
+   */
+  RecommendedNumberOfInstancesToPurchase?: string;
+
+  /**
+   * <p>The number of normalized units that AWS recommends that you purchase.</p>
+   */
+  RecommendedNormalizedUnitsToPurchase?: string;
+
+  /**
+   * <p>The minimum number of instances that you used in an hour during the historical
+   *             period. AWS uses this to calculate your recommended reservation purchases.</p>
+   */
+  MinimumNumberOfInstancesUsedPerHour?: string;
+
+  /**
+   * <p>The minimum number of normalized units that you used in an hour during the
+   *             historical period. AWS uses this to calculate your recommended reservation
+   *             purchases.</p>
+   */
+  MinimumNormalizedUnitsUsedPerHour?: string;
+
+  /**
+   * <p>The maximum number of instances that you used in an hour during the historical
+   *             period. AWS uses this to calculate your recommended reservation purchases.</p>
+   */
+  MaximumNumberOfInstancesUsedPerHour?: string;
+
+  /**
+   * <p>The maximum number of normalized units that you used in an hour during the
+   *             historical period. AWS uses this to calculate your recommended reservation
+   *             purchases.</p>
+   */
+  MaximumNormalizedUnitsUsedPerHour?: string;
+
+  /**
+   * <p>The average number of instances that you used in an hour during the historical
+   *             period. AWS uses this to calculate your recommended reservation purchases.</p>
+   */
+  AverageNumberOfInstancesUsedPerHour?: string;
+
+  /**
+   * <p>The average number of normalized units that you used in an hour during the
+   *             historical period. AWS uses this to calculate your recommended reservation
+   *             purchases.</p>
+   */
+  AverageNormalizedUnitsUsedPerHour?: string;
+
+  /**
+   * <p>The average utilization of your instances. AWS uses this to calculate your
+   *             recommended reservation purchases.</p>
+   */
+  AverageUtilization?: string;
+
+  /**
+   * <p>How long AWS estimates that it takes for this instance to start saving you money,
+   *             in months.</p>
+   */
+  EstimatedBreakEvenInMonths?: string;
+
+  /**
+   * <p>The currency code that AWS used to calculate the costs for this instance.</p>
+   */
+  CurrencyCode?: string;
+
+  /**
+   * <p>How much AWS estimates that this specific recommendation could save you in a
+   *             month.</p>
+   */
+  EstimatedMonthlySavingsAmount?: string;
+
+  /**
+   * <p>How much AWS estimates that this specific recommendation could save you in a month,
+   *             as a percentage of your overall costs.</p>
+   */
+  EstimatedMonthlySavingsPercentage?: string;
+
+  /**
+   * <p>How much AWS estimates that you spend on On-Demand Instances in a month.</p>
+   */
+  EstimatedMonthlyOnDemandCost?: string;
+
+  /**
+   * <p>How much AWS estimates that you would have spent for all usage during the specified
+   *             historical period if you had
+   *             a
+   *             reservation.</p>
+   */
+  EstimatedReservationCostForLookbackPeriod?: string;
+
+  /**
+   * <p>How much purchasing this instance costs you upfront.</p>
+   */
+  UpfrontCost?: string;
+
+  /**
+   * <p>How much purchasing this instance costs you on a monthly basis.</p>
+   */
+  RecurringStandardMonthlyCost?: string;
+}
+
+export namespace ReservationPurchaseRecommendationDetail {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReservationPurchaseRecommendationDetail): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>A summary about this recommendation, such as the currency code, the amount that AWS
+ *             estimates that you could save, and the total amount of reservation to
+ *             purchase.</p>
+ */
+export interface ReservationPurchaseRecommendationSummary {
+  /**
+   * <p>The total amount that AWS estimates that this recommendation could save you in a
+   *             month.</p>
+   */
+  TotalEstimatedMonthlySavingsAmount?: string;
+
+  /**
+   * <p>The total amount that AWS estimates that this recommendation could save you in a
+   *             month, as a percentage of your costs.</p>
+   */
+  TotalEstimatedMonthlySavingsPercentage?: string;
+
+  /**
+   * <p>The currency code used for this recommendation.</p>
+   */
+  CurrencyCode?: string;
+}
+
+export namespace ReservationPurchaseRecommendationSummary {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReservationPurchaseRecommendationSummary): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>A specific reservation that AWS recommends for purchase.</p>
+ */
+export interface ReservationPurchaseRecommendation {
+  /**
+   * <p>The account scope that AWS recommends that you purchase this instance for. For
+   *             example, you can purchase this reservation for an entire organization in AWS
+   *             Organizations.</p>
+   */
+  AccountScope?: AccountScope | string;
+
+  /**
+   * <p>How many days of previous usage that AWS considers when making this
+   *             recommendation.</p>
+   */
+  LookbackPeriodInDays?: LookbackPeriodInDays | string;
+
+  /**
+   * <p>The term of the reservation that you want recommendations for, in years.</p>
+   */
+  TermInYears?: TermInYears | string;
+
+  /**
+   * <p>The payment option for the reservation. For example, <code>AllUpfront</code> or
+   *                 <code>NoUpfront</code>.</p>
+   */
+  PaymentOption?: PaymentOption | string;
+
+  /**
+   * <p>Hardware specifications for the service that you want recommendations
+   *             for.</p>
+   */
+  ServiceSpecification?: ServiceSpecification;
+
+  /**
+   * <p>Details about the recommended purchases.</p>
+   */
+  RecommendationDetails?: ReservationPurchaseRecommendationDetail[];
+
+  /**
+   * <p>A summary about the recommended purchase.</p>
+   */
+  RecommendationSummary?: ReservationPurchaseRecommendationSummary;
+}
+
+export namespace ReservationPurchaseRecommendation {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReservationPurchaseRecommendation): any => ({
+    ...obj,
+  });
+}
+
+export interface GetReservationPurchaseRecommendationResponse {
+  /**
+   * <p>Information about this specific recommendation call, such as the time stamp for when Cost Explorer generated this recommendation.</p>
+   */
+  Metadata?: ReservationPurchaseRecommendationMetadata;
+
+  /**
+   * <p>Recommendations for reservations to purchase.</p>
+   */
+  Recommendations?: ReservationPurchaseRecommendation[];
+
+  /**
+   * <p>The pagination token for the next set of retrievable results.</p>
+   */
+  NextPageToken?: string;
+}
+
+export namespace GetReservationPurchaseRecommendationResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetReservationPurchaseRecommendationResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The aggregated numbers for your reservation usage.</p>
+ */
+export interface ReservationAggregates {
+  /**
+   * <p>The percentage of reservation time that you used.</p>
+   */
+  UtilizationPercentage?: string;
+
+  /**
+   * <p>The percentage of Amazon EC2 reservation time that you used, converted to normalized
+   *             units. Normalized units are available only for Amazon EC2 usage after November 11,
+   *             2017.</p>
+   */
+  UtilizationPercentageInUnits?: string;
+
+  /**
+   * <p>How many reservation hours that you purchased.</p>
+   */
+  PurchasedHours?: string;
+
+  /**
+   * <p>How many Amazon EC2 reservation hours that you purchased, converted to normalized units.
+   *             Normalized units are available only for Amazon EC2 usage after November 11, 2017.</p>
+   */
+  PurchasedUnits?: string;
+
+  /**
+   * <p>The total number of reservation hours that you used.</p>
+   */
+  TotalActualHours?: string;
+
+  /**
+   * <p>The total number of Amazon EC2 reservation hours that you used, converted to normalized
+   *             units. Normalized units are available only for Amazon EC2 usage after November 11,
+   *             2017.</p>
+   */
+  TotalActualUnits?: string;
+
+  /**
+   * <p>The number of reservation hours that you didn't use.</p>
+   */
+  UnusedHours?: string;
+
+  /**
+   * <p>The number of Amazon EC2 reservation hours that you didn't use, converted to normalized
+   *             units. Normalized units are available only for Amazon EC2 usage after November 11,
+   *             2017.</p>
+   */
+  UnusedUnits?: string;
+
+  /**
+   * <p>How much your reservation would cost if charged On-Demand rates.</p>
+   */
+  OnDemandCostOfRIHoursUsed?: string;
+
+  /**
+   * <p>How much you saved due to purchasing and utilizing reservation. AWS calculates this
+   *             by subtracting <code>TotalAmortizedFee</code> from
+   *                 <code>OnDemandCostOfRIHoursUsed</code>.</p>
+   */
+  NetRISavings?: string;
+
+  /**
+   * <p>How much you could save if you use your entire reservation.</p>
+   */
+  TotalPotentialRISavings?: string;
+
+  /**
+   * <p>The upfront cost of your reservation, amortized over the reservation
+   *             period.</p>
+   */
+  AmortizedUpfrontFee?: string;
+
+  /**
+   * <p>The monthly cost of your reservation, amortized over the reservation
+   *             period.</p>
+   */
+  AmortizedRecurringFee?: string;
+
+  /**
+   * <p>The total cost of your reservation, amortized over the reservation
+   *             period.</p>
+   */
+  TotalAmortizedFee?: string;
+
+  /**
+   * <p>The cost of unused hours for your reservation.</p>
+   */
+  RICostForUnusedHours?: string;
+
+  /**
+   * <p>The realized savings due to purchasing and using a reservation.</p>
+   */
+  RealizedSavings?: string;
+
+  /**
+   * <p>The unrealized savings due to purchasing and using a reservation.</p>
+   */
+  UnrealizedSavings?: string;
+}
+
+export namespace ReservationAggregates {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReservationAggregates): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>A group of reservations that share a set of attributes.</p>
+ */
+export interface ReservationUtilizationGroup {
+  /**
+   * <p>The key for a specific reservation attribute.</p>
+   */
+  Key?: string;
+
+  /**
+   * <p>The value of a specific reservation attribute.</p>
+   */
+  Value?: string;
+
+  /**
+   * <p>The attributes for this group of reservations.</p>
+   */
+  Attributes?: { [key: string]: string };
+
+  /**
+   * <p>How much you used this group of reservations.</p>
+   */
+  Utilization?: ReservationAggregates;
+}
+
+export namespace ReservationUtilizationGroup {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReservationUtilizationGroup): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The amount of utilization, in hours.</p>
+ */
+export interface UtilizationByTime {
+  /**
+   * <p>The period of time that this utilization was used for.</p>
+   */
+  TimePeriod?: DateInterval;
+
+  /**
+   * <p>The groups that this utilization result uses.</p>
+   */
+  Groups?: ReservationUtilizationGroup[];
+
+  /**
+   * <p>The total number of reservation hours that were used.</p>
+   */
+  Total?: ReservationAggregates;
+}
+
+export namespace UtilizationByTime {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UtilizationByTime): any => ({
+    ...obj,
+  });
+}
+
+export interface GetReservationUtilizationResponse {
+  /**
+   * <p>The amount of time that you used your RIs.</p>
+   */
+  UtilizationsByTime: UtilizationByTime[] | undefined;
+
+  /**
+   * <p>The total amount of time that you used your RIs.</p>
+   */
+  Total?: ReservationAggregates;
+
+  /**
+   * <p>The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
+   */
+  NextPageToken?: string;
+}
+
+export namespace GetReservationUtilizationResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetReservationUtilizationResponse): any => ({
+    ...obj,
+  });
+}
+
+export enum RecommendationTarget {
+  CROSS_INSTANCE_FAMILY = "CROSS_INSTANCE_FAMILY",
+  SAME_INSTANCE_FAMILY = "SAME_INSTANCE_FAMILY",
+}
+
+/**
+ * <p> Enables you to customize recommendations across two attributes. You can choose to view
+ *             recommendations for instances within the same instance families or across different instance
+ *             families. You can also choose to view your estimated savings associated with recommendations
+ *             with consideration of existing Savings Plans or RI benefits, or
+ *             neither. </p>
+ */
+export interface RightsizingRecommendationConfiguration {
+  /**
+   * <p>
+   *             The option to see recommendations within the same instance family, or recommendations for instances across other families. The default value is <code>SAME_INSTANCE_FAMILY</code>.
+   *         </p>
+   */
+  RecommendationTarget: RecommendationTarget | string | undefined;
+
+  /**
+   * <p>
+   *             The option to consider RI or Savings Plans discount benefits in your savings calculation. The default value is <code>TRUE</code>.
+   *         </p>
+   */
+  BenefitsConsidered: boolean | undefined;
+}
+
+export namespace RightsizingRecommendationConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RightsizingRecommendationConfiguration): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Metadata for this recommendation set.</p>
+ */
+export interface RightsizingRecommendationMetadata {
+  /**
+   * <p> The ID for this specific recommendation.</p>
+   */
+  RecommendationId?: string;
+
+  /**
+   * <p> The timestamp for when AWS made this recommendation.</p>
+   */
+  GenerationTimestamp?: string;
+
+  /**
+   * <p> How many days of previous usage that AWS considers when making this
+   *             recommendation.</p>
+   */
+  LookbackPeriodInDays?: LookbackPeriodInDays | string;
+
+  /**
+   * <p>Additional metadata that may be applicable to the recommendation.</p>
+   */
+  AdditionalMetadata?: string;
+}
+
+export namespace RightsizingRecommendationMetadata {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RightsizingRecommendationMetadata): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p> Details on the Amazon EC2 Resource.</p>
+ */
+export interface EC2ResourceDetails {
+  /**
+   * <p> Hourly public On-Demand rate for the instance type.</p>
+   */
+  HourlyOnDemandRate?: string;
+
+  /**
+   * <p> The type of AWS instance.</p>
+   */
+  InstanceType?: string;
+
+  /**
+   * <p> The platform of the AWS instance. The platform is the specific combination of
+   *             operating system, license model, and software on an instance.</p>
+   */
+  Platform?: string;
+
+  /**
+   * <p> The AWS Region of the instance.</p>
+   */
+  Region?: string;
+
+  /**
+   * <p> The SKU of the product.</p>
+   */
+  Sku?: string;
+
+  /**
+   * <p> Memory capacity of the AWS instance.</p>
+   */
+  Memory?: string;
+
+  /**
+   * <p> Network performance capacity of the AWS instance.</p>
+   */
+  NetworkPerformance?: string;
+
+  /**
+   * <p> The disk storage of the AWS instance (not EBS storage).</p>
+   */
+  Storage?: string;
+
+  /**
+   * <p> Number of VCPU cores in the AWS instance type.</p>
+   */
+  Vcpu?: string;
+}
+
+export namespace EC2ResourceDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: EC2ResourceDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details on the resource.</p>
+ */
+export interface ResourceDetails {
+  /**
+   * <p>Details on the Amazon EC2 resource.</p>
+   */
+  EC2ResourceDetails?: EC2ResourceDetails;
+}
+
+export namespace ResourceDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResourceDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>
+ *             The EBS field that contains a list of EBS metrics associated with the current instance.
+ *         </p>
+ */
+export interface EBSResourceUtilization {
+  /**
+   * <p>
+   *             The maximum number of read operations per second.
+   *         </p>
+   */
+  EbsReadOpsPerSecond?: string;
+
+  /**
+   * <p>
+   *             The maximum number of write operations per second.
+   *         </p>
+   */
+  EbsWriteOpsPerSecond?: string;
+
+  /**
+   * <p>
+   *             The maximum size of read operations per second
+   *         </p>
+   */
+  EbsReadBytesPerSecond?: string;
+
+  /**
+   * <p>
+   *             The maximum size of write operations per second.
+   *         </p>
+   */
+  EbsWriteBytesPerSecond?: string;
+}
+
+export namespace EBSResourceUtilization {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: EBSResourceUtilization): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p> Utilization metrics of the instance.  </p>
+ */
+export interface EC2ResourceUtilization {
+  /**
+   * <p> Maximum observed or expected CPU utilization of the instance.</p>
+   */
+  MaxCpuUtilizationPercentage?: string;
+
+  /**
+   * <p> Maximum observed or expected memory utilization of the instance.</p>
+   */
+  MaxMemoryUtilizationPercentage?: string;
+
+  /**
+   * <p> Maximum observed or expected storage utilization of the instance (does not measure EBS storage).</p>
+   */
+  MaxStorageUtilizationPercentage?: string;
+
+  /**
+   * <p>
+   *             The EBS field that contains a list of EBS metrics associated with the current instance.
+   *         </p>
+   */
+  EBSResourceUtilization?: EBSResourceUtilization;
+}
+
+export namespace EC2ResourceUtilization {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: EC2ResourceUtilization): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Resource utilization of current resource.  </p>
+ */
+export interface ResourceUtilization {
+  /**
+   * <p>Utilization of current Amazon EC2 instance. </p>
+   */
+  EC2ResourceUtilization?: EC2ResourceUtilization;
+}
+
+export namespace ResourceUtilization {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResourceUtilization): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Context about the current instance.</p>
+ */
+export interface CurrentInstance {
+  /**
+   * <p>Resource ID of the current instance.</p>
+   */
+  ResourceId?: string;
+
+  /**
+   * <p>The name you've given an instance. This field will show as blank if you haven't given the instance a name.</p>
+   */
+  InstanceName?: string;
+
+  /**
+   * <p>Cost allocation resource tags applied to the instance.</p>
+   */
+  Tags?: TagValues[];
+
+  /**
+   * <p> Details about the resource and utilization.</p>
+   */
+  ResourceDetails?: ResourceDetails;
+
+  /**
+   * <p> Utilization information of the current instance during the lookback period.</p>
+   */
+  ResourceUtilization?: ResourceUtilization;
+
+  /**
+   * <p> Number of hours during the lookback period covered by reservations.</p>
+   */
+  ReservationCoveredHoursInLookbackPeriod?: string;
+
+  /**
+   * <p>Number of hours during the lookback period covered by Savings Plans.</p>
+   */
+  SavingsPlansCoveredHoursInLookbackPeriod?: string;
+
+  /**
+   * <p> Number of hours during the lookback period billed at On-Demand rates.</p>
+   */
+  OnDemandHoursInLookbackPeriod?: string;
+
+  /**
+   * <p> The total number of hours the instance ran during the lookback period.</p>
+   */
+  TotalRunningHoursInLookbackPeriod?: string;
+
+  /**
+   * <p> Current On-Demand cost of operating this instance on a monthly basis.</p>
+   */
+  MonthlyCost?: string;
+
+  /**
+   * <p> The currency code that AWS used to calculate the costs for this instance.</p>
+   */
+  CurrencyCode?: string;
+}
+
+export namespace CurrentInstance {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CurrentInstance): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p> Details on recommended instance.</p>
+ */
+export interface TargetInstance {
+  /**
+   * <p> Expected cost to operate this instance type on a monthly basis.</p>
+   */
+  EstimatedMonthlyCost?: string;
+
+  /**
+   * <p> Estimated savings resulting from modification, on a monthly basis.</p>
+   */
+  EstimatedMonthlySavings?: string;
+
+  /**
+   * <p> The currency code that AWS used to calculate the costs for this instance.</p>
+   */
+  CurrencyCode?: string;
+
+  /**
+   * <p> Indicates whether this recommendation is the defaulted AWS recommendation.</p>
+   */
+  DefaultTargetInstance?: boolean;
+
+  /**
+   * <p> Details on the target instance type.  </p>
+   */
+  ResourceDetails?: ResourceDetails;
+
+  /**
+   * <p> Expected utilization metrics for target instance type.</p>
+   */
+  ExpectedResourceUtilization?: ResourceUtilization;
+}
+
+export namespace TargetInstance {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TargetInstance): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p> Details on the modification recommendation.</p>
+ */
+export interface ModifyRecommendationDetail {
+  /**
+   * <p>Identifies whether this instance type is the AWS default recommendation.</p>
+   */
+  TargetInstances?: TargetInstance[];
+}
+
+export namespace ModifyRecommendationDetail {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ModifyRecommendationDetail): any => ({
+    ...obj,
+  });
+}
+
+export enum RightsizingType {
+  MODIFY = "MODIFY",
+  TERMINATE = "TERMINATE",
+}
+
+/**
+ * <p> Details on termination recommendation.  </p>
+ */
+export interface TerminateRecommendationDetail {
+  /**
+   * <p> Estimated savings resulting from modification, on a monthly basis.</p>
+   */
+  EstimatedMonthlySavings?: string;
+
+  /**
+   * <p> The currency code that AWS used to calculate the costs for this instance.</p>
+   */
+  CurrencyCode?: string;
+}
+
+export namespace TerminateRecommendationDetail {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: TerminateRecommendationDetail): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Recommendations to rightsize resources.</p>
+ */
+export interface RightsizingRecommendation {
+  /**
+   * <p>The account that this recommendation is for.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p> Context regarding the current instance.</p>
+   */
+  CurrentInstance?: CurrentInstance;
+
+  /**
+   * <p>Recommendation to either terminate or modify the resource.</p>
+   */
+  RightsizingType?: RightsizingType | string;
+
+  /**
+   * <p> Details for modification recommendations.  </p>
+   */
+  ModifyRecommendationDetail?: ModifyRecommendationDetail;
+
+  /**
+   * <p>Details for termination recommendations.</p>
+   */
+  TerminateRecommendationDetail?: TerminateRecommendationDetail;
+}
+
+export namespace RightsizingRecommendation {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RightsizingRecommendation): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p> Summary of rightsizing recommendations  </p>
+ */
+export interface RightsizingRecommendationSummary {
+  /**
+   * <p> Total number of instance recommendations.</p>
+   */
+  TotalRecommendationCount?: string;
+
+  /**
+   * <p> Estimated total savings resulting from modifications, on a monthly basis.</p>
+   */
+  EstimatedTotalMonthlySavingsAmount?: string;
+
+  /**
+   * <p> The currency code that AWS used to calculate the savings.</p>
+   */
+  SavingsCurrencyCode?: string;
+
+  /**
+   * <p> Savings percentage based on the recommended modifications, relative to the total
+   *             On-Demand
+   *             costs associated with these instances.</p>
+   */
+  SavingsPercentage?: string;
+}
+
+export namespace RightsizingRecommendationSummary {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RightsizingRecommendationSummary): any => ({
+    ...obj,
+  });
+}
+
+export interface GetRightsizingRecommendationResponse {
+  /**
+   * <p>Information regarding this specific recommendation set.</p>
+   */
+  Metadata?: RightsizingRecommendationMetadata;
+
+  /**
+   * <p>Summary of this recommendation set.</p>
+   */
+  Summary?: RightsizingRecommendationSummary;
+
+  /**
+   * <p>Recommendations to rightsize resources.</p>
+   */
+  RightsizingRecommendations?: RightsizingRecommendation[];
+
+  /**
+   * <p>The token to retrieve the next set of results.</p>
+   */
+  NextPageToken?: string;
+
+  /**
+   * <p> Enables you to customize recommendations across two attributes. You can choose to view
+   *       recommendations for instances within the same instance families or across different instance
+   *       families. You can also choose to view your estimated savings associated with recommendations
+   *       with consideration of existing Savings Plans or RI benefits, or
+   *       neither. </p>
+   */
+  Configuration?: RightsizingRecommendationConfiguration;
+}
+
+export namespace GetRightsizingRecommendationResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetRightsizingRecommendationResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Specific coverage percentage, On-Demand costs, and spend covered by Savings Plans, and total Savings Plans costs for an account.</p>
+ */
+export interface SavingsPlansCoverageData {
+  /**
+   * <p>The amount of your AWS usage that is covered by a Savings Plans.</p>
+   */
+  SpendCoveredBySavingsPlans?: string;
+
+  /**
+   * <p>The cost of your AWS usage at the public On-Demand rate.</p>
+   */
+  OnDemandCost?: string;
+
+  /**
+   * <p>The total cost of your AWS usage, regardless of your purchase option.</p>
+   */
+  TotalCost?: string;
+
+  /**
+   * <p>The percentage of your existing Savings Plans covered usage, divided by all of your
+   *             eligible Savings Plans usage in an account(or set of accounts).</p>
+   */
+  CoveragePercentage?: string;
+}
+
+export namespace SavingsPlansCoverageData {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansCoverageData): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The amount of Savings Plans eligible usage that is covered by Savings Plans. All calculations consider the On-Demand equivalent of your Savings Plans usage.</p>
+ */
+export interface SavingsPlansCoverage {
+  /**
+   * <p>The attribute that applies to a specific <code>Dimension</code>.</p>
+   */
+  Attributes?: { [key: string]: string };
+
+  /**
+   * <p>The amount of Savings Plans eligible usage that the Savings Plans covered.</p>
+   */
+  Coverage?: SavingsPlansCoverageData;
+
+  /**
+   * <p>The time period of the request.
+   *         </p>
+   */
+  TimePeriod?: DateInterval;
+}
+
+export namespace SavingsPlansCoverage {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansCoverage): any => ({
+    ...obj,
+  });
+}
+
+export interface GetSavingsPlansCoverageResponse {
+  /**
+   * <p>The amount of spend that your Savings Plans covered.</p>
+   */
+  SavingsPlansCoverages: SavingsPlansCoverage[] | undefined;
+
+  /**
+   * <p>The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.</p>
+   */
+  NextToken?: string;
+}
+
+export namespace GetSavingsPlansCoverageResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetSavingsPlansCoverageResponse): any => ({
+    ...obj,
+  });
+}
+
+export enum SupportedSavingsPlansType {
+  COMPUTE_SP = "COMPUTE_SP",
+  EC2_INSTANCE_SP = "EC2_INSTANCE_SP",
+  SAGEMAKER_SP = "SAGEMAKER_SP",
+}
+
+/**
+ * <p>Metadata about your Savings Plans Purchase Recommendations.</p>
+ */
+export interface SavingsPlansPurchaseRecommendationMetadata {
+  /**
+   * <p>The unique identifier for the recommendation set.</p>
+   */
+  RecommendationId?: string;
+
+  /**
+   * <p>The timestamp showing when the recommendations were generated.</p>
+   */
+  GenerationTimestamp?: string;
+
+  /**
+   * <p>Additional metadata that may be applicable to the recommendation.</p>
+   */
+  AdditionalMetadata?: string;
+}
+
+export namespace SavingsPlansPurchaseRecommendationMetadata {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansPurchaseRecommendationMetadata): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Attribute details on a specific Savings Plan.</p>
+ */
+export interface SavingsPlansDetails {
+  /**
+   * <p>A collection of AWS resources in a geographic area. Each AWS Region is isolated and independent of the other Regions.</p>
+   */
+  Region?: string;
+
+  /**
+   * <p>A group of instance types that Savings Plans applies to.</p>
+   */
+  InstanceFamily?: string;
+
+  /**
+   * <p>The unique ID used to distinguish Savings Plans from one another.</p>
+   */
+  OfferingId?: string;
+}
+
+export namespace SavingsPlansDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details for your recommended Savings Plans.</p>
+ */
+export interface SavingsPlansPurchaseRecommendationDetail {
+  /**
+   * <p>Details for your recommended Savings Plans.</p>
+   */
+  SavingsPlansDetails?: SavingsPlansDetails;
+
+  /**
+   * <p>The <code>AccountID</code> the recommendation is generated for.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The upfront cost of the recommended Savings Plans, based on the selected payment option.</p>
+   */
+  UpfrontCost?: string;
+
+  /**
+   * <p>The estimated return on investment based on the recommended Savings Plans purchased. This is calculated as <code>estimatedSavingsAmount</code>/ <code>estimatedSPCost</code>*100.</p>
+   */
+  EstimatedROI?: string;
+
+  /**
+   * <p>The currency code AWS used to generate the recommendations and present potential
+   *             savings.</p>
+   */
+  CurrencyCode?: string;
+
+  /**
+   * <p>The cost of the recommended Savings Plans over the length of the lookback period.</p>
+   */
+  EstimatedSPCost?: string;
+
+  /**
+   * <p>The remaining On-Demand cost estimated to not be covered by the recommended Savings Plans, over the length of the lookback period.</p>
+   */
+  EstimatedOnDemandCost?: string;
+
+  /**
+   * <p>
+   *             The estimated On-Demand costs you would expect with no additional commitment, based on your usage of the selected time period and the Savings Plans you own.
+   *         </p>
+   */
+  EstimatedOnDemandCostWithCurrentCommitment?: string;
+
+  /**
+   * <p>The estimated savings amount based on the recommended Savings Plans over the length of the lookback period.</p>
+   */
+  EstimatedSavingsAmount?: string;
+
+  /**
+   * <p>The estimated savings percentage relative to the total cost of applicable On-Demand usage over the lookback period.</p>
+   */
+  EstimatedSavingsPercentage?: string;
+
+  /**
+   * <p>The recommended hourly commitment level for the Savings Plans type, and configuration based on the usage during the lookback period.</p>
+   */
+  HourlyCommitmentToPurchase?: string;
+
+  /**
+   * <p>The estimated utilization of the recommended Savings Plans.</p>
+   */
+  EstimatedAverageUtilization?: string;
+
+  /**
+   * <p>The estimated monthly savings amount, based on the recommended Savings Plans.</p>
+   */
+  EstimatedMonthlySavingsAmount?: string;
+
+  /**
+   * <p>The lowest value of hourly On-Demand spend over the lookback period of the applicable usage type.</p>
+   */
+  CurrentMinimumHourlyOnDemandSpend?: string;
+
+  /**
+   * <p>The highest value of hourly On-Demand spend over the lookback period of the applicable usage type.</p>
+   */
+  CurrentMaximumHourlyOnDemandSpend?: string;
+
+  /**
+   * <p>The average value of hourly On-Demand spend over the lookback period of the applicable usage type.</p>
+   */
+  CurrentAverageHourlyOnDemandSpend?: string;
+}
+
+export namespace SavingsPlansPurchaseRecommendationDetail {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansPurchaseRecommendationDetail): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Summary metrics for your Savings Plans Purchase Recommendations.</p>
+ */
+export interface SavingsPlansPurchaseRecommendationSummary {
+  /**
+   * <p>The estimated return on investment based on the recommended Savings Plans and estimated savings.</p>
+   */
+  EstimatedROI?: string;
+
+  /**
+   * <p>The currency code AWS used to generate the recommendations and present potential
+   *             savings.</p>
+   */
+  CurrencyCode?: string;
+
+  /**
+   * <p>The estimated total cost of the usage after purchasing the recommended Savings Plans. This is a sum of the cost of Savings Plans during this term, and the remaining On-Demand usage.</p>
+   */
+  EstimatedTotalCost?: string;
+
+  /**
+   * <p>The current total on demand spend of the applicable usage types over the lookback period.</p>
+   */
+  CurrentOnDemandSpend?: string;
+
+  /**
+   * <p>The estimated total savings over the lookback period, based on the purchase of the recommended Savings Plans.</p>
+   */
+  EstimatedSavingsAmount?: string;
+
+  /**
+   * <p>The aggregate number of Savings Plans recommendations that exist for your account.</p>
+   */
+  TotalRecommendationCount?: string;
+
+  /**
+   * <p>The recommended Savings Plans cost on a daily (24 hourly) basis.</p>
+   */
+  DailyCommitmentToPurchase?: string;
+
+  /**
+   * <p>The recommended hourly commitment based on the recommendation parameters.</p>
+   */
+  HourlyCommitmentToPurchase?: string;
+
+  /**
+   * <p>The estimated savings relative to the total cost of On-Demand usage, over the lookback period. This is calculated as <code>estimatedSavingsAmount</code>/ <code>CurrentOnDemandSpend</code>*100.</p>
+   */
+  EstimatedSavingsPercentage?: string;
+
+  /**
+   * <p>The estimated monthly savings amount, based on the recommended Savings Plans purchase.</p>
+   */
+  EstimatedMonthlySavingsAmount?: string;
+
+  /**
+   * <p>
+   *             The estimated On-Demand costs you would expect with no additional commitment, based on your usage of the selected time period and the Savings Plans you own.
+   *         </p>
+   */
+  EstimatedOnDemandCostWithCurrentCommitment?: string;
+}
+
+export namespace SavingsPlansPurchaseRecommendationSummary {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansPurchaseRecommendationSummary): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains your request parameters, Savings Plan Recommendations Summary, and Details.</p>
+ */
+export interface SavingsPlansPurchaseRecommendation {
+  /**
+   * <p>The account scope that you want your recommendations for. Amazon Web Services calculates recommendations including the management account and member accounts if the value is set to <code>PAYER</code>. If the value is <code>LINKED</code>, recommendations are calculated for individual member accounts only.</p>
+   */
+  AccountScope?: AccountScope | string;
+
+  /**
+   * <p>The requested Savings Plans recommendation type.</p>
+   */
+  SavingsPlansType?: SupportedSavingsPlansType | string;
+
+  /**
+   * <p>The Savings Plans recommendation term in years, used to generate the recommendation.</p>
+   */
+  TermInYears?: TermInYears | string;
+
+  /**
+   * <p>The payment option used to generate the recommendation.</p>
+   */
+  PaymentOption?: PaymentOption | string;
+
+  /**
+   * <p>The lookback period in days, used to generate the recommendation.</p>
+   */
+  LookbackPeriodInDays?: LookbackPeriodInDays | string;
+
+  /**
+   * <p>Details for the Savings Plans we recommend that you purchase to cover existing Savings
+   *             Plans eligible workloads.</p>
+   */
+  SavingsPlansPurchaseRecommendationDetails?: SavingsPlansPurchaseRecommendationDetail[];
+
+  /**
+   * <p>Summary metrics for your Savings Plans Recommendations. </p>
+   */
+  SavingsPlansPurchaseRecommendationSummary?: SavingsPlansPurchaseRecommendationSummary;
+}
+
+export namespace SavingsPlansPurchaseRecommendation {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansPurchaseRecommendation): any => ({
+    ...obj,
+  });
+}
+
+export interface GetSavingsPlansPurchaseRecommendationResponse {
+  /**
+   * <p>Information regarding this specific recommendation set.</p>
+   */
+  Metadata?: SavingsPlansPurchaseRecommendationMetadata;
+
+  /**
+   * <p>Contains your request parameters, Savings Plan Recommendations Summary, and Details.</p>
+   */
+  SavingsPlansPurchaseRecommendation?: SavingsPlansPurchaseRecommendation;
+
+  /**
+   * <p>The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
+   */
+  NextPageToken?: string;
+}
+
+export namespace GetSavingsPlansPurchaseRecommendationResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetSavingsPlansPurchaseRecommendationResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The amortized amount of Savings Plans purchased in a specific account during a specific time interval.</p>
+ */
+export interface SavingsPlansAmortizedCommitment {
+  /**
+   * <p>The amortized amount of your Savings Plans commitment that was purchased with either a <code>Partial</code> or a <code>NoUpfront</code>.</p>
+   */
+  AmortizedRecurringCommitment?: string;
+
+  /**
+   * <p>The amortized amount of your Savings Plans commitment that was purchased with an <code>Upfront</code> or <code>PartialUpfront</code> Savings Plans.</p>
+   */
+  AmortizedUpfrontCommitment?: string;
+
+  /**
+   * <p>The total amortized amount of your Savings Plans commitment, regardless of your Savings Plans purchase method. </p>
+   */
+  TotalAmortizedCommitment?: string;
+}
+
+export namespace SavingsPlansAmortizedCommitment {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansAmortizedCommitment): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The amount of savings you're accumulating, against the public On-Demand rate of the usage accrued in an account.</p>
+ */
+export interface SavingsPlansSavings {
+  /**
+   * <p>The savings amount that you are accumulating for the usage that is covered by a Savings Plans, when compared to the On-Demand equivalent of the same usage.</p>
+   */
+  NetSavings?: string;
+
+  /**
+   * <p>How much the amount that the usage would have cost if it was
+   *             accrued
+   *             at the On-Demand rate.</p>
+   */
+  OnDemandCostEquivalent?: string;
+}
+
+export namespace SavingsPlansSavings {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansSavings): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The measurement of how well you are using your existing Savings Plans.</p>
+ */
+export interface SavingsPlansUtilization {
+  /**
+   * <p>The total amount of Savings Plans commitment that's been purchased in an account (or set of accounts).</p>
+   */
+  TotalCommitment?: string;
+
+  /**
+   * <p>The amount of your Savings Plans commitment that was consumed from Savings Plans eligible usage in a specific period.</p>
+   */
+  UsedCommitment?: string;
+
+  /**
+   * <p>The amount of your Savings Plans commitment that was not consumed from Savings Plans eligible usage in a specific period.</p>
+   */
+  UnusedCommitment?: string;
+
+  /**
+   * <p>The amount of <code>UsedCommitment</code> divided by the <code>TotalCommitment</code> for your Savings Plans.</p>
+   */
+  UtilizationPercentage?: string;
+}
+
+export namespace SavingsPlansUtilization {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansUtilization): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The amount of Savings Plans utilization, in hours.</p>
+ */
+export interface SavingsPlansUtilizationByTime {
+  /**
+   * <p>The time period of the request.
+   *         </p>
+   */
+  TimePeriod: DateInterval | undefined;
+
+  /**
+   * <p>A ratio of your effectiveness of using existing Savings Plans to apply to workloads that are Savings Plans eligible.</p>
+   */
+  Utilization: SavingsPlansUtilization | undefined;
+
+  /**
+   * <p>The amount saved by using existing Savings Plans. Savings returns both net savings from Savings Plans as well as the <code>onDemandCostEquivalent</code> of the Savings Plans when considering the utilization rate.</p>
+   */
+  Savings?: SavingsPlansSavings;
+
+  /**
+   * <p>The total amortized commitment for a Savings Plans. This includes the sum of the upfront and recurring Savings Plans fees.</p>
+   */
+  AmortizedCommitment?: SavingsPlansAmortizedCommitment;
+}
+
+export namespace SavingsPlansUtilizationByTime {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansUtilizationByTime): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The aggregated utilization metrics for your Savings Plans usage.</p>
+ */
+export interface SavingsPlansUtilizationAggregates {
+  /**
+   * <p>A ratio of your effectiveness of using existing Savings Plans to apply to workloads that are Savings Plans eligible.</p>
+   */
+  Utilization: SavingsPlansUtilization | undefined;
+
+  /**
+   * <p>The amount saved by using existing Savings Plans. Savings returns both net savings from Savings Plans, as well as the <code>onDemandCostEquivalent</code> of the Savings Plans when considering the utilization rate.</p>
+   */
+  Savings?: SavingsPlansSavings;
+
+  /**
+   * <p>The total amortized commitment for a Savings Plans. This includes the sum of the upfront and recurring Savings Plans fees.</p>
+   */
+  AmortizedCommitment?: SavingsPlansAmortizedCommitment;
+}
+
+export namespace SavingsPlansUtilizationAggregates {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansUtilizationAggregates): any => ({
+    ...obj,
+  });
+}
+
+export interface GetSavingsPlansUtilizationResponse {
+  /**
+   * <p>The amount of cost/commitment you used your Savings Plans. This allows you to specify date ranges.</p>
+   */
+  SavingsPlansUtilizationsByTime?: SavingsPlansUtilizationByTime[];
+
+  /**
+   * <p>The total amount of cost/commitment that you used your Savings Plans, regardless of date ranges.</p>
+   */
+  Total: SavingsPlansUtilizationAggregates | undefined;
+}
+
+export namespace GetSavingsPlansUtilizationResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetSavingsPlansUtilizationResponse): any => ({
+    ...obj,
+  });
+}
+
+export enum SavingsPlansDataType {
+  AMORTIZED_COMMITMENT = "AMORTIZED_COMMITMENT",
+  ATTRIBUTES = "ATTRIBUTES",
+  SAVINGS = "SAVINGS",
+  UTILIZATION = "UTILIZATION",
+}
+
+/**
+ * <p>A single daily or monthly Savings Plans utilization rate, and details for your account. A management account in an organization have access to member accounts. You can use <code>GetDimensionValues</code> to determine the possible dimension values. </p>
+ */
+export interface SavingsPlansUtilizationDetail {
+  /**
+   * <p>The unique Amazon Resource Name (ARN) for a particular Savings Plan.</p>
+   */
+  SavingsPlanArn?: string;
+
+  /**
+   * <p>The attribute that applies to a specific <code>Dimension</code>.</p>
+   */
+  Attributes?: { [key: string]: string };
+
+  /**
+   * <p>A ratio of your effectiveness of using existing Savings Plans to apply to workloads that are Savings Plans eligible.</p>
+   */
+  Utilization?: SavingsPlansUtilization;
+
+  /**
+   * <p>The amount saved by using existing Savings Plans. Savings returns both net savings from savings plans as well as the <code>onDemandCostEquivalent</code> of the Savings Plans when considering the utilization rate.</p>
+   */
+  Savings?: SavingsPlansSavings;
+
+  /**
+   * <p>The total amortized commitment for a Savings Plans. Includes the sum of the upfront and recurring Savings Plans fees.</p>
+   */
+  AmortizedCommitment?: SavingsPlansAmortizedCommitment;
+}
+
+export namespace SavingsPlansUtilizationDetail {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SavingsPlansUtilizationDetail): any => ({
+    ...obj,
+  });
+}
+
+export interface GetSavingsPlansUtilizationDetailsResponse {
+  /**
+   * <p>Retrieves a single daily or monthly Savings Plans utilization rate and details for your account.</p>
+   */
+  SavingsPlansUtilizationDetails: SavingsPlansUtilizationDetail[] | undefined;
+
+  /**
+   * <p>The total Savings Plans utilization, regardless of time period.</p>
+   */
+  Total?: SavingsPlansUtilizationAggregates;
+
+  /**
+   * <p>The time period of the request.
+   *         </p>
+   */
+  TimePeriod: DateInterval | undefined;
+
+  /**
+   * <p>The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.</p>
+   */
+  NextToken?: string;
+}
+
+export namespace GetSavingsPlansUtilizationDetailsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetSavingsPlansUtilizationDetailsResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface GetTagsResponse {
+  /**
+   * <p>The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
+   */
+  NextPageToken?: string;
+
+  /**
+   * <p>The tags that match your request.</p>
+   */
+  Tags: string[] | undefined;
+
+  /**
+   * <p>The number of query results that AWS returns at a time.</p>
+   */
+  ReturnSize: number | undefined;
+
+  /**
+   * <p>The total number of query results.</p>
+   */
+  TotalSize: number | undefined;
+}
+
+export namespace GetTagsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetTagsResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface GetUsageForecastResponse {
+  /**
+   * <p>How much you're forecasted to use over the forecast period.</p>
+   */
+  Total?: MetricValue;
+
+  /**
+   * <p>The forecasts for your query, in order. For <code>DAILY</code> forecasts, this is a list of days. For <code>MONTHLY</code> forecasts,
+   * 			this is a list of months.</p>
+   */
+  ForecastResultsByTime?: ForecastResult[];
+}
+
+export namespace GetUsageForecastResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetUsageForecastResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Cost Explorer was unable to identify the usage unit. Provide <code>UsageType/UsageTypeGroup</code> filter selections that contain matching units, for example: <code>hours</code>.</p>
+ */
+export interface UnresolvableUsageUnitException extends __SmithyException, $MetadataBearer {
+  name: "UnresolvableUsageUnitException";
+  $fault: "client";
+  Message?: string;
+}
+
+export namespace UnresolvableUsageUnitException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UnresolvableUsageUnitException): any => ({
+    ...obj,
+  });
+}
+
+export interface ListCostCategoryDefinitionsRequest {
+  /**
+   * <p>
+   *       The date when the Cost Category was effective.
+   *     </p>
+   */
+  EffectiveOn?: string;
+
+  /**
+   * <p>
+   *       The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.
+   *     </p>
+   */
+  NextToken?: string;
+
+  /**
+   * <p> The number of entries a paginated response contains. </p>
+   */
+  MaxResults?: number;
+}
+
+export namespace ListCostCategoryDefinitionsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListCostCategoryDefinitionsRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>A reference to a Cost Category containing only enough information to identify the Cost Category.</p>
+ *         <p>You can use this information to retrieve the full Cost Category information using <code>DescribeCostCategory</code>.</p>
+ */
+export interface CostCategoryReference {
+  /**
+   * <p>
+   *             The unique identifier for your Cost Category.
+   *         </p>
+   */
+  CostCategoryArn?: string;
+
+  /**
+   * <p>The unique name of the Cost Category.</p>
+   */
+  Name?: string;
+
+  /**
+   * <p>
+   *             The Cost Category's effective start date.</p>
+   */
+  EffectiveStart?: string;
+
+  /**
+   * <p>
+   *             The Cost Category's effective end date.</p>
+   */
+  EffectiveEnd?: string;
+
+  /**
+   * <p>
+   *             The number of rules associated with a specific Cost Category.
+   *         </p>
+   */
+  NumberOfRules?: number;
+
+  /**
+   * <p>
+   *             The list of processing statuses for Cost Management products for a specific cost category.
+   *         </p>
+   */
+  ProcessingStatus?: CostCategoryProcessingStatus[];
+
+  /**
+   * <p>
+   *             A list of unique cost category values in a specific cost category.
+   *         </p>
+   */
+  Values?: string[];
+
+  /**
+   * <p>The default value for the cost category.</p>
+   */
+  DefaultValue?: string;
+}
+
+export namespace CostCategoryReference {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CostCategoryReference): any => ({
+    ...obj,
+  });
+}
+
+export interface ListCostCategoryDefinitionsResponse {
+  /**
+   * <p>
+   *       A reference to a Cost Category containing enough information to identify the Cost Category.
+   *     </p>
+   */
+  CostCategoryReferences?: CostCategoryReference[];
+
+  /**
+   * <p>
+   *       The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.
+   *     </p>
+   */
+  NextToken?: string;
+}
+
+export namespace ListCostCategoryDefinitionsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListCostCategoryDefinitionsResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ProvideAnomalyFeedbackRequest {
+  /**
+   * <p>
+   *       A cost anomaly ID.
+   *     </p>
+   */
+  AnomalyId: string | undefined;
+
+  /**
+   * <p>Describes whether the cost anomaly was a planned activity or you considered it an anomaly. </p>
+   */
+  Feedback: AnomalyFeedbackType | string | undefined;
+}
+
+export namespace ProvideAnomalyFeedbackRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ProvideAnomalyFeedbackRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ProvideAnomalyFeedbackResponse {
+  /**
+   * <p>
+   *       The ID of the modified cost anomaly.
+   *     </p>
+   */
+  AnomalyId: string | undefined;
+}
+
+export namespace ProvideAnomalyFeedbackResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ProvideAnomalyFeedbackResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateAnomalyMonitorRequest {
+  /**
+   * <p> Cost anomaly monitor Amazon Resource Names (ARNs). </p>
+   */
+  MonitorArn: string | undefined;
+
+  /**
+   * <p>
+   *       The new name for the cost anomaly monitor.
+   *     </p>
+   */
+  MonitorName?: string;
+}
+
+export namespace UpdateAnomalyMonitorRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateAnomalyMonitorRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateAnomalyMonitorResponse {
+  /**
+   * <p>
+   *       A cost anomaly monitor ARN.
+   *     </p>
+   */
+  MonitorArn: string | undefined;
+}
+
+export namespace UpdateAnomalyMonitorResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateAnomalyMonitorResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateAnomalySubscriptionRequest {
+  /**
+   * <p> A cost anomaly subscription Amazon Resource Name (ARN). </p>
+   */
+  SubscriptionArn: string | undefined;
+
+  /**
+   * <p>
+   *       The update to the threshold value for receiving notifications.
+   *     </p>
+   */
+  Threshold?: number;
+
+  /**
+   * <p>
+   *       The update to the frequency value at which subscribers will receive notifications.
+   *     </p>
+   */
+  Frequency?: AnomalySubscriptionFrequency | string;
+
+  /**
+   * <p>
+   *       A list of cost anomaly monitor ARNs.
+   *     </p>
+   */
+  MonitorArnList?: string[];
+
+  /**
+   * <p>
+   *       The update to the subscriber list.
+   *     </p>
+   */
+  Subscribers?: Subscriber[];
+
+  /**
+   * <p>
+   *       The subscription's new name.
+   *     </p>
+   */
+  SubscriptionName?: string;
+}
+
+export namespace UpdateAnomalySubscriptionRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateAnomalySubscriptionRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateAnomalySubscriptionResponse {
+  /**
+   * <p>
+   *       A cost anomaly subscription ARN.
+   *     </p>
+   */
+  SubscriptionArn: string | undefined;
+}
+
+export namespace UpdateAnomalySubscriptionResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateAnomalySubscriptionResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateCostCategoryDefinitionResponse {
+  /**
+   * <p>
+   *       The unique identifier for your Cost Category.
+   *     </p>
+   */
+  CostCategoryArn?: string;
+
+  /**
+   * <p>
+   *       The Cost Category's effective start date.
+   *     </p>
+   */
+  EffectiveStart?: string;
+}
+
+export namespace UpdateCostCategoryDefinitionResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateCostCategoryDefinitionResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Use <code>Expression</code> to filter by cost or by usage. There are two patterns: </p>
+ *         <ul>
+ *             <li>
+ *                 <p>Simple dimension values - You can set the dimension name and values for the
+ *                     filters that you plan to use. For example, you can filter for
+ *                     <code>REGION==us-east-1 OR REGION==us-west-1</code>. For <code>GetRightsizingRecommendation</code>, the Region is a full name (for example, <code>REGION==US East (N. Virginia)</code>. The
+ *                         <code>Expression</code> example looks like:</p>
+ *                 <p>
+ *                   <code>{ "Dimensions": { "Key": "REGION", "Values": [ "us-east-1",
+ *                         “us-west-1” ] } }</code>
+ *                 </p>
+ *                 <p>The list of dimension values are OR'd together to retrieve cost or usage
+ *                     data. You can create <code>Expression</code> and <code>DimensionValues</code>
+ *                     objects using either <code>with*</code> methods or <code>set*</code> methods in
+ *                     multiple lines. </p>
+ *             </li>
+ *             <li>
+ *                 <p>Compound dimension values with logical operations - You can use multiple
+ *                         <code>Expression</code> types and the logical operators
+ *                         <code>AND/OR/NOT</code> to create a list of one or more
+ *                         <code>Expression</code> objects. This allows you to filter on more advanced
+ *                     options. For example, you can filter on <code>((REGION == us-east-1 OR
+ *                         REGION == us-west-1) OR (TAG.Type == Type1)) AND (USAGE_TYPE !=
+ *                         DataTransfer)</code>. The <code>Expression</code> for that looks like
+ *                     this:</p>
+ *                 <p>
+ *                   <code>{ "And": [ {"Or": [ {"Dimensions": { "Key": "REGION",
+ *                         "Values": [ "us-east-1", "us-west-1" ] }}, {"Tags": { "Key": "TagName",
+ *                         "Values": ["Value1"] } } ]}, {"Not": {"Dimensions": { "Key": "USAGE_TYPE",
+ *                         "Values": ["DataTransfer"] }}} ] } </code>
+ *                </p>
+ *                 <note>
+ *                     <p>Because each <code>Expression</code> can have only one operator, the
+ *                         service returns an error if more than one is specified. The following
+ *                         example shows an <code>Expression</code> object that creates an
+ *                         error.</p>
+ *                 </note>
+ *                 <p>
+ *                     <code> { "And": [ ... ], "DimensionValues": { "Dimension": "USAGE_TYPE",
+ *                         "Values": [ "DataTransfer" ] } } </code>
+ *                </p>
+ *             </li>
+ *          </ul>
+ *         <note>
+ *             <p>For the <code>GetRightsizingRecommendation</code> action, a combination of OR and NOT is not
+ *                 supported. OR is not supported between different dimensions, or dimensions and tags.
+ *                 NOT operators aren't supported.
+ *                 Dimensions
+ *                 are also limited to <code>LINKED_ACCOUNT</code>, <code>REGION</code>, or
+ *                     <code>RIGHTSIZING_TYPE</code>.</p>
+ *
+ * 					       <p>For the <code>GetReservationPurchaseRecommendation</code> action, only NOT is supported. AND and OR are not supported. Dimensions are limited to <code>LINKED_ACCOUNT</code>.</p>
+ *
+ *
+ *
+ *          </note>
+ */
+export interface Expression {
+  /**
+   * <p>Return results that match either <code>Dimension</code> object.</p>
+   */
+  Or?: Expression[];
+
+  /**
+   * <p>Return results that match both <code>Dimension</code> objects.</p>
+   */
+  And?: Expression[];
+
+  /**
+   * <p>Return results that don't match a <code>Dimension</code> object.</p>
+   */
+  Not?: Expression;
+
+  /**
+   * <p>The specific <code>Dimension</code> to use for <code>Expression</code>.</p>
+   */
+  Dimensions?: DimensionValues;
+
+  /**
+   * <p>The specific <code>Tag</code> to use for <code>Expression</code>.</p>
+   */
+  Tags?: TagValues;
+
+  /**
+   * <p>The filter based on <code>CostCategory</code> values.</p>
+   */
+  CostCategories?: CostCategoryValues;
+}
+
+export namespace Expression {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: Expression): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p> This object continuously inspects your account's cost data for anomalies, based on
+ *                 <code>MonitorType</code> and <code>MonitorSpecification</code>. The content consists
+ *             of detailed metadata and the current status of the monitor object. </p>
+ */
+export interface AnomalyMonitor {
+  /**
+   * <p> The Amazon Resource Name (ARN) value. </p>
+   */
+  MonitorArn?: string;
+
+  /**
+   * <p>
+   *         The name of the monitor.
+   *     </p>
+   */
+  MonitorName: string | undefined;
+
+  /**
+   * <p>
+   *         The date when the monitor was created.
+   *     </p>
+   */
+  CreationDate?: string;
+
+  /**
+   * <p>
+   *         The date when the monitor was last updated.
+   *     </p>
+   */
+  LastUpdatedDate?: string;
+
+  /**
+   * <p>
+   *         The date when the monitor last evaluated for anomalies.
+   *     </p>
+   */
+  LastEvaluatedDate?: string;
+
+  /**
+   * <p>
+   *         The possible type values.
+   *     </p>
+   */
+  MonitorType: MonitorType | string | undefined;
+
+  /**
+   * <p>
+   *         The dimensions to evaluate.
+   *     </p>
+   */
+  MonitorDimension?: MonitorDimension | string;
+
+  /**
+   * <p>Use <code>Expression</code> to filter by cost or by usage. There are two patterns: </p>
+   *         <ul>
+   *             <li>
+   *                 <p>Simple dimension values - You can set the dimension name and values for the
+   *                     filters that you plan to use. For example, you can filter for
+   *                     <code>REGION==us-east-1 OR REGION==us-west-1</code>. For <code>GetRightsizingRecommendation</code>, the Region is a full name (for example, <code>REGION==US East (N. Virginia)</code>. The
+   *                         <code>Expression</code> example looks like:</p>
+   *                 <p>
+   *                   <code>{ "Dimensions": { "Key": "REGION", "Values": [ "us-east-1",
+   *                         “us-west-1” ] } }</code>
+   *                 </p>
+   *                 <p>The list of dimension values are OR'd together to retrieve cost or usage
+   *                     data. You can create <code>Expression</code> and <code>DimensionValues</code>
+   *                     objects using either <code>with*</code> methods or <code>set*</code> methods in
+   *                     multiple lines. </p>
+   *             </li>
+   *             <li>
+   *                 <p>Compound dimension values with logical operations - You can use multiple
+   *                         <code>Expression</code> types and the logical operators
+   *                         <code>AND/OR/NOT</code> to create a list of one or more
+   *                         <code>Expression</code> objects. This allows you to filter on more advanced
+   *                     options. For example, you can filter on <code>((REGION == us-east-1 OR
+   *                         REGION == us-west-1) OR (TAG.Type == Type1)) AND (USAGE_TYPE !=
+   *                         DataTransfer)</code>. The <code>Expression</code> for that looks like
+   *                     this:</p>
+   *                 <p>
+   *                   <code>{ "And": [ {"Or": [ {"Dimensions": { "Key": "REGION",
+   *                         "Values": [ "us-east-1", "us-west-1" ] }}, {"Tags": { "Key": "TagName",
+   *                         "Values": ["Value1"] } } ]}, {"Not": {"Dimensions": { "Key": "USAGE_TYPE",
+   *                         "Values": ["DataTransfer"] }}} ] } </code>
+   *                </p>
+   *                 <note>
+   *                     <p>Because each <code>Expression</code> can have only one operator, the
+   *                         service returns an error if more than one is specified. The following
+   *                         example shows an <code>Expression</code> object that creates an
+   *                         error.</p>
+   *                 </note>
+   *                 <p>
+   *                     <code> { "And": [ ... ], "DimensionValues": { "Dimension": "USAGE_TYPE",
+   *                         "Values": [ "DataTransfer" ] } } </code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *         <note>
+   *             <p>For the <code>GetRightsizingRecommendation</code> action, a combination of OR and NOT is not
+   *                 supported. OR is not supported between different dimensions, or dimensions and tags.
+   *                 NOT operators aren't supported.
+   *                 Dimensions
+   *                 are also limited to <code>LINKED_ACCOUNT</code>, <code>REGION</code>, or
+   *                     <code>RIGHTSIZING_TYPE</code>.</p>
+   *
+   * 					       <p>For the <code>GetReservationPurchaseRecommendation</code> action, only NOT is supported. AND and OR are not supported. Dimensions are limited to <code>LINKED_ACCOUNT</code>.</p>
+   *
+   *
+   *
+   *          </note>
+   */
+  MonitorSpecification?: Expression;
+
+  /**
+   * <p>
+   *         The value for evaluated dimensions.
+   *     </p>
+   */
+  DimensionalValueCount?: number;
+}
+
+export namespace AnomalyMonitor {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AnomalyMonitor): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Rules are processed in order. If there are multiple rules that match the line item, then the first rule to match is used to determine that Cost Category value.</p>
+ */
+export interface CostCategoryRule {
+  /**
+   * <p>The default value for the cost category.</p>
+   */
+  Value?: string;
+
+  /**
+   * <p>An <a href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>
+   *             object used to categorize costs. This supports dimensions, tags, and nested expressions.
+   *             Currently the only dimensions supported are <code>LINKED_ACCOUNT</code>,
+   *                 <code>SERVICE_CODE</code>, <code>RECORD_TYPE</code>, and
+   *                 <code>LINKED_ACCOUNT_NAME</code>.</p>
+   *         <p>Root level <code>OR</code> is not supported. We recommend that you create a separate
+   *             rule instead.</p>
+   *
+   *         <p>
+   *             <code>RECORD_TYPE</code> is a dimension used for Cost Explorer APIs, and is also
+   *             supported for Cost Category expressions. This dimension uses different terms, depending
+   *             on whether you're using the console or API/JSON editor. For a detailed comparison, see
+   *             <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/manage-cost-categories.html#cost-categories-terms">Term Comparisons</a> in the <i>AWS Billing and Cost Management User
+   *                 Guide</i>.</p>
+   */
+  Rule?: Expression;
+
+  /**
+   * <p>The value the line item will be categorized as, if the line item contains the matched dimension.</p>
+   */
+  InheritedValue?: CostCategoryInheritedValueDimension;
+
+  /**
+   * <p>You can define the <code>CostCategoryRule</code> rule type as either <code>REGULAR</code> or <code>INHERITED_VALUE</code>. The <code>INHERITED_VALUE</code> rule type adds the flexibility of defining a rule that dynamically inherits the cost category value from the dimension value defined by <code>CostCategoryInheritedValueDimension</code>. For example, if you wanted to dynamically group costs based on the value of a specific tag key, you would first choose an inherited value rule type, then choose the tag dimension and specify the tag key to use.</p>
+   */
+  Type?: CostCategoryRuleType | string;
+}
+
+export namespace CostCategoryRule {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CostCategoryRule): any => ({
+    ...obj,
+  });
+}
+
+export interface GetCostAndUsageRequest {
+  /**
+   * <p>Sets the start and end dates for retrieving AWS costs. The start date is inclusive,  but the end date is exclusive. For example, if <code>start</code> is <code>2017-01-01</code> and <code>end</code> is <code>2017-05-01</code>, then the cost and usage data is
+   *             retrieved from <code>2017-01-01</code> up to and including <code>2017-04-30</code> but not including <code>2017-05-01</code>.</p>
+   */
+  TimePeriod: DateInterval | undefined;
+
+  /**
+   * <p>Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. If <code>Granularity</code> isn't set,
+   * 	    the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. </p>
+   */
+  Granularity: Granularity | string | undefined;
+
+  /**
+   * <p>Filters AWS costs by different dimensions. For example, you can specify <code>SERVICE</code> and <code>LINKED_ACCOUNT</code>
+   * 			and get the costs that are associated with that account's usage of that service. You can nest <code>Expression</code> objects
+   * 			to define any combination of dimension filters. For more information, see
+   * 			<a href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>. </p>
+   */
+  Filter?: Expression;
+
+  /**
+   * <p>Which metrics are returned in the query. For more information about blended and unblended rates, see
+   * 			<a href="http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended" annotation
+   * 				appear on some line items in my bill?</a>. </p>
+   * 		       <p>Valid values are <code>AmortizedCost</code>, <code>BlendedCost</code>, <code>NetAmortizedCost</code>,
+   * 			<code>NetUnblendedCost</code>, <code>NormalizedUsageAmount</code>, <code>UnblendedCost</code>, and <code>UsageQuantity</code>. </p>
+   * 		       <note>
+   * 			         <p>If you return the <code>UsageQuantity</code> metric, the service aggregates all usage numbers without
+   * 				taking into account the units. For example, if you aggregate <code>usageQuantity</code> across all of Amazon EC2,
+   * 				the results aren't meaningful because Amazon EC2 compute hours and data transfer are measured in different units
+   * 				(for example, hours vs. GB). To get more meaningful <code>UsageQuantity</code> metrics, filter by <code>UsageType</code> or
+   * 				<code>UsageTypeGroups</code>. </p>
+   * 		       </note>
+   * 		       <p>
+   *             <code>Metrics</code> is required for <code>GetCostAndUsage</code> requests.</p>
+   */
+  Metrics: string[] | undefined;
+
+  /**
+   * <p>You can group AWS costs using up to two different groups, either dimensions, tag keys,
+   *       cost categories, or any two group by types.</p>
+   * 		       <p>When you group by tag key, you get all tag values, including empty strings.</p>
+   * 		       <p>Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>, <code>LINKED_ACCOUNT</code>,
+   * 			<code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>, <code>SERVICE</code>, <code>TAGS</code>,
+   * 		  <code>TENANCY</code>, <code>RECORD_TYPE</code>, and <code>USAGE_TYPE</code>.</p>
+   */
+  GroupBy?: GroupDefinition[];
+
+  /**
+   * <p>The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
+   */
+  NextPageToken?: string;
+}
+
+export namespace GetCostAndUsageRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetCostAndUsageRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetCostAndUsageWithResourcesRequest {
+  /**
+   * <p>Sets the start and end dates for retrieving Amazon Web Services costs. The range must be within the last 14 days (the start date cannot be earlier than 14 days ago). The start date is inclusive,  but the end date is exclusive. For example, if <code>start</code> is <code>2017-01-01</code> and <code>end</code> is <code>2017-05-01</code>, then the cost and usage data is
+   *             retrieved from <code>2017-01-01</code> up to and including <code>2017-04-30</code> but not including <code>2017-05-01</code>.</p>
+   */
+  TimePeriod: DateInterval | undefined;
+
+  /**
+   * <p>Sets the AWS cost granularity to <code>MONTHLY</code>, <code>DAILY</code>, or <code>HOURLY</code>. If
+   * 	    <code>Granularity</code> isn't set, the response object doesn't include the
+   * 	    <code>Granularity</code>, <code>MONTHLY</code>, <code>DAILY</code>, or <code>HOURLY</code>. </p>
+   */
+  Granularity: Granularity | string | undefined;
+
+  /**
+   * <p>Filters Amazon Web Services costs by different dimensions. For example, you can specify
+   *       <code>SERVICE</code> and <code>LINKED_ACCOUNT</code> and get the costs that are associated
+   *       with that account's usage of that service. You can nest <code>Expression</code> objects to
+   *       define any combination of dimension filters. For more information, see <a href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>. </p>
+   *          <p>The <code>GetCostAndUsageWithResources</code> operation requires that you either group by or filter by a
+   *       <code>ResourceId</code>. It requires the <a href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>
+   *             <code>"SERVICE = Amazon Elastic Compute Cloud - Compute"</code> in the filter.</p>
+   */
+  Filter: Expression | undefined;
+
+  /**
+   * <p>Which metrics are returned in the query. For more information about blended and
+   *       unblended rates, see <a href="http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does
+   *         the "blended" annotation appear on some line items in my bill?</a>. </p>
+   *          <p>Valid values are <code>AmortizedCost</code>, <code>BlendedCost</code>,
+   *       <code>NetAmortizedCost</code>, <code>NetUnblendedCost</code>,
+   *       <code>NormalizedUsageAmount</code>, <code>UnblendedCost</code>, and
+   *       <code>UsageQuantity</code>. </p>
+   *          <note>
+   *             <p>If you return the <code>UsageQuantity</code> metric, the service aggregates all usage
+   *         numbers without taking the units into account. For example, if you aggregate
+   *         <code>usageQuantity</code> across all of Amazon EC2, the results aren't meaningful because
+   *         Amazon EC2 compute hours and data transfer are measured in different units (for example, hours
+   *         vs. GB). To get more meaningful <code>UsageQuantity</code> metrics, filter by
+   *         <code>UsageType</code> or <code>UsageTypeGroups</code>. </p>
+   *          </note>
+   *          <p>
+   *             <code>Metrics</code> is required for <code>GetCostAndUsageWithResources</code> requests.</p>
+   */
+  Metrics?: string[];
+
+  /**
+   * <p>You can group Amazon Web Services costs using up to two different groups: <code>DIMENSION</code>, <code>TAG</code>, <code>COST_CATEGORY</code>.</p>
+   */
+  GroupBy?: GroupDefinition[];
+
+  /**
+   * <p>The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
+   */
+  NextPageToken?: string;
+}
+
+export namespace GetCostAndUsageWithResourcesRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetCostAndUsageWithResourcesRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetCostCategoriesRequest {
+  /**
+   * <p>The value that you want to search the filter values for.</p>
+   * 	        <p>If you do not specify a <code>CostCategoryName</code>, <code>SearchString</code> will be used to filter Cost Category names that match the <code>SearchString</code> pattern. If you do specifiy a <code>CostCategoryName</code>, <code>SearchString</code> will be used to filter Cost Category values that match the <code>SearchString</code> pattern.</p>
+   */
+  SearchString?: string;
+
+  /**
+   * <p>The time period of the request.
+   *         </p>
+   */
+  TimePeriod: DateInterval | undefined;
+
+  /**
+   * <p>The unique name of the Cost Category.</p>
+   */
+  CostCategoryName?: string;
+
+  /**
+   * <p>Use <code>Expression</code> to filter by cost or by usage. There are two patterns: </p>
+   *         <ul>
+   *             <li>
+   *                 <p>Simple dimension values - You can set the dimension name and values for the
+   *                     filters that you plan to use. For example, you can filter for
+   *                     <code>REGION==us-east-1 OR REGION==us-west-1</code>. For <code>GetRightsizingRecommendation</code>, the Region is a full name (for example, <code>REGION==US East (N. Virginia)</code>. The
+   *                         <code>Expression</code> example looks like:</p>
+   *                 <p>
+   *                   <code>{ "Dimensions": { "Key": "REGION", "Values": [ "us-east-1",
+   *                         “us-west-1” ] } }</code>
+   *                 </p>
+   *                 <p>The list of dimension values are OR'd together to retrieve cost or usage
+   *                     data. You can create <code>Expression</code> and <code>DimensionValues</code>
+   *                     objects using either <code>with*</code> methods or <code>set*</code> methods in
+   *                     multiple lines. </p>
+   *             </li>
+   *             <li>
+   *                 <p>Compound dimension values with logical operations - You can use multiple
+   *                         <code>Expression</code> types and the logical operators
+   *                         <code>AND/OR/NOT</code> to create a list of one or more
+   *                         <code>Expression</code> objects. This allows you to filter on more advanced
+   *                     options. For example, you can filter on <code>((REGION == us-east-1 OR
+   *                         REGION == us-west-1) OR (TAG.Type == Type1)) AND (USAGE_TYPE !=
+   *                         DataTransfer)</code>. The <code>Expression</code> for that looks like
+   *                     this:</p>
+   *                 <p>
+   *                   <code>{ "And": [ {"Or": [ {"Dimensions": { "Key": "REGION",
+   *                         "Values": [ "us-east-1", "us-west-1" ] }}, {"Tags": { "Key": "TagName",
+   *                         "Values": ["Value1"] } } ]}, {"Not": {"Dimensions": { "Key": "USAGE_TYPE",
+   *                         "Values": ["DataTransfer"] }}} ] } </code>
+   *                </p>
+   *                 <note>
+   *                     <p>Because each <code>Expression</code> can have only one operator, the
+   *                         service returns an error if more than one is specified. The following
+   *                         example shows an <code>Expression</code> object that creates an
+   *                         error.</p>
+   *                 </note>
+   *                 <p>
+   *                     <code> { "And": [ ... ], "DimensionValues": { "Dimension": "USAGE_TYPE",
+   *                         "Values": [ "DataTransfer" ] } } </code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *         <note>
+   *             <p>For the <code>GetRightsizingRecommendation</code> action, a combination of OR and NOT is not
+   *                 supported. OR is not supported between different dimensions, or dimensions and tags.
+   *                 NOT operators aren't supported.
+   *                 Dimensions
+   *                 are also limited to <code>LINKED_ACCOUNT</code>, <code>REGION</code>, or
+   *                     <code>RIGHTSIZING_TYPE</code>.</p>
+   *
+   * 					       <p>For the <code>GetReservationPurchaseRecommendation</code> action, only NOT is supported. AND and OR are not supported. Dimensions are limited to <code>LINKED_ACCOUNT</code>.</p>
+   *
+   *
+   *
+   *          </note>
+   */
+  Filter?: Expression;
+
+  /**
+   * <p>The value by which you want to sort the data.</p>
+   * 	        <p>The key represents cost and usage metrics. The following values are supported:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>BlendedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UnblendedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>AmortizedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>NetAmortizedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>NetUnblendedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UsageQuantity</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>NormalizedUsageAmount</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *          <p>Supported values for <code>SortOrder</code> are <code>ASCENDING</code> or <code>DESCENDING</code>.</p>
+   *          <p>When using <code>SortBy</code>, <code>NextPageToken</code> and <code>SearchString</code> are not supported.</p>
+   */
+  SortBy?: SortDefinition[];
+
+  /**
+   * <p>This field is only used when <code>SortBy</code> is provided in the request.</p>
+   * 	        <p>The maximum number of objects that to be returned for this request.  If <code>MaxResults</code> is not specified with <code>SortBy</code>, the request will return 1000 results as the default value for this parameter.</p>
+   * 	        <p>For <code>GetCostCategories</code>, MaxResults has an upper limit of 1000.</p>
+   */
+  MaxResults?: number;
+
+  /**
+   * <p>If the number of objects that are still available for retrieval exceeds the limit, AWS returns a NextPageToken value in the response. To retrieve the next batch of objects, provide the NextPageToken from the prior call in your next request.</p>
+   */
+  NextPageToken?: string;
+}
+
+export namespace GetCostCategoriesRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetCostCategoriesRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetCostForecastRequest {
+  /**
+   * <p>The period of time that you want the forecast to cover. The start date must be equal to or no later than the current date to avoid a validation error.</p>
+   */
+  TimePeriod: DateInterval | undefined;
+
+  /**
+   * <p>Which metric Cost Explorer uses to create your forecast. For more information about blended and unblended rates, see
+   * 			<a href="http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended" annotation
+   * 				appear on some line items in my bill?</a>. </p>
+   * 		       <p>Valid values for a <code>GetCostForecast</code> call are the following:</p>
+   * 		       <ul>
+   *             <li>
+   * 				           <p>AMORTIZED_COST</p>
+   * 			         </li>
+   *             <li>
+   * 				           <p>BLENDED_COST</p>
+   * 			         </li>
+   *             <li>
+   * 				           <p>NET_AMORTIZED_COST</p>
+   * 			         </li>
+   *             <li>
+   * 				           <p>NET_UNBLENDED_COST</p>
+   * 			         </li>
+   *             <li>
+   * 				           <p>UNBLENDED_COST</p>
+   * 			         </li>
+   *          </ul>
+   */
+  Metric: Metric | string | undefined;
+
+  /**
+   * <p>How granular you want the forecast to be. You can get 3 months of <code>DAILY</code> forecasts or 12 months of <code>MONTHLY</code> forecasts.</p>
+   * 		       <p>The <code>GetCostForecast</code> operation supports only <code>DAILY</code> and <code>MONTHLY</code> granularities.</p>
+   */
+  Granularity: Granularity | string | undefined;
+
+  /**
+   * <p>The filters that you want to use to filter your forecast. The <code>GetCostForecast</code> API supports filtering by the following dimensions:</p>
+   *
+   * 	        <ul>
+   *             <li>
+   *                <p>
+   *                   <code>AZ</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>INSTANCE_TYPE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>LINKED_ACCOUNT</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>LINKED_ACCOUNT_NAME</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>OPERATION</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>PURCHASE_TYPE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>REGION</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>SERVICE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>USAGE_TYPE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>USAGE_TYPE_GROUP</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>RECORD_TYPE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>OPERATING_SYSTEM</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>TENANCY</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>SCOPE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>PLATFORM</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>SUBSCRIPTION_ID</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>LEGAL_ENTITY_NAME</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>DEPLOYMENT_OPTION</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>DATABASE_ENGINE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>INSTANCE_TYPE_FAMILY</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>BILLING_ENTITY</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>RESERVATION_ID</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>SAVINGS_PLAN_ARN</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   */
+  Filter?: Expression;
+
+  /**
+   * <p>Cost Explorer always returns the mean forecast as a single point. You can request a prediction interval around the mean
+   * 			by specifying a confidence level. The higher the confidence level, the more confident Cost Explorer is about the actual value
+   * 			falling in the prediction interval. Higher confidence levels result in wider prediction intervals.</p>
+   */
+  PredictionIntervalLevel?: number;
+}
+
+export namespace GetCostForecastRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetCostForecastRequest): any => ({
+    ...obj,
+  });
 }
 
 export interface GetDimensionValuesRequest {
@@ -1380,2723 +5091,6 @@ export interface GetDimensionValuesRequest {
   Context?: Context | string;
 
   /**
-   * <p>The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
-   */
-  NextPageToken?: string;
-}
-
-export namespace GetDimensionValuesRequest {
-  export const filterSensitiveLog = (obj: GetDimensionValuesRequest): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The metadata of a specific type that you can use to filter and group your results.
- *             You can use <code>GetDimensionValues</code> to find specific values.</p>
- */
-export interface DimensionValuesWithAttributes {
-  /**
-   * <p>The value of a dimension with a specific attribute.</p>
-   */
-  Value?: string;
-
-  /**
-   * <p>The attribute that applies to a specific <code>Dimension</code>.</p>
-   */
-  Attributes?: { [key: string]: string };
-}
-
-export namespace DimensionValuesWithAttributes {
-  export const filterSensitiveLog = (obj: DimensionValuesWithAttributes): any => ({
-    ...obj,
-  });
-}
-
-export interface GetDimensionValuesResponse {
-  /**
-   * <p>The filters that you used to filter your request. Some dimensions are available only for a specific context.</p>
-   * 		       <p>If you set the context to <code>COST_AND_USAGE</code>, you can use the following
-   *            dimensions for searching:</p>
-   *            <ul>
-   *             <li>
-   *                <p>AZ - The Availability Zone. An example is <code>us-east-1a</code>.</p>
-   *             </li>
-   *             <li>
-   *                <p>DATABASE_ENGINE - The Amazon Relational Database Service database. Examples are Aurora or MySQL.</p>
-   *             </li>
-   *             <li>
-   *                <p>INSTANCE_TYPE - The type of Amazon EC2 instance. An example is <code>m4.xlarge</code>.</p>
-   *             </li>
-   *             <li>
-   *                <p>LEGAL_ENTITY_NAME - The name of the organization that sells you AWS services, such as Amazon Web Services.</p>
-   *             </li>
-   *             <li>
-   *                <p>LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account. The value
-   *                field contains the AWS ID of the member account.</p>
-   *             </li>
-   *             <li>
-   *                <p>OPERATING_SYSTEM - The operating system. Examples are Windows or Linux.</p>
-   *             </li>
-   *             <li>
-   *                <p>OPERATION - The action performed. Examples include <code>RunInstance</code> and <code>CreateBucket</code>.</p>
-   *             </li>
-   *             <li>
-   *                <p>PLATFORM - The Amazon EC2 operating system. Examples are Windows or Linux.</p>
-   *             </li>
-   *             <li>
-   *                <p>PURCHASE_TYPE - The reservation type of the purchase to which this usage is related. Examples include On-Demand
-   *                Instances and Standard Reserved Instances.</p>
-   *             </li>
-   *             <li>
-   *                <p>SERVICE - The AWS service such as Amazon DynamoDB.</p>
-   *             </li>
-   *             <li>
-   *                <p>USAGE_TYPE - The type of usage. An example is DataTransfer-In-Bytes. The response for the <code>GetDimensionValues</code> operation
-   *            includes a unit attribute. Examples include GB and Hrs.</p>
-   *             </li>
-   *             <li>
-   *                <p>USAGE_TYPE_GROUP - The grouping of common usage types. An example is Amazon EC2: CloudWatch – Alarms. The response for this
-   *                operation includes a unit attribute.</p>
-   *             </li>
-   *             <li>
-   *                <p>RECORD_TYPE - The different types of charges such as RI fees, usage costs, tax refunds, and credits.</p>
-   *             </li>
-   *             <li>
-   *                <p>RESOURCE_ID - The unique identifier of the resource. ResourceId is an opt-in feature only available for last 14 days for EC2-Compute Service.</p>
-   *             </li>
-   *          </ul>
-   *          <p>If you set the context to <code>RESERVATIONS</code>, you can use the following
-   *            dimensions for searching:</p>
-   *          <ul>
-   *             <li>
-   *                <p>AZ - The Availability Zone. An example is <code>us-east-1a</code>.</p>
-   *             </li>
-   *             <li>
-   *                <p>CACHE_ENGINE - The Amazon ElastiCache operating system. Examples are Windows or Linux.</p>
-   *             </li>
-   *             <li>
-   *                <p>DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service deployments. Valid values are <code>SingleAZ</code> and <code>MultiAZ</code>.</p>
-   *             </li>
-   *             <li>
-   *                <p>INSTANCE_TYPE - The type of Amazon EC2 instance. An example is <code>m4.xlarge</code>.</p>
-   *             </li>
-   *             <li>
-   *                <p>LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account. The value
-   *                field contains the AWS ID of the member account.</p>
-   *             </li>
-   *             <li>
-   *                <p>PLATFORM - The Amazon EC2 operating system. Examples are Windows or Linux.</p>
-   *             </li>
-   *             <li>
-   *                <p>REGION - The AWS Region.</p>
-   *             </li>
-   *             <li>
-   *                <p>SCOPE (Utilization only) - The scope of a Reserved Instance (RI). Values are regional or a single Availability Zone.</p>
-   *             </li>
-   *             <li>
-   *                <p>TAG (Coverage only) - The tags that are associated with a Reserved Instance (RI).</p>
-   *             </li>
-   *             <li>
-   *                <p>TENANCY - The tenancy of a resource. Examples are shared or dedicated.</p>
-   *             </li>
-   *          </ul>
-   *          <p>If you set the context to <code>SAVINGS_PLANS</code>, you can use the following dimensions for searching:</p>
-   *          <ul>
-   *             <li>
-   *                <p>SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)</p>
-   *             </li>
-   *             <li>
-   *                <p>PAYMENT_OPTION - Payment option for the given Savings Plans (for example, All Upfront)</p>
-   *             </li>
-   *             <li>
-   *                <p>REGION - The AWS Region.</p>
-   *             </li>
-   *             <li>
-   *                <p>INSTANCE_TYPE_FAMILY - The family of instances (For example, <code>m5</code>)</p>
-   *             </li>
-   *             <li>
-   *                <p>LINKED_ACCOUNT - The description in the attribute map that includes the full name of the member account. The value
-   *                field contains the AWS ID of the member account.</p>
-   *             </li>
-   *             <li>
-   *                <p>SAVINGS_PLAN_ARN - The unique identifier for your Savings Plan</p>
-   *             </li>
-   *          </ul>
-   */
-  DimensionValues: DimensionValuesWithAttributes[] | undefined;
-
-  /**
-   * <p>The number of results that AWS returned at one time.</p>
-   */
-  ReturnSize: number | undefined;
-
-  /**
-   * <p>The total number of search results.</p>
-   */
-  TotalSize: number | undefined;
-
-  /**
-   * <p>The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
-   */
-  NextPageToken?: string;
-}
-
-export namespace GetDimensionValuesResponse {
-  export const filterSensitiveLog = (obj: GetDimensionValuesResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>How much it costs to run an instance.</p>
- */
-export interface CoverageCost {
-  /**
-   * <p>How much an On-Demand Instance costs.</p>
-   */
-  OnDemandCost?: string;
-}
-
-export namespace CoverageCost {
-  export const filterSensitiveLog = (obj: CoverageCost): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>How long a running instance either used a reservation or was On-Demand.</p>
- */
-export interface CoverageHours {
-  /**
-   * <p>The number of instance running hours that On-Demand Instances covered.</p>
-   */
-  OnDemandHours?: string;
-
-  /**
-   * <p>The number of instance running hours that reservations covered.</p>
-   */
-  ReservedHours?: string;
-
-  /**
-   * <p>The total instance usage, in hours.</p>
-   */
-  TotalRunningHours?: string;
-
-  /**
-   * <p>The percentage of instance hours that a reservation covered.</p>
-   */
-  CoverageHoursPercentage?: string;
-}
-
-export namespace CoverageHours {
-  export const filterSensitiveLog = (obj: CoverageHours): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The amount of instance usage, in normalized units. Normalized units enable you to
- *             see your EC2 usage for multiple sizes of instances in a uniform way. For example,
- *             suppose you run an xlarge instance and a 2xlarge instance. If you run both instances for
- *             the same amount of time, the 2xlarge instance uses twice as much of your reservation as
- *             the xlarge instance, even though both instances show only one instance-hour. Using
- *             normalized units instead of instance-hours, the xlarge instance used 8 normalized units,
- *             and the 2xlarge instance used 16 normalized units.</p>
- *         <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html">Modifying Reserved Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide for
- *                 Linux Instances</i>.</p>
- */
-export interface CoverageNormalizedUnits {
-  /**
-   * <p>The number of normalized units that are covered by On-Demand Instances instead of a
-   *             reservation.</p>
-   */
-  OnDemandNormalizedUnits?: string;
-
-  /**
-   * <p>The number of normalized units that a reservation covers.</p>
-   */
-  ReservedNormalizedUnits?: string;
-
-  /**
-   * <p>The total number of normalized units that you used.</p>
-   */
-  TotalRunningNormalizedUnits?: string;
-
-  /**
-   * <p>The percentage of your used instance normalized units that a reservation
-   *             covers.</p>
-   */
-  CoverageNormalizedUnitsPercentage?: string;
-}
-
-export namespace CoverageNormalizedUnits {
-  export const filterSensitiveLog = (obj: CoverageNormalizedUnits): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The amount of instance usage that a reservation covered.</p>
- */
-export interface Coverage {
-  /**
-   * <p>The amount of instance usage that the reservation covered, in hours.</p>
-   */
-  CoverageHours?: CoverageHours;
-
-  /**
-   * <p>The amount of instance usage that the reservation covered, in normalized
-   *             units.</p>
-   */
-  CoverageNormalizedUnits?: CoverageNormalizedUnits;
-
-  /**
-   * <p>The amount of cost that the reservation covered.</p>
-   */
-  CoverageCost?: CoverageCost;
-}
-
-export namespace Coverage {
-  export const filterSensitiveLog = (obj: Coverage): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>A
- *             group of reservations that share a set of attributes.</p>
- */
-export interface ReservationCoverageGroup {
-  /**
-   * <p>The attributes for this group of reservations.</p>
-   */
-  Attributes?: { [key: string]: string };
-
-  /**
-   * <p>How much instance usage this group of reservations covered.</p>
-   */
-  Coverage?: Coverage;
-}
-
-export namespace ReservationCoverageGroup {
-  export const filterSensitiveLog = (obj: ReservationCoverageGroup): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Reservation
- *             coverage for a specified period, in
- *             hours.</p>
- */
-export interface CoverageByTime {
-  /**
-   * <p>The period that this coverage was used over.</p>
-   */
-  TimePeriod?: DateInterval;
-
-  /**
-   * <p>The groups of instances that the reservation covered.</p>
-   */
-  Groups?: ReservationCoverageGroup[];
-
-  /**
-   * <p>The total reservation coverage, in hours.</p>
-   */
-  Total?: Coverage;
-}
-
-export namespace CoverageByTime {
-  export const filterSensitiveLog = (obj: CoverageByTime): any => ({
-    ...obj,
-  });
-}
-
-export interface GetReservationCoverageResponse {
-  /**
-   * <p>The amount of time that your reservations covered.</p>
-   */
-  CoveragesByTime: CoverageByTime[] | undefined;
-
-  /**
-   * <p>The total amount of instance usage that a reservation covered.</p>
-   */
-  Total?: Coverage;
-
-  /**
-   * <p>The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
-   */
-  NextPageToken?: string;
-}
-
-export namespace GetReservationCoverageResponse {
-  export const filterSensitiveLog = (obj: GetReservationCoverageResponse): any => ({
-    ...obj,
-  });
-}
-
-export enum LookbackPeriodInDays {
-  SEVEN_DAYS = "SEVEN_DAYS",
-  SIXTY_DAYS = "SIXTY_DAYS",
-  THIRTY_DAYS = "THIRTY_DAYS",
-}
-
-export enum PaymentOption {
-  ALL_UPFRONT = "ALL_UPFRONT",
-  HEAVY_UTILIZATION = "HEAVY_UTILIZATION",
-  LIGHT_UTILIZATION = "LIGHT_UTILIZATION",
-  MEDIUM_UTILIZATION = "MEDIUM_UTILIZATION",
-  NO_UPFRONT = "NO_UPFRONT",
-  PARTIAL_UPFRONT = "PARTIAL_UPFRONT",
-}
-
-export enum OfferingClass {
-  CONVERTIBLE = "CONVERTIBLE",
-  STANDARD = "STANDARD",
-}
-
-/**
- * <p>The Amazon EC2 hardware specifications that you want AWS to provide recommendations
- *             for.</p>
- */
-export interface EC2Specification {
-  /**
-   * <p>Whether you want a recommendation for standard or convertible
-   *             reservations.</p>
-   */
-  OfferingClass?: OfferingClass | string;
-}
-
-export namespace EC2Specification {
-  export const filterSensitiveLog = (obj: EC2Specification): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Hardware specifications for the service that you want recommendations
- *             for.</p>
- */
-export interface ServiceSpecification {
-  /**
-   * <p>The Amazon EC2 hardware specifications that you want AWS to provide recommendations
-   *             for.</p>
-   */
-  EC2Specification?: EC2Specification;
-}
-
-export namespace ServiceSpecification {
-  export const filterSensitiveLog = (obj: ServiceSpecification): any => ({
-    ...obj,
-  });
-}
-
-export enum TermInYears {
-  ONE_YEAR = "ONE_YEAR",
-  THREE_YEARS = "THREE_YEARS",
-}
-
-export interface GetReservationPurchaseRecommendationRequest {
-  /**
-   * <p>The account ID that is associated with the recommendation. </p>
-   */
-  AccountId?: string;
-
-  /**
-   * <p>The specific service that you want recommendations for.</p>
-   */
-  Service: string | undefined;
-
-  /**
-   * <p>The account scope that you want your recommendations for. Amazon Web Services calculates recommendations including the management account and member accounts if the value is set to <code>PAYER</code>. If the value is <code>LINKED</code>, recommendations are calculated for individual member accounts only.</p>
-   */
-  AccountScope?: AccountScope | string;
-
-  /**
-   * <p>The number of previous days that you want AWS to consider when it calculates your recommendations.</p>
-   */
-  LookbackPeriodInDays?: LookbackPeriodInDays | string;
-
-  /**
-   * <p>The reservation term that you want recommendations for.</p>
-   */
-  TermInYears?: TermInYears | string;
-
-  /**
-   * <p>The reservation purchase option that you want recommendations for.</p>
-   */
-  PaymentOption?: PaymentOption | string;
-
-  /**
-   * <p>The hardware specifications for the service instances that you want recommendations for, such as standard or convertible Amazon EC2 instances.</p>
-   */
-  ServiceSpecification?: ServiceSpecification;
-
-  /**
-   * <p>The number of recommendations that you want returned in a single response object.</p>
-   */
-  PageSize?: number;
-
-  /**
-   * <p>The pagination token that indicates the next set of results that you want to retrieve.</p>
-   */
-  NextPageToken?: string;
-}
-
-export namespace GetReservationPurchaseRecommendationRequest {
-  export const filterSensitiveLog = (obj: GetReservationPurchaseRecommendationRequest): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Information about this specific recommendation, such as the timestamp for when AWS
- *             made a specific recommendation.</p>
- */
-export interface ReservationPurchaseRecommendationMetadata {
-  /**
-   * <p>The ID for this specific recommendation.</p>
-   */
-  RecommendationId?: string;
-
-  /**
-   * <p>The timestamp for when AWS made this recommendation.</p>
-   */
-  GenerationTimestamp?: string;
-}
-
-export namespace ReservationPurchaseRecommendationMetadata {
-  export const filterSensitiveLog = (obj: ReservationPurchaseRecommendationMetadata): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Details about the Amazon EC2 instances that AWS recommends that you purchase.</p>
- */
-export interface EC2InstanceDetails {
-  /**
-   * <p>The instance family of the recommended reservation.</p>
-   */
-  Family?: string;
-
-  /**
-   * <p>The type of instance that AWS recommends.</p>
-   */
-  InstanceType?: string;
-
-  /**
-   * <p>The AWS Region of the recommended reservation.</p>
-   */
-  Region?: string;
-
-  /**
-   * <p>The Availability Zone of the recommended reservation.</p>
-   */
-  AvailabilityZone?: string;
-
-  /**
-   * <p>The platform of the recommended reservation. The platform is the specific
-   *             combination of operating system, license model, and software on an instance.</p>
-   */
-  Platform?: string;
-
-  /**
-   * <p>Whether the recommended reservation is dedicated or shared.</p>
-   */
-  Tenancy?: string;
-
-  /**
-   * <p>Whether the recommendation is for a current-generation instance. </p>
-   */
-  CurrentGeneration?: boolean;
-
-  /**
-   * <p>Whether the recommended reservation is size flexible.</p>
-   */
-  SizeFlexEligible?: boolean;
-}
-
-export namespace EC2InstanceDetails {
-  export const filterSensitiveLog = (obj: EC2InstanceDetails): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Details about the Amazon ElastiCache instances that AWS recommends that you
- *             purchase.</p>
- */
-export interface ElastiCacheInstanceDetails {
-  /**
-   * <p>The instance family of the recommended reservation.</p>
-   */
-  Family?: string;
-
-  /**
-   * <p>The type of node that AWS recommends.</p>
-   */
-  NodeType?: string;
-
-  /**
-   * <p>The AWS Region of the recommended reservation.</p>
-   */
-  Region?: string;
-
-  /**
-   * <p>The description of the recommended reservation.</p>
-   */
-  ProductDescription?: string;
-
-  /**
-   * <p>Whether the recommendation is for a current generation instance.</p>
-   */
-  CurrentGeneration?: boolean;
-
-  /**
-   * <p>Whether the recommended reservation is size flexible.</p>
-   */
-  SizeFlexEligible?: boolean;
-}
-
-export namespace ElastiCacheInstanceDetails {
-  export const filterSensitiveLog = (obj: ElastiCacheInstanceDetails): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Details about the Amazon ES instances that AWS recommends that you
- *             purchase.</p>
- */
-export interface ESInstanceDetails {
-  /**
-   * <p>The class of instance that AWS recommends.</p>
-   */
-  InstanceClass?: string;
-
-  /**
-   * <p>The size of instance that AWS recommends.</p>
-   */
-  InstanceSize?: string;
-
-  /**
-   * <p>The AWS Region of the recommended reservation.</p>
-   */
-  Region?: string;
-
-  /**
-   * <p>Whether the recommendation is for a current-generation instance.</p>
-   */
-  CurrentGeneration?: boolean;
-
-  /**
-   * <p>Whether the recommended reservation is size flexible.</p>
-   */
-  SizeFlexEligible?: boolean;
-}
-
-export namespace ESInstanceDetails {
-  export const filterSensitiveLog = (obj: ESInstanceDetails): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Details about the Amazon RDS instances that AWS recommends that you
- *             purchase.</p>
- */
-export interface RDSInstanceDetails {
-  /**
-   * <p>The instance family of the recommended reservation.</p>
-   */
-  Family?: string;
-
-  /**
-   * <p>The type of instance that AWS recommends.</p>
-   */
-  InstanceType?: string;
-
-  /**
-   * <p>The AWS Region of the recommended reservation.</p>
-   */
-  Region?: string;
-
-  /**
-   * <p>The database engine that the recommended reservation supports.</p>
-   */
-  DatabaseEngine?: string;
-
-  /**
-   * <p>The database edition that the recommended reservation supports.</p>
-   */
-  DatabaseEdition?: string;
-
-  /**
-   * <p>Whether the recommendation is for a reservation in a single Availability Zone or a
-   *             reservation with a backup in a second Availability Zone.</p>
-   */
-  DeploymentOption?: string;
-
-  /**
-   * <p>The license model that the recommended reservation supports.</p>
-   */
-  LicenseModel?: string;
-
-  /**
-   * <p>Whether the recommendation is for a current-generation instance. </p>
-   */
-  CurrentGeneration?: boolean;
-
-  /**
-   * <p>Whether the recommended reservation is size flexible.</p>
-   */
-  SizeFlexEligible?: boolean;
-}
-
-export namespace RDSInstanceDetails {
-  export const filterSensitiveLog = (obj: RDSInstanceDetails): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Details about the Amazon Redshift instances that AWS recommends that you
- *             purchase.</p>
- */
-export interface RedshiftInstanceDetails {
-  /**
-   * <p>The instance family of the recommended reservation.</p>
-   */
-  Family?: string;
-
-  /**
-   * <p>The type of node that AWS recommends.</p>
-   */
-  NodeType?: string;
-
-  /**
-   * <p>The AWS Region of the recommended reservation.</p>
-   */
-  Region?: string;
-
-  /**
-   * <p>Whether the recommendation is for a current-generation instance.</p>
-   */
-  CurrentGeneration?: boolean;
-
-  /**
-   * <p>Whether the recommended reservation is size flexible.</p>
-   */
-  SizeFlexEligible?: boolean;
-}
-
-export namespace RedshiftInstanceDetails {
-  export const filterSensitiveLog = (obj: RedshiftInstanceDetails): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Details about the instances that AWS recommends that you purchase.</p>
- */
-export interface InstanceDetails {
-  /**
-   * <p>The Amazon EC2 instances that AWS recommends that you purchase.</p>
-   */
-  EC2InstanceDetails?: EC2InstanceDetails;
-
-  /**
-   * <p>The Amazon RDS instances that AWS recommends that you purchase.</p>
-   */
-  RDSInstanceDetails?: RDSInstanceDetails;
-
-  /**
-   * <p>The Amazon Redshift instances that AWS recommends that you purchase.</p>
-   */
-  RedshiftInstanceDetails?: RedshiftInstanceDetails;
-
-  /**
-   * <p>The ElastiCache instances that AWS recommends that you purchase.</p>
-   */
-  ElastiCacheInstanceDetails?: ElastiCacheInstanceDetails;
-
-  /**
-   * <p>The Amazon ES instances that AWS recommends that you purchase.</p>
-   */
-  ESInstanceDetails?: ESInstanceDetails;
-}
-
-export namespace InstanceDetails {
-  export const filterSensitiveLog = (obj: InstanceDetails): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Details about your recommended reservation purchase.</p>
- */
-export interface ReservationPurchaseRecommendationDetail {
-  /**
-   * <p>The account that this RI recommendation is for.</p>
-   */
-  AccountId?: string;
-
-  /**
-   * <p>Details about the instances that AWS recommends that you purchase.</p>
-   */
-  InstanceDetails?: InstanceDetails;
-
-  /**
-   * <p>The number of instances that AWS recommends that you purchase.</p>
-   */
-  RecommendedNumberOfInstancesToPurchase?: string;
-
-  /**
-   * <p>The number of normalized units that AWS recommends that you purchase.</p>
-   */
-  RecommendedNormalizedUnitsToPurchase?: string;
-
-  /**
-   * <p>The minimum number of instances that you used in an hour during the historical
-   *             period. AWS uses this to calculate your recommended reservation purchases.</p>
-   */
-  MinimumNumberOfInstancesUsedPerHour?: string;
-
-  /**
-   * <p>The minimum number of normalized units that you used in an hour during the
-   *             historical period. AWS uses this to calculate your recommended reservation
-   *             purchases.</p>
-   */
-  MinimumNormalizedUnitsUsedPerHour?: string;
-
-  /**
-   * <p>The maximum number of instances that you used in an hour during the historical
-   *             period. AWS uses this to calculate your recommended reservation purchases.</p>
-   */
-  MaximumNumberOfInstancesUsedPerHour?: string;
-
-  /**
-   * <p>The maximum number of normalized units that you used in an hour during the
-   *             historical period. AWS uses this to calculate your recommended reservation
-   *             purchases.</p>
-   */
-  MaximumNormalizedUnitsUsedPerHour?: string;
-
-  /**
-   * <p>The average number of instances that you used in an hour during the historical
-   *             period. AWS uses this to calculate your recommended reservation purchases.</p>
-   */
-  AverageNumberOfInstancesUsedPerHour?: string;
-
-  /**
-   * <p>The average number of normalized units that you used in an hour during the
-   *             historical period. AWS uses this to calculate your recommended reservation
-   *             purchases.</p>
-   */
-  AverageNormalizedUnitsUsedPerHour?: string;
-
-  /**
-   * <p>The average utilization of your instances. AWS uses this to calculate your
-   *             recommended reservation purchases.</p>
-   */
-  AverageUtilization?: string;
-
-  /**
-   * <p>How long AWS estimates that it takes for this instance to start saving you money,
-   *             in months.</p>
-   */
-  EstimatedBreakEvenInMonths?: string;
-
-  /**
-   * <p>The currency code that AWS used to calculate the costs for this instance.</p>
-   */
-  CurrencyCode?: string;
-
-  /**
-   * <p>How much AWS estimates that this specific recommendation could save you in a
-   *             month.</p>
-   */
-  EstimatedMonthlySavingsAmount?: string;
-
-  /**
-   * <p>How much AWS estimates that this specific recommendation could save you in a month,
-   *             as a percentage of your overall costs.</p>
-   */
-  EstimatedMonthlySavingsPercentage?: string;
-
-  /**
-   * <p>How much AWS estimates that you spend on On-Demand Instances in a month.</p>
-   */
-  EstimatedMonthlyOnDemandCost?: string;
-
-  /**
-   * <p>How much AWS estimates that you would have spent for all usage during the specified
-   *             historical period if you had
-   *             a
-   *             reservation.</p>
-   */
-  EstimatedReservationCostForLookbackPeriod?: string;
-
-  /**
-   * <p>How much purchasing this instance costs you upfront.</p>
-   */
-  UpfrontCost?: string;
-
-  /**
-   * <p>How much purchasing this instance costs you on a monthly basis.</p>
-   */
-  RecurringStandardMonthlyCost?: string;
-}
-
-export namespace ReservationPurchaseRecommendationDetail {
-  export const filterSensitiveLog = (obj: ReservationPurchaseRecommendationDetail): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>A summary about this recommendation, such as the currency code, the amount that AWS
- *             estimates that you could save, and the total amount of reservation to
- *             purchase.</p>
- */
-export interface ReservationPurchaseRecommendationSummary {
-  /**
-   * <p>The total amount that AWS estimates that this recommendation could save you in a
-   *             month.</p>
-   */
-  TotalEstimatedMonthlySavingsAmount?: string;
-
-  /**
-   * <p>The total amount that AWS estimates that this recommendation could save you in a
-   *             month, as a percentage of your costs.</p>
-   */
-  TotalEstimatedMonthlySavingsPercentage?: string;
-
-  /**
-   * <p>The currency code used for this recommendation.</p>
-   */
-  CurrencyCode?: string;
-}
-
-export namespace ReservationPurchaseRecommendationSummary {
-  export const filterSensitiveLog = (obj: ReservationPurchaseRecommendationSummary): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>A specific reservation that AWS recommends for purchase.</p>
- */
-export interface ReservationPurchaseRecommendation {
-  /**
-   * <p>The account scope that AWS recommends that you purchase this instance for. For
-   *             example, you can purchase this reservation for an entire organization in AWS
-   *             Organizations.</p>
-   */
-  AccountScope?: AccountScope | string;
-
-  /**
-   * <p>How many days of previous usage that AWS considers when making this
-   *             recommendation.</p>
-   */
-  LookbackPeriodInDays?: LookbackPeriodInDays | string;
-
-  /**
-   * <p>The term of the reservation that you want recommendations for, in years.</p>
-   */
-  TermInYears?: TermInYears | string;
-
-  /**
-   * <p>The payment option for the reservation. For example, <code>AllUpfront</code> or
-   *                 <code>NoUpfront</code>.</p>
-   */
-  PaymentOption?: PaymentOption | string;
-
-  /**
-   * <p>Hardware specifications for the service that you want recommendations
-   *             for.</p>
-   */
-  ServiceSpecification?: ServiceSpecification;
-
-  /**
-   * <p>Details about the recommended purchases.</p>
-   */
-  RecommendationDetails?: ReservationPurchaseRecommendationDetail[];
-
-  /**
-   * <p>A summary about the recommended purchase.</p>
-   */
-  RecommendationSummary?: ReservationPurchaseRecommendationSummary;
-}
-
-export namespace ReservationPurchaseRecommendation {
-  export const filterSensitiveLog = (obj: ReservationPurchaseRecommendation): any => ({
-    ...obj,
-  });
-}
-
-export interface GetReservationPurchaseRecommendationResponse {
-  /**
-   * <p>Information about this specific recommendation call, such as the time stamp for when Cost Explorer generated this recommendation.</p>
-   */
-  Metadata?: ReservationPurchaseRecommendationMetadata;
-
-  /**
-   * <p>Recommendations for reservations to purchase.</p>
-   */
-  Recommendations?: ReservationPurchaseRecommendation[];
-
-  /**
-   * <p>The pagination token for the next set of retrievable results.</p>
-   */
-  NextPageToken?: string;
-}
-
-export namespace GetReservationPurchaseRecommendationResponse {
-  export const filterSensitiveLog = (obj: GetReservationPurchaseRecommendationResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The aggregated numbers for your reservation usage.</p>
- */
-export interface ReservationAggregates {
-  /**
-   * <p>The percentage of reservation time that you used.</p>
-   */
-  UtilizationPercentage?: string;
-
-  /**
-   * <p>The percentage of Amazon EC2 reservation time that you used, converted to normalized
-   *             units. Normalized units are available only for Amazon EC2 usage after November 11,
-   *             2017.</p>
-   */
-  UtilizationPercentageInUnits?: string;
-
-  /**
-   * <p>How many reservation hours that you purchased.</p>
-   */
-  PurchasedHours?: string;
-
-  /**
-   * <p>How many Amazon EC2 reservation hours that you purchased, converted to normalized units.
-   *             Normalized units are available only for Amazon EC2 usage after November 11, 2017.</p>
-   */
-  PurchasedUnits?: string;
-
-  /**
-   * <p>The total number of reservation hours that you used.</p>
-   */
-  TotalActualHours?: string;
-
-  /**
-   * <p>The total number of Amazon EC2 reservation hours that you used, converted to normalized
-   *             units. Normalized units are available only for Amazon EC2 usage after November 11,
-   *             2017.</p>
-   */
-  TotalActualUnits?: string;
-
-  /**
-   * <p>The number of reservation hours that you didn't use.</p>
-   */
-  UnusedHours?: string;
-
-  /**
-   * <p>The number of Amazon EC2 reservation hours that you didn't use, converted to normalized
-   *             units. Normalized units are available only for Amazon EC2 usage after November 11,
-   *             2017.</p>
-   */
-  UnusedUnits?: string;
-
-  /**
-   * <p>How much your reservation would cost if charged On-Demand rates.</p>
-   */
-  OnDemandCostOfRIHoursUsed?: string;
-
-  /**
-   * <p>How much you saved due to purchasing and utilizing reservation. AWS calculates this
-   *             by subtracting <code>TotalAmortizedFee</code> from
-   *                 <code>OnDemandCostOfRIHoursUsed</code>.</p>
-   */
-  NetRISavings?: string;
-
-  /**
-   * <p>How much you could save if you use your entire reservation.</p>
-   */
-  TotalPotentialRISavings?: string;
-
-  /**
-   * <p>The upfront cost of your reservation, amortized over the reservation
-   *             period.</p>
-   */
-  AmortizedUpfrontFee?: string;
-
-  /**
-   * <p>The monthly cost of your reservation, amortized over the reservation
-   *             period.</p>
-   */
-  AmortizedRecurringFee?: string;
-
-  /**
-   * <p>The total cost of your reservation, amortized over the reservation
-   *             period.</p>
-   */
-  TotalAmortizedFee?: string;
-}
-
-export namespace ReservationAggregates {
-  export const filterSensitiveLog = (obj: ReservationAggregates): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>A group of reservations that share a set of attributes.</p>
- */
-export interface ReservationUtilizationGroup {
-  /**
-   * <p>The key for a specific reservation attribute.</p>
-   */
-  Key?: string;
-
-  /**
-   * <p>The value of a specific reservation attribute.</p>
-   */
-  Value?: string;
-
-  /**
-   * <p>The attributes for this group of reservations.</p>
-   */
-  Attributes?: { [key: string]: string };
-
-  /**
-   * <p>How much you used this group of reservations.</p>
-   */
-  Utilization?: ReservationAggregates;
-}
-
-export namespace ReservationUtilizationGroup {
-  export const filterSensitiveLog = (obj: ReservationUtilizationGroup): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The amount of utilization, in hours.</p>
- */
-export interface UtilizationByTime {
-  /**
-   * <p>The period of time that this utilization was used for.</p>
-   */
-  TimePeriod?: DateInterval;
-
-  /**
-   * <p>The groups that this utilization result uses.</p>
-   */
-  Groups?: ReservationUtilizationGroup[];
-
-  /**
-   * <p>The total number of reservation hours that were used.</p>
-   */
-  Total?: ReservationAggregates;
-}
-
-export namespace UtilizationByTime {
-  export const filterSensitiveLog = (obj: UtilizationByTime): any => ({
-    ...obj,
-  });
-}
-
-export interface GetReservationUtilizationResponse {
-  /**
-   * <p>The amount of time that you used your RIs.</p>
-   */
-  UtilizationsByTime: UtilizationByTime[] | undefined;
-
-  /**
-   * <p>The total amount of time that you used your RIs.</p>
-   */
-  Total?: ReservationAggregates;
-
-  /**
-   * <p>The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
-   */
-  NextPageToken?: string;
-}
-
-export namespace GetReservationUtilizationResponse {
-  export const filterSensitiveLog = (obj: GetReservationUtilizationResponse): any => ({
-    ...obj,
-  });
-}
-
-export enum RecommendationTarget {
-  CROSS_INSTANCE_FAMILY = "CROSS_INSTANCE_FAMILY",
-  SAME_INSTANCE_FAMILY = "SAME_INSTANCE_FAMILY",
-}
-
-/**
- * <p> Enables you to customize recommendations across two attributes. You can choose to view
- *             recommendations for instances within the same instance families or across different instance
- *             families. You can also choose to view your estimated savings associated with recommendations
- *             with consideration of existing Savings Plans or RI benefits, or
- *             neither. </p>
- */
-export interface RightsizingRecommendationConfiguration {
-  /**
-   * <p>
-   *             The option to see recommendations within the same instance family, or recommendations for instances across other families. The default value is <code>SAME_INSTANCE_FAMILY</code>.
-   *         </p>
-   */
-  RecommendationTarget: RecommendationTarget | string | undefined;
-
-  /**
-   * <p>
-   *             The option to consider RI or Savings Plans discount benefits in your savings calculation. The default value is <code>TRUE</code>.
-   *         </p>
-   */
-  BenefitsConsidered: boolean | undefined;
-}
-
-export namespace RightsizingRecommendationConfiguration {
-  export const filterSensitiveLog = (obj: RightsizingRecommendationConfiguration): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Metadata for this recommendation set.</p>
- */
-export interface RightsizingRecommendationMetadata {
-  /**
-   * <p> The ID for this specific recommendation.</p>
-   */
-  RecommendationId?: string;
-
-  /**
-   * <p> The timestamp for when AWS made this recommendation.</p>
-   */
-  GenerationTimestamp?: string;
-
-  /**
-   * <p> How many days of previous usage that AWS considers when making this
-   *             recommendation.</p>
-   */
-  LookbackPeriodInDays?: LookbackPeriodInDays | string;
-}
-
-export namespace RightsizingRecommendationMetadata {
-  export const filterSensitiveLog = (obj: RightsizingRecommendationMetadata): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p> Details on the Amazon EC2 Resource.</p>
- */
-export interface EC2ResourceDetails {
-  /**
-   * <p> Hourly public On-Demand rate for the instance type.</p>
-   */
-  HourlyOnDemandRate?: string;
-
-  /**
-   * <p> The type of AWS instance.</p>
-   */
-  InstanceType?: string;
-
-  /**
-   * <p> The platform of the AWS instance. The platform is the specific combination of
-   *             operating system, license model, and software on an instance.</p>
-   */
-  Platform?: string;
-
-  /**
-   * <p> The AWS Region of the instance.</p>
-   */
-  Region?: string;
-
-  /**
-   * <p> The SKU of the product.</p>
-   */
-  Sku?: string;
-
-  /**
-   * <p> Memory capacity of the AWS instance.</p>
-   */
-  Memory?: string;
-
-  /**
-   * <p> Network performance capacity of the AWS instance.</p>
-   */
-  NetworkPerformance?: string;
-
-  /**
-   * <p> The disk storage of the AWS instance (not EBS storage).</p>
-   */
-  Storage?: string;
-
-  /**
-   * <p> Number of VCPU cores in the AWS instance type.</p>
-   */
-  Vcpu?: string;
-}
-
-export namespace EC2ResourceDetails {
-  export const filterSensitiveLog = (obj: EC2ResourceDetails): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Details on the resource.</p>
- */
-export interface ResourceDetails {
-  /**
-   * <p>Details on the Amazon EC2 resource.</p>
-   */
-  EC2ResourceDetails?: EC2ResourceDetails;
-}
-
-export namespace ResourceDetails {
-  export const filterSensitiveLog = (obj: ResourceDetails): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>
- *             The EBS field that contains a list of EBS metrics associated with the current instance.
- *         </p>
- */
-export interface EBSResourceUtilization {
-  /**
-   * <p>
-   *             The maximum number of read operations per second.
-   *         </p>
-   */
-  EbsReadOpsPerSecond?: string;
-
-  /**
-   * <p>
-   *             The maximum number of write operations per second.
-   *         </p>
-   */
-  EbsWriteOpsPerSecond?: string;
-
-  /**
-   * <p>
-   *             The maximum size of read operations per second
-   *         </p>
-   */
-  EbsReadBytesPerSecond?: string;
-
-  /**
-   * <p>
-   *             The maximum size of write operations per second.
-   *         </p>
-   */
-  EbsWriteBytesPerSecond?: string;
-}
-
-export namespace EBSResourceUtilization {
-  export const filterSensitiveLog = (obj: EBSResourceUtilization): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p> Utilization metrics of the instance.  </p>
- */
-export interface EC2ResourceUtilization {
-  /**
-   * <p> Maximum observed or expected CPU utilization of the instance.</p>
-   */
-  MaxCpuUtilizationPercentage?: string;
-
-  /**
-   * <p> Maximum observed or expected memory utilization of the instance.</p>
-   */
-  MaxMemoryUtilizationPercentage?: string;
-
-  /**
-   * <p> Maximum observed or expected storage utilization of the instance (does not measure EBS storage).</p>
-   */
-  MaxStorageUtilizationPercentage?: string;
-
-  /**
-   * <p>
-   *             The EBS field that contains a list of EBS metrics associated with the current instance.
-   *         </p>
-   */
-  EBSResourceUtilization?: EBSResourceUtilization;
-}
-
-export namespace EC2ResourceUtilization {
-  export const filterSensitiveLog = (obj: EC2ResourceUtilization): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Resource utilization of current resource.  </p>
- */
-export interface ResourceUtilization {
-  /**
-   * <p>Utilization of current Amazon EC2 instance. </p>
-   */
-  EC2ResourceUtilization?: EC2ResourceUtilization;
-}
-
-export namespace ResourceUtilization {
-  export const filterSensitiveLog = (obj: ResourceUtilization): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Context about the current instance.</p>
- */
-export interface CurrentInstance {
-  /**
-   * <p>Resource ID of the current instance.</p>
-   */
-  ResourceId?: string;
-
-  /**
-   * <p>The name you've given an instance. This field will show as blank if you haven't given the instance a name.</p>
-   */
-  InstanceName?: string;
-
-  /**
-   * <p>Cost allocation resource tags applied to the instance.</p>
-   */
-  Tags?: TagValues[];
-
-  /**
-   * <p> Details about the resource and utilization.</p>
-   */
-  ResourceDetails?: ResourceDetails;
-
-  /**
-   * <p> Utilization information of the current instance during the lookback period.</p>
-   */
-  ResourceUtilization?: ResourceUtilization;
-
-  /**
-   * <p> Number of hours during the lookback period covered by reservations.</p>
-   */
-  ReservationCoveredHoursInLookbackPeriod?: string;
-
-  /**
-   * <p>Number of hours during the lookback period covered by Savings Plans.</p>
-   */
-  SavingsPlansCoveredHoursInLookbackPeriod?: string;
-
-  /**
-   * <p> Number of hours during the lookback period billed at On-Demand rates.</p>
-   */
-  OnDemandHoursInLookbackPeriod?: string;
-
-  /**
-   * <p> The total number of hours the instance ran during the lookback period.</p>
-   */
-  TotalRunningHoursInLookbackPeriod?: string;
-
-  /**
-   * <p> Current On-Demand cost of operating this instance on a monthly basis.</p>
-   */
-  MonthlyCost?: string;
-
-  /**
-   * <p> The currency code that AWS used to calculate the costs for this instance.</p>
-   */
-  CurrencyCode?: string;
-}
-
-export namespace CurrentInstance {
-  export const filterSensitiveLog = (obj: CurrentInstance): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p> Details on recommended instance.</p>
- */
-export interface TargetInstance {
-  /**
-   * <p> Expected cost to operate this instance type on a monthly basis.</p>
-   */
-  EstimatedMonthlyCost?: string;
-
-  /**
-   * <p> Estimated savings resulting from modification, on a monthly basis.</p>
-   */
-  EstimatedMonthlySavings?: string;
-
-  /**
-   * <p> The currency code that AWS used to calculate the costs for this instance.</p>
-   */
-  CurrencyCode?: string;
-
-  /**
-   * <p> Indicates whether this recommendation is the defaulted AWS recommendation.</p>
-   */
-  DefaultTargetInstance?: boolean;
-
-  /**
-   * <p> Details on the target instance type.  </p>
-   */
-  ResourceDetails?: ResourceDetails;
-
-  /**
-   * <p> Expected utilization metrics for target instance type.</p>
-   */
-  ExpectedResourceUtilization?: ResourceUtilization;
-}
-
-export namespace TargetInstance {
-  export const filterSensitiveLog = (obj: TargetInstance): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p> Details on the modification recommendation.</p>
- */
-export interface ModifyRecommendationDetail {
-  /**
-   * <p>Identifies whether this instance type is the AWS default recommendation.</p>
-   */
-  TargetInstances?: TargetInstance[];
-}
-
-export namespace ModifyRecommendationDetail {
-  export const filterSensitiveLog = (obj: ModifyRecommendationDetail): any => ({
-    ...obj,
-  });
-}
-
-export enum RightsizingType {
-  MODIFY = "MODIFY",
-  TERMINATE = "TERMINATE",
-}
-
-/**
- * <p> Details on termination recommendation.  </p>
- */
-export interface TerminateRecommendationDetail {
-  /**
-   * <p> Estimated savings resulting from modification, on a monthly basis.</p>
-   */
-  EstimatedMonthlySavings?: string;
-
-  /**
-   * <p> The currency code that AWS used to calculate the costs for this instance.</p>
-   */
-  CurrencyCode?: string;
-}
-
-export namespace TerminateRecommendationDetail {
-  export const filterSensitiveLog = (obj: TerminateRecommendationDetail): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Recommendations to rightsize resources.</p>
- */
-export interface RightsizingRecommendation {
-  /**
-   * <p>The account that this recommendation is for.</p>
-   */
-  AccountId?: string;
-
-  /**
-   * <p> Context regarding the current instance.</p>
-   */
-  CurrentInstance?: CurrentInstance;
-
-  /**
-   * <p>Recommendation to either terminate or modify the resource.</p>
-   */
-  RightsizingType?: RightsizingType | string;
-
-  /**
-   * <p> Details for modification recommendations.  </p>
-   */
-  ModifyRecommendationDetail?: ModifyRecommendationDetail;
-
-  /**
-   * <p>Details for termination recommendations.</p>
-   */
-  TerminateRecommendationDetail?: TerminateRecommendationDetail;
-}
-
-export namespace RightsizingRecommendation {
-  export const filterSensitiveLog = (obj: RightsizingRecommendation): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p> Summary of rightsizing recommendations  </p>
- */
-export interface RightsizingRecommendationSummary {
-  /**
-   * <p> Total number of instance recommendations.</p>
-   */
-  TotalRecommendationCount?: string;
-
-  /**
-   * <p> Estimated total savings resulting from modifications, on a monthly basis.</p>
-   */
-  EstimatedTotalMonthlySavingsAmount?: string;
-
-  /**
-   * <p> The currency code that AWS used to calculate the savings.</p>
-   */
-  SavingsCurrencyCode?: string;
-
-  /**
-   * <p> Savings percentage based on the recommended modifications, relative to the total
-   *             On-Demand
-   *             costs associated with these instances.</p>
-   */
-  SavingsPercentage?: string;
-}
-
-export namespace RightsizingRecommendationSummary {
-  export const filterSensitiveLog = (obj: RightsizingRecommendationSummary): any => ({
-    ...obj,
-  });
-}
-
-export interface GetRightsizingRecommendationResponse {
-  /**
-   * <p>Information regarding this specific recommendation set.</p>
-   */
-  Metadata?: RightsizingRecommendationMetadata;
-
-  /**
-   * <p>Summary of this recommendation set.</p>
-   */
-  Summary?: RightsizingRecommendationSummary;
-
-  /**
-   * <p>Recommendations to rightsize resources.</p>
-   */
-  RightsizingRecommendations?: RightsizingRecommendation[];
-
-  /**
-   * <p>The token to retrieve the next set of results.</p>
-   */
-  NextPageToken?: string;
-
-  /**
-   * <p> Enables you to customize recommendations across two attributes. You can choose to view
-   *       recommendations for instances within the same instance families or across different instance
-   *       families. You can also choose to view your estimated savings associated with recommendations
-   *       with consideration of existing Savings Plans or RI benefits, or
-   *       neither. </p>
-   */
-  Configuration?: RightsizingRecommendationConfiguration;
-}
-
-export namespace GetRightsizingRecommendationResponse {
-  export const filterSensitiveLog = (obj: GetRightsizingRecommendationResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Specific coverage percentage, On-Demand costs, and spend covered by Savings Plans, and total Savings Plans costs for an account.</p>
- */
-export interface SavingsPlansCoverageData {
-  /**
-   * <p>The amount of your AWS usage that is covered by a Savings Plans.</p>
-   */
-  SpendCoveredBySavingsPlans?: string;
-
-  /**
-   * <p>The cost of your AWS usage at the public On-Demand rate.</p>
-   */
-  OnDemandCost?: string;
-
-  /**
-   * <p>The total cost of your AWS usage, regardless of your purchase option.</p>
-   */
-  TotalCost?: string;
-
-  /**
-   * <p>The percentage of your existing Savings Plans covered usage, divided by all of your
-   *             eligible Savings Plans usage in an account(or set of accounts).</p>
-   */
-  CoveragePercentage?: string;
-}
-
-export namespace SavingsPlansCoverageData {
-  export const filterSensitiveLog = (obj: SavingsPlansCoverageData): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The amount of Savings Plans eligible usage that is covered by Savings Plans. All calculations consider the On-Demand equivalent of your Savings Plans usage.</p>
- */
-export interface SavingsPlansCoverage {
-  /**
-   * <p>The attribute that applies to a specific <code>Dimension</code>.</p>
-   */
-  Attributes?: { [key: string]: string };
-
-  /**
-   * <p>The amount of Savings Plans eligible usage that the Savings Plans covered.</p>
-   */
-  Coverage?: SavingsPlansCoverageData;
-
-  /**
-   * <p>The time period that you want the usage and costs for.
-   *         </p>
-   */
-  TimePeriod?: DateInterval;
-}
-
-export namespace SavingsPlansCoverage {
-  export const filterSensitiveLog = (obj: SavingsPlansCoverage): any => ({
-    ...obj,
-  });
-}
-
-export interface GetSavingsPlansCoverageResponse {
-  /**
-   * <p>The amount of spend that your Savings Plans covered.</p>
-   */
-  SavingsPlansCoverages: SavingsPlansCoverage[] | undefined;
-
-  /**
-   * <p>The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.</p>
-   */
-  NextToken?: string;
-}
-
-export namespace GetSavingsPlansCoverageResponse {
-  export const filterSensitiveLog = (obj: GetSavingsPlansCoverageResponse): any => ({
-    ...obj,
-  });
-}
-
-export enum SupportedSavingsPlansType {
-  COMPUTE_SP = "COMPUTE_SP",
-  EC2_INSTANCE_SP = "EC2_INSTANCE_SP",
-}
-
-/**
- * <p>Metadata about your Savings Plans Purchase Recommendations.</p>
- */
-export interface SavingsPlansPurchaseRecommendationMetadata {
-  /**
-   * <p>The unique identifier for the recommendation set.</p>
-   */
-  RecommendationId?: string;
-
-  /**
-   * <p>The timestamp showing when the recommendations were generated.</p>
-   */
-  GenerationTimestamp?: string;
-
-  /**
-   * <p>Additional metadata that may be applicable to the recommendation.</p>
-   */
-  AdditionalMetadata?: string;
-}
-
-export namespace SavingsPlansPurchaseRecommendationMetadata {
-  export const filterSensitiveLog = (obj: SavingsPlansPurchaseRecommendationMetadata): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Attribute details on a specific Savings Plan.</p>
- */
-export interface SavingsPlansDetails {
-  /**
-   * <p>A collection of AWS resources in a geographic area. Each AWS Region is isolated and independent of the other Regions.</p>
-   */
-  Region?: string;
-
-  /**
-   * <p>A group of instance types that Savings Plans applies to.</p>
-   */
-  InstanceFamily?: string;
-
-  /**
-   * <p>The unique ID used to distinguish Savings Plans from one another.</p>
-   */
-  OfferingId?: string;
-}
-
-export namespace SavingsPlansDetails {
-  export const filterSensitiveLog = (obj: SavingsPlansDetails): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Details for your recommended Savings Plans.</p>
- */
-export interface SavingsPlansPurchaseRecommendationDetail {
-  /**
-   * <p>Details for your recommended Savings Plans.</p>
-   */
-  SavingsPlansDetails?: SavingsPlansDetails;
-
-  /**
-   * <p>The <code>AccountID</code> the recommendation is generated for.</p>
-   */
-  AccountId?: string;
-
-  /**
-   * <p>The upfront cost of the recommended Savings Plans, based on the selected payment option.</p>
-   */
-  UpfrontCost?: string;
-
-  /**
-   * <p>The estimated return on investment based on the recommended Savings Plans purchased. This is calculated as <code>estimatedSavingsAmount</code>/ <code>estimatedSPCost</code>*100.</p>
-   */
-  EstimatedROI?: string;
-
-  /**
-   * <p>The currency code AWS used to generate the recommendations and present potential
-   *             savings.</p>
-   */
-  CurrencyCode?: string;
-
-  /**
-   * <p>The cost of the recommended Savings Plans over the length of the lookback period.</p>
-   */
-  EstimatedSPCost?: string;
-
-  /**
-   * <p>The remaining On-Demand cost estimated to not be covered by the recommended Savings Plans, over the length of the lookback period.</p>
-   */
-  EstimatedOnDemandCost?: string;
-
-  /**
-   * <p>
-   *             The estimated On-Demand costs you would expect with no additional commitment, based on your usage of the selected time period and the Savings Plans you own.
-   *         </p>
-   */
-  EstimatedOnDemandCostWithCurrentCommitment?: string;
-
-  /**
-   * <p>The estimated savings amount based on the recommended Savings Plans over the length of the lookback period.</p>
-   */
-  EstimatedSavingsAmount?: string;
-
-  /**
-   * <p>The estimated savings percentage relative to the total cost of applicable On-Demand usage over the lookback period.</p>
-   */
-  EstimatedSavingsPercentage?: string;
-
-  /**
-   * <p>The recommended hourly commitment level for the Savings Plans type, and configuration based on the usage during the lookback period.</p>
-   */
-  HourlyCommitmentToPurchase?: string;
-
-  /**
-   * <p>The estimated utilization of the recommended Savings Plans.</p>
-   */
-  EstimatedAverageUtilization?: string;
-
-  /**
-   * <p>The estimated monthly savings amount, based on the recommended Savings Plans.</p>
-   */
-  EstimatedMonthlySavingsAmount?: string;
-
-  /**
-   * <p>The lowest value of hourly On-Demand spend over the lookback period of the applicable usage type.</p>
-   */
-  CurrentMinimumHourlyOnDemandSpend?: string;
-
-  /**
-   * <p>The highest value of hourly On-Demand spend over the lookback period of the applicable usage type.</p>
-   */
-  CurrentMaximumHourlyOnDemandSpend?: string;
-
-  /**
-   * <p>The average value of hourly On-Demand spend over the lookback period of the applicable usage type.</p>
-   */
-  CurrentAverageHourlyOnDemandSpend?: string;
-}
-
-export namespace SavingsPlansPurchaseRecommendationDetail {
-  export const filterSensitiveLog = (obj: SavingsPlansPurchaseRecommendationDetail): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Summary metrics for your Savings Plans Purchase Recommendations.</p>
- */
-export interface SavingsPlansPurchaseRecommendationSummary {
-  /**
-   * <p>The estimated return on investment based on the recommended Savings Plans and estimated savings.</p>
-   */
-  EstimatedROI?: string;
-
-  /**
-   * <p>The currency code AWS used to generate the recommendations and present potential
-   *             savings.</p>
-   */
-  CurrencyCode?: string;
-
-  /**
-   * <p>The estimated total cost of the usage after purchasing the recommended Savings Plans. This is a sum of the cost of Savings Plans during this term, and the remaining On-Demand usage.</p>
-   */
-  EstimatedTotalCost?: string;
-
-  /**
-   * <p>The current total on demand spend of the applicable usage types over the lookback period.</p>
-   */
-  CurrentOnDemandSpend?: string;
-
-  /**
-   * <p>The estimated total savings over the lookback period, based on the purchase of the recommended Savings Plans.</p>
-   */
-  EstimatedSavingsAmount?: string;
-
-  /**
-   * <p>The aggregate number of Savings Plans recommendations that exist for your account.</p>
-   */
-  TotalRecommendationCount?: string;
-
-  /**
-   * <p>The recommended Savings Plans cost on a daily (24 hourly) basis.</p>
-   */
-  DailyCommitmentToPurchase?: string;
-
-  /**
-   * <p>The recommended hourly commitment based on the recommendation parameters.</p>
-   */
-  HourlyCommitmentToPurchase?: string;
-
-  /**
-   * <p>The estimated savings relative to the total cost of On-Demand usage, over the lookback period. This is calculated as <code>estimatedSavingsAmount</code>/ <code>CurrentOnDemandSpend</code>*100.</p>
-   */
-  EstimatedSavingsPercentage?: string;
-
-  /**
-   * <p>The estimated monthly savings amount, based on the recommended Savings Plans purchase.</p>
-   */
-  EstimatedMonthlySavingsAmount?: string;
-
-  /**
-   * <p>
-   *             The estimated On-Demand costs you would expect with no additional commitment, based on your usage of the selected time period and the Savings Plans you own.
-   *         </p>
-   */
-  EstimatedOnDemandCostWithCurrentCommitment?: string;
-}
-
-export namespace SavingsPlansPurchaseRecommendationSummary {
-  export const filterSensitiveLog = (obj: SavingsPlansPurchaseRecommendationSummary): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Contains your request parameters, Savings Plan Recommendations Summary, and Details.</p>
- */
-export interface SavingsPlansPurchaseRecommendation {
-  /**
-   * <p>The account scope that you want your recommendations for. Amazon Web Services calculates recommendations including the management account and member accounts if the value is set to <code>PAYER</code>. If the value is <code>LINKED</code>, recommendations are calculated for individual member accounts only.</p>
-   */
-  AccountScope?: AccountScope | string;
-
-  /**
-   * <p>The requested Savings Plans recommendation type.</p>
-   */
-  SavingsPlansType?: SupportedSavingsPlansType | string;
-
-  /**
-   * <p>The Savings Plans recommendation term in years, used to generate the recommendation.</p>
-   */
-  TermInYears?: TermInYears | string;
-
-  /**
-   * <p>The payment option used to generate the recommendation.</p>
-   */
-  PaymentOption?: PaymentOption | string;
-
-  /**
-   * <p>The lookback period in days, used to generate the recommendation.</p>
-   */
-  LookbackPeriodInDays?: LookbackPeriodInDays | string;
-
-  /**
-   * <p>Details for the Savings Plans we recommend that you purchase to cover existing Savings
-   *             Plans eligible workloads.</p>
-   */
-  SavingsPlansPurchaseRecommendationDetails?: SavingsPlansPurchaseRecommendationDetail[];
-
-  /**
-   * <p>Summary metrics for your Savings Plans Recommendations. </p>
-   */
-  SavingsPlansPurchaseRecommendationSummary?: SavingsPlansPurchaseRecommendationSummary;
-}
-
-export namespace SavingsPlansPurchaseRecommendation {
-  export const filterSensitiveLog = (obj: SavingsPlansPurchaseRecommendation): any => ({
-    ...obj,
-  });
-}
-
-export interface GetSavingsPlansPurchaseRecommendationResponse {
-  /**
-   * <p>Information regarding this specific recommendation set.</p>
-   */
-  Metadata?: SavingsPlansPurchaseRecommendationMetadata;
-
-  /**
-   * <p>Contains your request parameters, Savings Plan Recommendations Summary, and Details.</p>
-   */
-  SavingsPlansPurchaseRecommendation?: SavingsPlansPurchaseRecommendation;
-
-  /**
-   * <p>The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
-   */
-  NextPageToken?: string;
-}
-
-export namespace GetSavingsPlansPurchaseRecommendationResponse {
-  export const filterSensitiveLog = (obj: GetSavingsPlansPurchaseRecommendationResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The amortized amount of Savings Plans purchased in a specific account during a specific time interval.</p>
- */
-export interface SavingsPlansAmortizedCommitment {
-  /**
-   * <p>The amortized amount of your Savings Plans commitment that was purchased with either a <code>Partial</code> or a <code>NoUpfront</code>.</p>
-   */
-  AmortizedRecurringCommitment?: string;
-
-  /**
-   * <p>The amortized amount of your Savings Plans commitment that was purchased with an <code>Upfront</code> or <code>PartialUpfront</code> Savings Plans.</p>
-   */
-  AmortizedUpfrontCommitment?: string;
-
-  /**
-   * <p>The total amortized amount of your Savings Plans commitment, regardless of your Savings Plans purchase method. </p>
-   */
-  TotalAmortizedCommitment?: string;
-}
-
-export namespace SavingsPlansAmortizedCommitment {
-  export const filterSensitiveLog = (obj: SavingsPlansAmortizedCommitment): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The amount of savings you're accumulating, against the public On-Demand rate of the usage accrued in an account.</p>
- */
-export interface SavingsPlansSavings {
-  /**
-   * <p>The savings amount that you are accumulating for the usage that is covered by a Savings Plans, when compared to the On-Demand equivalent of the same usage.</p>
-   */
-  NetSavings?: string;
-
-  /**
-   * <p>How much the amount that the usage would have cost if it was
-   *             accrued
-   *             at the On-Demand rate.</p>
-   */
-  OnDemandCostEquivalent?: string;
-}
-
-export namespace SavingsPlansSavings {
-  export const filterSensitiveLog = (obj: SavingsPlansSavings): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The measurement of how well you are using your existing Savings Plans.</p>
- */
-export interface SavingsPlansUtilization {
-  /**
-   * <p>The total amount of Savings Plans commitment that's been purchased in an account (or set of accounts).</p>
-   */
-  TotalCommitment?: string;
-
-  /**
-   * <p>The amount of your Savings Plans commitment that was consumed from Savings Plans eligible usage in a specific period.</p>
-   */
-  UsedCommitment?: string;
-
-  /**
-   * <p>The amount of your Savings Plans commitment that was not consumed from Savings Plans eligible usage in a specific period.</p>
-   */
-  UnusedCommitment?: string;
-
-  /**
-   * <p>The amount of <code>UsedCommitment</code> divided by the <code>TotalCommitment</code> for your Savings Plans.</p>
-   */
-  UtilizationPercentage?: string;
-}
-
-export namespace SavingsPlansUtilization {
-  export const filterSensitiveLog = (obj: SavingsPlansUtilization): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The amount of Savings Plans utilization, in hours.</p>
- */
-export interface SavingsPlansUtilizationByTime {
-  /**
-   * <p>The time period that you want the usage and costs for.
-   *         </p>
-   */
-  TimePeriod: DateInterval | undefined;
-
-  /**
-   * <p>A ratio of your effectiveness of using existing Savings Plans to apply to workloads that are Savings Plans eligible.</p>
-   */
-  Utilization: SavingsPlansUtilization | undefined;
-
-  /**
-   * <p>The amount saved by using existing Savings Plans. Savings returns both net savings from Savings Plans as well as the <code>onDemandCostEquivalent</code> of the Savings Plans when considering the utilization rate.</p>
-   */
-  Savings?: SavingsPlansSavings;
-
-  /**
-   * <p>The total amortized commitment for a Savings Plans. This includes the sum of the upfront and recurring Savings Plans fees.</p>
-   */
-  AmortizedCommitment?: SavingsPlansAmortizedCommitment;
-}
-
-export namespace SavingsPlansUtilizationByTime {
-  export const filterSensitiveLog = (obj: SavingsPlansUtilizationByTime): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The aggregated utilization metrics for your Savings Plans usage.</p>
- */
-export interface SavingsPlansUtilizationAggregates {
-  /**
-   * <p>A ratio of your effectiveness of using existing Savings Plans to apply to workloads that are Savings Plans eligible.</p>
-   */
-  Utilization: SavingsPlansUtilization | undefined;
-
-  /**
-   * <p>The amount saved by using existing Savings Plans. Savings returns both net savings from Savings Plans, as well as the <code>onDemandCostEquivalent</code> of the Savings Plans when considering the utilization rate.</p>
-   */
-  Savings?: SavingsPlansSavings;
-
-  /**
-   * <p>The total amortized commitment for a Savings Plans. This includes the sum of the upfront and recurring Savings Plans fees.</p>
-   */
-  AmortizedCommitment?: SavingsPlansAmortizedCommitment;
-}
-
-export namespace SavingsPlansUtilizationAggregates {
-  export const filterSensitiveLog = (obj: SavingsPlansUtilizationAggregates): any => ({
-    ...obj,
-  });
-}
-
-export interface GetSavingsPlansUtilizationResponse {
-  /**
-   * <p>The amount of cost/commitment you used your Savings Plans. This allows you to specify date ranges.</p>
-   */
-  SavingsPlansUtilizationsByTime?: SavingsPlansUtilizationByTime[];
-
-  /**
-   * <p>The total amount of cost/commitment that you used your Savings Plans, regardless of date ranges.</p>
-   */
-  Total: SavingsPlansUtilizationAggregates | undefined;
-}
-
-export namespace GetSavingsPlansUtilizationResponse {
-  export const filterSensitiveLog = (obj: GetSavingsPlansUtilizationResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>A single daily or monthly Savings Plans utilization rate, and details for your account. A management account in an organization have access to member accounts. You can use <code>GetDimensionValues</code> to determine the possible dimension values. </p>
- */
-export interface SavingsPlansUtilizationDetail {
-  /**
-   * <p>The unique Amazon Resource Name (ARN) for a particular Savings Plan.</p>
-   */
-  SavingsPlanArn?: string;
-
-  /**
-   * <p>The attribute that applies to a specific <code>Dimension</code>.</p>
-   */
-  Attributes?: { [key: string]: string };
-
-  /**
-   * <p>A ratio of your effectiveness of using existing Savings Plans to apply to workloads that are Savings Plans eligible.</p>
-   */
-  Utilization?: SavingsPlansUtilization;
-
-  /**
-   * <p>The amount saved by using existing Savings Plans. Savings returns both net savings from savings plans as well as the <code>onDemandCostEquivalent</code> of the Savings Plans when considering the utilization rate.</p>
-   */
-  Savings?: SavingsPlansSavings;
-
-  /**
-   * <p>The total amortized commitment for a Savings Plans. Includes the sum of the upfront and recurring Savings Plans fees.</p>
-   */
-  AmortizedCommitment?: SavingsPlansAmortizedCommitment;
-}
-
-export namespace SavingsPlansUtilizationDetail {
-  export const filterSensitiveLog = (obj: SavingsPlansUtilizationDetail): any => ({
-    ...obj,
-  });
-}
-
-export interface GetSavingsPlansUtilizationDetailsResponse {
-  /**
-   * <p>Retrieves a single daily or monthly Savings Plans utilization rate and details for your account.</p>
-   */
-  SavingsPlansUtilizationDetails: SavingsPlansUtilizationDetail[] | undefined;
-
-  /**
-   * <p>The total Savings Plans utilization, regardless of time period.</p>
-   */
-  Total?: SavingsPlansUtilizationAggregates;
-
-  /**
-   * <p>The time period that you want the usage and costs for.
-   *         </p>
-   */
-  TimePeriod: DateInterval | undefined;
-
-  /**
-   * <p>The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.</p>
-   */
-  NextToken?: string;
-}
-
-export namespace GetSavingsPlansUtilizationDetailsResponse {
-  export const filterSensitiveLog = (obj: GetSavingsPlansUtilizationDetailsResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface GetTagsRequest {
-  /**
-   * <p>The value that you want to search for.</p>
-   */
-  SearchString?: string;
-
-  /**
-   * <p>The start and end dates for retrieving the dimension values. The start date is inclusive,  but the end date is exclusive. For example, if <code>start</code> is <code>2017-01-01</code> and <code>end</code> is <code>2017-05-01</code>, then the cost and usage data is
-   *             retrieved from <code>2017-01-01</code> up to and including <code>2017-04-30</code> but not including <code>2017-05-01</code>.</p>
-   */
-  TimePeriod: DateInterval | undefined;
-
-  /**
-   * <p>The key of the tag that you want to return values for.</p>
-   */
-  TagKey?: string;
-
-  /**
-   * <p>The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
-   */
-  NextPageToken?: string;
-}
-
-export namespace GetTagsRequest {
-  export const filterSensitiveLog = (obj: GetTagsRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface GetTagsResponse {
-  /**
-   * <p>The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
-   */
-  NextPageToken?: string;
-
-  /**
-   * <p>The tags that match your request.</p>
-   */
-  Tags: string[] | undefined;
-
-  /**
-   * <p>The number of query results that AWS returns at a time.</p>
-   */
-  ReturnSize: number | undefined;
-
-  /**
-   * <p>The total number of query results.</p>
-   */
-  TotalSize: number | undefined;
-}
-
-export namespace GetTagsResponse {
-  export const filterSensitiveLog = (obj: GetTagsResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface GetUsageForecastResponse {
-  /**
-   * <p>How much you're forecasted to use over the forecast period.</p>
-   */
-  Total?: MetricValue;
-
-  /**
-   * <p>The forecasts for your query, in order. For <code>DAILY</code> forecasts, this is a list of days. For <code>MONTHLY</code> forecasts,
-   * 			this is a list of months.</p>
-   */
-  ForecastResultsByTime?: ForecastResult[];
-}
-
-export namespace GetUsageForecastResponse {
-  export const filterSensitiveLog = (obj: GetUsageForecastResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Cost Explorer was unable to identify the usage unit. Provide <code>UsageType/UsageTypeGroup</code> filter selections that contain matching units, for example: <code>hours</code>.</p>
- */
-export interface UnresolvableUsageUnitException extends __SmithyException, $MetadataBearer {
-  name: "UnresolvableUsageUnitException";
-  $fault: "client";
-  Message?: string;
-}
-
-export namespace UnresolvableUsageUnitException {
-  export const filterSensitiveLog = (obj: UnresolvableUsageUnitException): any => ({
-    ...obj,
-  });
-}
-
-export interface ListCostCategoryDefinitionsRequest {
-  /**
-   * <p>
-   *       The date when the Cost Category was effective.
-   *     </p>
-   */
-  EffectiveOn?: string;
-
-  /**
-   * <p>
-   *       The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.
-   *     </p>
-   */
-  NextToken?: string;
-
-  /**
-   * <p> The number of entries a paginated response contains. </p>
-   */
-  MaxResults?: number;
-}
-
-export namespace ListCostCategoryDefinitionsRequest {
-  export const filterSensitiveLog = (obj: ListCostCategoryDefinitionsRequest): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>A reference to a Cost Category containing only enough information to identify the Cost Category.</p>
- *         <p>You can use this information to retrieve the full Cost Category information using <code>DescribeCostCategory</code>.</p>
- */
-export interface CostCategoryReference {
-  /**
-   * <p>
-   *             The unique identifier for your Cost Category.
-   *         </p>
-   */
-  CostCategoryArn?: string;
-
-  /**
-   * <p>The unique name of the Cost Category.</p>
-   */
-  Name?: string;
-
-  /**
-   * <p>
-   *             The Cost Category's effective start date.</p>
-   */
-  EffectiveStart?: string;
-
-  /**
-   * <p>
-   *             The Cost Category's effective end date.</p>
-   */
-  EffectiveEnd?: string;
-
-  /**
-   * <p>
-   *             The number of rules associated with a specific Cost Category.
-   *         </p>
-   */
-  NumberOfRules?: number;
-
-  /**
-   * <p>
-   *             The list of processing statuses for Cost Management products for a specific cost category.
-   *         </p>
-   */
-  ProcessingStatus?: CostCategoryProcessingStatus[];
-
-  /**
-   * <p>
-   *             A list of unique cost category values in a specific cost category.
-   *         </p>
-   */
-  Values?: string[];
-}
-
-export namespace CostCategoryReference {
-  export const filterSensitiveLog = (obj: CostCategoryReference): any => ({
-    ...obj,
-  });
-}
-
-export interface ListCostCategoryDefinitionsResponse {
-  /**
-   * <p>
-   *       A reference to a Cost Category containing enough information to identify the Cost Category.
-   *     </p>
-   */
-  CostCategoryReferences?: CostCategoryReference[];
-
-  /**
-   * <p>
-   *       The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.
-   *     </p>
-   */
-  NextToken?: string;
-}
-
-export namespace ListCostCategoryDefinitionsResponse {
-  export const filterSensitiveLog = (obj: ListCostCategoryDefinitionsResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface ProvideAnomalyFeedbackRequest {
-  /**
-   * <p>
-   *       A cost anomaly ID.
-   *     </p>
-   */
-  AnomalyId: string | undefined;
-
-  /**
-   * <p>Describes whether the cost anomaly was a planned activity or you considered it an anomaly. </p>
-   */
-  Feedback: AnomalyFeedbackType | string | undefined;
-}
-
-export namespace ProvideAnomalyFeedbackRequest {
-  export const filterSensitiveLog = (obj: ProvideAnomalyFeedbackRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface ProvideAnomalyFeedbackResponse {
-  /**
-   * <p>
-   *       The ID of the modified cost anomaly.
-   *     </p>
-   */
-  AnomalyId: string | undefined;
-}
-
-export namespace ProvideAnomalyFeedbackResponse {
-  export const filterSensitiveLog = (obj: ProvideAnomalyFeedbackResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateAnomalyMonitorRequest {
-  /**
-   * <p> Cost anomaly monitor Amazon Resource Names (ARNs). </p>
-   */
-  MonitorArn: string | undefined;
-
-  /**
-   * <p>
-   *       The new name for the cost anomaly monitor.
-   *     </p>
-   */
-  MonitorName?: string;
-}
-
-export namespace UpdateAnomalyMonitorRequest {
-  export const filterSensitiveLog = (obj: UpdateAnomalyMonitorRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateAnomalyMonitorResponse {
-  /**
-   * <p>
-   *       A cost anomaly monitor ARN.
-   *     </p>
-   */
-  MonitorArn: string | undefined;
-}
-
-export namespace UpdateAnomalyMonitorResponse {
-  export const filterSensitiveLog = (obj: UpdateAnomalyMonitorResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateAnomalySubscriptionRequest {
-  /**
-   * <p> A cost anomaly subscription Amazon Resource Name (ARN). </p>
-   */
-  SubscriptionArn: string | undefined;
-
-  /**
-   * <p>
-   *       The update to the threshold value for receiving notifications.
-   *     </p>
-   */
-  Threshold?: number;
-
-  /**
-   * <p>
-   *       The update to the frequency value at which subscribers will receive notifications.
-   *     </p>
-   */
-  Frequency?: AnomalySubscriptionFrequency | string;
-
-  /**
-   * <p>
-   *       A list of cost anomaly subscription ARNs.
-   *     </p>
-   */
-  MonitorArnList?: string[];
-
-  /**
-   * <p>
-   *       The update to the subscriber list.
-   *     </p>
-   */
-  Subscribers?: Subscriber[];
-
-  /**
-   * <p>
-   *       The subscription's new name.
-   *     </p>
-   */
-  SubscriptionName?: string;
-}
-
-export namespace UpdateAnomalySubscriptionRequest {
-  export const filterSensitiveLog = (obj: UpdateAnomalySubscriptionRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateAnomalySubscriptionResponse {
-  /**
-   * <p>
-   *       A cost anomaly subscription ARN.
-   *     </p>
-   */
-  SubscriptionArn: string | undefined;
-}
-
-export namespace UpdateAnomalySubscriptionResponse {
-  export const filterSensitiveLog = (obj: UpdateAnomalySubscriptionResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface UpdateCostCategoryDefinitionResponse {
-  /**
-   * <p>
-   *       The unique identifier for your Cost Category.
-   *     </p>
-   */
-  CostCategoryArn?: string;
-
-  /**
-   * <p>
-   *       The Cost Category's effective start date.
-   *     </p>
-   */
-  EffectiveStart?: string;
-}
-
-export namespace UpdateCostCategoryDefinitionResponse {
-  export const filterSensitiveLog = (obj: UpdateCostCategoryDefinitionResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Use <code>Expression</code> to filter by cost or by usage. There are two patterns: </p>
- *         <ul>
- *             <li>
- *                 <p>Simple dimension values - You can set the dimension name and values for the
- *                     filters that you plan to use. For example, you can filter for
- *                     <code>REGION==us-east-1 OR REGION==us-west-1</code>. For <code>GetRightsizingRecommendation</code>, the Region is a full name (for example, <code>REGION==US East (N. Virginia)</code>. The
- *                         <code>Expression</code> example looks like:</p>
- *                 <p>
- *                   <code>{ "Dimensions": { "Key": "REGION", "Values": [ "us-east-1",
- *                         “us-west-1” ] } }</code>
- *                 </p>
- *                 <p>The list of dimension values are OR'd together to retrieve cost or usage
- *                     data. You can create <code>Expression</code> and <code>DimensionValues</code>
- *                     objects using either <code>with*</code> methods or <code>set*</code> methods in
- *                     multiple lines. </p>
- *             </li>
- *             <li>
- *                 <p>Compound dimension values with logical operations - You can use multiple
- *                         <code>Expression</code> types and the logical operators
- *                         <code>AND/OR/NOT</code> to create a list of one or more
- *                         <code>Expression</code> objects. This allows you to filter on more advanced
- *                     options. For example, you can filter on <code>((REGION == us-east-1 OR
- *                         REGION == us-west-1) OR (TAG.Type == Type1)) AND (USAGE_TYPE !=
- *                         DataTransfer)</code>. The <code>Expression</code> for that looks like
- *                     this:</p>
- *                 <p>
- *                   <code>{ "And": [ {"Or": [ {"Dimensions": { "Key": "REGION",
- *                         "Values": [ "us-east-1", "us-west-1" ] }}, {"Tags": { "Key": "TagName",
- *                         "Values": ["Value1"] } } ]}, {"Not": {"Dimensions": { "Key": "USAGE_TYPE",
- *                         "Values": ["DataTransfer"] }}} ] } </code>
- *                </p>
- *                 <note>
- *                     <p>Because each <code>Expression</code> can have only one operator, the
- *                         service returns an error if more than one is specified. The following
- *                         example shows an <code>Expression</code> object that creates an
- *                         error.</p>
- *                 </note>
- *                 <p>
- *                     <code> { "And": [ ... ], "DimensionValues": { "Dimension": "USAGE_TYPE",
- *                         "Values": [ "DataTransfer" ] } } </code>
- *                </p>
- *             </li>
- *          </ul>
- *         <note>
- *             <p>For <code>GetRightsizingRecommendation</code> action, a combination of OR and NOT is not
- *                 supported. OR is not supported between different dimensions, or dimensions and tags.
- *                 NOT operators aren't supported.
- *                 Dimensions
- *                 are also limited to <code>LINKED_ACCOUNT</code>, <code>REGION</code>, or
- *                     <code>RIGHTSIZING_TYPE</code>.</p>
- *          </note>
- */
-export interface Expression {
-  /**
-   * <p>Return results that match either <code>Dimension</code> object.</p>
-   */
-  Or?: Expression[];
-
-  /**
-   * <p>Return results that match both <code>Dimension</code> objects.</p>
-   */
-  And?: Expression[];
-
-  /**
-   * <p>Return results that don't match a <code>Dimension</code> object.</p>
-   */
-  Not?: Expression;
-
-  /**
-   * <p>The specific <code>Dimension</code> to use for <code>Expression</code>.</p>
-   */
-  Dimensions?: DimensionValues;
-
-  /**
-   * <p>The specific <code>Tag</code> to use for <code>Expression</code>.</p>
-   */
-  Tags?: TagValues;
-
-  /**
-   * <p>The filter based on <code>CostCategory</code> values.</p>
-   */
-  CostCategories?: CostCategoryValues;
-}
-
-export namespace Expression {
-  export const filterSensitiveLog = (obj: Expression): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p> This object continuously inspects your account's cost data for anomalies, based on
- *                 <code>MonitorType</code> and <code>MonitorSpecification</code>. The content consists
- *             of detailed metadata and the current status of the monitor object. </p>
- */
-export interface AnomalyMonitor {
-  /**
-   * <p> The Amazon Resource Name (ARN) value. </p>
-   */
-  MonitorArn?: string;
-
-  /**
-   * <p>
-   *         The name of the monitor.
-   *     </p>
-   */
-  MonitorName: string | undefined;
-
-  /**
-   * <p>
-   *         The date when the monitor was created.
-   *     </p>
-   */
-  CreationDate?: string;
-
-  /**
-   * <p>
-   *         The date when the monitor was last updated.
-   *     </p>
-   */
-  LastUpdatedDate?: string;
-
-  /**
-   * <p>
-   *         The date when the monitor last evaluated for anomalies.
-   *     </p>
-   */
-  LastEvaluatedDate?: string;
-
-  /**
-   * <p>
-   *         The possible type values.
-   *     </p>
-   */
-  MonitorType: MonitorType | string | undefined;
-
-  /**
-   * <p>
-   *         The dimensions to evaluate.
-   *     </p>
-   */
-  MonitorDimension?: MonitorDimension | string;
-
-  /**
    * <p>Use <code>Expression</code> to filter by cost or by usage. There are two patterns: </p>
    *         <ul>
    *             <li>
@@ -4141,175 +5135,71 @@ export interface AnomalyMonitor {
    *             </li>
    *          </ul>
    *         <note>
-   *             <p>For <code>GetRightsizingRecommendation</code> action, a combination of OR and NOT is not
+   *             <p>For the <code>GetRightsizingRecommendation</code> action, a combination of OR and NOT is not
    *                 supported. OR is not supported between different dimensions, or dimensions and tags.
    *                 NOT operators aren't supported.
    *                 Dimensions
    *                 are also limited to <code>LINKED_ACCOUNT</code>, <code>REGION</code>, or
    *                     <code>RIGHTSIZING_TYPE</code>.</p>
-   *          </note>
-   */
-  MonitorSpecification?: Expression;
-
-  /**
-   * <p>
-   *         The value for evaluated dimensions.
-   *     </p>
-   */
-  DimensionalValueCount?: number;
-}
-
-export namespace AnomalyMonitor {
-  export const filterSensitiveLog = (obj: AnomalyMonitor): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Rules are processed in order. If there are multiple rules that match the line item, then the first rule to match is used to determine that Cost Category value.</p>
- */
-export interface CostCategoryRule {
-  /**
-   * <p>The value a line item will be categorized as, if it matches the rule.</p>
-   */
-  Value: string | undefined;
-
-  /**
-   * <p>An <a href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>
-   *             object used to categorize costs. This supports dimensions, tags, and nested expressions.
-   *             Currently the only dimensions supported are <code>LINKED_ACCOUNT</code>,
-   *                 <code>SERVICE_CODE</code>, <code>RECORD_TYPE</code>, and
-   *                 <code>LINKED_ACCOUNT_NAME</code>.</p>
-   *         <p>Root level <code>OR</code> is not supported. We recommend that you create a separate
-   *             rule instead.</p>
    *
-   *         <p>
-   *             <code>RECORD_TYPE</code> is a dimension used for Cost Explorer APIs, and is also
-   *             supported for Cost Category expressions. This dimension uses different terms, depending
-   *             on whether you're using the console or API/JSON editor. For a detailed comparison, see
-   *             <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/manage-cost-categories.html#cost-categories-terms">Term Comparisons</a> in the <i>AWS Billing and Cost Management User
-   *                 Guide</i>.</p>
-   */
-  Rule: Expression | undefined;
-}
-
-export namespace CostCategoryRule {
-  export const filterSensitiveLog = (obj: CostCategoryRule): any => ({
-    ...obj,
-  });
-}
-
-export interface GetCostAndUsageRequest {
-  /**
-   * <p>Sets the start and end dates for retrieving AWS costs. The start date is inclusive,  but the end date is exclusive. For example, if <code>start</code> is <code>2017-01-01</code> and <code>end</code> is <code>2017-05-01</code>, then the cost and usage data is
-   *             retrieved from <code>2017-01-01</code> up to and including <code>2017-04-30</code> but not including <code>2017-05-01</code>.</p>
-   */
-  TimePeriod: DateInterval | undefined;
-
-  /**
-   * <p>Sets the AWS cost granularity to <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. If <code>Granularity</code> isn't set,
-   * 	    the response object doesn't include the <code>Granularity</code>, either <code>MONTHLY</code> or <code>DAILY</code>, or <code>HOURLY</code>. </p>
-   */
-  Granularity?: Granularity | string;
-
-  /**
-   * <p>Filters AWS costs by different dimensions. For example, you can specify <code>SERVICE</code> and <code>LINKED_ACCOUNT</code>
-   * 			and get the costs that are associated with that account's usage of that service. You can nest <code>Expression</code> objects
-   * 			to define any combination of dimension filters. For more information, see
-   * 			<a href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>. </p>
-   */
-  Filter?: Expression;
-
-  /**
-   * <p>Which metrics are returned in the query. For more information about blended and unblended rates, see
-   * 			<a href="http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended" annotation
-   * 				appear on some line items in my bill?</a>. </p>
-   * 		       <p>Valid values are <code>AmortizedCost</code>, <code>BlendedCost</code>, <code>NetAmortizedCost</code>,
-   * 			<code>NetUnblendedCost</code>, <code>NormalizedUsageAmount</code>, <code>UnblendedCost</code>, and <code>UsageQuantity</code>. </p>
-   * 		       <note>
-   * 			         <p>If you return the <code>UsageQuantity</code> metric, the service aggregates all usage numbers without
-   * 				taking into account the units. For example, if you aggregate <code>usageQuantity</code> across all of Amazon EC2,
-   * 				the results aren't meaningful because Amazon EC2 compute hours and data transfer are measured in different units
-   * 				(for example, hours vs. GB). To get more meaningful <code>UsageQuantity</code> metrics, filter by <code>UsageType</code> or
-   * 				<code>UsageTypeGroups</code>. </p>
-   * 		       </note>
-   * 		       <p>
-   *             <code>Metrics</code> is required for <code>GetCostAndUsage</code> requests.</p>
-   */
-  Metrics: string[] | undefined;
-
-  /**
-   * <p>You can group AWS costs using up to two different groups, either dimensions, tag keys,
-   *       cost categories, or any two group by types.</p>
-   * 		       <p>When you group by tag key, you get all tag values, including empty strings.</p>
-   * 		       <p>Valid values are <code>AZ</code>, <code>INSTANCE_TYPE</code>, <code>LEGAL_ENTITY_NAME</code>, <code>LINKED_ACCOUNT</code>,
-   * 			<code>OPERATION</code>, <code>PLATFORM</code>, <code>PURCHASE_TYPE</code>, <code>SERVICE</code>, <code>TAGS</code>,
-   * 		  <code>TENANCY</code>, <code>RECORD_TYPE</code>, and <code>USAGE_TYPE</code>.</p>
-   */
-  GroupBy?: GroupDefinition[];
-
-  /**
-   * <p>The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
-   */
-  NextPageToken?: string;
-}
-
-export namespace GetCostAndUsageRequest {
-  export const filterSensitiveLog = (obj: GetCostAndUsageRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface GetCostAndUsageWithResourcesRequest {
-  /**
-   * <p>Sets the start and end dates for retrieving Amazon Web Services costs. The range must be within the last 14 days (the start date cannot be earlier than 14 days ago). The start date is inclusive,  but the end date is exclusive. For example, if <code>start</code> is <code>2017-01-01</code> and <code>end</code> is <code>2017-05-01</code>, then the cost and usage data is
-   *             retrieved from <code>2017-01-01</code> up to and including <code>2017-04-30</code> but not including <code>2017-05-01</code>.</p>
-   */
-  TimePeriod: DateInterval | undefined;
-
-  /**
-   * <p>Sets the AWS cost granularity to <code>MONTHLY</code>, <code>DAILY</code>, or <code>HOURLY</code>. If
-   * 	    <code>Granularity</code> isn't set, the response object doesn't include the
-   * 	    <code>Granularity</code>, <code>MONTHLY</code>, <code>DAILY</code>, or <code>HOURLY</code>. </p>
-   */
-  Granularity?: Granularity | string;
-
-  /**
-   * <p>Filters Amazon Web Services costs by different dimensions. For example, you can specify
-   *       <code>SERVICE</code> and <code>LINKED_ACCOUNT</code> and get the costs that are associated
-   *       with that account's usage of that service. You can nest <code>Expression</code> objects to
-   *       define any combination of dimension filters. For more information, see <a href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>. </p>
-   *          <p>The <code>GetCostAndUsageWithResources</code> operation requires that you either group by or filter by a
-   *       <code>ResourceId</code>. It requires the <a href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>
-   *             <code>"SERVICE = Amazon Elastic Compute Cloud - Compute"</code> in the filter.</p>
-   */
-  Filter: Expression | undefined;
-
-  /**
-   * <p>Which metrics are returned in the query. For more information about blended and
-   *       unblended rates, see <a href="http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does
-   *         the "blended" annotation appear on some line items in my bill?</a>. </p>
-   *          <p>Valid values are <code>AmortizedCost</code>, <code>BlendedCost</code>,
-   *       <code>NetAmortizedCost</code>, <code>NetUnblendedCost</code>,
-   *       <code>NormalizedUsageAmount</code>, <code>UnblendedCost</code>, and
-   *       <code>UsageQuantity</code>. </p>
-   *          <note>
-   *             <p>If you return the <code>UsageQuantity</code> metric, the service aggregates all usage
-   *         numbers without taking the units into account. For example, if you aggregate
-   *         <code>usageQuantity</code> across all of Amazon EC2, the results aren't meaningful because
-   *         Amazon EC2 compute hours and data transfer are measured in different units (for example, hours
-   *         vs. GB). To get more meaningful <code>UsageQuantity</code> metrics, filter by
-   *         <code>UsageType</code> or <code>UsageTypeGroups</code>. </p>
+   * 					       <p>For the <code>GetReservationPurchaseRecommendation</code> action, only NOT is supported. AND and OR are not supported. Dimensions are limited to <code>LINKED_ACCOUNT</code>.</p>
+   *
+   *
+   *
    *          </note>
-   *          <p>
-   *             <code>Metrics</code> is required for <code>GetCostAndUsageWithResources</code> requests.</p>
    */
-  Metrics?: string[];
+  Filter?: Expression;
 
   /**
-   * <p>You can group Amazon Web Services costs using up to two different groups: <code>DIMENSION</code>, <code>TAG</code>, <code>COST_CATEGORY</code>.</p>
+   * <p>The value by which you want to sort the data.</p>
+   * 	        <p>The key represents cost and usage metrics. The following values are supported:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>BlendedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UnblendedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>AmortizedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>NetAmortizedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>NetUnblendedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UsageQuantity</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>NormalizedUsageAmount</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *          <p>Supported values for <code>SortOrder</code> are <code>ASCENDING</code> or <code>DESCENDING</code>.</p>
+   *          <p>When you specify a <code>SortBy</code> paramater, the context must be <code>COST_AND_USAGE</code>. Further, when using <code>SortBy</code>, <code>NextPageToken</code> and <code>SearchString</code> are not supported.</p>
    */
-  GroupBy?: GroupDefinition[];
+  SortBy?: SortDefinition[];
+
+  /**
+   * <p>This field is only used when SortBy is provided in the request. The maximum number of objects that to be returned for this request. If MaxResults is not specified with SortBy, the request will return 1000 results as the default value for this parameter.</p>
+   * 	        <p>For <code>GetDimensionValues</code>, MaxResults has an upper limit of 1000.</p>
+   */
+  MaxResults?: number;
 
   /**
    * <p>The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
@@ -4317,64 +5207,11 @@ export interface GetCostAndUsageWithResourcesRequest {
   NextPageToken?: string;
 }
 
-export namespace GetCostAndUsageWithResourcesRequest {
-  export const filterSensitiveLog = (obj: GetCostAndUsageWithResourcesRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface GetCostForecastRequest {
+export namespace GetDimensionValuesRequest {
   /**
-   * <p>The period of time that you want the forecast to cover. The start date must be equal to or no later than the current date to avoid a validation error.</p>
+   * @internal
    */
-  TimePeriod: DateInterval | undefined;
-
-  /**
-   * <p>Which metric Cost Explorer uses to create your forecast. For more information about blended and unblended rates, see
-   * 			<a href="http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/">Why does the "blended" annotation
-   * 				appear on some line items in my bill?</a>. </p>
-   * 		       <p>Valid values for a <code>GetCostForecast</code> call are the following:</p>
-   * 		       <ul>
-   *             <li>
-   * 				           <p>AMORTIZED_COST</p>
-   * 			         </li>
-   *             <li>
-   * 				           <p>BLENDED_COST</p>
-   * 			         </li>
-   *             <li>
-   * 				           <p>NET_AMORTIZED_COST</p>
-   * 			         </li>
-   *             <li>
-   * 				           <p>NET_UNBLENDED_COST</p>
-   * 			         </li>
-   *             <li>
-   * 				           <p>UNBLENDED_COST</p>
-   * 			         </li>
-   *          </ul>
-   */
-  Metric: Metric | string | undefined;
-
-  /**
-   * <p>How granular you want the forecast to be. You can get 3 months of <code>DAILY</code> forecasts or 12 months of <code>MONTHLY</code> forecasts.</p>
-   * 		       <p>The <code>GetCostForecast</code> operation supports only <code>DAILY</code> and <code>MONTHLY</code> granularities.</p>
-   */
-  Granularity: Granularity | string | undefined;
-
-  /**
-   * <p>The filters that you want to use to filter your forecast. Cost Explorer API supports all of the Cost Explorer filters.</p>
-   */
-  Filter?: Expression;
-
-  /**
-   * <p>Cost Explorer always returns the mean forecast as a single point. You can request a prediction interval around the mean
-   * 			by specifying a confidence level. The higher the confidence level, the more confident Cost Explorer is about the actual value
-   * 			falling in the prediction interval. Higher confidence levels result in wider prediction intervals.</p>
-   */
-  PredictionIntervalLevel?: number;
-}
-
-export namespace GetCostForecastRequest {
-  export const filterSensitiveLog = (obj: GetCostForecastRequest): any => ({
+  export const filterSensitiveLog = (obj: GetDimensionValuesRequest): any => ({
     ...obj,
   });
 }
@@ -4495,10 +5332,194 @@ export interface GetReservationCoverageRequest {
    * <p>The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
    */
   NextPageToken?: string;
+
+  /**
+   * <p>The value by which you want to sort the data.</p>
+   * 	        <p>The following values are supported for <code>Key</code>:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>OnDemandCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CoverageHoursPercentage</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>OnDemandHours</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>ReservedHours</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>TotalRunningHours</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CoverageNormalizedUnitsPercentage</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>OnDemandNormalizedUnits</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>ReservedNormalizedUnits</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>TotalRunningNormalizedUnits</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>Time</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *
+   *          <p>Supported values for <code>SortOrder</code> are <code>ASCENDING</code> or <code>DESCENDING</code>.</p>
+   */
+  SortBy?: SortDefinition;
+
+  /**
+   * <p>The maximum number of objects that you returned for this request. If more objects are available, in the response, AWS provides a NextPageToken value that you can use in a subsequent call to get the next batch of objects.</p>
+   */
+  MaxResults?: number;
 }
 
 export namespace GetReservationCoverageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetReservationCoverageRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetReservationPurchaseRecommendationRequest {
+  /**
+   * <p>The account ID that is associated with the recommendation. </p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The specific service that you want recommendations for.</p>
+   */
+  Service: string | undefined;
+
+  /**
+   * <p>Use <code>Expression</code> to filter by cost or by usage. There are two patterns: </p>
+   *         <ul>
+   *             <li>
+   *                 <p>Simple dimension values - You can set the dimension name and values for the
+   *                     filters that you plan to use. For example, you can filter for
+   *                     <code>REGION==us-east-1 OR REGION==us-west-1</code>. For <code>GetRightsizingRecommendation</code>, the Region is a full name (for example, <code>REGION==US East (N. Virginia)</code>. The
+   *                         <code>Expression</code> example looks like:</p>
+   *                 <p>
+   *                   <code>{ "Dimensions": { "Key": "REGION", "Values": [ "us-east-1",
+   *                         “us-west-1” ] } }</code>
+   *                 </p>
+   *                 <p>The list of dimension values are OR'd together to retrieve cost or usage
+   *                     data. You can create <code>Expression</code> and <code>DimensionValues</code>
+   *                     objects using either <code>with*</code> methods or <code>set*</code> methods in
+   *                     multiple lines. </p>
+   *             </li>
+   *             <li>
+   *                 <p>Compound dimension values with logical operations - You can use multiple
+   *                         <code>Expression</code> types and the logical operators
+   *                         <code>AND/OR/NOT</code> to create a list of one or more
+   *                         <code>Expression</code> objects. This allows you to filter on more advanced
+   *                     options. For example, you can filter on <code>((REGION == us-east-1 OR
+   *                         REGION == us-west-1) OR (TAG.Type == Type1)) AND (USAGE_TYPE !=
+   *                         DataTransfer)</code>. The <code>Expression</code> for that looks like
+   *                     this:</p>
+   *                 <p>
+   *                   <code>{ "And": [ {"Or": [ {"Dimensions": { "Key": "REGION",
+   *                         "Values": [ "us-east-1", "us-west-1" ] }}, {"Tags": { "Key": "TagName",
+   *                         "Values": ["Value1"] } } ]}, {"Not": {"Dimensions": { "Key": "USAGE_TYPE",
+   *                         "Values": ["DataTransfer"] }}} ] } </code>
+   *                </p>
+   *                 <note>
+   *                     <p>Because each <code>Expression</code> can have only one operator, the
+   *                         service returns an error if more than one is specified. The following
+   *                         example shows an <code>Expression</code> object that creates an
+   *                         error.</p>
+   *                 </note>
+   *                 <p>
+   *                     <code> { "And": [ ... ], "DimensionValues": { "Dimension": "USAGE_TYPE",
+   *                         "Values": [ "DataTransfer" ] } } </code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *         <note>
+   *             <p>For the <code>GetRightsizingRecommendation</code> action, a combination of OR and NOT is not
+   *                 supported. OR is not supported between different dimensions, or dimensions and tags.
+   *                 NOT operators aren't supported.
+   *                 Dimensions
+   *                 are also limited to <code>LINKED_ACCOUNT</code>, <code>REGION</code>, or
+   *                     <code>RIGHTSIZING_TYPE</code>.</p>
+   *
+   * 					       <p>For the <code>GetReservationPurchaseRecommendation</code> action, only NOT is supported. AND and OR are not supported. Dimensions are limited to <code>LINKED_ACCOUNT</code>.</p>
+   *
+   *
+   *
+   *          </note>
+   */
+  Filter?: Expression;
+
+  /**
+   * <p>The account scope that you want your recommendations for. Amazon Web Services calculates recommendations including the management account and member accounts if the value is set to <code>PAYER</code>. If the value is <code>LINKED</code>, recommendations are calculated for individual member accounts only.</p>
+   */
+  AccountScope?: AccountScope | string;
+
+  /**
+   * <p>The number of previous days that you want AWS to consider when it calculates your recommendations.</p>
+   */
+  LookbackPeriodInDays?: LookbackPeriodInDays | string;
+
+  /**
+   * <p>The reservation term that you want recommendations for.</p>
+   */
+  TermInYears?: TermInYears | string;
+
+  /**
+   * <p>The reservation purchase option that you want recommendations for.</p>
+   */
+  PaymentOption?: PaymentOption | string;
+
+  /**
+   * <p>The hardware specifications for the service instances that you want recommendations for, such as standard or convertible Amazon EC2 instances.</p>
+   */
+  ServiceSpecification?: ServiceSpecification;
+
+  /**
+   * <p>The number of recommendations that you want returned in a single response object.</p>
+   */
+  PageSize?: number;
+
+  /**
+   * <p>The pagination token that indicates the next set of results that you want to retrieve.</p>
+   */
+  NextPageToken?: string;
+}
+
+export namespace GetReservationPurchaseRecommendationRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetReservationPurchaseRecommendationRequest): any => ({
     ...obj,
   });
 }
@@ -4569,12 +5590,116 @@ export interface GetReservationUtilizationRequest {
   Filter?: Expression;
 
   /**
+   * <p>The value by which you want to sort the data.</p>
+   *
+   * 	        <p>The following values are supported for <code>Key</code>:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>UtilizationPercentage</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UtilizationPercentageInUnits</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>PurchasedHours</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>PurchasedUnits</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>TotalActualHours</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>TotalActualUnits</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UnusedHours</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UnusedUnits</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>OnDemandCostOfRIHoursUsed</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>NetRISavings</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>TotalPotentialRISavings</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>AmortizedUpfrontFee</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>AmortizedRecurringFee</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>TotalAmortizedFee</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>RICostForUnusedHours</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>RealizedSavings</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UnrealizedSavings</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *
+   *          <p>Supported values for <code>SortOrder</code> are <code>ASCENDING</code> or <code>DESCENDING</code>.</p>
+   */
+  SortBy?: SortDefinition;
+
+  /**
    * <p>The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
    */
   NextPageToken?: string;
+
+  /**
+   * <p>The maximum number of objects that you returned for this request. If more objects are available, in the response, AWS provides a NextPageToken value that you can use in a subsequent call to get the next batch of objects.</p>
+   */
+  MaxResults?: number;
 }
 
 export namespace GetReservationUtilizationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetReservationUtilizationRequest): any => ({
     ...obj,
   });
@@ -4626,12 +5751,17 @@ export interface GetRightsizingRecommendationRequest {
    *             </li>
    *          </ul>
    *         <note>
-   *             <p>For <code>GetRightsizingRecommendation</code> action, a combination of OR and NOT is not
+   *             <p>For the <code>GetRightsizingRecommendation</code> action, a combination of OR and NOT is not
    *                 supported. OR is not supported between different dimensions, or dimensions and tags.
    *                 NOT operators aren't supported.
    *                 Dimensions
    *                 are also limited to <code>LINKED_ACCOUNT</code>, <code>REGION</code>, or
    *                     <code>RIGHTSIZING_TYPE</code>.</p>
+   *
+   * 					       <p>For the <code>GetReservationPurchaseRecommendation</code> action, only NOT is supported. AND and OR are not supported. Dimensions are limited to <code>LINKED_ACCOUNT</code>.</p>
+   *
+   *
+   *
    *          </note>
    */
   Filter?: Expression;
@@ -4663,6 +5793,9 @@ export interface GetRightsizingRecommendationRequest {
 }
 
 export namespace GetRightsizingRecommendationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRightsizingRecommendationRequest): any => ({
     ...obj,
   });
@@ -4731,9 +5864,57 @@ export interface GetSavingsPlansCoverageRequest {
    * <p>The number of items to be returned in a response. The default is <code>20</code>, with a minimum value of <code>1</code>.</p>
    */
   MaxResults?: number;
+
+  /**
+   * <p>The value by which you want to sort the data.</p>
+   * 	  	     <p>The following values are supported for <code>Key</code>:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>SpendCoveredBySavingsPlan</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>OnDemandCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>CoveragePercentage</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>TotalCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>InstanceFamily</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>Region</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>Service</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *
+   *          <p>Supported values for <code>SortOrder</code> are <code>ASCENDING</code> or <code>DESCENDING</code>.</p>
+   */
+  SortBy?: SortDefinition;
 }
 
 export namespace GetSavingsPlansCoverageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSavingsPlansCoverageRequest): any => ({
     ...obj,
   });
@@ -4793,6 +5974,9 @@ export interface GetSavingsPlansPurchaseRecommendationRequest {
 }
 
 export namespace GetSavingsPlansPurchaseRecommendationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSavingsPlansPurchaseRecommendationRequest): any => ({
     ...obj,
   });
@@ -4841,6 +6025,11 @@ export interface GetSavingsPlansUtilizationDetailsRequest {
   Filter?: Expression;
 
   /**
+   * <p>The data type.</p>
+   */
+  DataType?: (SavingsPlansDataType | string)[];
+
+  /**
    * <p>The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.</p>
    */
   NextToken?: string;
@@ -4849,9 +6038,58 @@ export interface GetSavingsPlansUtilizationDetailsRequest {
    * <p>The number of items to be returned in a response. The default is <code>20</code>, with a minimum value of <code>1</code>.</p>
    */
   MaxResults?: number;
+
+  /**
+   * <p>The value by which you want to sort the data.</p>
+   *
+   * 	        <p>The following values are supported for <code>Key</code>:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>UtilizationPercentage</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>TotalCommitment</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UsedCommitment</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UnusedCommitment</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>NetSavings</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>AmortizedRecurringCommitment</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>AmortizedUpfrontCommitment</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *
+   *          <p>Supported values for <code>SortOrder</code> are <code>ASCENDING</code> or <code>DESCENDING</code>.</p>
+   */
+  SortBy?: SortDefinition;
 }
 
 export namespace GetSavingsPlansUtilizationDetailsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSavingsPlansUtilizationDetailsRequest): any => ({
     ...obj,
   });
@@ -4909,10 +6147,191 @@ export interface GetSavingsPlansUtilizationRequest {
    *       as the other operations, but only <code>AND</code> is supported among each dimension.</p>
    */
   Filter?: Expression;
+
+  /**
+   * <p>The value by which you want to sort the data.</p>
+   * 	        <p>The following values are supported for <code>Key</code>:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>UtilizationPercentage</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>TotalCommitment</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UsedCommitment</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UnusedCommitment</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>NetSavings</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *
+   *          <p>Supported values for <code>SortOrder</code> are <code>ASCENDING</code> or <code>DESCENDING</code>.</p>
+   */
+  SortBy?: SortDefinition;
 }
 
 export namespace GetSavingsPlansUtilizationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSavingsPlansUtilizationRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetTagsRequest {
+  /**
+   * <p>The value that you want to search for.</p>
+   */
+  SearchString?: string;
+
+  /**
+   * <p>The start and end dates for retrieving the dimension values. The start date is inclusive,  but the end date is exclusive. For example, if <code>start</code> is <code>2017-01-01</code> and <code>end</code> is <code>2017-05-01</code>, then the cost and usage data is
+   *             retrieved from <code>2017-01-01</code> up to and including <code>2017-04-30</code> but not including <code>2017-05-01</code>.</p>
+   */
+  TimePeriod: DateInterval | undefined;
+
+  /**
+   * <p>The key of the tag that you want to return values for.</p>
+   */
+  TagKey?: string;
+
+  /**
+   * <p>Use <code>Expression</code> to filter by cost or by usage. There are two patterns: </p>
+   *         <ul>
+   *             <li>
+   *                 <p>Simple dimension values - You can set the dimension name and values for the
+   *                     filters that you plan to use. For example, you can filter for
+   *                     <code>REGION==us-east-1 OR REGION==us-west-1</code>. For <code>GetRightsizingRecommendation</code>, the Region is a full name (for example, <code>REGION==US East (N. Virginia)</code>. The
+   *                         <code>Expression</code> example looks like:</p>
+   *                 <p>
+   *                   <code>{ "Dimensions": { "Key": "REGION", "Values": [ "us-east-1",
+   *                         “us-west-1” ] } }</code>
+   *                 </p>
+   *                 <p>The list of dimension values are OR'd together to retrieve cost or usage
+   *                     data. You can create <code>Expression</code> and <code>DimensionValues</code>
+   *                     objects using either <code>with*</code> methods or <code>set*</code> methods in
+   *                     multiple lines. </p>
+   *             </li>
+   *             <li>
+   *                 <p>Compound dimension values with logical operations - You can use multiple
+   *                         <code>Expression</code> types and the logical operators
+   *                         <code>AND/OR/NOT</code> to create a list of one or more
+   *                         <code>Expression</code> objects. This allows you to filter on more advanced
+   *                     options. For example, you can filter on <code>((REGION == us-east-1 OR
+   *                         REGION == us-west-1) OR (TAG.Type == Type1)) AND (USAGE_TYPE !=
+   *                         DataTransfer)</code>. The <code>Expression</code> for that looks like
+   *                     this:</p>
+   *                 <p>
+   *                   <code>{ "And": [ {"Or": [ {"Dimensions": { "Key": "REGION",
+   *                         "Values": [ "us-east-1", "us-west-1" ] }}, {"Tags": { "Key": "TagName",
+   *                         "Values": ["Value1"] } } ]}, {"Not": {"Dimensions": { "Key": "USAGE_TYPE",
+   *                         "Values": ["DataTransfer"] }}} ] } </code>
+   *                </p>
+   *                 <note>
+   *                     <p>Because each <code>Expression</code> can have only one operator, the
+   *                         service returns an error if more than one is specified. The following
+   *                         example shows an <code>Expression</code> object that creates an
+   *                         error.</p>
+   *                 </note>
+   *                 <p>
+   *                     <code> { "And": [ ... ], "DimensionValues": { "Dimension": "USAGE_TYPE",
+   *                         "Values": [ "DataTransfer" ] } } </code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *         <note>
+   *             <p>For the <code>GetRightsizingRecommendation</code> action, a combination of OR and NOT is not
+   *                 supported. OR is not supported between different dimensions, or dimensions and tags.
+   *                 NOT operators aren't supported.
+   *                 Dimensions
+   *                 are also limited to <code>LINKED_ACCOUNT</code>, <code>REGION</code>, or
+   *                     <code>RIGHTSIZING_TYPE</code>.</p>
+   *
+   * 					       <p>For the <code>GetReservationPurchaseRecommendation</code> action, only NOT is supported. AND and OR are not supported. Dimensions are limited to <code>LINKED_ACCOUNT</code>.</p>
+   *
+   *
+   *
+   *          </note>
+   */
+  Filter?: Expression;
+
+  /**
+   * <p>The value by which you want to sort the data.</p>
+   * 	        <p>The key represents cost and usage metrics. The following values are supported:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>BlendedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UnblendedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>AmortizedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>NetAmortizedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>NetUnblendedCost</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>UsageQuantity</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>NormalizedUsageAmount</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *          <p>Supported values for <code>SortOrder</code> are <code>ASCENDING</code> or <code>DESCENDING</code>.</p>
+   *          <p>When using <code>SortBy</code>, <code>NextPageToken</code> and <code>SearchString</code> are not supported.</p>
+   */
+  SortBy?: SortDefinition[];
+
+  /**
+   * <p>This field is only used when SortBy is provided in the request. The maximum number of objects that to be returned for this request. If MaxResults is not specified with SortBy, the request will return 1000 results as the default value for this parameter.</p>
+   * 	        <p>For <code>GetTags</code>, MaxResults has an upper limit of 1000.</p>
+   */
+  MaxResults?: number;
+
+  /**
+   * <p>The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.</p>
+   */
+  NextPageToken?: string;
+}
+
+export namespace GetTagsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetTagsRequest): any => ({
     ...obj,
   });
 }
@@ -4945,7 +6364,125 @@ export interface GetUsageForecastRequest {
   Granularity: Granularity | string | undefined;
 
   /**
-   * <p>The filters that you want to use to filter your forecast. Cost Explorer API supports all of the Cost Explorer filters.</p>
+   * <p>The filters that you want to use to filter your forecast. The <code>GetUsageForecast</code> API supports filtering by the following dimensions:</p>
+   *
+   * 	        <ul>
+   *             <li>
+   *                <p>
+   *                   <code>AZ</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>INSTANCE_TYPE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>LINKED_ACCOUNT</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>LINKED_ACCOUNT_NAME</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>OPERATION</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>PURCHASE_TYPE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>REGION</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>SERVICE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>USAGE_TYPE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>USAGE_TYPE_GROUP</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>RECORD_TYPE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>OPERATING_SYSTEM</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>TENANCY</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>SCOPE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>PLATFORM</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>SUBSCRIPTION_ID</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>LEGAL_ENTITY_NAME</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>DEPLOYMENT_OPTION</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>DATABASE_ENGINE</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>INSTANCE_TYPE_FAMILY</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>BILLING_ENTITY</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>RESERVATION_ID</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>SAVINGS_PLAN_ARN</code>
+   *                </p>
+   *             </li>
+   *          </ul>
    */
   Filter?: Expression;
 
@@ -4958,6 +6495,9 @@ export interface GetUsageForecastRequest {
 }
 
 export namespace GetUsageForecastRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUsageForecastRequest): any => ({
     ...obj,
   });
@@ -4971,6 +6511,9 @@ export interface CreateAnomalyMonitorRequest {
 }
 
 export namespace CreateAnomalyMonitorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAnomalyMonitorRequest): any => ({
     ...obj,
   });
@@ -5022,9 +6565,17 @@ export interface CostCategory {
    *         </p>
    */
   ProcessingStatus?: CostCategoryProcessingStatus[];
+
+  /**
+   * <p>The default value for the cost category.</p>
+   */
+  DefaultValue?: string;
 }
 
 export namespace CostCategory {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CostCategory): any => ({
     ...obj,
   });
@@ -5046,9 +6597,17 @@ export interface CreateCostCategoryDefinitionRequest {
    *         <a href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html">CostCategoryRule</a>.</p>
    */
   Rules: CostCategoryRule[] | undefined;
+
+  /**
+   * <p>The default value for the cost category.</p>
+   */
+  DefaultValue?: string;
 }
 
 export namespace CreateCostCategoryDefinitionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCostCategoryDefinitionRequest): any => ({
     ...obj,
   });
@@ -5071,6 +6630,9 @@ export interface GetAnomalyMonitorsResponse {
 }
 
 export namespace GetAnomalyMonitorsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAnomalyMonitorsResponse): any => ({
     ...obj,
   });
@@ -5092,9 +6654,17 @@ export interface UpdateCostCategoryDefinitionRequest {
    *         <a href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html">CostCategoryRule </a>. </p>
    */
   Rules: CostCategoryRule[] | undefined;
+
+  /**
+   * <p>The default value for the cost category.</p>
+   */
+  DefaultValue?: string;
 }
 
 export namespace UpdateCostCategoryDefinitionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateCostCategoryDefinitionRequest): any => ({
     ...obj,
   });
@@ -5108,6 +6678,9 @@ export interface DescribeCostCategoryDefinitionResponse {
 }
 
 export namespace DescribeCostCategoryDefinitionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCostCategoryDefinitionResponse): any => ({
     ...obj,
   });

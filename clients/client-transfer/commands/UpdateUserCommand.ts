@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateUserCommandInput = UpdateUserRequest;
-export type UpdateUserCommandOutput = UpdateUserResponse & __MetadataBearer;
+export interface UpdateUserCommandInput extends UpdateUserRequest {}
+export interface UpdateUserCommandOutput extends UpdateUserResponse, __MetadataBearer {}
 
 /**
  * <p>Assigns new properties to a user. Parameters you pass modify any or all of the following:
@@ -27,6 +27,20 @@ export type UpdateUserCommandOutput = UpdateUserResponse & __MetadataBearer;
  *
  *          <p>The response returns the <code>ServerId</code> and the <code>UserName</code> for the
  *       updated user.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TransferClient, UpdateUserCommand } from "@aws-sdk/client-transfer"; // ES Modules import
+ * // const { TransferClient, UpdateUserCommand } = require("@aws-sdk/client-transfer"); // CommonJS import
+ * const client = new TransferClient(config);
+ * const command = new UpdateUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateUserCommandInput} for command's `input` shape.
+ * @see {@link UpdateUserCommandOutput} for command's `response` shape.
+ * @see {@link TransferClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateUserCommand extends $Command<
   UpdateUserCommandInput,

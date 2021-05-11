@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateRepositoryCommandInput = AssociateRepositoryRequest;
-export type AssociateRepositoryCommandOutput = AssociateRepositoryResponse & __MetadataBearer;
+export interface AssociateRepositoryCommandInput extends AssociateRepositoryRequest {}
+export interface AssociateRepositoryCommandOutput extends AssociateRepositoryResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -34,7 +34,7 @@ export type AssociateRepositoryCommandOutput = AssociateRepositoryResponse & __M
  *          AWS Region and AWS account where its CodeGuru Reviewer code reviews are configured.</p>
  *
  *          <p>Bitbucket and GitHub Enterprise Server repositories are managed by AWS CodeStar
- *          Connections to connect to CodeGuru Reviewer. For more information, see <a href="https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/reviewer-ug/step-one.html#select-repository-source-provider">Connect to a repository source provider</a> in
+ *          Connections to connect to CodeGuru Reviewer. For more information, see <a href="https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-associate-repository.html">Associate a repository</a> in
  *          the <i>Amazon CodeGuru Reviewer User Guide.</i>
  *          </p>
  *
@@ -46,6 +46,20 @@ export type AssociateRepositoryCommandOutput = AssociateRepositoryResponse & __M
  *             started with CodeGuru Reviewer</a> in the <i>CodeGuru Reviewer User Guide.</i>
  *             </p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeGuruReviewerClient, AssociateRepositoryCommand } from "@aws-sdk/client-codeguru-reviewer"; // ES Modules import
+ * // const { CodeGuruReviewerClient, AssociateRepositoryCommand } = require("@aws-sdk/client-codeguru-reviewer"); // CommonJS import
+ * const client = new CodeGuruReviewerClient(config);
+ * const command = new AssociateRepositoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateRepositoryCommandInput} for command's `input` shape.
+ * @see {@link AssociateRepositoryCommandOutput} for command's `response` shape.
+ * @see {@link CodeGuruReviewerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateRepositoryCommand extends $Command<
   AssociateRepositoryCommandInput,

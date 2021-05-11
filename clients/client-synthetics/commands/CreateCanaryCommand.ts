@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCanaryCommandInput = CreateCanaryRequest;
-export type CreateCanaryCommandOutput = CreateCanaryResponse & __MetadataBearer;
+export interface CreateCanaryCommandInput extends CreateCanaryRequest {}
+export interface CreateCanaryCommandOutput extends CreateCanaryResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a canary. Canaries are scripts that monitor your endpoints and APIs from the
@@ -35,6 +35,20 @@ export type CreateCanaryCommandOutput = CreateCanaryResponse & __MetadataBearer;
  *          makes up part of the Amazon Resource Name (ARN) for the canary, and the ARN is included in
  *          outbound calls over the internet. For more information, see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/servicelens_canaries_security.html">Security
  *             Considerations for Synthetics Canaries</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SyntheticsClient, CreateCanaryCommand } from "@aws-sdk/client-synthetics"; // ES Modules import
+ * // const { SyntheticsClient, CreateCanaryCommand } = require("@aws-sdk/client-synthetics"); // CommonJS import
+ * const client = new SyntheticsClient(config);
+ * const command = new CreateCanaryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCanaryCommandInput} for command's `input` shape.
+ * @see {@link CreateCanaryCommandOutput} for command's `response` shape.
+ * @see {@link SyntheticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCanaryCommand extends $Command<
   CreateCanaryCommandInput,

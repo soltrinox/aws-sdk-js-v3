@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateKmsKeyCommandInput = AssociateKmsKeyRequest;
-export type AssociateKmsKeyCommandOutput = __MetadataBearer;
+export interface AssociateKmsKeyCommandInput extends AssociateKmsKeyRequest {}
+export interface AssociateKmsKeyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Associates the specified AWS Key Management Service (AWS KMS) customer master key (CMK) with the specified log group.</p>
@@ -34,6 +34,20 @@ export type AssociateKmsKeyCommandOutput = __MetadataBearer;
  *          <p>It can take up to 5 minutes for this operation to take effect.</p>
  *          <p>If you attempt to associate a CMK with a log group but the CMK does not exist or the
  *       CMK is disabled, you receive an <code>InvalidParameterException</code> error. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, AssociateKmsKeyCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, AssociateKmsKeyCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new AssociateKmsKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateKmsKeyCommandInput} for command's `input` shape.
+ * @see {@link AssociateKmsKeyCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateKmsKeyCommand extends $Command<
   AssociateKmsKeyCommandInput,

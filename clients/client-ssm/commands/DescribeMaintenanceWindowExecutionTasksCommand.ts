@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeMaintenanceWindowExecutionTasksCommandInput = DescribeMaintenanceWindowExecutionTasksRequest;
-export type DescribeMaintenanceWindowExecutionTasksCommandOutput = DescribeMaintenanceWindowExecutionTasksResult &
-  __MetadataBearer;
+export interface DescribeMaintenanceWindowExecutionTasksCommandInput
+  extends DescribeMaintenanceWindowExecutionTasksRequest {}
+export interface DescribeMaintenanceWindowExecutionTasksCommandOutput
+  extends DescribeMaintenanceWindowExecutionTasksResult,
+    __MetadataBearer {}
 
 /**
  * <p>For a given maintenance window execution, lists the tasks that were run.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DescribeMaintenanceWindowExecutionTasksCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DescribeMaintenanceWindowExecutionTasksCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DescribeMaintenanceWindowExecutionTasksCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeMaintenanceWindowExecutionTasksCommandInput} for command's `input` shape.
+ * @see {@link DescribeMaintenanceWindowExecutionTasksCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeMaintenanceWindowExecutionTasksCommand extends $Command<
   DescribeMaintenanceWindowExecutionTasksCommandInput,

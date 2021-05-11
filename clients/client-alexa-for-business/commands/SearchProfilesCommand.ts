@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SearchProfilesCommandInput = SearchProfilesRequest;
-export type SearchProfilesCommandOutput = SearchProfilesResponse & __MetadataBearer;
+export interface SearchProfilesCommandInput extends SearchProfilesRequest {}
+export interface SearchProfilesCommandOutput extends SearchProfilesResponse, __MetadataBearer {}
 
 /**
  * <p>Searches room profiles and lists the ones that meet a set of filter
  *          criteria.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, SearchProfilesCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, SearchProfilesCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new SearchProfilesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SearchProfilesCommandInput} for command's `input` shape.
+ * @see {@link SearchProfilesCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SearchProfilesCommand extends $Command<
   SearchProfilesCommandInput,

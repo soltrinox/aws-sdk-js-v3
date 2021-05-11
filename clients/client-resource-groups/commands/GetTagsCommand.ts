@@ -17,12 +17,37 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTagsCommandInput = GetTagsInput;
-export type GetTagsCommandOutput = GetTagsOutput & __MetadataBearer;
+export interface GetTagsCommandInput extends GetTagsInput {}
+export interface GetTagsCommandOutput extends GetTagsOutput, __MetadataBearer {}
 
 /**
  * <p>Returns a list of tags that are associated with a resource group, specified by an
  *             ARN.</p>
+ *          <p>
+ *             <b>Minimum permissions</b>
+ *          </p>
+ *          <p>To run this command, you must have the following permissions:</p>
+ *          <ul>
+ *             <li>
+ *                 <p>
+ *                   <code>resource-groups:GetTags</code>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ResourceGroupsClient, GetTagsCommand } from "@aws-sdk/client-resource-groups"; // ES Modules import
+ * // const { ResourceGroupsClient, GetTagsCommand } = require("@aws-sdk/client-resource-groups"); // CommonJS import
+ * const client = new ResourceGroupsClient(config);
+ * const command = new GetTagsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTagsCommandInput} for command's `input` shape.
+ * @see {@link GetTagsCommandOutput} for command's `response` shape.
+ * @see {@link ResourceGroupsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTagsCommand extends $Command<
   GetTagsCommandInput,

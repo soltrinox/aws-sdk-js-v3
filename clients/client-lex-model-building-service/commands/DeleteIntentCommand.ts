@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteIntentCommandInput = DeleteIntentRequest;
-export type DeleteIntentCommandOutput = __MetadataBearer;
+export interface DeleteIntentCommandInput extends DeleteIntentRequest {}
+export interface DeleteIntentCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes all versions of the intent, including the
@@ -43,6 +43,20 @@ export type DeleteIntentCommandOutput = __MetadataBearer;
  *
  *          <p> This operation requires permission for the
  *         <code>lex:DeleteIntent</code> action. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, DeleteIntentCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, DeleteIntentCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new DeleteIntentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteIntentCommandInput} for command's `input` shape.
+ * @see {@link DeleteIntentCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteIntentCommand extends $Command<
   DeleteIntentCommandInput,

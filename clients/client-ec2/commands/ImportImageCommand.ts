@@ -14,13 +14,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ImportImageCommandInput = ImportImageRequest;
-export type ImportImageCommandOutput = ImportImageResult & __MetadataBearer;
+export interface ImportImageCommandInput extends ImportImageRequest {}
+export interface ImportImageCommandOutput extends ImportImageResult, __MetadataBearer {}
 
 /**
- * <p>Import single or multi-volume disk images or EBS snapshots into an Amazon Machine Image (AMI). For more
- *    information, see <a href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html">Importing a VM as an
- *     Image Using VM Import/Export</a> in the <i>VM Import/Export User Guide</i>.</p>
+ * <p>Import single or multi-volume disk images or EBS snapshots into an Amazon Machine Image (AMI).</p>
+ *          <p>For more information, see <a href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html">Importing a
+ *    VM as an image using VM Import/Export</a> in the <i>VM Import/Export User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, ImportImageCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, ImportImageCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new ImportImageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ImportImageCommandInput} for command's `input` shape.
+ * @see {@link ImportImageCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ImportImageCommand extends $Command<
   ImportImageCommandInput,

@@ -9,6 +9,9 @@ AWS SDK for JavaScript RedshiftData Client for Node.js, Browser and React Native
 
 <p>You can use the Amazon Redshift Data API to run queries on Amazon Redshift tables. You
 can run individual SQL statements, which are committed if the statement succeeds. </p>
+<p>For more information about the Amazon Redshift Data API, see
+<a href="https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html">Using the Amazon Redshift Data API</a> in the
+<i>Amazon Redshift Cluster Management Guide</i>. </p>
 
 ## Installing
 
@@ -47,7 +50,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new RedshiftDataClient({ region: "REGION" });
 
 const params = {
@@ -132,7 +135,7 @@ const client = new AWS.RedshiftData({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.cancelStatement(params);
+  const data = await client.cancelStatement(params);
   // process data.
 } catch (error) {
   // error handling.

@@ -17,15 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeletePartnerEventSourceCommandInput = DeletePartnerEventSourceRequest;
-export type DeletePartnerEventSourceCommandOutput = __MetadataBearer;
+export interface DeletePartnerEventSourceCommandInput extends DeletePartnerEventSourceRequest {}
+export interface DeletePartnerEventSourceCommandOutput extends __MetadataBearer {}
 
 /**
- * <p>This operation is used by SaaS partners to delete a partner event source. This
- *             operation is not used by AWS customers.</p>
- *         <p>When you delete an event source, the status of the corresponding partner event bus in
- *             the AWS customer account becomes DELETED.</p>
- *         <p></p>
+ * <p>This operation is used by SaaS partners to delete a partner event source. This operation
+ *       is not used by AWS customers.</p>
+ *          <p>When you delete an event source, the status of the corresponding partner event bus in the
+ *       AWS customer account becomes DELETED.</p>
+ *          <p></p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EventBridgeClient, DeletePartnerEventSourceCommand } from "@aws-sdk/client-eventbridge"; // ES Modules import
+ * // const { EventBridgeClient, DeletePartnerEventSourceCommand } = require("@aws-sdk/client-eventbridge"); // CommonJS import
+ * const client = new EventBridgeClient(config);
+ * const command = new DeletePartnerEventSourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeletePartnerEventSourceCommandInput} for command's `input` shape.
+ * @see {@link DeletePartnerEventSourceCommandOutput} for command's `response` shape.
+ * @see {@link EventBridgeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeletePartnerEventSourceCommand extends $Command<
   DeletePartnerEventSourceCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListParallelDataCommandInput = ListParallelDataRequest;
-export type ListParallelDataCommandOutput = ListParallelDataResponse & __MetadataBearer;
+export interface ListParallelDataCommandInput extends ListParallelDataRequest {}
+export interface ListParallelDataCommandOutput extends ListParallelDataResponse, __MetadataBearer {}
 
 /**
  * <p>Provides a list of your parallel data resources in Amazon Translate.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TranslateClient, ListParallelDataCommand } from "@aws-sdk/client-translate"; // ES Modules import
+ * // const { TranslateClient, ListParallelDataCommand } = require("@aws-sdk/client-translate"); // CommonJS import
+ * const client = new TranslateClient(config);
+ * const command = new ListParallelDataCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListParallelDataCommandInput} for command's `input` shape.
+ * @see {@link ListParallelDataCommandOutput} for command's `response` shape.
+ * @see {@link TranslateClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListParallelDataCommand extends $Command<
   ListParallelDataCommandInput,

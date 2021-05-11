@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeIdFormatCommandInput = DescribeIdFormatRequest;
-export type DescribeIdFormatCommandOutput = DescribeIdFormatResult & __MetadataBearer;
+export interface DescribeIdFormatCommandInput extends DescribeIdFormatRequest {}
+export interface DescribeIdFormatCommandOutput extends DescribeIdFormatResult, __MetadataBearer {}
 
 /**
  * <p>Describes the ID format settings for your resources on a per-Region basis, for example, to view which resource types are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types.</p>
@@ -41,6 +41,20 @@ export type DescribeIdFormatCommandOutput = DescribeIdFormatResult & __MetadataB
  *       created with longer IDs are visible to all IAM users, regardless of these settings and
  *       provided that they have permission to use the relevant <code>Describe</code> command for the
  *       resource type.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeIdFormatCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeIdFormatCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeIdFormatCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeIdFormatCommandInput} for command's `input` shape.
+ * @see {@link DescribeIdFormatCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeIdFormatCommand extends $Command<
   DescribeIdFormatCommandInput,

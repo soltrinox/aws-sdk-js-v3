@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListReviewPolicyResultsForHITCommandInput = ListReviewPolicyResultsForHITRequest;
-export type ListReviewPolicyResultsForHITCommandOutput = ListReviewPolicyResultsForHITResponse & __MetadataBearer;
+export interface ListReviewPolicyResultsForHITCommandInput extends ListReviewPolicyResultsForHITRequest {}
+export interface ListReviewPolicyResultsForHITCommandOutput
+  extends ListReviewPolicyResultsForHITResponse,
+    __MetadataBearer {}
 
 /**
  * <p>
@@ -28,6 +30,20 @@ export type ListReviewPolicyResultsForHITCommandOutput = ListReviewPolicyResults
  *             see Review Policies. The ListReviewPolicyResultsForHIT operation can return results for both
  *             Assignment-level and HIT-level review results.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, ListReviewPolicyResultsForHITCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, ListReviewPolicyResultsForHITCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new ListReviewPolicyResultsForHITCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListReviewPolicyResultsForHITCommandInput} for command's `input` shape.
+ * @see {@link ListReviewPolicyResultsForHITCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListReviewPolicyResultsForHITCommand extends $Command<
   ListReviewPolicyResultsForHITCommandInput,

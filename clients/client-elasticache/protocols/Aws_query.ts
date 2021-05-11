@@ -238,6 +238,7 @@ import {
   CacheSubnetGroupNotFoundFault,
   CacheSubnetGroupQuotaExceededFault,
   CacheSubnetQuotaExceededFault,
+  CloudWatchLogsDestinationDetails,
   ClusterQuotaForCustomerExceededFault,
   CompleteMigrationMessage,
   CompleteMigrationResponse,
@@ -302,6 +303,7 @@ import {
   DescribeUserGroupsResult,
   DescribeUsersMessage,
   DescribeUsersResult,
+  DestinationDetails,
   DisassociateGlobalReplicationGroupMessage,
   DisassociateGlobalReplicationGroupResult,
   DuplicateUserNameFault,
@@ -338,8 +340,11 @@ import {
   InvalidUserGroupStateFault,
   InvalidUserStateFault,
   InvalidVPCNetworkStateFault,
+  KinesisFirehoseDestinationDetails,
   ListAllowedNodeTypeModificationsMessage,
   ListTagsForResourceMessage,
+  LogDeliveryConfiguration,
+  LogDeliveryConfigurationRequest,
   ModifyCacheClusterMessage,
   ModifyCacheClusterResult,
   ModifyCacheParameterGroupMessage,
@@ -367,6 +372,7 @@ import {
   NotificationConfiguration,
   Parameter,
   ParameterNameValue,
+  PendingLogDeliveryConfiguration,
   PendingModifiedValues,
   ProcessedUpdateAction,
   PurchaseReservedCacheNodesOfferingMessage,
@@ -1533,10 +1539,58 @@ const deserializeAws_queryAddTagsToResourceCommandError = async (
         $metadata: deserializeMetadata(output),
       };
       break;
+    case "CacheParameterGroupNotFoundFault":
+    case "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryCacheParameterGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "CacheSecurityGroupNotFoundFault":
+    case "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryCacheSecurityGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "CacheSubnetGroupNotFoundFault":
+    case "com.amazonaws.elasticache#CacheSubnetGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryCacheSubnetGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
     case "InvalidARNFault":
     case "com.amazonaws.elasticache#InvalidARNFault":
       response = {
         ...(await deserializeAws_queryInvalidARNFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "InvalidReplicationGroupStateFault":
+    case "com.amazonaws.elasticache#InvalidReplicationGroupStateFault":
+      response = {
+        ...(await deserializeAws_queryInvalidReplicationGroupStateFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "ReplicationGroupNotFoundFault":
+    case "com.amazonaws.elasticache#ReplicationGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryReplicationGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "ReservedCacheNodeNotFoundFault":
+    case "com.amazonaws.elasticache#ReservedCacheNodeNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryReservedCacheNodeNotFoundFaultResponse(parsedOutput, context)),
         name: errorCode,
         $metadata: deserializeMetadata(output),
       };
@@ -1553,6 +1607,22 @@ const deserializeAws_queryAddTagsToResourceCommandError = async (
     case "com.amazonaws.elasticache#TagQuotaPerResourceExceeded":
       response = {
         ...(await deserializeAws_queryTagQuotaPerResourceExceededResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "UserGroupNotFoundFault":
+    case "com.amazonaws.elasticache#UserGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryUserGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "UserNotFoundFault":
+    case "com.amazonaws.elasticache#UserNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryUserNotFoundFaultResponse(parsedOutput, context)),
         name: errorCode,
         $metadata: deserializeMetadata(output),
       };
@@ -1934,6 +2004,14 @@ const deserializeAws_queryCopySnapshotCommandError = async (
         $metadata: deserializeMetadata(output),
       };
       break;
+    case "TagQuotaPerResourceExceeded":
+    case "com.amazonaws.elasticache#TagQuotaPerResourceExceeded":
+      response = {
+        ...(await deserializeAws_queryTagQuotaPerResourceExceededResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
     default:
       const parsedBody = parsedOutput.body;
       errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
@@ -2178,6 +2256,14 @@ const deserializeAws_queryCreateCacheParameterGroupCommandError = async (
         $metadata: deserializeMetadata(output),
       };
       break;
+    case "TagQuotaPerResourceExceeded":
+    case "com.amazonaws.elasticache#TagQuotaPerResourceExceeded":
+      response = {
+        ...(await deserializeAws_queryTagQuotaPerResourceExceededResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
     default:
       const parsedBody = parsedOutput.body;
       errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
@@ -2252,6 +2338,14 @@ const deserializeAws_queryCreateCacheSecurityGroupCommandError = async (
     case "com.amazonaws.elasticache#InvalidParameterValueException":
       response = {
         ...(await deserializeAws_queryInvalidParameterValueExceptionResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "TagQuotaPerResourceExceeded":
+    case "com.amazonaws.elasticache#TagQuotaPerResourceExceeded":
+      response = {
+        ...(await deserializeAws_queryTagQuotaPerResourceExceededResponse(parsedOutput, context)),
         name: errorCode,
         $metadata: deserializeMetadata(output),
       };
@@ -2338,6 +2432,14 @@ const deserializeAws_queryCreateCacheSubnetGroupCommandError = async (
     case "com.amazonaws.elasticache#SubnetNotAllowedFault":
       response = {
         ...(await deserializeAws_querySubnetNotAllowedFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "TagQuotaPerResourceExceeded":
+    case "com.amazonaws.elasticache#TagQuotaPerResourceExceeded":
+      response = {
+        ...(await deserializeAws_queryTagQuotaPerResourceExceededResponse(parsedOutput, context)),
         name: errorCode,
         $metadata: deserializeMetadata(output),
       };
@@ -2744,6 +2846,14 @@ const deserializeAws_queryCreateSnapshotCommandError = async (
         $metadata: deserializeMetadata(output),
       };
       break;
+    case "TagQuotaPerResourceExceeded":
+    case "com.amazonaws.elasticache#TagQuotaPerResourceExceeded":
+      response = {
+        ...(await deserializeAws_queryTagQuotaPerResourceExceededResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
     default:
       const parsedBody = parsedOutput.body;
       errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
@@ -2810,6 +2920,14 @@ const deserializeAws_queryCreateUserCommandError = async (
     case "com.amazonaws.elasticache#InvalidParameterValueException":
       response = {
         ...(await deserializeAws_queryInvalidParameterValueExceptionResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "TagQuotaPerResourceExceeded":
+    case "com.amazonaws.elasticache#TagQuotaPerResourceExceeded":
+      response = {
+        ...(await deserializeAws_queryTagQuotaPerResourceExceededResponse(parsedOutput, context)),
         name: errorCode,
         $metadata: deserializeMetadata(output),
       };
@@ -2896,6 +3014,14 @@ const deserializeAws_queryCreateUserGroupCommandError = async (
     case "com.amazonaws.elasticache#InvalidParameterValueException":
       response = {
         ...(await deserializeAws_queryInvalidParameterValueExceptionResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "TagQuotaPerResourceExceeded":
+    case "com.amazonaws.elasticache#TagQuotaPerResourceExceeded":
+      response = {
+        ...(await deserializeAws_queryTagQuotaPerResourceExceededResponse(parsedOutput, context)),
         name: errorCode,
         $metadata: deserializeMetadata(output),
       };
@@ -5495,6 +5621,30 @@ const deserializeAws_queryListTagsForResourceCommandError = async (
         $metadata: deserializeMetadata(output),
       };
       break;
+    case "CacheParameterGroupNotFoundFault":
+    case "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryCacheParameterGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "CacheSecurityGroupNotFoundFault":
+    case "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryCacheSecurityGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "CacheSubnetGroupNotFoundFault":
+    case "com.amazonaws.elasticache#CacheSubnetGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryCacheSubnetGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
     case "InvalidARNFault":
     case "com.amazonaws.elasticache#InvalidARNFault":
       response = {
@@ -5503,10 +5653,50 @@ const deserializeAws_queryListTagsForResourceCommandError = async (
         $metadata: deserializeMetadata(output),
       };
       break;
+    case "InvalidReplicationGroupStateFault":
+    case "com.amazonaws.elasticache#InvalidReplicationGroupStateFault":
+      response = {
+        ...(await deserializeAws_queryInvalidReplicationGroupStateFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "ReplicationGroupNotFoundFault":
+    case "com.amazonaws.elasticache#ReplicationGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryReplicationGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "ReservedCacheNodeNotFoundFault":
+    case "com.amazonaws.elasticache#ReservedCacheNodeNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryReservedCacheNodeNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
     case "SnapshotNotFoundFault":
     case "com.amazonaws.elasticache#SnapshotNotFoundFault":
       response = {
         ...(await deserializeAws_querySnapshotNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "UserGroupNotFoundFault":
+    case "com.amazonaws.elasticache#UserGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryUserGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "UserNotFoundFault":
+    case "com.amazonaws.elasticache#UserNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryUserNotFoundFaultResponse(parsedOutput, context)),
         name: errorCode,
         $metadata: deserializeMetadata(output),
       };
@@ -6459,6 +6649,14 @@ const deserializeAws_queryPurchaseReservedCacheNodesOfferingCommandError = async
         $metadata: deserializeMetadata(output),
       };
       break;
+    case "TagQuotaPerResourceExceeded":
+    case "com.amazonaws.elasticache#TagQuotaPerResourceExceeded":
+      response = {
+        ...(await deserializeAws_queryTagQuotaPerResourceExceededResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
     default:
       const parsedBody = parsedOutput.body;
       errorCode = parsedBody.Error.code || parsedBody.Error.Code || errorCode;
@@ -6648,10 +6846,58 @@ const deserializeAws_queryRemoveTagsFromResourceCommandError = async (
         $metadata: deserializeMetadata(output),
       };
       break;
+    case "CacheParameterGroupNotFoundFault":
+    case "com.amazonaws.elasticache#CacheParameterGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryCacheParameterGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "CacheSecurityGroupNotFoundFault":
+    case "com.amazonaws.elasticache#CacheSecurityGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryCacheSecurityGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "CacheSubnetGroupNotFoundFault":
+    case "com.amazonaws.elasticache#CacheSubnetGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryCacheSubnetGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
     case "InvalidARNFault":
     case "com.amazonaws.elasticache#InvalidARNFault":
       response = {
         ...(await deserializeAws_queryInvalidARNFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "InvalidReplicationGroupStateFault":
+    case "com.amazonaws.elasticache#InvalidReplicationGroupStateFault":
+      response = {
+        ...(await deserializeAws_queryInvalidReplicationGroupStateFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "ReplicationGroupNotFoundFault":
+    case "com.amazonaws.elasticache#ReplicationGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryReplicationGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "ReservedCacheNodeNotFoundFault":
+    case "com.amazonaws.elasticache#ReservedCacheNodeNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryReservedCacheNodeNotFoundFaultResponse(parsedOutput, context)),
         name: errorCode,
         $metadata: deserializeMetadata(output),
       };
@@ -6668,6 +6914,22 @@ const deserializeAws_queryRemoveTagsFromResourceCommandError = async (
     case "com.amazonaws.elasticache#TagNotFoundFault":
       response = {
         ...(await deserializeAws_queryTagNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "UserGroupNotFoundFault":
+    case "com.amazonaws.elasticache#UserGroupNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryUserGroupNotFoundFaultResponse(parsedOutput, context)),
+        name: errorCode,
+        $metadata: deserializeMetadata(output),
+      };
+      break;
+    case "UserNotFoundFault":
+    case "com.amazonaws.elasticache#UserNotFoundFault":
+      response = {
+        ...(await deserializeAws_queryUserNotFoundFaultResponse(parsedOutput, context)),
         name: errorCode,
         $metadata: deserializeMetadata(output),
       };
@@ -8199,6 +8461,17 @@ const serializeAws_queryCacheSecurityGroupNameList = (input: string[], context: 
   return entries;
 };
 
+const serializeAws_queryCloudWatchLogsDestinationDetails = (
+  input: CloudWatchLogsDestinationDetails,
+  context: __SerdeContext
+): any => {
+  const entries: any = {};
+  if (input.LogGroup !== undefined && input.LogGroup !== null) {
+    entries["LogGroup"] = input.LogGroup;
+  }
+  return entries;
+};
+
 const serializeAws_queryCompleteMigrationMessage = (input: CompleteMigrationMessage, context: __SerdeContext): any => {
   const entries: any = {};
   if (input.ReplicationGroupId !== undefined && input.ReplicationGroupId !== null) {
@@ -8248,6 +8521,13 @@ const serializeAws_queryCopySnapshotMessage = (input: CopySnapshotMessage, conte
   }
   if (input.KmsKeyId !== undefined && input.KmsKeyId !== null) {
     entries["KmsKeyId"] = input.KmsKeyId;
+  }
+  if (input.Tags !== undefined && input.Tags !== null) {
+    const memberEntries = serializeAws_queryTagList(input.Tags, context);
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `Tags.${key}`;
+      entries[loc] = value;
+    });
   }
   return entries;
 };
@@ -8359,6 +8639,16 @@ const serializeAws_queryCreateCacheClusterMessage = (
       entries[loc] = value;
     });
   }
+  if (input.LogDeliveryConfigurations !== undefined && input.LogDeliveryConfigurations !== null) {
+    const memberEntries = serializeAws_queryLogDeliveryConfigurationRequestList(
+      input.LogDeliveryConfigurations,
+      context
+    );
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `LogDeliveryConfigurations.${key}`;
+      entries[loc] = value;
+    });
+  }
   return entries;
 };
 
@@ -8376,6 +8666,13 @@ const serializeAws_queryCreateCacheParameterGroupMessage = (
   if (input.Description !== undefined && input.Description !== null) {
     entries["Description"] = input.Description;
   }
+  if (input.Tags !== undefined && input.Tags !== null) {
+    const memberEntries = serializeAws_queryTagList(input.Tags, context);
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `Tags.${key}`;
+      entries[loc] = value;
+    });
+  }
   return entries;
 };
 
@@ -8389,6 +8686,13 @@ const serializeAws_queryCreateCacheSecurityGroupMessage = (
   }
   if (input.Description !== undefined && input.Description !== null) {
     entries["Description"] = input.Description;
+  }
+  if (input.Tags !== undefined && input.Tags !== null) {
+    const memberEntries = serializeAws_queryTagList(input.Tags, context);
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `Tags.${key}`;
+      entries[loc] = value;
+    });
   }
   return entries;
 };
@@ -8408,6 +8712,13 @@ const serializeAws_queryCreateCacheSubnetGroupMessage = (
     const memberEntries = serializeAws_querySubnetIdentifierList(input.SubnetIds, context);
     Object.entries(memberEntries).forEach(([key, value]) => {
       const loc = `SubnetIds.${key}`;
+      entries[loc] = value;
+    });
+  }
+  if (input.Tags !== undefined && input.Tags !== null) {
+    const memberEntries = serializeAws_queryTagList(input.Tags, context);
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `Tags.${key}`;
       entries[loc] = value;
     });
   }
@@ -8560,6 +8871,16 @@ const serializeAws_queryCreateReplicationGroupMessage = (
       entries[loc] = value;
     });
   }
+  if (input.LogDeliveryConfigurations !== undefined && input.LogDeliveryConfigurations !== null) {
+    const memberEntries = serializeAws_queryLogDeliveryConfigurationRequestList(
+      input.LogDeliveryConfigurations,
+      context
+    );
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `LogDeliveryConfigurations.${key}`;
+      entries[loc] = value;
+    });
+  }
   return entries;
 };
 
@@ -8577,6 +8898,13 @@ const serializeAws_queryCreateSnapshotMessage = (input: CreateSnapshotMessage, c
   if (input.KmsKeyId !== undefined && input.KmsKeyId !== null) {
     entries["KmsKeyId"] = input.KmsKeyId;
   }
+  if (input.Tags !== undefined && input.Tags !== null) {
+    const memberEntries = serializeAws_queryTagList(input.Tags, context);
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `Tags.${key}`;
+      entries[loc] = value;
+    });
+  }
   return entries;
 };
 
@@ -8592,6 +8920,13 @@ const serializeAws_queryCreateUserGroupMessage = (input: CreateUserGroupMessage,
     const memberEntries = serializeAws_queryUserIdListInput(input.UserIds, context);
     Object.entries(memberEntries).forEach(([key, value]) => {
       const loc = `UserIds.${key}`;
+      entries[loc] = value;
+    });
+  }
+  if (input.Tags !== undefined && input.Tags !== null) {
+    const memberEntries = serializeAws_queryTagList(input.Tags, context);
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `Tags.${key}`;
       entries[loc] = value;
     });
   }
@@ -8621,6 +8956,13 @@ const serializeAws_queryCreateUserMessage = (input: CreateUserMessage, context: 
   }
   if (input.NoPasswordRequired !== undefined && input.NoPasswordRequired !== null) {
     entries["NoPasswordRequired"] = input.NoPasswordRequired;
+  }
+  if (input.Tags !== undefined && input.Tags !== null) {
+    const memberEntries = serializeAws_queryTagList(input.Tags, context);
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `Tags.${key}`;
+      entries[loc] = value;
+    });
   }
   return entries;
 };
@@ -9229,6 +9571,25 @@ const serializeAws_queryDescribeUsersMessage = (input: DescribeUsersMessage, con
   return entries;
 };
 
+const serializeAws_queryDestinationDetails = (input: DestinationDetails, context: __SerdeContext): any => {
+  const entries: any = {};
+  if (input.CloudWatchLogsDetails !== undefined && input.CloudWatchLogsDetails !== null) {
+    const memberEntries = serializeAws_queryCloudWatchLogsDestinationDetails(input.CloudWatchLogsDetails, context);
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `CloudWatchLogsDetails.${key}`;
+      entries[loc] = value;
+    });
+  }
+  if (input.KinesisFirehoseDetails !== undefined && input.KinesisFirehoseDetails !== null) {
+    const memberEntries = serializeAws_queryKinesisFirehoseDestinationDetails(input.KinesisFirehoseDetails, context);
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `KinesisFirehoseDetails.${key}`;
+      entries[loc] = value;
+    });
+  }
+  return entries;
+};
+
 const serializeAws_queryDisassociateGlobalReplicationGroupMessage = (
   input: DisassociateGlobalReplicationGroupMessage,
   context: __SerdeContext
@@ -9381,6 +9742,17 @@ const serializeAws_queryKeyList = (input: string[], context: __SerdeContext): an
   return entries;
 };
 
+const serializeAws_queryKinesisFirehoseDestinationDetails = (
+  input: KinesisFirehoseDestinationDetails,
+  context: __SerdeContext
+): any => {
+  const entries: any = {};
+  if (input.DeliveryStream !== undefined && input.DeliveryStream !== null) {
+    entries["DeliveryStream"] = input.DeliveryStream;
+  }
+  return entries;
+};
+
 const serializeAws_queryListAllowedNodeTypeModificationsMessage = (
   input: ListAllowedNodeTypeModificationsMessage,
   context: __SerdeContext
@@ -9402,6 +9774,52 @@ const serializeAws_queryListTagsForResourceMessage = (
   const entries: any = {};
   if (input.ResourceName !== undefined && input.ResourceName !== null) {
     entries["ResourceName"] = input.ResourceName;
+  }
+  return entries;
+};
+
+const serializeAws_queryLogDeliveryConfigurationRequest = (
+  input: LogDeliveryConfigurationRequest,
+  context: __SerdeContext
+): any => {
+  const entries: any = {};
+  if (input.LogType !== undefined && input.LogType !== null) {
+    entries["LogType"] = input.LogType;
+  }
+  if (input.DestinationType !== undefined && input.DestinationType !== null) {
+    entries["DestinationType"] = input.DestinationType;
+  }
+  if (input.DestinationDetails !== undefined && input.DestinationDetails !== null) {
+    const memberEntries = serializeAws_queryDestinationDetails(input.DestinationDetails, context);
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `DestinationDetails.${key}`;
+      entries[loc] = value;
+    });
+  }
+  if (input.LogFormat !== undefined && input.LogFormat !== null) {
+    entries["LogFormat"] = input.LogFormat;
+  }
+  if (input.Enabled !== undefined && input.Enabled !== null) {
+    entries["Enabled"] = input.Enabled;
+  }
+  return entries;
+};
+
+const serializeAws_queryLogDeliveryConfigurationRequestList = (
+  input: LogDeliveryConfigurationRequest[],
+  context: __SerdeContext
+): any => {
+  const entries: any = {};
+  let counter = 1;
+  for (let entry of input) {
+    if (entry === null) {
+      continue;
+    }
+    const memberEntries = serializeAws_queryLogDeliveryConfigurationRequest(entry, context);
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      entries[`LogDeliveryConfigurationRequest.${counter}.${key}`] = value;
+    });
+    counter++;
   }
   return entries;
 };
@@ -9484,6 +9902,16 @@ const serializeAws_queryModifyCacheClusterMessage = (
   if (input.AuthTokenUpdateStrategy !== undefined && input.AuthTokenUpdateStrategy !== null) {
     entries["AuthTokenUpdateStrategy"] = input.AuthTokenUpdateStrategy;
   }
+  if (input.LogDeliveryConfigurations !== undefined && input.LogDeliveryConfigurations !== null) {
+    const memberEntries = serializeAws_queryLogDeliveryConfigurationRequestList(
+      input.LogDeliveryConfigurations,
+      context
+    );
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `LogDeliveryConfigurations.${key}`;
+      entries[loc] = value;
+    });
+  }
   return entries;
 };
 
@@ -9542,6 +9970,9 @@ const serializeAws_queryModifyGlobalReplicationGroupMessage = (
   }
   if (input.EngineVersion !== undefined && input.EngineVersion !== null) {
     entries["EngineVersion"] = input.EngineVersion;
+  }
+  if (input.CacheParameterGroupName !== undefined && input.CacheParameterGroupName !== null) {
+    entries["CacheParameterGroupName"] = input.CacheParameterGroupName;
   }
   if (input.GlobalReplicationGroupDescription !== undefined && input.GlobalReplicationGroupDescription !== null) {
     entries["GlobalReplicationGroupDescription"] = input.GlobalReplicationGroupDescription;
@@ -9644,6 +10075,16 @@ const serializeAws_queryModifyReplicationGroupMessage = (
   }
   if (input.RemoveUserGroups !== undefined && input.RemoveUserGroups !== null) {
     entries["RemoveUserGroups"] = input.RemoveUserGroups;
+  }
+  if (input.LogDeliveryConfigurations !== undefined && input.LogDeliveryConfigurations !== null) {
+    const memberEntries = serializeAws_queryLogDeliveryConfigurationRequestList(
+      input.LogDeliveryConfigurations,
+      context
+    );
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `LogDeliveryConfigurations.${key}`;
+      entries[loc] = value;
+    });
   }
   return entries;
 };
@@ -9903,6 +10344,13 @@ const serializeAws_queryPurchaseReservedCacheNodesOfferingMessage = (
   }
   if (input.CacheNodeCount !== undefined && input.CacheNodeCount !== null) {
     entries["CacheNodeCount"] = input.CacheNodeCount;
+  }
+  if (input.Tags !== undefined && input.Tags !== null) {
+    const memberEntries = serializeAws_queryTagList(input.Tags, context);
+    Object.entries(memberEntries).forEach(([key, value]) => {
+      const loc = `Tags.${key}`;
+      entries[loc] = value;
+    });
   }
   return entries;
 };
@@ -10425,6 +10873,8 @@ const deserializeAws_queryCacheCluster = (output: any, context: __SerdeContext):
     TransitEncryptionEnabled: undefined,
     AtRestEncryptionEnabled: undefined,
     ARN: undefined,
+    ReplicationGroupLogDeliveryEnabled: undefined,
+    LogDeliveryConfigurations: undefined,
   };
   if (output["CacheClusterId"] !== undefined) {
     contents.CacheClusterId = output["CacheClusterId"];
@@ -10539,6 +10989,21 @@ const deserializeAws_queryCacheCluster = (output: any, context: __SerdeContext):
   }
   if (output["ARN"] !== undefined) {
     contents.ARN = output["ARN"];
+  }
+  if (output["ReplicationGroupLogDeliveryEnabled"] !== undefined) {
+    contents.ReplicationGroupLogDeliveryEnabled = output["ReplicationGroupLogDeliveryEnabled"] == "true";
+  }
+  if (output.LogDeliveryConfigurations === "") {
+    contents.LogDeliveryConfigurations = [];
+  }
+  if (
+    output["LogDeliveryConfigurations"] !== undefined &&
+    output["LogDeliveryConfigurations"]["LogDeliveryConfiguration"] !== undefined
+  ) {
+    contents.LogDeliveryConfigurations = deserializeAws_queryLogDeliveryConfigurationList(
+      __getArrayIfSingleItem(output["LogDeliveryConfigurations"]["LogDeliveryConfiguration"]),
+      context
+    );
   }
   return contents;
 };
@@ -11313,6 +11778,19 @@ const deserializeAws_queryCacheSubnetQuotaExceededFault = (
   return contents;
 };
 
+const deserializeAws_queryCloudWatchLogsDestinationDetails = (
+  output: any,
+  context: __SerdeContext
+): CloudWatchLogsDestinationDetails => {
+  let contents: any = {
+    LogGroup: undefined,
+  };
+  if (output["LogGroup"] !== undefined) {
+    contents.LogGroup = output["LogGroup"];
+  }
+  return contents;
+};
+
 const deserializeAws_queryClusterIdList = (output: any, context: __SerdeContext): string[] => {
   return (output || [])
     .filter((e: any) => e != null)
@@ -11653,6 +12131,26 @@ const deserializeAws_queryDescribeUsersResult = (output: any, context: __SerdeCo
   }
   if (output["Marker"] !== undefined) {
     contents.Marker = output["Marker"];
+  }
+  return contents;
+};
+
+const deserializeAws_queryDestinationDetails = (output: any, context: __SerdeContext): DestinationDetails => {
+  let contents: any = {
+    CloudWatchLogsDetails: undefined,
+    KinesisFirehoseDetails: undefined,
+  };
+  if (output["CloudWatchLogsDetails"] !== undefined) {
+    contents.CloudWatchLogsDetails = deserializeAws_queryCloudWatchLogsDestinationDetails(
+      output["CloudWatchLogsDetails"],
+      context
+    );
+  }
+  if (output["KinesisFirehoseDetails"] !== undefined) {
+    contents.KinesisFirehoseDetails = deserializeAws_queryKinesisFirehoseDestinationDetails(
+      output["KinesisFirehoseDetails"],
+      context
+    );
   }
   return contents;
 };
@@ -12236,6 +12734,66 @@ const deserializeAws_queryInvalidVPCNetworkStateFault = (
   return contents;
 };
 
+const deserializeAws_queryKinesisFirehoseDestinationDetails = (
+  output: any,
+  context: __SerdeContext
+): KinesisFirehoseDestinationDetails => {
+  let contents: any = {
+    DeliveryStream: undefined,
+  };
+  if (output["DeliveryStream"] !== undefined) {
+    contents.DeliveryStream = output["DeliveryStream"];
+  }
+  return contents;
+};
+
+const deserializeAws_queryLogDeliveryConfiguration = (
+  output: any,
+  context: __SerdeContext
+): LogDeliveryConfiguration => {
+  let contents: any = {
+    LogType: undefined,
+    DestinationType: undefined,
+    DestinationDetails: undefined,
+    LogFormat: undefined,
+    Status: undefined,
+    Message: undefined,
+  };
+  if (output["LogType"] !== undefined) {
+    contents.LogType = output["LogType"];
+  }
+  if (output["DestinationType"] !== undefined) {
+    contents.DestinationType = output["DestinationType"];
+  }
+  if (output["DestinationDetails"] !== undefined) {
+    contents.DestinationDetails = deserializeAws_queryDestinationDetails(output["DestinationDetails"], context);
+  }
+  if (output["LogFormat"] !== undefined) {
+    contents.LogFormat = output["LogFormat"];
+  }
+  if (output["Status"] !== undefined) {
+    contents.Status = output["Status"];
+  }
+  if (output["Message"] !== undefined) {
+    contents.Message = output["Message"];
+  }
+  return contents;
+};
+
+const deserializeAws_queryLogDeliveryConfigurationList = (
+  output: any,
+  context: __SerdeContext
+): LogDeliveryConfiguration[] => {
+  return (output || [])
+    .filter((e: any) => e != null)
+    .map((entry: any) => {
+      if (entry === null) {
+        return null as any;
+      }
+      return deserializeAws_queryLogDeliveryConfiguration(entry, context);
+    });
+};
+
 const deserializeAws_queryModifyCacheClusterResult = (
   output: any,
   context: __SerdeContext
@@ -12736,6 +13294,45 @@ const deserializeAws_queryParametersList = (output: any, context: __SerdeContext
     });
 };
 
+const deserializeAws_queryPendingLogDeliveryConfiguration = (
+  output: any,
+  context: __SerdeContext
+): PendingLogDeliveryConfiguration => {
+  let contents: any = {
+    LogType: undefined,
+    DestinationType: undefined,
+    DestinationDetails: undefined,
+    LogFormat: undefined,
+  };
+  if (output["LogType"] !== undefined) {
+    contents.LogType = output["LogType"];
+  }
+  if (output["DestinationType"] !== undefined) {
+    contents.DestinationType = output["DestinationType"];
+  }
+  if (output["DestinationDetails"] !== undefined) {
+    contents.DestinationDetails = deserializeAws_queryDestinationDetails(output["DestinationDetails"], context);
+  }
+  if (output["LogFormat"] !== undefined) {
+    contents.LogFormat = output["LogFormat"];
+  }
+  return contents;
+};
+
+const deserializeAws_queryPendingLogDeliveryConfigurationList = (
+  output: any,
+  context: __SerdeContext
+): PendingLogDeliveryConfiguration[] => {
+  return (output || [])
+    .filter((e: any) => e != null)
+    .map((entry: any) => {
+      if (entry === null) {
+        return null as any;
+      }
+      return deserializeAws_queryPendingLogDeliveryConfiguration(entry, context);
+    });
+};
+
 const deserializeAws_queryPendingModifiedValues = (output: any, context: __SerdeContext): PendingModifiedValues => {
   let contents: any = {
     NumCacheNodes: undefined,
@@ -12743,6 +13340,7 @@ const deserializeAws_queryPendingModifiedValues = (output: any, context: __Serde
     EngineVersion: undefined,
     CacheNodeType: undefined,
     AuthTokenStatus: undefined,
+    LogDeliveryConfigurations: undefined,
   };
   if (output["NumCacheNodes"] !== undefined) {
     contents.NumCacheNodes = parseInt(output["NumCacheNodes"]);
@@ -12764,6 +13362,18 @@ const deserializeAws_queryPendingModifiedValues = (output: any, context: __Serde
   }
   if (output["AuthTokenStatus"] !== undefined) {
     contents.AuthTokenStatus = output["AuthTokenStatus"];
+  }
+  if (output.LogDeliveryConfigurations === "") {
+    contents.LogDeliveryConfigurations = [];
+  }
+  if (
+    output["LogDeliveryConfigurations"] !== undefined &&
+    output["LogDeliveryConfigurations"]["member"] !== undefined
+  ) {
+    contents.LogDeliveryConfigurations = deserializeAws_queryPendingLogDeliveryConfigurationList(
+      __getArrayIfSingleItem(output["LogDeliveryConfigurations"]["member"]),
+      context
+    );
   }
   return contents;
 };
@@ -12896,6 +13506,7 @@ const deserializeAws_queryReplicationGroup = (output: any, context: __SerdeConte
     KmsKeyId: undefined,
     ARN: undefined,
     UserGroupIds: undefined,
+    LogDeliveryConfigurations: undefined,
   };
   if (output["ReplicationGroupId"] !== undefined) {
     contents.ReplicationGroupId = output["ReplicationGroupId"];
@@ -12996,6 +13607,18 @@ const deserializeAws_queryReplicationGroup = (output: any, context: __SerdeConte
   if (output["UserGroupIds"] !== undefined && output["UserGroupIds"]["member"] !== undefined) {
     contents.UserGroupIds = deserializeAws_queryUserGroupIdList(
       __getArrayIfSingleItem(output["UserGroupIds"]["member"]),
+      context
+    );
+  }
+  if (output.LogDeliveryConfigurations === "") {
+    contents.LogDeliveryConfigurations = [];
+  }
+  if (
+    output["LogDeliveryConfigurations"] !== undefined &&
+    output["LogDeliveryConfigurations"]["LogDeliveryConfiguration"] !== undefined
+  ) {
+    contents.LogDeliveryConfigurations = deserializeAws_queryLogDeliveryConfigurationList(
+      __getArrayIfSingleItem(output["LogDeliveryConfigurations"]["LogDeliveryConfiguration"]),
       context
     );
   }
@@ -13106,6 +13729,7 @@ const deserializeAws_queryReplicationGroupPendingModifiedValues = (
     Resharding: undefined,
     AuthTokenStatus: undefined,
     UserGroups: undefined,
+    LogDeliveryConfigurations: undefined,
   };
   if (output["PrimaryClusterId"] !== undefined) {
     contents.PrimaryClusterId = output["PrimaryClusterId"];
@@ -13121,6 +13745,18 @@ const deserializeAws_queryReplicationGroupPendingModifiedValues = (
   }
   if (output["UserGroups"] !== undefined) {
     contents.UserGroups = deserializeAws_queryUserGroupsUpdateStatus(output["UserGroups"], context);
+  }
+  if (output.LogDeliveryConfigurations === "") {
+    contents.LogDeliveryConfigurations = [];
+  }
+  if (
+    output["LogDeliveryConfigurations"] !== undefined &&
+    output["LogDeliveryConfigurations"]["member"] !== undefined
+  ) {
+    contents.LogDeliveryConfigurations = deserializeAws_queryPendingLogDeliveryConfigurationList(
+      __getArrayIfSingleItem(output["LogDeliveryConfigurations"]["member"]),
+      context
+    );
   }
   return contents;
 };

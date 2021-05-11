@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateModelCommandInput = CreateModelRequest;
-export type CreateModelCommandOutput = CreateModelResponse & __MetadataBearer;
+export interface CreateModelCommandInput extends CreateModelRequest {}
+export interface CreateModelCommandOutput extends CreateModelResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new version of a model within an an Amazon Lookout for Vision project.
@@ -32,6 +32,23 @@ export type CreateModelCommandOutput = CreateModelResponse & __MetadataBearer;
  *        the model. </p>
  *          <p>After training completes, the evaluation metrics are stored at the location specified in
  *         <code>OutputConfig</code>.  </p>
+ *          <p>This operation requires permissions to perform the
+ *          <code>lookoutvision:CreateModel</code> operation. If you want to tag your model, you also require
+ *          permission to the <code>lookoutvision:TagResource</code> operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LookoutVisionClient, CreateModelCommand } from "@aws-sdk/client-lookoutvision"; // ES Modules import
+ * // const { LookoutVisionClient, CreateModelCommand } = require("@aws-sdk/client-lookoutvision"); // CommonJS import
+ * const client = new LookoutVisionClient(config);
+ * const command = new CreateModelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateModelCommandInput} for command's `input` shape.
+ * @see {@link CreateModelCommandOutput} for command's `response` shape.
+ * @see {@link LookoutVisionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateModelCommand extends $Command<
   CreateModelCommandInput,

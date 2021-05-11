@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDocumentClassifierCommandInput = DeleteDocumentClassifierRequest;
-export type DeleteDocumentClassifierCommandOutput = DeleteDocumentClassifierResponse & __MetadataBearer;
+export interface DeleteDocumentClassifierCommandInput extends DeleteDocumentClassifierRequest {}
+export interface DeleteDocumentClassifierCommandOutput extends DeleteDocumentClassifierResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a previously created document classifier</p>
@@ -28,6 +28,20 @@ export type DeleteDocumentClassifierCommandOutput = DeleteDocumentClassifierResp
  *          <p>This is an asynchronous action that puts the classifier into a DELETING state, and it is
  *       then removed by a background job. Once removed, the classifier disappears from your account
  *       and is no longer available for use. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ComprehendClient, DeleteDocumentClassifierCommand } from "@aws-sdk/client-comprehend"; // ES Modules import
+ * // const { ComprehendClient, DeleteDocumentClassifierCommand } = require("@aws-sdk/client-comprehend"); // CommonJS import
+ * const client = new ComprehendClient(config);
+ * const command = new DeleteDocumentClassifierCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDocumentClassifierCommandInput} for command's `input` shape.
+ * @see {@link DeleteDocumentClassifierCommandOutput} for command's `response` shape.
+ * @see {@link ComprehendClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDocumentClassifierCommand extends $Command<
   DeleteDocumentClassifierCommandInput,

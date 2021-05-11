@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociatePackageCommandInput = AssociatePackageRequest;
-export type AssociatePackageCommandOutput = AssociatePackageResponse & __MetadataBearer;
+export interface AssociatePackageCommandInput extends AssociatePackageRequest {}
+export interface AssociatePackageCommandOutput extends AssociatePackageResponse, __MetadataBearer {}
 
 /**
  * <p>Associates a package with an Amazon ES domain.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticsearchServiceClient, AssociatePackageCommand } from "@aws-sdk/client-elasticsearch-service"; // ES Modules import
+ * // const { ElasticsearchServiceClient, AssociatePackageCommand } = require("@aws-sdk/client-elasticsearch-service"); // CommonJS import
+ * const client = new ElasticsearchServiceClient(config);
+ * const command = new AssociatePackageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociatePackageCommandInput} for command's `input` shape.
+ * @see {@link AssociatePackageCommandOutput} for command's `response` shape.
+ * @see {@link ElasticsearchServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociatePackageCommand extends $Command<
   AssociatePackageCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTargetsByRuleCommandInput = ListTargetsByRuleRequest;
-export type ListTargetsByRuleCommandOutput = ListTargetsByRuleResponse & __MetadataBearer;
+export interface ListTargetsByRuleCommandInput extends ListTargetsByRuleRequest {}
+export interface ListTargetsByRuleCommandOutput extends ListTargetsByRuleResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the targets assigned to the specified rule.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EventBridgeClient, ListTargetsByRuleCommand } from "@aws-sdk/client-eventbridge"; // ES Modules import
+ * // const { EventBridgeClient, ListTargetsByRuleCommand } = require("@aws-sdk/client-eventbridge"); // CommonJS import
+ * const client = new EventBridgeClient(config);
+ * const command = new ListTargetsByRuleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTargetsByRuleCommandInput} for command's `input` shape.
+ * @see {@link ListTargetsByRuleCommandOutput} for command's `response` shape.
+ * @see {@link EventBridgeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTargetsByRuleCommand extends $Command<
   ListTargetsByRuleCommandInput,

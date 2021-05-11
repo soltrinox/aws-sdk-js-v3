@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeContactCommandInput = DescribeContactRequest;
-export type DescribeContactCommandOutput = DescribeContactResponse & __MetadataBearer;
+export interface DescribeContactCommandInput extends DescribeContactRequest {}
+export interface DescribeContactCommandOutput extends DescribeContactResponse, __MetadataBearer {}
 
 /**
  * <p>Describes an existing contact.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GroundStationClient, DescribeContactCommand } from "@aws-sdk/client-groundstation"; // ES Modules import
+ * // const { GroundStationClient, DescribeContactCommand } = require("@aws-sdk/client-groundstation"); // CommonJS import
+ * const client = new GroundStationClient(config);
+ * const command = new DescribeContactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeContactCommandInput} for command's `input` shape.
+ * @see {@link DescribeContactCommandOutput} for command's `response` shape.
+ * @see {@link GroundStationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeContactCommand extends $Command<
   DescribeContactCommandInput,

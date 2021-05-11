@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteMLTransformCommandInput = DeleteMLTransformRequest;
-export type DeleteMLTransformCommandOutput = DeleteMLTransformResponse & __MetadataBearer;
+export interface DeleteMLTransformCommandInput extends DeleteMLTransformRequest {}
+export interface DeleteMLTransformCommandOutput extends DeleteMLTransformResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an AWS Glue machine learning transform. Machine learning transforms are a special
@@ -27,6 +27,20 @@ export type DeleteMLTransformCommandOutput = DeleteMLTransformResponse & __Metad
  *       by AWS Glue. If you no longer need a transform, you can delete it by calling
  *         <code>DeleteMLTransforms</code>. However, any AWS Glue jobs that still reference the deleted
  *       transform will no longer succeed.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, DeleteMLTransformCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, DeleteMLTransformCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new DeleteMLTransformCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteMLTransformCommandInput} for command's `input` shape.
+ * @see {@link DeleteMLTransformCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteMLTransformCommand extends $Command<
   DeleteMLTransformCommandInput,

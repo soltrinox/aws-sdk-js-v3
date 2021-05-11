@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SendTaskHeartbeatCommandInput = SendTaskHeartbeatInput;
-export type SendTaskHeartbeatCommandOutput = SendTaskHeartbeatOutput & __MetadataBearer;
+export interface SendTaskHeartbeatCommandInput extends SendTaskHeartbeatInput {}
+export interface SendTaskHeartbeatCommandOutput extends SendTaskHeartbeatOutput, __MetadataBearer {}
 
 /**
  * <p>Used by activity workers and task states using the <a href="https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token">callback</a>
@@ -36,6 +36,20 @@ export type SendTaskHeartbeatCommandOutput = SendTaskHeartbeatOutput & __Metadat
  *         its maximum allowed duration, regardless of the number of <a>SendTaskHeartbeat</a> requests received. Use <code>HeartbeatSeconds</code> to configure the timeout interval
  *         for heartbeats.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SFNClient, SendTaskHeartbeatCommand } from "@aws-sdk/client-sfn"; // ES Modules import
+ * // const { SFNClient, SendTaskHeartbeatCommand } = require("@aws-sdk/client-sfn"); // CommonJS import
+ * const client = new SFNClient(config);
+ * const command = new SendTaskHeartbeatCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SendTaskHeartbeatCommandInput} for command's `input` shape.
+ * @see {@link SendTaskHeartbeatCommandOutput} for command's `response` shape.
+ * @see {@link SFNClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SendTaskHeartbeatCommand extends $Command<
   SendTaskHeartbeatCommandInput,

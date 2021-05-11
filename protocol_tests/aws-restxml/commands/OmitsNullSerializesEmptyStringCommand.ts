@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type OmitsNullSerializesEmptyStringCommandInput = OmitsNullSerializesEmptyStringInput;
-export type OmitsNullSerializesEmptyStringCommandOutput = __MetadataBearer;
+export interface OmitsNullSerializesEmptyStringCommandInput extends OmitsNullSerializesEmptyStringInput {}
+export interface OmitsNullSerializesEmptyStringCommandOutput extends __MetadataBearer {}
 
 /**
  * Omits null, but serializes empty string value.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestXmlProtocolClient, OmitsNullSerializesEmptyStringCommand } from "@aws-sdk/aws-restxml"; // ES Modules import
+ * // const { RestXmlProtocolClient, OmitsNullSerializesEmptyStringCommand } = require("@aws-sdk/aws-restxml"); // CommonJS import
+ * const client = new RestXmlProtocolClient(config);
+ * const command = new OmitsNullSerializesEmptyStringCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link OmitsNullSerializesEmptyStringCommandInput} for command's `input` shape.
+ * @see {@link OmitsNullSerializesEmptyStringCommandOutput} for command's `response` shape.
+ * @see {@link RestXmlProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class OmitsNullSerializesEmptyStringCommand extends $Command<
   OmitsNullSerializesEmptyStringCommandInput,

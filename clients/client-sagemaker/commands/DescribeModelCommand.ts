@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeModelCommandInput = DescribeModelInput;
-export type DescribeModelCommandOutput = DescribeModelOutput & __MetadataBearer;
+export interface DescribeModelCommandInput extends DescribeModelInput {}
+export interface DescribeModelCommandOutput extends DescribeModelOutput, __MetadataBearer {}
 
 /**
  * <p>Describes a model that you created using the <code>CreateModel</code>
  *             API.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DescribeModelCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DescribeModelCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DescribeModelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeModelCommandInput} for command's `input` shape.
+ * @see {@link DescribeModelCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeModelCommand extends $Command<
   DescribeModelCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PostCommentForPullRequestCommandInput = PostCommentForPullRequestInput;
-export type PostCommentForPullRequestCommandOutput = PostCommentForPullRequestOutput & __MetadataBearer;
+export interface PostCommentForPullRequestCommandInput extends PostCommentForPullRequestInput {}
+export interface PostCommentForPullRequestCommandOutput extends PostCommentForPullRequestOutput, __MetadataBearer {}
 
 /**
  * <p>Posts a comment on a pull request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeCommitClient, PostCommentForPullRequestCommand } from "@aws-sdk/client-codecommit"; // ES Modules import
+ * // const { CodeCommitClient, PostCommentForPullRequestCommand } = require("@aws-sdk/client-codecommit"); // CommonJS import
+ * const client = new CodeCommitClient(config);
+ * const command = new PostCommentForPullRequestCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PostCommentForPullRequestCommandInput} for command's `input` shape.
+ * @see {@link PostCommentForPullRequestCommandOutput} for command's `response` shape.
+ * @see {@link CodeCommitClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PostCommentForPullRequestCommand extends $Command<
   PostCommentForPullRequestCommandInput,

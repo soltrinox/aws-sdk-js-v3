@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteImageRecipeCommandInput = DeleteImageRecipeRequest;
-export type DeleteImageRecipeCommandOutput = DeleteImageRecipeResponse & __MetadataBearer;
+export interface DeleteImageRecipeCommandInput extends DeleteImageRecipeRequest {}
+export interface DeleteImageRecipeCommandOutput extends DeleteImageRecipeResponse, __MetadataBearer {}
 
 /**
- * <p> Deletes an image recipe. </p>
+ * <p> Deletes an image recipe.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ImagebuilderClient, DeleteImageRecipeCommand } from "@aws-sdk/client-imagebuilder"; // ES Modules import
+ * // const { ImagebuilderClient, DeleteImageRecipeCommand } = require("@aws-sdk/client-imagebuilder"); // CommonJS import
+ * const client = new ImagebuilderClient(config);
+ * const command = new DeleteImageRecipeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteImageRecipeCommandInput} for command's `input` shape.
+ * @see {@link DeleteImageRecipeCommandOutput} for command's `response` shape.
+ * @see {@link ImagebuilderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteImageRecipeCommand extends $Command<
   DeleteImageRecipeCommandInput,

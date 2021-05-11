@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDomainsCommandInput = ListDomainsInput;
-export type ListDomainsCommandOutput = DomainInfos & __MetadataBearer;
+export interface ListDomainsCommandInput extends ListDomainsInput {}
+export interface ListDomainsCommandOutput extends DomainInfos, __MetadataBearer {}
 
 /**
  * <p>Returns the list of domains registered in the account. The results may be split into
@@ -53,6 +53,20 @@ export type ListDomainsCommandOutput = DomainInfos & __MetadataBearer;
  *       event attribute's <code>cause</code> parameter is set to <code>OPERATION_NOT_PERMITTED</code>.
  *       For details and example IAM policies, see <a href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF
  *         Workflows</a> in the <i>Amazon SWF Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SWFClient, ListDomainsCommand } from "@aws-sdk/client-swf"; // ES Modules import
+ * // const { SWFClient, ListDomainsCommand } = require("@aws-sdk/client-swf"); // CommonJS import
+ * const client = new SWFClient(config);
+ * const command = new ListDomainsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDomainsCommandInput} for command's `input` shape.
+ * @see {@link ListDomainsCommandOutput} for command's `response` shape.
+ * @see {@link SWFClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDomainsCommand extends $Command<
   ListDomainsCommandInput,

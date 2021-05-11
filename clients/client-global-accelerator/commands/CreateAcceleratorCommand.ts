@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAcceleratorCommandInput = CreateAcceleratorRequest;
-export type CreateAcceleratorCommandOutput = CreateAcceleratorResponse & __MetadataBearer;
+export interface CreateAcceleratorCommandInput extends CreateAcceleratorRequest {}
+export interface CreateAcceleratorCommandOutput extends CreateAcceleratorResponse, __MetadataBearer {}
 
 /**
  * <p>Create an accelerator. An accelerator includes one or more listeners that process inbound connections and direct traffic
@@ -31,6 +31,20 @@ export type CreateAcceleratorCommandOutput = CreateAcceleratorResponse & __Metad
  * 			         <p>Global Accelerator is a global service that supports endpoints in multiple AWS Regions but you must specify the
  * 				US West (Oregon) Region to create or update accelerators.</p>
  * 		       </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, CreateAcceleratorCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, CreateAcceleratorCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new CreateAcceleratorCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAcceleratorCommandInput} for command's `input` shape.
+ * @see {@link CreateAcceleratorCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAcceleratorCommand extends $Command<
   CreateAcceleratorCommandInput,

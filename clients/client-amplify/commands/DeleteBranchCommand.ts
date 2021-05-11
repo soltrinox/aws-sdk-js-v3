@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBranchCommandInput = DeleteBranchRequest;
-export type DeleteBranchCommandOutput = DeleteBranchResult & __MetadataBearer;
+export interface DeleteBranchCommandInput extends DeleteBranchRequest {}
+export interface DeleteBranchCommandOutput extends DeleteBranchResult, __MetadataBearer {}
 
 /**
  * <p> Deletes a branch for an Amplify app. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AmplifyClient, DeleteBranchCommand } from "@aws-sdk/client-amplify"; // ES Modules import
+ * // const { AmplifyClient, DeleteBranchCommand } = require("@aws-sdk/client-amplify"); // CommonJS import
+ * const client = new AmplifyClient(config);
+ * const command = new DeleteBranchCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBranchCommandInput} for command's `input` shape.
+ * @see {@link DeleteBranchCommandOutput} for command's `response` shape.
+ * @see {@link AmplifyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBranchCommand extends $Command<
   DeleteBranchCommandInput,

@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListNotebookExecutionsCommandInput = ListNotebookExecutionsInput;
-export type ListNotebookExecutionsCommandOutput = ListNotebookExecutionsOutput & __MetadataBearer;
+export interface ListNotebookExecutionsCommandInput extends ListNotebookExecutionsInput {}
+export interface ListNotebookExecutionsCommandOutput extends ListNotebookExecutionsOutput, __MetadataBearer {}
 
 /**
  * <p>Provides summaries of all notebook executions. You can filter the list based on multiple
  *          criteria such as status, time range, and editor id. Returns a maximum of 50 notebook
  *          executions and a marker to track the paging of a longer notebook execution list across
  *          multiple <code>ListNotebookExecution</code> calls.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EMRClient, ListNotebookExecutionsCommand } from "@aws-sdk/client-emr"; // ES Modules import
+ * // const { EMRClient, ListNotebookExecutionsCommand } = require("@aws-sdk/client-emr"); // CommonJS import
+ * const client = new EMRClient(config);
+ * const command = new ListNotebookExecutionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListNotebookExecutionsCommandInput} for command's `input` shape.
+ * @see {@link ListNotebookExecutionsCommandOutput} for command's `response` shape.
+ * @see {@link EMRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListNotebookExecutionsCommand extends $Command<
   ListNotebookExecutionsCommandInput,

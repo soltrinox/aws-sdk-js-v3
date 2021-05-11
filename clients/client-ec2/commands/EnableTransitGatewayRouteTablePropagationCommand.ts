@@ -20,13 +20,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type EnableTransitGatewayRouteTablePropagationCommandInput = EnableTransitGatewayRouteTablePropagationRequest;
-export type EnableTransitGatewayRouteTablePropagationCommandOutput = EnableTransitGatewayRouteTablePropagationResult &
-  __MetadataBearer;
+export interface EnableTransitGatewayRouteTablePropagationCommandInput
+  extends EnableTransitGatewayRouteTablePropagationRequest {}
+export interface EnableTransitGatewayRouteTablePropagationCommandOutput
+  extends EnableTransitGatewayRouteTablePropagationResult,
+    __MetadataBearer {}
 
 /**
  * <p>Enables the specified attachment to propagate routes to the specified
  *          propagation route table.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, EnableTransitGatewayRouteTablePropagationCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, EnableTransitGatewayRouteTablePropagationCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new EnableTransitGatewayRouteTablePropagationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link EnableTransitGatewayRouteTablePropagationCommandInput} for command's `input` shape.
+ * @see {@link EnableTransitGatewayRouteTablePropagationCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class EnableTransitGatewayRouteTablePropagationCommand extends $Command<
   EnableTransitGatewayRouteTablePropagationCommandInput,

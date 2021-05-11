@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetPasswordDataCommandInput = GetPasswordDataRequest;
-export type GetPasswordDataCommandOutput = GetPasswordDataResult & __MetadataBearer;
+export interface GetPasswordDataCommandInput extends GetPasswordDataRequest {}
+export interface GetPasswordDataCommandOutput extends GetPasswordDataResult, __MetadataBearer {}
 
 /**
  * <p>Retrieves the encrypted administrator password for a running Windows instance.</p>
@@ -31,6 +31,20 @@ export type GetPasswordDataCommandOutput = GetPasswordDataResult & __MetadataBea
  *             minutes. If you try to retrieve the password before it's available, the output returns
  *             an empty string. We recommend that you wait up to 15 minutes after launching an instance
  *             before trying to retrieve the generated password.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, GetPasswordDataCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, GetPasswordDataCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new GetPasswordDataCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetPasswordDataCommandInput} for command's `input` shape.
+ * @see {@link GetPasswordDataCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetPasswordDataCommand extends $Command<
   GetPasswordDataCommandInput,

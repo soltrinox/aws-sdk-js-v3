@@ -17,15 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelInstanceRefreshCommandInput = CancelInstanceRefreshType;
-export type CancelInstanceRefreshCommandOutput = CancelInstanceRefreshAnswer & __MetadataBearer;
+export interface CancelInstanceRefreshCommandInput extends CancelInstanceRefreshType {}
+export interface CancelInstanceRefreshCommandOutput extends CancelInstanceRefreshAnswer, __MetadataBearer {}
 
 /**
  * <p>Cancels an instance refresh operation in progress. Cancellation does not roll back any
  *             replacements that have already been completed, but it prevents new replacements from
  *             being started. </p>
- *         <p>For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html">Replacing Auto Scaling Instances
- *                 Based on an Instance Refresh</a>.</p>
+ *         <p>For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html">Replacing Auto Scaling instances
+ *                 based on an instance refresh</a> in the
+ *             <i>Amazon EC2 Auto Scaling User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AutoScalingClient, CancelInstanceRefreshCommand } from "@aws-sdk/client-auto-scaling"; // ES Modules import
+ * // const { AutoScalingClient, CancelInstanceRefreshCommand } = require("@aws-sdk/client-auto-scaling"); // CommonJS import
+ * const client = new AutoScalingClient(config);
+ * const command = new CancelInstanceRefreshCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelInstanceRefreshCommandInput} for command's `input` shape.
+ * @see {@link CancelInstanceRefreshCommandOutput} for command's `response` shape.
+ * @see {@link AutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelInstanceRefreshCommand extends $Command<
   CancelInstanceRefreshCommandInput,

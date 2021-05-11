@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutAttributesCommandInput = PutAttributesRequest;
-export type PutAttributesCommandOutput = PutAttributesResponse & __MetadataBearer;
+export interface PutAttributesCommandInput extends PutAttributesRequest {}
+export interface PutAttributesCommandOutput extends PutAttributesResponse, __MetadataBearer {}
 
 /**
  * <p>Create or update an attribute on an Amazon ECS resource. If the attribute does not exist,
@@ -26,6 +26,20 @@ export type PutAttributesCommandOutput = PutAttributesResponse & __MetadataBeare
  * 			To delete an attribute, use <a>DeleteAttributes</a>. For more information,
  * 			see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes">Attributes</a> in the
  * 			<i>Amazon Elastic Container Service Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, PutAttributesCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, PutAttributesCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new PutAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutAttributesCommandInput} for command's `input` shape.
+ * @see {@link PutAttributesCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutAttributesCommand extends $Command<
   PutAttributesCommandInput,

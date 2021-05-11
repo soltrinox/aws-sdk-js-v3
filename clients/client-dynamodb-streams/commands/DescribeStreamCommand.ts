@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeStreamCommandInput = DescribeStreamInput;
-export type DescribeStreamCommandOutput = DescribeStreamOutput & __MetadataBearer;
+export interface DescribeStreamCommandInput extends DescribeStreamInput {}
+export interface DescribeStreamCommandOutput extends DescribeStreamOutput, __MetadataBearer {}
 
 /**
  * <p>Returns information about a stream, including the current status of the stream, its Amazon Resource Name (ARN), the composition of its shards, and its corresponding DynamoDB table.</p>
@@ -30,6 +30,20 @@ export type DescribeStreamCommandOutput = DescribeStreamOutput & __MetadataBeare
  *         <code>EndingSequenceNumber</code>, then the shard is still open (able to receive more stream
  *       records). If both <code>StartingSequenceNumber</code> and <code>EndingSequenceNumber</code>
  *       are present, then that shard is closed and can no longer receive more data.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBStreamsClient, DescribeStreamCommand } from "@aws-sdk/client-dynamodb-streams"; // ES Modules import
+ * // const { DynamoDBStreamsClient, DescribeStreamCommand } = require("@aws-sdk/client-dynamodb-streams"); // CommonJS import
+ * const client = new DynamoDBStreamsClient(config);
+ * const command = new DescribeStreamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeStreamCommandInput} for command's `input` shape.
+ * @see {@link DescribeStreamCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBStreamsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeStreamCommand extends $Command<
   DescribeStreamCommandInput,

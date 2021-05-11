@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteProjectVersionCommandInput = DeleteProjectVersionRequest;
-export type DeleteProjectVersionCommandOutput = DeleteProjectVersionResponse & __MetadataBearer;
+export interface DeleteProjectVersionCommandInput extends DeleteProjectVersionRequest {}
+export interface DeleteProjectVersionCommandOutput extends DeleteProjectVersionResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an Amazon Rekognition Custom Labels model.  </p>
@@ -29,6 +29,20 @@ export type DeleteProjectVersionCommandOutput = DeleteProjectVersionResponse & _
  *       is training, wait until it finishes.</p>
  *          <p>This operation requires permissions to perform the
  *          <code>rekognition:DeleteProjectVersion</code> action. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, DeleteProjectVersionCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, DeleteProjectVersionCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new DeleteProjectVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteProjectVersionCommandInput} for command's `input` shape.
+ * @see {@link DeleteProjectVersionCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteProjectVersionCommand extends $Command<
   DeleteProjectVersionCommandInput,

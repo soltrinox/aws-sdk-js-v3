@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteEmailIdentityPolicyCommandInput = DeleteEmailIdentityPolicyRequest;
-export type DeleteEmailIdentityPolicyCommandOutput = DeleteEmailIdentityPolicyResponse & __MetadataBearer;
+export interface DeleteEmailIdentityPolicyCommandInput extends DeleteEmailIdentityPolicyRequest {}
+export interface DeleteEmailIdentityPolicyCommandOutput extends DeleteEmailIdentityPolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified sending authorization policy for the given identity (an email
@@ -34,6 +34,20 @@ export type DeleteEmailIdentityPolicyCommandOutput = DeleteEmailIdentityPolicyRe
  *                 Guide</a>.</p>
  *
  *         <p>You can execute this operation no more than once per second.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, DeleteEmailIdentityPolicyCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, DeleteEmailIdentityPolicyCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new DeleteEmailIdentityPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteEmailIdentityPolicyCommandInput} for command's `input` shape.
+ * @see {@link DeleteEmailIdentityPolicyCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteEmailIdentityPolicyCommand extends $Command<
   DeleteEmailIdentityPolicyCommandInput,

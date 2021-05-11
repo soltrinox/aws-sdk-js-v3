@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartImportTaskCommandInput = StartImportTaskRequest;
-export type StartImportTaskCommandOutput = StartImportTaskResponse & __MetadataBearer;
+export interface StartImportTaskCommandInput extends StartImportTaskRequest {}
+export interface StartImportTaskCommandOutput extends StartImportTaskResponse, __MetadataBearer {}
 
 /**
  * <p>Starts an import task, which allows you to import details of your on-premises environment
@@ -61,6 +61,20 @@ export type StartImportTaskCommandOutput = StartImportTaskResponse & __MetadataB
  *           Discovery Service Limits</a> in the <i>AWS Application Discovery Service User
  *           Guide</i>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationDiscoveryServiceClient, StartImportTaskCommand } from "@aws-sdk/client-application-discovery-service"; // ES Modules import
+ * // const { ApplicationDiscoveryServiceClient, StartImportTaskCommand } = require("@aws-sdk/client-application-discovery-service"); // CommonJS import
+ * const client = new ApplicationDiscoveryServiceClient(config);
+ * const command = new StartImportTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartImportTaskCommandInput} for command's `input` shape.
+ * @see {@link StartImportTaskCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationDiscoveryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartImportTaskCommand extends $Command<
   StartImportTaskCommandInput,

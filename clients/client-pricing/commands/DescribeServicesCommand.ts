@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeServicesCommandInput = DescribeServicesRequest;
-export type DescribeServicesCommandOutput = DescribeServicesResponse & __MetadataBearer;
+export interface DescribeServicesCommandInput extends DescribeServicesRequest {}
+export interface DescribeServicesCommandOutput extends DescribeServicesResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the metadata for one service or a list of the metadata for all services. Use
@@ -28,6 +28,20 @@ export type DescribeServicesCommandOutput = DescribeServicesResponse & __Metadat
  *          names available for that service. For example, some of the attribute names available for EC2 are
  *          <code>volumeType</code>, <code>maxIopsVolume</code>, <code>operation</code>,
  *          <code>locationType</code>, and <code>instanceCapacity10xlarge</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PricingClient, DescribeServicesCommand } from "@aws-sdk/client-pricing"; // ES Modules import
+ * // const { PricingClient, DescribeServicesCommand } = require("@aws-sdk/client-pricing"); // CommonJS import
+ * const client = new PricingClient(config);
+ * const command = new DescribeServicesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeServicesCommandInput} for command's `input` shape.
+ * @see {@link DescribeServicesCommandOutput} for command's `response` shape.
+ * @see {@link PricingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeServicesCommand extends $Command<
   DescribeServicesCommandInput,

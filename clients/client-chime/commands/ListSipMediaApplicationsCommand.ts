@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListSipMediaApplicationsCommandInput = ListSipMediaApplicationsRequest;
-export type ListSipMediaApplicationsCommandOutput = ListSipMediaApplicationsResponse & __MetadataBearer;
+export interface ListSipMediaApplicationsCommandInput extends ListSipMediaApplicationsRequest {}
+export interface ListSipMediaApplicationsCommandOutput extends ListSipMediaApplicationsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the SIP media applications under the administrator's AWS account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, ListSipMediaApplicationsCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, ListSipMediaApplicationsCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new ListSipMediaApplicationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListSipMediaApplicationsCommandInput} for command's `input` shape.
+ * @see {@link ListSipMediaApplicationsCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListSipMediaApplicationsCommand extends $Command<
   ListSipMediaApplicationsCommandInput,

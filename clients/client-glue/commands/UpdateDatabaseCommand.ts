@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDatabaseCommandInput = UpdateDatabaseRequest;
-export type UpdateDatabaseCommandOutput = UpdateDatabaseResponse & __MetadataBearer;
+export interface UpdateDatabaseCommandInput extends UpdateDatabaseRequest {}
+export interface UpdateDatabaseCommandOutput extends UpdateDatabaseResponse, __MetadataBearer {}
 
 /**
  * <p>Updates an existing database definition in a Data Catalog.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, UpdateDatabaseCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, UpdateDatabaseCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new UpdateDatabaseCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDatabaseCommandInput} for command's `input` shape.
+ * @see {@link UpdateDatabaseCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDatabaseCommand extends $Command<
   UpdateDatabaseCommandInput,

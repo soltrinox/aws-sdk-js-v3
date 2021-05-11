@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateGroupCertificateAuthorityCommandInput = CreateGroupCertificateAuthorityRequest;
-export type CreateGroupCertificateAuthorityCommandOutput = CreateGroupCertificateAuthorityResponse & __MetadataBearer;
+export interface CreateGroupCertificateAuthorityCommandInput extends CreateGroupCertificateAuthorityRequest {}
+export interface CreateGroupCertificateAuthorityCommandOutput
+  extends CreateGroupCertificateAuthorityResponse,
+    __MetadataBearer {}
 
 /**
  * Creates a CA for the group. If a CA already exists, it will rotate the existing CA.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, CreateGroupCertificateAuthorityCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, CreateGroupCertificateAuthorityCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new CreateGroupCertificateAuthorityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateGroupCertificateAuthorityCommandInput} for command's `input` shape.
+ * @see {@link CreateGroupCertificateAuthorityCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateGroupCertificateAuthorityCommand extends $Command<
   CreateGroupCertificateAuthorityCommandInput,

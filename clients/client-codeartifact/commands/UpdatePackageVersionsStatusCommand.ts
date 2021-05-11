@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdatePackageVersionsStatusCommandInput = UpdatePackageVersionsStatusRequest;
-export type UpdatePackageVersionsStatusCommandOutput = UpdatePackageVersionsStatusResult & __MetadataBearer;
+export interface UpdatePackageVersionsStatusCommandInput extends UpdatePackageVersionsStatusRequest {}
+export interface UpdatePackageVersionsStatusCommandOutput extends UpdatePackageVersionsStatusResult, __MetadataBearer {}
 
 /**
  * <p>
  *       Updates the status of one or more versions of a package.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeartifactClient, UpdatePackageVersionsStatusCommand } from "@aws-sdk/client-codeartifact"; // ES Modules import
+ * // const { CodeartifactClient, UpdatePackageVersionsStatusCommand } = require("@aws-sdk/client-codeartifact"); // CommonJS import
+ * const client = new CodeartifactClient(config);
+ * const command = new UpdatePackageVersionsStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdatePackageVersionsStatusCommandInput} for command's `input` shape.
+ * @see {@link UpdatePackageVersionsStatusCommandOutput} for command's `response` shape.
+ * @see {@link CodeartifactClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdatePackageVersionsStatusCommand extends $Command<
   UpdatePackageVersionsStatusCommandInput,

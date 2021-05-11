@@ -17,6 +17,9 @@ export interface BrokerEBSVolumeInfo {
 }
 
 export namespace BrokerEBSVolumeInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BrokerEBSVolumeInfo): any => ({
     ...obj,
   });
@@ -37,6 +40,9 @@ export interface EBSStorageInfo {
 }
 
 export namespace EBSStorageInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EBSStorageInfo): any => ({
     ...obj,
   });
@@ -53,6 +59,9 @@ export interface StorageInfo {
 }
 
 export namespace StorageInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StorageInfo): any => ({
     ...obj,
   });
@@ -91,6 +100,9 @@ export interface BrokerNodeGroupInfo {
 }
 
 export namespace BrokerNodeGroupInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BrokerNodeGroupInfo): any => ({
     ...obj,
   });
@@ -107,6 +119,9 @@ export interface Scram {
 }
 
 export namespace Scram {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Scram): any => ({
     ...obj,
   });
@@ -123,6 +138,9 @@ export interface Sasl {
 }
 
 export namespace Sasl {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Sasl): any => ({
     ...obj,
   });
@@ -139,6 +157,9 @@ export interface Tls {
 }
 
 export namespace Tls {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tls): any => ({
     ...obj,
   });
@@ -160,6 +181,9 @@ export interface ClientAuthentication {
 }
 
 export namespace ClientAuthentication {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClientAuthentication): any => ({
     ...obj,
   });
@@ -186,6 +210,9 @@ export interface BrokerSoftwareInfo {
 }
 
 export namespace BrokerSoftwareInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BrokerSoftwareInfo): any => ({
     ...obj,
   });
@@ -202,6 +229,9 @@ export interface EncryptionAtRest {
 }
 
 export namespace EncryptionAtRest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EncryptionAtRest): any => ({
     ...obj,
   });
@@ -237,6 +267,9 @@ export interface EncryptionInTransit {
 }
 
 export namespace EncryptionInTransit {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EncryptionInTransit): any => ({
     ...obj,
   });
@@ -258,6 +291,9 @@ export interface EncryptionInfo {
 }
 
 export namespace EncryptionInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EncryptionInfo): any => ({
     ...obj,
   });
@@ -276,6 +312,9 @@ export interface CloudWatchLogs {
 }
 
 export namespace CloudWatchLogs {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudWatchLogs): any => ({
     ...obj,
   });
@@ -287,6 +326,9 @@ export interface Firehose {
 }
 
 export namespace Firehose {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Firehose): any => ({
     ...obj,
   });
@@ -299,6 +341,9 @@ export interface S3 {
 }
 
 export namespace S3 {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3): any => ({
     ...obj,
   });
@@ -311,6 +356,9 @@ export interface BrokerLogs {
 }
 
 export namespace BrokerLogs {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BrokerLogs): any => ({
     ...obj,
   });
@@ -321,6 +369,9 @@ export interface LoggingInfo {
 }
 
 export namespace LoggingInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoggingInfo): any => ({
     ...obj,
   });
@@ -337,6 +388,9 @@ export interface JmxExporter {
 }
 
 export namespace JmxExporter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JmxExporter): any => ({
     ...obj,
   });
@@ -353,6 +407,9 @@ export interface NodeExporter {
 }
 
 export namespace NodeExporter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeExporter): any => ({
     ...obj,
   });
@@ -374,6 +431,9 @@ export interface Prometheus {
 }
 
 export namespace Prometheus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Prometheus): any => ({
     ...obj,
   });
@@ -390,6 +450,9 @@ export interface OpenMonitoring {
 }
 
 export namespace OpenMonitoring {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OpenMonitoring): any => ({
     ...obj,
   });
@@ -412,6 +475,9 @@ export interface StateInfo {
 }
 
 export namespace StateInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StateInfo): any => ({
     ...obj,
   });
@@ -505,6 +571,9 @@ export interface ClusterInfo {
 }
 
 export namespace ClusterInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClusterInfo): any => ({
     ...obj,
   });
@@ -526,6 +595,9 @@ export interface ErrorInfo {
 }
 
 export namespace ErrorInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ErrorInfo): any => ({
     ...obj,
   });
@@ -542,6 +614,9 @@ export interface ClusterOperationStepInfo {
 }
 
 export namespace ClusterOperationStepInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClusterOperationStepInfo): any => ({
     ...obj,
   });
@@ -563,6 +638,9 @@ export interface ClusterOperationStep {
 }
 
 export namespace ClusterOperationStep {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClusterOperationStep): any => ({
     ...obj,
   });
@@ -584,6 +662,9 @@ export interface ConfigurationInfo {
 }
 
 export namespace ConfigurationInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigurationInfo): any => ({
     ...obj,
   });
@@ -624,9 +705,16 @@ export interface MutableClusterInfo {
   KafkaVersion?: string;
 
   LoggingInfo?: LoggingInfo;
+  /**
+   * <p>Information about the Amazon MSK broker type.</p>
+   */
+  InstanceType?: string;
 }
 
 export namespace MutableClusterInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MutableClusterInfo): any => ({
     ...obj,
   });
@@ -693,6 +781,9 @@ export interface ClusterOperationInfo {
 }
 
 export namespace ClusterOperationInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClusterOperationInfo): any => ({
     ...obj,
   });
@@ -714,6 +805,9 @@ export interface CompatibleKafkaVersion {
 }
 
 export namespace CompatibleKafkaVersion {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompatibleKafkaVersion): any => ({
     ...obj,
   });
@@ -740,6 +834,9 @@ export interface ConfigurationRevision {
 }
 
 export namespace ConfigurationRevision {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigurationRevision): any => ({
     ...obj,
   });
@@ -792,6 +889,9 @@ export interface Configuration {
 }
 
 export namespace Configuration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Configuration): any => ({
     ...obj,
   });
@@ -808,6 +908,9 @@ export interface KafkaVersion {
 }
 
 export namespace KafkaVersion {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KafkaVersion): any => ({
     ...obj,
   });
@@ -849,6 +952,9 @@ export interface BrokerNodeInfo {
 }
 
 export namespace BrokerNodeInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BrokerNodeInfo): any => ({
     ...obj,
   });
@@ -889,6 +995,9 @@ export interface ZookeeperNodeInfo {
 }
 
 export namespace ZookeeperNodeInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ZookeeperNodeInfo): any => ({
     ...obj,
   });
@@ -930,6 +1039,9 @@ export interface NodeInfo {
 }
 
 export namespace NodeInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeInfo): any => ({
     ...obj,
   });
@@ -956,6 +1068,9 @@ export interface UnprocessedScramSecret {
 }
 
 export namespace UnprocessedScramSecret {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnprocessedScramSecret): any => ({
     ...obj,
   });
@@ -979,6 +1094,9 @@ export interface BadRequestException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace BadRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BadRequestException): any => ({
     ...obj,
   });
@@ -1000,6 +1118,9 @@ export interface BatchAssociateScramSecretRequest {
 }
 
 export namespace BatchAssociateScramSecretRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchAssociateScramSecretRequest): any => ({
     ...obj,
   });
@@ -1018,6 +1139,9 @@ export interface BatchAssociateScramSecretResponse {
 }
 
 export namespace BatchAssociateScramSecretResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchAssociateScramSecretResponse): any => ({
     ...obj,
   });
@@ -1041,6 +1165,9 @@ export interface ForbiddenException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ForbiddenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ForbiddenException): any => ({
     ...obj,
   });
@@ -1064,6 +1191,9 @@ export interface InternalServerErrorException extends __SmithyException, $Metada
 }
 
 export namespace InternalServerErrorException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerErrorException): any => ({
     ...obj,
   });
@@ -1087,6 +1217,9 @@ export interface NotFoundException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotFoundException): any => ({
     ...obj,
   });
@@ -1110,6 +1243,9 @@ export interface ServiceUnavailableException extends __SmithyException, $Metadat
 }
 
 export namespace ServiceUnavailableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceUnavailableException): any => ({
     ...obj,
   });
@@ -1133,6 +1269,9 @@ export interface TooManyRequestsException extends __SmithyException, $MetadataBe
 }
 
 export namespace TooManyRequestsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyRequestsException): any => ({
     ...obj,
   });
@@ -1156,6 +1295,9 @@ export interface UnauthorizedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace UnauthorizedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnauthorizedException): any => ({
     ...obj,
   });
@@ -1177,6 +1319,9 @@ export interface BatchDisassociateScramSecretRequest {
 }
 
 export namespace BatchDisassociateScramSecretRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDisassociateScramSecretRequest): any => ({
     ...obj,
   });
@@ -1195,6 +1340,9 @@ export interface BatchDisassociateScramSecretResponse {
 }
 
 export namespace BatchDisassociateScramSecretResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDisassociateScramSecretResponse): any => ({
     ...obj,
   });
@@ -1218,6 +1366,9 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
@@ -1234,6 +1385,9 @@ export interface JmxExporterInfo {
 }
 
 export namespace JmxExporterInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JmxExporterInfo): any => ({
     ...obj,
   });
@@ -1250,6 +1404,9 @@ export interface NodeExporterInfo {
 }
 
 export namespace NodeExporterInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NodeExporterInfo): any => ({
     ...obj,
   });
@@ -1271,6 +1428,9 @@ export interface PrometheusInfo {
 }
 
 export namespace PrometheusInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PrometheusInfo): any => ({
     ...obj,
   });
@@ -1287,6 +1447,9 @@ export interface OpenMonitoringInfo {
 }
 
 export namespace OpenMonitoringInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OpenMonitoringInfo): any => ({
     ...obj,
   });
@@ -1346,6 +1509,9 @@ export interface CreateClusterRequest {
 }
 
 export namespace CreateClusterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateClusterRequest): any => ({
     ...obj,
   });
@@ -1369,6 +1535,9 @@ export interface CreateClusterResponse {
 }
 
 export namespace CreateClusterResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateClusterResponse): any => ({
     ...obj,
   });
@@ -1398,6 +1567,9 @@ export interface CreateConfigurationRequest {
 }
 
 export namespace CreateConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateConfigurationRequest): any => ({
     ...obj,
   });
@@ -1431,6 +1603,9 @@ export interface CreateConfigurationResponse {
 }
 
 export namespace CreateConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateConfigurationResponse): any => ({
     ...obj,
   });
@@ -1449,6 +1624,9 @@ export interface DeleteClusterRequest {
 }
 
 export namespace DeleteClusterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteClusterRequest): any => ({
     ...obj,
   });
@@ -1467,6 +1645,9 @@ export interface DeleteClusterResponse {
 }
 
 export namespace DeleteClusterResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteClusterResponse): any => ({
     ...obj,
   });
@@ -1480,6 +1661,9 @@ export interface DeleteConfigurationRequest {
 }
 
 export namespace DeleteConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteConfigurationRequest): any => ({
     ...obj,
   });
@@ -1498,6 +1682,9 @@ export interface DeleteConfigurationResponse {
 }
 
 export namespace DeleteConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteConfigurationResponse): any => ({
     ...obj,
   });
@@ -1511,6 +1698,9 @@ export interface DescribeClusterRequest {
 }
 
 export namespace DescribeClusterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeClusterRequest): any => ({
     ...obj,
   });
@@ -1524,6 +1714,9 @@ export interface DescribeClusterResponse {
 }
 
 export namespace DescribeClusterResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeClusterResponse): any => ({
     ...obj,
   });
@@ -1537,6 +1730,9 @@ export interface DescribeClusterOperationRequest {
 }
 
 export namespace DescribeClusterOperationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeClusterOperationRequest): any => ({
     ...obj,
   });
@@ -1550,6 +1746,9 @@ export interface DescribeClusterOperationResponse {
 }
 
 export namespace DescribeClusterOperationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeClusterOperationResponse): any => ({
     ...obj,
   });
@@ -1563,6 +1762,9 @@ export interface DescribeConfigurationRequest {
 }
 
 export namespace DescribeConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigurationRequest): any => ({
     ...obj,
   });
@@ -1606,6 +1808,9 @@ export interface DescribeConfigurationResponse {
 }
 
 export namespace DescribeConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigurationResponse): any => ({
     ...obj,
   });
@@ -1624,6 +1829,9 @@ export interface DescribeConfigurationRevisionRequest {
 }
 
 export namespace DescribeConfigurationRevisionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigurationRevisionRequest): any => ({
     ...obj,
   });
@@ -1658,6 +1866,9 @@ export interface DescribeConfigurationRevisionResponse {
 }
 
 export namespace DescribeConfigurationRevisionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigurationRevisionResponse): any => ({
     ...obj,
   });
@@ -1671,6 +1882,9 @@ export interface GetBootstrapBrokersRequest {
 }
 
 export namespace GetBootstrapBrokersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBootstrapBrokersRequest): any => ({
     ...obj,
   });
@@ -1694,6 +1908,9 @@ export interface GetBootstrapBrokersResponse {
 }
 
 export namespace GetBootstrapBrokersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBootstrapBrokersResponse): any => ({
     ...obj,
   });
@@ -1707,6 +1924,9 @@ export interface GetCompatibleKafkaVersionsRequest {
 }
 
 export namespace GetCompatibleKafkaVersionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCompatibleKafkaVersionsRequest): any => ({
     ...obj,
   });
@@ -1720,6 +1940,9 @@ export interface GetCompatibleKafkaVersionsResponse {
 }
 
 export namespace GetCompatibleKafkaVersionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCompatibleKafkaVersionsResponse): any => ({
     ...obj,
   });
@@ -1744,6 +1967,9 @@ export interface ListClusterOperationsRequest {
 }
 
 export namespace ListClusterOperationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListClusterOperationsRequest): any => ({
     ...obj,
   });
@@ -1762,6 +1988,9 @@ export interface ListClusterOperationsResponse {
 }
 
 export namespace ListClusterOperationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListClusterOperationsResponse): any => ({
     ...obj,
   });
@@ -1786,6 +2015,9 @@ export interface ListClustersRequest {
 }
 
 export namespace ListClustersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListClustersRequest): any => ({
     ...obj,
   });
@@ -1805,6 +2037,9 @@ export interface ListClustersResponse {
 }
 
 export namespace ListClustersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListClustersResponse): any => ({
     ...obj,
   });
@@ -1829,6 +2064,9 @@ export interface ListConfigurationRevisionsRequest {
 }
 
 export namespace ListConfigurationRevisionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListConfigurationRevisionsRequest): any => ({
     ...obj,
   });
@@ -1847,6 +2085,9 @@ export interface ListConfigurationRevisionsResponse {
 }
 
 export namespace ListConfigurationRevisionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListConfigurationRevisionsResponse): any => ({
     ...obj,
   });
@@ -1866,6 +2107,9 @@ export interface ListConfigurationsRequest {
 }
 
 export namespace ListConfigurationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListConfigurationsRequest): any => ({
     ...obj,
   });
@@ -1885,6 +2129,9 @@ export interface ListConfigurationsResponse {
 }
 
 export namespace ListConfigurationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListConfigurationsResponse): any => ({
     ...obj,
   });
@@ -1903,6 +2150,9 @@ export interface ListKafkaVersionsRequest {
 }
 
 export namespace ListKafkaVersionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListKafkaVersionsRequest): any => ({
     ...obj,
   });
@@ -1914,6 +2164,9 @@ export interface ListKafkaVersionsResponse {
 }
 
 export namespace ListKafkaVersionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListKafkaVersionsResponse): any => ({
     ...obj,
   });
@@ -1938,6 +2191,9 @@ export interface ListNodesRequest {
 }
 
 export namespace ListNodesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListNodesRequest): any => ({
     ...obj,
   });
@@ -1957,6 +2213,9 @@ export interface ListNodesResponse {
 }
 
 export namespace ListNodesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListNodesResponse): any => ({
     ...obj,
   });
@@ -1980,6 +2239,9 @@ export interface ListScramSecretsRequest {
 }
 
 export namespace ListScramSecretsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListScramSecretsRequest): any => ({
     ...obj,
   });
@@ -1998,6 +2260,9 @@ export interface ListScramSecretsResponse {
 }
 
 export namespace ListScramSecretsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListScramSecretsResponse): any => ({
     ...obj,
   });
@@ -2011,6 +2276,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -2024,6 +2292,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -2045,6 +2316,9 @@ export interface RebootBrokerRequest {
 }
 
 export namespace RebootBrokerRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RebootBrokerRequest): any => ({
     ...obj,
   });
@@ -2063,6 +2337,9 @@ export interface RebootBrokerResponse {
 }
 
 export namespace RebootBrokerResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RebootBrokerResponse): any => ({
     ...obj,
   });
@@ -2081,6 +2358,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -2118,6 +2398,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -2141,6 +2424,9 @@ export interface UpdateBrokerCountRequest {
 }
 
 export namespace UpdateBrokerCountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateBrokerCountRequest): any => ({
     ...obj,
   });
@@ -2159,6 +2445,9 @@ export interface UpdateBrokerCountResponse {
 }
 
 export namespace UpdateBrokerCountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateBrokerCountResponse): any => ({
     ...obj,
   });
@@ -2182,6 +2471,9 @@ export interface UpdateBrokerStorageRequest {
 }
 
 export namespace UpdateBrokerStorageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateBrokerStorageRequest): any => ({
     ...obj,
   });
@@ -2200,7 +2492,57 @@ export interface UpdateBrokerStorageResponse {
 }
 
 export namespace UpdateBrokerStorageResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateBrokerStorageResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateBrokerTypeRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) that uniquely identifies the cluster.</p>
+   */
+  ClusterArn: string | undefined;
+
+  /**
+   * <p>The cluster version that you want to change. After this operation completes successfully, the cluster will have a new version.</p>
+   */
+  CurrentVersion: string | undefined;
+
+  /**
+   * <p>The Amazon MSK broker type that you want all of the brokers in this cluster to be.</p>
+   */
+  TargetInstanceType: string | undefined;
+}
+
+export namespace UpdateBrokerTypeRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateBrokerTypeRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateBrokerTypeResponse {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the cluster.</p>
+   */
+  ClusterArn?: string;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the cluster operation.</p>
+   */
+  ClusterOperationArn?: string;
+}
+
+export namespace UpdateBrokerTypeResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateBrokerTypeResponse): any => ({
     ...obj,
   });
 }
@@ -2223,6 +2565,9 @@ export interface UpdateClusterConfigurationRequest {
 }
 
 export namespace UpdateClusterConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateClusterConfigurationRequest): any => ({
     ...obj,
   });
@@ -2241,6 +2586,9 @@ export interface UpdateClusterConfigurationResponse {
 }
 
 export namespace UpdateClusterConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateClusterConfigurationResponse): any => ({
     ...obj,
   });
@@ -2269,6 +2617,9 @@ export interface UpdateClusterKafkaVersionRequest {
 }
 
 export namespace UpdateClusterKafkaVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateClusterKafkaVersionRequest): any => ({
     ...obj,
   });
@@ -2287,6 +2638,9 @@ export interface UpdateClusterKafkaVersionResponse {
 }
 
 export namespace UpdateClusterKafkaVersionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateClusterKafkaVersionResponse): any => ({
     ...obj,
   });
@@ -2311,6 +2665,9 @@ export interface UpdateConfigurationRequest {
 }
 
 export namespace UpdateConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateConfigurationRequest): any => ({
     ...obj,
   });
@@ -2329,6 +2686,9 @@ export interface UpdateConfigurationResponse {
 }
 
 export namespace UpdateConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateConfigurationResponse): any => ({
     ...obj,
   });
@@ -2362,6 +2722,9 @@ export interface UpdateMonitoringRequest {
 }
 
 export namespace UpdateMonitoringRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateMonitoringRequest): any => ({
     ...obj,
   });
@@ -2380,6 +2743,9 @@ export interface UpdateMonitoringResponse {
 }
 
 export namespace UpdateMonitoringResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateMonitoringResponse): any => ({
     ...obj,
   });

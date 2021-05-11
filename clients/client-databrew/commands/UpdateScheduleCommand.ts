@@ -17,12 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateScheduleCommandInput = UpdateScheduleRequest;
-export type UpdateScheduleCommandOutput = UpdateScheduleResponse & __MetadataBearer;
+export interface UpdateScheduleCommandInput extends UpdateScheduleRequest {}
+export interface UpdateScheduleCommandOutput extends UpdateScheduleResponse, __MetadataBearer {}
 
 /**
- * <p>Modifies the definition of an existing AWS Glue DataBrew schedule in the current AWS
- *             account.</p>
+ * <p>Modifies the definition of an existing DataBrew schedule.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataBrewClient, UpdateScheduleCommand } from "@aws-sdk/client-databrew"; // ES Modules import
+ * // const { DataBrewClient, UpdateScheduleCommand } = require("@aws-sdk/client-databrew"); // CommonJS import
+ * const client = new DataBrewClient(config);
+ * const command = new UpdateScheduleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateScheduleCommandInput} for command's `input` shape.
+ * @see {@link UpdateScheduleCommandOutput} for command's `response` shape.
+ * @see {@link DataBrewClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateScheduleCommand extends $Command<
   UpdateScheduleCommandInput,

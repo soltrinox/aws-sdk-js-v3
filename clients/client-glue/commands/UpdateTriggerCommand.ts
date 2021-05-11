@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateTriggerCommandInput = UpdateTriggerRequest;
-export type UpdateTriggerCommandOutput = UpdateTriggerResponse & __MetadataBearer;
+export interface UpdateTriggerCommandInput extends UpdateTriggerRequest {}
+export interface UpdateTriggerCommandOutput extends UpdateTriggerResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a trigger definition.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, UpdateTriggerCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, UpdateTriggerCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new UpdateTriggerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateTriggerCommandInput} for command's `input` shape.
+ * @see {@link UpdateTriggerCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateTriggerCommand extends $Command<
   UpdateTriggerCommandInput,

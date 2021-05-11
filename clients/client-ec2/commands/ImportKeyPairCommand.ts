@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ImportKeyPairCommandInput = ImportKeyPairRequest;
-export type ImportKeyPairCommandOutput = ImportKeyPairResult & __MetadataBearer;
+export interface ImportKeyPairCommandInput extends ImportKeyPairRequest {}
+export interface ImportKeyPairCommandOutput extends ImportKeyPairResult, __MetadataBearer {}
 
 /**
  * <p>Imports the public key from an RSA key pair that you created with a third-party tool.
@@ -24,6 +24,20 @@ export type ImportKeyPairCommandOutput = ImportKeyPairResult & __MetadataBearer;
  *         The private key is never transferred between you and AWS.</p>
  *          <p>For more information about key pairs, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">Key Pairs</a>
  * 				in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, ImportKeyPairCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, ImportKeyPairCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new ImportKeyPairCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ImportKeyPairCommandInput} for command's `input` shape.
+ * @see {@link ImportKeyPairCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ImportKeyPairCommand extends $Command<
   ImportKeyPairCommandInput,

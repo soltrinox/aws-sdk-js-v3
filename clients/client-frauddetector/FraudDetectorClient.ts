@@ -4,6 +4,14 @@ import {
 } from "./commands/BatchCreateVariableCommand";
 import { BatchGetVariableCommandInput, BatchGetVariableCommandOutput } from "./commands/BatchGetVariableCommand";
 import {
+  CancelBatchPredictionJobCommandInput,
+  CancelBatchPredictionJobCommandOutput,
+} from "./commands/CancelBatchPredictionJobCommand";
+import {
+  CreateBatchPredictionJobCommandInput,
+  CreateBatchPredictionJobCommandOutput,
+} from "./commands/CreateBatchPredictionJobCommand";
+import {
   CreateDetectorVersionCommandInput,
   CreateDetectorVersionCommandOutput,
 } from "./commands/CreateDetectorVersionCommand";
@@ -11,6 +19,10 @@ import { CreateModelCommandInput, CreateModelCommandOutput } from "./commands/Cr
 import { CreateModelVersionCommandInput, CreateModelVersionCommandOutput } from "./commands/CreateModelVersionCommand";
 import { CreateRuleCommandInput, CreateRuleCommandOutput } from "./commands/CreateRuleCommand";
 import { CreateVariableCommandInput, CreateVariableCommandOutput } from "./commands/CreateVariableCommand";
+import {
+  DeleteBatchPredictionJobCommandInput,
+  DeleteBatchPredictionJobCommandOutput,
+} from "./commands/DeleteBatchPredictionJobCommand";
 import { DeleteDetectorCommandInput, DeleteDetectorCommandOutput } from "./commands/DeleteDetectorCommand";
 import {
   DeleteDetectorVersionCommandInput,
@@ -34,6 +46,10 @@ import {
   DescribeModelVersionsCommandInput,
   DescribeModelVersionsCommandOutput,
 } from "./commands/DescribeModelVersionsCommand";
+import {
+  GetBatchPredictionJobsCommandInput,
+  GetBatchPredictionJobsCommandOutput,
+} from "./commands/GetBatchPredictionJobsCommand";
 import { GetDetectorVersionCommandInput, GetDetectorVersionCommandOutput } from "./commands/GetDetectorVersionCommand";
 import { GetDetectorsCommandInput, GetDetectorsCommandOutput } from "./commands/GetDetectorsCommand";
 import { GetEntityTypesCommandInput, GetEntityTypesCommandOutput } from "./commands/GetEntityTypesCommand";
@@ -141,11 +157,14 @@ import {
 export type ServiceInputTypes =
   | BatchCreateVariableCommandInput
   | BatchGetVariableCommandInput
+  | CancelBatchPredictionJobCommandInput
+  | CreateBatchPredictionJobCommandInput
   | CreateDetectorVersionCommandInput
   | CreateModelCommandInput
   | CreateModelVersionCommandInput
   | CreateRuleCommandInput
   | CreateVariableCommandInput
+  | DeleteBatchPredictionJobCommandInput
   | DeleteDetectorCommandInput
   | DeleteDetectorVersionCommandInput
   | DeleteEntityTypeCommandInput
@@ -160,6 +179,7 @@ export type ServiceInputTypes =
   | DeleteVariableCommandInput
   | DescribeDetectorCommandInput
   | DescribeModelVersionsCommandInput
+  | GetBatchPredictionJobsCommandInput
   | GetDetectorVersionCommandInput
   | GetDetectorsCommandInput
   | GetEntityTypesCommandInput
@@ -196,11 +216,14 @@ export type ServiceInputTypes =
 export type ServiceOutputTypes =
   | BatchCreateVariableCommandOutput
   | BatchGetVariableCommandOutput
+  | CancelBatchPredictionJobCommandOutput
+  | CreateBatchPredictionJobCommandOutput
   | CreateDetectorVersionCommandOutput
   | CreateModelCommandOutput
   | CreateModelVersionCommandOutput
   | CreateRuleCommandOutput
   | CreateVariableCommandOutput
+  | DeleteBatchPredictionJobCommandOutput
   | DeleteDetectorCommandOutput
   | DeleteDetectorVersionCommandOutput
   | DeleteEntityTypeCommandOutput
@@ -215,6 +238,7 @@ export type ServiceOutputTypes =
   | DeleteVariableCommandOutput
   | DescribeDetectorCommandOutput
   | DescribeModelVersionsCommandOutput
+  | GetBatchPredictionJobsCommandOutput
   | GetDetectorVersionCommandOutput
   | GetDetectorsCommandOutput
   | GetEntityTypesCommandOutput
@@ -313,7 +337,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -344,7 +368,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type FraudDetectorClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type FraudDetectorClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -352,8 +376,12 @@ export type FraudDetectorClientConfig = Partial<__SmithyConfiguration<__HttpHand
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of FraudDetectorClient class constructor that set the region, credentials and other options.
+ */
+export interface FraudDetectorClientConfig extends FraudDetectorClientConfigType {}
 
-export type FraudDetectorClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type FraudDetectorClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -361,6 +389,10 @@ export type FraudDetectorClientResolvedConfig = __SmithyResolvedConfiguration<__
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of FraudDetectorClient class. This is resolved and normalized from the {@link FraudDetectorClientConfig | constructor configuration interface}.
+ */
+export interface FraudDetectorClientResolvedConfig extends FraudDetectorClientResolvedConfigType {}
 
 /**
  * <p>This is the Amazon Fraud Detector API Reference. This guide is for developers who need
@@ -373,6 +405,9 @@ export class FraudDetectorClient extends __Client<
   ServiceOutputTypes,
   FraudDetectorClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of FraudDetectorClient class. This is resolved and normalized from the {@link FraudDetectorClientConfig | constructor configuration interface}.
+   */
   readonly config: FraudDetectorClientResolvedConfig;
 
   constructor(configuration: FraudDetectorClientConfig) {

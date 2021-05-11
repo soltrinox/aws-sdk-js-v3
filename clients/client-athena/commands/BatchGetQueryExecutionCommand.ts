@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchGetQueryExecutionCommandInput = BatchGetQueryExecutionInput;
-export type BatchGetQueryExecutionCommandOutput = BatchGetQueryExecutionOutput & __MetadataBearer;
+export interface BatchGetQueryExecutionCommandInput extends BatchGetQueryExecutionInput {}
+export interface BatchGetQueryExecutionCommandOutput extends BatchGetQueryExecutionOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the details of a single query execution or a list of up to 50 query
@@ -27,6 +27,20 @@ export type BatchGetQueryExecutionCommandOutput = BatchGetQueryExecutionOutput &
  *             IDs, use <a>ListQueryExecutionsInput$WorkGroup</a>. Query executions differ
  *             from named (saved) queries. Use <a>BatchGetNamedQueryInput</a> to get details
  *             about named queries.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AthenaClient, BatchGetQueryExecutionCommand } from "@aws-sdk/client-athena"; // ES Modules import
+ * // const { AthenaClient, BatchGetQueryExecutionCommand } = require("@aws-sdk/client-athena"); // CommonJS import
+ * const client = new AthenaClient(config);
+ * const command = new BatchGetQueryExecutionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchGetQueryExecutionCommandInput} for command's `input` shape.
+ * @see {@link BatchGetQueryExecutionCommandOutput} for command's `response` shape.
+ * @see {@link AthenaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchGetQueryExecutionCommand extends $Command<
   BatchGetQueryExecutionCommandInput,

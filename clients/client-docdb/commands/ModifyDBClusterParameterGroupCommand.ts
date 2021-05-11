@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyDBClusterParameterGroupCommandInput = ModifyDBClusterParameterGroupMessage;
-export type ModifyDBClusterParameterGroupCommandOutput = DBClusterParameterGroupNameMessage & __MetadataBearer;
+export interface ModifyDBClusterParameterGroupCommandInput extends ModifyDBClusterParameterGroupMessage {}
+export interface ModifyDBClusterParameterGroupCommandOutput
+  extends DBClusterParameterGroupNameMessage,
+    __MetadataBearer {}
 
 /**
  * <p> Modifies the parameters of a cluster parameter group. To modify more than one
@@ -40,6 +42,20 @@ export type ModifyDBClusterParameterGroupCommandOutput = DBClusterParameterGroup
  *                 database for a cluster, such as the character set for the default database
  *                 defined by the <code>character_set_database</code> parameter.</p>
  *         </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DocDBClient, ModifyDBClusterParameterGroupCommand } from "@aws-sdk/client-docdb"; // ES Modules import
+ * // const { DocDBClient, ModifyDBClusterParameterGroupCommand } = require("@aws-sdk/client-docdb"); // CommonJS import
+ * const client = new DocDBClient(config);
+ * const command = new ModifyDBClusterParameterGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyDBClusterParameterGroupCommandInput} for command's `input` shape.
+ * @see {@link ModifyDBClusterParameterGroupCommandOutput} for command's `response` shape.
+ * @see {@link DocDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyDBClusterParameterGroupCommand extends $Command<
   ModifyDBClusterParameterGroupCommandInput,

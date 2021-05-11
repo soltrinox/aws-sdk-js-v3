@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListApplicationRevisionsCommandInput = ListApplicationRevisionsInput;
-export type ListApplicationRevisionsCommandOutput = ListApplicationRevisionsOutput & __MetadataBearer;
+export interface ListApplicationRevisionsCommandInput extends ListApplicationRevisionsInput {}
+export interface ListApplicationRevisionsCommandOutput extends ListApplicationRevisionsOutput, __MetadataBearer {}
 
 /**
  * <p>Lists information about revisions for an application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeDeployClient, ListApplicationRevisionsCommand } from "@aws-sdk/client-codedeploy"; // ES Modules import
+ * // const { CodeDeployClient, ListApplicationRevisionsCommand } = require("@aws-sdk/client-codedeploy"); // CommonJS import
+ * const client = new CodeDeployClient(config);
+ * const command = new ListApplicationRevisionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListApplicationRevisionsCommandInput} for command's `input` shape.
+ * @see {@link ListApplicationRevisionsCommandOutput} for command's `response` shape.
+ * @see {@link CodeDeployClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListApplicationRevisionsCommand extends $Command<
   ListApplicationRevisionsCommandInput,

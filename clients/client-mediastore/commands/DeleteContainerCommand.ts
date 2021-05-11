@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteContainerCommandInput = DeleteContainerInput;
-export type DeleteContainerCommandOutput = DeleteContainerOutput & __MetadataBearer;
+export interface DeleteContainerCommandInput extends DeleteContainerInput {}
+export interface DeleteContainerCommandOutput extends DeleteContainerOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified container. Before you make a <code>DeleteContainer</code>
  *          request, delete any objects in the container or in any folders in the container. You can
  *          delete only empty containers. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaStoreClient, DeleteContainerCommand } from "@aws-sdk/client-mediastore"; // ES Modules import
+ * // const { MediaStoreClient, DeleteContainerCommand } = require("@aws-sdk/client-mediastore"); // CommonJS import
+ * const client = new MediaStoreClient(config);
+ * const command = new DeleteContainerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteContainerCommandInput} for command's `input` shape.
+ * @see {@link DeleteContainerCommandOutput} for command's `response` shape.
+ * @see {@link MediaStoreClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteContainerCommand extends $Command<
   DeleteContainerCommandInput,

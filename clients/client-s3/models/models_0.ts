@@ -6,7 +6,7 @@ import { Readable } from "stream";
  * <p>Specifies the days since the initiation of an incomplete multipart upload that Amazon S3 will
  *          wait before permanently removing all parts of the upload. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config">
  *             Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy</a> in the
- *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *             <i>Amazon S3 User Guide</i>.</p>
  */
 export interface AbortIncompleteMultipartUpload {
   /**
@@ -17,6 +17,9 @@ export interface AbortIncompleteMultipartUpload {
 }
 
 export namespace AbortIncompleteMultipartUpload {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AbortIncompleteMultipartUpload): any => ({
     ...obj,
   });
@@ -33,6 +36,9 @@ export interface AbortMultipartUploadOutput {
 }
 
 export namespace AbortMultipartUploadOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AbortMultipartUploadOutput): any => ({
     ...obj,
   });
@@ -43,8 +49,8 @@ export type RequestPayer = "requester";
 export interface AbortMultipartUploadRequest {
   /**
    * <p>The bucket name to which the upload was taking place. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -67,12 +73,15 @@ export interface AbortMultipartUploadRequest {
   RequestPayer?: RequestPayer | string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace AbortMultipartUploadRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AbortMultipartUploadRequest): any => ({
     ...obj,
   });
@@ -87,6 +96,9 @@ export interface NoSuchUpload extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NoSuchUpload {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchUpload): any => ({
     ...obj,
   });
@@ -97,8 +109,7 @@ export type BucketAccelerateStatus = "Enabled" | "Suspended";
 /**
  * <p>Configures the transfer acceleration state for an Amazon S3 bucket. For more information, see
  *             <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html">Amazon S3
- *             Transfer Acceleration</a> in the <i>Amazon Simple Storage Service Developer
- *          Guide</i>.</p>
+ *             Transfer Acceleration</a> in the <i>Amazon S3 User Guide</i>.</p>
  */
 export interface AccelerateConfiguration {
   /**
@@ -108,6 +119,9 @@ export interface AccelerateConfiguration {
 }
 
 export namespace AccelerateConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccelerateConfiguration): any => ({
     ...obj,
   });
@@ -176,6 +190,9 @@ export interface Grantee {
 }
 
 export namespace Grantee {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Grantee): any => ({
     ...obj,
   });
@@ -199,6 +216,9 @@ export interface Grant {
 }
 
 export namespace Grant {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Grant): any => ({
     ...obj,
   });
@@ -220,6 +240,9 @@ export interface Owner {
 }
 
 export namespace Owner {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Owner): any => ({
     ...obj,
   });
@@ -241,6 +264,9 @@ export interface AccessControlPolicy {
 }
 
 export namespace AccessControlPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessControlPolicy): any => ({
     ...obj,
   });
@@ -260,6 +286,9 @@ export interface AccessControlTranslation {
 }
 
 export namespace AccessControlTranslation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessControlTranslation): any => ({
     ...obj,
   });
@@ -275,8 +304,8 @@ export interface CompleteMultipartUploadOutput {
 
   /**
    * <p>The name of the bucket that contains the newly created object.</p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket?: string;
 
@@ -333,6 +362,9 @@ export interface CompleteMultipartUploadOutput {
 }
 
 export namespace CompleteMultipartUploadOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompleteMultipartUploadOutput): any => ({
     ...obj,
     ...(obj.SSEKMSKeyId && { SSEKMSKeyId: SENSITIVE_STRING }),
@@ -356,6 +388,9 @@ export interface CompletedPart {
 }
 
 export namespace CompletedPart {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompletedPart): any => ({
     ...obj,
   });
@@ -372,6 +407,9 @@ export interface CompletedMultipartUpload {
 }
 
 export namespace CompletedMultipartUpload {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompletedMultipartUpload): any => ({
     ...obj,
   });
@@ -407,12 +445,15 @@ export interface CompleteMultipartUploadRequest {
   RequestPayer?: RequestPayer | string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace CompleteMultipartUploadRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompleteMultipartUploadRequest): any => ({
     ...obj,
   });
@@ -425,17 +466,20 @@ export interface CopyObjectResult {
   /**
    * <p>Returns the ETag of the new object. The ETag reflects only changes to the contents of an
    *          object, not its metadata. The source and destination ETag is identical for a successfully
-   *          copied object.</p>
+   *          copied non-multipart object.</p>
    */
   ETag?: string;
 
   /**
-   * <p>Returns the date that the object was last modified.</p>
+   * <p>Creation date of the object.</p>
    */
   LastModified?: Date;
 }
 
 export namespace CopyObjectResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CopyObjectResult): any => ({
     ...obj,
   });
@@ -507,6 +551,9 @@ export interface CopyObjectOutput {
 }
 
 export namespace CopyObjectOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CopyObjectOutput): any => ({
     ...obj,
     ...(obj.SSEKMSKeyId && { SSEKMSKeyId: SENSITIVE_STRING }),
@@ -550,8 +597,8 @@ export interface CopyObjectRequest {
 
   /**
    * <p>The name of the destination bucket.</p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -584,7 +631,7 @@ export interface CopyObjectRequest {
 
   /**
    * <p>Specifies the source object for the copy operation. You specify the value in one of two
-   *          formats, depending on whether you want to access the source object through an <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html">access
+   *          formats, depending on whether you want to access the source object through an <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html">access
    *          point</a>:</p>
    *          <ul>
    *             <li>
@@ -747,7 +794,7 @@ export interface CopyObjectRequest {
 
   /**
    * <p>Specifies whether Amazon S3 should use an S3 Bucket Key for object encryption with server-side encryption using AWS KMS (SSE-KMS). Setting this header to <code>true</code> causes Amazon S3 to use an S3 Bucket Key for object encryption with SSE-KMS. </p>
-   *          <p>Specifying this header with a COPY operation doesn’t affect bucket-level settings for S3 Bucket Key.</p>
+   *          <p>Specifying this header with a COPY action doesn’t affect bucket-level settings for S3 Bucket Key.</p>
    */
   BucketKeyEnabled?: boolean;
 
@@ -802,17 +849,20 @@ export interface CopyObjectRequest {
   ObjectLockLegalHoldStatus?: ObjectLockLegalHoldStatus | string;
 
   /**
-   * <p>The account id of the expected destination bucket owner. If the destination bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected destination bucket owner. If the destination bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 
   /**
-   * <p>The account id of the expected source bucket owner. If the source bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected source bucket owner. If the source bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedSourceBucketOwner?: string;
 }
 
 export namespace CopyObjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CopyObjectRequest): any => ({
     ...obj,
     ...(obj.SSECustomerKey && { SSECustomerKey: SENSITIVE_STRING }),
@@ -823,7 +873,7 @@ export namespace CopyObjectRequest {
 }
 
 /**
- * <p>The source object of the COPY operation is not in the active tier and is only stored in
+ * <p>The source object of the COPY action is not in the active tier and is only stored in
  *          Amazon S3 Glacier.</p>
  */
 export interface ObjectNotInActiveTierError extends __SmithyException, $MetadataBearer {
@@ -832,6 +882,9 @@ export interface ObjectNotInActiveTierError extends __SmithyException, $Metadata
 }
 
 export namespace ObjectNotInActiveTierError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectNotInActiveTierError): any => ({
     ...obj,
   });
@@ -847,6 +900,9 @@ export interface BucketAlreadyExists extends __SmithyException, $MetadataBearer 
 }
 
 export namespace BucketAlreadyExists {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketAlreadyExists): any => ({
     ...obj,
   });
@@ -864,6 +920,9 @@ export interface BucketAlreadyOwnedByYou extends __SmithyException, $MetadataBea
 }
 
 export namespace BucketAlreadyOwnedByYou {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketAlreadyOwnedByYou): any => ({
     ...obj,
   });
@@ -879,6 +938,9 @@ export interface CreateBucketOutput {
 }
 
 export namespace CreateBucketOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBucketOutput): any => ({
     ...obj,
   });
@@ -925,6 +987,9 @@ export interface CreateBucketConfiguration {
 }
 
 export namespace CreateBucketConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBucketConfiguration): any => ({
     ...obj,
   });
@@ -940,11 +1005,6 @@ export interface CreateBucketRequest {
    * <p>The name of the bucket to create.</p>
    */
   Bucket: string | undefined;
-
-  /**
-   * <p>The configuration information for the bucket.</p>
-   */
-  CreateBucketConfiguration?: CreateBucketConfiguration;
 
   /**
    * <p>Allows grantee the read, write, read ACP, and write ACP permissions on the
@@ -976,9 +1036,17 @@ export interface CreateBucketRequest {
    * <p>Specifies whether you want S3 Object Lock to be enabled for the new bucket.</p>
    */
   ObjectLockEnabledForBucket?: boolean;
+
+  /**
+   * <p>The configuration information for the bucket.</p>
+   */
+  CreateBucketConfiguration?: CreateBucketConfiguration;
 }
 
 export namespace CreateBucketRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBucketRequest): any => ({
     ...obj,
   });
@@ -1006,8 +1074,8 @@ export interface CreateMultipartUploadOutput {
 
   /**
    * <p>The name of the bucket to which the multipart upload was initiated. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket?: string;
 
@@ -1066,6 +1134,9 @@ export interface CreateMultipartUploadOutput {
 }
 
 export namespace CreateMultipartUploadOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMultipartUploadOutput): any => ({
     ...obj,
     ...(obj.SSEKMSKeyId && { SSEKMSKeyId: SENSITIVE_STRING }),
@@ -1082,8 +1153,8 @@ export interface CreateMultipartUploadRequest {
 
   /**
    * <p>The name of the bucket to which to initiate the upload</p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -1203,7 +1274,7 @@ export interface CreateMultipartUploadRequest {
    * <p>Specifies the ID of the symmetric customer managed AWS KMS CMK to use for object
    *          encryption. All GET and PUT requests for an object protected by AWS KMS will fail if not
    *          made via SSL or using SigV4. For information about configuring using any of the officially
-   *          supported AWS SDKs and AWS CLI, see <a href="https://docs.aws.amazon.com/http:/docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version">Specifying the Signature Version in Request Authentication</a>
+   *          supported AWS SDKs and AWS CLI, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version">Specifying the Signature Version in Request Authentication</a>
    *          in the <i>Amazon S3 Developer Guide</i>.</p>
    */
   SSEKMSKeyId?: string;
@@ -1217,7 +1288,7 @@ export interface CreateMultipartUploadRequest {
 
   /**
    * <p>Specifies whether Amazon S3 should use an S3 Bucket Key for object encryption with server-side encryption using AWS KMS (SSE-KMS). Setting this header to <code>true</code> causes Amazon S3 to use an S3 Bucket Key for object encryption with SSE-KMS.</p>
-   *          <p>Specifying this header with an object operation doesn’t affect bucket-level settings for S3 Bucket Key.</p>
+   *          <p>Specifying this header with an object action doesn’t affect bucket-level settings for S3 Bucket Key.</p>
    */
   BucketKeyEnabled?: boolean;
 
@@ -1250,12 +1321,15 @@ export interface CreateMultipartUploadRequest {
   ObjectLockLegalHoldStatus?: ObjectLockLegalHoldStatus | string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace CreateMultipartUploadRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMultipartUploadRequest): any => ({
     ...obj,
     ...(obj.SSECustomerKey && { SSECustomerKey: SENSITIVE_STRING }),
@@ -1271,12 +1345,15 @@ export interface DeleteBucketRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteBucketRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketRequest): any => ({
     ...obj,
   });
@@ -1294,12 +1371,15 @@ export interface DeleteBucketAnalyticsConfigurationRequest {
   Id: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteBucketAnalyticsConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketAnalyticsConfigurationRequest): any => ({
     ...obj,
   });
@@ -1312,12 +1392,15 @@ export interface DeleteBucketCorsRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteBucketCorsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketCorsRequest): any => ({
     ...obj,
   });
@@ -1331,12 +1414,15 @@ export interface DeleteBucketEncryptionRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteBucketEncryptionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketEncryptionRequest): any => ({
     ...obj,
   });
@@ -1355,6 +1441,9 @@ export interface DeleteBucketIntelligentTieringConfigurationRequest {
 }
 
 export namespace DeleteBucketIntelligentTieringConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketIntelligentTieringConfigurationRequest): any => ({
     ...obj,
   });
@@ -1372,12 +1461,15 @@ export interface DeleteBucketInventoryConfigurationRequest {
   Id: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteBucketInventoryConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketInventoryConfigurationRequest): any => ({
     ...obj,
   });
@@ -1390,12 +1482,15 @@ export interface DeleteBucketLifecycleRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteBucketLifecycleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketLifecycleRequest): any => ({
     ...obj,
   });
@@ -1413,12 +1508,15 @@ export interface DeleteBucketMetricsConfigurationRequest {
   Id: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteBucketMetricsConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketMetricsConfigurationRequest): any => ({
     ...obj,
   });
@@ -1431,12 +1529,15 @@ export interface DeleteBucketOwnershipControlsRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteBucketOwnershipControlsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketOwnershipControlsRequest): any => ({
     ...obj,
   });
@@ -1449,12 +1550,15 @@ export interface DeleteBucketPolicyRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteBucketPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketPolicyRequest): any => ({
     ...obj,
   });
@@ -1467,12 +1571,15 @@ export interface DeleteBucketReplicationRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteBucketReplicationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketReplicationRequest): any => ({
     ...obj,
   });
@@ -1485,12 +1592,15 @@ export interface DeleteBucketTaggingRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteBucketTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketTaggingRequest): any => ({
     ...obj,
   });
@@ -1503,12 +1613,15 @@ export interface DeleteBucketWebsiteRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteBucketWebsiteRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketWebsiteRequest): any => ({
     ...obj,
   });
@@ -1535,6 +1648,9 @@ export interface DeleteObjectOutput {
 }
 
 export namespace DeleteObjectOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteObjectOutput): any => ({
     ...obj,
   });
@@ -1543,8 +1659,8 @@ export namespace DeleteObjectOutput {
 export interface DeleteObjectRequest {
   /**
    * <p>The bucket name of the bucket containing the object. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -1580,12 +1696,15 @@ export interface DeleteObjectRequest {
   BypassGovernanceRetention?: boolean;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteObjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteObjectRequest): any => ({
     ...obj,
   });
@@ -1621,6 +1740,9 @@ export interface DeletedObject {
 }
 
 export namespace DeletedObject {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletedObject): any => ({
     ...obj,
   });
@@ -1676,7 +1798,7 @@ export interface _Error {
    *                   <li>
    *                      <p>
    *                         <i>Description:</i> There is a problem with your AWS account
-   *                      that prevents the operation from completing successfully. Contact AWS Support
+   *                      that prevents the action from completing successfully. Contact AWS Support
    *                      for further assistance.</p>
    *                   </li>
    *                   <li>
@@ -2226,7 +2348,7 @@ export interface _Error {
    *                   </li>
    *                   <li>
    *                      <p>
-   *                         <i>Description:</i> The operation is not valid for the current
+   *                         <i>Description:</i> The action is not valid for the current
    *                      state of the object.</p>
    *                   </li>
    *                   <li>
@@ -3131,7 +3253,7 @@ export interface _Error {
    *                   </li>
    *                   <li>
    *                      <p>
-   *                         <i>Description:</i> A conflicting conditional operation is
+   *                         <i>Description:</i> A conflicting conditional action is
    *                      currently in progress against this resource. Try again.</p>
    *                   </li>
    *                   <li>
@@ -3518,6 +3640,9 @@ export interface _Error {
 }
 
 export namespace _Error {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: _Error): any => ({
     ...obj,
   });
@@ -3537,13 +3662,16 @@ export interface DeleteObjectsOutput {
   RequestCharged?: RequestCharged | string;
 
   /**
-   * <p>Container for a failed delete operation that describes the object that Amazon S3 attempted to
+   * <p>Container for a failed delete action that describes the object that Amazon S3 attempted to
    *          delete and the error it encountered.</p>
    */
   Errors?: _Error[];
 }
 
 export namespace DeleteObjectsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteObjectsOutput): any => ({
     ...obj,
   });
@@ -3554,7 +3682,12 @@ export namespace DeleteObjectsOutput {
  */
 export interface ObjectIdentifier {
   /**
-   * <p>Key name of the object to delete.</p>
+   * <p>Key name of the object.</p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   Key: string | undefined;
 
@@ -3565,6 +3698,9 @@ export interface ObjectIdentifier {
 }
 
 export namespace ObjectIdentifier {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectIdentifier): any => ({
     ...obj,
   });
@@ -3587,6 +3723,9 @@ export interface Delete {
 }
 
 export namespace Delete {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Delete): any => ({
     ...obj,
   });
@@ -3595,15 +3734,10 @@ export namespace Delete {
 export interface DeleteObjectsRequest {
   /**
    * <p>The bucket name containing the objects to delete. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
-
-  /**
-   * <p>Container for the request.</p>
-   */
-  Delete: Delete | undefined;
 
   /**
    * <p>The concatenation of the authentication device's serial number, a space, and the value
@@ -3627,12 +3761,20 @@ export interface DeleteObjectsRequest {
   BypassGovernanceRetention?: boolean;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
+
+  /**
+   * <p>Container for the request.</p>
+   */
+  Delete: Delete | undefined;
 }
 
 export namespace DeleteObjectsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteObjectsRequest): any => ({
     ...obj,
   });
@@ -3646,6 +3788,9 @@ export interface DeleteObjectTaggingOutput {
 }
 
 export namespace DeleteObjectTaggingOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteObjectTaggingOutput): any => ({
     ...obj,
   });
@@ -3654,13 +3799,13 @@ export namespace DeleteObjectTaggingOutput {
 export interface DeleteObjectTaggingRequest {
   /**
    * <p>The bucket name containing the objects from which to remove the tags. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
   /**
-   * <p>Name of the object key.</p>
+   * <p>The key that identifies the object in the bucket from which to remove all tags.</p>
    */
   Key: string | undefined;
 
@@ -3670,12 +3815,15 @@ export interface DeleteObjectTaggingRequest {
   VersionId?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeleteObjectTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteObjectTaggingRequest): any => ({
     ...obj,
   });
@@ -3689,12 +3837,15 @@ export interface DeletePublicAccessBlockRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace DeletePublicAccessBlockRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePublicAccessBlockRequest): any => ({
     ...obj,
   });
@@ -3708,6 +3859,9 @@ export interface GetBucketAccelerateConfigurationOutput {
 }
 
 export namespace GetBucketAccelerateConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketAccelerateConfigurationOutput): any => ({
     ...obj,
   });
@@ -3720,12 +3874,15 @@ export interface GetBucketAccelerateConfigurationRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketAccelerateConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketAccelerateConfigurationRequest): any => ({
     ...obj,
   });
@@ -3744,6 +3901,9 @@ export interface GetBucketAclOutput {
 }
 
 export namespace GetBucketAclOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketAclOutput): any => ({
     ...obj,
   });
@@ -3756,12 +3916,15 @@ export interface GetBucketAclRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketAclRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketAclRequest): any => ({
     ...obj,
   });
@@ -3783,6 +3946,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -3807,6 +3973,9 @@ export interface AnalyticsAndOperator {
 }
 
 export namespace AnalyticsAndOperator {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AnalyticsAndOperator): any => ({
     ...obj,
   });
@@ -3876,6 +4045,9 @@ export namespace AnalyticsFilter {
     return visitor._(value.$unknown[0], value.$unknown[1]);
   };
 
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AnalyticsFilter): any => {
     if (obj.Prefix !== undefined) return { Prefix: obj.Prefix };
     if (obj.Tag !== undefined) return { Tag: Tag.filterSensitiveLog(obj.Tag) };
@@ -3917,6 +4089,9 @@ export interface AnalyticsS3BucketDestination {
 }
 
 export namespace AnalyticsS3BucketDestination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AnalyticsS3BucketDestination): any => ({
     ...obj,
   });
@@ -3933,6 +4108,9 @@ export interface AnalyticsExportDestination {
 }
 
 export namespace AnalyticsExportDestination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AnalyticsExportDestination): any => ({
     ...obj,
   });
@@ -3958,6 +4136,9 @@ export interface StorageClassAnalysisDataExport {
 }
 
 export namespace StorageClassAnalysisDataExport {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StorageClassAnalysisDataExport): any => ({
     ...obj,
   });
@@ -3976,6 +4157,9 @@ export interface StorageClassAnalysis {
 }
 
 export namespace StorageClassAnalysis {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StorageClassAnalysis): any => ({
     ...obj,
   });
@@ -4006,6 +4190,9 @@ export interface AnalyticsConfiguration {
 }
 
 export namespace AnalyticsConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AnalyticsConfiguration): any => ({
     ...obj,
     ...(obj.Filter && { Filter: AnalyticsFilter.filterSensitiveLog(obj.Filter) }),
@@ -4020,6 +4207,9 @@ export interface GetBucketAnalyticsConfigurationOutput {
 }
 
 export namespace GetBucketAnalyticsConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketAnalyticsConfigurationOutput): any => ({
     ...obj,
     ...(obj.AnalyticsConfiguration && {
@@ -4040,12 +4230,15 @@ export interface GetBucketAnalyticsConfigurationRequest {
   Id: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketAnalyticsConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketAnalyticsConfigurationRequest): any => ({
     ...obj,
   });
@@ -4055,6 +4248,11 @@ export namespace GetBucketAnalyticsConfigurationRequest {
  * <p>Specifies a cross-origin access rule for an Amazon S3 bucket.</p>
  */
 export interface CORSRule {
+  /**
+   * <p>Unique identifier for the rule. The value cannot be longer than 255 characters.</p>
+   */
+  ID?: string;
+
   /**
    * <p>Headers that are specified in the <code>Access-Control-Request-Headers</code> header.
    *          These headers are allowed in a preflight OPTIONS request. In response to any preflight
@@ -4088,6 +4286,9 @@ export interface CORSRule {
 }
 
 export namespace CORSRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CORSRule): any => ({
     ...obj,
   });
@@ -4102,6 +4303,9 @@ export interface GetBucketCorsOutput {
 }
 
 export namespace GetBucketCorsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketCorsOutput): any => ({
     ...obj,
   });
@@ -4114,12 +4318,15 @@ export interface GetBucketCorsRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketCorsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketCorsRequest): any => ({
     ...obj,
   });
@@ -4169,6 +4376,9 @@ export interface ServerSideEncryptionByDefault {
 }
 
 export namespace ServerSideEncryptionByDefault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServerSideEncryptionByDefault): any => ({
     ...obj,
     ...(obj.KMSMasterKeyID && { KMSMasterKeyID: SENSITIVE_STRING }),
@@ -4188,12 +4398,15 @@ export interface ServerSideEncryptionRule {
 
   /**
    * <p>Specifies whether Amazon S3 should use an S3 Bucket Key with server-side encryption using KMS (SSE-KMS) for new objects in the bucket. Existing objects are not affected. Setting the <code>BucketKeyEnabled</code> element to <code>true</code> causes Amazon S3 to use an S3 Bucket Key. By default, S3 Bucket Key is not enabled.</p>
-   *          <p>For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html">Amazon S3 Bucket Keys</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html">Amazon S3 Bucket Keys</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   BucketKeyEnabled?: boolean;
 }
 
 export namespace ServerSideEncryptionRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServerSideEncryptionRule): any => ({
     ...obj,
     ...(obj.ApplyServerSideEncryptionByDefault && {
@@ -4216,6 +4429,9 @@ export interface ServerSideEncryptionConfiguration {
 }
 
 export namespace ServerSideEncryptionConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServerSideEncryptionConfiguration): any => ({
     ...obj,
     ...(obj.Rules && { Rules: obj.Rules.map((item) => ServerSideEncryptionRule.filterSensitiveLog(item)) }),
@@ -4230,6 +4446,9 @@ export interface GetBucketEncryptionOutput {
 }
 
 export namespace GetBucketEncryptionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketEncryptionOutput): any => ({
     ...obj,
     ...(obj.ServerSideEncryptionConfiguration && {
@@ -4248,12 +4467,15 @@ export interface GetBucketEncryptionRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketEncryptionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketEncryptionRequest): any => ({
     ...obj,
   });
@@ -4278,6 +4500,9 @@ export interface IntelligentTieringAndOperator {
 }
 
 export namespace IntelligentTieringAndOperator {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IntelligentTieringAndOperator): any => ({
     ...obj,
   });
@@ -4291,6 +4516,11 @@ export interface IntelligentTieringFilter {
   /**
    * <p>An object key name prefix that identifies the subset of objects to which the rule
    *          applies.</p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   Prefix?: string;
 
@@ -4308,6 +4538,9 @@ export interface IntelligentTieringFilter {
 }
 
 export namespace IntelligentTieringFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IntelligentTieringFilter): any => ({
     ...obj,
   });
@@ -4340,6 +4573,9 @@ export interface Tiering {
 }
 
 export namespace Tiering {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tiering): any => ({
     ...obj,
   });
@@ -4374,6 +4610,9 @@ export interface IntelligentTieringConfiguration {
 }
 
 export namespace IntelligentTieringConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IntelligentTieringConfiguration): any => ({
     ...obj,
   });
@@ -4387,6 +4626,9 @@ export interface GetBucketIntelligentTieringConfigurationOutput {
 }
 
 export namespace GetBucketIntelligentTieringConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketIntelligentTieringConfigurationOutput): any => ({
     ...obj,
   });
@@ -4405,6 +4647,9 @@ export interface GetBucketIntelligentTieringConfigurationRequest {
 }
 
 export namespace GetBucketIntelligentTieringConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketIntelligentTieringConfigurationRequest): any => ({
     ...obj,
   });
@@ -4422,6 +4667,9 @@ export interface SSEKMS {
 }
 
 export namespace SSEKMS {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SSEKMS): any => ({
     ...obj,
     ...(obj.KeyId && { KeyId: SENSITIVE_STRING }),
@@ -4434,6 +4682,9 @@ export namespace SSEKMS {
 export interface SSES3 {}
 
 export namespace SSES3 {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SSES3): any => ({
     ...obj,
   });
@@ -4456,6 +4707,9 @@ export interface InventoryEncryption {
 }
 
 export namespace InventoryEncryption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InventoryEncryption): any => ({
     ...obj,
     ...(obj.SSEKMS && { SSEKMS: SSEKMS.filterSensitiveLog(obj.SSEKMS) }),
@@ -4503,6 +4757,9 @@ export interface InventoryS3BucketDestination {
 }
 
 export namespace InventoryS3BucketDestination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InventoryS3BucketDestination): any => ({
     ...obj,
     ...(obj.Encryption && { Encryption: InventoryEncryption.filterSensitiveLog(obj.Encryption) }),
@@ -4521,6 +4778,9 @@ export interface InventoryDestination {
 }
 
 export namespace InventoryDestination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InventoryDestination): any => ({
     ...obj,
     ...(obj.S3BucketDestination && {
@@ -4541,6 +4801,9 @@ export interface InventoryFilter {
 }
 
 export namespace InventoryFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InventoryFilter): any => ({
     ...obj,
   });
@@ -4574,6 +4837,9 @@ export interface InventorySchedule {
 }
 
 export namespace InventorySchedule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InventorySchedule): any => ({
     ...obj,
   });
@@ -4629,6 +4895,9 @@ export interface InventoryConfiguration {
 }
 
 export namespace InventoryConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InventoryConfiguration): any => ({
     ...obj,
     ...(obj.Destination && { Destination: InventoryDestination.filterSensitiveLog(obj.Destination) }),
@@ -4643,6 +4912,9 @@ export interface GetBucketInventoryConfigurationOutput {
 }
 
 export namespace GetBucketInventoryConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketInventoryConfigurationOutput): any => ({
     ...obj,
     ...(obj.InventoryConfiguration && {
@@ -4663,12 +4935,15 @@ export interface GetBucketInventoryConfigurationRequest {
   Id: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketInventoryConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketInventoryConfigurationRequest): any => ({
     ...obj,
   });
@@ -4699,6 +4974,9 @@ export interface LifecycleExpiration {
 }
 
 export namespace LifecycleExpiration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleExpiration): any => ({
     ...obj,
   });
@@ -4723,6 +5001,9 @@ export interface LifecycleRuleAndOperator {
 }
 
 export namespace LifecycleRuleAndOperator {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleRuleAndOperator): any => ({
     ...obj,
   });
@@ -4742,6 +5023,11 @@ export type LifecycleRuleFilter =
 export namespace LifecycleRuleFilter {
   /**
    * <p>Prefix identifying one or more objects to which the rule applies.</p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   export interface PrefixMember {
     Prefix: string;
@@ -4793,6 +5079,9 @@ export namespace LifecycleRuleFilter {
     return visitor._(value.$unknown[0], value.$unknown[1]);
   };
 
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleRuleFilter): any => {
     if (obj.Prefix !== undefined) return { Prefix: obj.Prefix };
     if (obj.Tag !== undefined) return { Tag: Tag.filterSensitiveLog(obj.Tag) };
@@ -4818,6 +5107,9 @@ export interface NoncurrentVersionExpiration {
 }
 
 export namespace NoncurrentVersionExpiration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoncurrentVersionExpiration): any => ({
     ...obj,
   });
@@ -4840,7 +5132,7 @@ export interface NoncurrentVersionTransition {
    * <p>Specifies the number of days an object is noncurrent before Amazon S3 can perform the
    *          associated action. For information about the noncurrent days calculations, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations">How
    *             Amazon S3 Calculates How Long an Object Has Been Noncurrent</a> in the
-   *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *             <i>Amazon S3 User Guide</i>.</p>
    */
   NoncurrentDays?: number;
 
@@ -4851,6 +5143,9 @@ export interface NoncurrentVersionTransition {
 }
 
 export namespace NoncurrentVersionTransition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoncurrentVersionTransition): any => ({
     ...obj,
   });
@@ -4861,7 +5156,7 @@ export type ExpirationStatus = "Disabled" | "Enabled";
 /**
  * <p>Specifies when an object transitions to a specified storage class. For more information
  *          about Amazon S3 lifecycle configuration rules, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html">Transitioning
- *             Objects Using Amazon S3 Lifecycle</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *             Objects Using Amazon S3 Lifecycle</a> in the <i>Amazon S3 User Guide</i>.</p>
  */
 export interface Transition {
   /**
@@ -4883,6 +5178,9 @@ export interface Transition {
 }
 
 export namespace Transition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Transition): any => ({
     ...obj,
   });
@@ -4907,14 +5205,20 @@ export interface LifecycleRule {
    * @deprecated
    *
    * <p>Prefix identifying one or more objects to which the rule applies. This is
-   *          No longer used; use <code>Filter</code> instead.</p>
+   *          no longer used; use <code>Filter</code> instead.</p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   Prefix?: string;
 
   /**
    * <p>The <code>Filter</code> is used to identify objects that a Lifecycle Rule applies to. A
-   *             <code>Filter</code> must have exactly one of <code>Prefix</code>, <code>Tag</code>, or
-   *             <code>And</code> specified.</p>
+   *          <code>Filter</code> must have exactly one of <code>Prefix</code>, <code>Tag</code>, or
+   *          <code>And</code> specified. <code>Filter</code> is required if the <code>LifecycleRule</code>
+   *          does not containt a <code>Prefix</code> element.</p>
    */
   Filter?: LifecycleRuleFilter;
 
@@ -4950,12 +5254,15 @@ export interface LifecycleRule {
    * <p>Specifies the days since the initiation of an incomplete multipart upload that Amazon S3 will
    *          wait before permanently removing all parts of the upload. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config">
    *             Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy</a> in the
-   *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *             <i>Amazon S3 User Guide</i>.</p>
    */
   AbortIncompleteMultipartUpload?: AbortIncompleteMultipartUpload;
 }
 
 export namespace LifecycleRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleRule): any => ({
     ...obj,
     ...(obj.Filter && { Filter: LifecycleRuleFilter.filterSensitiveLog(obj.Filter) }),
@@ -4970,6 +5277,9 @@ export interface GetBucketLifecycleConfigurationOutput {
 }
 
 export namespace GetBucketLifecycleConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketLifecycleConfigurationOutput): any => ({
     ...obj,
     ...(obj.Rules && { Rules: obj.Rules.map((item) => LifecycleRule.filterSensitiveLog(item)) }),
@@ -4983,12 +5293,15 @@ export interface GetBucketLifecycleConfigurationRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketLifecycleConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketLifecycleConfigurationRequest): any => ({
     ...obj,
   });
@@ -5005,6 +5318,9 @@ export interface GetBucketLocationOutput {
 }
 
 export namespace GetBucketLocationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketLocationOutput): any => ({
     ...obj,
   });
@@ -5017,12 +5333,15 @@ export interface GetBucketLocationRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketLocationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketLocationRequest): any => ({
     ...obj,
   });
@@ -5046,6 +5365,9 @@ export interface TargetGrant {
 }
 
 export namespace TargetGrant {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TargetGrant): any => ({
     ...obj,
   });
@@ -5080,6 +5402,9 @@ export interface LoggingEnabled {
 }
 
 export namespace LoggingEnabled {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoggingEnabled): any => ({
     ...obj,
   });
@@ -5095,6 +5420,9 @@ export interface GetBucketLoggingOutput {
 }
 
 export namespace GetBucketLoggingOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketLoggingOutput): any => ({
     ...obj,
   });
@@ -5107,12 +5435,15 @@ export interface GetBucketLoggingRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketLoggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketLoggingRequest): any => ({
     ...obj,
   });
@@ -5136,6 +5467,9 @@ export interface MetricsAndOperator {
 }
 
 export namespace MetricsAndOperator {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricsAndOperator): any => ({
     ...obj,
   });
@@ -5206,6 +5540,9 @@ export namespace MetricsFilter {
     return visitor._(value.$unknown[0], value.$unknown[1]);
   };
 
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricsFilter): any => {
     if (obj.Prefix !== undefined) return { Prefix: obj.Prefix };
     if (obj.Tag !== undefined) return { Tag: Tag.filterSensitiveLog(obj.Tag) };
@@ -5237,6 +5574,9 @@ export interface MetricsConfiguration {
 }
 
 export namespace MetricsConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricsConfiguration): any => ({
     ...obj,
     ...(obj.Filter && { Filter: MetricsFilter.filterSensitiveLog(obj.Filter) }),
@@ -5251,6 +5591,9 @@ export interface GetBucketMetricsConfigurationOutput {
 }
 
 export namespace GetBucketMetricsConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketMetricsConfigurationOutput): any => ({
     ...obj,
     ...(obj.MetricsConfiguration && {
@@ -5271,12 +5614,15 @@ export interface GetBucketMetricsConfigurationRequest {
   Id: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketMetricsConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketMetricsConfigurationRequest): any => ({
     ...obj,
   });
@@ -5289,12 +5635,15 @@ export interface GetBucketNotificationConfigurationRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketNotificationConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketNotificationConfigurationRequest): any => ({
     ...obj,
   });
@@ -5330,7 +5679,7 @@ export interface FilterRule {
    * <p>The object key name prefix or suffix identifying one or more objects to which the
    *          filtering rule applies. The maximum length is 1,024 characters. Overlapping prefixes and
    *          suffixes are not supported. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Configuring Event Notifications</a>
-   *          in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          in the <i>Amazon S3 User Guide</i>.</p>
    */
   Name?: FilterRuleName | string;
 
@@ -5341,6 +5690,9 @@ export interface FilterRule {
 }
 
 export namespace FilterRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FilterRule): any => ({
     ...obj,
   });
@@ -5358,6 +5710,9 @@ export interface S3KeyFilter {
 }
 
 export namespace S3KeyFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3KeyFilter): any => ({
     ...obj,
   });
@@ -5366,8 +5721,7 @@ export namespace S3KeyFilter {
 /**
  * <p>Specifies object key name filtering rules. For information about key name filtering, see
  *             <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Configuring
- *             Event Notifications</a> in the <i>Amazon Simple Storage Service Developer
- *          Guide</i>.</p>
+ *             Event Notifications</a> in the <i>Amazon S3 User Guide</i>.</p>
  */
 export interface NotificationConfigurationFilter {
   /**
@@ -5377,6 +5731,9 @@ export interface NotificationConfigurationFilter {
 }
 
 export namespace NotificationConfigurationFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotificationConfigurationFilter): any => ({
     ...obj,
   });
@@ -5401,20 +5758,22 @@ export interface LambdaFunctionConfiguration {
   /**
    * <p>The Amazon S3 bucket event for which to invoke the AWS Lambda function. For more information,
    *          see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Supported
-   *             Event Types</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *             Event Types</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Events: (Event | string)[] | undefined;
 
   /**
    * <p>Specifies object key name filtering rules. For information about key name filtering, see
    *             <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Configuring
-   *             Event Notifications</a> in the <i>Amazon Simple Storage Service Developer
-   *          Guide</i>.</p>
+   *             Event Notifications</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Filter?: NotificationConfigurationFilter;
 }
 
 export namespace LambdaFunctionConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LambdaFunctionConfiguration): any => ({
     ...obj,
   });
@@ -5445,13 +5804,15 @@ export interface QueueConfiguration {
   /**
    * <p>Specifies object key name filtering rules. For information about key name filtering, see
    *             <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Configuring
-   *             Event Notifications</a> in the <i>Amazon Simple Storage Service Developer
-   *          Guide</i>.</p>
+   *             Event Notifications</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Filter?: NotificationConfigurationFilter;
 }
 
 export namespace QueueConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QueueConfiguration): any => ({
     ...obj,
   });
@@ -5477,20 +5838,22 @@ export interface TopicConfiguration {
   /**
    * <p>The Amazon S3 bucket event about which to send notifications. For more information, see
    *             <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Supported
-   *             Event Types</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *             Event Types</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Events: (Event | string)[] | undefined;
 
   /**
    * <p>Specifies object key name filtering rules. For information about key name filtering, see
    *             <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Configuring
-   *             Event Notifications</a> in the <i>Amazon Simple Storage Service Developer
-   *          Guide</i>.</p>
+   *             Event Notifications</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Filter?: NotificationConfigurationFilter;
 }
 
 export namespace TopicConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TopicConfiguration): any => ({
     ...obj,
   });
@@ -5521,6 +5884,9 @@ export interface NotificationConfiguration {
 }
 
 export namespace NotificationConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotificationConfiguration): any => ({
     ...obj,
   });
@@ -5544,6 +5910,9 @@ export interface OwnershipControlsRule {
 }
 
 export namespace OwnershipControlsRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OwnershipControlsRule): any => ({
     ...obj,
   });
@@ -5560,6 +5929,9 @@ export interface OwnershipControls {
 }
 
 export namespace OwnershipControls {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OwnershipControls): any => ({
     ...obj,
   });
@@ -5574,6 +5946,9 @@ export interface GetBucketOwnershipControlsOutput {
 }
 
 export namespace GetBucketOwnershipControlsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketOwnershipControlsOutput): any => ({
     ...obj,
   });
@@ -5587,12 +5962,15 @@ export interface GetBucketOwnershipControlsRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketOwnershipControlsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketOwnershipControlsRequest): any => ({
     ...obj,
   });
@@ -5606,6 +5984,9 @@ export interface GetBucketPolicyOutput {
 }
 
 export namespace GetBucketPolicyOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketPolicyOutput): any => ({
     ...obj,
   });
@@ -5618,12 +5999,15 @@ export interface GetBucketPolicyRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketPolicyRequest): any => ({
     ...obj,
   });
@@ -5641,6 +6025,9 @@ export interface PolicyStatus {
 }
 
 export namespace PolicyStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyStatus): any => ({
     ...obj,
   });
@@ -5654,6 +6041,9 @@ export interface GetBucketPolicyStatusOutput {
 }
 
 export namespace GetBucketPolicyStatusOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketPolicyStatusOutput): any => ({
     ...obj,
   });
@@ -5666,12 +6056,15 @@ export interface GetBucketPolicyStatusRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketPolicyStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketPolicyStatusRequest): any => ({
     ...obj,
   });
@@ -5704,6 +6097,9 @@ export interface DeleteMarkerReplication {
 }
 
 export namespace DeleteMarkerReplication {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMarkerReplication): any => ({
     ...obj,
   });
@@ -5726,6 +6122,9 @@ export interface EncryptionConfiguration {
 }
 
 export namespace EncryptionConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EncryptionConfiguration): any => ({
     ...obj,
   });
@@ -5744,6 +6143,9 @@ export interface ReplicationTimeValue {
 }
 
 export namespace ReplicationTimeValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationTimeValue): any => ({
     ...obj,
   });
@@ -5769,6 +6171,9 @@ export interface Metrics {
 }
 
 export namespace Metrics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Metrics): any => ({
     ...obj,
   });
@@ -5795,6 +6200,9 @@ export interface ReplicationTime {
 }
 
 export namespace ReplicationTime {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationTime): any => ({
     ...obj,
   });
@@ -5859,6 +6267,9 @@ export interface Destination {
 }
 
 export namespace Destination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Destination): any => ({
     ...obj,
   });
@@ -5868,7 +6279,7 @@ export type ExistingObjectReplicationStatus = "Disabled" | "Enabled";
 
 /**
  * <p>Optional configuration to replicate existing source bucket objects. For more
- *          information, see <a href=" https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-what-is-isnot-replicated.html#existing-object-replication">Replicating Existing Objects</a> in the <i>Amazon S3 Developer Guide</i>.
+ *          information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-what-is-isnot-replicated.html#existing-object-replication">Replicating Existing Objects</a> in the <i>Amazon S3 Developer Guide</i>.
  *       </p>
  */
 export interface ExistingObjectReplication {
@@ -5879,6 +6290,9 @@ export interface ExistingObjectReplication {
 }
 
 export namespace ExistingObjectReplication {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExistingObjectReplication): any => ({
     ...obj,
   });
@@ -5895,7 +6309,7 @@ export namespace ExistingObjectReplication {
  *             </li>
  *             <li>
  *                <p>If you specify a filter based on multiple tags, wrap the <code>Tag</code> elements
- *                in an <code>And</code> tag</p>
+ *                in an <code>And</code> tag.</p>
  *             </li>
  *          </ul>
  */
@@ -5913,6 +6327,9 @@ export interface ReplicationRuleAndOperator {
 }
 
 export namespace ReplicationRuleAndOperator {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationRuleAndOperator): any => ({
     ...obj,
   });
@@ -5933,6 +6350,11 @@ export namespace ReplicationRuleFilter {
   /**
    * <p>An object key name prefix that identifies the subset of objects to which the rule
    *          applies.</p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   export interface PrefixMember {
     Prefix: string;
@@ -5995,6 +6417,9 @@ export namespace ReplicationRuleFilter {
     return visitor._(value.$unknown[0], value.$unknown[1]);
   };
 
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationRuleFilter): any => {
     if (obj.Prefix !== undefined) return { Prefix: obj.Prefix };
     if (obj.Tag !== undefined) return { Tag: Tag.filterSensitiveLog(obj.Tag) };
@@ -6024,6 +6449,9 @@ export interface ReplicaModifications {
 }
 
 export namespace ReplicaModifications {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicaModifications): any => ({
     ...obj,
   });
@@ -6044,6 +6472,9 @@ export interface SseKmsEncryptedObjects {
 }
 
 export namespace SseKmsEncryptedObjects {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SseKmsEncryptedObjects): any => ({
     ...obj,
   });
@@ -6079,6 +6510,9 @@ export interface SourceSelectionCriteria {
 }
 
 export namespace SourceSelectionCriteria {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SourceSelectionCriteria): any => ({
     ...obj,
   });
@@ -6102,7 +6536,7 @@ export interface ReplicationRule {
    *          be replicated according to the rule with the highest priority. The higher the number, the
    *          higher the priority. </p>
    *          <p>For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html">Replication</a> in the
-   *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *             <i>Amazon S3 User Guide</i>.</p>
    */
   Priority?: number;
 
@@ -6112,6 +6546,11 @@ export interface ReplicationRule {
    * <p>An object key name prefix that identifies the object or objects to which the rule
    *          applies. The maximum prefix length is 1,024 characters. To include all objects in a bucket,
    *          specify an empty string. </p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   Prefix?: string;
 
@@ -6165,6 +6604,9 @@ export interface ReplicationRule {
 }
 
 export namespace ReplicationRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationRule): any => ({
     ...obj,
     ...(obj.Filter && { Filter: ReplicationRuleFilter.filterSensitiveLog(obj.Filter) }),
@@ -6179,7 +6621,7 @@ export interface ReplicationConfiguration {
   /**
    * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that
    *          Amazon S3 assumes when replicating objects. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html">How to Set Up
-   *             Replication</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *             Replication</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Role: string | undefined;
 
@@ -6191,6 +6633,9 @@ export interface ReplicationConfiguration {
 }
 
 export namespace ReplicationConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationConfiguration): any => ({
     ...obj,
     ...(obj.Rules && { Rules: obj.Rules.map((item) => ReplicationRule.filterSensitiveLog(item)) }),
@@ -6206,6 +6651,9 @@ export interface GetBucketReplicationOutput {
 }
 
 export namespace GetBucketReplicationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketReplicationOutput): any => ({
     ...obj,
     ...(obj.ReplicationConfiguration && {
@@ -6221,12 +6669,15 @@ export interface GetBucketReplicationRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketReplicationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketReplicationRequest): any => ({
     ...obj,
   });
@@ -6242,6 +6693,9 @@ export interface GetBucketRequestPaymentOutput {
 }
 
 export namespace GetBucketRequestPaymentOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketRequestPaymentOutput): any => ({
     ...obj,
   });
@@ -6254,12 +6708,15 @@ export interface GetBucketRequestPaymentRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketRequestPaymentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketRequestPaymentRequest): any => ({
     ...obj,
   });
@@ -6273,6 +6730,9 @@ export interface GetBucketTaggingOutput {
 }
 
 export namespace GetBucketTaggingOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketTaggingOutput): any => ({
     ...obj,
   });
@@ -6285,12 +6745,15 @@ export interface GetBucketTaggingRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketTaggingRequest): any => ({
     ...obj,
   });
@@ -6315,6 +6778,9 @@ export interface GetBucketVersioningOutput {
 }
 
 export namespace GetBucketVersioningOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketVersioningOutput): any => ({
     ...obj,
   });
@@ -6327,12 +6793,15 @@ export interface GetBucketVersioningRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketVersioningRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketVersioningRequest): any => ({
     ...obj,
   });
@@ -6344,11 +6813,19 @@ export namespace GetBucketVersioningRequest {
 export interface ErrorDocument {
   /**
    * <p>The object key name to use when a 4XX class error occurs.</p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   Key: string | undefined;
 }
 
 export namespace ErrorDocument {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ErrorDocument): any => ({
     ...obj,
   });
@@ -6363,11 +6840,19 @@ export interface IndexDocument {
    *          (for example,if the suffix is index.html and you make a request to samplebucket/images/ the
    *          data that is returned will be for the object with the key name images/index.html) The
    *          suffix must not be empty and must not include a slash character.</p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   Suffix: string | undefined;
 }
 
 export namespace IndexDocument {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IndexDocument): any => ({
     ...obj,
   });
@@ -6393,6 +6878,9 @@ export interface RedirectAllRequestsTo {
 }
 
 export namespace RedirectAllRequestsTo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RedirectAllRequestsTo): any => ({
     ...obj,
   });
@@ -6423,11 +6911,19 @@ export interface Condition {
    *             <code>Condition</code> is specified and sibling <code>HttpErrorCodeReturnedEquals</code>
    *          is not specified. If both conditions are specified, both must be true for the redirect to
    *          be applied.</p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   KeyPrefixEquals?: string;
 }
 
 export namespace Condition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Condition): any => ({
     ...obj,
   });
@@ -6462,6 +6958,11 @@ export interface Redirect {
    *          set to <code>docs/</code> and in the Redirect set <code>ReplaceKeyPrefixWith</code> to
    *             <code>/documents</code>. Not required if one of the siblings is present. Can be present
    *          only if <code>ReplaceKeyWith</code> is not provided.</p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   ReplaceKeyPrefixWith?: string;
 
@@ -6469,11 +6970,19 @@ export interface Redirect {
    * <p>The specific object key to use in the redirect request. For example, redirect request to
    *             <code>error.html</code>. Not required if one of the siblings is present. Can be present
    *          only if <code>ReplaceKeyPrefixWith</code> is not provided.</p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   ReplaceKeyWith?: string;
 }
 
 export namespace Redirect {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Redirect): any => ({
     ...obj,
   });
@@ -6482,7 +6991,7 @@ export namespace Redirect {
 /**
  * <p>Specifies the redirect behavior and when a redirect is applied. For more information
  *          about routing rules, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html#advanced-conditional-redirects">Configuring advanced conditional redirects</a> in the
- *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *             <i>Amazon S3 User Guide</i>.</p>
  */
 export interface RoutingRule {
   /**
@@ -6502,6 +7011,9 @@ export interface RoutingRule {
 }
 
 export namespace RoutingRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RoutingRule): any => ({
     ...obj,
   });
@@ -6532,6 +7044,9 @@ export interface GetBucketWebsiteOutput {
 }
 
 export namespace GetBucketWebsiteOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketWebsiteOutput): any => ({
     ...obj,
   });
@@ -6544,12 +7059,15 @@ export interface GetBucketWebsiteRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetBucketWebsiteRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketWebsiteRequest): any => ({
     ...obj,
   });
@@ -6582,13 +7100,13 @@ export interface GetObjectOutput {
   Expiration?: string;
 
   /**
-   * <p>Provides information about object restoration operation and expiration time of the
+   * <p>Provides information about object restoration action and expiration time of the
    *          restored object copy.</p>
    */
   Restore?: string;
 
   /**
-   * <p>Last modified date of the object</p>
+   * <p>Creation date of the object.</p>
    */
   LastModified?: Date;
 
@@ -6741,6 +7259,9 @@ export interface GetObjectOutput {
 }
 
 export namespace GetObjectOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectOutput): any => ({
     ...obj,
     ...(obj.SSEKMSKeyId && { SSEKMSKeyId: SENSITIVE_STRING }),
@@ -6750,8 +7271,8 @@ export namespace GetObjectOutput {
 export interface GetObjectRequest {
   /**
    * <p>The bucket name containing the object. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -6830,15 +7351,15 @@ export interface GetObjectRequest {
   VersionId?: string;
 
   /**
-   * <p>Specifies the algorithm to use to when encrypting the object (for example,
+   * <p>Specifies the algorithm to use to when decrypting the object (for example,
    *          AES256).</p>
    */
   SSECustomerAlgorithm?: string;
 
   /**
-   * <p>Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data. This
-   *          value is used to store the object and then it is discarded; Amazon S3 does not store the
-   *          encryption key. The key must be appropriate for use with the algorithm specified in the
+   * <p>Specifies the customer-provided encryption key for Amazon S3 used to encrypt the data. This
+   *          value is used to decrypt the object when recovering it and must match the one used when
+   *          storing the data. The key must be appropriate for use with the algorithm specified in the
    *             <code>x-amz-server-side-encryption-customer-algorithm</code> header.</p>
    */
   SSECustomerKey?: string;
@@ -6866,12 +7387,15 @@ export interface GetObjectRequest {
   PartNumber?: number;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetObjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectRequest): any => ({
     ...obj,
     ...(obj.SSECustomerKey && { SSECustomerKey: SENSITIVE_STRING }),
@@ -6889,6 +7413,9 @@ export interface InvalidObjectState extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidObjectState {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidObjectState): any => ({
     ...obj,
   });
@@ -6903,6 +7430,9 @@ export interface NoSuchKey extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NoSuchKey {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchKey): any => ({
     ...obj,
   });
@@ -6927,6 +7457,9 @@ export interface GetObjectAclOutput {
 }
 
 export namespace GetObjectAclOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectAclOutput): any => ({
     ...obj,
   });
@@ -6935,7 +7468,7 @@ export namespace GetObjectAclOutput {
 export interface GetObjectAclRequest {
   /**
    * <p>The bucket name that contains the object for which to get the ACL information. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -6958,12 +7491,15 @@ export interface GetObjectAclRequest {
   RequestPayer?: RequestPayer | string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetObjectAclRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectAclRequest): any => ({
     ...obj,
   });
@@ -6980,6 +7516,9 @@ export interface ObjectLockLegalHold {
 }
 
 export namespace ObjectLockLegalHold {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectLockLegalHold): any => ({
     ...obj,
   });
@@ -6993,6 +7532,9 @@ export interface GetObjectLegalHoldOutput {
 }
 
 export namespace GetObjectLegalHoldOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectLegalHoldOutput): any => ({
     ...obj,
   });
@@ -7001,7 +7543,7 @@ export namespace GetObjectLegalHoldOutput {
 export interface GetObjectLegalHoldRequest {
   /**
    * <p>The bucket name containing the object whose Legal Hold status you want to retrieve. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -7024,12 +7566,15 @@ export interface GetObjectLegalHoldRequest {
   RequestPayer?: RequestPayer | string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetObjectLegalHoldRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectLegalHoldRequest): any => ({
     ...obj,
   });
@@ -7042,26 +7587,44 @@ export type ObjectLockRetentionMode = "COMPLIANCE" | "GOVERNANCE";
 /**
  * <p>The container element for specifying the default Object Lock retention settings for new
  *          objects placed in the specified bucket.</p>
+ *          <note>
+ *             <ul>
+ *                <li>
+ *                   <p>The <code>DefaultRetention</code> settings require both a mode and a
+ *                period.</p>
+ *                </li>
+ *                <li>
+ *                   <p>The <code>DefaultRetention</code> period can be either <code>Days</code>
+ *                or <code>Years</code> but you must select one. You cannot specify <code>Days</code>
+ *                and <code>Years</code> at the same time.</p>
+ *                </li>
+ *             </ul>
+ *          </note>
  */
 export interface DefaultRetention {
   /**
    * <p>The default Object Lock retention mode you want to apply to new objects placed in the
-   *          specified bucket.</p>
+   *          specified bucket. Must be used with either <code>Days</code> or <code>Years</code>.</p>
    */
   Mode?: ObjectLockRetentionMode | string;
 
   /**
-   * <p>The number of days that you want to specify for the default retention period.</p>
+   * <p>The number of days that you want to specify for the default retention period. Must be
+   *          used with <code>Mode</code>.</p>
    */
   Days?: number;
 
   /**
-   * <p>The number of years that you want to specify for the default retention period.</p>
+   * <p>The number of years that you want to specify for the default retention period. Must be
+   *          used with <code>Mode</code>.</p>
    */
   Years?: number;
 }
 
 export namespace DefaultRetention {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DefaultRetention): any => ({
     ...obj,
   });
@@ -7072,13 +7635,18 @@ export namespace DefaultRetention {
  */
 export interface ObjectLockRule {
   /**
-   * <p>The default retention period that you want to apply to new objects placed in the
-   *          specified bucket.</p>
+   * <p>The default Object Lock retention mode and period that you want to apply to new objects
+   *          placed in the specified bucket. Bucket settings require both a mode and a period.
+   *          The period can be either <code>Days</code> or <code>Years</code> but you must select one.
+   *          You cannot specify <code>Days</code> and <code>Years</code> at the same time.</p>
    */
   DefaultRetention?: DefaultRetention;
 }
 
 export namespace ObjectLockRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectLockRule): any => ({
     ...obj,
   });
@@ -7089,17 +7657,25 @@ export namespace ObjectLockRule {
  */
 export interface ObjectLockConfiguration {
   /**
-   * <p>Indicates whether this bucket has an Object Lock configuration enabled.</p>
+   * <p>Indicates whether this bucket has an Object Lock configuration enabled.
+   *          Enable <code>ObjectLockEnabled</code> when you apply <code>ObjectLockConfiguration</code>
+   *          to a bucket. </p>
    */
   ObjectLockEnabled?: ObjectLockEnabled | string;
 
   /**
-   * <p>The Object Lock rule in place for the specified object.</p>
+   * <p>Specifies the Object Lock rule for the specified object. Enable the this rule when you apply
+   *          <code>ObjectLockConfiguration</code> to a bucket. Bucket settings require both a mode and a period.
+   *          The period can be either <code>Days</code> or <code>Years</code> but you must select one.
+   *          You cannot specify <code>Days</code> and <code>Years</code> at the same time.</p>
    */
   Rule?: ObjectLockRule;
 }
 
 export namespace ObjectLockConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectLockConfiguration): any => ({
     ...obj,
   });
@@ -7113,6 +7689,9 @@ export interface GetObjectLockConfigurationOutput {
 }
 
 export namespace GetObjectLockConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectLockConfigurationOutput): any => ({
     ...obj,
   });
@@ -7121,17 +7700,20 @@ export namespace GetObjectLockConfigurationOutput {
 export interface GetObjectLockConfigurationRequest {
   /**
    * <p>The bucket whose Object Lock configuration you want to retrieve.</p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetObjectLockConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectLockConfigurationRequest): any => ({
     ...obj,
   });
@@ -7153,6 +7735,9 @@ export interface ObjectLockRetention {
 }
 
 export namespace ObjectLockRetention {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectLockRetention): any => ({
     ...obj,
   });
@@ -7166,6 +7751,9 @@ export interface GetObjectRetentionOutput {
 }
 
 export namespace GetObjectRetentionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectRetentionOutput): any => ({
     ...obj,
   });
@@ -7174,7 +7762,7 @@ export namespace GetObjectRetentionOutput {
 export interface GetObjectRetentionRequest {
   /**
    * <p>The bucket name containing the object whose retention settings you want to retrieve. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -7197,12 +7785,15 @@ export interface GetObjectRetentionRequest {
   RequestPayer?: RequestPayer | string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetObjectRetentionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectRetentionRequest): any => ({
     ...obj,
   });
@@ -7221,6 +7812,9 @@ export interface GetObjectTaggingOutput {
 }
 
 export namespace GetObjectTaggingOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectTaggingOutput): any => ({
     ...obj,
   });
@@ -7229,8 +7823,8 @@ export namespace GetObjectTaggingOutput {
 export interface GetObjectTaggingRequest {
   /**
    * <p>The bucket name containing the object for which to get the tagging information. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -7245,12 +7839,23 @@ export interface GetObjectTaggingRequest {
   VersionId?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
+
+  /**
+   * <p>Confirms that the requester knows that they will be charged for the request. Bucket
+   *          owners need not specify this parameter in their requests. For information about downloading
+   *          objects from requester pays buckets, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectsinRequesterPaysBuckets.html">Downloading Objects in
+   *             Requestor Pays Buckets</a> in the <i>Amazon S3 Developer Guide</i>.</p>
+   */
+  RequestPayer?: RequestPayer | string;
 }
 
 export namespace GetObjectTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectTaggingRequest): any => ({
     ...obj,
   });
@@ -7270,6 +7875,9 @@ export interface GetObjectTorrentOutput {
 }
 
 export namespace GetObjectTorrentOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectTorrentOutput): any => ({
     ...obj,
   });
@@ -7295,12 +7903,15 @@ export interface GetObjectTorrentRequest {
   RequestPayer?: RequestPayer | string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetObjectTorrentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetObjectTorrentRequest): any => ({
     ...obj,
   });
@@ -7309,7 +7920,7 @@ export namespace GetObjectTorrentRequest {
 /**
  * <p>The PublicAccessBlock configuration that you want to apply to this Amazon S3 bucket. You can
  *          enable the configuration options in any combination. For more information about when Amazon S3
- *          considers a bucket or object public, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status">The Meaning of "Public"</a> in the <i>Amazon Simple Storage Service Developer Guide</i>. </p>
+ *          considers a bucket or object public, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status">The Meaning of "Public"</a> in the <i>Amazon S3 User Guide</i>. </p>
  */
 export interface PublicAccessBlockConfiguration {
   /**
@@ -7362,6 +7973,9 @@ export interface PublicAccessBlockConfiguration {
 }
 
 export namespace PublicAccessBlockConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PublicAccessBlockConfiguration): any => ({
     ...obj,
   });
@@ -7376,6 +7990,9 @@ export interface GetPublicAccessBlockOutput {
 }
 
 export namespace GetPublicAccessBlockOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPublicAccessBlockOutput): any => ({
     ...obj,
   });
@@ -7389,12 +8006,15 @@ export interface GetPublicAccessBlockRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace GetPublicAccessBlockRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPublicAccessBlockRequest): any => ({
     ...obj,
   });
@@ -7403,33 +8023,39 @@ export namespace GetPublicAccessBlockRequest {
 export interface HeadBucketRequest {
   /**
    * <p>The bucket name.</p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace HeadBucketRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HeadBucketRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The specified bucket does not exist.</p>
+ * <p>The specified content does not exist.</p>
  */
-export interface NoSuchBucket extends __SmithyException, $MetadataBearer {
-  name: "NoSuchBucket";
+export interface NotFound extends __SmithyException, $MetadataBearer {
+  name: "NotFound";
   $fault: "client";
 }
 
-export namespace NoSuchBucket {
-  export const filterSensitiveLog = (obj: NoSuchBucket): any => ({
+export namespace NotFound {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: NotFound): any => ({
     ...obj,
   });
 }
@@ -7463,7 +8089,7 @@ export interface HeadObjectOutput {
    *          scheduled to delete the object copy. For example:</p>
    *
    *          <p>
-   *             <code>x-amz-restore: ongoing-request="false", expiry-date="Fri, 23 Dec 2012 00:00:00
+   *             <code>x-amz-restore: ongoing-request="false", expiry-date="Fri, 21 Dec 2012 00:00:00
    *             GMT"</code>
    *          </p>
    *
@@ -7480,7 +8106,7 @@ export interface HeadObjectOutput {
   ArchiveStatus?: ArchiveStatus | string;
 
   /**
-   * <p>Last modified date of the object</p>
+   * <p>Creation date of the object.</p>
    */
   LastModified?: Date;
 
@@ -7670,6 +8296,9 @@ export interface HeadObjectOutput {
 }
 
 export namespace HeadObjectOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HeadObjectOutput): any => ({
     ...obj,
     ...(obj.SSEKMSKeyId && { SSEKMSKeyId: SENSITIVE_STRING }),
@@ -7679,8 +8308,8 @@ export namespace HeadObjectOutput {
 export interface HeadObjectRequest {
   /**
    * <p>The name of the bucket containing the object.</p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -7765,12 +8394,15 @@ export interface HeadObjectRequest {
   PartNumber?: number;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace HeadObjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HeadObjectRequest): any => ({
     ...obj,
     ...(obj.SSECustomerKey && { SSECustomerKey: SENSITIVE_STRING }),
@@ -7807,6 +8439,9 @@ export interface ListBucketAnalyticsConfigurationsOutput {
 }
 
 export namespace ListBucketAnalyticsConfigurationsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBucketAnalyticsConfigurationsOutput): any => ({
     ...obj,
     ...(obj.AnalyticsConfigurationList && {
@@ -7830,12 +8465,15 @@ export interface ListBucketAnalyticsConfigurationsRequest {
   ContinuationToken?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace ListBucketAnalyticsConfigurationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBucketAnalyticsConfigurationsRequest): any => ({
     ...obj,
   });
@@ -7869,6 +8507,9 @@ export interface ListBucketIntelligentTieringConfigurationsOutput {
 }
 
 export namespace ListBucketIntelligentTieringConfigurationsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBucketIntelligentTieringConfigurationsOutput): any => ({
     ...obj,
   });
@@ -7888,6 +8529,9 @@ export interface ListBucketIntelligentTieringConfigurationsRequest {
 }
 
 export namespace ListBucketIntelligentTieringConfigurationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBucketIntelligentTieringConfigurationsRequest): any => ({
     ...obj,
   });
@@ -7921,6 +8565,9 @@ export interface ListBucketInventoryConfigurationsOutput {
 }
 
 export namespace ListBucketInventoryConfigurationsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBucketInventoryConfigurationsOutput): any => ({
     ...obj,
     ...(obj.InventoryConfigurationList && {
@@ -7945,12 +8592,15 @@ export interface ListBucketInventoryConfigurationsRequest {
   ContinuationToken?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace ListBucketInventoryConfigurationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBucketInventoryConfigurationsRequest): any => ({
     ...obj,
   });
@@ -7985,6 +8635,9 @@ export interface ListBucketMetricsConfigurationsOutput {
 }
 
 export namespace ListBucketMetricsConfigurationsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBucketMetricsConfigurationsOutput): any => ({
     ...obj,
     ...(obj.MetricsConfigurationList && {
@@ -8010,12 +8663,15 @@ export interface ListBucketMetricsConfigurationsRequest {
   ContinuationToken?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace ListBucketMetricsConfigurationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBucketMetricsConfigurationsRequest): any => ({
     ...obj,
   });
@@ -8038,6 +8694,9 @@ export interface Bucket {
 }
 
 export namespace Bucket {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Bucket): any => ({
     ...obj,
   });
@@ -8056,6 +8715,9 @@ export interface ListBucketsOutput {
 }
 
 export namespace ListBucketsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBucketsOutput): any => ({
     ...obj,
   });
@@ -8075,6 +8737,9 @@ export interface CommonPrefix {
 }
 
 export namespace CommonPrefix {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CommonPrefix): any => ({
     ...obj,
   });
@@ -8099,6 +8764,9 @@ export interface Initiator {
 }
 
 export namespace Initiator {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Initiator): any => ({
     ...obj,
   });
@@ -8140,6 +8808,9 @@ export interface MultipartUpload {
 }
 
 export namespace MultipartUpload {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MultipartUpload): any => ({
     ...obj,
   });
@@ -8225,6 +8896,9 @@ export interface ListMultipartUploadsOutput {
 }
 
 export namespace ListMultipartUploadsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMultipartUploadsOutput): any => ({
     ...obj,
   });
@@ -8233,8 +8907,8 @@ export namespace ListMultipartUploadsOutput {
 export interface ListMultipartUploadsRequest {
   /**
    * <p>The name of the bucket to which the multipart upload was initiated. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -8294,12 +8968,15 @@ export interface ListMultipartUploadsRequest {
   UploadIdMarker?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace ListMultipartUploadsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMultipartUploadsRequest): any => ({
     ...obj,
   });
@@ -8326,7 +9003,7 @@ export interface _Object {
   Key?: string;
 
   /**
-   * <p>The date the Object was Last Modified</p>
+   * <p>Creation date of the object.</p>
    */
   LastModified?: Date;
 
@@ -8371,6 +9048,9 @@ export interface _Object {
 }
 
 export namespace _Object {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: _Object): any => ({
     ...obj,
   });
@@ -8429,7 +9109,7 @@ export interface ListObjectsOutput {
   MaxKeys?: number;
 
   /**
-   * <p>All of the keys rolled up in a common prefix count as a single return when calculating
+   * <p>All of the keys (up to 1,000) rolled up in a common prefix count as a single return when calculating
    *          the number of returns. </p>
    *
    *          <p>A response can contain CommonPrefixes only if you specify a delimiter.</p>
@@ -8453,6 +9133,9 @@ export interface ListObjectsOutput {
 }
 
 export namespace ListObjectsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListObjectsOutput): any => ({
     ...obj,
   });
@@ -8461,8 +9144,8 @@ export namespace ListObjectsOutput {
 export interface ListObjectsRequest {
   /**
    * <p>The name of the bucket containing the objects.</p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -8486,7 +9169,7 @@ export interface ListObjectsRequest {
   Marker?: string;
 
   /**
-   * <p>Sets the maximum number of keys returned in the response. By default the API returns up
+   * <p>Sets the maximum number of keys returned in the response. By default the action returns up
    *          to 1,000 key names. The response might contain fewer keys but will never contain more.
    *       </p>
    */
@@ -8504,13 +9187,33 @@ export interface ListObjectsRequest {
   RequestPayer?: RequestPayer | string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace ListObjectsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListObjectsRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The specified bucket does not exist.</p>
+ */
+export interface NoSuchBucket extends __SmithyException, $MetadataBearer {
+  name: "NoSuchBucket";
+  $fault: "client";
+}
+
+export namespace NoSuchBucket {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: NoSuchBucket): any => ({
     ...obj,
   });
 }
@@ -8530,8 +9233,8 @@ export interface ListObjectsV2Output {
 
   /**
    * <p>The bucket name.</p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Name?: string;
 
@@ -8549,14 +9252,14 @@ export interface ListObjectsV2Output {
   Delimiter?: string;
 
   /**
-   * <p>Sets the maximum number of keys returned in the response. By default the API returns up
+   * <p>Sets the maximum number of keys returned in the response. By default the action returns up
    *          to 1,000 key names. The response might contain fewer keys but will never contain
    *          more.</p>
    */
   MaxKeys?: number;
 
   /**
-   * <p>All of the keys rolled up into a common prefix count as a single return when calculating
+   * <p>All of the keys (up to 1,000) rolled up into a common prefix count as a single return when calculating
    *          the number of returns.</p>
    *
    *          <p>A response can contain <code>CommonPrefixes</code> only if you specify a
@@ -8591,7 +9294,7 @@ export interface ListObjectsV2Output {
 
   /**
    * <p>KeyCount is the number of keys returned with this request. KeyCount will always be less
-   *          than equals to MaxKeys field. Say you ask for 50 keys, your result will include less than
+   *          than or equals to MaxKeys field. Say you ask for 50 keys, your result will include less than
    *          equals 50 keys </p>
    */
   KeyCount?: number;
@@ -8617,6 +9320,9 @@ export interface ListObjectsV2Output {
 }
 
 export namespace ListObjectsV2Output {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListObjectsV2Output): any => ({
     ...obj,
   });
@@ -8625,8 +9331,8 @@ export namespace ListObjectsV2Output {
 export interface ListObjectsV2Request {
   /**
    * <p>Bucket name to list. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -8641,7 +9347,7 @@ export interface ListObjectsV2Request {
   EncodingType?: EncodingType | string;
 
   /**
-   * <p>Sets the maximum number of keys returned in the response. By default the API returns up
+   * <p>Sets the maximum number of keys returned in the response. By default the action returns up
    *          to 1,000 key names. The response might contain fewer keys but will never contain
    *          more.</p>
    */
@@ -8678,12 +9384,15 @@ export interface ListObjectsV2Request {
   RequestPayer?: RequestPayer | string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace ListObjectsV2Request {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListObjectsV2Request): any => ({
     ...obj,
   });
@@ -8721,6 +9430,9 @@ export interface DeleteMarkerEntry {
 }
 
 export namespace DeleteMarkerEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMarkerEntry): any => ({
     ...obj,
   });
@@ -8775,6 +9487,9 @@ export interface ObjectVersion {
 }
 
 export namespace ObjectVersion {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectVersion): any => ({
     ...obj,
   });
@@ -8868,6 +9583,9 @@ export interface ListObjectVersionsOutput {
 }
 
 export namespace ListObjectVersionsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListObjectVersionsOutput): any => ({
     ...obj,
   });
@@ -8903,7 +9621,7 @@ export interface ListObjectVersionsRequest {
   KeyMarker?: string;
 
   /**
-   * <p>Sets the maximum number of keys returned in the response. By default the API returns up
+   * <p>Sets the maximum number of keys returned in the response. By default the action returns up
    *          to 1,000 key names. The response might contain fewer keys but will never contain more. If
    *          additional keys satisfy the search criteria, but were not returned because max-keys was
    *          exceeded, the response contains <isTruncated>true</isTruncated>. To return the
@@ -8926,12 +9644,15 @@ export interface ListObjectVersionsRequest {
   VersionIdMarker?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace ListObjectVersionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListObjectVersionsRequest): any => ({
     ...obj,
   });
@@ -8964,6 +9685,9 @@ export interface Part {
 }
 
 export namespace Part {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Part): any => ({
     ...obj,
   });
@@ -9065,6 +9789,9 @@ export interface ListPartsOutput {
 }
 
 export namespace ListPartsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPartsOutput): any => ({
     ...obj,
   });
@@ -9073,8 +9800,8 @@ export namespace ListPartsOutput {
 export interface ListPartsRequest {
   /**
    * <p>The name of the bucket to which the parts are being uploaded. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -9108,12 +9835,15 @@ export interface ListPartsRequest {
   RequestPayer?: RequestPayer | string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace ListPartsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPartsRequest): any => ({
     ...obj,
   });
@@ -9126,17 +9856,20 @@ export interface PutBucketAccelerateConfigurationRequest {
   Bucket: string | undefined;
 
   /**
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   */
+  ExpectedBucketOwner?: string;
+
+  /**
    * <p>Container for setting the transfer acceleration state.</p>
    */
   AccelerateConfiguration: AccelerateConfiguration | undefined;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
-   */
-  ExpectedBucketOwner?: string;
 }
 
 export namespace PutBucketAccelerateConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketAccelerateConfigurationRequest): any => ({
     ...obj,
   });
@@ -9147,11 +9880,6 @@ export interface PutBucketAclRequest {
    * <p>The canned ACL to apply to the bucket.</p>
    */
   ACL?: BucketCannedACL | string;
-
-  /**
-   * <p>Contains the elements that set the ACL permissions for an object per grantee.</p>
-   */
-  AccessControlPolicy?: AccessControlPolicy;
 
   /**
    * <p>The bucket to which to apply the ACL.</p>
@@ -9195,12 +9923,20 @@ export interface PutBucketAclRequest {
   GrantWriteACP?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
+
+  /**
+   * <p>Contains the elements that set the ACL permissions for an object per grantee.</p>
+   */
+  AccessControlPolicy?: AccessControlPolicy;
 }
 
 export namespace PutBucketAclRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketAclRequest): any => ({
     ...obj,
   });
@@ -9218,17 +9954,20 @@ export interface PutBucketAnalyticsConfigurationRequest {
   Id: string | undefined;
 
   /**
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   */
+  ExpectedBucketOwner?: string;
+
+  /**
    * <p>The configuration and any analyses for the analytics filter.</p>
    */
   AnalyticsConfiguration: AnalyticsConfiguration | undefined;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
-   */
-  ExpectedBucketOwner?: string;
 }
 
 export namespace PutBucketAnalyticsConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketAnalyticsConfigurationRequest): any => ({
     ...obj,
     ...(obj.AnalyticsConfiguration && {
@@ -9240,8 +9979,7 @@ export namespace PutBucketAnalyticsConfigurationRequest {
 /**
  * <p>Describes the cross-origin access configuration for objects in an Amazon S3 bucket. For more
  *          information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html">Enabling
- *             Cross-Origin Resource Sharing</a> in the <i>Amazon Simple Storage Service Developer
- *             Guide</i>.</p>
+ *             Cross-Origin Resource Sharing</a> in the <i>Amazon S3 User Guide</i>.</p>
  */
 export interface CORSConfiguration {
   /**
@@ -9252,6 +9990,9 @@ export interface CORSConfiguration {
 }
 
 export namespace CORSConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CORSConfiguration): any => ({
     ...obj,
   });
@@ -9264,13 +10005,6 @@ export interface PutBucketCorsRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>Describes the cross-origin access configuration for objects in an Amazon S3 bucket. For more
-   *          information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html">Enabling Cross-Origin Resource
-   *             Sharing</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   */
-  CORSConfiguration: CORSConfiguration | undefined;
-
-  /**
    * <p>The base64-encoded 128-bit MD5 digest of the data. This header must be used as a message
    *          integrity check to verify that the request body was not corrupted in transit. For more
    *          information, go to <a href="http://www.ietf.org/rfc/rfc1864.txt">RFC
@@ -9281,12 +10015,22 @@ export interface PutBucketCorsRequest {
   ContentMD5?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
+
+  /**
+   * <p>Describes the cross-origin access configuration for objects in an Amazon S3 bucket. For more
+   *          information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html">Enabling Cross-Origin Resource
+   *             Sharing</a> in the <i>Amazon S3 User Guide</i>.</p>
+   */
+  CORSConfiguration: CORSConfiguration | undefined;
 }
 
 export namespace PutBucketCorsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketCorsRequest): any => ({
     ...obj,
   });
@@ -9297,7 +10041,7 @@ export interface PutBucketEncryptionRequest {
    * <p>Specifies default encryption for a bucket using server-side encryption with Amazon S3-managed
    *          keys (SSE-S3) or customer master keys stored in AWS KMS (SSE-KMS). For information about
    *          the Amazon S3 default encryption feature, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html">Amazon S3 Default Bucket Encryption</a>
-   *          in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -9308,17 +10052,20 @@ export interface PutBucketEncryptionRequest {
   ContentMD5?: string;
 
   /**
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   */
+  ExpectedBucketOwner?: string;
+
+  /**
    * <p>Specifies the default server-side-encryption configuration.</p>
    */
   ServerSideEncryptionConfiguration: ServerSideEncryptionConfiguration | undefined;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
-   */
-  ExpectedBucketOwner?: string;
 }
 
 export namespace PutBucketEncryptionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketEncryptionRequest): any => ({
     ...obj,
     ...(obj.ServerSideEncryptionConfiguration && {
@@ -9347,6 +10094,9 @@ export interface PutBucketIntelligentTieringConfigurationRequest {
 }
 
 export namespace PutBucketIntelligentTieringConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketIntelligentTieringConfigurationRequest): any => ({
     ...obj,
   });
@@ -9364,17 +10114,20 @@ export interface PutBucketInventoryConfigurationRequest {
   Id: string | undefined;
 
   /**
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   */
+  ExpectedBucketOwner?: string;
+
+  /**
    * <p>Specifies the inventory configuration.</p>
    */
   InventoryConfiguration: InventoryConfiguration | undefined;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
-   */
-  ExpectedBucketOwner?: string;
 }
 
 export namespace PutBucketInventoryConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketInventoryConfigurationRequest): any => ({
     ...obj,
     ...(obj.InventoryConfiguration && {
@@ -9386,7 +10139,7 @@ export namespace PutBucketInventoryConfigurationRequest {
 /**
  * <p>Specifies the lifecycle configuration for objects in an Amazon S3 bucket. For more
  *          information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html">Object Lifecycle Management</a>
- *          in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *          in the <i>Amazon S3 User Guide</i>.</p>
  */
 export interface BucketLifecycleConfiguration {
   /**
@@ -9396,6 +10149,9 @@ export interface BucketLifecycleConfiguration {
 }
 
 export namespace BucketLifecycleConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketLifecycleConfiguration): any => ({
     ...obj,
     ...(obj.Rules && { Rules: obj.Rules.map((item) => LifecycleRule.filterSensitiveLog(item)) }),
@@ -9409,17 +10165,20 @@ export interface PutBucketLifecycleConfigurationRequest {
   Bucket: string | undefined;
 
   /**
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   */
+  ExpectedBucketOwner?: string;
+
+  /**
    * <p>Container for lifecycle rules. You can add as many as 1,000 rules.</p>
    */
   LifecycleConfiguration?: BucketLifecycleConfiguration;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
-   */
-  ExpectedBucketOwner?: string;
 }
 
 export namespace PutBucketLifecycleConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketLifecycleConfigurationRequest): any => ({
     ...obj,
     ...(obj.LifecycleConfiguration && {
@@ -9441,6 +10200,9 @@ export interface BucketLoggingStatus {
 }
 
 export namespace BucketLoggingStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketLoggingStatus): any => ({
     ...obj,
   });
@@ -9453,23 +10215,26 @@ export interface PutBucketLoggingRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>Container for logging status information.</p>
-   */
-  BucketLoggingStatus: BucketLoggingStatus | undefined;
-
-  /**
    * <p>The MD5 hash of the <code>PutBucketLogging</code> request body.</p>
    *          <p>For requests made using the AWS Command Line Interface (CLI) or AWS SDKs, this field is calculated automatically.</p>
    */
   ContentMD5?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
+
+  /**
+   * <p>Container for logging status information.</p>
+   */
+  BucketLoggingStatus: BucketLoggingStatus | undefined;
 }
 
 export namespace PutBucketLoggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketLoggingRequest): any => ({
     ...obj,
   });
@@ -9487,17 +10252,20 @@ export interface PutBucketMetricsConfigurationRequest {
   Id: string | undefined;
 
   /**
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   */
+  ExpectedBucketOwner?: string;
+
+  /**
    * <p>Specifies the metrics configuration.</p>
    */
   MetricsConfiguration: MetricsConfiguration | undefined;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
-   */
-  ExpectedBucketOwner?: string;
 }
 
 export namespace PutBucketMetricsConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketMetricsConfigurationRequest): any => ({
     ...obj,
     ...(obj.MetricsConfiguration && {
@@ -9513,18 +10281,21 @@ export interface PutBucketNotificationConfigurationRequest {
   Bucket: string | undefined;
 
   /**
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   */
+  ExpectedBucketOwner?: string;
+
+  /**
    * <p>A container for specifying the notification configuration of the bucket. If this element
    *          is empty, notifications are turned off for the bucket.</p>
    */
   NotificationConfiguration: NotificationConfiguration | undefined;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
-   */
-  ExpectedBucketOwner?: string;
 }
 
 export namespace PutBucketNotificationConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketNotificationConfigurationRequest): any => ({
     ...obj,
   });
@@ -9543,7 +10314,7 @@ export interface PutBucketOwnershipControlsRequest {
   ContentMD5?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 
@@ -9555,6 +10326,9 @@ export interface PutBucketOwnershipControlsRequest {
 }
 
 export namespace PutBucketOwnershipControlsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketOwnershipControlsRequest): any => ({
     ...obj,
   });
@@ -9584,12 +10358,15 @@ export interface PutBucketPolicyRequest {
   Policy: string | undefined;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace PutBucketPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketPolicyRequest): any => ({
     ...obj,
   });
@@ -9610,23 +10387,26 @@ export interface PutBucketReplicationRequest {
   ContentMD5?: string;
 
   /**
-   * <p>A container for replication rules. You can add up to 1,000 rules. The maximum size of a
-   *          replication configuration is 2 MB.</p>
-   */
-  ReplicationConfiguration: ReplicationConfiguration | undefined;
-
-  /**
    * <p>A token to allow Object Lock to be enabled for an existing bucket.</p>
    */
   Token?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
+
+  /**
+   * <p>A container for replication rules. You can add up to 1,000 rules. The maximum size of a
+   *          replication configuration is 2 MB.</p>
+   */
+  ReplicationConfiguration: ReplicationConfiguration | undefined;
 }
 
 export namespace PutBucketReplicationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketReplicationRequest): any => ({
     ...obj,
     ...(obj.ReplicationConfiguration && {
@@ -9646,6 +10426,9 @@ export interface RequestPaymentConfiguration {
 }
 
 export namespace RequestPaymentConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RequestPaymentConfiguration): any => ({
     ...obj,
   });
@@ -9658,7 +10441,7 @@ export interface PutBucketRequestPaymentRequest {
   Bucket: string | undefined;
 
   /**
-   * <p>>The base64-encoded 128-bit MD5 digest of the data. You must use this header as a
+   * <p>The base64-encoded 128-bit MD5 digest of the data. You must use this header as a
    *          message integrity check to verify that the request body was not corrupted in transit. For
    *          more information, see <a href="http://www.ietf.org/rfc/rfc1864.txt">RFC
    *          1864</a>.</p>
@@ -9667,17 +10450,20 @@ export interface PutBucketRequestPaymentRequest {
   ContentMD5?: string;
 
   /**
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   */
+  ExpectedBucketOwner?: string;
+
+  /**
    * <p>Container for Payer.</p>
    */
   RequestPaymentConfiguration: RequestPaymentConfiguration | undefined;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
-   */
-  ExpectedBucketOwner?: string;
 }
 
 export namespace PutBucketRequestPaymentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketRequestPaymentRequest): any => ({
     ...obj,
   });
@@ -9694,6 +10480,9 @@ export interface Tagging {
 }
 
 export namespace Tagging {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tagging): any => ({
     ...obj,
   });
@@ -9714,17 +10503,20 @@ export interface PutBucketTaggingRequest {
   ContentMD5?: string;
 
   /**
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   */
+  ExpectedBucketOwner?: string;
+
+  /**
    * <p>Container for the <code>TagSet</code> and <code>Tag</code> elements.</p>
    */
   Tagging: Tagging | undefined;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
-   */
-  ExpectedBucketOwner?: string;
 }
 
 export namespace PutBucketTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketTaggingRequest): any => ({
     ...obj,
   });
@@ -9751,6 +10543,9 @@ export interface VersioningConfiguration {
 }
 
 export namespace VersioningConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VersioningConfiguration): any => ({
     ...obj,
   });
@@ -9778,17 +10573,20 @@ export interface PutBucketVersioningRequest {
   MFA?: string;
 
   /**
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   */
+  ExpectedBucketOwner?: string;
+
+  /**
    * <p>Container for setting the versioning state.</p>
    */
   VersioningConfiguration: VersioningConfiguration | undefined;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
-   */
-  ExpectedBucketOwner?: string;
 }
 
 export namespace PutBucketVersioningRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketVersioningRequest): any => ({
     ...obj,
   });
@@ -9823,6 +10621,9 @@ export interface WebsiteConfiguration {
 }
 
 export namespace WebsiteConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WebsiteConfiguration): any => ({
     ...obj,
   });
@@ -9843,17 +10644,20 @@ export interface PutBucketWebsiteRequest {
   ContentMD5?: string;
 
   /**
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   */
+  ExpectedBucketOwner?: string;
+
+  /**
    * <p>Container for the request.</p>
    */
   WebsiteConfiguration: WebsiteConfiguration | undefined;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
-   */
-  ExpectedBucketOwner?: string;
 }
 
 export namespace PutBucketWebsiteRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketWebsiteRequest): any => ({
     ...obj,
   });
@@ -9925,6 +10729,9 @@ export interface PutObjectOutput {
 }
 
 export namespace PutObjectOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutObjectOutput): any => ({
     ...obj,
     ...(obj.SSEKMSKeyId && { SSEKMSKeyId: SENSITIVE_STRING }),
@@ -9946,9 +10753,9 @@ export interface PutObjectRequest {
   Body?: Readable | ReadableStream | Blob;
 
   /**
-   * <p>The bucket name to which the PUT operation was initiated. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   * <p>The bucket name to which the PUT action was initiated. </p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -10031,7 +10838,7 @@ export interface PutObjectRequest {
   GrantWriteACP?: string;
 
   /**
-   * <p>Object key for which the PUT operation was initiated.</p>
+   * <p>Object key for which the PUT action was initiated.</p>
    */
   Key: string | undefined;
 
@@ -10122,7 +10929,7 @@ export interface PutObjectRequest {
 
   /**
    * <p>Specifies whether Amazon S3 should use an S3 Bucket Key for object encryption with server-side encryption using AWS KMS (SSE-KMS). Setting this header to <code>true</code> causes Amazon S3 to use an S3 Bucket Key for object encryption with SSE-KMS.</p>
-   *          <p>Specifying this header with a PUT operation doesn’t affect bucket-level settings for S3 Bucket Key.</p>
+   *          <p>Specifying this header with a PUT action doesn’t affect bucket-level settings for S3 Bucket Key.</p>
    */
   BucketKeyEnabled?: boolean;
 
@@ -10158,12 +10965,15 @@ export interface PutObjectRequest {
   ObjectLockLegalHoldStatus?: ObjectLockLegalHoldStatus | string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
 }
 
 export namespace PutObjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutObjectRequest): any => ({
     ...obj,
     ...(obj.SSECustomerKey && { SSECustomerKey: SENSITIVE_STRING }),
@@ -10181,6 +10991,9 @@ export interface PutObjectAclOutput {
 }
 
 export namespace PutObjectAclOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutObjectAclOutput): any => ({
     ...obj,
   });
@@ -10193,13 +11006,8 @@ export interface PutObjectAclRequest {
   ACL?: ObjectCannedACL | string;
 
   /**
-   * <p>Contains the elements that set the ACL permissions for an object per grantee.</p>
-   */
-  AccessControlPolicy?: AccessControlPolicy;
-
-  /**
    * <p>The bucket name that contains the object to which you want to attach the ACL. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -10246,9 +11054,9 @@ export interface PutObjectAclRequest {
   GrantWriteACP?: string;
 
   /**
-   * <p>Key for which the PUT operation was initiated.</p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   * <p>Key for which the PUT action was initiated.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Key: string | undefined;
 
@@ -10266,12 +11074,20 @@ export interface PutObjectAclRequest {
   VersionId?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
+
+  /**
+   * <p>Contains the elements that set the ACL permissions for an object per grantee.</p>
+   */
+  AccessControlPolicy?: AccessControlPolicy;
 }
 
 export namespace PutObjectAclRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutObjectAclRequest): any => ({
     ...obj,
   });
@@ -10286,6 +11102,9 @@ export interface PutObjectLegalHoldOutput {
 }
 
 export namespace PutObjectLegalHoldOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutObjectLegalHoldOutput): any => ({
     ...obj,
   });
@@ -10294,7 +11113,7 @@ export namespace PutObjectLegalHoldOutput {
 export interface PutObjectLegalHoldRequest {
   /**
    * <p>The bucket name containing the object that you want to place a Legal Hold on. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -10302,12 +11121,6 @@ export interface PutObjectLegalHoldRequest {
    * <p>The key name for the object that you want to place a Legal Hold on.</p>
    */
   Key: string | undefined;
-
-  /**
-   * <p>Container element for the Legal Hold configuration you want to apply to the specified
-   *          object.</p>
-   */
-  LegalHold?: ObjectLockLegalHold;
 
   /**
    * <p>Confirms that the requester knows that they will be charged for the request. Bucket
@@ -10329,12 +11142,21 @@ export interface PutObjectLegalHoldRequest {
   ContentMD5?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
+
+  /**
+   * <p>Container element for the Legal Hold configuration you want to apply to the specified
+   *          object.</p>
+   */
+  LegalHold?: ObjectLockLegalHold;
 }
 
 export namespace PutObjectLegalHoldRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutObjectLegalHoldRequest): any => ({
     ...obj,
   });
@@ -10349,6 +11171,9 @@ export interface PutObjectLockConfigurationOutput {
 }
 
 export namespace PutObjectLockConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutObjectLockConfigurationOutput): any => ({
     ...obj,
   });
@@ -10359,11 +11184,6 @@ export interface PutObjectLockConfigurationRequest {
    * <p>The bucket whose Object Lock configuration you want to create or replace.</p>
    */
   Bucket: string | undefined;
-
-  /**
-   * <p>The Object Lock configuration that you want to apply to the specified bucket.</p>
-   */
-  ObjectLockConfiguration?: ObjectLockConfiguration;
 
   /**
    * <p>Confirms that the requester knows that they will be charged for the request. Bucket
@@ -10385,12 +11205,20 @@ export interface PutObjectLockConfigurationRequest {
   ContentMD5?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
+
+  /**
+   * <p>The Object Lock configuration that you want to apply to the specified bucket.</p>
+   */
+  ObjectLockConfiguration?: ObjectLockConfiguration;
 }
 
 export namespace PutObjectLockConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutObjectLockConfigurationRequest): any => ({
     ...obj,
   });
@@ -10405,6 +11233,9 @@ export interface PutObjectRetentionOutput {
 }
 
 export namespace PutObjectRetentionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutObjectRetentionOutput): any => ({
     ...obj,
   });
@@ -10414,7 +11245,7 @@ export interface PutObjectRetentionRequest {
   /**
    * <p>The bucket name that contains the object you want to apply this Object Retention
    *          configuration to. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -10423,11 +11254,6 @@ export interface PutObjectRetentionRequest {
    *          to.</p>
    */
   Key: string | undefined;
-
-  /**
-   * <p>The container element for the Object Retention configuration.</p>
-   */
-  Retention?: ObjectLockRetention;
 
   /**
    * <p>Confirms that the requester knows that they will be charged for the request. Bucket
@@ -10444,7 +11270,7 @@ export interface PutObjectRetentionRequest {
   VersionId?: string;
 
   /**
-   * <p>Indicates whether this operation should bypass Governance-mode restrictions.</p>
+   * <p>Indicates whether this action should bypass Governance-mode restrictions.</p>
    */
   BypassGovernanceRetention?: boolean;
 
@@ -10455,12 +11281,20 @@ export interface PutObjectRetentionRequest {
   ContentMD5?: string;
 
   /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
+
+  /**
+   * <p>The container element for the Object Retention configuration.</p>
+   */
+  Retention?: ObjectLockRetention;
 }
 
 export namespace PutObjectRetentionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutObjectRetentionRequest): any => ({
     ...obj,
   });
@@ -10474,6 +11308,9 @@ export interface PutObjectTaggingOutput {
 }
 
 export namespace PutObjectTaggingOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutObjectTaggingOutput): any => ({
     ...obj,
   });
@@ -10482,8 +11319,8 @@ export namespace PutObjectTaggingOutput {
 export interface PutObjectTaggingRequest {
   /**
    * <p>The bucket name containing the object. </p>
-   *          <p>When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this operation with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html">Using Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
-   *          <p>When using this API with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this operation using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *          <p>When using this action with an access point, you must direct requests to the access point hostname. The access point hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.s3-accesspoint.<i>Region</i>.amazonaws.com. When using this action with an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html">Using Access Points</a> in the <i>Amazon S3 User Guide</i>.</p>
+   *          <p>When using this action with Amazon S3 on Outposts, you must direct requests to the S3 on Outposts hostname. The S3 on Outposts hostname takes the form <i>AccessPointName</i>-<i>AccountId</i>.<i>outpostID</i>.s3-outposts.<i>Region</i>.amazonaws.com. When using this action using S3 on Outposts through the AWS SDKs, you provide the Outposts bucket ARN in place of the bucket name. For more information about S3 on Outposts ARNs, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using S3 on Outposts</a> in the <i>Amazon S3 User Guide</i>.</p>
    */
   Bucket: string | undefined;
 
@@ -10504,17 +11341,28 @@ export interface PutObjectTaggingRequest {
   ContentMD5?: string;
 
   /**
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   */
+  ExpectedBucketOwner?: string;
+
+  /**
+   * <p>Confirms that the requester knows that they will be charged for the request. Bucket
+   *          owners need not specify this parameter in their requests. For information about downloading
+   *          objects from requester pays buckets, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectsinRequesterPaysBuckets.html">Downloading Objects in
+   *             Requestor Pays Buckets</a> in the <i>Amazon S3 Developer Guide</i>.</p>
+   */
+  RequestPayer?: RequestPayer | string;
+
+  /**
    * <p>Container for the <code>TagSet</code> and <code>Tag</code> elements</p>
    */
   Tagging: Tagging | undefined;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
-   */
-  ExpectedBucketOwner?: string;
 }
 
 export namespace PutObjectTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutObjectTaggingRequest): any => ({
     ...obj,
   });
@@ -10534,27 +11382,29 @@ export interface PutPublicAccessBlockRequest {
   ContentMD5?: string;
 
   /**
-   * <p>The <code>PublicAccessBlock</code> configuration that you want to apply to this Amazon S3
-   *          bucket. You can enable the configuration options in any combination. For more information
-   *          about when Amazon S3 considers a bucket or object public, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status">The Meaning of "Public"</a> in the <i>Amazon Simple Storage Service Developer
-   *          Guide</i>.</p>
-   */
-  PublicAccessBlockConfiguration: PublicAccessBlockConfiguration | undefined;
-
-  /**
-   * <p>The account id of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
+   * <p>The account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP <code>403 (Access Denied)</code> error.</p>
    */
   ExpectedBucketOwner?: string;
+
+  /**
+   * <p>The <code>PublicAccessBlock</code> configuration that you want to apply to this Amazon S3
+   *          bucket. You can enable the configuration options in any combination. For more information
+   *          about when Amazon S3 considers a bucket or object public, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status">The Meaning of "Public"</a> in the <i>Amazon S3 User Guide</i>.</p>
+   */
+  PublicAccessBlockConfiguration: PublicAccessBlockConfiguration | undefined;
 }
 
 export namespace PutPublicAccessBlockRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutPublicAccessBlockRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>This operation is not allowed against this storage tier.</p>
+ * <p>This action is not allowed against this storage tier.</p>
  */
 export interface ObjectAlreadyInActiveTierError extends __SmithyException, $MetadataBearer {
   name: "ObjectAlreadyInActiveTierError";
@@ -10562,6 +11412,9 @@ export interface ObjectAlreadyInActiveTierError extends __SmithyException, $Meta
 }
 
 export namespace ObjectAlreadyInActiveTierError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectAlreadyInActiveTierError): any => ({
     ...obj,
   });
@@ -10582,6 +11435,9 @@ export interface RestoreObjectOutput {
 }
 
 export namespace RestoreObjectOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RestoreObjectOutput): any => ({
     ...obj,
   });
@@ -10600,40 +11456,10 @@ export interface GlacierJobParameters {
 }
 
 export namespace GlacierJobParameters {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GlacierJobParameters): any => ({
     ...obj,
-  });
-}
-
-/**
- * <p>Contains the type of server-side encryption used.</p>
- */
-export interface Encryption {
-  /**
-   * <p>The server-side encryption algorithm used when storing job results in Amazon S3 (for example,
-   *          AES256, aws:kms).</p>
-   */
-  EncryptionType: ServerSideEncryption | string | undefined;
-
-  /**
-   * <p>If the encryption type is <code>aws:kms</code>, this optional value specifies the ID of
-   *          the symmetric customer managed AWS KMS CMK to use for encryption of job results. Amazon S3 only
-   *          supports symmetric CMKs. For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html">Using Symmetric and
-   *             Asymmetric Keys</a> in the <i>AWS Key Management Service Developer
-   *             Guide</i>.</p>
-   */
-  KMSKeyId?: string;
-
-  /**
-   * <p>If the encryption type is <code>aws:kms</code>, this optional value can be used to
-   *          specify the encryption context for the restore results.</p>
-   */
-  KMSContext?: string;
-}
-
-export namespace Encryption {
-  export const filterSensitiveLog = (obj: Encryption): any => ({
-    ...obj,
-    ...(obj.KMSKeyId && { KMSKeyId: SENSITIVE_STRING }),
   });
 }

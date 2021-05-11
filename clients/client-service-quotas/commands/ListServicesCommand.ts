@@ -17,13 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListServicesCommandInput = ListServicesRequest;
-export type ListServicesCommandOutput = ListServicesResponse & __MetadataBearer;
+export interface ListServicesCommandInput extends ListServicesRequest {}
+export interface ListServicesCommandOutput extends ListServicesResponse, __MetadataBearer {}
 
 /**
- * <p>Lists the AWS services available in Service Quotas. Not all AWS services are available in
- *       Service Quotas. To list the see the list of the service quotas for a specific service, use
- *         <a>ListServiceQuotas</a>.</p>
+ * <p>Lists the names and codes for the services integrated with Service Quotas.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceQuotasClient, ListServicesCommand } from "@aws-sdk/client-service-quotas"; // ES Modules import
+ * // const { ServiceQuotasClient, ListServicesCommand } = require("@aws-sdk/client-service-quotas"); // CommonJS import
+ * const client = new ServiceQuotasClient(config);
+ * const command = new ListServicesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListServicesCommandInput} for command's `input` shape.
+ * @see {@link ListServicesCommandOutput} for command's `response` shape.
+ * @see {@link ServiceQuotasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListServicesCommand extends $Command<
   ListServicesCommandInput,

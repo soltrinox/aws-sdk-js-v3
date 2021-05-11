@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetStatementResultCommandInput = GetStatementResultRequest;
-export type GetStatementResultCommandOutput = GetStatementResultResponse & __MetadataBearer;
+export interface GetStatementResultCommandInput extends GetStatementResultRequest {}
+export interface GetStatementResultCommandOutput extends GetStatementResultResponse, __MetadataBearer {}
 
 /**
  * <p>Fetches the temporarily cached result of an SQL statement.
  *        A token is returned to page through the statement results. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftDataClient, GetStatementResultCommand } from "@aws-sdk/client-redshift-data"; // ES Modules import
+ * // const { RedshiftDataClient, GetStatementResultCommand } = require("@aws-sdk/client-redshift-data"); // CommonJS import
+ * const client = new RedshiftDataClient(config);
+ * const command = new GetStatementResultCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetStatementResultCommandInput} for command's `input` shape.
+ * @see {@link GetStatementResultCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftDataClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetStatementResultCommand extends $Command<
   GetStatementResultCommandInput,

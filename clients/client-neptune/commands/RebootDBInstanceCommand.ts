@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RebootDBInstanceCommandInput = RebootDBInstanceMessage;
-export type RebootDBInstanceCommandOutput = RebootDBInstanceResult & __MetadataBearer;
+export interface RebootDBInstanceCommandInput extends RebootDBInstanceMessage {}
+export interface RebootDBInstanceCommandOutput extends RebootDBInstanceResult, __MetadataBearer {}
 
 /**
  * <p>You might need to reboot your DB instance, usually for maintenance reasons. For example,
@@ -26,6 +26,20 @@ export type RebootDBInstanceCommandOutput = RebootDBInstanceResult & __MetadataB
  *       DB instance, you must reboot the instance for the changes to take effect.</p>
  *          <p>Rebooting a DB instance restarts the database engine service. Rebooting a DB instance
  *       results in a momentary outage, during which the DB instance status is set to rebooting.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, RebootDBInstanceCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, RebootDBInstanceCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new RebootDBInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RebootDBInstanceCommandInput} for command's `input` shape.
+ * @see {@link RebootDBInstanceCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RebootDBInstanceCommand extends $Command<
   RebootDBInstanceCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteUsageLimitCommandInput = DeleteUsageLimitMessage;
-export type DeleteUsageLimitCommandOutput = __MetadataBearer;
+export interface DeleteUsageLimitCommandInput extends DeleteUsageLimitMessage {}
+export interface DeleteUsageLimitCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a usage limit from a cluster.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, DeleteUsageLimitCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, DeleteUsageLimitCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new DeleteUsageLimitCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteUsageLimitCommandInput} for command's `input` shape.
+ * @see {@link DeleteUsageLimitCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteUsageLimitCommand extends $Command<
   DeleteUsageLimitCommandInput,

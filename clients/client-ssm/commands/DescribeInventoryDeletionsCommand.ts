@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeInventoryDeletionsCommandInput = DescribeInventoryDeletionsRequest;
-export type DescribeInventoryDeletionsCommandOutput = DescribeInventoryDeletionsResult & __MetadataBearer;
+export interface DescribeInventoryDeletionsCommandInput extends DescribeInventoryDeletionsRequest {}
+export interface DescribeInventoryDeletionsCommandOutput extends DescribeInventoryDeletionsResult, __MetadataBearer {}
 
 /**
  * <p>Describes a specific delete inventory operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DescribeInventoryDeletionsCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DescribeInventoryDeletionsCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DescribeInventoryDeletionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeInventoryDeletionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeInventoryDeletionsCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeInventoryDeletionsCommand extends $Command<
   DescribeInventoryDeletionsCommandInput,

@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ImportCertificateCommandInput = ImportCertificateMessage;
-export type ImportCertificateCommandOutput = ImportCertificateResponse & __MetadataBearer;
+export interface ImportCertificateCommandInput extends ImportCertificateMessage {}
+export interface ImportCertificateCommandOutput extends ImportCertificateResponse, __MetadataBearer {}
 
 /**
  * <p>Uploads the specified certificate.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, ImportCertificateCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, ImportCertificateCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new ImportCertificateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ImportCertificateCommandInput} for command's `input` shape.
+ * @see {@link ImportCertificateCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ImportCertificateCommand extends $Command<
   ImportCertificateCommandInput,

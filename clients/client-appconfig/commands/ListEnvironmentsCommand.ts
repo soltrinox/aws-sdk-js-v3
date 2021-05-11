@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListEnvironmentsCommandInput = ListEnvironmentsRequest;
-export type ListEnvironmentsCommandOutput = Environments & __MetadataBearer;
+export interface ListEnvironmentsCommandInput extends ListEnvironmentsRequest {}
+export interface ListEnvironmentsCommandOutput extends Environments, __MetadataBearer {}
 
 /**
  * <p>List the environments for an application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppConfigClient, ListEnvironmentsCommand } from "@aws-sdk/client-appconfig"; // ES Modules import
+ * // const { AppConfigClient, ListEnvironmentsCommand } = require("@aws-sdk/client-appconfig"); // CommonJS import
+ * const client = new AppConfigClient(config);
+ * const command = new ListEnvironmentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListEnvironmentsCommandInput} for command's `input` shape.
+ * @see {@link ListEnvironmentsCommandOutput} for command's `response` shape.
+ * @see {@link AppConfigClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListEnvironmentsCommand extends $Command<
   ListEnvironmentsCommandInput,

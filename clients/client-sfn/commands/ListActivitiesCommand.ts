@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListActivitiesCommandInput = ListActivitiesInput;
-export type ListActivitiesCommandOutput = ListActivitiesOutput & __MetadataBearer;
+export interface ListActivitiesCommandInput extends ListActivitiesInput {}
+export interface ListActivitiesCommandOutput extends ListActivitiesOutput, __MetadataBearer {}
 
 /**
  * <p>Lists the existing activities.</p>
@@ -27,6 +27,20 @@ export type ListActivitiesCommandOutput = ListActivitiesOutput & __MetadataBeare
  *          <note>
  *             <p>This operation is eventually consistent. The results are best effort and may not reflect very recent updates and changes.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SFNClient, ListActivitiesCommand } from "@aws-sdk/client-sfn"; // ES Modules import
+ * // const { SFNClient, ListActivitiesCommand } = require("@aws-sdk/client-sfn"); // CommonJS import
+ * const client = new SFNClient(config);
+ * const command = new ListActivitiesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListActivitiesCommandInput} for command's `input` shape.
+ * @see {@link ListActivitiesCommandOutput} for command's `response` shape.
+ * @see {@link SFNClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListActivitiesCommand extends $Command<
   ListActivitiesCommandInput,

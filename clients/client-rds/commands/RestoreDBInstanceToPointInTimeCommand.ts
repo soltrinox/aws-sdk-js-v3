@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreDBInstanceToPointInTimeCommandInput = RestoreDBInstanceToPointInTimeMessage;
-export type RestoreDBInstanceToPointInTimeCommandOutput = RestoreDBInstanceToPointInTimeResult & __MetadataBearer;
+export interface RestoreDBInstanceToPointInTimeCommandInput extends RestoreDBInstanceToPointInTimeMessage {}
+export interface RestoreDBInstanceToPointInTimeCommandOutput
+  extends RestoreDBInstanceToPointInTimeResult,
+    __MetadataBearer {}
 
 /**
  * <p>Restores a DB instance to an arbitrary point in time. You can restore to any point in time before the time identified by the LatestRestorableTime property. You can restore to a point up to the number of days specified by the BackupRetentionPeriod property.</p>
@@ -31,6 +33,20 @@ export type RestoreDBInstanceToPointInTimeCommandOutput = RestoreDBInstanceToPoi
  *          <note>
  *             <p>This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For Aurora, use <code>RestoreDBClusterToPointInTime</code>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, RestoreDBInstanceToPointInTimeCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, RestoreDBInstanceToPointInTimeCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new RestoreDBInstanceToPointInTimeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreDBInstanceToPointInTimeCommandInput} for command's `input` shape.
+ * @see {@link RestoreDBInstanceToPointInTimeCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreDBInstanceToPointInTimeCommand extends $Command<
   RestoreDBInstanceToPointInTimeCommandInput,

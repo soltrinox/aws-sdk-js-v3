@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSignalingChannelEndpointCommandInput = GetSignalingChannelEndpointInput;
-export type GetSignalingChannelEndpointCommandOutput = GetSignalingChannelEndpointOutput & __MetadataBearer;
+export interface GetSignalingChannelEndpointCommandInput extends GetSignalingChannelEndpointInput {}
+export interface GetSignalingChannelEndpointCommandOutput extends GetSignalingChannelEndpointOutput, __MetadataBearer {}
 
 /**
  * <p>Provides an endpoint for the specified signaling channel to send and receive messages.
@@ -35,6 +35,20 @@ export type GetSignalingChannelEndpointCommandOutput = GetSignalingChannelEndpoi
  *             of the viewers on the channel. A <code>VIEWER</code> role results in this API generating
  *             an endpoint that a client can use to communicate only with a
  *                 <code>MASTER</code>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisVideoClient, GetSignalingChannelEndpointCommand } from "@aws-sdk/client-kinesis-video"; // ES Modules import
+ * // const { KinesisVideoClient, GetSignalingChannelEndpointCommand } = require("@aws-sdk/client-kinesis-video"); // CommonJS import
+ * const client = new KinesisVideoClient(config);
+ * const command = new GetSignalingChannelEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSignalingChannelEndpointCommandInput} for command's `input` shape.
+ * @see {@link GetSignalingChannelEndpointCommandOutput} for command's `response` shape.
+ * @see {@link KinesisVideoClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSignalingChannelEndpointCommand extends $Command<
   GetSignalingChannelEndpointCommandInput,

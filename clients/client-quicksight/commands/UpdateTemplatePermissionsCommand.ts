@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateTemplatePermissionsCommandInput = UpdateTemplatePermissionsRequest;
-export type UpdateTemplatePermissionsCommandOutput = UpdateTemplatePermissionsResponse & __MetadataBearer;
+export interface UpdateTemplatePermissionsCommandInput extends UpdateTemplatePermissionsRequest {}
+export interface UpdateTemplatePermissionsCommandOutput extends UpdateTemplatePermissionsResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the resource permissions for a template.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, UpdateTemplatePermissionsCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, UpdateTemplatePermissionsCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new UpdateTemplatePermissionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateTemplatePermissionsCommandInput} for command's `input` shape.
+ * @see {@link UpdateTemplatePermissionsCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateTemplatePermissionsCommand extends $Command<
   UpdateTemplatePermissionsCommandInput,

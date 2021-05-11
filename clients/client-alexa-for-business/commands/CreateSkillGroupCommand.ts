@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSkillGroupCommandInput = CreateSkillGroupRequest;
-export type CreateSkillGroupCommandOutput = CreateSkillGroupResponse & __MetadataBearer;
+export interface CreateSkillGroupCommandInput extends CreateSkillGroupRequest {}
+export interface CreateSkillGroupCommandOutput extends CreateSkillGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a skill group with a specified name and description.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, CreateSkillGroupCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, CreateSkillGroupCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new CreateSkillGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSkillGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateSkillGroupCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSkillGroupCommand extends $Command<
   CreateSkillGroupCommandInput,

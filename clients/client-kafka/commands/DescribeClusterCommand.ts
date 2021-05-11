@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeClusterCommandInput = DescribeClusterRequest;
-export type DescribeClusterCommandOutput = DescribeClusterResponse & __MetadataBearer;
+export interface DescribeClusterCommandInput extends DescribeClusterRequest {}
+export interface DescribeClusterCommandOutput extends DescribeClusterResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, DescribeClusterCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, DescribeClusterCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new DescribeClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeClusterCommandInput} for command's `input` shape.
+ * @see {@link DescribeClusterCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeClusterCommand extends $Command<
   DescribeClusterCommandInput,

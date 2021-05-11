@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateUserCommandInput = CreateUserRequest;
-export type CreateUserCommandOutput = CreateUserResponse & __MetadataBearer;
+export interface CreateUserCommandInput extends CreateUserRequest {}
+export interface CreateUserCommandOutput extends CreateUserResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a user and associates them with an existing file transfer protocol-enabled server.
@@ -28,6 +28,20 @@ export type CreateUserCommandOutput = CreateUserResponse & __MetadataBearer;
  *       user's public key, and assign the user's AWS Identity and Access Management (IAM)
  *       role. You can also optionally add a scope-down policy, and assign metadata with tags that can
  *       be used to group and search for users.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TransferClient, CreateUserCommand } from "@aws-sdk/client-transfer"; // ES Modules import
+ * // const { TransferClient, CreateUserCommand } = require("@aws-sdk/client-transfer"); // CommonJS import
+ * const client = new TransferClient(config);
+ * const command = new CreateUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateUserCommandInput} for command's `input` shape.
+ * @see {@link CreateUserCommandOutput} for command's `response` shape.
+ * @see {@link TransferClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateUserCommand extends $Command<
   CreateUserCommandInput,

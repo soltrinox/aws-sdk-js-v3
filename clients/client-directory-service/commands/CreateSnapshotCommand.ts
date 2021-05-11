@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSnapshotCommandInput = CreateSnapshotRequest;
-export type CreateSnapshotCommandOutput = CreateSnapshotResult & __MetadataBearer;
+export interface CreateSnapshotCommandInput extends CreateSnapshotRequest {}
+export interface CreateSnapshotCommandOutput extends CreateSnapshotResult, __MetadataBearer {}
 
 /**
  * <p>Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS cloud.</p>
  *          <note>
  *             <p>You cannot take snapshots of AD Connector directories.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectoryServiceClient, CreateSnapshotCommand } from "@aws-sdk/client-directory-service"; // ES Modules import
+ * // const { DirectoryServiceClient, CreateSnapshotCommand } = require("@aws-sdk/client-directory-service"); // CommonJS import
+ * const client = new DirectoryServiceClient(config);
+ * const command = new CreateSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSnapshotCommandInput} for command's `input` shape.
+ * @see {@link CreateSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link DirectoryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSnapshotCommand extends $Command<
   CreateSnapshotCommandInput,

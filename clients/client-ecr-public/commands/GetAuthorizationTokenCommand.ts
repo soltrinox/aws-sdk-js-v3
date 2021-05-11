@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAuthorizationTokenCommandInput = GetAuthorizationTokenRequest;
-export type GetAuthorizationTokenCommandOutput = GetAuthorizationTokenResponse & __MetadataBearer;
+export interface GetAuthorizationTokenCommandInput extends GetAuthorizationTokenRequest {}
+export interface GetAuthorizationTokenCommandOutput extends GetAuthorizationTokenResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves an authorization token. An authorization token represents your IAM
@@ -26,6 +26,20 @@ export type GetAuthorizationTokenCommandOutput = GetAuthorizationTokenResponse &
  *          principal has access to. The authorization token is valid for 12 hours. This API requires
  *          the <code>ecr-public:GetAuthorizationToken</code> and
  *             <code>sts:GetServiceBearerToken</code> permissions.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECRPUBLICClient, GetAuthorizationTokenCommand } from "@aws-sdk/client-ecr-public"; // ES Modules import
+ * // const { ECRPUBLICClient, GetAuthorizationTokenCommand } = require("@aws-sdk/client-ecr-public"); // CommonJS import
+ * const client = new ECRPUBLICClient(config);
+ * const command = new GetAuthorizationTokenCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAuthorizationTokenCommandInput} for command's `input` shape.
+ * @see {@link GetAuthorizationTokenCommandOutput} for command's `response` shape.
+ * @see {@link ECRPUBLICClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAuthorizationTokenCommand extends $Command<
   GetAuthorizationTokenCommandInput,

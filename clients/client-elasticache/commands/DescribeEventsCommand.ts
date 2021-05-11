@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEventsCommandInput = DescribeEventsMessage;
-export type DescribeEventsCommandOutput = EventsMessage & __MetadataBearer;
+export interface DescribeEventsCommandInput extends DescribeEventsMessage {}
+export interface DescribeEventsCommandOutput extends EventsMessage, __MetadataBearer {}
 
 /**
  * <p>Returns events related to clusters, cache
@@ -27,6 +27,20 @@ export type DescribeEventsCommandOutput = EventsMessage & __MetadataBearer;
  *             the name as a parameter.</p>
  *         <p>By default, only the events occurring within the last hour are returned;
  *             however, you can retrieve up to 14 days' worth of events if necessary.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, DescribeEventsCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, DescribeEventsCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new DescribeEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEventsCommandInput} for command's `input` shape.
+ * @see {@link DescribeEventsCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEventsCommand extends $Command<
   DescribeEventsCommandInput,

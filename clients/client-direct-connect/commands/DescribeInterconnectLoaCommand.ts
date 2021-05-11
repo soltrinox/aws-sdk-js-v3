@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeInterconnectLoaCommandInput = DescribeInterconnectLoaRequest;
-export type DescribeInterconnectLoaCommandOutput = DescribeInterconnectLoaResponse & __MetadataBearer;
+export interface DescribeInterconnectLoaCommandInput extends DescribeInterconnectLoaRequest {}
+export interface DescribeInterconnectLoaCommandOutput extends DescribeInterconnectLoaResponse, __MetadataBearer {}
 
 /**
  * @deprecated
@@ -28,6 +28,20 @@ export type DescribeInterconnectLoaCommandOutput = DescribeInterconnectLoaRespon
  *          <p>The Letter of Authorization - Connecting Facility Assignment (LOA-CFA) is a document that is used when establishing your cross connect to AWS at the colocation facility.
  *       For more information, see <a href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html">Requesting Cross Connects at AWS Direct Connect Locations</a>
  *       in the <i>AWS Direct Connect User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectConnectClient, DescribeInterconnectLoaCommand } from "@aws-sdk/client-direct-connect"; // ES Modules import
+ * // const { DirectConnectClient, DescribeInterconnectLoaCommand } = require("@aws-sdk/client-direct-connect"); // CommonJS import
+ * const client = new DirectConnectClient(config);
+ * const command = new DescribeInterconnectLoaCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeInterconnectLoaCommandInput} for command's `input` shape.
+ * @see {@link DescribeInterconnectLoaCommandOutput} for command's `response` shape.
+ * @see {@link DirectConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeInterconnectLoaCommand extends $Command<
   DescribeInterconnectLoaCommandInput,

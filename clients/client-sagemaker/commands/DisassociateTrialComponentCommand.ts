@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateTrialComponentCommandInput = DisassociateTrialComponentRequest;
-export type DisassociateTrialComponentCommandOutput = DisassociateTrialComponentResponse & __MetadataBearer;
+export interface DisassociateTrialComponentCommandInput extends DisassociateTrialComponentRequest {}
+export interface DisassociateTrialComponentCommandOutput extends DisassociateTrialComponentResponse, __MetadataBearer {}
 
 /**
  * <p>Disassociates a trial component from a trial. This doesn't effect other trials the
@@ -27,6 +27,20 @@ export type DisassociateTrialComponentCommandOutput = DisassociateTrialComponent
  *       call the <a>AssociateTrialComponent</a> API.</p>
  *          <p>To get a list of the trials a component is associated with, use the <a>Search</a> API. Specify <code>ExperimentTrialComponent</code> for the <code>Resource</code> parameter.
  *       The list appears in the response under <code>Results.TrialComponent.Parents</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DisassociateTrialComponentCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DisassociateTrialComponentCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DisassociateTrialComponentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateTrialComponentCommandInput} for command's `input` shape.
+ * @see {@link DisassociateTrialComponentCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateTrialComponentCommand extends $Command<
   DisassociateTrialComponentCommandInput,

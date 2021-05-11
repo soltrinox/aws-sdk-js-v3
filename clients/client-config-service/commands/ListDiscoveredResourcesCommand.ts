@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDiscoveredResourcesCommandInput = ListDiscoveredResourcesRequest;
-export type ListDiscoveredResourcesCommandOutput = ListDiscoveredResourcesResponse & __MetadataBearer;
+export interface ListDiscoveredResourcesCommandInput extends ListDiscoveredResourcesRequest {}
+export interface ListDiscoveredResourcesCommandOutput extends ListDiscoveredResourcesResponse, __MetadataBearer {}
 
 /**
  * <p>Accepts a resource type and returns a list of resource
@@ -38,6 +38,20 @@ export type ListDiscoveredResourcesCommandOutput = ListDiscoveredResourcesRespon
  * 				<code>nextToken</code> string. To get the next page of results,
  * 			run the request again and specify the string for the
  * 				<code>nextToken</code> parameter.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, ListDiscoveredResourcesCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, ListDiscoveredResourcesCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new ListDiscoveredResourcesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDiscoveredResourcesCommandInput} for command's `input` shape.
+ * @see {@link ListDiscoveredResourcesCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDiscoveredResourcesCommand extends $Command<
   ListDiscoveredResourcesCommandInput,

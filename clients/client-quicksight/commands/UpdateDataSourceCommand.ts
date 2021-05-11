@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDataSourceCommandInput = UpdateDataSourceRequest;
-export type UpdateDataSourceCommandOutput = UpdateDataSourceResponse & __MetadataBearer;
+export interface UpdateDataSourceCommandInput extends UpdateDataSourceRequest {}
+export interface UpdateDataSourceCommandOutput extends UpdateDataSourceResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a data source.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, UpdateDataSourceCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, UpdateDataSourceCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new UpdateDataSourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDataSourceCommandInput} for command's `input` shape.
+ * @see {@link UpdateDataSourceCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDataSourceCommand extends $Command<
   UpdateDataSourceCommandInput,

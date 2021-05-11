@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteKeyGroupCommandInput = DeleteKeyGroupRequest;
-export type DeleteKeyGroupCommandOutput = __MetadataBearer;
+export interface DeleteKeyGroupCommandInput extends DeleteKeyGroupRequest {}
+export interface DeleteKeyGroupCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a key group.</p>
@@ -28,6 +28,20 @@ export type DeleteKeyGroupCommandOutput = __MetadataBearer;
  * 		       <p>To delete a key group, you must provide the key group’s identifier and version. To get
  * 			these values, use <code>ListKeyGroups</code> followed by <code>GetKeyGroup</code> or
  * 			<code>GetKeyGroupConfig</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, DeleteKeyGroupCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, DeleteKeyGroupCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new DeleteKeyGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteKeyGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteKeyGroupCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteKeyGroupCommand extends $Command<
   DeleteKeyGroupCommandInput,

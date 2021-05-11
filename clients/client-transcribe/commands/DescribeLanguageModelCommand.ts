@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeLanguageModelCommandInput = DescribeLanguageModelRequest;
-export type DescribeLanguageModelCommandOutput = DescribeLanguageModelResponse & __MetadataBearer;
+export interface DescribeLanguageModelCommandInput extends DescribeLanguageModelRequest {}
+export interface DescribeLanguageModelCommandOutput extends DescribeLanguageModelResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about a single custom language model. Use this information to see
@@ -27,6 +27,20 @@ export type DescribeLanguageModelCommandOutput = DescribeLanguageModelResponse &
  *             updated the base model, you can create a new custom language model using the updated
  *             base model. If the language model wasn't created, you can use this operation to
  *             understand why Amazon Transcribe couldn't create it. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TranscribeClient, DescribeLanguageModelCommand } from "@aws-sdk/client-transcribe"; // ES Modules import
+ * // const { TranscribeClient, DescribeLanguageModelCommand } = require("@aws-sdk/client-transcribe"); // CommonJS import
+ * const client = new TranscribeClient(config);
+ * const command = new DescribeLanguageModelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeLanguageModelCommandInput} for command's `input` shape.
+ * @see {@link DescribeLanguageModelCommandOutput} for command's `response` shape.
+ * @see {@link TranscribeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeLanguageModelCommand extends $Command<
   DescribeLanguageModelCommandInput,

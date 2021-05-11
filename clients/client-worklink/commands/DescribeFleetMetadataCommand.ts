@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeFleetMetadataCommandInput = DescribeFleetMetadataRequest;
-export type DescribeFleetMetadataCommandOutput = DescribeFleetMetadataResponse & __MetadataBearer;
+export interface DescribeFleetMetadataCommandInput extends DescribeFleetMetadataRequest {}
+export interface DescribeFleetMetadataCommandOutput extends DescribeFleetMetadataResponse, __MetadataBearer {}
 
 /**
  * <p>Provides basic information for the specified fleet, excluding identity provider,
  *             networking, and device configuration details.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkLinkClient, DescribeFleetMetadataCommand } from "@aws-sdk/client-worklink"; // ES Modules import
+ * // const { WorkLinkClient, DescribeFleetMetadataCommand } = require("@aws-sdk/client-worklink"); // CommonJS import
+ * const client = new WorkLinkClient(config);
+ * const command = new DescribeFleetMetadataCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeFleetMetadataCommandInput} for command's `input` shape.
+ * @see {@link DescribeFleetMetadataCommandOutput} for command's `response` shape.
+ * @see {@link WorkLinkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeFleetMetadataCommand extends $Command<
   DescribeFleetMetadataCommandInput,

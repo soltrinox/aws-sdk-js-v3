@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AcceptGrantCommandInput = AcceptGrantRequest;
-export type AcceptGrantCommandOutput = AcceptGrantResponse & __MetadataBearer;
+export interface AcceptGrantCommandInput extends AcceptGrantRequest {}
+export interface AcceptGrantCommandOutput extends AcceptGrantResponse, __MetadataBearer {}
 
 /**
  * <p>Accepts the specified grant.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LicenseManagerClient, AcceptGrantCommand } from "@aws-sdk/client-license-manager"; // ES Modules import
+ * // const { LicenseManagerClient, AcceptGrantCommand } = require("@aws-sdk/client-license-manager"); // CommonJS import
+ * const client = new LicenseManagerClient(config);
+ * const command = new AcceptGrantCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AcceptGrantCommandInput} for command's `input` shape.
+ * @see {@link AcceptGrantCommandOutput} for command's `response` shape.
+ * @see {@link LicenseManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AcceptGrantCommand extends $Command<
   AcceptGrantCommandInput,

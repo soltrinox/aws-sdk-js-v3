@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteConnectionCommandInput = DeleteConnectionMessage;
-export type DeleteConnectionCommandOutput = DeleteConnectionResponse & __MetadataBearer;
+export interface DeleteConnectionCommandInput extends DeleteConnectionMessage {}
+export interface DeleteConnectionCommandOutput extends DeleteConnectionResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the connection between a replication instance and an endpoint.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, DeleteConnectionCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, DeleteConnectionCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new DeleteConnectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteConnectionCommandInput} for command's `input` shape.
+ * @see {@link DeleteConnectionCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteConnectionCommand extends $Command<
   DeleteConnectionCommandInput,

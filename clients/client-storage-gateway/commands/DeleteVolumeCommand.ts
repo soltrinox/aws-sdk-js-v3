@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteVolumeCommandInput = DeleteVolumeInput;
-export type DeleteVolumeCommandOutput = DeleteVolumeOutput & __MetadataBearer;
+export interface DeleteVolumeCommandInput extends DeleteVolumeInput {}
+export interface DeleteVolumeCommandOutput extends DeleteVolumeOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified storage volume that you previously created using the <a>CreateCachediSCSIVolume</a> or <a>CreateStorediSCSIVolume</a> API.
@@ -34,6 +34,20 @@ export type DeleteVolumeCommandOutput = DeleteVolumeOutput & __MetadataBearer;
  *
  *          <p>In the request, you must provide the Amazon Resource Name (ARN) of the storage volume
  *          you want to delete.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, DeleteVolumeCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, DeleteVolumeCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new DeleteVolumeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteVolumeCommandInput} for command's `input` shape.
+ * @see {@link DeleteVolumeCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteVolumeCommand extends $Command<
   DeleteVolumeCommandInput,

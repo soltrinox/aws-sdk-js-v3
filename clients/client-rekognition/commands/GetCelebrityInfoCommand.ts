@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCelebrityInfoCommandInput = GetCelebrityInfoRequest;
-export type GetCelebrityInfoCommandOutput = GetCelebrityInfoResponse & __MetadataBearer;
+export interface GetCelebrityInfoCommandInput extends GetCelebrityInfoRequest {}
+export interface GetCelebrityInfoCommandOutput extends GetCelebrityInfoResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the name and additional information about a celebrity based on his or her
@@ -29,6 +29,20 @@ export type GetCelebrityInfoCommandOutput = GetCelebrityInfoResponse & __Metadat
  *       the Amazon Rekognition Developer Guide.</p>
  *          <p>This operation requires permissions to perform the
  *         <code>rekognition:GetCelebrityInfo</code> action. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, GetCelebrityInfoCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, GetCelebrityInfoCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new GetCelebrityInfoCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCelebrityInfoCommandInput} for command's `input` shape.
+ * @see {@link GetCelebrityInfoCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCelebrityInfoCommand extends $Command<
   GetCelebrityInfoCommandInput,

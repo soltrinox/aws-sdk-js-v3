@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateSecurityKeyCommandInput = DisassociateSecurityKeyRequest;
-export type DisassociateSecurityKeyCommandOutput = __MetadataBearer;
+export interface DisassociateSecurityKeyCommandInput extends DisassociateSecurityKeyRequest {}
+export interface DisassociateSecurityKeyCommandOutput extends __MetadataBearer {}
 
 /**
- * <p>Deletes the specified security key.</p>
+ * <p>This API is in preview release for Amazon Connect and is subject to change.</p>
+ *          <p>Deletes the specified security key.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, DisassociateSecurityKeyCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, DisassociateSecurityKeyCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new DisassociateSecurityKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateSecurityKeyCommandInput} for command's `input` shape.
+ * @see {@link DisassociateSecurityKeyCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateSecurityKeyCommand extends $Command<
   DisassociateSecurityKeyCommandInput,

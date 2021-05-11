@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateCustomerGatewayCommandInput = AssociateCustomerGatewayRequest;
-export type AssociateCustomerGatewayCommandOutput = AssociateCustomerGatewayResponse & __MetadataBearer;
+export interface AssociateCustomerGatewayCommandInput extends AssociateCustomerGatewayRequest {}
+export interface AssociateCustomerGatewayCommandOutput extends AssociateCustomerGatewayResponse, __MetadataBearer {}
 
 /**
  * <p>Associates a customer gateway with a device and optionally, with a link. If you
@@ -30,6 +30,20 @@ export type AssociateCustomerGatewayCommandOutput = AssociateCustomerGatewayResp
  *             that are connected to a transit gateway, use the <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnConnections.html">DescribeVpnConnections</a> EC2 API and filter by
  *                 <code>transit-gateway-id</code>.</p>
  *         <p>You cannot associate a customer gateway with more than one device and link. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkManagerClient, AssociateCustomerGatewayCommand } from "@aws-sdk/client-networkmanager"; // ES Modules import
+ * // const { NetworkManagerClient, AssociateCustomerGatewayCommand } = require("@aws-sdk/client-networkmanager"); // CommonJS import
+ * const client = new NetworkManagerClient(config);
+ * const command = new AssociateCustomerGatewayCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateCustomerGatewayCommandInput} for command's `input` shape.
+ * @see {@link AssociateCustomerGatewayCommandOutput} for command's `response` shape.
+ * @see {@link NetworkManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateCustomerGatewayCommand extends $Command<
   AssociateCustomerGatewayCommandInput,

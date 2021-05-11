@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutLogEventsCommandInput = PutLogEventsRequest;
-export type PutLogEventsCommandOutput = PutLogEventsResponse & __MetadataBearer;
+export interface PutLogEventsCommandInput extends PutLogEventsRequest {}
+export interface PutLogEventsCommandOutput extends PutLogEventsResponse, __MetadataBearer {}
 
 /**
  * <p>Uploads a batch of log events to the specified log stream.</p>
@@ -59,6 +59,20 @@ export type PutLogEventsCommandOutput = PutLogEventsResponse & __MetadataBearer;
  *             </li>
  *          </ul>
  *          <p>If a call to <code>PutLogEvents</code> returns "UnrecognizedClientException" the most likely cause is an invalid AWS access key ID or secret key. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, PutLogEventsCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, PutLogEventsCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new PutLogEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutLogEventsCommandInput} for command's `input` shape.
+ * @see {@link PutLogEventsCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutLogEventsCommand extends $Command<
   PutLogEventsCommandInput,

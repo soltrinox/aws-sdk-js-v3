@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeletePublicAccessBlockCommandInput = DeletePublicAccessBlockRequest;
-export type DeletePublicAccessBlockCommandOutput = __MetadataBearer;
+export interface DeletePublicAccessBlockCommandInput extends DeletePublicAccessBlockRequest {}
+export interface DeletePublicAccessBlockCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Removes the <code>PublicAccessBlock</code> configuration for an AWS account. For more
@@ -38,6 +38,20 @@ export type DeletePublicAccessBlockCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, DeletePublicAccessBlockCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, DeletePublicAccessBlockCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new DeletePublicAccessBlockCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeletePublicAccessBlockCommandInput} for command's `input` shape.
+ * @see {@link DeletePublicAccessBlockCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeletePublicAccessBlockCommand extends $Command<
   DeletePublicAccessBlockCommandInput,

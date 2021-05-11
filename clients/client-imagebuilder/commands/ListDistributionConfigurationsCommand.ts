@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDistributionConfigurationsCommandInput = ListDistributionConfigurationsRequest;
-export type ListDistributionConfigurationsCommandOutput = ListDistributionConfigurationsResponse & __MetadataBearer;
+export interface ListDistributionConfigurationsCommandInput extends ListDistributionConfigurationsRequest {}
+export interface ListDistributionConfigurationsCommandOutput
+  extends ListDistributionConfigurationsResponse,
+    __MetadataBearer {}
 
 /**
- * <p> Returns a list of distribution configurations. </p>
+ * <p>Returns a list of distribution configurations.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ImagebuilderClient, ListDistributionConfigurationsCommand } from "@aws-sdk/client-imagebuilder"; // ES Modules import
+ * // const { ImagebuilderClient, ListDistributionConfigurationsCommand } = require("@aws-sdk/client-imagebuilder"); // CommonJS import
+ * const client = new ImagebuilderClient(config);
+ * const command = new ListDistributionConfigurationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDistributionConfigurationsCommandInput} for command's `input` shape.
+ * @see {@link ListDistributionConfigurationsCommandOutput} for command's `response` shape.
+ * @see {@link ImagebuilderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDistributionConfigurationsCommand extends $Command<
   ListDistributionConfigurationsCommandInput,

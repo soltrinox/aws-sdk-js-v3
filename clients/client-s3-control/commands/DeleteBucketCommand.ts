@@ -18,18 +18,18 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBucketCommandInput = DeleteBucketRequest;
-export type DeleteBucketCommandOutput = __MetadataBearer;
+export interface DeleteBucketCommandInput extends DeleteBucketRequest {}
+export interface DeleteBucketCommandOutput extends __MetadataBearer {}
 
 /**
  * <note>
- *             <p>This API operation deletes an Amazon S3 on Outposts bucket. To delete an S3 bucket,
+ *             <p>This action deletes an Amazon S3 on Outposts bucket. To delete an S3 bucket,
  *          see <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html">DeleteBucket</a> in the <i>Amazon Simple Storage Service API</i>.
  *       </p>
  *          </note>
  *          <p>Deletes the Amazon S3 on Outposts bucket. All objects (including all object versions and delete markers) in the
  *          bucket must be deleted before the bucket itself can be deleted.
- *          For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html">Using Amazon S3 on Outposts</a> in <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *          For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html">Using Amazon S3 on Outposts</a> in <i>Amazon Simple Storage Service User Guide</i>.</p>
  *          <p>All Amazon S3 on Outposts REST API requests for this action require an additional parameter of <code>x-amz-outpost-id</code> to be passed with the request and an S3 on Outposts endpoint hostname prefix instead of <code>s3-control</code>. For an example of the request syntax for Amazon S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and the <code>x-amz-outpost-id</code> derived using the access point ARN, see the <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucket.html#API_control_DeleteBucket_Examples">Examples</a> section.</p>
  *          <p class="title">
  *             <b>Related Resources</b>
@@ -51,6 +51,20 @@ export type DeleteBucketCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, DeleteBucketCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, DeleteBucketCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new DeleteBucketCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBucketCommandInput} for command's `input` shape.
+ * @see {@link DeleteBucketCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBucketCommand extends $Command<
   DeleteBucketCommandInput,

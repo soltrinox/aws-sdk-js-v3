@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutPartnerEventsCommandInput = PutPartnerEventsRequest;
-export type PutPartnerEventsCommandOutput = PutPartnerEventsResponse & __MetadataBearer;
+export interface PutPartnerEventsCommandInput extends PutPartnerEventsRequest {}
+export interface PutPartnerEventsCommandOutput extends PutPartnerEventsResponse, __MetadataBearer {}
 
 /**
  * <p>This is used by SaaS partners to write events to a customer's partner event bus. AWS
- *             customers do not use this operation.</p>
+ *       customers do not use this operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EventBridgeClient, PutPartnerEventsCommand } from "@aws-sdk/client-eventbridge"; // ES Modules import
+ * // const { EventBridgeClient, PutPartnerEventsCommand } = require("@aws-sdk/client-eventbridge"); // CommonJS import
+ * const client = new EventBridgeClient(config);
+ * const command = new PutPartnerEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutPartnerEventsCommandInput} for command's `input` shape.
+ * @see {@link PutPartnerEventsCommandOutput} for command's `response` shape.
+ * @see {@link EventBridgeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutPartnerEventsCommand extends $Command<
   PutPartnerEventsCommandInput,

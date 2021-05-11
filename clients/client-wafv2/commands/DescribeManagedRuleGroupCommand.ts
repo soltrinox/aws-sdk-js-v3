@@ -17,14 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeManagedRuleGroupCommandInput = DescribeManagedRuleGroupRequest;
-export type DescribeManagedRuleGroupCommandOutput = DescribeManagedRuleGroupResponse & __MetadataBearer;
+export interface DescribeManagedRuleGroupCommandInput extends DescribeManagedRuleGroupRequest {}
+export interface DescribeManagedRuleGroupCommandOutput extends DescribeManagedRuleGroupResponse, __MetadataBearer {}
 
 /**
- * <note>
- *             <p>This is the latest version of <b>AWS WAF</b>, named AWS WAFV2, released in November, 2019. For information, including how to migrate your AWS WAF resources from the prior release, see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>.  </p>
- *          </note>
- *          <p>Provides high-level information for a managed rule group, including descriptions of the rules. </p>
+ * <p>Provides high-level information for a managed rule group, including descriptions of the rules. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFV2Client, DescribeManagedRuleGroupCommand } from "@aws-sdk/client-wafv2"; // ES Modules import
+ * // const { WAFV2Client, DescribeManagedRuleGroupCommand } = require("@aws-sdk/client-wafv2"); // CommonJS import
+ * const client = new WAFV2Client(config);
+ * const command = new DescribeManagedRuleGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeManagedRuleGroupCommandInput} for command's `input` shape.
+ * @see {@link DescribeManagedRuleGroupCommandOutput} for command's `response` shape.
+ * @see {@link WAFV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeManagedRuleGroupCommand extends $Command<
   DescribeManagedRuleGroupCommandInput,

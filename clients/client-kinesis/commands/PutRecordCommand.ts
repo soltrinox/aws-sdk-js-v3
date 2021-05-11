@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutRecordCommandInput = PutRecordInput;
-export type PutRecordCommandOutput = PutRecordOutput & __MetadataBearer;
+export interface PutRecordCommandInput extends PutRecordInput {}
+export interface PutRecordCommandOutput extends PutRecordOutput, __MetadataBearer {}
 
 /**
  * <p>Writes a single data record into an Amazon Kinesis data stream. Call
@@ -54,6 +54,20 @@ export type PutRecordCommandOutput = PutRecordOutput & __MetadataBearer;
  *             throws <code>ProvisionedThroughputExceededException</code>. </p>
  *         <p>By default, data records are accessible for 24 hours from the time that they are
  *             added to a stream. You can use <a>IncreaseStreamRetentionPeriod</a> or <a>DecreaseStreamRetentionPeriod</a> to modify this retention period.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisClient, PutRecordCommand } from "@aws-sdk/client-kinesis"; // ES Modules import
+ * // const { KinesisClient, PutRecordCommand } = require("@aws-sdk/client-kinesis"); // CommonJS import
+ * const client = new KinesisClient(config);
+ * const command = new PutRecordCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutRecordCommandInput} for command's `input` shape.
+ * @see {@link PutRecordCommandOutput} for command's `response` shape.
+ * @see {@link KinesisClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutRecordCommand extends $Command<
   PutRecordCommandInput,

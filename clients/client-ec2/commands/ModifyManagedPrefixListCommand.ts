@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyManagedPrefixListCommandInput = ModifyManagedPrefixListRequest;
-export type ModifyManagedPrefixListCommandOutput = ModifyManagedPrefixListResult & __MetadataBearer;
+export interface ModifyManagedPrefixListCommandInput extends ModifyManagedPrefixListRequest {}
+export interface ModifyManagedPrefixListCommandOutput extends ModifyManagedPrefixListResult, __MetadataBearer {}
 
 /**
  * <p>Modifies the specified managed prefix list.</p>
@@ -26,6 +26,20 @@ export type ModifyManagedPrefixListCommandOutput = ModifyManagedPrefixListResult
  *             Changing the name of the prefix list does not affect the version.</p>
  *         <p>If you specify a current version number that does not match the true current version
  *             number, the request fails.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, ModifyManagedPrefixListCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, ModifyManagedPrefixListCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new ModifyManagedPrefixListCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyManagedPrefixListCommandInput} for command's `input` shape.
+ * @see {@link ModifyManagedPrefixListCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyManagedPrefixListCommand extends $Command<
   ModifyManagedPrefixListCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssignInstanceCommandInput = AssignInstanceRequest;
-export type AssignInstanceCommandOutput = __MetadataBearer;
+export interface AssignInstanceCommandInput extends AssignInstanceRequest {}
+export interface AssignInstanceCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Assign a registered instance to a layer.</p>
@@ -39,6 +39,20 @@ export type AssignInstanceCommandOutput = __MetadataBearer;
  *       level for the stack or an attached policy that explicitly grants permissions. For more
  *       information on user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, AssignInstanceCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, AssignInstanceCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new AssignInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssignInstanceCommandInput} for command's `input` shape.
+ * @see {@link AssignInstanceCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssignInstanceCommand extends $Command<
   AssignInstanceCommandInput,

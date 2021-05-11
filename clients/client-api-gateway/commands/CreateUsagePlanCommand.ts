@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateUsagePlanCommandInput = CreateUsagePlanRequest;
-export type CreateUsagePlanCommandOutput = UsagePlan & __MetadataBearer;
+export interface CreateUsagePlanCommandInput extends CreateUsagePlanRequest {}
+export interface CreateUsagePlanCommandOutput extends UsagePlan, __MetadataBearer {}
 
 /**
  * <p>Creates a usage plan with the throttle and quota limits, as well as the associated API stages, specified in the payload. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, CreateUsagePlanCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, CreateUsagePlanCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new CreateUsagePlanCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateUsagePlanCommandInput} for command's `input` shape.
+ * @see {@link CreateUsagePlanCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateUsagePlanCommand extends $Command<
   CreateUsagePlanCommandInput,

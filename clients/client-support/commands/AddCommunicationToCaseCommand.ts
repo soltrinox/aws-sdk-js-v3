@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddCommunicationToCaseCommandInput = AddCommunicationToCaseRequest;
-export type AddCommunicationToCaseCommandOutput = AddCommunicationToCaseResponse & __MetadataBearer;
+export interface AddCommunicationToCaseCommandInput extends AddCommunicationToCaseRequest {}
+export interface AddCommunicationToCaseCommandOutput extends AddCommunicationToCaseResponse, __MetadataBearer {}
 
 /**
  * <p>Adds additional customer communication to an AWS Support case. Use the <code>caseId</code>
@@ -41,6 +41,20 @@ export type AddCommunicationToCaseCommandOutput = AddCommunicationToCaseResponse
  *                 </li>
  *             </ul>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SupportClient, AddCommunicationToCaseCommand } from "@aws-sdk/client-support"; // ES Modules import
+ * // const { SupportClient, AddCommunicationToCaseCommand } = require("@aws-sdk/client-support"); // CommonJS import
+ * const client = new SupportClient(config);
+ * const command = new AddCommunicationToCaseCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddCommunicationToCaseCommandInput} for command's `input` shape.
+ * @see {@link AddCommunicationToCaseCommandOutput} for command's `response` shape.
+ * @see {@link SupportClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddCommunicationToCaseCommand extends $Command<
   AddCommunicationToCaseCommandInput,

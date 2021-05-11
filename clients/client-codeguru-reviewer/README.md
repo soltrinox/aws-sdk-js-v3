@@ -8,8 +8,8 @@
 AWS SDK for JavaScript CodeGuruReviewer Client for Node.js, Browser and React Native.
 
 <p>This section provides documentation for the Amazon CodeGuru Reviewer API operations. CodeGuru Reviewer is a service
-that uses program analysis and machine learning to detect potential defects that are difficult for developers to find and recommends
-fixes in your Java code.</p>
+that uses program analysis and machine learning to detect potential defects that are difficult for developers to find and recommendations to
+address them in your Java and Python code.</p>
 
 <p>By proactively detecting and providing recommendations for addressing code defects and implementing best practices, CodeGuru Reviewer
 improves the overall quality and maintainability of your code base during the code review stage. For more information about CodeGuru Reviewer, see the
@@ -61,7 +61,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new CodeGuruReviewerClient({ region: "REGION" });
 
 const params = {
@@ -146,7 +146,7 @@ const client = new AWS.CodeGuruReviewer({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.associateRepository(params);
+  const data = await client.associateRepository(params);
   // process data.
 } catch (error) {
   // error handling.

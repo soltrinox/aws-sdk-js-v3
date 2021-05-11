@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateFirewallPolicyCommandInput = AssociateFirewallPolicyRequest;
-export type AssociateFirewallPolicyCommandOutput = AssociateFirewallPolicyResponse & __MetadataBearer;
+export interface AssociateFirewallPolicyCommandInput extends AssociateFirewallPolicyRequest {}
+export interface AssociateFirewallPolicyCommandOutput extends AssociateFirewallPolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Associates a <a>FirewallPolicy</a> to a <a>Firewall</a>. </p>
@@ -26,6 +26,20 @@ export type AssociateFirewallPolicyCommandOutput = AssociateFirewallPolicyRespon
  *          collection of inspection rule groups and other settings. Each firewall requires one
  *          firewall policy association, and you can use the same firewall policy for multiple
  *          firewalls. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkFirewallClient, AssociateFirewallPolicyCommand } from "@aws-sdk/client-network-firewall"; // ES Modules import
+ * // const { NetworkFirewallClient, AssociateFirewallPolicyCommand } = require("@aws-sdk/client-network-firewall"); // CommonJS import
+ * const client = new NetworkFirewallClient(config);
+ * const command = new AssociateFirewallPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateFirewallPolicyCommandInput} for command's `input` shape.
+ * @see {@link AssociateFirewallPolicyCommandOutput} for command's `response` shape.
+ * @see {@link NetworkFirewallClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateFirewallPolicyCommand extends $Command<
   AssociateFirewallPolicyCommandInput,

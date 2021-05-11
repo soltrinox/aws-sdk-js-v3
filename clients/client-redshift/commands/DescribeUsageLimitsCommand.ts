@@ -1,5 +1,5 @@
 import { RedshiftClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../RedshiftClient";
-import { DescribeUsageLimitsMessage, UsageLimitList } from "../models/models_0";
+import { DescribeUsageLimitsMessage, UsageLimitList } from "../models/models_1";
 import {
   deserializeAws_queryDescribeUsageLimitsCommand,
   serializeAws_queryDescribeUsageLimitsCommand,
@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeUsageLimitsCommandInput = DescribeUsageLimitsMessage;
-export type DescribeUsageLimitsCommandOutput = UsageLimitList & __MetadataBearer;
+export interface DescribeUsageLimitsCommandInput extends DescribeUsageLimitsMessage {}
+export interface DescribeUsageLimitsCommandOutput extends UsageLimitList, __MetadataBearer {}
 
 /**
  * <p>Shows usage limits on a cluster.
@@ -41,6 +41,20 @@ export type DescribeUsageLimitsCommandOutput = UsageLimitList & __MetadataBearer
  *                 then all usage limit objects for the combination of cluster and feature are returned.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, DescribeUsageLimitsCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, DescribeUsageLimitsCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new DescribeUsageLimitsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeUsageLimitsCommandInput} for command's `input` shape.
+ * @see {@link DescribeUsageLimitsCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeUsageLimitsCommand extends $Command<
   DescribeUsageLimitsCommandInput,

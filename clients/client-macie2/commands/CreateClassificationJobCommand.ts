@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateClassificationJobCommandInput = CreateClassificationJobRequest;
-export type CreateClassificationJobCommandOutput = CreateClassificationJobResponse & __MetadataBearer;
+export interface CreateClassificationJobCommandInput extends CreateClassificationJobRequest {}
+export interface CreateClassificationJobCommandOutput extends CreateClassificationJobResponse, __MetadataBearer {}
 
 /**
  * <p>Creates and defines the settings for a classification job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Macie2Client, CreateClassificationJobCommand } from "@aws-sdk/client-macie2"; // ES Modules import
+ * // const { Macie2Client, CreateClassificationJobCommand } = require("@aws-sdk/client-macie2"); // CommonJS import
+ * const client = new Macie2Client(config);
+ * const command = new CreateClassificationJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateClassificationJobCommandInput} for command's `input` shape.
+ * @see {@link CreateClassificationJobCommandOutput} for command's `response` shape.
+ * @see {@link Macie2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateClassificationJobCommand extends $Command<
   CreateClassificationJobCommandInput,

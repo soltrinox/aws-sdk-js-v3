@@ -1,5 +1,5 @@
 import { IoTClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../IoTClient";
-import { DescribeAuditSuppressionRequest, DescribeAuditSuppressionResponse } from "../models/models_0";
+import { DescribeAuditSuppressionRequest, DescribeAuditSuppressionResponse } from "../models/models_1";
 import {
   deserializeAws_restJson1DescribeAuditSuppressionCommand,
   serializeAws_restJson1DescribeAuditSuppressionCommand,
@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAuditSuppressionCommandInput = DescribeAuditSuppressionRequest;
-export type DescribeAuditSuppressionCommandOutput = DescribeAuditSuppressionResponse & __MetadataBearer;
+export interface DescribeAuditSuppressionCommandInput extends DescribeAuditSuppressionRequest {}
+export interface DescribeAuditSuppressionCommandOutput extends DescribeAuditSuppressionResponse, __MetadataBearer {}
 
 /**
  * <p>
  *       Gets information about a Device Defender audit suppression.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DescribeAuditSuppressionCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DescribeAuditSuppressionCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DescribeAuditSuppressionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAuditSuppressionCommandInput} for command's `input` shape.
+ * @see {@link DescribeAuditSuppressionCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAuditSuppressionCommand extends $Command<
   DescribeAuditSuppressionCommandInput,

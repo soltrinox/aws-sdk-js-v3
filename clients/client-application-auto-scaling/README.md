@@ -44,7 +44,7 @@ resources:</p>
 <p>Amazon Keyspaces (for Apache Cassandra) tables</p>
 </li>
 <li>
-<p>Amazon Managed Streaming for Apache Kafka cluster storage</p>
+<p>Amazon Managed Streaming for Apache Kafka broker storage</p>
 </li>
 </ul>
 <p>
@@ -115,7 +115,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new ApplicationAutoScalingClient({ region: "REGION" });
 
 const params = {
@@ -200,7 +200,7 @@ const client = new AWS.ApplicationAutoScaling({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.deleteScalingPolicy(params);
+  const data = await client.deleteScalingPolicy(params);
   // process data.
 } catch (error) {
   // error handling.

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateOrganizationalUnitCommandInput = CreateOrganizationalUnitRequest;
-export type CreateOrganizationalUnitCommandOutput = CreateOrganizationalUnitResponse & __MetadataBearer;
+export interface CreateOrganizationalUnitCommandInput extends CreateOrganizationalUnitRequest {}
+export interface CreateOrganizationalUnitCommandOutput extends CreateOrganizationalUnitResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an organizational unit (OU) within a root or parent OU. An OU is a container
@@ -32,6 +32,20 @@ export type CreateOrganizationalUnitCommandOutput = CreateOrganizationalUnitResp
  *         <p>If the request includes tags, then the requester must have the
  *                 <code>organizations:TagResource</code> permission.</p>
  *         <p>This operation can be called only from the organization's management account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, CreateOrganizationalUnitCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, CreateOrganizationalUnitCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new CreateOrganizationalUnitCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateOrganizationalUnitCommandInput} for command's `input` shape.
+ * @see {@link CreateOrganizationalUnitCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateOrganizationalUnitCommand extends $Command<
   CreateOrganizationalUnitCommandInput,

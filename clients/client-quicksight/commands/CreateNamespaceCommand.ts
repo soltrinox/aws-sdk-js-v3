@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateNamespaceCommandInput = CreateNamespaceRequest;
-export type CreateNamespaceCommandOutput = CreateNamespaceResponse & __MetadataBearer;
+export interface CreateNamespaceCommandInput extends CreateNamespaceRequest {}
+export interface CreateNamespaceCommandOutput extends CreateNamespaceResponse, __MetadataBearer {}
 
 /**
  * <p>(Enterprise edition only) Creates a new namespace for you to use with Amazon QuickSight.</p>
@@ -29,6 +29,20 @@ export type CreateNamespaceCommandOutput = CreateNamespaceResponse & __MetadataB
  *             QuickSight. The namespace must be unique within the AWS account. By default, there is a
  *             limit of 100 namespaces per AWS account. To increase your limit, create a ticket with
  *             AWS Support. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, CreateNamespaceCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, CreateNamespaceCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new CreateNamespaceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateNamespaceCommandInput} for command's `input` shape.
+ * @see {@link CreateNamespaceCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateNamespaceCommand extends $Command<
   CreateNamespaceCommandInput,

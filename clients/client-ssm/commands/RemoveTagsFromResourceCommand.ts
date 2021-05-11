@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveTagsFromResourceCommandInput = RemoveTagsFromResourceRequest;
-export type RemoveTagsFromResourceCommandOutput = RemoveTagsFromResourceResult & __MetadataBearer;
+export interface RemoveTagsFromResourceCommandInput extends RemoveTagsFromResourceRequest {}
+export interface RemoveTagsFromResourceCommandOutput extends RemoveTagsFromResourceResult, __MetadataBearer {}
 
 /**
  * <p>Removes tag keys from the specified resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, RemoveTagsFromResourceCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, RemoveTagsFromResourceCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new RemoveTagsFromResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveTagsFromResourceCommandInput} for command's `input` shape.
+ * @see {@link RemoveTagsFromResourceCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveTagsFromResourceCommand extends $Command<
   RemoveTagsFromResourceCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteArchiveRuleCommandInput = DeleteArchiveRuleRequest;
-export type DeleteArchiveRuleCommandOutput = __MetadataBearer;
+export interface DeleteArchiveRuleCommandInput extends DeleteArchiveRuleRequest {}
+export interface DeleteArchiveRuleCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified archive rule.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AccessAnalyzerClient, DeleteArchiveRuleCommand } from "@aws-sdk/client-accessanalyzer"; // ES Modules import
+ * // const { AccessAnalyzerClient, DeleteArchiveRuleCommand } = require("@aws-sdk/client-accessanalyzer"); // CommonJS import
+ * const client = new AccessAnalyzerClient(config);
+ * const command = new DeleteArchiveRuleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteArchiveRuleCommandInput} for command's `input` shape.
+ * @see {@link DeleteArchiveRuleCommandOutput} for command's `response` shape.
+ * @see {@link AccessAnalyzerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteArchiveRuleCommand extends $Command<
   DeleteArchiveRuleCommandInput,

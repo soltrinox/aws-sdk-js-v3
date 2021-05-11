@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBaiduChannelCommandInput = GetBaiduChannelRequest;
-export type GetBaiduChannelCommandOutput = GetBaiduChannelResponse & __MetadataBearer;
+export interface GetBaiduChannelCommandInput extends GetBaiduChannelRequest {}
+export interface GetBaiduChannelCommandOutput extends GetBaiduChannelResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about the status and settings of the Baidu channel for an application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, GetBaiduChannelCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, GetBaiduChannelCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new GetBaiduChannelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBaiduChannelCommandInput} for command's `input` shape.
+ * @see {@link GetBaiduChannelCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBaiduChannelCommand extends $Command<
   GetBaiduChannelCommandInput,

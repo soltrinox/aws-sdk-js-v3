@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAppsCommandInput = ListAppsRequest;
-export type ListAppsCommandOutput = ListAppsResponse & __MetadataBearer;
+export interface ListAppsCommandInput extends ListAppsRequest {}
+export interface ListAppsCommandOutput extends ListAppsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves summaries for all applications.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SMSClient, ListAppsCommand } from "@aws-sdk/client-sms"; // ES Modules import
+ * // const { SMSClient, ListAppsCommand } = require("@aws-sdk/client-sms"); // CommonJS import
+ * const client = new SMSClient(config);
+ * const command = new ListAppsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAppsCommandInput} for command's `input` shape.
+ * @see {@link ListAppsCommandOutput} for command's `response` shape.
+ * @see {@link SMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAppsCommand extends $Command<ListAppsCommandInput, ListAppsCommandOutput, SMSClientResolvedConfig> {
   // Start section: command_properties

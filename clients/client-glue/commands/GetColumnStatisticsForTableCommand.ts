@@ -17,13 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetColumnStatisticsForTableCommandInput = GetColumnStatisticsForTableRequest;
-export type GetColumnStatisticsForTableCommandOutput = GetColumnStatisticsForTableResponse & __MetadataBearer;
+export interface GetColumnStatisticsForTableCommandInput extends GetColumnStatisticsForTableRequest {}
+export interface GetColumnStatisticsForTableCommandOutput
+  extends GetColumnStatisticsForTableResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieves table statistics of columns.</p>
  *
  *          <p>The Identity and Access Management (IAM) permission required for this operation is <code>GetTable</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetColumnStatisticsForTableCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetColumnStatisticsForTableCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetColumnStatisticsForTableCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetColumnStatisticsForTableCommandInput} for command's `input` shape.
+ * @see {@link GetColumnStatisticsForTableCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetColumnStatisticsForTableCommand extends $Command<
   GetColumnStatisticsForTableCommandInput,

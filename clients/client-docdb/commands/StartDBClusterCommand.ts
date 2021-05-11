@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartDBClusterCommandInput = StartDBClusterMessage;
-export type StartDBClusterCommandOutput = StartDBClusterResult & __MetadataBearer;
+export interface StartDBClusterCommandInput extends StartDBClusterMessage {}
+export interface StartDBClusterCommandOutput extends StartDBClusterResult, __MetadataBearer {}
 
 /**
  * <p>Restarts the stopped cluster that is specified by <code>DBClusterIdentifier</code>.
  *             For more information, see <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html">Stopping and
  *                 Starting an Amazon DocumentDB Cluster</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DocDBClient, StartDBClusterCommand } from "@aws-sdk/client-docdb"; // ES Modules import
+ * // const { DocDBClient, StartDBClusterCommand } = require("@aws-sdk/client-docdb"); // CommonJS import
+ * const client = new DocDBClient(config);
+ * const command = new StartDBClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartDBClusterCommandInput} for command's `input` shape.
+ * @see {@link StartDBClusterCommandOutput} for command's `response` shape.
+ * @see {@link DocDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartDBClusterCommand extends $Command<
   StartDBClusterCommandInput,

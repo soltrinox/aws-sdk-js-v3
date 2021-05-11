@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListScheduledAuditsCommandInput = ListScheduledAuditsRequest;
-export type ListScheduledAuditsCommandOutput = ListScheduledAuditsResponse & __MetadataBearer;
+export interface ListScheduledAuditsCommandInput extends ListScheduledAuditsRequest {}
+export interface ListScheduledAuditsCommandOutput extends ListScheduledAuditsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists all of your scheduled audits.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, ListScheduledAuditsCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, ListScheduledAuditsCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new ListScheduledAuditsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListScheduledAuditsCommandInput} for command's `input` shape.
+ * @see {@link ListScheduledAuditsCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListScheduledAuditsCommand extends $Command<
   ListScheduledAuditsCommandInput,

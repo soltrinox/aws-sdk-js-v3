@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRelationalDatabaseLogEventsCommandInput = GetRelationalDatabaseLogEventsRequest;
-export type GetRelationalDatabaseLogEventsCommandOutput = GetRelationalDatabaseLogEventsResult & __MetadataBearer;
+export interface GetRelationalDatabaseLogEventsCommandInput extends GetRelationalDatabaseLogEventsRequest {}
+export interface GetRelationalDatabaseLogEventsCommandOutput
+  extends GetRelationalDatabaseLogEventsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Returns a list of log events for a database in Amazon Lightsail.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetRelationalDatabaseLogEventsCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetRelationalDatabaseLogEventsCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetRelationalDatabaseLogEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRelationalDatabaseLogEventsCommandInput} for command's `input` shape.
+ * @see {@link GetRelationalDatabaseLogEventsCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRelationalDatabaseLogEventsCommand extends $Command<
   GetRelationalDatabaseLogEventsCommandInput,

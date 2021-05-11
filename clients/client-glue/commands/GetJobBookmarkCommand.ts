@@ -18,11 +18,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetJobBookmarkCommandInput = GetJobBookmarkRequest;
-export type GetJobBookmarkCommandOutput = GetJobBookmarkResponse & __MetadataBearer;
+export interface GetJobBookmarkCommandInput extends GetJobBookmarkRequest {}
+export interface GetJobBookmarkCommandOutput extends GetJobBookmarkResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information on a job bookmark entry.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetJobBookmarkCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetJobBookmarkCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetJobBookmarkCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetJobBookmarkCommandInput} for command's `input` shape.
+ * @see {@link GetJobBookmarkCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetJobBookmarkCommand extends $Command<
   GetJobBookmarkCommandInput,

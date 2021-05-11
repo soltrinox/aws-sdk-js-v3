@@ -17,14 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeComputeEnvironmentsCommandInput = DescribeComputeEnvironmentsRequest;
-export type DescribeComputeEnvironmentsCommandOutput = DescribeComputeEnvironmentsResponse & __MetadataBearer;
+export interface DescribeComputeEnvironmentsCommandInput extends DescribeComputeEnvironmentsRequest {}
+export interface DescribeComputeEnvironmentsCommandOutput
+  extends DescribeComputeEnvironmentsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Describes one or more of your compute environments.</p>
  *          <p>If you're using an unmanaged compute environment, you can use the <code>DescribeComputeEnvironment</code>
  *    operation to determine the <code>ecsClusterArn</code> that you should launch your Amazon ECS container instances
  *    into.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BatchClient, DescribeComputeEnvironmentsCommand } from "@aws-sdk/client-batch"; // ES Modules import
+ * // const { BatchClient, DescribeComputeEnvironmentsCommand } = require("@aws-sdk/client-batch"); // CommonJS import
+ * const client = new BatchClient(config);
+ * const command = new DescribeComputeEnvironmentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeComputeEnvironmentsCommandInput} for command's `input` shape.
+ * @see {@link DescribeComputeEnvironmentsCommandOutput} for command's `response` shape.
+ * @see {@link BatchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeComputeEnvironmentsCommand extends $Command<
   DescribeComputeEnvironmentsCommandInput,

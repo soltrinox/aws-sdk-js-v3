@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListOriginRequestPoliciesCommandInput = ListOriginRequestPoliciesRequest;
-export type ListOriginRequestPoliciesCommandOutput = ListOriginRequestPoliciesResult & __MetadataBearer;
+export interface ListOriginRequestPoliciesCommandInput extends ListOriginRequestPoliciesRequest {}
+export interface ListOriginRequestPoliciesCommandOutput extends ListOriginRequestPoliciesResult, __MetadataBearer {}
 
 /**
  * <p>Gets a list of origin request policies.</p>
@@ -29,6 +29,20 @@ export type ListOriginRequestPoliciesCommandOutput = ListOriginRequestPoliciesRe
  * 			default maximum, the response is paginated. To get the next page of items, send a
  * 			subsequent request that specifies the <code>NextMarker</code> value from the current
  * 			response as the <code>Marker</code> value in the subsequent request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, ListOriginRequestPoliciesCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, ListOriginRequestPoliciesCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new ListOriginRequestPoliciesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListOriginRequestPoliciesCommandInput} for command's `input` shape.
+ * @see {@link ListOriginRequestPoliciesCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListOriginRequestPoliciesCommand extends $Command<
   ListOriginRequestPoliciesCommandInput,

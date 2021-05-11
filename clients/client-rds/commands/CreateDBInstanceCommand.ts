@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDBInstanceCommandInput = CreateDBInstanceMessage;
-export type CreateDBInstanceCommandOutput = CreateDBInstanceResult & __MetadataBearer;
+export interface CreateDBInstanceCommandInput extends CreateDBInstanceMessage {}
+export interface CreateDBInstanceCommandOutput extends CreateDBInstanceResult, __MetadataBearer {}
 
 /**
  * <p>Creates a new DB instance.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, CreateDBInstanceCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, CreateDBInstanceCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new CreateDBInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDBInstanceCommandInput} for command's `input` shape.
+ * @see {@link CreateDBInstanceCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDBInstanceCommand extends $Command<
   CreateDBInstanceCommandInput,

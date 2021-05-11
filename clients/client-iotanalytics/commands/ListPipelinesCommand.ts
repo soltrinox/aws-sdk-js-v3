@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPipelinesCommandInput = ListPipelinesRequest;
-export type ListPipelinesCommandOutput = ListPipelinesResponse & __MetadataBearer;
+export interface ListPipelinesCommandInput extends ListPipelinesRequest {}
+export interface ListPipelinesCommandOutput extends ListPipelinesResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a list of pipelines.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTAnalyticsClient, ListPipelinesCommand } from "@aws-sdk/client-iotanalytics"; // ES Modules import
+ * // const { IoTAnalyticsClient, ListPipelinesCommand } = require("@aws-sdk/client-iotanalytics"); // CommonJS import
+ * const client = new IoTAnalyticsClient(config);
+ * const command = new ListPipelinesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPipelinesCommandInput} for command's `input` shape.
+ * @see {@link ListPipelinesCommandOutput} for command's `response` shape.
+ * @see {@link IoTAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPipelinesCommand extends $Command<
   ListPipelinesCommandInput,

@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutObjectTaggingCommandInput = PutObjectTaggingRequest;
-export type PutObjectTaggingCommandOutput = PutObjectTaggingOutput & __MetadataBearer;
+export interface PutObjectTaggingCommandInput extends PutObjectTaggingRequest {}
+export interface PutObjectTaggingCommandOutput extends PutObjectTaggingOutput, __MetadataBearer {}
 
 /**
  * <p>Sets the supplied tag-set to an object that already exists in a bucket.</p>
@@ -83,7 +83,7 @@ export type PutObjectTaggingCommandOutput = PutObjectTaggingOutput & __MetadataB
  *                   </li>
  *                   <li>
  *                      <p>
- *                         <i>Cause: A conflicting conditional operation is currently in
+ *                         <i>Cause: A conflicting conditional action is currently in
  *                         progress against this resource. Please try again.</i>
  *                      </p>
  *                   </li>
@@ -120,7 +120,26 @@ export type PutObjectTaggingCommandOutput = PutObjectTaggingOutput & __MetadataB
  *                   <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html">GetObjectTagging</a>
  *                </p>
  *             </li>
+ *             <li>
+ *                <p>
+ *                   <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectTagging.html">DeleteObjectTagging</a>
+ *                </p>
+ *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, PutObjectTaggingCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, PutObjectTaggingCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new PutObjectTaggingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutObjectTaggingCommandInput} for command's `input` shape.
+ * @see {@link PutObjectTaggingCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutObjectTaggingCommand extends $Command<
   PutObjectTaggingCommandInput,

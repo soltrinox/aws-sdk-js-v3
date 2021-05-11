@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeComplianceByResourceCommandInput = DescribeComplianceByResourceRequest;
-export type DescribeComplianceByResourceCommandOutput = DescribeComplianceByResourceResponse & __MetadataBearer;
+export interface DescribeComplianceByResourceCommandInput extends DescribeComplianceByResourceRequest {}
+export interface DescribeComplianceByResourceCommandOutput
+  extends DescribeComplianceByResourceResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Indicates whether the specified AWS resources are compliant. If
@@ -55,6 +57,20 @@ export type DescribeComplianceByResourceCommandOutput = DescribeComplianceByReso
  * 					the rule's scope.</p>
  * 			         </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DescribeComplianceByResourceCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DescribeComplianceByResourceCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DescribeComplianceByResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeComplianceByResourceCommandInput} for command's `input` shape.
+ * @see {@link DescribeComplianceByResourceCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeComplianceByResourceCommand extends $Command<
   DescribeComplianceByResourceCommandInput,

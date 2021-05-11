@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type JsonUnionsCommandInput = UnionInputOutput;
-export type JsonUnionsCommandOutput = UnionInputOutput & __MetadataBearer;
+export interface JsonUnionsCommandInput extends UnionInputOutput {}
+export interface JsonUnionsCommandOutput extends UnionInputOutput, __MetadataBearer {}
 
 /**
  * This operation uses unions for inputs and outputs.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestJsonProtocolClient, JsonUnionsCommand } from "@aws-sdk/aws-restjson"; // ES Modules import
+ * // const { RestJsonProtocolClient, JsonUnionsCommand } = require("@aws-sdk/aws-restjson"); // CommonJS import
+ * const client = new RestJsonProtocolClient(config);
+ * const command = new JsonUnionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link JsonUnionsCommandInput} for command's `input` shape.
+ * @see {@link JsonUnionsCommandOutput} for command's `response` shape.
+ * @see {@link RestJsonProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class JsonUnionsCommand extends $Command<
   JsonUnionsCommandInput,

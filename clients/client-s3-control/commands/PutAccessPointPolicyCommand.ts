@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutAccessPointPolicyCommandInput = PutAccessPointPolicyRequest;
-export type PutAccessPointPolicyCommandOutput = __MetadataBearer;
+export interface PutAccessPointPolicyCommandInput extends PutAccessPointPolicyRequest {}
+export interface PutAccessPointPolicyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Associates an access policy with the specified access point. Each access point can have only one policy, so a request made to this API
@@ -39,6 +39,20 @@ export type PutAccessPointPolicyCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, PutAccessPointPolicyCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, PutAccessPointPolicyCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new PutAccessPointPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutAccessPointPolicyCommandInput} for command's `input` shape.
+ * @see {@link PutAccessPointPolicyCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutAccessPointPolicyCommand extends $Command<
   PutAccessPointPolicyCommandInput,

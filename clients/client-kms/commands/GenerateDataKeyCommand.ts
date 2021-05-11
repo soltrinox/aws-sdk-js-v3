@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GenerateDataKeyCommandInput = GenerateDataKeyRequest;
-export type GenerateDataKeyCommandOutput = GenerateDataKeyResponse & __MetadataBearer;
+export interface GenerateDataKeyCommandInput extends GenerateDataKeyRequest {}
+export interface GenerateDataKeyCommandOutput extends GenerateDataKeyResponse, __MetadataBearer {}
 
 /**
  * <p>Generates a unique symmetric data key for client-side encryption. This operation returns a
@@ -80,6 +80,56 @@ export type GenerateDataKeyCommandOutput = GenerateDataKeyResponse & __MetadataB
  *           data key from memory.</p>
  *             </li>
  *          </ol>
+ *          <p>
+ *             <b>Cross-account use</b>: Yes. To perform this operation with a CMK in a different AWS account, specify
+ *   the key ARN or alias ARN in the value of the <code>KeyId</code> parameter.</p>
+ *
+ *          <p>
+ *             <b>Required permissions</b>: <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:GenerateDataKey</a> (key policy)</p>
+ *          <p>
+ *             <b>Related operations:</b>
+ *          </p>
+ *          <ul>
+ *             <li>
+ *                <p>
+ *                   <a>Decrypt</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>Encrypt</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>GenerateDataKeyPair</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>GenerateDataKeyPairWithoutPlaintext</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>GenerateDataKeyWithoutPlaintext</a>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, GenerateDataKeyCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, GenerateDataKeyCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new GenerateDataKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GenerateDataKeyCommandInput} for command's `input` shape.
+ * @see {@link GenerateDataKeyCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GenerateDataKeyCommand extends $Command<
   GenerateDataKeyCommandInput,

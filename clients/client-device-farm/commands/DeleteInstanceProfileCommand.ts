@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteInstanceProfileCommandInput = DeleteInstanceProfileRequest;
-export type DeleteInstanceProfileCommandOutput = DeleteInstanceProfileResult & __MetadataBearer;
+export interface DeleteInstanceProfileCommandInput extends DeleteInstanceProfileRequest {}
+export interface DeleteInstanceProfileCommandOutput extends DeleteInstanceProfileResult, __MetadataBearer {}
 
 /**
  * <p>Deletes a profile that can be applied to one or more private device instances.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, DeleteInstanceProfileCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, DeleteInstanceProfileCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new DeleteInstanceProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteInstanceProfileCommandInput} for command's `input` shape.
+ * @see {@link DeleteInstanceProfileCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteInstanceProfileCommand extends $Command<
   DeleteInstanceProfileCommandInput,

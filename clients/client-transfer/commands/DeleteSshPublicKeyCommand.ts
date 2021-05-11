@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteSshPublicKeyCommandInput = DeleteSshPublicKeyRequest;
-export type DeleteSshPublicKeyCommandOutput = __MetadataBearer;
+export interface DeleteSshPublicKeyCommandInput extends DeleteSshPublicKeyRequest {}
+export interface DeleteSshPublicKeyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a user's Secure Shell (SSH) public key.</p>
  *
  *          <p>No response is returned from this operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TransferClient, DeleteSshPublicKeyCommand } from "@aws-sdk/client-transfer"; // ES Modules import
+ * // const { TransferClient, DeleteSshPublicKeyCommand } = require("@aws-sdk/client-transfer"); // CommonJS import
+ * const client = new TransferClient(config);
+ * const command = new DeleteSshPublicKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteSshPublicKeyCommandInput} for command's `input` shape.
+ * @see {@link DeleteSshPublicKeyCommandOutput} for command's `response` shape.
+ * @see {@link TransferClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteSshPublicKeyCommand extends $Command<
   DeleteSshPublicKeyCommandInput,

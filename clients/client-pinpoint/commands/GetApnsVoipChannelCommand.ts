@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetApnsVoipChannelCommandInput = GetApnsVoipChannelRequest;
-export type GetApnsVoipChannelCommandOutput = GetApnsVoipChannelResponse & __MetadataBearer;
+export interface GetApnsVoipChannelCommandInput extends GetApnsVoipChannelRequest {}
+export interface GetApnsVoipChannelCommandOutput extends GetApnsVoipChannelResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about the status and settings of the APNs VoIP channel for an application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, GetApnsVoipChannelCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, GetApnsVoipChannelCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new GetApnsVoipChannelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetApnsVoipChannelCommandInput} for command's `input` shape.
+ * @see {@link GetApnsVoipChannelCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetApnsVoipChannelCommand extends $Command<
   GetApnsVoipChannelCommandInput,

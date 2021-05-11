@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListInvalidationsCommandInput = ListInvalidationsRequest;
-export type ListInvalidationsCommandOutput = ListInvalidationsResult & __MetadataBearer;
+export interface ListInvalidationsCommandInput extends ListInvalidationsRequest {}
+export interface ListInvalidationsCommandOutput extends ListInvalidationsResult, __MetadataBearer {}
 
 /**
  * <p>Lists invalidation batches. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, ListInvalidationsCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, ListInvalidationsCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new ListInvalidationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListInvalidationsCommandInput} for command's `input` shape.
+ * @see {@link ListInvalidationsCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListInvalidationsCommand extends $Command<
   ListInvalidationsCommandInput,

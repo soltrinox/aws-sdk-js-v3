@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateUserCommandInput = CreateUserRequest;
-export type CreateUserCommandOutput = CreateUserResult & __MetadataBearer;
+export interface CreateUserCommandInput extends CreateUserRequest {}
+export interface CreateUserCommandOutput extends CreateUserResult, __MetadataBearer {}
 
 /**
  * <p>Creates a new user in the user pool.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppStreamClient, CreateUserCommand } from "@aws-sdk/client-appstream"; // ES Modules import
+ * // const { AppStreamClient, CreateUserCommand } = require("@aws-sdk/client-appstream"); // CommonJS import
+ * const client = new AppStreamClient(config);
+ * const command = new CreateUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateUserCommandInput} for command's `input` shape.
+ * @see {@link CreateUserCommandOutput} for command's `response` shape.
+ * @see {@link AppStreamClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateUserCommand extends $Command<
   CreateUserCommandInput,

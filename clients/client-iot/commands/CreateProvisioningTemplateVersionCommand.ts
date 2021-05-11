@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateProvisioningTemplateVersionCommandInput = CreateProvisioningTemplateVersionRequest;
-export type CreateProvisioningTemplateVersionCommandOutput = CreateProvisioningTemplateVersionResponse &
-  __MetadataBearer;
+export interface CreateProvisioningTemplateVersionCommandInput extends CreateProvisioningTemplateVersionRequest {}
+export interface CreateProvisioningTemplateVersionCommandOutput
+  extends CreateProvisioningTemplateVersionResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a new version of a fleet provisioning template.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, CreateProvisioningTemplateVersionCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, CreateProvisioningTemplateVersionCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new CreateProvisioningTemplateVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateProvisioningTemplateVersionCommandInput} for command's `input` shape.
+ * @see {@link CreateProvisioningTemplateVersionCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateProvisioningTemplateVersionCommand extends $Command<
   CreateProvisioningTemplateVersionCommandInput,

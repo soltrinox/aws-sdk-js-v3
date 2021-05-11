@@ -48,7 +48,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new NetworkManagerClient({ region: "REGION" });
 
 const params = {
@@ -133,7 +133,7 @@ const client = new AWS.NetworkManager({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.associateCustomerGateway(params);
+  const data = await client.associateCustomerGateway(params);
   // process data.
 } catch (error) {
   // error handling.

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDocumentCommandInput = GetDocumentRequest;
-export type GetDocumentCommandOutput = GetDocumentResult & __MetadataBearer;
+export interface GetDocumentCommandInput extends GetDocumentRequest {}
+export interface GetDocumentCommandOutput extends GetDocumentResult, __MetadataBearer {}
 
 /**
  * <p>Gets the contents of the specified Systems Manager document.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, GetDocumentCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, GetDocumentCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new GetDocumentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDocumentCommandInput} for command's `input` shape.
+ * @see {@link GetDocumentCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDocumentCommand extends $Command<
   GetDocumentCommandInput,

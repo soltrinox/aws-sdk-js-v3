@@ -15,15 +15,15 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateJobCommandInput = CreateJobRequest;
-export type CreateJobCommandOutput = CreateJobResult & __MetadataBearer;
+export interface CreateJobCommandInput extends CreateJobRequest {}
+export interface CreateJobCommandOutput extends CreateJobResult, __MetadataBearer {}
 
 /**
- * <p>S3 Batch Operations performs large-scale Batch Operations on Amazon S3 objects. Batch Operations can run a
- *          single operation or action on lists of Amazon S3 objects that you specify. For more information,
+ * <p>You can use S3 Batch Operations to perform large-scale batch actions on Amazon S3 objects. Batch Operations can run a
+ *          single action on lists of Amazon S3 objects that you specify. For more information,
  *          see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html">S3 Batch Operations</a> in the
- *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
- *          <p>This operation creates an S3 Batch Operations job.</p>
+ *             <i>Amazon Simple Storage Service User Guide</i>.</p>
+ *          <p>This action creates a S3 Batch Operations job.</p>
  *          <p></p>
  *          <p>Related actions include:</p>
  *          <ul>
@@ -47,7 +47,26 @@ export type CreateJobCommandOutput = CreateJobResult & __MetadataBearer;
  *                   <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html">UpdateJobStatus</a>
  *                </p>
  *             </li>
+ *             <li>
+ *                <p>
+ *                   <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_JobOperation.html">JobOperation</a>
+ *                </p>
+ *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, CreateJobCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, CreateJobCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new CreateJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateJobCommandInput} for command's `input` shape.
+ * @see {@link CreateJobCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateJobCommand extends $Command<
   CreateJobCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteApiKeyCommandInput = DeleteApiKeyRequest;
-export type DeleteApiKeyCommandOutput = DeleteApiKeyResponse & __MetadataBearer;
+export interface DeleteApiKeyCommandInput extends DeleteApiKeyRequest {}
+export interface DeleteApiKeyCommandOutput extends DeleteApiKeyResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an API key.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppSyncClient, DeleteApiKeyCommand } from "@aws-sdk/client-appsync"; // ES Modules import
+ * // const { AppSyncClient, DeleteApiKeyCommand } = require("@aws-sdk/client-appsync"); // CommonJS import
+ * const client = new AppSyncClient(config);
+ * const command = new DeleteApiKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteApiKeyCommandInput} for command's `input` shape.
+ * @see {@link DeleteApiKeyCommandOutput} for command's `response` shape.
+ * @see {@link AppSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteApiKeyCommand extends $Command<
   DeleteApiKeyCommandInput,

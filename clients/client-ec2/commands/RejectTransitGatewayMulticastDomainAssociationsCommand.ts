@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RejectTransitGatewayMulticastDomainAssociationsCommandInput = RejectTransitGatewayMulticastDomainAssociationsRequest;
-export type RejectTransitGatewayMulticastDomainAssociationsCommandOutput = RejectTransitGatewayMulticastDomainAssociationsResult &
-  __MetadataBearer;
+export interface RejectTransitGatewayMulticastDomainAssociationsCommandInput
+  extends RejectTransitGatewayMulticastDomainAssociationsRequest {}
+export interface RejectTransitGatewayMulticastDomainAssociationsCommandOutput
+  extends RejectTransitGatewayMulticastDomainAssociationsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Rejects a request to associate cross-account subnets with a transit gateway multicast domain.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, RejectTransitGatewayMulticastDomainAssociationsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, RejectTransitGatewayMulticastDomainAssociationsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new RejectTransitGatewayMulticastDomainAssociationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RejectTransitGatewayMulticastDomainAssociationsCommandInput} for command's `input` shape.
+ * @see {@link RejectTransitGatewayMulticastDomainAssociationsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RejectTransitGatewayMulticastDomainAssociationsCommand extends $Command<
   RejectTransitGatewayMulticastDomainAssociationsCommandInput,

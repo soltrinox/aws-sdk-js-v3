@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListCollectionsCommandInput = ListCollectionsRequest;
-export type ListCollectionsCommandOutput = ListCollectionsResponse & __MetadataBearer;
+export interface ListCollectionsCommandInput extends ListCollectionsRequest {}
+export interface ListCollectionsCommandOutput extends ListCollectionsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns list of collection IDs in your account.
@@ -27,6 +27,20 @@ export type ListCollectionsCommandOutput = ListCollectionsResponse & __MetadataB
  *
  *          <p>For an example, see Listing Collections in the Amazon Rekognition Developer Guide.</p>
  *          <p>This operation requires permissions to perform the <code>rekognition:ListCollections</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, ListCollectionsCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, ListCollectionsCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new ListCollectionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListCollectionsCommandInput} for command's `input` shape.
+ * @see {@link ListCollectionsCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListCollectionsCommand extends $Command<
   ListCollectionsCommandInput,

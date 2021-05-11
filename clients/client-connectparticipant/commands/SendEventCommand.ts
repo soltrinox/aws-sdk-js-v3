@@ -21,12 +21,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SendEventCommandInput = SendEventRequest;
-export type SendEventCommandOutput = SendEventResponse & __MetadataBearer;
+export interface SendEventCommandInput extends SendEventRequest {}
+export interface SendEventCommandOutput extends SendEventResponse, __MetadataBearer {}
 
 /**
  * <p>Sends an event. Note that ConnectionToken is used for invoking this API instead of
  *             ParticipantToken.</p>
+ *         <p>The Amazon Connect Participant Service APIs do not use <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4
+ *                 authentication</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectParticipantClient, SendEventCommand } from "@aws-sdk/client-connectparticipant"; // ES Modules import
+ * // const { ConnectParticipantClient, SendEventCommand } = require("@aws-sdk/client-connectparticipant"); // CommonJS import
+ * const client = new ConnectParticipantClient(config);
+ * const command = new SendEventCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SendEventCommandInput} for command's `input` shape.
+ * @see {@link SendEventCommandOutput} for command's `response` shape.
+ * @see {@link ConnectParticipantClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SendEventCommand extends $Command<
   SendEventCommandInput,

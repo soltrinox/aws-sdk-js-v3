@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateContainerInstancesStateCommandInput = UpdateContainerInstancesStateRequest;
-export type UpdateContainerInstancesStateCommandOutput = UpdateContainerInstancesStateResponse & __MetadataBearer;
+export interface UpdateContainerInstancesStateCommandInput extends UpdateContainerInstancesStateRequest {}
+export interface UpdateContainerInstancesStateCommandOutput
+  extends UpdateContainerInstancesStateResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Modifies the status of an Amazon ECS container instance.</p>
@@ -70,6 +72,20 @@ export type UpdateContainerInstancesStateCommandOutput = UpdateContainerInstance
  * 		       <p>When a container instance has been drained, you can set a container instance to
  * 				<code>ACTIVE</code> status and once it has reached that status the Amazon ECS scheduler
  * 			can begin scheduling tasks on the instance again.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, UpdateContainerInstancesStateCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, UpdateContainerInstancesStateCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new UpdateContainerInstancesStateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateContainerInstancesStateCommandInput} for command's `input` shape.
+ * @see {@link UpdateContainerInstancesStateCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateContainerInstancesStateCommand extends $Command<
   UpdateContainerInstancesStateCommandInput,

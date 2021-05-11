@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartPersonTrackingCommandInput = StartPersonTrackingRequest;
-export type StartPersonTrackingCommandOutput = StartPersonTrackingResponse & __MetadataBearer;
+export interface StartPersonTrackingCommandInput extends StartPersonTrackingRequest {}
+export interface StartPersonTrackingCommandOutput extends StartPersonTrackingResponse, __MetadataBearer {}
 
 /**
  * <p>Starts the asynchronous tracking of a person's path in a stored video.</p>
@@ -30,6 +30,20 @@ export type StartPersonTrackingCommandOutput = StartPersonTrackingResponse & __M
  *          <p>To get the results of the person detection operation, first check that the status value published to the Amazon SNS
  *        topic is <code>SUCCEEDED</code>. If so, call  <a>GetPersonTracking</a> and pass the job identifier
  *       (<code>JobId</code>) from the initial call to <code>StartPersonTracking</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, StartPersonTrackingCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, StartPersonTrackingCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new StartPersonTrackingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartPersonTrackingCommandInput} for command's `input` shape.
+ * @see {@link StartPersonTrackingCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartPersonTrackingCommand extends $Command<
   StartPersonTrackingCommandInput,

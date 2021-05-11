@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteLogSubscriptionCommandInput = DeleteLogSubscriptionRequest;
-export type DeleteLogSubscriptionCommandOutput = DeleteLogSubscriptionResult & __MetadataBearer;
+export interface DeleteLogSubscriptionCommandInput extends DeleteLogSubscriptionRequest {}
+export interface DeleteLogSubscriptionCommandOutput extends DeleteLogSubscriptionResult, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified log subscription.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectoryServiceClient, DeleteLogSubscriptionCommand } from "@aws-sdk/client-directory-service"; // ES Modules import
+ * // const { DirectoryServiceClient, DeleteLogSubscriptionCommand } = require("@aws-sdk/client-directory-service"); // CommonJS import
+ * const client = new DirectoryServiceClient(config);
+ * const command = new DeleteLogSubscriptionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteLogSubscriptionCommandInput} for command's `input` shape.
+ * @see {@link DeleteLogSubscriptionCommandOutput} for command's `response` shape.
+ * @see {@link DirectoryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteLogSubscriptionCommand extends $Command<
   DeleteLogSubscriptionCommandInput,

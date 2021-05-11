@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDomainCommandInput = UpdateDomainRequest;
-export type UpdateDomainCommandOutput = UpdateDomainResponse & __MetadataBearer;
+export interface UpdateDomainCommandInput extends UpdateDomainRequest {}
+export interface UpdateDomainCommandOutput extends UpdateDomainResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the default settings for new user profiles in the domain.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, UpdateDomainCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, UpdateDomainCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new UpdateDomainCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDomainCommandInput} for command's `input` shape.
+ * @see {@link UpdateDomainCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDomainCommand extends $Command<
   UpdateDomainCommandInput,

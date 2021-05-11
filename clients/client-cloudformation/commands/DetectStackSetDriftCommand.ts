@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DetectStackSetDriftCommandInput = DetectStackSetDriftInput;
-export type DetectStackSetDriftCommandOutput = DetectStackSetDriftOutput & __MetadataBearer;
+export interface DetectStackSetDriftCommandInput extends DetectStackSetDriftInput {}
+export interface DetectStackSetDriftCommandOutput extends DetectStackSetDriftOutput, __MetadataBearer {}
 
 /**
  * <p>Detect drift on a stack set. When CloudFormation performs drift detection on a stack
@@ -39,7 +39,7 @@ export type DetectStackSetDriftCommandOutput = DetectStackSetDriftOutput & __Met
  *             <li>
  *                <p>Use <code>
  *                      <a>DescribeStackSet</a>
- *                   </code> to return detailed informaiton
+ *                   </code> to return detailed information
  *                about the stack set, including detailed information about the last
  *                <i>completed</i> drift operation performed on the stack set.
  *                (Information about drift operations that are in progress is not included.)</p>
@@ -66,6 +66,20 @@ export type DetectStackSetDriftCommandOutput = DetectStackSetDriftOutput & __Met
  *          <p>To stop a drift detection stack set operation, use <code>
  *                <a>StopStackSetOperation</a>
  *             </code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, DetectStackSetDriftCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, DetectStackSetDriftCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new DetectStackSetDriftCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DetectStackSetDriftCommandInput} for command's `input` shape.
+ * @see {@link DetectStackSetDriftCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DetectStackSetDriftCommand extends $Command<
   DetectStackSetDriftCommandInput,

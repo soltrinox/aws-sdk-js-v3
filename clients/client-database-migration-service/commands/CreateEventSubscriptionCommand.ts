@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateEventSubscriptionCommandInput = CreateEventSubscriptionMessage;
-export type CreateEventSubscriptionCommandOutput = CreateEventSubscriptionResponse & __MetadataBearer;
+export interface CreateEventSubscriptionCommandInput extends CreateEventSubscriptionMessage {}
+export interface CreateEventSubscriptionCommandOutput extends CreateEventSubscriptionResponse, __MetadataBearer {}
 
 /**
  * <p> Creates an AWS DMS event notification subscription. </p>
@@ -41,6 +41,20 @@ export type CreateEventSubscriptionCommandOutput = CreateEventSubscriptionRespon
  *             Notifications</a> in the <i>AWS Database Migration Service User
  *             Guide.</i>
  *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, CreateEventSubscriptionCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, CreateEventSubscriptionCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new CreateEventSubscriptionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateEventSubscriptionCommandInput} for command's `input` shape.
+ * @see {@link CreateEventSubscriptionCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateEventSubscriptionCommand extends $Command<
   CreateEventSubscriptionCommandInput,

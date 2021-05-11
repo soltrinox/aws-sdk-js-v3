@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateExternalConnectionCommandInput = AssociateExternalConnectionRequest;
-export type AssociateExternalConnectionCommandOutput = AssociateExternalConnectionResult & __MetadataBearer;
+export interface AssociateExternalConnectionCommandInput extends AssociateExternalConnectionRequest {}
+export interface AssociateExternalConnectionCommandOutput extends AssociateExternalConnectionResult, __MetadataBearer {}
 
 /**
  * <p>Adds an existing external connection to a repository. One external connection is allowed
@@ -26,6 +26,20 @@ export type AssociateExternalConnectionCommandOutput = AssociateExternalConnecti
  *          <note>
  *             <p>A repository can have one or more upstream repositories, or an external connection.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeartifactClient, AssociateExternalConnectionCommand } from "@aws-sdk/client-codeartifact"; // ES Modules import
+ * // const { CodeartifactClient, AssociateExternalConnectionCommand } = require("@aws-sdk/client-codeartifact"); // CommonJS import
+ * const client = new CodeartifactClient(config);
+ * const command = new AssociateExternalConnectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateExternalConnectionCommandInput} for command's `input` shape.
+ * @see {@link AssociateExternalConnectionCommandOutput} for command's `response` shape.
+ * @see {@link CodeartifactClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateExternalConnectionCommand extends $Command<
   AssociateExternalConnectionCommandInput,

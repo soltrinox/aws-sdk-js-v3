@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateOutpostCommandInput = CreateOutpostInput;
-export type CreateOutpostCommandOutput = CreateOutpostOutput & __MetadataBearer;
+export interface CreateOutpostCommandInput extends CreateOutpostInput {}
+export interface CreateOutpostCommandOutput extends CreateOutpostOutput, __MetadataBearer {}
 
 /**
  * <p>Creates an Outpost.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OutpostsClient, CreateOutpostCommand } from "@aws-sdk/client-outposts"; // ES Modules import
+ * // const { OutpostsClient, CreateOutpostCommand } = require("@aws-sdk/client-outposts"); // CommonJS import
+ * const client = new OutpostsClient(config);
+ * const command = new CreateOutpostCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateOutpostCommandInput} for command's `input` shape.
+ * @see {@link CreateOutpostCommandOutput} for command's `response` shape.
+ * @see {@link OutpostsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateOutpostCommand extends $Command<
   CreateOutpostCommandInput,

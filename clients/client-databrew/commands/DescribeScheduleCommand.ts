@@ -17,12 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeScheduleCommandInput = DescribeScheduleRequest;
-export type DescribeScheduleCommandOutput = DescribeScheduleResponse & __MetadataBearer;
+export interface DescribeScheduleCommandInput extends DescribeScheduleRequest {}
+export interface DescribeScheduleCommandOutput extends DescribeScheduleResponse, __MetadataBearer {}
 
 /**
- * <p>Returns the definition of a specific AWS Glue DataBrew schedule that is in the current
- *             AWS account.</p>
+ * <p>Returns the definition of a specific DataBrew schedule.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataBrewClient, DescribeScheduleCommand } from "@aws-sdk/client-databrew"; // ES Modules import
+ * // const { DataBrewClient, DescribeScheduleCommand } = require("@aws-sdk/client-databrew"); // CommonJS import
+ * const client = new DataBrewClient(config);
+ * const command = new DescribeScheduleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeScheduleCommandInput} for command's `input` shape.
+ * @see {@link DescribeScheduleCommandOutput} for command's `response` shape.
+ * @see {@link DataBrewClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeScheduleCommand extends $Command<
   DescribeScheduleCommandInput,

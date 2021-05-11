@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateBackupPlanCommandInput = UpdateBackupPlanInput;
-export type UpdateBackupPlanCommandOutput = UpdateBackupPlanOutput & __MetadataBearer;
+export interface UpdateBackupPlanCommandInput extends UpdateBackupPlanInput {}
+export interface UpdateBackupPlanCommandOutput extends UpdateBackupPlanOutput, __MetadataBearer {}
 
 /**
- * <p>Updates an existing backup plan identified by its <code>backupPlanId</code>
- *          with the input document in JSON format. The new version is uniquely identified by a
+ * <p>Updates an existing backup plan identified by its <code>backupPlanId</code> with the
+ *          input document in JSON format. The new version is uniquely identified by a
  *             <code>VersionId</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BackupClient, UpdateBackupPlanCommand } from "@aws-sdk/client-backup"; // ES Modules import
+ * // const { BackupClient, UpdateBackupPlanCommand } = require("@aws-sdk/client-backup"); // CommonJS import
+ * const client = new BackupClient(config);
+ * const command = new UpdateBackupPlanCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateBackupPlanCommandInput} for command's `input` shape.
+ * @see {@link UpdateBackupPlanCommandOutput} for command's `response` shape.
+ * @see {@link BackupClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateBackupPlanCommand extends $Command<
   UpdateBackupPlanCommandInput,

@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteArtifactCommandInput = DeleteArtifactRequest;
-export type DeleteArtifactCommandOutput = DeleteArtifactResponse & __MetadataBearer;
+export interface DeleteArtifactCommandInput extends DeleteArtifactRequest {}
+export interface DeleteArtifactCommandOutput extends DeleteArtifactResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an artifact. Either <code>ArtifactArn</code> or <code>Source</code> must be
  *         specified.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DeleteArtifactCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DeleteArtifactCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DeleteArtifactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteArtifactCommandInput} for command's `input` shape.
+ * @see {@link DeleteArtifactCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteArtifactCommand extends $Command<
   DeleteArtifactCommandInput,

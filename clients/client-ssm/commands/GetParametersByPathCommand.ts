@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetParametersByPathCommandInput = GetParametersByPathRequest;
-export type GetParametersByPathCommandOutput = GetParametersByPathResult & __MetadataBearer;
+export interface GetParametersByPathCommandInput extends GetParametersByPathRequest {}
+export interface GetParametersByPathCommandOutput extends GetParametersByPathResult, __MetadataBearer {}
 
 /**
  * <p>Retrieve information about one or more parameters in a specific hierarchy. </p>
@@ -30,6 +30,20 @@ export type GetParametersByPathCommandOutput = GetParametersByPathResult & __Met
  *     matching values up to that point and a <code>NextToken</code>. You can specify the
  *      <code>NextToken</code> in a subsequent call to get the next set of results.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, GetParametersByPathCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, GetParametersByPathCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new GetParametersByPathCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetParametersByPathCommandInput} for command's `input` shape.
+ * @see {@link GetParametersByPathCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetParametersByPathCommand extends $Command<
   GetParametersByPathCommandInput,

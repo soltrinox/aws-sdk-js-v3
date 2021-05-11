@@ -11,6 +11,7 @@ import {
   DescribeAccountOverviewCommandOutput,
 } from "./commands/DescribeAccountOverviewCommand";
 import { DescribeAnomalyCommandInput, DescribeAnomalyCommandOutput } from "./commands/DescribeAnomalyCommand";
+import { DescribeFeedbackCommandInput, DescribeFeedbackCommandOutput } from "./commands/DescribeFeedbackCommand";
 import { DescribeInsightCommandInput, DescribeInsightCommandOutput } from "./commands/DescribeInsightCommand";
 import {
   DescribeResourceCollectionHealthCommandInput,
@@ -114,6 +115,7 @@ export type ServiceInputTypes =
   | DescribeAccountHealthCommandInput
   | DescribeAccountOverviewCommandInput
   | DescribeAnomalyCommandInput
+  | DescribeFeedbackCommandInput
   | DescribeInsightCommandInput
   | DescribeResourceCollectionHealthCommandInput
   | DescribeServiceIntegrationCommandInput
@@ -134,6 +136,7 @@ export type ServiceOutputTypes =
   | DescribeAccountHealthCommandOutput
   | DescribeAccountOverviewCommandOutput
   | DescribeAnomalyCommandOutput
+  | DescribeFeedbackCommandOutput
   | DescribeInsightCommandOutput
   | DescribeResourceCollectionHealthCommandOutput
   | DescribeServiceIntegrationCommandOutput
@@ -214,7 +217,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -245,7 +248,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type DevOpsGuruClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type DevOpsGuruClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -253,8 +256,12 @@ export type DevOpsGuruClientConfig = Partial<__SmithyConfiguration<__HttpHandler
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of DevOpsGuruClient class constructor that set the region, credentials and other options.
+ */
+export interface DevOpsGuruClientConfig extends DevOpsGuruClientConfigType {}
 
-export type DevOpsGuruClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type DevOpsGuruClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -262,13 +269,38 @@ export type DevOpsGuruClientResolvedConfig = __SmithyResolvedConfiguration<__Htt
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of DevOpsGuruClient class. This is resolved and normalized from the {@link DevOpsGuruClientConfig | constructor configuration interface}.
+ */
+export interface DevOpsGuruClientResolvedConfig extends DevOpsGuruClientResolvedConfigType {}
 
+/**
+ * <p> Amazon DevOps Guru is a fully managed service that helps you identify anomalous behavior in business
+ * 			critical operational applications. You specify the AWS resources that you want DevOps Guru to cover,
+ * 			then the Amazon CloudWatch metrics and AWS CloudTrail events related to those resources are analyzed. When
+ * 			anomalous behavior is detected, DevOps Guru creates an <i>insight</i> that includes
+ * 			recommendations, related events, and related metrics that can help you improve your
+ * 			operational applications. For more information, see <a href="https://docs.aws.amazon.com/devops-guru/latest/userguide/welcome.html">What is Amazon DevOps Guru</a>. </p>
+ *
+ * 		       <p>
+ * 			You can specify 1 or 2 Amazon Simple Notification Service topics so you are notified every time a new insight is created. You can also enable DevOps Guru to generate
+ * 			an OpsItem in AWS Systems Manager for each insight to help you manage and track your work addressing insights.
+ * 		</p>
+ *
+ * 		       <p>
+ * 			To learn about the DevOps Guru workflow, see <a href="https://docs.aws.amazon.com/devops-guru/latest/userguide/welcome.html#how-it-works">How DevOps Guru works</a>. To
+ * 			learn about DevOps Guru concepts, see <a href="https://docs.aws.amazon.com/devops-guru/latest/userguide/concepts.html">Concepts in DevOps Guru</a>.
+ * 		</p>
+ */
 export class DevOpsGuruClient extends __Client<
   __HttpHandlerOptions,
   ServiceInputTypes,
   ServiceOutputTypes,
   DevOpsGuruClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of DevOpsGuruClient class. This is resolved and normalized from the {@link DevOpsGuruClientConfig | constructor configuration interface}.
+   */
   readonly config: DevOpsGuruClientResolvedConfig;
 
   constructor(configuration: DevOpsGuruClientConfig) {

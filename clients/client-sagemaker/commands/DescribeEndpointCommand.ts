@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEndpointCommandInput = DescribeEndpointInput;
-export type DescribeEndpointCommandOutput = DescribeEndpointOutput & __MetadataBearer;
+export interface DescribeEndpointCommandInput extends DescribeEndpointInput {}
+export interface DescribeEndpointCommandOutput extends DescribeEndpointOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the description of an endpoint.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DescribeEndpointCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DescribeEndpointCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DescribeEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEndpointCommandInput} for command's `input` shape.
+ * @see {@link DescribeEndpointCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEndpointCommand extends $Command<
   DescribeEndpointCommandInput,

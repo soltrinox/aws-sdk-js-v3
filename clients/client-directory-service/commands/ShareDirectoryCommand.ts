@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ShareDirectoryCommandInput = ShareDirectoryRequest;
-export type ShareDirectoryCommandOutput = ShareDirectoryResult & __MetadataBearer;
+export interface ShareDirectoryCommandInput extends ShareDirectoryRequest {}
+export interface ShareDirectoryCommandOutput extends ShareDirectoryResult, __MetadataBearer {}
 
 /**
  * <p>Shares a specified directory (<code>DirectoryId</code>) in your AWS account (directory
@@ -34,6 +34,20 @@ export type ShareDirectoryCommandOutput = ShareDirectoryResult & __MetadataBeare
  *       or outside of the organization (<code>HANDSHAKE</code>).</p>
  *          <p>The <code>ShareNotes</code> parameter is only used when <code>HANDSHAKE</code> is called,
  *       which sends a directory sharing request to the directory consumer. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectoryServiceClient, ShareDirectoryCommand } from "@aws-sdk/client-directory-service"; // ES Modules import
+ * // const { DirectoryServiceClient, ShareDirectoryCommand } = require("@aws-sdk/client-directory-service"); // CommonJS import
+ * const client = new DirectoryServiceClient(config);
+ * const command = new ShareDirectoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ShareDirectoryCommandInput} for command's `input` shape.
+ * @see {@link ShareDirectoryCommandOutput} for command's `response` shape.
+ * @see {@link DirectoryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ShareDirectoryCommand extends $Command<
   ShareDirectoryCommandInput,

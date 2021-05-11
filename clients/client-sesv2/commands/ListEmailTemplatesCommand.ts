@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListEmailTemplatesCommandInput = ListEmailTemplatesRequest;
-export type ListEmailTemplatesCommandOutput = ListEmailTemplatesResponse & __MetadataBearer;
+export interface ListEmailTemplatesCommandInput extends ListEmailTemplatesRequest {}
+export interface ListEmailTemplatesCommandOutput extends ListEmailTemplatesResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the email templates present in your Amazon SES account in the current AWS
  *             Region.</p>
  *
  *         <p>You can execute this operation no more than once per second.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, ListEmailTemplatesCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, ListEmailTemplatesCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new ListEmailTemplatesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListEmailTemplatesCommandInput} for command's `input` shape.
+ * @see {@link ListEmailTemplatesCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListEmailTemplatesCommand extends $Command<
   ListEmailTemplatesCommandInput,

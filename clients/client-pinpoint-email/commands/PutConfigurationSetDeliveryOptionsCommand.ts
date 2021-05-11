@@ -20,13 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutConfigurationSetDeliveryOptionsCommandInput = PutConfigurationSetDeliveryOptionsRequest;
-export type PutConfigurationSetDeliveryOptionsCommandOutput = PutConfigurationSetDeliveryOptionsResponse &
-  __MetadataBearer;
+export interface PutConfigurationSetDeliveryOptionsCommandInput extends PutConfigurationSetDeliveryOptionsRequest {}
+export interface PutConfigurationSetDeliveryOptionsCommandOutput
+  extends PutConfigurationSetDeliveryOptionsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Associate a configuration set with a dedicated IP pool. You can use dedicated IP pools
  *             to create groups of dedicated IP addresses for sending specific types of email.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointEmailClient, PutConfigurationSetDeliveryOptionsCommand } from "@aws-sdk/client-pinpoint-email"; // ES Modules import
+ * // const { PinpointEmailClient, PutConfigurationSetDeliveryOptionsCommand } = require("@aws-sdk/client-pinpoint-email"); // CommonJS import
+ * const client = new PinpointEmailClient(config);
+ * const command = new PutConfigurationSetDeliveryOptionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutConfigurationSetDeliveryOptionsCommandInput} for command's `input` shape.
+ * @see {@link PutConfigurationSetDeliveryOptionsCommandOutput} for command's `response` shape.
+ * @see {@link PinpointEmailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutConfigurationSetDeliveryOptionsCommand extends $Command<
   PutConfigurationSetDeliveryOptionsCommandInput,

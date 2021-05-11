@@ -17,16 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetStudioSessionMappingCommandInput = GetStudioSessionMappingInput;
-export type GetStudioSessionMappingCommandOutput = GetStudioSessionMappingOutput & __MetadataBearer;
+export interface GetStudioSessionMappingCommandInput extends GetStudioSessionMappingInput {}
+export interface GetStudioSessionMappingCommandOutput extends GetStudioSessionMappingOutput, __MetadataBearer {}
 
 /**
- * <note>
- *             <p>The Amazon EMR Studio APIs are in preview release for Amazon EMR and are subject to
- *             change.</p>
- *          </note>
- *          <p>Fetches mapping details for the specified Amazon EMR Studio and identity (user or
+ * <p>Fetches mapping details for the specified Amazon EMR Studio and identity (user or
  *          group).</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EMRClient, GetStudioSessionMappingCommand } from "@aws-sdk/client-emr"; // ES Modules import
+ * // const { EMRClient, GetStudioSessionMappingCommand } = require("@aws-sdk/client-emr"); // CommonJS import
+ * const client = new EMRClient(config);
+ * const command = new GetStudioSessionMappingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetStudioSessionMappingCommandInput} for command's `input` shape.
+ * @see {@link GetStudioSessionMappingCommandOutput} for command's `response` shape.
+ * @see {@link EMRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetStudioSessionMappingCommand extends $Command<
   GetStudioSessionMappingCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SearchDashboardsCommandInput = SearchDashboardsRequest;
-export type SearchDashboardsCommandOutput = SearchDashboardsResponse & __MetadataBearer;
+export interface SearchDashboardsCommandInput extends SearchDashboardsRequest {}
+export interface SearchDashboardsCommandOutput extends SearchDashboardsResponse, __MetadataBearer {}
 
 /**
  * <p>Searches for dashboards that belong to a user. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, SearchDashboardsCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, SearchDashboardsCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new SearchDashboardsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SearchDashboardsCommandInput} for command's `input` shape.
+ * @see {@link SearchDashboardsCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SearchDashboardsCommand extends $Command<
   SearchDashboardsCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDistributionCommandInput = UpdateDistributionRequest;
-export type UpdateDistributionCommandOutput = UpdateDistributionResult & __MetadataBearer;
+export interface UpdateDistributionCommandInput extends UpdateDistributionRequest {}
+export interface UpdateDistributionCommandOutput extends UpdateDistributionResult, __MetadataBearer {}
 
 /**
  * <p>Updates the configuration for a web distribution. </p>
@@ -100,6 +100,20 @@ export type UpdateDistributionCommandOutput = UpdateDistributionResult & __Metad
  * 				When propagation is complete, the value of <code>Status</code> is <code>Deployed</code>.</p>
  * 			         </li>
  *          </ol>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, UpdateDistributionCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, UpdateDistributionCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new UpdateDistributionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDistributionCommandInput} for command's `input` shape.
+ * @see {@link UpdateDistributionCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDistributionCommand extends $Command<
   UpdateDistributionCommandInput,

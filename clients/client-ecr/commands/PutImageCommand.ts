@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutImageCommandInput = PutImageRequest;
-export type PutImageCommandOutput = PutImageResponse & __MetadataBearer;
+export interface PutImageCommandInput extends PutImageRequest {}
+export interface PutImageCommandOutput extends PutImageResponse, __MetadataBearer {}
 
 /**
  * <p>Creates or updates the image manifest and tags associated with an image.</p>
@@ -27,6 +27,20 @@ export type PutImageCommandOutput = PutImageResponse & __MetadataBearer;
  *             <p>This operation is used by the Amazon ECR proxy and is not generally used by
  *         customers for pulling and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECRClient, PutImageCommand } from "@aws-sdk/client-ecr"; // ES Modules import
+ * // const { ECRClient, PutImageCommand } = require("@aws-sdk/client-ecr"); // CommonJS import
+ * const client = new ECRClient(config);
+ * const command = new PutImageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutImageCommandInput} for command's `input` shape.
+ * @see {@link PutImageCommandOutput} for command's `response` shape.
+ * @see {@link ECRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutImageCommand extends $Command<PutImageCommandInput, PutImageCommandOutput, ECRClientResolvedConfig> {
   // Start section: command_properties

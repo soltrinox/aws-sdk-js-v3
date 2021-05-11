@@ -14,10 +14,6 @@ Serverless DB cluster. To run these statements, you work with the Data Service
 API.</p>
 <p>For more information about the Data Service API, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html">Using the Data API for Aurora
 Serverless</a> in the <i>Amazon Aurora User Guide</i>.</p>
-<note>
-<p>If you have questions or comments related to the Data API, send email to
-<a href="mailto:Rds-data-api-feedback@amazon.com">Rds-data-api-feedback@amazon.com</a>.</p>
-</note>
 
 ## Installing
 
@@ -56,7 +52,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new RDSDataClient({ region: "REGION" });
 
 const params = {
@@ -141,7 +137,7 @@ const client = new AWS.RDSData({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.batchExecuteStatement(params);
+  const data = await client.batchExecuteStatement(params);
   // process data.
 } catch (error) {
   // error handling.

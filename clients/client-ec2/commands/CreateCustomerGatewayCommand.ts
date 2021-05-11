@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCustomerGatewayCommandInput = CreateCustomerGatewayRequest;
-export type CreateCustomerGatewayCommandOutput = CreateCustomerGatewayResult & __MetadataBearer;
+export interface CreateCustomerGatewayCommandInput extends CreateCustomerGatewayRequest {}
+export interface CreateCustomerGatewayCommandOutput extends CreateCustomerGatewayResult, __MetadataBearer {}
 
 /**
  * <p>Provides information to AWS about your VPN customer gateway device. The customer
@@ -57,6 +57,20 @@ export type CreateCustomerGatewayCommandOutput = CreateCustomerGatewayResult & _
  *                 return information about the existing customer gateway and do not create new
  *                 customer gateways.</p>
  *         </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, CreateCustomerGatewayCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, CreateCustomerGatewayCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new CreateCustomerGatewayCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCustomerGatewayCommandInput} for command's `input` shape.
+ * @see {@link CreateCustomerGatewayCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCustomerGatewayCommand extends $Command<
   CreateCustomerGatewayCommandInput,

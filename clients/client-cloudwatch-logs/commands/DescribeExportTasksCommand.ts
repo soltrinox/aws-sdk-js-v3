@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeExportTasksCommandInput = DescribeExportTasksRequest;
-export type DescribeExportTasksCommandOutput = DescribeExportTasksResponse & __MetadataBearer;
+export interface DescribeExportTasksCommandInput extends DescribeExportTasksRequest {}
+export interface DescribeExportTasksCommandOutput extends DescribeExportTasksResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the specified export tasks. You can list all your export tasks or filter
  *       the results based on task ID or task status.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, DescribeExportTasksCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, DescribeExportTasksCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new DescribeExportTasksCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeExportTasksCommandInput} for command's `input` shape.
+ * @see {@link DescribeExportTasksCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeExportTasksCommand extends $Command<
   DescribeExportTasksCommandInput,

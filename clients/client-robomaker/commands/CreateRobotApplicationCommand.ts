@@ -17,12 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateRobotApplicationCommandInput = CreateRobotApplicationRequest;
-export type CreateRobotApplicationCommandOutput = CreateRobotApplicationResponse & __MetadataBearer;
+export interface CreateRobotApplicationCommandInput extends CreateRobotApplicationRequest {}
+export interface CreateRobotApplicationCommandOutput extends CreateRobotApplicationResponse, __MetadataBearer {}
 
 /**
- * <p>Creates a robot application.
- *       </p>
+ * <p>Creates a robot application. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RoboMakerClient, CreateRobotApplicationCommand } from "@aws-sdk/client-robomaker"; // ES Modules import
+ * // const { RoboMakerClient, CreateRobotApplicationCommand } = require("@aws-sdk/client-robomaker"); // CommonJS import
+ * const client = new RoboMakerClient(config);
+ * const command = new CreateRobotApplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateRobotApplicationCommandInput} for command's `input` shape.
+ * @see {@link CreateRobotApplicationCommandOutput} for command's `response` shape.
+ * @see {@link RoboMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateRobotApplicationCommand extends $Command<
   CreateRobotApplicationCommandInput,

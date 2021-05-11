@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteResourcePolicyCommandInput = DeleteResourcePolicyRequest;
-export type DeleteResourcePolicyCommandOutput = __MetadataBearer;
+export interface DeleteResourcePolicyCommandInput extends DeleteResourcePolicyRequest {}
+export interface DeleteResourcePolicyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Delete the resource-based policy attached to the specified registry.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SchemasClient, DeleteResourcePolicyCommand } from "@aws-sdk/client-schemas"; // ES Modules import
+ * // const { SchemasClient, DeleteResourcePolicyCommand } = require("@aws-sdk/client-schemas"); // CommonJS import
+ * const client = new SchemasClient(config);
+ * const command = new DeleteResourcePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteResourcePolicyCommandInput} for command's `input` shape.
+ * @see {@link DeleteResourcePolicyCommandOutput} for command's `response` shape.
+ * @see {@link SchemasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteResourcePolicyCommand extends $Command<
   DeleteResourcePolicyCommandInput,

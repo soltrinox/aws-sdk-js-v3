@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeWorkspaceSnapshotsCommandInput = DescribeWorkspaceSnapshotsRequest;
-export type DescribeWorkspaceSnapshotsCommandOutput = DescribeWorkspaceSnapshotsResult & __MetadataBearer;
+export interface DescribeWorkspaceSnapshotsCommandInput extends DescribeWorkspaceSnapshotsRequest {}
+export interface DescribeWorkspaceSnapshotsCommandOutput extends DescribeWorkspaceSnapshotsResult, __MetadataBearer {}
 
 /**
  * <p>Describes the snapshots for the specified WorkSpace.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, DescribeWorkspaceSnapshotsCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, DescribeWorkspaceSnapshotsCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new DescribeWorkspaceSnapshotsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeWorkspaceSnapshotsCommandInput} for command's `input` shape.
+ * @see {@link DescribeWorkspaceSnapshotsCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeWorkspaceSnapshotsCommand extends $Command<
   DescribeWorkspaceSnapshotsCommandInput,

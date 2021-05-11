@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateTypeCommandInput = UpdateTypeRequest;
-export type UpdateTypeCommandOutput = UpdateTypeResponse & __MetadataBearer;
+export interface UpdateTypeCommandInput extends UpdateTypeRequest {}
+export interface UpdateTypeCommandOutput extends UpdateTypeResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a <code>Type</code> object.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppSyncClient, UpdateTypeCommand } from "@aws-sdk/client-appsync"; // ES Modules import
+ * // const { AppSyncClient, UpdateTypeCommand } = require("@aws-sdk/client-appsync"); // CommonJS import
+ * const client = new AppSyncClient(config);
+ * const command = new UpdateTypeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateTypeCommandInput} for command's `input` shape.
+ * @see {@link UpdateTypeCommandOutput} for command's `response` shape.
+ * @see {@link AppSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateTypeCommand extends $Command<
   UpdateTypeCommandInput,

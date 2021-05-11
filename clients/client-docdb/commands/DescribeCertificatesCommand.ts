@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCertificatesCommandInput = DescribeCertificatesMessage;
-export type DescribeCertificatesCommandOutput = CertificateMessage & __MetadataBearer;
+export interface DescribeCertificatesCommandInput extends DescribeCertificatesMessage {}
+export interface DescribeCertificatesCommandOutput extends CertificateMessage, __MetadataBearer {}
 
 /**
  * <p>Returns a list of certificate authority (CA) certificates provided by Amazon DocumentDB for
  *             this AWS account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DocDBClient, DescribeCertificatesCommand } from "@aws-sdk/client-docdb"; // ES Modules import
+ * // const { DocDBClient, DescribeCertificatesCommand } = require("@aws-sdk/client-docdb"); // CommonJS import
+ * const client = new DocDBClient(config);
+ * const command = new DescribeCertificatesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCertificatesCommandInput} for command's `input` shape.
+ * @see {@link DescribeCertificatesCommandOutput} for command's `response` shape.
+ * @see {@link DocDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCertificatesCommand extends $Command<
   DescribeCertificatesCommandInput,

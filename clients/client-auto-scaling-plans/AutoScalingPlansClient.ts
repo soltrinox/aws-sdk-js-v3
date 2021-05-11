@@ -145,7 +145,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -176,7 +176,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type AutoScalingPlansClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type AutoScalingPlansClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -184,8 +184,12 @@ export type AutoScalingPlansClientConfig = Partial<__SmithyConfiguration<__HttpH
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of AutoScalingPlansClient class constructor that set the region, credentials and other options.
+ */
+export interface AutoScalingPlansClientConfig extends AutoScalingPlansClientConfigType {}
 
-export type AutoScalingPlansClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type AutoScalingPlansClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -193,16 +197,47 @@ export type AutoScalingPlansClientResolvedConfig = __SmithyResolvedConfiguration
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of AutoScalingPlansClient class. This is resolved and normalized from the {@link AutoScalingPlansClientConfig | constructor configuration interface}.
+ */
+export interface AutoScalingPlansClientResolvedConfig extends AutoScalingPlansClientResolvedConfigType {}
 
 /**
  * <fullname>AWS Auto Scaling</fullname>
- *          <p>Use AWS Auto Scaling to quickly discover all the scalable AWS resources for your application and
- *          configure dynamic scaling and predictive scaling for your resources using scaling plans.
- *          Use this service in conjunction with the Amazon EC2 Auto Scaling, Application Auto Scaling, Amazon CloudWatch, and AWS
- *          CloudFormation services. </p>
- *          <p>Currently, predictive scaling is only available for Amazon EC2 Auto Scaling groups.</p>
- *          <p>For more information about AWS Auto Scaling, including information about granting IAM users
- *          required permissions for AWS Auto Scaling actions, see the <a href="https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html">AWS Auto Scaling User Guide</a>.</p>
+ *
+ *
+ *          <p>Use AWS Auto Scaling to create scaling plans for your applications to
+ *          automatically scale your scalable AWS resources. </p>
+ *          <p>
+ *             <b>API Summary</b>
+ *          </p>
+ *          <p>You can use the AWS Auto Scaling service API to accomplish the following tasks:</p>
+ *          <ul>
+ *             <li>
+ *                <p>Create and manage scaling plans</p>
+ *             </li>
+ *             <li>
+ *                <p>Define target tracking scaling policies to dynamically scale your resources based
+ *                on utilization</p>
+ *             </li>
+ *             <li>
+ *                <p>Scale Amazon EC2 Auto Scaling groups using predictive scaling and dynamic scaling to scale your
+ *                Amazon EC2 capacity faster</p>
+ *             </li>
+ *             <li>
+ *                <p>Set minimum and maximum capacity limits</p>
+ *             </li>
+ *             <li>
+ *                <p>Retrieve information on existing scaling plans</p>
+ *             </li>
+ *             <li>
+ *                <p>Access current forecast data and historical forecast data for up to 56 days
+ *                previous</p>
+ *             </li>
+ *          </ul>
+ *
+ *          <p>To learn more about AWS Auto Scaling, including information about granting IAM users required
+ *          permissions for AWS Auto Scaling actions, see the <a href="https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html">AWS Auto Scaling User Guide</a>. </p>
  */
 export class AutoScalingPlansClient extends __Client<
   __HttpHandlerOptions,
@@ -210,6 +245,9 @@ export class AutoScalingPlansClient extends __Client<
   ServiceOutputTypes,
   AutoScalingPlansClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of AutoScalingPlansClient class. This is resolved and normalized from the {@link AutoScalingPlansClientConfig | constructor configuration interface}.
+   */
   readonly config: AutoScalingPlansClientResolvedConfig;
 
   constructor(configuration: AutoScalingPlansClientConfig) {

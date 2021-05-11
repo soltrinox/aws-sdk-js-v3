@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListElasticsearchVersionsCommandInput = ListElasticsearchVersionsRequest;
-export type ListElasticsearchVersionsCommandOutput = ListElasticsearchVersionsResponse & __MetadataBearer;
+export interface ListElasticsearchVersionsCommandInput extends ListElasticsearchVersionsRequest {}
+export interface ListElasticsearchVersionsCommandOutput extends ListElasticsearchVersionsResponse, __MetadataBearer {}
 
 /**
  * <p>List all supported Elasticsearch versions</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticsearchServiceClient, ListElasticsearchVersionsCommand } from "@aws-sdk/client-elasticsearch-service"; // ES Modules import
+ * // const { ElasticsearchServiceClient, ListElasticsearchVersionsCommand } = require("@aws-sdk/client-elasticsearch-service"); // CommonJS import
+ * const client = new ElasticsearchServiceClient(config);
+ * const command = new ListElasticsearchVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListElasticsearchVersionsCommandInput} for command's `input` shape.
+ * @see {@link ListElasticsearchVersionsCommandOutput} for command's `response` shape.
+ * @see {@link ElasticsearchServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListElasticsearchVersionsCommand extends $Command<
   ListElasticsearchVersionsCommandInput,

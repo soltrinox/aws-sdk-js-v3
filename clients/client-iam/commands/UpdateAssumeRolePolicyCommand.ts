@@ -1,5 +1,5 @@
 import { IAMClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../IAMClient";
-import { UpdateAssumeRolePolicyRequest } from "../models/models_0";
+import { UpdateAssumeRolePolicyRequest } from "../models/models_1";
 import {
   deserializeAws_queryUpdateAssumeRolePolicyCommand,
   serializeAws_queryUpdateAssumeRolePolicyCommand,
@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateAssumeRolePolicyCommandInput = UpdateAssumeRolePolicyRequest;
-export type UpdateAssumeRolePolicyCommandOutput = __MetadataBearer;
+export interface UpdateAssumeRolePolicyCommandInput extends UpdateAssumeRolePolicyRequest {}
+export interface UpdateAssumeRolePolicyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Updates the policy that grants an IAM entity permission to assume a role. This is
- *          typically referred to as the "role trust policy". For more information about roles, go to
- *             <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html">Using Roles to
- *             Delegate Permissions and Federate Identities</a>.</p>
+ *             typically referred to as the "role trust policy". For more information about roles, see
+ *                 <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html">Using roles to
+ *                 delegate permissions and federate identities</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, UpdateAssumeRolePolicyCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, UpdateAssumeRolePolicyCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new UpdateAssumeRolePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateAssumeRolePolicyCommandInput} for command's `input` shape.
+ * @see {@link UpdateAssumeRolePolicyCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateAssumeRolePolicyCommand extends $Command<
   UpdateAssumeRolePolicyCommandInput,

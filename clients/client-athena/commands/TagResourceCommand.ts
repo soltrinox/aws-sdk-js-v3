@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceInput;
-export type TagResourceCommandOutput = TagResourceOutput & __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceInput {}
+export interface TagResourceCommandOutput extends TagResourceOutput, __MetadataBearer {}
 
 /**
  * <p>Adds one or more tags to an Athena resource. A tag is a label that you assign to a
@@ -31,6 +31,20 @@ export type TagResourceCommandOutput = TagResourceOutput & __MetadataBearer;
  *             letters and numbers representable in UTF-8, and the following characters: + - = . _ : /
  *             @. Tag keys and values are case-sensitive. Tag keys must be unique per resource. If you
  *             specify more than one tag, separate them by commas.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AthenaClient, TagResourceCommand } from "@aws-sdk/client-athena"; // ES Modules import
+ * // const { AthenaClient, TagResourceCommand } = require("@aws-sdk/client-athena"); // CommonJS import
+ * const client = new AthenaClient(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link AthenaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

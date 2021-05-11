@@ -17,15 +17,15 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateTrainingJobCommandInput = CreateTrainingJobRequest;
-export type CreateTrainingJobCommandOutput = CreateTrainingJobResponse & __MetadataBearer;
+export interface CreateTrainingJobCommandInput extends CreateTrainingJobRequest {}
+export interface CreateTrainingJobCommandOutput extends CreateTrainingJobResponse, __MetadataBearer {}
 
 /**
  * <p>Starts a model training job. After training completes, Amazon SageMaker saves the resulting
  *             model artifacts to an Amazon S3 location that you specify. </p>
- *         <p>If you choose to host your model using Amazon SageMaker hosting services, you can use the resulting
- *             model artifacts as part of the model. You can also use the artifacts in a machine
- *             learning service other than Amazon SageMaker, provided that you know how to use them for
+ *         <p>If you choose to host your model using Amazon SageMaker hosting services, you can use the
+ *             resulting model artifacts as part of the model. You can also use the artifacts in a
+ *             machine learning service other than Amazon SageMaker, provided that you know how to use them for
  *             inference.
  *
  *         </p>
@@ -71,8 +71,8 @@ export type CreateTrainingJobCommandOutput = CreateTrainingJobResponse & __Metad
  *             </li>
  *             <li>
  *                 <p>
- *                   <code>RoleArn</code> - The Amazon Resource Number (ARN) that Amazon SageMaker assumes
- *                     to perform tasks on your behalf during model training.
+ *                   <code>RoleArn</code> - The Amazon Resource Name (ARN) that Amazon SageMaker assumes to perform tasks on
+ *                     your behalf during model training.
  *
  *                     You must grant this role the necessary permissions so that Amazon SageMaker can successfully
  *                     complete model training. </p>
@@ -84,8 +84,26 @@ export type CreateTrainingJobCommandOutput = CreateTrainingJobResponse & __Metad
  *                         <code>MaxWaitTimeInSeconds</code> to specify how long you are willing to
  *                     wait for a managed spot training job to complete. </p>
  *             </li>
+ *             <li>
+ *                 <p>
+ *                   <code>Environment</code> - The environment variables to set in the Docker container.</p>
+ *             </li>
  *          </ul>
  *         <p> For more information about Amazon SageMaker, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html">How It Works</a>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, CreateTrainingJobCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, CreateTrainingJobCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new CreateTrainingJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateTrainingJobCommandInput} for command's `input` shape.
+ * @see {@link CreateTrainingJobCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateTrainingJobCommand extends $Command<
   CreateTrainingJobCommandInput,

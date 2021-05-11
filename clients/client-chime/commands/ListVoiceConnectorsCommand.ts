@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListVoiceConnectorsCommandInput = ListVoiceConnectorsRequest;
-export type ListVoiceConnectorsCommandOutput = ListVoiceConnectorsResponse & __MetadataBearer;
+export interface ListVoiceConnectorsCommandInput extends ListVoiceConnectorsRequest {}
+export interface ListVoiceConnectorsCommandOutput extends ListVoiceConnectorsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the Amazon Chime Voice Connectors for the administrator's AWS account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, ListVoiceConnectorsCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, ListVoiceConnectorsCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new ListVoiceConnectorsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListVoiceConnectorsCommandInput} for command's `input` shape.
+ * @see {@link ListVoiceConnectorsCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListVoiceConnectorsCommand extends $Command<
   ListVoiceConnectorsCommandInput,

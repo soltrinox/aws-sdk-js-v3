@@ -22,8 +22,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateResourceServerCommandInput = UpdateResourceServerRequest;
-export type UpdateResourceServerCommandOutput = UpdateResourceServerResponse & __MetadataBearer;
+export interface UpdateResourceServerCommandInput extends UpdateResourceServerRequest {}
+export interface UpdateResourceServerCommandOutput extends UpdateResourceServerResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the name and scopes of resource server. All other fields are read-only.</p>
@@ -31,6 +31,20 @@ export type UpdateResourceServerCommandOutput = UpdateResourceServerResponse & _
  *             <p>If you don't provide a value for an attribute, it will be set to the default
  *                 value.</p>
  *         </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, UpdateResourceServerCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, UpdateResourceServerCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new UpdateResourceServerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateResourceServerCommandInput} for command's `input` shape.
+ * @see {@link UpdateResourceServerCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateResourceServerCommand extends $Command<
   UpdateResourceServerCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssignPrivateIpAddressesCommandInput = AssignPrivateIpAddressesRequest;
-export type AssignPrivateIpAddressesCommandOutput = AssignPrivateIpAddressesResult & __MetadataBearer;
+export interface AssignPrivateIpAddressesCommandInput extends AssignPrivateIpAddressesRequest {}
+export interface AssignPrivateIpAddressesCommandOutput extends AssignPrivateIpAddressesResult, __MetadataBearer {}
 
 /**
  * <p>Assigns one or more secondary private IP addresses to the specified network interface.</p>
@@ -33,6 +33,20 @@ export type AssignPrivateIpAddressesCommandOutput = AssignPrivateIpAddressesResu
  *             interface to another, check <code>network/interfaces/macs/mac/local-ipv4s</code> in the instance
  *             metadata to confirm that the remapping is complete.</p>
  *         <p>You must specify either the IP addresses or the IP address count in the request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, AssignPrivateIpAddressesCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, AssignPrivateIpAddressesCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new AssignPrivateIpAddressesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssignPrivateIpAddressesCommandInput} for command's `input` shape.
+ * @see {@link AssignPrivateIpAddressesCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssignPrivateIpAddressesCommand extends $Command<
   AssignPrivateIpAddressesCommandInput,

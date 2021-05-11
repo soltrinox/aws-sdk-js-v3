@@ -1,11 +1,23 @@
 import { CreateAccessPointCommandInput, CreateAccessPointCommandOutput } from "./commands/CreateAccessPointCommand";
+import {
+  CreateAccessPointForObjectLambdaCommandInput,
+  CreateAccessPointForObjectLambdaCommandOutput,
+} from "./commands/CreateAccessPointForObjectLambdaCommand";
 import { CreateBucketCommandInput, CreateBucketCommandOutput } from "./commands/CreateBucketCommand";
 import { CreateJobCommandInput, CreateJobCommandOutput } from "./commands/CreateJobCommand";
 import { DeleteAccessPointCommandInput, DeleteAccessPointCommandOutput } from "./commands/DeleteAccessPointCommand";
 import {
+  DeleteAccessPointForObjectLambdaCommandInput,
+  DeleteAccessPointForObjectLambdaCommandOutput,
+} from "./commands/DeleteAccessPointForObjectLambdaCommand";
+import {
   DeleteAccessPointPolicyCommandInput,
   DeleteAccessPointPolicyCommandOutput,
 } from "./commands/DeleteAccessPointPolicyCommand";
+import {
+  DeleteAccessPointPolicyForObjectLambdaCommandInput,
+  DeleteAccessPointPolicyForObjectLambdaCommandOutput,
+} from "./commands/DeleteAccessPointPolicyForObjectLambdaCommand";
 import { DeleteBucketCommandInput, DeleteBucketCommandOutput } from "./commands/DeleteBucketCommand";
 import {
   DeleteBucketLifecycleConfigurationCommandInput,
@@ -32,13 +44,29 @@ import {
 import { DescribeJobCommandInput, DescribeJobCommandOutput } from "./commands/DescribeJobCommand";
 import { GetAccessPointCommandInput, GetAccessPointCommandOutput } from "./commands/GetAccessPointCommand";
 import {
+  GetAccessPointConfigurationForObjectLambdaCommandInput,
+  GetAccessPointConfigurationForObjectLambdaCommandOutput,
+} from "./commands/GetAccessPointConfigurationForObjectLambdaCommand";
+import {
+  GetAccessPointForObjectLambdaCommandInput,
+  GetAccessPointForObjectLambdaCommandOutput,
+} from "./commands/GetAccessPointForObjectLambdaCommand";
+import {
   GetAccessPointPolicyCommandInput,
   GetAccessPointPolicyCommandOutput,
 } from "./commands/GetAccessPointPolicyCommand";
 import {
+  GetAccessPointPolicyForObjectLambdaCommandInput,
+  GetAccessPointPolicyForObjectLambdaCommandOutput,
+} from "./commands/GetAccessPointPolicyForObjectLambdaCommand";
+import {
   GetAccessPointPolicyStatusCommandInput,
   GetAccessPointPolicyStatusCommandOutput,
 } from "./commands/GetAccessPointPolicyStatusCommand";
+import {
+  GetAccessPointPolicyStatusForObjectLambdaCommandInput,
+  GetAccessPointPolicyStatusForObjectLambdaCommandOutput,
+} from "./commands/GetAccessPointPolicyStatusForObjectLambdaCommand";
 import { GetBucketCommandInput, GetBucketCommandOutput } from "./commands/GetBucketCommand";
 import {
   GetBucketLifecycleConfigurationCommandInput,
@@ -60,6 +88,10 @@ import {
   GetStorageLensConfigurationTaggingCommandOutput,
 } from "./commands/GetStorageLensConfigurationTaggingCommand";
 import { ListAccessPointsCommandInput, ListAccessPointsCommandOutput } from "./commands/ListAccessPointsCommand";
+import {
+  ListAccessPointsForObjectLambdaCommandInput,
+  ListAccessPointsForObjectLambdaCommandOutput,
+} from "./commands/ListAccessPointsForObjectLambdaCommand";
 import { ListJobsCommandInput, ListJobsCommandOutput } from "./commands/ListJobsCommand";
 import {
   ListRegionalBucketsCommandInput,
@@ -70,9 +102,17 @@ import {
   ListStorageLensConfigurationsCommandOutput,
 } from "./commands/ListStorageLensConfigurationsCommand";
 import {
+  PutAccessPointConfigurationForObjectLambdaCommandInput,
+  PutAccessPointConfigurationForObjectLambdaCommandOutput,
+} from "./commands/PutAccessPointConfigurationForObjectLambdaCommand";
+import {
   PutAccessPointPolicyCommandInput,
   PutAccessPointPolicyCommandOutput,
 } from "./commands/PutAccessPointPolicyCommand";
+import {
+  PutAccessPointPolicyForObjectLambdaCommandInput,
+  PutAccessPointPolicyForObjectLambdaCommandOutput,
+} from "./commands/PutAccessPointPolicyForObjectLambdaCommand";
 import {
   PutBucketLifecycleConfigurationCommandInput,
   PutBucketLifecycleConfigurationCommandOutput,
@@ -152,10 +192,13 @@ import {
 
 export type ServiceInputTypes =
   | CreateAccessPointCommandInput
+  | CreateAccessPointForObjectLambdaCommandInput
   | CreateBucketCommandInput
   | CreateJobCommandInput
   | DeleteAccessPointCommandInput
+  | DeleteAccessPointForObjectLambdaCommandInput
   | DeleteAccessPointPolicyCommandInput
+  | DeleteAccessPointPolicyForObjectLambdaCommandInput
   | DeleteBucketCommandInput
   | DeleteBucketLifecycleConfigurationCommandInput
   | DeleteBucketPolicyCommandInput
@@ -166,8 +209,12 @@ export type ServiceInputTypes =
   | DeleteStorageLensConfigurationTaggingCommandInput
   | DescribeJobCommandInput
   | GetAccessPointCommandInput
+  | GetAccessPointConfigurationForObjectLambdaCommandInput
+  | GetAccessPointForObjectLambdaCommandInput
   | GetAccessPointPolicyCommandInput
+  | GetAccessPointPolicyForObjectLambdaCommandInput
   | GetAccessPointPolicyStatusCommandInput
+  | GetAccessPointPolicyStatusForObjectLambdaCommandInput
   | GetBucketCommandInput
   | GetBucketLifecycleConfigurationCommandInput
   | GetBucketPolicyCommandInput
@@ -177,10 +224,13 @@ export type ServiceInputTypes =
   | GetStorageLensConfigurationCommandInput
   | GetStorageLensConfigurationTaggingCommandInput
   | ListAccessPointsCommandInput
+  | ListAccessPointsForObjectLambdaCommandInput
   | ListJobsCommandInput
   | ListRegionalBucketsCommandInput
   | ListStorageLensConfigurationsCommandInput
+  | PutAccessPointConfigurationForObjectLambdaCommandInput
   | PutAccessPointPolicyCommandInput
+  | PutAccessPointPolicyForObjectLambdaCommandInput
   | PutBucketLifecycleConfigurationCommandInput
   | PutBucketPolicyCommandInput
   | PutBucketTaggingCommandInput
@@ -193,10 +243,13 @@ export type ServiceInputTypes =
 
 export type ServiceOutputTypes =
   | CreateAccessPointCommandOutput
+  | CreateAccessPointForObjectLambdaCommandOutput
   | CreateBucketCommandOutput
   | CreateJobCommandOutput
   | DeleteAccessPointCommandOutput
+  | DeleteAccessPointForObjectLambdaCommandOutput
   | DeleteAccessPointPolicyCommandOutput
+  | DeleteAccessPointPolicyForObjectLambdaCommandOutput
   | DeleteBucketCommandOutput
   | DeleteBucketLifecycleConfigurationCommandOutput
   | DeleteBucketPolicyCommandOutput
@@ -207,8 +260,12 @@ export type ServiceOutputTypes =
   | DeleteStorageLensConfigurationTaggingCommandOutput
   | DescribeJobCommandOutput
   | GetAccessPointCommandOutput
+  | GetAccessPointConfigurationForObjectLambdaCommandOutput
+  | GetAccessPointForObjectLambdaCommandOutput
   | GetAccessPointPolicyCommandOutput
+  | GetAccessPointPolicyForObjectLambdaCommandOutput
   | GetAccessPointPolicyStatusCommandOutput
+  | GetAccessPointPolicyStatusForObjectLambdaCommandOutput
   | GetBucketCommandOutput
   | GetBucketLifecycleConfigurationCommandOutput
   | GetBucketPolicyCommandOutput
@@ -218,10 +275,13 @@ export type ServiceOutputTypes =
   | GetStorageLensConfigurationCommandOutput
   | GetStorageLensConfigurationTaggingCommandOutput
   | ListAccessPointsCommandOutput
+  | ListAccessPointsForObjectLambdaCommandOutput
   | ListJobsCommandOutput
   | ListRegionalBucketsCommandOutput
   | ListStorageLensConfigurationsCommandOutput
+  | PutAccessPointConfigurationForObjectLambdaCommandOutput
   | PutAccessPointPolicyCommandOutput
+  | PutAccessPointPolicyForObjectLambdaCommandOutput
   | PutBucketLifecycleConfigurationCommandOutput
   | PutBucketPolicyCommandOutput
   | PutBucketTaggingCommandOutput
@@ -297,7 +357,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -328,7 +388,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type S3ControlClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type S3ControlClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -337,8 +397,12 @@ export type S3ControlClientConfig = Partial<__SmithyConfiguration<__HttpHandlerO
   AwsAuthInputConfig &
   S3ControlInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of S3ControlClient class constructor that set the region, credentials and other options.
+ */
+export interface S3ControlClientConfig extends S3ControlClientConfigType {}
 
-export type S3ControlClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type S3ControlClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -347,10 +411,14 @@ export type S3ControlClientResolvedConfig = __SmithyResolvedConfiguration<__Http
   AwsAuthResolvedConfig &
   S3ControlResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of S3ControlClient class. This is resolved and normalized from the {@link S3ControlClientConfig | constructor configuration interface}.
+ */
+export interface S3ControlClientResolvedConfig extends S3ControlClientResolvedConfigType {}
 
 /**
  * <p>
- *          AWS S3 Control provides access to Amazon S3 control plane operations.
+ *          AWS S3 Control provides access to Amazon S3 control plane actions.
  *
  *       </p>
  */
@@ -360,6 +428,9 @@ export class S3ControlClient extends __Client<
   ServiceOutputTypes,
   S3ControlClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of S3ControlClient class. This is resolved and normalized from the {@link S3ControlClientConfig | constructor configuration interface}.
+   */
   readonly config: S3ControlClientResolvedConfig;
 
   constructor(configuration: S3ControlClientConfig) {

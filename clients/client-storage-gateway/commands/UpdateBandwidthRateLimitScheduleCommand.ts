@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateBandwidthRateLimitScheduleCommandInput = UpdateBandwidthRateLimitScheduleInput;
-export type UpdateBandwidthRateLimitScheduleCommandOutput = UpdateBandwidthRateLimitScheduleOutput & __MetadataBearer;
+export interface UpdateBandwidthRateLimitScheduleCommandInput extends UpdateBandwidthRateLimitScheduleInput {}
+export interface UpdateBandwidthRateLimitScheduleCommandOutput
+  extends UpdateBandwidthRateLimitScheduleOutput,
+    __MetadataBearer {}
 
 /**
  * <p>
@@ -27,6 +29,20 @@ export type UpdateBandwidthRateLimitScheduleCommandOutput = UpdateBandwidthRateL
  *          Use this to initiate or update a gateway's bandwidth rate limit schedule.
  *          This operation is supported in the volume and tape gateway types.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, UpdateBandwidthRateLimitScheduleCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, UpdateBandwidthRateLimitScheduleCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new UpdateBandwidthRateLimitScheduleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateBandwidthRateLimitScheduleCommandInput} for command's `input` shape.
+ * @see {@link UpdateBandwidthRateLimitScheduleCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateBandwidthRateLimitScheduleCommand extends $Command<
   UpdateBandwidthRateLimitScheduleCommandInput,

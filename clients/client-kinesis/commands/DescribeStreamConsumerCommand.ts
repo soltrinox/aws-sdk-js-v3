@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeStreamConsumerCommandInput = DescribeStreamConsumerInput;
-export type DescribeStreamConsumerCommandOutput = DescribeStreamConsumerOutput & __MetadataBearer;
+export interface DescribeStreamConsumerCommandInput extends DescribeStreamConsumerInput {}
+export interface DescribeStreamConsumerCommandOutput extends DescribeStreamConsumerOutput, __MetadataBearer {}
 
 /**
  * <p>To get the description of a registered consumer, provide the ARN of the consumer.
@@ -29,6 +29,20 @@ export type DescribeStreamConsumerCommandOutput = DescribeStreamConsumerOutput &
  *             operation to get a list of the descriptions of all the consumers that are currently
  *             registered with a given data stream.</p>
  *         <p>This operation has a limit of 20 transactions per second per stream.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisClient, DescribeStreamConsumerCommand } from "@aws-sdk/client-kinesis"; // ES Modules import
+ * // const { KinesisClient, DescribeStreamConsumerCommand } = require("@aws-sdk/client-kinesis"); // CommonJS import
+ * const client = new KinesisClient(config);
+ * const command = new DescribeStreamConsumerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeStreamConsumerCommandInput} for command's `input` shape.
+ * @see {@link DescribeStreamConsumerCommandOutput} for command's `response` shape.
+ * @see {@link KinesisClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeStreamConsumerCommand extends $Command<
   DescribeStreamConsumerCommandInput,

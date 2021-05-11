@@ -15,6 +15,11 @@ import {
   CreateDatasetCommandOutput,
 } from "./commands/CreateDatasetCommand";
 import {
+  CreateDatasetExportJobCommand,
+  CreateDatasetExportJobCommandInput,
+  CreateDatasetExportJobCommandOutput,
+} from "./commands/CreateDatasetExportJobCommand";
+import {
   CreateDatasetGroupCommand,
   CreateDatasetGroupCommandInput,
   CreateDatasetGroupCommandOutput,
@@ -105,6 +110,11 @@ import {
   DescribeDatasetCommandOutput,
 } from "./commands/DescribeDatasetCommand";
 import {
+  DescribeDatasetExportJobCommand,
+  DescribeDatasetExportJobCommandInput,
+  DescribeDatasetExportJobCommandOutput,
+} from "./commands/DescribeDatasetExportJobCommand";
+import {
   DescribeDatasetGroupCommand,
   DescribeDatasetGroupCommandInput,
   DescribeDatasetGroupCommandOutput,
@@ -164,6 +174,11 @@ import {
   ListCampaignsCommandInput,
   ListCampaignsCommandOutput,
 } from "./commands/ListCampaignsCommand";
+import {
+  ListDatasetExportJobsCommand,
+  ListDatasetExportJobsCommandInput,
+  ListDatasetExportJobsCommandOutput,
+} from "./commands/ListDatasetExportJobsCommand";
 import {
   ListDatasetGroupsCommand,
   ListDatasetGroupsCommandInput,
@@ -252,15 +267,22 @@ export class Personalize extends PersonalizeClient {
    *          <p>
    *             <b>Minimum Provisioned TPS and Auto-Scaling</b>
    *          </p>
+   *
    *          <p>A transaction is a single <code>GetRecommendations</code> or
    *        <code>GetPersonalizedRanking</code> call. Transactions per second (TPS) is the throughput
    *        and unit of billing for Amazon Personalize. The minimum provisioned TPS
    *        (<code>minProvisionedTPS</code>) specifies the baseline throughput provisioned by
-   *        Amazon Personalize, and thus, the minimum billing charge. If your TPS increases beyond
+   *        Amazon Personalize, and thus, the minimum billing charge.
+   *     </p>
+   *          <p>
+   *        If your TPS increases beyond
    *        <code>minProvisionedTPS</code>, Amazon Personalize auto-scales the provisioned capacity up and down,
-   *        but never below <code>minProvisionedTPS</code>, to maintain a 70% utilization.
+   *        but never below <code>minProvisionedTPS</code>.
    *        There's a short time delay while the capacity is increased that might cause loss of
-   *        transactions. It's recommended to start with a low <code>minProvisionedTPS</code>, track
+   *        transactions.</p>
+   *          <p>The actual TPS used is calculated as the average requests/second within a 5-minute window.
+   *       You pay for maximum of either the minimum provisioned TPS or the actual TPS.
+   *       We recommend starting with a low <code>minProvisionedTPS</code>, track
    *        your usage using Amazon CloudWatch metrics, and then increase the <code>minProvisionedTPS</code>
    *        as necessary.</p>
    *
@@ -420,6 +442,59 @@ export class Personalize extends PersonalizeClient {
   }
 
   /**
+   * <p>
+   *       Creates a job that exports data from your dataset to an Amazon S3 bucket.
+   *       To allow Amazon Personalize to export the training data, you must specify an
+   *       service-linked AWS Identity and Access Management (IAM) role that gives Amazon Personalize <code>PutObject</code> permissions for your Amazon S3 bucket.
+   *       For information, see <a href="https://docs.aws.amazon.com/personalize/latest/dg/export-permissions.html">Dataset export job permissions requirements</a>
+   *       in the Amazon Personalize developer guide.
+   *     </p>
+   *          <p>
+   *             <b>Status</b>
+   *          </p>
+   *          <p>A dataset export job can be in one of the following states:</p>
+   *          <ul>
+   *             <li>
+   *                <p>CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED</p>
+   *             </li>
+   *          </ul>
+   *          <p>
+   *       To get the status of the export job, call <a>DescribeDatasetExportJob</a>,
+   *       and specify the Amazon Resource Name (ARN) of the dataset export job. The dataset export is
+   *       complete when the status shows as ACTIVE. If the status shows as CREATE FAILED, the response
+   *       includes a <code>failureReason</code> key, which describes why the job failed.
+   *     </p>
+   */
+  public createDatasetExportJob(
+    args: CreateDatasetExportJobCommandInput,
+    options?: __HttpHandlerOptions
+  ): Promise<CreateDatasetExportJobCommandOutput>;
+  public createDatasetExportJob(
+    args: CreateDatasetExportJobCommandInput,
+    cb: (err: any, data?: CreateDatasetExportJobCommandOutput) => void
+  ): void;
+  public createDatasetExportJob(
+    args: CreateDatasetExportJobCommandInput,
+    options: __HttpHandlerOptions,
+    cb: (err: any, data?: CreateDatasetExportJobCommandOutput) => void
+  ): void;
+  public createDatasetExportJob(
+    args: CreateDatasetExportJobCommandInput,
+    optionsOrCb?: __HttpHandlerOptions | ((err: any, data?: CreateDatasetExportJobCommandOutput) => void),
+    cb?: (err: any, data?: CreateDatasetExportJobCommandOutput) => void
+  ): Promise<CreateDatasetExportJobCommandOutput> | void {
+    const command = new CreateDatasetExportJobCommand(args);
+    if (typeof optionsOrCb === "function") {
+      this.send(command, optionsOrCb);
+    } else if (typeof cb === "function") {
+      if (typeof optionsOrCb !== "object") throw new Error(`Expect http options but get ${typeof optionsOrCb}`);
+      this.send(command, optionsOrCb || {}, cb);
+    } else {
+      return this.send(command, optionsOrCb);
+    }
+  }
+
+  /**
    * <p>Creates an empty dataset group. A dataset group contains related datasets that supply data
    *       for training a model. A dataset group can contain at most three datasets, one for each type of
    *       dataset:</p>
@@ -529,10 +604,12 @@ export class Personalize extends PersonalizeClient {
   /**
    * <p>Creates a job that imports training data from your data source (an Amazon S3 bucket) to an
    *       Amazon Personalize dataset. To allow Amazon Personalize to import the training data, you must specify an
-   *       AWS Identity and Access Management (IAM) role that has permission to read from the data source, as Amazon Personalize makes a
-   *       copy of your data and processes it in an internal AWS system.</p>
+   *       AWS Identity and Access Management (IAM) service role that has permission to read from the data source, as Amazon Personalize makes a
+   *       copy of your data and processes it in an internal AWS system. For information on granting access
+   *       to your Amazon S3 bucket, see <a href="https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html">Giving Amazon Personalize
+   *       Access to Amazon S3 Resources</a>. </p>
    *          <important>
-   *             <p>The dataset import job replaces any previous data in the dataset.</p>
+   *             <p>The dataset import job replaces any existing data in the dataset that you imported in bulk.</p>
    *          </important>
    *          <p>
    *             <b>Status</b>
@@ -598,21 +675,19 @@ export class Personalize extends PersonalizeClient {
   }
 
   /**
-   * <p>Creates an event tracker that you use when sending event data to the specified dataset
+   * <p>Creates an event tracker that you use when adding event data to a specified dataset
    *       group using the
    *       <a href="https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html">PutEvents</a> API.</p>
-   *          <p>When Amazon Personalize creates an event tracker, it also
-   *       creates an <i>event-interactions</i> dataset in the dataset group associated
-   *       with the event tracker.
-   *       The event-interactions dataset stores the event data from the <code>PutEvents</code> call.
-   *       The contents of this dataset are not available to the user.</p>
    *          <note>
    *             <p>Only one event tracker can be associated with a dataset group. You will get
    *         an error if you call <code>CreateEventTracker</code> using the same dataset group as an
    *         existing event tracker.</p>
    *          </note>
-   *          <p>When you send event data you include your tracking ID. The tracking ID identifies
-   *       the customer and authorizes the customer to send the data.</p>
+   *          <p>When you create an event tracker, the response includes a tracking ID, which you pass as a parameter when you use the
+   *       <a href="https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html">PutEvents</a> operation.
+   *       Amazon Personalize then appends the event data to the Interactions dataset of the dataset group you specify
+   *       in your event tracker.
+   *     </p>
    *          <p>The event tracker can be in one of the following states:</p>
    *          <ul>
    *             <li>
@@ -677,8 +752,7 @@ export class Personalize extends PersonalizeClient {
   }
 
   /**
-   * <p>Creates a recommendation filter. For more information, see <a href="https://docs.aws.amazon.com/personalize/latest/dg/filters.html">Using
-   *             Filters with Amazon Personalize</a>.</p>
+   * <p>Creates a recommendation filter. For more information, see <a>filter</a>.</p>
    */
   public createFilter(
     args: CreateFilterCommandInput,
@@ -776,6 +850,10 @@ export class Personalize extends PersonalizeClient {
    *       recipes provided by Amazon Personalize. Alternatively, you can specify
    *       <code>performAutoML</code> and Amazon Personalize will analyze your data and select the
    *       optimum USER_PERSONALIZATION recipe for you.</p>
+   *          <note>
+   *             <p>Amazon Personalize doesn't support configuring the <code>hpoObjective</code>
+   *         for solution hyperparameter optimization at this time.</p>
+   *          </note>
    *          <p>
    *             <b>Status</b>
    *          </p>
@@ -1334,6 +1412,39 @@ export class Personalize extends PersonalizeClient {
   }
 
   /**
+   * <p>Describes the dataset export job created by <a>CreateDatasetExportJob</a>,
+   *       including the export job status.</p>
+   */
+  public describeDatasetExportJob(
+    args: DescribeDatasetExportJobCommandInput,
+    options?: __HttpHandlerOptions
+  ): Promise<DescribeDatasetExportJobCommandOutput>;
+  public describeDatasetExportJob(
+    args: DescribeDatasetExportJobCommandInput,
+    cb: (err: any, data?: DescribeDatasetExportJobCommandOutput) => void
+  ): void;
+  public describeDatasetExportJob(
+    args: DescribeDatasetExportJobCommandInput,
+    options: __HttpHandlerOptions,
+    cb: (err: any, data?: DescribeDatasetExportJobCommandOutput) => void
+  ): void;
+  public describeDatasetExportJob(
+    args: DescribeDatasetExportJobCommandInput,
+    optionsOrCb?: __HttpHandlerOptions | ((err: any, data?: DescribeDatasetExportJobCommandOutput) => void),
+    cb?: (err: any, data?: DescribeDatasetExportJobCommandOutput) => void
+  ): Promise<DescribeDatasetExportJobCommandOutput> | void {
+    const command = new DescribeDatasetExportJobCommand(args);
+    if (typeof optionsOrCb === "function") {
+      this.send(command, optionsOrCb);
+    } else if (typeof cb === "function") {
+      if (typeof optionsOrCb !== "object") throw new Error(`Expect http options but get ${typeof optionsOrCb}`);
+      this.send(command, optionsOrCb || {}, cb);
+    } else {
+      return this.send(command, optionsOrCb);
+    }
+  }
+
+  /**
    * <p>Describes the given dataset group. For more information on dataset groups, see <a>CreateDatasetGroup</a>.</p>
    */
   public describeDatasetGroup(
@@ -1734,6 +1845,42 @@ export class Personalize extends PersonalizeClient {
     cb?: (err: any, data?: ListCampaignsCommandOutput) => void
   ): Promise<ListCampaignsCommandOutput> | void {
     const command = new ListCampaignsCommand(args);
+    if (typeof optionsOrCb === "function") {
+      this.send(command, optionsOrCb);
+    } else if (typeof cb === "function") {
+      if (typeof optionsOrCb !== "object") throw new Error(`Expect http options but get ${typeof optionsOrCb}`);
+      this.send(command, optionsOrCb || {}, cb);
+    } else {
+      return this.send(command, optionsOrCb);
+    }
+  }
+
+  /**
+   * <p>Returns a list of dataset export jobs that use the given dataset. When a dataset is not
+   *       specified, all the dataset export jobs associated with the account are listed. The response
+   *       provides the properties for each dataset export job, including the Amazon Resource Name (ARN).
+   *       For more information on dataset export jobs, see <a>CreateDatasetExportJob</a>. For
+   *       more information on datasets, see <a>CreateDataset</a>.</p>
+   */
+  public listDatasetExportJobs(
+    args: ListDatasetExportJobsCommandInput,
+    options?: __HttpHandlerOptions
+  ): Promise<ListDatasetExportJobsCommandOutput>;
+  public listDatasetExportJobs(
+    args: ListDatasetExportJobsCommandInput,
+    cb: (err: any, data?: ListDatasetExportJobsCommandOutput) => void
+  ): void;
+  public listDatasetExportJobs(
+    args: ListDatasetExportJobsCommandInput,
+    options: __HttpHandlerOptions,
+    cb: (err: any, data?: ListDatasetExportJobsCommandOutput) => void
+  ): void;
+  public listDatasetExportJobs(
+    args: ListDatasetExportJobsCommandInput,
+    optionsOrCb?: __HttpHandlerOptions | ((err: any, data?: ListDatasetExportJobsCommandOutput) => void),
+    cb?: (err: any, data?: ListDatasetExportJobsCommandOutput) => void
+  ): Promise<ListDatasetExportJobsCommandOutput> | void {
+    const command = new ListDatasetExportJobsCommand(args);
     if (typeof optionsOrCb === "function") {
       this.send(command, optionsOrCb);
     } else if (typeof cb === "function") {

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListResourceDefinitionsCommandInput = ListResourceDefinitionsRequest;
-export type ListResourceDefinitionsCommandOutput = ListResourceDefinitionsResponse & __MetadataBearer;
+export interface ListResourceDefinitionsCommandInput extends ListResourceDefinitionsRequest {}
+export interface ListResourceDefinitionsCommandOutput extends ListResourceDefinitionsResponse, __MetadataBearer {}
 
 /**
  * Retrieves a list of resource definitions.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, ListResourceDefinitionsCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, ListResourceDefinitionsCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new ListResourceDefinitionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListResourceDefinitionsCommandInput} for command's `input` shape.
+ * @see {@link ListResourceDefinitionsCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListResourceDefinitionsCommand extends $Command<
   ListResourceDefinitionsCommandInput,

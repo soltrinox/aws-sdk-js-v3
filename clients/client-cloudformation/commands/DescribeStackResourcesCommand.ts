@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeStackResourcesCommandInput = DescribeStackResourcesInput;
-export type DescribeStackResourcesCommandOutput = DescribeStackResourcesOutput & __MetadataBearer;
+export interface DescribeStackResourcesCommandInput extends DescribeStackResourcesInput {}
+export interface DescribeStackResourcesCommandOutput extends DescribeStackResourcesOutput, __MetadataBearer {}
 
 /**
  * <p>Returns AWS resource descriptions for running and deleted stacks. If
@@ -41,6 +41,20 @@ export type DescribeStackResourcesCommandOutput = DescribeStackResourcesOutput &
  *                <code>StackName</code> and <code>PhysicalResourceId</code> in the same
  *             request.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, DescribeStackResourcesCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, DescribeStackResourcesCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new DescribeStackResourcesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeStackResourcesCommandInput} for command's `input` shape.
+ * @see {@link DescribeStackResourcesCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeStackResourcesCommand extends $Command<
   DescribeStackResourcesCommandInput,

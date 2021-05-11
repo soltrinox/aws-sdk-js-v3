@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListCoreDefinitionVersionsCommandInput = ListCoreDefinitionVersionsRequest;
-export type ListCoreDefinitionVersionsCommandOutput = ListCoreDefinitionVersionsResponse & __MetadataBearer;
+export interface ListCoreDefinitionVersionsCommandInput extends ListCoreDefinitionVersionsRequest {}
+export interface ListCoreDefinitionVersionsCommandOutput extends ListCoreDefinitionVersionsResponse, __MetadataBearer {}
 
 /**
  * Lists the versions of a core definition.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, ListCoreDefinitionVersionsCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, ListCoreDefinitionVersionsCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new ListCoreDefinitionVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListCoreDefinitionVersionsCommandInput} for command's `input` shape.
+ * @see {@link ListCoreDefinitionVersionsCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListCoreDefinitionVersionsCommand extends $Command<
   ListCoreDefinitionVersionsCommandInput,

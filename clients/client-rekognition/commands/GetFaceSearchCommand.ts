@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetFaceSearchCommandInput = GetFaceSearchRequest;
-export type GetFaceSearchCommandOutput = GetFaceSearchResponse & __MetadataBearer;
+export interface GetFaceSearchCommandInput extends GetFaceSearchRequest {}
+export interface GetFaceSearchCommandOutput extends GetFaceSearchResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the face search results for Amazon Rekognition Video face search started by
@@ -53,6 +53,20 @@ export type GetFaceSearchCommandOutput = GetFaceSearchResponse & __MetadataBeare
  *     start of the video, persons are matched.
  *     You can also sort by persons by specifying <code>INDEX</code> for the <code>SORTBY</code> input
  *     parameter.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, GetFaceSearchCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, GetFaceSearchCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new GetFaceSearchCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetFaceSearchCommandInput} for command's `input` shape.
+ * @see {@link GetFaceSearchCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetFaceSearchCommand extends $Command<
   GetFaceSearchCommandInput,

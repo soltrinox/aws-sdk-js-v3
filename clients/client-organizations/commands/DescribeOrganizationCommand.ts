@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeOrganizationCommandInput = {};
-export type DescribeOrganizationCommandOutput = DescribeOrganizationResponse & __MetadataBearer;
+export interface DescribeOrganizationCommandInput {}
+export interface DescribeOrganizationCommandOutput extends DescribeOrganizationResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about the organization that the user's account belongs
@@ -29,6 +29,20 @@ export type DescribeOrganizationCommandOutput = DescribeOrganizationResponse & _
  *                 it separately at the root level with <a>DisablePolicyType</a>. Use <a>ListRoots</a> to see the status of policy types for a specified
  *                 root.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, DescribeOrganizationCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, DescribeOrganizationCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new DescribeOrganizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeOrganizationCommandInput} for command's `input` shape.
+ * @see {@link DescribeOrganizationCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeOrganizationCommand extends $Command<
   DescribeOrganizationCommandInput,

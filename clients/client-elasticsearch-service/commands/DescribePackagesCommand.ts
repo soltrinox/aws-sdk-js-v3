@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribePackagesCommandInput = DescribePackagesRequest;
-export type DescribePackagesCommandOutput = DescribePackagesResponse & __MetadataBearer;
+export interface DescribePackagesCommandInput extends DescribePackagesRequest {}
+export interface DescribePackagesCommandOutput extends DescribePackagesResponse, __MetadataBearer {}
 
 /**
  * <p>Describes all packages available to Amazon ES. Includes options for filtering, limiting the number of results, and pagination.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticsearchServiceClient, DescribePackagesCommand } from "@aws-sdk/client-elasticsearch-service"; // ES Modules import
+ * // const { ElasticsearchServiceClient, DescribePackagesCommand } = require("@aws-sdk/client-elasticsearch-service"); // CommonJS import
+ * const client = new ElasticsearchServiceClient(config);
+ * const command = new DescribePackagesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribePackagesCommandInput} for command's `input` shape.
+ * @see {@link DescribePackagesCommandOutput} for command's `response` shape.
+ * @see {@link ElasticsearchServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribePackagesCommand extends $Command<
   DescribePackagesCommandInput,

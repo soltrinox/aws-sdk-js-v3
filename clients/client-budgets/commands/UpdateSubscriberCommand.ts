@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateSubscriberCommandInput = UpdateSubscriberRequest;
-export type UpdateSubscriberCommandOutput = UpdateSubscriberResponse & __MetadataBearer;
+export interface UpdateSubscriberCommandInput extends UpdateSubscriberRequest {}
+export interface UpdateSubscriberCommandOutput extends UpdateSubscriberResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a subscriber.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BudgetsClient, UpdateSubscriberCommand } from "@aws-sdk/client-budgets"; // ES Modules import
+ * // const { BudgetsClient, UpdateSubscriberCommand } = require("@aws-sdk/client-budgets"); // CommonJS import
+ * const client = new BudgetsClient(config);
+ * const command = new UpdateSubscriberCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateSubscriberCommandInput} for command's `input` shape.
+ * @see {@link UpdateSubscriberCommandOutput} for command's `response` shape.
+ * @see {@link BudgetsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateSubscriberCommand extends $Command<
   UpdateSubscriberCommandInput,

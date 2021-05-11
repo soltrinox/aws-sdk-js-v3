@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateScriptCommandInput = CreateScriptInput;
-export type CreateScriptCommandOutput = CreateScriptOutput & __MetadataBearer;
+export interface CreateScriptCommandInput extends CreateScriptInput {}
+export interface CreateScriptCommandOutput extends CreateScriptOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a new script record for your Realtime Servers script. Realtime scripts are JavaScript that
@@ -55,35 +55,30 @@ export type CreateScriptCommandOutput = CreateScriptOutput & __MetadataBearer;
  *             <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/setting-up-role.html">Set Up a Role for Amazon GameLift Access</a>
  *          </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateScript</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ListScripts</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeScript</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateScript</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteScript</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>CreateScript</a> |
+ *                     <a>ListScripts</a> |
+ *                     <a>DescribeScript</a> |
+ *                     <a>UpdateScript</a> |
+ *                     <a>DeleteScript</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, CreateScriptCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, CreateScriptCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new CreateScriptCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateScriptCommandInput} for command's `input` shape.
+ * @see {@link CreateScriptCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateScriptCommand extends $Command<
   CreateScriptCommandInput,

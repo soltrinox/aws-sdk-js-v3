@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ImportKeyPairCommandInput = ImportKeyPairRequest;
-export type ImportKeyPairCommandOutput = ImportKeyPairResult & __MetadataBearer;
+export interface ImportKeyPairCommandInput extends ImportKeyPairRequest {}
+export interface ImportKeyPairCommandOutput extends ImportKeyPairResult, __MetadataBearer {}
 
 /**
  * <p>Imports a public SSH key from a specific key pair.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, ImportKeyPairCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, ImportKeyPairCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new ImportKeyPairCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ImportKeyPairCommandInput} for command's `input` shape.
+ * @see {@link ImportKeyPairCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ImportKeyPairCommand extends $Command<
   ImportKeyPairCommandInput,

@@ -1,5 +1,5 @@
 import { SageMakerClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SageMakerClient";
-import { UpdateWorkteamRequest, UpdateWorkteamResponse } from "../models/models_2";
+import { UpdateWorkteamRequest, UpdateWorkteamResponse } from "../models/models_3";
 import {
   deserializeAws_json1_1UpdateWorkteamCommand,
   serializeAws_json1_1UpdateWorkteamCommand,
@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateWorkteamCommandInput = UpdateWorkteamRequest;
-export type UpdateWorkteamCommandOutput = UpdateWorkteamResponse & __MetadataBearer;
+export interface UpdateWorkteamCommandInput extends UpdateWorkteamRequest {}
+export interface UpdateWorkteamCommandOutput extends UpdateWorkteamResponse, __MetadataBearer {}
 
 /**
  * <p>Updates an existing work team with new member definitions or description.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, UpdateWorkteamCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, UpdateWorkteamCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new UpdateWorkteamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateWorkteamCommandInput} for command's `input` shape.
+ * @see {@link UpdateWorkteamCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateWorkteamCommand extends $Command<
   UpdateWorkteamCommandInput,

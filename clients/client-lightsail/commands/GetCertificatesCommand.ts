@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCertificatesCommandInput = GetCertificatesRequest;
-export type GetCertificatesCommandOutput = GetCertificatesResult & __MetadataBearer;
+export interface GetCertificatesCommandInput extends GetCertificatesRequest {}
+export interface GetCertificatesCommandOutput extends GetCertificatesResult, __MetadataBearer {}
 
 /**
  * <p>Returns information about one or more Amazon Lightsail SSL/TLS certificates.</p>
@@ -27,6 +27,20 @@ export type GetCertificatesCommandOutput = GetCertificatesResult & __MetadataBea
  *         your request. The response will include only the certificate Amazon Resource Name (ARN),
  *         certificate name, domain name, and tags.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetCertificatesCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetCertificatesCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetCertificatesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCertificatesCommandInput} for command's `input` shape.
+ * @see {@link GetCertificatesCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCertificatesCommand extends $Command<
   GetCertificatesCommandInput,

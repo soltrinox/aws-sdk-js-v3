@@ -18,13 +18,19 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListObjectVersionsCommandInput = ListObjectVersionsRequest;
-export type ListObjectVersionsCommandOutput = ListObjectVersionsOutput & __MetadataBearer;
+export interface ListObjectVersionsCommandInput extends ListObjectVersionsRequest {}
+export interface ListObjectVersionsCommandOutput extends ListObjectVersionsOutput, __MetadataBearer {}
 
 /**
  * <p>Returns metadata about all versions of the objects in a bucket. You can also use request
  *          parameters as selection criteria to return metadata about a subset of all the object
- *          versions. </p>
+ *          versions.</p>
+ *          <important>
+ *             <p>
+ *             To use this operation, you must have permissions to perform the
+ *             <code>s3:ListBucketVersions</code> action. Be aware of the name difference.
+ *          </p>
+ *          </important>
  *          <note>
  *             <p> A 200 OK response can contain valid or invalid XML. Make sure to design your
  *             application to parse the contents of the response and handle it appropriately.</p>
@@ -55,6 +61,20 @@ export type ListObjectVersionsCommandOutput = ListObjectVersionsOutput & __Metad
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, ListObjectVersionsCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, ListObjectVersionsCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new ListObjectVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListObjectVersionsCommandInput} for command's `input` shape.
+ * @see {@link ListObjectVersionsCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListObjectVersionsCommand extends $Command<
   ListObjectVersionsCommandInput,

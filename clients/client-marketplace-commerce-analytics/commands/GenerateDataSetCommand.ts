@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GenerateDataSetCommandInput = GenerateDataSetRequest;
-export type GenerateDataSetCommandOutput = GenerateDataSetResult & __MetadataBearer;
+export interface GenerateDataSetCommandInput extends GenerateDataSetRequest {}
+export interface GenerateDataSetCommandOutput extends GenerateDataSetResult, __MetadataBearer {}
 
 /**
  * Given a data set type and data set publication date, asynchronously publishes the requested data set to the specified
@@ -33,6 +33,20 @@ export type GenerateDataSetCommandOutput = GenerateDataSetResult & __MetadataBea
  *         be overwritten by the new file.
  *         Requires a Role with an attached permissions policy providing Allow permissions for the following actions:
  *         s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MarketplaceCommerceAnalyticsClient, GenerateDataSetCommand } from "@aws-sdk/client-marketplace-commerce-analytics"; // ES Modules import
+ * // const { MarketplaceCommerceAnalyticsClient, GenerateDataSetCommand } = require("@aws-sdk/client-marketplace-commerce-analytics"); // CommonJS import
+ * const client = new MarketplaceCommerceAnalyticsClient(config);
+ * const command = new GenerateDataSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GenerateDataSetCommandInput} for command's `input` shape.
+ * @see {@link GenerateDataSetCommandOutput} for command's `response` shape.
+ * @see {@link MarketplaceCommerceAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GenerateDataSetCommand extends $Command<
   GenerateDataSetCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveProfilePermissionCommandInput = RemoveProfilePermissionRequest;
-export type RemoveProfilePermissionCommandOutput = RemoveProfilePermissionResponse & __MetadataBearer;
+export interface RemoveProfilePermissionCommandInput extends RemoveProfilePermissionRequest {}
+export interface RemoveProfilePermissionCommandOutput extends RemoveProfilePermissionResponse, __MetadataBearer {}
 
 /**
  * <p>Removes cross-account permissions from a signing profile.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SignerClient, RemoveProfilePermissionCommand } from "@aws-sdk/client-signer"; // ES Modules import
+ * // const { SignerClient, RemoveProfilePermissionCommand } = require("@aws-sdk/client-signer"); // CommonJS import
+ * const client = new SignerClient(config);
+ * const command = new RemoveProfilePermissionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveProfilePermissionCommandInput} for command's `input` shape.
+ * @see {@link RemoveProfilePermissionCommandOutput} for command's `response` shape.
+ * @see {@link SignerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveProfilePermissionCommand extends $Command<
   RemoveProfilePermissionCommandInput,

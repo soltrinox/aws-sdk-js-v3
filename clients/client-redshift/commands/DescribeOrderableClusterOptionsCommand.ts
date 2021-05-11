@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeOrderableClusterOptionsCommandInput = DescribeOrderableClusterOptionsMessage;
-export type DescribeOrderableClusterOptionsCommandOutput = OrderableClusterOptionsMessage & __MetadataBearer;
+export interface DescribeOrderableClusterOptionsCommandInput extends DescribeOrderableClusterOptionsMessage {}
+export interface DescribeOrderableClusterOptionsCommandOutput
+  extends OrderableClusterOptionsMessage,
+    __MetadataBearer {}
 
 /**
  * <p>Returns a list of orderable cluster options. Before you create a new cluster you
@@ -30,6 +32,20 @@ export type DescribeOrderableClusterOptionsCommandOutput = OrderableClusterOptio
  * For more information about managing clusters, go to
  * <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a>
  * in the <i>Amazon Redshift Cluster Management Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, DescribeOrderableClusterOptionsCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, DescribeOrderableClusterOptionsCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new DescribeOrderableClusterOptionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeOrderableClusterOptionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeOrderableClusterOptionsCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeOrderableClusterOptionsCommand extends $Command<
   DescribeOrderableClusterOptionsCommandInput,

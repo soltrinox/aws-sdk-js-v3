@@ -62,7 +62,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new KinesisAnalyticsClient({ region: "REGION" });
 
 const params = {
@@ -147,7 +147,7 @@ const client = new AWS.KinesisAnalytics({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.addApplicationCloudWatchLoggingOption(params);
+  const data = await client.addApplicationCloudWatchLoggingOption(params);
   // process data.
 } catch (error) {
   // error handling.

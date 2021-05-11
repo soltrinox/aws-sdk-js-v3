@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteCustomRoutingListenerCommandInput = DeleteCustomRoutingListenerRequest;
-export type DeleteCustomRoutingListenerCommandOutput = __MetadataBearer;
+export interface DeleteCustomRoutingListenerCommandInput extends DeleteCustomRoutingListenerRequest {}
+export interface DeleteCustomRoutingListenerCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Delete a listener for a custom routing accelerator.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, DeleteCustomRoutingListenerCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, DeleteCustomRoutingListenerCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new DeleteCustomRoutingListenerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteCustomRoutingListenerCommandInput} for command's `input` shape.
+ * @see {@link DeleteCustomRoutingListenerCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteCustomRoutingListenerCommand extends $Command<
   DeleteCustomRoutingListenerCommandInput,

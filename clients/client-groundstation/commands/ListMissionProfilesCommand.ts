@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListMissionProfilesCommandInput = ListMissionProfilesRequest;
-export type ListMissionProfilesCommandOutput = ListMissionProfilesResponse & __MetadataBearer;
+export interface ListMissionProfilesCommandInput extends ListMissionProfilesRequest {}
+export interface ListMissionProfilesCommandOutput extends ListMissionProfilesResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of mission profiles.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GroundStationClient, ListMissionProfilesCommand } from "@aws-sdk/client-groundstation"; // ES Modules import
+ * // const { GroundStationClient, ListMissionProfilesCommand } = require("@aws-sdk/client-groundstation"); // CommonJS import
+ * const client = new GroundStationClient(config);
+ * const command = new ListMissionProfilesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListMissionProfilesCommandInput} for command's `input` shape.
+ * @see {@link ListMissionProfilesCommandOutput} for command's `response` shape.
+ * @see {@link GroundStationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListMissionProfilesCommand extends $Command<
   ListMissionProfilesCommandInput,

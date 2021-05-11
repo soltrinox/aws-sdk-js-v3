@@ -1,5 +1,5 @@
 import { IoTClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../IoTClient";
-import { RemoveThingFromBillingGroupRequest, RemoveThingFromBillingGroupResponse } from "../models/models_1";
+import { RemoveThingFromBillingGroupRequest, RemoveThingFromBillingGroupResponse } from "../models/models_2";
 import {
   deserializeAws_restJson1RemoveThingFromBillingGroupCommand,
   serializeAws_restJson1RemoveThingFromBillingGroupCommand,
@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveThingFromBillingGroupCommandInput = RemoveThingFromBillingGroupRequest;
-export type RemoveThingFromBillingGroupCommandOutput = RemoveThingFromBillingGroupResponse & __MetadataBearer;
+export interface RemoveThingFromBillingGroupCommandInput extends RemoveThingFromBillingGroupRequest {}
+export interface RemoveThingFromBillingGroupCommandOutput
+  extends RemoveThingFromBillingGroupResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Removes the given thing from the billing group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, RemoveThingFromBillingGroupCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, RemoveThingFromBillingGroupCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new RemoveThingFromBillingGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveThingFromBillingGroupCommandInput} for command's `input` shape.
+ * @see {@link RemoveThingFromBillingGroupCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveThingFromBillingGroupCommand extends $Command<
   RemoveThingFromBillingGroupCommandInput,

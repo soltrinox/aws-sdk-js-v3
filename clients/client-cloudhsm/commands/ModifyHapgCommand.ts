@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyHapgCommandInput = ModifyHapgRequest;
-export type ModifyHapgCommandOutput = ModifyHapgResponse & __MetadataBearer;
+export interface ModifyHapgCommandInput extends ModifyHapgRequest {}
+export interface ModifyHapgCommandOutput extends ModifyHapgResponse, __MetadataBearer {}
 
 /**
  * <p>This is documentation for <b>AWS CloudHSM Classic</b>. For
@@ -32,6 +32,20 @@ export type ModifyHapgCommandOutput = ModifyHapgResponse & __MetadataBearer;
  *       and the <a href="https://docs.aws.amazon.com/cloudhsm/latest/APIReference/">AWS CloudHSM API
  *       Reference</a>.</p>
  *          <p>Modifies an existing high-availability partition group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudHSMClient, ModifyHapgCommand } from "@aws-sdk/client-cloudhsm"; // ES Modules import
+ * // const { CloudHSMClient, ModifyHapgCommand } = require("@aws-sdk/client-cloudhsm"); // CommonJS import
+ * const client = new CloudHSMClient(config);
+ * const command = new ModifyHapgCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyHapgCommandInput} for command's `input` shape.
+ * @see {@link ModifyHapgCommandOutput} for command's `response` shape.
+ * @see {@link CloudHSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyHapgCommand extends $Command<
   ModifyHapgCommandInput,

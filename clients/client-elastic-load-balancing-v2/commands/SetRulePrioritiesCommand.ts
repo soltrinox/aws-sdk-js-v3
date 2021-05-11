@@ -21,13 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SetRulePrioritiesCommandInput = SetRulePrioritiesInput;
-export type SetRulePrioritiesCommandOutput = SetRulePrioritiesOutput & __MetadataBearer;
+export interface SetRulePrioritiesCommandInput extends SetRulePrioritiesInput {}
+export interface SetRulePrioritiesCommandOutput extends SetRulePrioritiesOutput, __MetadataBearer {}
 
 /**
  * <p>Sets the priorities of the specified rules.</p>
- *          <p>You can reorder the rules as long as there are no priority conflicts in the new order.
- *       Any existing rules that you do not specify retain their current priority.</p>
+ *          <p>You can reorder the rules as long as there are no priority conflicts in the new order. Any
+ *       existing rules that you do not specify retain their current priority.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingV2Client, SetRulePrioritiesCommand } from "@aws-sdk/client-elastic-load-balancing-v2"; // ES Modules import
+ * // const { ElasticLoadBalancingV2Client, SetRulePrioritiesCommand } = require("@aws-sdk/client-elastic-load-balancing-v2"); // CommonJS import
+ * const client = new ElasticLoadBalancingV2Client(config);
+ * const command = new SetRulePrioritiesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SetRulePrioritiesCommandInput} for command's `input` shape.
+ * @see {@link SetRulePrioritiesCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SetRulePrioritiesCommand extends $Command<
   SetRulePrioritiesCommandInput,

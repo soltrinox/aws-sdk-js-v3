@@ -12,7 +12,31 @@ export interface GroupIdentity {
 }
 
 export namespace GroupIdentity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GroupIdentity): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains information about an AWS Identity and Access Management (IAM) role. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html">IAM roles</a> in the
+ *       <i>IAM User Guide</i>.</p>
+ */
+export interface IAMRoleIdentity {
+  /**
+   * <p>The ARN of the IAM role. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM ARNs</a> in the
+   *       <i>IAM User Guide</i>.</p>
+   */
+  arn: string | undefined;
+}
+
+export namespace IAMRoleIdentity {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: IAMRoleIdentity): any => ({
     ...obj,
   });
 }
@@ -23,7 +47,7 @@ export namespace GroupIdentity {
 export interface IAMUserIdentity {
   /**
    * <p>The ARN of the IAM user. For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM ARNs</a> in the
-   *         <i>IAM User Guide</i>.</p>
+   *       <i>IAM User Guide</i>.</p>
    *          <note>
    *             <p>If you delete the IAM user, access policies that contain this identity include an
    *         empty <code>arn</code>. You can delete the access policy for the IAM user that no longer
@@ -34,6 +58,9 @@ export interface IAMUserIdentity {
 }
 
 export namespace IAMUserIdentity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IAMUserIdentity): any => ({
     ...obj,
   });
@@ -50,6 +77,9 @@ export interface UserIdentity {
 }
 
 export namespace UserIdentity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserIdentity): any => ({
     ...obj,
   });
@@ -77,9 +107,17 @@ export interface Identity {
    * <p>An IAM user identity.</p>
    */
   iamUser?: IAMUserIdentity;
+
+  /**
+   * <p>An IAM role identity.</p>
+   */
+  iamRole?: IAMRoleIdentity;
 }
 
 export namespace Identity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Identity): any => ({
     ...obj,
   });
@@ -101,6 +139,9 @@ export interface PortalResource {
 }
 
 export namespace PortalResource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PortalResource): any => ({
     ...obj,
   });
@@ -117,6 +158,9 @@ export interface ProjectResource {
 }
 
 export namespace ProjectResource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProjectResource): any => ({
     ...obj,
   });
@@ -138,6 +182,9 @@ export interface Resource {
 }
 
 export namespace Resource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Resource): any => ({
     ...obj,
   });
@@ -181,6 +228,9 @@ export interface AccessPolicySummary {
 }
 
 export namespace AccessPolicySummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessPolicySummary): any => ({
     ...obj,
   });
@@ -228,6 +278,9 @@ export interface Aggregates {
 }
 
 export namespace Aggregates {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Aggregates): any => ({
     ...obj,
   });
@@ -255,6 +308,9 @@ export interface AggregatedValue {
 }
 
 export namespace AggregatedValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AggregatedValue): any => ({
     ...obj,
   });
@@ -299,6 +355,9 @@ export interface PropertyNotification {
 }
 
 export namespace PropertyNotification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PropertyNotification): any => ({
     ...obj,
   });
@@ -349,6 +408,9 @@ export interface AssetProperty {
 }
 
 export namespace AssetProperty {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetProperty): any => ({
     ...obj,
   });
@@ -382,6 +444,9 @@ export interface AssetCompositeModel {
 }
 
 export namespace AssetCompositeModel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetCompositeModel): any => ({
     ...obj,
   });
@@ -412,6 +477,9 @@ export interface AssetErrorDetails {
 }
 
 export namespace AssetErrorDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetErrorDetails): any => ({
     ...obj,
   });
@@ -434,6 +502,9 @@ export interface AssetHierarchy {
 }
 
 export namespace AssetHierarchy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetHierarchy): any => ({
     ...obj,
   });
@@ -456,6 +527,9 @@ export interface AssetHierarchyInfo {
 }
 
 export namespace AssetHierarchyInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetHierarchyInfo): any => ({
     ...obj,
   });
@@ -476,18 +550,24 @@ export interface Attribute {
 }
 
 export namespace Attribute {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Attribute): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Contains an asset measurement property. This structure is empty. For more information, see
+ * <p>Contains an asset measurement property. For more information, see
  *       <a href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-properties.html#measurements">Measurements</a> in the <i>AWS IoT SiteWise User Guide</i>.</p>
  */
 export interface Measurement {}
 
 export namespace Measurement {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Measurement): any => ({
     ...obj,
   });
@@ -515,6 +595,9 @@ export interface VariableValue {
 }
 
 export namespace VariableValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VariableValue): any => ({
     ...obj,
   });
@@ -536,6 +619,9 @@ export interface ExpressionVariable {
 }
 
 export namespace ExpressionVariable {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExpressionVariable): any => ({
     ...obj,
   });
@@ -560,6 +646,9 @@ export interface TumblingWindow {
 }
 
 export namespace TumblingWindow {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TumblingWindow): any => ({
     ...obj,
   });
@@ -577,6 +666,9 @@ export interface MetricWindow {
 }
 
 export namespace MetricWindow {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricWindow): any => ({
     ...obj,
   });
@@ -615,6 +707,9 @@ export interface Metric {
 }
 
 export namespace Metric {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Metric): any => ({
     ...obj,
   });
@@ -644,6 +739,9 @@ export interface Transform {
 }
 
 export namespace Transform {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Transform): any => ({
     ...obj,
   });
@@ -682,6 +780,9 @@ export interface PropertyType {
 }
 
 export namespace PropertyType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PropertyType): any => ({
     ...obj,
   });
@@ -725,6 +826,9 @@ export interface AssetModelProperty {
 }
 
 export namespace AssetModelProperty {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetModelProperty): any => ({
     ...obj,
   });
@@ -758,6 +862,9 @@ export interface AssetModelCompositeModel {
 }
 
 export namespace AssetModelCompositeModel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetModelCompositeModel): any => ({
     ...obj,
   });
@@ -803,6 +910,9 @@ export interface AssetModelPropertyDefinition {
 }
 
 export namespace AssetModelPropertyDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetModelPropertyDefinition): any => ({
     ...obj,
   });
@@ -836,6 +946,9 @@ export interface AssetModelCompositeModelDefinition {
 }
 
 export namespace AssetModelCompositeModelDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetModelCompositeModelDefinition): any => ({
     ...obj,
   });
@@ -865,6 +978,9 @@ export interface AssetModelHierarchy {
 }
 
 export namespace AssetModelHierarchy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetModelHierarchy): any => ({
     ...obj,
   });
@@ -888,6 +1004,9 @@ export interface AssetModelHierarchyDefinition {
 }
 
 export namespace AssetModelHierarchyDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetModelHierarchyDefinition): any => ({
     ...obj,
   });
@@ -923,6 +1042,9 @@ export interface ErrorDetails {
 }
 
 export namespace ErrorDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ErrorDetails): any => ({
     ...obj,
   });
@@ -945,6 +1067,9 @@ export interface AssetModelStatus {
 }
 
 export namespace AssetModelStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetModelStatus): any => ({
     ...obj,
   });
@@ -994,6 +1119,9 @@ export interface AssetModelSummary {
 }
 
 export namespace AssetModelSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetModelSummary): any => ({
     ...obj,
   });
@@ -1016,6 +1144,9 @@ export interface TimeInNanos {
 }
 
 export namespace TimeInNanos {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TimeInNanos): any => ({
     ...obj,
   });
@@ -1047,6 +1178,9 @@ export interface Variant {
 }
 
 export namespace Variant {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Variant): any => ({
     ...obj,
   });
@@ -1073,6 +1207,9 @@ export interface AssetPropertyValue {
 }
 
 export namespace AssetPropertyValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetPropertyValue): any => ({
     ...obj,
   });
@@ -1109,6 +1246,9 @@ export interface AssetRelationshipSummary {
 }
 
 export namespace AssetRelationshipSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetRelationshipSummary): any => ({
     ...obj,
   });
@@ -1140,6 +1280,9 @@ export interface AssetStatus {
 }
 
 export namespace AssetStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetStatus): any => ({
     ...obj,
   });
@@ -1194,6 +1337,9 @@ export interface AssetSummary {
 }
 
 export namespace AssetSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetSummary): any => ({
     ...obj,
   });
@@ -1224,6 +1370,9 @@ export interface AssociateAssetsRequest {
 }
 
 export namespace AssociateAssetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateAssetsRequest): any => ({
     ...obj,
   });
@@ -1249,6 +1398,9 @@ export interface ConflictingOperationException extends __SmithyException, $Metad
 }
 
 export namespace ConflictingOperationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictingOperationException): any => ({
     ...obj,
   });
@@ -1264,6 +1416,9 @@ export interface InternalFailureException extends __SmithyException, $MetadataBe
 }
 
 export namespace InternalFailureException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalFailureException): any => ({
     ...obj,
   });
@@ -1280,6 +1435,9 @@ export interface InvalidRequestException extends __SmithyException, $MetadataBea
 }
 
 export namespace InvalidRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRequestException): any => ({
     ...obj,
   });
@@ -1298,6 +1456,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -1313,6 +1474,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -1331,6 +1495,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -1385,6 +1552,9 @@ export interface AssociatedAssetsSummary {
 }
 
 export namespace AssociatedAssetsSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociatedAssetsSummary): any => ({
     ...obj,
   });
@@ -1413,6 +1583,9 @@ export interface BatchAssociateProjectAssetsRequest {
 }
 
 export namespace BatchAssociateProjectAssetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchAssociateProjectAssetsRequest): any => ({
     ...obj,
   });
@@ -1426,6 +1599,9 @@ export interface BatchAssociateProjectAssetsResponse {
 }
 
 export namespace BatchAssociateProjectAssetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchAssociateProjectAssetsResponse): any => ({
     ...obj,
   });
@@ -1449,6 +1625,9 @@ export interface BatchDisassociateProjectAssetsRequest {
 }
 
 export namespace BatchDisassociateProjectAssetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDisassociateProjectAssetsRequest): any => ({
     ...obj,
   });
@@ -1462,6 +1641,9 @@ export interface BatchDisassociateProjectAssetsResponse {
 }
 
 export namespace BatchDisassociateProjectAssetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDisassociateProjectAssetsResponse): any => ({
     ...obj,
   });
@@ -1505,6 +1687,9 @@ export interface PutAssetPropertyValueEntry {
 }
 
 export namespace PutAssetPropertyValueEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutAssetPropertyValueEntry): any => ({
     ...obj,
   });
@@ -1519,6 +1704,9 @@ export interface BatchPutAssetPropertyValueRequest {
 }
 
 export namespace BatchPutAssetPropertyValueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchPutAssetPropertyValueRequest): any => ({
     ...obj,
   });
@@ -1557,6 +1745,9 @@ export interface BatchPutAssetPropertyError {
 }
 
 export namespace BatchPutAssetPropertyError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchPutAssetPropertyError): any => ({
     ...obj,
   });
@@ -1579,6 +1770,9 @@ export interface BatchPutAssetPropertyErrorEntry {
 }
 
 export namespace BatchPutAssetPropertyErrorEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchPutAssetPropertyErrorEntry): any => ({
     ...obj,
   });
@@ -1593,6 +1787,9 @@ export interface BatchPutAssetPropertyValueResponse {
 }
 
 export namespace BatchPutAssetPropertyValueResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchPutAssetPropertyValueResponse): any => ({
     ...obj,
   });
@@ -1608,6 +1805,9 @@ export interface ServiceUnavailableException extends __SmithyException, $Metadat
 }
 
 export namespace ServiceUnavailableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceUnavailableException): any => ({
     ...obj,
   });
@@ -1643,6 +1843,9 @@ export interface CreateAccessPolicyRequest {
 }
 
 export namespace CreateAccessPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccessPolicyRequest): any => ({
     ...obj,
   });
@@ -1664,6 +1867,9 @@ export interface CreateAccessPolicyResponse {
 }
 
 export namespace CreateAccessPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccessPolicyResponse): any => ({
     ...obj,
   });
@@ -1694,6 +1900,9 @@ export interface CreateAssetRequest {
 }
 
 export namespace CreateAssetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAssetRequest): any => ({
     ...obj,
   });
@@ -1722,6 +1931,9 @@ export interface CreateAssetResponse {
 }
 
 export namespace CreateAssetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAssetResponse): any => ({
     ...obj,
   });
@@ -1746,6 +1958,9 @@ export interface ResourceAlreadyExistsException extends __SmithyException, $Meta
 }
 
 export namespace ResourceAlreadyExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceAlreadyExistsException): any => ({
     ...obj,
   });
@@ -1801,6 +2016,9 @@ export interface CreateAssetModelRequest {
 }
 
 export namespace CreateAssetModelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAssetModelRequest): any => ({
     ...obj,
   });
@@ -1828,6 +2046,9 @@ export interface CreateAssetModelResponse {
 }
 
 export namespace CreateAssetModelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAssetModelResponse): any => ({
     ...obj,
   });
@@ -1869,6 +2090,9 @@ export interface CreateDashboardRequest {
 }
 
 export namespace CreateDashboardRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDashboardRequest): any => ({
     ...obj,
   });
@@ -1890,6 +2114,9 @@ export interface CreateDashboardResponse {
 }
 
 export namespace CreateDashboardResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDashboardResponse): any => ({
     ...obj,
   });
@@ -1911,6 +2138,9 @@ export interface Greengrass {
 }
 
 export namespace Greengrass {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Greengrass): any => ({
     ...obj,
   });
@@ -1927,6 +2157,9 @@ export interface GatewayPlatform {
 }
 
 export namespace GatewayPlatform {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GatewayPlatform): any => ({
     ...obj,
   });
@@ -1952,6 +2185,9 @@ export interface CreateGatewayRequest {
 }
 
 export namespace CreateGatewayRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateGatewayRequest): any => ({
     ...obj,
   });
@@ -1973,6 +2209,9 @@ export interface CreateGatewayResponse {
 }
 
 export namespace CreateGatewayResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateGatewayResponse): any => ({
     ...obj,
   });
@@ -1999,6 +2238,9 @@ export interface ImageFile {
 }
 
 export namespace ImageFile {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImageFile): any => ({
     ...obj,
   });
@@ -2071,6 +2313,9 @@ export interface CreatePortalRequest {
 }
 
 export namespace CreatePortalRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePortalRequest): any => ({
     ...obj,
   });
@@ -2098,6 +2343,9 @@ export interface MonitorErrorDetails {
 }
 
 export namespace MonitorErrorDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MonitorErrorDetails): any => ({
     ...obj,
   });
@@ -2127,6 +2375,9 @@ export interface PortalStatus {
 }
 
 export namespace PortalStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PortalStatus): any => ({
     ...obj,
   });
@@ -2166,6 +2417,9 @@ export interface CreatePortalResponse {
 }
 
 export namespace CreatePortalResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePortalResponse): any => ({
     ...obj,
   });
@@ -2201,6 +2455,9 @@ export interface CreateProjectRequest {
 }
 
 export namespace CreateProjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateProjectRequest): any => ({
     ...obj,
   });
@@ -2222,6 +2479,9 @@ export interface CreateProjectResponse {
 }
 
 export namespace CreateProjectResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateProjectResponse): any => ({
     ...obj,
   });
@@ -2240,6 +2500,9 @@ export interface DeleteAccessPolicyRequest {
 }
 
 export namespace DeleteAccessPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAccessPolicyRequest): any => ({
     ...obj,
   });
@@ -2248,6 +2511,9 @@ export namespace DeleteAccessPolicyRequest {
 export interface DeleteAccessPolicyResponse {}
 
 export namespace DeleteAccessPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAccessPolicyResponse): any => ({
     ...obj,
   });
@@ -2266,6 +2532,9 @@ export interface DeleteAssetRequest {
 }
 
 export namespace DeleteAssetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAssetRequest): any => ({
     ...obj,
   });
@@ -2280,6 +2549,9 @@ export interface DeleteAssetResponse {
 }
 
 export namespace DeleteAssetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAssetResponse): any => ({
     ...obj,
   });
@@ -2298,6 +2570,9 @@ export interface DeleteAssetModelRequest {
 }
 
 export namespace DeleteAssetModelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAssetModelRequest): any => ({
     ...obj,
   });
@@ -2312,6 +2587,9 @@ export interface DeleteAssetModelResponse {
 }
 
 export namespace DeleteAssetModelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAssetModelResponse): any => ({
     ...obj,
   });
@@ -2330,6 +2608,9 @@ export interface DeleteDashboardRequest {
 }
 
 export namespace DeleteDashboardRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDashboardRequest): any => ({
     ...obj,
   });
@@ -2338,6 +2619,9 @@ export namespace DeleteDashboardRequest {
 export interface DeleteDashboardResponse {}
 
 export namespace DeleteDashboardResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDashboardResponse): any => ({
     ...obj,
   });
@@ -2351,6 +2635,9 @@ export interface DeleteGatewayRequest {
 }
 
 export namespace DeleteGatewayRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteGatewayRequest): any => ({
     ...obj,
   });
@@ -2369,6 +2656,9 @@ export interface DeletePortalRequest {
 }
 
 export namespace DeletePortalRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePortalRequest): any => ({
     ...obj,
   });
@@ -2383,6 +2673,9 @@ export interface DeletePortalResponse {
 }
 
 export namespace DeletePortalResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePortalResponse): any => ({
     ...obj,
   });
@@ -2401,6 +2694,9 @@ export interface DeleteProjectRequest {
 }
 
 export namespace DeleteProjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProjectRequest): any => ({
     ...obj,
   });
@@ -2409,6 +2705,9 @@ export namespace DeleteProjectRequest {
 export interface DeleteProjectResponse {}
 
 export namespace DeleteProjectResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProjectResponse): any => ({
     ...obj,
   });
@@ -2422,6 +2721,9 @@ export interface DescribeAccessPolicyRequest {
 }
 
 export namespace DescribeAccessPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAccessPolicyRequest): any => ({
     ...obj,
   });
@@ -2471,6 +2773,9 @@ export interface DescribeAccessPolicyResponse {
 }
 
 export namespace DescribeAccessPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAccessPolicyResponse): any => ({
     ...obj,
   });
@@ -2484,6 +2789,9 @@ export interface DescribeAssetRequest {
 }
 
 export namespace DescribeAssetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAssetRequest): any => ({
     ...obj,
   });
@@ -2547,6 +2855,9 @@ export interface DescribeAssetResponse {
 }
 
 export namespace DescribeAssetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAssetResponse): any => ({
     ...obj,
   });
@@ -2560,6 +2871,9 @@ export interface DescribeAssetModelRequest {
 }
 
 export namespace DescribeAssetModelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAssetModelRequest): any => ({
     ...obj,
   });
@@ -2626,6 +2940,9 @@ export interface DescribeAssetModelResponse {
 }
 
 export namespace DescribeAssetModelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAssetModelResponse): any => ({
     ...obj,
   });
@@ -2644,6 +2961,9 @@ export interface DescribeAssetPropertyRequest {
 }
 
 export namespace DescribeAssetPropertyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAssetPropertyRequest): any => ({
     ...obj,
   });
@@ -2693,6 +3013,9 @@ export interface Property {
 }
 
 export namespace Property {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Property): any => ({
     ...obj,
   });
@@ -2719,6 +3042,9 @@ export interface CompositeModelProperty {
 }
 
 export namespace CompositeModelProperty {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CompositeModelProperty): any => ({
     ...obj,
   });
@@ -2756,6 +3082,9 @@ export interface DescribeAssetPropertyResponse {
 }
 
 export namespace DescribeAssetPropertyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAssetPropertyResponse): any => ({
     ...obj,
   });
@@ -2769,6 +3098,9 @@ export interface DescribeDashboardRequest {
 }
 
 export namespace DescribeDashboardRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDashboardRequest): any => ({
     ...obj,
   });
@@ -2821,6 +3153,9 @@ export interface DescribeDashboardResponse {
 }
 
 export namespace DescribeDashboardResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDashboardResponse): any => ({
     ...obj,
   });
@@ -2829,6 +3164,9 @@ export namespace DescribeDashboardResponse {
 export interface DescribeDefaultEncryptionConfigurationRequest {}
 
 export namespace DescribeDefaultEncryptionConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDefaultEncryptionConfigurationRequest): any => ({
     ...obj,
   });
@@ -2850,6 +3188,9 @@ export interface ConfigurationErrorDetails {
 }
 
 export namespace ConfigurationErrorDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigurationErrorDetails): any => ({
     ...obj,
   });
@@ -2877,6 +3218,9 @@ export interface ConfigurationStatus {
 }
 
 export namespace ConfigurationStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigurationStatus): any => ({
     ...obj,
   });
@@ -2908,6 +3252,9 @@ export interface DescribeDefaultEncryptionConfigurationResponse {
 }
 
 export namespace DescribeDefaultEncryptionConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDefaultEncryptionConfigurationResponse): any => ({
     ...obj,
   });
@@ -2921,6 +3268,9 @@ export interface DescribeGatewayRequest {
 }
 
 export namespace DescribeGatewayRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeGatewayRequest): any => ({
     ...obj,
   });
@@ -2966,6 +3316,9 @@ export interface GatewayCapabilitySummary {
 }
 
 export namespace GatewayCapabilitySummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GatewayCapabilitySummary): any => ({
     ...obj,
   });
@@ -3014,6 +3367,9 @@ export interface DescribeGatewayResponse {
 }
 
 export namespace DescribeGatewayResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeGatewayResponse): any => ({
     ...obj,
   });
@@ -3036,6 +3392,9 @@ export interface DescribeGatewayCapabilityConfigurationRequest {
 }
 
 export namespace DescribeGatewayCapabilityConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeGatewayCapabilityConfigurationRequest): any => ({
     ...obj,
   });
@@ -3079,6 +3438,9 @@ export interface DescribeGatewayCapabilityConfigurationResponse {
 }
 
 export namespace DescribeGatewayCapabilityConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeGatewayCapabilityConfigurationResponse): any => ({
     ...obj,
   });
@@ -3087,6 +3449,9 @@ export namespace DescribeGatewayCapabilityConfigurationResponse {
 export interface DescribeLoggingOptionsRequest {}
 
 export namespace DescribeLoggingOptionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLoggingOptionsRequest): any => ({
     ...obj,
   });
@@ -3109,6 +3474,9 @@ export interface LoggingOptions {
 }
 
 export namespace LoggingOptions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoggingOptions): any => ({
     ...obj,
   });
@@ -3122,6 +3490,9 @@ export interface DescribeLoggingOptionsResponse {
 }
 
 export namespace DescribeLoggingOptionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLoggingOptionsResponse): any => ({
     ...obj,
   });
@@ -3135,6 +3506,9 @@ export interface DescribePortalRequest {
 }
 
 export namespace DescribePortalRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePortalRequest): any => ({
     ...obj,
   });
@@ -3157,6 +3531,9 @@ export interface ImageLocation {
 }
 
 export namespace ImageLocation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImageLocation): any => ({
     ...obj,
   });
@@ -3238,6 +3615,9 @@ export interface DescribePortalResponse {
 }
 
 export namespace DescribePortalResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePortalResponse): any => ({
     ...obj,
   });
@@ -3251,6 +3631,9 @@ export interface DescribeProjectRequest {
 }
 
 export namespace DescribeProjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeProjectRequest): any => ({
     ...obj,
   });
@@ -3297,6 +3680,9 @@ export interface DescribeProjectResponse {
 }
 
 export namespace DescribeProjectResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeProjectResponse): any => ({
     ...obj,
   });
@@ -3328,6 +3714,9 @@ export interface DisassociateAssetsRequest {
 }
 
 export namespace DisassociateAssetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateAssetsRequest): any => ({
     ...obj,
   });
@@ -3402,6 +3791,9 @@ export interface GetAssetPropertyAggregatesRequest {
 }
 
 export namespace GetAssetPropertyAggregatesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAssetPropertyAggregatesRequest): any => ({
     ...obj,
   });
@@ -3420,6 +3812,9 @@ export interface GetAssetPropertyAggregatesResponse {
 }
 
 export namespace GetAssetPropertyAggregatesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAssetPropertyAggregatesResponse): any => ({
     ...obj,
   });
@@ -3446,6 +3841,9 @@ export interface GetAssetPropertyValueRequest {
 }
 
 export namespace GetAssetPropertyValueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAssetPropertyValueRequest): any => ({
     ...obj,
   });
@@ -3459,6 +3857,9 @@ export interface GetAssetPropertyValueResponse {
 }
 
 export namespace GetAssetPropertyValueResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAssetPropertyValueResponse): any => ({
     ...obj,
   });
@@ -3518,6 +3919,9 @@ export interface GetAssetPropertyValueHistoryRequest {
 }
 
 export namespace GetAssetPropertyValueHistoryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAssetPropertyValueHistoryRequest): any => ({
     ...obj,
   });
@@ -3536,7 +3940,136 @@ export interface GetAssetPropertyValueHistoryResponse {
 }
 
 export namespace GetAssetPropertyValueHistoryResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAssetPropertyValueHistoryResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface GetInterpolatedAssetPropertyValuesRequest {
+  /**
+   * <p>The ID of the asset.</p>
+   */
+  assetId?: string;
+
+  /**
+   * <p>The ID of the asset property.</p>
+   */
+  propertyId?: string;
+
+  /**
+   * <p>The property alias that identifies the property, such as an OPC-UA server data stream path
+   *         (for example, <code>/company/windfarm/3/turbine/7/temperature</code>). For more information, see
+   *         <a href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html">Mapping industrial data streams to asset properties</a> in the
+   *         <i>AWS IoT SiteWise User Guide</i>.</p>
+   */
+  propertyAlias?: string;
+
+  /**
+   * <p>The exclusive start of the range from which to interpolate data, expressed in seconds in
+   *       Unix epoch time.</p>
+   */
+  startTimeInSeconds: number | undefined;
+
+  /**
+   * <p>The nanosecond offset converted from <code>startTimeInSeconds</code>.</p>
+   */
+  startTimeOffsetInNanos?: number;
+
+  /**
+   * <p>The inclusive end of the range from which to interpolate data, expressed in seconds in
+   *       Unix epoch time.</p>
+   */
+  endTimeInSeconds: number | undefined;
+
+  /**
+   * <p>The nanosecond offset converted from <code>endTimeInSeconds</code>.</p>
+   */
+  endTimeOffsetInNanos?: number;
+
+  /**
+   * <p>The quality of the asset property value. You can use this parameter as a filter to choose
+   *       only the asset property values that have a specific quality.</p>
+   */
+  quality: Quality | string | undefined;
+
+  /**
+   * <p>The time interval in seconds over which to interpolate data. Each interval starts when the
+   *       previous one ends.</p>
+   */
+  intervalInSeconds: number | undefined;
+
+  /**
+   * <p>The token to be used for the next set of paginated results.</p>
+   */
+  nextToken?: string;
+
+  /**
+   * <p>The maximum number of results to be returned per paginated request.
+   *       If not specified, the default value is 10.</p>
+   */
+  maxResults?: number;
+
+  /**
+   * <p>The interpolation type.</p>
+   *          <p>Valid values: <code>LINEAR_INTERPOLATION</code>
+   *          </p>
+   */
+  type: string | undefined;
+}
+
+export namespace GetInterpolatedAssetPropertyValuesRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetInterpolatedAssetPropertyValuesRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains information about an interpolated asset property value.</p>
+ */
+export interface InterpolatedAssetPropertyValue {
+  /**
+   * <p>Contains a timestamp with optional nanosecond granularity.</p>
+   */
+  timestamp: TimeInNanos | undefined;
+
+  /**
+   * <p>Contains an asset property value (of a single type only).</p>
+   */
+  value: Variant | undefined;
+}
+
+export namespace InterpolatedAssetPropertyValue {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InterpolatedAssetPropertyValue): any => ({
+    ...obj,
+  });
+}
+
+export interface GetInterpolatedAssetPropertyValuesResponse {
+  /**
+   * <p>The requested interpolated values.</p>
+   */
+  interpolatedAssetPropertyValues: InterpolatedAssetPropertyValue[] | undefined;
+
+  /**
+   * <p>The token for the next set of results, or null if there are no additional results.</p>
+   */
+  nextToken?: string;
+}
+
+export namespace GetInterpolatedAssetPropertyValuesResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetInterpolatedAssetPropertyValuesResponse): any => ({
     ...obj,
   });
 }
@@ -3597,6 +4130,9 @@ export interface ListAccessPoliciesRequest {
 }
 
 export namespace ListAccessPoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccessPoliciesRequest): any => ({
     ...obj,
   });
@@ -3615,6 +4151,9 @@ export interface ListAccessPoliciesResponse {
 }
 
 export namespace ListAccessPoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccessPoliciesResponse): any => ({
     ...obj,
   });
@@ -3634,6 +4173,9 @@ export interface ListAssetModelsRequest {
 }
 
 export namespace ListAssetModelsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAssetModelsRequest): any => ({
     ...obj,
   });
@@ -3652,6 +4194,9 @@ export interface ListAssetModelsResponse {
 }
 
 export namespace ListAssetModelsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAssetModelsResponse): any => ({
     ...obj,
   });
@@ -3693,6 +4238,9 @@ export interface ListAssetRelationshipsRequest {
 }
 
 export namespace ListAssetRelationshipsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAssetRelationshipsRequest): any => ({
     ...obj,
   });
@@ -3711,6 +4259,9 @@ export interface ListAssetRelationshipsResponse {
 }
 
 export namespace ListAssetRelationshipsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAssetRelationshipsResponse): any => ({
     ...obj,
   });
@@ -3761,6 +4312,9 @@ export interface ListAssetsRequest {
 }
 
 export namespace ListAssetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAssetsRequest): any => ({
     ...obj,
   });
@@ -3779,6 +4333,9 @@ export interface ListAssetsResponse {
 }
 
 export namespace ListAssetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAssetsResponse): any => ({
     ...obj,
   });
@@ -3836,6 +4393,9 @@ export interface ListAssociatedAssetsRequest {
 }
 
 export namespace ListAssociatedAssetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAssociatedAssetsRequest): any => ({
     ...obj,
   });
@@ -3854,6 +4414,9 @@ export interface ListAssociatedAssetsResponse {
 }
 
 export namespace ListAssociatedAssetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAssociatedAssetsResponse): any => ({
     ...obj,
   });
@@ -3878,6 +4441,9 @@ export interface ListDashboardsRequest {
 }
 
 export namespace ListDashboardsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDashboardsRequest): any => ({
     ...obj,
   });
@@ -3914,6 +4480,9 @@ export interface DashboardSummary {
 }
 
 export namespace DashboardSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DashboardSummary): any => ({
     ...obj,
   });
@@ -3932,6 +4501,9 @@ export interface ListDashboardsResponse {
 }
 
 export namespace ListDashboardsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDashboardsResponse): any => ({
     ...obj,
   });
@@ -3951,6 +4523,9 @@ export interface ListGatewaysRequest {
 }
 
 export namespace ListGatewaysRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGatewaysRequest): any => ({
     ...obj,
   });
@@ -3989,6 +4564,9 @@ export interface GatewaySummary {
 }
 
 export namespace GatewaySummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GatewaySummary): any => ({
     ...obj,
   });
@@ -4007,6 +4585,9 @@ export interface ListGatewaysResponse {
 }
 
 export namespace ListGatewaysResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGatewaysResponse): any => ({
     ...obj,
   });
@@ -4026,6 +4607,9 @@ export interface ListPortalsRequest {
 }
 
 export namespace ListPortalsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPortalsRequest): any => ({
     ...obj,
   });
@@ -4081,6 +4665,9 @@ export interface PortalSummary {
 }
 
 export namespace PortalSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PortalSummary): any => ({
     ...obj,
   });
@@ -4099,6 +4686,9 @@ export interface ListPortalsResponse {
 }
 
 export namespace ListPortalsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPortalsResponse): any => ({
     ...obj,
   });
@@ -4123,6 +4713,9 @@ export interface ListProjectAssetsRequest {
 }
 
 export namespace ListProjectAssetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProjectAssetsRequest): any => ({
     ...obj,
   });
@@ -4141,6 +4734,9 @@ export interface ListProjectAssetsResponse {
 }
 
 export namespace ListProjectAssetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProjectAssetsResponse): any => ({
     ...obj,
   });
@@ -4165,6 +4761,9 @@ export interface ListProjectsRequest {
 }
 
 export namespace ListProjectsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProjectsRequest): any => ({
     ...obj,
   });
@@ -4201,6 +4800,9 @@ export interface ProjectSummary {
 }
 
 export namespace ProjectSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProjectSummary): any => ({
     ...obj,
   });
@@ -4219,6 +4821,9 @@ export interface ListProjectsResponse {
 }
 
 export namespace ListProjectsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProjectsResponse): any => ({
     ...obj,
   });
@@ -4232,6 +4837,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -4247,6 +4855,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -4262,6 +4873,9 @@ export interface UnauthorizedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace UnauthorizedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnauthorizedException): any => ({
     ...obj,
   });
@@ -4281,6 +4895,9 @@ export interface PutDefaultEncryptionConfigurationRequest {
 }
 
 export namespace PutDefaultEncryptionConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutDefaultEncryptionConfigurationRequest): any => ({
     ...obj,
   });
@@ -4307,6 +4924,9 @@ export interface PutDefaultEncryptionConfigurationResponse {
 }
 
 export namespace PutDefaultEncryptionConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutDefaultEncryptionConfigurationResponse): any => ({
     ...obj,
   });
@@ -4320,6 +4940,9 @@ export interface PutLoggingOptionsRequest {
 }
 
 export namespace PutLoggingOptionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutLoggingOptionsRequest): any => ({
     ...obj,
   });
@@ -4328,6 +4951,9 @@ export namespace PutLoggingOptionsRequest {
 export interface PutLoggingOptionsResponse {}
 
 export namespace PutLoggingOptionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutLoggingOptionsResponse): any => ({
     ...obj,
   });
@@ -4348,6 +4974,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -4356,6 +4985,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -4377,6 +5009,9 @@ export interface TooManyTagsException extends __SmithyException, $MetadataBearer
 }
 
 export namespace TooManyTagsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyTagsException): any => ({
     ...obj,
   });
@@ -4395,6 +5030,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -4403,6 +5041,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
@@ -4436,6 +5077,9 @@ export interface UpdateAccessPolicyRequest {
 }
 
 export namespace UpdateAccessPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAccessPolicyRequest): any => ({
     ...obj,
   });
@@ -4444,6 +5088,9 @@ export namespace UpdateAccessPolicyRequest {
 export interface UpdateAccessPolicyResponse {}
 
 export namespace UpdateAccessPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAccessPolicyResponse): any => ({
     ...obj,
   });
@@ -4467,6 +5114,9 @@ export interface UpdateAssetRequest {
 }
 
 export namespace UpdateAssetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAssetRequest): any => ({
     ...obj,
   });
@@ -4481,6 +5131,9 @@ export interface UpdateAssetResponse {
 }
 
 export namespace UpdateAssetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAssetResponse): any => ({
     ...obj,
   });
@@ -4534,6 +5187,9 @@ export interface UpdateAssetModelRequest {
 }
 
 export namespace UpdateAssetModelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAssetModelRequest): any => ({
     ...obj,
   });
@@ -4548,6 +5204,9 @@ export interface UpdateAssetModelResponse {
 }
 
 export namespace UpdateAssetModelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAssetModelResponse): any => ({
     ...obj,
   });
@@ -4588,6 +5247,9 @@ export interface UpdateAssetPropertyRequest {
 }
 
 export namespace UpdateAssetPropertyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAssetPropertyRequest): any => ({
     ...obj,
   });
@@ -4622,6 +5284,9 @@ export interface UpdateDashboardRequest {
 }
 
 export namespace UpdateDashboardRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDashboardRequest): any => ({
     ...obj,
   });
@@ -4630,6 +5295,9 @@ export namespace UpdateDashboardRequest {
 export interface UpdateDashboardResponse {}
 
 export namespace UpdateDashboardResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDashboardResponse): any => ({
     ...obj,
   });
@@ -4648,6 +5316,9 @@ export interface UpdateGatewayRequest {
 }
 
 export namespace UpdateGatewayRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateGatewayRequest): any => ({
     ...obj,
   });
@@ -4676,6 +5347,9 @@ export interface UpdateGatewayCapabilityConfigurationRequest {
 }
 
 export namespace UpdateGatewayCapabilityConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateGatewayCapabilityConfigurationRequest): any => ({
     ...obj,
   });
@@ -4710,6 +5384,9 @@ export interface UpdateGatewayCapabilityConfigurationResponse {
 }
 
 export namespace UpdateGatewayCapabilityConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateGatewayCapabilityConfigurationResponse): any => ({
     ...obj,
   });
@@ -4739,6 +5416,9 @@ export interface Image {
 }
 
 export namespace Image {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Image): any => ({
     ...obj,
   });
@@ -4792,6 +5472,9 @@ export interface UpdatePortalRequest {
 }
 
 export namespace UpdatePortalRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdatePortalRequest): any => ({
     ...obj,
   });
@@ -4806,6 +5489,9 @@ export interface UpdatePortalResponse {
 }
 
 export namespace UpdatePortalResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdatePortalResponse): any => ({
     ...obj,
   });
@@ -4834,6 +5520,9 @@ export interface UpdateProjectRequest {
 }
 
 export namespace UpdateProjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateProjectRequest): any => ({
     ...obj,
   });
@@ -4842,6 +5531,9 @@ export namespace UpdateProjectRequest {
 export interface UpdateProjectResponse {}
 
 export namespace UpdateProjectResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateProjectResponse): any => ({
     ...obj,
   });

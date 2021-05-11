@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeTransitGatewayMulticastDomainsCommandInput = DescribeTransitGatewayMulticastDomainsRequest;
-export type DescribeTransitGatewayMulticastDomainsCommandOutput = DescribeTransitGatewayMulticastDomainsResult &
-  __MetadataBearer;
+export interface DescribeTransitGatewayMulticastDomainsCommandInput
+  extends DescribeTransitGatewayMulticastDomainsRequest {}
+export interface DescribeTransitGatewayMulticastDomainsCommandOutput
+  extends DescribeTransitGatewayMulticastDomainsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Describes one or more transit gateway multicast domains.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeTransitGatewayMulticastDomainsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeTransitGatewayMulticastDomainsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeTransitGatewayMulticastDomainsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeTransitGatewayMulticastDomainsCommandInput} for command's `input` shape.
+ * @see {@link DescribeTransitGatewayMulticastDomainsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeTransitGatewayMulticastDomainsCommand extends $Command<
   DescribeTransitGatewayMulticastDomainsCommandInput,

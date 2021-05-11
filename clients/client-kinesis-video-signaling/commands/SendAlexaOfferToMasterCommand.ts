@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SendAlexaOfferToMasterCommandInput = SendAlexaOfferToMasterRequest;
-export type SendAlexaOfferToMasterCommandOutput = SendAlexaOfferToMasterResponse & __MetadataBearer;
+export interface SendAlexaOfferToMasterCommandInput extends SendAlexaOfferToMasterRequest {}
+export interface SendAlexaOfferToMasterCommandOutput extends SendAlexaOfferToMasterResponse, __MetadataBearer {}
 
 /**
  * <p>This API allows you to connect WebRTC-enabled devices with Alexa display devices. When
@@ -31,6 +31,20 @@ export type SendAlexaOfferToMasterCommandOutput = SendAlexaOfferToMasterResponse
  *             channel. This API returns the SDP answer from the connected master. If the master is not
  *             connected to the signaling channel, redelivery requests are made until the message
  *             expires.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisVideoSignalingClient, SendAlexaOfferToMasterCommand } from "@aws-sdk/client-kinesis-video-signaling"; // ES Modules import
+ * // const { KinesisVideoSignalingClient, SendAlexaOfferToMasterCommand } = require("@aws-sdk/client-kinesis-video-signaling"); // CommonJS import
+ * const client = new KinesisVideoSignalingClient(config);
+ * const command = new SendAlexaOfferToMasterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SendAlexaOfferToMasterCommandInput} for command's `input` shape.
+ * @see {@link SendAlexaOfferToMasterCommandOutput} for command's `response` shape.
+ * @see {@link KinesisVideoSignalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SendAlexaOfferToMasterCommand extends $Command<
   SendAlexaOfferToMasterCommandInput,

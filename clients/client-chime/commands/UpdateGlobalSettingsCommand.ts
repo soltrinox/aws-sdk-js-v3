@@ -17,12 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateGlobalSettingsCommandInput = UpdateGlobalSettingsRequest;
-export type UpdateGlobalSettingsCommandOutput = __MetadataBearer;
+export interface UpdateGlobalSettingsCommandInput extends UpdateGlobalSettingsRequest {}
+export interface UpdateGlobalSettingsCommandOutput extends __MetadataBearer {}
 
 /**
- * <p>Updates global settings for the administrator's AWS account, such as Amazon Chime Business
- *       Calling and Amazon Chime Voice Connector settings.</p>
+ * <p>Updates global settings for the administrator's AWS account, such as Amazon Chime Business Calling and Amazon Chime Voice Connector settings.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, UpdateGlobalSettingsCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, UpdateGlobalSettingsCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new UpdateGlobalSettingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateGlobalSettingsCommandInput} for command's `input` shape.
+ * @see {@link UpdateGlobalSettingsCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateGlobalSettingsCommand extends $Command<
   UpdateGlobalSettingsCommandInput,

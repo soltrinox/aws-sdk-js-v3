@@ -115,6 +115,7 @@ import {
   StopNotebookExecutionCommandOutput,
 } from "./commands/StopNotebookExecutionCommand";
 import { TerminateJobFlowsCommandInput, TerminateJobFlowsCommandOutput } from "./commands/TerminateJobFlowsCommand";
+import { UpdateStudioCommandInput, UpdateStudioCommandOutput } from "./commands/UpdateStudioCommand";
 import {
   UpdateStudioSessionMappingCommandInput,
   UpdateStudioSessionMappingCommandOutput,
@@ -216,6 +217,7 @@ export type ServiceInputTypes =
   | StartNotebookExecutionCommandInput
   | StopNotebookExecutionCommandInput
   | TerminateJobFlowsCommandInput
+  | UpdateStudioCommandInput
   | UpdateStudioSessionMappingCommandInput;
 
 export type ServiceOutputTypes =
@@ -264,6 +266,7 @@ export type ServiceOutputTypes =
   | StartNotebookExecutionCommandOutput
   | StopNotebookExecutionCommandOutput
   | TerminateJobFlowsCommandOutput
+  | UpdateStudioCommandOutput
   | UpdateStudioSessionMappingCommandOutput;
 
 export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__HttpHandlerOptions>> {
@@ -331,7 +334,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -362,7 +365,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type EMRClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type EMRClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -370,8 +373,12 @@ export type EMRClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of EMRClient class constructor that set the region, credentials and other options.
+ */
+export interface EMRClientConfig extends EMRClientConfigType {}
 
-export type EMRClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type EMRClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -379,6 +386,10 @@ export type EMRClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandle
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of EMRClient class. This is resolved and normalized from the {@link EMRClientConfig | constructor configuration interface}.
+ */
+export interface EMRClientResolvedConfig extends EMRClientResolvedConfigType {}
 
 /**
  * <p>Amazon EMR is a web service that makes it easier to process large amounts of data
@@ -392,6 +403,9 @@ export class EMRClient extends __Client<
   ServiceOutputTypes,
   EMRClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of EMRClient class. This is resolved and normalized from the {@link EMRClientConfig | constructor configuration interface}.
+   */
   readonly config: EMRClientResolvedConfig;
 
   constructor(configuration: EMRClientConfig) {

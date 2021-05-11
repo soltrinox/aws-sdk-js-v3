@@ -18,22 +18,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutObjectLegalHoldCommandInput = PutObjectLegalHoldRequest;
-export type PutObjectLegalHoldCommandOutput = PutObjectLegalHoldOutput & __MetadataBearer;
+export interface PutObjectLegalHoldCommandInput extends PutObjectLegalHoldRequest {}
+export interface PutObjectLegalHoldCommandOutput extends PutObjectLegalHoldOutput, __MetadataBearer {}
 
 /**
- * <p>Applies a Legal Hold configuration to the specified object.</p>
+ * <p>Applies a Legal Hold configuration to the specified object. For more information, see
+ *             <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">Locking
+ *             Objects</a>.</p>
  *          <p>This action is not supported by Amazon S3 on Outposts.</p>
- *          <p class="title">
- *             <b>Related Resources</b>
- *          </p>
- *          <ul>
- *             <li>
- *                <p>
- *                   <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">Locking Objects</a>
- *                </p>
- *             </li>
- *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, PutObjectLegalHoldCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, PutObjectLegalHoldCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new PutObjectLegalHoldCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutObjectLegalHoldCommandInput} for command's `input` shape.
+ * @see {@link PutObjectLegalHoldCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutObjectLegalHoldCommand extends $Command<
   PutObjectLegalHoldCommandInput,

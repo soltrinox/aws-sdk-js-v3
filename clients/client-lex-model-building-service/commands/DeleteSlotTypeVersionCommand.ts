@@ -21,14 +21,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteSlotTypeVersionCommandInput = DeleteSlotTypeVersionRequest;
-export type DeleteSlotTypeVersionCommandOutput = __MetadataBearer;
+export interface DeleteSlotTypeVersionCommandInput extends DeleteSlotTypeVersionRequest {}
+export interface DeleteSlotTypeVersionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a specific version of a slot type. To delete all versions
  *       of a slot type, use the <a>DeleteSlotType</a> operation. </p>
  *          <p>This operation requires permissions for the
  *         <code>lex:DeleteSlotTypeVersion</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, DeleteSlotTypeVersionCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, DeleteSlotTypeVersionCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new DeleteSlotTypeVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteSlotTypeVersionCommandInput} for command's `input` shape.
+ * @see {@link DeleteSlotTypeVersionCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteSlotTypeVersionCommand extends $Command<
   DeleteSlotTypeVersionCommandInput,

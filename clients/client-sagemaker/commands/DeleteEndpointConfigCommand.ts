@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteEndpointConfigCommandInput = DeleteEndpointConfigInput;
-export type DeleteEndpointConfigCommandOutput = __MetadataBearer;
+export interface DeleteEndpointConfigCommandInput extends DeleteEndpointConfigInput {}
+export interface DeleteEndpointConfigCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes an endpoint configuration. The <code>DeleteEndpointConfig</code> API
@@ -30,6 +30,20 @@ export type DeleteEndpointConfigCommandOutput = __MetadataBearer;
  *             endpoint that is active or being created or updated you may lose visibility into the
  *             instance type the endpoint is using. The endpoint must be deleted in order to stop
  *             incurring charges.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DeleteEndpointConfigCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DeleteEndpointConfigCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DeleteEndpointConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteEndpointConfigCommandInput} for command's `input` shape.
+ * @see {@link DeleteEndpointConfigCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteEndpointConfigCommand extends $Command<
   DeleteEndpointConfigCommandInput,

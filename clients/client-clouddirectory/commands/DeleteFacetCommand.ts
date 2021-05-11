@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteFacetCommandInput = DeleteFacetRequest;
-export type DeleteFacetCommandOutput = DeleteFacetResponse & __MetadataBearer;
+export interface DeleteFacetCommandInput extends DeleteFacetRequest {}
+export interface DeleteFacetCommandOutput extends DeleteFacetResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a given <a>Facet</a>. All attributes and <a>Rule</a>s
  *       that are associated with the facet will be deleted. Only development schema facets are allowed
  *       deletion.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, DeleteFacetCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, DeleteFacetCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new DeleteFacetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteFacetCommandInput} for command's `input` shape.
+ * @see {@link DeleteFacetCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteFacetCommand extends $Command<
   DeleteFacetCommandInput,

@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ResetDistributionCacheCommandInput = ResetDistributionCacheRequest;
-export type ResetDistributionCacheCommandOutput = ResetDistributionCacheResult & __MetadataBearer;
+export interface ResetDistributionCacheCommandInput extends ResetDistributionCacheRequest {}
+export interface ResetDistributionCacheCommandOutput extends ResetDistributionCacheResult, __MetadataBearer {}
 
 /**
  * <p>Deletes currently cached content from your Amazon Lightsail content delivery network (CDN)
  *       distribution.</p>
  *          <p>After resetting the cache, the next time a content request is made, your distribution
  *       pulls, serves, and caches it from the origin.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, ResetDistributionCacheCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, ResetDistributionCacheCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new ResetDistributionCacheCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ResetDistributionCacheCommandInput} for command's `input` shape.
+ * @see {@link ResetDistributionCacheCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ResetDistributionCacheCommand extends $Command<
   ResetDistributionCacheCommandInput,

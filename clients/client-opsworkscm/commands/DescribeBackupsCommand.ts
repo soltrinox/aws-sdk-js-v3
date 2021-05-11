@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeBackupsCommandInput = DescribeBackupsRequest;
-export type DescribeBackupsCommandOutput = DescribeBackupsResponse & __MetadataBearer;
+export interface DescribeBackupsCommandInput extends DescribeBackupsRequest {}
+export interface DescribeBackupsCommandOutput extends DescribeBackupsResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -32,6 +32,20 @@ export type DescribeBackupsCommandOutput = DescribeBackupsResponse & __MetadataB
  *       A <code>ResourceNotFoundException</code> is thrown when the backup does not exist.
  *       A <code>ValidationException</code> is raised when parameters of the request are not valid.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksCMClient, DescribeBackupsCommand } from "@aws-sdk/client-opsworkscm"; // ES Modules import
+ * // const { OpsWorksCMClient, DescribeBackupsCommand } = require("@aws-sdk/client-opsworkscm"); // CommonJS import
+ * const client = new OpsWorksCMClient(config);
+ * const command = new DescribeBackupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeBackupsCommandInput} for command's `input` shape.
+ * @see {@link DescribeBackupsCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksCMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeBackupsCommand extends $Command<
   DescribeBackupsCommandInput,

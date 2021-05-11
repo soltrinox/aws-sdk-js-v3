@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AttachLoadBalancerTargetGroupsCommandInput = AttachLoadBalancerTargetGroupsType;
-export type AttachLoadBalancerTargetGroupsCommandOutput = AttachLoadBalancerTargetGroupsResultType & __MetadataBearer;
+export interface AttachLoadBalancerTargetGroupsCommandInput extends AttachLoadBalancerTargetGroupsType {}
+export interface AttachLoadBalancerTargetGroupsCommandOutput
+  extends AttachLoadBalancerTargetGroupsResultType,
+    __MetadataBearer {}
 
 /**
  * <p>Attaches one or more target groups to the specified Auto Scaling group.</p>
@@ -40,6 +42,20 @@ export type AttachLoadBalancerTargetGroupsCommandOutput = AttachLoadBalancerTarg
  *             the Auto Scaling group, call the <a>DetachLoadBalancerTargetGroups</a> API.</p>
  *         <p>For more information, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html">Elastic Load Balancing and
  *                 Amazon EC2 Auto Scaling</a> in the <i>Amazon EC2 Auto Scaling User Guide</i>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AutoScalingClient, AttachLoadBalancerTargetGroupsCommand } from "@aws-sdk/client-auto-scaling"; // ES Modules import
+ * // const { AutoScalingClient, AttachLoadBalancerTargetGroupsCommand } = require("@aws-sdk/client-auto-scaling"); // CommonJS import
+ * const client = new AutoScalingClient(config);
+ * const command = new AttachLoadBalancerTargetGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AttachLoadBalancerTargetGroupsCommandInput} for command's `input` shape.
+ * @see {@link AttachLoadBalancerTargetGroupsCommandOutput} for command's `response` shape.
+ * @see {@link AutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AttachLoadBalancerTargetGroupsCommand extends $Command<
   AttachLoadBalancerTargetGroupsCommandInput,

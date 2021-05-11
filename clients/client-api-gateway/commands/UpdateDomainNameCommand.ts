@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDomainNameCommandInput = UpdateDomainNameRequest;
-export type UpdateDomainNameCommandOutput = DomainName & __MetadataBearer;
+export interface UpdateDomainNameCommandInput extends UpdateDomainNameRequest {}
+export interface UpdateDomainNameCommandOutput extends DomainName, __MetadataBearer {}
 
 /**
  * <p>Changes information about the <a>DomainName</a> resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, UpdateDomainNameCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, UpdateDomainNameCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new UpdateDomainNameCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDomainNameCommandInput} for command's `input` shape.
+ * @see {@link UpdateDomainNameCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDomainNameCommand extends $Command<
   UpdateDomainNameCommandInput,

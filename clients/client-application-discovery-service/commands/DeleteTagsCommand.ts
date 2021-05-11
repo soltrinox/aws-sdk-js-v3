@@ -21,12 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteTagsCommandInput = DeleteTagsRequest;
-export type DeleteTagsCommandOutput = DeleteTagsResponse & __MetadataBearer;
+export interface DeleteTagsCommandInput extends DeleteTagsRequest {}
+export interface DeleteTagsCommandOutput extends DeleteTagsResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the association between configuration items and one or more tags. This API
  *       accepts a list of multiple configuration items.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationDiscoveryServiceClient, DeleteTagsCommand } from "@aws-sdk/client-application-discovery-service"; // ES Modules import
+ * // const { ApplicationDiscoveryServiceClient, DeleteTagsCommand } = require("@aws-sdk/client-application-discovery-service"); // CommonJS import
+ * const client = new ApplicationDiscoveryServiceClient(config);
+ * const command = new DeleteTagsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteTagsCommandInput} for command's `input` shape.
+ * @see {@link DeleteTagsCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationDiscoveryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteTagsCommand extends $Command<
   DeleteTagsCommandInput,

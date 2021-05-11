@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRecordsCommandInput = GetRecordsInput;
-export type GetRecordsCommandOutput = GetRecordsOutput & __MetadataBearer;
+export interface GetRecordsCommandInput extends GetRecordsInput {}
+export interface GetRecordsCommandOutput extends GetRecordsOutput, __MetadataBearer {}
 
 /**
  * <p>Gets data records from a Kinesis data stream's shard.</p>
@@ -68,6 +68,20 @@ export type GetRecordsCommandOutput = GetRecordsOutput & __MetadataBearer;
  *             increasing. For example, records in a shard or across a stream might have time stamps
  *             that are out of order.</p>
  *         <p>This operation has a limit of five transactions per second per shard.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisClient, GetRecordsCommand } from "@aws-sdk/client-kinesis"; // ES Modules import
+ * // const { KinesisClient, GetRecordsCommand } = require("@aws-sdk/client-kinesis"); // CommonJS import
+ * const client = new KinesisClient(config);
+ * const command = new GetRecordsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRecordsCommandInput} for command's `input` shape.
+ * @see {@link GetRecordsCommandOutput} for command's `response` shape.
+ * @see {@link KinesisClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRecordsCommand extends $Command<
   GetRecordsCommandInput,

@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopDeploymentCommandInput = StopDeploymentRequest;
-export type StopDeploymentCommandOutput = Deployment & __MetadataBearer;
+export interface StopDeploymentCommandInput extends StopDeploymentRequest {}
+export interface StopDeploymentCommandOutput extends Deployment, __MetadataBearer {}
 
 /**
  * <p>Stops a deployment. This API action works only on deployments that have a status of
  *             <code>DEPLOYING</code>. This action moves the deployment to a status of
  *             <code>ROLLED_BACK</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppConfigClient, StopDeploymentCommand } from "@aws-sdk/client-appconfig"; // ES Modules import
+ * // const { AppConfigClient, StopDeploymentCommand } = require("@aws-sdk/client-appconfig"); // CommonJS import
+ * const client = new AppConfigClient(config);
+ * const command = new StopDeploymentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopDeploymentCommandInput} for command's `input` shape.
+ * @see {@link StopDeploymentCommandOutput} for command's `response` shape.
+ * @see {@link AppConfigClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopDeploymentCommand extends $Command<
   StopDeploymentCommandInput,

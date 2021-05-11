@@ -20,13 +20,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEngineDefaultClusterParametersCommandInput = DescribeEngineDefaultClusterParametersMessage;
-export type DescribeEngineDefaultClusterParametersCommandOutput = DescribeEngineDefaultClusterParametersResult &
-  __MetadataBearer;
+export interface DescribeEngineDefaultClusterParametersCommandInput
+  extends DescribeEngineDefaultClusterParametersMessage {}
+export interface DescribeEngineDefaultClusterParametersCommandOutput
+  extends DescribeEngineDefaultClusterParametersResult,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the default engine and system parameter information for the cluster database
  *       engine.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, DescribeEngineDefaultClusterParametersCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, DescribeEngineDefaultClusterParametersCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new DescribeEngineDefaultClusterParametersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEngineDefaultClusterParametersCommandInput} for command's `input` shape.
+ * @see {@link DescribeEngineDefaultClusterParametersCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEngineDefaultClusterParametersCommand extends $Command<
   DescribeEngineDefaultClusterParametersCommandInput,

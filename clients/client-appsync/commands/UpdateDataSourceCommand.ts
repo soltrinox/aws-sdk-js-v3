@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDataSourceCommandInput = UpdateDataSourceRequest;
-export type UpdateDataSourceCommandOutput = UpdateDataSourceResponse & __MetadataBearer;
+export interface UpdateDataSourceCommandInput extends UpdateDataSourceRequest {}
+export interface UpdateDataSourceCommandOutput extends UpdateDataSourceResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a <code>DataSource</code> object.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppSyncClient, UpdateDataSourceCommand } from "@aws-sdk/client-appsync"; // ES Modules import
+ * // const { AppSyncClient, UpdateDataSourceCommand } = require("@aws-sdk/client-appsync"); // CommonJS import
+ * const client = new AppSyncClient(config);
+ * const command = new UpdateDataSourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDataSourceCommandInput} for command's `input` shape.
+ * @see {@link UpdateDataSourceCommandOutput} for command's `response` shape.
+ * @see {@link AppSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDataSourceCommand extends $Command<
   UpdateDataSourceCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartBuildCommandInput = StartBuildInput;
-export type StartBuildCommandOutput = StartBuildOutput & __MetadataBearer;
+export interface StartBuildCommandInput extends StartBuildInput {}
+export interface StartBuildCommandOutput extends StartBuildOutput, __MetadataBearer {}
 
 /**
  * <p>Starts running a build.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeBuildClient, StartBuildCommand } from "@aws-sdk/client-codebuild"; // ES Modules import
+ * // const { CodeBuildClient, StartBuildCommand } = require("@aws-sdk/client-codebuild"); // CommonJS import
+ * const client = new CodeBuildClient(config);
+ * const command = new StartBuildCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartBuildCommandInput} for command's `input` shape.
+ * @see {@link StartBuildCommandOutput} for command's `response` shape.
+ * @see {@link CodeBuildClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartBuildCommand extends $Command<
   StartBuildCommandInput,

@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAuditSuppressionsCommandInput = ListAuditSuppressionsRequest;
-export type ListAuditSuppressionsCommandOutput = ListAuditSuppressionsResponse & __MetadataBearer;
+export interface ListAuditSuppressionsCommandInput extends ListAuditSuppressionsRequest {}
+export interface ListAuditSuppressionsCommandOutput extends ListAuditSuppressionsResponse, __MetadataBearer {}
 
 /**
  * <p>
  *       Lists your Device Defender audit listings.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, ListAuditSuppressionsCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, ListAuditSuppressionsCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new ListAuditSuppressionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAuditSuppressionsCommandInput} for command's `input` shape.
+ * @see {@link ListAuditSuppressionsCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAuditSuppressionsCommand extends $Command<
   ListAuditSuppressionsCommandInput,

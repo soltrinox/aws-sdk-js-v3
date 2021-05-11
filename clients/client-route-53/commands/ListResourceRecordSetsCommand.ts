@@ -18,13 +18,13 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListResourceRecordSetsCommandInput = ListResourceRecordSetsRequest;
-export type ListResourceRecordSetsCommandOutput = ListResourceRecordSetsResponse & __MetadataBearer;
+export interface ListResourceRecordSetsCommandInput extends ListResourceRecordSetsRequest {}
+export interface ListResourceRecordSetsCommandOutput extends ListResourceRecordSetsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the resource record sets in a specified hosted zone.</p>
  * 		       <p>
- *             <code>ListResourceRecordSets</code> returns up to 100 resource record sets at a time in ASCII order,
+ *             <code>ListResourceRecordSets</code> returns up to 300 resource record sets at a time in ASCII order,
  * 			beginning at a position specified by the <code>name</code> and <code>type</code> elements.</p>
  *
  * 		       <p>
@@ -86,6 +86,20 @@ export type ListResourceRecordSetsCommandOutput = ListResourceRecordSetsResponse
  * 				is <code>true</code>. To display the next page of results, get the values of <code>NextRecordName</code>, <code>NextRecordType</code>,
  * 				and <code>NextRecordIdentifier</code> (if any) from the response. Then submit another <code>ListResourceRecordSets</code> request, and
  * 				specify those values for <code>StartRecordName</code>, <code>StartRecordType</code>, and <code>StartRecordIdentifier</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, ListResourceRecordSetsCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, ListResourceRecordSetsCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new ListResourceRecordSetsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListResourceRecordSetsCommandInput} for command's `input` shape.
+ * @see {@link ListResourceRecordSetsCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListResourceRecordSetsCommand extends $Command<
   ListResourceRecordSetsCommandInput,

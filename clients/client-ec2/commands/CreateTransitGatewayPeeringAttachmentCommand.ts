@@ -20,9 +20,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateTransitGatewayPeeringAttachmentCommandInput = CreateTransitGatewayPeeringAttachmentRequest;
-export type CreateTransitGatewayPeeringAttachmentCommandOutput = CreateTransitGatewayPeeringAttachmentResult &
-  __MetadataBearer;
+export interface CreateTransitGatewayPeeringAttachmentCommandInput
+  extends CreateTransitGatewayPeeringAttachmentRequest {}
+export interface CreateTransitGatewayPeeringAttachmentCommandOutput
+  extends CreateTransitGatewayPeeringAttachmentResult,
+    __MetadataBearer {}
 
 /**
  * <p>Requests a transit gateway peering attachment between the specified transit gateway
@@ -31,6 +33,20 @@ export type CreateTransitGatewayPeeringAttachmentCommandOutput = CreateTransitGa
  *             account. </p>
  *          <p>After you create the peering attachment, the owner of the accepter
  *             transit gateway must accept the attachment request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, CreateTransitGatewayPeeringAttachmentCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, CreateTransitGatewayPeeringAttachmentCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new CreateTransitGatewayPeeringAttachmentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateTransitGatewayPeeringAttachmentCommandInput} for command's `input` shape.
+ * @see {@link CreateTransitGatewayPeeringAttachmentCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateTransitGatewayPeeringAttachmentCommand extends $Command<
   CreateTransitGatewayPeeringAttachmentCommandInput,

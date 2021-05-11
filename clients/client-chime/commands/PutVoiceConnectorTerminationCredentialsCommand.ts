@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutVoiceConnectorTerminationCredentialsCommandInput = PutVoiceConnectorTerminationCredentialsRequest;
-export type PutVoiceConnectorTerminationCredentialsCommandOutput = __MetadataBearer;
+export interface PutVoiceConnectorTerminationCredentialsCommandInput
+  extends PutVoiceConnectorTerminationCredentialsRequest {}
+export interface PutVoiceConnectorTerminationCredentialsCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Adds termination SIP credentials for the specified Amazon Chime Voice Connector.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, PutVoiceConnectorTerminationCredentialsCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, PutVoiceConnectorTerminationCredentialsCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new PutVoiceConnectorTerminationCredentialsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutVoiceConnectorTerminationCredentialsCommandInput} for command's `input` shape.
+ * @see {@link PutVoiceConnectorTerminationCredentialsCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutVoiceConnectorTerminationCredentialsCommand extends $Command<
   PutVoiceConnectorTerminationCredentialsCommandInput,

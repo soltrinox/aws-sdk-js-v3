@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetStreamCommandInput = GetStreamRequest;
-export type GetStreamCommandOutput = GetStreamResponse & __MetadataBearer;
+export interface GetStreamCommandInput extends GetStreamRequest {}
+export interface GetStreamCommandOutput extends GetStreamResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about the active (live) stream on a specified channel.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IvsClient, GetStreamCommand } from "@aws-sdk/client-ivs"; // ES Modules import
+ * // const { IvsClient, GetStreamCommand } = require("@aws-sdk/client-ivs"); // CommonJS import
+ * const client = new IvsClient(config);
+ * const command = new GetStreamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetStreamCommandInput} for command's `input` shape.
+ * @see {@link GetStreamCommandOutput} for command's `response` shape.
+ * @see {@link IvsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetStreamCommand extends $Command<GetStreamCommandInput, GetStreamCommandOutput, IvsClientResolvedConfig> {
   // Start section: command_properties

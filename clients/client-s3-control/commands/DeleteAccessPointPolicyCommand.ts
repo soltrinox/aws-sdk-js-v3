@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAccessPointPolicyCommandInput = DeleteAccessPointPolicyRequest;
-export type DeleteAccessPointPolicyCommandOutput = __MetadataBearer;
+export interface DeleteAccessPointPolicyCommandInput extends DeleteAccessPointPolicyRequest {}
+export interface DeleteAccessPointPolicyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the access point policy for the specified access point.</p>
@@ -38,6 +38,20 @@ export type DeleteAccessPointPolicyCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3ControlClient, DeleteAccessPointPolicyCommand } from "@aws-sdk/client-s3-control"; // ES Modules import
+ * // const { S3ControlClient, DeleteAccessPointPolicyCommand } = require("@aws-sdk/client-s3-control"); // CommonJS import
+ * const client = new S3ControlClient(config);
+ * const command = new DeleteAccessPointPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAccessPointPolicyCommandInput} for command's `input` shape.
+ * @see {@link DeleteAccessPointPolicyCommandOutput} for command's `response` shape.
+ * @see {@link S3ControlClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAccessPointPolicyCommand extends $Command<
   DeleteAccessPointPolicyCommandInput,

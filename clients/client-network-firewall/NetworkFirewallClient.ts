@@ -253,7 +253,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -284,7 +284,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type NetworkFirewallClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type NetworkFirewallClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -292,8 +292,12 @@ export type NetworkFirewallClientConfig = Partial<__SmithyConfiguration<__HttpHa
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of NetworkFirewallClient class constructor that set the region, credentials and other options.
+ */
+export interface NetworkFirewallClientConfig extends NetworkFirewallClientConfigType {}
 
-export type NetworkFirewallClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type NetworkFirewallClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -301,6 +305,10 @@ export type NetworkFirewallClientResolvedConfig = __SmithyResolvedConfiguration<
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of NetworkFirewallClient class. This is resolved and normalized from the {@link NetworkFirewallClientConfig | constructor configuration interface}.
+ */
+export interface NetworkFirewallClientResolvedConfig extends NetworkFirewallClientResolvedConfigType {}
 
 /**
  * <p>This is the API Reference for AWS Network Firewall. This guide is for developers who need
@@ -346,9 +354,6 @@ export type NetworkFirewallClientResolvedConfig = __SmithyResolvedConfiguration<
  *                <p>Perform deep packet inspection on traffic entering or leaving your VPC.</p>
  *             </li>
  *             <li>
- *                <p>Rate limit traffic going from AWS to on-premises IP destinations.</p>
- *             </li>
- *             <li>
  *                <p>Use stateful protocol detection to filter protocols like HTTPS, regardless of the
  *                port used.</p>
  *             </li>
@@ -390,6 +395,9 @@ export class NetworkFirewallClient extends __Client<
   ServiceOutputTypes,
   NetworkFirewallClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of NetworkFirewallClient class. This is resolved and normalized from the {@link NetworkFirewallClientConfig | constructor configuration interface}.
+   */
   readonly config: NetworkFirewallClientResolvedConfig;
 
   constructor(configuration: NetworkFirewallClientConfig) {

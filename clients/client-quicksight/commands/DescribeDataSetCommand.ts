@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDataSetCommandInput = DescribeDataSetRequest;
-export type DescribeDataSetCommandOutput = DescribeDataSetResponse & __MetadataBearer;
+export interface DescribeDataSetCommandInput extends DescribeDataSetRequest {}
+export interface DescribeDataSetCommandOutput extends DescribeDataSetResponse, __MetadataBearer {}
 
 /**
  * <p>Describes a dataset. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, DescribeDataSetCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, DescribeDataSetCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new DescribeDataSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDataSetCommandInput} for command's `input` shape.
+ * @see {@link DescribeDataSetCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDataSetCommand extends $Command<
   DescribeDataSetCommandInput,

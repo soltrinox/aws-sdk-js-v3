@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListRevisionAssetsCommandInput = ListRevisionAssetsRequest;
-export type ListRevisionAssetsCommandOutput = ListRevisionAssetsResponse & __MetadataBearer;
+export interface ListRevisionAssetsCommandInput extends ListRevisionAssetsRequest {}
+export interface ListRevisionAssetsCommandOutput extends ListRevisionAssetsResponse, __MetadataBearer {}
 
 /**
  * <p>This operation lists a revision's assets sorted alphabetically in descending order.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataExchangeClient, ListRevisionAssetsCommand } from "@aws-sdk/client-dataexchange"; // ES Modules import
+ * // const { DataExchangeClient, ListRevisionAssetsCommand } = require("@aws-sdk/client-dataexchange"); // CommonJS import
+ * const client = new DataExchangeClient(config);
+ * const command = new ListRevisionAssetsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListRevisionAssetsCommandInput} for command's `input` shape.
+ * @see {@link ListRevisionAssetsCommandOutput} for command's `response` shape.
+ * @see {@link DataExchangeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListRevisionAssetsCommand extends $Command<
   ListRevisionAssetsCommandInput,

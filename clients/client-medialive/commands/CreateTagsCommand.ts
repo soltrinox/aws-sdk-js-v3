@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateTagsCommandInput = CreateTagsRequest;
-export type CreateTagsCommandOutput = __MetadataBearer;
+export interface CreateTagsCommandInput extends CreateTagsRequest {}
+export interface CreateTagsCommandOutput extends __MetadataBearer {}
 
 /**
  * Create tags for a resource
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, CreateTagsCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, CreateTagsCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new CreateTagsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateTagsCommandInput} for command's `input` shape.
+ * @see {@link CreateTagsCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateTagsCommand extends $Command<
   CreateTagsCommandInput,

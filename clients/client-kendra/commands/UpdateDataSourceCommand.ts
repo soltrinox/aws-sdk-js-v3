@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDataSourceCommandInput = UpdateDataSourceRequest;
-export type UpdateDataSourceCommandOutput = __MetadataBearer;
+export interface UpdateDataSourceCommandInput extends UpdateDataSourceRequest {}
+export interface UpdateDataSourceCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Updates an existing Amazon Kendra data source.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KendraClient, UpdateDataSourceCommand } from "@aws-sdk/client-kendra"; // ES Modules import
+ * // const { KendraClient, UpdateDataSourceCommand } = require("@aws-sdk/client-kendra"); // CommonJS import
+ * const client = new KendraClient(config);
+ * const command = new UpdateDataSourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDataSourceCommandInput} for command's `input` shape.
+ * @see {@link UpdateDataSourceCommandOutput} for command's `response` shape.
+ * @see {@link KendraClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDataSourceCommand extends $Command<
   UpdateDataSourceCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteRepositoryPolicyCommandInput = DeleteRepositoryPolicyRequest;
-export type DeleteRepositoryPolicyCommandOutput = DeleteRepositoryPolicyResponse & __MetadataBearer;
+export interface DeleteRepositoryPolicyCommandInput extends DeleteRepositoryPolicyRequest {}
+export interface DeleteRepositoryPolicyCommandOutput extends DeleteRepositoryPolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the repository policy associated with the specified repository.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECRClient, DeleteRepositoryPolicyCommand } from "@aws-sdk/client-ecr"; // ES Modules import
+ * // const { ECRClient, DeleteRepositoryPolicyCommand } = require("@aws-sdk/client-ecr"); // CommonJS import
+ * const client = new ECRClient(config);
+ * const command = new DeleteRepositoryPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteRepositoryPolicyCommandInput} for command's `input` shape.
+ * @see {@link DeleteRepositoryPolicyCommandOutput} for command's `response` shape.
+ * @see {@link ECRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteRepositoryPolicyCommand extends $Command<
   DeleteRepositoryPolicyCommandInput,

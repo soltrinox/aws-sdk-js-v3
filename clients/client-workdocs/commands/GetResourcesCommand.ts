@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetResourcesCommandInput = GetResourcesRequest;
-export type GetResourcesCommandOutput = GetResourcesResponse & __MetadataBearer;
+export interface GetResourcesCommandInput extends GetResourcesRequest {}
+export interface GetResourcesCommandOutput extends GetResourcesResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a collection of resources, including folders and documents. The only
  *             <code>CollectionType</code> supported is <code>SHARED_WITH_ME</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkDocsClient, GetResourcesCommand } from "@aws-sdk/client-workdocs"; // ES Modules import
+ * // const { WorkDocsClient, GetResourcesCommand } = require("@aws-sdk/client-workdocs"); // CommonJS import
+ * const client = new WorkDocsClient(config);
+ * const command = new GetResourcesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetResourcesCommandInput} for command's `input` shape.
+ * @see {@link GetResourcesCommandOutput} for command's `response` shape.
+ * @see {@link WorkDocsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetResourcesCommand extends $Command<
   GetResourcesCommandInput,

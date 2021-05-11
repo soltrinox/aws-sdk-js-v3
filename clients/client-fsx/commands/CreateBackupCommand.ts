@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateBackupCommandInput = CreateBackupRequest;
-export type CreateBackupCommandOutput = CreateBackupResponse & __MetadataBearer;
+export interface CreateBackupCommandInput extends CreateBackupRequest {}
+export interface CreateBackupCommandOutput extends CreateBackupResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a backup of an existing Amazon FSx file system.
@@ -65,6 +65,20 @@ export type CreateBackupCommandOutput = CreateBackupResponse & __MetadataBearer;
  *             lifecycle state is still <code>CREATING</code>. You can check the backup creation
  *             status by calling the <a>DescribeBackups</a> operation, which returns the
  *             backup state along with other information.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FSxClient, CreateBackupCommand } from "@aws-sdk/client-fsx"; // ES Modules import
+ * // const { FSxClient, CreateBackupCommand } = require("@aws-sdk/client-fsx"); // CommonJS import
+ * const client = new FSxClient(config);
+ * const command = new CreateBackupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateBackupCommandInput} for command's `input` shape.
+ * @see {@link CreateBackupCommandOutput} for command's `response` shape.
+ * @see {@link FSxClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateBackupCommand extends $Command<
   CreateBackupCommandInput,

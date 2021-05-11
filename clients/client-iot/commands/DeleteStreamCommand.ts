@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteStreamCommandInput = DeleteStreamRequest;
-export type DeleteStreamCommandOutput = DeleteStreamResponse & __MetadataBearer;
+export interface DeleteStreamCommandInput extends DeleteStreamRequest {}
+export interface DeleteStreamCommandOutput extends DeleteStreamResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a stream.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DeleteStreamCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DeleteStreamCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DeleteStreamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteStreamCommandInput} for command's `input` shape.
+ * @see {@link DeleteStreamCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteStreamCommand extends $Command<
   DeleteStreamCommandInput,

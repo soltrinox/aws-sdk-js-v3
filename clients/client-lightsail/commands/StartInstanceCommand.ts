@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartInstanceCommandInput = StartInstanceRequest;
-export type StartInstanceCommandOutput = StartInstanceResult & __MetadataBearer;
+export interface StartInstanceCommandInput extends StartInstanceRequest {}
+export interface StartInstanceCommandOutput extends StartInstanceResult, __MetadataBearer {}
 
 /**
  * <p>Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance,
@@ -31,6 +31,20 @@ export type StartInstanceCommandOutput = StartInstanceResult & __MetadataBearer;
  *          <p>The <code>start instance</code> operation supports tag-based access control via resource
  *       tags applied to the resource identified by <code>instance name</code>. For more information,
  *       see the <a href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags">Lightsail Dev Guide</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, StartInstanceCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, StartInstanceCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new StartInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartInstanceCommandInput} for command's `input` shape.
+ * @see {@link StartInstanceCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartInstanceCommand extends $Command<
   StartInstanceCommandInput,

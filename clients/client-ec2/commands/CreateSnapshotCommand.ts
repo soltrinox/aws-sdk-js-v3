@@ -14,13 +14,20 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSnapshotCommandInput = CreateSnapshotRequest;
-export type CreateSnapshotCommandOutput = Snapshot & __MetadataBearer;
+export interface CreateSnapshotCommandInput extends CreateSnapshotRequest {}
+export interface CreateSnapshotCommandOutput extends Snapshot, __MetadataBearer {}
 
 /**
  * <p>Creates a snapshot of an EBS volume and stores it in Amazon S3. You can use snapshots for
- *       backups, to make copies of EBS volumes, and to save data before shutting down an
- *       instance.</p>
+ *   	backups, to make copies of EBS volumes, and to save data before shutting down an
+ *   	instance.</p>
+ *
+ *
+ *          <p>You can create snapshots of volumes in a Region and volumes on an Outpost. If you
+ *     	create a snapshot of a volume in a Region, the snapshot must be stored in the same
+ *     	Region as the volume. If you create a snapshot of a volume on an Outpost, the snapshot
+ *     	can be stored on the same Outpost as the volume, or in the Region for that Outpost.</p>
+ *
  *          <p>When a snapshot is created, any AWS Marketplace product codes that are associated with the
  *       source volume are propagated to the snapshot.</p>
  *          <p>You can take a snapshot of an attached volume that is in use. However, snapshots only
@@ -39,6 +46,20 @@ export type CreateSnapshotCommandOutput = Snapshot & __MetadataBearer;
  *          <p>You can tag your snapshots during creation. For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html">Tagging your Amazon EC2
  *         resources</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
  *          <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html">Amazon Elastic Block Store</a> and <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">Amazon EBS encryption</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, CreateSnapshotCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, CreateSnapshotCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new CreateSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSnapshotCommandInput} for command's `input` shape.
+ * @see {@link CreateSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSnapshotCommand extends $Command<
   CreateSnapshotCommandInput,

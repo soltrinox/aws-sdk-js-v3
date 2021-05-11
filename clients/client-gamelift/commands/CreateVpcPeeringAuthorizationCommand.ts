@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateVpcPeeringAuthorizationCommandInput = CreateVpcPeeringAuthorizationInput;
-export type CreateVpcPeeringAuthorizationCommandOutput = CreateVpcPeeringAuthorizationOutput & __MetadataBearer;
+export interface CreateVpcPeeringAuthorizationCommandInput extends CreateVpcPeeringAuthorizationInput {}
+export interface CreateVpcPeeringAuthorizationCommandOutput
+  extends CreateVpcPeeringAuthorizationOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Requests authorization to create or delete a peer connection between the VPC for
@@ -43,38 +45,32 @@ export type CreateVpcPeeringAuthorizationCommandOutput = CreateVpcPeeringAuthori
  *         <p>The authorization remains valid for 24 hours unless it is canceled by a call to
  *                 <a>DeleteVpcPeeringAuthorization</a>. You must create or delete the
  *             peering connection while the authorization is valid. </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateVpcPeeringAuthorization</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeVpcPeeringAuthorizations</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteVpcPeeringAuthorization</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>CreateVpcPeeringConnection</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeVpcPeeringConnections</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteVpcPeeringConnection</a>
- *                </p>
- *             </li>
- *          </ul>
+ *         <p>
+ *             <b>Related actions</b>
+ *          </p>
+ *                     <p>
+ *             <a>CreateVpcPeeringAuthorization</a> |
+ *                     <a>DescribeVpcPeeringAuthorizations</a> |
+ *                     <a>DeleteVpcPeeringAuthorization</a> |
+ *                     <a>CreateVpcPeeringConnection</a> |
+ *                     <a>DescribeVpcPeeringConnections</a> |
+ *                     <a>DeleteVpcPeeringConnection</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, CreateVpcPeeringAuthorizationCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, CreateVpcPeeringAuthorizationCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new CreateVpcPeeringAuthorizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateVpcPeeringAuthorizationCommandInput} for command's `input` shape.
+ * @see {@link CreateVpcPeeringAuthorizationCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateVpcPeeringAuthorizationCommand extends $Command<
   CreateVpcPeeringAuthorizationCommandInput,

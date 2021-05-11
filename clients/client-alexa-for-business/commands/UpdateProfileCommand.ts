@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateProfileCommandInput = UpdateProfileRequest;
-export type UpdateProfileCommandOutput = UpdateProfileResponse & __MetadataBearer;
+export interface UpdateProfileCommandInput extends UpdateProfileRequest {}
+export interface UpdateProfileCommandOutput extends UpdateProfileResponse, __MetadataBearer {}
 
 /**
  * <p>Updates an existing room profile by room profile ARN.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, UpdateProfileCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, UpdateProfileCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new UpdateProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateProfileCommandInput} for command's `input` shape.
+ * @see {@link UpdateProfileCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateProfileCommand extends $Command<
   UpdateProfileCommandInput,

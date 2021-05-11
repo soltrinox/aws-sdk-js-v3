@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetOpenIDConnectProviderCommandInput = GetOpenIDConnectProviderRequest;
-export type GetOpenIDConnectProviderCommandOutput = GetOpenIDConnectProviderResponse & __MetadataBearer;
+export interface GetOpenIDConnectProviderCommandInput extends GetOpenIDConnectProviderRequest {}
+export interface GetOpenIDConnectProviderCommandOutput extends GetOpenIDConnectProviderResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information about the specified OpenID Connect (OIDC) provider resource object
- *          in IAM.</p>
+ *             in IAM.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, GetOpenIDConnectProviderCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, GetOpenIDConnectProviderCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new GetOpenIDConnectProviderCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetOpenIDConnectProviderCommandInput} for command's `input` shape.
+ * @see {@link GetOpenIDConnectProviderCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetOpenIDConnectProviderCommand extends $Command<
   GetOpenIDConnectProviderCommandInput,

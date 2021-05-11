@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateMaintenanceWindowCommandInput = CreateMaintenanceWindowRequest;
-export type CreateMaintenanceWindowCommandOutput = CreateMaintenanceWindowResult & __MetadataBearer;
+export interface CreateMaintenanceWindowCommandInput extends CreateMaintenanceWindowRequest {}
+export interface CreateMaintenanceWindowCommandOutput extends CreateMaintenanceWindowResult, __MetadataBearer {}
 
 /**
  * <p>Creates a new maintenance window.</p>
@@ -30,6 +30,20 @@ export type CreateMaintenanceWindowCommandOutput = CreateMaintenanceWindowResult
  *     value you specify for <code>Cutoff</code> is one hour, no maintenance window tasks can start
  *     after 5 PM.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, CreateMaintenanceWindowCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, CreateMaintenanceWindowCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new CreateMaintenanceWindowCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateMaintenanceWindowCommandInput} for command's `input` shape.
+ * @see {@link CreateMaintenanceWindowCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateMaintenanceWindowCommand extends $Command<
   CreateMaintenanceWindowCommandInput,

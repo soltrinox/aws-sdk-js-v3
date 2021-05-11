@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SearchFacesCommandInput = SearchFacesRequest;
-export type SearchFacesCommandOutput = SearchFacesResponse & __MetadataBearer;
+export interface SearchFacesCommandInput extends SearchFacesRequest {}
+export interface SearchFacesCommandOutput extends SearchFacesResponse, __MetadataBearer {}
 
 /**
  * <p>For a given input face ID, searches for matching faces in the collection the face
@@ -42,6 +42,20 @@ export type SearchFacesCommandOutput = SearchFacesResponse & __MetadataBearer;
  *
  *          <p>This operation requires permissions to perform the <code>rekognition:SearchFaces</code>
  *       action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, SearchFacesCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, SearchFacesCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new SearchFacesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SearchFacesCommandInput} for command's `input` shape.
+ * @see {@link SearchFacesCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SearchFacesCommand extends $Command<
   SearchFacesCommandInput,

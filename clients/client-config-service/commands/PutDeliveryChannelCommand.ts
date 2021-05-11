@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutDeliveryChannelCommandInput = PutDeliveryChannelRequest;
-export type PutDeliveryChannelCommandOutput = __MetadataBearer;
+export interface PutDeliveryChannelCommandInput extends PutDeliveryChannelRequest {}
+export interface PutDeliveryChannelCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Creates a delivery channel object to deliver configuration
@@ -38,6 +38,20 @@ export type PutDeliveryChannelCommandOutput = __MetadataBearer;
  *
  *
  * 		       </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, PutDeliveryChannelCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, PutDeliveryChannelCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new PutDeliveryChannelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutDeliveryChannelCommandInput} for command's `input` shape.
+ * @see {@link PutDeliveryChannelCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutDeliveryChannelCommand extends $Command<
   PutDeliveryChannelCommandInput,

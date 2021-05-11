@@ -17,16 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UntagResourceCommandInput = UntagResourceRequest;
-export type UntagResourceCommandOutput = UntagResourceResponse & __MetadataBearer;
+export interface UntagResourceCommandInput extends UntagResourceRequest {}
+export interface UntagResourceCommandOutput extends UntagResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Removes the specified tags from the specified AWS RoboMaker resource.</p>
- *          <p>To remove a tag, specify the tag key. To change the tag value of an existing tag key, use
- *          <a href="https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html">
+ *          <p>To remove a tag, specify the tag key. To change the tag value of an existing tag key,
+ *          use <a href="https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html">
  *                <code>TagResource</code>
- *             </a>.
- *       </p>
+ *             </a>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RoboMakerClient, UntagResourceCommand } from "@aws-sdk/client-robomaker"; // ES Modules import
+ * // const { RoboMakerClient, UntagResourceCommand } = require("@aws-sdk/client-robomaker"); // CommonJS import
+ * const client = new RoboMakerClient(config);
+ * const command = new UntagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UntagResourceCommandInput} for command's `input` shape.
+ * @see {@link UntagResourceCommandOutput} for command's `response` shape.
+ * @see {@link RoboMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UntagResourceCommand extends $Command<
   UntagResourceCommandInput,

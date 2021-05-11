@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEngineDefaultParametersCommandInput = DescribeEngineDefaultParametersMessage;
-export type DescribeEngineDefaultParametersCommandOutput = DescribeEngineDefaultParametersResult & __MetadataBearer;
+export interface DescribeEngineDefaultParametersCommandInput extends DescribeEngineDefaultParametersMessage {}
+export interface DescribeEngineDefaultParametersCommandOutput
+  extends DescribeEngineDefaultParametersResult,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the default engine and
  *             system parameter information for the specified cache engine.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, DescribeEngineDefaultParametersCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, DescribeEngineDefaultParametersCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new DescribeEngineDefaultParametersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEngineDefaultParametersCommandInput} for command's `input` shape.
+ * @see {@link DescribeEngineDefaultParametersCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEngineDefaultParametersCommand extends $Command<
   DescribeEngineDefaultParametersCommandInput,

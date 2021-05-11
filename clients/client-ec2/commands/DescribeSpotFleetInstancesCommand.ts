@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeSpotFleetInstancesCommandInput = DescribeSpotFleetInstancesRequest;
-export type DescribeSpotFleetInstancesCommandOutput = DescribeSpotFleetInstancesResponse & __MetadataBearer;
+export interface DescribeSpotFleetInstancesCommandInput extends DescribeSpotFleetInstancesRequest {}
+export interface DescribeSpotFleetInstancesCommandOutput extends DescribeSpotFleetInstancesResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the running instances for the specified Spot Fleet.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeSpotFleetInstancesCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeSpotFleetInstancesCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeSpotFleetInstancesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeSpotFleetInstancesCommandInput} for command's `input` shape.
+ * @see {@link DescribeSpotFleetInstancesCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeSpotFleetInstancesCommand extends $Command<
   DescribeSpotFleetInstancesCommandInput,

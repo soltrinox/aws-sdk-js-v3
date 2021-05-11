@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddTagsCommandInput = AddTagsInput;
-export type AddTagsCommandOutput = AddTagsOutput & __MetadataBearer;
+export interface AddTagsCommandInput extends AddTagsInput {}
+export interface AddTagsCommandOutput extends AddTagsOutput, __MetadataBearer {}
 
 /**
  * <p>Adds the specified tags to the specified load balancer. Each load balancer can have a maximum of 10 tags.</p>
@@ -29,6 +29,20 @@ export type AddTagsCommandOutput = AddTagsOutput & __MetadataBearer;
  *
  *         <p>For more information, see <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html">Tag Your Classic Load Balancer</a>
  *             in the <i>Classic Load Balancers Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingClient, AddTagsCommand } from "@aws-sdk/client-elastic-load-balancing"; // ES Modules import
+ * // const { ElasticLoadBalancingClient, AddTagsCommand } = require("@aws-sdk/client-elastic-load-balancing"); // CommonJS import
+ * const client = new ElasticLoadBalancingClient(config);
+ * const command = new AddTagsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddTagsCommandInput} for command's `input` shape.
+ * @see {@link AddTagsCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddTagsCommand extends $Command<
   AddTagsCommandInput,

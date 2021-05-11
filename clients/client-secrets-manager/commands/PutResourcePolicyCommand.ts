@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutResourcePolicyCommandInput = PutResourcePolicyRequest;
-export type PutResourcePolicyCommandOutput = PutResourcePolicyResponse & __MetadataBearer;
+export interface PutResourcePolicyCommandInput extends PutResourcePolicyRequest {}
+export interface PutResourcePolicyCommandOutput extends PutResourcePolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Attaches the contents of the specified resource-based permission policy to a secret. A
@@ -47,12 +47,26 @@ export type PutResourcePolicyCommandOutput = PutResourcePolicyResponse & __Metad
  *                <p>To retrieve the resource policy attached to a secret, use <a>GetResourcePolicy</a>.</p>
  *             </li>
  *             <li>
- *                <p>To delete the resource-based policy that's attached to a secret, use <a>DeleteResourcePolicy</a>.</p>
+ *                <p>To delete the resource-based policy attached to a secret, use <a>DeleteResourcePolicy</a>.</p>
  *             </li>
  *             <li>
  *                <p>To list all of the currently available secrets, use <a>ListSecrets</a>.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecretsManagerClient, PutResourcePolicyCommand } from "@aws-sdk/client-secrets-manager"; // ES Modules import
+ * // const { SecretsManagerClient, PutResourcePolicyCommand } = require("@aws-sdk/client-secrets-manager"); // CommonJS import
+ * const client = new SecretsManagerClient(config);
+ * const command = new PutResourcePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutResourcePolicyCommandInput} for command's `input` shape.
+ * @see {@link PutResourcePolicyCommandOutput} for command's `response` shape.
+ * @see {@link SecretsManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutResourcePolicyCommand extends $Command<
   PutResourcePolicyCommandInput,

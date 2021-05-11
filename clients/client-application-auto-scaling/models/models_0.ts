@@ -23,6 +23,9 @@ export interface Alarm {
 }
 
 export namespace Alarm {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Alarm): any => ({
     ...obj,
   });
@@ -39,6 +42,9 @@ export interface ConcurrentUpdateException extends __SmithyException, $MetadataB
 }
 
 export namespace ConcurrentUpdateException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConcurrentUpdateException): any => ({
     ...obj,
   });
@@ -231,6 +237,9 @@ export interface DeleteScalingPolicyRequest {
 }
 
 export namespace DeleteScalingPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteScalingPolicyRequest): any => ({
     ...obj,
   });
@@ -239,6 +248,9 @@ export namespace DeleteScalingPolicyRequest {
 export interface DeleteScalingPolicyResponse {}
 
 export namespace DeleteScalingPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteScalingPolicyResponse): any => ({
     ...obj,
   });
@@ -254,6 +266,9 @@ export interface InternalServiceException extends __SmithyException, $MetadataBe
 }
 
 export namespace InternalServiceException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServiceException): any => ({
     ...obj,
   });
@@ -273,6 +288,9 @@ export interface ObjectNotFoundException extends __SmithyException, $MetadataBea
 }
 
 export namespace ObjectNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ObjectNotFoundException): any => ({
     ...obj,
   });
@@ -289,6 +307,9 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
@@ -446,6 +467,9 @@ export interface DeleteScheduledActionRequest {
 }
 
 export namespace DeleteScheduledActionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteScheduledActionRequest): any => ({
     ...obj,
   });
@@ -454,6 +478,9 @@ export namespace DeleteScheduledActionRequest {
 export interface DeleteScheduledActionResponse {}
 
 export namespace DeleteScheduledActionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteScheduledActionResponse): any => ({
     ...obj,
   });
@@ -607,6 +634,9 @@ export interface DeregisterScalableTargetRequest {
 }
 
 export namespace DeregisterScalableTargetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeregisterScalableTargetRequest): any => ({
     ...obj,
   });
@@ -615,6 +645,9 @@ export namespace DeregisterScalableTargetRequest {
 export interface DeregisterScalableTargetResponse {}
 
 export namespace DeregisterScalableTargetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeregisterScalableTargetResponse): any => ({
     ...obj,
   });
@@ -629,7 +662,7 @@ export interface DescribeScalableTargetsRequest {
 
   /**
    * <p>The identifier of the resource associated with the scalable target.
-   *       This string consists of the resource type and unique identifier. If you specify a scalable dimension, you must also specify a resource ID.</p>
+   *       This string consists of the resource type and unique identifier.</p>
    *          <ul>
    *             <li>
    *                <p>ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name
@@ -784,6 +817,9 @@ export interface DescribeScalableTargetsRequest {
 }
 
 export namespace DescribeScalableTargetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeScalableTargetsRequest): any => ({
     ...obj,
   });
@@ -817,6 +853,9 @@ export interface SuspendedState {
 }
 
 export namespace SuspendedState {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SuspendedState): any => ({
     ...obj,
   });
@@ -1000,6 +1039,9 @@ export interface ScalableTarget {
 }
 
 export namespace ScalableTarget {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScalableTarget): any => ({
     ...obj,
   });
@@ -1019,6 +1061,9 @@ export interface DescribeScalableTargetsResponse {
 }
 
 export namespace DescribeScalableTargetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeScalableTargetsResponse): any => ({
     ...obj,
   });
@@ -1034,6 +1079,9 @@ export interface InvalidNextTokenException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidNextTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextTokenException): any => ({
     ...obj,
   });
@@ -1048,7 +1096,7 @@ export interface DescribeScalingActivitiesRequest {
 
   /**
    * <p>The identifier of the resource associated with the scaling activity.
-   *       This string consists of the resource type and unique identifier. If you specify a scalable dimension, you must also specify a resource ID.</p>
+   *       This string consists of the resource type and unique identifier.</p>
    *          <ul>
    *             <li>
    *                <p>ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name
@@ -1203,6 +1251,9 @@ export interface DescribeScalingActivitiesRequest {
 }
 
 export namespace DescribeScalingActivitiesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeScalingActivitiesRequest): any => ({
     ...obj,
   });
@@ -1407,6 +1458,9 @@ export interface ScalingActivity {
 }
 
 export namespace ScalingActivity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScalingActivity): any => ({
     ...obj,
   });
@@ -1426,6 +1480,9 @@ export interface DescribeScalingActivitiesResponse {
 }
 
 export namespace DescribeScalingActivitiesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeScalingActivitiesResponse): any => ({
     ...obj,
   });
@@ -1445,7 +1502,7 @@ export interface DescribeScalingPoliciesRequest {
 
   /**
    * <p>The identifier of the resource associated with the scaling policy.
-   *       This string consists of the resource type and unique identifier. If you specify a scalable dimension, you must also specify a resource ID.</p>
+   *       This string consists of the resource type and unique identifier.</p>
    *          <ul>
    *             <li>
    *                <p>ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name
@@ -1600,6 +1657,9 @@ export interface DescribeScalingPoliciesRequest {
 }
 
 export namespace DescribeScalingPoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeScalingPoliciesRequest): any => ({
     ...obj,
   });
@@ -1681,6 +1741,9 @@ export interface StepAdjustment {
 }
 
 export namespace StepAdjustment {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StepAdjustment): any => ({
     ...obj,
   });
@@ -1778,7 +1841,7 @@ export interface StepScalingPolicyConfiguration {
    *                <p>Amazon Keyspaces tables</p>
    *            </li>
    *             <li>
-   *                <p>Amazon MSK cluster storage</p>
+   *                <p>Amazon MSK broker storage</p>
    *            </li>
    *          </ul>
    */
@@ -1793,6 +1856,9 @@ export interface StepScalingPolicyConfiguration {
 }
 
 export namespace StepScalingPolicyConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StepScalingPolicyConfiguration): any => ({
     ...obj,
   });
@@ -1814,6 +1880,9 @@ export interface MetricDimension {
 }
 
 export namespace MetricDimension {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricDimension): any => ({
     ...obj,
   });
@@ -1881,6 +1950,9 @@ export interface CustomizedMetricSpecification {
 }
 
 export namespace CustomizedMetricSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CustomizedMetricSpecification): any => ({
     ...obj,
   });
@@ -1911,7 +1983,7 @@ export enum MetricType {
  *          Application Auto Scaling.</p>
  *          <p>Only the AWS services that you're using send metrics to Amazon CloudWatch. To determine whether a
  *          desired metric already exists by looking up its namespace and dimension using the CloudWatch
- *          metrics dashboard in the console, follow the procedure in <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/monitoring-cloudwatch.html">Building Dashboards
+ *          metrics dashboard in the console, follow the procedure in <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/monitoring-cloudwatch.html">Building dashboards
  *             with CloudWatch</a> in the <i>Application Auto Scaling User Guide</i>.</p>
  */
 export interface PredefinedMetricSpecification {
@@ -1949,6 +2021,9 @@ export interface PredefinedMetricSpecification {
 }
 
 export namespace PredefinedMetricSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PredefinedMetricSpecification): any => ({
     ...obj,
   });
@@ -1959,8 +2034,11 @@ export namespace PredefinedMetricSpecification {
  */
 export interface TargetTrackingScalingPolicyConfiguration {
   /**
-   * <p>The target value for the metric. The range is 8.515920e-109 to 1.174271e+108 (Base 10)
-   *          or 2e-360 to 2e360 (Base 2).</p>
+   * <p>The target value for the metric. Although this property accepts numbers of type Double,
+   *          it won't accept values that are either too small or too large. Values must be in the range
+   *          of -2^360 to 2^360. The value must be a valid number based on the choice of metric. For
+   *          example, if the metric is CPU utilization, then the target value is a percent value that
+   *          represents how much of the CPU can be used before scaling out. </p>
    */
   TargetValue: number | undefined;
 
@@ -2028,7 +2106,7 @@ export interface TargetTrackingScalingPolicyConfiguration {
    *                <p>Amazon Keyspaces tables</p>
    *            </li>
    *             <li>
-   *                <p>Amazon MSK cluster storage</p>
+   *                <p>Amazon MSK broker storage</p>
    *            </li>
    *          </ul>
    */
@@ -2084,7 +2162,7 @@ export interface TargetTrackingScalingPolicyConfiguration {
    *                <p>Amazon Keyspaces tables</p>
    *            </li>
    *             <li>
-   *                <p>Amazon MSK cluster storage</p>
+   *                <p>Amazon MSK broker storage</p>
    *            </li>
    *          </ul>
    */
@@ -2101,6 +2179,9 @@ export interface TargetTrackingScalingPolicyConfiguration {
 }
 
 export namespace TargetTrackingScalingPolicyConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TargetTrackingScalingPolicyConfiguration): any => ({
     ...obj,
   });
@@ -2108,7 +2189,9 @@ export namespace TargetTrackingScalingPolicyConfiguration {
 
 /**
  * <p>Represents a scaling policy to use with Application Auto Scaling.</p>
- *          <p>For more information about configuring scaling policies for a specific service, see <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/getting-started.html">Getting started with Application Auto Scaling</a> in the <i>Application Auto Scaling User Guide</i>.</p>
+ *          <p>For more information about configuring scaling policies for a specific service, see
+ *             <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/getting-started.html">Getting started with Application Auto Scaling</a> in the
+ *          <i>Application Auto Scaling User Guide</i>.</p>
  */
 export interface ScalingPolicy {
   /**
@@ -2292,6 +2375,9 @@ export interface ScalingPolicy {
 }
 
 export namespace ScalingPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScalingPolicy): any => ({
     ...obj,
   });
@@ -2311,6 +2397,9 @@ export interface DescribeScalingPoliciesResponse {
 }
 
 export namespace DescribeScalingPoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeScalingPoliciesResponse): any => ({
     ...obj,
   });
@@ -2329,6 +2418,9 @@ export interface FailedResourceAccessException extends __SmithyException, $Metad
 }
 
 export namespace FailedResourceAccessException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FailedResourceAccessException): any => ({
     ...obj,
   });
@@ -2348,7 +2440,7 @@ export interface DescribeScheduledActionsRequest {
 
   /**
    * <p>The identifier of the resource associated with the scheduled action.
-   *       This string consists of the resource type and unique identifier. If you specify a scalable dimension, you must also specify a resource ID.</p>
+   *       This string consists of the resource type and unique identifier.</p>
    *          <ul>
    *             <li>
    *                <p>ECS service - The resource type is <code>service</code> and the unique identifier is the cluster name
@@ -2503,6 +2595,9 @@ export interface DescribeScheduledActionsRequest {
 }
 
 export namespace DescribeScheduledActionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeScheduledActionsRequest): any => ({
     ...obj,
   });
@@ -2533,6 +2628,9 @@ export interface ScalableTargetAction {
 }
 
 export namespace ScalableTargetAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScalableTargetAction): any => ({
     ...obj,
   });
@@ -2572,13 +2670,23 @@ export interface ScheduledAction {
    *                <p>Cron expressions - "<code>cron(<i>fields</i>)</code>"</p>
    *             </li>
    *          </ul>
-   *          <p>At expressions are useful for one-time schedules. Specify the time in UTC.</p>
+   *          <p>At expressions are useful for one-time schedules. Cron expressions are useful for
+   *          scheduled actions that run periodically at a specified date and time, and rate expressions
+   *          are useful for scheduled actions that run at a regular interval.</p>
+   *          <p>At and cron expressions use Universal Coordinated Time (UTC) by
+   *          default.</p>
+   *          <p>The cron format consists of six fields separated by white spaces: [Minutes] [Hours] [Day_of_Month] [Month] [Day_of_Week] [Year].</p>
    *          <p>For rate expressions, <i>value</i> is a positive integer and <i>unit</i> is
    *          <code>minute</code> | <code>minutes</code> | <code>hour</code> | <code>hours</code> | <code>day</code> | <code>days</code>.</p>
-   *          <p>For more information about cron expressions, see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions">Cron Expressions</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
-   *            <p>For examples of using these expressions, see <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html">Scheduled Scaling</a> in the <i>Application Auto Scaling User Guide</i>.</p>
+   *            <p>For more information and examples, see <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/examples-scheduled-actions.html">Example scheduled actions for Application Auto Scaling</a> in the <i>Application Auto Scaling User Guide</i>.</p>
    */
   Schedule: string | undefined;
+
+  /**
+   * <p>The time zone used when referring to the date and time of a scheduled action, when the
+   *          scheduled action uses an at or cron expression.</p>
+   */
+  Timezone?: string;
 
   /**
    * <p>The identifier of the resource associated with the scaling policy.
@@ -2719,12 +2827,12 @@ export interface ScheduledAction {
   ScalableDimension?: ScalableDimension | string;
 
   /**
-   * <p>The date and time that the action is scheduled to begin.</p>
+   * <p>The date and time that the action is scheduled to begin, in UTC.</p>
    */
   StartTime?: Date;
 
   /**
-   * <p>The date and time that the action is scheduled to end.</p>
+   * <p>The date and time that the action is scheduled to end, in UTC.</p>
    */
   EndTime?: Date;
 
@@ -2743,6 +2851,9 @@ export interface ScheduledAction {
 }
 
 export namespace ScheduledAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduledAction): any => ({
     ...obj,
   });
@@ -2762,13 +2873,16 @@ export interface DescribeScheduledActionsResponse {
 }
 
 export namespace DescribeScheduledActionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeScheduledActionsResponse): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A per-account resource limit is exceeded. For more information, see <a href="https://docs.aws.amazon.com/ApplicationAutoScaling/latest/userguide/application-auto-scaling-limits.html">Application Auto Scaling Limits</a>.</p>
+ * <p>A per-account resource limit is exceeded. For more information, see <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-limits.html">Application Auto Scaling service quotas</a>.</p>
  */
 export interface LimitExceededException extends __SmithyException, $MetadataBearer {
   name: "LimitExceededException";
@@ -2777,6 +2891,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -2941,7 +3058,7 @@ export interface PutScalingPolicyRequest {
    *             <code>StepScaling</code>—Not supported for DynamoDB, Amazon Comprehend, Lambda, Amazon Keyspaces (for
    *       Apache Cassandra), or Amazon MSK.</p>
    *          <p>For more information, see <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html">Target
-   *         Tracking Scaling Policies</a> and <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html">Step Scaling Policies</a> in the <i>Application Auto Scaling User Guide</i>.</p>
+   *         tracking scaling policies</a> and <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html">Step scaling policies</a> in the <i>Application Auto Scaling User Guide</i>.</p>
    */
   PolicyType?: PolicyType | string;
 
@@ -2962,6 +3079,9 @@ export interface PutScalingPolicyRequest {
 }
 
 export namespace PutScalingPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutScalingPolicyRequest): any => ({
     ...obj,
   });
@@ -2980,6 +3100,9 @@ export interface PutScalingPolicyResponse {
 }
 
 export namespace PutScalingPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutScalingPolicyResponse): any => ({
     ...obj,
   });
@@ -3006,13 +3129,25 @@ export interface PutScheduledActionRequest {
    *                <p>Cron expressions - "<code>cron(<i>fields</i>)</code>"</p>
    *             </li>
    *          </ul>
-   *          <p>At expressions are useful for one-time schedules. Specify the time in UTC.</p>
+   *          <p>At expressions are useful for one-time schedules. Cron expressions are useful for
+   *          scheduled actions that run periodically at a specified date and time, and rate expressions
+   *          are useful for scheduled actions that run at a regular interval.</p>
+   *          <p>At and cron expressions use Universal Coordinated Time (UTC) by
+   *          default.</p>
+   *          <p>The cron format consists of six fields separated by white spaces: [Minutes] [Hours] [Day_of_Month] [Month] [Day_of_Week] [Year].</p>
    *          <p>For rate expressions, <i>value</i> is a positive integer and <i>unit</i> is
    *          <code>minute</code> | <code>minutes</code> | <code>hour</code> | <code>hours</code> | <code>day</code> | <code>days</code>.</p>
-   *          <p>For more information about cron expressions, see <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions">Cron Expressions</a> in the <i>Amazon CloudWatch Events User Guide</i>.</p>
-   *            <p>For examples of using these expressions, see <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html">Scheduled Scaling</a> in the <i>Application Auto Scaling User Guide</i>.</p>
+   *            <p>For more information and examples, see <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/examples-scheduled-actions.html">Example scheduled actions for Application Auto Scaling</a> in the <i>Application Auto Scaling User Guide</i>.</p>
    */
   Schedule?: string;
+
+  /**
+   * <p>Specifies the time zone used when setting a scheduled action by using an at or cron
+   *          expression. If a time zone is not provided, UTC is used by default.</p>
+   *          <p>Valid values are the canonical names of the IANA time zones supported by Joda-Time (such
+   *          as <code>Etc/GMT+9</code> or <code>Pacific/Tahiti</code>). For more information, see <a href="https://www.joda.org/joda-time/timezones.html">https://www.joda.org/joda-time/timezones.html</a>.</p>
+   */
+  Timezone?: string;
 
   /**
    * <p>The name of the scheduled action. This name must be unique among all other scheduled
@@ -3159,12 +3294,12 @@ export interface PutScheduledActionRequest {
   ScalableDimension: ScalableDimension | string | undefined;
 
   /**
-   * <p>The date and time for this scheduled action to start.</p>
+   * <p>The date and time for this scheduled action to start, in UTC.</p>
    */
   StartTime?: Date;
 
   /**
-   * <p>The date and time for the recurring schedule to end.</p>
+   * <p>The date and time for the recurring schedule to end, in UTC.</p>
    */
   EndTime?: Date;
 
@@ -3178,6 +3313,9 @@ export interface PutScheduledActionRequest {
 }
 
 export namespace PutScheduledActionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutScheduledActionRequest): any => ({
     ...obj,
   });
@@ -3186,6 +3324,9 @@ export namespace PutScheduledActionRequest {
 export interface PutScheduledActionResponse {}
 
 export namespace PutScheduledActionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutScheduledActionResponse): any => ({
     ...obj,
   });
@@ -3340,19 +3481,17 @@ export interface RegisterScalableTargetRequest {
   /**
    * <p>The minimum value that you plan to scale in to. When a scaling policy is in effect,
    *       Application Auto Scaling can scale in (contract) as needed to the minimum capacity limit in response to
-   *       changing demand. </p>
-   *          <p>This parameter is required if you are registering a scalable target. For certain
-   *       resources, the minimum value allowed is 0. This includes Lambda provisioned concurrency, Spot
-   *       Fleet, ECS services, Aurora DB clusters, EMR clusters, and custom resources. For all other
-   *       resources, the minimum value allowed is 1.</p>
+   *       changing demand. This property is required when registering a new scalable target.</p>
+   *          <p>For certain resources, the minimum value allowed is 0. This includes Lambda provisioned
+   *       concurrency, Spot Fleet, ECS services, Aurora DB clusters, EMR clusters, and custom resources.
+   *       For all other resources, the minimum value allowed is 1.</p>
    */
   MinCapacity?: number;
 
   /**
    * <p>The maximum value that you plan to scale out to. When a scaling policy is in effect,
    *          Application Auto Scaling can scale out (expand) as needed to the maximum capacity limit in response to
-   *          changing demand. </p>
-   *          <p>This parameter is required if you are registering a scalable target.</p>
+   *          changing demand. This property is required when registering a new scalable target.</p>
    *          <p>Although you can specify a large maximum capacity, note that service quotas may impose
    *          lower limits. Each service has its own default quotas for the maximum capacity of the
    *          resource. If you want to specify a higher limit, you can request an increase. For more
@@ -3367,7 +3506,7 @@ export interface RegisterScalableTargetRequest {
    *       Amazon EMR), and it must specify the ARN of an IAM role that allows Application Auto Scaling to modify the scalable
    *       target on your behalf. </p>
    *          <p>If the service supports service-linked roles, Application Auto Scaling uses a service-linked role, which
-   *       it creates if it does not yet exist. For more information, see <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles">Application Auto Scaling IAM Roles</a>.</p>
+   *       it creates if it does not yet exist. For more information, see <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles">Application Auto Scaling IAM roles</a>.</p>
    */
   RoleARN?: string;
 
@@ -3393,13 +3532,16 @@ export interface RegisterScalableTargetRequest {
    *                scaling activities that involve scheduled actions are suspended. </p>
    *             </li>
    *          </ul>
-   *          <p>For more information, see <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html">Suspending and Resuming Scaling</a> in the <i>Application Auto Scaling User
+   *          <p>For more information, see <a href="https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html">Suspending and resuming scaling</a> in the <i>Application Auto Scaling User
    *          Guide</i>.</p>
    */
   SuspendedState?: SuspendedState;
 }
 
 export namespace RegisterScalableTargetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegisterScalableTargetRequest): any => ({
     ...obj,
   });
@@ -3408,6 +3550,9 @@ export namespace RegisterScalableTargetRequest {
 export interface RegisterScalableTargetResponse {}
 
 export namespace RegisterScalableTargetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegisterScalableTargetResponse): any => ({
     ...obj,
   });

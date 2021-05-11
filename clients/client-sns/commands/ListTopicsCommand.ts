@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTopicsCommandInput = ListTopicsInput;
-export type ListTopicsCommandOutput = ListTopicsResponse & __MetadataBearer;
+export interface ListTopicsCommandInput extends ListTopicsInput {}
+export interface ListTopicsCommandOutput extends ListTopicsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of the requester's topics. Each call returns a limited list of topics,
@@ -23,6 +23,20 @@ export type ListTopicsCommandOutput = ListTopicsResponse & __MetadataBearer;
  *                 <code>NextToken</code> parameter in a new <code>ListTopics</code> call to get
  *             further results.</p>
  *         <p>This action is throttled at 30 transactions per second (TPS).</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SNSClient, ListTopicsCommand } from "@aws-sdk/client-sns"; // ES Modules import
+ * // const { SNSClient, ListTopicsCommand } = require("@aws-sdk/client-sns"); // CommonJS import
+ * const client = new SNSClient(config);
+ * const command = new ListTopicsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTopicsCommandInput} for command's `input` shape.
+ * @see {@link ListTopicsCommandOutput} for command's `response` shape.
+ * @see {@link SNSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTopicsCommand extends $Command<
   ListTopicsCommandInput,

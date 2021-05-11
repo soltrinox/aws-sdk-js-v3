@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListRecommendationsCommandInput = ListRecommendationsRequest;
-export type ListRecommendationsCommandOutput = ListRecommendationsResponse & __MetadataBearer;
+export interface ListRecommendationsCommandInput extends ListRecommendationsRequest {}
+export interface ListRecommendationsCommandOutput extends ListRecommendationsResponse, __MetadataBearer {}
 
 /**
  * <p>
  *          Returns the list of all recommendations for a completed code review.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeGuruReviewerClient, ListRecommendationsCommand } from "@aws-sdk/client-codeguru-reviewer"; // ES Modules import
+ * // const { CodeGuruReviewerClient, ListRecommendationsCommand } = require("@aws-sdk/client-codeguru-reviewer"); // CommonJS import
+ * const client = new CodeGuruReviewerClient(config);
+ * const command = new ListRecommendationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListRecommendationsCommandInput} for command's `input` shape.
+ * @see {@link ListRecommendationsCommandOutput} for command's `response` shape.
+ * @see {@link CodeGuruReviewerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListRecommendationsCommand extends $Command<
   ListRecommendationsCommandInput,

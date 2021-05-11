@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDomainPermissionsPolicyCommandInput = GetDomainPermissionsPolicyRequest;
-export type GetDomainPermissionsPolicyCommandOutput = GetDomainPermissionsPolicyResult & __MetadataBearer;
+export interface GetDomainPermissionsPolicyCommandInput extends GetDomainPermissionsPolicyRequest {}
+export interface GetDomainPermissionsPolicyCommandOutput extends GetDomainPermissionsPolicyResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -31,6 +31,20 @@ export type GetDomainPermissionsPolicyCommandOutput = GetDomainPermissionsPolicy
  *            and resource-based policies </a> in the <i>AWS Identity and Access Management User Guide</i>.
  *        </p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeartifactClient, GetDomainPermissionsPolicyCommand } from "@aws-sdk/client-codeartifact"; // ES Modules import
+ * // const { CodeartifactClient, GetDomainPermissionsPolicyCommand } = require("@aws-sdk/client-codeartifact"); // CommonJS import
+ * const client = new CodeartifactClient(config);
+ * const command = new GetDomainPermissionsPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDomainPermissionsPolicyCommandInput} for command's `input` shape.
+ * @see {@link GetDomainPermissionsPolicyCommandOutput} for command's `response` shape.
+ * @see {@link CodeartifactClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDomainPermissionsPolicyCommand extends $Command<
   GetDomainPermissionsPolicyCommandInput,

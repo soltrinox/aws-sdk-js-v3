@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteInvitationsCommandInput = DeleteInvitationsRequest;
-export type DeleteInvitationsCommandOutput = DeleteInvitationsResponse & __MetadataBearer;
+export interface DeleteInvitationsCommandInput extends DeleteInvitationsRequest {}
+export interface DeleteInvitationsCommandOutput extends DeleteInvitationsResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes invitations received by the AWS account to become a member account.</p>
  *          <p>This operation is only used by accounts that are not part of an organization.
  *          Organization accounts do not receive invitations.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecurityHubClient, DeleteInvitationsCommand } from "@aws-sdk/client-securityhub"; // ES Modules import
+ * // const { SecurityHubClient, DeleteInvitationsCommand } = require("@aws-sdk/client-securityhub"); // CommonJS import
+ * const client = new SecurityHubClient(config);
+ * const command = new DeleteInvitationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteInvitationsCommandInput} for command's `input` shape.
+ * @see {@link DeleteInvitationsCommandOutput} for command's `response` shape.
+ * @see {@link SecurityHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteInvitationsCommand extends $Command<
   DeleteInvitationsCommandInput,

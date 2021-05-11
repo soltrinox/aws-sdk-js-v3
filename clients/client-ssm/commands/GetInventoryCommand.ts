@@ -1,5 +1,6 @@
 import { SSMClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SSMClient";
-import { GetInventoryRequest, GetInventoryResult } from "../models/models_1";
+import { GetInventoryResult } from "../models/models_1";
+import { GetInventoryRequest } from "../models/models_2";
 import {
   deserializeAws_json1_1GetInventoryCommand,
   serializeAws_json1_1GetInventoryCommand,
@@ -17,11 +18,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetInventoryCommandInput = GetInventoryRequest;
-export type GetInventoryCommandOutput = GetInventoryResult & __MetadataBearer;
+export interface GetInventoryCommandInput extends GetInventoryRequest {}
+export interface GetInventoryCommandOutput extends GetInventoryResult, __MetadataBearer {}
 
 /**
  * <p>Query inventory information.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, GetInventoryCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, GetInventoryCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new GetInventoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetInventoryCommandInput} for command's `input` shape.
+ * @see {@link GetInventoryCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetInventoryCommand extends $Command<
   GetInventoryCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteStreamCommandInput = DeleteStreamInput;
-export type DeleteStreamCommandOutput = DeleteStreamOutput & __MetadataBearer;
+export interface DeleteStreamCommandInput extends DeleteStreamInput {}
+export interface DeleteStreamCommandOutput extends DeleteStreamOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes a Kinesis video stream and the data contained in the stream. </p>
@@ -31,6 +31,20 @@ export type DeleteStreamCommandOutput = DeleteStreamOutput & __MetadataBearer;
  *             latest stream version, use the <code>DescribeStream</code> API. </p>
  *         <p>This operation requires permission for the <code>KinesisVideo:DeleteStream</code>
  *             action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisVideoClient, DeleteStreamCommand } from "@aws-sdk/client-kinesis-video"; // ES Modules import
+ * // const { KinesisVideoClient, DeleteStreamCommand } = require("@aws-sdk/client-kinesis-video"); // CommonJS import
+ * const client = new KinesisVideoClient(config);
+ * const command = new DeleteStreamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteStreamCommandInput} for command's `input` shape.
+ * @see {@link DeleteStreamCommandOutput} for command's `response` shape.
+ * @see {@link KinesisVideoClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteStreamCommand extends $Command<
   DeleteStreamCommandInput,

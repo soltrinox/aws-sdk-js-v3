@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDBInstanceReadReplicaCommandInput = CreateDBInstanceReadReplicaMessage;
-export type CreateDBInstanceReadReplicaCommandOutput = CreateDBInstanceReadReplicaResult & __MetadataBearer;
+export interface CreateDBInstanceReadReplicaCommandInput extends CreateDBInstanceReadReplicaMessage {}
+export interface CreateDBInstanceReadReplicaCommandOutput extends CreateDBInstanceReadReplicaResult, __MetadataBearer {}
 
 /**
  * <p>Creates a new DB instance that acts as a read replica for an existing source DB
@@ -38,6 +38,20 @@ export type CreateDBInstanceReadReplicaCommandOutput = CreateDBInstanceReadRepli
  *             <p>Your source DB instance must have backup retention enabled.
  *          </p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, CreateDBInstanceReadReplicaCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, CreateDBInstanceReadReplicaCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new CreateDBInstanceReadReplicaCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDBInstanceReadReplicaCommandInput} for command's `input` shape.
+ * @see {@link CreateDBInstanceReadReplicaCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDBInstanceReadReplicaCommand extends $Command<
   CreateDBInstanceReadReplicaCommandInput,

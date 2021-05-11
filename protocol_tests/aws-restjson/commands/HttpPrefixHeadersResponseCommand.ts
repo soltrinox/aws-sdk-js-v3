@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type HttpPrefixHeadersResponseCommandInput = {};
-export type HttpPrefixHeadersResponseCommandOutput = HttpPrefixHeadersResponseOutput & __MetadataBearer;
+export interface HttpPrefixHeadersResponseCommandInput {}
+export interface HttpPrefixHeadersResponseCommandOutput extends HttpPrefixHeadersResponseOutput, __MetadataBearer {}
 
 /**
  * Clients that perform this test extract all headers from the response.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestJsonProtocolClient, HttpPrefixHeadersResponseCommand } from "@aws-sdk/aws-restjson"; // ES Modules import
+ * // const { RestJsonProtocolClient, HttpPrefixHeadersResponseCommand } = require("@aws-sdk/aws-restjson"); // CommonJS import
+ * const client = new RestJsonProtocolClient(config);
+ * const command = new HttpPrefixHeadersResponseCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link HttpPrefixHeadersResponseCommandInput} for command's `input` shape.
+ * @see {@link HttpPrefixHeadersResponseCommandOutput} for command's `response` shape.
+ * @see {@link RestJsonProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class HttpPrefixHeadersResponseCommand extends $Command<
   HttpPrefixHeadersResponseCommandInput,

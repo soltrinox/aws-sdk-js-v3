@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetImageRecipeCommandInput = GetImageRecipeRequest;
-export type GetImageRecipeCommandOutput = GetImageRecipeResponse & __MetadataBearer;
+export interface GetImageRecipeCommandInput extends GetImageRecipeRequest {}
+export interface GetImageRecipeCommandOutput extends GetImageRecipeResponse, __MetadataBearer {}
 
 /**
- * <p> Gets an image recipe. </p>
+ * <p> Gets an image recipe.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ImagebuilderClient, GetImageRecipeCommand } from "@aws-sdk/client-imagebuilder"; // ES Modules import
+ * // const { ImagebuilderClient, GetImageRecipeCommand } = require("@aws-sdk/client-imagebuilder"); // CommonJS import
+ * const client = new ImagebuilderClient(config);
+ * const command = new GetImageRecipeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetImageRecipeCommandInput} for command's `input` shape.
+ * @see {@link GetImageRecipeCommandOutput} for command's `response` shape.
+ * @see {@link ImagebuilderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetImageRecipeCommand extends $Command<
   GetImageRecipeCommandInput,

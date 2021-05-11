@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetUsagePlanKeysCommandInput = GetUsagePlanKeysRequest;
-export type GetUsagePlanKeysCommandOutput = UsagePlanKeys & __MetadataBearer;
+export interface GetUsagePlanKeysCommandInput extends GetUsagePlanKeysRequest {}
+export interface GetUsagePlanKeysCommandOutput extends UsagePlanKeys, __MetadataBearer {}
 
 /**
  * <p>Gets all the usage plan keys representing the API keys added to a specified usage plan.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, GetUsagePlanKeysCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, GetUsagePlanKeysCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new GetUsagePlanKeysCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetUsagePlanKeysCommandInput} for command's `input` shape.
+ * @see {@link GetUsagePlanKeysCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetUsagePlanKeysCommand extends $Command<
   GetUsagePlanKeysCommandInput,

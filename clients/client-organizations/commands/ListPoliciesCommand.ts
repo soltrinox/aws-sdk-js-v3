@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPoliciesCommandInput = ListPoliciesRequest;
-export type ListPoliciesCommandOutput = ListPoliciesResponse & __MetadataBearer;
+export interface ListPoliciesCommandInput extends ListPoliciesRequest {}
+export interface ListPoliciesCommandOutput extends ListPoliciesResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the list of all policies in an organization of a specified type.</p>
@@ -30,8 +30,22 @@ export type ListPoliciesCommandOutput = ListPoliciesResponse & __MetadataBearer;
  *                <i>only</i>
  * when there are no more results to display.</p>
  *          </note>
- *          <p>This operation can be called only from the organization's
+ *         <p>This operation can be called only from the organization's
  * management account or by a member account that is a delegated administrator for an AWS service.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, ListPoliciesCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, ListPoliciesCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new ListPoliciesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPoliciesCommandInput} for command's `input` shape.
+ * @see {@link ListPoliciesCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPoliciesCommand extends $Command<
   ListPoliciesCommandInput,

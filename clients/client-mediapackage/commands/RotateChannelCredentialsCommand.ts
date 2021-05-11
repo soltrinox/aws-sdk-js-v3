@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RotateChannelCredentialsCommandInput = RotateChannelCredentialsRequest;
-export type RotateChannelCredentialsCommandOutput = RotateChannelCredentialsResponse & __MetadataBearer;
+export interface RotateChannelCredentialsCommandInput extends RotateChannelCredentialsRequest {}
+export interface RotateChannelCredentialsCommandOutput extends RotateChannelCredentialsResponse, __MetadataBearer {}
 
 /**
  * @deprecated
  *
  * Changes the Channel's first IngestEndpoint's username and password. WARNING - This API is deprecated. Please use RotateIngestEndpointCredentials instead
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaPackageClient, RotateChannelCredentialsCommand } from "@aws-sdk/client-mediapackage"; // ES Modules import
+ * // const { MediaPackageClient, RotateChannelCredentialsCommand } = require("@aws-sdk/client-mediapackage"); // CommonJS import
+ * const client = new MediaPackageClient(config);
+ * const command = new RotateChannelCredentialsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RotateChannelCredentialsCommandInput} for command's `input` shape.
+ * @see {@link RotateChannelCredentialsCommandOutput} for command's `response` shape.
+ * @see {@link MediaPackageClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RotateChannelCredentialsCommand extends $Command<
   RotateChannelCredentialsCommandInput,

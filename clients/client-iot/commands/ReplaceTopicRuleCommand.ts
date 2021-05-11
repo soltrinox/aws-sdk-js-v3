@@ -1,5 +1,5 @@
 import { IoTClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../IoTClient";
-import { ReplaceTopicRuleRequest } from "../models/models_1";
+import { ReplaceTopicRuleRequest } from "../models/models_2";
 import {
   deserializeAws_restJson1ReplaceTopicRuleCommand,
   serializeAws_restJson1ReplaceTopicRuleCommand,
@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ReplaceTopicRuleCommandInput = ReplaceTopicRuleRequest;
-export type ReplaceTopicRuleCommandOutput = __MetadataBearer;
+export interface ReplaceTopicRuleCommandInput extends ReplaceTopicRuleRequest {}
+export interface ReplaceTopicRuleCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Replaces the rule. You must specify all parameters for the new rule. Creating rules
  *          is an administrator-level action. Any user who has permission to create rules will be able
  *          to access data processed by the rule.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, ReplaceTopicRuleCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, ReplaceTopicRuleCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new ReplaceTopicRuleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ReplaceTopicRuleCommandInput} for command's `input` shape.
+ * @see {@link ReplaceTopicRuleCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ReplaceTopicRuleCommand extends $Command<
   ReplaceTopicRuleCommandInput,

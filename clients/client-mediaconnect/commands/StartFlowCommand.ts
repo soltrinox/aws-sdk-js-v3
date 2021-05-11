@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartFlowCommandInput = StartFlowRequest;
-export type StartFlowCommandOutput = StartFlowResponse & __MetadataBearer;
+export interface StartFlowCommandInput extends StartFlowRequest {}
+export interface StartFlowCommandOutput extends StartFlowResponse, __MetadataBearer {}
 
 /**
  * Starts a flow.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaConnectClient, StartFlowCommand } from "@aws-sdk/client-mediaconnect"; // ES Modules import
+ * // const { MediaConnectClient, StartFlowCommand } = require("@aws-sdk/client-mediaconnect"); // CommonJS import
+ * const client = new MediaConnectClient(config);
+ * const command = new StartFlowCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartFlowCommandInput} for command's `input` shape.
+ * @see {@link StartFlowCommandOutput} for command's `response` shape.
+ * @see {@link MediaConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartFlowCommand extends $Command<
   StartFlowCommandInput,

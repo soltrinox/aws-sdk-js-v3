@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateRouteTableCommandInput = AssociateRouteTableRequest;
-export type AssociateRouteTableCommandOutput = AssociateRouteTableResult & __MetadataBearer;
+export interface AssociateRouteTableCommandInput extends AssociateRouteTableRequest {}
+export interface AssociateRouteTableCommandOutput extends AssociateRouteTableResult, __MetadataBearer {}
 
 /**
  * <p>Associates a subnet in your VPC or an internet gateway or virtual private gateway
@@ -28,6 +28,20 @@ export type AssociateRouteTableCommandOutput = AssociateRouteTableResult & __Met
  *             table later. A route table can be associated with multiple subnets.</p>
  *         <p>For more information, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html">Route Tables</a> in the
  *                 <i>Amazon Virtual Private Cloud User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, AssociateRouteTableCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, AssociateRouteTableCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new AssociateRouteTableCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateRouteTableCommandInput} for command's `input` shape.
+ * @see {@link AssociateRouteTableCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateRouteTableCommand extends $Command<
   AssociateRouteTableCommandInput,

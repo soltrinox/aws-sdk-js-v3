@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDistributionsByCachePolicyIdCommandInput = ListDistributionsByCachePolicyIdRequest;
-export type ListDistributionsByCachePolicyIdCommandOutput = ListDistributionsByCachePolicyIdResult & __MetadataBearer;
+export interface ListDistributionsByCachePolicyIdCommandInput extends ListDistributionsByCachePolicyIdRequest {}
+export interface ListDistributionsByCachePolicyIdCommandOutput
+  extends ListDistributionsByCachePolicyIdResult,
+    __MetadataBearer {}
 
 /**
  * <p>Gets a list of distribution IDs for distributions that have a cache behavior that’s
@@ -28,6 +30,20 @@ export type ListDistributionsByCachePolicyIdCommandOutput = ListDistributionsByC
  * 			default maximum, the response is paginated. To get the next page of items, send a
  * 			subsequent request that specifies the <code>NextMarker</code> value from the current
  * 			response as the <code>Marker</code> value in the subsequent request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, ListDistributionsByCachePolicyIdCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, ListDistributionsByCachePolicyIdCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new ListDistributionsByCachePolicyIdCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDistributionsByCachePolicyIdCommandInput} for command's `input` shape.
+ * @see {@link ListDistributionsByCachePolicyIdCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDistributionsByCachePolicyIdCommand extends $Command<
   ListDistributionsByCachePolicyIdCommandInput,

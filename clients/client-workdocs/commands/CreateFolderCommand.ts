@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateFolderCommandInput = CreateFolderRequest;
-export type CreateFolderCommandOutput = CreateFolderResponse & __MetadataBearer;
+export interface CreateFolderCommandInput extends CreateFolderRequest {}
+export interface CreateFolderCommandOutput extends CreateFolderResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a folder with the specified name and parent folder.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkDocsClient, CreateFolderCommand } from "@aws-sdk/client-workdocs"; // ES Modules import
+ * // const { WorkDocsClient, CreateFolderCommand } = require("@aws-sdk/client-workdocs"); // CommonJS import
+ * const client = new WorkDocsClient(config);
+ * const command = new CreateFolderCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateFolderCommandInput} for command's `input` shape.
+ * @see {@link CreateFolderCommandOutput} for command's `response` shape.
+ * @see {@link WorkDocsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateFolderCommand extends $Command<
   CreateFolderCommandInput,

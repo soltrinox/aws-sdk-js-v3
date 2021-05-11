@@ -21,12 +21,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEntitiesDetectionV2JobCommandInput = DescribeEntitiesDetectionV2JobRequest;
-export type DescribeEntitiesDetectionV2JobCommandOutput = DescribeEntitiesDetectionV2JobResponse & __MetadataBearer;
+export interface DescribeEntitiesDetectionV2JobCommandInput extends DescribeEntitiesDetectionV2JobRequest {}
+export interface DescribeEntitiesDetectionV2JobCommandOutput
+  extends DescribeEntitiesDetectionV2JobResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Gets the properties associated with a medical entities detection job. Use this operation
  *       to get the status of a detection job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ComprehendMedicalClient, DescribeEntitiesDetectionV2JobCommand } from "@aws-sdk/client-comprehendmedical"; // ES Modules import
+ * // const { ComprehendMedicalClient, DescribeEntitiesDetectionV2JobCommand } = require("@aws-sdk/client-comprehendmedical"); // CommonJS import
+ * const client = new ComprehendMedicalClient(config);
+ * const command = new DescribeEntitiesDetectionV2JobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEntitiesDetectionV2JobCommandInput} for command's `input` shape.
+ * @see {@link DescribeEntitiesDetectionV2JobCommandOutput} for command's `response` shape.
+ * @see {@link ComprehendMedicalClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEntitiesDetectionV2JobCommand extends $Command<
   DescribeEntitiesDetectionV2JobCommandInput,

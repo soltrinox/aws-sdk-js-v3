@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCertificateAuthorityCsrCommandInput = GetCertificateAuthorityCsrRequest;
-export type GetCertificateAuthorityCsrCommandOutput = GetCertificateAuthorityCsrResponse & __MetadataBearer;
+export interface GetCertificateAuthorityCsrCommandInput extends GetCertificateAuthorityCsrRequest {}
+export interface GetCertificateAuthorityCsrCommandOutput extends GetCertificateAuthorityCsrResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the certificate signing request (CSR) for your private certificate authority
@@ -26,6 +26,20 @@ export type GetCertificateAuthorityCsrCommandOutput = GetCertificateAuthorityCsr
  * 			on-premises root or subordinate CA. Then import the signed certificate back into ACM Private CA
  * 			by calling the <a href="https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html">ImportCertificateAuthorityCertificate</a> action. The CSR is returned as a
  * 			base64 PEM-encoded string. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ACMPCAClient, GetCertificateAuthorityCsrCommand } from "@aws-sdk/client-acm-pca"; // ES Modules import
+ * // const { ACMPCAClient, GetCertificateAuthorityCsrCommand } = require("@aws-sdk/client-acm-pca"); // CommonJS import
+ * const client = new ACMPCAClient(config);
+ * const command = new GetCertificateAuthorityCsrCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCertificateAuthorityCsrCommandInput} for command's `input` shape.
+ * @see {@link GetCertificateAuthorityCsrCommandOutput} for command's `response` shape.
+ * @see {@link ACMPCAClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCertificateAuthorityCsrCommand extends $Command<
   GetCertificateAuthorityCsrCommandInput,

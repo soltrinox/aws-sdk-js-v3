@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeSavingsPlansOfferingsCommandInput = DescribeSavingsPlansOfferingsRequest;
-export type DescribeSavingsPlansOfferingsCommandOutput = DescribeSavingsPlansOfferingsResponse & __MetadataBearer;
+export interface DescribeSavingsPlansOfferingsCommandInput extends DescribeSavingsPlansOfferingsRequest {}
+export interface DescribeSavingsPlansOfferingsCommandOutput
+  extends DescribeSavingsPlansOfferingsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Describes the specified Savings Plans offerings.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SavingsplansClient, DescribeSavingsPlansOfferingsCommand } from "@aws-sdk/client-savingsplans"; // ES Modules import
+ * // const { SavingsplansClient, DescribeSavingsPlansOfferingsCommand } = require("@aws-sdk/client-savingsplans"); // CommonJS import
+ * const client = new SavingsplansClient(config);
+ * const command = new DescribeSavingsPlansOfferingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeSavingsPlansOfferingsCommandInput} for command's `input` shape.
+ * @see {@link DescribeSavingsPlansOfferingsCommandOutput} for command's `response` shape.
+ * @see {@link SavingsplansClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeSavingsPlansOfferingsCommand extends $Command<
   DescribeSavingsPlansOfferingsCommandInput,

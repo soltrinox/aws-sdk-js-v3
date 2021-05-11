@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAccountLimitCommandInput = GetAccountLimitRequest;
-export type GetAccountLimitCommandOutput = GetAccountLimitResponse & __MetadataBearer;
+export interface GetAccountLimitCommandInput extends GetAccountLimitRequest {}
+export interface GetAccountLimitCommandOutput extends GetAccountLimitResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the specified limit for the current account, for example, the maximum number of health checks that you
@@ -31,6 +31,20 @@ export type GetAccountLimitCommandOutput = GetAccountLimitResponse & __MetadataB
  * 			<a href="https://console.aws.amazon.com/trustedadvisor">https://console.aws.amazon.com/trustedadvisor/</a>. Then choose
  * 			<b>Service limits</b> in the navigation pane.</p>
  * 		       </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, GetAccountLimitCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, GetAccountLimitCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new GetAccountLimitCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAccountLimitCommandInput} for command's `input` shape.
+ * @see {@link GetAccountLimitCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAccountLimitCommand extends $Command<
   GetAccountLimitCommandInput,

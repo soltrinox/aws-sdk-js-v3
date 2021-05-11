@@ -21,11 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateCustomRoutingListenerCommandInput = UpdateCustomRoutingListenerRequest;
-export type UpdateCustomRoutingListenerCommandOutput = UpdateCustomRoutingListenerResponse & __MetadataBearer;
+export interface UpdateCustomRoutingListenerCommandInput extends UpdateCustomRoutingListenerRequest {}
+export interface UpdateCustomRoutingListenerCommandOutput
+  extends UpdateCustomRoutingListenerResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Update a listener for a custom routing accelerator. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, UpdateCustomRoutingListenerCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, UpdateCustomRoutingListenerCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new UpdateCustomRoutingListenerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateCustomRoutingListenerCommandInput} for command's `input` shape.
+ * @see {@link UpdateCustomRoutingListenerCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateCustomRoutingListenerCommand extends $Command<
   UpdateCustomRoutingListenerCommandInput,

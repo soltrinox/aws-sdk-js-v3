@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeTaskExecutionCommandInput = DescribeTaskExecutionRequest;
-export type DescribeTaskExecutionCommandOutput = DescribeTaskExecutionResponse & __MetadataBearer;
+export interface DescribeTaskExecutionCommandInput extends DescribeTaskExecutionRequest {}
+export interface DescribeTaskExecutionCommandOutput extends DescribeTaskExecutionResponse, __MetadataBearer {}
 
 /**
  * <p>Returns detailed metadata about a task that is being executed.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataSyncClient, DescribeTaskExecutionCommand } from "@aws-sdk/client-datasync"; // ES Modules import
+ * // const { DataSyncClient, DescribeTaskExecutionCommand } = require("@aws-sdk/client-datasync"); // CommonJS import
+ * const client = new DataSyncClient(config);
+ * const command = new DescribeTaskExecutionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeTaskExecutionCommandInput} for command's `input` shape.
+ * @see {@link DescribeTaskExecutionCommandOutput} for command's `response` shape.
+ * @see {@link DataSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeTaskExecutionCommand extends $Command<
   DescribeTaskExecutionCommandInput,

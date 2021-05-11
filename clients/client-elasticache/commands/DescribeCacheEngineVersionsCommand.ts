@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCacheEngineVersionsCommandInput = DescribeCacheEngineVersionsMessage;
-export type DescribeCacheEngineVersionsCommandOutput = CacheEngineVersionMessage & __MetadataBearer;
+export interface DescribeCacheEngineVersionsCommandInput extends DescribeCacheEngineVersionsMessage {}
+export interface DescribeCacheEngineVersionsCommandOutput extends CacheEngineVersionMessage, __MetadataBearer {}
 
 /**
  * <p>Returns a list of the available cache
  *             engines and their versions.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, DescribeCacheEngineVersionsCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, DescribeCacheEngineVersionsCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new DescribeCacheEngineVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCacheEngineVersionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeCacheEngineVersionsCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCacheEngineVersionsCommand extends $Command<
   DescribeCacheEngineVersionsCommandInput,

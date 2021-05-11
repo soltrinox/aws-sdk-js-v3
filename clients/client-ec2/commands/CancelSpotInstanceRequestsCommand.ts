@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelSpotInstanceRequestsCommandInput = CancelSpotInstanceRequestsRequest;
-export type CancelSpotInstanceRequestsCommandOutput = CancelSpotInstanceRequestsResult & __MetadataBearer;
+export interface CancelSpotInstanceRequestsCommandInput extends CancelSpotInstanceRequestsRequest {}
+export interface CancelSpotInstanceRequestsCommandOutput extends CancelSpotInstanceRequestsResult, __MetadataBearer {}
 
 /**
  * <p>Cancels one or more Spot Instance requests.</p>
  *          <important>
  *             <p>Canceling a Spot Instance request does not terminate running Spot Instances associated with the request.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, CancelSpotInstanceRequestsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, CancelSpotInstanceRequestsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new CancelSpotInstanceRequestsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelSpotInstanceRequestsCommandInput} for command's `input` shape.
+ * @see {@link CancelSpotInstanceRequestsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelSpotInstanceRequestsCommand extends $Command<
   CancelSpotInstanceRequestsCommandInput,

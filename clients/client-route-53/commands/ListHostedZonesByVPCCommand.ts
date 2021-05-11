@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListHostedZonesByVPCCommandInput = ListHostedZonesByVPCRequest;
-export type ListHostedZonesByVPCCommandOutput = ListHostedZonesByVPCResponse & __MetadataBearer;
+export interface ListHostedZonesByVPCCommandInput extends ListHostedZonesByVPCRequest {}
+export interface ListHostedZonesByVPCCommandOutput extends ListHostedZonesByVPCResponse, __MetadataBearer {}
 
 /**
  * <p>Lists all the private hosted zones that a specified VPC is associated with, regardless of which AWS account or AWS service owns the
@@ -34,6 +34,20 @@ export type ListHostedZonesByVPCCommandOutput = ListHostedZonesByVPCResponse & _
  * 				<code>efs.amazonaws.com</code>. </p>
  * 			         </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, ListHostedZonesByVPCCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, ListHostedZonesByVPCCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new ListHostedZonesByVPCCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListHostedZonesByVPCCommandInput} for command's `input` shape.
+ * @see {@link ListHostedZonesByVPCCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListHostedZonesByVPCCommand extends $Command<
   ListHostedZonesByVPCCommandInput,

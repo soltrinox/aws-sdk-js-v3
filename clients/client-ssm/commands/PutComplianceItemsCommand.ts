@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutComplianceItemsCommandInput = PutComplianceItemsRequest;
-export type PutComplianceItemsCommandOutput = PutComplianceItemsResult & __MetadataBearer;
+export interface PutComplianceItemsCommandInput extends PutComplianceItemsRequest {}
+export interface PutComplianceItemsCommandOutput extends PutComplianceItemsResult, __MetadataBearer {}
 
 /**
  * <p>Registers a compliance type and other compliance details on a designated resource. This
@@ -77,6 +77,20 @@ export type PutComplianceItemsCommandOutput = PutComplianceItemsResult & __Metad
  *      the resource. Specify the time by using the following format: yyyy-MM-dd'T'HH:mm:ss'Z'</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, PutComplianceItemsCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, PutComplianceItemsCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new PutComplianceItemsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutComplianceItemsCommandInput} for command's `input` shape.
+ * @see {@link PutComplianceItemsCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutComplianceItemsCommand extends $Command<
   PutComplianceItemsCommandInput,

@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GenerateChangeSetCommandInput = GenerateChangeSetRequest;
-export type GenerateChangeSetCommandOutput = GenerateChangeSetResponse & __MetadataBearer;
+export interface GenerateChangeSetCommandInput extends GenerateChangeSetRequest {}
+export interface GenerateChangeSetCommandOutput extends GenerateChangeSetResponse, __MetadataBearer {}
 
 /**
  * <p>Generates a target change set for a currently launched stack and writes it to an Amazon S3
  *             object in the customer’s Amazon S3 bucket.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SMSClient, GenerateChangeSetCommand } from "@aws-sdk/client-sms"; // ES Modules import
+ * // const { SMSClient, GenerateChangeSetCommand } = require("@aws-sdk/client-sms"); // CommonJS import
+ * const client = new SMSClient(config);
+ * const command = new GenerateChangeSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GenerateChangeSetCommandInput} for command's `input` shape.
+ * @see {@link GenerateChangeSetCommandOutput} for command's `response` shape.
+ * @see {@link SMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GenerateChangeSetCommand extends $Command<
   GenerateChangeSetCommandInput,

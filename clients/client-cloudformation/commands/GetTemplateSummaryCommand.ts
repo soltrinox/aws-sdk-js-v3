@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTemplateSummaryCommandInput = GetTemplateSummaryInput;
-export type GetTemplateSummaryCommandOutput = GetTemplateSummaryOutput & __MetadataBearer;
+export interface GetTemplateSummaryCommandInput extends GetTemplateSummaryInput {}
+export interface GetTemplateSummaryCommandOutput extends GetTemplateSummaryOutput, __MetadataBearer {}
 
 /**
  * <p>Returns information about a new or existing template. The
@@ -30,6 +30,20 @@ export type GetTemplateSummaryCommandOutput = GetTemplateSummaryOutput & __Metad
  *          <p>For deleted stacks, <code>GetTemplateSummary</code> returns the template information
  *          for up to 90 days after the stack has been deleted. If the template does not exist, a
  *             <code>ValidationError</code> is returned.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, GetTemplateSummaryCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, GetTemplateSummaryCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new GetTemplateSummaryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTemplateSummaryCommandInput} for command's `input` shape.
+ * @see {@link GetTemplateSummaryCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTemplateSummaryCommand extends $Command<
   GetTemplateSummaryCommandInput,

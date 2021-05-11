@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCoreDefinitionCommandInput = GetCoreDefinitionRequest;
-export type GetCoreDefinitionCommandOutput = GetCoreDefinitionResponse & __MetadataBearer;
+export interface GetCoreDefinitionCommandInput extends GetCoreDefinitionRequest {}
+export interface GetCoreDefinitionCommandOutput extends GetCoreDefinitionResponse, __MetadataBearer {}
 
 /**
  * Retrieves information about a core definition version.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, GetCoreDefinitionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, GetCoreDefinitionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new GetCoreDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCoreDefinitionCommandInput} for command's `input` shape.
+ * @see {@link GetCoreDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCoreDefinitionCommand extends $Command<
   GetCoreDefinitionCommandInput,

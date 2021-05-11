@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchDisassociateServiceActionFromProvisioningArtifactCommandInput = BatchDisassociateServiceActionFromProvisioningArtifactInput;
-export type BatchDisassociateServiceActionFromProvisioningArtifactCommandOutput = BatchDisassociateServiceActionFromProvisioningArtifactOutput &
-  __MetadataBearer;
+export interface BatchDisassociateServiceActionFromProvisioningArtifactCommandInput
+  extends BatchDisassociateServiceActionFromProvisioningArtifactInput {}
+export interface BatchDisassociateServiceActionFromProvisioningArtifactCommandOutput
+  extends BatchDisassociateServiceActionFromProvisioningArtifactOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Disassociates a batch of self-service actions from the specified provisioning artifact.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, BatchDisassociateServiceActionFromProvisioningArtifactCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, BatchDisassociateServiceActionFromProvisioningArtifactCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new BatchDisassociateServiceActionFromProvisioningArtifactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchDisassociateServiceActionFromProvisioningArtifactCommandInput} for command's `input` shape.
+ * @see {@link BatchDisassociateServiceActionFromProvisioningArtifactCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchDisassociateServiceActionFromProvisioningArtifactCommand extends $Command<
   BatchDisassociateServiceActionFromProvisioningArtifactCommandInput,

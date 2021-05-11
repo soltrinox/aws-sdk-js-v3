@@ -19,8 +19,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutBucketCorsCommandInput = PutBucketCorsRequest;
-export type PutBucketCorsCommandOutput = __MetadataBearer;
+export interface PutBucketCorsCommandInput extends PutBucketCorsRequest {}
+export interface PutBucketCorsCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Sets the <code>cors</code> configuration for your bucket. If the configuration exists,
@@ -58,7 +58,7 @@ export type PutBucketCorsCommandOutput = __MetadataBearer;
  *             </li>
  *          </ul>
  *          <p> For more information about CORS, go to <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html">Enabling
- *             Cross-Origin Resource Sharing</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *             Cross-Origin Resource Sharing</a> in the <i>Amazon S3 User Guide</i>.</p>
  *
  *          <p class="title">
  *             <b>Related Resources</b>
@@ -80,6 +80,20 @@ export type PutBucketCorsCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, PutBucketCorsCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, PutBucketCorsCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new PutBucketCorsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutBucketCorsCommandInput} for command's `input` shape.
+ * @see {@link PutBucketCorsCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutBucketCorsCommand extends $Command<
   PutBucketCorsCommandInput,

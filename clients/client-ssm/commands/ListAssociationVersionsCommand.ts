@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAssociationVersionsCommandInput = ListAssociationVersionsRequest;
-export type ListAssociationVersionsCommandOutput = ListAssociationVersionsResult & __MetadataBearer;
+export interface ListAssociationVersionsCommandInput extends ListAssociationVersionsRequest {}
+export interface ListAssociationVersionsCommandOutput extends ListAssociationVersionsResult, __MetadataBearer {}
 
 /**
  * <p>Retrieves all versions of an association for a specific association ID.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, ListAssociationVersionsCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, ListAssociationVersionsCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new ListAssociationVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAssociationVersionsCommandInput} for command's `input` shape.
+ * @see {@link ListAssociationVersionsCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAssociationVersionsCommand extends $Command<
   ListAssociationVersionsCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AdvertiseByoipCidrCommandInput = AdvertiseByoipCidrRequest;
-export type AdvertiseByoipCidrCommandOutput = AdvertiseByoipCidrResult & __MetadataBearer;
+export interface AdvertiseByoipCidrCommandInput extends AdvertiseByoipCidrRequest {}
+export interface AdvertiseByoipCidrCommandOutput extends AdvertiseByoipCidrResult, __MetadataBearer {}
 
 /**
  * <p>Advertises an IPv4 or IPv6 address range that is provisioned for use with your AWS resources through
@@ -32,6 +32,20 @@ export type AdvertiseByoipCidrCommandOutput = AdvertiseByoipCidrResult & __Metad
  *          <p>It can take a few minutes before traffic to the specified addresses starts routing to AWS
  *          because of BGP propagation delays.</p>
  *          <p>To stop advertising the BYOIP CIDR, use <a>WithdrawByoipCidr</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, AdvertiseByoipCidrCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, AdvertiseByoipCidrCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new AdvertiseByoipCidrCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AdvertiseByoipCidrCommandInput} for command's `input` shape.
+ * @see {@link AdvertiseByoipCidrCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AdvertiseByoipCidrCommand extends $Command<
   AdvertiseByoipCidrCommandInput,

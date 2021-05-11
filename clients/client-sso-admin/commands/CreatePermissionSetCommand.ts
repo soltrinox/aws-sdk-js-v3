@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreatePermissionSetCommandInput = CreatePermissionSetRequest;
-export type CreatePermissionSetCommandOutput = CreatePermissionSetResponse & __MetadataBearer;
+export interface CreatePermissionSetCommandInput extends CreatePermissionSetRequest {}
+export interface CreatePermissionSetCommandOutput extends CreatePermissionSetResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a permission set within a specified SSO instance.</p>
@@ -27,6 +27,20 @@ export type CreatePermissionSetCommandOutput = CreatePermissionSetResponse & __M
  *                   <a>CreateAccountAssignment</a>
  *                </code>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSOAdminClient, CreatePermissionSetCommand } from "@aws-sdk/client-sso-admin"; // ES Modules import
+ * // const { SSOAdminClient, CreatePermissionSetCommand } = require("@aws-sdk/client-sso-admin"); // CommonJS import
+ * const client = new SSOAdminClient(config);
+ * const command = new CreatePermissionSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreatePermissionSetCommandInput} for command's `input` shape.
+ * @see {@link CreatePermissionSetCommandOutput} for command's `response` shape.
+ * @see {@link SSOAdminClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreatePermissionSetCommand extends $Command<
   CreatePermissionSetCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAddonCommandInput = DescribeAddonRequest;
-export type DescribeAddonCommandOutput = DescribeAddonResponse & __MetadataBearer;
+export interface DescribeAddonCommandInput extends DescribeAddonRequest {}
+export interface DescribeAddonCommandOutput extends DescribeAddonResponse, __MetadataBearer {}
 
 /**
  * <p>Describes an Amazon EKS add-on.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EKSClient, DescribeAddonCommand } from "@aws-sdk/client-eks"; // ES Modules import
+ * // const { EKSClient, DescribeAddonCommand } = require("@aws-sdk/client-eks"); // CommonJS import
+ * const client = new EKSClient(config);
+ * const command = new DescribeAddonCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAddonCommandInput} for command's `input` shape.
+ * @see {@link DescribeAddonCommandOutput} for command's `response` shape.
+ * @see {@link EKSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAddonCommand extends $Command<
   DescribeAddonCommandInput,

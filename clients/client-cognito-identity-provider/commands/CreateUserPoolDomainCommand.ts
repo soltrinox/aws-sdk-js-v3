@@ -22,11 +22,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateUserPoolDomainCommandInput = CreateUserPoolDomainRequest;
-export type CreateUserPoolDomainCommandOutput = CreateUserPoolDomainResponse & __MetadataBearer;
+export interface CreateUserPoolDomainCommandInput extends CreateUserPoolDomainRequest {}
+export interface CreateUserPoolDomainCommandOutput extends CreateUserPoolDomainResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new domain for a user pool.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, CreateUserPoolDomainCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, CreateUserPoolDomainCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new CreateUserPoolDomainCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateUserPoolDomainCommandInput} for command's `input` shape.
+ * @see {@link CreateUserPoolDomainCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateUserPoolDomainCommand extends $Command<
   CreateUserPoolDomainCommandInput,

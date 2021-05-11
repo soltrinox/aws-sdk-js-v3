@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeFolderContentsCommandInput = DescribeFolderContentsRequest;
-export type DescribeFolderContentsCommandOutput = DescribeFolderContentsResponse & __MetadataBearer;
+export interface DescribeFolderContentsCommandInput extends DescribeFolderContentsRequest {}
+export interface DescribeFolderContentsCommandOutput extends DescribeFolderContentsResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the contents of the specified folder, including its documents and
@@ -27,6 +27,20 @@ export type DescribeFolderContentsCommandOutput = DescribeFolderContentsResponse
  *             metadata items. If there are more results, the response includes a marker that you can
  *             use to request the next set of results. You can also request initialized
  *             documents.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkDocsClient, DescribeFolderContentsCommand } from "@aws-sdk/client-workdocs"; // ES Modules import
+ * // const { WorkDocsClient, DescribeFolderContentsCommand } = require("@aws-sdk/client-workdocs"); // CommonJS import
+ * const client = new WorkDocsClient(config);
+ * const command = new DescribeFolderContentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeFolderContentsCommandInput} for command's `input` shape.
+ * @see {@link DescribeFolderContentsCommandOutput} for command's `response` shape.
+ * @see {@link WorkDocsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeFolderContentsCommand extends $Command<
   DescribeFolderContentsCommandInput,

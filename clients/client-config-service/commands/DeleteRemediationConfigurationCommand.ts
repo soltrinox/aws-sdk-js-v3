@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteRemediationConfigurationCommandInput = DeleteRemediationConfigurationRequest;
-export type DeleteRemediationConfigurationCommandOutput = DeleteRemediationConfigurationResponse & __MetadataBearer;
+export interface DeleteRemediationConfigurationCommandInput extends DeleteRemediationConfigurationRequest {}
+export interface DeleteRemediationConfigurationCommandOutput
+  extends DeleteRemediationConfigurationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Deletes the remediation configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DeleteRemediationConfigurationCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DeleteRemediationConfigurationCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DeleteRemediationConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteRemediationConfigurationCommandInput} for command's `input` shape.
+ * @see {@link DeleteRemediationConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteRemediationConfigurationCommand extends $Command<
   DeleteRemediationConfigurationCommandInput,

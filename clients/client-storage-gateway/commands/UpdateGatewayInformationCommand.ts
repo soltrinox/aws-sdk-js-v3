@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateGatewayInformationCommandInput = UpdateGatewayInformationInput;
-export type UpdateGatewayInformationCommandOutput = UpdateGatewayInformationOutput & __MetadataBearer;
+export interface UpdateGatewayInformationCommandInput extends UpdateGatewayInformationInput {}
+export interface UpdateGatewayInformationCommandOutput extends UpdateGatewayInformationOutput, __MetadataBearer {}
 
 /**
  * <p>Updates a gateway's metadata, which includes the gateway's name and time zone.
@@ -30,6 +30,20 @@ export type UpdateGatewayInformationCommandOutput = UpdateGatewayInformationOutp
  *             gateway ID rather than the gateway name. However, changing the name of the gateway has
  *             no effect on the gateway's ARN.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, UpdateGatewayInformationCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, UpdateGatewayInformationCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new UpdateGatewayInformationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateGatewayInformationCommandInput} for command's `input` shape.
+ * @see {@link UpdateGatewayInformationCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateGatewayInformationCommand extends $Command<
   UpdateGatewayInformationCommandInput,

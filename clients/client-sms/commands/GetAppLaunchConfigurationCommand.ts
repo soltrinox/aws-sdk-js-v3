@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAppLaunchConfigurationCommandInput = GetAppLaunchConfigurationRequest;
-export type GetAppLaunchConfigurationCommandOutput = GetAppLaunchConfigurationResponse & __MetadataBearer;
+export interface GetAppLaunchConfigurationCommandInput extends GetAppLaunchConfigurationRequest {}
+export interface GetAppLaunchConfigurationCommandOutput extends GetAppLaunchConfigurationResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the application launch configuration associated with the specified application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SMSClient, GetAppLaunchConfigurationCommand } from "@aws-sdk/client-sms"; // ES Modules import
+ * // const { SMSClient, GetAppLaunchConfigurationCommand } = require("@aws-sdk/client-sms"); // CommonJS import
+ * const client = new SMSClient(config);
+ * const command = new GetAppLaunchConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAppLaunchConfigurationCommandInput} for command's `input` shape.
+ * @see {@link GetAppLaunchConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link SMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAppLaunchConfigurationCommand extends $Command<
   GetAppLaunchConfigurationCommandInput,

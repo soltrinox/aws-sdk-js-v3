@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteEndpointCommandInput = DeleteEndpointInput;
-export type DeleteEndpointCommandOutput = __MetadataBearer;
+export interface DeleteEndpointCommandInput extends DeleteEndpointInput {}
+export interface DeleteEndpointCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the endpoint for a device and mobile app from Amazon SNS. This action is
@@ -26,6 +26,20 @@ export type DeleteEndpointCommandOutput = __MetadataBearer;
  *             Notifications</a>. </p>
  *         <p>When you delete an endpoint that is also subscribed to a topic, then you must also
  *             unsubscribe the endpoint from the topic.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SNSClient, DeleteEndpointCommand } from "@aws-sdk/client-sns"; // ES Modules import
+ * // const { SNSClient, DeleteEndpointCommand } = require("@aws-sdk/client-sns"); // CommonJS import
+ * const client = new SNSClient(config);
+ * const command = new DeleteEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteEndpointCommandInput} for command's `input` shape.
+ * @see {@link DeleteEndpointCommandOutput} for command's `response` shape.
+ * @see {@link SNSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteEndpointCommand extends $Command<
   DeleteEndpointCommandInput,

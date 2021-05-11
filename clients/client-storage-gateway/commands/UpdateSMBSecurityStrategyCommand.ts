@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateSMBSecurityStrategyCommandInput = UpdateSMBSecurityStrategyInput;
-export type UpdateSMBSecurityStrategyCommandOutput = UpdateSMBSecurityStrategyOutput & __MetadataBearer;
+export interface UpdateSMBSecurityStrategyCommandInput extends UpdateSMBSecurityStrategyInput {}
+export interface UpdateSMBSecurityStrategyCommandOutput extends UpdateSMBSecurityStrategyOutput, __MetadataBearer {}
 
 /**
  * <p>Updates the SMB security strategy on a file gateway. This action is only supported in
@@ -29,6 +29,20 @@ export type UpdateSMBSecurityStrategyCommandOutput = UpdateSMBSecurityStrategyOu
  *
  *             <p>A higher security level can affect performance of the gateway.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, UpdateSMBSecurityStrategyCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, UpdateSMBSecurityStrategyCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new UpdateSMBSecurityStrategyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateSMBSecurityStrategyCommandInput} for command's `input` shape.
+ * @see {@link UpdateSMBSecurityStrategyCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateSMBSecurityStrategyCommand extends $Command<
   UpdateSMBSecurityStrategyCommandInput,

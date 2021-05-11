@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteIpGroupCommandInput = DeleteIpGroupRequest;
-export type DeleteIpGroupCommandOutput = DeleteIpGroupResult & __MetadataBearer;
+export interface DeleteIpGroupCommandInput extends DeleteIpGroupRequest {}
+export interface DeleteIpGroupCommandOutput extends DeleteIpGroupResult, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified IP access control group.</p>
  *          <p>You cannot delete an IP access control group that is associated with a directory.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, DeleteIpGroupCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, DeleteIpGroupCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new DeleteIpGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteIpGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteIpGroupCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteIpGroupCommand extends $Command<
   DeleteIpGroupCommandInput,

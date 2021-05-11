@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateMultiplexCommandInput = CreateMultiplexRequest;
-export type CreateMultiplexCommandOutput = CreateMultiplexResponse & __MetadataBearer;
+export interface CreateMultiplexCommandInput extends CreateMultiplexRequest {}
+export interface CreateMultiplexCommandOutput extends CreateMultiplexResponse, __MetadataBearer {}
 
 /**
  * Create a new multiplex.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, CreateMultiplexCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, CreateMultiplexCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new CreateMultiplexCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateMultiplexCommandInput} for command's `input` shape.
+ * @see {@link CreateMultiplexCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateMultiplexCommand extends $Command<
   CreateMultiplexCommandInput,

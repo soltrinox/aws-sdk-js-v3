@@ -102,6 +102,7 @@ import {
   DocumentAttributeValue,
   DocumentAttributeValueCountPair,
   DocumentMetadataConfiguration,
+  DocumentRelevanceConfiguration,
   DocumentsMetadataConfiguration,
   Facet,
   FacetResult,
@@ -4150,6 +4151,31 @@ const serializeAws_json1_1DocumentMetadataConfigurationList = (
     });
 };
 
+const serializeAws_json1_1DocumentRelevanceConfiguration = (
+  input: DocumentRelevanceConfiguration,
+  context: __SerdeContext
+): any => {
+  return {
+    ...(input.Name !== undefined && input.Name !== null && { Name: input.Name }),
+    ...(input.Relevance !== undefined &&
+      input.Relevance !== null && { Relevance: serializeAws_json1_1Relevance(input.Relevance, context) }),
+  };
+};
+
+const serializeAws_json1_1DocumentRelevanceOverrideConfigurationList = (
+  input: DocumentRelevanceConfiguration[],
+  context: __SerdeContext
+): any => {
+  return input
+    .filter((e: any) => e != null)
+    .map((entry) => {
+      if (entry === null) {
+        return null as any;
+      }
+      return serializeAws_json1_1DocumentRelevanceConfiguration(entry, context);
+    });
+};
+
 const serializeAws_json1_1DocumentsMetadataConfiguration = (
   input: DocumentsMetadataConfiguration,
   context: __SerdeContext
@@ -4403,6 +4429,13 @@ const serializeAws_json1_1QueryRequest = (input: QueryRequest, context: __SerdeC
     ...(input.AttributeFilter !== undefined &&
       input.AttributeFilter !== null && {
         AttributeFilter: serializeAws_json1_1AttributeFilter(input.AttributeFilter, context),
+      }),
+    ...(input.DocumentRelevanceOverrideConfigurations !== undefined &&
+      input.DocumentRelevanceOverrideConfigurations !== null && {
+        DocumentRelevanceOverrideConfigurations: serializeAws_json1_1DocumentRelevanceOverrideConfigurationList(
+          input.DocumentRelevanceOverrideConfigurations,
+          context
+        ),
       }),
     ...(input.Facets !== undefined &&
       input.Facets !== null && { Facets: serializeAws_json1_1FacetList(input.Facets, context) }),
@@ -4754,6 +4787,8 @@ const serializeAws_json1_1ServerSideEncryptionConfiguration = (
 
 const serializeAws_json1_1ServiceNowConfiguration = (input: ServiceNowConfiguration, context: __SerdeContext): any => {
   return {
+    ...(input.AuthenticationType !== undefined &&
+      input.AuthenticationType !== null && { AuthenticationType: input.AuthenticationType }),
     ...(input.HostUrl !== undefined && input.HostUrl !== null && { HostUrl: input.HostUrl }),
     ...(input.KnowledgeArticleConfiguration !== undefined &&
       input.KnowledgeArticleConfiguration !== null && {
@@ -4797,6 +4832,7 @@ const serializeAws_json1_1ServiceNowKnowledgeArticleConfiguration = (
       input.FieldMappings !== null && {
         FieldMappings: serializeAws_json1_1DataSourceToIndexFieldMappingList(input.FieldMappings, context),
       }),
+    ...(input.FilterQuery !== undefined && input.FilterQuery !== null && { FilterQuery: input.FilterQuery }),
     ...(input.IncludeAttachmentFilePatterns !== undefined &&
       input.IncludeAttachmentFilePatterns !== null && {
         IncludeAttachmentFilePatterns: serializeAws_json1_1DataSourceInclusionsExclusionsStrings(
@@ -6819,6 +6855,10 @@ const deserializeAws_json1_1ServiceNowConfiguration = (
   context: __SerdeContext
 ): ServiceNowConfiguration => {
   return {
+    AuthenticationType:
+      output.AuthenticationType !== undefined && output.AuthenticationType !== null
+        ? output.AuthenticationType
+        : undefined,
     HostUrl: output.HostUrl !== undefined && output.HostUrl !== null ? output.HostUrl : undefined,
     KnowledgeArticleConfiguration:
       output.KnowledgeArticleConfiguration !== undefined && output.KnowledgeArticleConfiguration !== null
@@ -6859,6 +6899,7 @@ const deserializeAws_json1_1ServiceNowKnowledgeArticleConfiguration = (
       output.FieldMappings !== undefined && output.FieldMappings !== null
         ? deserializeAws_json1_1DataSourceToIndexFieldMappingList(output.FieldMappings, context)
         : undefined,
+    FilterQuery: output.FilterQuery !== undefined && output.FilterQuery !== null ? output.FilterQuery : undefined,
     IncludeAttachmentFilePatterns:
       output.IncludeAttachmentFilePatterns !== undefined && output.IncludeAttachmentFilePatterns !== null
         ? deserializeAws_json1_1DataSourceInclusionsExclusionsStrings(output.IncludeAttachmentFilePatterns, context)

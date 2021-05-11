@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDeploymentStrategyCommandInput = GetDeploymentStrategyRequest;
-export type GetDeploymentStrategyCommandOutput = DeploymentStrategy & __MetadataBearer;
+export interface GetDeploymentStrategyCommandInput extends GetDeploymentStrategyRequest {}
+export interface GetDeploymentStrategyCommandOutput extends DeploymentStrategy, __MetadataBearer {}
 
 /**
  * <p>Retrieve information about a deployment strategy. A deployment strategy defines
@@ -26,6 +26,20 @@ export type GetDeploymentStrategyCommandOutput = DeploymentStrategy & __Metadata
  *          deployment strategy includes: the overall duration required, a percentage of targets to
  *          receive the deployment during each interval, an algorithm that defines how percentage
  *          grows, and bake time.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppConfigClient, GetDeploymentStrategyCommand } from "@aws-sdk/client-appconfig"; // ES Modules import
+ * // const { AppConfigClient, GetDeploymentStrategyCommand } = require("@aws-sdk/client-appconfig"); // CommonJS import
+ * const client = new AppConfigClient(config);
+ * const command = new GetDeploymentStrategyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDeploymentStrategyCommandInput} for command's `input` shape.
+ * @see {@link GetDeploymentStrategyCommandOutput} for command's `response` shape.
+ * @see {@link AppConfigClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDeploymentStrategyCommand extends $Command<
   GetDeploymentStrategyCommandInput,

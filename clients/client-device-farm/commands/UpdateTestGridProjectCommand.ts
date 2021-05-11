@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateTestGridProjectCommandInput = UpdateTestGridProjectRequest;
-export type UpdateTestGridProjectCommandOutput = UpdateTestGridProjectResult & __MetadataBearer;
+export interface UpdateTestGridProjectCommandInput extends UpdateTestGridProjectRequest {}
+export interface UpdateTestGridProjectCommandOutput extends UpdateTestGridProjectResult, __MetadataBearer {}
 
 /**
  * <p>Change details of a project.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, UpdateTestGridProjectCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, UpdateTestGridProjectCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new UpdateTestGridProjectCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateTestGridProjectCommandInput} for command's `input` shape.
+ * @see {@link UpdateTestGridProjectCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateTestGridProjectCommand extends $Command<
   UpdateTestGridProjectCommandInput,

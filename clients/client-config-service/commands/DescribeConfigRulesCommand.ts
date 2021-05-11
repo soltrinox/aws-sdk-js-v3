@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeConfigRulesCommandInput = DescribeConfigRulesRequest;
-export type DescribeConfigRulesCommandOutput = DescribeConfigRulesResponse & __MetadataBearer;
+export interface DescribeConfigRulesCommandInput extends DescribeConfigRulesRequest {}
+export interface DescribeConfigRulesCommandOutput extends DescribeConfigRulesResponse, __MetadataBearer {}
 
 /**
  * <p>Returns details about your AWS Config rules.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DescribeConfigRulesCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DescribeConfigRulesCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DescribeConfigRulesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeConfigRulesCommandInput} for command's `input` shape.
+ * @see {@link DescribeConfigRulesCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeConfigRulesCommand extends $Command<
   DescribeConfigRulesCommandInput,

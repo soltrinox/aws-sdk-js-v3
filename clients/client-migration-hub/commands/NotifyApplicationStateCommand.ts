@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type NotifyApplicationStateCommandInput = NotifyApplicationStateRequest;
-export type NotifyApplicationStateCommandOutput = NotifyApplicationStateResult & __MetadataBearer;
+export interface NotifyApplicationStateCommandInput extends NotifyApplicationStateRequest {}
+export interface NotifyApplicationStateCommandOutput extends NotifyApplicationStateResult, __MetadataBearer {}
 
 /**
  * <p>Sets the migration state of an application. For a given application identified by the
  *          value passed to <code>ApplicationId</code>, its status is set or updated by passing one of
  *          three values to <code>Status</code>: <code>NOT_STARTED | IN_PROGRESS |
  *          COMPLETED</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MigrationHubClient, NotifyApplicationStateCommand } from "@aws-sdk/client-migration-hub"; // ES Modules import
+ * // const { MigrationHubClient, NotifyApplicationStateCommand } = require("@aws-sdk/client-migration-hub"); // CommonJS import
+ * const client = new MigrationHubClient(config);
+ * const command = new NotifyApplicationStateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link NotifyApplicationStateCommandInput} for command's `input` shape.
+ * @see {@link NotifyApplicationStateCommandOutput} for command's `response` shape.
+ * @see {@link MigrationHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class NotifyApplicationStateCommand extends $Command<
   NotifyApplicationStateCommandInput,

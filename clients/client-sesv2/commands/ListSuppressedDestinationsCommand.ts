@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListSuppressedDestinationsCommandInput = ListSuppressedDestinationsRequest;
-export type ListSuppressedDestinationsCommandOutput = ListSuppressedDestinationsResponse & __MetadataBearer;
+export interface ListSuppressedDestinationsCommandInput extends ListSuppressedDestinationsRequest {}
+export interface ListSuppressedDestinationsCommandOutput extends ListSuppressedDestinationsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a list of email addresses that are on the suppression list for your
  *             account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, ListSuppressedDestinationsCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, ListSuppressedDestinationsCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new ListSuppressedDestinationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListSuppressedDestinationsCommandInput} for command's `input` shape.
+ * @see {@link ListSuppressedDestinationsCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListSuppressedDestinationsCommand extends $Command<
   ListSuppressedDestinationsCommandInput,

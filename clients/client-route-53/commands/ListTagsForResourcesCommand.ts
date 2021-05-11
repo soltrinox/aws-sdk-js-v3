@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTagsForResourcesCommandInput = ListTagsForResourcesRequest;
-export type ListTagsForResourcesCommandOutput = ListTagsForResourcesResponse & __MetadataBearer;
+export interface ListTagsForResourcesCommandInput extends ListTagsForResourcesRequest {}
+export interface ListTagsForResourcesCommandOutput extends ListTagsForResourcesResponse, __MetadataBearer {}
 
 /**
  * <p>Lists tags for up to 10 health checks or hosted zones.</p>
  * 		       <p>For information about using tags for cost allocation, see
  * 			<a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html">Using Cost Allocation Tags</a>
  * 			in the <i>AWS Billing and Cost Management User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, ListTagsForResourcesCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, ListTagsForResourcesCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new ListTagsForResourcesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTagsForResourcesCommandInput} for command's `input` shape.
+ * @see {@link ListTagsForResourcesCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTagsForResourcesCommand extends $Command<
   ListTagsForResourcesCommandInput,

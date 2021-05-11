@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeReservationCommandInput = DescribeReservationRequest;
-export type DescribeReservationCommandOutput = DescribeReservationResponse & __MetadataBearer;
+export interface DescribeReservationCommandInput extends DescribeReservationRequest {}
+export interface DescribeReservationCommandOutput extends DescribeReservationResponse, __MetadataBearer {}
 
 /**
  * Get details for a reservation.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, DescribeReservationCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, DescribeReservationCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new DescribeReservationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeReservationCommandInput} for command's `input` shape.
+ * @see {@link DescribeReservationCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeReservationCommand extends $Command<
   DescribeReservationCommandInput,

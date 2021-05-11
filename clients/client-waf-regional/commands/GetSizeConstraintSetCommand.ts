@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSizeConstraintSetCommandInput = GetSizeConstraintSetRequest;
-export type GetSizeConstraintSetCommandOutput = GetSizeConstraintSetResponse & __MetadataBearer;
+export interface GetSizeConstraintSetCommandInput extends GetSizeConstraintSetRequest {}
+export interface GetSizeConstraintSetCommandOutput extends GetSizeConstraintSetResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -30,6 +30,20 @@ export type GetSizeConstraintSetCommandOutput = GetSizeConstraintSetResponse & _
  *       WAF</b>, use the AWS WAFV2 API and see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>. With the latest version, AWS WAF has a single set of endpoints for regional and global use. </p>
  *          </note>
  * 		       <p>Returns the <a>SizeConstraintSet</a> specified by <code>SizeConstraintSetId</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFRegionalClient, GetSizeConstraintSetCommand } from "@aws-sdk/client-waf-regional"; // ES Modules import
+ * // const { WAFRegionalClient, GetSizeConstraintSetCommand } = require("@aws-sdk/client-waf-regional"); // CommonJS import
+ * const client = new WAFRegionalClient(config);
+ * const command = new GetSizeConstraintSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSizeConstraintSetCommandInput} for command's `input` shape.
+ * @see {@link GetSizeConstraintSetCommandOutput} for command's `response` shape.
+ * @see {@link WAFRegionalClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSizeConstraintSetCommand extends $Command<
   GetSizeConstraintSetCommandInput,

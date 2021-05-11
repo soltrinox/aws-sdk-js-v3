@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutTelemetryRecordsCommandInput = PutTelemetryRecordsRequest;
-export type PutTelemetryRecordsCommandOutput = PutTelemetryRecordsResult & __MetadataBearer;
+export interface PutTelemetryRecordsCommandInput extends PutTelemetryRecordsRequest {}
+export interface PutTelemetryRecordsCommandOutput extends PutTelemetryRecordsResult, __MetadataBearer {}
 
 /**
  * <p>Used by the AWS X-Ray daemon to upload telemetry.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { XRayClient, PutTelemetryRecordsCommand } from "@aws-sdk/client-xray"; // ES Modules import
+ * // const { XRayClient, PutTelemetryRecordsCommand } = require("@aws-sdk/client-xray"); // CommonJS import
+ * const client = new XRayClient(config);
+ * const command = new PutTelemetryRecordsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutTelemetryRecordsCommandInput} for command's `input` shape.
+ * @see {@link PutTelemetryRecordsCommandOutput} for command's `response` shape.
+ * @see {@link XRayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutTelemetryRecordsCommand extends $Command<
   PutTelemetryRecordsCommandInput,

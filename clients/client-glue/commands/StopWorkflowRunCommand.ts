@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopWorkflowRunCommandInput = StopWorkflowRunRequest;
-export type StopWorkflowRunCommandOutput = StopWorkflowRunResponse & __MetadataBearer;
+export interface StopWorkflowRunCommandInput extends StopWorkflowRunRequest {}
+export interface StopWorkflowRunCommandOutput extends StopWorkflowRunResponse, __MetadataBearer {}
 
 /**
  * <p>Stops the execution of the specified workflow run.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, StopWorkflowRunCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, StopWorkflowRunCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new StopWorkflowRunCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopWorkflowRunCommandInput} for command's `input` shape.
+ * @see {@link StopWorkflowRunCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopWorkflowRunCommand extends $Command<
   StopWorkflowRunCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteSkillAuthorizationCommandInput = DeleteSkillAuthorizationRequest;
-export type DeleteSkillAuthorizationCommandOutput = DeleteSkillAuthorizationResponse & __MetadataBearer;
+export interface DeleteSkillAuthorizationCommandInput extends DeleteSkillAuthorizationRequest {}
+export interface DeleteSkillAuthorizationCommandOutput extends DeleteSkillAuthorizationResponse, __MetadataBearer {}
 
 /**
  * <p>Unlinks a third-party account from a skill.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, DeleteSkillAuthorizationCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, DeleteSkillAuthorizationCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new DeleteSkillAuthorizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteSkillAuthorizationCommandInput} for command's `input` shape.
+ * @see {@link DeleteSkillAuthorizationCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteSkillAuthorizationCommand extends $Command<
   DeleteSkillAuthorizationCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBackupPlanFromTemplateCommandInput = GetBackupPlanFromTemplateInput;
-export type GetBackupPlanFromTemplateCommandOutput = GetBackupPlanFromTemplateOutput & __MetadataBearer;
+export interface GetBackupPlanFromTemplateCommandInput extends GetBackupPlanFromTemplateInput {}
+export interface GetBackupPlanFromTemplateCommandOutput extends GetBackupPlanFromTemplateOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the template specified by its <code>templateId</code> as a backup plan.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BackupClient, GetBackupPlanFromTemplateCommand } from "@aws-sdk/client-backup"; // ES Modules import
+ * // const { BackupClient, GetBackupPlanFromTemplateCommand } = require("@aws-sdk/client-backup"); // CommonJS import
+ * const client = new BackupClient(config);
+ * const command = new GetBackupPlanFromTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBackupPlanFromTemplateCommandInput} for command's `input` shape.
+ * @see {@link GetBackupPlanFromTemplateCommandOutput} for command's `response` shape.
+ * @see {@link BackupClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBackupPlanFromTemplateCommand extends $Command<
   GetBackupPlanFromTemplateCommandInput,

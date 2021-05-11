@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartLifecyclePolicyPreviewCommandInput = StartLifecyclePolicyPreviewRequest;
-export type StartLifecyclePolicyPreviewCommandOutput = StartLifecyclePolicyPreviewResponse & __MetadataBearer;
+export interface StartLifecyclePolicyPreviewCommandInput extends StartLifecyclePolicyPreviewRequest {}
+export interface StartLifecyclePolicyPreviewCommandOutput
+  extends StartLifecyclePolicyPreviewResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Starts a preview of a lifecycle policy for the specified repository. This allows you
  *             to see the results before associating the lifecycle policy with the repository.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECRClient, StartLifecyclePolicyPreviewCommand } from "@aws-sdk/client-ecr"; // ES Modules import
+ * // const { ECRClient, StartLifecyclePolicyPreviewCommand } = require("@aws-sdk/client-ecr"); // CommonJS import
+ * const client = new ECRClient(config);
+ * const command = new StartLifecyclePolicyPreviewCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartLifecyclePolicyPreviewCommandInput} for command's `input` shape.
+ * @see {@link StartLifecyclePolicyPreviewCommandOutput} for command's `response` shape.
+ * @see {@link ECRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartLifecyclePolicyPreviewCommand extends $Command<
   StartLifecyclePolicyPreviewCommandInput,

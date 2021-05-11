@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSolutionVersionCommandInput = CreateSolutionVersionRequest;
-export type CreateSolutionVersionCommandOutput = CreateSolutionVersionResponse & __MetadataBearer;
+export interface CreateSolutionVersionCommandInput extends CreateSolutionVersionRequest {}
+export interface CreateSolutionVersionCommandOutput extends CreateSolutionVersionResponse, __MetadataBearer {}
 
 /**
  * <p>Trains or retrains an active solution. A solution is created using the <a>CreateSolution</a> operation and must be in the ACTIVE state before calling
@@ -74,6 +74,20 @@ export type CreateSolutionVersionCommandOutput = CreateSolutionVersionResponse &
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PersonalizeClient, CreateSolutionVersionCommand } from "@aws-sdk/client-personalize"; // ES Modules import
+ * // const { PersonalizeClient, CreateSolutionVersionCommand } = require("@aws-sdk/client-personalize"); // CommonJS import
+ * const client = new PersonalizeClient(config);
+ * const command = new CreateSolutionVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSolutionVersionCommandInput} for command's `input` shape.
+ * @see {@link CreateSolutionVersionCommandOutput} for command's `response` shape.
+ * @see {@link PersonalizeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSolutionVersionCommand extends $Command<
   CreateSolutionVersionCommandInput,

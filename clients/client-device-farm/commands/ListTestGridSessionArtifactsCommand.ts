@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTestGridSessionArtifactsCommandInput = ListTestGridSessionArtifactsRequest;
-export type ListTestGridSessionArtifactsCommandOutput = ListTestGridSessionArtifactsResult & __MetadataBearer;
+export interface ListTestGridSessionArtifactsCommandInput extends ListTestGridSessionArtifactsRequest {}
+export interface ListTestGridSessionArtifactsCommandOutput
+  extends ListTestGridSessionArtifactsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieves a list of artifacts created during the session.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, ListTestGridSessionArtifactsCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, ListTestGridSessionArtifactsCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new ListTestGridSessionArtifactsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTestGridSessionArtifactsCommandInput} for command's `input` shape.
+ * @see {@link ListTestGridSessionArtifactsCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTestGridSessionArtifactsCommand extends $Command<
   ListTestGridSessionArtifactsCommandInput,

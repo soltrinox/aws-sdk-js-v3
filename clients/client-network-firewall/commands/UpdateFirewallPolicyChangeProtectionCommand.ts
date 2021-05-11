@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateFirewallPolicyChangeProtectionCommandInput = UpdateFirewallPolicyChangeProtectionRequest;
-export type UpdateFirewallPolicyChangeProtectionCommandOutput = UpdateFirewallPolicyChangeProtectionResponse &
-  __MetadataBearer;
+export interface UpdateFirewallPolicyChangeProtectionCommandInput extends UpdateFirewallPolicyChangeProtectionRequest {}
+export interface UpdateFirewallPolicyChangeProtectionCommandOutput
+  extends UpdateFirewallPolicyChangeProtectionResponse,
+    __MetadataBearer {}
 
 /**
  * <p></p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkFirewallClient, UpdateFirewallPolicyChangeProtectionCommand } from "@aws-sdk/client-network-firewall"; // ES Modules import
+ * // const { NetworkFirewallClient, UpdateFirewallPolicyChangeProtectionCommand } = require("@aws-sdk/client-network-firewall"); // CommonJS import
+ * const client = new NetworkFirewallClient(config);
+ * const command = new UpdateFirewallPolicyChangeProtectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateFirewallPolicyChangeProtectionCommandInput} for command's `input` shape.
+ * @see {@link UpdateFirewallPolicyChangeProtectionCommandOutput} for command's `response` shape.
+ * @see {@link NetworkFirewallClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateFirewallPolicyChangeProtectionCommand extends $Command<
   UpdateFirewallPolicyChangeProtectionCommandInput,

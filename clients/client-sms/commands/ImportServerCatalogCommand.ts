@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ImportServerCatalogCommandInput = ImportServerCatalogRequest;
-export type ImportServerCatalogCommandOutput = ImportServerCatalogResponse & __MetadataBearer;
+export interface ImportServerCatalogCommandInput extends ImportServerCatalogRequest {}
+export interface ImportServerCatalogCommandOutput extends ImportServerCatalogResponse, __MetadataBearer {}
 
 /**
  * <p>Gathers a complete list of on-premises servers. Connectors must be installed and
  *             monitoring all servers to import.</p>
  *         <p>This call returns immediately, but might take additional time to retrieve all the
  *             servers.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SMSClient, ImportServerCatalogCommand } from "@aws-sdk/client-sms"; // ES Modules import
+ * // const { SMSClient, ImportServerCatalogCommand } = require("@aws-sdk/client-sms"); // CommonJS import
+ * const client = new SMSClient(config);
+ * const command = new ImportServerCatalogCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ImportServerCatalogCommandInput} for command's `input` shape.
+ * @see {@link ImportServerCatalogCommandOutput} for command's `response` shape.
+ * @see {@link SMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ImportServerCatalogCommand extends $Command<
   ImportServerCatalogCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListVolumesCommandInput = ListVolumesInput;
-export type ListVolumesCommandOutput = ListVolumesOutput & __MetadataBearer;
+export interface ListVolumesCommandInput extends ListVolumesInput {}
+export interface ListVolumesCommandOutput extends ListVolumesOutput, __MetadataBearer {}
 
 /**
  * <p>Lists the iSCSI stored volumes of a gateway. Results are sorted by volume ARN. The
@@ -31,6 +31,20 @@ export type ListVolumesCommandOutput = ListVolumesOutput & __MetadataBearer;
  *          truncated, the response includes a Marker field. You can use this Marker value in your
  *          subsequent request to retrieve the next set of volumes. This operation is only supported in
  *          the cached volume and stored volume gateway types.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, ListVolumesCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, ListVolumesCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new ListVolumesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListVolumesCommandInput} for command's `input` shape.
+ * @see {@link ListVolumesCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListVolumesCommand extends $Command<
   ListVolumesCommandInput,

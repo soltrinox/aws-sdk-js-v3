@@ -21,12 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeReplicationTasksCommandInput = DescribeReplicationTasksMessage;
-export type DescribeReplicationTasksCommandOutput = DescribeReplicationTasksResponse & __MetadataBearer;
+export interface DescribeReplicationTasksCommandInput extends DescribeReplicationTasksMessage {}
+export interface DescribeReplicationTasksCommandOutput extends DescribeReplicationTasksResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information about replication tasks for your account in the current
  *          region.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, DescribeReplicationTasksCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, DescribeReplicationTasksCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new DescribeReplicationTasksCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeReplicationTasksCommandInput} for command's `input` shape.
+ * @see {@link DescribeReplicationTasksCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeReplicationTasksCommand extends $Command<
   DescribeReplicationTasksCommandInput,

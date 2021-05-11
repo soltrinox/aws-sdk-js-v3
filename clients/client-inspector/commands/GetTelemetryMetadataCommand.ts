@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTelemetryMetadataCommandInput = GetTelemetryMetadataRequest;
-export type GetTelemetryMetadataCommandOutput = GetTelemetryMetadataResponse & __MetadataBearer;
+export interface GetTelemetryMetadataCommandInput extends GetTelemetryMetadataRequest {}
+export interface GetTelemetryMetadataCommandOutput extends GetTelemetryMetadataResponse, __MetadataBearer {}
 
 /**
  * <p>Information about the data that is collected for the specified assessment
  *          run.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { InspectorClient, GetTelemetryMetadataCommand } from "@aws-sdk/client-inspector"; // ES Modules import
+ * // const { InspectorClient, GetTelemetryMetadataCommand } = require("@aws-sdk/client-inspector"); // CommonJS import
+ * const client = new InspectorClient(config);
+ * const command = new GetTelemetryMetadataCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTelemetryMetadataCommandInput} for command's `input` shape.
+ * @see {@link GetTelemetryMetadataCommandOutput} for command's `response` shape.
+ * @see {@link InspectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTelemetryMetadataCommand extends $Command<
   GetTelemetryMetadataCommandInput,

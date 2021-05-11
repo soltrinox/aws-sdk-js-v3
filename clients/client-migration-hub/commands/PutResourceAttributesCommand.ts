@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutResourceAttributesCommandInput = PutResourceAttributesRequest;
-export type PutResourceAttributesCommandOutput = PutResourceAttributesResult & __MetadataBearer;
+export interface PutResourceAttributesCommandInput extends PutResourceAttributesRequest {}
+export interface PutResourceAttributesCommandOutput extends PutResourceAttributesResult, __MetadataBearer {}
 
 /**
  * <p>Provides identifying details of the resource being migrated so that it can be associated
@@ -47,6 +47,20 @@ export type PutResourceAttributesCommandOutput = PutResourceAttributesResult & _
  *             association occurs or not. To confirm if an association was found based on the provided
  *             details, call <code>ListDiscoveredResources</code>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MigrationHubClient, PutResourceAttributesCommand } from "@aws-sdk/client-migration-hub"; // ES Modules import
+ * // const { MigrationHubClient, PutResourceAttributesCommand } = require("@aws-sdk/client-migration-hub"); // CommonJS import
+ * const client = new MigrationHubClient(config);
+ * const command = new PutResourceAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutResourceAttributesCommandInput} for command's `input` shape.
+ * @see {@link PutResourceAttributesCommandOutput} for command's `response` shape.
+ * @see {@link MigrationHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutResourceAttributesCommand extends $Command<
   PutResourceAttributesCommandInput,

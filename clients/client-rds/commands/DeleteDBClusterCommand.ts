@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDBClusterCommandInput = DeleteDBClusterMessage;
-export type DeleteDBClusterCommandOutput = DeleteDBClusterResult & __MetadataBearer;
+export interface DeleteDBClusterCommandInput extends DeleteDBClusterMessage {}
+export interface DeleteDBClusterCommandOutput extends DeleteDBClusterResult, __MetadataBearer {}
 
 /**
  * <p>The DeleteDBCluster action deletes a previously provisioned DB cluster.
@@ -32,6 +32,20 @@ export type DeleteDBClusterCommandOutput = DeleteDBClusterResult & __MetadataBea
  *          <note>
  *             <p>This action only applies to Aurora DB clusters.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, DeleteDBClusterCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, DeleteDBClusterCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new DeleteDBClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDBClusterCommandInput} for command's `input` shape.
+ * @see {@link DeleteDBClusterCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDBClusterCommand extends $Command<
   DeleteDBClusterCommandInput,

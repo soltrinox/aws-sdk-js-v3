@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateUploadCommandInput = CreateUploadRequest;
-export type CreateUploadCommandOutput = CreateUploadResult & __MetadataBearer;
+export interface CreateUploadCommandInput extends CreateUploadRequest {}
+export interface CreateUploadCommandOutput extends CreateUploadResult, __MetadataBearer {}
 
 /**
  * <p>Uploads an app or test scripts.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, CreateUploadCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, CreateUploadCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new CreateUploadCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateUploadCommandInput} for command's `input` shape.
+ * @see {@link CreateUploadCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateUploadCommand extends $Command<
   CreateUploadCommandInput,

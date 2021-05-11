@@ -17,11 +17,38 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetGroupQueryCommandInput = GetGroupQueryInput;
-export type GetGroupQueryCommandOutput = GetGroupQueryOutput & __MetadataBearer;
+export interface GetGroupQueryCommandInput extends GetGroupQueryInput {}
+export interface GetGroupQueryCommandOutput extends GetGroupQueryOutput, __MetadataBearer {}
 
 /**
- * <p>Retrieves the resource query associated with the specified resource group.</p>
+ * <p>Retrieves the resource query associated with the specified resource group. For more
+ *             information about resource queries, see <a href="https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag">Create
+ *                 a tag-based group in Resource Groups</a>.</p>
+ *          <p>
+ *             <b>Minimum permissions</b>
+ *          </p>
+ *          <p>To run this command, you must have the following permissions:</p>
+ *          <ul>
+ *             <li>
+ *                 <p>
+ *                   <code>resource-groups:GetGroupQuery</code>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ResourceGroupsClient, GetGroupQueryCommand } from "@aws-sdk/client-resource-groups"; // ES Modules import
+ * // const { ResourceGroupsClient, GetGroupQueryCommand } = require("@aws-sdk/client-resource-groups"); // CommonJS import
+ * const client = new ResourceGroupsClient(config);
+ * const command = new GetGroupQueryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetGroupQueryCommandInput} for command's `input` shape.
+ * @see {@link GetGroupQueryCommandOutput} for command's `response` shape.
+ * @see {@link ResourceGroupsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetGroupQueryCommand extends $Command<
   GetGroupQueryCommandInput,

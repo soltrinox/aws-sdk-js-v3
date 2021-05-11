@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveTagsCommandInput = RemoveTagsInput;
-export type RemoveTagsCommandOutput = RemoveTagsOutput & __MetadataBearer;
+export interface RemoveTagsCommandInput extends RemoveTagsInput {}
+export interface RemoveTagsCommandOutput extends RemoveTagsOutput, __MetadataBearer {}
 
 /**
  * <p>Removes existing tags from the specified pipeline.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataPipelineClient, RemoveTagsCommand } from "@aws-sdk/client-data-pipeline"; // ES Modules import
+ * // const { DataPipelineClient, RemoveTagsCommand } = require("@aws-sdk/client-data-pipeline"); // CommonJS import
+ * const client = new DataPipelineClient(config);
+ * const command = new RemoveTagsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveTagsCommandInput} for command's `input` shape.
+ * @see {@link RemoveTagsCommandOutput} for command's `response` shape.
+ * @see {@link DataPipelineClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveTagsCommand extends $Command<
   RemoveTagsCommandInput,

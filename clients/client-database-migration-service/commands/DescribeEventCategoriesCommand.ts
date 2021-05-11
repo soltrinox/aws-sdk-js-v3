@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEventCategoriesCommandInput = DescribeEventCategoriesMessage;
-export type DescribeEventCategoriesCommandOutput = DescribeEventCategoriesResponse & __MetadataBearer;
+export interface DescribeEventCategoriesCommandInput extends DescribeEventCategoriesMessage {}
+export interface DescribeEventCategoriesCommandOutput extends DescribeEventCategoriesResponse, __MetadataBearer {}
 
 /**
  * <p>Lists categories for all event source types, or, if specified, for a specified source
@@ -30,6 +30,20 @@ export type DescribeEventCategoriesCommandOutput = DescribeEventCategoriesRespon
  *             and Notifications</a> in the <i>AWS Database Migration Service User
  *             Guide.</i>
  *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, DescribeEventCategoriesCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, DescribeEventCategoriesCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new DescribeEventCategoriesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEventCategoriesCommandInput} for command's `input` shape.
+ * @see {@link DescribeEventCategoriesCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEventCategoriesCommand extends $Command<
   DescribeEventCategoriesCommandInput,

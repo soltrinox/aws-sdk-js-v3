@@ -226,7 +226,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -257,7 +257,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type ACMPCAClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type ACMPCAClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -265,8 +265,12 @@ export type ACMPCAClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOpti
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of ACMPCAClient class constructor that set the region, credentials and other options.
+ */
+export interface ACMPCAClientConfig extends ACMPCAClientConfigType {}
 
-export type ACMPCAClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type ACMPCAClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -274,12 +278,13 @@ export type ACMPCAClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHan
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of ACMPCAClient class. This is resolved and normalized from the {@link ACMPCAClientConfig | constructor configuration interface}.
+ */
+export interface ACMPCAClientResolvedConfig extends ACMPCAClientResolvedConfigType {}
 
 /**
- * <note>
- * 			         <p></p>
- * 		       </note>
- * 		       <p>This is the <i>ACM Private CA API Reference</i>. It provides descriptions,
+ * <p>This is the <i>ACM Private CA API Reference</i>. It provides descriptions,
  * 			syntax, and usage examples for each of the actions and data types involved in creating
  * 			and managing private certificate authorities (CA) for your organization.</p>
  * 		       <p>The documentation for each action shows the Query API request parameters and the XML
@@ -299,6 +304,9 @@ export class ACMPCAClient extends __Client<
   ServiceOutputTypes,
   ACMPCAClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of ACMPCAClient class. This is resolved and normalized from the {@link ACMPCAClientConfig | constructor configuration interface}.
+   */
   readonly config: ACMPCAClientResolvedConfig;
 
   constructor(configuration: ACMPCAClientConfig) {

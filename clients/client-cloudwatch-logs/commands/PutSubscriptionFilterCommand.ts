@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutSubscriptionFilterCommandInput = PutSubscriptionFilterRequest;
-export type PutSubscriptionFilterCommandOutput = __MetadataBearer;
+export interface PutSubscriptionFilterCommandInput extends PutSubscriptionFilterRequest {}
+export interface PutSubscriptionFilterCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Creates or updates a subscription filter and associates it with the specified log
@@ -51,6 +51,20 @@ export type PutSubscriptionFilterCommandOutput = __MetadataBearer;
  *       group.</p>
  *          <p>To perform a <code>PutSubscriptionFilter</code> operation, you must also have the
  *       <code>iam:PassRole</code> permission.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, PutSubscriptionFilterCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, PutSubscriptionFilterCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new PutSubscriptionFilterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutSubscriptionFilterCommandInput} for command's `input` shape.
+ * @see {@link PutSubscriptionFilterCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutSubscriptionFilterCommand extends $Command<
   PutSubscriptionFilterCommandInput,

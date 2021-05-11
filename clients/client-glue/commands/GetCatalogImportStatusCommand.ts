@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCatalogImportStatusCommandInput = GetCatalogImportStatusRequest;
-export type GetCatalogImportStatusCommandOutput = GetCatalogImportStatusResponse & __MetadataBearer;
+export interface GetCatalogImportStatusCommandInput extends GetCatalogImportStatusRequest {}
+export interface GetCatalogImportStatusCommandOutput extends GetCatalogImportStatusResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the status of a migration operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetCatalogImportStatusCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetCatalogImportStatusCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetCatalogImportStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCatalogImportStatusCommandInput} for command's `input` shape.
+ * @see {@link GetCatalogImportStatusCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCatalogImportStatusCommand extends $Command<
   GetCatalogImportStatusCommandInput,

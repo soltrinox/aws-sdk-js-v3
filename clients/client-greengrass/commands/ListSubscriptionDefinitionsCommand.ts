@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListSubscriptionDefinitionsCommandInput = ListSubscriptionDefinitionsRequest;
-export type ListSubscriptionDefinitionsCommandOutput = ListSubscriptionDefinitionsResponse & __MetadataBearer;
+export interface ListSubscriptionDefinitionsCommandInput extends ListSubscriptionDefinitionsRequest {}
+export interface ListSubscriptionDefinitionsCommandOutput
+  extends ListSubscriptionDefinitionsResponse,
+    __MetadataBearer {}
 
 /**
  * Retrieves a list of subscription definitions.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, ListSubscriptionDefinitionsCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, ListSubscriptionDefinitionsCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new ListSubscriptionDefinitionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListSubscriptionDefinitionsCommandInput} for command's `input` shape.
+ * @see {@link ListSubscriptionDefinitionsCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListSubscriptionDefinitionsCommand extends $Command<
   ListSubscriptionDefinitionsCommandInput,

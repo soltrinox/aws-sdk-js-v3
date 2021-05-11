@@ -1,5 +1,5 @@
 import { ConfigServiceClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../ConfigServiceClient";
-import { StartConfigRulesEvaluationRequest, StartConfigRulesEvaluationResponse } from "../models/models_0";
+import { StartConfigRulesEvaluationRequest, StartConfigRulesEvaluationResponse } from "../models/models_1";
 import {
   deserializeAws_json1_1StartConfigRulesEvaluationCommand,
   serializeAws_json1_1StartConfigRulesEvaluationCommand,
@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartConfigRulesEvaluationCommandInput = StartConfigRulesEvaluationRequest;
-export type StartConfigRulesEvaluationCommandOutput = StartConfigRulesEvaluationResponse & __MetadataBearer;
+export interface StartConfigRulesEvaluationCommandInput extends StartConfigRulesEvaluationRequest {}
+export interface StartConfigRulesEvaluationCommandOutput extends StartConfigRulesEvaluationResponse, __MetadataBearer {}
 
 /**
  * <p>Runs an on-demand evaluation for the specified AWS Config rules
@@ -69,6 +69,20 @@ export type StartConfigRulesEvaluationCommandOutput = StartConfigRulesEvaluation
  * 					every 24 hours.</p>
  * 			         </li>
  *          </ol>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, StartConfigRulesEvaluationCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, StartConfigRulesEvaluationCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new StartConfigRulesEvaluationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartConfigRulesEvaluationCommandInput} for command's `input` shape.
+ * @see {@link StartConfigRulesEvaluationCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartConfigRulesEvaluationCommand extends $Command<
   StartConfigRulesEvaluationCommandInput,

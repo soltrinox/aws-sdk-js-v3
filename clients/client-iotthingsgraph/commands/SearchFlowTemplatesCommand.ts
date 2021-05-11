@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SearchFlowTemplatesCommandInput = SearchFlowTemplatesRequest;
-export type SearchFlowTemplatesCommandOutput = SearchFlowTemplatesResponse & __MetadataBearer;
+export interface SearchFlowTemplatesCommandInput extends SearchFlowTemplatesRequest {}
+export interface SearchFlowTemplatesCommandOutput extends SearchFlowTemplatesResponse, __MetadataBearer {}
 
 /**
  * <p>Searches for summary information about workflows.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTThingsGraphClient, SearchFlowTemplatesCommand } from "@aws-sdk/client-iotthingsgraph"; // ES Modules import
+ * // const { IoTThingsGraphClient, SearchFlowTemplatesCommand } = require("@aws-sdk/client-iotthingsgraph"); // CommonJS import
+ * const client = new IoTThingsGraphClient(config);
+ * const command = new SearchFlowTemplatesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SearchFlowTemplatesCommandInput} for command's `input` shape.
+ * @see {@link SearchFlowTemplatesCommandOutput} for command's `response` shape.
+ * @see {@link IoTThingsGraphClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SearchFlowTemplatesCommand extends $Command<
   SearchFlowTemplatesCommandInput,

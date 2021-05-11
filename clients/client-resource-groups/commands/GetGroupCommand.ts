@@ -17,11 +17,36 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetGroupCommandInput = GetGroupInput;
-export type GetGroupCommandOutput = GetGroupOutput & __MetadataBearer;
+export interface GetGroupCommandInput extends GetGroupInput {}
+export interface GetGroupCommandOutput extends GetGroupOutput, __MetadataBearer {}
 
 /**
  * <p>Returns information about a specified resource group.</p>
+ *          <p>
+ *             <b>Minimum permissions</b>
+ *          </p>
+ *          <p>To run this command, you must have the following permissions:</p>
+ *          <ul>
+ *             <li>
+ *                 <p>
+ *                   <code>resource-groups:GetGroup</code>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ResourceGroupsClient, GetGroupCommand } from "@aws-sdk/client-resource-groups"; // ES Modules import
+ * // const { ResourceGroupsClient, GetGroupCommand } = require("@aws-sdk/client-resource-groups"); // CommonJS import
+ * const client = new ResourceGroupsClient(config);
+ * const command = new GetGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetGroupCommandInput} for command's `input` shape.
+ * @see {@link GetGroupCommandOutput} for command's `response` shape.
+ * @see {@link ResourceGroupsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetGroupCommand extends $Command<
   GetGroupCommandInput,

@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyClusterDbRevisionCommandInput = ModifyClusterDbRevisionMessage;
-export type ModifyClusterDbRevisionCommandOutput = ModifyClusterDbRevisionResult & __MetadataBearer;
+export interface ModifyClusterDbRevisionCommandInput extends ModifyClusterDbRevisionMessage {}
+export interface ModifyClusterDbRevisionCommandOutput extends ModifyClusterDbRevisionResult, __MetadataBearer {}
 
 /**
  * <p>Modifies the database revision of a cluster. The database revision is a unique
  *             revision of the database running in a cluster.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, ModifyClusterDbRevisionCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, ModifyClusterDbRevisionCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new ModifyClusterDbRevisionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyClusterDbRevisionCommandInput} for command's `input` shape.
+ * @see {@link ModifyClusterDbRevisionCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyClusterDbRevisionCommand extends $Command<
   ModifyClusterDbRevisionCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetConnectorsCommandInput = GetConnectorsRequest;
-export type GetConnectorsCommandOutput = GetConnectorsResponse & __MetadataBearer;
+export interface GetConnectorsCommandInput extends GetConnectorsRequest {}
+export interface GetConnectorsCommandOutput extends GetConnectorsResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the connectors registered with the AWS SMS.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SMSClient, GetConnectorsCommand } from "@aws-sdk/client-sms"; // ES Modules import
+ * // const { SMSClient, GetConnectorsCommand } = require("@aws-sdk/client-sms"); // CommonJS import
+ * const client = new SMSClient(config);
+ * const command = new GetConnectorsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetConnectorsCommandInput} for command's `input` shape.
+ * @see {@link GetConnectorsCommandOutput} for command's `response` shape.
+ * @see {@link SMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetConnectorsCommand extends $Command<
   GetConnectorsCommandInput,

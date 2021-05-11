@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListConfigurationsCommandInput = ListConfigurationsRequest;
-export type ListConfigurationsCommandOutput = ListConfigurationsResponse & __MetadataBearer;
+export interface ListConfigurationsCommandInput extends ListConfigurationsRequest {}
+export interface ListConfigurationsCommandOutput extends ListConfigurationsResponse, __MetadataBearer {}
 
 /**
  * Returns a list of all configurations.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MqClient, ListConfigurationsCommand } from "@aws-sdk/client-mq"; // ES Modules import
+ * // const { MqClient, ListConfigurationsCommand } = require("@aws-sdk/client-mq"); // CommonJS import
+ * const client = new MqClient(config);
+ * const command = new ListConfigurationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListConfigurationsCommandInput} for command's `input` shape.
+ * @see {@link ListConfigurationsCommandOutput} for command's `response` shape.
+ * @see {@link MqClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListConfigurationsCommand extends $Command<
   ListConfigurationsCommandInput,

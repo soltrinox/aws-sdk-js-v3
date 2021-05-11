@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelDataRepositoryTaskCommandInput = CancelDataRepositoryTaskRequest;
-export type CancelDataRepositoryTaskCommandOutput = CancelDataRepositoryTaskResponse & __MetadataBearer;
+export interface CancelDataRepositoryTaskCommandInput extends CancelDataRepositoryTaskRequest {}
+export interface CancelDataRepositoryTaskCommandOutput extends CancelDataRepositoryTaskResponse, __MetadataBearer {}
 
 /**
  * <p>Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the
@@ -34,6 +34,20 @@ export type CancelDataRepositoryTaskCommandOutput = CancelDataRepositoryTaskResp
  *                <p>FSx does not export any files that have not yet been exported.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FSxClient, CancelDataRepositoryTaskCommand } from "@aws-sdk/client-fsx"; // ES Modules import
+ * // const { FSxClient, CancelDataRepositoryTaskCommand } = require("@aws-sdk/client-fsx"); // CommonJS import
+ * const client = new FSxClient(config);
+ * const command = new CancelDataRepositoryTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelDataRepositoryTaskCommandInput} for command's `input` shape.
+ * @see {@link CancelDataRepositoryTaskCommandOutput} for command's `response` shape.
+ * @see {@link FSxClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelDataRepositoryTaskCommand extends $Command<
   CancelDataRepositoryTaskCommandInput,

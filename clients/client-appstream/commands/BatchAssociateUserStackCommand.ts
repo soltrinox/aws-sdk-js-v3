@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchAssociateUserStackCommandInput = BatchAssociateUserStackRequest;
-export type BatchAssociateUserStackCommandOutput = BatchAssociateUserStackResult & __MetadataBearer;
+export interface BatchAssociateUserStackCommandInput extends BatchAssociateUserStackRequest {}
+export interface BatchAssociateUserStackCommandOutput extends BatchAssociateUserStackResult, __MetadataBearer {}
 
 /**
  * <p>Associates the specified users with the specified stacks. Users in a user pool cannot be assigned to stacks with fleets that are joined to an Active Directory domain.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppStreamClient, BatchAssociateUserStackCommand } from "@aws-sdk/client-appstream"; // ES Modules import
+ * // const { AppStreamClient, BatchAssociateUserStackCommand } = require("@aws-sdk/client-appstream"); // CommonJS import
+ * const client = new AppStreamClient(config);
+ * const command = new BatchAssociateUserStackCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchAssociateUserStackCommandInput} for command's `input` shape.
+ * @see {@link BatchAssociateUserStackCommandOutput} for command's `response` shape.
+ * @see {@link AppStreamClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchAssociateUserStackCommand extends $Command<
   BatchAssociateUserStackCommandInput,

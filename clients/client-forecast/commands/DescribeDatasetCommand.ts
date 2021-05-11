@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDatasetCommandInput = DescribeDatasetRequest;
-export type DescribeDatasetCommandOutput = DescribeDatasetResponse & __MetadataBearer;
+export interface DescribeDatasetCommandInput extends DescribeDatasetRequest {}
+export interface DescribeDatasetCommandOutput extends DescribeDatasetResponse, __MetadataBearer {}
 
 /**
  * <p>Describes an Amazon Forecast dataset created using the <a>CreateDataset</a>
@@ -42,6 +42,20 @@ export type DescribeDatasetCommandOutput = DescribeDatasetResponse & __MetadataB
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ForecastClient, DescribeDatasetCommand } from "@aws-sdk/client-forecast"; // ES Modules import
+ * // const { ForecastClient, DescribeDatasetCommand } = require("@aws-sdk/client-forecast"); // CommonJS import
+ * const client = new ForecastClient(config);
+ * const command = new DescribeDatasetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDatasetCommandInput} for command's `input` shape.
+ * @see {@link DescribeDatasetCommandOutput} for command's `response` shape.
+ * @see {@link ForecastClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDatasetCommand extends $Command<
   DescribeDatasetCommandInput,

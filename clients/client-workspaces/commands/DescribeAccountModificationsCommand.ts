@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAccountModificationsCommandInput = DescribeAccountModificationsRequest;
-export type DescribeAccountModificationsCommandOutput = DescribeAccountModificationsResult & __MetadataBearer;
+export interface DescribeAccountModificationsCommandInput extends DescribeAccountModificationsRequest {}
+export interface DescribeAccountModificationsCommandOutput
+  extends DescribeAccountModificationsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieves a list that describes modifications to the configuration of Bring Your Own
  *          License (BYOL) for the specified account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, DescribeAccountModificationsCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, DescribeAccountModificationsCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new DescribeAccountModificationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAccountModificationsCommandInput} for command's `input` shape.
+ * @see {@link DescribeAccountModificationsCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAccountModificationsCommand extends $Command<
   DescribeAccountModificationsCommandInput,

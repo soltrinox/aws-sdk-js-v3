@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteSimulationApplicationCommandInput = DeleteSimulationApplicationRequest;
-export type DeleteSimulationApplicationCommandOutput = DeleteSimulationApplicationResponse & __MetadataBearer;
+export interface DeleteSimulationApplicationCommandInput extends DeleteSimulationApplicationRequest {}
+export interface DeleteSimulationApplicationCommandOutput
+  extends DeleteSimulationApplicationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Deletes a simulation application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RoboMakerClient, DeleteSimulationApplicationCommand } from "@aws-sdk/client-robomaker"; // ES Modules import
+ * // const { RoboMakerClient, DeleteSimulationApplicationCommand } = require("@aws-sdk/client-robomaker"); // CommonJS import
+ * const client = new RoboMakerClient(config);
+ * const command = new DeleteSimulationApplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteSimulationApplicationCommandInput} for command's `input` shape.
+ * @see {@link DeleteSimulationApplicationCommandOutput} for command's `response` shape.
+ * @see {@link RoboMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteSimulationApplicationCommand extends $Command<
   DeleteSimulationApplicationCommandInput,

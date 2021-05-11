@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteVocabularyCommandInput = DeleteVocabularyRequest;
-export type DeleteVocabularyCommandOutput = __MetadataBearer;
+export interface DeleteVocabularyCommandInput extends DeleteVocabularyRequest {}
+export interface DeleteVocabularyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a vocabulary from Amazon Transcribe. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TranscribeClient, DeleteVocabularyCommand } from "@aws-sdk/client-transcribe"; // ES Modules import
+ * // const { TranscribeClient, DeleteVocabularyCommand } = require("@aws-sdk/client-transcribe"); // CommonJS import
+ * const client = new TranscribeClient(config);
+ * const command = new DeleteVocabularyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteVocabularyCommandInput} for command's `input` shape.
+ * @see {@link DeleteVocabularyCommandOutput} for command's `response` shape.
+ * @see {@link TranscribeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteVocabularyCommand extends $Command<
   DeleteVocabularyCommandInput,

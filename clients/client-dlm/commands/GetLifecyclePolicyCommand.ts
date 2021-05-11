@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetLifecyclePolicyCommandInput = GetLifecyclePolicyRequest;
-export type GetLifecyclePolicyCommandOutput = GetLifecyclePolicyResponse & __MetadataBearer;
+export interface GetLifecyclePolicyCommandInput extends GetLifecyclePolicyRequest {}
+export interface GetLifecyclePolicyCommandOutput extends GetLifecyclePolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Gets detailed information about the specified lifecycle policy.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DLMClient, GetLifecyclePolicyCommand } from "@aws-sdk/client-dlm"; // ES Modules import
+ * // const { DLMClient, GetLifecyclePolicyCommand } = require("@aws-sdk/client-dlm"); // CommonJS import
+ * const client = new DLMClient(config);
+ * const command = new GetLifecyclePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetLifecyclePolicyCommandInput} for command's `input` shape.
+ * @see {@link GetLifecyclePolicyCommandOutput} for command's `response` shape.
+ * @see {@link DLMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetLifecyclePolicyCommand extends $Command<
   GetLifecyclePolicyCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetInstanceAccessDetailsCommandInput = GetInstanceAccessDetailsRequest;
-export type GetInstanceAccessDetailsCommandOutput = GetInstanceAccessDetailsResult & __MetadataBearer;
+export interface GetInstanceAccessDetailsCommandInput extends GetInstanceAccessDetailsRequest {}
+export interface GetInstanceAccessDetailsCommandOutput extends GetInstanceAccessDetailsResult, __MetadataBearer {}
 
 /**
  * <p>Returns temporary SSH keys you can use to connect to a specific virtual private server, or
@@ -26,6 +26,20 @@ export type GetInstanceAccessDetailsCommandOutput = GetInstanceAccessDetailsResu
  *          <p>The <code>get instance access details</code> operation supports tag-based access control
  *       via resource tags applied to the resource identified by <code>instance name</code>. For more
  *       information, see the <a href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags">Lightsail Dev Guide</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetInstanceAccessDetailsCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetInstanceAccessDetailsCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetInstanceAccessDetailsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetInstanceAccessDetailsCommandInput} for command's `input` shape.
+ * @see {@link GetInstanceAccessDetailsCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetInstanceAccessDetailsCommand extends $Command<
   GetInstanceAccessDetailsCommandInput,

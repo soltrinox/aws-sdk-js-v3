@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutBucketAclCommandInput = PutBucketAclRequest;
-export type PutBucketAclCommandOutput = __MetadataBearer;
+export interface PutBucketAclCommandInput extends PutBucketAclRequest {}
+export interface PutBucketAclCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Sets the permissions on an existing bucket using access control lists (ACL). For more
@@ -213,6 +213,20 @@ export type PutBucketAclCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, PutBucketAclCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, PutBucketAclCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new PutBucketAclCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutBucketAclCommandInput} for command's `input` shape.
+ * @see {@link PutBucketAclCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutBucketAclCommand extends $Command<
   PutBucketAclCommandInput,

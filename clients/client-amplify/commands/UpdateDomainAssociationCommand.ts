@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDomainAssociationCommandInput = UpdateDomainAssociationRequest;
-export type UpdateDomainAssociationCommandOutput = UpdateDomainAssociationResult & __MetadataBearer;
+export interface UpdateDomainAssociationCommandInput extends UpdateDomainAssociationRequest {}
+export interface UpdateDomainAssociationCommandOutput extends UpdateDomainAssociationResult, __MetadataBearer {}
 
 /**
  * <p> Creates a new domain association for an Amplify app.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AmplifyClient, UpdateDomainAssociationCommand } from "@aws-sdk/client-amplify"; // ES Modules import
+ * // const { AmplifyClient, UpdateDomainAssociationCommand } = require("@aws-sdk/client-amplify"); // CommonJS import
+ * const client = new AmplifyClient(config);
+ * const command = new UpdateDomainAssociationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDomainAssociationCommandInput} for command's `input` shape.
+ * @see {@link UpdateDomainAssociationCommandOutput} for command's `response` shape.
+ * @see {@link AmplifyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDomainAssociationCommand extends $Command<
   UpdateDomainAssociationCommandInput,

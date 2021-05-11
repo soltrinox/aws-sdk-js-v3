@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateRoomMembershipCommandInput = CreateRoomMembershipRequest;
-export type CreateRoomMembershipCommandOutput = CreateRoomMembershipResponse & __MetadataBearer;
+export interface CreateRoomMembershipCommandInput extends CreateRoomMembershipRequest {}
+export interface CreateRoomMembershipCommandOutput extends CreateRoomMembershipResponse, __MetadataBearer {}
 
 /**
  * <p>Adds a member to a chat room in an Amazon Chime Enterprise account. A member can be either a user or a bot. The member role designates whether the member is a chat room administrator or a general chat room member.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, CreateRoomMembershipCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, CreateRoomMembershipCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new CreateRoomMembershipCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateRoomMembershipCommandInput} for command's `input` shape.
+ * @see {@link CreateRoomMembershipCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateRoomMembershipCommand extends $Command<
   CreateRoomMembershipCommandInput,

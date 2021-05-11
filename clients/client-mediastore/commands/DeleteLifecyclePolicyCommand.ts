@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteLifecyclePolicyCommandInput = DeleteLifecyclePolicyInput;
-export type DeleteLifecyclePolicyCommandOutput = DeleteLifecyclePolicyOutput & __MetadataBearer;
+export interface DeleteLifecyclePolicyCommandInput extends DeleteLifecyclePolicyInput {}
+export interface DeleteLifecyclePolicyCommandOutput extends DeleteLifecyclePolicyOutput, __MetadataBearer {}
 
 /**
  * <p>Removes an object lifecycle policy from a container. It takes up to 20 minutes for the change to take effect.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaStoreClient, DeleteLifecyclePolicyCommand } from "@aws-sdk/client-mediastore"; // ES Modules import
+ * // const { MediaStoreClient, DeleteLifecyclePolicyCommand } = require("@aws-sdk/client-mediastore"); // CommonJS import
+ * const client = new MediaStoreClient(config);
+ * const command = new DeleteLifecyclePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteLifecyclePolicyCommandInput} for command's `input` shape.
+ * @see {@link DeleteLifecyclePolicyCommandOutput} for command's `response` shape.
+ * @see {@link MediaStoreClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteLifecyclePolicyCommand extends $Command<
   DeleteLifecyclePolicyCommandInput,

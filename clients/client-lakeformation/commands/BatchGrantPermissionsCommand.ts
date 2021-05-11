@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchGrantPermissionsCommandInput = BatchGrantPermissionsRequest;
-export type BatchGrantPermissionsCommandOutput = BatchGrantPermissionsResponse & __MetadataBearer;
+export interface BatchGrantPermissionsCommandInput extends BatchGrantPermissionsRequest {}
+export interface BatchGrantPermissionsCommandOutput extends BatchGrantPermissionsResponse, __MetadataBearer {}
 
 /**
  * <p>Batch operation to grant permissions to the principal.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LakeFormationClient, BatchGrantPermissionsCommand } from "@aws-sdk/client-lakeformation"; // ES Modules import
+ * // const { LakeFormationClient, BatchGrantPermissionsCommand } = require("@aws-sdk/client-lakeformation"); // CommonJS import
+ * const client = new LakeFormationClient(config);
+ * const command = new BatchGrantPermissionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchGrantPermissionsCommandInput} for command's `input` shape.
+ * @see {@link BatchGrantPermissionsCommandOutput} for command's `response` shape.
+ * @see {@link LakeFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchGrantPermissionsCommand extends $Command<
   BatchGrantPermissionsCommandInput,

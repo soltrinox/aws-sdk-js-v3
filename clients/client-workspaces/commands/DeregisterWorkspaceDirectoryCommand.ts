@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeregisterWorkspaceDirectoryCommandInput = DeregisterWorkspaceDirectoryRequest;
-export type DeregisterWorkspaceDirectoryCommandOutput = DeregisterWorkspaceDirectoryResult & __MetadataBearer;
+export interface DeregisterWorkspaceDirectoryCommandInput extends DeregisterWorkspaceDirectoryRequest {}
+export interface DeregisterWorkspaceDirectoryCommandOutput
+  extends DeregisterWorkspaceDirectoryResult,
+    __MetadataBearer {}
 
 /**
  * <p>Deregisters the specified directory. This operation is asynchronous
@@ -38,6 +40,20 @@ export type DeregisterWorkspaceDirectoryCommandOutput = DeregisterWorkspaceDirec
  *             Simple AD or AD Connector directory, you can always create a new one when you want to start using
  *             WorkSpaces again.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, DeregisterWorkspaceDirectoryCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, DeregisterWorkspaceDirectoryCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new DeregisterWorkspaceDirectoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeregisterWorkspaceDirectoryCommandInput} for command's `input` shape.
+ * @see {@link DeregisterWorkspaceDirectoryCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeregisterWorkspaceDirectoryCommand extends $Command<
   DeregisterWorkspaceDirectoryCommandInput,

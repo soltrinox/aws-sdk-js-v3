@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteResourceCommandInput = DeleteResourceRequest;
-export type DeleteResourceCommandOutput = DeleteResourceResponse & __MetadataBearer;
+export interface DeleteResourceCommandInput extends DeleteResourceRequest {}
+export interface DeleteResourceCommandOutput extends DeleteResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified resource. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkMailClient, DeleteResourceCommand } from "@aws-sdk/client-workmail"; // ES Modules import
+ * // const { WorkMailClient, DeleteResourceCommand } = require("@aws-sdk/client-workmail"); // CommonJS import
+ * const client = new WorkMailClient(config);
+ * const command = new DeleteResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteResourceCommandInput} for command's `input` shape.
+ * @see {@link DeleteResourceCommandOutput} for command's `response` shape.
+ * @see {@link WorkMailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteResourceCommand extends $Command<
   DeleteResourceCommandInput,

@@ -14,12 +14,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTablesCommandInput = GetTablesRequest;
-export type GetTablesCommandOutput = GetTablesResponse & __MetadataBearer;
+export interface GetTablesCommandInput extends GetTablesRequest {}
+export interface GetTablesCommandOutput extends GetTablesResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the definitions of some or all of the tables in a given
  *       <code>Database</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetTablesCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetTablesCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetTablesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTablesCommandInput} for command's `input` shape.
+ * @see {@link GetTablesCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTablesCommand extends $Command<
   GetTablesCommandInput,

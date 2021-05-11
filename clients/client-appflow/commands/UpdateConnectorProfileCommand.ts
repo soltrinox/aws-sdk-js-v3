@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateConnectorProfileCommandInput = UpdateConnectorProfileRequest;
-export type UpdateConnectorProfileCommandOutput = UpdateConnectorProfileResponse & __MetadataBearer;
+export interface UpdateConnectorProfileCommandInput extends UpdateConnectorProfileRequest {}
+export interface UpdateConnectorProfileCommandOutput extends UpdateConnectorProfileResponse, __MetadataBearer {}
 
 /**
  * <p>
  *   Updates a given connector profile associated with your account.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppflowClient, UpdateConnectorProfileCommand } from "@aws-sdk/client-appflow"; // ES Modules import
+ * // const { AppflowClient, UpdateConnectorProfileCommand } = require("@aws-sdk/client-appflow"); // CommonJS import
+ * const client = new AppflowClient(config);
+ * const command = new UpdateConnectorProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateConnectorProfileCommandInput} for command's `input` shape.
+ * @see {@link UpdateConnectorProfileCommandOutput} for command's `response` shape.
+ * @see {@link AppflowClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateConnectorProfileCommand extends $Command<
   UpdateConnectorProfileCommandInput,

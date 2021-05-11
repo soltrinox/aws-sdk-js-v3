@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDBEngineVersionsCommandInput = DescribeDBEngineVersionsMessage;
-export type DescribeDBEngineVersionsCommandOutput = DBEngineVersionMessage & __MetadataBearer;
+export interface DescribeDBEngineVersionsCommandInput extends DescribeDBEngineVersionsMessage {}
+export interface DescribeDBEngineVersionsCommandOutput extends DBEngineVersionMessage, __MetadataBearer {}
 
 /**
  * <p>Returns a list of the available DB engines.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, DescribeDBEngineVersionsCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, DescribeDBEngineVersionsCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new DescribeDBEngineVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDBEngineVersionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeDBEngineVersionsCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDBEngineVersionsCommand extends $Command<
   DescribeDBEngineVersionsCommandInput,

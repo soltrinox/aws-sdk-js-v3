@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelInputDeviceTransferCommandInput = CancelInputDeviceTransferRequest;
-export type CancelInputDeviceTransferCommandOutput = CancelInputDeviceTransferResponse & __MetadataBearer;
+export interface CancelInputDeviceTransferCommandInput extends CancelInputDeviceTransferRequest {}
+export interface CancelInputDeviceTransferCommandOutput extends CancelInputDeviceTransferResponse, __MetadataBearer {}
 
 /**
  * Cancel an input device transfer that you have requested.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, CancelInputDeviceTransferCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, CancelInputDeviceTransferCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new CancelInputDeviceTransferCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelInputDeviceTransferCommandInput} for command's `input` shape.
+ * @see {@link CancelInputDeviceTransferCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelInputDeviceTransferCommand extends $Command<
   CancelInputDeviceTransferCommandInput,

@@ -20,14 +20,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutDefaultEncryptionConfigurationCommandInput = PutDefaultEncryptionConfigurationRequest;
-export type PutDefaultEncryptionConfigurationCommandOutput = PutDefaultEncryptionConfigurationResponse &
-  __MetadataBearer;
+export interface PutDefaultEncryptionConfigurationCommandInput extends PutDefaultEncryptionConfigurationRequest {}
+export interface PutDefaultEncryptionConfigurationCommandOutput
+  extends PutDefaultEncryptionConfigurationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Sets the default encryption configuration for the AWS
  *       account. For more information, see <a href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/key-management.html">Key management</a>
  *       in the <i>AWS IoT SiteWise User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTSiteWiseClient, PutDefaultEncryptionConfigurationCommand } from "@aws-sdk/client-iotsitewise"; // ES Modules import
+ * // const { IoTSiteWiseClient, PutDefaultEncryptionConfigurationCommand } = require("@aws-sdk/client-iotsitewise"); // CommonJS import
+ * const client = new IoTSiteWiseClient(config);
+ * const command = new PutDefaultEncryptionConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutDefaultEncryptionConfigurationCommandInput} for command's `input` shape.
+ * @see {@link PutDefaultEncryptionConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link IoTSiteWiseClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutDefaultEncryptionConfigurationCommand extends $Command<
   PutDefaultEncryptionConfigurationCommandInput,

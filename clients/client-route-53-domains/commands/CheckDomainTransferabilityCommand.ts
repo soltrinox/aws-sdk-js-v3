@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CheckDomainTransferabilityCommandInput = CheckDomainTransferabilityRequest;
-export type CheckDomainTransferabilityCommandOutput = CheckDomainTransferabilityResponse & __MetadataBearer;
+export interface CheckDomainTransferabilityCommandInput extends CheckDomainTransferabilityRequest {}
+export interface CheckDomainTransferabilityCommandOutput extends CheckDomainTransferabilityResponse, __MetadataBearer {}
 
 /**
  * <p>Checks whether a domain name can be transferred to Amazon Route 53. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53DomainsClient, CheckDomainTransferabilityCommand } from "@aws-sdk/client-route-53-domains"; // ES Modules import
+ * // const { Route53DomainsClient, CheckDomainTransferabilityCommand } = require("@aws-sdk/client-route-53-domains"); // CommonJS import
+ * const client = new Route53DomainsClient(config);
+ * const command = new CheckDomainTransferabilityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CheckDomainTransferabilityCommandInput} for command's `input` shape.
+ * @see {@link CheckDomainTransferabilityCommandOutput} for command's `response` shape.
+ * @see {@link Route53DomainsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CheckDomainTransferabilityCommand extends $Command<
   CheckDomainTransferabilityCommandInput,

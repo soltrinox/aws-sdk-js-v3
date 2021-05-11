@@ -21,12 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetExportCommandInput = GetExportRequest;
-export type GetExportCommandOutput = GetExportResponse & __MetadataBearer;
+export interface GetExportCommandInput extends GetExportRequest {}
+export interface GetExportCommandOutput extends GetExportResponse, __MetadataBearer {}
 
 /**
  * <p>Exports the contents of a Amazon Lex resource in a specified format.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, GetExportCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, GetExportCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new GetExportCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetExportCommandInput} for command's `input` shape.
+ * @see {@link GetExportCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetExportCommand extends $Command<
   GetExportCommandInput,

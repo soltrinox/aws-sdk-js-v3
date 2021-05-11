@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreAnalysisCommandInput = RestoreAnalysisRequest;
-export type RestoreAnalysisCommandOutput = RestoreAnalysisResponse & __MetadataBearer;
+export interface RestoreAnalysisCommandInput extends RestoreAnalysisRequest {}
+export interface RestoreAnalysisCommandOutput extends RestoreAnalysisResponse, __MetadataBearer {}
 
 /**
  * <p>Restores an analysis.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, RestoreAnalysisCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, RestoreAnalysisCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new RestoreAnalysisCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreAnalysisCommandInput} for command's `input` shape.
+ * @see {@link RestoreAnalysisCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreAnalysisCommand extends $Command<
   RestoreAnalysisCommandInput,

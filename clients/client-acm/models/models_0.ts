@@ -2,6 +2,25 @@ import { SENSITIVE_STRING, SmithyException as __SmithyException } from "@aws-sdk
 import { MetadataBearer as $MetadataBearer } from "@aws-sdk/types";
 
 /**
+ * <p>You do not have access
+ *       required to perform this action.</p>
+ */
+export interface AccessDeniedException extends __SmithyException, $MetadataBearer {
+  name: "AccessDeniedException";
+  $fault: "client";
+  Message?: string;
+}
+
+export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
+    ...obj,
+  });
+}
+
+/**
  * <p>A key-value pair that identifies or specifies metadata about an ACM resource.</p>
  */
 export interface Tag {
@@ -17,6 +36,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -31,7 +53,7 @@ export interface AddTagsToCertificateRequest {
    *             <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
    *          </p>
    *
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>. </p>
+   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a>.</p>
    */
   CertificateArn: string | undefined;
 
@@ -42,6 +64,9 @@ export interface AddTagsToCertificateRequest {
 }
 
 export namespace AddTagsToCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsToCertificateRequest): any => ({
     ...obj,
   });
@@ -57,6 +82,9 @@ export interface InvalidArnException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace InvalidArnException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidArnException): any => ({
     ...obj,
   });
@@ -72,6 +100,9 @@ export interface InvalidParameterException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidParameterException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidParameterException): any => ({
     ...obj,
   });
@@ -88,6 +119,9 @@ export interface InvalidTagException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace InvalidTagException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTagException): any => ({
     ...obj,
   });
@@ -104,6 +138,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -119,7 +156,29 @@ export interface TagPolicyException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace TagPolicyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagPolicyException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The request was denied
+ *       because it exceeded a quota.</p>
+ */
+export interface ThrottlingException extends __SmithyException, $MetadataBearer {
+  name: "ThrottlingException";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace ThrottlingException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
 }
@@ -134,6 +193,9 @@ export interface TooManyTagsException extends __SmithyException, $MetadataBearer
 }
 
 export namespace TooManyTagsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyTagsException): any => ({
     ...obj,
   });
@@ -166,6 +228,9 @@ export interface ResourceRecord {
 }
 
 export namespace ResourceRecord {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceRecord): any => ({
     ...obj,
   });
@@ -240,6 +305,9 @@ export interface DomainValidation {
 }
 
 export namespace DomainValidation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DomainValidation): any => ({
     ...obj,
   });
@@ -327,6 +395,9 @@ export interface ExtendedKeyUsage {
 }
 
 export namespace ExtendedKeyUsage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExtendedKeyUsage): any => ({
     ...obj,
   });
@@ -387,6 +458,9 @@ export interface KeyUsage {
 }
 
 export namespace KeyUsage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KeyUsage): any => ({
     ...obj,
   });
@@ -415,6 +489,9 @@ export interface CertificateOptions {
 }
 
 export namespace CertificateOptions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CertificateOptions): any => ({
     ...obj,
   });
@@ -463,6 +540,9 @@ export interface RenewalSummary {
 }
 
 export namespace RenewalSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RenewalSummary): any => ({
     ...obj,
   });
@@ -504,8 +584,8 @@ export enum CertificateType {
 export interface CertificateDetail {
   /**
    * <p>The Amazon Resource Name (ARN) of the certificate. For more information about ARNs, see
-   *         <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS
-   *         Service Namespaces</a> in the <i>AWS General Reference</i>.</p>
+   *         <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a> in
+   *       the <i>AWS General Reference</i>.</p>
    */
   CertificateArn?: string;
 
@@ -547,8 +627,7 @@ export interface CertificateDetail {
   Issuer?: string;
 
   /**
-   * <p>The time at which the certificate was requested. This value exists only when the
-   *       certificate type is <code>AMAZON_ISSUED</code>. </p>
+   * <p>The time at which the certificate was requested.</p>
    */
   CreatedAt?: Date;
 
@@ -670,6 +749,9 @@ export interface CertificateDetail {
 }
 
 export namespace CertificateDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CertificateDetail): any => ({
     ...obj,
   });
@@ -682,12 +764,15 @@ export interface DeleteCertificateRequest {
    *          <p>
    *             <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
    *          </p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a>.</p>
    */
   CertificateArn: string | undefined;
 }
 
 export namespace DeleteCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCertificateRequest): any => ({
     ...obj,
   });
@@ -704,6 +789,9 @@ export interface ResourceInUseException extends __SmithyException, $MetadataBear
 }
 
 export namespace ResourceInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceInUseException): any => ({
     ...obj,
   });
@@ -716,12 +804,15 @@ export interface DescribeCertificateRequest {
    *          <p>
    *             <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
    *          </p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a>.</p>
    */
   CertificateArn: string | undefined;
 }
 
 export namespace DescribeCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCertificateRequest): any => ({
     ...obj,
   });
@@ -735,6 +826,9 @@ export interface DescribeCertificateResponse {
 }
 
 export namespace DescribeCertificateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCertificateResponse): any => ({
     ...obj,
   });
@@ -761,6 +855,9 @@ export interface ExportCertificateRequest {
 }
 
 export namespace ExportCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportCertificateRequest): any => ({
     ...obj,
     ...(obj.Passphrase && { Passphrase: SENSITIVE_STRING }),
@@ -787,6 +884,9 @@ export interface ExportCertificateResponse {
 }
 
 export namespace ExportCertificateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportCertificateResponse): any => ({
     ...obj,
     ...(obj.PrivateKey && { PrivateKey: SENSITIVE_STRING }),
@@ -804,7 +904,50 @@ export interface RequestInProgressException extends __SmithyException, $Metadata
 }
 
 export namespace RequestInProgressException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RequestInProgressException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Object containing
+ *       expiration events options associated with an AWS account.</p>
+ */
+export interface ExpiryEventsConfiguration {
+  /**
+   * <p>Specifies the number of days prior to certificate expiration when ACM starts generating
+   *         <code>EventBridge</code> events. ACM sends one event per day per certificate until the
+   *       certificate expires. By default, accounts receive events starting 45 days before certificate
+   *       expiration.</p>
+   */
+  DaysBeforeExpiry?: number;
+}
+
+export namespace ExpiryEventsConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ExpiryEventsConfiguration): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAccountConfigurationResponse {
+  /**
+   * <p>Expiration events
+   *       configuration options associated with the AWS account.</p>
+   */
+  ExpiryEvents?: ExpiryEventsConfiguration;
+}
+
+export namespace GetAccountConfigurationResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAccountConfigurationResponse): any => ({
     ...obj,
   });
 }
@@ -815,12 +958,15 @@ export interface GetCertificateRequest {
    *          <p>
    *             <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
    *          </p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a>.</p>
    */
   CertificateArn: string | undefined;
 }
 
 export namespace GetCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCertificateRequest): any => ({
     ...obj,
   });
@@ -834,12 +980,16 @@ export interface GetCertificateResponse {
 
   /**
    * <p>Certificates forming the requested certificate's chain of trust. The chain consists of the
-   *       certificate of the issuing CA and the intermediate certificates of any other subordinate CAs. </p>
+   *       certificate of the issuing CA and the intermediate certificates of any other subordinate CAs.
+   *     </p>
    */
   CertificateChain?: string;
 }
 
 export namespace GetCertificateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCertificateResponse): any => ({
     ...obj,
   });
@@ -876,6 +1026,9 @@ export interface ImportCertificateRequest {
 }
 
 export namespace ImportCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportCertificateRequest): any => ({
     ...obj,
     ...(obj.PrivateKey && { PrivateKey: SENSITIVE_STRING }),
@@ -891,6 +1044,9 @@ export interface ImportCertificateResponse {
 }
 
 export namespace ImportCertificateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportCertificateResponse): any => ({
     ...obj,
   });
@@ -906,6 +1062,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -921,6 +1080,9 @@ export interface InvalidArgsException extends __SmithyException, $MetadataBearer
 }
 
 export namespace InvalidArgsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidArgsException): any => ({
     ...obj,
   });
@@ -943,15 +1105,19 @@ export interface Filters {
 
   /**
    * <p>Specify one or more algorithms that can be used to generate key pairs.</p>
-   *          <p>Default filtering returns only <code>RSA_2048</code> certificates. To return other
-   *       certificate types, provide the desired type signatures in a comma-separated list. For example,
-   *         <code>"keyTypes": ["RSA_2048,RSA_4096"]</code>  returns both <code>RSA_2048</code> and
-   *         <code>RSA_4096</code> certificates.</p>
+   *          <p>Default filtering returns only <code>RSA_1024</code> and <code>RSA_2048</code>
+   *       certificates that have at least one domain. To return other certificate types, provide the
+   *       desired type signatures in a comma-separated list. For example, <code>"keyTypes":
+   *         ["RSA_2048,RSA_4096"]</code> returns both <code>RSA_2048</code> and <code>RSA_4096</code>
+   *       certificates.</p>
    */
   keyTypes?: (KeyAlgorithm | string)[];
 }
 
 export namespace Filters {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Filters): any => ({
     ...obj,
   });
@@ -986,6 +1152,9 @@ export interface ListCertificatesRequest {
 }
 
 export namespace ListCertificatesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListCertificatesRequest): any => ({
     ...obj,
   });
@@ -1003,7 +1172,7 @@ export interface CertificateSummary {
    *             <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
    *          </p>
    *
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>. </p>
+   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a>.</p>
    */
   CertificateArn?: string;
 
@@ -1015,6 +1184,9 @@ export interface CertificateSummary {
 }
 
 export namespace CertificateSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CertificateSummary): any => ({
     ...obj,
   });
@@ -1034,6 +1206,9 @@ export interface ListCertificatesResponse {
 }
 
 export namespace ListCertificatesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListCertificatesResponse): any => ({
     ...obj,
   });
@@ -1046,12 +1221,15 @@ export interface ListTagsForCertificateRequest {
    *          <p>
    *             <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
    *          </p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>. </p>
+   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a>.</p>
    */
   CertificateArn: string | undefined;
 }
 
 export namespace ListTagsForCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForCertificateRequest): any => ({
     ...obj,
   });
@@ -1065,7 +1243,76 @@ export interface ListTagsForCertificateResponse {
 }
 
 export namespace ListTagsForCertificateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForCertificateResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>You are trying to
+ *       update a resource or configuration that is already being created or updated. Wait for the
+ *       previous operation to finish and try again.</p>
+ */
+export interface ConflictException extends __SmithyException, $MetadataBearer {
+  name: "ConflictException";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace ConflictException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ConflictException): any => ({
+    ...obj,
+  });
+}
+
+export interface PutAccountConfigurationRequest {
+  /**
+   * <p>Specifies expiration
+   *       events associated with an account.</p>
+   */
+  ExpiryEvents?: ExpiryEventsConfiguration;
+
+  /**
+   * <p>Customer-chosen string
+   *       used to distinguish between calls to <code>PutAccountConfiguration</code>. Idempotency tokens
+   *       time out after one hour. If you call <code>PutAccountConfiguration</code> multiple times with
+   *       the same unexpired idempotency token, ACM treats it as the same request and returns the
+   *       original result. If you change the idempotency token for each call, ACM treats each call as
+   *       a new request.</p>
+   */
+  IdempotencyToken: string | undefined;
+}
+
+export namespace PutAccountConfigurationRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PutAccountConfigurationRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The supplied input
+ *       failed to satisfy constraints of an AWS service.</p>
+ */
+export interface ValidationException extends __SmithyException, $MetadataBearer {
+  name: "ValidationException";
+  $fault: "client";
+  message?: string;
+}
+
+export namespace ValidationException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
 }
@@ -1079,7 +1326,7 @@ export interface RemoveTagsFromCertificateRequest {
    *             <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
    *          </p>
    *
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>. </p>
+   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a>.</p>
    */
   CertificateArn: string | undefined;
 
@@ -1090,6 +1337,9 @@ export interface RemoveTagsFromCertificateRequest {
 }
 
 export namespace RemoveTagsFromCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveTagsFromCertificateRequest): any => ({
     ...obj,
   });
@@ -1102,12 +1352,15 @@ export interface RenewCertificateRequest {
    *          <p>
    *             <code>arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012</code>
    *          </p>
-   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p>
+   *          <p>For more information about ARNs, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs)</a>.</p>
    */
   CertificateArn: string | undefined;
 }
 
 export namespace RenewCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RenewCertificateRequest): any => ({
     ...obj,
   });
@@ -1124,6 +1377,9 @@ export interface InvalidDomainValidationOptionsException extends __SmithyExcepti
 }
 
 export namespace InvalidDomainValidationOptionsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidDomainValidationOptionsException): any => ({
     ...obj,
   });
@@ -1168,6 +1424,9 @@ export interface DomainValidationOption {
 }
 
 export namespace DomainValidationOption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DomainValidationOption): any => ({
     ...obj,
   });
@@ -1268,6 +1527,9 @@ export interface RequestCertificateRequest {
 }
 
 export namespace RequestCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RequestCertificateRequest): any => ({
     ...obj,
   });
@@ -1284,6 +1546,9 @@ export interface RequestCertificateResponse {
 }
 
 export namespace RequestCertificateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RequestCertificateResponse): any => ({
     ...obj,
   });
@@ -1299,6 +1564,9 @@ export interface InvalidStateException extends __SmithyException, $MetadataBeare
 }
 
 export namespace InvalidStateException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidStateException): any => ({
     ...obj,
   });
@@ -1352,6 +1620,9 @@ export interface ResendValidationEmailRequest {
 }
 
 export namespace ResendValidationEmailRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResendValidationEmailRequest): any => ({
     ...obj,
   });
@@ -1377,6 +1648,9 @@ export interface UpdateCertificateOptionsRequest {
 }
 
 export namespace UpdateCertificateOptionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateCertificateOptionsRequest): any => ({
     ...obj,
   });

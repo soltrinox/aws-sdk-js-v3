@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListArtifactsCommandInput = ListArtifactsRequest;
-export type ListArtifactsCommandOutput = ListArtifactsResult & __MetadataBearer;
+export interface ListArtifactsCommandInput extends ListArtifactsRequest {}
+export interface ListArtifactsCommandOutput extends ListArtifactsResult, __MetadataBearer {}
 
 /**
  * <p>Gets information about artifacts.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, ListArtifactsCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, ListArtifactsCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new ListArtifactsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListArtifactsCommandInput} for command's `input` shape.
+ * @see {@link ListArtifactsCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListArtifactsCommand extends $Command<
   ListArtifactsCommandInput,

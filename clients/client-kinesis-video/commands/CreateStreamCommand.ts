@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateStreamCommandInput = CreateStreamInput;
-export type CreateStreamCommandOutput = CreateStreamOutput & __MetadataBearer;
+export interface CreateStreamCommandInput extends CreateStreamInput {}
+export interface CreateStreamCommandOutput extends CreateStreamOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a new Kinesis video stream. </p>
@@ -30,6 +30,20 @@ export type CreateStreamCommandOutput = CreateStreamOutput & __MetadataBearer;
  *         <p>For information about how the service works, see <a href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/how-it-works.html">How it Works</a>. </p>
  *         <p>You must have permissions for the <code>KinesisVideo:CreateStream</code>
  *             action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisVideoClient, CreateStreamCommand } from "@aws-sdk/client-kinesis-video"; // ES Modules import
+ * // const { KinesisVideoClient, CreateStreamCommand } = require("@aws-sdk/client-kinesis-video"); // CommonJS import
+ * const client = new KinesisVideoClient(config);
+ * const command = new CreateStreamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateStreamCommandInput} for command's `input` shape.
+ * @see {@link CreateStreamCommandOutput} for command's `response` shape.
+ * @see {@link KinesisVideoClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateStreamCommand extends $Command<
   CreateStreamCommandInput,

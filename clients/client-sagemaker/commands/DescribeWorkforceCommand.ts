@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeWorkforceCommandInput = DescribeWorkforceRequest;
-export type DescribeWorkforceCommandOutput = DescribeWorkforceResponse & __MetadataBearer;
+export interface DescribeWorkforceCommandInput extends DescribeWorkforceRequest {}
+export interface DescribeWorkforceCommandOutput extends DescribeWorkforceResponse, __MetadataBearer {}
 
 /**
  * <p>Lists private workforce information, including workforce name, Amazon Resource Name
@@ -27,6 +27,20 @@ export type DescribeWorkforceCommandOutput = DescribeWorkforceResponse & __Metad
  *         <important>
  *             <p>This operation applies only to private workforces.</p>
  *         </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DescribeWorkforceCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DescribeWorkforceCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DescribeWorkforceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeWorkforceCommandInput} for command's `input` shape.
+ * @see {@link DescribeWorkforceCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeWorkforceCommand extends $Command<
   DescribeWorkforceCommandInput,

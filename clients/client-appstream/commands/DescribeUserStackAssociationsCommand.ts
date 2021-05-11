@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeUserStackAssociationsCommandInput = DescribeUserStackAssociationsRequest;
-export type DescribeUserStackAssociationsCommandOutput = DescribeUserStackAssociationsResult & __MetadataBearer;
+export interface DescribeUserStackAssociationsCommandInput extends DescribeUserStackAssociationsRequest {}
+export interface DescribeUserStackAssociationsCommandOutput
+  extends DescribeUserStackAssociationsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieves a list that describes the UserStackAssociation objects. You must specify either or both of the following:</p>
@@ -30,6 +32,20 @@ export type DescribeUserStackAssociationsCommandOutput = DescribeUserStackAssoci
  *                <p>The user name (email address of the user associated with the stack) and the authentication type for the user</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppStreamClient, DescribeUserStackAssociationsCommand } from "@aws-sdk/client-appstream"; // ES Modules import
+ * // const { AppStreamClient, DescribeUserStackAssociationsCommand } = require("@aws-sdk/client-appstream"); // CommonJS import
+ * const client = new AppStreamClient(config);
+ * const command = new DescribeUserStackAssociationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeUserStackAssociationsCommandInput} for command's `input` shape.
+ * @see {@link DescribeUserStackAssociationsCommandOutput} for command's `response` shape.
+ * @see {@link AppStreamClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeUserStackAssociationsCommand extends $Command<
   DescribeUserStackAssociationsCommandInput,

@@ -21,12 +21,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisconnectParticipantCommandInput = DisconnectParticipantRequest;
-export type DisconnectParticipantCommandOutput = DisconnectParticipantResponse & __MetadataBearer;
+export interface DisconnectParticipantCommandInput extends DisconnectParticipantRequest {}
+export interface DisconnectParticipantCommandOutput extends DisconnectParticipantResponse, __MetadataBearer {}
 
 /**
  * <p>Disconnects a participant. Note that ConnectionToken is used for invoking this API
  *             instead of ParticipantToken.</p>
+ *         <p>The Amazon Connect Participant Service APIs do not use <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4
+ *                 authentication</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectParticipantClient, DisconnectParticipantCommand } from "@aws-sdk/client-connectparticipant"; // ES Modules import
+ * // const { ConnectParticipantClient, DisconnectParticipantCommand } = require("@aws-sdk/client-connectparticipant"); // CommonJS import
+ * const client = new ConnectParticipantClient(config);
+ * const command = new DisconnectParticipantCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisconnectParticipantCommandInput} for command's `input` shape.
+ * @see {@link DisconnectParticipantCommandOutput} for command's `response` shape.
+ * @see {@link ConnectParticipantClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisconnectParticipantCommand extends $Command<
   DisconnectParticipantCommandInput,

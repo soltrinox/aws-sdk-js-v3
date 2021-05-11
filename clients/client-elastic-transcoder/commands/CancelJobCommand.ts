@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelJobCommandInput = CancelJobRequest;
-export type CancelJobCommandOutput = CancelJobResponse & __MetadataBearer;
+export interface CancelJobCommandInput extends CancelJobRequest {}
+export interface CancelJobCommandOutput extends CancelJobResponse, __MetadataBearer {}
 
 /**
  * <p>The CancelJob operation cancels an unfinished job.</p>
@@ -31,6 +31,20 @@ export type CancelJobCommandOutput = CancelJobResponse & __MetadataBearer;
  *             pipeline from starting to process a job while you're getting the job identifier, use
  *                 <a>UpdatePipelineStatus</a> to temporarily pause the pipeline.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticTranscoderClient, CancelJobCommand } from "@aws-sdk/client-elastic-transcoder"; // ES Modules import
+ * // const { ElasticTranscoderClient, CancelJobCommand } = require("@aws-sdk/client-elastic-transcoder"); // CommonJS import
+ * const client = new ElasticTranscoderClient(config);
+ * const command = new CancelJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelJobCommandInput} for command's `input` shape.
+ * @see {@link CancelJobCommandOutput} for command's `response` shape.
+ * @see {@link ElasticTranscoderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelJobCommand extends $Command<
   CancelJobCommandInput,

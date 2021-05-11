@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPolicyAttachmentsCommandInput = ListPolicyAttachmentsRequest;
-export type ListPolicyAttachmentsCommandOutput = ListPolicyAttachmentsResponse & __MetadataBearer;
+export interface ListPolicyAttachmentsCommandInput extends ListPolicyAttachmentsRequest {}
+export interface ListPolicyAttachmentsCommandOutput extends ListPolicyAttachmentsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns all of the <code>ObjectIdentifiers</code> to which a given policy is attached.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, ListPolicyAttachmentsCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, ListPolicyAttachmentsCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new ListPolicyAttachmentsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPolicyAttachmentsCommandInput} for command's `input` shape.
+ * @see {@link ListPolicyAttachmentsCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPolicyAttachmentsCommand extends $Command<
   ListPolicyAttachmentsCommandInput,

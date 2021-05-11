@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutPlaybackConfigurationCommandInput = PutPlaybackConfigurationRequest;
-export type PutPlaybackConfigurationCommandOutput = PutPlaybackConfigurationResponse & __MetadataBearer;
+export interface PutPlaybackConfigurationCommandInput extends PutPlaybackConfigurationRequest {}
+export interface PutPlaybackConfigurationCommandOutput extends PutPlaybackConfigurationResponse, __MetadataBearer {}
 
 /**
- * <p>Adds a new playback configuration to AWS Elemental MediaTailor. </p>
+ * <p>Adds a new playback configuration to AWS Elemental MediaTailor.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaTailorClient, PutPlaybackConfigurationCommand } from "@aws-sdk/client-mediatailor"; // ES Modules import
+ * // const { MediaTailorClient, PutPlaybackConfigurationCommand } = require("@aws-sdk/client-mediatailor"); // CommonJS import
+ * const client = new MediaTailorClient(config);
+ * const command = new PutPlaybackConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutPlaybackConfigurationCommandInput} for command's `input` shape.
+ * @see {@link PutPlaybackConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link MediaTailorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutPlaybackConfigurationCommand extends $Command<
   PutPlaybackConfigurationCommandInput,

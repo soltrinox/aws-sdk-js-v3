@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateHITReviewStatusCommandInput = UpdateHITReviewStatusRequest;
-export type UpdateHITReviewStatusCommandOutput = UpdateHITReviewStatusResponse & __MetadataBearer;
+export interface UpdateHITReviewStatusCommandInput extends UpdateHITReviewStatusRequest {}
+export interface UpdateHITReviewStatusCommandOutput extends UpdateHITReviewStatusResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -26,6 +26,20 @@ export type UpdateHITReviewStatusCommandOutput = UpdateHITReviewStatusResponse &
  *             If the status is Reviewable, this operation can update the status to Reviewing,
  *             or it can revert a Reviewing HIT back to the Reviewable status.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, UpdateHITReviewStatusCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, UpdateHITReviewStatusCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new UpdateHITReviewStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateHITReviewStatusCommandInput} for command's `input` shape.
+ * @see {@link UpdateHITReviewStatusCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateHITReviewStatusCommand extends $Command<
   UpdateHITReviewStatusCommandInput,

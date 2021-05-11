@@ -30,6 +30,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -60,6 +63,9 @@ export interface SigninDelegateGroup {
 }
 
 export namespace SigninDelegateGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SigninDelegateGroup): any => ({
     ...obj,
   });
@@ -85,10 +91,9 @@ export interface Account {
   Name: string | undefined;
 
   /**
-   * <p>The Amazon Chime account type. For more information
-   *        about different account types, see <a href="https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html">Managing Your Amazon Chime Accounts</a> in the
-   *        <i>Amazon
-   *          Chime Administration Guide</i>.</p>
+   * <p>The Amazon Chime account type. For more information about different account types, see <a href="https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html">Managing Your
+   *                 Amazon Chime Accounts</a> in the <i>Amazon Chime Administration
+   *                 Guide</i>.</p>
    */
   AccountType?: AccountType | string;
 
@@ -114,16 +119,19 @@ export interface Account {
 }
 
 export namespace Account {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Account): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Settings related to the Amazon Chime account. This includes settings that start or
- *       stop remote control of shared screens, or start or stop the dial-out option in the Amazon
- *       Chime web application. For more information about these settings, see <a href="https://docs.aws.amazon.com/chime/latest/ag/policies.html">Use the Policies Page</a> in
- *       the <i>Amazon Chime Administration Guide</i>.</p>
+ * <p>Settings related to the Amazon Chime account. This includes settings that start or stop
+ *             remote control of shared screens, or start or stop the dial-out option in the Amazon
+ *             Chime web application. For more information about these settings, see <a href="https://docs.aws.amazon.com/chime/latest/ag/policies.html">Use the Policies
+ *                 Page</a> in the <i>Amazon Chime Administration Guide</i>.</p>
  */
 export interface AccountSettings {
   /**
@@ -132,13 +140,17 @@ export interface AccountSettings {
   DisableRemoteControl?: boolean;
 
   /**
-   * <p>Setting that allows meeting participants to choose the <b>Call me at a phone
-   *         number</b> option. For more information, see <a href="https://docs.aws.amazon.com/chime/latest/ug/chime-join-meeting.html">Join a Meeting without the Amazon Chime App</a>.</p>
+   * <p>Setting that allows meeting participants to choose the <b>Call me at a
+   *                 phone number</b> option. For more information, see <a href="https://docs.aws.amazon.com/chime/latest/ug/chime-join-meeting.html">Join a Meeting
+   *                 without the Amazon Chime App</a>.</p>
    */
   EnableDialOut?: boolean;
 }
 
 export namespace AccountSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccountSettings): any => ({
     ...obj,
   });
@@ -160,6 +172,9 @@ export interface AlexaForBusinessMetadata {
 }
 
 export namespace AlexaForBusinessMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlexaForBusinessMetadata): any => ({
     ...obj,
     ...(obj.AlexaForBusinessRoomArn && { AlexaForBusinessRoomArn: SENSITIVE_STRING }),
@@ -167,36 +182,39 @@ export namespace AlexaForBusinessMetadata {
 }
 
 /**
- * <p>An instance of a Chime messaging application.</p>
+ * <p>The details of an <code>AppInstance</code>, an instance of an Amazon Chime SDK messaging application.</p>
  */
 export interface AppInstance {
   /**
-   * <p>The ARN of the messaging instance. </p>
+   * <p>The ARN of the messaging instance.</p>
    */
   AppInstanceArn?: string;
 
   /**
-   * <p>The name of an app instance.</p>
+   * <p>The name of an <code>AppInstance</code>.</p>
    */
   Name?: string;
 
   /**
-   * <p>The metadata of an app instance.</p>
+   * <p>The metadata of an <code>AppInstance</code>.</p>
    */
   Metadata?: string;
 
   /**
-   * <p>The time at which an app instance was created. In epoch milliseconds.</p>
+   * <p>The time at which an <code>AppInstance</code> was created. In epoch milliseconds.</p>
    */
   CreatedTimestamp?: Date;
 
   /**
-   * <p>The time an app instance was last updated. In epoch milliseconds.</p>
+   * <p>The time an <code>AppInstance</code> was last updated. In epoch milliseconds.</p>
    */
   LastUpdatedTimestamp?: Date;
 }
 
 export namespace AppInstance {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppInstance): any => ({
     ...obj,
     ...(obj.Name && { Name: SENSITIVE_STRING }),
@@ -205,7 +223,7 @@ export namespace AppInstance {
 }
 
 /**
- * <p>The ARN and name of a user.</p>
+ * <p>The details of a user.</p>
  */
 export interface Identity {
   /**
@@ -220,6 +238,9 @@ export interface Identity {
 }
 
 export namespace Identity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Identity): any => ({
     ...obj,
     ...(obj.Name && { Name: SENSITIVE_STRING }),
@@ -227,16 +248,16 @@ export namespace Identity {
 }
 
 /**
- * <p>Promotes a user to the administrator role for the duration of an app instance.</p>
+ * <p>The details of an <code>AppInstanceAdmin</code>.</p>
  */
 export interface AppInstanceAdmin {
   /**
-   * <p>The name and metadata of the app instance administrator.</p>
+   * <p>The <code>AppInstanceAdmin</code> data.</p>
    */
   Admin?: Identity;
 
   /**
-   * <p>The ARN of the app instance administrator.</p>
+   * <p>The ARN of the <code>AppInstance</code> for which the user is an administrator.</p>
    */
   AppInstanceArn?: string;
 
@@ -247,6 +268,9 @@ export interface AppInstanceAdmin {
 }
 
 export namespace AppInstanceAdmin {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppInstanceAdmin): any => ({
     ...obj,
     ...(obj.Admin && { Admin: Identity.filterSensitiveLog(obj.Admin) }),
@@ -254,16 +278,19 @@ export namespace AppInstanceAdmin {
 }
 
 /**
- * <p>The identity and metadata of an administrator.</p>
+ * <p>Summary of the details of an <code>AppInstanceAdmin</code>.</p>
  */
 export interface AppInstanceAdminSummary {
   /**
-   * <p>The name and metadata of the app instance administrator.</p>
+   * <p>The details of the <code>AppInstanceAdmin</code>.</p>
    */
   Admin?: Identity;
 }
 
 export namespace AppInstanceAdminSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppInstanceAdminSummary): any => ({
     ...obj,
     ...(obj.Admin && { Admin: Identity.filterSensitiveLog(obj.Admin) }),
@@ -276,26 +303,29 @@ export enum AppInstanceDataType {
 }
 
 /**
- * <p>The summary data for an app instance.</p>
+ * <p>Summary of the data for an <code>AppInstance</code>.</p>
  */
 export interface AppInstanceSummary {
   /**
-   * <p>The app instance ARN.</p>
+   * <p>The <code>AppInstance</code> ARN.</p>
    */
   AppInstanceArn?: string;
 
   /**
-   * <p>The name of the app instance summary.</p>
+   * <p>The name of the <code>AppInstance</code>.</p>
    */
   Name?: string;
 
   /**
-   * <p>The metadata of the app instance summary.</p>
+   * <p>The metadata of the <code>AppInstance</code>.</p>
    */
   Metadata?: string;
 }
 
 export namespace AppInstanceSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppInstanceSummary): any => ({
     ...obj,
     ...(obj.Name && { Name: SENSITIVE_STRING }),
@@ -304,43 +334,49 @@ export namespace AppInstanceSummary {
 }
 
 /**
- * <p>The retention settings for a channel.</p>
+ * <p>The details of the retention settings for a channel.</p>
  */
 export interface ChannelRetentionSettings {
   /**
-   * <p>The time in days to retain a channel.</p>
+   * <p>The time in days to retain the messages in a channel.</p>
    */
   RetentionDays?: number;
 }
 
 export namespace ChannelRetentionSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelRetentionSettings): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The length of time in days to retain messages.</p>
+ * <p>The details of the data-retention settings for an <code>AppInstance</code>.</p>
  */
 export interface AppInstanceRetentionSettings {
   /**
-   * <p>The length of time in days to retain a channel.</p>
+   * <p>The length of time in days to retain the messages in a channel.</p>
    */
   ChannelRetentionSettings?: ChannelRetentionSettings;
 }
 
 export namespace AppInstanceRetentionSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppInstanceRetentionSettings): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The streaming configuration of an app instance.</p>
+ * <p>The details of the streaming configuration of an <code>AppInstance</code>.</p>
  */
 export interface AppInstanceStreamingConfiguration {
   /**
-   * <p>The data type of the app instance.</p>
+   * <p>The type of data to be streamed.</p>
    */
   AppInstanceDataType: AppInstanceDataType | string | undefined;
 
@@ -351,6 +387,9 @@ export interface AppInstanceStreamingConfiguration {
 }
 
 export namespace AppInstanceStreamingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppInstanceStreamingConfiguration): any => ({
     ...obj,
     ...(obj.ResourceArn && { ResourceArn: SENSITIVE_STRING }),
@@ -358,36 +397,39 @@ export namespace AppInstanceStreamingConfiguration {
 }
 
 /**
- * <p>The app instance user.</p>
+ * <p>The details of an <code>AppInstanceUser</code>.</p>
  */
 export interface AppInstanceUser {
   /**
-   * <p>The ARN of the app instance user.</p>
+   * <p>The ARN of the <code>AppInstanceUser</code>.</p>
    */
   AppInstanceUserArn?: string;
 
   /**
-   * <p>The name of the app instance user.</p>
+   * <p>The name of the <code>AppInstanceUser</code>.</p>
    */
   Name?: string;
 
   /**
-   * <p>The time at which the app instance user was created.</p>
+   * <p>The time at which the <code>AppInstanceUser</code> was created.</p>
    */
   CreatedTimestamp?: Date;
 
   /**
-   * <p>The metadata of the app instance user.</p>
+   * <p>The metadata of the <code>AppInstanceUser</code>.</p>
    */
   Metadata?: string;
 
   /**
-   * <p>The time at which the app instance user was last updated.</p>
+   * <p>The time at which the <code>AppInstanceUser</code> was last updated.</p>
    */
   LastUpdatedTimestamp?: Date;
 }
 
 export namespace AppInstanceUser {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppInstanceUser): any => ({
     ...obj,
     ...(obj.Name && { Name: SENSITIVE_STRING }),
@@ -396,26 +438,29 @@ export namespace AppInstanceUser {
 }
 
 /**
- * <p>The app instance user summary data .</p>
+ * <p>Summary of the details of an <code>AppInstanceUser</code>.</p>
  */
 export interface AppInstanceUserSummary {
   /**
-   * <p>The ARN of the app instance user.</p>
+   * <p>The ARN of the <code>AppInstanceUser</code>.</p>
    */
   AppInstanceUserArn?: string;
 
   /**
-   * <p>The name in an app instance user summary.</p>
+   * <p>The name of an <code>AppInstanceUser</code>.</p>
    */
   Name?: string;
 
   /**
-   * <p>The metadata in an app instance user summary.</p>
+   * <p>The metadata of the <code>AppInstanceUser</code>.</p>
    */
   Metadata?: string;
 }
 
 export namespace AppInstanceUserSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppInstanceUserSummary): any => ({
     ...obj,
     ...(obj.Name && { Name: SENSITIVE_STRING }),
@@ -429,21 +474,24 @@ export enum ChannelMembershipType {
 }
 
 /**
- * <p>Lists the channels to which app instance users belong.</p>
+ * <p>Summary of the membership details of an <code>AppInstanceUser</code>.</p>
  */
 export interface AppInstanceUserMembershipSummary {
   /**
-   * <p>The type of channel summary, </p>
+   * <p>The type of <code>ChannelMembership</code>.</p>
    */
   Type?: ChannelMembershipType | string;
 
   /**
-   * <p>The time at which a summary was last read.</p>
+   * <p>The time at which a message was last read.</p>
    */
   ReadMarkerTimestamp?: Date;
 }
 
 export namespace AppInstanceUserMembershipSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AppInstanceUserMembershipSummary): any => ({
     ...obj,
   });
@@ -467,6 +515,9 @@ export interface AssociatePhoneNumbersWithVoiceConnectorRequest {
 }
 
 export namespace AssociatePhoneNumbersWithVoiceConnectorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociatePhoneNumbersWithVoiceConnectorRequest): any => ({
     ...obj,
     ...(obj.E164PhoneNumbers && { E164PhoneNumbers: SENSITIVE_STRING }),
@@ -474,8 +525,8 @@ export namespace AssociatePhoneNumbersWithVoiceConnectorRequest {
 }
 
 /**
- * <p>If the phone number action fails for one or more of the phone numbers in the request, a
- *     list of the phone numbers is returned, along with error codes and error messages.</p>
+ * <p>If the phone number action fails for one or more of the phone numbers in the request, a list of
+ *             the phone numbers is returned, along with error codes and error messages.</p>
  */
 export interface PhoneNumberError {
   /**
@@ -495,6 +546,9 @@ export interface PhoneNumberError {
 }
 
 export namespace PhoneNumberError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PhoneNumberError): any => ({
     ...obj,
   });
@@ -502,12 +556,16 @@ export namespace PhoneNumberError {
 
 export interface AssociatePhoneNumbersWithVoiceConnectorResponse {
   /**
-   * <p>If the action fails for one or more of the phone numbers in the request, a list of the phone numbers is returned, along with error codes and error messages.</p>
+   * <p>If the action fails for one or more of the phone numbers in the request, a list of the phone numbers is returned, along with error codes and
+   *     error messages.</p>
    */
   PhoneNumberErrors?: PhoneNumberError[];
 }
 
 export namespace AssociatePhoneNumbersWithVoiceConnectorResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociatePhoneNumbersWithVoiceConnectorResponse): any => ({
     ...obj,
   });
@@ -524,6 +582,9 @@ export interface BadRequestException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace BadRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BadRequestException): any => ({
     ...obj,
   });
@@ -540,6 +601,9 @@ export interface ForbiddenException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ForbiddenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ForbiddenException): any => ({
     ...obj,
   });
@@ -556,6 +620,9 @@ export interface NotFoundException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotFoundException): any => ({
     ...obj,
   });
@@ -572,6 +639,9 @@ export interface ServiceFailureException extends __SmithyException, $MetadataBea
 }
 
 export namespace ServiceFailureException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceFailureException): any => ({
     ...obj,
   });
@@ -588,6 +658,9 @@ export interface ServiceUnavailableException extends __SmithyException, $Metadat
 }
 
 export namespace ServiceUnavailableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceUnavailableException): any => ({
     ...obj,
   });
@@ -604,6 +677,9 @@ export interface ThrottledClientException extends __SmithyException, $MetadataBe
 }
 
 export namespace ThrottledClientException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottledClientException): any => ({
     ...obj,
   });
@@ -620,6 +696,9 @@ export interface UnauthorizedClientException extends __SmithyException, $Metadat
 }
 
 export namespace UnauthorizedClientException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnauthorizedClientException): any => ({
     ...obj,
   });
@@ -643,6 +722,9 @@ export interface AssociatePhoneNumbersWithVoiceConnectorGroupRequest {
 }
 
 export namespace AssociatePhoneNumbersWithVoiceConnectorGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociatePhoneNumbersWithVoiceConnectorGroupRequest): any => ({
     ...obj,
     ...(obj.E164PhoneNumbers && { E164PhoneNumbers: SENSITIVE_STRING }),
@@ -657,6 +739,9 @@ export interface AssociatePhoneNumbersWithVoiceConnectorGroupResponse {
 }
 
 export namespace AssociatePhoneNumbersWithVoiceConnectorGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociatePhoneNumbersWithVoiceConnectorGroupResponse): any => ({
     ...obj,
   });
@@ -680,6 +765,9 @@ export interface AssociatePhoneNumberWithUserRequest {
 }
 
 export namespace AssociatePhoneNumberWithUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociatePhoneNumberWithUserRequest): any => ({
     ...obj,
     ...(obj.E164PhoneNumber && { E164PhoneNumber: SENSITIVE_STRING }),
@@ -689,6 +777,9 @@ export namespace AssociatePhoneNumberWithUserRequest {
 export interface AssociatePhoneNumberWithUserResponse {}
 
 export namespace AssociatePhoneNumberWithUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociatePhoneNumberWithUserResponse): any => ({
     ...obj,
   });
@@ -707,6 +798,9 @@ export interface AssociateSigninDelegateGroupsWithAccountRequest {
 }
 
 export namespace AssociateSigninDelegateGroupsWithAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateSigninDelegateGroupsWithAccountRequest): any => ({
     ...obj,
   });
@@ -715,21 +809,36 @@ export namespace AssociateSigninDelegateGroupsWithAccountRequest {
 export interface AssociateSigninDelegateGroupsWithAccountResponse {}
 
 export namespace AssociateSigninDelegateGroupsWithAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateSigninDelegateGroupsWithAccountResponse): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>An Amazon Chime SDK meeting attendee. Includes a unique <code>AttendeeId</code>
- *       and <code>JoinToken</code>. The <code>JoinToken</code> allows a client to authenticate and join as the specified attendee. The <code>JoinToken</code> expires when the meeting ends or when <a>DeleteAttendee</a> is called. After that, the attendee is unable to join the meeting.</p>
- *          <p>We recommend securely transferring each <code>JoinToken</code> from your server
- *       application to the client so that no other client has access to the token except for the one authorized to represent the attendee.</p>
+ * <p>
+ * An Amazon Chime SDK meeting attendee. Includes a unique
+ * <code>AttendeeId</code>
+ * and
+ * <code>JoinToken</code>
+ * . The
+ * <code>JoinToken</code>
+ * allows a client to authenticate and join as the specified attendee. The
+ * <code>JoinToken</code>
+ * expires when the meeting ends or when
+ * <a>DeleteAttendee</a>
+ * is called. After that, the attendee is unable to join the meeting.
+ * </p>
+ *
+ *          <p>We recommend securely transferring each <code>JoinToken</code> from your server application
+ *             to the client so that no other client has access to the token except for the one
+ *             authorized to represent the attendee.</p>
  */
 export interface Attendee {
   /**
-   * <p>The Amazon Chime SDK external user ID. An idempotency token. Links the attendee to an identity managed by a builder application.
-   *       If you create an attendee with the same external user id, the service returns the existing record.</p>
+   * <p>The Amazon Chime SDK external user ID. An idempotency token. Links the attendee to an identity managed by a builder application.</p>
    */
   ExternalUserId?: string;
 
@@ -745,6 +854,9 @@ export interface Attendee {
 }
 
 export namespace Attendee {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Attendee): any => ({
     ...obj,
     ...(obj.ExternalUserId && { ExternalUserId: SENSITIVE_STRING }),
@@ -768,6 +880,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
     ...(obj.Key && { Key: SENSITIVE_STRING }),
@@ -780,11 +895,7 @@ export namespace Tag {
  */
 export interface CreateAttendeeRequestItem {
   /**
-   * <p>The Amazon Chime SDK external user ID. An idempotency token. Links the attendee to an identity managed by a builder application.
-   *       If you create an attendee with the same external user id, the service returns the existing record.</p>
-   *
-   *
-   *          <p>The Amazon Chime SDK external user ID. Links the attendee to an identity managed by a builder application.</p>
+   * <p>The Amazon Chime SDK external user ID. An idempotency token. Links the attendee to an identity managed by a builder application.</p>
    */
   ExternalUserId: string | undefined;
 
@@ -795,6 +906,9 @@ export interface CreateAttendeeRequestItem {
 }
 
 export namespace CreateAttendeeRequestItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAttendeeRequestItem): any => ({
     ...obj,
     ...(obj.ExternalUserId && { ExternalUserId: SENSITIVE_STRING }),
@@ -815,6 +929,9 @@ export interface BatchCreateAttendeeRequest {
 }
 
 export namespace BatchCreateAttendeeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchCreateAttendeeRequest): any => ({
     ...obj,
     ...(obj.Attendees && {
@@ -828,8 +945,7 @@ export namespace BatchCreateAttendeeRequest {
  */
 export interface CreateAttendeeError {
   /**
-   * <p>The Amazon Chime SDK external user ID. An idempotency token. Links the attendee to an identity managed by a builder application.
-   *       If you create an attendee with the same external user id, the service returns the existing record.</p>
+   * <p>The Amazon Chime SDK external user ID. An idempotency token. Links the attendee to an identity managed by a builder application.</p>
    */
   ExternalUserId?: string;
 
@@ -845,6 +961,9 @@ export interface CreateAttendeeError {
 }
 
 export namespace CreateAttendeeError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAttendeeError): any => ({
     ...obj,
     ...(obj.ExternalUserId && { ExternalUserId: SENSITIVE_STRING }),
@@ -864,6 +983,9 @@ export interface BatchCreateAttendeeResponse {
 }
 
 export namespace BatchCreateAttendeeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchCreateAttendeeResponse): any => ({
     ...obj,
     ...(obj.Attendees && { Attendees: obj.Attendees.map((item) => Attendee.filterSensitiveLog(item)) }),
@@ -882,6 +1004,9 @@ export interface ResourceLimitExceededException extends __SmithyException, $Meta
 }
 
 export namespace ResourceLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceLimitExceededException): any => ({
     ...obj,
   });
@@ -908,6 +1033,9 @@ export interface MembershipItem {
 }
 
 export namespace MembershipItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MembershipItem): any => ({
     ...obj,
   });
@@ -931,6 +1059,9 @@ export interface BatchCreateRoomMembershipRequest {
 }
 
 export namespace BatchCreateRoomMembershipRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchCreateRoomMembershipRequest): any => ({
     ...obj,
   });
@@ -957,6 +1088,9 @@ export interface MemberError {
 }
 
 export namespace MemberError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MemberError): any => ({
     ...obj,
   });
@@ -970,6 +1104,9 @@ export interface BatchCreateRoomMembershipResponse {
 }
 
 export namespace BatchCreateRoomMembershipResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchCreateRoomMembershipResponse): any => ({
     ...obj,
   });
@@ -983,6 +1120,9 @@ export interface BatchDeletePhoneNumberRequest {
 }
 
 export namespace BatchDeletePhoneNumberRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDeletePhoneNumberRequest): any => ({
     ...obj,
   });
@@ -996,6 +1136,9 @@ export interface BatchDeletePhoneNumberResponse {
 }
 
 export namespace BatchDeletePhoneNumberResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDeletePhoneNumberResponse): any => ({
     ...obj,
   });
@@ -1014,6 +1157,9 @@ export interface BatchSuspendUserRequest {
 }
 
 export namespace BatchSuspendUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchSuspendUserRequest): any => ({
     ...obj,
   });
@@ -1021,7 +1167,7 @@ export namespace BatchSuspendUserRequest {
 
 /**
  * <p>The list of errors returned when errors are encountered during the <a>BatchSuspendUser</a>, <a>BatchUnsuspendUser</a>, or <a>BatchUpdateUser</a> actions. This includes user IDs, error codes, and error
- *       messages.</p>
+ *             messages.</p>
  */
 export interface UserError {
   /**
@@ -1041,6 +1187,9 @@ export interface UserError {
 }
 
 export namespace UserError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserError): any => ({
     ...obj,
   });
@@ -1048,14 +1197,16 @@ export namespace UserError {
 
 export interface BatchSuspendUserResponse {
   /**
-   * <p>If the <a>BatchSuspendUser</a> action fails for one
-   *       or more of the user IDs in the request, a list of the user IDs is returned, along with error
-   *       codes and error messages.</p>
+   * <p>If the <a>BatchSuspendUser</a> action fails for one or more of the user IDs in the
+   *             request, a list of the user IDs is returned, along with error codes and error messages.</p>
    */
   UserErrors?: UserError[];
 }
 
 export namespace BatchSuspendUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchSuspendUserResponse): any => ({
     ...obj,
   });
@@ -1074,6 +1225,9 @@ export interface BatchUnsuspendUserRequest {
 }
 
 export namespace BatchUnsuspendUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchUnsuspendUserRequest): any => ({
     ...obj,
   });
@@ -1081,14 +1235,16 @@ export namespace BatchUnsuspendUserRequest {
 
 export interface BatchUnsuspendUserResponse {
   /**
-   * <p>If the <a>BatchUnsuspendUser</a> action fails for one
-   *       or more of the user IDs in the request, a list of the user IDs is returned, along with error
-   *       codes and error messages.</p>
+   * <p>If the <a>BatchUnsuspendUser</a> action fails for one or more of the user IDs in the
+   *             request, a list of the user IDs is returned, along with error codes and error messages.</p>
    */
   UserErrors?: UserError[];
 }
 
 export namespace BatchUnsuspendUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchUnsuspendUserResponse): any => ({
     ...obj,
   });
@@ -1100,7 +1256,13 @@ export enum PhoneNumberProductType {
 }
 
 /**
- * <p>The phone number ID, product type, or calling name fields to update, used with the <a>BatchUpdatePhoneNumber</a> and <a>UpdatePhoneNumber</a> actions.</p>
+ * <p>
+ * The phone number ID, product type, or calling name fields to update, used with the
+ * <a>BatchUpdatePhoneNumber</a>
+ * and
+ * <a>UpdatePhoneNumber</a>
+ * actions.
+ * </p>
  */
 export interface UpdatePhoneNumberRequestItem {
   /**
@@ -1120,6 +1282,9 @@ export interface UpdatePhoneNumberRequestItem {
 }
 
 export namespace UpdatePhoneNumberRequestItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdatePhoneNumberRequestItem): any => ({
     ...obj,
     ...(obj.CallingName && { CallingName: SENSITIVE_STRING }),
@@ -1134,6 +1299,9 @@ export interface BatchUpdatePhoneNumberRequest {
 }
 
 export namespace BatchUpdatePhoneNumberRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchUpdatePhoneNumberRequest): any => ({
     ...obj,
     ...(obj.UpdatePhoneNumberRequestItems && {
@@ -1152,6 +1320,9 @@ export interface BatchUpdatePhoneNumberResponse {
 }
 
 export namespace BatchUpdatePhoneNumberResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchUpdatePhoneNumberResponse): any => ({
     ...obj,
   });
@@ -1163,7 +1334,11 @@ export enum UserType {
 }
 
 /**
- * <p>The user ID and user fields to update, used with the <a>BatchUpdateUser</a> action.</p>
+ * <p>
+ * The user ID and user fields to update, used with the
+ * <a>BatchUpdateUser</a>
+ * action.
+ * </p>
  */
 export interface UpdateUserRequestItem {
   /**
@@ -1188,6 +1363,9 @@ export interface UpdateUserRequestItem {
 }
 
 export namespace UpdateUserRequestItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateUserRequestItem): any => ({
     ...obj,
     ...(obj.AlexaForBusinessMetadata && {
@@ -1209,6 +1387,9 @@ export interface BatchUpdateUserRequest {
 }
 
 export namespace BatchUpdateUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchUpdateUserRequest): any => ({
     ...obj,
     ...(obj.UpdateUserRequestItems && {
@@ -1219,14 +1400,16 @@ export namespace BatchUpdateUserRequest {
 
 export interface BatchUpdateUserResponse {
   /**
-   * <p>If the <a>BatchUpdateUser</a> action fails for one
-   *       or more of the user IDs in the request, a list of the user IDs is returned, along with error
-   *       codes and error messages.</p>
+   * <p>If the <a>BatchUpdateUser</a> action fails for one or more of the user IDs in the
+   *             request, a list of the user IDs is returned, along with error codes and error messages.</p>
    */
   UserErrors?: UserError[];
 }
 
 export namespace BatchUpdateUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchUpdateUserResponse): any => ({
     ...obj,
   });
@@ -1287,6 +1470,9 @@ export interface Bot {
 }
 
 export namespace Bot {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Bot): any => ({
     ...obj,
     ...(obj.DisplayName && { DisplayName: SENSITIVE_STRING }),
@@ -1296,8 +1482,8 @@ export namespace Bot {
 }
 
 /**
- * <p>The Amazon Chime Business Calling settings for the administrator's AWS account.
- *       Includes any Amazon S3 buckets designated for storing call detail records.</p>
+ * <p>The Amazon Chime Business Calling settings for the administrator's AWS account. Includes any
+ *             Amazon S3 buckets designated for storing call detail records.</p>
  */
 export interface BusinessCallingSettings {
   /**
@@ -1307,6 +1493,9 @@ export interface BusinessCallingSettings {
 }
 
 export namespace BusinessCallingSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BusinessCallingSettings): any => ({
     ...obj,
   });
@@ -1335,7 +1524,7 @@ export enum ChannelPrivacy {
 }
 
 /**
- * <p>Creates a channel.</p>
+ * <p>The details of a channel.</p>
  */
 export interface Channel {
   /**
@@ -1354,27 +1543,27 @@ export interface Channel {
   Mode?: ChannelMode | string;
 
   /**
-   * <p>The channel's privacy setting, <code>PUBLIC</code> or <code>HIDDEN</code>.</p>
+   * <p>The channel's privacy setting.</p>
    */
   Privacy?: ChannelPrivacy | string;
 
   /**
-   * <p>The metadata of the channel.</p>
+   * <p>The channel's metadata.</p>
    */
   Metadata?: string;
 
   /**
-   * <p>The administrator who created the channel.</p>
+   * <p>The <code>AppInstanceUser</code> who created the channel.</p>
    */
   CreatedBy?: Identity;
 
   /**
-   * <p>The time at which the administrator created the channel.</p>
+   * <p>The time at which the <code>AppInstanceUser</code> created the channel.</p>
    */
   CreatedTimestamp?: Date;
 
   /**
-   * <p>The time at which a member sent the last message in a session.</p>
+   * <p>The time at which a member sent the last message in the channel.</p>
    */
   LastMessageTimestamp?: Date;
 
@@ -1385,6 +1574,9 @@ export interface Channel {
 }
 
 export namespace Channel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Channel): any => ({
     ...obj,
     ...(obj.Name && { Name: SENSITIVE_STRING }),
@@ -1394,7 +1586,7 @@ export namespace Channel {
 }
 
 /**
- * <p>Bans a user from a channel.</p>
+ * <p>The details of a channel ban.</p>
  */
 export interface ChannelBan {
   /**
@@ -1413,12 +1605,15 @@ export interface ChannelBan {
   CreatedTimestamp?: Date;
 
   /**
-   * <p>The  parameter of the  action.</p>
+   * <p>The <code>AppInstanceUser</code> who created the ban.</p>
    */
   CreatedBy?: Identity;
 }
 
 export namespace ChannelBan {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelBan): any => ({
     ...obj,
     ...(obj.Member && { Member: Identity.filterSensitiveLog(obj.Member) }),
@@ -1427,7 +1622,7 @@ export namespace ChannelBan {
 }
 
 /**
- * <p>The summary data for the channel ban.</p>
+ * <p>Summary of the details of a <code>ChannelBan</code>.</p>
  */
 export interface ChannelBanSummary {
   /**
@@ -1437,6 +1632,9 @@ export interface ChannelBanSummary {
 }
 
 export namespace ChannelBanSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelBanSummary): any => ({
     ...obj,
     ...(obj.Member && { Member: Identity.filterSensitiveLog(obj.Member) }),
@@ -1444,11 +1642,11 @@ export namespace ChannelBanSummary {
 }
 
 /**
- * <p>Creates a channel member.</p>
+ * <p>The details of a channel member.</p>
  */
 export interface ChannelMembership {
   /**
-   * <p>The identifier of the member who invited another member. Taken from the message header.</p>
+   * <p>The identifier of the member who invited another member.</p>
    */
   InvitedBy?: Identity;
 
@@ -1468,7 +1666,7 @@ export interface ChannelMembership {
   ChannelArn?: string;
 
   /**
-   * <p>The time at which the channel membership was created. </p>
+   * <p>The time at which the channel membership was created.</p>
    */
   CreatedTimestamp?: Date;
 
@@ -1479,6 +1677,9 @@ export interface ChannelMembership {
 }
 
 export namespace ChannelMembership {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelMembership): any => ({
     ...obj,
     ...(obj.InvitedBy && { InvitedBy: Identity.filterSensitiveLog(obj.InvitedBy) }),
@@ -1487,31 +1688,31 @@ export namespace ChannelMembership {
 }
 
 /**
- * <p>The summary data for a channel.</p>
+ * <p>Summary of the details of a <code>Channel</code>.</p>
  */
 export interface ChannelSummary {
   /**
-   * <p>The  parameter of the  action.</p>
+   * <p>The name of the channel.</p>
    */
   Name?: string;
 
   /**
-   * <p>The ARN of the channel summary.</p>
+   * <p>The ARN of the channel.</p>
    */
   ChannelArn?: string;
 
   /**
-   * <p>The summary mode of the channel.</p>
+   * <p>The mode of the channel.</p>
    */
   Mode?: ChannelMode | string;
 
   /**
-   * <p>The privacy setting of the channel being summarized, <code>PUBLIC</code> or <code>HIDDEN</code>.</p>
+   * <p>The privacy setting of the channel.</p>
    */
   Privacy?: ChannelPrivacy | string;
 
   /**
-   * <p>The metadata of the channel summary.</p>
+   * <p>The metadata of the channel.</p>
    */
   Metadata?: string;
 
@@ -1522,6 +1723,9 @@ export interface ChannelSummary {
 }
 
 export namespace ChannelSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelSummary): any => ({
     ...obj,
     ...(obj.Name && { Name: SENSITIVE_STRING }),
@@ -1530,21 +1734,24 @@ export namespace ChannelSummary {
 }
 
 /**
- * <p>Returns the channel membership summary data for an app instance.</p>
+ * <p>Summary of the channel membership details of an <code>AppInstanceUser</code>.</p>
  */
 export interface ChannelMembershipForAppInstanceUserSummary {
   /**
-   * <p>The summary data for a channel.</p>
+   * <p>Summary of the details of a <code>Channel</code>.</p>
    */
   ChannelSummary?: ChannelSummary;
 
   /**
-   * <p>Returns the channel membership data for an app instance.</p>
+   * <p>Returns the channel membership data for an <code>AppInstance</code>.</p>
    */
   AppInstanceUserMembershipSummary?: AppInstanceUserMembershipSummary;
 }
 
 export namespace ChannelMembershipForAppInstanceUserSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelMembershipForAppInstanceUserSummary): any => ({
     ...obj,
     ...(obj.ChannelSummary && { ChannelSummary: ChannelSummary.filterSensitiveLog(obj.ChannelSummary) }),
@@ -1552,7 +1759,7 @@ export namespace ChannelMembershipForAppInstanceUserSummary {
 }
 
 /**
- * <p>The summary data of a channel membership.</p>
+ * <p>Summary of the details of a <code>ChannelMembership</code>.</p>
  */
 export interface ChannelMembershipSummary {
   /**
@@ -1562,6 +1769,9 @@ export interface ChannelMembershipSummary {
 }
 
 export namespace ChannelMembershipSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelMembershipSummary): any => ({
     ...obj,
     ...(obj.Member && { Member: Identity.filterSensitiveLog(obj.Member) }),
@@ -1579,7 +1789,7 @@ export enum ChannelMessageType {
 }
 
 /**
- * <p>Creates a message in a channel.</p>
+ * <p>The details of a message in a channel.</p>
  */
 export interface ChannelMessage {
   /**
@@ -1628,15 +1838,20 @@ export interface ChannelMessage {
   Sender?: Identity;
 
   /**
-   * <p>Hides the content of a message. The message still exists on the back end, but this action
-   *       only returns metadata.</p>
+   * <p>Hides the content of a message.</p>
    */
   Redacted?: boolean;
 
+  /**
+   * <p>The persistence setting for a channel message.</p>
+   */
   Persistence?: ChannelMessagePersistenceType | string;
 }
 
 export namespace ChannelMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelMessage): any => ({
     ...obj,
     ...(obj.Content && { Content: SENSITIVE_STRING }),
@@ -1646,26 +1861,26 @@ export namespace ChannelMessage {
 }
 
 /**
- * <p>A summary of the messages in a channel.</p>
+ * <p>Summary of the messages in a <code>Channel</code>.</p>
  */
 export interface ChannelMessageSummary {
   /**
-   * <p>The ID of the message summary.</p>
+   * <p>The ID of the message.</p>
    */
   MessageId?: string;
 
   /**
-   * <p>The content of the message summary.</p>
+   * <p>The content of the message.</p>
    */
   Content?: string;
 
   /**
-   * <p>The metadata of the message summary.</p>
+   * <p>The metadata of the message.</p>
    */
   Metadata?: string;
 
   /**
-   * <p>The type of message summary.</p>
+   * <p>The type of message.</p>
    */
   Type?: ChannelMessageType | string;
 
@@ -1674,20 +1889,31 @@ export interface ChannelMessageSummary {
    */
   CreatedTimestamp?: Date;
 
-  LastUpdatedTimestamp?: Date;
-  LastEditedTimestamp?: Date;
   /**
-   * <p>The sender of the message summary.</p>
+   * <p>The time at which a message was last updated.</p>
+   */
+  LastUpdatedTimestamp?: Date;
+
+  /**
+   * <p>The time at which a message was last edited.</p>
+   */
+  LastEditedTimestamp?: Date;
+
+  /**
+   * <p>The message sender.</p>
    */
   Sender?: Identity;
 
   /**
-   * <p>Redacts the content of a message summary.</p>
+   * <p>Indicates whether a message was redacted.</p>
    */
   Redacted?: boolean;
 }
 
 export namespace ChannelMessageSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelMessageSummary): any => ({
     ...obj,
     ...(obj.Content && { Content: SENSITIVE_STRING }),
@@ -1697,16 +1923,19 @@ export namespace ChannelMessageSummary {
 }
 
 /**
- * <p>Returns the summary data for a moderated channel.</p>
+ * <p>Summary of the details of a moderated channel.</p>
  */
 export interface ChannelModeratedByAppInstanceUserSummary {
   /**
-   * <p>The summary data for a channel.</p>
+   * <p>Summary of the details of a <code>Channel</code>.</p>
    */
   ChannelSummary?: ChannelSummary;
 }
 
 export namespace ChannelModeratedByAppInstanceUserSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelModeratedByAppInstanceUserSummary): any => ({
     ...obj,
     ...(obj.ChannelSummary && { ChannelSummary: ChannelSummary.filterSensitiveLog(obj.ChannelSummary) }),
@@ -1714,7 +1943,7 @@ export namespace ChannelModeratedByAppInstanceUserSummary {
 }
 
 /**
- * <p>Creates a moderator on a channel.</p>
+ * <p>The details of a channel moderator.</p>
  */
 export interface ChannelModerator {
   /**
@@ -1733,12 +1962,15 @@ export interface ChannelModerator {
   CreatedTimestamp?: Date;
 
   /**
-   * <p>The member who created the moderator.</p>
+   * <p>The <code>AppInstanceUser</code> who created the moderator.</p>
    */
   CreatedBy?: Identity;
 }
 
 export namespace ChannelModerator {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelModerator): any => ({
     ...obj,
     ...(obj.Moderator && { Moderator: Identity.filterSensitiveLog(obj.Moderator) }),
@@ -1747,7 +1979,7 @@ export namespace ChannelModerator {
 }
 
 /**
- * <p>Summary data of the moderators in a channel.</p>
+ * <p>Summary of the details of a <code>ChannelModerator</code>.</p>
  */
 export interface ChannelModeratorSummary {
   /**
@@ -1757,6 +1989,9 @@ export interface ChannelModeratorSummary {
 }
 
 export namespace ChannelModeratorSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelModeratorSummary): any => ({
     ...obj,
     ...(obj.Moderator && { Moderator: Identity.filterSensitiveLog(obj.Moderator) }),
@@ -1765,7 +2000,7 @@ export namespace ChannelModeratorSummary {
 
 /**
  * <p>The request could not be processed because of conflict in the current state of the
- *        resource.</p>
+ *             resource.</p>
  */
 export interface ConflictException extends __SmithyException, $MetadataBearer {
   name: "ConflictException";
@@ -1775,22 +2010,28 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The retention settings that determine how long to retain chat conversation messages for an Amazon Chime Enterprise account.</p>
+ * <p>The retention settings that determine how long to retain conversation messages for an Amazon Chime Enterprise account.</p>
  */
 export interface ConversationRetentionSettings {
   /**
-   * <p>The number of days for which to retain chat conversation messages.</p>
+   * <p>The number of days for which to retain conversation messages.</p>
    */
   RetentionDays?: number;
 }
 
 export namespace ConversationRetentionSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConversationRetentionSettings): any => ({
     ...obj,
   });
@@ -1804,6 +2045,9 @@ export interface CreateAccountRequest {
 }
 
 export namespace CreateAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccountRequest): any => ({
     ...obj,
   });
@@ -1811,12 +2055,15 @@ export namespace CreateAccountRequest {
 
 export interface CreateAccountResponse {
   /**
-   * <p>The Amazon Chime account details. An AWS account can have multiple Amazon Chime accounts.</p>
+   * <p>The Amazon Chime account details.</p>
    */
   Account?: Account;
 }
 
 export namespace CreateAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccountResponse): any => ({
     ...obj,
   });
@@ -1824,38 +2071,50 @@ export namespace CreateAccountResponse {
 
 export interface CreateAppInstanceRequest {
   /**
-   * <p>The name of the app instance.</p>
+   * <p>The name of the <code>AppInstance</code>.</p>
    */
   Name: string | undefined;
 
   /**
-   * <p>The metadata of the app instance. Limited to a 1KB string in UTF-8.</p>
+   * <p>The metadata of the <code>AppInstance</code>. Limited to a 1KB string in UTF-8.</p>
    */
   Metadata?: string;
 
   /**
-   * <p>The <code>ClientRequestToken</code> of the app instance.</p>
+   * <p>The <code>ClientRequestToken</code> of the <code>AppInstance</code>.</p>
    */
   ClientRequestToken?: string;
+
+  /**
+   * <p>Tags assigned to the <code>AppInstanceUser</code>.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateAppInstanceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAppInstanceRequest): any => ({
     ...obj,
     ...(obj.Name && { Name: SENSITIVE_STRING }),
     ...(obj.Metadata && { Metadata: SENSITIVE_STRING }),
     ...(obj.ClientRequestToken && { ClientRequestToken: SENSITIVE_STRING }),
+    ...(obj.Tags && { Tags: obj.Tags.map((item) => Tag.filterSensitiveLog(item)) }),
   });
 }
 
 export interface CreateAppInstanceResponse {
   /**
-   * <p>The Amazon Resource Number (ARN) of the app instance.</p>
+   * <p>The Amazon Resource Number (ARN) of the <code>AppInstance</code>.</p>
    */
   AppInstanceArn?: string;
 }
 
 export namespace CreateAppInstanceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAppInstanceResponse): any => ({
     ...obj,
   });
@@ -1863,17 +2122,20 @@ export namespace CreateAppInstanceResponse {
 
 export interface CreateAppInstanceAdminRequest {
   /**
-   * <p>The ARN of the administrator of the current app instance.</p>
+   * <p>The ARN of the administrator of the current <code>AppInstance</code>.</p>
    */
   AppInstanceAdminArn: string | undefined;
 
   /**
-   * <p>The ARN of the app instance.</p>
+   * <p>The ARN of the <code>AppInstance</code>.</p>
    */
   AppInstanceArn: string | undefined;
 }
 
 export namespace CreateAppInstanceAdminRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAppInstanceAdminRequest): any => ({
     ...obj,
   });
@@ -1881,17 +2143,20 @@ export namespace CreateAppInstanceAdminRequest {
 
 export interface CreateAppInstanceAdminResponse {
   /**
-   * <p>The name and ARN of the admin for the app instance.</p>
+   * <p>The name and ARN of the admin for the <code>AppInstance</code>.</p>
    */
   AppInstanceAdmin?: Identity;
 
   /**
-   * <p>The ARN of the of the admin for the app instance.</p>
+   * <p>The ARN of the of the admin for the <code>AppInstance</code>.</p>
    */
   AppInstanceArn?: string;
 }
 
 export namespace CreateAppInstanceAdminResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAppInstanceAdminResponse): any => ({
     ...obj,
     ...(obj.AppInstanceAdmin && { AppInstanceAdmin: Identity.filterSensitiveLog(obj.AppInstanceAdmin) }),
@@ -1900,12 +2165,12 @@ export namespace CreateAppInstanceAdminResponse {
 
 export interface CreateAppInstanceUserRequest {
   /**
-   * <p>The ARN of the app instance request.</p>
+   * <p>The ARN of the <code>AppInstance</code> request.</p>
    */
   AppInstanceArn: string | undefined;
 
   /**
-   * <p>The user ID of the app instance.</p>
+   * <p>The user ID of the <code>AppInstance</code>.</p>
    */
   AppInstanceUserId: string | undefined;
 
@@ -1920,18 +2185,27 @@ export interface CreateAppInstanceUserRequest {
   Metadata?: string;
 
   /**
-   * <p>The token assigned to the user requesting an app instance.</p>
+   * <p>The token assigned to the user requesting an <code>AppInstance</code>.</p>
    */
   ClientRequestToken?: string;
+
+  /**
+   * <p>Tags assigned to the <code>AppInstanceUser</code>.</p>
+   */
+  Tags?: Tag[];
 }
 
 export namespace CreateAppInstanceUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAppInstanceUserRequest): any => ({
     ...obj,
     ...(obj.AppInstanceUserId && { AppInstanceUserId: SENSITIVE_STRING }),
     ...(obj.Name && { Name: SENSITIVE_STRING }),
     ...(obj.Metadata && { Metadata: SENSITIVE_STRING }),
     ...(obj.ClientRequestToken && { ClientRequestToken: SENSITIVE_STRING }),
+    ...(obj.Tags && { Tags: obj.Tags.map((item) => Tag.filterSensitiveLog(item)) }),
   });
 }
 
@@ -1943,6 +2217,9 @@ export interface CreateAppInstanceUserResponse {
 }
 
 export namespace CreateAppInstanceUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAppInstanceUserResponse): any => ({
     ...obj,
   });
@@ -1955,8 +2232,7 @@ export interface CreateAttendeeRequest {
   MeetingId: string | undefined;
 
   /**
-   * <p>The Amazon Chime SDK external user ID. An idempotency token. Links the attendee to an identity managed by a builder application.
-   *       If you create an attendee with the same external user id, the service returns the existing record.</p>
+   * <p>The Amazon Chime SDK external user ID. An idempotency token. Links the attendee to an identity managed by a builder application.</p>
    */
   ExternalUserId: string | undefined;
 
@@ -1967,6 +2243,9 @@ export interface CreateAttendeeRequest {
 }
 
 export namespace CreateAttendeeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAttendeeRequest): any => ({
     ...obj,
     ...(obj.ExternalUserId && { ExternalUserId: SENSITIVE_STRING }),
@@ -1982,6 +2261,9 @@ export interface CreateAttendeeResponse {
 }
 
 export namespace CreateAttendeeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAttendeeResponse): any => ({
     ...obj,
     ...(obj.Attendee && { Attendee: Attendee.filterSensitiveLog(obj.Attendee) }),
@@ -2006,6 +2288,9 @@ export interface CreateBotRequest {
 }
 
 export namespace CreateBotRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBotRequest): any => ({
     ...obj,
     ...(obj.DisplayName && { DisplayName: SENSITIVE_STRING }),
@@ -2020,6 +2305,9 @@ export interface CreateBotResponse {
 }
 
 export namespace CreateBotResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBotResponse): any => ({
     ...obj,
     ...(obj.Bot && { Bot: Bot.filterSensitiveLog(obj.Bot) }),
@@ -2038,14 +2326,14 @@ export interface CreateChannelRequest {
   Name: string | undefined;
 
   /**
-   * <p>The channel mode: <code>UNRESTRICTED</code> or <code>RESTRICTED</code>. Administrators, moderators, and channel members can add
-   *            themselves and other members to unrestricted channels. Only administrators and moderators can add members to restricted channels.</p>
+   * <p>The channel mode: <code>UNRESTRICTED</code> or <code>RESTRICTED</code>. Administrators, moderators, and channel members can add themselves
+   *     and other members to unrestricted channels. Only administrators and moderators can add members to restricted channels.</p>
    */
   Mode?: ChannelMode | string;
 
   /**
-   * <p>The channel's privacy level: <code>PUBLIC</code> or <code>PRIVATE</code>. Private channels aren't discoverable by users outside
-   *        the channel. Public channels are discoverable by anyone in the app instance.</p>
+   * <p>The channel's privacy level: <code>PUBLIC</code> or <code>PRIVATE</code>. Private channels aren't discoverable by users outside the channel.
+   *     Public channels are discoverable by anyone in the <code>AppInstance</code>.</p>
    */
   Privacy?: ChannelPrivacy | string;
 
@@ -2059,10 +2347,21 @@ export interface CreateChannelRequest {
    */
   ClientRequestToken?: string;
 
+  /**
+   * <p>The tags for the creation request.</p>
+   */
   Tags?: Tag[];
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace CreateChannelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateChannelRequest): any => ({
     ...obj,
     ...(obj.Name && { Name: SENSITIVE_STRING }),
@@ -2080,6 +2379,9 @@ export interface CreateChannelResponse {
 }
 
 export namespace CreateChannelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateChannelResponse): any => ({
     ...obj,
   });
@@ -2095,9 +2397,17 @@ export interface CreateChannelBanRequest {
    * <p>The ARN of the member being banned.</p>
    */
   MemberArn: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace CreateChannelBanRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateChannelBanRequest): any => ({
     ...obj,
   });
@@ -2116,6 +2426,9 @@ export interface CreateChannelBanResponse {
 }
 
 export namespace CreateChannelBanResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateChannelBanResponse): any => ({
     ...obj,
     ...(obj.Member && { Member: Identity.filterSensitiveLog(obj.Member) }),
@@ -2135,13 +2448,21 @@ export interface CreateChannelMembershipRequest {
 
   /**
    * <p>The membership type of a user, <code>DEFAULT</code> or <code>HIDDEN</code>. Default members are always returned as part of
-   *            <code>ListChannelMemberships</code>. Hidden members are only returned if the type filter in <code>ListChannelMemberships</code>
-   *            equals <code>HIDDEN</code>. Otherwise hidden members are not returned. This is only supported by moderators.</p>
+   * <code>ListChannelMemberships</code>. Hidden members are only returned if the type filter in <code>ListChannelMemberships</code> equals
+   * <code>HIDDEN</code>. Otherwise hidden members are not returned. This is only supported by moderators.</p>
    */
   Type: ChannelMembershipType | string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace CreateChannelMembershipRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateChannelMembershipRequest): any => ({
     ...obj,
   });
@@ -2160,6 +2481,9 @@ export interface CreateChannelMembershipResponse {
 }
 
 export namespace CreateChannelMembershipResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateChannelMembershipResponse): any => ({
     ...obj,
     ...(obj.Member && { Member: Identity.filterSensitiveLog(obj.Member) }),
@@ -2176,9 +2500,17 @@ export interface CreateChannelModeratorRequest {
    * <p>The ARN of the moderator.</p>
    */
   ChannelModeratorArn: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace CreateChannelModeratorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateChannelModeratorRequest): any => ({
     ...obj,
   });
@@ -2197,6 +2529,9 @@ export interface CreateChannelModeratorResponse {
 }
 
 export namespace CreateChannelModeratorResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateChannelModeratorResponse): any => ({
     ...obj,
     ...(obj.ChannelModerator && { ChannelModerator: Identity.filterSensitiveLog(obj.ChannelModerator) }),
@@ -2204,7 +2539,9 @@ export namespace CreateChannelModeratorResponse {
 }
 
 /**
- * <p>The configuration for resource targets to receive notifications when Amazon Chime SDK meeting and attendee events occur. The Amazon Chime SDK supports resource targets located in the US East (N. Virginia) AWS Region (<code>us-east-1</code>).</p>
+ * <p> The resource target configurations for receiving Amazon Chime SDK meeting and attendee event
+ *             notifications. The Amazon Chime SDK supports resource targets located in the US East (N.
+ *             Virginia) AWS Region (<code>us-east-1</code>). </p>
  */
 export interface MeetingNotificationConfiguration {
   /**
@@ -2219,6 +2556,9 @@ export interface MeetingNotificationConfiguration {
 }
 
 export namespace MeetingNotificationConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MeetingNotificationConfiguration): any => ({
     ...obj,
     ...(obj.SnsTopicArn && { SnsTopicArn: SENSITIVE_STRING }),
@@ -2243,11 +2583,49 @@ export interface CreateMeetingRequest {
   MeetingHostId?: string;
 
   /**
-   * <p>The Region in which to create the meeting. Default: <code>us-east-1</code>.</p>
-   *          <p>Available values: <code>af-south-1</code>, <code>ap-northeast-1</code>, <code>ap-northeast-2</code>, <code>ap-south-1</code>,
-   *           <code>ap-southeast-1</code>, <code>ap-southeast-2</code>, <code>ca-central-1</code>, <code>eu-central-1</code>, <code>eu-north-1</code>,
-   *           <code>eu-south-1</code>, <code>eu-west-1</code>, <code>eu-west-2</code>, <code>eu-west-3</code>, <code>sa-east-1</code>, <code>us-east-1</code>,
-   *           <code>us-east-2</code>, <code>us-west-1</code>, <code>us-west-2</code>.</p>
+   * <p>
+   * The Region in which to create the meeting. Default: <code>us-east-1</code>.
+   * </p>
+   *
+   *          <p>
+   * Available values:
+   * <code>af-south-1</code>
+   * ,
+   * <code>ap-northeast-1</code>
+   * ,
+   * <code>ap-northeast-2</code>
+   * ,
+   * <code>ap-south-1</code>
+   * ,
+   * <code>ap-southeast-1</code>
+   * ,
+   * <code>ap-southeast-2</code>
+   * ,
+   * <code>ca-central-1</code>
+   * ,
+   * <code>eu-central-1</code>
+   * ,
+   * <code>eu-north-1</code>
+   * ,
+   * <code>eu-south-1</code>
+   * ,
+   * <code>eu-west-1</code>
+   * ,
+   * <code>eu-west-2</code>
+   * ,
+   * <code>eu-west-3</code>
+   * ,
+   * <code>sa-east-1</code>
+   * ,
+   * <code>us-east-1</code>
+   * ,
+   * <code>us-east-2</code>
+   * ,
+   * <code>us-west-1</code>
+   * ,
+   * <code>us-west-2</code>
+   * .
+   * </p>
    */
   MediaRegion?: string;
 
@@ -2263,6 +2641,9 @@ export interface CreateMeetingRequest {
 }
 
 export namespace CreateMeetingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMeetingRequest): any => ({
     ...obj,
     ...(obj.ClientRequestToken && { ClientRequestToken: SENSITIVE_STRING }),
@@ -2316,6 +2697,9 @@ export interface MediaPlacement {
 }
 
 export namespace MediaPlacement {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MediaPlacement): any => ({
     ...obj,
   });
@@ -2341,12 +2725,21 @@ export interface Meeting {
   MediaPlacement?: MediaPlacement;
 
   /**
-   * <p>The Region in which to create the meeting. Available values: <code>af-south-1</code>, <code>ap-northeast-1</code>, <code>ap-northeast-2</code>, <code>ap-south-1</code>, <code>ap-southeast-1</code>, <code>ap-southeast-2</code>, <code>ca-central-1</code>, <code>eu-central-1</code>, <code>eu-north-1</code>, <code>eu-south-1</code>, <code>eu-west-1</code>, <code>eu-west-2</code>, <code>eu-west-3</code>, <code>sa-east-1</code>, <code>us-east-1</code>, <code>us-east-2</code>, <code>us-west-1</code>, <code>us-west-2</code>.</p>
+   * <p> The Region in which you create the meeting. Available values: <code>af-south-1</code> ,
+   *                 <code>ap-northeast-1</code> , <code>ap-northeast-2</code> , <code>ap-south-1</code>
+   *             , <code>ap-southeast-1</code> , <code>ap-southeast-2</code> , <code>ca-central-1</code>
+   *             , <code>eu-central-1</code> , <code>eu-north-1</code> , <code>eu-south-1</code> ,
+   *                 <code>eu-west-1</code> , <code>eu-west-2</code> , <code>eu-west-3</code> ,
+   *                 <code>sa-east-1</code> , <code>us-east-1</code> , <code>us-east-2</code> ,
+   *                 <code>us-west-1</code> , <code>us-west-2</code> . </p>
    */
   MediaRegion?: string;
 }
 
 export namespace Meeting {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Meeting): any => ({
     ...obj,
     ...(obj.ExternalMeetingId && { ExternalMeetingId: SENSITIVE_STRING }),
@@ -2355,12 +2748,19 @@ export namespace Meeting {
 
 export interface CreateMeetingResponse {
   /**
-   * <p>The meeting information, including the meeting ID and <code>MediaPlacement</code>.</p>
+   * <p>
+   * The meeting information, including the meeting ID and
+   * <code>MediaPlacement</code>
+   * .
+   * </p>
    */
   Meeting?: Meeting;
 }
 
 export namespace CreateMeetingResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMeetingResponse): any => ({
     ...obj,
     ...(obj.Meeting && { Meeting: Meeting.filterSensitiveLog(obj.Meeting) }),
@@ -2370,12 +2770,6 @@ export namespace CreateMeetingResponse {
 export interface CreateMeetingDialOutRequest {
   /**
    * <p>The Amazon Chime SDK meeting ID.</p>
-   *
-   *          <p>Type: String</p>
-   *
-   *          <p>Pattern: [a-fA-F0-9]{8}(?:-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}</p>
-   *
-   *          <p>Required: No</p>
    */
   MeetingId: string | undefined;
 
@@ -2390,13 +2784,17 @@ export interface CreateMeetingDialOutRequest {
   ToPhoneNumber: string | undefined;
 
   /**
-   * <p>Token used by the Amazon Chime SDK attendee. Call the <a href="https://docs.aws.amazon.com/https:/docs.aws.amazon.com/chime/latest/APIReference/API_Attendee.html">
-   *         CreateAttendee API</a> to get a join token. </p>
+   * <p>Token used by the Amazon Chime SDK attendee. Call the
+   *     <a href="https://docs.aws.amazon.com/chime/latest/APIReference/API_Attendee.htmlCreateAttendee">CreateAttendee</a> action to
+   *     get a join token.</p>
    */
   JoinToken: string | undefined;
 }
 
 export namespace CreateMeetingDialOutRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMeetingDialOutRequest): any => ({
     ...obj,
     ...(obj.FromPhoneNumber && { FromPhoneNumber: SENSITIVE_STRING }),
@@ -2413,6 +2811,9 @@ export interface CreateMeetingDialOutResponse {
 }
 
 export namespace CreateMeetingDialOutResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMeetingDialOutResponse): any => ({
     ...obj,
   });
@@ -2435,8 +2836,50 @@ export interface CreateMeetingWithAttendeesRequest {
   MeetingHostId?: string;
 
   /**
-   * <p>The Region in which to create the meeting. Default: <code>us-east-1</code>.</p>
-   *          <p>Available values: <code>af-south-1</code>, <code>ap-northeast-1</code>, <code>ap-northeast-2</code>, <code>ap-south-1</code>, <code>ap-southeast-1</code>, <code>ap-southeast-2</code>, <code>ca-central-1</code>, <code>eu-central-1</code>, <code>eu-north-1</code>, <code>eu-south-1</code>, <code>eu-west-1</code>, <code>eu-west-2</code>, <code>eu-west-3</code>, <code>sa-east-1</code>, <code>us-east-1</code>, <code>us-east-2</code>, <code>us-west-1</code>, <code>us-west-2</code>.</p>
+   * <p>
+   * The Region in which to create the meeting. Default: <code>us-east-1</code>
+   * .
+   * </p>
+   *
+   *          <p>
+   * Available values:
+   * <code>af-south-1</code>
+   * ,
+   * <code>ap-northeast-1</code>
+   * ,
+   * <code>ap-northeast-2</code>
+   * ,
+   * <code>ap-south-1</code>
+   * ,
+   * <code>ap-southeast-1</code>
+   * ,
+   * <code>ap-southeast-2</code>
+   * ,
+   * <code>ca-central-1</code>
+   * ,
+   * <code>eu-central-1</code>
+   * ,
+   * <code>eu-north-1</code>
+   * ,
+   * <code>eu-south-1</code>
+   * ,
+   * <code>eu-west-1</code>
+   * ,
+   * <code>eu-west-2</code>
+   * ,
+   * <code>eu-west-3</code>
+   * ,
+   * <code>sa-east-1</code>
+   * ,
+   * <code>us-east-1</code>
+   * ,
+   * <code>us-east-2</code>
+   * ,
+   * <code>us-west-1</code>
+   * ,
+   * <code>us-west-2</code>
+   * .
+   * </p>
    */
   MediaRegion?: string;
 
@@ -2446,7 +2889,9 @@ export interface CreateMeetingWithAttendeesRequest {
   Tags?: Tag[];
 
   /**
-   * <p>The configuration for resource targets to receive notifications when Amazon Chime SDK meeting and attendee events occur. The Amazon Chime SDK supports resource targets located in the US East (N. Virginia) AWS Region (<code>us-east-1</code>).</p>
+   * <p> The resource target configurations for receiving Amazon Chime SDK meeting and attendee event
+   *             notifications. The Amazon Chime SDK supports resource targets located in the US East (N.
+   *             Virginia) AWS Region (<code>us-east-1</code>). </p>
    */
   NotificationsConfiguration?: MeetingNotificationConfiguration;
 
@@ -2457,6 +2902,9 @@ export interface CreateMeetingWithAttendeesRequest {
 }
 
 export namespace CreateMeetingWithAttendeesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMeetingWithAttendeesRequest): any => ({
     ...obj,
     ...(obj.ClientRequestToken && { ClientRequestToken: SENSITIVE_STRING }),
@@ -2490,6 +2938,9 @@ export interface CreateMeetingWithAttendeesResponse {
 }
 
 export namespace CreateMeetingWithAttendeesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMeetingWithAttendeesResponse): any => ({
     ...obj,
     ...(obj.Meeting && { Meeting: Meeting.filterSensitiveLog(obj.Meeting) }),
@@ -2511,6 +2962,9 @@ export interface CreatePhoneNumberOrderRequest {
 }
 
 export namespace CreatePhoneNumberOrderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePhoneNumberOrderRequest): any => ({
     ...obj,
     ...(obj.E164PhoneNumbers && { E164PhoneNumbers: SENSITIVE_STRING }),
@@ -2539,6 +2993,9 @@ export interface OrderedPhoneNumber {
 }
 
 export namespace OrderedPhoneNumber {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrderedPhoneNumber): any => ({
     ...obj,
     ...(obj.E164PhoneNumber && { E164PhoneNumber: SENSITIVE_STRING }),
@@ -2572,23 +3029,26 @@ export interface PhoneNumberOrder {
   Status?: PhoneNumberOrderStatus | string;
 
   /**
-   * <p>The ordered phone number details, such as the phone number in E.164 format and the
-   *      phone number status.</p>
+   * <p>The ordered phone number details, such as the phone number in E.164 format and the phone
+   *             number status.</p>
    */
   OrderedPhoneNumbers?: OrderedPhoneNumber[];
 
   /**
-   * <p>The phone number order creation timestamp, in ISO 8601 format.</p>
+   * <p>The phone number order creation time stamp, in ISO 8601 format.</p>
    */
   CreatedTimestamp?: Date;
 
   /**
-   * <p>The updated phone number order timestamp, in ISO 8601 format.</p>
+   * <p>The updated phone number order time stamp, in ISO 8601 format.</p>
    */
   UpdatedTimestamp?: Date;
 }
 
 export namespace PhoneNumberOrder {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PhoneNumberOrder): any => ({
     ...obj,
     ...(obj.OrderedPhoneNumbers && {
@@ -2605,6 +3065,9 @@ export interface CreatePhoneNumberOrderResponse {
 }
 
 export namespace CreatePhoneNumberOrderResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePhoneNumberOrderResponse): any => ({
     ...obj,
     ...(obj.PhoneNumberOrder && { PhoneNumberOrder: PhoneNumberOrder.filterSensitiveLog(obj.PhoneNumberOrder) }),
@@ -2632,6 +3095,9 @@ export interface GeoMatchParams {
 }
 
 export namespace GeoMatchParams {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GeoMatchParams): any => ({
     ...obj,
   });
@@ -2685,6 +3151,9 @@ export interface CreateProxySessionRequest {
 }
 
 export namespace CreateProxySessionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateProxySessionRequest): any => ({
     ...obj,
     ...(obj.ParticipantPhoneNumbers && { ParticipantPhoneNumbers: SENSITIVE_STRING }),
@@ -2708,6 +3177,9 @@ export interface Participant {
 }
 
 export namespace Participant {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Participant): any => ({
     ...obj,
     ...(obj.PhoneNumber && { PhoneNumber: SENSITIVE_STRING }),
@@ -2756,17 +3228,17 @@ export interface ProxySession {
   Capabilities?: (Capability | string)[];
 
   /**
-   * <p>The created timestamp, in ISO 8601 format.</p>
+   * <p>The created time stamp, in ISO 8601 format.</p>
    */
   CreatedTimestamp?: Date;
 
   /**
-   * <p>The updated timestamp, in ISO 8601 format.</p>
+   * <p>The updated time stamp, in ISO 8601 format.</p>
    */
   UpdatedTimestamp?: Date;
 
   /**
-   * <p>The ended timestamp, in ISO 8601 format.</p>
+   * <p>The ended time stamp, in ISO 8601 format.</p>
    */
   EndedTimestamp?: Date;
 
@@ -2792,6 +3264,9 @@ export interface ProxySession {
 }
 
 export namespace ProxySession {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProxySession): any => ({
     ...obj,
     ...(obj.Participants && { Participants: obj.Participants.map((item) => Participant.filterSensitiveLog(item)) }),
@@ -2806,6 +3281,9 @@ export interface CreateProxySessionResponse {
 }
 
 export namespace CreateProxySessionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateProxySessionResponse): any => ({
     ...obj,
     ...(obj.ProxySession && { ProxySession: ProxySession.filterSensitiveLog(obj.ProxySession) }),
@@ -2830,6 +3308,9 @@ export interface CreateRoomRequest {
 }
 
 export namespace CreateRoomRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateRoomRequest): any => ({
     ...obj,
     ...(obj.Name && { Name: SENSITIVE_STRING }),
@@ -2873,6 +3354,9 @@ export interface Room {
 }
 
 export namespace Room {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Room): any => ({
     ...obj,
     ...(obj.Name && { Name: SENSITIVE_STRING }),
@@ -2887,6 +3371,9 @@ export interface CreateRoomResponse {
 }
 
 export namespace CreateRoomResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateRoomResponse): any => ({
     ...obj,
     ...(obj.Room && { Room: Room.filterSensitiveLog(obj.Room) }),
@@ -2916,6 +3403,9 @@ export interface CreateRoomMembershipRequest {
 }
 
 export namespace CreateRoomMembershipRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateRoomMembershipRequest): any => ({
     ...obj,
   });
@@ -2958,6 +3448,9 @@ export interface Member {
 }
 
 export namespace Member {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Member): any => ({
     ...obj,
     ...(obj.Email && { Email: SENSITIVE_STRING }),
@@ -2996,6 +3489,9 @@ export interface RoomMembership {
 }
 
 export namespace RoomMembership {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RoomMembership): any => ({
     ...obj,
     ...(obj.Member && { Member: Member.filterSensitiveLog(obj.Member) }),
@@ -3010,6 +3506,9 @@ export interface CreateRoomMembershipResponse {
 }
 
 export namespace CreateRoomMembershipResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateRoomMembershipResponse): any => ({
     ...obj,
     ...(obj.RoomMembership && { RoomMembership: RoomMembership.filterSensitiveLog(obj.RoomMembership) }),
@@ -3017,17 +3516,19 @@ export namespace CreateRoomMembershipResponse {
 }
 
 /**
- * <p>Endpoints to specify as part of a SIP media application.</p>
+ * <p>The endpoint assigned to the SIP media application.</p>
  */
 export interface SipMediaApplicationEndpoint {
   /**
-   * <p>Valid Amazon Resource Name (ARN) of the Lambda function of the same AWS Region where the
-   *       SIP media application is created.</p>
+   * <p>Valid Amazon Resource Name (ARN) of the Lambda function. The function must be created in the same AWS Region as the SIP media application.</p>
    */
   LambdaArn?: string;
 }
 
 export namespace SipMediaApplicationEndpoint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SipMediaApplicationEndpoint): any => ({
     ...obj,
     ...(obj.LambdaArn && { LambdaArn: SENSITIVE_STRING }),
@@ -3036,23 +3537,25 @@ export namespace SipMediaApplicationEndpoint {
 
 export interface CreateSipMediaApplicationRequest {
   /**
-   * <p>AWS Region assigned to the SIP media application.</p>
+   * <p>The AWS Region assigned to the SIP media application.</p>
    */
   AwsRegion: string | undefined;
 
   /**
    * <p>The SIP media application name.</p>
    */
-  Name?: string;
+  Name: string | undefined;
 
   /**
-   * <p>List of endpoints (Lambda Amazon Resource Names) specified for the SIP media
-   *       application. Currently, only one endpoint is supported.</p>
+   * <p>List of endpoints (Lambda Amazon Resource Names) specified for the SIP media application. Currently, only one endpoint is supported.</p>
    */
   Endpoints: SipMediaApplicationEndpoint[] | undefined;
 }
 
 export namespace CreateSipMediaApplicationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSipMediaApplicationRequest): any => ({
     ...obj,
     ...(obj.Endpoints && {
@@ -3062,7 +3565,7 @@ export namespace CreateSipMediaApplicationRequest {
 }
 
 /**
- * <p>The SIP media application details, including name and endpoints. An AWS account can have multiple SIP media applications.</p>
+ * <p>The details of the SIP media application, including name and endpoints. An AWS account can have multiple SIP media applications.</p>
  */
 export interface SipMediaApplication {
   /**
@@ -3081,8 +3584,7 @@ export interface SipMediaApplication {
   Name?: string;
 
   /**
-   * <p>List of endpoints for SIP media application. Currently, only one endpoint per SIP media
-   *       application is permitted.</p>
+   * <p>List of endpoints for SIP media application. Currently, only one endpoint per SIP media application is permitted.</p>
    */
   Endpoints?: SipMediaApplicationEndpoint[];
 
@@ -3098,6 +3600,9 @@ export interface SipMediaApplication {
 }
 
 export namespace SipMediaApplication {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SipMediaApplication): any => ({
     ...obj,
     ...(obj.Endpoints && {
@@ -3108,12 +3613,15 @@ export namespace SipMediaApplication {
 
 export interface CreateSipMediaApplicationResponse {
   /**
-   * <p>The Sip media application details.</p>
+   * <p>The SIP media application details.</p>
    */
   SipMediaApplication?: SipMediaApplication;
 }
 
 export namespace CreateSipMediaApplicationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSipMediaApplicationResponse): any => ({
     ...obj,
     ...(obj.SipMediaApplication && {
@@ -3126,12 +3634,12 @@ export interface CreateSipMediaApplicationCallRequest {
   /**
    * <p>The phone number that a user calls from.</p>
    */
-  FromPhoneNumber?: string;
+  FromPhoneNumber: string | undefined;
 
   /**
-   * <p>The phone number that the user dials in order to connect to a meeting</p>
+   * <p>The phone number that the user dials in order to connect to a meeting.</p>
    */
-  ToPhoneNumber?: string;
+  ToPhoneNumber: string | undefined;
 
   /**
    * <p>The ID of the SIP media application.</p>
@@ -3140,6 +3648,9 @@ export interface CreateSipMediaApplicationCallRequest {
 }
 
 export namespace CreateSipMediaApplicationCallRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSipMediaApplicationCallRequest): any => ({
     ...obj,
     ...(obj.FromPhoneNumber && { FromPhoneNumber: SENSITIVE_STRING }),
@@ -3158,6 +3669,9 @@ export interface SipMediaApplicationCall {
 }
 
 export namespace SipMediaApplicationCall {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SipMediaApplicationCall): any => ({
     ...obj,
   });
@@ -3171,14 +3685,17 @@ export interface CreateSipMediaApplicationCallResponse {
 }
 
 export namespace CreateSipMediaApplicationCallResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSipMediaApplicationCallResponse): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Target SIP media application along with other details like priority and AWS Region to be
- *       specified in the SIP rule. Only one SIP rule per AWS Region can be provided.</p>
+ * <p>Target SIP media application and other details, such as priority and AWS Region, to be
+ *             specified in the SIP rule. Only one SIP rule per AWS Region can be provided.</p>
  */
 export interface SipRuleTargetApplication {
   /**
@@ -3192,12 +3709,15 @@ export interface SipRuleTargetApplication {
   Priority?: number;
 
   /**
-   * <p>AWS Region of target application.</p>
+   * <p>The AWS Region of the target application.</p>
    */
   AwsRegion?: string;
 }
 
 export namespace SipRuleTargetApplication {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SipRuleTargetApplication): any => ({
     ...obj,
   });
@@ -3215,21 +3735,17 @@ export interface CreateSipRuleRequest {
   Name: string | undefined;
 
   /**
-   * <p>The type of trigger whose value is assigned to the SIP rule in
-   *         <code>TriggerValue</code>. Allowed trigger values are <code>RequestUriHostname</code> and <code>ToPhoneNumber</code>.</p>
+   * <p>The type of trigger assigned to the SIP rule in <code>TriggerValue</code>, currently <code>RequestUriHostname</code> or <code>ToPhoneNumber</code>.</p>
    */
   TriggerType: SipRuleTriggerType | string | undefined;
 
   /**
-   * <p>If <code>TriggerType</code> is <code>RequestUriHostname</code> then the value can be the
-   *       outbound host name of an Amazon Chime Voice Connector. If <code>TriggerType</code> is
-   *         <code>ToPhoneNumber</code> then the value can be a customer-owned phone number in E164
-   *       format. <code>SipRule</code> is triggered if the SIP application requests a host name, or a If
-   *         <code>TriggerType</code> is <code>RequestUriHostname</code>, then the value can be the
-   *       outbound hostname of an Amazon Chime Voice Connector. If <code>TriggerType</code> is
-   *         <code>ToPhoneNumber</code>, then the value can be a customer-owned phone number in E164
-   *       format. <code>SipRule</code> is triggered if the SIP application requests a host name, or a
-   *         <code>ToPhoneNumber</code> value matches the incoming SIP request.</p>
+   * <p>If <code>TriggerType</code> is <code>RequestUriHostname</code>, the value can be the outbound
+   *             host name of an Amazon Chime Voice Connector. If <code>TriggerType</code> is
+   *                 <code>ToPhoneNumber</code>, the value can be a customer-owned phone number in the
+   *     E164 format. The <code>SipMediaApplication</code> specified in the <code>SipRule</code> is triggered if the request URI in an incoming SIP
+   *     request matches the <code>RequestUriHostname</code>, or if the <code>To</code> header in the incoming SIP request matches the
+   *     <code>ToPhoneNumber</code> value.</p>
    */
   TriggerValue: string | undefined;
 
@@ -3239,21 +3755,22 @@ export interface CreateSipRuleRequest {
   Disabled?: boolean;
 
   /**
-   * <p>List of SIP media applications with priority and AWS Region. Only one SIP application
-   *       per AWS Region can be used.</p>
+   * <p>List of SIP media applications with priority and AWS Region. Only one SIP application per AWS Region can be used.</p>
    */
   TargetApplications: SipRuleTargetApplication[] | undefined;
 }
 
 export namespace CreateSipRuleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSipRuleRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The SIP rule details, including name, triggers, and target applications. An AWS account
- *       can have multiple SIP rules.</p>
+ * <p>The SIP rule details, including name, triggers, and target applications. An AWS account can have multiple SIP rules.</p>
  */
 export interface SipRule {
   /**
@@ -3267,44 +3784,46 @@ export interface SipRule {
   Name?: string;
 
   /**
-   * <p>Indicates if the SIP rule is enabled or disabled. You must disable a rule before you can
-   *       delete it.</p>
+   * <p>Indicates whether the SIP rule is enabled or disabled. You must disable a rule before you can delete it.</p>
    */
   Disabled?: boolean;
 
   /**
-   * <p>The type of trigger whose value is assigned to the SIP rule in
-   *       <code>TriggerValue</code>.</p>
+   * <p>The type of trigger assigned to the SIP rule in <code>TriggerValue</code>, currently <code>RequestUriHostname</code> or
+   *         <code>ToPhoneNumber</code>.</p>
    */
   TriggerType?: SipRuleTriggerType | string;
 
   /**
    * <p>If <code>TriggerType</code> is <code>RequestUriHostname</code>, then the value can be the
-   *       outbound host name of the Amazon Chime Voice Connector. If <code>TriggerType</code> is
-   *         <code>ToPhoneNumber</code>, then  the value can be a customer-owned phone number in E164
-   *       format. <code>SipRule</code> is triggered when a SIP rule requests host name or
-   *         <code>ToPhoneNumber</code> matches in the incoming SIP request.</p>
+   *             outbound host name of the Amazon Chime Voice Connector. If <code>TriggerType</code> is
+   *                 <code>ToPhoneNumber</code>, then the value can be a customer-owned phone number in
+   *             E164 format. <code>SipRule</code> is triggered when a SIP rule requests host name or
+   *                 <code>ToPhoneNumber</code> matches in the incoming SIP request.</p>
    */
   TriggerValue?: string;
 
   /**
-   * <p>List of SIP media applications with priority and AWS Region. You can only use one SIP
-   *       application per AWS Region and priority combination.</p>
+   * <p>Target SIP media application and other details, such as priority and AWS Region, to be
+   *             specified in the SIP rule. Only one SIP rule per AWS Region can be provided.</p>
    */
   TargetApplications?: SipRuleTargetApplication[];
 
   /**
-   * <p>The SIP rule created timestamp, in ISO 8601 format.</p>
+   * <p>The time at which the SIP rule was created, in ISO 8601 format.</p>
    */
   CreatedTimestamp?: Date;
 
   /**
-   * <p>The SIP rule updated timestamp, in ISO 8601 format.</p>
+   * <p>The time at which the SIP rule was last updated, in ISO 8601 format.</p>
    */
   UpdatedTimestamp?: Date;
 }
 
 export namespace SipRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SipRule): any => ({
     ...obj,
   });
@@ -3318,6 +3837,9 @@ export interface CreateSipRuleResponse {
 }
 
 export namespace CreateSipRuleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSipRuleResponse): any => ({
     ...obj,
   });
@@ -3346,6 +3868,9 @@ export interface CreateUserRequest {
 }
 
 export namespace CreateUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateUserRequest): any => ({
     ...obj,
     ...(obj.Email && { Email: SENSITIVE_STRING }),
@@ -3419,8 +3944,7 @@ export interface User {
   RegisteredOn?: Date;
 
   /**
-   * <p>Date and time when the user is invited to the Amazon Chime account, in ISO 8601
-   *       format.</p>
+   * <p>Date and time when the user is invited to the Amazon Chime account, in ISO 8601 format.</p>
    */
   InvitedOn?: Date;
 
@@ -3436,6 +3960,9 @@ export interface User {
 }
 
 export namespace User {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: User): any => ({
     ...obj,
     ...(obj.PrimaryEmail && { PrimaryEmail: SENSITIVE_STRING }),
@@ -3455,6 +3982,9 @@ export interface CreateUserResponse {
 }
 
 export namespace CreateUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateUserResponse): any => ({
     ...obj,
     ...(obj.User && { User: User.filterSensitiveLog(obj.User) }),
@@ -3473,7 +4003,11 @@ export interface CreateVoiceConnectorRequest {
   Name: string | undefined;
 
   /**
-   * <p>The AWS Region in which the Amazon Chime Voice Connector is created. Default value: <code>us-east-1</code>.</p>
+   * <p>
+   * The AWS Region in which the Amazon Chime Voice Connector is created. Default value:
+   * <code>us-east-1</code>
+   * .
+   * </p>
    */
   AwsRegion?: VoiceConnectorAwsRegion | string;
 
@@ -3484,14 +4018,17 @@ export interface CreateVoiceConnectorRequest {
 }
 
 export namespace CreateVoiceConnectorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateVoiceConnectorRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The Amazon Chime Voice Connector configuration, including outbound host name and
- *       encryption settings.</p>
+ * <p>The Amazon Chime Voice Connector configuration, including outbound host name and encryption
+ *             settings.</p>
  */
 export interface VoiceConnector {
   /**
@@ -3500,7 +4037,10 @@ export interface VoiceConnector {
   VoiceConnectorId?: string;
 
   /**
-   * <p>The AWS Region in which the Amazon Chime Voice Connector is created. Default: <code>us-east-1</code>.</p>
+   * <p>
+   * The AWS Region in which the Amazon Chime Voice Connector is created. Default:
+   * <code>us-east-1</code>.
+   * </p>
    */
   AwsRegion?: VoiceConnectorAwsRegion | string;
 
@@ -3531,6 +4071,9 @@ export interface VoiceConnector {
 }
 
 export namespace VoiceConnector {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VoiceConnector): any => ({
     ...obj,
   });
@@ -3544,13 +4087,20 @@ export interface CreateVoiceConnectorResponse {
 }
 
 export namespace CreateVoiceConnectorResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateVoiceConnectorResponse): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>For Amazon Chime Voice Connector groups, the Amazon Chime Voice Connectors to which to route inbound calls. Includes priority configuration settings. Limit: 3 <code>VoiceConnectorItems</code> per Amazon Chime Voice Connector group.</p>
+ * <p>
+ * For Amazon Chime Voice Connector groups, the Amazon Chime Voice Connectors to which to route inbound calls. Includes priority configuration settings. Limit: 3
+ * <code>VoiceConnectorItems</code>
+ * per Amazon Chime Voice Connector group.
+ * </p>
  */
 export interface VoiceConnectorItem {
   /**
@@ -3559,12 +4109,15 @@ export interface VoiceConnectorItem {
   VoiceConnectorId: string | undefined;
 
   /**
-   * <p>The priority associated with the Amazon Chime Voice Connector, with 1 being the highest priority. Higher priority Amazon Chime Voice Connectors are attempted first. </p>
+   * <p>The priority associated with the Amazon Chime Voice Connector, with 1 being the highest priority. Higher priority Amazon Chime Voice Connectors are attempted first.</p>
    */
   Priority: number | undefined;
 }
 
 export namespace VoiceConnectorItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VoiceConnectorItem): any => ({
     ...obj,
   });
@@ -3583,16 +4136,19 @@ export interface CreateVoiceConnectorGroupRequest {
 }
 
 export namespace CreateVoiceConnectorGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateVoiceConnectorGroupRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The Amazon Chime Voice Connector group configuration, including associated Amazon Chime
- *       Voice Connectors. You can include Amazon Chime Voice Connectors from different AWS Regions in
- *       your group. This creates a fault tolerant mechanism for fallback in case of availability
- *       events.</p>
+ * <p>The Amazon Chime Voice Connector group configuration, including associated Amazon Chime Voice
+ *             Connectors. You can include Amazon Chime Voice Connectors from different AWS Regions in
+ *             your group. This creates a fault tolerant mechanism for fallback in case of availability
+ *             events.</p>
  */
 export interface VoiceConnectorGroup {
   /**
@@ -3611,17 +4167,20 @@ export interface VoiceConnectorGroup {
   VoiceConnectorItems?: VoiceConnectorItem[];
 
   /**
-   * <p>The Amazon Chime Voice Connector group creation timestamp, in ISO 8601 format.</p>
+   * <p>The Amazon Chime Voice Connector group creation time stamp, in ISO 8601 format.</p>
    */
   CreatedTimestamp?: Date;
 
   /**
-   * <p>The updated Amazon Chime Voice Connector group timestamp, in ISO 8601 format.</p>
+   * <p>The updated Amazon Chime Voice Connector group time stamp, in ISO 8601 format.</p>
    */
   UpdatedTimestamp?: Date;
 }
 
 export namespace VoiceConnectorGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VoiceConnectorGroup): any => ({
     ...obj,
   });
@@ -3635,6 +4194,9 @@ export interface CreateVoiceConnectorGroupResponse {
 }
 
 export namespace CreateVoiceConnectorGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateVoiceConnectorGroupResponse): any => ({
     ...obj,
   });
@@ -3646,7 +4208,7 @@ export namespace CreateVoiceConnectorGroupResponse {
 export interface Credential {
   /**
    * <p>The RFC2617 compliant user name associated with the SIP credentials, in US-ASCII
-   *       format.</p>
+   *             format.</p>
    */
   Username?: string;
 
@@ -3657,6 +4219,9 @@ export interface Credential {
 }
 
 export namespace Credential {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Credential): any => ({
     ...obj,
     ...(obj.Username && { Username: SENSITIVE_STRING }),
@@ -3672,6 +4237,9 @@ export interface DeleteAccountRequest {
 }
 
 export namespace DeleteAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAccountRequest): any => ({
     ...obj,
   });
@@ -3680,6 +4248,9 @@ export namespace DeleteAccountRequest {
 export interface DeleteAccountResponse {}
 
 export namespace DeleteAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAccountResponse): any => ({
     ...obj,
   });
@@ -3696,6 +4267,9 @@ export interface UnprocessableEntityException extends __SmithyException, $Metada
 }
 
 export namespace UnprocessableEntityException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnprocessableEntityException): any => ({
     ...obj,
   });
@@ -3703,12 +4277,15 @@ export namespace UnprocessableEntityException {
 
 export interface DeleteAppInstanceRequest {
   /**
-   * <p>The ARN of the app instance.</p>
+   * <p>The ARN of the <code>AppInstance</code>.</p>
    */
   AppInstanceArn: string | undefined;
 }
 
 export namespace DeleteAppInstanceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAppInstanceRequest): any => ({
     ...obj,
   });
@@ -3716,17 +4293,20 @@ export namespace DeleteAppInstanceRequest {
 
 export interface DeleteAppInstanceAdminRequest {
   /**
-   * <p>The ARN of the app instance's administrator.</p>
+   * <p>The ARN of the <code>AppInstance</code>'s administrator.</p>
    */
   AppInstanceAdminArn: string | undefined;
 
   /**
-   * <p>The ARN of the app instance.</p>
+   * <p>The ARN of the <code>AppInstance</code>.</p>
    */
   AppInstanceArn: string | undefined;
 }
 
 export namespace DeleteAppInstanceAdminRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAppInstanceAdminRequest): any => ({
     ...obj,
   });
@@ -3740,6 +4320,9 @@ export interface DeleteAppInstanceStreamingConfigurationsRequest {
 }
 
 export namespace DeleteAppInstanceStreamingConfigurationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAppInstanceStreamingConfigurationsRequest): any => ({
     ...obj,
   });
@@ -3753,6 +4336,9 @@ export interface DeleteAppInstanceUserRequest {
 }
 
 export namespace DeleteAppInstanceUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAppInstanceUserRequest): any => ({
     ...obj,
   });
@@ -3771,6 +4357,9 @@ export interface DeleteAttendeeRequest {
 }
 
 export namespace DeleteAttendeeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAttendeeRequest): any => ({
     ...obj,
   });
@@ -3781,9 +4370,17 @@ export interface DeleteChannelRequest {
    * <p>The ARN of the channel being deleted.</p>
    */
   ChannelArn: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace DeleteChannelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteChannelRequest): any => ({
     ...obj,
   });
@@ -3791,17 +4388,25 @@ export namespace DeleteChannelRequest {
 
 export interface DeleteChannelBanRequest {
   /**
-   * <p>The ARN of the channel from which the app instance user was banned.</p>
+   * <p>The ARN of the channel from which the <code>AppInstanceUser</code> was banned.</p>
    */
   ChannelArn: string | undefined;
 
   /**
-   * <p>The ARN of the app instance user that you want to reinstate.</p>
+   * <p>The ARN of the <code>AppInstanceUser</code> that you want to reinstate.</p>
    */
   MemberArn: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace DeleteChannelBanRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteChannelBanRequest): any => ({
     ...obj,
   });
@@ -3817,9 +4422,17 @@ export interface DeleteChannelMembershipRequest {
    * <p>The ARN of the member that you're removing from the channel.</p>
    */
   MemberArn: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace DeleteChannelMembershipRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteChannelMembershipRequest): any => ({
     ...obj,
   });
@@ -3835,9 +4448,17 @@ export interface DeleteChannelMessageRequest {
    * <p>The ID of the message being deleted.</p>
    */
   MessageId: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace DeleteChannelMessageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteChannelMessageRequest): any => ({
     ...obj,
   });
@@ -3853,9 +4474,17 @@ export interface DeleteChannelModeratorRequest {
    * <p>The ARN of the moderator being deleted.</p>
    */
   ChannelModeratorArn: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace DeleteChannelModeratorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteChannelModeratorRequest): any => ({
     ...obj,
   });
@@ -3874,6 +4503,9 @@ export interface DeleteEventsConfigurationRequest {
 }
 
 export namespace DeleteEventsConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteEventsConfigurationRequest): any => ({
     ...obj,
   });
@@ -3887,6 +4519,9 @@ export interface DeleteMeetingRequest {
 }
 
 export namespace DeleteMeetingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMeetingRequest): any => ({
     ...obj,
   });
@@ -3900,6 +4535,9 @@ export interface DeletePhoneNumberRequest {
 }
 
 export namespace DeletePhoneNumberRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePhoneNumberRequest): any => ({
     ...obj,
   });
@@ -3918,6 +4556,9 @@ export interface DeleteProxySessionRequest {
 }
 
 export namespace DeleteProxySessionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProxySessionRequest): any => ({
     ...obj,
   });
@@ -3936,6 +4577,9 @@ export interface DeleteRoomRequest {
 }
 
 export namespace DeleteRoomRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRoomRequest): any => ({
     ...obj,
   });
@@ -3959,6 +4603,9 @@ export interface DeleteRoomMembershipRequest {
 }
 
 export namespace DeleteRoomMembershipRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRoomMembershipRequest): any => ({
     ...obj,
   });
@@ -3972,6 +4619,9 @@ export interface DeleteSipMediaApplicationRequest {
 }
 
 export namespace DeleteSipMediaApplicationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSipMediaApplicationRequest): any => ({
     ...obj,
   });
@@ -3985,6 +4635,9 @@ export interface DeleteSipRuleRequest {
 }
 
 export namespace DeleteSipRuleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSipRuleRequest): any => ({
     ...obj,
   });
@@ -3998,6 +4651,9 @@ export interface DeleteVoiceConnectorRequest {
 }
 
 export namespace DeleteVoiceConnectorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteVoiceConnectorRequest): any => ({
     ...obj,
   });
@@ -4011,6 +4667,9 @@ export interface DeleteVoiceConnectorEmergencyCallingConfigurationRequest {
 }
 
 export namespace DeleteVoiceConnectorEmergencyCallingConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteVoiceConnectorEmergencyCallingConfigurationRequest): any => ({
     ...obj,
   });
@@ -4024,6 +4683,9 @@ export interface DeleteVoiceConnectorGroupRequest {
 }
 
 export namespace DeleteVoiceConnectorGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteVoiceConnectorGroupRequest): any => ({
     ...obj,
   });
@@ -4037,6 +4699,9 @@ export interface DeleteVoiceConnectorOriginationRequest {
 }
 
 export namespace DeleteVoiceConnectorOriginationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteVoiceConnectorOriginationRequest): any => ({
     ...obj,
   });
@@ -4050,6 +4715,9 @@ export interface DeleteVoiceConnectorProxyRequest {
 }
 
 export namespace DeleteVoiceConnectorProxyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteVoiceConnectorProxyRequest): any => ({
     ...obj,
   });
@@ -4063,6 +4731,9 @@ export interface DeleteVoiceConnectorStreamingConfigurationRequest {
 }
 
 export namespace DeleteVoiceConnectorStreamingConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteVoiceConnectorStreamingConfigurationRequest): any => ({
     ...obj,
   });
@@ -4076,6 +4747,9 @@ export interface DeleteVoiceConnectorTerminationRequest {
 }
 
 export namespace DeleteVoiceConnectorTerminationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteVoiceConnectorTerminationRequest): any => ({
     ...obj,
   });
@@ -4094,6 +4768,9 @@ export interface DeleteVoiceConnectorTerminationCredentialsRequest {
 }
 
 export namespace DeleteVoiceConnectorTerminationCredentialsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteVoiceConnectorTerminationCredentialsRequest): any => ({
     ...obj,
     ...(obj.Usernames && { Usernames: SENSITIVE_STRING }),
@@ -4102,12 +4779,15 @@ export namespace DeleteVoiceConnectorTerminationCredentialsRequest {
 
 export interface DescribeAppInstanceRequest {
   /**
-   * <p>The ARN of the app instance.</p>
+   * <p>The ARN of the <code>AppInstance</code>.</p>
    */
   AppInstanceArn: string | undefined;
 }
 
 export namespace DescribeAppInstanceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAppInstanceRequest): any => ({
     ...obj,
   });
@@ -4115,13 +4795,16 @@ export namespace DescribeAppInstanceRequest {
 
 export interface DescribeAppInstanceResponse {
   /**
-   * <p>The ARN, metadata, created and last-updated timestamps, and the name of the app instance. All timestamps
-   *            use epoch milliseconds.</p>
+   * <p>The ARN, metadata, created and last-updated timestamps, and the name of the <code>AppInstance</code>. All
+   *             timestamps use epoch milliseconds.</p>
    */
   AppInstance?: AppInstance;
 }
 
 export namespace DescribeAppInstanceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAppInstanceResponse): any => ({
     ...obj,
     ...(obj.AppInstance && { AppInstance: AppInstance.filterSensitiveLog(obj.AppInstance) }),
@@ -4130,17 +4813,20 @@ export namespace DescribeAppInstanceResponse {
 
 export interface DescribeAppInstanceAdminRequest {
   /**
-   * <p>The ARN of the app instance administrator.</p>
+   * <p>The ARN of the <code>AppInstanceAdmin</code>.</p>
    */
   AppInstanceAdminArn: string | undefined;
 
   /**
-   * <p>The ARN of the app instance.</p>
+   * <p>The ARN of the <code>AppInstance</code>.</p>
    */
   AppInstanceArn: string | undefined;
 }
 
 export namespace DescribeAppInstanceAdminRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAppInstanceAdminRequest): any => ({
     ...obj,
   });
@@ -4148,13 +4834,16 @@ export namespace DescribeAppInstanceAdminRequest {
 
 export interface DescribeAppInstanceAdminResponse {
   /**
-   * <p>The ARN and name of the app instance user, the ARN of the app instance, and the created and last-updated timestamps. All timestamps
-   *        use epoch milliseconds.</p>
+   * <p>The ARN and name of the <code>AppInstanceUser</code>, the ARN of the <code>AppInstance</code>, and the created and
+   *             last-updated timestamps. All timestamps use epoch milliseconds.</p>
    */
   AppInstanceAdmin?: AppInstanceAdmin;
 }
 
 export namespace DescribeAppInstanceAdminResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAppInstanceAdminResponse): any => ({
     ...obj,
     ...(obj.AppInstanceAdmin && { AppInstanceAdmin: AppInstanceAdmin.filterSensitiveLog(obj.AppInstanceAdmin) }),
@@ -4163,12 +4852,15 @@ export namespace DescribeAppInstanceAdminResponse {
 
 export interface DescribeAppInstanceUserRequest {
   /**
-   * <p>The ARN of the app instance user.</p>
+   * <p>The ARN of the <code>AppInstanceUser</code>.</p>
    */
   AppInstanceUserArn: string | undefined;
 }
 
 export namespace DescribeAppInstanceUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAppInstanceUserRequest): any => ({
     ...obj,
   });
@@ -4176,12 +4868,15 @@ export namespace DescribeAppInstanceUserRequest {
 
 export interface DescribeAppInstanceUserResponse {
   /**
-   * <p>The name of the app instance user.</p>
+   * <p>The name of the <code>AppInstanceUser</code>.</p>
    */
   AppInstanceUser?: AppInstanceUser;
 }
 
 export namespace DescribeAppInstanceUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAppInstanceUserResponse): any => ({
     ...obj,
     ...(obj.AppInstanceUser && { AppInstanceUser: AppInstanceUser.filterSensitiveLog(obj.AppInstanceUser) }),
@@ -4193,9 +4888,17 @@ export interface DescribeChannelRequest {
    * <p>The ARN of the channel.</p>
    */
   ChannelArn: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace DescribeChannelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeChannelRequest): any => ({
     ...obj,
   });
@@ -4209,6 +4912,9 @@ export interface DescribeChannelResponse {
 }
 
 export namespace DescribeChannelResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeChannelResponse): any => ({
     ...obj,
     ...(obj.Channel && { Channel: Channel.filterSensitiveLog(obj.Channel) }),
@@ -4225,9 +4931,17 @@ export interface DescribeChannelBanRequest {
    * <p>The ARN of the member being banned.</p>
    */
   MemberArn: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace DescribeChannelBanRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeChannelBanRequest): any => ({
     ...obj,
   });
@@ -4241,6 +4955,9 @@ export interface DescribeChannelBanResponse {
 }
 
 export namespace DescribeChannelBanResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeChannelBanResponse): any => ({
     ...obj,
     ...(obj.ChannelBan && { ChannelBan: ChannelBan.filterSensitiveLog(obj.ChannelBan) }),
@@ -4257,9 +4974,17 @@ export interface DescribeChannelMembershipRequest {
    * <p>The ARN of the member.</p>
    */
   MemberArn: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace DescribeChannelMembershipRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeChannelMembershipRequest): any => ({
     ...obj,
   });
@@ -4273,6 +4998,9 @@ export interface DescribeChannelMembershipResponse {
 }
 
 export namespace DescribeChannelMembershipResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeChannelMembershipResponse): any => ({
     ...obj,
     ...(obj.ChannelMembership && { ChannelMembership: ChannelMembership.filterSensitiveLog(obj.ChannelMembership) }),
@@ -4289,9 +5017,17 @@ export interface DescribeChannelMembershipForAppInstanceUserRequest {
    * <p>The ARN of the user in a channel.</p>
    */
   AppInstanceUserArn: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace DescribeChannelMembershipForAppInstanceUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeChannelMembershipForAppInstanceUserRequest): any => ({
     ...obj,
   });
@@ -4305,6 +5041,9 @@ export interface DescribeChannelMembershipForAppInstanceUserResponse {
 }
 
 export namespace DescribeChannelMembershipForAppInstanceUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeChannelMembershipForAppInstanceUserResponse): any => ({
     ...obj,
     ...(obj.ChannelMembership && {
@@ -4320,12 +5059,20 @@ export interface DescribeChannelModeratedByAppInstanceUserRequest {
   ChannelArn: string | undefined;
 
   /**
-   * <p>The ARN of the app instance user  in the moderated channel.</p>
+   * <p>The ARN of the <code>AppInstanceUser</code> in the moderated channel.</p>
    */
   AppInstanceUserArn: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace DescribeChannelModeratedByAppInstanceUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeChannelModeratedByAppInstanceUserRequest): any => ({
     ...obj,
   });
@@ -4339,6 +5086,9 @@ export interface DescribeChannelModeratedByAppInstanceUserResponse {
 }
 
 export namespace DescribeChannelModeratedByAppInstanceUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeChannelModeratedByAppInstanceUserResponse): any => ({
     ...obj,
     ...(obj.Channel && { Channel: ChannelModeratedByAppInstanceUserSummary.filterSensitiveLog(obj.Channel) }),
@@ -4355,9 +5105,17 @@ export interface DescribeChannelModeratorRequest {
    * <p>The ARN of the channel moderator.</p>
    */
   ChannelModeratorArn: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace DescribeChannelModeratorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeChannelModeratorRequest): any => ({
     ...obj,
   });
@@ -4371,6 +5129,9 @@ export interface DescribeChannelModeratorResponse {
 }
 
 export namespace DescribeChannelModeratorResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeChannelModeratorResponse): any => ({
     ...obj,
     ...(obj.ChannelModerator && { ChannelModerator: ChannelModerator.filterSensitiveLog(obj.ChannelModerator) }),
@@ -4390,6 +5151,9 @@ export interface DisassociatePhoneNumberFromUserRequest {
 }
 
 export namespace DisassociatePhoneNumberFromUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociatePhoneNumberFromUserRequest): any => ({
     ...obj,
   });
@@ -4398,6 +5162,9 @@ export namespace DisassociatePhoneNumberFromUserRequest {
 export interface DisassociatePhoneNumberFromUserResponse {}
 
 export namespace DisassociatePhoneNumberFromUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociatePhoneNumberFromUserResponse): any => ({
     ...obj,
   });
@@ -4416,6 +5183,9 @@ export interface DisassociatePhoneNumbersFromVoiceConnectorRequest {
 }
 
 export namespace DisassociatePhoneNumbersFromVoiceConnectorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociatePhoneNumbersFromVoiceConnectorRequest): any => ({
     ...obj,
     ...(obj.E164PhoneNumbers && { E164PhoneNumbers: SENSITIVE_STRING }),
@@ -4430,6 +5200,9 @@ export interface DisassociatePhoneNumbersFromVoiceConnectorResponse {
 }
 
 export namespace DisassociatePhoneNumbersFromVoiceConnectorResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociatePhoneNumbersFromVoiceConnectorResponse): any => ({
     ...obj,
   });
@@ -4448,6 +5221,9 @@ export interface DisassociatePhoneNumbersFromVoiceConnectorGroupRequest {
 }
 
 export namespace DisassociatePhoneNumbersFromVoiceConnectorGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociatePhoneNumbersFromVoiceConnectorGroupRequest): any => ({
     ...obj,
     ...(obj.E164PhoneNumbers && { E164PhoneNumbers: SENSITIVE_STRING }),
@@ -4462,6 +5238,9 @@ export interface DisassociatePhoneNumbersFromVoiceConnectorGroupResponse {
 }
 
 export namespace DisassociatePhoneNumbersFromVoiceConnectorGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociatePhoneNumbersFromVoiceConnectorGroupResponse): any => ({
     ...obj,
   });
@@ -4480,6 +5259,9 @@ export interface DisassociateSigninDelegateGroupsFromAccountRequest {
 }
 
 export namespace DisassociateSigninDelegateGroupsFromAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateSigninDelegateGroupsFromAccountRequest): any => ({
     ...obj,
   });
@@ -4488,6 +5270,9 @@ export namespace DisassociateSigninDelegateGroupsFromAccountRequest {
 export interface DisassociateSigninDelegateGroupsFromAccountResponse {}
 
 export namespace DisassociateSigninDelegateGroupsFromAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateSigninDelegateGroupsFromAccountResponse): any => ({
     ...obj,
   });
@@ -4514,6 +5299,9 @@ export interface DNISEmergencyCallingConfiguration {
 }
 
 export namespace DNISEmergencyCallingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DNISEmergencyCallingConfiguration): any => ({
     ...obj,
     ...(obj.EmergencyPhoneNumber && { EmergencyPhoneNumber: SENSITIVE_STRING }),
@@ -4538,6 +5326,9 @@ export interface EmergencyCallingConfiguration {
 }
 
 export namespace EmergencyCallingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EmergencyCallingConfiguration): any => ({
     ...obj,
     ...(obj.DNIS && { DNIS: obj.DNIS.map((item) => DNISEmergencyCallingConfiguration.filterSensitiveLog(item)) }),
@@ -4565,6 +5356,9 @@ export interface EventsConfiguration {
 }
 
 export namespace EventsConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EventsConfiguration): any => ({
     ...obj,
     ...(obj.OutboundEventsHTTPSEndpoint && { OutboundEventsHTTPSEndpoint: SENSITIVE_STRING }),
@@ -4580,6 +5374,9 @@ export interface GetAccountRequest {
 }
 
 export namespace GetAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccountRequest): any => ({
     ...obj,
   });
@@ -4587,12 +5384,15 @@ export namespace GetAccountRequest {
 
 export interface GetAccountResponse {
   /**
-   * <p>The Amazon Chime account details. An AWS account can have multiple Amazon Chime accounts.</p>
+   * <p>The Amazon Chime account details.</p>
    */
   Account?: Account;
 }
 
 export namespace GetAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccountResponse): any => ({
     ...obj,
   });
@@ -4606,6 +5406,9 @@ export interface GetAccountSettingsRequest {
 }
 
 export namespace GetAccountSettingsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccountSettingsRequest): any => ({
     ...obj,
   });
@@ -4619,6 +5422,9 @@ export interface GetAccountSettingsResponse {
 }
 
 export namespace GetAccountSettingsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccountSettingsResponse): any => ({
     ...obj,
   });
@@ -4626,12 +5432,15 @@ export namespace GetAccountSettingsResponse {
 
 export interface GetAppInstanceRetentionSettingsRequest {
   /**
-   * <p>The ARN of the app instance.</p>
+   * <p>The ARN of the <code>AppInstance</code>.</p>
    */
   AppInstanceArn: string | undefined;
 }
 
 export namespace GetAppInstanceRetentionSettingsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAppInstanceRetentionSettingsRequest): any => ({
     ...obj,
   });
@@ -4639,7 +5448,7 @@ export namespace GetAppInstanceRetentionSettingsRequest {
 
 export interface GetAppInstanceRetentionSettingsResponse {
   /**
-   * <p>The retention settings for the app instance.</p>
+   * <p>The retention settings for the <code>AppInstance</code>.</p>
    */
   AppInstanceRetentionSettings?: AppInstanceRetentionSettings;
 
@@ -4650,6 +5459,9 @@ export interface GetAppInstanceRetentionSettingsResponse {
 }
 
 export namespace GetAppInstanceRetentionSettingsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAppInstanceRetentionSettingsResponse): any => ({
     ...obj,
   });
@@ -4657,12 +5469,15 @@ export namespace GetAppInstanceRetentionSettingsResponse {
 
 export interface GetAppInstanceStreamingConfigurationsRequest {
   /**
-   * <p>The ARN of the app instance. </p>
+   * <p>The ARN of the <code>AppInstance</code>.</p>
    */
   AppInstanceArn: string | undefined;
 }
 
 export namespace GetAppInstanceStreamingConfigurationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAppInstanceStreamingConfigurationsRequest): any => ({
     ...obj,
   });
@@ -4676,6 +5491,9 @@ export interface GetAppInstanceStreamingConfigurationsResponse {
 }
 
 export namespace GetAppInstanceStreamingConfigurationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAppInstanceStreamingConfigurationsResponse): any => ({
     ...obj,
     ...(obj.AppInstanceStreamingConfigurations && {
@@ -4699,6 +5517,9 @@ export interface GetAttendeeRequest {
 }
 
 export namespace GetAttendeeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAttendeeRequest): any => ({
     ...obj,
   });
@@ -4712,6 +5533,9 @@ export interface GetAttendeeResponse {
 }
 
 export namespace GetAttendeeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAttendeeResponse): any => ({
     ...obj,
     ...(obj.Attendee && { Attendee: Attendee.filterSensitiveLog(obj.Attendee) }),
@@ -4731,6 +5555,9 @@ export interface GetBotRequest {
 }
 
 export namespace GetBotRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBotRequest): any => ({
     ...obj,
   });
@@ -4744,6 +5571,9 @@ export interface GetBotResponse {
 }
 
 export namespace GetBotResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBotResponse): any => ({
     ...obj,
     ...(obj.Bot && { Bot: Bot.filterSensitiveLog(obj.Bot) }),
@@ -4760,9 +5590,17 @@ export interface GetChannelMessageRequest {
    * <p>The ID of the message.</p>
    */
   MessageId: string | undefined;
+
+  /**
+   * <p>The <code>AppInstanceUserArn</code> of the user that makes the API call.</p>
+   */
+  ChimeBearer?: string;
 }
 
 export namespace GetChannelMessageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetChannelMessageRequest): any => ({
     ...obj,
   });
@@ -4776,6 +5614,9 @@ export interface GetChannelMessageResponse {
 }
 
 export namespace GetChannelMessageResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetChannelMessageResponse): any => ({
     ...obj,
     ...(obj.ChannelMessage && { ChannelMessage: ChannelMessage.filterSensitiveLog(obj.ChannelMessage) }),
@@ -4795,6 +5636,9 @@ export interface GetEventsConfigurationRequest {
 }
 
 export namespace GetEventsConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetEventsConfigurationRequest): any => ({
     ...obj,
   });
@@ -4808,6 +5652,9 @@ export interface GetEventsConfigurationResponse {
 }
 
 export namespace GetEventsConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetEventsConfigurationResponse): any => ({
     ...obj,
     ...(obj.EventsConfiguration && {
@@ -4817,8 +5664,8 @@ export namespace GetEventsConfigurationResponse {
 }
 
 /**
- * <p>The Amazon Chime Voice Connector settings.
- *       Includes any Amazon S3 buckets designated for storing call detail records.</p>
+ * <p>The Amazon Chime Voice Connector settings. Includes any Amazon S3 buckets designated for
+ *             storing call detail records.</p>
  */
 export interface VoiceConnectorSettings {
   /**
@@ -4828,6 +5675,9 @@ export interface VoiceConnectorSettings {
 }
 
 export namespace VoiceConnectorSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VoiceConnectorSettings): any => ({
     ...obj,
   });
@@ -4846,6 +5696,9 @@ export interface GetGlobalSettingsResponse {
 }
 
 export namespace GetGlobalSettingsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetGlobalSettingsResponse): any => ({
     ...obj,
   });
@@ -4859,6 +5712,9 @@ export interface GetMeetingRequest {
 }
 
 export namespace GetMeetingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMeetingRequest): any => ({
     ...obj,
   });
@@ -4872,6 +5728,9 @@ export interface GetMeetingResponse {
 }
 
 export namespace GetMeetingResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMeetingResponse): any => ({
     ...obj,
     ...(obj.Meeting && { Meeting: Meeting.filterSensitiveLog(obj.Meeting) }),
@@ -4881,22 +5740,28 @@ export namespace GetMeetingResponse {
 export interface GetMessagingSessionEndpointRequest {}
 
 export namespace GetMessagingSessionEndpointRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMessagingSessionEndpointRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The endpoint of a meeting session.</p>
+ * <p>The websocket endpoint used to connect to Amazon Chime SDK messaging.</p>
  */
 export interface MessagingSessionEndpoint {
   /**
-   * <p>The URL of a meeting session endpoint.</p>
+   * <p>The endpoint to which you establish a websocket connection.</p>
    */
   Url?: string;
 }
 
 export namespace MessagingSessionEndpoint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MessagingSessionEndpoint): any => ({
     ...obj,
   });
@@ -4910,6 +5775,9 @@ export interface GetMessagingSessionEndpointResponse {
 }
 
 export namespace GetMessagingSessionEndpointResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMessagingSessionEndpointResponse): any => ({
     ...obj,
   });
@@ -4923,6 +5791,9 @@ export interface GetPhoneNumberRequest {
 }
 
 export namespace GetPhoneNumberRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPhoneNumberRequest): any => ({
     ...obj,
   });
@@ -4937,8 +5808,8 @@ export enum PhoneNumberAssociationName {
 }
 
 /**
- * <p>The phone number associations, such as Amazon Chime account ID, Amazon Chime user ID, Amazon Chime Voice
- *       Connector ID, or Amazon Chime Voice Connector group ID.</p>
+ * <p>The phone number associations, such as Amazon Chime account ID, Amazon Chime user ID, Amazon
+ *             Chime Voice Connector ID, or Amazon Chime Voice Connector group ID.</p>
  */
 export interface PhoneNumberAssociation {
   /**
@@ -4947,8 +5818,8 @@ export interface PhoneNumberAssociation {
   Value?: string;
 
   /**
-   * <p>Defines the association with an Amazon Chime account ID, user ID, Amazon Chime Voice
-   *       Connector ID, or Amazon Chime Voice Connector group ID.</p>
+   * <p>Defines the association with an Amazon Chime account ID, user ID, Amazon Chime Voice Connector
+   *             ID, or Amazon Chime Voice Connector group ID.</p>
    */
   Name?: PhoneNumberAssociationName | string;
 
@@ -4959,14 +5830,17 @@ export interface PhoneNumberAssociation {
 }
 
 export namespace PhoneNumberAssociation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PhoneNumberAssociation): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The phone number capabilities for Amazon Chime Business Calling phone numbers, such as enabled inbound and outbound calling and text
- *       messaging.</p>
+ * <p>The phone number capabilities for Amazon Chime Business Calling phone numbers, such as enabled
+ *             inbound and outbound calling and text messaging.</p>
  */
 export interface PhoneNumberCapabilities {
   /**
@@ -5001,6 +5875,9 @@ export interface PhoneNumberCapabilities {
 }
 
 export namespace PhoneNumberCapabilities {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PhoneNumberCapabilities): any => ({
     ...obj,
   });
@@ -5024,7 +5901,7 @@ export enum PhoneNumberType {
 
 /**
  * <p>A phone number used for Amazon Chime Business Calling or an Amazon Chime Voice
- *       Connector.</p>
+ *             Connector.</p>
  */
 export interface PhoneNumber {
   /**
@@ -5089,6 +5966,9 @@ export interface PhoneNumber {
 }
 
 export namespace PhoneNumber {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PhoneNumber): any => ({
     ...obj,
     ...(obj.E164PhoneNumber && { E164PhoneNumber: SENSITIVE_STRING }),
@@ -5104,6 +5984,9 @@ export interface GetPhoneNumberResponse {
 }
 
 export namespace GetPhoneNumberResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPhoneNumberResponse): any => ({
     ...obj,
     ...(obj.PhoneNumber && { PhoneNumber: PhoneNumber.filterSensitiveLog(obj.PhoneNumber) }),
@@ -5118,6 +6001,9 @@ export interface GetPhoneNumberOrderRequest {
 }
 
 export namespace GetPhoneNumberOrderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPhoneNumberOrderRequest): any => ({
     ...obj,
   });
@@ -5131,6 +6017,9 @@ export interface GetPhoneNumberOrderResponse {
 }
 
 export namespace GetPhoneNumberOrderResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPhoneNumberOrderResponse): any => ({
     ...obj,
     ...(obj.PhoneNumberOrder && { PhoneNumberOrder: PhoneNumberOrder.filterSensitiveLog(obj.PhoneNumberOrder) }),
@@ -5150,6 +6039,9 @@ export interface GetPhoneNumberSettingsResponse {
 }
 
 export namespace GetPhoneNumberSettingsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPhoneNumberSettingsResponse): any => ({
     ...obj,
     ...(obj.CallingName && { CallingName: SENSITIVE_STRING }),
@@ -5169,6 +6061,9 @@ export interface GetProxySessionRequest {
 }
 
 export namespace GetProxySessionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetProxySessionRequest): any => ({
     ...obj,
   });
@@ -5182,6 +6077,9 @@ export interface GetProxySessionResponse {
 }
 
 export namespace GetProxySessionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetProxySessionResponse): any => ({
     ...obj,
     ...(obj.ProxySession && { ProxySession: ProxySession.filterSensitiveLog(obj.ProxySession) }),
@@ -5196,30 +6094,35 @@ export interface GetRetentionSettingsRequest {
 }
 
 export namespace GetRetentionSettingsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRetentionSettingsRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The retention settings that determine how long to retain chat room messages for an Amazon Chime Enterprise account.</p>
+ * <p>The retention settings that determine how long to retain chat-room messages for an Amazon Chime Enterprise account.</p>
  */
 export interface RoomRetentionSettings {
   /**
-   * <p>The number of days for which to retain chat room messages.</p>
+   * <p>The number of days for which to retain chat-room messages.</p>
    */
   RetentionDays?: number;
 }
 
 export namespace RoomRetentionSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RoomRetentionSettings): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The retention settings for an Amazon Chime Enterprise account that determine how long to retain items such as chat room messages
- *           and chat conversation messages.</p>
+ * <p>The retention settings for an Amazon Chime Enterprise account that determine how long to retain items such as chat-room messages and chat-conversation messages.</p>
  */
 export interface RetentionSettings {
   /**
@@ -5234,6 +6137,9 @@ export interface RetentionSettings {
 }
 
 export namespace RetentionSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RetentionSettings): any => ({
     ...obj,
   });
@@ -5252,6 +6158,9 @@ export interface GetRetentionSettingsResponse {
 }
 
 export namespace GetRetentionSettingsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRetentionSettingsResponse): any => ({
     ...obj,
   });
@@ -5270,6 +6179,9 @@ export interface GetRoomRequest {
 }
 
 export namespace GetRoomRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRoomRequest): any => ({
     ...obj,
   });
@@ -5283,6 +6195,9 @@ export interface GetRoomResponse {
 }
 
 export namespace GetRoomResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRoomResponse): any => ({
     ...obj,
     ...(obj.Room && { Room: Room.filterSensitiveLog(obj.Room) }),
@@ -5297,6 +6212,9 @@ export interface GetSipMediaApplicationRequest {
 }
 
 export namespace GetSipMediaApplicationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSipMediaApplicationRequest): any => ({
     ...obj,
   });
@@ -5310,6 +6228,9 @@ export interface GetSipMediaApplicationResponse {
 }
 
 export namespace GetSipMediaApplicationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSipMediaApplicationResponse): any => ({
     ...obj,
     ...(obj.SipMediaApplication && {
@@ -5320,12 +6241,15 @@ export namespace GetSipMediaApplicationResponse {
 
 export interface GetSipMediaApplicationLoggingConfigurationRequest {
   /**
-   * <p>The ID of the SIP media application.</p>
+   * <p>The SIP media application ID.</p>
    */
   SipMediaApplicationId: string | undefined;
 }
 
 export namespace GetSipMediaApplicationLoggingConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSipMediaApplicationLoggingConfigurationRequest): any => ({
     ...obj,
   });
@@ -5342,6 +6266,9 @@ export interface SipMediaApplicationLoggingConfiguration {
 }
 
 export namespace SipMediaApplicationLoggingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SipMediaApplicationLoggingConfiguration): any => ({
     ...obj,
   });
@@ -5355,6 +6282,9 @@ export interface GetSipMediaApplicationLoggingConfigurationResponse {
 }
 
 export namespace GetSipMediaApplicationLoggingConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSipMediaApplicationLoggingConfigurationResponse): any => ({
     ...obj,
   });
@@ -5368,6 +6298,9 @@ export interface GetSipRuleRequest {
 }
 
 export namespace GetSipRuleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSipRuleRequest): any => ({
     ...obj,
   });
@@ -5381,6 +6314,9 @@ export interface GetSipRuleResponse {
 }
 
 export namespace GetSipRuleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSipRuleResponse): any => ({
     ...obj,
   });
@@ -5399,6 +6335,9 @@ export interface GetUserRequest {
 }
 
 export namespace GetUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUserRequest): any => ({
     ...obj,
   });
@@ -5412,6 +6351,9 @@ export interface GetUserResponse {
 }
 
 export namespace GetUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUserResponse): any => ({
     ...obj,
     ...(obj.User && { User: User.filterSensitiveLog(obj.User) }),
@@ -5431,14 +6373,17 @@ export interface GetUserSettingsRequest {
 }
 
 export namespace GetUserSettingsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUserSettingsRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Settings that allow management of telephony permissions for an Amazon Chime user, such
- *       as inbound and outbound calling and text messaging.</p>
+ * <p>Settings that allow management of telephony permissions for an Amazon Chime user, such as
+ *             inbound and outbound calling and text messaging.</p>
  */
 export interface TelephonySettings {
   /**
@@ -5458,14 +6403,17 @@ export interface TelephonySettings {
 }
 
 export namespace TelephonySettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TelephonySettings): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Settings associated with an Amazon Chime user, including inbound and outbound calling and
- *       text messaging.</p>
+ * <p>Settings associated with an Amazon Chime user, including inbound and outbound calling and text
+ *             messaging.</p>
  */
 export interface UserSettings {
   /**
@@ -5475,6 +6423,9 @@ export interface UserSettings {
 }
 
 export namespace UserSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UserSettings): any => ({
     ...obj,
   });
@@ -5488,6 +6439,9 @@ export interface GetUserSettingsResponse {
 }
 
 export namespace GetUserSettingsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetUserSettingsResponse): any => ({
     ...obj,
   });
@@ -5501,6 +6455,9 @@ export interface GetVoiceConnectorRequest {
 }
 
 export namespace GetVoiceConnectorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorRequest): any => ({
     ...obj,
   });
@@ -5514,6 +6471,9 @@ export interface GetVoiceConnectorResponse {
 }
 
 export namespace GetVoiceConnectorResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorResponse): any => ({
     ...obj,
   });
@@ -5527,6 +6487,9 @@ export interface GetVoiceConnectorEmergencyCallingConfigurationRequest {
 }
 
 export namespace GetVoiceConnectorEmergencyCallingConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorEmergencyCallingConfigurationRequest): any => ({
     ...obj,
   });
@@ -5540,6 +6503,9 @@ export interface GetVoiceConnectorEmergencyCallingConfigurationResponse {
 }
 
 export namespace GetVoiceConnectorEmergencyCallingConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorEmergencyCallingConfigurationResponse): any => ({
     ...obj,
     ...(obj.EmergencyCallingConfiguration && {
@@ -5558,6 +6524,9 @@ export interface GetVoiceConnectorGroupRequest {
 }
 
 export namespace GetVoiceConnectorGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorGroupRequest): any => ({
     ...obj,
   });
@@ -5571,6 +6540,9 @@ export interface GetVoiceConnectorGroupResponse {
 }
 
 export namespace GetVoiceConnectorGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorGroupResponse): any => ({
     ...obj,
   });
@@ -5584,6 +6556,9 @@ export interface GetVoiceConnectorLoggingConfigurationRequest {
 }
 
 export namespace GetVoiceConnectorLoggingConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorLoggingConfigurationRequest): any => ({
     ...obj,
   });
@@ -5600,6 +6575,9 @@ export interface LoggingConfiguration {
 }
 
 export namespace LoggingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LoggingConfiguration): any => ({
     ...obj,
   });
@@ -5613,6 +6591,9 @@ export interface GetVoiceConnectorLoggingConfigurationResponse {
 }
 
 export namespace GetVoiceConnectorLoggingConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorLoggingConfigurationResponse): any => ({
     ...obj,
   });
@@ -5626,6 +6607,9 @@ export interface GetVoiceConnectorOriginationRequest {
 }
 
 export namespace GetVoiceConnectorOriginationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorOriginationRequest): any => ({
     ...obj,
   });
@@ -5637,9 +6621,9 @@ export enum OriginationRouteProtocol {
 }
 
 /**
- * <p>Origination routes define call distribution properties for your SIP hosts to receive
- *       inbound calls using your Amazon Chime Voice Connector. Limit: Ten origination routes for each
- *       Amazon Chime Voice Connector.</p>
+ * <p>Origination routes define call distribution properties for your SIP hosts to receive inbound
+ *             calls using your Amazon Chime Voice Connector. Limit: Ten origination routes for each
+ *             Amazon Chime Voice Connector.</p>
  */
 export interface OriginationRoute {
   /**
@@ -5658,43 +6642,49 @@ export interface OriginationRoute {
   Protocol?: OriginationRouteProtocol | string;
 
   /**
-   * <p>The priority associated with the host, with 1 being the highest priority. Higher
-   *       priority hosts are attempted first.</p>
+   * <p>The priority associated with the host, with 1 being the highest priority. Higher priority
+   *             hosts are attempted first.</p>
    */
   Priority?: number;
 
   /**
-   * <p>The weight associated with the host. If hosts are equal in priority, calls are
-   *       distributed among them based on their relative weight.</p>
+   * <p>The weight associated with the host. If hosts are equal in priority, calls are redistributed among
+   *             them based on their relative weight.</p>
    */
   Weight?: number;
 }
 
 export namespace OriginationRoute {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OriginationRoute): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Origination settings enable your SIP hosts to receive inbound calls using your Amazon
- *       Chime Voice Connector.</p>
+ * <p>Origination settings enable your SIP hosts to receive inbound calls using your Amazon Chime
+ *             Voice Connector.</p>
  */
 export interface Origination {
   /**
-   * <p>The call distribution properties defined for your SIP hosts. Valid range: Minimum value
-   *     of 1. Maximum value of 20.</p>
+   * <p>The call distribution properties defined for your SIP hosts. Valid range: Minimum value of 1.
+   *             Maximum value of 20.</p>
    */
   Routes?: OriginationRoute[];
 
   /**
-   * <p>When origination settings are disabled, inbound calls are not enabled for your Amazon
-   *       Chime Voice Connector.</p>
+   * <p>When origination settings are disabled, inbound calls are not enabled for your Amazon Chime
+   *             Voice Connector.</p>
    */
   Disabled?: boolean;
 }
 
 export namespace Origination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Origination): any => ({
     ...obj,
   });
@@ -5708,6 +6698,9 @@ export interface GetVoiceConnectorOriginationResponse {
 }
 
 export namespace GetVoiceConnectorOriginationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorOriginationResponse): any => ({
     ...obj,
   });
@@ -5721,6 +6714,9 @@ export interface GetVoiceConnectorProxyRequest {
 }
 
 export namespace GetVoiceConnectorProxyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorProxyRequest): any => ({
     ...obj,
   });
@@ -5752,6 +6748,9 @@ export interface Proxy {
 }
 
 export namespace Proxy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Proxy): any => ({
     ...obj,
     ...(obj.FallBackPhoneNumber && { FallBackPhoneNumber: SENSITIVE_STRING }),
@@ -5766,6 +6765,9 @@ export interface GetVoiceConnectorProxyResponse {
 }
 
 export namespace GetVoiceConnectorProxyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorProxyResponse): any => ({
     ...obj,
     ...(obj.Proxy && { Proxy: Proxy.filterSensitiveLog(obj.Proxy) }),
@@ -5780,6 +6782,9 @@ export interface GetVoiceConnectorStreamingConfigurationRequest {
 }
 
 export namespace GetVoiceConnectorStreamingConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorStreamingConfigurationRequest): any => ({
     ...obj,
   });
@@ -5802,14 +6807,18 @@ export interface StreamingNotificationTarget {
 }
 
 export namespace StreamingNotificationTarget {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StreamingNotificationTarget): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The streaming configuration associated with an Amazon Chime Voice Connector. Specifies whether media streaming is enabled for
- *           sending to Amazon Kinesis, and shows the retention period for the Amazon Kinesis data, in hours.</p>
+ * <p>The streaming configuration associated with an Amazon Chime Voice Connector. Specifies whether
+ *             media streaming is enabled for sending to Amazon Kinesis, and shows the retention period
+ *             for the Amazon Kinesis data, in hours.</p>
  */
 export interface StreamingConfiguration {
   /**
@@ -5829,6 +6838,9 @@ export interface StreamingConfiguration {
 }
 
 export namespace StreamingConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StreamingConfiguration): any => ({
     ...obj,
   });
@@ -5842,6 +6854,9 @@ export interface GetVoiceConnectorStreamingConfigurationResponse {
 }
 
 export namespace GetVoiceConnectorStreamingConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetVoiceConnectorStreamingConfigurationResponse): any => ({
     ...obj,
   });

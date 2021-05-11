@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeTrustedAdvisorCheckSummariesCommandInput = DescribeTrustedAdvisorCheckSummariesRequest;
-export type DescribeTrustedAdvisorCheckSummariesCommandOutput = DescribeTrustedAdvisorCheckSummariesResponse &
-  __MetadataBearer;
+export interface DescribeTrustedAdvisorCheckSummariesCommandInput extends DescribeTrustedAdvisorCheckSummariesRequest {}
+export interface DescribeTrustedAdvisorCheckSummariesCommandOutput
+  extends DescribeTrustedAdvisorCheckSummariesResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the results for the AWS Trusted Advisor check summaries for the check IDs that you
@@ -43,6 +44,20 @@ export type DescribeTrustedAdvisorCheckSummariesCommandOutput = DescribeTrustedA
  *                 </li>
  *             </ul>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SupportClient, DescribeTrustedAdvisorCheckSummariesCommand } from "@aws-sdk/client-support"; // ES Modules import
+ * // const { SupportClient, DescribeTrustedAdvisorCheckSummariesCommand } = require("@aws-sdk/client-support"); // CommonJS import
+ * const client = new SupportClient(config);
+ * const command = new DescribeTrustedAdvisorCheckSummariesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeTrustedAdvisorCheckSummariesCommandInput} for command's `input` shape.
+ * @see {@link DescribeTrustedAdvisorCheckSummariesCommandOutput} for command's `response` shape.
+ * @see {@link SupportClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeTrustedAdvisorCheckSummariesCommand extends $Command<
   DescribeTrustedAdvisorCheckSummariesCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateSubnetGroupCommandInput = UpdateSubnetGroupRequest;
-export type UpdateSubnetGroupCommandOutput = UpdateSubnetGroupResponse & __MetadataBearer;
+export interface UpdateSubnetGroupCommandInput extends UpdateSubnetGroupRequest {}
+export interface UpdateSubnetGroupCommandOutput extends UpdateSubnetGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Modifies an existing subnet group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DAXClient, UpdateSubnetGroupCommand } from "@aws-sdk/client-dax"; // ES Modules import
+ * // const { DAXClient, UpdateSubnetGroupCommand } = require("@aws-sdk/client-dax"); // CommonJS import
+ * const client = new DAXClient(config);
+ * const command = new UpdateSubnetGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateSubnetGroupCommandInput} for command's `input` shape.
+ * @see {@link UpdateSubnetGroupCommandOutput} for command's `response` shape.
+ * @see {@link DAXClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateSubnetGroupCommand extends $Command<
   UpdateSubnetGroupCommandInput,

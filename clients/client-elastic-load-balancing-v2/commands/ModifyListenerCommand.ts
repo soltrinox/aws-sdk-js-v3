@@ -21,18 +21,32 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyListenerCommandInput = ModifyListenerInput;
-export type ModifyListenerCommandOutput = ModifyListenerOutput & __MetadataBearer;
+export interface ModifyListenerCommandInput extends ModifyListenerInput {}
+export interface ModifyListenerCommandOutput extends ModifyListenerOutput, __MetadataBearer {}
 
 /**
- * <p>Replaces the specified properties of the specified listener. Any properties that you do not
- *       specify remain unchanged.</p>
+ * <p>Replaces the specified properties of the specified listener. Any properties that you do
+ *       not specify remain unchanged.</p>
  *          <p>Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes the security policy
- *       and default certificate properties. If you change the protocol from HTTP to HTTPS, or from
- *       TCP to TLS, you must add the security policy and default certificate properties.</p>
- *          <p>To add an item to a list, remove an item from a list, or update an item in a list,
- *       you must provide the entire list. For example, to add an action, specify a list with the
- *       current actions plus the new action.</p>
+ *       and default certificate properties. If you change the protocol from HTTP to HTTPS, or from TCP
+ *       to TLS, you must add the security policy and default certificate properties.</p>
+ *          <p>To add an item to a list, remove an item from a list, or update an item in a list, you
+ *       must provide the entire list. For example, to add an action, specify a list with the current
+ *       actions plus the new action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingV2Client, ModifyListenerCommand } from "@aws-sdk/client-elastic-load-balancing-v2"; // ES Modules import
+ * // const { ElasticLoadBalancingV2Client, ModifyListenerCommand } = require("@aws-sdk/client-elastic-load-balancing-v2"); // CommonJS import
+ * const client = new ElasticLoadBalancingV2Client(config);
+ * const command = new ModifyListenerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyListenerCommandInput} for command's `input` shape.
+ * @see {@link ModifyListenerCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyListenerCommand extends $Command<
   ModifyListenerCommandInput,

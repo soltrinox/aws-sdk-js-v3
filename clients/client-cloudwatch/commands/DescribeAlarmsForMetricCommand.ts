@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAlarmsForMetricCommandInput = DescribeAlarmsForMetricInput;
-export type DescribeAlarmsForMetricCommandOutput = DescribeAlarmsForMetricOutput & __MetadataBearer;
+export interface DescribeAlarmsForMetricCommandInput extends DescribeAlarmsForMetricInput {}
+export interface DescribeAlarmsForMetricCommandOutput extends DescribeAlarmsForMetricOutput, __MetadataBearer {}
 
 /**
  * <p>Retrieves the alarms for the specified metric. To
@@ -26,6 +26,20 @@ export type DescribeAlarmsForMetricCommandOutput = DescribeAlarmsForMetricOutput
  * 		       <p>This operation retrieves only standard alarms that are based on
  * 		the specified metric. It does not return alarms based on math expressions that
  * 		use the specified metric, or composite alarms that use the specified metric.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchClient, DescribeAlarmsForMetricCommand } from "@aws-sdk/client-cloudwatch"; // ES Modules import
+ * // const { CloudWatchClient, DescribeAlarmsForMetricCommand } = require("@aws-sdk/client-cloudwatch"); // CommonJS import
+ * const client = new CloudWatchClient(config);
+ * const command = new DescribeAlarmsForMetricCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAlarmsForMetricCommandInput} for command's `input` shape.
+ * @see {@link DescribeAlarmsForMetricCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAlarmsForMetricCommand extends $Command<
   DescribeAlarmsForMetricCommandInput,

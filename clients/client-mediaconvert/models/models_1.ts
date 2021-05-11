@@ -7,18 +7,14 @@ import {
   AutomatedEncodingSettings,
   Av1Settings,
   AvailBlanking,
-  AvcIntraSettings,
+  AvcIntraClass,
+  AvcIntraUhdQualityTuningLevel,
   BillingTagsSource,
   CaptionDescription,
   CaptionDescriptionPreset,
   ContainerSettings,
   Endpoint,
   EsamSettings,
-  FrameCaptureSettings,
-  H264AdaptiveQuantization,
-  H264CodecLevel,
-  H264CodecProfile,
-  H264DynamicSubGop,
   Hdr10Metadata,
   HopDestination,
   Id3Insertion,
@@ -35,10 +31,217 @@ import {
   OutputSettings,
   QueueTransition,
   Rectangle,
-  VideoCodec,
 } from "./models_0";
 import { SmithyException as __SmithyException } from "@aws-sdk/smithy-client";
 import { MetadataBearer as $MetadataBearer } from "@aws-sdk/types";
+
+/**
+ * Optional when you set AVC-Intra class (avcIntraClass) to Class 4K/2K (CLASS_4K_2K). When you set AVC-Intra class to a different value, this object isn't allowed.
+ */
+export interface AvcIntraUhdSettings {
+  /**
+   * Optional. Use Quality tuning level (qualityTuningLevel) to choose how many transcoding passes MediaConvert does with your video. When you choose Multi-pass (MULTI_PASS), your video quality is better and your output bitrate is more accurate. That is, the actual bitrate of your output is closer to the target bitrate defined in the specification. When you choose Single-pass (SINGLE_PASS), your encoding time is faster. The default behavior is Single-pass (SINGLE_PASS).
+   */
+  QualityTuningLevel?: AvcIntraUhdQualityTuningLevel | string;
+}
+
+export namespace AvcIntraUhdSettings {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AvcIntraUhdSettings): any => ({
+    ...obj,
+  });
+}
+
+export enum AvcIntraFramerateControl {
+  INITIALIZE_FROM_SOURCE = "INITIALIZE_FROM_SOURCE",
+  SPECIFIED = "SPECIFIED",
+}
+
+export enum AvcIntraFramerateConversionAlgorithm {
+  DUPLICATE_DROP = "DUPLICATE_DROP",
+  FRAMEFORMER = "FRAMEFORMER",
+  INTERPOLATE = "INTERPOLATE",
+}
+
+export enum AvcIntraInterlaceMode {
+  BOTTOM_FIELD = "BOTTOM_FIELD",
+  FOLLOW_BOTTOM_FIELD = "FOLLOW_BOTTOM_FIELD",
+  FOLLOW_TOP_FIELD = "FOLLOW_TOP_FIELD",
+  PROGRESSIVE = "PROGRESSIVE",
+  TOP_FIELD = "TOP_FIELD",
+}
+
+export enum AvcIntraScanTypeConversionMode {
+  INTERLACED = "INTERLACED",
+  INTERLACED_OPTIMIZE = "INTERLACED_OPTIMIZE",
+}
+
+export enum AvcIntraSlowPal {
+  DISABLED = "DISABLED",
+  ENABLED = "ENABLED",
+}
+
+export enum AvcIntraTelecine {
+  HARD = "HARD",
+  NONE = "NONE",
+}
+
+/**
+ * Required when you choose AVC-Intra for your output video codec. For more information about the AVC-Intra settings, see the relevant specification. For detailed information about SD and HD in AVC-Intra, see https://ieeexplore.ieee.org/document/7290936. For information about 4K/2K in AVC-Intra, see https://pro-av.panasonic.net/en/avc-ultra/AVC-ULTRAoverview.pdf.
+ */
+export interface AvcIntraSettings {
+  /**
+   * Specify the AVC-Intra class of your output. The AVC-Intra class selection determines the output video bit rate depending on the frame rate of the output. Outputs with higher class values have higher bitrates and improved image quality. Note that for Class 4K/2K, MediaConvert supports only 4:2:2 chroma subsampling.
+   */
+  AvcIntraClass?: AvcIntraClass | string;
+
+  /**
+   * Optional when you set AVC-Intra class (avcIntraClass) to Class 4K/2K (CLASS_4K_2K). When you set AVC-Intra class to a different value, this object isn't allowed.
+   */
+  AvcIntraUhdSettings?: AvcIntraUhdSettings;
+
+  /**
+   * If you are using the console, use the Framerate setting to specify the frame rate for this output. If you want to keep the same frame rate as the input video, choose Follow source. If you want to do frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify your frame rate as a fraction. If you are creating your transcoding job specification as a JSON file without the console, use FramerateControl to specify which value the service uses for the frame rate for this output. Choose INITIALIZE_FROM_SOURCE if you want the service to use the frame rate from the input. Choose SPECIFIED if you want the service to use the frame rate you specify in the settings FramerateNumerator and FramerateDenominator.
+   */
+  FramerateControl?: AvcIntraFramerateControl | string;
+
+  /**
+   * Choose the method that you want MediaConvert to use when increasing or decreasing the frame rate. We recommend using drop duplicate (DUPLICATE_DROP) for numerically simple conversions, such as 60 fps to 30 fps. For numerically complex conversions, you can use interpolate (INTERPOLATE) to avoid stutter. This results in a smooth picture, but might introduce undesirable video artifacts. For complex frame rate conversions, especially if your source video has already been converted from its original cadence, use FrameFormer (FRAMEFORMER) to do motion-compensated interpolation. FrameFormer chooses the best conversion method frame by frame. Note that using FrameFormer increases the transcoding time and incurs a significant add-on cost.
+   */
+  FramerateConversionAlgorithm?: AvcIntraFramerateConversionAlgorithm | string;
+
+  /**
+   * When you use the API for transcode jobs that use frame rate conversion, specify the frame rate as a fraction. For example,  24000 / 1001 = 23.976 fps. Use FramerateDenominator to specify the denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When you use the console for transcode jobs that use frame rate conversion, provide the value as a decimal number for Framerate. In this example, specify 23.976.
+   */
+  FramerateDenominator?: number;
+
+  /**
+   * When you use the API for transcode jobs that use frame rate conversion, specify the frame rate as a fraction. For example,  24000 / 1001 = 23.976 fps. Use FramerateNumerator to specify the numerator of this fraction. In this example, use 24000 for the value of FramerateNumerator. When you use the console for transcode jobs that use frame rate conversion, provide the value as a decimal number for Framerate. In this example, specify 23.976.
+   */
+  FramerateNumerator?: number;
+
+  /**
+   * Choose the scan line type for the output. Keep the default value, Progressive (PROGRESSIVE) to create a progressive output, regardless of the scan type of your input. Use Top field first (TOP_FIELD) or Bottom field first (BOTTOM_FIELD) to create an output that's interlaced with the same field polarity throughout. Use Follow, default top (FOLLOW_TOP_FIELD) or Follow, default bottom (FOLLOW_BOTTOM_FIELD) to produce outputs with the same field polarity as the source. For jobs that have multiple inputs, the output field polarity might change over the course of the output. Follow behavior depends on the input scan type. If the source is interlaced, the output will be interlaced with the same polarity as the source. If the source is progressive, the output will be interlaced with top field bottom field first, depending on which of the Follow options you choose.
+   */
+  InterlaceMode?: AvcIntraInterlaceMode | string;
+
+  /**
+   * Use this setting for interlaced outputs, when your output frame rate is half of your input frame rate. In this situation, choose Optimized interlacing (INTERLACED_OPTIMIZE) to create a better quality interlaced output. In this case, each progressive frame from the input corresponds to an interlaced field in the output. Keep the default value, Basic interlacing (INTERLACED), for all other output frame rates. With basic interlacing, MediaConvert performs any frame rate conversion first and then interlaces the frames. When you choose Optimized interlacing and you set your output frame rate to a value that isn't suitable for optimized interlacing, MediaConvert automatically falls back to basic interlacing. Required settings: To use optimized interlacing, you must set Telecine (telecine) to None (NONE) or Soft (SOFT). You can't use optimized interlacing for hard telecine outputs. You must also set Interlace mode (interlaceMode) to a value other than Progressive (PROGRESSIVE).
+   */
+  ScanTypeConversionMode?: AvcIntraScanTypeConversionMode | string;
+
+  /**
+   * Ignore this setting unless your input frame rate is 23.976 or 24 frames per second (fps). Enable slow PAL to create a 25 fps output. When you enable slow PAL, MediaConvert relabels the video frames to 25 fps and resamples your audio to keep it synchronized with the video. Note that enabling this setting will slightly reduce the duration of your video. Required settings: You must also set Framerate to 25. In your JSON job specification, set (framerateControl) to (SPECIFIED), (framerateNumerator) to 25 and (framerateDenominator) to 1.
+   */
+  SlowPal?: AvcIntraSlowPal | string;
+
+  /**
+   * When you do frame rate conversion from 23.976 frames per second (fps) to 29.97 fps, and your output scan type is interlaced, you can optionally enable hard telecine (HARD) to create a smoother picture. When you keep the default value, None (NONE), MediaConvert does a standard frame rate conversion to 29.97 without doing anything with the field polarity to create a smoother picture.
+   */
+  Telecine?: AvcIntraTelecine | string;
+}
+
+export namespace AvcIntraSettings {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AvcIntraSettings): any => ({
+    ...obj,
+  });
+}
+
+export enum VideoCodec {
+  AV1 = "AV1",
+  AVC_INTRA = "AVC_INTRA",
+  FRAME_CAPTURE = "FRAME_CAPTURE",
+  H_264 = "H_264",
+  H_265 = "H_265",
+  MPEG2 = "MPEG2",
+  PRORES = "PRORES",
+  VC3 = "VC3",
+  VP8 = "VP8",
+  VP9 = "VP9",
+}
+
+/**
+ * Required when you set (Codec) under (VideoDescription)>(CodecSettings) to the value FRAME_CAPTURE.
+ */
+export interface FrameCaptureSettings {
+  /**
+   * Frame capture will encode the first frame of the output stream, then one frame every framerateDenominator/framerateNumerator seconds. For example, settings of framerateNumerator = 1 and framerateDenominator = 3 (a rate of 1/3 frame per second) will capture the first frame, then 1 frame every 3s. Files will be named as filename.n.jpg where n is the 0-based sequence number of each Capture.
+   */
+  FramerateDenominator?: number;
+
+  /**
+   * Frame capture will encode the first frame of the output stream, then one frame every framerateDenominator/framerateNumerator seconds. For example, settings of framerateNumerator = 1 and framerateDenominator = 3 (a rate of 1/3 frame per second) will capture the first frame, then 1 frame every 3s. Files will be named as filename.NNNNNNN.jpg where N is the 0-based frame sequence number zero padded to 7 decimal places.
+   */
+  FramerateNumerator?: number;
+
+  /**
+   * Maximum number of captures (encoded jpg output files).
+   */
+  MaxCaptures?: number;
+
+  /**
+   * JPEG Quality - a higher value equals higher quality.
+   */
+  Quality?: number;
+}
+
+export namespace FrameCaptureSettings {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: FrameCaptureSettings): any => ({
+    ...obj,
+  });
+}
+
+export enum H264AdaptiveQuantization {
+  AUTO = "AUTO",
+  HIGH = "HIGH",
+  HIGHER = "HIGHER",
+  LOW = "LOW",
+  MAX = "MAX",
+  MEDIUM = "MEDIUM",
+  OFF = "OFF",
+}
+
+export enum H264CodecLevel {
+  AUTO = "AUTO",
+  LEVEL_1 = "LEVEL_1",
+  LEVEL_1_1 = "LEVEL_1_1",
+  LEVEL_1_2 = "LEVEL_1_2",
+  LEVEL_1_3 = "LEVEL_1_3",
+  LEVEL_2 = "LEVEL_2",
+  LEVEL_2_1 = "LEVEL_2_1",
+  LEVEL_2_2 = "LEVEL_2_2",
+  LEVEL_3 = "LEVEL_3",
+  LEVEL_3_1 = "LEVEL_3_1",
+  LEVEL_3_2 = "LEVEL_3_2",
+  LEVEL_4 = "LEVEL_4",
+  LEVEL_4_1 = "LEVEL_4_1",
+  LEVEL_4_2 = "LEVEL_4_2",
+  LEVEL_5 = "LEVEL_5",
+  LEVEL_5_1 = "LEVEL_5_1",
+  LEVEL_5_2 = "LEVEL_5_2",
+}
+
+export enum H264CodecProfile {
+  BASELINE = "BASELINE",
+  HIGH = "HIGH",
+  HIGH_10BIT = "HIGH_10BIT",
+  HIGH_422 = "HIGH_422",
+  HIGH_422_10BIT = "HIGH_422_10BIT",
+  MAIN = "MAIN",
+}
+
+export enum H264DynamicSubGop {
+  ADAPTIVE = "ADAPTIVE",
+  STATIC = "STATIC",
+}
 
 export enum H264EntropyEncoding {
   CABAC = "CABAC",
@@ -116,6 +319,9 @@ export interface H264QvbrSettings {
 }
 
 export namespace H264QvbrSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: H264QvbrSettings): any => ({
     ...obj,
   });
@@ -130,6 +336,11 @@ export enum H264RateControlMode {
 export enum H264RepeatPps {
   DISABLED = "DISABLED",
   ENABLED = "ENABLED",
+}
+
+export enum H264ScanTypeConversionMode {
+  INTERLACED = "INTERLACED",
+  INTERLACED_OPTIMIZE = "INTERLACED_OPTIMIZE",
 }
 
 export enum H264SceneChangeDetect {
@@ -324,6 +535,11 @@ export interface H264Settings {
   RepeatPps?: H264RepeatPps | string;
 
   /**
+   * Use this setting for interlaced outputs, when your output frame rate is half of your input frame rate. In this situation, choose Optimized interlacing (INTERLACED_OPTIMIZE) to create a better quality interlaced output. In this case, each progressive frame from the input corresponds to an interlaced field in the output. Keep the default value, Basic interlacing (INTERLACED), for all other output frame rates. With basic interlacing, MediaConvert performs any frame rate conversion first and then interlaces the frames. When you choose Optimized interlacing and you set your output frame rate to a value that isn't suitable for optimized interlacing, MediaConvert automatically falls back to basic interlacing. Required settings: To use optimized interlacing, you must set Telecine (telecine) to None (NONE) or Soft (SOFT). You can't use optimized interlacing for hard telecine outputs. You must also set Interlace mode (interlaceMode) to a value other than Progressive (PROGRESSIVE).
+   */
+  ScanTypeConversionMode?: H264ScanTypeConversionMode | string;
+
+  /**
    * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves video quality and is enabled by default. If this output uses QVBR, choose Transition detection (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
    */
   SceneChangeDetect?: H264SceneChangeDetect | string;
@@ -370,6 +586,9 @@ export interface H264Settings {
 }
 
 export namespace H264Settings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: H264Settings): any => ({
     ...obj,
   });
@@ -488,6 +707,9 @@ export interface H265QvbrSettings {
 }
 
 export namespace H265QvbrSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: H265QvbrSettings): any => ({
     ...obj,
   });
@@ -503,6 +725,11 @@ export enum H265SampleAdaptiveOffsetFilterMode {
   ADAPTIVE = "ADAPTIVE",
   DEFAULT = "DEFAULT",
   OFF = "OFF",
+}
+
+export enum H265ScanTypeConversionMode {
+  INTERLACED = "INTERLACED",
+  INTERLACED_OPTIMIZE = "INTERLACED_OPTIMIZE",
 }
 
 export enum H265SceneChangeDetect {
@@ -702,6 +929,11 @@ export interface H265Settings {
   SampleAdaptiveOffsetFilterMode?: H265SampleAdaptiveOffsetFilterMode | string;
 
   /**
+   * Use this setting for interlaced outputs, when your output frame rate is half of your input frame rate. In this situation, choose Optimized interlacing (INTERLACED_OPTIMIZE) to create a better quality interlaced output. In this case, each progressive frame from the input corresponds to an interlaced field in the output. Keep the default value, Basic interlacing (INTERLACED), for all other output frame rates. With basic interlacing, MediaConvert performs any frame rate conversion first and then interlaces the frames. When you choose Optimized interlacing and you set your output frame rate to a value that isn't suitable for optimized interlacing, MediaConvert automatically falls back to basic interlacing. Required settings: To use optimized interlacing, you must set Telecine (telecine) to None (NONE) or Soft (SOFT). You can't use optimized interlacing for hard telecine outputs. You must also set Interlace mode (interlaceMode) to a value other than Progressive (PROGRESSIVE).
+   */
+  ScanTypeConversionMode?: H265ScanTypeConversionMode | string;
+
+  /**
    * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves video quality and is enabled by default. If this output uses QVBR, choose Transition detection (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
    */
   SceneChangeDetect?: H265SceneChangeDetect | string;
@@ -753,6 +985,9 @@ export interface H265Settings {
 }
 
 export namespace H265Settings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: H265Settings): any => ({
     ...obj,
   });
@@ -828,6 +1063,11 @@ export enum Mpeg2QualityTuningLevel {
 export enum Mpeg2RateControlMode {
   CBR = "CBR",
   VBR = "VBR",
+}
+
+export enum Mpeg2ScanTypeConversionMode {
+  INTERLACED = "INTERLACED",
+  INTERLACED_OPTIMIZE = "INTERLACED_OPTIMIZE",
 }
 
 export enum Mpeg2SceneChangeDetect {
@@ -981,9 +1221,14 @@ export interface Mpeg2Settings {
   QualityTuningLevel?: Mpeg2QualityTuningLevel | string;
 
   /**
-   * Use Rate control mode (Mpeg2RateControlMode) to specifiy whether the bitrate is variable (vbr) or constant (cbr).
+   * Use Rate control mode (Mpeg2RateControlMode) to specify whether the bitrate is variable (vbr) or constant (cbr).
    */
   RateControlMode?: Mpeg2RateControlMode | string;
+
+  /**
+   * Use this setting for interlaced outputs, when your output frame rate is half of your input frame rate. In this situation, choose Optimized interlacing (INTERLACED_OPTIMIZE) to create a better quality interlaced output. In this case, each progressive frame from the input corresponds to an interlaced field in the output. Keep the default value, Basic interlacing (INTERLACED), for all other output frame rates. With basic interlacing, MediaConvert performs any frame rate conversion first and then interlaces the frames. When you choose Optimized interlacing and you set your output frame rate to a value that isn't suitable for optimized interlacing, MediaConvert automatically falls back to basic interlacing. Required settings: To use optimized interlacing, you must set Telecine (telecine) to None (NONE) or Soft (SOFT). You can't use optimized interlacing for hard telecine outputs. You must also set Interlace mode (interlaceMode) to a value other than Progressive (PROGRESSIVE).
+   */
+  ScanTypeConversionMode?: Mpeg2ScanTypeConversionMode | string;
 
   /**
    * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves video quality and is enabled by default.
@@ -1022,6 +1267,9 @@ export interface Mpeg2Settings {
 }
 
 export namespace Mpeg2Settings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Mpeg2Settings): any => ({
     ...obj,
   });
@@ -1058,6 +1306,11 @@ export enum ProresParControl {
   SPECIFIED = "SPECIFIED",
 }
 
+export enum ProresScanTypeConversionMode {
+  INTERLACED = "INTERLACED",
+  INTERLACED_OPTIMIZE = "INTERLACED_OPTIMIZE",
+}
+
 export enum ProresSlowPal {
   DISABLED = "DISABLED",
   ENABLED = "ENABLED",
@@ -1073,7 +1326,7 @@ export enum ProresTelecine {
  */
 export interface ProresSettings {
   /**
-   * Use Profile (ProResCodecProfile) to specifiy the type of Apple ProRes codec to use for this output.
+   * Use Profile (ProResCodecProfile) to specify the type of Apple ProRes codec to use for this output.
    */
   CodecProfile?: ProresCodecProfile | string;
 
@@ -1118,6 +1371,11 @@ export interface ProresSettings {
   ParNumerator?: number;
 
   /**
+   * Use this setting for interlaced outputs, when your output frame rate is half of your input frame rate. In this situation, choose Optimized interlacing (INTERLACED_OPTIMIZE) to create a better quality interlaced output. In this case, each progressive frame from the input corresponds to an interlaced field in the output. Keep the default value, Basic interlacing (INTERLACED), for all other output frame rates. With basic interlacing, MediaConvert performs any frame rate conversion first and then interlaces the frames. When you choose Optimized interlacing and you set your output frame rate to a value that isn't suitable for optimized interlacing, MediaConvert automatically falls back to basic interlacing. Required settings: To use optimized interlacing, you must set Telecine (telecine) to None (NONE) or Soft (SOFT). You can't use optimized interlacing for hard telecine outputs. You must also set Interlace mode (interlaceMode) to a value other than Progressive (PROGRESSIVE).
+   */
+  ScanTypeConversionMode?: ProresScanTypeConversionMode | string;
+
+  /**
    * Ignore this setting unless your input frame rate is 23.976 or 24 frames per second (fps). Enable slow PAL to create a 25 fps output. When you enable slow PAL, MediaConvert relabels the video frames to 25 fps and resamples your audio to keep it synchronized with the video. Note that enabling this setting will slightly reduce the duration of your video. Required settings: You must also set Framerate to 25. In your JSON job specification, set (framerateControl) to (SPECIFIED), (framerateNumerator) to 25 and (framerateDenominator) to 1.
    */
   SlowPal?: ProresSlowPal | string;
@@ -1129,6 +1387,9 @@ export interface ProresSettings {
 }
 
 export namespace ProresSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ProresSettings): any => ({
     ...obj,
   });
@@ -1148,6 +1409,11 @@ export enum Vc3FramerateConversionAlgorithm {
 export enum Vc3InterlaceMode {
   INTERLACED = "INTERLACED",
   PROGRESSIVE = "PROGRESSIVE",
+}
+
+export enum Vc3ScanTypeConversionMode {
+  INTERLACED = "INTERLACED",
+  INTERLACED_OPTIMIZE = "INTERLACED_OPTIMIZE",
 }
 
 export enum Vc3SlowPal {
@@ -1196,6 +1462,11 @@ export interface Vc3Settings {
   InterlaceMode?: Vc3InterlaceMode | string;
 
   /**
+   * Use this setting for interlaced outputs, when your output frame rate is half of your input frame rate. In this situation, choose Optimized interlacing (INTERLACED_OPTIMIZE) to create a better quality interlaced output. In this case, each progressive frame from the input corresponds to an interlaced field in the output. Keep the default value, Basic interlacing (INTERLACED), for all other output frame rates. With basic interlacing, MediaConvert performs any frame rate conversion first and then interlaces the frames. When you choose Optimized interlacing and you set your output frame rate to a value that isn't suitable for optimized interlacing, MediaConvert automatically falls back to basic interlacing. Required settings: To use optimized interlacing, you must set Telecine (telecine) to None (NONE) or Soft (SOFT). You can't use optimized interlacing for hard telecine outputs. You must also set Interlace mode (interlaceMode) to a value other than Progressive (PROGRESSIVE).
+   */
+  ScanTypeConversionMode?: Vc3ScanTypeConversionMode | string;
+
+  /**
    * Ignore this setting unless your input frame rate is 23.976 or 24 frames per second (fps). Enable slow PAL to create a 25 fps output by relabeling the video frames and resampling your audio. Note that enabling this setting will slightly reduce the duration of your video. Related settings: You must also set Framerate to 25. In your JSON job specification, set (framerateControl) to (SPECIFIED), (framerateNumerator) to 25 and (framerateDenominator) to 1.
    */
   SlowPal?: Vc3SlowPal | string;
@@ -1212,6 +1483,9 @@ export interface Vc3Settings {
 }
 
 export namespace Vc3Settings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Vc3Settings): any => ({
     ...obj,
   });
@@ -1313,6 +1587,9 @@ export interface Vp8Settings {
 }
 
 export namespace Vp8Settings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Vp8Settings): any => ({
     ...obj,
   });
@@ -1414,6 +1691,9 @@ export interface Vp9Settings {
 }
 
 export namespace Vp9Settings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Vp9Settings): any => ({
     ...obj,
   });
@@ -1429,7 +1709,7 @@ export interface VideoCodecSettings {
   Av1Settings?: Av1Settings;
 
   /**
-   * Required when you set your output video codec to AVC-Intra. For more information about the AVC-I settings, see the relevant specification. For detailed information about SD and HD in AVC-I, see https://ieeexplore.ieee.org/document/7290936.
+   * Required when you choose AVC-Intra for your output video codec. For more information about the AVC-Intra settings, see the relevant specification. For detailed information about SD and HD in AVC-Intra, see https://ieeexplore.ieee.org/document/7290936. For information about 4K/2K in AVC-Intra, see https://pro-av.panasonic.net/en/avc-ultra/AVC-ULTRAoverview.pdf.
    */
   AvcIntraSettings?: AvcIntraSettings;
 
@@ -1480,6 +1760,9 @@ export interface VideoCodecSettings {
 }
 
 export namespace VideoCodecSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VideoCodecSettings): any => ({
     ...obj,
   });
@@ -1555,6 +1838,9 @@ export interface ColorCorrector {
 }
 
 export namespace ColorCorrector {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ColorCorrector): any => ({
     ...obj,
   });
@@ -1599,6 +1885,9 @@ export interface Deinterlacer {
 }
 
 export namespace Deinterlacer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Deinterlacer): any => ({
     ...obj,
   });
@@ -1620,6 +1909,9 @@ export interface DolbyVisionLevel6Metadata {
 }
 
 export namespace DolbyVisionLevel6Metadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DolbyVisionLevel6Metadata): any => ({
     ...obj,
   });
@@ -1636,7 +1928,7 @@ export enum DolbyVisionProfile {
 }
 
 /**
- * Settings for Dolby Vision
+ * With AWS Elemental MediaConvert, you can create profile 5 Dolby Vision outputs from MXF and IMF sources that contain mastering information as frame-interleaved Dolby Vision metadata.
  */
 export interface DolbyVision {
   /**
@@ -1656,6 +1948,9 @@ export interface DolbyVision {
 }
 
 export namespace DolbyVision {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DolbyVision): any => ({
     ...obj,
   });
@@ -1683,6 +1978,9 @@ export interface NoiseReducerFilterSettings {
 }
 
 export namespace NoiseReducerFilterSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoiseReducerFilterSettings): any => ({
     ...obj,
   });
@@ -1709,6 +2007,9 @@ export interface NoiseReducerSpatialFilterSettings {
 }
 
 export namespace NoiseReducerSpatialFilterSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoiseReducerSpatialFilterSettings): any => ({
     ...obj,
   });
@@ -1746,6 +2047,9 @@ export interface NoiseReducerTemporalFilterSettings {
 }
 
 export namespace NoiseReducerTemporalFilterSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoiseReducerTemporalFilterSettings): any => ({
     ...obj,
   });
@@ -1777,6 +2081,9 @@ export interface NoiseReducer {
 }
 
 export namespace NoiseReducer {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoiseReducer): any => ({
     ...obj,
   });
@@ -1816,6 +2123,9 @@ export interface NexGuardFileMarkerSettings {
 }
 
 export namespace NexGuardFileMarkerSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NexGuardFileMarkerSettings): any => ({
     ...obj,
   });
@@ -1832,6 +2142,9 @@ export interface PartnerWatermarking {
 }
 
 export namespace PartnerWatermarking {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PartnerWatermarking): any => ({
     ...obj,
   });
@@ -1850,7 +2163,7 @@ export enum TimecodeBurninPosition {
 }
 
 /**
- * Timecode burn-in (TimecodeBurnIn)--Burns the output timecode and specified prefix into the output.
+ * Settings for burning the output timecode and specified prefix into the output.
  */
 export interface TimecodeBurnin {
   /**
@@ -1870,6 +2183,9 @@ export interface TimecodeBurnin {
 }
 
 export namespace TimecodeBurnin {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TimecodeBurnin): any => ({
     ...obj,
   });
@@ -1880,12 +2196,12 @@ export namespace TimecodeBurnin {
  */
 export interface VideoPreprocessor {
   /**
-   * Enable the Color corrector (ColorCorrector) feature if necessary. Enable or disable this feature for each output individually. This setting is disabled by default.
+   * Use these settings to convert the color space or to modify properties such as hue and contrast for this output. For more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/converting-the-color-space.html.
    */
   ColorCorrector?: ColorCorrector;
 
   /**
-   * Use Deinterlacer (Deinterlacer) to produce smoother motion and a clearer picture.
+   * Use the deinterlacer to produce smoother motion and a clearer picture. For more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-scan-type.html.
    */
   Deinterlacer?: Deinterlacer;
 
@@ -1910,19 +2226,22 @@ export interface VideoPreprocessor {
   PartnerWatermarking?: PartnerWatermarking;
 
   /**
-   * Timecode burn-in (TimecodeBurnIn)--Burns the output timecode and specified prefix into the output.
+   * Settings for burning the output timecode and specified prefix into the output.
    */
   TimecodeBurnin?: TimecodeBurnin;
 }
 
 export namespace VideoPreprocessor {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VideoPreprocessor): any => ({
     ...obj,
   });
 }
 
 /**
- * Settings for video outputs
+ * Settings related to video encoding of your output. The specific video settings depend on the video codec that you choose. When you work directly in your JSON job specification, include one instance of Video description (VideoDescription) per output.
  */
 export interface VideoDescription {
   /**
@@ -2002,13 +2321,16 @@ export interface VideoDescription {
 }
 
 export namespace VideoDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VideoDescription): any => ({
     ...obj,
   });
 }
 
 /**
- * An output object describes the settings for a single output file or stream in an output group.
+ * Each output in your job is a collection of settings that describes how you want MediaConvert to encode a single output file or stream. For more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/create-outputs.html.
  */
 export interface Output {
   /**
@@ -2042,17 +2364,20 @@ export interface Output {
   OutputSettings?: OutputSettings;
 
   /**
-   * Use Preset (Preset) to specifiy a preset for your transcoding settings. Provide the system or custom preset name. You can specify either Preset (Preset) or Container settings (ContainerSettings), but not both.
+   * Use Preset (Preset) to specify a preset for your transcoding settings. Provide the system or custom preset name. You can specify either Preset (Preset) or Container settings (ContainerSettings), but not both.
    */
   Preset?: string;
 
   /**
-   * (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video codec that you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per output.
+   * VideoDescription contains a group of video encoding settings. The specific video settings depend on the video codec that you choose for the property codec. Include one instance of  VideoDescription per output.
    */
   VideoDescription?: VideoDescription;
 }
 
 export namespace Output {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Output): any => ({
     ...obj,
   });
@@ -2089,6 +2414,9 @@ export interface OutputGroup {
 }
 
 export namespace OutputGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OutputGroup): any => ({
     ...obj,
   });
@@ -2126,6 +2454,9 @@ export interface TimecodeConfig {
 }
 
 export namespace TimecodeConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TimecodeConfig): any => ({
     ...obj,
   });
@@ -2142,6 +2473,9 @@ export interface TimedMetadataInsertion {
 }
 
 export namespace TimedMetadataInsertion {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TimedMetadataInsertion): any => ({
     ...obj,
   });
@@ -2162,7 +2496,7 @@ export interface JobSettings {
   AvailBlanking?: AvailBlanking;
 
   /**
-   * Settings for Event Signaling And Messaging (ESAM).
+   * Settings for Event Signaling And Messaging (ESAM). If you don't do ad insertion, you can ignore these settings.
    */
   Esam?: EsamSettings;
 
@@ -2172,7 +2506,7 @@ export interface JobSettings {
   Inputs?: Input[];
 
   /**
-   * Overlay motion graphics on top of your video. The motion graphics that you specify here appear on all outputs in all output groups.
+   * Overlay motion graphics on top of your video. The motion graphics that you specify here appear on all outputs in all output groups. For more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/motion-graphic-overlay.html.
    */
   MotionImageInserter?: MotionImageInserter;
 
@@ -2192,7 +2526,7 @@ export interface JobSettings {
   OutputGroups?: OutputGroup[];
 
   /**
-   * Contains settings used to acquire and adjust timecode information from inputs.
+   * These settings control how the service handles timecodes throughout the job. These settings don't affect input clipping.
    */
   TimecodeConfig?: TimecodeConfig;
 
@@ -2203,6 +2537,9 @@ export interface JobSettings {
 }
 
 export namespace JobSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobSettings): any => ({
     ...obj,
   });
@@ -2260,6 +2597,9 @@ export interface Timing {
 }
 
 export namespace Timing {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Timing): any => ({
     ...obj,
   });
@@ -2396,6 +2736,9 @@ export interface Job {
 }
 
 export namespace Job {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Job): any => ({
     ...obj,
   });
@@ -2416,7 +2759,7 @@ export interface JobTemplateSettings {
   AvailBlanking?: AvailBlanking;
 
   /**
-   * Settings for Event Signaling And Messaging (ESAM).
+   * Settings for Event Signaling And Messaging (ESAM). If you don't do ad insertion, you can ignore these settings.
    */
   Esam?: EsamSettings;
 
@@ -2426,7 +2769,7 @@ export interface JobTemplateSettings {
   Inputs?: InputTemplate[];
 
   /**
-   * Overlay motion graphics on top of your video. The motion graphics that you specify here appear on all outputs in all output groups.
+   * Overlay motion graphics on top of your video. The motion graphics that you specify here appear on all outputs in all output groups. For more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/motion-graphic-overlay.html.
    */
   MotionImageInserter?: MotionImageInserter;
 
@@ -2446,7 +2789,7 @@ export interface JobTemplateSettings {
   OutputGroups?: OutputGroup[];
 
   /**
-   * Contains settings used to acquire and adjust timecode information from inputs.
+   * These settings control how the service handles timecodes throughout the job. These settings don't affect input clipping.
    */
   TimecodeConfig?: TimecodeConfig;
 
@@ -2457,6 +2800,9 @@ export interface JobTemplateSettings {
 }
 
 export namespace JobTemplateSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobTemplateSettings): any => ({
     ...obj,
   });
@@ -2538,6 +2884,9 @@ export interface JobTemplate {
 }
 
 export namespace JobTemplate {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobTemplate): any => ({
     ...obj,
   });
@@ -2553,7 +2902,7 @@ export interface PresetSettings {
   AudioDescriptions?: AudioDescription[];
 
   /**
-   * Caption settings for this preset. There can be multiple caption settings in a single output.
+   * This object holds groups of settings related to captions for one output. For each output that has captions, include one instance of CaptionDescriptions.
    */
   CaptionDescriptions?: CaptionDescriptionPreset[];
 
@@ -2563,12 +2912,15 @@ export interface PresetSettings {
   ContainerSettings?: ContainerSettings;
 
   /**
-   * (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video codec that you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per output.
+   * VideoDescription contains a group of video encoding settings. The specific video settings depend on the video codec that you choose for the property codec. Include one instance of  VideoDescription per output.
    */
   VideoDescription?: VideoDescription;
 }
 
 export namespace PresetSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PresetSettings): any => ({
     ...obj,
   });
@@ -2620,6 +2972,9 @@ export interface Preset {
 }
 
 export namespace Preset {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Preset): any => ({
     ...obj,
   });
@@ -2680,6 +3035,9 @@ export interface ReservationPlan {
 }
 
 export namespace ReservationPlan {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReservationPlan): any => ({
     ...obj,
   });
@@ -2751,6 +3109,9 @@ export interface Queue {
 }
 
 export namespace Queue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Queue): any => ({
     ...obj,
   });
@@ -2764,6 +3125,9 @@ export interface AssociateCertificateRequest {
 }
 
 export namespace AssociateCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateCertificateRequest): any => ({
     ...obj,
   });
@@ -2772,6 +3136,9 @@ export namespace AssociateCertificateRequest {
 export interface AssociateCertificateResponse {}
 
 export namespace AssociateCertificateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateCertificateResponse): any => ({
     ...obj,
   });
@@ -2787,6 +3154,9 @@ export interface BadRequestException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace BadRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BadRequestException): any => ({
     ...obj,
   });
@@ -2802,6 +3172,9 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
@@ -2817,6 +3190,9 @@ export interface ForbiddenException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ForbiddenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ForbiddenException): any => ({
     ...obj,
   });
@@ -2832,6 +3208,9 @@ export interface InternalServerErrorException extends __SmithyException, $Metada
 }
 
 export namespace InternalServerErrorException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerErrorException): any => ({
     ...obj,
   });
@@ -2847,6 +3226,9 @@ export interface NotFoundException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotFoundException): any => ({
     ...obj,
   });
@@ -2862,6 +3244,9 @@ export interface TooManyRequestsException extends __SmithyException, $MetadataBe
 }
 
 export namespace TooManyRequestsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyRequestsException): any => ({
     ...obj,
   });
@@ -2875,6 +3260,9 @@ export interface CancelJobRequest {
 }
 
 export namespace CancelJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelJobRequest): any => ({
     ...obj,
   });
@@ -2883,6 +3271,9 @@ export namespace CancelJobRequest {
 export interface CancelJobResponse {}
 
 export namespace CancelJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelJobResponse): any => ({
     ...obj,
   });
@@ -2956,6 +3347,9 @@ export interface CreateJobRequest {
 }
 
 export namespace CreateJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateJobRequest): any => ({
     ...obj,
   });
@@ -2969,6 +3363,9 @@ export interface CreateJobResponse {
 }
 
 export namespace CreateJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateJobResponse): any => ({
     ...obj,
   });
@@ -3027,6 +3424,9 @@ export interface CreateJobTemplateRequest {
 }
 
 export namespace CreateJobTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateJobTemplateRequest): any => ({
     ...obj,
   });
@@ -3040,6 +3440,9 @@ export interface CreateJobTemplateResponse {
 }
 
 export namespace CreateJobTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateJobTemplateResponse): any => ({
     ...obj,
   });
@@ -3073,6 +3476,9 @@ export interface CreatePresetRequest {
 }
 
 export namespace CreatePresetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePresetRequest): any => ({
     ...obj,
   });
@@ -3086,6 +3492,9 @@ export interface CreatePresetResponse {
 }
 
 export namespace CreatePresetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePresetResponse): any => ({
     ...obj,
   });
@@ -3112,6 +3521,9 @@ export interface ReservationPlanSettings {
 }
 
 export namespace ReservationPlanSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReservationPlanSettings): any => ({
     ...obj,
   });
@@ -3150,6 +3562,9 @@ export interface CreateQueueRequest {
 }
 
 export namespace CreateQueueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateQueueRequest): any => ({
     ...obj,
   });
@@ -3163,6 +3578,9 @@ export interface CreateQueueResponse {
 }
 
 export namespace CreateQueueResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateQueueResponse): any => ({
     ...obj,
   });
@@ -3176,6 +3594,9 @@ export interface DeleteJobTemplateRequest {
 }
 
 export namespace DeleteJobTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteJobTemplateRequest): any => ({
     ...obj,
   });
@@ -3184,6 +3605,9 @@ export namespace DeleteJobTemplateRequest {
 export interface DeleteJobTemplateResponse {}
 
 export namespace DeleteJobTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteJobTemplateResponse): any => ({
     ...obj,
   });
@@ -3197,6 +3621,9 @@ export interface DeletePresetRequest {
 }
 
 export namespace DeletePresetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePresetRequest): any => ({
     ...obj,
   });
@@ -3205,6 +3632,9 @@ export namespace DeletePresetRequest {
 export interface DeletePresetResponse {}
 
 export namespace DeletePresetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePresetResponse): any => ({
     ...obj,
   });
@@ -3218,6 +3648,9 @@ export interface DeleteQueueRequest {
 }
 
 export namespace DeleteQueueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteQueueRequest): any => ({
     ...obj,
   });
@@ -3226,6 +3659,9 @@ export namespace DeleteQueueRequest {
 export interface DeleteQueueResponse {}
 
 export namespace DeleteQueueResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteQueueResponse): any => ({
     ...obj,
   });
@@ -3257,6 +3693,9 @@ export interface DescribeEndpointsRequest {
 }
 
 export namespace DescribeEndpointsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEndpointsRequest): any => ({
     ...obj,
   });
@@ -3275,6 +3714,9 @@ export interface DescribeEndpointsResponse {
 }
 
 export namespace DescribeEndpointsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEndpointsResponse): any => ({
     ...obj,
   });
@@ -3288,6 +3730,9 @@ export interface DisassociateCertificateRequest {
 }
 
 export namespace DisassociateCertificateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateCertificateRequest): any => ({
     ...obj,
   });
@@ -3296,6 +3741,9 @@ export namespace DisassociateCertificateRequest {
 export interface DisassociateCertificateResponse {}
 
 export namespace DisassociateCertificateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateCertificateResponse): any => ({
     ...obj,
   });
@@ -3309,6 +3757,9 @@ export interface GetJobRequest {
 }
 
 export namespace GetJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetJobRequest): any => ({
     ...obj,
   });
@@ -3322,6 +3773,9 @@ export interface GetJobResponse {
 }
 
 export namespace GetJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetJobResponse): any => ({
     ...obj,
   });
@@ -3335,6 +3789,9 @@ export interface GetJobTemplateRequest {
 }
 
 export namespace GetJobTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetJobTemplateRequest): any => ({
     ...obj,
   });
@@ -3348,6 +3805,9 @@ export interface GetJobTemplateResponse {
 }
 
 export namespace GetJobTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetJobTemplateResponse): any => ({
     ...obj,
   });
@@ -3361,6 +3821,9 @@ export interface GetPresetRequest {
 }
 
 export namespace GetPresetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPresetRequest): any => ({
     ...obj,
   });
@@ -3374,6 +3837,9 @@ export interface GetPresetResponse {
 }
 
 export namespace GetPresetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPresetResponse): any => ({
     ...obj,
   });
@@ -3387,6 +3853,9 @@ export interface GetQueueRequest {
 }
 
 export namespace GetQueueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetQueueRequest): any => ({
     ...obj,
   });
@@ -3400,6 +3869,9 @@ export interface GetQueueResponse {
 }
 
 export namespace GetQueueResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetQueueResponse): any => ({
     ...obj,
   });
@@ -3444,6 +3916,9 @@ export interface ListJobsRequest {
 }
 
 export namespace ListJobsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobsRequest): any => ({
     ...obj,
   });
@@ -3462,6 +3937,9 @@ export interface ListJobsResponse {
 }
 
 export namespace ListJobsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobsResponse): any => ({
     ...obj,
   });
@@ -3495,6 +3973,9 @@ export interface ListJobTemplatesRequest {
 }
 
 export namespace ListJobTemplatesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobTemplatesRequest): any => ({
     ...obj,
   });
@@ -3513,6 +3994,9 @@ export interface ListJobTemplatesResponse {
 }
 
 export namespace ListJobTemplatesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobTemplatesResponse): any => ({
     ...obj,
   });
@@ -3552,6 +4036,9 @@ export interface ListPresetsRequest {
 }
 
 export namespace ListPresetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPresetsRequest): any => ({
     ...obj,
   });
@@ -3570,6 +4057,9 @@ export interface ListPresetsResponse {
 }
 
 export namespace ListPresetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPresetsResponse): any => ({
     ...obj,
   });
@@ -3603,6 +4093,9 @@ export interface ListQueuesRequest {
 }
 
 export namespace ListQueuesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListQueuesRequest): any => ({
     ...obj,
   });
@@ -3621,6 +4114,9 @@ export interface ListQueuesResponse {
 }
 
 export namespace ListQueuesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListQueuesResponse): any => ({
     ...obj,
   });
@@ -3634,6 +4130,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -3655,6 +4154,9 @@ export interface ResourceTags {
 }
 
 export namespace ResourceTags {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceTags): any => ({
     ...obj,
   });
@@ -3668,6 +4170,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -3686,6 +4191,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -3694,6 +4202,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -3712,6 +4223,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -3720,6 +4234,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
@@ -3773,6 +4290,9 @@ export interface UpdateJobTemplateRequest {
 }
 
 export namespace UpdateJobTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateJobTemplateRequest): any => ({
     ...obj,
   });
@@ -3786,6 +4306,9 @@ export interface UpdateJobTemplateResponse {
 }
 
 export namespace UpdateJobTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateJobTemplateResponse): any => ({
     ...obj,
   });
@@ -3814,6 +4337,9 @@ export interface UpdatePresetRequest {
 }
 
 export namespace UpdatePresetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdatePresetRequest): any => ({
     ...obj,
   });
@@ -3827,6 +4353,9 @@ export interface UpdatePresetResponse {
 }
 
 export namespace UpdatePresetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdatePresetResponse): any => ({
     ...obj,
   });
@@ -3855,6 +4384,9 @@ export interface UpdateQueueRequest {
 }
 
 export namespace UpdateQueueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateQueueRequest): any => ({
     ...obj,
   });
@@ -3868,6 +4400,9 @@ export interface UpdateQueueResponse {
 }
 
 export namespace UpdateQueueResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateQueueResponse): any => ({
     ...obj,
   });

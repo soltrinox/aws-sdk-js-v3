@@ -17,12 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSipMediaApplicationCommandInput = GetSipMediaApplicationRequest;
-export type GetSipMediaApplicationCommandOutput = GetSipMediaApplicationResponse & __MetadataBearer;
+export interface GetSipMediaApplicationCommandInput extends GetSipMediaApplicationRequest {}
+export interface GetSipMediaApplicationCommandOutput extends GetSipMediaApplicationResponse, __MetadataBearer {}
 
 /**
- * <p>Retrieves the information for a SIP media application, including name, AWS Region, and
- *       endpoints.</p>
+ * <p>Retrieves the information for a SIP media application, including name, AWS Region, and endpoints.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, GetSipMediaApplicationCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, GetSipMediaApplicationCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new GetSipMediaApplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSipMediaApplicationCommandInput} for command's `input` shape.
+ * @see {@link GetSipMediaApplicationCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSipMediaApplicationCommand extends $Command<
   GetSipMediaApplicationCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCostForecastCommandInput = GetCostForecastRequest;
-export type GetCostForecastCommandOutput = GetCostForecastResponse & __MetadataBearer;
+export interface GetCostForecastCommandInput extends GetCostForecastRequest {}
+export interface GetCostForecastCommandOutput extends GetCostForecastResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CostExplorerClient, GetCostForecastCommand } from "@aws-sdk/client-cost-explorer"; // ES Modules import
+ * // const { CostExplorerClient, GetCostForecastCommand } = require("@aws-sdk/client-cost-explorer"); // CommonJS import
+ * const client = new CostExplorerClient(config);
+ * const command = new GetCostForecastCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCostForecastCommandInput} for command's `input` shape.
+ * @see {@link GetCostForecastCommandOutput} for command's `response` shape.
+ * @see {@link CostExplorerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCostForecastCommand extends $Command<
   GetCostForecastCommandInput,

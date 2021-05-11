@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteParameterCommandInput = DeleteParameterRequest;
-export type DeleteParameterCommandOutput = DeleteParameterResult & __MetadataBearer;
+export interface DeleteParameterCommandInput extends DeleteParameterRequest {}
+export interface DeleteParameterCommandOutput extends DeleteParameterResult, __MetadataBearer {}
 
 /**
  * <p>Delete a parameter from the system.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DeleteParameterCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DeleteParameterCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DeleteParameterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteParameterCommandInput} for command's `input` shape.
+ * @see {@link DeleteParameterCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteParameterCommand extends $Command<
   DeleteParameterCommandInput,

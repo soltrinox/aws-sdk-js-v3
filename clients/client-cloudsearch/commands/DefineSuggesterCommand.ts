@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DefineSuggesterCommandInput = DefineSuggesterRequest;
-export type DefineSuggesterCommandOutput = DefineSuggesterResponse & __MetadataBearer;
+export interface DefineSuggesterCommandInput extends DefineSuggesterRequest {}
+export interface DefineSuggesterCommandOutput extends DefineSuggesterResponse, __MetadataBearer {}
 
 /**
  * <p>Configures a suggester for a domain. A suggester enables you to display possible matches before users finish typing their queries. When you configure a suggester, you must specify the name of the text field you want to search for possible matches and a unique name for the suggester. For more information, see <a href="http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the <i>Amazon CloudSearch Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudSearchClient, DefineSuggesterCommand } from "@aws-sdk/client-cloudsearch"; // ES Modules import
+ * // const { CloudSearchClient, DefineSuggesterCommand } = require("@aws-sdk/client-cloudsearch"); // CommonJS import
+ * const client = new CloudSearchClient(config);
+ * const command = new DefineSuggesterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DefineSuggesterCommandInput} for command's `input` shape.
+ * @see {@link DefineSuggesterCommandOutput} for command's `response` shape.
+ * @see {@link CloudSearchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DefineSuggesterCommand extends $Command<
   DefineSuggesterCommandInput,

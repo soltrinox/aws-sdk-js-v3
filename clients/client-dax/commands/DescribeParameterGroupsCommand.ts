@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeParameterGroupsCommandInput = DescribeParameterGroupsRequest;
-export type DescribeParameterGroupsCommandOutput = DescribeParameterGroupsResponse & __MetadataBearer;
+export interface DescribeParameterGroupsCommandInput extends DescribeParameterGroupsRequest {}
+export interface DescribeParameterGroupsCommandOutput extends DescribeParameterGroupsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of parameter group descriptions. If a parameter group name is
  *             specified, the list will contain only the descriptions for that group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DAXClient, DescribeParameterGroupsCommand } from "@aws-sdk/client-dax"; // ES Modules import
+ * // const { DAXClient, DescribeParameterGroupsCommand } = require("@aws-sdk/client-dax"); // CommonJS import
+ * const client = new DAXClient(config);
+ * const command = new DescribeParameterGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeParameterGroupsCommandInput} for command's `input` shape.
+ * @see {@link DescribeParameterGroupsCommandOutput} for command's `response` shape.
+ * @see {@link DAXClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeParameterGroupsCommand extends $Command<
   DescribeParameterGroupsCommandInput,

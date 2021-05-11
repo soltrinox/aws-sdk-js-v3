@@ -64,6 +64,10 @@ import {
   DescribeConnectionsCommandOutput,
 } from "./commands/DescribeConnectionsCommand";
 import {
+  DescribeEndpointSettingsCommandInput,
+  DescribeEndpointSettingsCommandOutput,
+} from "./commands/DescribeEndpointSettingsCommand";
+import {
   DescribeEndpointTypesCommandInput,
   DescribeEndpointTypesCommandOutput,
 } from "./commands/DescribeEndpointTypesCommand";
@@ -247,6 +251,7 @@ export type ServiceInputTypes =
   | DescribeApplicableIndividualAssessmentsCommandInput
   | DescribeCertificatesCommandInput
   | DescribeConnectionsCommandInput
+  | DescribeEndpointSettingsCommandInput
   | DescribeEndpointTypesCommandInput
   | DescribeEndpointsCommandInput
   | DescribeEventCategoriesCommandInput
@@ -303,6 +308,7 @@ export type ServiceOutputTypes =
   | DescribeApplicableIndividualAssessmentsCommandOutput
   | DescribeCertificatesCommandOutput
   | DescribeConnectionsCommandOutput
+  | DescribeEndpointSettingsCommandOutput
   | DescribeEndpointTypesCommandOutput
   | DescribeEndpointsCommandOutput
   | DescribeEventCategoriesCommandOutput
@@ -403,7 +409,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -434,7 +440,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type DatabaseMigrationServiceClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type DatabaseMigrationServiceClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -442,8 +448,12 @@ export type DatabaseMigrationServiceClientConfig = Partial<__SmithyConfiguration
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of DatabaseMigrationServiceClient class constructor that set the region, credentials and other options.
+ */
+export interface DatabaseMigrationServiceClientConfig extends DatabaseMigrationServiceClientConfigType {}
 
-export type DatabaseMigrationServiceClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type DatabaseMigrationServiceClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -451,6 +461,11 @@ export type DatabaseMigrationServiceClientResolvedConfig = __SmithyResolvedConfi
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of DatabaseMigrationServiceClient class. This is resolved and normalized from the {@link DatabaseMigrationServiceClientConfig | constructor configuration interface}.
+ */
+export interface DatabaseMigrationServiceClientResolvedConfig
+  extends DatabaseMigrationServiceClientResolvedConfigType {}
 
 /**
  * <fullname>AWS Database Migration Service</fullname>
@@ -470,6 +485,9 @@ export class DatabaseMigrationServiceClient extends __Client<
   ServiceOutputTypes,
   DatabaseMigrationServiceClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of DatabaseMigrationServiceClient class. This is resolved and normalized from the {@link DatabaseMigrationServiceClientConfig | constructor configuration interface}.
+   */
   readonly config: DatabaseMigrationServiceClientResolvedConfig;
 
   constructor(configuration: DatabaseMigrationServiceClientConfig) {

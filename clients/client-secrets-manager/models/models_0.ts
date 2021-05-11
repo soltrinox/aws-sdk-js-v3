@@ -1,6 +1,30 @@
 import { SENSITIVE_STRING, SmithyException as __SmithyException } from "@aws-sdk/smithy-client";
 import { MetadataBearer as $MetadataBearer } from "@aws-sdk/types";
 
+/**
+ * <p>(Optional) Custom type consisting of a <code>Region</code> (required) and the <code>KmsKeyId</code> which can be an <code>ARN</code>, <code>Key ID</code>, or <code>Alias</code>.</p>
+ */
+export interface ReplicaRegionType {
+  /**
+   * <p>Describes a single instance of Region objects.</p>
+   */
+  Region?: string;
+
+  /**
+   * <p>Can be an <code>ARN</code>, <code>Key ID</code>, or <code>Alias</code>. </p>
+   */
+  KmsKeyId?: string;
+}
+
+export namespace ReplicaRegionType {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReplicaRegionType): any => ({
+    ...obj,
+  });
+}
+
 export interface CancelRotateSecretRequest {
   /**
    * <p>Specifies the secret to cancel a rotation request. You can specify either the Amazon
@@ -24,6 +48,9 @@ export interface CancelRotateSecretRequest {
 }
 
 export namespace CancelRotateSecretRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelRotateSecretRequest): any => ({
     ...obj,
   });
@@ -51,6 +78,9 @@ export interface CancelRotateSecretResponse {
 }
 
 export namespace CancelRotateSecretResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelRotateSecretResponse): any => ({
     ...obj,
   });
@@ -66,6 +96,9 @@ export interface InternalServiceError extends __SmithyException, $MetadataBearer
 }
 
 export namespace InternalServiceError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServiceError): any => ({
     ...obj,
   });
@@ -81,6 +114,9 @@ export interface InvalidParameterException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidParameterException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidParameterException): any => ({
     ...obj,
   });
@@ -107,6 +143,9 @@ export interface InvalidRequestException extends __SmithyException, $MetadataBea
 }
 
 export namespace InvalidRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRequestException): any => ({
     ...obj,
   });
@@ -122,6 +161,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -143,6 +185,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -190,7 +235,7 @@ export interface CreateSecretRequest {
    *             <li>
    *                <p>If a version with this value already exists and that version's
    *             <code>SecretString</code> and <code>SecretBinary</code> values are different from those
-   *           in the request then the request fails because you cannot modify an existing version.
+   *           in the request, then the request fails because you cannot modify an existing version.
    *           Instead, use <a>PutSecretValue</a> to create a new version.</p>
    *             </li>
    *          </ul>
@@ -310,13 +355,74 @@ export interface CreateSecretRequest {
    *          </ul>
    */
   Tags?: Tag[];
+
+  /**
+   * <p>(Optional) Add a list of regions to replicate secrets. Secrets Manager replicates the KMSKeyID objects to the list of regions specified in
+   *       the parameter.</p>
+   */
+  AddReplicaRegions?: ReplicaRegionType[];
+
+  /**
+   * <p>(Optional) If set, the replication overwrites a secret with the same name in the
+   *       destination region.</p>
+   */
+  ForceOverwriteReplicaSecret?: boolean;
 }
 
 export namespace CreateSecretRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSecretRequest): any => ({
     ...obj,
     ...(obj.SecretBinary && { SecretBinary: SENSITIVE_STRING }),
     ...(obj.SecretString && { SecretString: SENSITIVE_STRING }),
+  });
+}
+
+export enum StatusType {
+  Failed = "Failed",
+  InProgress = "InProgress",
+  InSync = "InSync",
+}
+
+/**
+ * <p>A replication object consisting of a <code>RegionReplicationStatus</code> object and includes a Region, KMSKeyId, status, and status message.</p>
+ */
+export interface ReplicationStatusType {
+  /**
+   * <p>The Region where replication occurs.</p>
+   */
+  Region?: string;
+
+  /**
+   * <p>Can be an <code>ARN</code>, <code>Key ID</code>, or <code>Alias</code>. </p>
+   */
+  KmsKeyId?: string;
+
+  /**
+   * <p>The status can be <code>InProgress</code>, <code>Failed</code>, or <code>InSync</code>.</p>
+   */
+  Status?: StatusType | string;
+
+  /**
+   * <p>Status message such as "<i>Secret with this name already exists in this
+   *         region</i>".</p>
+   */
+  StatusMessage?: string;
+
+  /**
+   * <p>The date that you last accessed the secret in the Region. </p>
+   */
+  LastAccessedDate?: Date;
+}
+
+export namespace ReplicationStatusType {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReplicationStatusType): any => ({
+    ...obj,
   });
 }
 
@@ -339,13 +445,20 @@ export interface CreateSecretResponse {
   Name?: string;
 
   /**
-   * <p>The unique identifier associated with the version of the secret you just
-   *       created.</p>
+   * <p>The unique identifier associated with the version of the secret you just created.</p>
    */
   VersionId?: string;
+
+  /**
+   * <p>Describes a list of replication status objects as <code>InProgress</code>, <code>Failed</code> or <code>InSync</code>.</p>
+   */
+  ReplicationStatus?: ReplicationStatusType[];
 }
 
 export namespace CreateSecretResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSecretResponse): any => ({
     ...obj,
   });
@@ -364,6 +477,9 @@ export interface EncryptionFailure extends __SmithyException, $MetadataBearer {
 }
 
 export namespace EncryptionFailure {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EncryptionFailure): any => ({
     ...obj,
   });
@@ -379,13 +495,16 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The policy document that you provided isn't valid.</p>
+ * <p>You provided a resource-based policy with syntax errors.</p>
  */
 export interface MalformedPolicyDocumentException extends __SmithyException, $MetadataBearer {
   name: "MalformedPolicyDocumentException";
@@ -394,6 +513,9 @@ export interface MalformedPolicyDocumentException extends __SmithyException, $Me
 }
 
 export namespace MalformedPolicyDocumentException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MalformedPolicyDocumentException): any => ({
     ...obj,
   });
@@ -409,6 +531,9 @@ export interface PreconditionNotMetException extends __SmithyException, $Metadat
 }
 
 export namespace PreconditionNotMetException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PreconditionNotMetException): any => ({
     ...obj,
   });
@@ -424,6 +549,9 @@ export interface ResourceExistsException extends __SmithyException, $MetadataBea
 }
 
 export namespace ResourceExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceExistsException): any => ({
     ...obj,
   });
@@ -439,6 +567,9 @@ export interface DecryptionFailure extends __SmithyException, $MetadataBearer {
 }
 
 export namespace DecryptionFailure {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DecryptionFailure): any => ({
     ...obj,
   });
@@ -467,6 +598,9 @@ export interface DeleteResourcePolicyRequest {
 }
 
 export namespace DeleteResourcePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteResourcePolicyRequest): any => ({
     ...obj,
   });
@@ -485,6 +619,9 @@ export interface DeleteResourcePolicyResponse {
 }
 
 export namespace DeleteResourcePolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteResourcePolicyResponse): any => ({
     ...obj,
   });
@@ -492,8 +629,8 @@ export namespace DeleteResourcePolicyResponse {
 
 export interface DeleteSecretRequest {
   /**
-   * <p>Specifies the secret that you want to delete. You can specify either the Amazon Resource
-   *       Name (ARN) or the friendly name of the secret.</p>
+   * <p>Specifies the secret to delete. You can specify either the Amazon Resource Name (ARN) or
+   *       the friendly name of the secret.</p>
    *          <note>
    *             <p>If you specify an ARN, we generally recommend that you specify a complete ARN. You can
    *         specify a partial ARN too—for example, if you don’t include the final hyphen and six random
@@ -512,10 +649,10 @@ export interface DeleteSecretRequest {
   SecretId: string | undefined;
 
   /**
-   * <p>(Optional) Specifies the number of days that Secrets Manager waits before it can delete the secret.
-   *       You can't use both this parameter and the <code>ForceDeleteWithoutRecovery</code> parameter in
-   *       the same API call.</p>
-   *          <p>This value can range from 7 to 30 days. The default value is 30.</p>
+   * <p>(Optional) Specifies the number of days that Secrets Manager waits before Secrets Manager can delete the
+   *       secret. You can't use both this parameter and the <code>ForceDeleteWithoutRecovery</code>
+   *       parameter in the same API call.</p>
+   *          <p>This value can range from 7 to 30 days with a default value of 30.</p>
    */
   RecoveryWindowInDays?: number;
 
@@ -532,13 +669,21 @@ export interface DeleteSecretRequest {
    *         waiting period before the permanent deletion that AWS would normally impose with the
    *           <code>RecoveryWindowInDays</code> parameter. If you delete a secret with the
    *           <code>ForceDeleteWithouRecovery</code> parameter, then you have no opportunity to recover
-   *         the secret. It is permanently lost.</p>
+   *         the secret. You lose the secret permanently.</p>
+   *          </important>
+   *          <important>
+   *             <p>If you use this parameter and include a previously deleted or nonexistent secret, the
+   *         operation does not return the error <code>ResourceNotFoundException</code> in order to
+   *         correctly handle retries.</p>
    *          </important>
    */
   ForceDeleteWithoutRecovery?: boolean;
 }
 
 export namespace DeleteSecretRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSecretRequest): any => ({
     ...obj,
   });
@@ -551,7 +696,7 @@ export interface DeleteSecretResponse {
   ARN?: string;
 
   /**
-   * <p>The friendly name of the secret that is now scheduled for deletion.</p>
+   * <p>The friendly name of the secret currently scheduled for deletion.</p>
    */
   Name?: string;
 
@@ -564,6 +709,9 @@ export interface DeleteSecretResponse {
 }
 
 export namespace DeleteSecretResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSecretResponse): any => ({
     ...obj,
   });
@@ -592,6 +740,9 @@ export interface DescribeSecretRequest {
 }
 
 export namespace DescribeSecretRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSecretRequest): any => ({
     ...obj,
   });
@@ -613,6 +764,9 @@ export interface RotationRulesType {
 }
 
 export namespace RotationRulesType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RotationRulesType): any => ({
     ...obj,
   });
@@ -658,13 +812,14 @@ export interface DescribeSecretResponse {
   RotationLambdaARN?: string;
 
   /**
-   * <p>A structure that contains the rotation configuration for this secret.</p>
+   * <p>A structure with the rotation configuration for this secret.</p>
    */
   RotationRules?: RotationRulesType;
 
   /**
-   * <p>The most recent date and time that the Secrets Manager rotation process was successfully
-   *       completed. This value is null if the secret has never rotated.</p>
+   * <p>The last date and time that the rotation process for this secret was invoked.</p>
+   *          <p>The most recent date and time that the Secrets Manager rotation process successfully
+   *       completed. If the secret doesn't rotate, Secrets Manager returns a null value.</p>
    */
   LastRotatedDate?: Date;
 
@@ -710,21 +865,35 @@ export interface DescribeSecretResponse {
   OwningService?: string;
 
   /**
-   * <p>The date that the secret was created.</p>
+   * <p>The date you created the secret.</p>
    */
   CreatedDate?: Date;
+
+  /**
+   * <p>Specifies the primary region for secret replication. </p>
+   */
+  PrimaryRegion?: string;
+
+  /**
+   * <p>Describes a list of replication status objects as <code>InProgress</code>, <code>Failed</code> or <code>InSync</code>.<code>P</code>
+   *          </p>
+   */
+  ReplicationStatus?: ReplicationStatusType[];
 }
 
 export namespace DescribeSecretResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSecretResponse): any => ({
     ...obj,
   });
 }
 
-export type FilterNameStringType = "all" | "description" | "name" | "tag-key" | "tag-value";
+export type FilterNameStringType = "all" | "description" | "name" | "primary-region" | "tag-key" | "tag-value";
 
 /**
- * <p>Allows you to filter your list of secrets.</p>
+ * <p>Allows you to add filters when you use the search function in Secrets Manager.</p>
  */
 export interface Filter {
   /**
@@ -734,11 +903,15 @@ export interface Filter {
 
   /**
    * <p>Filters your list of secrets by a specific value.</p>
+   *          <p>You can prefix your search value with an exclamation mark (<code>!</code>) in order to perform negation filters. </p>
    */
   Values?: string[];
 }
 
 export namespace Filter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Filter): any => ({
     ...obj,
   });
@@ -804,6 +977,9 @@ export interface GetRandomPasswordRequest {
 }
 
 export namespace GetRandomPasswordRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRandomPasswordRequest): any => ({
     ...obj,
   });
@@ -817,6 +993,9 @@ export interface GetRandomPasswordResponse {
 }
 
 export namespace GetRandomPasswordResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRandomPasswordResponse): any => ({
     ...obj,
     ...(obj.RandomPassword && { RandomPassword: SENSITIVE_STRING }),
@@ -846,6 +1025,9 @@ export interface GetResourcePolicyRequest {
 }
 
 export namespace GetResourcePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetResourcePolicyRequest): any => ({
     ...obj,
   });
@@ -873,6 +1055,9 @@ export interface GetResourcePolicyResponse {
 }
 
 export namespace GetResourcePolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetResourcePolicyResponse): any => ({
     ...obj,
   });
@@ -901,10 +1086,10 @@ export interface GetSecretValueRequest {
 
   /**
    * <p>Specifies the unique identifier of the version of the secret that you want to retrieve. If
-   *       you specify this parameter then don't specify <code>VersionStage</code>. If you
-   *       don't specify either a <code>VersionStage</code> or <code>VersionId</code> then the
-   *       default is to perform the operation on the version with the <code>VersionStage</code> value of
-   *       <code>AWSCURRENT</code>.</p>
+   *       you specify both this parameter and <code>VersionStage</code>,  the two parameters must refer
+   *       to the same secret version. If you don't specify either a <code>VersionStage</code> or
+   *         <code>VersionId</code> then the default is to perform the operation on the version with the
+   *         <code>VersionStage</code> value of <code>AWSCURRENT</code>.</p>
    *          <p>This value is typically a <a href="https://wikipedia.org/wiki/Universally_unique_identifier">UUID-type</a> value with
    *       32 hexadecimal digits.</p>
    */
@@ -914,15 +1099,18 @@ export interface GetSecretValueRequest {
    * <p>Specifies the secret version that you want to retrieve by the staging label attached to
    *       the version.</p>
    *          <p>Staging labels are used to keep track of different versions during the rotation process.
-   *       If you use this parameter then don't specify <code>VersionId</code>. If you don't
-   *       specify either a <code>VersionStage</code> or <code>VersionId</code>, then the default is to
-   *       perform the operation on the version with the <code>VersionStage</code> value of
-   *       <code>AWSCURRENT</code>.</p>
+   *       If you specify both this parameter and <code>VersionId</code>,  the two parameters must refer
+   *       to the same secret version . If you don't specify either a <code>VersionStage</code> or
+   *         <code>VersionId</code>, then the default is to perform the operation on the version with the
+   *         <code>VersionStage</code> value of <code>AWSCURRENT</code>.</p>
    */
   VersionStage?: string;
 }
 
 export namespace GetSecretValueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSecretValueRequest): any => ({
     ...obj,
   });
@@ -983,6 +1171,9 @@ export interface GetSecretValueResponse {
 }
 
 export namespace GetSecretValueResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSecretValueResponse): any => ({
     ...obj,
     ...(obj.SecretBinary && { SecretBinary: SENSITIVE_STRING }),
@@ -1000,6 +1191,9 @@ export interface InvalidNextTokenException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidNextTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextTokenException): any => ({
     ...obj,
   });
@@ -1043,6 +1237,9 @@ export interface ListSecretsRequest {
 }
 
 export namespace ListSecretsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSecretsRequest): any => ({
     ...obj,
   });
@@ -1099,7 +1296,7 @@ export interface SecretListEntry {
   RotationRules?: RotationRulesType;
 
   /**
-   * <p>The last date and time that the rotation process for this secret was invoked.</p>
+   * <p>The most recent date and time that the Secrets Manager rotation process was successfully completed. This value is null if the secret hasn't ever rotated.</p>
    */
   LastRotatedDate?: Date;
 
@@ -1147,9 +1344,17 @@ export interface SecretListEntry {
    * <p>The date and time when a secret was created.</p>
    */
   CreatedDate?: Date;
+
+  /**
+   * <p>The Region where Secrets Manager originated the secret.</p>
+   */
+  PrimaryRegion?: string;
 }
 
 export namespace SecretListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SecretListEntry): any => ({
     ...obj,
   });
@@ -1174,6 +1379,9 @@ export interface ListSecretsResponse {
 }
 
 export namespace ListSecretsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSecretsResponse): any => ({
     ...obj,
   });
@@ -1229,6 +1437,9 @@ export interface ListSecretVersionIdsRequest {
 }
 
 export namespace ListSecretVersionIdsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSecretVersionIdsRequest): any => ({
     ...obj,
   });
@@ -1262,6 +1473,9 @@ export interface SecretVersionsListEntry {
 }
 
 export namespace SecretVersionsListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SecretVersionsListEntry): any => ({
     ...obj,
   });
@@ -1303,13 +1517,16 @@ export interface ListSecretVersionIdsResponse {
 }
 
 export namespace ListSecretVersionIdsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSecretVersionIdsResponse): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The resource policy did not prevent broad access to the secret.</p>
+ * <p>The BlockPublicPolicy parameter is set to true and the resource policy did not prevent broad access to the secret.</p>
  */
 export interface PublicPolicyException extends __SmithyException, $MetadataBearer {
   name: "PublicPolicyException";
@@ -1318,6 +1535,9 @@ export interface PublicPolicyException extends __SmithyException, $MetadataBeare
 }
 
 export namespace PublicPolicyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PublicPolicyException): any => ({
     ...obj,
   });
@@ -1325,7 +1545,7 @@ export namespace PublicPolicyException {
 
 export interface PutResourcePolicyRequest {
   /**
-   * <p>Specifies the secret that you want to attach the resource-based policy to. You can specify
+   * <p>Specifies the secret that you want to attach the resource-based policy. You can specify
    *       either the ARN or the friendly name of the secret.</p>
    *          <note>
    *             <p>If you specify an ARN, we generally recommend that you specify a complete ARN. You can
@@ -1345,8 +1565,8 @@ export interface PutResourcePolicyRequest {
   SecretId: string | undefined;
 
   /**
-   * <p>A JSON-formatted string that's constructed according to the grammar and syntax for an
-   *       AWS resource-based policy. The policy in the string identifies who can access or manage this
+   * <p>A JSON-formatted string constructed according to the grammar and syntax for an AWS
+   *       resource-based policy. The policy in the string identifies who can access or manage this
    *       secret and its versions. For information on how to format a JSON parameter for the various
    *       command line tool environments, see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using
    *         JSON for Parameters</a> in the <i>AWS CLI User Guide</i>.</p>
@@ -1354,12 +1574,16 @@ export interface PutResourcePolicyRequest {
   ResourcePolicy: string | undefined;
 
   /**
-   * <p>Makes an optional API call to Zelkova to validate the Resource Policy to prevent broad access to your secret.</p>
+   * <p>(Optional) If you set the parameter, <code>BlockPublicPolicy</code> to true, then you
+   *       block resource-based policies that allow broad access to the secret.</p>
    */
   BlockPublicPolicy?: boolean;
 }
 
 export namespace PutResourcePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutResourcePolicyRequest): any => ({
     ...obj,
   });
@@ -1372,12 +1596,15 @@ export interface PutResourcePolicyResponse {
   ARN?: string;
 
   /**
-   * <p>The friendly name of the secret that the retrieved by the resource-based policy.</p>
+   * <p>The friendly name of the secret retrieved by the resource-based policy.</p>
    */
   Name?: string;
 }
 
 export namespace PutResourcePolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutResourcePolicyResponse): any => ({
     ...obj,
   });
@@ -1487,6 +1714,9 @@ export interface PutSecretValueRequest {
 }
 
 export namespace PutSecretValueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutSecretValueRequest): any => ({
     ...obj,
     ...(obj.SecretBinary && { SecretBinary: SENSITIVE_STRING }),
@@ -1519,7 +1749,101 @@ export interface PutSecretValueResponse {
 }
 
 export namespace PutSecretValueResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutSecretValueResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface RemoveRegionsFromReplicationRequest {
+  /**
+   * <p>Remove a secret by <code>SecretId</code> from replica Regions.</p>
+   */
+  SecretId: string | undefined;
+
+  /**
+   * <p>Remove replication from specific Regions.</p>
+   */
+  RemoveReplicaRegions: string[] | undefined;
+}
+
+export namespace RemoveRegionsFromReplicationRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RemoveRegionsFromReplicationRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface RemoveRegionsFromReplicationResponse {
+  /**
+   * <p>The secret <code>ARN</code> removed from replication regions.</p>
+   */
+  ARN?: string;
+
+  /**
+   * <p>Describes the remaining replication status after you remove regions from the replication list.</p>
+   */
+  ReplicationStatus?: ReplicationStatusType[];
+}
+
+export namespace RemoveRegionsFromReplicationResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RemoveRegionsFromReplicationResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ReplicateSecretToRegionsRequest {
+  /**
+   * <p>Use the <code>Secret Id</code> to replicate a secret to regions.</p>
+   */
+  SecretId: string | undefined;
+
+  /**
+   * <p>Add Regions to replicate the secret.</p>
+   */
+  AddReplicaRegions: ReplicaRegionType[] | undefined;
+
+  /**
+   * <p>(Optional) If set, Secrets Manager replication overwrites a secret with the same name in the
+   *       destination region.</p>
+   */
+  ForceOverwriteReplicaSecret?: boolean;
+}
+
+export namespace ReplicateSecretToRegionsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReplicateSecretToRegionsRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface ReplicateSecretToRegionsResponse {
+  /**
+   * <p>Replicate a secret based on the <code>ReplicaRegionType</code>> consisting of a
+   *       Region(required) and a KMSKeyId (optional) which can be the ARN, KeyID, or Alias. </p>
+   */
+  ARN?: string;
+
+  /**
+   * <p>Describes the secret replication status as <code>PENDING</code>, <code>SUCCESS</code> or <code>FAIL</code>.</p>
+   */
+  ReplicationStatus?: ReplicationStatusType[];
+}
+
+export namespace ReplicateSecretToRegionsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReplicateSecretToRegionsResponse): any => ({
     ...obj,
   });
 }
@@ -1547,6 +1871,9 @@ export interface RestoreSecretRequest {
 }
 
 export namespace RestoreSecretRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RestoreSecretRequest): any => ({
     ...obj,
   });
@@ -1565,6 +1892,9 @@ export interface RestoreSecretResponse {
 }
 
 export namespace RestoreSecretResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RestoreSecretResponse): any => ({
     ...obj,
   });
@@ -1621,6 +1951,9 @@ export interface RotateSecretRequest {
 }
 
 export namespace RotateSecretRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RotateSecretRequest): any => ({
     ...obj,
   });
@@ -1645,7 +1978,42 @@ export interface RotateSecretResponse {
 }
 
 export namespace RotateSecretResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RotateSecretResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface StopReplicationToReplicaRequest {
+  /**
+   * <p>Response to <code>StopReplicationToReplica</code> of a secret, based on the <code>SecretId</code>.</p>
+   */
+  SecretId: string | undefined;
+}
+
+export namespace StopReplicationToReplicaRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: StopReplicationToReplicaRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface StopReplicationToReplicaResponse {
+  /**
+   * <p>Response <code>StopReplicationToReplica</code> of a secret, based on the <code>ARN,</code>.</p>
+   */
+  ARN?: string;
+}
+
+export namespace StopReplicationToReplicaResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: StopReplicationToReplicaResponse): any => ({
     ...obj,
   });
 }
@@ -1676,14 +2044,17 @@ export interface TagResourceRequest {
    *       and a <code>Value</code>.</p>
    *          <p>This parameter to the API requires a JSON text string argument. For information on how to
    *       format a JSON parameter for the various command line tool environments, see <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using JSON for Parameters</a> in the <i>AWS CLI User Guide</i>. For the
-   *       AWS CLI, you can also use the syntax: <code>--Tags
-   *         Key="Key1",Value="Value1",Key="Key2",Value="Value2"[,…]</code>
+   *       AWS CLI, you can also use the syntax: <code>--Tags Key="Key1",Value="Value1"
+   *         Key="Key2",Value="Value2"[,…]</code>
    *          </p>
    */
   Tags: Tag[] | undefined;
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -1720,6 +2091,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -1837,6 +2211,9 @@ export interface UpdateSecretRequest {
 }
 
 export namespace UpdateSecretRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateSecretRequest): any => ({
     ...obj,
     ...(obj.SecretBinary && { SecretBinary: SENSITIVE_STRING }),
@@ -1870,6 +2247,9 @@ export interface UpdateSecretResponse {
 }
 
 export namespace UpdateSecretResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateSecretResponse): any => ({
     ...obj,
   });
@@ -1921,6 +2301,9 @@ export interface UpdateSecretVersionStageRequest {
 }
 
 export namespace UpdateSecretVersionStageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateSecretVersionStageRequest): any => ({
     ...obj,
   });
@@ -1939,6 +2322,9 @@ export interface UpdateSecretVersionStageResponse {
 }
 
 export namespace UpdateSecretVersionStageResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateSecretVersionStageResponse): any => ({
     ...obj,
   });
@@ -1946,8 +2332,9 @@ export namespace UpdateSecretVersionStageResponse {
 
 export interface ValidateResourcePolicyRequest {
   /**
-   * <p> The identifier for the secret that you want to validate a resource policy. You can specify either
-   *     the Amazon Resource Name (ARN) or the friendly name of the secret.</p>
+   * <p> (Optional) The identifier of the secret with the resource-based policy you want to
+   *       validate. You can specify either the Amazon Resource Name (ARN) or the friendly name of the
+   *       secret.</p>
    *          <note>
    *             <p>If you specify an ARN, we generally recommend that you specify a complete ARN. You can
    *         specify a partial ARN too—for example, if you don’t include the final hyphen and six random
@@ -1966,12 +2353,19 @@ export interface ValidateResourcePolicyRequest {
   SecretId?: string;
 
   /**
-   * <p>Identifies the Resource Policy attached to the secret.</p>
+   * <p>A JSON-formatted string constructed according to the grammar and syntax for an AWS
+   *       resource-based policy. The policy in the string identifies who can access or manage this
+   *       secret and its versions. For information on how to format a JSON parameter for the various
+   *       command line tool environments, see <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json">Using
+   *         JSON for Parameters</a> in the <i>AWS CLI User Guide</i>.publi</p>
    */
   ResourcePolicy: string | undefined;
 }
 
 export namespace ValidateResourcePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidateResourcePolicyRequest): any => ({
     ...obj,
   });
@@ -1993,6 +2387,9 @@ export interface ValidationErrorsEntry {
 }
 
 export namespace ValidationErrorsEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationErrorsEntry): any => ({
     ...obj,
   });
@@ -2011,6 +2408,9 @@ export interface ValidateResourcePolicyResponse {
 }
 
 export namespace ValidateResourcePolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidateResourcePolicyResponse): any => ({
     ...obj,
   });

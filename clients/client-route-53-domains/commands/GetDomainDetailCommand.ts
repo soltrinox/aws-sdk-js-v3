@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDomainDetailCommandInput = GetDomainDetailRequest;
-export type GetDomainDetailCommandOutput = GetDomainDetailResponse & __MetadataBearer;
+export interface GetDomainDetailCommandInput extends GetDomainDetailRequest {}
+export interface GetDomainDetailCommandOutput extends GetDomainDetailResponse, __MetadataBearer {}
 
 /**
  * <p>This operation returns detailed information about a specified domain that is associated with the current AWS account.
  * 			Contact information for the domain is also returned as part of the output.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53DomainsClient, GetDomainDetailCommand } from "@aws-sdk/client-route-53-domains"; // ES Modules import
+ * // const { Route53DomainsClient, GetDomainDetailCommand } = require("@aws-sdk/client-route-53-domains"); // CommonJS import
+ * const client = new Route53DomainsClient(config);
+ * const command = new GetDomainDetailCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDomainDetailCommandInput} for command's `input` shape.
+ * @see {@link GetDomainDetailCommandOutput} for command's `response` shape.
+ * @see {@link Route53DomainsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDomainDetailCommand extends $Command<
   GetDomainDetailCommandInput,

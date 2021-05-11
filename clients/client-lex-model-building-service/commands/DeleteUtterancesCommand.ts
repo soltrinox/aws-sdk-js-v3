@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteUtterancesCommandInput = DeleteUtterancesRequest;
-export type DeleteUtterancesCommandOutput = __MetadataBearer;
+export interface DeleteUtterancesCommandInput extends DeleteUtterancesRequest {}
+export interface DeleteUtterancesCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes stored utterances.</p>
@@ -37,6 +37,20 @@ export type DeleteUtterancesCommandOutput = __MetadataBearer;
  *       operation are deleted after 15 days.</p>
  *          <p>This operation requires permissions for the
  *         <code>lex:DeleteUtterances</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, DeleteUtterancesCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, DeleteUtterancesCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new DeleteUtterancesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteUtterancesCommandInput} for command's `input` shape.
+ * @see {@link DeleteUtterancesCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteUtterancesCommand extends $Command<
   DeleteUtterancesCommandInput,

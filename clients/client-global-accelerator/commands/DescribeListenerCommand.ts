@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeListenerCommandInput = DescribeListenerRequest;
-export type DescribeListenerCommandOutput = DescribeListenerResponse & __MetadataBearer;
+export interface DescribeListenerCommandInput extends DescribeListenerRequest {}
+export interface DescribeListenerCommandOutput extends DescribeListenerResponse, __MetadataBearer {}
 
 /**
  * <p>Describe a listener. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, DescribeListenerCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, DescribeListenerCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new DescribeListenerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeListenerCommandInput} for command's `input` shape.
+ * @see {@link DescribeListenerCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeListenerCommand extends $Command<
   DescribeListenerCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ClearDefaultAuthorizerCommandInput = ClearDefaultAuthorizerRequest;
-export type ClearDefaultAuthorizerCommandOutput = ClearDefaultAuthorizerResponse & __MetadataBearer;
+export interface ClearDefaultAuthorizerCommandInput extends ClearDefaultAuthorizerRequest {}
+export interface ClearDefaultAuthorizerCommandOutput extends ClearDefaultAuthorizerResponse, __MetadataBearer {}
 
 /**
  * <p>Clears the default authorizer.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, ClearDefaultAuthorizerCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, ClearDefaultAuthorizerCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new ClearDefaultAuthorizerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ClearDefaultAuthorizerCommandInput} for command's `input` shape.
+ * @see {@link ClearDefaultAuthorizerCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ClearDefaultAuthorizerCommand extends $Command<
   ClearDefaultAuthorizerCommandInput,

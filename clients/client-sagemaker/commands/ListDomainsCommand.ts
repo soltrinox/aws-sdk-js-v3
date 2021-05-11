@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDomainsCommandInput = ListDomainsRequest;
-export type ListDomainsCommandOutput = ListDomainsResponse & __MetadataBearer;
+export interface ListDomainsCommandInput extends ListDomainsRequest {}
+export interface ListDomainsCommandOutput extends ListDomainsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the domains.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, ListDomainsCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, ListDomainsCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new ListDomainsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDomainsCommandInput} for command's `input` shape.
+ * @see {@link ListDomainsCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDomainsCommand extends $Command<
   ListDomainsCommandInput,

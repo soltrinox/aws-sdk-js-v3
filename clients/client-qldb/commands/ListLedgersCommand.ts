@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListLedgersCommandInput = ListLedgersRequest;
-export type ListLedgersCommandOutput = ListLedgersResponse & __MetadataBearer;
+export interface ListLedgersCommandInput extends ListLedgersRequest {}
+export interface ListLedgersCommandOutput extends ListLedgersResponse, __MetadataBearer {}
 
 /**
  * <p>Returns an array of ledger summaries that are associated with the current AWS account
  *          and Region.</p>
  *          <p>This action returns a maximum of 100 items and is paginated so that you can
  *          retrieve all the items by calling <code>ListLedgers</code> multiple times.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QLDBClient, ListLedgersCommand } from "@aws-sdk/client-qldb"; // ES Modules import
+ * // const { QLDBClient, ListLedgersCommand } = require("@aws-sdk/client-qldb"); // CommonJS import
+ * const client = new QLDBClient(config);
+ * const command = new ListLedgersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListLedgersCommandInput} for command's `input` shape.
+ * @see {@link ListLedgersCommandOutput} for command's `response` shape.
+ * @see {@link QLDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListLedgersCommand extends $Command<
   ListLedgersCommandInput,

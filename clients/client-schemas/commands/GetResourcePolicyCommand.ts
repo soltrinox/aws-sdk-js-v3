@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetResourcePolicyCommandInput = GetResourcePolicyRequest;
-export type GetResourcePolicyCommandOutput = GetResourcePolicyResponse & __MetadataBearer;
+export interface GetResourcePolicyCommandInput extends GetResourcePolicyRequest {}
+export interface GetResourcePolicyCommandOutput extends GetResourcePolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the resource-based policy attached to a given registry.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SchemasClient, GetResourcePolicyCommand } from "@aws-sdk/client-schemas"; // ES Modules import
+ * // const { SchemasClient, GetResourcePolicyCommand } = require("@aws-sdk/client-schemas"); // CommonJS import
+ * const client = new SchemasClient(config);
+ * const command = new GetResourcePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetResourcePolicyCommandInput} for command's `input` shape.
+ * @see {@link GetResourcePolicyCommandOutput} for command's `response` shape.
+ * @see {@link SchemasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetResourcePolicyCommand extends $Command<
   GetResourcePolicyCommandInput,

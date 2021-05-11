@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetEmailIdentityPoliciesCommandInput = GetEmailIdentityPoliciesRequest;
-export type GetEmailIdentityPoliciesCommandOutput = GetEmailIdentityPoliciesResponse & __MetadataBearer;
+export interface GetEmailIdentityPoliciesCommandInput extends GetEmailIdentityPoliciesRequest {}
+export interface GetEmailIdentityPoliciesCommandOutput extends GetEmailIdentityPoliciesResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the requested sending authorization policies for the given identity (an email
@@ -33,6 +33,20 @@ export type GetEmailIdentityPoliciesCommandOutput = GetEmailIdentityPoliciesResp
  *             the <a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html">Amazon SES Developer
  *                 Guide</a>.</p>
  *         <p>You can execute this operation no more than once per second.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, GetEmailIdentityPoliciesCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, GetEmailIdentityPoliciesCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new GetEmailIdentityPoliciesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetEmailIdentityPoliciesCommandInput} for command's `input` shape.
+ * @see {@link GetEmailIdentityPoliciesCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetEmailIdentityPoliciesCommand extends $Command<
   GetEmailIdentityPoliciesCommandInput,

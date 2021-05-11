@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListMigrationTasksCommandInput = ListMigrationTasksRequest;
-export type ListMigrationTasksCommandOutput = ListMigrationTasksResult & __MetadataBearer;
+export interface ListMigrationTasksCommandInput extends ListMigrationTasksRequest {}
+export interface ListMigrationTasksCommandOutput extends ListMigrationTasksResult, __MetadataBearer {}
 
 /**
  * <p>Lists all, or filtered by resource name, migration tasks associated with the user
@@ -35,6 +35,20 @@ export type ListMigrationTasksCommandOutput = ListMigrationTasksResult & __Metad
  *                <p>Lists migration tasks in a paginated interface.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MigrationHubClient, ListMigrationTasksCommand } from "@aws-sdk/client-migration-hub"; // ES Modules import
+ * // const { MigrationHubClient, ListMigrationTasksCommand } = require("@aws-sdk/client-migration-hub"); // CommonJS import
+ * const client = new MigrationHubClient(config);
+ * const command = new ListMigrationTasksCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListMigrationTasksCommandInput} for command's `input` shape.
+ * @see {@link ListMigrationTasksCommandOutput} for command's `response` shape.
+ * @see {@link MigrationHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListMigrationTasksCommand extends $Command<
   ListMigrationTasksCommandInput,

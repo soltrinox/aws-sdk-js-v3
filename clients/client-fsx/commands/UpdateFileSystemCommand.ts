@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateFileSystemCommandInput = UpdateFileSystemRequest;
-export type UpdateFileSystemCommandOutput = UpdateFileSystemResponse & __MetadataBearer;
+export interface UpdateFileSystemCommandInput extends UpdateFileSystemRequest {}
+export interface UpdateFileSystemCommandOutput extends UpdateFileSystemResponse, __MetadataBearer {}
 
 /**
  * <p>Use this operation to update the configuration of an existing Amazon FSx file system.
@@ -64,6 +64,20 @@ export type UpdateFileSystemCommandOutput = UpdateFileSystemResponse & __Metadat
  *                <p>WeeklyMaintenanceStartTime</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FSxClient, UpdateFileSystemCommand } from "@aws-sdk/client-fsx"; // ES Modules import
+ * // const { FSxClient, UpdateFileSystemCommand } = require("@aws-sdk/client-fsx"); // CommonJS import
+ * const client = new FSxClient(config);
+ * const command = new UpdateFileSystemCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateFileSystemCommandInput} for command's `input` shape.
+ * @see {@link UpdateFileSystemCommandOutput} for command's `response` shape.
+ * @see {@link FSxClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateFileSystemCommand extends $Command<
   UpdateFileSystemCommandInput,

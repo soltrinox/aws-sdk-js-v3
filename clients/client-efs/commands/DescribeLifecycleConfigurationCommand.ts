@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeLifecycleConfigurationCommandInput = DescribeLifecycleConfigurationRequest;
-export type DescribeLifecycleConfigurationCommandOutput = LifecycleConfigurationDescription & __MetadataBearer;
+export interface DescribeLifecycleConfigurationCommandInput extends DescribeLifecycleConfigurationRequest {}
+export interface DescribeLifecycleConfigurationCommandOutput
+  extends LifecycleConfigurationDescription,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the current <code>LifecycleConfiguration</code> object for the specified Amazon
@@ -28,6 +30,20 @@ export type DescribeLifecycleConfigurationCommandOutput = LifecycleConfiguration
  *       response.</p>
  *          <p>This operation requires permissions for the
  *         <code>elasticfilesystem:DescribeLifecycleConfiguration</code> operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EFSClient, DescribeLifecycleConfigurationCommand } from "@aws-sdk/client-efs"; // ES Modules import
+ * // const { EFSClient, DescribeLifecycleConfigurationCommand } = require("@aws-sdk/client-efs"); // CommonJS import
+ * const client = new EFSClient(config);
+ * const command = new DescribeLifecycleConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeLifecycleConfigurationCommandInput} for command's `input` shape.
+ * @see {@link DescribeLifecycleConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link EFSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeLifecycleConfigurationCommand extends $Command<
   DescribeLifecycleConfigurationCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchGetDeploymentInstancesCommandInput = BatchGetDeploymentInstancesInput;
-export type BatchGetDeploymentInstancesCommandOutput = BatchGetDeploymentInstancesOutput & __MetadataBearer;
+export interface BatchGetDeploymentInstancesCommandInput extends BatchGetDeploymentInstancesInput {}
+export interface BatchGetDeploymentInstancesCommandOutput extends BatchGetDeploymentInstancesOutput, __MetadataBearer {}
 
 /**
  * @deprecated
@@ -27,10 +27,24 @@ export type BatchGetDeploymentInstancesCommandOutput = BatchGetDeploymentInstanc
  *             <p> This method works, but is deprecated. Use <code>BatchGetDeploymentTargets</code>
  *                 instead. </p>
  *         </note>
- *         <p> Returns an array of one or more instances associated with a deployment. This method works with
- *             EC2/On-premises and AWS Lambda compute platforms. The newer
- *                 <code>BatchGetDeploymentTargets</code> works with all compute platforms.
- *             The maximum number of instances that can be returned is 25.</p>
+ *         <p> Returns an array of one or more instances associated with a deployment. This method
+ *             works with EC2/On-premises and AWS Lambda compute platforms. The newer
+ *                 <code>BatchGetDeploymentTargets</code> works with all compute platforms. The maximum
+ *             number of instances that can be returned is 25.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeDeployClient, BatchGetDeploymentInstancesCommand } from "@aws-sdk/client-codedeploy"; // ES Modules import
+ * // const { CodeDeployClient, BatchGetDeploymentInstancesCommand } = require("@aws-sdk/client-codedeploy"); // CommonJS import
+ * const client = new CodeDeployClient(config);
+ * const command = new BatchGetDeploymentInstancesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchGetDeploymentInstancesCommandInput} for command's `input` shape.
+ * @see {@link BatchGetDeploymentInstancesCommandOutput} for command's `response` shape.
+ * @see {@link CodeDeployClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchGetDeploymentInstancesCommand extends $Command<
   BatchGetDeploymentInstancesCommandInput,

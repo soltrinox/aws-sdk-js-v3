@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BeginTransactionCommandInput = BeginTransactionRequest;
-export type BeginTransactionCommandOutput = BeginTransactionResponse & __MetadataBearer;
+export interface BeginTransactionCommandInput extends BeginTransactionRequest {}
+export interface BeginTransactionCommandOutput extends BeginTransactionResponse, __MetadataBearer {}
 
 /**
  * <p>Starts a SQL transaction.</p>
@@ -33,6 +33,20 @@ export type BeginTransactionCommandOutput = BeginTransactionResponse & __Metadat
  *                 that you run each DDL statement in a separate <code>ExecuteStatement</code> call with
  *                 <code>continueAfterTimeout</code> enabled.</p>
  *         </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSDataClient, BeginTransactionCommand } from "@aws-sdk/client-rds-data"; // ES Modules import
+ * // const { RDSDataClient, BeginTransactionCommand } = require("@aws-sdk/client-rds-data"); // CommonJS import
+ * const client = new RDSDataClient(config);
+ * const command = new BeginTransactionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BeginTransactionCommandInput} for command's `input` shape.
+ * @see {@link BeginTransactionCommandOutput} for command's `response` shape.
+ * @see {@link RDSDataClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BeginTransactionCommand extends $Command<
   BeginTransactionCommandInput,

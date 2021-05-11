@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPipelineExecutionsCommandInput = ListPipelineExecutionsRequest;
-export type ListPipelineExecutionsCommandOutput = ListPipelineExecutionsResponse & __MetadataBearer;
+export interface ListPipelineExecutionsCommandInput extends ListPipelineExecutionsRequest {}
+export interface ListPipelineExecutionsCommandOutput extends ListPipelineExecutionsResponse, __MetadataBearer {}
 
 /**
  * <p>Gets a list of the pipeline executions.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, ListPipelineExecutionsCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, ListPipelineExecutionsCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new ListPipelineExecutionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPipelineExecutionsCommandInput} for command's `input` shape.
+ * @see {@link ListPipelineExecutionsCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPipelineExecutionsCommand extends $Command<
   ListPipelineExecutionsCommandInput,

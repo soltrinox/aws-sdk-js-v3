@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBulkDeploymentStatusCommandInput = GetBulkDeploymentStatusRequest;
-export type GetBulkDeploymentStatusCommandOutput = GetBulkDeploymentStatusResponse & __MetadataBearer;
+export interface GetBulkDeploymentStatusCommandInput extends GetBulkDeploymentStatusRequest {}
+export interface GetBulkDeploymentStatusCommandOutput extends GetBulkDeploymentStatusResponse, __MetadataBearer {}
 
 /**
  * Returns the status of a bulk deployment.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, GetBulkDeploymentStatusCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, GetBulkDeploymentStatusCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new GetBulkDeploymentStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBulkDeploymentStatusCommandInput} for command's `input` shape.
+ * @see {@link GetBulkDeploymentStatusCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBulkDeploymentStatusCommand extends $Command<
   GetBulkDeploymentStatusCommandInput,

@@ -25,9 +25,15 @@ export interface AliasListEntry {
    * <p>String that contains the key identifier referred to by the alias.</p>
    */
   TargetKeyId?: string;
+
+  CreationDate?: Date;
+  LastUpdatedDate?: Date;
 }
 
 export namespace AliasListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AliasListEntry): any => ({
     ...obj,
   });
@@ -44,6 +50,9 @@ export interface AlreadyExistsException extends __SmithyException, $MetadataBear
 }
 
 export namespace AlreadyExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlreadyExistsException): any => ({
     ...obj,
   });
@@ -71,6 +80,9 @@ export interface CancelKeyDeletionRequest {
 }
 
 export namespace CancelKeyDeletionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelKeyDeletionRequest): any => ({
     ...obj,
   });
@@ -84,6 +96,9 @@ export interface CancelKeyDeletionResponse {
 }
 
 export namespace CancelKeyDeletionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelKeyDeletionResponse): any => ({
     ...obj,
   });
@@ -100,6 +115,9 @@ export interface DependencyTimeoutException extends __SmithyException, $Metadata
 }
 
 export namespace DependencyTimeoutException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DependencyTimeoutException): any => ({
     ...obj,
   });
@@ -116,6 +134,9 @@ export interface InvalidArnException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace InvalidArnException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidArnException): any => ({
     ...obj,
   });
@@ -132,6 +153,9 @@ export interface KMSInternalException extends __SmithyException, $MetadataBearer
 }
 
 export namespace KMSInternalException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KMSInternalException): any => ({
     ...obj,
   });
@@ -152,6 +176,9 @@ export interface KMSInvalidStateException extends __SmithyException, $MetadataBe
 }
 
 export namespace KMSInvalidStateException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KMSInvalidStateException): any => ({
     ...obj,
   });
@@ -168,6 +195,9 @@ export interface NotFoundException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotFoundException): any => ({
     ...obj,
   });
@@ -187,6 +217,9 @@ export interface CloudHsmClusterInUseException extends __SmithyException, $Metad
 }
 
 export namespace CloudHsmClusterInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudHsmClusterInUseException): any => ({
     ...obj,
   });
@@ -234,6 +267,9 @@ export interface CloudHsmClusterInvalidConfigurationException extends __SmithyEx
 }
 
 export namespace CloudHsmClusterInvalidConfigurationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudHsmClusterInvalidConfigurationException): any => ({
     ...obj,
   });
@@ -251,6 +287,9 @@ export interface CloudHsmClusterNotActiveException extends __SmithyException, $M
 }
 
 export namespace CloudHsmClusterNotActiveException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudHsmClusterNotActiveException): any => ({
     ...obj,
   });
@@ -267,6 +306,9 @@ export interface CloudHsmClusterNotFoundException extends __SmithyException, $Me
 }
 
 export namespace CloudHsmClusterNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudHsmClusterNotFoundException): any => ({
     ...obj,
   });
@@ -289,6 +331,9 @@ export interface CloudHsmClusterNotRelatedException extends __SmithyException, $
 }
 
 export namespace CloudHsmClusterNotRelatedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudHsmClusterNotRelatedException): any => ({
     ...obj,
   });
@@ -303,6 +348,9 @@ export interface ConnectCustomKeyStoreRequest {
 }
 
 export namespace ConnectCustomKeyStoreRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConnectCustomKeyStoreRequest): any => ({
     ...obj,
   });
@@ -311,6 +359,9 @@ export namespace ConnectCustomKeyStoreRequest {
 export interface ConnectCustomKeyStoreResponse {}
 
 export namespace ConnectCustomKeyStoreResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConnectCustomKeyStoreResponse): any => ({
     ...obj,
   });
@@ -346,6 +397,9 @@ export interface CustomKeyStoreInvalidStateException extends __SmithyException, 
 }
 
 export namespace CustomKeyStoreInvalidStateException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CustomKeyStoreInvalidStateException): any => ({
     ...obj,
   });
@@ -362,6 +416,9 @@ export interface CustomKeyStoreNotFoundException extends __SmithyException, $Met
 }
 
 export namespace CustomKeyStoreNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CustomKeyStoreNotFoundException): any => ({
     ...obj,
   });
@@ -390,22 +447,42 @@ export enum ConnectionStateType {
 export interface CreateAliasRequest {
   /**
    * <p>Specifies the alias name. This value must begin with <code>alias/</code> followed by a
-   *       name, such as <code>alias/ExampleAlias</code>. The alias name cannot begin with
-   *         <code>alias/aws/</code>. The <code>alias/aws/</code> prefix is reserved for AWS managed
-   *       CMKs.</p>
+   *       name, such as <code>alias/ExampleAlias</code>. </p>
+   *          <p>The <code>AliasName</code> value must be string of 1-256 characters. It can contain only alphanumeric characters,
+   *       forward slashes (/), underscores (_), and dashes (-). The alias name cannot begin with <code>alias/aws/</code>. The <code>alias/aws/</code> prefix is reserved
+   *       for <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk">AWS managed CMKs</a>.</p>
    */
   AliasName: string | undefined;
 
   /**
-   * <p>Identifies the CMK to which the alias refers. Specify the key ID or the Amazon Resource
-   *       Name (ARN) of the CMK. You cannot specify another alias. For help finding the key ID and ARN,
-   *       see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn">Finding the Key ID and
+   * <p>Associates the alias with the specified <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk">customer managed CMK</a>. The CMK must be
+   *       in the same AWS Region. </p>
+   *          <p>A valid CMK ID is required. If you supply a null or empty string value, this operation
+   *       returns an error.</p>
+   *          <p>For help finding the key ID and ARN, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn">Finding the Key ID and
    *         ARN</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+   *
+   *          <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
+   *          <p>For example:</p>
+   *          <ul>
+   *             <li>
+   *                <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *          <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
    */
   TargetKeyId: string | undefined;
 }
 
 export namespace CreateAliasRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAliasRequest): any => ({
     ...obj,
   });
@@ -421,6 +498,9 @@ export interface InvalidAliasNameException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidAliasNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidAliasNameException): any => ({
     ...obj,
   });
@@ -437,6 +517,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -475,6 +558,9 @@ export interface CreateCustomKeyStoreRequest {
 }
 
 export namespace CreateCustomKeyStoreRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCustomKeyStoreRequest): any => ({
     ...obj,
     ...(obj.KeyStorePassword && { KeyStorePassword: SENSITIVE_STRING }),
@@ -489,6 +575,9 @@ export interface CreateCustomKeyStoreResponse {
 }
 
 export namespace CreateCustomKeyStoreResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCustomKeyStoreResponse): any => ({
     ...obj,
   });
@@ -506,6 +595,9 @@ export interface CustomKeyStoreNameInUseException extends __SmithyException, $Me
 }
 
 export namespace CustomKeyStoreNameInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CustomKeyStoreNameInUseException): any => ({
     ...obj,
   });
@@ -524,6 +616,9 @@ export interface IncorrectTrustAnchorException extends __SmithyException, $Metad
 }
 
 export namespace IncorrectTrustAnchorException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IncorrectTrustAnchorException): any => ({
     ...obj,
   });
@@ -535,7 +630,7 @@ export namespace IncorrectTrustAnchorException {
  *          <p>AWS KMS applies the grant constraints only to cryptographic operations that support an
  *       encryption context, that is, all cryptographic operations with a <a href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html#symmetric-cmks">symmetric CMK</a>. Grant
  *       constraints are not applied to operations that do not support an encryption context, such as
- *       cryptographic operations with asymmetric CMKs and management operations, such as <a>DescribeKey</a> or <a>ScheduleKeyDeletion</a>.</p>
+ *       cryptographic operations with asymmetric CMKs and management operations, such as <a>DescribeKey</a> or <a>RetireGrant</a>.</p>
  *          <important>
  *             <p>In a cryptographic operation, the encryption context in the decryption operation must be
  *         an exact, case-sensitive match for the keys and values in the encryption context of the
@@ -567,6 +662,9 @@ export interface GrantConstraints {
 }
 
 export namespace GrantConstraints {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GrantConstraints): any => ({
     ...obj,
   });
@@ -643,6 +741,9 @@ export interface CreateGrantRequest {
    *         Context</a> in the <i>
    *                <i>AWS Key Management Service Developer Guide</i>
    *             </i>.</p>
+   *          <p>Grant constraints are not applied to operations that do not support an encryption context,
+   *       such as cryptographic operations with asymmetric CMKs and management operations, such as
+   *       <a>DescribeKey</a> or <a>RetireGrant</a>.</p>
    */
   Constraints?: GrantConstraints;
 
@@ -654,7 +755,7 @@ export interface CreateGrantRequest {
   GrantTokens?: string[];
 
   /**
-   * <p>A friendly name for identifying the grant. Use this value to prevent the unintended
+   * <p>A friendly name for the grant. Use this value to prevent the unintended
    *       creation of duplicate grants when retrying this request.</p>
    *          <p>When this value is absent, all <code>CreateGrant</code> requests result in a new grant
    *       with a unique <code>GrantId</code> even if all the supplied parameters are identical. This can
@@ -663,12 +764,15 @@ export interface CreateGrantRequest {
    *       identical parameters; if the grant already exists, the original <code>GrantId</code> is
    *       returned without creating a new grant. Note that the returned grant token is unique with every
    *         <code>CreateGrant</code> request, even when a duplicate <code>GrantId</code> is returned.
-   *       All grant tokens obtained in this way can be used interchangeably.</p>
+   *       All grant tokens for the same grant ID can be used interchangeably.</p>
    */
   Name?: string;
 }
 
 export namespace CreateGrantRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateGrantRequest): any => ({
     ...obj,
   });
@@ -684,13 +788,15 @@ export interface CreateGrantResponse {
 
   /**
    * <p>The unique identifier for the grant.</p>
-   *          <p>You can use the <code>GrantId</code> in a subsequent <a>RetireGrant</a> or
-   *         <a>RevokeGrant</a> operation.</p>
+   *          <p>You can use the <code>GrantId</code> in a <a>ListGrants</a>, <a>RetireGrant</a>, or <a>RevokeGrant</a> operation.</p>
    */
   GrantId?: string;
 }
 
 export namespace CreateGrantResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateGrantResponse): any => ({
     ...obj,
   });
@@ -706,6 +812,9 @@ export interface DisabledException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace DisabledException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisabledException): any => ({
     ...obj,
   });
@@ -721,6 +830,9 @@ export interface InvalidGrantTokenException extends __SmithyException, $Metadata
 }
 
 export namespace InvalidGrantTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidGrantTokenException): any => ({
     ...obj,
   });
@@ -767,6 +879,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -796,8 +911,11 @@ export interface CreateKeyRequest {
    *          </ul>
    *          <p>If you do not provide a key policy, AWS KMS attaches a default key policy to the CMK. For
    *       more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default">Default Key Policy</a> in the
-   *       <i>AWS Key Management Service Developer Guide</i>.</p>
+   *       <i>AWS Key Management Service Developer Guide</i>. </p>
    *          <p>The key policy size quota is 32 kilobytes (32768 bytes).</p>
+   *          <p>For help writing and formatting a JSON policy document, see the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html">IAM JSON Policy Reference</a> in the <i>
+   *                <i>IAM User Guide</i>
+   *             </i>.</p>
    */
   Policy?: string;
 
@@ -958,17 +1076,21 @@ export interface CreateKeyRequest {
 
   /**
    * <p>One or more tags. Each tag consists of a tag key and a tag value. Both the tag key and the
-   *       tag value are required, but the tag value can be an empty (null) string.</p>
+   *       tag value are required, but the tag value can be an empty (null) string. </p>
    *          <p>When you add tags to an AWS resource, AWS generates a cost allocation
    *               report with usage and costs aggregated by tags. For information about adding, changing, deleting and listing tags for CMKs,
    *               see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html">Tagging Keys</a>.</p>
    *          <p>Use this parameter to tag the CMK when it is created. To add tags to an
    *       existing CMK, use the <a>TagResource</a> operation.</p>
+   *          <p>To use this parameter, you must have <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:TagResource</a> permission in an IAM policy.</p>
    */
   Tags?: Tag[];
 }
 
 export namespace CreateKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateKeyRequest): any => ({
     ...obj,
   });
@@ -1132,6 +1254,9 @@ export interface KeyMetadata {
 }
 
 export namespace KeyMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KeyMetadata): any => ({
     ...obj,
   });
@@ -1145,6 +1270,9 @@ export interface CreateKeyResponse {
 }
 
 export namespace CreateKeyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateKeyResponse): any => ({
     ...obj,
   });
@@ -1161,6 +1289,9 @@ export interface MalformedPolicyDocumentException extends __SmithyException, $Me
 }
 
 export namespace MalformedPolicyDocumentException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MalformedPolicyDocumentException): any => ({
     ...obj,
   });
@@ -1176,6 +1307,9 @@ export interface TagException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace TagException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagException): any => ({
     ...obj,
   });
@@ -1192,6 +1326,9 @@ export interface UnsupportedOperationException extends __SmithyException, $Metad
 }
 
 export namespace UnsupportedOperationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnsupportedOperationException): any => ({
     ...obj,
   });
@@ -1209,6 +1346,9 @@ export interface CustomKeyStoreHasCMKsException extends __SmithyException, $Meta
 }
 
 export namespace CustomKeyStoreHasCMKsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CustomKeyStoreHasCMKsException): any => ({
     ...obj,
   });
@@ -1326,6 +1466,9 @@ export interface CustomKeyStoresListEntry {
 }
 
 export namespace CustomKeyStoresListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CustomKeyStoresListEntry): any => ({
     ...obj,
   });
@@ -1370,15 +1513,14 @@ export interface DecryptRequest {
   GrantTokens?: string[];
 
   /**
-   * <p>Specifies the customer master key (CMK) that AWS KMS will use to decrypt the ciphertext.
-   *       Enter a key ID of the CMK that was used to encrypt the ciphertext.</p>
-   *          <p>If you specify a <code>KeyId</code> value, the <code>Decrypt</code> operation succeeds
-   *       only if the specified CMK was used to encrypt the ciphertext.</p>
+   * <p>Specifies the customer master key (CMK) that AWS KMS uses to decrypt the ciphertext. Enter a
+   *       key ID of the CMK that was used to encrypt the ciphertext.</p>
    *          <p>This parameter is required only when the ciphertext was encrypted under an asymmetric CMK.
-   *       Otherwise, AWS KMS uses the metadata that it adds to the ciphertext blob to determine which
-   *       CMK was used to encrypt the ciphertext. However, you can use this parameter to ensure that a
-   *       particular CMK (of any kind) is used to decrypt the ciphertext.</p>
-   *          <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>.</p>
+   *       If you used a symmetric CMK, AWS KMS can get the CMK from metadata that it adds to the
+   *       symmetric ciphertext blob. However, it is always recommended as a best practice. This practice
+   *       ensures that you use the CMK that you intend.</p>
+   *
+   *          <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p>
    *          <p>For example:</p>
    *          <ul>
    *             <li>
@@ -1414,6 +1556,9 @@ export interface DecryptRequest {
 }
 
 export namespace DecryptRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DecryptRequest): any => ({
     ...obj,
   });
@@ -1437,6 +1582,9 @@ export interface DecryptResponse {
 }
 
 export namespace DecryptResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DecryptResponse): any => ({
     ...obj,
     ...(obj.Plaintext && { Plaintext: SENSITIVE_STRING }),
@@ -1456,6 +1604,9 @@ export interface IncorrectKeyException extends __SmithyException, $MetadataBeare
 }
 
 export namespace IncorrectKeyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IncorrectKeyException): any => ({
     ...obj,
   });
@@ -1476,6 +1627,9 @@ export interface InvalidCiphertextException extends __SmithyException, $Metadata
 }
 
 export namespace InvalidCiphertextException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidCiphertextException): any => ({
     ...obj,
   });
@@ -1507,6 +1661,9 @@ export interface InvalidKeyUsageException extends __SmithyException, $MetadataBe
 }
 
 export namespace InvalidKeyUsageException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidKeyUsageException): any => ({
     ...obj,
   });
@@ -1523,6 +1680,9 @@ export interface KeyUnavailableException extends __SmithyException, $MetadataBea
 }
 
 export namespace KeyUnavailableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KeyUnavailableException): any => ({
     ...obj,
   });
@@ -1537,6 +1697,9 @@ export interface DeleteAliasRequest {
 }
 
 export namespace DeleteAliasRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAliasRequest): any => ({
     ...obj,
   });
@@ -1550,6 +1713,9 @@ export interface DeleteCustomKeyStoreRequest {
 }
 
 export namespace DeleteCustomKeyStoreRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCustomKeyStoreRequest): any => ({
     ...obj,
   });
@@ -1558,6 +1724,9 @@ export namespace DeleteCustomKeyStoreRequest {
 export interface DeleteCustomKeyStoreResponse {}
 
 export namespace DeleteCustomKeyStoreResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCustomKeyStoreResponse): any => ({
     ...obj,
   });
@@ -1585,6 +1754,9 @@ export interface DeleteImportedKeyMaterialRequest {
 }
 
 export namespace DeleteImportedKeyMaterialRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteImportedKeyMaterialRequest): any => ({
     ...obj,
   });
@@ -1626,6 +1798,9 @@ export interface DescribeCustomKeyStoresRequest {
 }
 
 export namespace DescribeCustomKeyStoresRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCustomKeyStoresRequest): any => ({
     ...obj,
   });
@@ -1653,6 +1828,9 @@ export interface DescribeCustomKeyStoresResponse {
 }
 
 export namespace DescribeCustomKeyStoresResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCustomKeyStoresResponse): any => ({
     ...obj,
   });
@@ -1698,6 +1876,9 @@ export interface DescribeKeyRequest {
 }
 
 export namespace DescribeKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeKeyRequest): any => ({
     ...obj,
   });
@@ -1711,6 +1892,9 @@ export interface DescribeKeyResponse {
 }
 
 export namespace DescribeKeyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeKeyResponse): any => ({
     ...obj,
   });
@@ -1737,6 +1921,9 @@ export interface DisableKeyRequest {
 }
 
 export namespace DisableKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisableKeyRequest): any => ({
     ...obj,
   });
@@ -1744,9 +1931,10 @@ export namespace DisableKeyRequest {
 
 export interface DisableKeyRotationRequest {
   /**
-   * <p>Identifies a symmetric customer master key (CMK). You cannot enable automatic rotation of
-   *         <a href="https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks">asymmetric CMKs</a>, CMKs with <a href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">imported key material</a>, or CMKs in a
-   *       <a href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a>.</p>
+   * <p>Identifies a symmetric customer master key (CMK). You cannot enable or disable automatic
+   *       rotation of <a href="https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks">asymmetric CMKs</a>, CMKs
+   *       with <a href="https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html">imported key
+   *         material</a>, or CMKs in a <a href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a>.</p>
    *          <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
    *          <p>For example:</p>
    *          <ul>
@@ -1765,6 +1953,9 @@ export interface DisableKeyRotationRequest {
 }
 
 export namespace DisableKeyRotationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisableKeyRotationRequest): any => ({
     ...obj,
   });
@@ -1778,6 +1969,9 @@ export interface DisconnectCustomKeyStoreRequest {
 }
 
 export namespace DisconnectCustomKeyStoreRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisconnectCustomKeyStoreRequest): any => ({
     ...obj,
   });
@@ -1786,6 +1980,9 @@ export namespace DisconnectCustomKeyStoreRequest {
 export interface DisconnectCustomKeyStoreResponse {}
 
 export namespace DisconnectCustomKeyStoreResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisconnectCustomKeyStoreResponse): any => ({
     ...obj,
   });
@@ -1812,6 +2009,9 @@ export interface EnableKeyRequest {
 }
 
 export namespace EnableKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableKeyRequest): any => ({
     ...obj,
   });
@@ -1839,6 +2039,9 @@ export interface EnableKeyRotationRequest {
 }
 
 export namespace EnableKeyRotationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableKeyRotationRequest): any => ({
     ...obj,
   });
@@ -1904,6 +2107,9 @@ export interface EncryptRequest {
 }
 
 export namespace EncryptRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EncryptRequest): any => ({
     ...obj,
     ...(obj.Plaintext && { Plaintext: SENSITIVE_STRING }),
@@ -1928,6 +2134,9 @@ export interface EncryptResponse {
 }
 
 export namespace EncryptResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EncryptResponse): any => ({
     ...obj,
   });
@@ -1944,6 +2153,9 @@ export interface ExpiredImportTokenException extends __SmithyException, $Metadat
 }
 
 export namespace ExpiredImportTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExpiredImportTokenException): any => ({
     ...obj,
   });
@@ -2012,6 +2224,9 @@ export interface GenerateDataKeyRequest {
 }
 
 export namespace GenerateDataKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateDataKeyRequest): any => ({
     ...obj,
   });
@@ -2036,6 +2251,9 @@ export interface GenerateDataKeyResponse {
 }
 
 export namespace GenerateDataKeyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateDataKeyResponse): any => ({
     ...obj,
     ...(obj.Plaintext && { Plaintext: SENSITIVE_STRING }),
@@ -2096,6 +2314,9 @@ export interface GenerateDataKeyPairRequest {
 }
 
 export namespace GenerateDataKeyPairRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateDataKeyPairRequest): any => ({
     ...obj,
   });
@@ -2129,6 +2350,9 @@ export interface GenerateDataKeyPairResponse {
 }
 
 export namespace GenerateDataKeyPairResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateDataKeyPairResponse): any => ({
     ...obj,
     ...(obj.PrivateKeyPlaintext && { PrivateKeyPlaintext: SENSITIVE_STRING }),
@@ -2150,7 +2374,7 @@ export interface GenerateDataKeyPairWithoutPlaintextRequest {
    * <p>Specifies the CMK that encrypts the private key in the data key pair. You must specify a
    *       symmetric CMK. You cannot use an asymmetric CMK or a CMK in a custom key store. To get the
    *       type and origin of your CMK, use the <a>DescribeKey</a> operation. </p>
-   *          <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>.</p>
+   *          <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p>
    *          <p>For example:</p>
    *          <ul>
    *             <li>
@@ -2189,6 +2413,9 @@ export interface GenerateDataKeyPairWithoutPlaintextRequest {
 }
 
 export namespace GenerateDataKeyPairWithoutPlaintextRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateDataKeyPairWithoutPlaintextRequest): any => ({
     ...obj,
   });
@@ -2217,6 +2444,9 @@ export interface GenerateDataKeyPairWithoutPlaintextResponse {
 }
 
 export namespace GenerateDataKeyPairWithoutPlaintextResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateDataKeyPairWithoutPlaintextResponse): any => ({
     ...obj,
   });
@@ -2281,6 +2511,9 @@ export interface GenerateDataKeyWithoutPlaintextRequest {
 }
 
 export namespace GenerateDataKeyWithoutPlaintextRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateDataKeyWithoutPlaintextRequest): any => ({
     ...obj,
   });
@@ -2299,6 +2532,9 @@ export interface GenerateDataKeyWithoutPlaintextResponse {
 }
 
 export namespace GenerateDataKeyWithoutPlaintextResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateDataKeyWithoutPlaintextResponse): any => ({
     ...obj,
   });
@@ -2318,6 +2554,9 @@ export interface GenerateRandomRequest {
 }
 
 export namespace GenerateRandomRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateRandomRequest): any => ({
     ...obj,
   });
@@ -2331,6 +2570,9 @@ export interface GenerateRandomResponse {
 }
 
 export namespace GenerateRandomResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GenerateRandomResponse): any => ({
     ...obj,
     ...(obj.Plaintext && { Plaintext: SENSITIVE_STRING }),
@@ -2364,6 +2606,9 @@ export interface GetKeyPolicyRequest {
 }
 
 export namespace GetKeyPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetKeyPolicyRequest): any => ({
     ...obj,
   });
@@ -2377,6 +2622,9 @@ export interface GetKeyPolicyResponse {
 }
 
 export namespace GetKeyPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetKeyPolicyResponse): any => ({
     ...obj,
   });
@@ -2404,6 +2652,9 @@ export interface GetKeyRotationStatusRequest {
 }
 
 export namespace GetKeyRotationStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetKeyRotationStatusRequest): any => ({
     ...obj,
   });
@@ -2417,6 +2668,9 @@ export interface GetKeyRotationStatusResponse {
 }
 
 export namespace GetKeyRotationStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetKeyRotationStatusResponse): any => ({
     ...obj,
   });
@@ -2460,6 +2714,9 @@ export interface GetParametersForImportRequest {
 }
 
 export namespace GetParametersForImportRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetParametersForImportRequest): any => ({
     ...obj,
   });
@@ -2493,6 +2750,9 @@ export interface GetParametersForImportResponse {
 }
 
 export namespace GetParametersForImportResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetParametersForImportResponse): any => ({
     ...obj,
     ...(obj.PublicKey && { PublicKey: SENSITIVE_STRING }),
@@ -2536,6 +2796,9 @@ export interface GetPublicKeyRequest {
 }
 
 export namespace GetPublicKeyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPublicKeyRequest): any => ({
     ...obj,
   });
@@ -2586,6 +2849,9 @@ export interface GetPublicKeyResponse {
 }
 
 export namespace GetPublicKeyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPublicKeyResponse): any => ({
     ...obj,
   });
@@ -2648,6 +2914,9 @@ export interface GrantListEntry {
 }
 
 export namespace GrantListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GrantListEntry): any => ({
     ...obj,
   });
@@ -2706,6 +2975,9 @@ export interface ImportKeyMaterialRequest {
 }
 
 export namespace ImportKeyMaterialRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportKeyMaterialRequest): any => ({
     ...obj,
   });
@@ -2714,6 +2986,9 @@ export namespace ImportKeyMaterialRequest {
 export interface ImportKeyMaterialResponse {}
 
 export namespace ImportKeyMaterialResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportKeyMaterialResponse): any => ({
     ...obj,
   });
@@ -2731,6 +3006,9 @@ export interface IncorrectKeyMaterialException extends __SmithyException, $Metad
 }
 
 export namespace IncorrectKeyMaterialException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IncorrectKeyMaterialException): any => ({
     ...obj,
   });
@@ -2747,6 +3025,9 @@ export interface InvalidImportTokenException extends __SmithyException, $Metadat
 }
 
 export namespace InvalidImportTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidImportTokenException): any => ({
     ...obj,
   });
@@ -2762,6 +3043,9 @@ export interface InvalidGrantIdException extends __SmithyException, $MetadataBea
 }
 
 export namespace InvalidGrantIdException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidGrantIdException): any => ({
     ...obj,
   });
@@ -2778,6 +3062,9 @@ export interface InvalidMarkerException extends __SmithyException, $MetadataBear
 }
 
 export namespace InvalidMarkerException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidMarkerException): any => ({
     ...obj,
   });
@@ -2799,6 +3086,9 @@ export interface KeyListEntry {
 }
 
 export namespace KeyListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KeyListEntry): any => ({
     ...obj,
   });
@@ -2816,6 +3106,9 @@ export interface KMSInvalidSignatureException extends __SmithyException, $Metada
 }
 
 export namespace KMSInvalidSignatureException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KMSInvalidSignatureException): any => ({
     ...obj,
   });
@@ -2823,11 +3116,24 @@ export namespace KMSInvalidSignatureException {
 
 export interface ListAliasesRequest {
   /**
-   * <p>Lists only aliases that refer to the specified CMK. The value of this parameter can be the
-   *       ID or Amazon Resource Name (ARN) of a CMK in the caller's account and region. You cannot use
-   *       an alias name or alias ARN in this value.</p>
+   * <p>Lists only aliases that are associated with the specified CMK. Enter a CMK in your AWS
+   *       account. </p>
    *          <p>This parameter is optional. If you omit it, <code>ListAliases</code> returns all aliases
-   *       in the account and region.</p>
+   *       in the account and Region.</p>
+   *
+   *          <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
+   *          <p>For example:</p>
+   *          <ul>
+   *             <li>
+   *                <p>Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
+   *                </p>
+   *             </li>
+   *             <li>
+   *                <p>Key ARN: <code>arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+   *                </p>
+   *             </li>
+   *          </ul>
+   *          <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
    */
   KeyId?: string;
 
@@ -2849,6 +3155,9 @@ export interface ListAliasesRequest {
 }
 
 export namespace ListAliasesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAliasesRequest): any => ({
     ...obj,
   });
@@ -2876,6 +3185,9 @@ export interface ListAliasesResponse {
 }
 
 export namespace ListAliasesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAliasesResponse): any => ({
     ...obj,
   });
@@ -2899,7 +3211,8 @@ export interface ListGrantsRequest {
   Marker?: string;
 
   /**
-   * <p>A unique identifier for the customer master key (CMK).</p>
+   * <p>Returns only grants for the specified customer master key (CMK). This parameter is
+   *       required.</p>
    *          <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To specify a CMK in a
    * different AWS account, you must use the key ARN.</p>
    *          <p>For example:</p>
@@ -2916,9 +3229,24 @@ export interface ListGrantsRequest {
    *          <p>To get the key ID and key ARN for a CMK, use <a>ListKeys</a> or <a>DescribeKey</a>.</p>
    */
   KeyId: string | undefined;
+
+  /**
+   * <p>Returns only the grant with the specified grant ID. The grant ID uniquely identifies the
+   *       grant. </p>
+   */
+  GrantId?: string;
+
+  /**
+   * <p>Returns only grants where the specified principal is the grantee principal for the
+   *       grant.</p>
+   */
+  GranteePrincipal?: string;
 }
 
 export namespace ListGrantsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGrantsRequest): any => ({
     ...obj,
   });
@@ -2946,6 +3274,9 @@ export interface ListGrantsResponse {
 }
 
 export namespace ListGrantsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGrantsResponse): any => ({
     ...obj,
   });
@@ -2989,6 +3320,9 @@ export interface ListKeyPoliciesRequest {
 }
 
 export namespace ListKeyPoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListKeyPoliciesRequest): any => ({
     ...obj,
   });
@@ -3016,6 +3350,9 @@ export interface ListKeyPoliciesResponse {
 }
 
 export namespace ListKeyPoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListKeyPoliciesResponse): any => ({
     ...obj,
   });
@@ -3040,6 +3377,9 @@ export interface ListKeysRequest {
 }
 
 export namespace ListKeysRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListKeysRequest): any => ({
     ...obj,
   });
@@ -3067,6 +3407,9 @@ export interface ListKeysResponse {
 }
 
 export namespace ListKeysResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListKeysResponse): any => ({
     ...obj,
   });
@@ -3111,6 +3454,9 @@ export interface ListResourceTagsRequest {
 }
 
 export namespace ListResourceTagsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListResourceTagsRequest): any => ({
     ...obj,
   });
@@ -3139,6 +3485,9 @@ export interface ListResourceTagsResponse {
 }
 
 export namespace ListResourceTagsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListResourceTagsResponse): any => ({
     ...obj,
   });
@@ -3162,7 +3511,8 @@ export interface ListRetirableGrantsRequest {
   Marker?: string;
 
   /**
-   * <p>The retiring principal for which to list grants.</p>
+   * <p>The retiring principal for which to list grants. Enter a principal in your AWS
+   *       account.</p>
    *          <p>To specify the retiring principal, use the <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of an AWS
    *       principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and
    *       assumed role users. For examples of the ARN syntax for specifying a principal, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam">AWS
@@ -3173,6 +3523,9 @@ export interface ListRetirableGrantsRequest {
 }
 
 export namespace ListRetirableGrantsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRetirableGrantsRequest): any => ({
     ...obj,
   });
@@ -3245,6 +3598,9 @@ export interface PutKeyPolicyRequest {
 }
 
 export namespace PutKeyPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutKeyPolicyRequest): any => ({
     ...obj,
   });
@@ -3267,17 +3623,15 @@ export interface ReEncryptRequest {
   SourceEncryptionContext?: { [key: string]: string };
 
   /**
-   * <p>A unique identifier for the CMK that is used to decrypt the ciphertext before it
-   *       reencrypts it using the destination CMK.</p>
+   * <p>Specifies the customer master key (CMK) that
+   *     AWS KMS will use to decrypt the ciphertext before it is re-encrypted. Enter a key ID of the CMK
+   *     that was used to encrypt the ciphertext.</p>
    *          <p>This parameter is required only when the ciphertext was encrypted under an asymmetric CMK.
-   *       Otherwise, AWS KMS uses the metadata that it adds to the ciphertext blob to determine which
-   *       CMK was used to encrypt the ciphertext. However, you can use this parameter to ensure that a
-   *       particular CMK (of any kind) is used to decrypt the ciphertext before it is
-   *       reencrypted.</p>
-   *          <p>If you specify a <code>KeyId</code> value, the decrypt part of the <code>ReEncrypt</code>
-   *       operation succeeds only if the specified CMK was used to encrypt the ciphertext.</p>
+   *       If you used a symmetric CMK, AWS KMS can get the CMK from metadata that it adds to the
+   *       symmetric ciphertext blob. However, it is always recommended as a best practice. This practice
+   *       ensures that you use the CMK that you intend.</p>
    *
-   *          <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>.</p>
+   *          <p>To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias name, or alias ARN. When using an alias name, prefix it with <code>"alias/"</code>. To specify a CMK in a different AWS account, you must use the key ARN or alias ARN.</p>
    *          <p>For example:</p>
    *          <ul>
    *             <li>
@@ -3370,6 +3724,9 @@ export interface ReEncryptRequest {
 }
 
 export namespace ReEncryptRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReEncryptRequest): any => ({
     ...obj,
   });
@@ -3404,6 +3761,9 @@ export interface ReEncryptResponse {
 }
 
 export namespace ReEncryptResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReEncryptResponse): any => ({
     ...obj,
   });
@@ -3436,6 +3796,9 @@ export interface RetireGrantRequest {
 }
 
 export namespace RetireGrantRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RetireGrantRequest): any => ({
     ...obj,
   });
@@ -3469,6 +3832,9 @@ export interface RevokeGrantRequest {
 }
 
 export namespace RevokeGrantRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RevokeGrantRequest): any => ({
     ...obj,
   });
@@ -3504,6 +3870,9 @@ export interface ScheduleKeyDeletionRequest {
 }
 
 export namespace ScheduleKeyDeletionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduleKeyDeletionRequest): any => ({
     ...obj,
   });
@@ -3522,6 +3891,9 @@ export interface ScheduleKeyDeletionResponse {
 }
 
 export namespace ScheduleKeyDeletionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScheduleKeyDeletionResponse): any => ({
     ...obj,
   });
@@ -3588,6 +3960,9 @@ export interface SignRequest {
 }
 
 export namespace SignRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SignRequest): any => ({
     ...obj,
     ...(obj.Message && { Message: SENSITIVE_STRING }),
@@ -3628,6 +4003,9 @@ export interface SignResponse {
 }
 
 export namespace SignResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SignResponse): any => ({
     ...obj,
   });
@@ -3635,7 +4013,7 @@ export namespace SignResponse {
 
 export interface TagResourceRequest {
   /**
-   * <p>A unique identifier for the CMK you are tagging.</p>
+   * <p>Identifies a customer managed CMK in the account and Region.</p>
    *          <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
    *          <p>For example:</p>
    *          <ul>
@@ -3653,12 +4031,20 @@ export interface TagResourceRequest {
   KeyId: string | undefined;
 
   /**
-   * <p>One or more tags. Each tag consists of a tag key and a tag value.</p>
+   * <p>One or more tags. </p>
+   *          <p>Each tag consists of a tag key and a tag value. The tag value can be an empty (null)
+   *       string. </p>
+   *          <p>You cannot have more than one tag on a CMK with the same tag key. If you specify an
+   *       existing tag key with a different tag value, AWS KMS replaces the current tag value with the
+   *       specified one.</p>
    */
   Tags: Tag[] | undefined;
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -3666,7 +4052,7 @@ export namespace TagResourceRequest {
 
 export interface UntagResourceRequest {
   /**
-   * <p>A unique identifier for the CMK from which you are removing tags.</p>
+   * <p>Identifies the CMK from which you are removing tags.</p>
    *
    *          <p>Specify the key ID or the Amazon Resource Name (ARN) of the CMK.</p>
    *          <p>For example:</p>
@@ -3691,6 +4077,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -3705,8 +4094,8 @@ export interface UpdateAliasRequest {
   AliasName: string | undefined;
 
   /**
-   * <p>Identifies the CMK to associate with the alias. When the update operation completes, the
-   *       alias will point to this CMK. </p>
+   * <p>Identifies the <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk">customer managed CMK</a> to associate with the alias. You don't have permission
+   *       to associate an alias with an <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk">AWS managed CMK</a>.</p>
    *          <p>The CMK must be in the same AWS account and Region as the alias. Also, the new target CMK
    *       must be the same type as the current target CMK (both symmetric or both asymmetric) and they
    *       must have the same key usage. </p>
@@ -3730,6 +4119,9 @@ export interface UpdateAliasRequest {
 }
 
 export namespace UpdateAliasRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAliasRequest): any => ({
     ...obj,
   });
@@ -3769,6 +4161,9 @@ export interface UpdateCustomKeyStoreRequest {
 }
 
 export namespace UpdateCustomKeyStoreRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateCustomKeyStoreRequest): any => ({
     ...obj,
     ...(obj.KeyStorePassword && { KeyStorePassword: SENSITIVE_STRING }),
@@ -3778,6 +4173,9 @@ export namespace UpdateCustomKeyStoreRequest {
 export interface UpdateCustomKeyStoreResponse {}
 
 export namespace UpdateCustomKeyStoreResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateCustomKeyStoreResponse): any => ({
     ...obj,
   });
@@ -3809,6 +4207,9 @@ export interface UpdateKeyDescriptionRequest {
 }
 
 export namespace UpdateKeyDescriptionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateKeyDescriptionRequest): any => ({
     ...obj,
   });
@@ -3886,6 +4287,9 @@ export interface VerifyRequest {
 }
 
 export namespace VerifyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VerifyRequest): any => ({
     ...obj,
     ...(obj.Message && { Message: SENSITIVE_STRING }),
@@ -3914,6 +4318,9 @@ export interface VerifyResponse {
 }
 
 export namespace VerifyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VerifyResponse): any => ({
     ...obj,
   });

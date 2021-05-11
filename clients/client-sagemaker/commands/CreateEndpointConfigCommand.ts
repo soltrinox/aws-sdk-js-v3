@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateEndpointConfigCommandInput = CreateEndpointConfigInput;
-export type CreateEndpointConfigCommandOutput = CreateEndpointConfigOutput & __MetadataBearer;
+export interface CreateEndpointConfigCommandInput extends CreateEndpointConfigInput {}
+export interface CreateEndpointConfigCommandOutput extends CreateEndpointConfigOutput, __MetadataBearer {}
 
 /**
  * <p>Creates an endpoint configuration that Amazon SageMaker hosting services uses to deploy models. In
@@ -55,6 +55,20 @@ export type CreateEndpointConfigCommandOutput = CreateEndpointConfigOutput & __M
  *                 response should return the latest data. So retry logic is recommended to handle
  *                 these possible issues. We also recommend that customers call <a>DescribeEndpointConfig</a> before calling <a>CreateEndpoint</a> to minimize the potential impact of a DynamoDB eventually consistent read.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, CreateEndpointConfigCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, CreateEndpointConfigCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new CreateEndpointConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateEndpointConfigCommandInput} for command's `input` shape.
+ * @see {@link CreateEndpointConfigCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateEndpointConfigCommand extends $Command<
   CreateEndpointConfigCommandInput,

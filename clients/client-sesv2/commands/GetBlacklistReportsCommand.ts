@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBlacklistReportsCommandInput = GetBlacklistReportsRequest;
-export type GetBlacklistReportsCommandOutput = GetBlacklistReportsResponse & __MetadataBearer;
+export interface GetBlacklistReportsCommandInput extends GetBlacklistReportsRequest {}
+export interface GetBlacklistReportsCommandOutput extends GetBlacklistReportsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieve a list of the blacklists that your dedicated IP addresses appear on.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, GetBlacklistReportsCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, GetBlacklistReportsCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new GetBlacklistReportsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBlacklistReportsCommandInput} for command's `input` shape.
+ * @see {@link GetBlacklistReportsCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBlacklistReportsCommand extends $Command<
   GetBlacklistReportsCommandInput,

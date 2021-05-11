@@ -2,7 +2,7 @@ import { SageMakerClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } 
 import {
   DisableSagemakerServicecatalogPortfolioInput,
   DisableSagemakerServicecatalogPortfolioOutput,
-} from "../models/models_1";
+} from "../models/models_2";
 import {
   deserializeAws_json1_1DisableSagemakerServicecatalogPortfolioCommand,
   serializeAws_json1_1DisableSagemakerServicecatalogPortfolioCommand,
@@ -20,13 +20,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisableSagemakerServicecatalogPortfolioCommandInput = DisableSagemakerServicecatalogPortfolioInput;
-export type DisableSagemakerServicecatalogPortfolioCommandOutput = DisableSagemakerServicecatalogPortfolioOutput &
-  __MetadataBearer;
+export interface DisableSagemakerServicecatalogPortfolioCommandInput
+  extends DisableSagemakerServicecatalogPortfolioInput {}
+export interface DisableSagemakerServicecatalogPortfolioCommandOutput
+  extends DisableSagemakerServicecatalogPortfolioOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Disables using Service Catalog in SageMaker. Service Catalog is used to create
  *             SageMaker projects.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DisableSagemakerServicecatalogPortfolioCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DisableSagemakerServicecatalogPortfolioCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DisableSagemakerServicecatalogPortfolioCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisableSagemakerServicecatalogPortfolioCommandInput} for command's `input` shape.
+ * @see {@link DisableSagemakerServicecatalogPortfolioCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisableSagemakerServicecatalogPortfolioCommand extends $Command<
   DisableSagemakerServicecatalogPortfolioCommandInput,

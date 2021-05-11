@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetParameterCommandInput = GetParameterRequest;
-export type GetParameterCommandOutput = GetParameterResult & __MetadataBearer;
+export interface GetParameterCommandInput extends GetParameterRequest {}
+export interface GetParameterCommandOutput extends GetParameterResult, __MetadataBearer {}
 
 /**
  * <p>Get information about a parameter by using the parameter name. Don't confuse this API action
  *    with the <a>GetParameters</a> API action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, GetParameterCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, GetParameterCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new GetParameterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetParameterCommandInput} for command's `input` shape.
+ * @see {@link GetParameterCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetParameterCommand extends $Command<
   GetParameterCommandInput,

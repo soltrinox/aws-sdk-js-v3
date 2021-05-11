@@ -62,6 +62,7 @@ import {
   UpdateBrokerStorageCommandInput,
   UpdateBrokerStorageCommandOutput,
 } from "./commands/UpdateBrokerStorageCommand";
+import { UpdateBrokerTypeCommandInput, UpdateBrokerTypeCommandOutput } from "./commands/UpdateBrokerTypeCommand";
 import {
   UpdateClusterConfigurationCommandInput,
   UpdateClusterConfigurationCommandOutput,
@@ -152,6 +153,7 @@ export type ServiceInputTypes =
   | UntagResourceCommandInput
   | UpdateBrokerCountCommandInput
   | UpdateBrokerStorageCommandInput
+  | UpdateBrokerTypeCommandInput
   | UpdateClusterConfigurationCommandInput
   | UpdateClusterKafkaVersionCommandInput
   | UpdateConfigurationCommandInput
@@ -183,6 +185,7 @@ export type ServiceOutputTypes =
   | UntagResourceCommandOutput
   | UpdateBrokerCountCommandOutput
   | UpdateBrokerStorageCommandOutput
+  | UpdateBrokerTypeCommandOutput
   | UpdateClusterConfigurationCommandOutput
   | UpdateClusterKafkaVersionCommandOutput
   | UpdateConfigurationCommandOutput
@@ -253,7 +256,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -284,7 +287,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type KafkaClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type KafkaClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -292,8 +295,12 @@ export type KafkaClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptio
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of KafkaClient class constructor that set the region, credentials and other options.
+ */
+export interface KafkaClientConfig extends KafkaClientConfigType {}
 
-export type KafkaClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type KafkaClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -301,6 +308,10 @@ export type KafkaClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHand
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of KafkaClient class. This is resolved and normalized from the {@link KafkaClientConfig | constructor configuration interface}.
+ */
+export interface KafkaClientResolvedConfig extends KafkaClientResolvedConfigType {}
 
 /**
  * <p>The operations for managing an Amazon MSK cluster.</p>
@@ -311,6 +322,9 @@ export class KafkaClient extends __Client<
   ServiceOutputTypes,
   KafkaClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of KafkaClient class. This is resolved and normalized from the {@link KafkaClientConfig | constructor configuration interface}.
+   */
   readonly config: KafkaClientResolvedConfig;
 
   constructor(configuration: KafkaClientConfig) {

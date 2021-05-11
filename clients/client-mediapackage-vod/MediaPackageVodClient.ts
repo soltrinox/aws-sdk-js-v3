@@ -1,3 +1,4 @@
+import { ConfigureLogsCommandInput, ConfigureLogsCommandOutput } from "./commands/ConfigureLogsCommand";
 import { CreateAssetCommandInput, CreateAssetCommandOutput } from "./commands/CreateAssetCommand";
 import {
   CreatePackagingConfigurationCommandInput,
@@ -96,6 +97,7 @@ import {
 } from "@aws-sdk/types";
 
 export type ServiceInputTypes =
+  | ConfigureLogsCommandInput
   | CreateAssetCommandInput
   | CreatePackagingConfigurationCommandInput
   | CreatePackagingGroupCommandInput
@@ -114,6 +116,7 @@ export type ServiceInputTypes =
   | UpdatePackagingGroupCommandInput;
 
 export type ServiceOutputTypes =
+  | ConfigureLogsCommandOutput
   | CreateAssetCommandOutput
   | CreatePackagingConfigurationCommandOutput
   | CreatePackagingGroupCommandOutput
@@ -196,7 +199,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -227,7 +230,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type MediaPackageVodClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type MediaPackageVodClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -235,8 +238,12 @@ export type MediaPackageVodClientConfig = Partial<__SmithyConfiguration<__HttpHa
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of MediaPackageVodClient class constructor that set the region, credentials and other options.
+ */
+export interface MediaPackageVodClientConfig extends MediaPackageVodClientConfigType {}
 
-export type MediaPackageVodClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type MediaPackageVodClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -244,6 +251,10 @@ export type MediaPackageVodClientResolvedConfig = __SmithyResolvedConfiguration<
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of MediaPackageVodClient class. This is resolved and normalized from the {@link MediaPackageVodClientConfig | constructor configuration interface}.
+ */
+export interface MediaPackageVodClientResolvedConfig extends MediaPackageVodClientResolvedConfigType {}
 
 /**
  * AWS Elemental MediaPackage VOD
@@ -254,6 +265,9 @@ export class MediaPackageVodClient extends __Client<
   ServiceOutputTypes,
   MediaPackageVodClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of MediaPackageVodClient class. This is resolved and normalized from the {@link MediaPackageVodClientConfig | constructor configuration interface}.
+   */
   readonly config: MediaPackageVodClientResolvedConfig;
 
   constructor(configuration: MediaPackageVodClientConfig) {

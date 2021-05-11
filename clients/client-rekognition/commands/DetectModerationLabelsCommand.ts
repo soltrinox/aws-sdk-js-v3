@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DetectModerationLabelsCommandInput = DetectModerationLabelsRequest;
-export type DetectModerationLabelsCommandOutput = DetectModerationLabelsResponse & __MetadataBearer;
+export interface DetectModerationLabelsCommandInput extends DetectModerationLabelsRequest {}
+export interface DetectModerationLabelsCommandOutput extends DetectModerationLabelsResponse, __MetadataBearer {}
 
 /**
  * <p>Detects unsafe content in a specified JPEG or PNG format image.
@@ -35,6 +35,20 @@ export type DetectModerationLabelsCommandOutput = DetectModerationLabelsResponse
  *       AWS
  *       CLI to call Amazon Rekognition operations, passing image bytes is not
  *       supported. The image must be either a PNG or JPEG formatted file. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, DetectModerationLabelsCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, DetectModerationLabelsCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new DetectModerationLabelsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DetectModerationLabelsCommandInput} for command's `input` shape.
+ * @see {@link DetectModerationLabelsCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DetectModerationLabelsCommand extends $Command<
   DetectModerationLabelsCommandInput,

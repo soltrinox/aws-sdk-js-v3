@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSubscriptionAttributesCommandInput = GetSubscriptionAttributesInput;
-export type GetSubscriptionAttributesCommandOutput = GetSubscriptionAttributesResponse & __MetadataBearer;
+export interface GetSubscriptionAttributesCommandInput extends GetSubscriptionAttributesInput {}
+export interface GetSubscriptionAttributesCommandOutput extends GetSubscriptionAttributesResponse, __MetadataBearer {}
 
 /**
  * <p>Returns all of the properties of a subscription.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SNSClient, GetSubscriptionAttributesCommand } from "@aws-sdk/client-sns"; // ES Modules import
+ * // const { SNSClient, GetSubscriptionAttributesCommand } = require("@aws-sdk/client-sns"); // CommonJS import
+ * const client = new SNSClient(config);
+ * const command = new GetSubscriptionAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSubscriptionAttributesCommandInput} for command's `input` shape.
+ * @see {@link GetSubscriptionAttributesCommandOutput} for command's `response` shape.
+ * @see {@link SNSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSubscriptionAttributesCommand extends $Command<
   GetSubscriptionAttributesCommandInput,

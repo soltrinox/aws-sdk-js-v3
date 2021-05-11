@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListOperationsCommandInput = ListOperationsRequest;
-export type ListOperationsCommandOutput = ListOperationsResponse & __MetadataBearer;
+export interface ListOperationsCommandInput extends ListOperationsRequest {}
+export interface ListOperationsCommandOutput extends ListOperationsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists operations that match the criteria that you specify.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceDiscoveryClient, ListOperationsCommand } from "@aws-sdk/client-servicediscovery"; // ES Modules import
+ * // const { ServiceDiscoveryClient, ListOperationsCommand } = require("@aws-sdk/client-servicediscovery"); // CommonJS import
+ * const client = new ServiceDiscoveryClient(config);
+ * const command = new ListOperationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListOperationsCommandInput} for command's `input` shape.
+ * @see {@link ListOperationsCommandOutput} for command's `response` shape.
+ * @see {@link ServiceDiscoveryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListOperationsCommand extends $Command<
   ListOperationsCommandInput,

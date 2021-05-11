@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSizeConstraintSetCommandInput = CreateSizeConstraintSetRequest;
-export type CreateSizeConstraintSetCommandOutput = CreateSizeConstraintSetResponse & __MetadataBearer;
+export interface CreateSizeConstraintSetCommandInput extends CreateSizeConstraintSetRequest {}
+export interface CreateSizeConstraintSetCommandOutput extends CreateSizeConstraintSetResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -53,6 +53,20 @@ export type CreateSizeConstraintSetCommandOutput = CreateSizeConstraintSetRespon
  *          </ol>
  * 		       <p>For more information about how to use the AWS WAF API to allow or block HTTP requests, see the
  * 			<a href="https://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF Developer Guide</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFRegionalClient, CreateSizeConstraintSetCommand } from "@aws-sdk/client-waf-regional"; // ES Modules import
+ * // const { WAFRegionalClient, CreateSizeConstraintSetCommand } = require("@aws-sdk/client-waf-regional"); // CommonJS import
+ * const client = new WAFRegionalClient(config);
+ * const command = new CreateSizeConstraintSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSizeConstraintSetCommandInput} for command's `input` shape.
+ * @see {@link CreateSizeConstraintSetCommandOutput} for command's `response` shape.
+ * @see {@link WAFRegionalClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSizeConstraintSetCommand extends $Command<
   CreateSizeConstraintSetCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutMetricAlarmCommandInput = PutMetricAlarmInput;
-export type PutMetricAlarmCommandOutput = __MetadataBearer;
+export interface PutMetricAlarmCommandInput extends PutMetricAlarmInput {}
+export interface PutMetricAlarmCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Creates or updates an alarm and associates it with the specified metric, metric math expression,
@@ -51,10 +51,24 @@ export type PutMetricAlarmCommandOutput = __MetadataBearer;
  *
  * 		       <p>The first time you create an alarm in the
  * 			AWS Management Console, the CLI, or by using the PutMetricAlarm API, CloudWatch
- * 			creates the necessary service-linked rolea for you. The service-linked roles
+ * 			creates the necessary service-linked role for you. The service-linked roles
  * 			are called <code>AWSServiceRoleForCloudWatchEvents</code> and
  * 			<code>AWSServiceRoleForCloudWatchAlarms_ActionSSM</code>.
  * 			For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role">AWS service-linked role</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchClient, PutMetricAlarmCommand } from "@aws-sdk/client-cloudwatch"; // ES Modules import
+ * // const { CloudWatchClient, PutMetricAlarmCommand } = require("@aws-sdk/client-cloudwatch"); // CommonJS import
+ * const client = new CloudWatchClient(config);
+ * const command = new PutMetricAlarmCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutMetricAlarmCommandInput} for command's `input` shape.
+ * @see {@link PutMetricAlarmCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutMetricAlarmCommand extends $Command<
   PutMetricAlarmCommandInput,

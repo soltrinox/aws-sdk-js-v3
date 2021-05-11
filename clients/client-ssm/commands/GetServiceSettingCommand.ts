@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetServiceSettingCommandInput = GetServiceSettingRequest;
-export type GetServiceSettingCommandOutput = GetServiceSettingResult & __MetadataBearer;
+export interface GetServiceSettingCommandInput extends GetServiceSettingRequest {}
+export interface GetServiceSettingCommandOutput extends GetServiceSettingResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -35,6 +35,20 @@ export type GetServiceSettingCommandOutput = GetServiceSettingResult & __Metadat
  *    the original value defined by the AWS service team.</p>
  *
  *          <p>Query the current service setting for the account. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, GetServiceSettingCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, GetServiceSettingCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new GetServiceSettingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetServiceSettingCommandInput} for command's `input` shape.
+ * @see {@link GetServiceSettingCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetServiceSettingCommand extends $Command<
   GetServiceSettingCommandInput,

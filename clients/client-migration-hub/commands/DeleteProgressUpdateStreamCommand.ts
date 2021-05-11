@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteProgressUpdateStreamCommandInput = DeleteProgressUpdateStreamRequest;
-export type DeleteProgressUpdateStreamCommandOutput = DeleteProgressUpdateStreamResult & __MetadataBearer;
+export interface DeleteProgressUpdateStreamCommandInput extends DeleteProgressUpdateStreamRequest {}
+export interface DeleteProgressUpdateStreamCommandOutput extends DeleteProgressUpdateStreamResult, __MetadataBearer {}
 
 /**
  * <p>Deletes a progress update stream, including all of its tasks, which was previously
@@ -52,6 +52,20 @@ export type DeleteProgressUpdateStreamCommandOutput = DeleteProgressUpdateStream
  *                resources associated with the old stream).</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MigrationHubClient, DeleteProgressUpdateStreamCommand } from "@aws-sdk/client-migration-hub"; // ES Modules import
+ * // const { MigrationHubClient, DeleteProgressUpdateStreamCommand } = require("@aws-sdk/client-migration-hub"); // CommonJS import
+ * const client = new MigrationHubClient(config);
+ * const command = new DeleteProgressUpdateStreamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteProgressUpdateStreamCommandInput} for command's `input` shape.
+ * @see {@link DeleteProgressUpdateStreamCommandOutput} for command's `response` shape.
+ * @see {@link MigrationHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteProgressUpdateStreamCommand extends $Command<
   DeleteProgressUpdateStreamCommandInput,

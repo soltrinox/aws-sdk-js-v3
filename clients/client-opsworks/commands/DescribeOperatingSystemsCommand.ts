@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeOperatingSystemsCommandInput = {};
-export type DescribeOperatingSystemsCommandOutput = DescribeOperatingSystemsResponse & __MetadataBearer;
+export interface DescribeOperatingSystemsCommandInput {}
+export interface DescribeOperatingSystemsCommandOutput extends DescribeOperatingSystemsResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the operating systems that are supported by AWS OpsWorks Stacks.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, DescribeOperatingSystemsCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, DescribeOperatingSystemsCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new DescribeOperatingSystemsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeOperatingSystemsCommandInput} for command's `input` shape.
+ * @see {@link DescribeOperatingSystemsCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeOperatingSystemsCommand extends $Command<
   DescribeOperatingSystemsCommandInput,

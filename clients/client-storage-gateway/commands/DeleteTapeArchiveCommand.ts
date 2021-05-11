@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteTapeArchiveCommandInput = DeleteTapeArchiveInput;
-export type DeleteTapeArchiveCommandOutput = DeleteTapeArchiveOutput & __MetadataBearer;
+export interface DeleteTapeArchiveCommandInput extends DeleteTapeArchiveInput {}
+export interface DeleteTapeArchiveCommandOutput extends DeleteTapeArchiveOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified virtual tape from the virtual tape shelf (VTS). This operation is
  *          only supported in the tape gateway type.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, DeleteTapeArchiveCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, DeleteTapeArchiveCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new DeleteTapeArchiveCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteTapeArchiveCommandInput} for command's `input` shape.
+ * @see {@link DeleteTapeArchiveCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteTapeArchiveCommand extends $Command<
   DeleteTapeArchiveCommandInput,

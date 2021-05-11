@@ -11,6 +11,9 @@ export interface AcceptHandshakeRequest {
 }
 
 export namespace AcceptHandshakeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AcceptHandshakeRequest): any => ({
     ...obj,
   });
@@ -35,7 +38,7 @@ export enum HandshakePartyType {
 export interface HandshakeParty {
   /**
    * <p>The unique identifier (ID) for the party.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for  handshake ID string requires "h-"
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for  handshake ID string requires "h-"
    *     followed by from 8 to 32 lowercase letters or digits.</p>
    */
   Id: string | undefined;
@@ -47,6 +50,9 @@ export interface HandshakeParty {
 }
 
 export namespace HandshakeParty {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HandshakeParty): any => ({
     ...obj,
     ...(obj.Id && { Id: SENSITIVE_STRING }),
@@ -87,6 +93,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -110,6 +119,9 @@ export interface AccessDeniedForDependencyException extends __SmithyException, $
 }
 
 export namespace AccessDeniedForDependencyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedForDependencyException): any => ({
     ...obj,
   });
@@ -126,6 +138,9 @@ export interface AWSOrganizationsNotInUseException extends __SmithyException, $M
 }
 
 export namespace AWSOrganizationsNotInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AWSOrganizationsNotInUseException): any => ({
     ...obj,
   });
@@ -142,6 +157,9 @@ export interface ConcurrentModificationException extends __SmithyException, $Met
 }
 
 export namespace ConcurrentModificationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConcurrentModificationException): any => ({
     ...obj,
   });
@@ -158,6 +176,9 @@ export interface HandshakeAlreadyInStateException extends __SmithyException, $Me
 }
 
 export namespace HandshakeAlreadyInStateException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HandshakeAlreadyInStateException): any => ({
     ...obj,
   });
@@ -170,6 +191,7 @@ export enum HandshakeConstraintViolationExceptionReason {
   INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES = "INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES",
   ORGANIZATION_ALREADY_HAS_ALL_FEATURES = "ORGANIZATION_ALREADY_HAS_ALL_FEATURES",
   ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD = "ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD",
+  ORGANIZATION_IS_ALREADY_PENDING_ALL_FEATURES_MIGRATION = "ORGANIZATION_IS_ALREADY_PENDING_ALL_FEATURES_MIGRATION",
   ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED = "ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED",
   PAYMENT_INSTRUMENT_REQUIRED = "PAYMENT_INSTRUMENT_REQUIRED",
 }
@@ -212,6 +234,11 @@ export enum HandshakeConstraintViolationExceptionReason {
  *                     because the organization has already enabled all features.</p>
  *             </li>
  *             <li>
+ *                 <p>ORGANIZATION_IS_ALREADY_PENDING_ALL_FEATURES_MIGRATION: The handshake request
+ *                     is invalid because the organization has already started the process to enable
+ *                     all features.</p>
+ *             </li>
+ *             <li>
  *                 <p>ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD: The request failed because the
  *                     account is from a different marketplace than the accounts in the organization.
  *                     For example, accounts with India addresses must be associated with the AISPL
@@ -237,6 +264,9 @@ export interface HandshakeConstraintViolationException extends __SmithyException
 }
 
 export namespace HandshakeConstraintViolationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HandshakeConstraintViolationException): any => ({
     ...obj,
   });
@@ -252,6 +282,9 @@ export interface HandshakeNotFoundException extends __SmithyException, $Metadata
 }
 
 export namespace HandshakeNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HandshakeNotFoundException): any => ({
     ...obj,
   });
@@ -269,6 +302,9 @@ export interface InvalidHandshakeTransitionException extends __SmithyException, 
 }
 
 export namespace InvalidHandshakeTransitionException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidHandshakeTransitionException): any => ({
     ...obj,
   });
@@ -278,6 +314,7 @@ export enum InvalidInputExceptionReason {
   DUPLICATE_TAG_KEY = "DUPLICATE_TAG_KEY",
   IMMUTABLE_POLICY = "IMMUTABLE_POLICY",
   INPUT_REQUIRED = "INPUT_REQUIRED",
+  INVALID_EMAIL_ADDRESS_TARGET = "INVALID_EMAIL_ADDRESS_TARGET",
   INVALID_ENUM = "INVALID_ENUM",
   INVALID_ENUM_POLICY_TYPE = "INVALID_ENUM_POLICY_TYPE",
   INVALID_FULL_NAME_TARGET = "INVALID_FULL_NAME_TARGET",
@@ -319,6 +356,10 @@ export enum InvalidInputExceptionReason {
  *             </li>
  *             <li>
  *                 <p>INPUT_REQUIRED: You must include a value for all required parameters.</p>
+ *             </li>
+ *             <li>
+ *                 <p>INVALID_EMAIL_ADDRESS_TARGET: You specified an invalid email address for the
+ *                     invited account owner.</p>
  *             </li>
  *             <li>
  *                 <p>INVALID_ENUM: You specified an invalid value.</p>
@@ -408,6 +449,9 @@ export interface InvalidInputException extends __SmithyException, $MetadataBeare
 }
 
 export namespace InvalidInputException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidInputException): any => ({
     ...obj,
   });
@@ -424,6 +468,9 @@ export interface ServiceException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ServiceException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceException): any => ({
     ...obj,
   });
@@ -444,6 +491,9 @@ export interface TooManyRequestsException extends __SmithyException, $MetadataBe
 }
 
 export namespace TooManyRequestsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyRequestsException): any => ({
     ...obj,
   });
@@ -466,15 +516,15 @@ export enum AccountStatus {
 export interface Account {
   /**
    * <p>The unique identifier (ID) of the account.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12
    *     digits.</p>
    */
   Id?: string;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the account.</p>
-   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by
-   *     Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
+   *     Formats Supported by Organizations</a> in the <i>AWS Service Authorization Reference</i>.</p>
    */
   Arn?: string;
 
@@ -510,6 +560,9 @@ export interface Account {
 }
 
 export namespace Account {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Account): any => ({
     ...obj,
     ...(obj.Email && { Email: SENSITIVE_STRING }),
@@ -528,6 +581,9 @@ export interface AccountAlreadyRegisteredException extends __SmithyException, $M
 }
 
 export namespace AccountAlreadyRegisteredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccountAlreadyRegisteredException): any => ({
     ...obj,
   });
@@ -545,6 +601,9 @@ export interface AccountNotFoundException extends __SmithyException, $MetadataBe
 }
 
 export namespace AccountNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccountNotFoundException): any => ({
     ...obj,
   });
@@ -560,6 +619,9 @@ export interface AccountNotRegisteredException extends __SmithyException, $Metad
 }
 
 export namespace AccountNotRegisteredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccountNotRegisteredException): any => ({
     ...obj,
   });
@@ -579,6 +641,9 @@ export interface AccountOwnerNotVerifiedException extends __SmithyException, $Me
 }
 
 export namespace AccountOwnerNotVerifiedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccountOwnerNotVerifiedException): any => ({
     ...obj,
   });
@@ -595,6 +660,9 @@ export interface AlreadyInOrganizationException extends __SmithyException, $Meta
 }
 
 export namespace AlreadyInOrganizationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlreadyInOrganizationException): any => ({
     ...obj,
   });
@@ -605,7 +673,7 @@ export interface AttachPolicyRequest {
    * <p>The unique identifier (ID) of the policy that you want to attach to the target. You
    *             can get the ID for the policy by calling the <a>ListPolicies</a>
    *             operation.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed
    *     by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).</p>
    */
   PolicyId: string | undefined;
@@ -614,7 +682,7 @@ export interface AttachPolicyRequest {
    * <p>The unique identifier (ID) of the root, OU, or account that you want to attach the
    *             policy to. You can get the ID by calling the <a>ListRoots</a>, <a>ListOrganizationalUnitsForParent</a>, or <a>ListAccounts</a>
    *             operations.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the
    *     following:</p>
    *          <ul>
    *             <li>
@@ -638,6 +706,9 @@ export interface AttachPolicyRequest {
 }
 
 export namespace AttachPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AttachPolicyRequest): any => ({
     ...obj,
   });
@@ -686,10 +757,9 @@ export enum ConstraintViolationExceptionReason {
  *         </note>
  *         <ul>
  *             <li>
- *                 <p>ACCOUNT_CANNOT_LEAVE_ORGANIZAION: You attempted to remove the
- *                     management account from the organization. You can't remove the management account.
- *                     Instead, after you remove all member accounts, delete the organization
- *                     itself.</p>
+ *                 <p>ACCOUNT_CANNOT_LEAVE_ORGANIZATION: You attempted to remove the management
+ *                     account from the organization. You can't remove the management account. Instead,
+ *                     after you remove all member accounts, delete the organization itself.</p>
  *             </li>
  *             <li>
  *                 <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the
@@ -768,13 +838,13 @@ export enum ConstraintViolationExceptionReason {
  *             </li>
  *             <li>
  *                 <p>MASTER_ACCOUNT_MISSING_BUSINESS_LICENSE: Applies only to the AWS Regions in
- *                     China. To create an organization, the master must have an valid business
- *                     license. For more information, contact customer support.</p>
+ *                     China. To create an organization, the master must have a valid business license.
+ *                     For more information, contact customer support.</p>
  *             </li>
  *             <li>
  *                 <p>MASTER_ACCOUNT_MISSING_CONTACT_INFO: To complete this operation, you must
- *                     first provide a valid contact address and phone number for the
- *                     management account. Then try the operation again.</p>
+ *                     first provide a valid contact address and phone number for the management
+ *                     account. Then try the operation again.</p>
  *             </li>
  *             <li>
  *                 <p>MASTER_ACCOUNT_NOT_GOVCLOUD_ENABLED: To complete this operation, the
@@ -853,6 +923,9 @@ export interface ConstraintViolationException extends __SmithyException, $Metada
 }
 
 export namespace ConstraintViolationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConstraintViolationException): any => ({
     ...obj,
   });
@@ -868,6 +941,9 @@ export interface DuplicatePolicyAttachmentException extends __SmithyException, $
 }
 
 export namespace DuplicatePolicyAttachmentException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DuplicatePolicyAttachmentException): any => ({
     ...obj,
   });
@@ -884,6 +960,9 @@ export interface PolicyChangesInProgressException extends __SmithyException, $Me
 }
 
 export namespace PolicyChangesInProgressException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyChangesInProgressException): any => ({
     ...obj,
   });
@@ -899,6 +978,9 @@ export interface PolicyNotFoundException extends __SmithyException, $MetadataBea
 }
 
 export namespace PolicyNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyNotFoundException): any => ({
     ...obj,
   });
@@ -918,6 +1000,9 @@ export interface PolicyTypeNotEnabledException extends __SmithyException, $Metad
 }
 
 export namespace PolicyTypeNotEnabledException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyTypeNotEnabledException): any => ({
     ...obj,
   });
@@ -934,6 +1019,9 @@ export interface TargetNotFoundException extends __SmithyException, $MetadataBea
 }
 
 export namespace TargetNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TargetNotFoundException): any => ({
     ...obj,
   });
@@ -949,6 +1037,9 @@ export interface UnsupportedAPIEndpointException extends __SmithyException, $Met
 }
 
 export namespace UnsupportedAPIEndpointException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnsupportedAPIEndpointException): any => ({
     ...obj,
   });
@@ -965,6 +1056,9 @@ export interface CancelHandshakeRequest {
 }
 
 export namespace CancelHandshakeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelHandshakeRequest): any => ({
     ...obj,
   });
@@ -1007,6 +1101,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -1029,9 +1126,9 @@ export interface CreateAccountRequest {
   /**
    * <p>(Optional)</p>
    *         <p>The name of an IAM role that AWS Organizations automatically preconfigures in the new member
-   *             account. This role trusts the management account, allowing users in the management account
-   *             to assume the role, as permitted by the management account administrator. The role has
-   *             administrator permissions in the new member account.</p>
+   *             account. This role trusts the management account, allowing users in the management
+   *             account to assume the role, as permitted by the management account administrator. The
+   *             role has administrator permissions in the new member account.</p>
    *         <p>If you don't specify this parameter, the role name defaults to
    *                 <code>OrganizationAccountAccessRole</code>.</p>
    *         <p>For more information about how to use this role to access the member account, see the
@@ -1073,8 +1170,8 @@ export interface CreateAccountRequest {
    * <p>A list of tags that you want to attach to the newly created account. For each tag in
    *             the list, you must specify both a tag key and a value. You can set the value to an empty
    *             string, but you can't set it to <code>null</code>. For more information about tagging,
-   *             see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging AWS
-   *                 Organizations resources</a> in the AWS Organizations User Guide.</p>
+   *             see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging AWS Organizations
+   *                 resources</a> in the AWS Organizations User Guide.</p>
    *         <note>
    *             <p>If any one of the tags is invalid or if you exceed the allowed number of tags for
    *                 an account, then the entire request fails and the account is not created.</p>
@@ -1084,6 +1181,9 @@ export interface CreateAccountRequest {
 }
 
 export namespace CreateAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccountRequest): any => ({
     ...obj,
     ...(obj.Email && { Email: SENSITIVE_STRING }),
@@ -1095,12 +1195,16 @@ export enum CreateAccountFailureReason {
   ACCOUNT_LIMIT_EXCEEDED = "ACCOUNT_LIMIT_EXCEEDED",
   CONCURRENT_ACCOUNT_MODIFICATION = "CONCURRENT_ACCOUNT_MODIFICATION",
   EMAIL_ALREADY_EXISTS = "EMAIL_ALREADY_EXISTS",
+  FAILED_BUSINESS_VALIDATION = "FAILED_BUSINESS_VALIDATION",
   GOVCLOUD_ACCOUNT_ALREADY_EXISTS = "GOVCLOUD_ACCOUNT_ALREADY_EXISTS",
   INTERNAL_FAILURE = "INTERNAL_FAILURE",
   INVALID_ADDRESS = "INVALID_ADDRESS",
   INVALID_EMAIL = "INVALID_EMAIL",
+  INVALID_IDENTITY_FOR_BUSINESS_VALIDATION = "INVALID_IDENTITY_FOR_BUSINESS_VALIDATION",
   MISSING_BUSINESS_VALIDATION = "MISSING_BUSINESS_VALIDATION",
   MISSING_PAYMENT_INSTRUMENT = "MISSING_PAYMENT_INSTRUMENT",
+  PENDING_BUSINESS_VALIDATIONv = "PENDING_BUSINESS_VALIDATION",
+  UNKNOWN_BUSINESS_VALIDATION = "UNKNOWN_BUSINESS_VALIDATION",
 }
 
 export enum CreateAccountState {
@@ -1118,7 +1222,7 @@ export interface CreateAccountStatus {
    * <p>The unique identifier (ID) that references this request. You get this value from the
    *             response of the initial <a>CreateAccount</a> request to create the
    *             account.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string
    *     requires "car-" followed by from 8 to 32 lowercase letters or digits.</p>
    */
   Id?: string;
@@ -1129,7 +1233,7 @@ export interface CreateAccountStatus {
   AccountName?: string;
 
   /**
-   * <p>The status of the request.</p>
+   * <p>The status of the asynchronous request to create an AWS account.</p>
    */
   State?: CreateAccountState | string;
 
@@ -1146,7 +1250,7 @@ export interface CreateAccountStatus {
   /**
    * <p>If the account was created successfully, the unique identifier (ID) of the new
    *             account.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12
    *     digits.</p>
    */
   AccountId?: string;
@@ -1161,8 +1265,8 @@ export interface CreateAccountStatus {
    * <p>If the request failed, a description of the reason for the failure.</p>
    *         <ul>
    *             <li>
-   *                 <p>ACCOUNT_LIMIT_EXCEEDED: The account could not be created because you have
-   *                     reached the limit on the number of accounts in your organization.</p>
+   *                 <p>ACCOUNT_LIMIT_EXCEEDED: The account couldn't be created because you reached
+   *                     the limit on the number of accounts in your organization.</p>
    *             </li>
    *             <li>
    *                 <p>CONCURRENT_ACCOUNT_MODIFICATION: You already submitted a request with the same
@@ -1173,9 +1277,18 @@ export interface CreateAccountStatus {
    *                     account with that email address already exists.</p>
    *             </li>
    *             <li>
+   *                 <p>FAILED_BUSINESS_VALIDATION: The AWS account that owns your organization
+   *                     failed to receive business license validation.</p>
+   *             </li>
+   *             <li>
    *                 <p>GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region
    *                     could not be created because this Region already includes an account with that
    *                     email address.</p>
+   *             </li>
+   *             <li>
+   *                 <p>IDENTITY_INVALID_BUSINESS_VALIDATION: The AWS account that owns your
+   *                     organization can't complete business license validation because it doesn't have
+   *                     valid identity data.</p>
    *             </li>
    *             <li>
    *                 <p>INVALID_ADDRESS: The account could not be created because the address you
@@ -1187,7 +1300,7 @@ export interface CreateAccountStatus {
    *             </li>
    *             <li>
    *                 <p>INTERNAL_FAILURE: The account could not be created because of an internal
-   *                     failure. Try again later. If the problem persists, contact Customer
+   *                     failure. Try again later. If the problem persists, contact AWS Customer
    *                     Support.</p>
    *             </li>
    *             <li>
@@ -1198,12 +1311,23 @@ export interface CreateAccountStatus {
    *                 <p> MISSING_PAYMENT_INSTRUMENT: You must configure the management account with a
    *                     valid payment method, such as a credit card.</p>
    *             </li>
+   *             <li>
+   *                 <p>PENDING_BUSINESS_VALIDATION: The AWS account that owns your organization is
+   *                     still in the process of completing business license validation.</p>
+   *             </li>
+   *             <li>
+   *                 <p>UNKNOWN_BUSINESS_VALIDATION: The AWS account that owns your organization has
+   *                     an unknown issue with business license validation.</p>
+   *             </li>
    *          </ul>
    */
   FailureReason?: CreateAccountFailureReason | string;
 }
 
 export namespace CreateAccountStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccountStatus): any => ({
     ...obj,
     ...(obj.AccountName && { AccountName: SENSITIVE_STRING }),
@@ -1224,6 +1348,9 @@ export interface CreateAccountResponse {
 }
 
 export namespace CreateAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccountResponse): any => ({
     ...obj,
     ...(obj.CreateAccountStatus && {
@@ -1245,6 +1372,9 @@ export interface FinalizingOrganizationException extends __SmithyException, $Met
 }
 
 export namespace FinalizingOrganizationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FinalizingOrganizationException): any => ({
     ...obj,
   });
@@ -1308,8 +1438,8 @@ export interface CreateGovCloudAccountRequest {
    *             account exists.</p>
    *         <p>For each tag in the list, you must specify both a tag key and a value. You can set the
    *             value to an empty string, but you can't set it to <code>null</code>. For more
-   *             information about tagging, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging AWS Organizations resources</a>
-   *             in the AWS Organizations User Guide.</p>
+   *             information about tagging, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging AWS Organizations resources</a> in the
+   *             AWS Organizations User Guide.</p>
    *         <note>
    *             <p>If any one of the tags is invalid or if you exceed the allowed number of tags for
    *                 an account, then the entire request fails and the account is not created.</p>
@@ -1319,6 +1449,9 @@ export interface CreateGovCloudAccountRequest {
 }
 
 export namespace CreateGovCloudAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateGovCloudAccountRequest): any => ({
     ...obj,
     ...(obj.Email && { Email: SENSITIVE_STRING }),
@@ -1335,6 +1468,9 @@ export interface CreateGovCloudAccountResponse {
 }
 
 export namespace CreateGovCloudAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateGovCloudAccountResponse): any => ({
     ...obj,
     ...(obj.CreateAccountStatus && {
@@ -1378,6 +1514,9 @@ export interface CreateOrganizationRequest {
 }
 
 export namespace CreateOrganizationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateOrganizationRequest): any => ({
     ...obj,
   });
@@ -1414,6 +1553,9 @@ export interface PolicyTypeSummary {
 }
 
 export namespace PolicyTypeSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyTypeSummary): any => ({
     ...obj,
   });
@@ -1427,15 +1569,15 @@ export namespace PolicyTypeSummary {
 export interface Organization {
   /**
    * <p>The unique identifier (ID) of an organization.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organization ID string requires "o-"
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organization ID string requires "o-"
    *     followed by from 10 to 32 lowercase letters or digits.</p>
    */
   Id?: string;
 
   /**
    * <p>The Amazon Resource Name (ARN) of an organization.</p>
-   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by
-   *     Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
+   *     Formats Supported by Organizations</a> in the <i>AWS Service Authorization Reference</i>.</p>
    */
   Arn?: string;
 
@@ -1449,10 +1591,10 @@ export interface Organization {
   FeatureSet?: OrganizationFeatureSet | string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of the account that is designated as the
-   *             management account for the organization.</p>
-   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by
-   *     Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+   * <p>The Amazon Resource Name (ARN) of the account that is designated as the management
+   *             account for the organization.</p>
+   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
+   *     Formats Supported by Organizations</a> in the <i>AWS Service Authorization Reference</i>.</p>
    */
   MasterAccountArn?: string;
 
@@ -1481,6 +1623,9 @@ export interface Organization {
 }
 
 export namespace Organization {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Organization): any => ({
     ...obj,
     ...(obj.MasterAccountEmail && { MasterAccountEmail: SENSITIVE_STRING }),
@@ -1495,6 +1640,9 @@ export interface CreateOrganizationResponse {
 }
 
 export namespace CreateOrganizationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateOrganizationResponse): any => ({
     ...obj,
     ...(obj.Organization && { Organization: Organization.filterSensitiveLog(obj.Organization) }),
@@ -1505,7 +1653,7 @@ export interface CreateOrganizationalUnitRequest {
   /**
    * <p>The unique identifier (ID) of the parent root or OU that you want to create the new OU
    *             in.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
    *     following:</p>
    *          <ul>
    *             <li>
@@ -1532,8 +1680,8 @@ export interface CreateOrganizationalUnitRequest {
    * <p>A list of tags that you want to attach to the newly created OU. For each tag in the
    *             list, you must specify both a tag key and a value. You can set the value to an empty
    *             string, but you can't set it to <code>null</code>. For more information about tagging,
-   *             see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging AWS
-   *                 Organizations resources</a> in the AWS Organizations User Guide.</p>
+   *             see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging AWS Organizations
+   *                 resources</a> in the AWS Organizations User Guide.</p>
    *         <note>
    *             <p>If any one of the tags is invalid or if you exceed the allowed number of tags for
    *                 an OU, then the entire request fails and the OU is not created.</p>
@@ -1543,6 +1691,9 @@ export interface CreateOrganizationalUnitRequest {
 }
 
 export namespace CreateOrganizationalUnitRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateOrganizationalUnitRequest): any => ({
     ...obj,
   });
@@ -1556,7 +1707,7 @@ export namespace CreateOrganizationalUnitRequest {
 export interface OrganizationalUnit {
   /**
    * <p>The unique identifier (ID) associated with this OU.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational unit ID string requires
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational unit ID string requires
    *     "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the
    *     OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters
    *     or digits.</p>
@@ -1565,8 +1716,8 @@ export interface OrganizationalUnit {
 
   /**
    * <p>The Amazon Resource Name (ARN) of this OU.</p>
-   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by
-   *     Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
+   *     Formats Supported by Organizations</a> in the <i>AWS Service Authorization Reference</i>.</p>
    */
   Arn?: string;
 
@@ -1580,6 +1731,9 @@ export interface OrganizationalUnit {
 }
 
 export namespace OrganizationalUnit {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationalUnit): any => ({
     ...obj,
   });
@@ -1593,6 +1747,9 @@ export interface CreateOrganizationalUnitResponse {
 }
 
 export namespace CreateOrganizationalUnitResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateOrganizationalUnitResponse): any => ({
     ...obj,
   });
@@ -1608,6 +1765,9 @@ export interface DuplicateOrganizationalUnitException extends __SmithyException,
 }
 
 export namespace DuplicateOrganizationalUnitException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DuplicateOrganizationalUnitException): any => ({
     ...obj,
   });
@@ -1623,6 +1783,9 @@ export interface ParentNotFoundException extends __SmithyException, $MetadataBea
 }
 
 export namespace ParentNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ParentNotFoundException): any => ({
     ...obj,
   });
@@ -1679,8 +1842,8 @@ export interface CreatePolicyRequest {
    * <p>A list of tags that you want to attach to the newly created policy. For each tag in
    *             the list, you must specify both a tag key and a value. You can set the value to an empty
    *             string, but you can't set it to <code>null</code>. For more information about tagging,
-   *             see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging AWS
-   *                 Organizations resources</a> in the AWS Organizations User Guide.</p>
+   *             see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging AWS Organizations
+   *                 resources</a> in the AWS Organizations User Guide.</p>
    *         <note>
    *             <p>If any one of the tags is invalid or if you exceed the allowed number of tags for
    *                 a policy, then the entire request fails and the policy is not created.</p>
@@ -1690,6 +1853,9 @@ export interface CreatePolicyRequest {
 }
 
 export namespace CreatePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePolicyRequest): any => ({
     ...obj,
   });
@@ -1702,15 +1868,15 @@ export namespace CreatePolicyRequest {
 export interface PolicySummary {
   /**
    * <p>The unique identifier (ID) of the policy.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed
    *     by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).</p>
    */
   Id?: string;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the policy.</p>
-   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by
-   *     Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
+   *     Formats Supported by Organizations</a> in the <i>AWS Service Authorization Reference</i>.</p>
    */
   Arn?: string;
 
@@ -1741,6 +1907,9 @@ export interface PolicySummary {
 }
 
 export namespace PolicySummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicySummary): any => ({
     ...obj,
   });
@@ -1764,6 +1933,9 @@ export interface Policy {
 }
 
 export namespace Policy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Policy): any => ({
     ...obj,
   });
@@ -1777,6 +1949,9 @@ export interface CreatePolicyResponse {
 }
 
 export namespace CreatePolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePolicyResponse): any => ({
     ...obj,
   });
@@ -1792,6 +1967,9 @@ export interface DuplicatePolicyException extends __SmithyException, $MetadataBe
 }
 
 export namespace DuplicatePolicyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DuplicatePolicyException): any => ({
     ...obj,
   });
@@ -1811,6 +1989,9 @@ export interface MalformedPolicyDocumentException extends __SmithyException, $Me
 }
 
 export namespace MalformedPolicyDocumentException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MalformedPolicyDocumentException): any => ({
     ...obj,
   });
@@ -1830,6 +2011,9 @@ export interface PolicyTypeNotAvailableForOrganizationException extends __Smithy
 }
 
 export namespace PolicyTypeNotAvailableForOrganizationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyTypeNotAvailableForOrganizationException): any => ({
     ...obj,
   });
@@ -1846,6 +2030,9 @@ export interface DeclineHandshakeRequest {
 }
 
 export namespace DeclineHandshakeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeclineHandshakeRequest): any => ({
     ...obj,
   });
@@ -1862,6 +2049,9 @@ export interface OrganizationNotEmptyException extends __SmithyException, $Metad
 }
 
 export namespace OrganizationNotEmptyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationNotEmptyException): any => ({
     ...obj,
   });
@@ -1880,6 +2070,9 @@ export interface DeleteOrganizationalUnitRequest {
 }
 
 export namespace DeleteOrganizationalUnitRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteOrganizationalUnitRequest): any => ({
     ...obj,
   });
@@ -1896,6 +2089,9 @@ export interface OrganizationalUnitNotEmptyException extends __SmithyException, 
 }
 
 export namespace OrganizationalUnitNotEmptyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationalUnitNotEmptyException): any => ({
     ...obj,
   });
@@ -1912,6 +2108,9 @@ export interface OrganizationalUnitNotFoundException extends __SmithyException, 
 }
 
 export namespace OrganizationalUnitNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationalUnitNotFoundException): any => ({
     ...obj,
   });
@@ -1922,13 +2121,16 @@ export interface DeletePolicyRequest {
    * <p>The unique identifier (ID) of the policy that you want to delete. You can get the ID
    *             from the <a>ListPolicies</a> or <a>ListPoliciesForTarget</a>
    *             operations.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed
    *     by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).</p>
    */
   PolicyId: string | undefined;
 }
 
 export namespace DeletePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePolicyRequest): any => ({
     ...obj,
   });
@@ -1945,6 +2147,9 @@ export interface PolicyInUseException extends __SmithyException, $MetadataBearer
 }
 
 export namespace PolicyInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyInUseException): any => ({
     ...obj,
   });
@@ -1969,6 +2174,9 @@ export interface DeregisterDelegatedAdministratorRequest {
 }
 
 export namespace DeregisterDelegatedAdministratorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeregisterDelegatedAdministratorRequest): any => ({
     ...obj,
   });
@@ -1978,13 +2186,16 @@ export interface DescribeAccountRequest {
   /**
    * <p>The unique identifier (ID) of the AWS account that you want information about. You
    *             can get the ID from the <a>ListAccounts</a> or <a>ListAccountsForParent</a> operations.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12
    *     digits.</p>
    */
   AccountId: string | undefined;
 }
 
 export namespace DescribeAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAccountRequest): any => ({
     ...obj,
   });
@@ -1998,6 +2209,9 @@ export interface DescribeAccountResponse {
 }
 
 export namespace DescribeAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAccountResponse): any => ({
     ...obj,
     ...(obj.Account && { Account: Account.filterSensitiveLog(obj.Account) }),
@@ -2015,6 +2229,9 @@ export interface CreateAccountStatusNotFoundException extends __SmithyException,
 }
 
 export namespace CreateAccountStatusNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccountStatusNotFoundException): any => ({
     ...obj,
   });
@@ -2025,13 +2242,16 @@ export interface DescribeCreateAccountStatusRequest {
    * <p>Specifies the <code>Id</code> value that uniquely identifies the
    *                 <code>CreateAccount</code> request. You can get the value from the
    *                 <code>CreateAccountStatus.Id</code> response in an earlier <a>CreateAccount</a> request, or from the <a>ListCreateAccountStatus</a> operation.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a create account request ID string
    *     requires "car-" followed by from 8 to 32 lowercase letters or digits.</p>
    */
   CreateAccountRequestId: string | undefined;
 }
 
 export namespace DescribeCreateAccountStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCreateAccountStatusRequest): any => ({
     ...obj,
   });
@@ -2045,6 +2265,9 @@ export interface DescribeCreateAccountStatusResponse {
 }
 
 export namespace DescribeCreateAccountStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCreateAccountStatusResponse): any => ({
     ...obj,
     ...(obj.CreateAccountStatus && {
@@ -2063,7 +2286,7 @@ export interface DescribeEffectivePolicyRequest {
   /**
    * <p>The type of policy that you want information about. You can specify one of the
    *             following values:</p>
-   *          <ul>
+   *         <ul>
    *             <li>
    *                <p>
    *                   <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
@@ -2084,14 +2307,17 @@ export interface DescribeEffectivePolicyRequest {
   PolicyType: EffectivePolicyType | string | undefined;
 
   /**
-   * <p>When you're signed in as the management account, specify the ID of the account that you
-   *             want details about. Specifying an organization root or organizational unit (OU) as the
-   *             target is not supported.</p>
+   * <p>When you're signed in as the management account, specify the ID of the account that
+   *             you want details about. Specifying an organization root or organizational unit (OU) as
+   *             the target is not supported.</p>
    */
   TargetId?: string;
 }
 
 export namespace DescribeEffectivePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEffectivePolicyRequest): any => ({
     ...obj,
   });
@@ -2125,6 +2351,9 @@ export interface EffectivePolicy {
 }
 
 export namespace EffectivePolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EffectivePolicy): any => ({
     ...obj,
   });
@@ -2138,6 +2367,9 @@ export interface DescribeEffectivePolicyResponse {
 }
 
 export namespace DescribeEffectivePolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEffectivePolicyResponse): any => ({
     ...obj,
   });
@@ -2156,6 +2388,9 @@ export interface EffectivePolicyNotFoundException extends __SmithyException, $Me
 }
 
 export namespace EffectivePolicyNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EffectivePolicyNotFoundException): any => ({
     ...obj,
   });
@@ -2166,13 +2401,16 @@ export interface DescribeHandshakeRequest {
    * <p>The unique identifier (ID) of the handshake that you want information about. You can
    *             get the ID from the original call to <a>InviteAccountToOrganization</a>, or
    *             from a call to <a>ListHandshakesForAccount</a> or <a>ListHandshakesForOrganization</a>.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for  handshake ID string requires "h-"
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for  handshake ID string requires "h-"
    *     followed by from 8 to 32 lowercase letters or digits.</p>
    */
   HandshakeId: string | undefined;
 }
 
 export namespace DescribeHandshakeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeHandshakeRequest): any => ({
     ...obj,
   });
@@ -2194,6 +2432,9 @@ export interface DescribeOrganizationResponse {
 }
 
 export namespace DescribeOrganizationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationResponse): any => ({
     ...obj,
     ...(obj.Organization && { Organization: Organization.filterSensitiveLog(obj.Organization) }),
@@ -2205,7 +2446,7 @@ export interface DescribeOrganizationalUnitRequest {
    * <p>The unique identifier (ID) of the organizational unit that you want details about. You
    *             can get the ID from the <a>ListOrganizationalUnitsForParent</a>
    *             operation.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational unit ID string requires
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational unit ID string requires
    *     "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the
    *     OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters
    *     or digits.</p>
@@ -2214,6 +2455,9 @@ export interface DescribeOrganizationalUnitRequest {
 }
 
 export namespace DescribeOrganizationalUnitRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationalUnitRequest): any => ({
     ...obj,
   });
@@ -2227,6 +2471,9 @@ export interface DescribeOrganizationalUnitResponse {
 }
 
 export namespace DescribeOrganizationalUnitResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationalUnitResponse): any => ({
     ...obj,
   });
@@ -2237,13 +2484,16 @@ export interface DescribePolicyRequest {
    * <p>The unique identifier (ID) of the policy that you want details about. You can get the
    *             ID from the <a>ListPolicies</a> or <a>ListPoliciesForTarget</a>
    *             operations.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed
    *     by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).</p>
    */
   PolicyId: string | undefined;
 }
 
 export namespace DescribePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePolicyRequest): any => ({
     ...obj,
   });
@@ -2257,6 +2507,9 @@ export interface DescribePolicyResponse {
 }
 
 export namespace DescribePolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePolicyResponse): any => ({
     ...obj,
   });
@@ -2267,7 +2520,7 @@ export interface DetachPolicyRequest {
    * <p>The unique identifier (ID) of the policy you want to detach. You can get the ID from
    *             the <a>ListPolicies</a> or <a>ListPoliciesForTarget</a>
    *             operations.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a policy ID string requires "p-" followed
    *     by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).</p>
    */
   PolicyId: string | undefined;
@@ -2276,7 +2529,7 @@ export interface DetachPolicyRequest {
    * <p>The unique identifier (ID) of the root, OU, or account that you want to detach the
    *             policy from. You can get the ID from the <a>ListRoots</a>, <a>ListOrganizationalUnitsForParent</a>, or <a>ListAccounts</a>
    *             operations.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the
    *     following:</p>
    *          <ul>
    *             <li>
@@ -2300,6 +2553,9 @@ export interface DetachPolicyRequest {
 }
 
 export namespace DetachPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DetachPolicyRequest): any => ({
     ...obj,
   });
@@ -2315,6 +2571,9 @@ export interface PolicyNotAttachedException extends __SmithyException, $Metadata
 }
 
 export namespace PolicyNotAttachedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyNotAttachedException): any => ({
     ...obj,
   });
@@ -2331,6 +2590,9 @@ export interface DisableAWSServiceAccessRequest {
 }
 
 export namespace DisableAWSServiceAccessRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisableAWSServiceAccessRequest): any => ({
     ...obj,
   });
@@ -2340,7 +2602,7 @@ export interface DisablePolicyTypeRequest {
   /**
    * <p>The unique identifier (ID) of the root in which you want to disable a policy type. You
    *             can get the ID from the <a>ListRoots</a> operation.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string requires "r-" followed by
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string requires "r-" followed by
    *     from 4 to 32 lowercase letters or digits.</p>
    */
   RootId: string | undefined;
@@ -2348,7 +2610,7 @@ export interface DisablePolicyTypeRequest {
   /**
    * <p>The policy type that you want to disable in this root. You can specify one of the
    *             following values:</p>
-   *          <ul>
+   *         <ul>
    *             <li>
    *                <p>
    *                   <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
@@ -2375,6 +2637,9 @@ export interface DisablePolicyTypeRequest {
 }
 
 export namespace DisablePolicyTypeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisablePolicyTypeRequest): any => ({
     ...obj,
   });
@@ -2389,15 +2654,15 @@ export namespace DisablePolicyTypeRequest {
 export interface Root {
   /**
    * <p>The unique identifier (ID) for the root.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string requires "r-" followed by
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string requires "r-" followed by
    *     from 4 to 32 lowercase letters or digits.</p>
    */
   Id?: string;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the root.</p>
-   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by
-   *     Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
+   *     Formats Supported by Organizations</a> in the <i>AWS Service Authorization Reference</i>.</p>
    */
   Arn?: string;
 
@@ -2422,6 +2687,9 @@ export interface Root {
 }
 
 export namespace Root {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Root): any => ({
     ...obj,
   });
@@ -2435,6 +2703,9 @@ export interface DisablePolicyTypeResponse {
 }
 
 export namespace DisablePolicyTypeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisablePolicyTypeResponse): any => ({
     ...obj,
   });
@@ -2450,6 +2721,9 @@ export interface RootNotFoundException extends __SmithyException, $MetadataBeare
 }
 
 export namespace RootNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RootNotFoundException): any => ({
     ...obj,
   });
@@ -2458,6 +2732,9 @@ export namespace RootNotFoundException {
 export interface EnableAllFeaturesRequest {}
 
 export namespace EnableAllFeaturesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableAllFeaturesRequest): any => ({
     ...obj,
   });
@@ -2474,6 +2751,9 @@ export interface EnableAWSServiceAccessRequest {
 }
 
 export namespace EnableAWSServiceAccessRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableAWSServiceAccessRequest): any => ({
     ...obj,
   });
@@ -2483,7 +2763,7 @@ export interface EnablePolicyTypeRequest {
   /**
    * <p>The unique identifier (ID) of the root in which you want to enable a policy type. You
    *             can get the ID from the <a>ListRoots</a> operation.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string requires "r-" followed by
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a root ID string requires "r-" followed by
    *     from 4 to 32 lowercase letters or digits.</p>
    */
   RootId: string | undefined;
@@ -2491,7 +2771,7 @@ export interface EnablePolicyTypeRequest {
   /**
    * <p>The policy type that you want to enable. You can specify one of the following
    *             values:</p>
-   *          <ul>
+   *         <ul>
    *             <li>
    *                <p>
    *                   <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
@@ -2518,6 +2798,9 @@ export interface EnablePolicyTypeRequest {
 }
 
 export namespace EnablePolicyTypeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnablePolicyTypeRequest): any => ({
     ...obj,
   });
@@ -2531,6 +2814,9 @@ export interface EnablePolicyTypeResponse {
 }
 
 export namespace EnablePolicyTypeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnablePolicyTypeResponse): any => ({
     ...obj,
   });
@@ -2546,6 +2832,9 @@ export interface PolicyTypeAlreadyEnabledException extends __SmithyException, $M
 }
 
 export namespace PolicyTypeAlreadyEnabledException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyTypeAlreadyEnabledException): any => ({
     ...obj,
   });
@@ -2565,6 +2854,9 @@ export interface DuplicateHandshakeException extends __SmithyException, $Metadat
 }
 
 export namespace DuplicateHandshakeException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DuplicateHandshakeException): any => ({
     ...obj,
   });
@@ -2580,8 +2872,8 @@ export interface InviteAccountToOrganizationRequest {
    *                         number</b>
    *                </i>>" }</code>
    *         </p>
-   *         <p>If you use the AWS CLI, you can submit this as a single string, similar to the
-   *             following example:</p>
+   *         <p>If you use the AWS CLI, you can submit this as a single string, similar to the following
+   *             example:</p>
    *         <p>
    *             <code>--target Id=123456789012,Type=ACCOUNT</code>
    *         </p>
@@ -2604,8 +2896,8 @@ export interface InviteAccountToOrganizationRequest {
    * <p>A list of tags that you want to attach to the account when it becomes a member of the
    *             organization. For each tag in the list, you must specify both a tag key and a value. You
    *             can set the value to an empty string, but you can't set it to <code>null</code>. For
-   *             more information about tagging, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging AWS Organizations resources</a>
-   *             in the AWS Organizations User Guide.</p>
+   *             more information about tagging, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html">Tagging AWS Organizations resources</a> in the
+   *             AWS Organizations User Guide.</p>
    *         <important>
    *             <p>Any tags in the request are checked for compliance with any applicable tag
    *                 policies when the request is made. The request is rejected if the tags in the
@@ -2626,6 +2918,9 @@ export interface InviteAccountToOrganizationRequest {
 }
 
 export namespace InviteAccountToOrganizationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InviteAccountToOrganizationRequest): any => ({
     ...obj,
     ...(obj.Target && { Target: HandshakeParty.filterSensitiveLog(obj.Target) }),
@@ -2634,9 +2929,9 @@ export namespace InviteAccountToOrganizationRequest {
 }
 
 /**
- * <p>You can't remove a management account from an organization. If you want the
- *             management account to become a member account in another organization, you must first
- *             delete the current organization of the management account.</p>
+ * <p>You can't remove a management account from an organization. If you want the management
+ *             account to become a member account in another organization, you must first delete the
+ *             current organization of the management account.</p>
  */
 export interface MasterCannotLeaveOrganizationException extends __SmithyException, $MetadataBearer {
   name: "MasterCannotLeaveOrganizationException";
@@ -2645,6 +2940,9 @@ export interface MasterCannotLeaveOrganizationException extends __SmithyExceptio
 }
 
 export namespace MasterCannotLeaveOrganizationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MasterCannotLeaveOrganizationException): any => ({
     ...obj,
   });
@@ -2674,6 +2972,9 @@ export interface ListAccountsRequest {
 }
 
 export namespace ListAccountsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccountsRequest): any => ({
     ...obj,
   });
@@ -2695,6 +2996,9 @@ export interface ListAccountsResponse {
 }
 
 export namespace ListAccountsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccountsResponse): any => ({
     ...obj,
     ...(obj.Accounts && { Accounts: obj.Accounts.map((item) => Account.filterSensitiveLog(item)) }),
@@ -2731,6 +3035,9 @@ export interface ListAccountsForParentRequest {
 }
 
 export namespace ListAccountsForParentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccountsForParentRequest): any => ({
     ...obj,
   });
@@ -2752,6 +3059,9 @@ export interface ListAccountsForParentResponse {
 }
 
 export namespace ListAccountsForParentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccountsForParentResponse): any => ({
     ...obj,
     ...(obj.Accounts && { Accounts: obj.Accounts.map((item) => Account.filterSensitiveLog(item)) }),
@@ -2782,6 +3092,9 @@ export interface ListAWSServiceAccessForOrganizationRequest {
 }
 
 export namespace ListAWSServiceAccessForOrganizationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAWSServiceAccessForOrganizationRequest): any => ({
     ...obj,
   });
@@ -2806,6 +3119,9 @@ export interface EnabledServicePrincipal {
 }
 
 export namespace EnabledServicePrincipal {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnabledServicePrincipal): any => ({
     ...obj,
   });
@@ -2829,6 +3145,9 @@ export interface ListAWSServiceAccessForOrganizationResponse {
 }
 
 export namespace ListAWSServiceAccessForOrganizationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAWSServiceAccessForOrganizationResponse): any => ({
     ...obj,
   });
@@ -2843,7 +3162,7 @@ export interface ListChildrenRequest {
   /**
    * <p>The unique identifier (ID) for the parent root or OU whose children you want to
    *             list.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
    *     following:</p>
    *          <ul>
    *             <li>
@@ -2889,6 +3208,9 @@ export interface ListChildrenRequest {
 }
 
 export namespace ListChildrenRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListChildrenRequest): any => ({
     ...obj,
   });
@@ -2900,7 +3222,7 @@ export namespace ListChildrenRequest {
 export interface Child {
   /**
    * <p>The unique identifier (ID) of this child entity.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the
    *     following:</p>
    *          <ul>
    *             <li>
@@ -2925,6 +3247,9 @@ export interface Child {
 }
 
 export namespace Child {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Child): any => ({
     ...obj,
   });
@@ -2946,6 +3271,9 @@ export interface ListChildrenResponse {
 }
 
 export namespace ListChildrenResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListChildrenResponse): any => ({
     ...obj,
   });
@@ -2981,6 +3309,9 @@ export interface ListCreateAccountStatusRequest {
 }
 
 export namespace ListCreateAccountStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListCreateAccountStatusRequest): any => ({
     ...obj,
   });
@@ -3004,6 +3335,9 @@ export interface ListCreateAccountStatusResponse {
 }
 
 export namespace ListCreateAccountStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListCreateAccountStatusResponse): any => ({
     ...obj,
     ...(obj.CreateAccountStatuses && {
@@ -3044,6 +3378,9 @@ export interface ListDelegatedAdministratorsRequest {
 }
 
 export namespace ListDelegatedAdministratorsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDelegatedAdministratorsRequest): any => ({
     ...obj,
   });
@@ -3098,6 +3435,9 @@ export interface DelegatedAdministrator {
 }
 
 export namespace DelegatedAdministrator {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DelegatedAdministrator): any => ({
     ...obj,
     ...(obj.Email && { Email: SENSITIVE_STRING }),
@@ -3121,6 +3461,9 @@ export interface ListDelegatedAdministratorsResponse {
 }
 
 export namespace ListDelegatedAdministratorsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDelegatedAdministratorsResponse): any => ({
     ...obj,
     ...(obj.DelegatedAdministrators && {
@@ -3160,6 +3503,9 @@ export interface ListDelegatedServicesForAccountRequest {
 }
 
 export namespace ListDelegatedServicesForAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDelegatedServicesForAccountRequest): any => ({
     ...obj,
   });
@@ -3171,8 +3517,8 @@ export namespace ListDelegatedServicesForAccountRequest {
  */
 export interface DelegatedService {
   /**
-   * <p>The name of a service that can request an operation for the specified service. This is
-   *             typically in the form of a URL, such as:
+   * <p>The name of an AWS service that can request an operation for the specified service.
+   *             This is typically in the form of a URL, such as:
    *                 <code>
    *                <i>servicename</i>.amazonaws.com</code>.</p>
    */
@@ -3185,6 +3531,9 @@ export interface DelegatedService {
 }
 
 export namespace DelegatedService {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DelegatedService): any => ({
     ...obj,
   });
@@ -3206,6 +3555,9 @@ export interface ListDelegatedServicesForAccountResponse {
 }
 
 export namespace ListDelegatedServicesForAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDelegatedServicesForAccountResponse): any => ({
     ...obj,
   });
@@ -3228,13 +3580,16 @@ export interface HandshakeFilter {
    *             another type.</p>
    *         <p>If you specify <code>ParentHandshakeId</code>, you cannot also specify
    *                 <code>ActionType</code>.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for  handshake ID string requires "h-"
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for  handshake ID string requires "h-"
    *     followed by from 8 to 32 lowercase letters or digits.</p>
    */
   ParentHandshakeId?: string;
 }
 
 export namespace HandshakeFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HandshakeFilter): any => ({
     ...obj,
   });
@@ -3275,6 +3630,9 @@ export interface ListHandshakesForAccountRequest {
 }
 
 export namespace ListHandshakesForAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListHandshakesForAccountRequest): any => ({
     ...obj,
   });
@@ -3315,6 +3673,9 @@ export interface ListHandshakesForOrganizationRequest {
 }
 
 export namespace ListHandshakesForOrganizationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListHandshakesForOrganizationRequest): any => ({
     ...obj,
   });
@@ -3364,6 +3725,9 @@ export interface ListOrganizationalUnitsForParentRequest {
 }
 
 export namespace ListOrganizationalUnitsForParentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListOrganizationalUnitsForParentRequest): any => ({
     ...obj,
   });
@@ -3385,6 +3749,9 @@ export interface ListOrganizationalUnitsForParentResponse {
 }
 
 export namespace ListOrganizationalUnitsForParentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListOrganizationalUnitsForParentResponse): any => ({
     ...obj,
   });
@@ -3401,6 +3768,9 @@ export interface ChildNotFoundException extends __SmithyException, $MetadataBear
 }
 
 export namespace ChildNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChildNotFoundException): any => ({
     ...obj,
   });
@@ -3410,7 +3780,7 @@ export interface ListParentsRequest {
   /**
    * <p>The unique identifier (ID) of the OU or account whose parent containers you want to
    *             list. Don't specify a root.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the
    *     following:</p>
    *          <ul>
    *             <li>
@@ -3451,6 +3821,9 @@ export interface ListParentsRequest {
 }
 
 export namespace ListParentsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListParentsRequest): any => ({
     ...obj,
   });
@@ -3468,7 +3841,7 @@ export enum ParentType {
 export interface Parent {
   /**
    * <p>The unique identifier (ID) of the parent entity.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
    *     following:</p>
    *          <ul>
    *             <li>
@@ -3493,6 +3866,9 @@ export interface Parent {
 }
 
 export namespace Parent {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Parent): any => ({
     ...obj,
   });
@@ -3514,6 +3890,9 @@ export interface ListParentsResponse {
 }
 
 export namespace ListParentsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListParentsResponse): any => ({
     ...obj,
   });
@@ -3523,7 +3902,7 @@ export interface ListPoliciesRequest {
   /**
    * <p>Specifies the type of policy that you want to include in the response. You must
    *             specify one of the following values:</p>
-   *          <ul>
+   *         <ul>
    *             <li>
    *                <p>
    *                   <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
@@ -3571,6 +3950,9 @@ export interface ListPoliciesRequest {
 }
 
 export namespace ListPoliciesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPoliciesRequest): any => ({
     ...obj,
   });
@@ -3593,6 +3975,9 @@ export interface ListPoliciesResponse {
 }
 
 export namespace ListPoliciesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPoliciesResponse): any => ({
     ...obj,
   });
@@ -3602,7 +3987,7 @@ export interface ListPoliciesForTargetRequest {
   /**
    * <p>The unique identifier (ID) of the root, organizational unit, or account whose policies
    *             you want to list.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the
    *     following:</p>
    *          <ul>
    *             <li>
@@ -3627,7 +4012,7 @@ export interface ListPoliciesForTargetRequest {
   /**
    * <p>The type of policy that you want to include in the returned list. You must specify one
    *             of the following values:</p>
-   *          <ul>
+   *         <ul>
    *             <li>
    *                <p>
    *                   <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html">AISERVICES_OPT_OUT_POLICY</a>
@@ -3675,6 +4060,9 @@ export interface ListPoliciesForTargetRequest {
 }
 
 export namespace ListPoliciesForTargetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPoliciesForTargetRequest): any => ({
     ...obj,
   });
@@ -3696,6 +4084,9 @@ export interface ListPoliciesForTargetResponse {
 }
 
 export namespace ListPoliciesForTargetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPoliciesForTargetResponse): any => ({
     ...obj,
   });
@@ -3725,6 +4116,9 @@ export interface ListRootsRequest {
 }
 
 export namespace ListRootsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRootsRequest): any => ({
     ...obj,
   });
@@ -3746,6 +4140,9 @@ export interface ListRootsResponse {
 }
 
 export namespace ListRootsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRootsResponse): any => ({
     ...obj,
   });
@@ -3754,7 +4151,7 @@ export namespace ListRootsResponse {
 export interface ListTagsForResourceRequest {
   /**
    * <p>The ID of the resource with the tags to list.</p>
-   *          <p>You can specify any of the following taggable resources.</p>
+   *         <p>You can specify any of the following taggable resources.</p>
    *         <ul>
    *             <li>
    *                 <p>AWS account – specify the account ID number.</p>
@@ -3792,6 +4189,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -3813,6 +4213,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -3849,6 +4252,9 @@ export interface ListTargetsForPolicyRequest {
 }
 
 export namespace ListTargetsForPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTargetsForPolicyRequest): any => ({
     ...obj,
   });
@@ -3866,7 +4272,7 @@ export enum TargetType {
 export interface PolicyTargetSummary {
   /**
    * <p>The unique identifier (ID) of the policy target.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a target ID string requires one of the
    *     following:</p>
    *          <ul>
    *             <li>
@@ -3890,8 +4296,8 @@ export interface PolicyTargetSummary {
 
   /**
    * <p>The Amazon Resource Name (ARN) of the policy target.</p>
-   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by
-   *     Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
+   *     Formats Supported by Organizations</a> in the <i>AWS Service Authorization Reference</i>.</p>
    */
   Arn?: string;
 
@@ -3910,6 +4316,9 @@ export interface PolicyTargetSummary {
 }
 
 export namespace PolicyTargetSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyTargetSummary): any => ({
     ...obj,
   });
@@ -3932,6 +4341,9 @@ export interface ListTargetsForPolicyResponse {
 }
 
 export namespace ListTargetsForPolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTargetsForPolicyResponse): any => ({
     ...obj,
   });
@@ -3948,6 +4360,9 @@ export interface DestinationParentNotFoundException extends __SmithyException, $
 }
 
 export namespace DestinationParentNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DestinationParentNotFoundException): any => ({
     ...obj,
   });
@@ -3963,6 +4378,9 @@ export interface DuplicateAccountException extends __SmithyException, $MetadataB
 }
 
 export namespace DuplicateAccountException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DuplicateAccountException): any => ({
     ...obj,
   });
@@ -3979,7 +4397,7 @@ export interface MoveAccountRequest {
   /**
    * <p>The unique identifier (ID) of the root or organizational unit that you want to move
    *             the account from.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
    *     following:</p>
    *          <ul>
    *             <li>
@@ -4000,7 +4418,7 @@ export interface MoveAccountRequest {
   /**
    * <p>The unique identifier (ID) of the root or organizational unit that you want to move
    *             the account to.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the
    *     following:</p>
    *          <ul>
    *             <li>
@@ -4020,6 +4438,9 @@ export interface MoveAccountRequest {
 }
 
 export namespace MoveAccountRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MoveAccountRequest): any => ({
     ...obj,
   });
@@ -4036,6 +4457,9 @@ export interface SourceParentNotFoundException extends __SmithyException, $Metad
 }
 
 export namespace SourceParentNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SourceParentNotFoundException): any => ({
     ...obj,
   });
@@ -4056,6 +4480,9 @@ export interface RegisterDelegatedAdministratorRequest {
 }
 
 export namespace RegisterDelegatedAdministratorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegisterDelegatedAdministratorRequest): any => ({
     ...obj,
   });
@@ -4065,13 +4492,16 @@ export interface RemoveAccountFromOrganizationRequest {
   /**
    * <p>The unique identifier (ID) of the member account that you want to remove from the
    *             organization.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12
    *     digits.</p>
    */
   AccountId: string | undefined;
 }
 
 export namespace RemoveAccountFromOrganizationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveAccountFromOrganizationRequest): any => ({
     ...obj,
   });
@@ -4085,7 +4515,7 @@ export interface TagResourceRequest {
 
   /**
    * <p>A list of tags to add to the specified resource.</p>
-   *          <p>You can specify any of the following taggable resources.</p>
+   *         <p>You can specify any of the following taggable resources.</p>
    *         <ul>
    *             <li>
    *                 <p>AWS account – specify the account ID number.</p>
@@ -4109,9 +4539,8 @@ export interface TagResourceRequest {
    *                </p>
    *             </li>
    *          </ul>
-   *          <p>For
-   *             each tag in the list, you must specify both a tag key and a value. You can set the value
-   *             to an empty string, but you can't set it to <code>null</code>.</p>
+   *         <p>For each tag in the list, you must specify both a tag key and a value. You can set the
+   *             value to an empty string, but you can't set it to <code>null</code>.</p>
    *         <note>
    *             <p>If any one of the tags is invalid or if you exceed the allowed number of tags for
    *                 an account user, then the entire request fails and the account is not
@@ -4122,6 +4551,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -4130,7 +4562,7 @@ export namespace TagResourceRequest {
 export interface UntagResourceRequest {
   /**
    * <p>The ID of the resource to remove a tag from.</p>
-   *          <p>You can specify any of the following taggable resources.</p>
+   *         <p>You can specify any of the following taggable resources.</p>
    *         <ul>
    *             <li>
    *                 <p>AWS account – specify the account ID number.</p>
@@ -4164,6 +4596,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -4173,7 +4608,7 @@ export interface UpdateOrganizationalUnitRequest {
   /**
    * <p>The unique identifier (ID) of the OU that you want to rename. You can get the ID from
    *             the <a>ListOrganizationalUnitsForParent</a> operation.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational unit ID string requires
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an organizational unit ID string requires
    *     "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the
    *     OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters
    *     or digits.</p>
@@ -4190,6 +4625,9 @@ export interface UpdateOrganizationalUnitRequest {
 }
 
 export namespace UpdateOrganizationalUnitRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateOrganizationalUnitRequest): any => ({
     ...obj,
   });
@@ -4204,6 +4642,9 @@ export interface UpdateOrganizationalUnitResponse {
 }
 
 export namespace UpdateOrganizationalUnitResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateOrganizationalUnitResponse): any => ({
     ...obj,
   });
@@ -4240,6 +4681,9 @@ export interface UpdatePolicyRequest {
 }
 
 export namespace UpdatePolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdatePolicyRequest): any => ({
     ...obj,
   });
@@ -4254,6 +4698,9 @@ export interface UpdatePolicyResponse {
 }
 
 export namespace UpdatePolicyResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdatePolicyResponse): any => ({
     ...obj,
   });
@@ -4293,8 +4740,8 @@ export interface HandshakeResource {
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>OWNER_NAME</code> - Specifies the name associated with the
-   *                     management account. Included as information about an organization. </p>
+   *                   <code>OWNER_NAME</code> - Specifies the name associated with the management
+   *                     account. Included as information about an organization. </p>
    *             </li>
    *             <li>
    *                 <p>
@@ -4313,6 +4760,9 @@ export interface HandshakeResource {
 }
 
 export namespace HandshakeResource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HandshakeResource): any => ({
     ...obj,
     ...(obj.Value && { Value: SENSITIVE_STRING }),
@@ -4327,23 +4777,23 @@ export namespace HandshakeResource {
  *             originator) invites another account (the recipient) to join its organization, the two
  *             accounts exchange information as a series of handshake requests and responses.</p>
  *         <p>
- *             <b>Note:</b> Handshakes that are CANCELED, ACCEPTED, or
- *             DECLINED show up in lists for only 30 days after entering that state After that they are
- *             deleted.</p>
+ *             <b>Note:</b> Handshakes that are <code>CANCELED</code>,
+ *                 <code>ACCEPTED</code>, or <code>DECLINED</code> show up in lists for only 30 days
+ *             after entering that state After that they are deleted.</p>
  */
 export interface Handshake {
   /**
    * <p>The unique identifier (ID) of a handshake. The originating account creates the ID when
    *             it initiates the handshake.</p>
-   *          <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for  handshake ID string requires "h-"
+   *         <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for  handshake ID string requires "h-"
    *     followed by from 8 to 32 lowercase letters or digits.</p>
    */
   Id?: string;
 
   /**
    * <p>The Amazon Resource Name (ARN) of a handshake.</p>
-   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by
-   *     Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
+   *         <p>For more information about ARNs in Organizations, see <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies">ARN
+   *     Formats Supported by Organizations</a> in the <i>AWS Service Authorization Reference</i>.</p>
    */
   Arn?: string;
 
@@ -4414,8 +4864,8 @@ export interface Handshake {
    *             <li>
    *                 <p>
    *                   <b>INVITE</b>: This type of handshake represents a
-   *                     request to join an organization. It is always sent from the management account to
-   *                     only non-member accounts.</p>
+   *                     request to join an organization. It is always sent from the management account
+   *                     to only non-member accounts.</p>
    *             </li>
    *             <li>
    *                 <p>
@@ -4423,7 +4873,8 @@ export interface Handshake {
    *                     represents a request to enable all features in an organization. It is always
    *                     sent from the management account to only <i>invited</i> member
    *                     accounts. Created accounts do not receive this because those accounts were
-   *                     created by the organization's management account and approval is inferred.</p>
+   *                     created by the organization's management account and approval is
+   *                     inferred.</p>
    *             </li>
    *             <li>
    *                 <p>
@@ -4444,6 +4895,9 @@ export interface Handshake {
 }
 
 export namespace Handshake {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Handshake): any => ({
     ...obj,
     ...(obj.Parties && { Parties: obj.Parties.map((item) => HandshakeParty.filterSensitiveLog(item)) }),
@@ -4459,6 +4913,9 @@ export interface AcceptHandshakeResponse {
 }
 
 export namespace AcceptHandshakeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AcceptHandshakeResponse): any => ({
     ...obj,
     ...(obj.Handshake && { Handshake: Handshake.filterSensitiveLog(obj.Handshake) }),
@@ -4473,6 +4930,9 @@ export interface CancelHandshakeResponse {
 }
 
 export namespace CancelHandshakeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelHandshakeResponse): any => ({
     ...obj,
     ...(obj.Handshake && { Handshake: Handshake.filterSensitiveLog(obj.Handshake) }),
@@ -4488,6 +4948,9 @@ export interface DeclineHandshakeResponse {
 }
 
 export namespace DeclineHandshakeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeclineHandshakeResponse): any => ({
     ...obj,
     ...(obj.Handshake && { Handshake: Handshake.filterSensitiveLog(obj.Handshake) }),
@@ -4502,6 +4965,9 @@ export interface DescribeHandshakeResponse {
 }
 
 export namespace DescribeHandshakeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeHandshakeResponse): any => ({
     ...obj,
     ...(obj.Handshake && { Handshake: Handshake.filterSensitiveLog(obj.Handshake) }),
@@ -4517,6 +4983,9 @@ export interface EnableAllFeaturesResponse {
 }
 
 export namespace EnableAllFeaturesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EnableAllFeaturesResponse): any => ({
     ...obj,
     ...(obj.Handshake && { Handshake: Handshake.filterSensitiveLog(obj.Handshake) }),
@@ -4532,6 +5001,9 @@ export interface InviteAccountToOrganizationResponse {
 }
 
 export namespace InviteAccountToOrganizationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InviteAccountToOrganizationResponse): any => ({
     ...obj,
     ...(obj.Handshake && { Handshake: Handshake.filterSensitiveLog(obj.Handshake) }),
@@ -4555,6 +5027,9 @@ export interface ListHandshakesForAccountResponse {
 }
 
 export namespace ListHandshakesForAccountResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListHandshakesForAccountResponse): any => ({
     ...obj,
   });
@@ -4577,6 +5052,9 @@ export interface ListHandshakesForOrganizationResponse {
 }
 
 export namespace ListHandshakesForOrganizationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListHandshakesForOrganizationResponse): any => ({
     ...obj,
   });

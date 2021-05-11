@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartDeviceAuthorizationCommandInput = StartDeviceAuthorizationRequest;
-export type StartDeviceAuthorizationCommandOutput = StartDeviceAuthorizationResponse & __MetadataBearer;
+export interface StartDeviceAuthorizationCommandInput extends StartDeviceAuthorizationRequest {}
+export interface StartDeviceAuthorizationCommandOutput extends StartDeviceAuthorizationResponse, __MetadataBearer {}
 
 /**
  * <p>Initiates device authorization by requesting a pair of verification codes from the authorization service.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSOOIDCClient, StartDeviceAuthorizationCommand } from "@aws-sdk/client-sso-oidc"; // ES Modules import
+ * // const { SSOOIDCClient, StartDeviceAuthorizationCommand } = require("@aws-sdk/client-sso-oidc"); // CommonJS import
+ * const client = new SSOOIDCClient(config);
+ * const command = new StartDeviceAuthorizationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartDeviceAuthorizationCommandInput} for command's `input` shape.
+ * @see {@link StartDeviceAuthorizationCommandOutput} for command's `response` shape.
+ * @see {@link SSOOIDCClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartDeviceAuthorizationCommand extends $Command<
   StartDeviceAuthorizationCommandInput,

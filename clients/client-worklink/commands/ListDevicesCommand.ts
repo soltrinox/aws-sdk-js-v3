@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDevicesCommandInput = ListDevicesRequest;
-export type ListDevicesCommandOutput = ListDevicesResponse & __MetadataBearer;
+export interface ListDevicesCommandInput extends ListDevicesRequest {}
+export interface ListDevicesCommandOutput extends ListDevicesResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a list of devices registered with the specified fleet.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkLinkClient, ListDevicesCommand } from "@aws-sdk/client-worklink"; // ES Modules import
+ * // const { WorkLinkClient, ListDevicesCommand } = require("@aws-sdk/client-worklink"); // CommonJS import
+ * const client = new WorkLinkClient(config);
+ * const command = new ListDevicesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDevicesCommandInput} for command's `input` shape.
+ * @see {@link ListDevicesCommandOutput} for command's `response` shape.
+ * @see {@link WorkLinkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDevicesCommand extends $Command<
   ListDevicesCommandInput,

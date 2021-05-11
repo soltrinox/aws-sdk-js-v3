@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetInstanceSnapshotCommandInput = GetInstanceSnapshotRequest;
-export type GetInstanceSnapshotCommandOutput = GetInstanceSnapshotResult & __MetadataBearer;
+export interface GetInstanceSnapshotCommandInput extends GetInstanceSnapshotRequest {}
+export interface GetInstanceSnapshotCommandOutput extends GetInstanceSnapshotResult, __MetadataBearer {}
 
 /**
  * <p>Returns information about a specific instance snapshot.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetInstanceSnapshotCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetInstanceSnapshotCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetInstanceSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetInstanceSnapshotCommandInput} for command's `input` shape.
+ * @see {@link GetInstanceSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetInstanceSnapshotCommand extends $Command<
   GetInstanceSnapshotCommandInput,

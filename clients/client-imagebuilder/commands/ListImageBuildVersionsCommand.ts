@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListImageBuildVersionsCommandInput = ListImageBuildVersionsRequest;
-export type ListImageBuildVersionsCommandOutput = ListImageBuildVersionsResponse & __MetadataBearer;
+export interface ListImageBuildVersionsCommandInput extends ListImageBuildVersionsRequest {}
+export interface ListImageBuildVersionsCommandOutput extends ListImageBuildVersionsResponse, __MetadataBearer {}
 
 /**
- * <p> Returns a list of image build versions. </p>
+ * <p> Returns a list of image build versions.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ImagebuilderClient, ListImageBuildVersionsCommand } from "@aws-sdk/client-imagebuilder"; // ES Modules import
+ * // const { ImagebuilderClient, ListImageBuildVersionsCommand } = require("@aws-sdk/client-imagebuilder"); // CommonJS import
+ * const client = new ImagebuilderClient(config);
+ * const command = new ListImageBuildVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListImageBuildVersionsCommandInput} for command's `input` shape.
+ * @see {@link ListImageBuildVersionsCommandOutput} for command's `response` shape.
+ * @see {@link ImagebuilderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListImageBuildVersionsCommand extends $Command<
   ListImageBuildVersionsCommandInput,

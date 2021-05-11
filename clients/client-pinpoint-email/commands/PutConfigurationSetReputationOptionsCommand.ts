@@ -20,13 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutConfigurationSetReputationOptionsCommandInput = PutConfigurationSetReputationOptionsRequest;
-export type PutConfigurationSetReputationOptionsCommandOutput = PutConfigurationSetReputationOptionsResponse &
-  __MetadataBearer;
+export interface PutConfigurationSetReputationOptionsCommandInput extends PutConfigurationSetReputationOptionsRequest {}
+export interface PutConfigurationSetReputationOptionsCommandOutput
+  extends PutConfigurationSetReputationOptionsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Enable or disable collection of reputation metrics for emails that you send using a
  *             particular configuration set in a specific AWS Region.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointEmailClient, PutConfigurationSetReputationOptionsCommand } from "@aws-sdk/client-pinpoint-email"; // ES Modules import
+ * // const { PinpointEmailClient, PutConfigurationSetReputationOptionsCommand } = require("@aws-sdk/client-pinpoint-email"); // CommonJS import
+ * const client = new PinpointEmailClient(config);
+ * const command = new PutConfigurationSetReputationOptionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutConfigurationSetReputationOptionsCommandInput} for command's `input` shape.
+ * @see {@link PutConfigurationSetReputationOptionsCommandOutput} for command's `response` shape.
+ * @see {@link PinpointEmailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutConfigurationSetReputationOptionsCommand extends $Command<
   PutConfigurationSetReputationOptionsCommandInput,

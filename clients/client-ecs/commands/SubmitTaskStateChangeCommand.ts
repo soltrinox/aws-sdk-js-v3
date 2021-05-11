@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SubmitTaskStateChangeCommandInput = SubmitTaskStateChangeRequest;
-export type SubmitTaskStateChangeCommandOutput = SubmitTaskStateChangeResponse & __MetadataBearer;
+export interface SubmitTaskStateChangeCommandInput extends SubmitTaskStateChangeRequest {}
+export interface SubmitTaskStateChangeCommandOutput extends SubmitTaskStateChangeResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -26,6 +26,20 @@ export type SubmitTaskStateChangeCommandOutput = SubmitTaskStateChangeResponse &
  *          </note>
  *          <p>Sent to acknowledge
  * 			that a task changed states.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, SubmitTaskStateChangeCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, SubmitTaskStateChangeCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new SubmitTaskStateChangeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SubmitTaskStateChangeCommandInput} for command's `input` shape.
+ * @see {@link SubmitTaskStateChangeCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SubmitTaskStateChangeCommand extends $Command<
   SubmitTaskStateChangeCommandInput,

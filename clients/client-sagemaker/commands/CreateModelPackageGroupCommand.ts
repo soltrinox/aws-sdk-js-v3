@@ -1,5 +1,5 @@
 import { SageMakerClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SageMakerClient";
-import { CreateModelPackageGroupInput, CreateModelPackageGroupOutput } from "../models/models_0";
+import { CreateModelPackageGroupInput, CreateModelPackageGroupOutput } from "../models/models_1";
 import {
   deserializeAws_json1_1CreateModelPackageGroupCommand,
   serializeAws_json1_1CreateModelPackageGroupCommand,
@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateModelPackageGroupCommandInput = CreateModelPackageGroupInput;
-export type CreateModelPackageGroupCommandOutput = CreateModelPackageGroupOutput & __MetadataBearer;
+export interface CreateModelPackageGroupCommandInput extends CreateModelPackageGroupInput {}
+export interface CreateModelPackageGroupCommandOutput extends CreateModelPackageGroupOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a model group. A model group contains a group of model versions.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, CreateModelPackageGroupCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, CreateModelPackageGroupCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new CreateModelPackageGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateModelPackageGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateModelPackageGroupCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateModelPackageGroupCommand extends $Command<
   CreateModelPackageGroupCommandInput,

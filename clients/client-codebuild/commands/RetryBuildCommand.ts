@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RetryBuildCommandInput = RetryBuildInput;
-export type RetryBuildCommandOutput = RetryBuildOutput & __MetadataBearer;
+export interface RetryBuildCommandInput extends RetryBuildInput {}
+export interface RetryBuildCommandOutput extends RetryBuildOutput, __MetadataBearer {}
 
 /**
  * <p>Restarts a build.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeBuildClient, RetryBuildCommand } from "@aws-sdk/client-codebuild"; // ES Modules import
+ * // const { CodeBuildClient, RetryBuildCommand } = require("@aws-sdk/client-codebuild"); // CommonJS import
+ * const client = new CodeBuildClient(config);
+ * const command = new RetryBuildCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RetryBuildCommandInput} for command's `input` shape.
+ * @see {@link RetryBuildCommandOutput} for command's `response` shape.
+ * @see {@link CodeBuildClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RetryBuildCommand extends $Command<
   RetryBuildCommandInput,

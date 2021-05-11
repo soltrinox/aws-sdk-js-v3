@@ -17,15 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteLoggingConfigurationCommandInput = DeleteLoggingConfigurationRequest;
-export type DeleteLoggingConfigurationCommandOutput = DeleteLoggingConfigurationResponse & __MetadataBearer;
+export interface DeleteLoggingConfigurationCommandInput extends DeleteLoggingConfigurationRequest {}
+export interface DeleteLoggingConfigurationCommandOutput extends DeleteLoggingConfigurationResponse, __MetadataBearer {}
 
 /**
- * <note>
- *             <p>This is the latest version of <b>AWS WAF</b>, named AWS WAFV2, released in November, 2019. For information, including how to migrate your AWS WAF resources from the prior release, see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>.  </p>
- *          </note>
- *          <p>Deletes the <a>LoggingConfiguration</a> from the specified web
+ * <p>Deletes the <a>LoggingConfiguration</a> from the specified web
  *          ACL.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFV2Client, DeleteLoggingConfigurationCommand } from "@aws-sdk/client-wafv2"; // ES Modules import
+ * // const { WAFV2Client, DeleteLoggingConfigurationCommand } = require("@aws-sdk/client-wafv2"); // CommonJS import
+ * const client = new WAFV2Client(config);
+ * const command = new DeleteLoggingConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteLoggingConfigurationCommandInput} for command's `input` shape.
+ * @see {@link DeleteLoggingConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link WAFV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteLoggingConfigurationCommand extends $Command<
   DeleteLoggingConfigurationCommandInput,

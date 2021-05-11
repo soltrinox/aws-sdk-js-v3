@@ -17,14 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetServiceQuotaCommandInput = GetServiceQuotaRequest;
-export type GetServiceQuotaCommandOutput = GetServiceQuotaResponse & __MetadataBearer;
+export interface GetServiceQuotaCommandInput extends GetServiceQuotaRequest {}
+export interface GetServiceQuotaCommandOutput extends GetServiceQuotaResponse, __MetadataBearer {}
 
 /**
- * <p>Returns the details for the specified service quota. This operation provides a different
- *       Value than the <code>GetAWSDefaultServiceQuota</code> operation. This operation returns the
- *       applied value for each quota. <code>GetAWSDefaultServiceQuota</code> returns the default AWS
- *       value for each quota. </p>
+ * <p>Retrieves the applied quota value for the specified quota. For some quotas, only the
+ *       default values are available. If the applied quota value is not available for a quota, the
+ *       quota is not retrieved.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceQuotasClient, GetServiceQuotaCommand } from "@aws-sdk/client-service-quotas"; // ES Modules import
+ * // const { ServiceQuotasClient, GetServiceQuotaCommand } = require("@aws-sdk/client-service-quotas"); // CommonJS import
+ * const client = new ServiceQuotasClient(config);
+ * const command = new GetServiceQuotaCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetServiceQuotaCommandInput} for command's `input` shape.
+ * @see {@link GetServiceQuotaCommandOutput} for command's `response` shape.
+ * @see {@link ServiceQuotasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetServiceQuotaCommand extends $Command<
   GetServiceQuotaCommandInput,

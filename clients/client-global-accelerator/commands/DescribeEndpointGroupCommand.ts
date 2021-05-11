@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEndpointGroupCommandInput = DescribeEndpointGroupRequest;
-export type DescribeEndpointGroupCommandOutput = DescribeEndpointGroupResponse & __MetadataBearer;
+export interface DescribeEndpointGroupCommandInput extends DescribeEndpointGroupRequest {}
+export interface DescribeEndpointGroupCommandOutput extends DescribeEndpointGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Describe an endpoint group. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlobalAcceleratorClient, DescribeEndpointGroupCommand } from "@aws-sdk/client-global-accelerator"; // ES Modules import
+ * // const { GlobalAcceleratorClient, DescribeEndpointGroupCommand } = require("@aws-sdk/client-global-accelerator"); // CommonJS import
+ * const client = new GlobalAcceleratorClient(config);
+ * const command = new DescribeEndpointGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEndpointGroupCommandInput} for command's `input` shape.
+ * @see {@link DescribeEndpointGroupCommandOutput} for command's `response` shape.
+ * @see {@link GlobalAcceleratorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEndpointGroupCommand extends $Command<
   DescribeEndpointGroupCommandInput,

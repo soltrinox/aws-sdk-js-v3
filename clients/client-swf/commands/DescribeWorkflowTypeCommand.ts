@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeWorkflowTypeCommandInput = DescribeWorkflowTypeInput;
-export type DescribeWorkflowTypeCommandOutput = WorkflowTypeDetail & __MetadataBearer;
+export interface DescribeWorkflowTypeCommandInput extends DescribeWorkflowTypeInput {}
+export interface DescribeWorkflowTypeCommandOutput extends WorkflowTypeDetail, __MetadataBearer {}
 
 /**
  * <p>Returns information about the specified <i>workflow type</i>. This
@@ -60,6 +60,20 @@ export type DescribeWorkflowTypeCommandOutput = WorkflowTypeDetail & __MetadataB
  *       event attribute's <code>cause</code> parameter is set to <code>OPERATION_NOT_PERMITTED</code>.
  *       For details and example IAM policies, see <a href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using IAM to Manage Access to Amazon SWF
  *         Workflows</a> in the <i>Amazon SWF Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SWFClient, DescribeWorkflowTypeCommand } from "@aws-sdk/client-swf"; // ES Modules import
+ * // const { SWFClient, DescribeWorkflowTypeCommand } = require("@aws-sdk/client-swf"); // CommonJS import
+ * const client = new SWFClient(config);
+ * const command = new DescribeWorkflowTypeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeWorkflowTypeCommandInput} for command's `input` shape.
+ * @see {@link DescribeWorkflowTypeCommandOutput} for command's `response` shape.
+ * @see {@link SWFClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeWorkflowTypeCommand extends $Command<
   DescribeWorkflowTypeCommandInput,

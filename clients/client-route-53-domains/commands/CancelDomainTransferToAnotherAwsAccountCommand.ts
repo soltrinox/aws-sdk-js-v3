@@ -20,9 +20,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelDomainTransferToAnotherAwsAccountCommandInput = CancelDomainTransferToAnotherAwsAccountRequest;
-export type CancelDomainTransferToAnotherAwsAccountCommandOutput = CancelDomainTransferToAnotherAwsAccountResponse &
-  __MetadataBearer;
+export interface CancelDomainTransferToAnotherAwsAccountCommandInput
+  extends CancelDomainTransferToAnotherAwsAccountRequest {}
+export interface CancelDomainTransferToAnotherAwsAccountCommandOutput
+  extends CancelDomainTransferToAnotherAwsAccountResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Cancels the transfer of a domain from the current AWS account to another AWS account. You initiate a transfer between AWS accounts using
@@ -41,6 +43,20 @@ export type CancelDomainTransferToAnotherAwsAccountCommandOutput = CancelDomainT
  * 			<a href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html">GetOperationDetail</a>
  * 			provides additional information, for example, <code>Domain Transfer from Aws Account 111122223333 has been cancelled</code>.
  * 		</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53DomainsClient, CancelDomainTransferToAnotherAwsAccountCommand } from "@aws-sdk/client-route-53-domains"; // ES Modules import
+ * // const { Route53DomainsClient, CancelDomainTransferToAnotherAwsAccountCommand } = require("@aws-sdk/client-route-53-domains"); // CommonJS import
+ * const client = new Route53DomainsClient(config);
+ * const command = new CancelDomainTransferToAnotherAwsAccountCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelDomainTransferToAnotherAwsAccountCommandInput} for command's `input` shape.
+ * @see {@link CancelDomainTransferToAnotherAwsAccountCommandOutput} for command's `response` shape.
+ * @see {@link Route53DomainsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelDomainTransferToAnotherAwsAccountCommand extends $Command<
   CancelDomainTransferToAnotherAwsAccountCommandInput,

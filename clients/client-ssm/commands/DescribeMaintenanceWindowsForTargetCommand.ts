@@ -20,13 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeMaintenanceWindowsForTargetCommandInput = DescribeMaintenanceWindowsForTargetRequest;
-export type DescribeMaintenanceWindowsForTargetCommandOutput = DescribeMaintenanceWindowsForTargetResult &
-  __MetadataBearer;
+export interface DescribeMaintenanceWindowsForTargetCommandInput extends DescribeMaintenanceWindowsForTargetRequest {}
+export interface DescribeMaintenanceWindowsForTargetCommandOutput
+  extends DescribeMaintenanceWindowsForTargetResult,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieves information about the maintenance window targets or tasks that an instance is
  *    associated with.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DescribeMaintenanceWindowsForTargetCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DescribeMaintenanceWindowsForTargetCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DescribeMaintenanceWindowsForTargetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeMaintenanceWindowsForTargetCommandInput} for command's `input` shape.
+ * @see {@link DescribeMaintenanceWindowsForTargetCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeMaintenanceWindowsForTargetCommand extends $Command<
   DescribeMaintenanceWindowsForTargetCommandInput,

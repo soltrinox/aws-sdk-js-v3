@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchStopJobRunCommandInput = BatchStopJobRunRequest;
-export type BatchStopJobRunCommandOutput = BatchStopJobRunResponse & __MetadataBearer;
+export interface BatchStopJobRunCommandInput extends BatchStopJobRunRequest {}
+export interface BatchStopJobRunCommandOutput extends BatchStopJobRunResponse, __MetadataBearer {}
 
 /**
  * <p>Stops one or more job runs for a specified job definition.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, BatchStopJobRunCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, BatchStopJobRunCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new BatchStopJobRunCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchStopJobRunCommandInput} for command's `input` shape.
+ * @see {@link BatchStopJobRunCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchStopJobRunCommand extends $Command<
   BatchStopJobRunCommandInput,

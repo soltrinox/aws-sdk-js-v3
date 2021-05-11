@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetHealthCheckCountCommandInput = GetHealthCheckCountRequest;
-export type GetHealthCheckCountCommandOutput = GetHealthCheckCountResponse & __MetadataBearer;
+export interface GetHealthCheckCountCommandInput extends GetHealthCheckCountRequest {}
+export interface GetHealthCheckCountCommandOutput extends GetHealthCheckCountResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the number of health checks that are associated with the current AWS account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, GetHealthCheckCountCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, GetHealthCheckCountCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new GetHealthCheckCountCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetHealthCheckCountCommandInput} for command's `input` shape.
+ * @see {@link GetHealthCheckCountCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetHealthCheckCountCommand extends $Command<
   GetHealthCheckCountCommandInput,

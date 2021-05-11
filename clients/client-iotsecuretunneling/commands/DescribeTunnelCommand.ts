@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeTunnelCommandInput = DescribeTunnelRequest;
-export type DescribeTunnelCommandOutput = DescribeTunnelResponse & __MetadataBearer;
+export interface DescribeTunnelCommandInput extends DescribeTunnelRequest {}
+export interface DescribeTunnelCommandOutput extends DescribeTunnelResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about a tunnel identified by the unique tunnel id.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTSecureTunnelingClient, DescribeTunnelCommand } from "@aws-sdk/client-iotsecuretunneling"; // ES Modules import
+ * // const { IoTSecureTunnelingClient, DescribeTunnelCommand } = require("@aws-sdk/client-iotsecuretunneling"); // CommonJS import
+ * const client = new IoTSecureTunnelingClient(config);
+ * const command = new DescribeTunnelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeTunnelCommandInput} for command's `input` shape.
+ * @see {@link DescribeTunnelCommandOutput} for command's `response` shape.
+ * @see {@link IoTSecureTunnelingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeTunnelCommand extends $Command<
   DescribeTunnelCommandInput,

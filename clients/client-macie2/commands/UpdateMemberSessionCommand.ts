@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateMemberSessionCommandInput = UpdateMemberSessionRequest;
-export type UpdateMemberSessionCommandOutput = UpdateMemberSessionResponse & __MetadataBearer;
+export interface UpdateMemberSessionCommandInput extends UpdateMemberSessionRequest {}
+export interface UpdateMemberSessionCommandOutput extends UpdateMemberSessionResponse, __MetadataBearer {}
 
 /**
- * <p>Enables an Amazon Macie master account to suspend or re-enable a member account.</p>
+ * <p>Enables an Amazon Macie administrator to suspend or re-enable a member account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Macie2Client, UpdateMemberSessionCommand } from "@aws-sdk/client-macie2"; // ES Modules import
+ * // const { Macie2Client, UpdateMemberSessionCommand } = require("@aws-sdk/client-macie2"); // CommonJS import
+ * const client = new Macie2Client(config);
+ * const command = new UpdateMemberSessionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateMemberSessionCommandInput} for command's `input` shape.
+ * @see {@link UpdateMemberSessionCommandOutput} for command's `response` shape.
+ * @see {@link Macie2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateMemberSessionCommand extends $Command<
   UpdateMemberSessionCommandInput,

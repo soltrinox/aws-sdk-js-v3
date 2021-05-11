@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteRemoteAccessSessionCommandInput = DeleteRemoteAccessSessionRequest;
-export type DeleteRemoteAccessSessionCommandOutput = DeleteRemoteAccessSessionResult & __MetadataBearer;
+export interface DeleteRemoteAccessSessionCommandInput extends DeleteRemoteAccessSessionRequest {}
+export interface DeleteRemoteAccessSessionCommandOutput extends DeleteRemoteAccessSessionResult, __MetadataBearer {}
 
 /**
  * <p>Deletes a completed remote access session and its results.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, DeleteRemoteAccessSessionCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, DeleteRemoteAccessSessionCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new DeleteRemoteAccessSessionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteRemoteAccessSessionCommandInput} for command's `input` shape.
+ * @see {@link DeleteRemoteAccessSessionCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteRemoteAccessSessionCommand extends $Command<
   DeleteRemoteAccessSessionCommandInput,

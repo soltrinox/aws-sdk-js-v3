@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ConstantAndVariableQueryStringCommandInput = ConstantAndVariableQueryStringInput;
-export type ConstantAndVariableQueryStringCommandOutput = __MetadataBearer;
+export interface ConstantAndVariableQueryStringCommandInput extends ConstantAndVariableQueryStringInput {}
+export interface ConstantAndVariableQueryStringCommandOutput extends __MetadataBearer {}
 
 /**
  * This example uses fixed query string params and variable query string params.
  * The fixed query string parameters and variable parameters must both be
  * serialized (implementations may need to merge them together).
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestXmlProtocolClient, ConstantAndVariableQueryStringCommand } from "@aws-sdk/aws-restxml"; // ES Modules import
+ * // const { RestXmlProtocolClient, ConstantAndVariableQueryStringCommand } = require("@aws-sdk/aws-restxml"); // CommonJS import
+ * const client = new RestXmlProtocolClient(config);
+ * const command = new ConstantAndVariableQueryStringCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ConstantAndVariableQueryStringCommandInput} for command's `input` shape.
+ * @see {@link ConstantAndVariableQueryStringCommandOutput} for command's `response` shape.
+ * @see {@link RestXmlProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ConstantAndVariableQueryStringCommand extends $Command<
   ConstantAndVariableQueryStringCommandInput,

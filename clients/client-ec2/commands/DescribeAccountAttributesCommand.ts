@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAccountAttributesCommandInput = DescribeAccountAttributesRequest;
-export type DescribeAccountAttributesCommandOutput = DescribeAccountAttributesResult & __MetadataBearer;
+export interface DescribeAccountAttributesCommandInput extends DescribeAccountAttributesRequest {}
+export interface DescribeAccountAttributesCommandOutput extends DescribeAccountAttributesResult, __MetadataBearer {}
 
 /**
  * <p>Describes attributes of your AWS account. The following are the supported account attributes:</p>
@@ -56,6 +56,20 @@ export type DescribeAccountAttributesCommandOutput = DescribeAccountAttributesRe
  *           allocate for use with EC2-VPC.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeAccountAttributesCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeAccountAttributesCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeAccountAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAccountAttributesCommandInput} for command's `input` shape.
+ * @see {@link DescribeAccountAttributesCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAccountAttributesCommand extends $Command<
   DescribeAccountAttributesCommandInput,

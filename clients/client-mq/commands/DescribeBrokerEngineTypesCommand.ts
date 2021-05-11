@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeBrokerEngineTypesCommandInput = DescribeBrokerEngineTypesRequest;
-export type DescribeBrokerEngineTypesCommandOutput = DescribeBrokerEngineTypesResponse & __MetadataBearer;
+export interface DescribeBrokerEngineTypesCommandInput extends DescribeBrokerEngineTypesRequest {}
+export interface DescribeBrokerEngineTypesCommandOutput extends DescribeBrokerEngineTypesResponse, __MetadataBearer {}
 
 /**
  * Describe available engine types and versions.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MqClient, DescribeBrokerEngineTypesCommand } from "@aws-sdk/client-mq"; // ES Modules import
+ * // const { MqClient, DescribeBrokerEngineTypesCommand } = require("@aws-sdk/client-mq"); // CommonJS import
+ * const client = new MqClient(config);
+ * const command = new DescribeBrokerEngineTypesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeBrokerEngineTypesCommandInput} for command's `input` shape.
+ * @see {@link DescribeBrokerEngineTypesCommandOutput} for command's `response` shape.
+ * @see {@link MqClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeBrokerEngineTypesCommand extends $Command<
   DescribeBrokerEngineTypesCommandInput,

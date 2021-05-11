@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutFunctionCodeSigningConfigCommandInput = PutFunctionCodeSigningConfigRequest;
-export type PutFunctionCodeSigningConfigCommandOutput = PutFunctionCodeSigningConfigResponse & __MetadataBearer;
+export interface PutFunctionCodeSigningConfigCommandInput extends PutFunctionCodeSigningConfigRequest {}
+export interface PutFunctionCodeSigningConfigCommandOutput
+  extends PutFunctionCodeSigningConfigResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Update the code signing configuration for the function. Changes to the code signing configuration take effect the
  *       next time a user tries to deploy a code package to the function. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LambdaClient, PutFunctionCodeSigningConfigCommand } from "@aws-sdk/client-lambda"; // ES Modules import
+ * // const { LambdaClient, PutFunctionCodeSigningConfigCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+ * const client = new LambdaClient(config);
+ * const command = new PutFunctionCodeSigningConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutFunctionCodeSigningConfigCommandInput} for command's `input` shape.
+ * @see {@link PutFunctionCodeSigningConfigCommandOutput} for command's `response` shape.
+ * @see {@link LambdaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutFunctionCodeSigningConfigCommand extends $Command<
   PutFunctionCodeSigningConfigCommandInput,

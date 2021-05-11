@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutEmailIdentityFeedbackAttributesCommandInput = PutEmailIdentityFeedbackAttributesRequest;
-export type PutEmailIdentityFeedbackAttributesCommandOutput = PutEmailIdentityFeedbackAttributesResponse &
-  __MetadataBearer;
+export interface PutEmailIdentityFeedbackAttributesCommandInput extends PutEmailIdentityFeedbackAttributesRequest {}
+export interface PutEmailIdentityFeedbackAttributesCommandOutput
+  extends PutEmailIdentityFeedbackAttributesResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Used to enable or disable feedback forwarding for an identity. This setting determines
@@ -35,6 +36,20 @@ export type PutEmailIdentityFeedbackAttributesCommandOutput = PutEmailIdentityFe
  *             set up another mechanism for receiving bounce or complaint notifications (for example,
  *             by setting up an event destination), you receive an email notification when these events
  *             occur (even if this setting is disabled).</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, PutEmailIdentityFeedbackAttributesCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, PutEmailIdentityFeedbackAttributesCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new PutEmailIdentityFeedbackAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutEmailIdentityFeedbackAttributesCommandInput} for command's `input` shape.
+ * @see {@link PutEmailIdentityFeedbackAttributesCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutEmailIdentityFeedbackAttributesCommand extends $Command<
   PutEmailIdentityFeedbackAttributesCommandInput,

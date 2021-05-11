@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateScalingPlanCommandInput = UpdateScalingPlanRequest;
-export type UpdateScalingPlanCommandOutput = UpdateScalingPlanResponse & __MetadataBearer;
+export interface UpdateScalingPlanCommandInput extends UpdateScalingPlanRequest {}
+export interface UpdateScalingPlanCommandOutput extends UpdateScalingPlanResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the specified scaling plan.</p>
  *          <p>You cannot update a scaling plan if it is in the process of being created, updated, or
  *          deleted.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AutoScalingPlansClient, UpdateScalingPlanCommand } from "@aws-sdk/client-auto-scaling-plans"; // ES Modules import
+ * // const { AutoScalingPlansClient, UpdateScalingPlanCommand } = require("@aws-sdk/client-auto-scaling-plans"); // CommonJS import
+ * const client = new AutoScalingPlansClient(config);
+ * const command = new UpdateScalingPlanCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateScalingPlanCommandInput} for command's `input` shape.
+ * @see {@link UpdateScalingPlanCommandOutput} for command's `response` shape.
+ * @see {@link AutoScalingPlansClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateScalingPlanCommand extends $Command<
   UpdateScalingPlanCommandInput,

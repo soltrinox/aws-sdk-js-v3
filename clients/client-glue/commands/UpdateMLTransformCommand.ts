@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateMLTransformCommandInput = UpdateMLTransformRequest;
-export type UpdateMLTransformCommandOutput = UpdateMLTransformResponse & __MetadataBearer;
+export interface UpdateMLTransformCommandInput extends UpdateMLTransformRequest {}
+export interface UpdateMLTransformCommandOutput extends UpdateMLTransformResponse, __MetadataBearer {}
 
 /**
  * <p>Updates an existing machine learning transform. Call this operation to tune the algorithm parameters to achieve better results.</p>
@@ -26,6 +26,20 @@ export type UpdateMLTransformCommandOutput = UpdateMLTransformResponse & __Metad
  *          <p>After calling this operation, you can call the <code>StartMLEvaluationTaskRun</code>
  *       operation to assess how well your new parameters achieved your goals (such as improving the
  *       quality of your machine learning transform, or making it more cost-effective).</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, UpdateMLTransformCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, UpdateMLTransformCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new UpdateMLTransformCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateMLTransformCommandInput} for command's `input` shape.
+ * @see {@link UpdateMLTransformCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateMLTransformCommand extends $Command<
   UpdateMLTransformCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateWebACLCommandInput = CreateWebACLRequest;
-export type CreateWebACLCommandOutput = CreateWebACLResponse & __MetadataBearer;
+export interface CreateWebACLCommandInput extends CreateWebACLRequest {}
+export interface CreateWebACLCommandOutput extends CreateWebACLResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -61,6 +61,20 @@ export type CreateWebACLCommandOutput = CreateWebACLResponse & __MetadataBearer;
  *             </li>
  *          </ol>
  * 		       <p>For more information about how to use the AWS WAF API, see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF Developer Guide</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFRegionalClient, CreateWebACLCommand } from "@aws-sdk/client-waf-regional"; // ES Modules import
+ * // const { WAFRegionalClient, CreateWebACLCommand } = require("@aws-sdk/client-waf-regional"); // CommonJS import
+ * const client = new WAFRegionalClient(config);
+ * const command = new CreateWebACLCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateWebACLCommandInput} for command's `input` shape.
+ * @see {@link CreateWebACLCommandOutput} for command's `response` shape.
+ * @see {@link WAFRegionalClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateWebACLCommand extends $Command<
   CreateWebACLCommandInput,

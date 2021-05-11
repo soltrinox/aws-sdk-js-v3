@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateHITWithHITTypeCommandInput = CreateHITWithHITTypeRequest;
-export type CreateHITWithHITTypeCommandOutput = CreateHITWithHITTypeResponse & __MetadataBearer;
+export interface CreateHITWithHITTypeCommandInput extends CreateHITWithHITTypeRequest {}
+export interface CreateHITWithHITTypeCommandOutput extends CreateHITWithHITTypeResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -39,6 +39,20 @@ export type CreateHITWithHITTypeCommandOutput = CreateHITWithHITTypeResponse & _
  *                 For more information, see <a href="https://requester.mturk.com/pricing">Amazon Mechanical Turk Pricing</a>.
  *             </p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, CreateHITWithHITTypeCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, CreateHITWithHITTypeCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new CreateHITWithHITTypeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateHITWithHITTypeCommandInput} for command's `input` shape.
+ * @see {@link CreateHITWithHITTypeCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateHITWithHITTypeCommand extends $Command<
   CreateHITWithHITTypeCommandInput,

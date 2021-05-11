@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEndpointsCommandInput = DescribeEndpointsRequest;
-export type DescribeEndpointsCommandOutput = DescribeEndpointsResponse & __MetadataBearer;
+export interface DescribeEndpointsCommandInput extends DescribeEndpointsRequest {}
+export interface DescribeEndpointsCommandOutput extends DescribeEndpointsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the regional endpoint information.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, DescribeEndpointsCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, DescribeEndpointsCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new DescribeEndpointsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEndpointsCommandInput} for command's `input` shape.
+ * @see {@link DescribeEndpointsCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEndpointsCommand extends $Command<
   DescribeEndpointsCommandInput,

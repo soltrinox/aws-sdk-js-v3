@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAssetPropertyAggregatesCommandInput = GetAssetPropertyAggregatesRequest;
-export type GetAssetPropertyAggregatesCommandOutput = GetAssetPropertyAggregatesResponse & __MetadataBearer;
+export interface GetAssetPropertyAggregatesCommandInput extends GetAssetPropertyAggregatesRequest {}
+export interface GetAssetPropertyAggregatesCommandOutput extends GetAssetPropertyAggregatesResponse, __MetadataBearer {}
 
 /**
  * <p>Gets aggregated values for an asset property. For more information, see <a href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates">Querying
@@ -33,6 +33,20 @@ export type GetAssetPropertyAggregatesCommandOutput = GetAssetPropertyAggregates
  *           <code>/company/windfarm/3/turbine/7/temperature</code>). To define an asset property's alias, see <a href="https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html">UpdateAssetProperty</a>.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTSiteWiseClient, GetAssetPropertyAggregatesCommand } from "@aws-sdk/client-iotsitewise"; // ES Modules import
+ * // const { IoTSiteWiseClient, GetAssetPropertyAggregatesCommand } = require("@aws-sdk/client-iotsitewise"); // CommonJS import
+ * const client = new IoTSiteWiseClient(config);
+ * const command = new GetAssetPropertyAggregatesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAssetPropertyAggregatesCommandInput} for command's `input` shape.
+ * @see {@link GetAssetPropertyAggregatesCommandOutput} for command's `response` shape.
+ * @see {@link IoTSiteWiseClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAssetPropertyAggregatesCommand extends $Command<
   GetAssetPropertyAggregatesCommandInput,

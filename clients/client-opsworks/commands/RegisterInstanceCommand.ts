@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RegisterInstanceCommandInput = RegisterInstanceRequest;
-export type RegisterInstanceCommandOutput = RegisterInstanceResult & __MetadataBearer;
+export interface RegisterInstanceCommandInput extends RegisterInstanceRequest {}
+export interface RegisterInstanceCommandOutput extends RegisterInstanceResult, __MetadataBearer {}
 
 /**
  * <p>Registers instances that were created outside of AWS OpsWorks Stacks with a specified stack.</p>
@@ -40,6 +40,20 @@ export type RegisterInstanceCommandOutput = RegisterInstanceResult & __MetadataB
  *       level for the stack or an attached policy that explicitly grants permissions. For more
  *       information on user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, RegisterInstanceCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, RegisterInstanceCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new RegisterInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RegisterInstanceCommandInput} for command's `input` shape.
+ * @see {@link RegisterInstanceCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RegisterInstanceCommand extends $Command<
   RegisterInstanceCommandInput,

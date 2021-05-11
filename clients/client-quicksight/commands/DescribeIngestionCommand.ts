@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeIngestionCommandInput = DescribeIngestionRequest;
-export type DescribeIngestionCommandOutput = DescribeIngestionResponse & __MetadataBearer;
+export interface DescribeIngestionCommandInput extends DescribeIngestionRequest {}
+export interface DescribeIngestionCommandOutput extends DescribeIngestionResponse, __MetadataBearer {}
 
 /**
  * <p>Describes a SPICE ingestion.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, DescribeIngestionCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, DescribeIngestionCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new DescribeIngestionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeIngestionCommandInput} for command's `input` shape.
+ * @see {@link DescribeIngestionCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeIngestionCommand extends $Command<
   DescribeIngestionCommandInput,

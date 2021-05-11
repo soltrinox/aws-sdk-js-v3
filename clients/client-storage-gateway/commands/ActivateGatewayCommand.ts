@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ActivateGatewayCommandInput = ActivateGatewayInput;
-export type ActivateGatewayCommandOutput = ActivateGatewayOutput & __MetadataBearer;
+export interface ActivateGatewayCommandInput extends ActivateGatewayInput {}
+export interface ActivateGatewayCommandOutput extends ActivateGatewayOutput, __MetadataBearer {}
 
 /**
  * <p>Activates the gateway you previously deployed on your host. In the activation process,
@@ -29,6 +29,20 @@ export type ActivateGatewayCommandOutput = ActivateGatewayOutput & __MetadataBea
  *          <note>
  *             <p>You must turn on the gateway VM before you can activate your gateway.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, ActivateGatewayCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, ActivateGatewayCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new ActivateGatewayCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ActivateGatewayCommandInput} for command's `input` shape.
+ * @see {@link ActivateGatewayCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ActivateGatewayCommand extends $Command<
   ActivateGatewayCommandInput,

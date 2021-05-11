@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateReplicationInstanceCommandInput = CreateReplicationInstanceMessage;
-export type CreateReplicationInstanceCommandOutput = CreateReplicationInstanceResponse & __MetadataBearer;
+export interface CreateReplicationInstanceCommandInput extends CreateReplicationInstanceMessage {}
+export interface CreateReplicationInstanceCommandOutput extends CreateReplicationInstanceResponse, __MetadataBearer {}
 
 /**
  * <p>Creates the replication instance using the specified parameters.</p>
@@ -31,6 +31,20 @@ export type CreateReplicationInstanceCommandOutput = CreateReplicationInstanceRe
  *       <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.APIRole">Creating the IAM Roles to Use With the AWS CLI and AWS DMS API</a>. For
  *          information on the required permissions, see
  *       <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.IAMPermissions">IAM Permissions Needed to Use AWS DMS</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, CreateReplicationInstanceCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, CreateReplicationInstanceCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new CreateReplicationInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateReplicationInstanceCommandInput} for command's `input` shape.
+ * @see {@link CreateReplicationInstanceCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateReplicationInstanceCommand extends $Command<
   CreateReplicationInstanceCommandInput,

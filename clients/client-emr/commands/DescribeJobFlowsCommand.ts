@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeJobFlowsCommandInput = DescribeJobFlowsInput;
-export type DescribeJobFlowsCommandOutput = DescribeJobFlowsOutput & __MetadataBearer;
+export interface DescribeJobFlowsCommandInput extends DescribeJobFlowsInput {}
+export interface DescribeJobFlowsCommandOutput extends DescribeJobFlowsOutput, __MetadataBearer {}
 
 /**
  * @deprecated
@@ -44,6 +44,20 @@ export type DescribeJobFlowsCommandOutput = DescribeJobFlowsOutput & __MetadataB
  *             </li>
  *          </ul>
  *          <p>Amazon EMR can return a maximum of 512 job flow descriptions.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EMRClient, DescribeJobFlowsCommand } from "@aws-sdk/client-emr"; // ES Modules import
+ * // const { EMRClient, DescribeJobFlowsCommand } = require("@aws-sdk/client-emr"); // CommonJS import
+ * const client = new EMRClient(config);
+ * const command = new DescribeJobFlowsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeJobFlowsCommandInput} for command's `input` shape.
+ * @see {@link DescribeJobFlowsCommandOutput} for command's `response` shape.
+ * @see {@link EMRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeJobFlowsCommand extends $Command<
   DescribeJobFlowsCommandInput,

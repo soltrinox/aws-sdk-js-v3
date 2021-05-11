@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDatasetCommandInput = DeleteDatasetRequest;
-export type DeleteDatasetCommandOutput = __MetadataBearer;
+export interface DeleteDatasetCommandInput extends DeleteDatasetRequest {}
+export interface DeleteDatasetCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a dataset. You can't delete a dataset if an associated
  *         <code>DatasetImportJob</code> or <code>SolutionVersion</code> is in the CREATE PENDING or IN
  *       PROGRESS state. For more information on datasets, see <a>CreateDataset</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PersonalizeClient, DeleteDatasetCommand } from "@aws-sdk/client-personalize"; // ES Modules import
+ * // const { PersonalizeClient, DeleteDatasetCommand } = require("@aws-sdk/client-personalize"); // CommonJS import
+ * const client = new PersonalizeClient(config);
+ * const command = new DeleteDatasetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDatasetCommandInput} for command's `input` shape.
+ * @see {@link DeleteDatasetCommandOutput} for command's `response` shape.
+ * @see {@link PersonalizeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDatasetCommand extends $Command<
   DeleteDatasetCommandInput,

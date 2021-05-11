@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCurrentUserCommandInput = GetCurrentUserRequest;
-export type GetCurrentUserCommandOutput = GetCurrentUserResponse & __MetadataBearer;
+export interface GetCurrentUserCommandInput extends GetCurrentUserRequest {}
+export interface GetCurrentUserCommandOutput extends GetCurrentUserResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves details of the current user for whom the authentication token was
@@ -28,6 +28,20 @@ export type GetCurrentUserCommandOutput = GetCurrentUserResponse & __MetadataBea
  *                 Control for User Applications</a> in the
  *             <i>Amazon
  *                 WorkDocs Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkDocsClient, GetCurrentUserCommand } from "@aws-sdk/client-workdocs"; // ES Modules import
+ * // const { WorkDocsClient, GetCurrentUserCommand } = require("@aws-sdk/client-workdocs"); // CommonJS import
+ * const client = new WorkDocsClient(config);
+ * const command = new GetCurrentUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCurrentUserCommandInput} for command's `input` shape.
+ * @see {@link GetCurrentUserCommandOutput} for command's `response` shape.
+ * @see {@link WorkDocsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCurrentUserCommand extends $Command<
   GetCurrentUserCommandInput,

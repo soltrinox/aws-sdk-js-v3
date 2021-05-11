@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSchemaAsJsonCommandInput = GetSchemaAsJsonRequest;
-export type GetSchemaAsJsonCommandOutput = GetSchemaAsJsonResponse & __MetadataBearer;
+export interface GetSchemaAsJsonCommandInput extends GetSchemaAsJsonRequest {}
+export interface GetSchemaAsJsonCommandOutput extends GetSchemaAsJsonResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a JSON representation of the schema. See <a href="https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json">JSON Schema Format</a> for more information.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, GetSchemaAsJsonCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, GetSchemaAsJsonCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new GetSchemaAsJsonCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSchemaAsJsonCommandInput} for command's `input` shape.
+ * @see {@link GetSchemaAsJsonCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSchemaAsJsonCommand extends $Command<
   GetSchemaAsJsonCommandInput,

@@ -17,6 +17,9 @@ export interface AlgorithmImage {
 }
 
 export namespace AlgorithmImage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AlgorithmImage): any => ({
     ...obj,
   });
@@ -45,6 +48,9 @@ export interface DefaultCategoricalHyperParameterRange {
 }
 
 export namespace DefaultCategoricalHyperParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DefaultCategoricalHyperParameterRange): any => ({
     ...obj,
   });
@@ -78,6 +84,9 @@ export interface DefaultContinuousHyperParameterRange {
 }
 
 export namespace DefaultContinuousHyperParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DefaultContinuousHyperParameterRange): any => ({
     ...obj,
   });
@@ -111,6 +120,9 @@ export interface DefaultIntegerHyperParameterRange {
 }
 
 export namespace DefaultIntegerHyperParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DefaultIntegerHyperParameterRange): any => ({
     ...obj,
   });
@@ -138,6 +150,9 @@ export interface DefaultHyperParameterRanges {
 }
 
 export namespace DefaultHyperParameterRanges {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DefaultHyperParameterRanges): any => ({
     ...obj,
   });
@@ -201,6 +216,9 @@ export interface Algorithm {
 }
 
 export namespace Algorithm {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Algorithm): any => ({
     ...obj,
   });
@@ -211,12 +229,18 @@ export namespace Algorithm {
  */
 export interface BatchInferenceJobConfig {
   /**
-   * <p>A string to string map specifying the inference hyperparameters you wish to use for hyperparameter optimization. See <a>customizing-solution-config-hpo</a>.</p>
+   * <p>A string to string map specifying the exploration configuration hyperparameters, including <code>explorationWeight</code> and
+   *       <code>explorationItemAgeCutOff</code>, you want to use to configure the amount of item exploration Amazon Personalize uses when
+   *       recommending items.
+   *       See <a href="https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-new-item-USER_PERSONALIZATION.html">User-Personalization</a>.</p>
    */
   itemExplorationConfig?: { [key: string]: string };
 }
 
 export namespace BatchInferenceJobConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchInferenceJobConfig): any => ({
     ...obj,
   });
@@ -239,6 +263,9 @@ export interface S3DataConfig {
 }
 
 export namespace S3DataConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3DataConfig): any => ({
     ...obj,
   });
@@ -256,6 +283,9 @@ export interface BatchInferenceJobInput {
 }
 
 export namespace BatchInferenceJobInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchInferenceJobInput): any => ({
     ...obj,
   });
@@ -272,6 +302,9 @@ export interface BatchInferenceJobOutput {
 }
 
 export namespace BatchInferenceJobOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchInferenceJobOutput): any => ({
     ...obj,
   });
@@ -291,7 +324,8 @@ export interface CreateBatchInferenceJobRequest {
 
   /**
    * <p>The ARN of the filter to apply to the batch inference job. For more information on using
-   *       filters, see Using Filters with Amazon Personalize.</p>
+   *       filters, see
+   *       <a href="https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html">Filtering Batch Recommendations</a>..</p>
    */
   filterArn?: string;
 
@@ -312,7 +346,7 @@ export interface CreateBatchInferenceJobRequest {
   jobOutput: BatchInferenceJobOutput | undefined;
 
   /**
-   * <p>The ARN of the Amazon Identity and Access Management role that has permissions to read and write to your input and out
+   * <p>The ARN of the Amazon Identity and Access Management role that has permissions to read and write to your input and output
    *       Amazon S3 buckets respectively.</p>
    */
   roleArn: string | undefined;
@@ -324,6 +358,9 @@ export interface CreateBatchInferenceJobRequest {
 }
 
 export namespace CreateBatchInferenceJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBatchInferenceJobRequest): any => ({
     ...obj,
   });
@@ -337,6 +374,9 @@ export interface CreateBatchInferenceJobResponse {
 }
 
 export namespace CreateBatchInferenceJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBatchInferenceJobResponse): any => ({
     ...obj,
   });
@@ -352,6 +392,9 @@ export interface InvalidInputException extends __SmithyException, $MetadataBeare
 }
 
 export namespace InvalidInputException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidInputException): any => ({
     ...obj,
   });
@@ -367,6 +410,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -382,6 +428,9 @@ export interface ResourceAlreadyExistsException extends __SmithyException, $Meta
 }
 
 export namespace ResourceAlreadyExistsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceAlreadyExistsException): any => ({
     ...obj,
   });
@@ -397,6 +446,9 @@ export interface ResourceInUseException extends __SmithyException, $MetadataBear
 }
 
 export namespace ResourceInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceInUseException): any => ({
     ...obj,
   });
@@ -412,6 +464,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -422,12 +477,18 @@ export namespace ResourceNotFoundException {
  */
 export interface CampaignConfig {
   /**
-   * <p>A string to string map specifying the inference hyperparameters you wish to use for hyperparameter optimization. See <a>customizing-solution-config-hpo</a>.</p>
+   * <p>A string to string map specifying the exploration configuration hyperparameters, including <code>explorationWeight</code> and
+   *       <code>explorationItemAgeCutOff</code>, you want to use to configure the amount of item exploration Amazon Personalize uses when
+   *       recommending items. Provide <code>itemExplorationConfig</code> data only if your solution uses the
+   *       <a href="https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-new-item-USER_PERSONALIZATION.html">User-Personalization</a> recipe.</p>
    */
   itemExplorationConfig?: { [key: string]: string };
 }
 
 export namespace CampaignConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CampaignConfig): any => ({
     ...obj,
   });
@@ -457,6 +518,9 @@ export interface CreateCampaignRequest {
 }
 
 export namespace CreateCampaignRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCampaignRequest): any => ({
     ...obj,
   });
@@ -470,6 +534,9 @@ export interface CreateCampaignResponse {
 }
 
 export namespace CreateCampaignResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCampaignResponse): any => ({
     ...obj,
   });
@@ -511,6 +578,9 @@ export interface CreateDatasetRequest {
 }
 
 export namespace CreateDatasetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetRequest): any => ({
     ...obj,
   });
@@ -524,7 +594,91 @@ export interface CreateDatasetResponse {
 }
 
 export namespace CreateDatasetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetResponse): any => ({
+    ...obj,
+  });
+}
+
+export enum IngestionMode {
+  ALL = "ALL",
+  BULK = "BULK",
+  PUT = "PUT",
+}
+
+/**
+ * <p>The output configuration parameters of a dataset export job.</p>
+ */
+export interface DatasetExportJobOutput {
+  /**
+   * <p>The configuration details of an Amazon S3 input or output bucket.</p>
+   */
+  s3DataDestination: S3DataConfig | undefined;
+}
+
+export namespace DatasetExportJobOutput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DatasetExportJobOutput): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateDatasetExportJobRequest {
+  /**
+   * <p>The name for the dataset export job.</p>
+   */
+  jobName: string | undefined;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the dataset that contains the data to export.</p>
+   */
+  datasetArn: string | undefined;
+
+  /**
+   * <p>The data to export, based on how you imported the data. You can choose to export only <code>BULK</code> data that you imported using a dataset import job,
+   *       only <code>PUT</code> data that you imported incrementally (using the console, PutEvents, PutUsers and PutItems operations), or <code>ALL</code>
+   *       for both types. The default value is <code>PUT</code>.
+   *     </p>
+   */
+  ingestionMode?: IngestionMode | string;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management service role that has permissions to add data to your
+   *       output Amazon S3 bucket.</p>
+   */
+  roleArn: string | undefined;
+
+  /**
+   * <p>The path to the Amazon S3 bucket where the job's output is stored.</p>
+   */
+  jobOutput: DatasetExportJobOutput | undefined;
+}
+
+export namespace CreateDatasetExportJobRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateDatasetExportJobRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface CreateDatasetExportJobResponse {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the dataset export job.</p>
+   */
+  datasetExportJobArn?: string;
+}
+
+export namespace CreateDatasetExportJobResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateDatasetExportJobResponse): any => ({
     ...obj,
   });
 }
@@ -548,6 +702,9 @@ export interface CreateDatasetGroupRequest {
 }
 
 export namespace CreateDatasetGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetGroupRequest): any => ({
     ...obj,
   });
@@ -561,6 +718,9 @@ export interface CreateDatasetGroupResponse {
 }
 
 export namespace CreateDatasetGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetGroupResponse): any => ({
     ...obj,
   });
@@ -574,13 +734,16 @@ export interface DataSource {
    * <p>The path to the Amazon S3 bucket where the data that you want to upload to your dataset is
    *       stored. For example: </p>
    *          <p>
-   *             <code>s3://bucket-name/training-data.csv</code>
+   *             <code>s3://bucket-name/folder-name/</code>
    *          </p>
    */
   dataLocation?: string;
 }
 
 export namespace DataSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataSource): any => ({
     ...obj,
   });
@@ -609,6 +772,9 @@ export interface CreateDatasetImportJobRequest {
 }
 
 export namespace CreateDatasetImportJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetImportJobRequest): any => ({
     ...obj,
   });
@@ -622,6 +788,9 @@ export interface CreateDatasetImportJobResponse {
 }
 
 export namespace CreateDatasetImportJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetImportJobResponse): any => ({
     ...obj,
   });
@@ -640,6 +809,9 @@ export interface CreateEventTrackerRequest {
 }
 
 export namespace CreateEventTrackerRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateEventTrackerRequest): any => ({
     ...obj,
   });
@@ -659,6 +831,9 @@ export interface CreateEventTrackerResponse {
 }
 
 export namespace CreateEventTrackerResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateEventTrackerResponse): any => ({
     ...obj,
   });
@@ -676,20 +851,17 @@ export interface CreateFilterRequest {
   datasetGroupArn: string | undefined;
 
   /**
-   * <p>The filter expression that designates the interaction types that the filter will
-   *             filter out. A filter expression must follow the following format:</p>
-   *         <p>
-   *             <code>EXCLUDE itemId WHERE INTERACTIONS.event_type in ("EVENT_TYPE")</code>
-   *          </p>
-   *         <p>Where "EVENT_TYPE" is the type of event to filter out. To filter out all items with
-   *             any interactions history, set <code>"*"</code> as the EVENT_TYPE. For more information,
-   *             see <a href="https://docs.aws.amazon.com/personalize/latest/dg/filters.html">Using
-   *                 Filters with Amazon Personalize</a>.</p>
+   * <p>The filter expression defines which items are included or excluded from recommendations. Filter expression must follow specific format rules.
+   *             For information about filter expression structure and syntax, see
+   *              <a>filter-expressions</a>.</p>
    */
   filterExpression: string | undefined;
 }
 
 export namespace CreateFilterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFilterRequest): any => ({
     ...obj,
     ...(obj.filterExpression && { filterExpression: SENSITIVE_STRING }),
@@ -704,6 +876,9 @@ export interface CreateFilterResponse {
 }
 
 export namespace CreateFilterResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFilterResponse): any => ({
     ...obj,
   });
@@ -722,6 +897,9 @@ export interface CreateSchemaRequest {
 }
 
 export namespace CreateSchemaRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSchemaRequest): any => ({
     ...obj,
   });
@@ -735,6 +913,9 @@ export interface CreateSchemaResponse {
 }
 
 export namespace CreateSchemaResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSchemaResponse): any => ({
     ...obj,
   });
@@ -759,6 +940,9 @@ export interface AutoMLConfig {
 }
 
 export namespace AutoMLConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLConfig): any => ({
     ...obj,
   });
@@ -780,6 +964,9 @@ export interface CategoricalHyperParameterRange {
 }
 
 export namespace CategoricalHyperParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CategoricalHyperParameterRange): any => ({
     ...obj,
   });
@@ -806,6 +993,9 @@ export interface ContinuousHyperParameterRange {
 }
 
 export namespace ContinuousHyperParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ContinuousHyperParameterRange): any => ({
     ...obj,
   });
@@ -832,6 +1022,9 @@ export interface IntegerHyperParameterRange {
 }
 
 export namespace IntegerHyperParameterRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IntegerHyperParameterRange): any => ({
     ...obj,
   });
@@ -859,6 +1052,9 @@ export interface HyperParameterRanges {
 }
 
 export namespace HyperParameterRanges {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HyperParameterRanges): any => ({
     ...obj,
   });
@@ -866,6 +1062,10 @@ export namespace HyperParameterRanges {
 
 /**
  * <p>The metric to optimize during hyperparameter optimization (HPO).</p>
+ *          <note>
+ *             <p>Amazon Personalize doesn't support configuring the <code>hpoObjective</code>
+ *         at this time.</p>
+ *          </note>
  */
 export interface HPOObjective {
   /**
@@ -885,6 +1085,9 @@ export interface HPOObjective {
 }
 
 export namespace HPOObjective {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HPOObjective): any => ({
     ...obj,
   });
@@ -916,18 +1119,24 @@ export interface HPOResourceConfig {
 }
 
 export namespace HPOResourceConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HPOResourceConfig): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Describes the properties for hyperparameter optimization (HPO). For use with the
- *       bring-your-own-recipe feature. Do not use for Amazon Personalize native recipes.</p>
+ * <p>Describes the properties for hyperparameter optimization (HPO).</p>
  */
 export interface HPOConfig {
   /**
    * <p>The metric to optimize during HPO.</p>
+   *          <note>
+   *             <p>Amazon Personalize doesn't support configuring the <code>hpoObjective</code>
+   *         at this time.</p>
+   *          </note>
    */
   hpoObjective?: HPOObjective;
 
@@ -943,6 +1152,9 @@ export interface HPOConfig {
 }
 
 export namespace HPOConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HPOConfig): any => ({
     ...obj,
   });
@@ -981,6 +1193,9 @@ export interface SolutionConfig {
 }
 
 export namespace SolutionConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SolutionConfig): any => ({
     ...obj,
   });
@@ -1026,6 +1241,8 @@ export interface CreateSolutionRequest {
    * <p>When your have multiple event types (using an <code>EVENT_TYPE</code> schema field),
    *       this parameter specifies which event type (for example, 'click' or 'like') is used for
    *       training the model.</p>
+   *          <p>If you do not provide an <code>eventType</code>, Amazon Personalize will use all interactions for training with
+   *        equal weight regardless of type.</p>
    */
   eventType?: string;
 
@@ -1033,11 +1250,18 @@ export interface CreateSolutionRequest {
    * <p>The configuration to use with the solution. When <code>performAutoML</code> is set to
    *       true, Amazon Personalize only evaluates the <code>autoMLConfig</code> section
    *       of the solution configuration.</p>
+   *          <note>
+   *             <p>Amazon Personalize doesn't support configuring the <code>hpoObjective</code>
+   *         at this time.</p>
+   *          </note>
    */
   solutionConfig?: SolutionConfig;
 }
 
 export namespace CreateSolutionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSolutionRequest): any => ({
     ...obj,
   });
@@ -1051,6 +1275,9 @@ export interface CreateSolutionResponse {
 }
 
 export namespace CreateSolutionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSolutionResponse): any => ({
     ...obj,
   });
@@ -1077,13 +1304,19 @@ export interface CreateSolutionVersionRequest {
    *          <important>
    *             <p>The <code>UPDATE</code> option can only be used when you already have an active solution
    *         version created from the input solution using the <code>FULL</code> option and the input
-   *         solution was trained with the <a>native-recipe-hrnn-coldstart</a> recipe.</p>
+   *         solution was trained with the
+   *         <a href="https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-new-item-USER_PERSONALIZATION.html">User-Personalization</a>
+   *         recipe or the
+   *         <a href="https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-hrnn-coldstart.html">HRNN-Coldstart</a> recipe.</p>
    *          </important>
    */
   trainingMode?: TrainingMode | string;
 }
 
 export namespace CreateSolutionVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSolutionVersionRequest): any => ({
     ...obj,
   });
@@ -1097,6 +1330,9 @@ export interface CreateSolutionVersionResponse {
 }
 
 export namespace CreateSolutionVersionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSolutionVersionResponse): any => ({
     ...obj,
   });
@@ -1110,6 +1346,9 @@ export interface DeleteCampaignRequest {
 }
 
 export namespace DeleteCampaignRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCampaignRequest): any => ({
     ...obj,
   });
@@ -1123,6 +1362,9 @@ export interface DeleteDatasetRequest {
 }
 
 export namespace DeleteDatasetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDatasetRequest): any => ({
     ...obj,
   });
@@ -1136,6 +1378,9 @@ export interface DeleteDatasetGroupRequest {
 }
 
 export namespace DeleteDatasetGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDatasetGroupRequest): any => ({
     ...obj,
   });
@@ -1149,6 +1394,9 @@ export interface DeleteEventTrackerRequest {
 }
 
 export namespace DeleteEventTrackerRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteEventTrackerRequest): any => ({
     ...obj,
   });
@@ -1162,6 +1410,9 @@ export interface DeleteFilterRequest {
 }
 
 export namespace DeleteFilterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFilterRequest): any => ({
     ...obj,
   });
@@ -1175,6 +1426,9 @@ export interface DeleteSchemaRequest {
 }
 
 export namespace DeleteSchemaRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSchemaRequest): any => ({
     ...obj,
   });
@@ -1188,6 +1442,9 @@ export interface DeleteSolutionRequest {
 }
 
 export namespace DeleteSolutionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSolutionRequest): any => ({
     ...obj,
   });
@@ -1201,6 +1458,9 @@ export interface DescribeAlgorithmRequest {
 }
 
 export namespace DescribeAlgorithmRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAlgorithmRequest): any => ({
     ...obj,
   });
@@ -1214,6 +1474,9 @@ export interface DescribeAlgorithmResponse {
 }
 
 export namespace DescribeAlgorithmResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAlgorithmResponse): any => ({
     ...obj,
   });
@@ -1227,6 +1490,9 @@ export interface DescribeBatchInferenceJobRequest {
 }
 
 export namespace DescribeBatchInferenceJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeBatchInferenceJobRequest): any => ({
     ...obj,
   });
@@ -1320,6 +1586,9 @@ export interface BatchInferenceJob {
 }
 
 export namespace BatchInferenceJob {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchInferenceJob): any => ({
     ...obj,
   });
@@ -1333,6 +1602,9 @@ export interface DescribeBatchInferenceJobResponse {
 }
 
 export namespace DescribeBatchInferenceJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeBatchInferenceJobResponse): any => ({
     ...obj,
   });
@@ -1346,6 +1618,9 @@ export interface DescribeCampaignRequest {
 }
 
 export namespace DescribeCampaignRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCampaignRequest): any => ({
     ...obj,
   });
@@ -1403,6 +1678,9 @@ export interface CampaignUpdateSummary {
 }
 
 export namespace CampaignUpdateSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CampaignUpdateSummary): any => ({
     ...obj,
   });
@@ -1475,6 +1753,9 @@ export interface Campaign {
 }
 
 export namespace Campaign {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Campaign): any => ({
     ...obj,
   });
@@ -1488,6 +1769,9 @@ export interface DescribeCampaignResponse {
 }
 
 export namespace DescribeCampaignResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCampaignResponse): any => ({
     ...obj,
   });
@@ -1501,6 +1785,9 @@ export interface DescribeDatasetRequest {
 }
 
 export namespace DescribeDatasetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetRequest): any => ({
     ...obj,
   });
@@ -1572,6 +1859,9 @@ export interface Dataset {
 }
 
 export namespace Dataset {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Dataset): any => ({
     ...obj,
   });
@@ -1585,7 +1875,140 @@ export interface DescribeDatasetResponse {
 }
 
 export namespace DescribeDatasetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeDatasetExportJobRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the dataset export job to describe.</p>
+   */
+  datasetExportJobArn: string | undefined;
+}
+
+export namespace DescribeDatasetExportJobRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeDatasetExportJobRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Describes a job that exports a dataset to an Amazon S3 bucket. For more information, see <a>CreateDatasetExportJob</a>.</p>
+ *          <p>A dataset export job can be in one of the following states:</p>
+ *          <ul>
+ *             <li>
+ *                <p>CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED</p>
+ *             </li>
+ *          </ul>
+ */
+export interface DatasetExportJob {
+  /**
+   * <p>The name of the export job.</p>
+   */
+  jobName?: string;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the dataset export job.</p>
+   */
+  datasetExportJobArn?: string;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the dataset to export.</p>
+   */
+  datasetArn?: string;
+
+  /**
+   * <p>The data to export, based on how you imported the data. You can choose to export <code>BULK</code> data that you imported using a dataset import job,
+   *       <code>PUT</code> data that you imported incrementally (using the console, PutEvents, PutUsers and PutItems operations), or <code>ALL</code>
+   *       for both types. The default value is <code>PUT</code>.
+   *     </p>
+   */
+  ingestionMode?: IngestionMode | string;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management service role that has permissions to add data to your
+   *       output Amazon S3 bucket.</p>
+   */
+  roleArn?: string;
+
+  /**
+   * <p>The status of the dataset export job.</p>
+   *          <p>A dataset export job can be in one of the following states:</p>
+   *          <ul>
+   *             <li>
+   *                <p>CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED</p>
+   *             </li>
+   *          </ul>
+   */
+  status?: string;
+
+  /**
+   * <p>The path to the Amazon S3 bucket where the job's output is stored.  For example:</p>
+   *          <p>
+   *             <code>s3://bucket-name/folder-name/</code>
+   *          </p>
+   */
+  jobOutput?: DatasetExportJobOutput;
+
+  /**
+   * <p>The creation date and time (in Unix time) of the dataset export job.</p>
+   */
+  creationDateTime?: Date;
+
+  /**
+   * <p>The date and time (in Unix time) the status of the dataset export job was last updated.</p>
+   */
+  lastUpdatedDateTime?: Date;
+
+  /**
+   * <p>If a dataset export job fails, provides the reason why.</p>
+   */
+  failureReason?: string;
+}
+
+export namespace DatasetExportJob {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DatasetExportJob): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeDatasetExportJobResponse {
+  /**
+   * <p>Information about the dataset export job, including the status.</p>
+   *          <p>The status is one of the following values:</p>
+   *          <ul>
+   *             <li>
+   *                <p>CREATE PENDING</p>
+   *             </li>
+   *             <li>
+   *                <p>CREATE IN_PROGRESS</p>
+   *             </li>
+   *             <li>
+   *                <p>ACTIVE</p>
+   *             </li>
+   *             <li>
+   *                <p>CREATE FAILED</p>
+   *             </li>
+   *          </ul>
+   */
+  datasetExportJob?: DatasetExportJob;
+}
+
+export namespace DescribeDatasetExportJobResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeDatasetExportJobResponse): any => ({
     ...obj,
   });
 }
@@ -1598,6 +2021,9 @@ export interface DescribeDatasetGroupRequest {
 }
 
 export namespace DescribeDatasetGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetGroupRequest): any => ({
     ...obj,
   });
@@ -1663,6 +2089,9 @@ export interface DatasetGroup {
 }
 
 export namespace DatasetGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetGroup): any => ({
     ...obj,
   });
@@ -1676,6 +2105,9 @@ export interface DescribeDatasetGroupResponse {
 }
 
 export namespace DescribeDatasetGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetGroupResponse): any => ({
     ...obj,
   });
@@ -1689,6 +2121,9 @@ export interface DescribeDatasetImportJobRequest {
 }
 
 export namespace DescribeDatasetImportJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetImportJobRequest): any => ({
     ...obj,
   });
@@ -1759,6 +2194,9 @@ export interface DatasetImportJob {
 }
 
 export namespace DatasetImportJob {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetImportJob): any => ({
     ...obj,
   });
@@ -1787,6 +2225,9 @@ export interface DescribeDatasetImportJobResponse {
 }
 
 export namespace DescribeDatasetImportJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetImportJobResponse): any => ({
     ...obj,
   });
@@ -1800,6 +2241,9 @@ export interface DescribeEventTrackerRequest {
 }
 
 export namespace DescribeEventTrackerRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEventTrackerRequest): any => ({
     ...obj,
   });
@@ -1861,6 +2305,9 @@ export interface EventTracker {
 }
 
 export namespace EventTracker {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EventTracker): any => ({
     ...obj,
   });
@@ -1874,6 +2321,9 @@ export interface DescribeEventTrackerResponse {
 }
 
 export namespace DescribeEventTrackerResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEventTrackerResponse): any => ({
     ...obj,
   });
@@ -1887,6 +2337,9 @@ export interface DescribeFeatureTransformationRequest {
 }
 
 export namespace DescribeFeatureTransformationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFeatureTransformationRequest): any => ({
     ...obj,
   });
@@ -1935,6 +2388,9 @@ export interface FeatureTransformation {
 }
 
 export namespace FeatureTransformation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FeatureTransformation): any => ({
     ...obj,
   });
@@ -1948,6 +2404,9 @@ export interface DescribeFeatureTransformationResponse {
 }
 
 export namespace DescribeFeatureTransformationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFeatureTransformationResponse): any => ({
     ...obj,
   });
@@ -1961,6 +2420,9 @@ export interface DescribeFilterRequest {
 }
 
 export namespace DescribeFilterRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFilterRequest): any => ({
     ...obj,
   });
@@ -2003,13 +2465,8 @@ export interface Filter {
 
   /**
    * <p>Specifies the type of item interactions to filter out of recommendation results. The
-   *             filter expression must follow the following format:</p>
-   *         <p>
-   *             <code>EXCLUDE itemId WHERE INTERACTIONS.event_type in ("EVENT_TYPE")</code>
-   *          </p>
-   *         <p>Where "EVENT_TYPE" is the type of event to filter out. For more information, see
-   *                 <a href="https://docs.aws.amazon.com/personalize/latest/dg/filters.html">Using
-   *                 Filters with Amazon Personalize</a>.</p>
+   *             filter expression must follow specific format rules. For information about filter expression structure and syntax, see
+   *             <a>filter-expressions</a>.</p>
    */
   filterExpression?: string;
 
@@ -2020,6 +2477,9 @@ export interface Filter {
 }
 
 export namespace Filter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Filter): any => ({
     ...obj,
     ...(obj.filterExpression && { filterExpression: SENSITIVE_STRING }),
@@ -2034,6 +2494,9 @@ export interface DescribeFilterResponse {
 }
 
 export namespace DescribeFilterResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFilterResponse): any => ({
     ...obj,
     ...(obj.filter && { filter: Filter.filterSensitiveLog(obj.filter) }),
@@ -2048,6 +2511,9 @@ export interface DescribeRecipeRequest {
 }
 
 export namespace DescribeRecipeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRecipeRequest): any => ({
     ...obj,
   });
@@ -2118,6 +2584,9 @@ export interface Recipe {
 }
 
 export namespace Recipe {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Recipe): any => ({
     ...obj,
   });
@@ -2131,6 +2600,9 @@ export interface DescribeRecipeResponse {
 }
 
 export namespace DescribeRecipeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRecipeResponse): any => ({
     ...obj,
   });
@@ -2144,6 +2616,9 @@ export interface DescribeSchemaRequest {
 }
 
 export namespace DescribeSchemaRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSchemaRequest): any => ({
     ...obj,
   });
@@ -2181,6 +2656,9 @@ export interface DatasetSchema {
 }
 
 export namespace DatasetSchema {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetSchema): any => ({
     ...obj,
   });
@@ -2194,6 +2672,9 @@ export interface DescribeSchemaResponse {
 }
 
 export namespace DescribeSchemaResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSchemaResponse): any => ({
     ...obj,
   });
@@ -2207,6 +2688,9 @@ export interface DescribeSolutionRequest {
 }
 
 export namespace DescribeSolutionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSolutionRequest): any => ({
     ...obj,
   });
@@ -2225,6 +2709,9 @@ export interface AutoMLResult {
 }
 
 export namespace AutoMLResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoMLResult): any => ({
     ...obj,
   });
@@ -2268,6 +2755,9 @@ export interface SolutionVersionSummary {
 }
 
 export namespace SolutionVersionSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SolutionVersionSummary): any => ({
     ...obj,
   });
@@ -2312,7 +2802,9 @@ export interface Solution {
   datasetGroupArn?: string;
 
   /**
-   * <p>The event type (for example, 'click' or 'like') that is used for training the model.</p>
+   * <p>The event type (for example, 'click' or 'like') that is used for training the model.
+   *       If no <code>eventType</code> is provided, Amazon Personalize uses all interactions for training with
+   *       equal weight regardless of type.</p>
    */
   eventType?: string;
 
@@ -2357,6 +2849,9 @@ export interface Solution {
 }
 
 export namespace Solution {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Solution): any => ({
     ...obj,
   });
@@ -2370,6 +2865,9 @@ export interface DescribeSolutionResponse {
 }
 
 export namespace DescribeSolutionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSolutionResponse): any => ({
     ...obj,
   });
@@ -2383,6 +2881,9 @@ export interface DescribeSolutionVersionRequest {
 }
 
 export namespace DescribeSolutionVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSolutionVersionRequest): any => ({
     ...obj,
   });
@@ -2400,6 +2901,9 @@ export interface TunedHPOParams {
 }
 
 export namespace TunedHPOParams {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TunedHPOParams): any => ({
     ...obj,
   });
@@ -2459,14 +2963,18 @@ export interface SolutionVersion {
   trainingHours?: number;
 
   /**
-   * <p>The scope of training used to create the solution version. The <code>FULL</code> option
-   *       trains the solution version based on the entirety of the input solution's training data, while
-   *       the <code>UPDATE</code> option processes only the training data that has changed since the
-   *       creation of the last solution version. Choose <code>UPDATE</code> when you want to start
-   *       recommending items added to the dataset without retraining the model.</p>
+   * <p>The scope of training to be performed when creating the solution version. The
+   *       <code>FULL</code> option trains the solution version based on the entirety of the input
+   *       solution's training data, while the <code>UPDATE</code> option processes only the data that
+   *       has changed in comparison to the input solution. Choose <code>UPDATE</code> when you want to
+   *       incrementally update your solution version instead of creating an entirely new one.</p>
    *          <important>
-   *             <p>The <code>UPDATE</code> option can only be used after you've created a solution version
-   *         with the <code>FULL</code> option and the training solution uses the <a>native-recipe-hrnn-coldstart</a>.</p>
+   *             <p>The <code>UPDATE</code> option can only be used when you already have an active solution
+   *         version created from the input solution using the <code>FULL</code> option and the input
+   *         solution was trained with the
+   *         <a href="https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-new-item-USER_PERSONALIZATION.html">User-Personalization</a>
+   *         recipe or the
+   *         <a href="https://docs.aws.amazon.com/personalize/latest/dg/native-recipe-hrnn-coldstart.html">HRNN-Coldstart</a> recipe.</p>
    *          </important>
    */
   trainingMode?: TrainingMode | string;
@@ -2518,6 +3026,9 @@ export interface SolutionVersion {
 }
 
 export namespace SolutionVersion {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SolutionVersion): any => ({
     ...obj,
   });
@@ -2531,6 +3042,9 @@ export interface DescribeSolutionVersionResponse {
 }
 
 export namespace DescribeSolutionVersionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSolutionVersionResponse): any => ({
     ...obj,
   });
@@ -2544,6 +3058,9 @@ export interface GetSolutionMetricsRequest {
 }
 
 export namespace GetSolutionMetricsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSolutionMetricsRequest): any => ({
     ...obj,
   });
@@ -2562,6 +3079,9 @@ export interface GetSolutionMetricsResponse {
 }
 
 export namespace GetSolutionMetricsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSolutionMetricsResponse): any => ({
     ...obj,
   });
@@ -2577,6 +3097,9 @@ export interface InvalidNextTokenException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidNextTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextTokenException): any => ({
     ...obj,
   });
@@ -2602,6 +3125,9 @@ export interface ListBatchInferenceJobsRequest {
 }
 
 export namespace ListBatchInferenceJobsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBatchInferenceJobsRequest): any => ({
     ...obj,
   });
@@ -2663,6 +3189,9 @@ export interface BatchInferenceJobSummary {
 }
 
 export namespace BatchInferenceJobSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchInferenceJobSummary): any => ({
     ...obj,
   });
@@ -2675,13 +3204,16 @@ export interface ListBatchInferenceJobsResponse {
   batchInferenceJobs?: BatchInferenceJobSummary[];
 
   /**
-   * <p>The token to use to retreive the next page of results. The value is <code>null</code> when
+   * <p>The token to use to retrieve the next page of results. The value is <code>null</code> when
    *       there are no more results to return.</p>
    */
   nextToken?: string;
 }
 
 export namespace ListBatchInferenceJobsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBatchInferenceJobsResponse): any => ({
     ...obj,
   });
@@ -2707,6 +3239,9 @@ export interface ListCampaignsRequest {
 }
 
 export namespace ListCampaignsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListCampaignsRequest): any => ({
     ...obj,
   });
@@ -2758,6 +3293,9 @@ export interface CampaignSummary {
 }
 
 export namespace CampaignSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CampaignSummary): any => ({
     ...obj,
   });
@@ -2776,7 +3314,109 @@ export interface ListCampaignsResponse {
 }
 
 export namespace ListCampaignsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListCampaignsResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListDatasetExportJobsRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the dataset to list the dataset export jobs for.</p>
+   */
+  datasetArn?: string;
+
+  /**
+   * <p>A token returned from the previous call to <code>ListDatasetExportJobs</code> for getting
+   *       the next set of dataset export jobs (if they exist).</p>
+   */
+  nextToken?: string;
+
+  /**
+   * <p>The maximum number of dataset export jobs to return.</p>
+   */
+  maxResults?: number;
+}
+
+export namespace ListDatasetExportJobsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListDatasetExportJobsRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Provides a summary of the properties of a dataset export job. For a complete listing, call the
+ *       <a>DescribeDatasetExportJob</a> API.</p>
+ */
+export interface DatasetExportJobSummary {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the dataset export job.</p>
+   */
+  datasetExportJobArn?: string;
+
+  /**
+   * <p>The name of the dataset export job.</p>
+   */
+  jobName?: string;
+
+  /**
+   * <p>The status of the dataset export job.</p>
+   *          <p>A dataset export job can be in one of the following states:</p>
+   *          <ul>
+   *             <li>
+   *                <p>CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED</p>
+   *             </li>
+   *          </ul>
+   */
+  status?: string;
+
+  /**
+   * <p>The date and time (in Unix time) that the dataset export job was created.</p>
+   */
+  creationDateTime?: Date;
+
+  /**
+   * <p>The date and time (in Unix time) that the dataset export job status was last updated.</p>
+   */
+  lastUpdatedDateTime?: Date;
+
+  /**
+   * <p>If a dataset export job fails, the reason behind the failure.</p>
+   */
+  failureReason?: string;
+}
+
+export namespace DatasetExportJobSummary {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DatasetExportJobSummary): any => ({
+    ...obj,
+  });
+}
+
+export interface ListDatasetExportJobsResponse {
+  /**
+   * <p>The list of dataset export jobs.</p>
+   */
+  datasetExportJobs?: DatasetExportJobSummary[];
+
+  /**
+   * <p>A token for getting the next set of dataset export jobs (if they exist).</p>
+   */
+  nextToken?: string;
+}
+
+export namespace ListDatasetExportJobsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListDatasetExportJobsResponse): any => ({
     ...obj,
   });
 }
@@ -2795,6 +3435,9 @@ export interface ListDatasetGroupsRequest {
 }
 
 export namespace ListDatasetGroupsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetGroupsRequest): any => ({
     ...obj,
   });
@@ -2846,6 +3489,9 @@ export interface DatasetGroupSummary {
 }
 
 export namespace DatasetGroupSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetGroupSummary): any => ({
     ...obj,
   });
@@ -2864,6 +3510,9 @@ export interface ListDatasetGroupsResponse {
 }
 
 export namespace ListDatasetGroupsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetGroupsResponse): any => ({
     ...obj,
   });
@@ -2888,6 +3537,9 @@ export interface ListDatasetImportJobsRequest {
 }
 
 export namespace ListDatasetImportJobsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetImportJobsRequest): any => ({
     ...obj,
   });
@@ -2925,7 +3577,7 @@ export interface DatasetImportJobSummary {
   creationDateTime?: Date;
 
   /**
-   * <p>The date and time (in Unix time) that the dataset was last updated.</p>
+   * <p>The date and time (in Unix time) that the dataset import job status was last updated.</p>
    */
   lastUpdatedDateTime?: Date;
 
@@ -2936,6 +3588,9 @@ export interface DatasetImportJobSummary {
 }
 
 export namespace DatasetImportJobSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetImportJobSummary): any => ({
     ...obj,
   });
@@ -2954,6 +3609,9 @@ export interface ListDatasetImportJobsResponse {
 }
 
 export namespace ListDatasetImportJobsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetImportJobsResponse): any => ({
     ...obj,
   });
@@ -2979,6 +3637,9 @@ export interface ListDatasetsRequest {
 }
 
 export namespace ListDatasetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetsRequest): any => ({
     ...obj,
   });
@@ -3044,6 +3705,9 @@ export interface DatasetSummary {
 }
 
 export namespace DatasetSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetSummary): any => ({
     ...obj,
   });
@@ -3063,6 +3727,9 @@ export interface ListDatasetsResponse {
 }
 
 export namespace ListDatasetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetsResponse): any => ({
     ...obj,
   });
@@ -3087,6 +3754,9 @@ export interface ListEventTrackersRequest {
 }
 
 export namespace ListEventTrackersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListEventTrackersRequest): any => ({
     ...obj,
   });
@@ -3133,6 +3803,9 @@ export interface EventTrackerSummary {
 }
 
 export namespace EventTrackerSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EventTrackerSummary): any => ({
     ...obj,
   });
@@ -3151,6 +3824,9 @@ export interface ListEventTrackersResponse {
 }
 
 export namespace ListEventTrackersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListEventTrackersResponse): any => ({
     ...obj,
   });
@@ -3175,6 +3851,9 @@ export interface ListFiltersRequest {
 }
 
 export namespace ListFiltersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListFiltersRequest): any => ({
     ...obj,
   });
@@ -3221,6 +3900,9 @@ export interface FilterSummary {
 }
 
 export namespace FilterSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FilterSummary): any => ({
     ...obj,
   });
@@ -3239,6 +3921,9 @@ export interface ListFiltersResponse {
 }
 
 export namespace ListFiltersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListFiltersResponse): any => ({
     ...obj,
   });
@@ -3267,6 +3952,9 @@ export interface ListRecipesRequest {
 }
 
 export namespace ListRecipesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecipesRequest): any => ({
     ...obj,
   });
@@ -3304,6 +3992,9 @@ export interface RecipeSummary {
 }
 
 export namespace RecipeSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecipeSummary): any => ({
     ...obj,
   });
@@ -3322,6 +4013,9 @@ export interface ListRecipesResponse {
 }
 
 export namespace ListRecipesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecipesResponse): any => ({
     ...obj,
   });
@@ -3341,6 +4035,9 @@ export interface ListSchemasRequest {
 }
 
 export namespace ListSchemasRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSchemasRequest): any => ({
     ...obj,
   });
@@ -3373,6 +4070,9 @@ export interface DatasetSchemaSummary {
 }
 
 export namespace DatasetSchemaSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DatasetSchemaSummary): any => ({
     ...obj,
   });
@@ -3391,6 +4091,9 @@ export interface ListSchemasResponse {
 }
 
 export namespace ListSchemasResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSchemasResponse): any => ({
     ...obj,
   });
@@ -3415,6 +4118,9 @@ export interface ListSolutionsRequest {
 }
 
 export namespace ListSolutionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSolutionsRequest): any => ({
     ...obj,
   });
@@ -3461,6 +4167,9 @@ export interface SolutionSummary {
 }
 
 export namespace SolutionSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SolutionSummary): any => ({
     ...obj,
   });
@@ -3479,6 +4188,9 @@ export interface ListSolutionsResponse {
 }
 
 export namespace ListSolutionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSolutionsResponse): any => ({
     ...obj,
   });
@@ -3503,6 +4215,9 @@ export interface ListSolutionVersionsRequest {
 }
 
 export namespace ListSolutionVersionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSolutionVersionsRequest): any => ({
     ...obj,
   });
@@ -3521,6 +4236,9 @@ export interface ListSolutionVersionsResponse {
 }
 
 export namespace ListSolutionVersionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSolutionVersionsResponse): any => ({
     ...obj,
   });
@@ -3550,6 +4268,9 @@ export interface UpdateCampaignRequest {
 }
 
 export namespace UpdateCampaignRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateCampaignRequest): any => ({
     ...obj,
   });
@@ -3563,6 +4284,9 @@ export interface UpdateCampaignResponse {
 }
 
 export namespace UpdateCampaignResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateCampaignResponse): any => ({
     ...obj,
   });

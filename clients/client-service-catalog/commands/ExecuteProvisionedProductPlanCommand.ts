@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ExecuteProvisionedProductPlanCommandInput = ExecuteProvisionedProductPlanInput;
-export type ExecuteProvisionedProductPlanCommandOutput = ExecuteProvisionedProductPlanOutput & __MetadataBearer;
+export interface ExecuteProvisionedProductPlanCommandInput extends ExecuteProvisionedProductPlanInput {}
+export interface ExecuteProvisionedProductPlanCommandOutput
+  extends ExecuteProvisionedProductPlanOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Provisions or modifies a product based on the resource changes for the specified plan.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, ExecuteProvisionedProductPlanCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, ExecuteProvisionedProductPlanCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new ExecuteProvisionedProductPlanCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ExecuteProvisionedProductPlanCommandInput} for command's `input` shape.
+ * @see {@link ExecuteProvisionedProductPlanCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ExecuteProvisionedProductPlanCommand extends $Command<
   ExecuteProvisionedProductPlanCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateEmailIdentityPolicyCommandInput = UpdateEmailIdentityPolicyRequest;
-export type UpdateEmailIdentityPolicyCommandOutput = UpdateEmailIdentityPolicyResponse & __MetadataBearer;
+export interface UpdateEmailIdentityPolicyCommandInput extends UpdateEmailIdentityPolicyRequest {}
+export interface UpdateEmailIdentityPolicyCommandOutput extends UpdateEmailIdentityPolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the specified sending authorization policy for the given identity (an email
@@ -34,6 +34,20 @@ export type UpdateEmailIdentityPolicyCommandOutput = UpdateEmailIdentityPolicyRe
  *                 Guide</a>.</p>
  *
  *         <p>You can execute this operation no more than once per second.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, UpdateEmailIdentityPolicyCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, UpdateEmailIdentityPolicyCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new UpdateEmailIdentityPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateEmailIdentityPolicyCommandInput} for command's `input` shape.
+ * @see {@link UpdateEmailIdentityPolicyCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateEmailIdentityPolicyCommand extends $Command<
   UpdateEmailIdentityPolicyCommandInput,

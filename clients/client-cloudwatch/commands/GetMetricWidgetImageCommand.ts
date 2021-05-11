@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetMetricWidgetImageCommandInput = GetMetricWidgetImageInput;
-export type GetMetricWidgetImageCommandOutput = GetMetricWidgetImageOutput & __MetadataBearer;
+export interface GetMetricWidgetImageCommandInput extends GetMetricWidgetImageInput {}
+export interface GetMetricWidgetImageCommandOutput extends GetMetricWidgetImageOutput, __MetadataBearer {}
 
 /**
  * <p>You can use the <code>GetMetricWidgetImage</code> API to retrieve a snapshot graph of
@@ -39,6 +39,20 @@ export type GetMetricWidgetImageCommandOutput = GetMetricWidgetImageOutput & __M
  * 				           <p>Up to 100 KB uncompressed payload.</p>
  * 			         </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchClient, GetMetricWidgetImageCommand } from "@aws-sdk/client-cloudwatch"; // ES Modules import
+ * // const { CloudWatchClient, GetMetricWidgetImageCommand } = require("@aws-sdk/client-cloudwatch"); // CommonJS import
+ * const client = new CloudWatchClient(config);
+ * const command = new GetMetricWidgetImageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetMetricWidgetImageCommandInput} for command's `input` shape.
+ * @see {@link GetMetricWidgetImageCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetMetricWidgetImageCommand extends $Command<
   GetMetricWidgetImageCommandInput,

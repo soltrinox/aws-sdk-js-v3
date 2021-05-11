@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopStackSetOperationCommandInput = StopStackSetOperationInput;
-export type StopStackSetOperationCommandOutput = StopStackSetOperationOutput & __MetadataBearer;
+export interface StopStackSetOperationCommandInput extends StopStackSetOperationInput {}
+export interface StopStackSetOperationCommandOutput extends StopStackSetOperationOutput, __MetadataBearer {}
 
 /**
  * <p>Stops an in-progress operation on a stack set and its associated stack instances. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, StopStackSetOperationCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, StopStackSetOperationCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new StopStackSetOperationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopStackSetOperationCommandInput} for command's `input` shape.
+ * @see {@link StopStackSetOperationCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopStackSetOperationCommand extends $Command<
   StopStackSetOperationCommandInput,

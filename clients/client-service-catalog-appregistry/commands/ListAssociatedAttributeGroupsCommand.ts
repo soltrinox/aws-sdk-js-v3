@@ -21,11 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAssociatedAttributeGroupsCommandInput = ListAssociatedAttributeGroupsRequest;
-export type ListAssociatedAttributeGroupsCommandOutput = ListAssociatedAttributeGroupsResponse & __MetadataBearer;
+export interface ListAssociatedAttributeGroupsCommandInput extends ListAssociatedAttributeGroupsRequest {}
+export interface ListAssociatedAttributeGroupsCommandOutput
+  extends ListAssociatedAttributeGroupsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Lists all attribute groups that are associated with specified application.  Results are paginated.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogAppRegistryClient, ListAssociatedAttributeGroupsCommand } from "@aws-sdk/client-service-catalog-appregistry"; // ES Modules import
+ * // const { ServiceCatalogAppRegistryClient, ListAssociatedAttributeGroupsCommand } = require("@aws-sdk/client-service-catalog-appregistry"); // CommonJS import
+ * const client = new ServiceCatalogAppRegistryClient(config);
+ * const command = new ListAssociatedAttributeGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAssociatedAttributeGroupsCommandInput} for command's `input` shape.
+ * @see {@link ListAssociatedAttributeGroupsCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogAppRegistryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAssociatedAttributeGroupsCommand extends $Command<
   ListAssociatedAttributeGroupsCommandInput,

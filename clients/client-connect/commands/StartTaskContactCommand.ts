@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartTaskContactCommandInput = StartTaskContactRequest;
-export type StartTaskContactCommandOutput = StartTaskContactResponse & __MetadataBearer;
+export interface StartTaskContactCommandInput extends StartTaskContactRequest {}
+export interface StartTaskContactCommandOutput extends StartTaskContactResponse, __MetadataBearer {}
 
 /**
  * <p>Initiates a contact flow to start a new task.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, StartTaskContactCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, StartTaskContactCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new StartTaskContactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartTaskContactCommandInput} for command's `input` shape.
+ * @see {@link StartTaskContactCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartTaskContactCommand extends $Command<
   StartTaskContactCommandInput,

@@ -17,12 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopModelCommandInput = StopModelRequest;
-export type StopModelCommandOutput = StopModelResponse & __MetadataBearer;
+export interface StopModelCommandInput extends StopModelRequest {}
+export interface StopModelCommandOutput extends StopModelResponse, __MetadataBearer {}
 
 /**
- * <p>Stops a running model. The operation might take a while to complete. To
+ * <p>Stops the hosting of a running model. The operation might take a while to complete. To
  *          check the current status, call <a>DescribeModel</a>. </p>
+ *          <p>After the model hosting stops, the <code>Status</code> of the model is <code>TRAINED</code>.</p>
+ *          <p>This operation requires permissions to perform the
+ *          <code>lookoutvision:StopModel</code> operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LookoutVisionClient, StopModelCommand } from "@aws-sdk/client-lookoutvision"; // ES Modules import
+ * // const { LookoutVisionClient, StopModelCommand } = require("@aws-sdk/client-lookoutvision"); // CommonJS import
+ * const client = new LookoutVisionClient(config);
+ * const command = new StopModelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopModelCommandInput} for command's `input` shape.
+ * @see {@link StopModelCommandOutput} for command's `response` shape.
+ * @see {@link LookoutVisionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopModelCommand extends $Command<
   StopModelCommandInput,

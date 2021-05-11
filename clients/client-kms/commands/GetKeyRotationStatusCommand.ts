@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetKeyRotationStatusCommandInput = GetKeyRotationStatusRequest;
-export type GetKeyRotationStatusCommandOutput = GetKeyRotationStatusResponse & __MetadataBearer;
+export interface GetKeyRotationStatusCommandInput extends GetKeyRotationStatusRequest {}
+export interface GetKeyRotationStatusCommandOutput extends GetKeyRotationStatusResponse, __MetadataBearer {}
 
 /**
  * <p>Gets a Boolean value that indicates whether <a href="https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html">automatic rotation of the key material</a> is
@@ -38,8 +38,41 @@ export type GetKeyRotationStatusCommandOutput = GetKeyRotationStatusResponse & _
  *           deletion, the original key rotation status is restored.</p>
  *             </li>
  *          </ul>
- *          <p>To perform this operation on a CMK in a different AWS account, specify the key
+ *          <p>
+ *             <b>Cross-account use</b>: Yes. To perform this operation on a CMK in a different AWS account, specify the key
  *   ARN in the value of the <code>KeyId</code> parameter.</p>
+ *
+ *          <p>
+ *             <b>Required permissions</b>: <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:GetKeyRotationStatus</a> (key policy)</p>
+ *          <p>
+ *             <b>Related operations:</b>
+ *          </p>
+ *          <ul>
+ *             <li>
+ *                <p>
+ *                   <a>DisableKeyRotation</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>EnableKeyRotation</a>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, GetKeyRotationStatusCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, GetKeyRotationStatusCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new GetKeyRotationStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetKeyRotationStatusCommandInput} for command's `input` shape.
+ * @see {@link GetKeyRotationStatusCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetKeyRotationStatusCommand extends $Command<
   GetKeyRotationStatusCommandInput,

@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDataQualityJobDefinitionsCommandInput = ListDataQualityJobDefinitionsRequest;
-export type ListDataQualityJobDefinitionsCommandOutput = ListDataQualityJobDefinitionsResponse & __MetadataBearer;
+export interface ListDataQualityJobDefinitionsCommandInput extends ListDataQualityJobDefinitionsRequest {}
+export interface ListDataQualityJobDefinitionsCommandOutput
+  extends ListDataQualityJobDefinitionsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Lists the data quality job definitions in your account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, ListDataQualityJobDefinitionsCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, ListDataQualityJobDefinitionsCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new ListDataQualityJobDefinitionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDataQualityJobDefinitionsCommandInput} for command's `input` shape.
+ * @see {@link ListDataQualityJobDefinitionsCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDataQualityJobDefinitionsCommand extends $Command<
   ListDataQualityJobDefinitionsCommandInput,

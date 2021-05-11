@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AddWorkingStorageCommandInput = AddWorkingStorageInput;
-export type AddWorkingStorageCommandOutput = AddWorkingStorageOutput & __MetadataBearer;
+export interface AddWorkingStorageCommandInput extends AddWorkingStorageInput {}
+export interface AddWorkingStorageCommandOutput extends AddWorkingStorageOutput, __MetadataBearer {}
 
 /**
  * <p>Configures one or more gateway local disks as working storage for a gateway. This
@@ -34,6 +34,20 @@ export type AddWorkingStorageCommandOutput = AddWorkingStorageOutput & __Metadat
  *          <p>In the request, you specify the gateway Amazon Resource Name (ARN) to which you want to
  *          add working storage, and one or more disk IDs that you want to configure as working
  *          storage.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, AddWorkingStorageCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, AddWorkingStorageCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new AddWorkingStorageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AddWorkingStorageCommandInput} for command's `input` shape.
+ * @see {@link AddWorkingStorageCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AddWorkingStorageCommand extends $Command<
   AddWorkingStorageCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateOTAUpdateCommandInput = CreateOTAUpdateRequest;
-export type CreateOTAUpdateCommandOutput = CreateOTAUpdateResponse & __MetadataBearer;
+export interface CreateOTAUpdateCommandInput extends CreateOTAUpdateRequest {}
+export interface CreateOTAUpdateCommandOutput extends CreateOTAUpdateResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an AWS IoT OTAUpdate on a target group of things or groups.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, CreateOTAUpdateCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, CreateOTAUpdateCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new CreateOTAUpdateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateOTAUpdateCommandInput} for command's `input` shape.
+ * @see {@link CreateOTAUpdateCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateOTAUpdateCommand extends $Command<
   CreateOTAUpdateCommandInput,

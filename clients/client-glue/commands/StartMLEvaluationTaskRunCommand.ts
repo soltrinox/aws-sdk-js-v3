@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartMLEvaluationTaskRunCommandInput = StartMLEvaluationTaskRunRequest;
-export type StartMLEvaluationTaskRunCommandOutput = StartMLEvaluationTaskRunResponse & __MetadataBearer;
+export interface StartMLEvaluationTaskRunCommandInput extends StartMLEvaluationTaskRunRequest {}
+export interface StartMLEvaluationTaskRunCommandOutput extends StartMLEvaluationTaskRunResponse, __MetadataBearer {}
 
 /**
  * <p>Starts a task to estimate the quality of the transform. </p>
@@ -29,6 +29,20 @@ export type StartMLEvaluationTaskRunCommandOutput = StartMLEvaluationTaskRunResp
  *
  * 	        <p>Returns a unique identifier for the run. You can call <code>GetMLTaskRun</code> to get more
  *       information about the stats of the <code>EvaluationTaskRun</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, StartMLEvaluationTaskRunCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, StartMLEvaluationTaskRunCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new StartMLEvaluationTaskRunCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartMLEvaluationTaskRunCommandInput} for command's `input` shape.
+ * @see {@link StartMLEvaluationTaskRunCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartMLEvaluationTaskRunCommand extends $Command<
   StartMLEvaluationTaskRunCommandInput,

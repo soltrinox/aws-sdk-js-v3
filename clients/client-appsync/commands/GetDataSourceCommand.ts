@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDataSourceCommandInput = GetDataSourceRequest;
-export type GetDataSourceCommandOutput = GetDataSourceResponse & __MetadataBearer;
+export interface GetDataSourceCommandInput extends GetDataSourceRequest {}
+export interface GetDataSourceCommandOutput extends GetDataSourceResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a <code>DataSource</code> object.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppSyncClient, GetDataSourceCommand } from "@aws-sdk/client-appsync"; // ES Modules import
+ * // const { AppSyncClient, GetDataSourceCommand } = require("@aws-sdk/client-appsync"); // CommonJS import
+ * const client = new AppSyncClient(config);
+ * const command = new GetDataSourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDataSourceCommandInput} for command's `input` shape.
+ * @see {@link GetDataSourceCommandOutput} for command's `response` shape.
+ * @see {@link AppSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDataSourceCommand extends $Command<
   GetDataSourceCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeGatewayCommandInput = DescribeGatewayRequest;
-export type DescribeGatewayCommandOutput = DescribeGatewayResponse & __MetadataBearer;
+export interface DescribeGatewayCommandInput extends DescribeGatewayRequest {}
+export interface DescribeGatewayCommandOutput extends DescribeGatewayResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about a gateway.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTSiteWiseClient, DescribeGatewayCommand } from "@aws-sdk/client-iotsitewise"; // ES Modules import
+ * // const { IoTSiteWiseClient, DescribeGatewayCommand } = require("@aws-sdk/client-iotsitewise"); // CommonJS import
+ * const client = new IoTSiteWiseClient(config);
+ * const command = new DescribeGatewayCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeGatewayCommandInput} for command's `input` shape.
+ * @see {@link DescribeGatewayCommandOutput} for command's `response` shape.
+ * @see {@link IoTSiteWiseClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeGatewayCommand extends $Command<
   DescribeGatewayCommandInput,

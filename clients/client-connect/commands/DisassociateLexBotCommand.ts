@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateLexBotCommandInput = DisassociateLexBotRequest;
-export type DisassociateLexBotCommandOutput = __MetadataBearer;
+export interface DisassociateLexBotCommandInput extends DisassociateLexBotRequest {}
+export interface DisassociateLexBotCommandOutput extends __MetadataBearer {}
 
 /**
- * <p>Revokes authorization from the specified instance to access the specified Amazon Lex bot.</p>
+ * <p>This API is in preview release for Amazon Connect and is subject to change.</p>
+ *          <p>Revokes authorization from the specified instance to access the specified Amazon Lex bot.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, DisassociateLexBotCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, DisassociateLexBotCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new DisassociateLexBotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateLexBotCommandInput} for command's `input` shape.
+ * @see {@link DisassociateLexBotCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateLexBotCommand extends $Command<
   DisassociateLexBotCommandInput,

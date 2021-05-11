@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetImageCommandInput = GetImageRequest;
-export type GetImageCommandOutput = GetImageResponse & __MetadataBearer;
+export interface GetImageCommandInput extends GetImageRequest {}
+export interface GetImageCommandOutput extends GetImageResponse, __MetadataBearer {}
 
 /**
- * <p> Gets an image. </p>
+ * <p> Gets an image.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ImagebuilderClient, GetImageCommand } from "@aws-sdk/client-imagebuilder"; // ES Modules import
+ * // const { ImagebuilderClient, GetImageCommand } = require("@aws-sdk/client-imagebuilder"); // CommonJS import
+ * const client = new ImagebuilderClient(config);
+ * const command = new GetImageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetImageCommandInput} for command's `input` shape.
+ * @see {@link GetImageCommandOutput} for command's `response` shape.
+ * @see {@link ImagebuilderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetImageCommand extends $Command<
   GetImageCommandInput,

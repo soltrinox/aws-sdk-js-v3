@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ResetDBParameterGroupCommandInput = ResetDBParameterGroupMessage;
-export type ResetDBParameterGroupCommandOutput = DBParameterGroupNameMessage & __MetadataBearer;
+export interface ResetDBParameterGroupCommandInput extends ResetDBParameterGroupMessage {}
+export interface ResetDBParameterGroupCommandOutput extends DBParameterGroupNameMessage, __MetadataBearer {}
 
 /**
  * <p>Modifies the parameters of a DB parameter group to the engine/system default value. To
@@ -28,6 +28,20 @@ export type ResetDBParameterGroupCommandOutput = DBParameterGroupNameMessage & _
  *       resetting the entire group, dynamic parameters are updated immediately and static parameters
  *       are set to <code>pending-reboot</code> to take effect on the next DB instance restart or
  *       <code>RebootDBInstance</code> request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, ResetDBParameterGroupCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, ResetDBParameterGroupCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new ResetDBParameterGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ResetDBParameterGroupCommandInput} for command's `input` shape.
+ * @see {@link ResetDBParameterGroupCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ResetDBParameterGroupCommand extends $Command<
   ResetDBParameterGroupCommandInput,

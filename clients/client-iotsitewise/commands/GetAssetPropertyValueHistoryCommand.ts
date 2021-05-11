@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAssetPropertyValueHistoryCommandInput = GetAssetPropertyValueHistoryRequest;
-export type GetAssetPropertyValueHistoryCommandOutput = GetAssetPropertyValueHistoryResponse & __MetadataBearer;
+export interface GetAssetPropertyValueHistoryCommandInput extends GetAssetPropertyValueHistoryRequest {}
+export interface GetAssetPropertyValueHistoryCommandOutput
+  extends GetAssetPropertyValueHistoryResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Gets the history of an asset property's values. For more information, see <a href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values">Querying
@@ -33,6 +35,20 @@ export type GetAssetPropertyValueHistoryCommandOutput = GetAssetPropertyValueHis
  *           <code>/company/windfarm/3/turbine/7/temperature</code>). To define an asset property's alias, see <a href="https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html">UpdateAssetProperty</a>.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTSiteWiseClient, GetAssetPropertyValueHistoryCommand } from "@aws-sdk/client-iotsitewise"; // ES Modules import
+ * // const { IoTSiteWiseClient, GetAssetPropertyValueHistoryCommand } = require("@aws-sdk/client-iotsitewise"); // CommonJS import
+ * const client = new IoTSiteWiseClient(config);
+ * const command = new GetAssetPropertyValueHistoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAssetPropertyValueHistoryCommandInput} for command's `input` shape.
+ * @see {@link GetAssetPropertyValueHistoryCommandOutput} for command's `response` shape.
+ * @see {@link IoTSiteWiseClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAssetPropertyValueHistoryCommand extends $Command<
   GetAssetPropertyValueHistoryCommandInput,

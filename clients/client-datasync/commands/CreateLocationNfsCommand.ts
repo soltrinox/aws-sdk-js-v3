@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateLocationNfsCommandInput = CreateLocationNfsRequest;
-export type CreateLocationNfsCommandOutput = CreateLocationNfsResponse & __MetadataBearer;
+export interface CreateLocationNfsCommandInput extends CreateLocationNfsRequest {}
+export interface CreateLocationNfsCommandOutput extends CreateLocationNfsResponse, __MetadataBearer {}
 
 /**
  * <p>Defines a file system on a Network File System (NFS) server that can be read from or
  *       written to.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataSyncClient, CreateLocationNfsCommand } from "@aws-sdk/client-datasync"; // ES Modules import
+ * // const { DataSyncClient, CreateLocationNfsCommand } = require("@aws-sdk/client-datasync"); // CommonJS import
+ * const client = new DataSyncClient(config);
+ * const command = new CreateLocationNfsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateLocationNfsCommandInput} for command's `input` shape.
+ * @see {@link CreateLocationNfsCommandOutput} for command's `response` shape.
+ * @see {@link DataSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateLocationNfsCommand extends $Command<
   CreateLocationNfsCommandInput,

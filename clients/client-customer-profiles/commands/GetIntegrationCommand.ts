@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetIntegrationCommandInput = GetIntegrationRequest;
-export type GetIntegrationCommandOutput = GetIntegrationResponse & __MetadataBearer;
+export interface GetIntegrationCommandInput extends GetIntegrationRequest {}
+export interface GetIntegrationCommandOutput extends GetIntegrationResponse, __MetadataBearer {}
 
 /**
  * <p>Returns an integration for a domain.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CustomerProfilesClient, GetIntegrationCommand } from "@aws-sdk/client-customer-profiles"; // ES Modules import
+ * // const { CustomerProfilesClient, GetIntegrationCommand } = require("@aws-sdk/client-customer-profiles"); // CommonJS import
+ * const client = new CustomerProfilesClient(config);
+ * const command = new GetIntegrationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetIntegrationCommandInput} for command's `input` shape.
+ * @see {@link GetIntegrationCommandOutput} for command's `response` shape.
+ * @see {@link CustomerProfilesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetIntegrationCommand extends $Command<
   GetIntegrationCommandInput,

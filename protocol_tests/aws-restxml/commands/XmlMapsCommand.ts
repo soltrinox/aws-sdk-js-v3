@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type XmlMapsCommandInput = XmlMapsInputOutput;
-export type XmlMapsCommandOutput = XmlMapsInputOutput & __MetadataBearer;
+export interface XmlMapsCommandInput extends XmlMapsInputOutput {}
+export interface XmlMapsCommandOutput extends XmlMapsInputOutput, __MetadataBearer {}
 
 /**
  * The example tests basic map serialization.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestXmlProtocolClient, XmlMapsCommand } from "@aws-sdk/aws-restxml"; // ES Modules import
+ * // const { RestXmlProtocolClient, XmlMapsCommand } = require("@aws-sdk/aws-restxml"); // CommonJS import
+ * const client = new RestXmlProtocolClient(config);
+ * const command = new XmlMapsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link XmlMapsCommandInput} for command's `input` shape.
+ * @see {@link XmlMapsCommandOutput} for command's `response` shape.
+ * @see {@link RestXmlProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class XmlMapsCommand extends $Command<
   XmlMapsCommandInput,

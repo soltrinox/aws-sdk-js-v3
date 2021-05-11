@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisableAWSOrganizationsAccessCommandInput = DisableAWSOrganizationsAccessInput;
-export type DisableAWSOrganizationsAccessCommandOutput = DisableAWSOrganizationsAccessOutput & __MetadataBearer;
+export interface DisableAWSOrganizationsAccessCommandInput extends DisableAWSOrganizationsAccessInput {}
+export interface DisableAWSOrganizationsAccessCommandOutput
+  extends DisableAWSOrganizationsAccessOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Disable portfolio sharing through AWS Organizations feature. This feature will not
@@ -28,6 +30,20 @@ export type DisableAWSOrganizationsAccessCommandOutput = DisableAWSOrganizations
  *          the organization.</p>
  *          <p>This API can't be invoked if there are active delegated administrators in the organization.</p>
  *          <p>Note that a delegated administrator is not authorized to invoke <code>DisableAWSOrganizationsAccess</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, DisableAWSOrganizationsAccessCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, DisableAWSOrganizationsAccessCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new DisableAWSOrganizationsAccessCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisableAWSOrganizationsAccessCommandInput} for command's `input` shape.
+ * @see {@link DisableAWSOrganizationsAccessCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisableAWSOrganizationsAccessCommand extends $Command<
   DisableAWSOrganizationsAccessCommandInput,

@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteLogPatternCommandInput = DeleteLogPatternRequest;
-export type DeleteLogPatternCommandOutput = DeleteLogPatternResponse & __MetadataBearer;
+export interface DeleteLogPatternCommandInput extends DeleteLogPatternRequest {}
+export interface DeleteLogPatternCommandOutput extends DeleteLogPatternResponse, __MetadataBearer {}
 
 /**
  * <p>Removes the specified log pattern from a <code>LogPatternSet</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationInsightsClient, DeleteLogPatternCommand } from "@aws-sdk/client-application-insights"; // ES Modules import
+ * // const { ApplicationInsightsClient, DeleteLogPatternCommand } = require("@aws-sdk/client-application-insights"); // CommonJS import
+ * const client = new ApplicationInsightsClient(config);
+ * const command = new DeleteLogPatternCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteLogPatternCommandInput} for command's `input` shape.
+ * @see {@link DeleteLogPatternCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationInsightsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteLogPatternCommand extends $Command<
   DeleteLogPatternCommandInput,

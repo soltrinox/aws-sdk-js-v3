@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListGroupMembersCommandInput = ListGroupMembersRequest;
-export type ListGroupMembersCommandOutput = ListGroupMembersResponse & __MetadataBearer;
+export interface ListGroupMembersCommandInput extends ListGroupMembersRequest {}
+export interface ListGroupMembersCommandOutput extends ListGroupMembersResponse, __MetadataBearer {}
 
 /**
- * <p>Returns an overview of the members
- *          of a group. Users and groups can be members of a group.</p>
+ * <p>Returns an overview of the members of a group. Users and groups can be members of a
+ *          group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkMailClient, ListGroupMembersCommand } from "@aws-sdk/client-workmail"; // ES Modules import
+ * // const { WorkMailClient, ListGroupMembersCommand } = require("@aws-sdk/client-workmail"); // CommonJS import
+ * const client = new WorkMailClient(config);
+ * const command = new ListGroupMembersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListGroupMembersCommandInput} for command's `input` shape.
+ * @see {@link ListGroupMembersCommandOutput} for command's `response` shape.
+ * @see {@link WorkMailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListGroupMembersCommand extends $Command<
   ListGroupMembersCommandInput,

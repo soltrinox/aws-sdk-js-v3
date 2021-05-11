@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type FlushStageAuthorizersCacheCommandInput = FlushStageAuthorizersCacheRequest;
-export type FlushStageAuthorizersCacheCommandOutput = __MetadataBearer;
+export interface FlushStageAuthorizersCacheCommandInput extends FlushStageAuthorizersCacheRequest {}
+export interface FlushStageAuthorizersCacheCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Flushes all authorizer cache entries on a stage.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, FlushStageAuthorizersCacheCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, FlushStageAuthorizersCacheCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new FlushStageAuthorizersCacheCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link FlushStageAuthorizersCacheCommandInput} for command's `input` shape.
+ * @see {@link FlushStageAuthorizersCacheCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class FlushStageAuthorizersCacheCommand extends $Command<
   FlushStageAuthorizersCacheCommandInput,

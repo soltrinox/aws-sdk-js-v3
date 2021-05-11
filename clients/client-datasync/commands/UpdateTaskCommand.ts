@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateTaskCommandInput = UpdateTaskRequest;
-export type UpdateTaskCommandOutput = UpdateTaskResponse & __MetadataBearer;
+export interface UpdateTaskCommandInput extends UpdateTaskRequest {}
+export interface UpdateTaskCommandOutput extends UpdateTaskResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the metadata associated with a task.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataSyncClient, UpdateTaskCommand } from "@aws-sdk/client-datasync"; // ES Modules import
+ * // const { DataSyncClient, UpdateTaskCommand } = require("@aws-sdk/client-datasync"); // CommonJS import
+ * const client = new DataSyncClient(config);
+ * const command = new UpdateTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateTaskCommandInput} for command's `input` shape.
+ * @see {@link UpdateTaskCommandOutput} for command's `response` shape.
+ * @see {@link DataSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateTaskCommand extends $Command<
   UpdateTaskCommandInput,

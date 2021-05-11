@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeHsmClientCertificatesCommandInput = DescribeHsmClientCertificatesMessage;
-export type DescribeHsmClientCertificatesCommandOutput = HsmClientCertificateMessage & __MetadataBearer;
+export interface DescribeHsmClientCertificatesCommandInput extends DescribeHsmClientCertificatesMessage {}
+export interface DescribeHsmClientCertificatesCommandOutput extends HsmClientCertificateMessage, __MetadataBearer {}
 
 /**
  * <p>Returns information about the specified HSM client certificate. If no certificate
@@ -32,6 +32,20 @@ export type DescribeHsmClientCertificatesCommandOutput = HsmClientCertificateMes
  *         <p>If both tag keys and values are omitted from the request, HSM client certificates
  *             are returned regardless of whether they have tag keys or values associated with
  *             them.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, DescribeHsmClientCertificatesCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, DescribeHsmClientCertificatesCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new DescribeHsmClientCertificatesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeHsmClientCertificatesCommandInput} for command's `input` shape.
+ * @see {@link DescribeHsmClientCertificatesCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeHsmClientCertificatesCommand extends $Command<
   DescribeHsmClientCertificatesCommandInput,

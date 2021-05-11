@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GenerateDataKeyPairWithoutPlaintextCommandInput = GenerateDataKeyPairWithoutPlaintextRequest;
-export type GenerateDataKeyPairWithoutPlaintextCommandOutput = GenerateDataKeyPairWithoutPlaintextResponse &
-  __MetadataBearer;
+export interface GenerateDataKeyPairWithoutPlaintextCommandInput extends GenerateDataKeyPairWithoutPlaintextRequest {}
+export interface GenerateDataKeyPairWithoutPlaintextCommandOutput
+  extends GenerateDataKeyPairWithoutPlaintextResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Generates a unique asymmetric data key pair. The
@@ -50,6 +51,56 @@ export type GenerateDataKeyPairWithoutPlaintextCommandOutput = GenerateDataKeyPa
  *          <p>The CMK that you use for this operation must be in a compatible key state. For
  * details, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use
  * of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+ *          <p>
+ *             <b>Cross-account use</b>: Yes. To perform this operation with a CMK in a different AWS account, specify
+ *   the key ARN or alias ARN in the value of the <code>KeyId</code> parameter.</p>
+ *
+ *          <p>
+ *             <b>Required permissions</b>: <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:GenerateDataKeyPairWithoutPlaintext</a> (key policy)</p>
+ *          <p>
+ *             <b>Related operations:</b>
+ *          </p>
+ *          <ul>
+ *             <li>
+ *                <p>
+ *                   <a>Decrypt</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>Encrypt</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>GenerateDataKey</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>GenerateDataKeyPair</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>GenerateDataKeyWithoutPlaintext</a>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, GenerateDataKeyPairWithoutPlaintextCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, GenerateDataKeyPairWithoutPlaintextCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new GenerateDataKeyPairWithoutPlaintextCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GenerateDataKeyPairWithoutPlaintextCommandInput} for command's `input` shape.
+ * @see {@link GenerateDataKeyPairWithoutPlaintextCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GenerateDataKeyPairWithoutPlaintextCommand extends $Command<
   GenerateDataKeyPairWithoutPlaintextCommandInput,

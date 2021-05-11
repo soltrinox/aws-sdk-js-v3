@@ -17,77 +17,58 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateFleetPortSettingsCommandInput = UpdateFleetPortSettingsInput;
-export type UpdateFleetPortSettingsCommandOutput = UpdateFleetPortSettingsOutput & __MetadataBearer;
+export interface UpdateFleetPortSettingsCommandInput extends UpdateFleetPortSettingsInput {}
+export interface UpdateFleetPortSettingsCommandOutput extends UpdateFleetPortSettingsOutput, __MetadataBearer {}
 
 /**
- * <p>Updates port settings for a fleet. To update settings, specify the fleet ID to be
- *             updated and list the permissions you want to update. List the permissions you want to
- *             add in <code>InboundPermissionAuthorizations</code>, and permissions you want to remove
- *             in <code>InboundPermissionRevocations</code>. Permissions to be removed must match
- *             existing fleet permissions. If successful, the fleet ID for the updated fleet is
- *             returned.</p>
+ * <p>Updates permissions that allow inbound traffic to connect to game sessions that are
+ *             being hosted on instances in the fleet. </p>
+ *         <p>To update settings, specify the fleet ID to be updated and specify the changes to be
+ *             made. List the permissions you want to add in
+ *                 <code>InboundPermissionAuthorizations</code>, and permissions you want to remove in
+ *                 <code>InboundPermissionRevocations</code>. Permissions to be removed must match
+ *             existing fleet permissions. </p>
+ *         <p>If successful, the fleet ID for the updated fleet is returned. For fleets with remote
+ *             locations, port setting updates can take time to propagate across all locations. You can
+ *             check the status of updates in each location by calling
+ *                 <code>DescribeFleetPortSettings</code> with a location name.</p>
  *         <p>
  *             <b>Learn more</b>
  *          </p>
  *         <p>
- *             <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html">Setting up GameLift Fleets</a>
+ *             <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html">Setting up GameLift fleets</a>
  *          </p>
  *         <p>
- *             <b>Related operations</b>
+ *             <b>Related actions</b>
  *          </p>
- *         <ul>
- *             <li>
- *                <p>
- *                   <a>CreateFleet</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>ListFleets</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DeleteFleet</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeFleetAttributes</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>Update fleets:</p>
- *                         <ul>
- *                   <li>
- *                      <p>
- *                         <a>UpdateFleetAttributes</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>UpdateFleetCapacity</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>UpdateFleetPortSettings</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>UpdateRuntimeConfiguration</a>
- *                      </p>
- *                   </li>
- *                </ul>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>StartFleetActions</a> or <a>StopFleetActions</a>
- *                </p>
- *             </li>
- *          </ul>
+ *                     <p>
+ *             <a>CreateFleetLocations</a> |
+ *                     <a>UpdateFleetAttributes</a> |
+ *                     <a>UpdateFleetCapacity</a> |
+ *                     <a>UpdateFleetPortSettings</a> |
+ *                     <a>UpdateRuntimeConfiguration</a> |
+ *                     <a>StopFleetActions</a> |
+ *                     <a>StartFleetActions</a> |
+ *                     <a>PutScalingPolicy</a> |
+ *                     <a>DeleteFleet</a> |
+ *                     <a>DeleteFleetLocations</a> |
+ *                     <a>DeleteScalingPolicy</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, UpdateFleetPortSettingsCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, UpdateFleetPortSettingsCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new UpdateFleetPortSettingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateFleetPortSettingsCommandInput} for command's `input` shape.
+ * @see {@link UpdateFleetPortSettingsCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateFleetPortSettingsCommand extends $Command<
   UpdateFleetPortSettingsCommandInput,

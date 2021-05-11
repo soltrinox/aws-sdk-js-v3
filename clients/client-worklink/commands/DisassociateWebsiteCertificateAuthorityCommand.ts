@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateWebsiteCertificateAuthorityCommandInput = DisassociateWebsiteCertificateAuthorityRequest;
-export type DisassociateWebsiteCertificateAuthorityCommandOutput = DisassociateWebsiteCertificateAuthorityResponse &
-  __MetadataBearer;
+export interface DisassociateWebsiteCertificateAuthorityCommandInput
+  extends DisassociateWebsiteCertificateAuthorityRequest {}
+export interface DisassociateWebsiteCertificateAuthorityCommandOutput
+  extends DisassociateWebsiteCertificateAuthorityResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Removes a certificate authority (CA).</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkLinkClient, DisassociateWebsiteCertificateAuthorityCommand } from "@aws-sdk/client-worklink"; // ES Modules import
+ * // const { WorkLinkClient, DisassociateWebsiteCertificateAuthorityCommand } = require("@aws-sdk/client-worklink"); // CommonJS import
+ * const client = new WorkLinkClient(config);
+ * const command = new DisassociateWebsiteCertificateAuthorityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateWebsiteCertificateAuthorityCommandInput} for command's `input` shape.
+ * @see {@link DisassociateWebsiteCertificateAuthorityCommandOutput} for command's `response` shape.
+ * @see {@link WorkLinkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateWebsiteCertificateAuthorityCommand extends $Command<
   DisassociateWebsiteCertificateAuthorityCommandInput,

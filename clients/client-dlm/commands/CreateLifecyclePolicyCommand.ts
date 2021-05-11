@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateLifecyclePolicyCommandInput = CreateLifecyclePolicyRequest;
-export type CreateLifecyclePolicyCommandOutput = CreateLifecyclePolicyResponse & __MetadataBearer;
+export interface CreateLifecyclePolicyCommandInput extends CreateLifecyclePolicyRequest {}
+export interface CreateLifecyclePolicyCommandOutput extends CreateLifecyclePolicyResponse, __MetadataBearer {}
 
 /**
- * <p>Creates a policy to manage the lifecycle of the specified AWS resources. You can create up to 100 lifecycle policies.</p>
+ * <p>Creates a policy to manage the lifecycle of the specified AWS resources. You can
+ * 			create up to 100 lifecycle policies.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DLMClient, CreateLifecyclePolicyCommand } from "@aws-sdk/client-dlm"; // ES Modules import
+ * // const { DLMClient, CreateLifecyclePolicyCommand } = require("@aws-sdk/client-dlm"); // CommonJS import
+ * const client = new DLMClient(config);
+ * const command = new CreateLifecyclePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateLifecyclePolicyCommandInput} for command's `input` shape.
+ * @see {@link CreateLifecyclePolicyCommandOutput} for command's `response` shape.
+ * @see {@link DLMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateLifecyclePolicyCommand extends $Command<
   CreateLifecyclePolicyCommandInput,

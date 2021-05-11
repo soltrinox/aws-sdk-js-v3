@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDeviceDefinitionCommandInput = DeleteDeviceDefinitionRequest;
-export type DeleteDeviceDefinitionCommandOutput = DeleteDeviceDefinitionResponse & __MetadataBearer;
+export interface DeleteDeviceDefinitionCommandInput extends DeleteDeviceDefinitionRequest {}
+export interface DeleteDeviceDefinitionCommandOutput extends DeleteDeviceDefinitionResponse, __MetadataBearer {}
 
 /**
  * Deletes a device definition.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, DeleteDeviceDefinitionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, DeleteDeviceDefinitionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new DeleteDeviceDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDeviceDefinitionCommandInput} for command's `input` shape.
+ * @see {@link DeleteDeviceDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDeviceDefinitionCommand extends $Command<
   DeleteDeviceDefinitionCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeClusterSecurityGroupsCommandInput = DescribeClusterSecurityGroupsMessage;
-export type DescribeClusterSecurityGroupsCommandOutput = ClusterSecurityGroupMessage & __MetadataBearer;
+export interface DescribeClusterSecurityGroupsCommandInput extends DescribeClusterSecurityGroupsMessage {}
+export interface DescribeClusterSecurityGroupsCommandOutput extends ClusterSecurityGroupMessage, __MetadataBearer {}
 
 /**
  * <p>Returns information about Amazon Redshift security groups. If the name of a security
@@ -36,6 +36,20 @@ export type DescribeClusterSecurityGroupsCommandOutput = ClusterSecurityGroupMes
  *         <p>If both tag keys and values are omitted from the request, security groups are
  *             returned regardless of whether they have tag keys or values associated with
  *             them.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, DescribeClusterSecurityGroupsCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, DescribeClusterSecurityGroupsCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new DescribeClusterSecurityGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeClusterSecurityGroupsCommandInput} for command's `input` shape.
+ * @see {@link DescribeClusterSecurityGroupsCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeClusterSecurityGroupsCommand extends $Command<
   DescribeClusterSecurityGroupsCommandInput,

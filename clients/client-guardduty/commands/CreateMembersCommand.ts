@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateMembersCommandInput = CreateMembersRequest;
-export type CreateMembersCommandOutput = CreateMembersResponse & __MetadataBearer;
+export interface CreateMembersCommandInput extends CreateMembersRequest {}
+export interface CreateMembersCommandOutput extends CreateMembersResponse, __MetadataBearer {}
 
 /**
  * <p>Creates member accounts of the current AWS account by specifying a list of AWS account
@@ -33,6 +33,20 @@ export type CreateMembersCommandOutput = CreateMembersResponse & __MetadataBeare
  *                <code>Invite
  *         Members</code>
  *             </a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GuardDutyClient, CreateMembersCommand } from "@aws-sdk/client-guardduty"; // ES Modules import
+ * // const { GuardDutyClient, CreateMembersCommand } = require("@aws-sdk/client-guardduty"); // CommonJS import
+ * const client = new GuardDutyClient(config);
+ * const command = new CreateMembersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateMembersCommandInput} for command's `input` shape.
+ * @see {@link CreateMembersCommandOutput} for command's `response` shape.
+ * @see {@link GuardDutyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateMembersCommand extends $Command<
   CreateMembersCommandInput,

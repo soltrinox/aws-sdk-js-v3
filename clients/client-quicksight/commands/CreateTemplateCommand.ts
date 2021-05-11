@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateTemplateCommandInput = CreateTemplateRequest;
-export type CreateTemplateCommandOutput = CreateTemplateResponse & __MetadataBearer;
+export interface CreateTemplateCommandInput extends CreateTemplateRequest {}
+export interface CreateTemplateCommandOutput extends CreateTemplateResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a template from an existing QuickSight analysis or template. You can use the resulting
@@ -29,6 +29,20 @@ export type CreateTemplateCommandOutput = CreateTemplateResponse & __MetadataBea
  * 			analysis. You can use templates to create dashboards by replacing dataset placeholders
  * 			with datasets that follow the same schema that was used to create the source analysis
  * 			and template.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, CreateTemplateCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, CreateTemplateCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new CreateTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateTemplateCommandInput} for command's `input` shape.
+ * @see {@link CreateTemplateCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateTemplateCommand extends $Command<
   CreateTemplateCommandInput,

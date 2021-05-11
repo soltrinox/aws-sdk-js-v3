@@ -2,7 +2,7 @@ import { SmithyException as __SmithyException } from "@aws-sdk/smithy-client";
 import { MetadataBearer as $MetadataBearer } from "@aws-sdk/types";
 
 /**
- * <p>A value or list of parameter values.</p>
+ * <p>A value or list of parameter values. </p>
  */
 export interface ParameterValue {
   /**
@@ -17,6 +17,9 @@ export interface ParameterValue {
 }
 
 export namespace ParameterValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ParameterValue): any => ({
     ...obj,
   });
@@ -43,6 +46,9 @@ export interface ActivatePipelineInput {
 }
 
 export namespace ActivatePipelineInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActivatePipelineInput): any => ({
     ...obj,
   });
@@ -54,6 +60,9 @@ export namespace ActivatePipelineInput {
 export interface ActivatePipelineOutput {}
 
 export namespace ActivatePipelineOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActivatePipelineOutput): any => ({
     ...obj,
   });
@@ -72,6 +81,9 @@ export interface InternalServiceError extends __SmithyException, $MetadataBearer
 }
 
 export namespace InternalServiceError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServiceError): any => ({
     ...obj,
   });
@@ -90,6 +102,9 @@ export interface InvalidRequestException extends __SmithyException, $MetadataBea
 }
 
 export namespace InvalidRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRequestException): any => ({
     ...obj,
   });
@@ -108,6 +123,9 @@ export interface PipelineDeletedException extends __SmithyException, $MetadataBe
 }
 
 export namespace PipelineDeletedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineDeletedException): any => ({
     ...obj,
   });
@@ -126,6 +144,9 @@ export interface PipelineNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace PipelineNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineNotFoundException): any => ({
     ...obj,
   });
@@ -133,23 +154,26 @@ export namespace PipelineNotFoundException {
 
 /**
  * <p>Tags are key/value pairs defined by a user and associated with a pipeline to control access. AWS Data Pipeline allows you to associate ten tags per pipeline.
- *             For more information, see <a href="https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
+ *             For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
  */
 export interface Tag {
   /**
    * <p>The key name of a tag defined by a user.
-   *             For more information, see <a href="https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
+   *             For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
    */
   key: string | undefined;
 
   /**
    * <p>The optional value portion of a tag defined by a user.
-   *             For more information, see <a href="https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
+   *             For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
    */
   value: string | undefined;
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -171,6 +195,9 @@ export interface AddTagsInput {
 }
 
 export namespace AddTagsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsInput): any => ({
     ...obj,
   });
@@ -182,6 +209,9 @@ export namespace AddTagsInput {
 export interface AddTagsOutput {}
 
 export namespace AddTagsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsOutput): any => ({
     ...obj,
   });
@@ -192,7 +222,8 @@ export namespace AddTagsOutput {
  */
 export interface CreatePipelineInput {
   /**
-   * <p>The name for the pipeline. You can use the same name for multiple pipelines associated with your AWS account, because AWS Data Pipeline assigns each pipeline a unique pipeline identifier.</p>
+   * <p>The name for the pipeline. You can use the same name for multiple pipelines associated with your AWS account,
+   *             because AWS Data Pipeline assigns each pipeline a unique pipeline identifier.</p>
    */
   name: string | undefined;
 
@@ -215,13 +246,16 @@ export interface CreatePipelineInput {
 
   /**
    * <p>A list of tags to associate with the pipeline at creation. Tags let you control access to pipelines.
-   *             For more information, see <a href="https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a>
+   *             For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a>
    *             in the <i>AWS Data Pipeline Developer Guide</i>.</p>
    */
   tags?: Tag[];
 }
 
 export namespace CreatePipelineInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePipelineInput): any => ({
     ...obj,
   });
@@ -238,6 +272,9 @@ export interface CreatePipelineOutput {
 }
 
 export namespace CreatePipelineOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreatePipelineOutput): any => ({
     ...obj,
   });
@@ -262,6 +299,9 @@ export interface DeactivatePipelineInput {
 }
 
 export namespace DeactivatePipelineInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeactivatePipelineInput): any => ({
     ...obj,
   });
@@ -273,6 +313,9 @@ export namespace DeactivatePipelineInput {
 export interface DeactivatePipelineOutput {}
 
 export namespace DeactivatePipelineOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeactivatePipelineOutput): any => ({
     ...obj,
   });
@@ -289,6 +332,9 @@ export interface DeletePipelineInput {
 }
 
 export namespace DeletePipelineInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePipelineInput): any => ({
     ...obj,
   });
@@ -322,6 +368,9 @@ export interface DescribeObjectsInput {
 }
 
 export namespace DescribeObjectsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeObjectsInput): any => ({
     ...obj,
   });
@@ -348,6 +397,9 @@ export interface Field {
 }
 
 export namespace Field {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Field): any => ({
     ...obj,
   });
@@ -374,6 +426,9 @@ export interface PipelineObject {
 }
 
 export namespace PipelineObject {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineObject): any => ({
     ...obj,
   });
@@ -401,6 +456,9 @@ export interface DescribeObjectsOutput {
 }
 
 export namespace DescribeObjectsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeObjectsOutput): any => ({
     ...obj,
   });
@@ -418,6 +476,9 @@ export interface DescribePipelinesInput {
 }
 
 export namespace DescribePipelinesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePipelinesInput): any => ({
     ...obj,
   });
@@ -449,12 +510,15 @@ export interface PipelineDescription {
 
   /**
    * <p>A list of tags to associated with a pipeline. Tags let you control access to pipelines.
-   *             For more information, see <a href="https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
+   *             For more information, see <a href="http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html">Controlling User Access to Pipelines</a> in the <i>AWS Data Pipeline Developer Guide</i>.</p>
    */
   tags?: Tag[];
 }
 
 export namespace PipelineDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineDescription): any => ({
     ...obj,
   });
@@ -471,6 +535,9 @@ export interface DescribePipelinesOutput {
 }
 
 export namespace DescribePipelinesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePipelinesOutput): any => ({
     ...obj,
   });
@@ -497,6 +564,9 @@ export interface EvaluateExpressionInput {
 }
 
 export namespace EvaluateExpressionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EvaluateExpressionInput): any => ({
     ...obj,
   });
@@ -513,13 +583,16 @@ export interface EvaluateExpressionOutput {
 }
 
 export namespace EvaluateExpressionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EvaluateExpressionOutput): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The specified task was not found.</p>
+ * <p>The specified task was not found. </p>
  */
 export interface TaskNotFoundException extends __SmithyException, $MetadataBearer {
   name: "TaskNotFoundException";
@@ -531,6 +604,9 @@ export interface TaskNotFoundException extends __SmithyException, $MetadataBeare
 }
 
 export namespace TaskNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TaskNotFoundException): any => ({
     ...obj,
   });
@@ -554,6 +630,9 @@ export interface GetPipelineDefinitionInput {
 }
 
 export namespace GetPipelineDefinitionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPipelineDefinitionInput): any => ({
     ...obj,
   });
@@ -575,6 +654,9 @@ export interface ParameterAttribute {
 }
 
 export namespace ParameterAttribute {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ParameterAttribute): any => ({
     ...obj,
   });
@@ -585,7 +667,7 @@ export namespace ParameterAttribute {
  */
 export interface ParameterObject {
   /**
-   * <p>The ID of the parameter object.</p>
+   * <p>The ID of the parameter object. </p>
    */
   id: string | undefined;
 
@@ -596,6 +678,9 @@ export interface ParameterObject {
 }
 
 export namespace ParameterObject {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ParameterObject): any => ({
     ...obj,
   });
@@ -622,6 +707,9 @@ export interface GetPipelineDefinitionOutput {
 }
 
 export namespace GetPipelineDefinitionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPipelineDefinitionOutput): any => ({
     ...obj,
   });
@@ -640,6 +728,9 @@ export interface ListPipelinesInput {
 }
 
 export namespace ListPipelinesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPipelinesInput): any => ({
     ...obj,
   });
@@ -661,6 +752,9 @@ export interface PipelineIdName {
 }
 
 export namespace PipelineIdName {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PipelineIdName): any => ({
     ...obj,
   });
@@ -689,15 +783,18 @@ export interface ListPipelinesOutput {
 }
 
 export namespace ListPipelinesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListPipelinesOutput): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Identity information for the EC2 instance that is hosting the task runner. You can get this value by calling a metadata URI from the EC2 instance.
- *             For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i>
- *             Passing in this value proves that your task runner is running on an EC2 instance, and ensures the proper AWS Data Pipeline service charges are applied to your pipeline.</p>
+ * <p><p>Identity information for the EC2 instance that is hosting the task runner. You can get this value by calling a metadata URI from the EC2 instance.
+ *             For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i>
+ *             Passing in this value proves that your task runner is running on an EC2 instance, and ensures the proper AWS Data Pipeline service charges are applied to your pipeline.</p></p>
  */
 export interface InstanceIdentity {
   /**
@@ -712,6 +809,9 @@ export interface InstanceIdentity {
 }
 
 export namespace InstanceIdentity {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceIdentity): any => ({
     ...obj,
   });
@@ -734,12 +834,15 @@ export interface PollForTaskInput {
   hostname?: string;
 
   /**
-   * <p>Identity information for the EC2 instance that is hosting the task runner. You can get this value from the instance using <code>http://169.254.169.254/latest/meta-data/instance-id</code>. For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i> Passing in this value proves that your task runner is running on an EC2 instance, and ensures the proper AWS Data Pipeline service charges are applied to your pipeline.</p>
+   * <p>Identity information for the EC2 instance that is hosting the task runner. You can get this value from the instance using <code>http://169.254.169.254/latest/meta-data/instance-id</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html">Instance Metadata</a> in the <i>Amazon Elastic Compute Cloud User Guide.</i> Passing in this value proves that your task runner is running on an EC2 instance, and ensures the proper AWS Data Pipeline service charges are applied to your pipeline.</p>
    */
   instanceIdentity?: InstanceIdentity;
 }
 
 export namespace PollForTaskInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PollForTaskInput): any => ({
     ...obj,
   });
@@ -771,6 +874,9 @@ export interface TaskObject {
 }
 
 export namespace TaskObject {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TaskObject): any => ({
     ...obj,
   });
@@ -789,6 +895,9 @@ export interface PollForTaskOutput {
 }
 
 export namespace PollForTaskOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PollForTaskOutput): any => ({
     ...obj,
   });
@@ -820,6 +929,9 @@ export interface PutPipelineDefinitionInput {
 }
 
 export namespace PutPipelineDefinitionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutPipelineDefinitionInput): any => ({
     ...obj,
   });
@@ -841,6 +953,9 @@ export interface ValidationError {
 }
 
 export namespace ValidationError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationError): any => ({
     ...obj,
   });
@@ -862,6 +977,9 @@ export interface ValidationWarning {
 }
 
 export namespace ValidationWarning {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationWarning): any => ({
     ...obj,
   });
@@ -889,6 +1007,9 @@ export interface PutPipelineDefinitionOutput {
 }
 
 export namespace PutPipelineDefinitionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutPipelineDefinitionOutput): any => ({
     ...obj,
   });
@@ -910,57 +1031,31 @@ export interface Operator {
    * <p>
    *             The logical operation to be performed: equal (<code>EQ</code>), equal reference (<code>REF_EQ</code>), less than or equal (<code>LE</code>), greater than or equal (<code>GE</code>), or between (<code>BETWEEN</code>). Equal reference (<code>REF_EQ</code>) can be used only with reference fields. The other comparison types can be used only with String fields. The comparison types you can use apply only to certain object fields, as detailed below.
    *         </p>
-   *         <p>The comparison operators EQ and REF_EQ act on the following fields:</p>
+   *         <p>
+   *           The comparison operators EQ and REF_EQ act on the following fields:
+   *         </p>
    *         <ul>
-   *             <li>
-   *                <p>name</p>
-   *             </li>
-   *             <li>
-   *                <p>@sphere</p>
-   *             </li>
-   *             <li>
-   *                <p>parent</p>
-   *             </li>
-   *             <li>
-   *                <p>@componentParent</p>
-   *             </li>
-   *             <li>
-   *                <p>@instanceParent</p>
-   *             </li>
-   *             <li>
-   *                <p>@status</p>
-   *             </li>
-   *             <li>
-   *                <p>@scheduledStartTime</p>
-   *             </li>
-   *             <li>
-   *                <p>@scheduledEndTime</p>
-   *             </li>
-   *             <li>
-   *                <p>@actualStartTime</p>
-   *             </li>
-   *             <li>
-   *                <p>@actualEndTime</p>
-   *             </li>
-   *          </ul>
+   *             <li>name</li>
+   *             <li>@sphere</li>
+   *             <li>parent</li>
+   *             <li>@componentParent</li>
+   *             <li>@instanceParent</li>
+   *             <li>@status</li>
+   *             <li>@scheduledStartTime</li>
+   *             <li>@scheduledEndTime</li>
+   *             <li>@actualStartTime</li>
+   *             <li>@actualEndTime</li>
+   *         </ul>
    *
    *         <p>
    *             The comparison operators <code>GE</code>, <code>LE</code>, and <code>BETWEEN</code> act on the following fields:
    *         </p>
    *         <ul>
-   *             <li>
-   *                <p>@scheduledStartTime</p>
-   *             </li>
-   *             <li>
-   *                <p>@scheduledEndTime</p>
-   *             </li>
-   *             <li>
-   *                <p>@actualStartTime</p>
-   *             </li>
-   *             <li>
-   *                <p>@actualEndTime</p>
-   *             </li>
-   *          </ul>
+   *             <li>@scheduledStartTime</li>
+   *             <li>@scheduledEndTime</li>
+   *             <li>@actualStartTime</li>
+   *             <li>@actualEndTime</li>
+   *         </ul>
    *         <p>Note that fields beginning with the at sign (@) are read-only and set by the web service. When you name fields, you should choose names containing only alpha-numeric values, as symbols may be reserved by AWS Data Pipeline. User-defined fields that you add to a pipeline should prefix their name with the string "my".</p>
    */
   type?: OperatorType | string;
@@ -972,13 +1067,16 @@ export interface Operator {
 }
 
 export namespace Operator {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Operator): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>A comparison that is used to determine whether a query should return this object.</p>
+ * <p>A comparision that is used to determine whether a query should return this object.</p>
  */
 export interface Selector {
   /**
@@ -993,6 +1091,9 @@ export interface Selector {
 }
 
 export namespace Selector {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Selector): any => ({
     ...obj,
   });
@@ -1009,6 +1110,9 @@ export interface Query {
 }
 
 export namespace Query {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Query): any => ({
     ...obj,
   });
@@ -1050,6 +1154,9 @@ export interface QueryObjectsInput {
 }
 
 export namespace QueryObjectsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QueryObjectsInput): any => ({
     ...obj,
   });
@@ -1077,6 +1184,9 @@ export interface QueryObjectsOutput {
 }
 
 export namespace QueryObjectsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QueryObjectsOutput): any => ({
     ...obj,
   });
@@ -1098,6 +1208,9 @@ export interface RemoveTagsInput {
 }
 
 export namespace RemoveTagsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveTagsInput): any => ({
     ...obj,
   });
@@ -1109,6 +1222,9 @@ export namespace RemoveTagsInput {
 export interface RemoveTagsOutput {}
 
 export namespace RemoveTagsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveTagsOutput): any => ({
     ...obj,
   });
@@ -1130,6 +1246,9 @@ export interface ReportTaskProgressInput {
 }
 
 export namespace ReportTaskProgressInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReportTaskProgressInput): any => ({
     ...obj,
   });
@@ -1146,6 +1265,9 @@ export interface ReportTaskProgressOutput {
 }
 
 export namespace ReportTaskProgressOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReportTaskProgressOutput): any => ({
     ...obj,
   });
@@ -1156,7 +1278,9 @@ export namespace ReportTaskProgressOutput {
  */
 export interface ReportTaskRunnerHeartbeatInput {
   /**
-   * <p>The ID of the task runner. This value should be unique across your AWS account. In the case of AWS Data Pipeline Task Runner launched on a resource managed by AWS Data Pipeline, the web service provides a unique identifier when it launches the application. If you have written a custom task runner, you should assign a unique identifier for the task runner.</p>
+   * <p>The ID of the task runner. This value should be unique across your AWS account. In the case of AWS Data Pipeline Task Runner
+   *             launched on a resource managed by AWS Data Pipeline, the web service provides a unique identifier when it launches the application.
+   *             If you have written a custom task runner, you should assign a unique identifier for the task runner.</p>
    */
   taskrunnerId: string | undefined;
 
@@ -1174,6 +1298,9 @@ export interface ReportTaskRunnerHeartbeatInput {
 }
 
 export namespace ReportTaskRunnerHeartbeatInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReportTaskRunnerHeartbeatInput): any => ({
     ...obj,
   });
@@ -1190,6 +1317,9 @@ export interface ReportTaskRunnerHeartbeatOutput {
 }
 
 export namespace ReportTaskRunnerHeartbeatOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReportTaskRunnerHeartbeatOutput): any => ({
     ...obj,
   });
@@ -1217,6 +1347,9 @@ export interface SetStatusInput {
 }
 
 export namespace SetStatusInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetStatusInput): any => ({
     ...obj,
   });
@@ -1243,22 +1376,28 @@ export interface SetTaskStatusInput {
   taskStatus: TaskStatus | string | undefined;
 
   /**
-   * <p>If an error occurred during the task, this value specifies the error code. This value is set on the physical attempt object. It is used to display error information to the user. It should not start with string "Service_" which is reserved by the system.</p>
+   * <p>If an error occurred during the task, this value specifies the error code. This value is set on the physical attempt object.
+   *             It is used to display error information to the user. It should not start with string "Service_" which is reserved by the system.</p>
    */
   errorId?: string;
 
   /**
-   * <p>If an error occurred during the task, this value specifies a text description of the error. This value is set on the physical attempt object. It is used to display error information to the user. The web service does not parse this value.</p>
+   * <p>If an error occurred during the task, this value specifies a text description of the error. This value is set on the physical attempt object.
+   *             It is used to display error information to the user. The web service does not parse this value.</p>
    */
   errorMessage?: string;
 
   /**
-   * <p>If an error occurred during the task, this value specifies the stack trace associated with the error. This value is set on the physical attempt object. It is used to display error information to the user. The web service does not parse this value.</p>
+   * <p>If an error occurred during the task, this value specifies the stack trace associated with the error. This value is set on the physical attempt object.
+   *             It is used to display error information to the user. The web service does not parse this value.</p>
    */
   errorStackTrace?: string;
 }
 
 export namespace SetTaskStatusInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetTaskStatusInput): any => ({
     ...obj,
   });
@@ -1270,6 +1409,9 @@ export namespace SetTaskStatusInput {
 export interface SetTaskStatusOutput {}
 
 export namespace SetTaskStatusOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetTaskStatusOutput): any => ({
     ...obj,
   });
@@ -1301,6 +1443,9 @@ export interface ValidatePipelineDefinitionInput {
 }
 
 export namespace ValidatePipelineDefinitionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidatePipelineDefinitionInput): any => ({
     ...obj,
   });
@@ -1327,6 +1472,9 @@ export interface ValidatePipelineDefinitionOutput {
 }
 
 export namespace ValidatePipelineDefinitionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidatePipelineDefinitionOutput): any => ({
     ...obj,
   });

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBucketCommandInput = DeleteBucketRequest;
-export type DeleteBucketCommandOutput = __MetadataBearer;
+export interface DeleteBucketCommandInput extends DeleteBucketRequest {}
+export interface DeleteBucketCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the S3 bucket. All objects (including all object versions and delete markers) in
@@ -39,6 +39,20 @@ export type DeleteBucketCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, DeleteBucketCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, DeleteBucketCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new DeleteBucketCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBucketCommandInput} for command's `input` shape.
+ * @see {@link DeleteBucketCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBucketCommand extends $Command<
   DeleteBucketCommandInput,

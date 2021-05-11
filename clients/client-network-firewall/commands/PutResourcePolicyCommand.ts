@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutResourcePolicyCommandInput = PutResourcePolicyRequest;
-export type PutResourcePolicyCommandOutput = PutResourcePolicyResponse & __MetadataBearer;
+export interface PutResourcePolicyCommandInput extends PutResourcePolicyRequest {}
+export interface PutResourcePolicyCommandOutput extends PutResourcePolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Creates or updates an AWS Identity and Access Management policy for your rule group or firewall policy. Use this to share rule groups and firewall policies between accounts. This operation works in conjunction with the AWS Resource Access Manager (RAM) service
@@ -36,6 +36,20 @@ export type PutResourcePolicyCommandOutput = PutResourcePolicyResponse & __Metad
  *            </li>
  *          </ul>
  *          <p>For additional information about resource sharing using RAM, see <a href="https://docs.aws.amazon.com/ram/latest/userguide/what-is.html">AWS Resource Access Manager User Guide</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkFirewallClient, PutResourcePolicyCommand } from "@aws-sdk/client-network-firewall"; // ES Modules import
+ * // const { NetworkFirewallClient, PutResourcePolicyCommand } = require("@aws-sdk/client-network-firewall"); // CommonJS import
+ * const client = new NetworkFirewallClient(config);
+ * const command = new PutResourcePolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutResourcePolicyCommandInput} for command's `input` shape.
+ * @see {@link PutResourcePolicyCommandOutput} for command's `response` shape.
+ * @see {@link NetworkFirewallClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutResourcePolicyCommand extends $Command<
   PutResourcePolicyCommandInput,

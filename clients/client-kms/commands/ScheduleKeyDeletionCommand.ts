@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ScheduleKeyDeletionCommandInput = ScheduleKeyDeletionRequest;
-export type ScheduleKeyDeletionCommandOutput = ScheduleKeyDeletionResponse & __MetadataBearer;
+export interface ScheduleKeyDeletionCommandInput extends ScheduleKeyDeletionRequest {}
+export interface ScheduleKeyDeletionCommandOutput extends ScheduleKeyDeletionResponse, __MetadataBearer {}
 
 /**
  * <p>Schedules the deletion of a customer master key (CMK). You may provide a waiting period,
@@ -37,12 +37,46 @@ export type ScheduleKeyDeletionCommandOutput = ScheduleKeyDeletionResponse & __M
  *       effort to delete the key material from the associated AWS CloudHSM cluster. However, you might need
  *       to manually <a href="https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key">delete the orphaned key
  *         material</a> from the cluster and its backups.</p>
- *          <p>You cannot perform this operation on a CMK in a different AWS account.</p>
  *          <p>For more information about scheduling a CMK for deletion, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html">Deleting Customer Master Keys</a> in the
  *       <i>AWS Key Management Service Developer Guide</i>.</p>
  *          <p>The CMK that you use for this operation must be in a compatible key state. For
  * details, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use
  * of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+ *          <p>
+ *             <b>Cross-account use</b>: No. You cannot perform this operation on a CMK in a different AWS account.</p>
+ *
+ *
+ *          <p>
+ *             <b>Required permissions</b>: <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:ScheduleKeyDeletion</a> (key policy)</p>
+ *          <p>
+ *             <b>Related operations</b>
+ *          </p>
+ *          <ul>
+ *             <li>
+ *                <p>
+ *                   <a>CancelKeyDeletion</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>DisableKey</a>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, ScheduleKeyDeletionCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, ScheduleKeyDeletionCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new ScheduleKeyDeletionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ScheduleKeyDeletionCommandInput} for command's `input` shape.
+ * @see {@link ScheduleKeyDeletionCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ScheduleKeyDeletionCommand extends $Command<
   ScheduleKeyDeletionCommandInput,

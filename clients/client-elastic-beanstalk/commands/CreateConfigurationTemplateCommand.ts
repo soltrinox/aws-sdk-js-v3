@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateConfigurationTemplateCommandInput = CreateConfigurationTemplateMessage;
-export type CreateConfigurationTemplateCommandOutput = ConfigurationSettingsDescription & __MetadataBearer;
+export interface CreateConfigurationTemplateCommandInput extends CreateConfigurationTemplateMessage {}
+export interface CreateConfigurationTemplateCommandOutput extends ConfigurationSettingsDescription, __MetadataBearer {}
 
 /**
  * <p>Creates an AWS Elastic Beanstalk configuration template, associated with a specific Elastic Beanstalk
@@ -45,6 +45,20 @@ export type CreateConfigurationTemplateCommandOutput = ConfigurationSettingsDesc
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticBeanstalkClient, CreateConfigurationTemplateCommand } from "@aws-sdk/client-elastic-beanstalk"; // ES Modules import
+ * // const { ElasticBeanstalkClient, CreateConfigurationTemplateCommand } = require("@aws-sdk/client-elastic-beanstalk"); // CommonJS import
+ * const client = new ElasticBeanstalkClient(config);
+ * const command = new CreateConfigurationTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateConfigurationTemplateCommandInput} for command's `input` shape.
+ * @see {@link CreateConfigurationTemplateCommandOutput} for command's `response` shape.
+ * @see {@link ElasticBeanstalkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateConfigurationTemplateCommand extends $Command<
   CreateConfigurationTemplateCommandInput,

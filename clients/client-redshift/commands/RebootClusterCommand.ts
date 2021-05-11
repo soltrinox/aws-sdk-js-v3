@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RebootClusterCommandInput = RebootClusterMessage;
-export type RebootClusterCommandOutput = RebootClusterResult & __MetadataBearer;
+export interface RebootClusterCommandInput extends RebootClusterMessage {}
+export interface RebootClusterCommandOutput extends RebootClusterResult, __MetadataBearer {}
 
 /**
  * <p>Reboots a cluster. This action is taken as soon as possible. It results in a
@@ -29,6 +29,20 @@ export type RebootClusterCommandOutput = RebootClusterResult & __MetadataBearer;
  * For more information about managing clusters, go to
  * <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a>
  * in the <i>Amazon Redshift Cluster Management Guide</i>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, RebootClusterCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, RebootClusterCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new RebootClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RebootClusterCommandInput} for command's `input` shape.
+ * @see {@link RebootClusterCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RebootClusterCommand extends $Command<
   RebootClusterCommandInput,

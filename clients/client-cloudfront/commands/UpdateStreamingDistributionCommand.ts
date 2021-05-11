@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateStreamingDistributionCommandInput = UpdateStreamingDistributionRequest;
-export type UpdateStreamingDistributionCommandOutput = UpdateStreamingDistributionResult & __MetadataBearer;
+export interface UpdateStreamingDistributionCommandInput extends UpdateStreamingDistributionRequest {}
+export interface UpdateStreamingDistributionCommandOutput extends UpdateStreamingDistributionResult, __MetadataBearer {}
 
 /**
  * <p>Update a streaming distribution. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, UpdateStreamingDistributionCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, UpdateStreamingDistributionCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new UpdateStreamingDistributionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateStreamingDistributionCommandInput} for command's `input` shape.
+ * @see {@link UpdateStreamingDistributionCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateStreamingDistributionCommand extends $Command<
   UpdateStreamingDistributionCommandInput,

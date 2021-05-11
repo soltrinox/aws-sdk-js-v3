@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAssetModelsCommandInput = ListAssetModelsRequest;
-export type ListAssetModelsCommandOutput = ListAssetModelsResponse & __MetadataBearer;
+export interface ListAssetModelsCommandInput extends ListAssetModelsRequest {}
+export interface ListAssetModelsCommandOutput extends ListAssetModelsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a paginated list of summaries of all asset models.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTSiteWiseClient, ListAssetModelsCommand } from "@aws-sdk/client-iotsitewise"; // ES Modules import
+ * // const { IoTSiteWiseClient, ListAssetModelsCommand } = require("@aws-sdk/client-iotsitewise"); // CommonJS import
+ * const client = new IoTSiteWiseClient(config);
+ * const command = new ListAssetModelsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAssetModelsCommandInput} for command's `input` shape.
+ * @see {@link ListAssetModelsCommandOutput} for command's `response` shape.
+ * @see {@link IoTSiteWiseClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAssetModelsCommand extends $Command<
   ListAssetModelsCommandInput,

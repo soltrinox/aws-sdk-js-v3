@@ -15,6 +15,8 @@
 
 package software.amazon.smithy.aws.typescript.codegen;
 
+import static software.amazon.smithy.aws.typescript.codegen.AwsTraitsUtils.isAwsService;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -29,16 +31,21 @@ import software.amazon.smithy.typescript.codegen.integration.RuntimeClientPlugin
 import software.amazon.smithy.typescript.codegen.integration.TypeScriptIntegration;
 import software.amazon.smithy.utils.ListUtils;
 import software.amazon.smithy.utils.MapUtils;
+import software.amazon.smithy.utils.SmithyInternalApi;
 
 /**
  * Add client plubins and configs to support injecting user agent.
  */
+// TODO: Looks to add this back for non-AWS service clients, by fixing the dependency on ClientSharedValues.serviceId
+@SmithyInternalApi
 public class AddUserAgentDependency implements TypeScriptIntegration {
     @Override
     public List<RuntimeClientPlugin> getClientPlugins() {
         return ListUtils.of(
                 RuntimeClientPlugin.builder()
-                        .withConventions(AwsDependency.MIDDLEWARE_USER_AGENT.dependency, "UserAgent").build());
+                        .withConventions(AwsDependency.MIDDLEWARE_USER_AGENT.dependency, "UserAgent")
+                        .servicePredicate((m, s) -> isAwsService(s))
+                        .build());
     }
 
     @Override
@@ -48,6 +55,9 @@ public class AddUserAgentDependency implements TypeScriptIntegration {
             SymbolProvider symbolProvider,
             TypeScriptWriter writer
     ) {
+        if (!isAwsService(settings, model)) {
+            return;
+        }
         writer.addImport("Provider", "Provider", TypeScriptDependency.AWS_SDK_TYPES.packageName);
         writer.addImport("UserAgent", "__UserAgent", TypeScriptDependency.AWS_SDK_TYPES.packageName);
         writer.writeDocs("The provider populating default tracking information to be sent with `user-agent`, "
@@ -62,6 +72,9 @@ public class AddUserAgentDependency implements TypeScriptIntegration {
         SymbolProvider symbolProvider,
         LanguageTarget target
     ) {
+        if (!isAwsService(settings, model)) {
+            return Collections.emptyMap();
+        }
         switch (target) {
             case NODE:
                 return MapUtils.of(

@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBranchCommandInput = GetBranchInput;
-export type GetBranchCommandOutput = GetBranchOutput & __MetadataBearer;
+export interface GetBranchCommandInput extends GetBranchInput {}
+export interface GetBranchCommandOutput extends GetBranchOutput, __MetadataBearer {}
 
 /**
  * <p>Returns information about a repository branch, including its name and the last commit ID.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeCommitClient, GetBranchCommand } from "@aws-sdk/client-codecommit"; // ES Modules import
+ * // const { CodeCommitClient, GetBranchCommand } = require("@aws-sdk/client-codecommit"); // CommonJS import
+ * const client = new CodeCommitClient(config);
+ * const command = new GetBranchCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBranchCommandInput} for command's `input` shape.
+ * @see {@link GetBranchCommandOutput} for command's `response` shape.
+ * @see {@link CodeCommitClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBranchCommand extends $Command<
   GetBranchCommandInput,

@@ -21,8 +21,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyLoadBalancerAttributesCommandInput = ModifyLoadBalancerAttributesInput;
-export type ModifyLoadBalancerAttributesCommandOutput = ModifyLoadBalancerAttributesOutput & __MetadataBearer;
+export interface ModifyLoadBalancerAttributesCommandInput extends ModifyLoadBalancerAttributesInput {}
+export interface ModifyLoadBalancerAttributesCommandOutput
+  extends ModifyLoadBalancerAttributesOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Modifies the attributes of the specified load balancer.</p>
@@ -52,6 +54,20 @@ export type ModifyLoadBalancerAttributesCommandOutput = ModifyLoadBalancerAttrib
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingClient, ModifyLoadBalancerAttributesCommand } from "@aws-sdk/client-elastic-load-balancing"; // ES Modules import
+ * // const { ElasticLoadBalancingClient, ModifyLoadBalancerAttributesCommand } = require("@aws-sdk/client-elastic-load-balancing"); // CommonJS import
+ * const client = new ElasticLoadBalancingClient(config);
+ * const command = new ModifyLoadBalancerAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyLoadBalancerAttributesCommandInput} for command's `input` shape.
+ * @see {@link ModifyLoadBalancerAttributesCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyLoadBalancerAttributesCommand extends $Command<
   ModifyLoadBalancerAttributesCommandInput,

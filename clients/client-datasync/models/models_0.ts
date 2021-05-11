@@ -29,6 +29,9 @@ export interface AgentListEntry {
 }
 
 export namespace AgentListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AgentListEntry): any => ({
     ...obj,
   });
@@ -50,6 +53,9 @@ export interface CancelTaskExecutionRequest {
 }
 
 export namespace CancelTaskExecutionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelTaskExecutionRequest): any => ({
     ...obj,
   });
@@ -58,6 +64,9 @@ export namespace CancelTaskExecutionRequest {
 export interface CancelTaskExecutionResponse {}
 
 export namespace CancelTaskExecutionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelTaskExecutionResponse): any => ({
     ...obj,
   });
@@ -74,6 +83,9 @@ export interface InternalException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InternalException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalException): any => ({
     ...obj,
   });
@@ -90,6 +102,9 @@ export interface InvalidRequestException extends __SmithyException, $MetadataBea
 }
 
 export namespace InvalidRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRequestException): any => ({
     ...obj,
   });
@@ -113,6 +128,9 @@ export interface TagListEntry {
 }
 
 export namespace TagListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagListEntry): any => ({
     ...obj,
   });
@@ -180,6 +198,9 @@ export interface CreateAgentRequest {
 }
 
 export namespace CreateAgentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAgentRequest): any => ({
     ...obj,
   });
@@ -197,6 +218,9 @@ export interface CreateAgentResponse {
 }
 
 export namespace CreateAgentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAgentResponse): any => ({
     ...obj,
   });
@@ -223,6 +247,9 @@ export interface Ec2Config {
 }
 
 export namespace Ec2Config {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Ec2Config): any => ({
     ...obj,
   });
@@ -286,6 +313,9 @@ export interface CreateLocationEfsRequest {
 }
 
 export namespace CreateLocationEfsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLocationEfsRequest): any => ({
     ...obj,
   });
@@ -303,6 +333,9 @@ export interface CreateLocationEfsResponse {
 }
 
 export namespace CreateLocationEfsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLocationEfsResponse): any => ({
     ...obj,
   });
@@ -310,19 +343,20 @@ export namespace CreateLocationEfsResponse {
 
 export interface CreateLocationFsxWindowsRequest {
   /**
-   * <p>A subdirectory in the location’s path. This subdirectory in the Amazon FSx for Windows file system is used
-   *       to read data from the Amazon FSx for Windows source location or write data to the FSx for Windows destination.</p>
+   * <p>A subdirectory in the location’s path. This subdirectory in the Amazon FSx for Windows
+   *       File Server file system is used to read data from the Amazon FSx for Windows File Server
+   *       source location or write data to the FSx for Windows File Server destination.</p>
    */
   Subdirectory?: string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) for the FSx for Windows file system.</p>
+   * <p>The Amazon Resource Name (ARN) for the FSx for Windows File Server file system.</p>
    */
   FsxFilesystemArn: string | undefined;
 
   /**
    * <p>The Amazon Resource Names (ARNs) of the security groups that are to use to configure the
-   *       FSx for Windows file system.</p>
+   *       FSx for Windows File Server file system.</p>
    */
   SecurityGroupArns: string[] | undefined;
 
@@ -334,24 +368,27 @@ export interface CreateLocationFsxWindowsRequest {
   Tags?: TagListEntry[];
 
   /**
-   * <p>The user who has the permissions to access files and folders in the
-   *       FSx for Windows file system.</p>
+   * <p>The user who has the permissions to access files and folders in the FSx for Windows File
+   *       Server file system.</p>
    */
   User: string | undefined;
 
   /**
-   * <p>The name of the Windows domain that the FSx for Windows server belongs to.</p>
+   * <p>The name of the Windows domain that the FSx for Windows File Server belongs to.</p>
    */
   Domain?: string;
 
   /**
-   * <p>The password of the user who has the permissions to access files and folders in the
-   *       FSx for Windows file system.</p>
+   * <p>The password of the user who has the permissions to access files and folders in the FSx
+   *       for Windows File Server file system.</p>
    */
   Password: string | undefined;
 }
 
 export namespace CreateLocationFsxWindowsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLocationFsxWindowsRequest): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -360,13 +397,16 @@ export namespace CreateLocationFsxWindowsRequest {
 
 export interface CreateLocationFsxWindowsResponse {
   /**
-   * <p>The Amazon Resource Name (ARN) of the FSx for Windows file system location that is
-   *       created.</p>
+   * <p>The Amazon Resource Name (ARN) of the FSx for Windows File Server file system location
+   *       that is created.</p>
    */
   LocationArn?: string;
 }
 
 export namespace CreateLocationFsxWindowsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLocationFsxWindowsResponse): any => ({
     ...obj,
   });
@@ -420,6 +460,9 @@ export interface NfsMountOptions {
 }
 
 export namespace NfsMountOptions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NfsMountOptions): any => ({
     ...obj,
   });
@@ -437,6 +480,9 @@ export interface OnPremConfig {
 }
 
 export namespace OnPremConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OnPremConfig): any => ({
     ...obj,
   });
@@ -500,6 +546,9 @@ export interface CreateLocationNfsRequest {
 }
 
 export namespace CreateLocationNfsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLocationNfsRequest): any => ({
     ...obj,
   });
@@ -517,6 +566,9 @@ export interface CreateLocationNfsResponse {
 }
 
 export namespace CreateLocationNfsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLocationNfsResponse): any => ({
     ...obj,
   });
@@ -593,6 +645,9 @@ export interface CreateLocationObjectStorageRequest {
 }
 
 export namespace CreateLocationObjectStorageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLocationObjectStorageRequest): any => ({
     ...obj,
     ...(obj.SecretKey && { SecretKey: SENSITIVE_STRING }),
@@ -611,6 +666,9 @@ export interface CreateLocationObjectStorageResponse {
 }
 
 export namespace CreateLocationObjectStorageResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLocationObjectStorageResponse): any => ({
     ...obj,
   });
@@ -631,6 +689,9 @@ export interface S3Config {
 }
 
 export namespace S3Config {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Config): any => ({
     ...obj,
   });
@@ -696,6 +757,9 @@ export interface CreateLocationS3Request {
 }
 
 export namespace CreateLocationS3Request {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLocationS3Request): any => ({
     ...obj,
   });
@@ -713,6 +777,9 @@ export interface CreateLocationS3Response {
 }
 
 export namespace CreateLocationS3Response {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLocationS3Response): any => ({
     ...obj,
   });
@@ -738,6 +805,9 @@ export interface SmbMountOptions {
 }
 
 export namespace SmbMountOptions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SmbMountOptions): any => ({
     ...obj,
   });
@@ -814,6 +884,9 @@ export interface CreateLocationSmbRequest {
 }
 
 export namespace CreateLocationSmbRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLocationSmbRequest): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -832,6 +905,9 @@ export interface CreateLocationSmbResponse {
 }
 
 export namespace CreateLocationSmbResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateLocationSmbResponse): any => ({
     ...obj,
   });
@@ -863,6 +939,9 @@ export interface FilterRule {
 }
 
 export namespace FilterRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FilterRule): any => ({
     ...obj,
   });
@@ -1096,6 +1175,9 @@ export interface Options {
 }
 
 export namespace Options {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Options): any => ({
     ...obj,
   });
@@ -1114,6 +1196,9 @@ export interface TaskSchedule {
 }
 
 export namespace TaskSchedule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TaskSchedule): any => ({
     ...obj,
   });
@@ -1179,6 +1264,9 @@ export interface CreateTaskRequest {
 }
 
 export namespace CreateTaskRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateTaskRequest): any => ({
     ...obj,
   });
@@ -1195,6 +1283,9 @@ export interface CreateTaskResponse {
 }
 
 export namespace CreateTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateTaskResponse): any => ({
     ...obj,
   });
@@ -1212,6 +1303,9 @@ export interface DeleteAgentRequest {
 }
 
 export namespace DeleteAgentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAgentRequest): any => ({
     ...obj,
   });
@@ -1220,6 +1314,9 @@ export namespace DeleteAgentRequest {
 export interface DeleteAgentResponse {}
 
 export namespace DeleteAgentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAgentResponse): any => ({
     ...obj,
   });
@@ -1236,6 +1333,9 @@ export interface DeleteLocationRequest {
 }
 
 export namespace DeleteLocationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteLocationRequest): any => ({
     ...obj,
   });
@@ -1244,6 +1344,9 @@ export namespace DeleteLocationRequest {
 export interface DeleteLocationResponse {}
 
 export namespace DeleteLocationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteLocationResponse): any => ({
     ...obj,
   });
@@ -1260,6 +1363,9 @@ export interface DeleteTaskRequest {
 }
 
 export namespace DeleteTaskRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteTaskRequest): any => ({
     ...obj,
   });
@@ -1268,6 +1374,9 @@ export namespace DeleteTaskRequest {
 export interface DeleteTaskResponse {}
 
 export namespace DeleteTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteTaskResponse): any => ({
     ...obj,
   });
@@ -1284,6 +1393,9 @@ export interface DescribeAgentRequest {
 }
 
 export namespace DescribeAgentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAgentRequest): any => ({
     ...obj,
   });
@@ -1328,6 +1440,9 @@ export interface PrivateLinkConfig {
 }
 
 export namespace PrivateLinkConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PrivateLinkConfig): any => ({
     ...obj,
   });
@@ -1379,6 +1494,9 @@ export interface DescribeAgentResponse {
 }
 
 export namespace DescribeAgentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAgentResponse): any => ({
     ...obj,
   });
@@ -1395,6 +1513,9 @@ export interface DescribeLocationEfsRequest {
 }
 
 export namespace DescribeLocationEfsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLocationEfsRequest): any => ({
     ...obj,
   });
@@ -1429,6 +1550,9 @@ export interface DescribeLocationEfsResponse {
 }
 
 export namespace DescribeLocationEfsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLocationEfsResponse): any => ({
     ...obj,
   });
@@ -1436,12 +1560,16 @@ export namespace DescribeLocationEfsResponse {
 
 export interface DescribeLocationFsxWindowsRequest {
   /**
-   * <p>The Amazon Resource Name (ARN) of the FSx for Windows location to describe.</p>
+   * <p>The Amazon Resource Name (ARN) of the FSx for Windows File Server location to
+   *       describe.</p>
    */
   LocationArn: string | undefined;
 }
 
 export namespace DescribeLocationFsxWindowsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLocationFsxWindowsRequest): any => ({
     ...obj,
   });
@@ -1449,39 +1577,43 @@ export namespace DescribeLocationFsxWindowsRequest {
 
 export interface DescribeLocationFsxWindowsResponse {
   /**
-   * <p>The Amazon Resource Name (ARN) of the FSx for Windows location that was described.</p>
+   * <p>The Amazon Resource Name (ARN) of the FSx for Windows File Server location that was
+   *       described.</p>
    */
   LocationArn?: string;
 
   /**
-   * <p>The URL of the FSx for Windows location that was described.</p>
+   * <p>The URL of the FSx for Windows File Server location that was described.</p>
    */
   LocationUri?: string;
 
   /**
    * <p>The Amazon Resource Names (ARNs) of the security groups that are configured for the FSx
-   *       for Windows file system.</p>
+   *       for Windows File Server file system.</p>
    */
   SecurityGroupArns?: string[];
 
   /**
-   * <p>The time that the FSx for Windows location was created.</p>
+   * <p>The time that the FSx for Windows File Server location was created.</p>
    */
   CreationTime?: Date;
 
   /**
-   * <p>The user who has the permissions to access files and folders in the
-   *       FSx for Windows file system.</p>
+   * <p>The user who has the permissions to access files and folders in the FSx for Windows File
+   *       Server file system.</p>
    */
   User?: string;
 
   /**
-   * <p>The name of the Windows domain that the FSx for Windows server belongs to.</p>
+   * <p>The name of the Windows domain that the FSx for Windows File Server belongs to.</p>
    */
   Domain?: string;
 }
 
 export namespace DescribeLocationFsxWindowsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLocationFsxWindowsResponse): any => ({
     ...obj,
   });
@@ -1498,6 +1630,9 @@ export interface DescribeLocationNfsRequest {
 }
 
 export namespace DescribeLocationNfsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLocationNfsRequest): any => ({
     ...obj,
   });
@@ -1535,6 +1670,9 @@ export interface DescribeLocationNfsResponse {
 }
 
 export namespace DescribeLocationNfsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLocationNfsResponse): any => ({
     ...obj,
   });
@@ -1551,6 +1689,9 @@ export interface DescribeLocationObjectStorageRequest {
 }
 
 export namespace DescribeLocationObjectStorageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLocationObjectStorageRequest): any => ({
     ...obj,
   });
@@ -1603,6 +1744,9 @@ export interface DescribeLocationObjectStorageResponse {
 }
 
 export namespace DescribeLocationObjectStorageResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLocationObjectStorageResponse): any => ({
     ...obj,
   });
@@ -1619,6 +1763,9 @@ export interface DescribeLocationS3Request {
 }
 
 export namespace DescribeLocationS3Request {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLocationS3Request): any => ({
     ...obj,
   });
@@ -1669,6 +1816,9 @@ export interface DescribeLocationS3Response {
 }
 
 export namespace DescribeLocationS3Response {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLocationS3Response): any => ({
     ...obj,
   });
@@ -1685,6 +1835,9 @@ export interface DescribeLocationSmbRequest {
 }
 
 export namespace DescribeLocationSmbRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLocationSmbRequest): any => ({
     ...obj,
   });
@@ -1733,6 +1886,9 @@ export interface DescribeLocationSmbResponse {
 }
 
 export namespace DescribeLocationSmbResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeLocationSmbResponse): any => ({
     ...obj,
   });
@@ -1749,6 +1905,9 @@ export interface DescribeTaskRequest {
 }
 
 export namespace DescribeTaskRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeTaskRequest): any => ({
     ...obj,
   });
@@ -1867,6 +2026,9 @@ export interface DescribeTaskResponse {
 }
 
 export namespace DescribeTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeTaskResponse): any => ({
     ...obj,
   });
@@ -1883,6 +2045,9 @@ export interface DescribeTaskExecutionRequest {
 }
 
 export namespace DescribeTaskExecutionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeTaskExecutionRequest): any => ({
     ...obj,
   });
@@ -1952,6 +2117,9 @@ export interface TaskExecutionResultDetail {
 }
 
 export namespace TaskExecutionResultDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TaskExecutionResultDetail): any => ({
     ...obj,
   });
@@ -2072,6 +2240,9 @@ export interface DescribeTaskExecutionResponse {
 }
 
 export namespace DescribeTaskExecutionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeTaskExecutionResponse): any => ({
     ...obj,
   });
@@ -2094,6 +2265,9 @@ export interface ListAgentsRequest {
 }
 
 export namespace ListAgentsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAgentsRequest): any => ({
     ...obj,
   });
@@ -2116,6 +2290,9 @@ export interface ListAgentsResponse {
 }
 
 export namespace ListAgentsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAgentsResponse): any => ({
     ...obj,
   });
@@ -2166,6 +2343,9 @@ export interface LocationFilter {
 }
 
 export namespace LocationFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LocationFilter): any => ({
     ...obj,
   });
@@ -2195,6 +2375,9 @@ export interface ListLocationsRequest {
 }
 
 export namespace ListLocationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListLocationsRequest): any => ({
     ...obj,
   });
@@ -2233,6 +2416,9 @@ export interface LocationListEntry {
 }
 
 export namespace LocationListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LocationListEntry): any => ({
     ...obj,
   });
@@ -2255,6 +2441,9 @@ export interface ListLocationsResponse {
 }
 
 export namespace ListLocationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListLocationsResponse): any => ({
     ...obj,
   });
@@ -2282,6 +2471,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -2304,6 +2496,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -2331,6 +2526,9 @@ export interface ListTaskExecutionsRequest {
 }
 
 export namespace ListTaskExecutionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTaskExecutionsRequest): any => ({
     ...obj,
   });
@@ -2354,6 +2552,9 @@ export interface TaskExecutionListEntry {
 }
 
 export namespace TaskExecutionListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TaskExecutionListEntry): any => ({
     ...obj,
   });
@@ -2376,6 +2577,9 @@ export interface ListTaskExecutionsResponse {
 }
 
 export namespace ListTaskExecutionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTaskExecutionsResponse): any => ({
     ...obj,
   });
@@ -2413,6 +2617,9 @@ export interface TaskFilter {
 }
 
 export namespace TaskFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TaskFilter): any => ({
     ...obj,
   });
@@ -2443,6 +2650,9 @@ export interface ListTasksRequest {
 }
 
 export namespace ListTasksRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTasksRequest): any => ({
     ...obj,
   });
@@ -2472,6 +2682,9 @@ export interface TaskListEntry {
 }
 
 export namespace TaskListEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TaskListEntry): any => ({
     ...obj,
   });
@@ -2494,6 +2707,9 @@ export interface ListTasksResponse {
 }
 
 export namespace ListTasksResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTasksResponse): any => ({
     ...obj,
   });
@@ -2532,6 +2748,9 @@ export interface StartTaskExecutionRequest {
 }
 
 export namespace StartTaskExecutionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartTaskExecutionRequest): any => ({
     ...obj,
   });
@@ -2549,6 +2768,9 @@ export interface StartTaskExecutionResponse {
 }
 
 export namespace StartTaskExecutionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartTaskExecutionResponse): any => ({
     ...obj,
   });
@@ -2570,6 +2792,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -2578,6 +2803,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -2599,6 +2827,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -2607,6 +2838,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
@@ -2628,6 +2862,9 @@ export interface UpdateAgentRequest {
 }
 
 export namespace UpdateAgentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAgentRequest): any => ({
     ...obj,
   });
@@ -2636,7 +2873,227 @@ export namespace UpdateAgentRequest {
 export interface UpdateAgentResponse {}
 
 export namespace UpdateAgentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAgentResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateLocationNfsRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the NFS location to update.</p>
+   */
+  LocationArn: string | undefined;
+
+  /**
+   * <p>The subdirectory in the NFS file system that is used to read data from the NFS source
+   *       location or write data to the NFS destination. The NFS path should be a path that's
+   *       exported by the NFS server, or a subdirectory of that path. The path should be such that it
+   *       can be mounted by other NFS clients in your network.</p>
+   *
+   *          <p>To see all the paths exported by your NFS server, run "<code>showmount -e
+   *         nfs-server-name</code>" from an NFS client that has access to your server. You can specify
+   *         any directory that appears in the results, and any subdirectory of that directory. Ensure that
+   *         the NFS export is accessible without Kerberos authentication. </p>
+   *          <p>To transfer all the data in the folder that you specified, DataSync must have
+   *       permissions to read all the data. To ensure this, either configure the NFS export with
+   *         <code>no_root_squash</code>, or ensure that the files you want DataSync to
+   *       access have permissions that allow read access for all users. Doing either option enables the
+   *       agent to read the files. For the agent to access directories, you must additionally enable all
+   *       execute access.</p>
+   *          <p>If you are copying data to or from your AWS Snowcone device, see <a href="https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html#nfs-on-snowcone">NFS Server on AWS Snowcone</a> for more information.</p>
+   *
+   *          <p>For information about NFS export configuration, see 18.7. The /etc/exports
+   *       Configuration File in the Red Hat Enterprise Linux documentation.</p>
+   */
+  Subdirectory?: string;
+
+  /**
+   * <p>A list of Amazon Resource Names (ARNs) of agents to use for a Network File System (NFS)
+   *       location.</p>
+   */
+  OnPremConfig?: OnPremConfig;
+
+  /**
+   * <p>Represents the mount options that are available for DataSync to access an NFS
+   *       location.</p>
+   */
+  MountOptions?: NfsMountOptions;
+}
+
+export namespace UpdateLocationNfsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateLocationNfsRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateLocationNfsResponse {}
+
+export namespace UpdateLocationNfsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateLocationNfsResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateLocationObjectStorageRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the self-managed object storage server location to be updated.</p>
+   */
+  LocationArn: string | undefined;
+
+  /**
+   * <p>The port that your self-managed object storage server accepts inbound network traffic on.
+   *       The server port is set by default to TCP 80 (HTTP) or TCP 443 (HTTPS). You can
+   *       specify a custom port if your self-managed object storage server requires one.</p>
+   */
+  ServerPort?: number;
+
+  /**
+   * <p>The protocol that the object storage server uses to communicate. Valid values are
+   *         <code>HTTP</code> or <code>HTTPS</code>.</p>
+   */
+  ServerProtocol?: ObjectStorageServerProtocol | string;
+
+  /**
+   * <p>The subdirectory in the self-managed object storage server that is used
+   *       to read data from.</p>
+   */
+  Subdirectory?: string;
+
+  /**
+   * <p>Optional. The access key is used if credentials are required to access the self-managed
+   *       object storage server. If your object storage requires a user name and password to
+   *       authenticate, use <code>AccessKey</code> and <code>SecretKey</code> to provide the user name
+   *       and password, respectively.</p>
+   */
+  AccessKey?: string;
+
+  /**
+   * <p>Optional. The secret key is used if credentials are required to access the self-managed
+   *       object storage server. If your object storage requires a user name and password to
+   *       authenticate, use <code>AccessKey</code> and <code>SecretKey</code> to provide the user name
+   *       and password, respectively.</p>
+   */
+  SecretKey?: string;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the agents associated with the
+   *       self-managed object storage server location.</p>
+   */
+  AgentArns?: string[];
+}
+
+export namespace UpdateLocationObjectStorageRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateLocationObjectStorageRequest): any => ({
+    ...obj,
+    ...(obj.SecretKey && { SecretKey: SENSITIVE_STRING }),
+  });
+}
+
+export interface UpdateLocationObjectStorageResponse {}
+
+export namespace UpdateLocationObjectStorageResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateLocationObjectStorageResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateLocationSmbRequest {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the SMB location to update.</p>
+   */
+  LocationArn: string | undefined;
+
+  /**
+   * <p>The subdirectory in the SMB file system that is used to read data from the SMB source
+   *       location or write data to the SMB destination. The SMB path should be a path that's
+   *       exported by the SMB server, or a subdirectory of that path. The path should be such that it
+   *       can be mounted by other SMB clients in your network.</p>
+   *          <note>
+   *             <p>
+   *                <code>Subdirectory</code> must be specified with forward slashes. For example,
+   *       <code>/path/to/folder</code>.</p>
+   *          </note>
+   *
+   *          <p>To transfer all the data in the folder that you specified, DataSync must have
+   *       permissions to mount the SMB share and to access all the data in that share. To ensure this,
+   *       do either of the following:</p>
+   *          <ul>
+   *             <li>
+   *                <p>Ensure that the user/password specified belongs to the user who can mount the share
+   *           and who has the appropriate permissions for all of the files and directories that you want
+   *           DataSync to access.</p>
+   *             </li>
+   *             <li>
+   *                <p>Use credentials of a member of the Backup Operators group to mount the share. </p>
+   *             </li>
+   *          </ul>
+   *          <p>Doing either of these options enables the agent to access the data. For the agent to
+   *       access directories, you must also enable all execute access.</p>
+   */
+  Subdirectory?: string;
+
+  /**
+   * <p>The user who can mount the share has the permissions to access files and folders in the
+   *       SMB share.</p>
+   */
+  User?: string;
+
+  /**
+   * <p>The name of the Windows domain that the SMB server belongs to.</p>
+   */
+  Domain?: string;
+
+  /**
+   * <p>The password of the user who can mount the share has the permissions to access files and
+   *       folders in the SMB share.</p>
+   */
+  Password?: string;
+
+  /**
+   * <p>The Amazon Resource Names (ARNs) of agents to use for a Simple Message Block (SMB)
+   *       location.</p>
+   */
+  AgentArns?: string[];
+
+  /**
+   * <p>Represents the mount options that are available for DataSync to access an SMB
+   *       location.</p>
+   */
+  MountOptions?: SmbMountOptions;
+}
+
+export namespace UpdateLocationSmbRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateLocationSmbRequest): any => ({
+    ...obj,
+    ...(obj.Password && { Password: SENSITIVE_STRING }),
+  });
+}
+
+export interface UpdateLocationSmbResponse {}
+
+export namespace UpdateLocationSmbResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateLocationSmbResponse): any => ({
     ...obj,
   });
 }
@@ -2692,6 +3149,9 @@ export interface UpdateTaskRequest {
 }
 
 export namespace UpdateTaskRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTaskRequest): any => ({
     ...obj,
   });
@@ -2700,6 +3160,9 @@ export namespace UpdateTaskRequest {
 export interface UpdateTaskResponse {}
 
 export namespace UpdateTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTaskResponse): any => ({
     ...obj,
   });
@@ -2724,6 +3187,9 @@ export interface UpdateTaskExecutionRequest {
 }
 
 export namespace UpdateTaskExecutionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTaskExecutionRequest): any => ({
     ...obj,
   });
@@ -2732,6 +3198,9 @@ export namespace UpdateTaskExecutionRequest {
 export interface UpdateTaskExecutionResponse {}
 
 export namespace UpdateTaskExecutionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTaskExecutionResponse): any => ({
     ...obj,
   });

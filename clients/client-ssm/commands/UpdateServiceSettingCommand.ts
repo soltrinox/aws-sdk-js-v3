@@ -1,5 +1,5 @@
 import { SSMClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SSMClient";
-import { UpdateServiceSettingRequest, UpdateServiceSettingResult } from "../models/models_1";
+import { UpdateServiceSettingRequest, UpdateServiceSettingResult } from "../models/models_2";
 import {
   deserializeAws_json1_1UpdateServiceSettingCommand,
   serializeAws_json1_1UpdateServiceSettingCommand,
@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateServiceSettingCommandInput = UpdateServiceSettingRequest;
-export type UpdateServiceSettingCommandOutput = UpdateServiceSettingResult & __MetadataBearer;
+export interface UpdateServiceSettingCommandInput extends UpdateServiceSettingRequest {}
+export interface UpdateServiceSettingCommandOutput extends UpdateServiceSettingResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -35,6 +35,20 @@ export type UpdateServiceSettingCommandOutput = UpdateServiceSettingResult & __M
  *    original value defined by the AWS service team.</p>
  *
  *          <p>Update the service setting for the account. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, UpdateServiceSettingCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, UpdateServiceSettingCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new UpdateServiceSettingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateServiceSettingCommandInput} for command's `input` shape.
+ * @see {@link UpdateServiceSettingCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateServiceSettingCommand extends $Command<
   UpdateServiceSettingCommandInput,

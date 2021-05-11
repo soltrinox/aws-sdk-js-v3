@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateSkillGroupCommandInput = UpdateSkillGroupRequest;
-export type UpdateSkillGroupCommandOutput = UpdateSkillGroupResponse & __MetadataBearer;
+export interface UpdateSkillGroupCommandInput extends UpdateSkillGroupRequest {}
+export interface UpdateSkillGroupCommandOutput extends UpdateSkillGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Updates skill group details by skill group ARN.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, UpdateSkillGroupCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, UpdateSkillGroupCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new UpdateSkillGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateSkillGroupCommandInput} for command's `input` shape.
+ * @see {@link UpdateSkillGroupCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateSkillGroupCommand extends $Command<
   UpdateSkillGroupCommandInput,

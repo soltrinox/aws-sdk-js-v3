@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteModelPackageGroupPolicyCommandInput = DeleteModelPackageGroupPolicyInput;
-export type DeleteModelPackageGroupPolicyCommandOutput = __MetadataBearer;
+export interface DeleteModelPackageGroupPolicyCommandInput extends DeleteModelPackageGroupPolicyInput {}
+export interface DeleteModelPackageGroupPolicyCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a model group resource policy.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DeleteModelPackageGroupPolicyCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DeleteModelPackageGroupPolicyCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DeleteModelPackageGroupPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteModelPackageGroupPolicyCommandInput} for command's `input` shape.
+ * @see {@link DeleteModelPackageGroupPolicyCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteModelPackageGroupPolicyCommand extends $Command<
   DeleteModelPackageGroupPolicyCommandInput,

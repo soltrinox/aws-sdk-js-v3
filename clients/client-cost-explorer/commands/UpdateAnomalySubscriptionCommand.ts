@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateAnomalySubscriptionCommandInput = UpdateAnomalySubscriptionRequest;
-export type UpdateAnomalySubscriptionCommandOutput = UpdateAnomalySubscriptionResponse & __MetadataBearer;
+export interface UpdateAnomalySubscriptionCommandInput extends UpdateAnomalySubscriptionRequest {}
+export interface UpdateAnomalySubscriptionCommandOutput extends UpdateAnomalySubscriptionResponse, __MetadataBearer {}
 
 /**
  * <p> Updates an existing cost anomaly monitor subscription. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CostExplorerClient, UpdateAnomalySubscriptionCommand } from "@aws-sdk/client-cost-explorer"; // ES Modules import
+ * // const { CostExplorerClient, UpdateAnomalySubscriptionCommand } = require("@aws-sdk/client-cost-explorer"); // CommonJS import
+ * const client = new CostExplorerClient(config);
+ * const command = new UpdateAnomalySubscriptionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateAnomalySubscriptionCommandInput} for command's `input` shape.
+ * @see {@link UpdateAnomalySubscriptionCommandOutput} for command's `response` shape.
+ * @see {@link CostExplorerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateAnomalySubscriptionCommand extends $Command<
   UpdateAnomalySubscriptionCommandInput,

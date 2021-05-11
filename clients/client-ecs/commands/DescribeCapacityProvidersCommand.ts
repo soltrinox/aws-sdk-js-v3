@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCapacityProvidersCommandInput = DescribeCapacityProvidersRequest;
-export type DescribeCapacityProvidersCommandOutput = DescribeCapacityProvidersResponse & __MetadataBearer;
+export interface DescribeCapacityProvidersCommandInput extends DescribeCapacityProvidersRequest {}
+export interface DescribeCapacityProvidersCommandOutput extends DescribeCapacityProvidersResponse, __MetadataBearer {}
 
 /**
  * <p>Describes one or more of your capacity providers.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, DescribeCapacityProvidersCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, DescribeCapacityProvidersCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new DescribeCapacityProvidersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCapacityProvidersCommandInput} for command's `input` shape.
+ * @see {@link DescribeCapacityProvidersCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCapacityProvidersCommand extends $Command<
   DescribeCapacityProvidersCommandInput,

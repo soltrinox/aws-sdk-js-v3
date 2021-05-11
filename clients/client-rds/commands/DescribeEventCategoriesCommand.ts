@@ -1,6 +1,5 @@
 import { RDSClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../RDSClient";
-import { DescribeEventCategoriesMessage } from "../models/models_0";
-import { EventCategoriesMessage } from "../models/models_1";
+import { DescribeEventCategoriesMessage, EventCategoriesMessage } from "../models/models_1";
 import {
   deserializeAws_queryDescribeEventCategoriesCommand,
   serializeAws_queryDescribeEventCategoriesCommand,
@@ -18,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEventCategoriesCommandInput = DescribeEventCategoriesMessage;
-export type DescribeEventCategoriesCommandOutput = EventCategoriesMessage & __MetadataBearer;
+export interface DescribeEventCategoriesCommandInput extends DescribeEventCategoriesMessage {}
+export interface DescribeEventCategoriesCommandOutput extends EventCategoriesMessage, __MetadataBearer {}
 
 /**
  * <p>Displays a list of categories for all event source types, or, if specified, for a specified source type.
@@ -27,6 +26,20 @@ export type DescribeEventCategoriesCommandOutput = EventCategoriesMessage & __Me
  *             in <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html">
  *                 Events</a> in the <i>Amazon RDS User Guide.</i>
  *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, DescribeEventCategoriesCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, DescribeEventCategoriesCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new DescribeEventCategoriesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEventCategoriesCommandInput} for command's `input` shape.
+ * @see {@link DescribeEventCategoriesCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEventCategoriesCommand extends $Command<
   DescribeEventCategoriesCommandInput,

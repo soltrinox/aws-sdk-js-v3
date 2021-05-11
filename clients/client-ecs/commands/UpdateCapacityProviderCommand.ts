@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateCapacityProviderCommandInput = UpdateCapacityProviderRequest;
-export type UpdateCapacityProviderCommandOutput = UpdateCapacityProviderResponse & __MetadataBearer;
+export interface UpdateCapacityProviderCommandInput extends UpdateCapacityProviderRequest {}
+export interface UpdateCapacityProviderCommandOutput extends UpdateCapacityProviderResponse, __MetadataBearer {}
 
 /**
  * <p>Modifies the parameters for a capacity provider.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, UpdateCapacityProviderCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, UpdateCapacityProviderCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new UpdateCapacityProviderCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateCapacityProviderCommandInput} for command's `input` shape.
+ * @see {@link UpdateCapacityProviderCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateCapacityProviderCommand extends $Command<
   UpdateCapacityProviderCommandInput,

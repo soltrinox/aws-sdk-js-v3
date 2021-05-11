@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAnomalyMonitorCommandInput = CreateAnomalyMonitorRequest;
-export type CreateAnomalyMonitorCommandOutput = CreateAnomalyMonitorResponse & __MetadataBearer;
+export interface CreateAnomalyMonitorCommandInput extends CreateAnomalyMonitorRequest {}
+export interface CreateAnomalyMonitorCommandOutput extends CreateAnomalyMonitorResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new cost anomaly detection monitor with the requested type and monitor
  *       specification. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CostExplorerClient, CreateAnomalyMonitorCommand } from "@aws-sdk/client-cost-explorer"; // ES Modules import
+ * // const { CostExplorerClient, CreateAnomalyMonitorCommand } = require("@aws-sdk/client-cost-explorer"); // CommonJS import
+ * const client = new CostExplorerClient(config);
+ * const command = new CreateAnomalyMonitorCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAnomalyMonitorCommandInput} for command's `input` shape.
+ * @see {@link CreateAnomalyMonitorCommandOutput} for command's `response` shape.
+ * @see {@link CostExplorerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAnomalyMonitorCommand extends $Command<
   CreateAnomalyMonitorCommandInput,

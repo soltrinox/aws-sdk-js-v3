@@ -24,9 +24,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCompatibleElasticsearchVersionsCommandInput = GetCompatibleElasticsearchVersionsRequest;
-export type GetCompatibleElasticsearchVersionsCommandOutput = GetCompatibleElasticsearchVersionsResponse &
-  __MetadataBearer;
+export interface GetCompatibleElasticsearchVersionsCommandInput extends GetCompatibleElasticsearchVersionsRequest {}
+export interface GetCompatibleElasticsearchVersionsCommandOutput
+  extends GetCompatibleElasticsearchVersionsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>
@@ -37,6 +38,20 @@ export type GetCompatibleElasticsearchVersionsCommandOutput = GetCompatibleElast
  *         </code>
  *         to get all upgrade compatible Elasticsearch versions for that specific domain.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticsearchServiceClient, GetCompatibleElasticsearchVersionsCommand } from "@aws-sdk/client-elasticsearch-service"; // ES Modules import
+ * // const { ElasticsearchServiceClient, GetCompatibleElasticsearchVersionsCommand } = require("@aws-sdk/client-elasticsearch-service"); // CommonJS import
+ * const client = new ElasticsearchServiceClient(config);
+ * const command = new GetCompatibleElasticsearchVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCompatibleElasticsearchVersionsCommandInput} for command's `input` shape.
+ * @see {@link GetCompatibleElasticsearchVersionsCommandOutput} for command's `response` shape.
+ * @see {@link ElasticsearchServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCompatibleElasticsearchVersionsCommand extends $Command<
   GetCompatibleElasticsearchVersionsCommandInput,

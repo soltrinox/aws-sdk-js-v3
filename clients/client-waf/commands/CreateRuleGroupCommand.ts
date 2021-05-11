@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateRuleGroupCommandInput = CreateRuleGroupRequest;
-export type CreateRuleGroupCommandOutput = CreateRuleGroupResponse & __MetadataBearer;
+export interface CreateRuleGroupCommandInput extends CreateRuleGroupRequest {}
+export interface CreateRuleGroupCommandOutput extends CreateRuleGroupResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -44,6 +44,20 @@ export type CreateRuleGroupCommandOutput = CreateRuleGroupResponse & __MetadataB
  *          </ul>
  *          <p>For more information about how to use the AWS WAF API to allow or block HTTP requests, see the
  *          <a href="https://docs.aws.amazon.com/waf/latest/developerguide/">AWS WAF Developer Guide</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFClient, CreateRuleGroupCommand } from "@aws-sdk/client-waf"; // ES Modules import
+ * // const { WAFClient, CreateRuleGroupCommand } = require("@aws-sdk/client-waf"); // CommonJS import
+ * const client = new WAFClient(config);
+ * const command = new CreateRuleGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateRuleGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateRuleGroupCommandOutput} for command's `response` shape.
+ * @see {@link WAFClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateRuleGroupCommand extends $Command<
   CreateRuleGroupCommandInput,

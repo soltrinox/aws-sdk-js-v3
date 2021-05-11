@@ -7,12 +7,11 @@
 
 AWS SDK for JavaScript Outposts Client for Node.js, Browser and React Native.
 
-<p>AWS Outposts is a fully-managed service that extends AWS infrastructure,
-APIs, and tools to customer premises. By providing local access to AWS-managed
-infrastructure, AWS Outposts enables customers to build and run applications
-on premises using the same programming interfaces as in AWS Regions, while
-using local compute and storage resources for lower latency and local data
-processing needs.</p>
+<p>AWS Outposts is a fully managed service that extends AWS infrastructure, APIs, and tools
+to customer premises. By providing local access to AWS managed infrastructure, AWS Outposts
+enables customers to build and run applications on premises using the same programming
+interfaces as in AWS Regions, while using local compute and storage resources for lower
+latency and local data processing needs.</p>
 
 ## Installing
 
@@ -51,7 +50,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new OutpostsClient({ region: "REGION" });
 
 const params = {
@@ -136,7 +135,7 @@ const client = new AWS.Outposts({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.createOutpost(params);
+  const data = await client.createOutpost(params);
   // process data.
 } catch (error) {
   // error handling.

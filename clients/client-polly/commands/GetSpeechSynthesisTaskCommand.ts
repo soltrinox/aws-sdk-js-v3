@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSpeechSynthesisTaskCommandInput = GetSpeechSynthesisTaskInput;
-export type GetSpeechSynthesisTaskCommandOutput = GetSpeechSynthesisTaskOutput & __MetadataBearer;
+export interface GetSpeechSynthesisTaskCommandInput extends GetSpeechSynthesisTaskInput {}
+export interface GetSpeechSynthesisTaskCommandOutput extends GetSpeechSynthesisTaskOutput, __MetadataBearer {}
 
 /**
  * <p>Retrieves a specific SpeechSynthesisTask object based on its TaskID. This object contains
  *       information about the given speech synthesis task, including the status of the task, and a
  *       link to the S3 bucket containing the output of the task.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PollyClient, GetSpeechSynthesisTaskCommand } from "@aws-sdk/client-polly"; // ES Modules import
+ * // const { PollyClient, GetSpeechSynthesisTaskCommand } = require("@aws-sdk/client-polly"); // CommonJS import
+ * const client = new PollyClient(config);
+ * const command = new GetSpeechSynthesisTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSpeechSynthesisTaskCommandInput} for command's `input` shape.
+ * @see {@link GetSpeechSynthesisTaskCommandOutput} for command's `response` shape.
+ * @see {@link PollyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSpeechSynthesisTaskCommand extends $Command<
   GetSpeechSynthesisTaskCommandInput,

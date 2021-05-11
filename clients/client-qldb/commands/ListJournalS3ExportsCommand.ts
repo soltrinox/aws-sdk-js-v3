@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListJournalS3ExportsCommandInput = ListJournalS3ExportsRequest;
-export type ListJournalS3ExportsCommandOutput = ListJournalS3ExportsResponse & __MetadataBearer;
+export interface ListJournalS3ExportsCommandInput extends ListJournalS3ExportsRequest {}
+export interface ListJournalS3ExportsCommandOutput extends ListJournalS3ExportsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns an array of journal export job descriptions for all ledgers that are associated
@@ -28,6 +28,20 @@ export type ListJournalS3ExportsCommandOutput = ListJournalS3ExportsResponse & _
  *          times.</p>
  *          <p>This action does not return any expired export jobs. For more information, see <a href="https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration">Export Job Expiration</a> in the <i>Amazon QLDB Developer
  *          Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QLDBClient, ListJournalS3ExportsCommand } from "@aws-sdk/client-qldb"; // ES Modules import
+ * // const { QLDBClient, ListJournalS3ExportsCommand } = require("@aws-sdk/client-qldb"); // CommonJS import
+ * const client = new QLDBClient(config);
+ * const command = new ListJournalS3ExportsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListJournalS3ExportsCommandInput} for command's `input` shape.
+ * @see {@link ListJournalS3ExportsCommandOutput} for command's `response` shape.
+ * @see {@link QLDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListJournalS3ExportsCommand extends $Command<
   ListJournalS3ExportsCommandInput,

@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListGraphsCommandInput = ListGraphsRequest;
-export type ListGraphsCommandOutput = ListGraphsResponse & __MetadataBearer;
+export interface ListGraphsCommandInput extends ListGraphsRequest {}
+export interface ListGraphsCommandOutput extends ListGraphsResponse, __MetadataBearer {}
 
 /**
- * <p>Returns the list of behavior graphs that the calling account is a master of. This
- *          operation can only be called by a master account.</p>
- *          <p>Because an account can currently only be the master of one behavior graph within a
- *          Region, the results always contain a single graph.</p>
+ * <p>Returns the list of behavior graphs that the calling account is an administrator account
+ *          of. This operation can only be called by an administrator account.</p>
+ *          <p>Because an account can currently only be the administrator of one behavior graph within
+ *          a Region, the results always contain a single behavior graph.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DetectiveClient, ListGraphsCommand } from "@aws-sdk/client-detective"; // ES Modules import
+ * // const { DetectiveClient, ListGraphsCommand } = require("@aws-sdk/client-detective"); // CommonJS import
+ * const client = new DetectiveClient(config);
+ * const command = new ListGraphsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListGraphsCommandInput} for command's `input` shape.
+ * @see {@link ListGraphsCommandOutput} for command's `response` shape.
+ * @see {@link DetectiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListGraphsCommand extends $Command<
   ListGraphsCommandInput,

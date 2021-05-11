@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeUploadBufferCommandInput = DescribeUploadBufferInput;
-export type DescribeUploadBufferCommandOutput = DescribeUploadBufferOutput & __MetadataBearer;
+export interface DescribeUploadBufferCommandInput extends DescribeUploadBufferInput {}
+export interface DescribeUploadBufferCommandOutput extends DescribeUploadBufferOutput, __MetadataBearer {}
 
 /**
  * <p>Returns information about the upload buffer of a gateway. This operation is supported
@@ -26,6 +26,20 @@ export type DescribeUploadBufferCommandOutput = DescribeUploadBufferOutput & __M
  *
  *          <p>The response includes disk IDs that are configured as upload buffer space, and it
  *          includes the amount of upload buffer space allocated and used.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, DescribeUploadBufferCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, DescribeUploadBufferCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new DescribeUploadBufferCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeUploadBufferCommandInput} for command's `input` shape.
+ * @see {@link DescribeUploadBufferCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeUploadBufferCommand extends $Command<
   DescribeUploadBufferCommandInput,

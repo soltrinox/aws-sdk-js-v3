@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateMaintenanceWindowTaskCommandInput = UpdateMaintenanceWindowTaskRequest;
-export type UpdateMaintenanceWindowTaskCommandOutput = UpdateMaintenanceWindowTaskResult & __MetadataBearer;
+export interface UpdateMaintenanceWindowTaskCommandInput extends UpdateMaintenanceWindowTaskRequest {}
+export interface UpdateMaintenanceWindowTaskCommandOutput extends UpdateMaintenanceWindowTaskResult, __MetadataBearer {}
 
 /**
  * <p>Modifies a task assigned to a maintenance window. You can't change the task type, but you
@@ -44,6 +44,14 @@ export type UpdateMaintenanceWindowTaskCommandOutput = UpdateMaintenanceWindowTa
  *                <p>MaxErrors</p>
  *             </li>
  *          </ul>
+ *          <note>
+ *             <p>One or more targets must be specified for maintenance window Run Command-type tasks.
+ *     Depending on the task, targets are optional for other maintenance window task types (Automation,
+ *     AWS Lambda, and AWS Step Functions). For more information about running tasks that do not
+ *     specify targets, see <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html">Registering
+ *      maintenance window tasks without targets</a> in the
+ *     <i>AWS Systems Manager User Guide</i>.</p>
+ *          </note>
  *          <p>If the value for a parameter in <code>UpdateMaintenanceWindowTask</code> is null, then the
  *    corresponding field is not modified. If you set <code>Replace</code> to true, then all fields
  *    required by the <a>RegisterTaskWithMaintenanceWindow</a> action are required for this
@@ -58,6 +66,20 @@ export type UpdateMaintenanceWindowTaskCommandOutput = UpdateMaintenanceWindowTa
  *     maintenance window task and specify only a different <code>OutputS3BucketName</code> value, the
  *     values for <code>Comment</code> and <code>NotificationConfig</code> are removed.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, UpdateMaintenanceWindowTaskCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, UpdateMaintenanceWindowTaskCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new UpdateMaintenanceWindowTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateMaintenanceWindowTaskCommandInput} for command's `input` shape.
+ * @see {@link UpdateMaintenanceWindowTaskCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateMaintenanceWindowTaskCommand extends $Command<
   UpdateMaintenanceWindowTaskCommandInput,

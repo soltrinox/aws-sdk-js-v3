@@ -60,6 +60,10 @@ import {
 } from "./commands/CreateDBParameterGroupCommand";
 import { CreateDBProxyCommandInput, CreateDBProxyCommandOutput } from "./commands/CreateDBProxyCommand";
 import {
+  CreateDBProxyEndpointCommandInput,
+  CreateDBProxyEndpointCommandOutput,
+} from "./commands/CreateDBProxyEndpointCommand";
+import {
   CreateDBSecurityGroupCommandInput,
   CreateDBSecurityGroupCommandOutput,
 } from "./commands/CreateDBSecurityGroupCommand";
@@ -104,6 +108,10 @@ import {
   DeleteDBParameterGroupCommandOutput,
 } from "./commands/DeleteDBParameterGroupCommand";
 import { DeleteDBProxyCommandInput, DeleteDBProxyCommandOutput } from "./commands/DeleteDBProxyCommand";
+import {
+  DeleteDBProxyEndpointCommandInput,
+  DeleteDBProxyEndpointCommandOutput,
+} from "./commands/DeleteDBProxyEndpointCommand";
 import {
   DeleteDBSecurityGroupCommandInput,
   DeleteDBSecurityGroupCommandOutput,
@@ -189,6 +197,10 @@ import {
   DescribeDBParametersCommandOutput,
 } from "./commands/DescribeDBParametersCommand";
 import { DescribeDBProxiesCommandInput, DescribeDBProxiesCommandOutput } from "./commands/DescribeDBProxiesCommand";
+import {
+  DescribeDBProxyEndpointsCommandInput,
+  DescribeDBProxyEndpointsCommandOutput,
+} from "./commands/DescribeDBProxyEndpointsCommand";
 import {
   DescribeDBProxyTargetGroupsCommandInput,
   DescribeDBProxyTargetGroupsCommandOutput,
@@ -280,6 +292,10 @@ import {
 } from "./commands/DownloadDBLogFilePortionCommand";
 import { FailoverDBClusterCommandInput, FailoverDBClusterCommandOutput } from "./commands/FailoverDBClusterCommand";
 import {
+  FailoverGlobalClusterCommandInput,
+  FailoverGlobalClusterCommandOutput,
+} from "./commands/FailoverGlobalClusterCommand";
+import {
   ImportInstallationMediaCommandInput,
   ImportInstallationMediaCommandOutput,
 } from "./commands/ImportInstallationMediaCommand";
@@ -311,6 +327,10 @@ import {
   ModifyDBParameterGroupCommandOutput,
 } from "./commands/ModifyDBParameterGroupCommand";
 import { ModifyDBProxyCommandInput, ModifyDBProxyCommandOutput } from "./commands/ModifyDBProxyCommand";
+import {
+  ModifyDBProxyEndpointCommandInput,
+  ModifyDBProxyEndpointCommandOutput,
+} from "./commands/ModifyDBProxyEndpointCommand";
 import {
   ModifyDBProxyTargetGroupCommandInput,
   ModifyDBProxyTargetGroupCommandOutput,
@@ -495,6 +515,7 @@ export type ServiceInputTypes =
   | CreateDBInstanceReadReplicaCommandInput
   | CreateDBParameterGroupCommandInput
   | CreateDBProxyCommandInput
+  | CreateDBProxyEndpointCommandInput
   | CreateDBSecurityGroupCommandInput
   | CreateDBSnapshotCommandInput
   | CreateDBSubnetGroupCommandInput
@@ -510,6 +531,7 @@ export type ServiceInputTypes =
   | DeleteDBInstanceCommandInput
   | DeleteDBParameterGroupCommandInput
   | DeleteDBProxyCommandInput
+  | DeleteDBProxyEndpointCommandInput
   | DeleteDBSecurityGroupCommandInput
   | DeleteDBSnapshotCommandInput
   | DeleteDBSubnetGroupCommandInput
@@ -535,6 +557,7 @@ export type ServiceInputTypes =
   | DescribeDBParameterGroupsCommandInput
   | DescribeDBParametersCommandInput
   | DescribeDBProxiesCommandInput
+  | DescribeDBProxyEndpointsCommandInput
   | DescribeDBProxyTargetGroupsCommandInput
   | DescribeDBProxyTargetsCommandInput
   | DescribeDBSecurityGroupsCommandInput
@@ -559,6 +582,7 @@ export type ServiceInputTypes =
   | DescribeValidDBInstanceModificationsCommandInput
   | DownloadDBLogFilePortionCommandInput
   | FailoverDBClusterCommandInput
+  | FailoverGlobalClusterCommandInput
   | ImportInstallationMediaCommandInput
   | ListTagsForResourceCommandInput
   | ModifyCertificatesCommandInput
@@ -570,6 +594,7 @@ export type ServiceInputTypes =
   | ModifyDBInstanceCommandInput
   | ModifyDBParameterGroupCommandInput
   | ModifyDBProxyCommandInput
+  | ModifyDBProxyEndpointCommandInput
   | ModifyDBProxyTargetGroupCommandInput
   | ModifyDBSnapshotAttributeCommandInput
   | ModifyDBSnapshotCommandInput
@@ -629,6 +654,7 @@ export type ServiceOutputTypes =
   | CreateDBInstanceReadReplicaCommandOutput
   | CreateDBParameterGroupCommandOutput
   | CreateDBProxyCommandOutput
+  | CreateDBProxyEndpointCommandOutput
   | CreateDBSecurityGroupCommandOutput
   | CreateDBSnapshotCommandOutput
   | CreateDBSubnetGroupCommandOutput
@@ -644,6 +670,7 @@ export type ServiceOutputTypes =
   | DeleteDBInstanceCommandOutput
   | DeleteDBParameterGroupCommandOutput
   | DeleteDBProxyCommandOutput
+  | DeleteDBProxyEndpointCommandOutput
   | DeleteDBSecurityGroupCommandOutput
   | DeleteDBSnapshotCommandOutput
   | DeleteDBSubnetGroupCommandOutput
@@ -669,6 +696,7 @@ export type ServiceOutputTypes =
   | DescribeDBParameterGroupsCommandOutput
   | DescribeDBParametersCommandOutput
   | DescribeDBProxiesCommandOutput
+  | DescribeDBProxyEndpointsCommandOutput
   | DescribeDBProxyTargetGroupsCommandOutput
   | DescribeDBProxyTargetsCommandOutput
   | DescribeDBSecurityGroupsCommandOutput
@@ -693,6 +721,7 @@ export type ServiceOutputTypes =
   | DescribeValidDBInstanceModificationsCommandOutput
   | DownloadDBLogFilePortionCommandOutput
   | FailoverDBClusterCommandOutput
+  | FailoverGlobalClusterCommandOutput
   | ImportInstallationMediaCommandOutput
   | ListTagsForResourceCommandOutput
   | ModifyCertificatesCommandOutput
@@ -704,6 +733,7 @@ export type ServiceOutputTypes =
   | ModifyDBInstanceCommandOutput
   | ModifyDBParameterGroupCommandOutput
   | ModifyDBProxyCommandOutput
+  | ModifyDBProxyEndpointCommandOutput
   | ModifyDBProxyTargetGroupCommandOutput
   | ModifyDBSnapshotAttributeCommandOutput
   | ModifyDBSnapshotCommandOutput
@@ -805,7 +835,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -836,7 +866,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type RDSClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type RDSClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -844,8 +874,12 @@ export type RDSClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of RDSClient class constructor that set the region, credentials and other options.
+ */
+export interface RDSClientConfig extends RDSClientConfigType {}
 
-export type RDSClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type RDSClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -853,6 +887,10 @@ export type RDSClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandle
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of RDSClient class. This is resolved and normalized from the {@link RDSClientConfig | constructor configuration interface}.
+ */
+export interface RDSClientResolvedConfig extends RDSClientResolvedConfigType {}
 
 /**
  * <fullname>Amazon Relational Database Service</fullname>
@@ -919,6 +957,9 @@ export class RDSClient extends __Client<
   ServiceOutputTypes,
   RDSClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of RDSClient class. This is resolved and normalized from the {@link RDSClientConfig | constructor configuration interface}.
+   */
   readonly config: RDSClientResolvedConfig;
 
   constructor(configuration: RDSClientConfig) {

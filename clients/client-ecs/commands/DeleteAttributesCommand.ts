@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAttributesCommandInput = DeleteAttributesRequest;
-export type DeleteAttributesCommandOutput = DeleteAttributesResponse & __MetadataBearer;
+export interface DeleteAttributesCommandInput extends DeleteAttributesRequest {}
+export interface DeleteAttributesCommandOutput extends DeleteAttributesResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes one or more custom attributes from an Amazon ECS resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, DeleteAttributesCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, DeleteAttributesCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new DeleteAttributesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAttributesCommandInput} for command's `input` shape.
+ * @see {@link DeleteAttributesCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAttributesCommand extends $Command<
   DeleteAttributesCommandInput,

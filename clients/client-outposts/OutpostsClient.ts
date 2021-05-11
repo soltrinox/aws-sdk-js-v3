@@ -8,6 +8,12 @@ import {
 } from "./commands/GetOutpostInstanceTypesCommand";
 import { ListOutpostsCommandInput, ListOutpostsCommandOutput } from "./commands/ListOutpostsCommand";
 import { ListSitesCommandInput, ListSitesCommandOutput } from "./commands/ListSitesCommand";
+import {
+  ListTagsForResourceCommandInput,
+  ListTagsForResourceCommandOutput,
+} from "./commands/ListTagsForResourceCommand";
+import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
+import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
 import { ClientDefaultValues as __ClientDefaultValues } from "./runtimeConfig";
 import {
   EndpointsInputConfig,
@@ -66,7 +72,10 @@ export type ServiceInputTypes =
   | GetOutpostCommandInput
   | GetOutpostInstanceTypesCommandInput
   | ListOutpostsCommandInput
-  | ListSitesCommandInput;
+  | ListSitesCommandInput
+  | ListTagsForResourceCommandInput
+  | TagResourceCommandInput
+  | UntagResourceCommandInput;
 
 export type ServiceOutputTypes =
   | CreateOutpostCommandOutput
@@ -75,7 +84,10 @@ export type ServiceOutputTypes =
   | GetOutpostCommandOutput
   | GetOutpostInstanceTypesCommandOutput
   | ListOutpostsCommandOutput
-  | ListSitesCommandOutput;
+  | ListSitesCommandOutput
+  | ListTagsForResourceCommandOutput
+  | TagResourceCommandOutput
+  | UntagResourceCommandOutput;
 
 export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__HttpHandlerOptions>> {
   /**
@@ -142,7 +154,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -173,7 +185,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type OutpostsClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type OutpostsClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -181,8 +193,12 @@ export type OutpostsClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOp
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of OutpostsClient class constructor that set the region, credentials and other options.
+ */
+export interface OutpostsClientConfig extends OutpostsClientConfigType {}
 
-export type OutpostsClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type OutpostsClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -190,14 +206,17 @@ export type OutpostsClientResolvedConfig = __SmithyResolvedConfiguration<__HttpH
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of OutpostsClient class. This is resolved and normalized from the {@link OutpostsClientConfig | constructor configuration interface}.
+ */
+export interface OutpostsClientResolvedConfig extends OutpostsClientResolvedConfigType {}
 
 /**
- * <p>AWS Outposts is a fully-managed service that extends AWS infrastructure,
- *       APIs, and tools to customer premises. By providing local access to AWS-managed
- *       infrastructure, AWS Outposts enables customers to build and run applications
- *       on premises using the same programming interfaces as in AWS Regions, while
- *       using local compute and storage resources for lower latency and local data
- *       processing needs.</p>
+ * <p>AWS Outposts is a fully managed service that extends AWS infrastructure, APIs, and tools
+ *       to customer premises. By providing local access to AWS managed infrastructure, AWS Outposts
+ *       enables customers to build and run applications on premises using the same programming
+ *       interfaces as in AWS Regions, while using local compute and storage resources for lower
+ *       latency and local data processing needs.</p>
  */
 export class OutpostsClient extends __Client<
   __HttpHandlerOptions,
@@ -205,6 +224,9 @@ export class OutpostsClient extends __Client<
   ServiceOutputTypes,
   OutpostsClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of OutpostsClient class. This is resolved and normalized from the {@link OutpostsClientConfig | constructor configuration interface}.
+   */
   readonly config: OutpostsClientResolvedConfig;
 
   constructor(configuration: OutpostsClientConfig) {

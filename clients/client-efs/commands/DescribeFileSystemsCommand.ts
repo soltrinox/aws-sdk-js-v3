@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeFileSystemsCommandInput = DescribeFileSystemsRequest;
-export type DescribeFileSystemsCommandOutput = DescribeFileSystemsResponse & __MetadataBearer;
+export interface DescribeFileSystemsCommandInput extends DescribeFileSystemsRequest {}
+export interface DescribeFileSystemsCommandOutput extends DescribeFileSystemsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the description of a specific Amazon EFS file system if either the file system
@@ -44,6 +44,20 @@ export type DescribeFileSystemsCommandOutput = DescribeFileSystemsResponse & __M
  *       responses of a multi-call iteration is unspecified. </p>
  *          <p> This operation requires permissions for the
  *         <code>elasticfilesystem:DescribeFileSystems</code> action. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EFSClient, DescribeFileSystemsCommand } from "@aws-sdk/client-efs"; // ES Modules import
+ * // const { EFSClient, DescribeFileSystemsCommand } = require("@aws-sdk/client-efs"); // CommonJS import
+ * const client = new EFSClient(config);
+ * const command = new DescribeFileSystemsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeFileSystemsCommandInput} for command's `input` shape.
+ * @see {@link DescribeFileSystemsCommandOutput} for command's `response` shape.
+ * @see {@link EFSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeFileSystemsCommand extends $Command<
   DescribeFileSystemsCommandInput,

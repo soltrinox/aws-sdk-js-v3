@@ -17,11 +17,15 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateAutoScalingGroupCommandInput = UpdateAutoScalingGroupType;
-export type UpdateAutoScalingGroupCommandOutput = __MetadataBearer;
+export interface UpdateAutoScalingGroupCommandInput extends UpdateAutoScalingGroupType {}
+export interface UpdateAutoScalingGroupCommandOutput extends __MetadataBearer {}
 
 /**
- * <p>Updates the configuration for the specified Auto Scaling group.</p>
+ * <p>
+ *             <b>We strongly recommend that all Auto Scaling groups use launch templates to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.</b>
+ *          </p>
+ *          <p>Updates the configuration for
+ *             the specified Auto Scaling group.</p>
  *         <p>To update an Auto Scaling group, specify the name of the group and the parameter that you want
  *             to change. Any parameters that you don't specify are not changed by this update request.
  *             The new settings take effect on any scaling activities after this call returns.
@@ -62,6 +66,20 @@ export type UpdateAutoScalingGroupCommandOutput = __MetadataBearer;
  *             group, call the <a>DescribePolicies</a> API. If the group has scaling
  *             policies, you can update them by calling the <a>PutScalingPolicy</a>
  *             API.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AutoScalingClient, UpdateAutoScalingGroupCommand } from "@aws-sdk/client-auto-scaling"; // ES Modules import
+ * // const { AutoScalingClient, UpdateAutoScalingGroupCommand } = require("@aws-sdk/client-auto-scaling"); // CommonJS import
+ * const client = new AutoScalingClient(config);
+ * const command = new UpdateAutoScalingGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateAutoScalingGroupCommandInput} for command's `input` shape.
+ * @see {@link UpdateAutoScalingGroupCommandOutput} for command's `response` shape.
+ * @see {@link AutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateAutoScalingGroupCommand extends $Command<
   UpdateAutoScalingGroupCommandInput,

@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteFlowLogsCommandInput = DeleteFlowLogsRequest;
-export type DeleteFlowLogsCommandOutput = DeleteFlowLogsResult & __MetadataBearer;
+export interface DeleteFlowLogsCommandInput extends DeleteFlowLogsRequest {}
+export interface DeleteFlowLogsCommandOutput extends DeleteFlowLogsResult, __MetadataBearer {}
 
 /**
  * <p>Deletes one or more flow logs.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DeleteFlowLogsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DeleteFlowLogsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DeleteFlowLogsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteFlowLogsCommandInput} for command's `input` shape.
+ * @see {@link DeleteFlowLogsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteFlowLogsCommand extends $Command<
   DeleteFlowLogsCommandInput,

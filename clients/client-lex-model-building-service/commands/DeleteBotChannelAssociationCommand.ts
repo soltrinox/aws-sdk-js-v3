@@ -21,14 +21,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBotChannelAssociationCommandInput = DeleteBotChannelAssociationRequest;
-export type DeleteBotChannelAssociationCommandOutput = __MetadataBearer;
+export interface DeleteBotChannelAssociationCommandInput extends DeleteBotChannelAssociationRequest {}
+export interface DeleteBotChannelAssociationCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the association between an Amazon Lex bot and a messaging
  *       platform.</p>
  *          <p>This operation requires permission for the
  *         <code>lex:DeleteBotChannelAssociation</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, DeleteBotChannelAssociationCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, DeleteBotChannelAssociationCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new DeleteBotChannelAssociationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBotChannelAssociationCommandInput} for command's `input` shape.
+ * @see {@link DeleteBotChannelAssociationCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBotChannelAssociationCommand extends $Command<
   DeleteBotChannelAssociationCommandInput,

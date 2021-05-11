@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteReportCommandInput = DeleteReportInput;
-export type DeleteReportCommandOutput = DeleteReportOutput & __MetadataBearer;
+export interface DeleteReportCommandInput extends DeleteReportInput {}
+export interface DeleteReportCommandOutput extends DeleteReportOutput, __MetadataBearer {}
 
 /**
  * <p>
  *       Deletes a report.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeBuildClient, DeleteReportCommand } from "@aws-sdk/client-codebuild"; // ES Modules import
+ * // const { CodeBuildClient, DeleteReportCommand } = require("@aws-sdk/client-codebuild"); // CommonJS import
+ * const client = new CodeBuildClient(config);
+ * const command = new DeleteReportCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteReportCommandInput} for command's `input` shape.
+ * @see {@link DeleteReportCommandOutput} for command's `response` shape.
+ * @see {@link CodeBuildClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteReportCommand extends $Command<
   DeleteReportCommandInput,

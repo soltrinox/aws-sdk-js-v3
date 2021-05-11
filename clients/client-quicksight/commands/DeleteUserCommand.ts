@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteUserCommandInput = DeleteUserRequest;
-export type DeleteUserCommandOutput = DeleteUserResponse & __MetadataBearer;
+export interface DeleteUserCommandInput extends DeleteUserRequest {}
+export interface DeleteUserCommandOutput extends DeleteUserResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the Amazon QuickSight user that is associated with the identity of the AWS
  * 			Identity and Access Management (IAM) user or role that's making the call. The IAM user
  * 			isn't deleted as a result of this call. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, DeleteUserCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, DeleteUserCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new DeleteUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteUserCommandInput} for command's `input` shape.
+ * @see {@link DeleteUserCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteUserCommand extends $Command<
   DeleteUserCommandInput,

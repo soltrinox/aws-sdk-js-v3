@@ -17,12 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSipRuleCommandInput = GetSipRuleRequest;
-export type GetSipRuleCommandOutput = GetSipRuleResponse & __MetadataBearer;
+export interface GetSipRuleCommandInput extends GetSipRuleRequest {}
+export interface GetSipRuleCommandOutput extends GetSipRuleResponse, __MetadataBearer {}
 
 /**
- * <p>Retrieves the details of a SIP rule, such as the rule ID, name, triggers, and target
- *       endpoints.</p>
+ * <p>Retrieves the details of a SIP rule, such as the rule ID, name, triggers, and target endpoints.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, GetSipRuleCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, GetSipRuleCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new GetSipRuleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSipRuleCommandInput} for command's `input` shape.
+ * @see {@link GetSipRuleCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSipRuleCommand extends $Command<
   GetSipRuleCommandInput,

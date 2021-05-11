@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDeviceEventsCommandInput = ListDeviceEventsRequest;
-export type ListDeviceEventsCommandOutput = ListDeviceEventsResponse & __MetadataBearer;
+export interface ListDeviceEventsCommandInput extends ListDeviceEventsRequest {}
+export interface ListDeviceEventsCommandOutput extends ListDeviceEventsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the device event history, including device connection status, for up to 30
  *          days.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, ListDeviceEventsCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, ListDeviceEventsCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new ListDeviceEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDeviceEventsCommandInput} for command's `input` shape.
+ * @see {@link ListDeviceEventsCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDeviceEventsCommand extends $Command<
   ListDeviceEventsCommandInput,

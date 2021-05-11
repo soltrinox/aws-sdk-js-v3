@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDeviceFleetsCommandInput = ListDeviceFleetsRequest;
-export type ListDeviceFleetsCommandOutput = ListDeviceFleetsResponse & __MetadataBearer;
+export interface ListDeviceFleetsCommandInput extends ListDeviceFleetsRequest {}
+export interface ListDeviceFleetsCommandOutput extends ListDeviceFleetsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of devices in the fleet.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, ListDeviceFleetsCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, ListDeviceFleetsCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new ListDeviceFleetsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDeviceFleetsCommandInput} for command's `input` shape.
+ * @see {@link ListDeviceFleetsCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDeviceFleetsCommand extends $Command<
   ListDeviceFleetsCommandInput,

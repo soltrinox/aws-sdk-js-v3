@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListWorkflowsCommandInput = ListWorkflowsRequest;
-export type ListWorkflowsCommandOutput = ListWorkflowsResponse & __MetadataBearer;
+export interface ListWorkflowsCommandInput extends ListWorkflowsRequest {}
+export interface ListWorkflowsCommandOutput extends ListWorkflowsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists names of workflows created in the account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, ListWorkflowsCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, ListWorkflowsCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new ListWorkflowsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListWorkflowsCommandInput} for command's `input` shape.
+ * @see {@link ListWorkflowsCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListWorkflowsCommand extends $Command<
   ListWorkflowsCommandInput,

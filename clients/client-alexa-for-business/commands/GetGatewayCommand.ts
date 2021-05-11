@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetGatewayCommandInput = GetGatewayRequest;
-export type GetGatewayCommandOutput = GetGatewayResponse & __MetadataBearer;
+export interface GetGatewayCommandInput extends GetGatewayRequest {}
+export interface GetGatewayCommandOutput extends GetGatewayResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the details of a gateway.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AlexaForBusinessClient, GetGatewayCommand } from "@aws-sdk/client-alexa-for-business"; // ES Modules import
+ * // const { AlexaForBusinessClient, GetGatewayCommand } = require("@aws-sdk/client-alexa-for-business"); // CommonJS import
+ * const client = new AlexaForBusinessClient(config);
+ * const command = new GetGatewayCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetGatewayCommandInput} for command's `input` shape.
+ * @see {@link GetGatewayCommandOutput} for command's `response` shape.
+ * @see {@link AlexaForBusinessClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetGatewayCommand extends $Command<
   GetGatewayCommandInput,

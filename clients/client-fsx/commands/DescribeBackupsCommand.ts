@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeBackupsCommandInput = DescribeBackupsRequest;
-export type DescribeBackupsCommandOutput = DescribeBackupsResponse & __MetadataBearer;
+export interface DescribeBackupsCommandInput extends DescribeBackupsRequest {}
+export interface DescribeBackupsCommandOutput extends DescribeBackupsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the description of specific Amazon FSx backups, if
@@ -52,6 +52,20 @@ export type DescribeBackupsCommandOutput = DescribeBackupsResponse & __MetadataB
  *                     the responses of a multi-call iteration is unspecified.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FSxClient, DescribeBackupsCommand } from "@aws-sdk/client-fsx"; // ES Modules import
+ * // const { FSxClient, DescribeBackupsCommand } = require("@aws-sdk/client-fsx"); // CommonJS import
+ * const client = new FSxClient(config);
+ * const command = new DescribeBackupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeBackupsCommandInput} for command's `input` shape.
+ * @see {@link DescribeBackupsCommandOutput} for command's `response` shape.
+ * @see {@link FSxClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeBackupsCommand extends $Command<
   DescribeBackupsCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreFromClusterSnapshotCommandInput = RestoreFromClusterSnapshotMessage;
-export type RestoreFromClusterSnapshotCommandOutput = RestoreFromClusterSnapshotResult & __MetadataBearer;
+export interface RestoreFromClusterSnapshotCommandInput extends RestoreFromClusterSnapshotMessage {}
+export interface RestoreFromClusterSnapshotCommandOutput extends RestoreFromClusterSnapshotResult, __MetadataBearer {}
 
 /**
  * <p>Creates a new cluster from a snapshot. By default, Amazon Redshift creates the resulting
@@ -33,6 +33,20 @@ export type RestoreFromClusterSnapshotCommandOutput = RestoreFromClusterSnapshot
  * For more information about working with snapshots, go to
  * <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon Redshift Snapshots</a>
  * in the <i>Amazon Redshift Cluster Management Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, RestoreFromClusterSnapshotCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, RestoreFromClusterSnapshotCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new RestoreFromClusterSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreFromClusterSnapshotCommandInput} for command's `input` shape.
+ * @see {@link RestoreFromClusterSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreFromClusterSnapshotCommand extends $Command<
   RestoreFromClusterSnapshotCommandInput,

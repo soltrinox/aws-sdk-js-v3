@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SetVaultNotificationsCommandInput = SetVaultNotificationsInput;
-export type SetVaultNotificationsCommandOutput = __MetadataBearer;
+export interface SetVaultNotificationsCommandInput extends SetVaultNotificationsInput {}
+export interface SetVaultNotificationsCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>This operation configures notifications that will be sent when specific events happen
@@ -59,6 +59,20 @@ export type SetVaultNotificationsCommandOutput = __MetadataBearer;
  *          <p>For conceptual information and underlying REST API, see <a href="https://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html">Configuring Vault
  *             Notifications in Amazon S3 Glacier</a> and <a href="https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-put.html">Set Vault Notification
  *             Configuration </a> in the <i>Amazon Glacier Developer Guide</i>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlacierClient, SetVaultNotificationsCommand } from "@aws-sdk/client-glacier"; // ES Modules import
+ * // const { GlacierClient, SetVaultNotificationsCommand } = require("@aws-sdk/client-glacier"); // CommonJS import
+ * const client = new GlacierClient(config);
+ * const command = new SetVaultNotificationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SetVaultNotificationsCommandInput} for command's `input` shape.
+ * @see {@link SetVaultNotificationsCommandOutput} for command's `response` shape.
+ * @see {@link GlacierClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SetVaultNotificationsCommand extends $Command<
   SetVaultNotificationsCommandInput,

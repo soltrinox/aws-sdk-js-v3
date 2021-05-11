@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SuspendContactRecordingCommandInput = SuspendContactRecordingRequest;
-export type SuspendContactRecordingCommandOutput = SuspendContactRecordingResponse & __MetadataBearer;
+export interface SuspendContactRecordingCommandInput extends SuspendContactRecordingRequest {}
+export interface SuspendContactRecordingCommandOutput extends SuspendContactRecordingResponse, __MetadataBearer {}
 
 /**
  * <p>When a contact is being recorded, this API suspends recording the call. For example, you
@@ -27,6 +27,20 @@ export type SuspendContactRecordingCommandOutput = SuspendContactRecordingRespon
  *          <p>The period of time that the recording is suspended is filled with silence in the final
  *    recording. </p>
  *          <p>Only voice recordings are supported at this time.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, SuspendContactRecordingCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, SuspendContactRecordingCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new SuspendContactRecordingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SuspendContactRecordingCommandInput} for command's `input` shape.
+ * @see {@link SuspendContactRecordingCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SuspendContactRecordingCommand extends $Command<
   SuspendContactRecordingCommandInput,

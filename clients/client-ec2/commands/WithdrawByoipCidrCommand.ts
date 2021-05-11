@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type WithdrawByoipCidrCommandInput = WithdrawByoipCidrRequest;
-export type WithdrawByoipCidrCommandOutput = WithdrawByoipCidrResult & __MetadataBearer;
+export interface WithdrawByoipCidrCommandInput extends WithdrawByoipCidrRequest {}
+export interface WithdrawByoipCidrCommandOutput extends WithdrawByoipCidrResult, __MetadataBearer {}
 
 /**
  * <p>Stops advertising an address range that is provisioned as an address pool.</p>
@@ -26,6 +26,20 @@ export type WithdrawByoipCidrCommandOutput = WithdrawByoipCidrResult & __Metadat
  *          address ranges each time.</p>
  *          <p>It can take a few minutes before traffic to the specified addresses stops routing to AWS
  *           because of BGP propagation delays.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, WithdrawByoipCidrCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, WithdrawByoipCidrCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new WithdrawByoipCidrCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link WithdrawByoipCidrCommandInput} for command's `input` shape.
+ * @see {@link WithdrawByoipCidrCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class WithdrawByoipCidrCommand extends $Command<
   WithdrawByoipCidrCommandInput,

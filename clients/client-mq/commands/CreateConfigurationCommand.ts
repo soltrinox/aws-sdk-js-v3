@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateConfigurationCommandInput = CreateConfigurationRequest;
-export type CreateConfigurationCommandOutput = CreateConfigurationResponse & __MetadataBearer;
+export interface CreateConfigurationCommandInput extends CreateConfigurationRequest {}
+export interface CreateConfigurationCommandOutput extends CreateConfigurationResponse, __MetadataBearer {}
 
 /**
  * Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version).
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MqClient, CreateConfigurationCommand } from "@aws-sdk/client-mq"; // ES Modules import
+ * // const { MqClient, CreateConfigurationCommand } = require("@aws-sdk/client-mq"); // CommonJS import
+ * const client = new MqClient(config);
+ * const command = new CreateConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateConfigurationCommandInput} for command's `input` shape.
+ * @see {@link CreateConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link MqClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateConfigurationCommand extends $Command<
   CreateConfigurationCommandInput,

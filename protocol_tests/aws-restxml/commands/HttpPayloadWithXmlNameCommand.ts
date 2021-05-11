@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type HttpPayloadWithXmlNameCommandInput = HttpPayloadWithXmlNameInputOutput;
-export type HttpPayloadWithXmlNameCommandOutput = HttpPayloadWithXmlNameInputOutput & __MetadataBearer;
+export interface HttpPayloadWithXmlNameCommandInput extends HttpPayloadWithXmlNameInputOutput {}
+export interface HttpPayloadWithXmlNameCommandOutput extends HttpPayloadWithXmlNameInputOutput, __MetadataBearer {}
 
 /**
  * The following example serializes a payload that uses an XML name,
  * changing the wrapper name.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestXmlProtocolClient, HttpPayloadWithXmlNameCommand } from "@aws-sdk/aws-restxml"; // ES Modules import
+ * // const { RestXmlProtocolClient, HttpPayloadWithXmlNameCommand } = require("@aws-sdk/aws-restxml"); // CommonJS import
+ * const client = new RestXmlProtocolClient(config);
+ * const command = new HttpPayloadWithXmlNameCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link HttpPayloadWithXmlNameCommandInput} for command's `input` shape.
+ * @see {@link HttpPayloadWithXmlNameCommandOutput} for command's `response` shape.
+ * @see {@link RestXmlProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class HttpPayloadWithXmlNameCommand extends $Command<
   HttpPayloadWithXmlNameCommandInput,

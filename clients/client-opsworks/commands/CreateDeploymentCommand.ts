@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDeploymentCommandInput = CreateDeploymentRequest;
-export type CreateDeploymentCommandOutput = CreateDeploymentResult & __MetadataBearer;
+export interface CreateDeploymentCommandInput extends CreateDeploymentRequest {}
+export interface CreateDeploymentCommandOutput extends CreateDeploymentResult, __MetadataBearer {}
 
 /**
  * <p>Runs deployment or stack commands. For more information, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html">Deploying
@@ -28,6 +28,20 @@ export type CreateDeploymentCommandOutput = CreateDeploymentResult & __MetadataB
  *       permissions level for the stack, or an attached policy that explicitly grants permissions. For
  *       more information on user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, CreateDeploymentCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, CreateDeploymentCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new CreateDeploymentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDeploymentCommandInput} for command's `input` shape.
+ * @see {@link CreateDeploymentCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDeploymentCommand extends $Command<
   CreateDeploymentCommandInput,

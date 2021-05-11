@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetPersonTrackingCommandInput = GetPersonTrackingRequest;
-export type GetPersonTrackingCommandOutput = GetPersonTrackingResponse & __MetadataBearer;
+export interface GetPersonTrackingCommandInput extends GetPersonTrackingRequest {}
+export interface GetPersonTrackingCommandOutput extends GetPersonTrackingResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the path tracking results of a Amazon Rekognition Video analysis started by <a>StartPersonTracking</a>.</p>
@@ -51,6 +51,20 @@ export type GetPersonTrackingCommandOutput = GetPersonTrackingResponse & __Metad
  *    specified in <code>MaxResults</code>, the value of <code>NextToken</code> in the operation response contains a pagination token for getting the next set
  *    of results. To get the next page of results, call <code>GetPersonTracking</code> and populate the <code>NextToken</code> request parameter with the token
  *     value returned from the previous call to <code>GetPersonTracking</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, GetPersonTrackingCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, GetPersonTrackingCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new GetPersonTrackingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetPersonTrackingCommandInput} for command's `input` shape.
+ * @see {@link GetPersonTrackingCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetPersonTrackingCommand extends $Command<
   GetPersonTrackingCommandInput,

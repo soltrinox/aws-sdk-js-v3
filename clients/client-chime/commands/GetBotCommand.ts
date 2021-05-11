@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBotCommandInput = GetBotRequest;
-export type GetBotCommandOutput = GetBotResponse & __MetadataBearer;
+export interface GetBotCommandInput extends GetBotRequest {}
+export interface GetBotCommandOutput extends GetBotResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves details for the specified bot, such as bot email address, bot type, status, and display name.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, GetBotCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, GetBotCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new GetBotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBotCommandInput} for command's `input` shape.
+ * @see {@link GetBotCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBotCommand extends $Command<GetBotCommandInput, GetBotCommandOutput, ChimeClientResolvedConfig> {
   // Start section: command_properties

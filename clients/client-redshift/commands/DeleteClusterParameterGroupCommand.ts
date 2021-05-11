@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteClusterParameterGroupCommandInput = DeleteClusterParameterGroupMessage;
-export type DeleteClusterParameterGroupCommandOutput = __MetadataBearer;
+export interface DeleteClusterParameterGroupCommandInput extends DeleteClusterParameterGroupMessage {}
+export interface DeleteClusterParameterGroupCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a specified Amazon Redshift parameter group.</p>
@@ -26,6 +26,20 @@ export type DeleteClusterParameterGroupCommandOutput = __MetadataBearer;
  *             <p>You cannot delete a parameter group if it is associated with a
  *                 cluster.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, DeleteClusterParameterGroupCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, DeleteClusterParameterGroupCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new DeleteClusterParameterGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteClusterParameterGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteClusterParameterGroupCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteClusterParameterGroupCommand extends $Command<
   DeleteClusterParameterGroupCommandInput,

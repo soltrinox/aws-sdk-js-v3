@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEventsCommandInput = DescribeEventsRequest;
-export type DescribeEventsCommandOutput = DescribeEventsResponse & __MetadataBearer;
+export interface DescribeEventsCommandInput extends DescribeEventsRequest {}
+export interface DescribeEventsCommandOutput extends DescribeEventsResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -31,6 +31,20 @@ export type DescribeEventsCommandOutput = DescribeEventsResponse & __MetadataBea
  *       A <code>ResourceNotFoundException</code> is thrown when the server does not exist.
  *       A <code>ValidationException</code> is raised when parameters of the request are not valid.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksCMClient, DescribeEventsCommand } from "@aws-sdk/client-opsworkscm"; // ES Modules import
+ * // const { OpsWorksCMClient, DescribeEventsCommand } = require("@aws-sdk/client-opsworkscm"); // CommonJS import
+ * const client = new OpsWorksCMClient(config);
+ * const command = new DescribeEventsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEventsCommandInput} for command's `input` shape.
+ * @see {@link DescribeEventsCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksCMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEventsCommand extends $Command<
   DescribeEventsCommandInput,

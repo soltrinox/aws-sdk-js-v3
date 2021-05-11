@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetPolicyCommandInput = GetPolicyRequest;
-export type GetPolicyCommandOutput = GetPolicyResponse & __MetadataBearer;
+export interface GetPolicyCommandInput extends GetPolicyRequest {}
+export interface GetPolicyCommandOutput extends GetPolicyResponse, __MetadataBearer {}
 
 /**
- * <p>Gets the profiling group policy.</p>
+ * <p>
+ *             Returns the JSON-formatted resource-based policy on a profiling group.
+ *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeGuruProfilerClient, GetPolicyCommand } from "@aws-sdk/client-codeguruprofiler"; // ES Modules import
+ * // const { CodeGuruProfilerClient, GetPolicyCommand } = require("@aws-sdk/client-codeguruprofiler"); // CommonJS import
+ * const client = new CodeGuruProfilerClient(config);
+ * const command = new GetPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetPolicyCommandInput} for command's `input` shape.
+ * @see {@link GetPolicyCommandOutput} for command's `response` shape.
+ * @see {@link CodeGuruProfilerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetPolicyCommand extends $Command<
   GetPolicyCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListVirtualNodesCommandInput = ListVirtualNodesInput;
-export type ListVirtualNodesCommandOutput = ListVirtualNodesOutput & __MetadataBearer;
+export interface ListVirtualNodesCommandInput extends ListVirtualNodesInput {}
+export interface ListVirtualNodesCommandOutput extends ListVirtualNodesOutput, __MetadataBearer {}
 
 /**
  * <p>Returns a list of existing virtual nodes.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppMeshClient, ListVirtualNodesCommand } from "@aws-sdk/client-app-mesh"; // ES Modules import
+ * // const { AppMeshClient, ListVirtualNodesCommand } = require("@aws-sdk/client-app-mesh"); // CommonJS import
+ * const client = new AppMeshClient(config);
+ * const command = new ListVirtualNodesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListVirtualNodesCommandInput} for command's `input` shape.
+ * @see {@link ListVirtualNodesCommandOutput} for command's `response` shape.
+ * @see {@link AppMeshClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListVirtualNodesCommand extends $Command<
   ListVirtualNodesCommandInput,

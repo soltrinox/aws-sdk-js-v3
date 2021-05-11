@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeWorkingStorageCommandInput = DescribeWorkingStorageInput;
-export type DescribeWorkingStorageCommandOutput = DescribeWorkingStorageOutput & __MetadataBearer;
+export interface DescribeWorkingStorageCommandInput extends DescribeWorkingStorageInput {}
+export interface DescribeWorkingStorageCommandOutput extends DescribeWorkingStorageOutput, __MetadataBearer {}
 
 /**
  * <p>Returns information about the working storage of a gateway. This operation is only
@@ -32,6 +32,20 @@ export type DescribeWorkingStorageCommandOutput = DescribeWorkingStorageOutput &
  *
  *          <p>The response includes disk IDs that are configured as working storage, and it includes
  *          the amount of working storage allocated and used.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, DescribeWorkingStorageCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, DescribeWorkingStorageCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new DescribeWorkingStorageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeWorkingStorageCommandInput} for command's `input` shape.
+ * @see {@link DescribeWorkingStorageCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeWorkingStorageCommand extends $Command<
   DescribeWorkingStorageCommandInput,

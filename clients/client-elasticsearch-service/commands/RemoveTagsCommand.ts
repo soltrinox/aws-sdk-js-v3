@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveTagsCommandInput = RemoveTagsRequest;
-export type RemoveTagsCommandOutput = __MetadataBearer;
+export interface RemoveTagsCommandInput extends RemoveTagsRequest {}
+export interface RemoveTagsCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Removes the specified set of tags from the specified Elasticsearch domain.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticsearchServiceClient, RemoveTagsCommand } from "@aws-sdk/client-elasticsearch-service"; // ES Modules import
+ * // const { ElasticsearchServiceClient, RemoveTagsCommand } = require("@aws-sdk/client-elasticsearch-service"); // CommonJS import
+ * const client = new ElasticsearchServiceClient(config);
+ * const command = new RemoveTagsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveTagsCommandInput} for command's `input` shape.
+ * @see {@link RemoveTagsCommandOutput} for command's `response` shape.
+ * @see {@link ElasticsearchServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveTagsCommand extends $Command<
   RemoveTagsCommandInput,

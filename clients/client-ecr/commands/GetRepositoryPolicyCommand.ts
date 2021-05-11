@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRepositoryPolicyCommandInput = GetRepositoryPolicyRequest;
-export type GetRepositoryPolicyCommandOutput = GetRepositoryPolicyResponse & __MetadataBearer;
+export interface GetRepositoryPolicyCommandInput extends GetRepositoryPolicyRequest {}
+export interface GetRepositoryPolicyCommandOutput extends GetRepositoryPolicyResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the repository policy for the specified repository.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECRClient, GetRepositoryPolicyCommand } from "@aws-sdk/client-ecr"; // ES Modules import
+ * // const { ECRClient, GetRepositoryPolicyCommand } = require("@aws-sdk/client-ecr"); // CommonJS import
+ * const client = new ECRClient(config);
+ * const command = new GetRepositoryPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRepositoryPolicyCommandInput} for command's `input` shape.
+ * @see {@link GetRepositoryPolicyCommandOutput} for command's `response` shape.
+ * @see {@link ECRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRepositoryPolicyCommand extends $Command<
   GetRepositoryPolicyCommandInput,

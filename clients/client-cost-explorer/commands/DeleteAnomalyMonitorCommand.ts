@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAnomalyMonitorCommandInput = DeleteAnomalyMonitorRequest;
-export type DeleteAnomalyMonitorCommandOutput = DeleteAnomalyMonitorResponse & __MetadataBearer;
+export interface DeleteAnomalyMonitorCommandInput extends DeleteAnomalyMonitorRequest {}
+export interface DeleteAnomalyMonitorCommandOutput extends DeleteAnomalyMonitorResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a cost anomaly monitor. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CostExplorerClient, DeleteAnomalyMonitorCommand } from "@aws-sdk/client-cost-explorer"; // ES Modules import
+ * // const { CostExplorerClient, DeleteAnomalyMonitorCommand } = require("@aws-sdk/client-cost-explorer"); // CommonJS import
+ * const client = new CostExplorerClient(config);
+ * const command = new DeleteAnomalyMonitorCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAnomalyMonitorCommandInput} for command's `input` shape.
+ * @see {@link DeleteAnomalyMonitorCommandOutput} for command's `response` shape.
+ * @see {@link CostExplorerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAnomalyMonitorCommand extends $Command<
   DeleteAnomalyMonitorCommandInput,

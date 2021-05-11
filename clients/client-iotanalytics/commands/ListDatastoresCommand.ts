@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDatastoresCommandInput = ListDatastoresRequest;
-export type ListDatastoresCommandOutput = ListDatastoresResponse & __MetadataBearer;
+export interface ListDatastoresCommandInput extends ListDatastoresRequest {}
+export interface ListDatastoresCommandOutput extends ListDatastoresResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a list of data stores.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTAnalyticsClient, ListDatastoresCommand } from "@aws-sdk/client-iotanalytics"; // ES Modules import
+ * // const { IoTAnalyticsClient, ListDatastoresCommand } = require("@aws-sdk/client-iotanalytics"); // CommonJS import
+ * const client = new IoTAnalyticsClient(config);
+ * const command = new ListDatastoresCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDatastoresCommandInput} for command's `input` shape.
+ * @see {@link ListDatastoresCommandOutput} for command's `response` shape.
+ * @see {@link IoTAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDatastoresCommand extends $Command<
   ListDatastoresCommandInput,

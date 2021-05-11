@@ -17,19 +17,34 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveRoleFromInstanceProfileCommandInput = RemoveRoleFromInstanceProfileRequest;
-export type RemoveRoleFromInstanceProfileCommandOutput = __MetadataBearer;
+export interface RemoveRoleFromInstanceProfileCommandInput extends RemoveRoleFromInstanceProfileRequest {}
+export interface RemoveRoleFromInstanceProfileCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Removes the specified IAM role from the specified EC2 instance profile.</p>
- *          <important>
- *             <p>Make sure that you do not have any Amazon EC2 instances running with the role you are
- *             about to remove from the instance profile. Removing a role from an instance profile that
- *             is associated with a running instance might break any applications running on the
- *             instance.</p>
- *          </important>
- *          <p> For more information about IAM roles, go to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html">Working with Roles</a>. For more
- *          information about instance profiles, go to <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html">About Instance Profiles</a>.</p>
+ *         <important>
+ *             <p>Make sure that you do not have any Amazon EC2 instances running with the role you
+ *                 are about to remove from the instance profile. Removing a role from an instance
+ *                 profile that is associated with a running instance might break any applications
+ *                 running on the instance.</p>
+ *         </important>
+ *         <p> For more information about IAM roles, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html">Working with roles</a>. For more
+ *             information about instance profiles, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html">About instance
+ *             profiles</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, RemoveRoleFromInstanceProfileCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, RemoveRoleFromInstanceProfileCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new RemoveRoleFromInstanceProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveRoleFromInstanceProfileCommandInput} for command's `input` shape.
+ * @see {@link RemoveRoleFromInstanceProfileCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveRoleFromInstanceProfileCommand extends $Command<
   RemoveRoleFromInstanceProfileCommandInput,

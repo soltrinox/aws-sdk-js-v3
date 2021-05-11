@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDatastoreCommandInput = DescribeDatastoreRequest;
-export type DescribeDatastoreCommandOutput = DescribeDatastoreResponse & __MetadataBearer;
+export interface DescribeDatastoreCommandInput extends DescribeDatastoreRequest {}
+export interface DescribeDatastoreCommandOutput extends DescribeDatastoreResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about a data store.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTAnalyticsClient, DescribeDatastoreCommand } from "@aws-sdk/client-iotanalytics"; // ES Modules import
+ * // const { IoTAnalyticsClient, DescribeDatastoreCommand } = require("@aws-sdk/client-iotanalytics"); // CommonJS import
+ * const client = new IoTAnalyticsClient(config);
+ * const command = new DescribeDatastoreCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDatastoreCommandInput} for command's `input` shape.
+ * @see {@link DescribeDatastoreCommandOutput} for command's `response` shape.
+ * @see {@link IoTAnalyticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDatastoreCommand extends $Command<
   DescribeDatastoreCommandInput,

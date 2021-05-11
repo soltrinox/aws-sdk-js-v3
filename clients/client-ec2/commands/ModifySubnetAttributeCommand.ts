@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifySubnetAttributeCommandInput = ModifySubnetAttributeRequest;
-export type ModifySubnetAttributeCommandOutput = __MetadataBearer;
+export interface ModifySubnetAttributeCommandInput extends ModifySubnetAttributeRequest {}
+export interface ModifySubnetAttributeCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Modifies a subnet attribute. You can only modify one attribute at a time.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, ModifySubnetAttributeCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, ModifySubnetAttributeCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new ModifySubnetAttributeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifySubnetAttributeCommandInput} for command's `input` shape.
+ * @see {@link ModifySubnetAttributeCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifySubnetAttributeCommand extends $Command<
   ModifySubnetAttributeCommandInput,

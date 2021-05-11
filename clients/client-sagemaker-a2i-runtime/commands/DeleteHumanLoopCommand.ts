@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteHumanLoopCommandInput = DeleteHumanLoopRequest;
-export type DeleteHumanLoopCommandOutput = DeleteHumanLoopResponse & __MetadataBearer;
+export interface DeleteHumanLoopCommandInput extends DeleteHumanLoopRequest {}
+export interface DeleteHumanLoopCommandOutput extends DeleteHumanLoopResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified human loop for a flow definition.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerA2IRuntimeClient, DeleteHumanLoopCommand } from "@aws-sdk/client-sagemaker-a2i-runtime"; // ES Modules import
+ * // const { SageMakerA2IRuntimeClient, DeleteHumanLoopCommand } = require("@aws-sdk/client-sagemaker-a2i-runtime"); // CommonJS import
+ * const client = new SageMakerA2IRuntimeClient(config);
+ * const command = new DeleteHumanLoopCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteHumanLoopCommandInput} for command's `input` shape.
+ * @see {@link DeleteHumanLoopCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerA2IRuntimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteHumanLoopCommand extends $Command<
   DeleteHumanLoopCommandInput,

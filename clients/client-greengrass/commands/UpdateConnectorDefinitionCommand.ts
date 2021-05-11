@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateConnectorDefinitionCommandInput = UpdateConnectorDefinitionRequest;
-export type UpdateConnectorDefinitionCommandOutput = UpdateConnectorDefinitionResponse & __MetadataBearer;
+export interface UpdateConnectorDefinitionCommandInput extends UpdateConnectorDefinitionRequest {}
+export interface UpdateConnectorDefinitionCommandOutput extends UpdateConnectorDefinitionResponse, __MetadataBearer {}
 
 /**
  * Updates a connector definition.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, UpdateConnectorDefinitionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, UpdateConnectorDefinitionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new UpdateConnectorDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateConnectorDefinitionCommandInput} for command's `input` shape.
+ * @see {@link UpdateConnectorDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateConnectorDefinitionCommand extends $Command<
   UpdateConnectorDefinitionCommandInput,

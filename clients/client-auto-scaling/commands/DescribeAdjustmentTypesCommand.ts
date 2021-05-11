@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAdjustmentTypesCommandInput = {};
-export type DescribeAdjustmentTypesCommandOutput = DescribeAdjustmentTypesAnswer & __MetadataBearer;
+export interface DescribeAdjustmentTypesCommandInput {}
+export interface DescribeAdjustmentTypesCommandOutput extends DescribeAdjustmentTypesAnswer, __MetadataBearer {}
 
 /**
  * <p>Describes the available adjustment types for Amazon EC2 Auto Scaling scaling policies. These settings
@@ -36,6 +36,20 @@ export type DescribeAdjustmentTypesCommandOutput = DescribeAdjustmentTypesAnswer
  *                 <p>PercentChangeInCapacity</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AutoScalingClient, DescribeAdjustmentTypesCommand } from "@aws-sdk/client-auto-scaling"; // ES Modules import
+ * // const { AutoScalingClient, DescribeAdjustmentTypesCommand } = require("@aws-sdk/client-auto-scaling"); // CommonJS import
+ * const client = new AutoScalingClient(config);
+ * const command = new DescribeAdjustmentTypesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAdjustmentTypesCommandInput} for command's `input` shape.
+ * @see {@link DescribeAdjustmentTypesCommandOutput} for command's `response` shape.
+ * @see {@link AutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAdjustmentTypesCommand extends $Command<
   DescribeAdjustmentTypesCommandInput,

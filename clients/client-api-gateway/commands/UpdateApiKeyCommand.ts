@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateApiKeyCommandInput = UpdateApiKeyRequest;
-export type UpdateApiKeyCommandOutput = ApiKey & __MetadataBearer;
+export interface UpdateApiKeyCommandInput extends UpdateApiKeyRequest {}
+export interface UpdateApiKeyCommandOutput extends ApiKey, __MetadataBearer {}
 
 /**
  * <p>Changes information about an <a>ApiKey</a> resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, UpdateApiKeyCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, UpdateApiKeyCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new UpdateApiKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateApiKeyCommandInput} for command's `input` shape.
+ * @see {@link UpdateApiKeyCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateApiKeyCommand extends $Command<
   UpdateApiKeyCommandInput,

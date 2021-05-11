@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RespondDecisionTaskCompletedCommandInput = RespondDecisionTaskCompletedInput;
-export type RespondDecisionTaskCompletedCommandOutput = __MetadataBearer;
+export interface RespondDecisionTaskCompletedCommandInput extends RespondDecisionTaskCompletedInput {}
+export interface RespondDecisionTaskCompletedCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Used by deciders to tell the service that the <a>DecisionTask</a> identified
@@ -41,6 +41,20 @@ export type RespondDecisionTaskCompletedCommandOutput = __MetadataBearer;
  *       see <a href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html">Using
  *         IAM to Manage Access to Amazon SWF Workflows</a> in the
  *       <i>Amazon SWF Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SWFClient, RespondDecisionTaskCompletedCommand } from "@aws-sdk/client-swf"; // ES Modules import
+ * // const { SWFClient, RespondDecisionTaskCompletedCommand } = require("@aws-sdk/client-swf"); // CommonJS import
+ * const client = new SWFClient(config);
+ * const command = new RespondDecisionTaskCompletedCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RespondDecisionTaskCompletedCommandInput} for command's `input` shape.
+ * @see {@link RespondDecisionTaskCompletedCommandOutput} for command's `response` shape.
+ * @see {@link SWFClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RespondDecisionTaskCompletedCommand extends $Command<
   RespondDecisionTaskCompletedCommandInput,

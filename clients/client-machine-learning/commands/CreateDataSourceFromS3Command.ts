@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDataSourceFromS3CommandInput = CreateDataSourceFromS3Input;
-export type CreateDataSourceFromS3CommandOutput = CreateDataSourceFromS3Output & __MetadataBearer;
+export interface CreateDataSourceFromS3CommandInput extends CreateDataSourceFromS3Input {}
+export interface CreateDataSourceFromS3CommandOutput extends CreateDataSourceFromS3Output, __MetadataBearer {}
 
 /**
  * <p>Creates a <code>DataSource</code> object. A <code>DataSource</code> references data that
@@ -52,6 +52,20 @@ export type CreateDataSourceFromS3CommandOutput = CreateDataSourceFromS3Output &
  *             the variable be included or excluded from training? Will the variable be manipulated;
  *             for example, will it be combined with another variable or will it be split apart into
  *             word combinations? The recipe provides answers to these questions.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MachineLearningClient, CreateDataSourceFromS3Command } from "@aws-sdk/client-machine-learning"; // ES Modules import
+ * // const { MachineLearningClient, CreateDataSourceFromS3Command } = require("@aws-sdk/client-machine-learning"); // CommonJS import
+ * const client = new MachineLearningClient(config);
+ * const command = new CreateDataSourceFromS3Command(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDataSourceFromS3CommandInput} for command's `input` shape.
+ * @see {@link CreateDataSourceFromS3CommandOutput} for command's `response` shape.
+ * @see {@link MachineLearningClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDataSourceFromS3Command extends $Command<
   CreateDataSourceFromS3CommandInput,

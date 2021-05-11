@@ -20,14 +20,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDomainDeliverabilityCampaignsCommandInput = ListDomainDeliverabilityCampaignsRequest;
-export type ListDomainDeliverabilityCampaignsCommandOutput = ListDomainDeliverabilityCampaignsResponse &
-  __MetadataBearer;
+export interface ListDomainDeliverabilityCampaignsCommandInput extends ListDomainDeliverabilityCampaignsRequest {}
+export interface ListDomainDeliverabilityCampaignsCommandOutput
+  extends ListDomainDeliverabilityCampaignsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Retrieve deliverability data for all the campaigns that used a specific domain to send
  *             email during a specified time range. This data is available for a domain only if you
  *             enabled the Deliverability dashboard for the domain.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, ListDomainDeliverabilityCampaignsCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, ListDomainDeliverabilityCampaignsCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new ListDomainDeliverabilityCampaignsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDomainDeliverabilityCampaignsCommandInput} for command's `input` shape.
+ * @see {@link ListDomainDeliverabilityCampaignsCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDomainDeliverabilityCampaignsCommand extends $Command<
   ListDomainDeliverabilityCampaignsCommandInput,

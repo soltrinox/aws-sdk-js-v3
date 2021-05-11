@@ -22,12 +22,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListUsersInGroupCommandInput = ListUsersInGroupRequest;
-export type ListUsersInGroupCommandOutput = ListUsersInGroupResponse & __MetadataBearer;
+export interface ListUsersInGroupCommandInput extends ListUsersInGroupRequest {}
+export interface ListUsersInGroupCommandOutput extends ListUsersInGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the users in the specified group.</p>
  *         <p>Calling this action requires developer credentials.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, ListUsersInGroupCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, ListUsersInGroupCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new ListUsersInGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListUsersInGroupCommandInput} for command's `input` shape.
+ * @see {@link ListUsersInGroupCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListUsersInGroupCommand extends $Command<
   ListUsersInGroupCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetResolverCommandInput = GetResolverRequest;
-export type GetResolverCommandOutput = GetResolverResponse & __MetadataBearer;
+export interface GetResolverCommandInput extends GetResolverRequest {}
+export interface GetResolverCommandOutput extends GetResolverResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a <code>Resolver</code> object.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppSyncClient, GetResolverCommand } from "@aws-sdk/client-appsync"; // ES Modules import
+ * // const { AppSyncClient, GetResolverCommand } = require("@aws-sdk/client-appsync"); // CommonJS import
+ * const client = new AppSyncClient(config);
+ * const command = new GetResolverCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetResolverCommandInput} for command's `input` shape.
+ * @see {@link GetResolverCommandOutput} for command's `response` shape.
+ * @see {@link AppSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetResolverCommand extends $Command<
   GetResolverCommandInput,

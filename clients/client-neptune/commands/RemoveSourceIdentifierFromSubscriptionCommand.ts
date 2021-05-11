@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveSourceIdentifierFromSubscriptionCommandInput = RemoveSourceIdentifierFromSubscriptionMessage;
-export type RemoveSourceIdentifierFromSubscriptionCommandOutput = RemoveSourceIdentifierFromSubscriptionResult &
-  __MetadataBearer;
+export interface RemoveSourceIdentifierFromSubscriptionCommandInput
+  extends RemoveSourceIdentifierFromSubscriptionMessage {}
+export interface RemoveSourceIdentifierFromSubscriptionCommandOutput
+  extends RemoveSourceIdentifierFromSubscriptionResult,
+    __MetadataBearer {}
 
 /**
  * <p>Removes a source identifier from an existing event notification subscription.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, RemoveSourceIdentifierFromSubscriptionCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, RemoveSourceIdentifierFromSubscriptionCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new RemoveSourceIdentifierFromSubscriptionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveSourceIdentifierFromSubscriptionCommandInput} for command's `input` shape.
+ * @see {@link RemoveSourceIdentifierFromSubscriptionCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveSourceIdentifierFromSubscriptionCommand extends $Command<
   RemoveSourceIdentifierFromSubscriptionCommandInput,

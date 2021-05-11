@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListCloudFrontOriginAccessIdentitiesCommandInput = ListCloudFrontOriginAccessIdentitiesRequest;
-export type ListCloudFrontOriginAccessIdentitiesCommandOutput = ListCloudFrontOriginAccessIdentitiesResult &
-  __MetadataBearer;
+export interface ListCloudFrontOriginAccessIdentitiesCommandInput extends ListCloudFrontOriginAccessIdentitiesRequest {}
+export interface ListCloudFrontOriginAccessIdentitiesCommandOutput
+  extends ListCloudFrontOriginAccessIdentitiesResult,
+    __MetadataBearer {}
 
 /**
  * <p>Lists origin access identities.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, ListCloudFrontOriginAccessIdentitiesCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, ListCloudFrontOriginAccessIdentitiesCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new ListCloudFrontOriginAccessIdentitiesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListCloudFrontOriginAccessIdentitiesCommandInput} for command's `input` shape.
+ * @see {@link ListCloudFrontOriginAccessIdentitiesCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListCloudFrontOriginAccessIdentitiesCommand extends $Command<
   ListCloudFrontOriginAccessIdentitiesCommandInput,

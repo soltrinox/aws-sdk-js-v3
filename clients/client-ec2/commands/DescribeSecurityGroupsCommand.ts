@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeSecurityGroupsCommandInput = DescribeSecurityGroupsRequest;
-export type DescribeSecurityGroupsCommandOutput = DescribeSecurityGroupsResult & __MetadataBearer;
+export interface DescribeSecurityGroupsCommandInput extends DescribeSecurityGroupsRequest {}
+export interface DescribeSecurityGroupsCommandOutput extends DescribeSecurityGroupsResult, __MetadataBearer {}
 
 /**
  * <p>Describes the specified security groups or all of your security groups.</p>
@@ -28,6 +28,20 @@ export type DescribeSecurityGroupsCommandOutput = DescribeSecurityGroupsResult &
  * 				the <i>Amazon Elastic Compute Cloud User Guide</i> and
  * 				<a href="https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html">Security Groups for Your VPC</a> in the
  * 				<i>Amazon Virtual Private Cloud User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeSecurityGroupsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeSecurityGroupsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeSecurityGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeSecurityGroupsCommandInput} for command's `input` shape.
+ * @see {@link DescribeSecurityGroupsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeSecurityGroupsCommand extends $Command<
   DescribeSecurityGroupsCommandInput,

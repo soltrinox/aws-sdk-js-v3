@@ -17,14 +17,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRelationalDatabaseBundlesCommandInput = GetRelationalDatabaseBundlesRequest;
-export type GetRelationalDatabaseBundlesCommandOutput = GetRelationalDatabaseBundlesResult & __MetadataBearer;
+export interface GetRelationalDatabaseBundlesCommandInput extends GetRelationalDatabaseBundlesRequest {}
+export interface GetRelationalDatabaseBundlesCommandOutput
+  extends GetRelationalDatabaseBundlesResult,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the list of bundles that are available in Amazon Lightsail. A bundle describes the
  *       performance specifications for a database.</p>
  *          <p>You can use a bundle ID to create a new database with explicit performance
  *       specifications.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetRelationalDatabaseBundlesCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetRelationalDatabaseBundlesCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetRelationalDatabaseBundlesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRelationalDatabaseBundlesCommandInput} for command's `input` shape.
+ * @see {@link GetRelationalDatabaseBundlesCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRelationalDatabaseBundlesCommand extends $Command<
   GetRelationalDatabaseBundlesCommandInput,

@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AttachCertificateToDistributionCommandInput = AttachCertificateToDistributionRequest;
-export type AttachCertificateToDistributionCommandOutput = AttachCertificateToDistributionResult & __MetadataBearer;
+export interface AttachCertificateToDistributionCommandInput extends AttachCertificateToDistributionRequest {}
+export interface AttachCertificateToDistributionCommandOutput
+  extends AttachCertificateToDistributionResult,
+    __MetadataBearer {}
 
 /**
  * <p>Attaches an SSL/TLS certificate to your Amazon Lightsail content delivery network (CDN)
@@ -33,6 +35,20 @@ export type AttachCertificateToDistributionCommandOutput = AttachCertificateToDi
  *         an origin in any AWS Region, and distribute its content globally. However, all
  *         distributions are located in the <code>us-east-1</code> Region.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, AttachCertificateToDistributionCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, AttachCertificateToDistributionCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new AttachCertificateToDistributionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AttachCertificateToDistributionCommandInput} for command's `input` shape.
+ * @see {@link AttachCertificateToDistributionCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AttachCertificateToDistributionCommand extends $Command<
   AttachCertificateToDistributionCommandInput,

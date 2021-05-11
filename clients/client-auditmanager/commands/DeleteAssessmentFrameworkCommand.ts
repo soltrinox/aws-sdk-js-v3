@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAssessmentFrameworkCommandInput = DeleteAssessmentFrameworkRequest;
-export type DeleteAssessmentFrameworkCommandOutput = DeleteAssessmentFrameworkResponse & __MetadataBearer;
+export interface DeleteAssessmentFrameworkCommandInput extends DeleteAssessmentFrameworkRequest {}
+export interface DeleteAssessmentFrameworkCommandOutput extends DeleteAssessmentFrameworkResponse, __MetadataBearer {}
 
 /**
  * <p>
  *    Deletes a custom framework in AWS Audit Manager.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AuditManagerClient, DeleteAssessmentFrameworkCommand } from "@aws-sdk/client-auditmanager"; // ES Modules import
+ * // const { AuditManagerClient, DeleteAssessmentFrameworkCommand } = require("@aws-sdk/client-auditmanager"); // CommonJS import
+ * const client = new AuditManagerClient(config);
+ * const command = new DeleteAssessmentFrameworkCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAssessmentFrameworkCommandInput} for command's `input` shape.
+ * @see {@link DeleteAssessmentFrameworkCommandOutput} for command's `response` shape.
+ * @see {@link AuditManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAssessmentFrameworkCommand extends $Command<
   DeleteAssessmentFrameworkCommandInput,

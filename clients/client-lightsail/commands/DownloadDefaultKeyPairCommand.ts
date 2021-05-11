@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DownloadDefaultKeyPairCommandInput = DownloadDefaultKeyPairRequest;
-export type DownloadDefaultKeyPairCommandOutput = DownloadDefaultKeyPairResult & __MetadataBearer;
+export interface DownloadDefaultKeyPairCommandInput extends DownloadDefaultKeyPairRequest {}
+export interface DownloadDefaultKeyPairCommandOutput extends DownloadDefaultKeyPairResult, __MetadataBearer {}
 
 /**
  * <p>Downloads the default SSH key pair from the user's account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, DownloadDefaultKeyPairCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, DownloadDefaultKeyPairCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new DownloadDefaultKeyPairCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DownloadDefaultKeyPairCommandInput} for command's `input` shape.
+ * @see {@link DownloadDefaultKeyPairCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DownloadDefaultKeyPairCommand extends $Command<
   DownloadDefaultKeyPairCommandInput,

@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateIntegrationAssociationCommandInput = CreateIntegrationAssociationRequest;
-export type CreateIntegrationAssociationCommandOutput = CreateIntegrationAssociationResponse & __MetadataBearer;
+export interface CreateIntegrationAssociationCommandInput extends CreateIntegrationAssociationRequest {}
+export interface CreateIntegrationAssociationCommandOutput
+  extends CreateIntegrationAssociationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>This API is in preview release for Amazon Connect and is subject to change.</p>
- *          <p>Create an AppIntegration association with anAmazon Connect instance.</p>
+ *          <p>Create an AppIntegration association with an Amazon Connect instance.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, CreateIntegrationAssociationCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, CreateIntegrationAssociationCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new CreateIntegrationAssociationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateIntegrationAssociationCommandInput} for command's `input` shape.
+ * @see {@link CreateIntegrationAssociationCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateIntegrationAssociationCommand extends $Command<
   CreateIntegrationAssociationCommandInput,

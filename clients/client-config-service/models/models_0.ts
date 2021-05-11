@@ -24,6 +24,9 @@ export interface AccountAggregationSource {
 }
 
 export namespace AccountAggregationSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccountAggregationSource): any => ({
     ...obj,
   });
@@ -48,6 +51,9 @@ export interface ComplianceContributorCount {
 }
 
 export namespace ComplianceContributorCount {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ComplianceContributorCount): any => ({
     ...obj,
   });
@@ -95,6 +101,9 @@ export interface Compliance {
 }
 
 export namespace Compliance {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Compliance): any => ({
     ...obj,
   });
@@ -132,7 +141,92 @@ export interface AggregateComplianceByConfigRule {
 }
 
 export namespace AggregateComplianceByConfigRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AggregateComplianceByConfigRule): any => ({
+    ...obj,
+  });
+}
+
+export enum ConformancePackComplianceType {
+  COMPLIANT = "COMPLIANT",
+  INSUFFICIENT_DATA = "INSUFFICIENT_DATA",
+  NON_COMPLIANT = "NON_COMPLIANT",
+}
+
+/**
+ * <p>Provides the number of compliant and noncompliant rules within a conformance pack.
+ * 			Also provides the compliance status of the conformance pack and the total rule count which includes compliant rules, noncompliant rules, and rules that cannot be evaluated due to insufficient data.</p>
+ *
+ * 		       <p>A conformance pack is compliant if all of the rules in a conformance packs are compliant. It is noncompliant if any of the rules are not compliant.
+ * 			The compliance status of a conformance pack is INSUFFICIENT_DATA only if all rules within a conformance pack cannot be evaluated due to insufficient data.
+ * 			If some of the rules in a conformance pack are compliant but the compliance status of other rules in that same conformance pack is INSUFFICIENT_DATA, the conformance pack shows compliant.</p>
+ */
+export interface AggregateConformancePackCompliance {
+  /**
+   * <p>The compliance status of the conformance pack.</p>
+   */
+  ComplianceType?: ConformancePackComplianceType | string;
+
+  /**
+   * <p>The number of compliant AWS Config Rules.</p>
+   */
+  CompliantRuleCount?: number;
+
+  /**
+   * <p>The number of noncompliant AWS Config Rules.</p>
+   */
+  NonCompliantRuleCount?: number;
+
+  /**
+   * <p>Total number of compliant rules, noncompliant rules, and the rules that do not have any applicable resources to evaluate upon resulting in insufficient data.</p>
+   */
+  TotalRuleCount?: number;
+}
+
+export namespace AggregateConformancePackCompliance {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AggregateConformancePackCompliance): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Provides aggregate compliance of the conformance pack. Indicates whether a conformance pack is compliant based on the name of the conformance pack, account ID, and region.</p>
+ * 		       <p>A conformance pack is compliant if all of the rules in a conformance packs are compliant. It is noncompliant if any of the rules are not compliant.
+ * 			The compliance status of a conformance pack is INSUFFICIENT_DATA only if all rules within a conformance pack cannot be evaluated due to insufficient data.
+ * 			If some of the rules in a conformance pack are compliant but the compliance status of other rules in that same conformance pack is INSUFFICIENT_DATA, the conformance pack shows compliant.</p>
+ */
+export interface AggregateComplianceByConformancePack {
+  /**
+   * <p>The name of the conformance pack.</p>
+   */
+  ConformancePackName?: string;
+
+  /**
+   * <p>The compliance status of the conformance pack.</p>
+   */
+  Compliance?: AggregateConformancePackCompliance;
+
+  /**
+   * <p>The 12-digit AWS account ID of the source account.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The source AWS Region from where the data is aggregated.</p>
+   */
+  AwsRegion?: string;
+}
+
+export namespace AggregateComplianceByConformancePack {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AggregateComplianceByConformancePack): any => ({
     ...obj,
   });
 }
@@ -164,6 +258,9 @@ export interface ComplianceSummary {
 }
 
 export namespace ComplianceSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ComplianceSummary): any => ({
     ...obj,
   });
@@ -188,9 +285,123 @@ export interface AggregateComplianceCount {
 }
 
 export namespace AggregateComplianceCount {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AggregateComplianceCount): any => ({
     ...obj,
   });
+}
+
+/**
+ * <p>The number of conformance packs that are compliant and noncompliant.</p>
+ */
+export interface AggregateConformancePackComplianceCount {
+  /**
+   * <p>Number of compliant conformance packs.</p>
+   */
+  CompliantConformancePackCount?: number;
+
+  /**
+   * <p>Number of noncompliant conformance packs.</p>
+   */
+  NonCompliantConformancePackCount?: number;
+}
+
+export namespace AggregateConformancePackComplianceCount {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AggregateConformancePackComplianceCount): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Filters the conformance packs based on an account ID, region, compliance type, and the name of the conformance pack.</p>
+ */
+export interface AggregateConformancePackComplianceFilters {
+  /**
+   * <p>The name of the conformance pack.</p>
+   */
+  ConformancePackName?: string;
+
+  /**
+   * <p>The compliance status of the conformance pack.</p>
+   */
+  ComplianceType?: ConformancePackComplianceType | string;
+
+  /**
+   * <p>The 12-digit AWS account ID of the source account.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The source AWS Region from where the data is aggregated.</p>
+   */
+  AwsRegion?: string;
+}
+
+export namespace AggregateConformancePackComplianceFilters {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AggregateConformancePackComplianceFilters): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Provides a summary of compliance based on either account ID or region. </p>
+ */
+export interface AggregateConformancePackComplianceSummary {
+  /**
+   * <p>Returns an <code>AggregateConformancePackComplianceCount</code> object. </p>
+   */
+  ComplianceSummary?: AggregateConformancePackComplianceCount;
+
+  /**
+   * <p>Groups the result based on AWS Account ID or AWS Region.</p>
+   */
+  GroupName?: string;
+}
+
+export namespace AggregateConformancePackComplianceSummary {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AggregateConformancePackComplianceSummary): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Filters the results based on account ID and region. </p>
+ */
+export interface AggregateConformancePackComplianceSummaryFilters {
+  /**
+   * <p>The 12-digit AWS account ID of the source account.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The source AWS Region from where the data is aggregated.</p>
+   */
+  AwsRegion?: string;
+}
+
+export namespace AggregateConformancePackComplianceSummaryFilters {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AggregateConformancePackComplianceSummaryFilters): any => ({
+    ...obj,
+  });
+}
+
+export enum AggregateConformancePackComplianceSummaryGroupKey {
+  ACCOUNT_ID = "ACCOUNT_ID",
+  AWS_REGION = "AWS_REGION",
 }
 
 export enum AggregatedSourceStatusType {
@@ -262,6 +473,9 @@ export interface AggregatedSourceStatus {
 }
 
 export namespace AggregatedSourceStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AggregatedSourceStatus): any => ({
     ...obj,
   });
@@ -291,6 +505,9 @@ export interface EvaluationResultQualifier {
 }
 
 export namespace EvaluationResultQualifier {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EvaluationResultQualifier): any => ({
     ...obj,
   });
@@ -317,6 +534,9 @@ export interface EvaluationResultIdentifier {
 }
 
 export namespace EvaluationResultIdentifier {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EvaluationResultIdentifier): any => ({
     ...obj,
   });
@@ -374,6 +594,9 @@ export interface AggregateEvaluationResult {
 }
 
 export namespace AggregateEvaluationResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AggregateEvaluationResult): any => ({
     ...obj,
   });
@@ -396,6 +619,7 @@ export enum ResourceType {
   ClusterSecurityGroup = "AWS::Redshift::ClusterSecurityGroup",
   ClusterSnapshot = "AWS::Redshift::ClusterSnapshot",
   ClusterSubnetGroup = "AWS::Redshift::ClusterSubnetGroup",
+  ConformancePackCompliance = "AWS::Config::ConformancePackCompliance",
   CustomerGateway = "AWS::EC2::CustomerGateway",
   DBCluster = "AWS::RDS::DBCluster",
   DBClusterSnapshot = "AWS::RDS::DBClusterSnapshot",
@@ -426,6 +650,9 @@ export enum ResourceType {
   ManagedRuleSetV2 = "AWS::WAFv2::ManagedRuleSet",
   NatGateway = "AWS::EC2::NatGateway",
   NetworkAcl = "AWS::EC2::NetworkAcl",
+  NetworkFirewallFirewall = "AWS::NetworkFirewall::Firewall",
+  NetworkFirewallFirewallPolicy = "AWS::NetworkFirewall::FirewallPolicy",
+  NetworkFirewallRuleGroup = "AWS::NetworkFirewall::RuleGroup",
   NetworkInterface = "AWS::EC2::NetworkInterface",
   PatchCompliance = "AWS::SSM::PatchCompliance",
   Pipeline = "AWS::CodePipeline::Pipeline",
@@ -506,6 +733,9 @@ export interface AggregateResourceIdentifier {
 }
 
 export namespace AggregateResourceIdentifier {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AggregateResourceIdentifier): any => ({
     ...obj,
   });
@@ -541,6 +771,9 @@ export interface AggregationAuthorization {
 }
 
 export namespace AggregationAuthorization {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AggregationAuthorization): any => ({
     ...obj,
   });
@@ -654,6 +887,9 @@ export interface BaseConfigurationItem {
 }
 
 export namespace BaseConfigurationItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BaseConfigurationItem): any => ({
     ...obj,
   });
@@ -672,6 +908,9 @@ export interface BatchGetAggregateResourceConfigRequest {
 }
 
 export namespace BatchGetAggregateResourceConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetAggregateResourceConfigRequest): any => ({
     ...obj,
   });
@@ -690,6 +929,9 @@ export interface BatchGetAggregateResourceConfigResponse {
 }
 
 export namespace BatchGetAggregateResourceConfigResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetAggregateResourceConfigResponse): any => ({
     ...obj,
   });
@@ -708,6 +950,9 @@ export interface NoSuchConfigurationAggregatorException extends __SmithyExceptio
 }
 
 export namespace NoSuchConfigurationAggregatorException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchConfigurationAggregatorException): any => ({
     ...obj,
   });
@@ -715,6 +960,8 @@ export namespace NoSuchConfigurationAggregatorException {
 
 /**
  * <p>The requested action is not valid.</p>
+ * 		       <p>For PutStoredQuery, you will see this exception if there are missing required fields or if the input value fails the validation, or if you are trying to create more than 300 queries.</p>
+ * 		       <p>For GetStoredQuery, ListStoredQuery, and DeleteStoredQuery you will see this exception if there are missing required fields or if the input value fails the validation.</p>
  */
 export interface ValidationException extends __SmithyException, $MetadataBearer {
   name: "ValidationException";
@@ -726,6 +973,9 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
@@ -748,6 +998,9 @@ export interface ResourceKey {
 }
 
 export namespace ResourceKey {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceKey): any => ({
     ...obj,
   });
@@ -763,6 +1016,9 @@ export interface BatchGetResourceConfigRequest {
 }
 
 export namespace BatchGetResourceConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetResourceConfigRequest): any => ({
     ...obj,
   });
@@ -788,6 +1044,9 @@ export interface BatchGetResourceConfigResponse {
 }
 
 export namespace BatchGetResourceConfigResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchGetResourceConfigResponse): any => ({
     ...obj,
   });
@@ -808,6 +1067,9 @@ export interface NoAvailableConfigurationRecorderException extends __SmithyExcep
 }
 
 export namespace NoAvailableConfigurationRecorderException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoAvailableConfigurationRecorderException): any => ({
     ...obj,
   });
@@ -837,6 +1099,9 @@ export interface ComplianceByConfigRule {
 }
 
 export namespace ComplianceByConfigRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ComplianceByConfigRule): any => ({
     ...obj,
   });
@@ -868,6 +1133,9 @@ export interface ComplianceByResource {
 }
 
 export namespace ComplianceByResource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ComplianceByResource): any => ({
     ...obj,
   });
@@ -892,6 +1160,9 @@ export interface ComplianceSummaryByResourceType {
 }
 
 export namespace ComplianceSummaryByResourceType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ComplianceSummaryByResourceType): any => ({
     ...obj,
   });
@@ -942,6 +1213,9 @@ export interface ConfigExportDeliveryInfo {
 }
 
 export namespace ConfigExportDeliveryInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigExportDeliveryInfo): any => ({
     ...obj,
   });
@@ -1004,6 +1278,9 @@ export interface Scope {
 }
 
 export namespace Scope {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Scope): any => ({
     ...obj,
   });
@@ -1110,6 +1387,9 @@ export interface SourceDetail {
 }
 
 export namespace SourceDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SourceDetail): any => ({
     ...obj,
   });
@@ -1145,6 +1425,9 @@ export interface Source {
 }
 
 export namespace Source {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Source): any => ({
     ...obj,
   });
@@ -1282,6 +1565,9 @@ export interface ConfigRule {
 }
 
 export namespace ConfigRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigRule): any => ({
     ...obj,
   });
@@ -1321,6 +1607,9 @@ export interface ConfigRuleComplianceFilters {
 }
 
 export namespace ConfigRuleComplianceFilters {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigRuleComplianceFilters): any => ({
     ...obj,
   });
@@ -1343,6 +1632,9 @@ export interface ConfigRuleComplianceSummaryFilters {
 }
 
 export namespace ConfigRuleComplianceSummaryFilters {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigRuleComplianceSummaryFilters): any => ({
     ...obj,
   });
@@ -1445,6 +1737,9 @@ export interface ConfigRuleEvaluationStatus {
 }
 
 export namespace ConfigRuleEvaluationStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigRuleEvaluationStatus): any => ({
     ...obj,
   });
@@ -1524,6 +1819,9 @@ export interface ConfigSnapshotDeliveryProperties {
 }
 
 export namespace ConfigSnapshotDeliveryProperties {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigSnapshotDeliveryProperties): any => ({
     ...obj,
   });
@@ -1560,6 +1858,9 @@ export interface ConfigStreamDeliveryInfo {
 }
 
 export namespace ConfigStreamDeliveryInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigStreamDeliveryInfo): any => ({
     ...obj,
   });
@@ -1589,6 +1890,9 @@ export interface OrganizationAggregationSource {
 }
 
 export namespace OrganizationAggregationSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationAggregationSource): any => ({
     ...obj,
   });
@@ -1640,6 +1944,9 @@ export interface ConfigurationAggregator {
 }
 
 export namespace ConfigurationAggregator {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigurationAggregator): any => ({
     ...obj,
   });
@@ -1674,6 +1981,9 @@ export interface Relationship {
 }
 
 export namespace Relationship {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Relationship): any => ({
     ...obj,
   });
@@ -1743,7 +2053,7 @@ export interface ConfigurationItem {
   configurationItemMD5Hash?: string;
 
   /**
-   * <p>accoun</p>
+   * <p>Amazon Resource Name (ARN) associated with the resource.</p>
    */
   arn?: string;
 
@@ -1814,6 +2124,9 @@ export interface ConfigurationItem {
 }
 
 export namespace ConfigurationItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigurationItem): any => ({
     ...obj,
   });
@@ -1885,10 +2198,10 @@ export interface RecordingGroup {
    * 			resources for which AWS Config records configuration changes (for
    * 			example, <code>AWS::EC2::Instance</code> or
    * 				<code>AWS::CloudTrail::Trail</code>).</p>
-   * 		       <p>Before you can set this option to <code>true</code>, you must
+   * 		       <p>To record all configuration changes, you must
    * 			set the <code>allSupported</code> option to
-   * 			<code>false</code>.</p>
-   * 		       <p>If you set this option to <code>true</code>, when AWS Config
+   * 			<code>true</code>.</p>
+   * 		       <p>If you set this option to <code>false</code>, when AWS Config
    * 			adds support for a new type of resource, it will not record
    * 			resources of that type unless you manually add that type to your
    * 			recording group.</p>
@@ -1900,6 +2213,9 @@ export interface RecordingGroup {
 }
 
 export namespace RecordingGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecordingGroup): any => ({
     ...obj,
   });
@@ -1931,6 +2247,9 @@ export interface ConfigurationRecorder {
 }
 
 export namespace ConfigurationRecorder {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigurationRecorder): any => ({
     ...obj,
   });
@@ -1990,14 +2309,12 @@ export interface ConfigurationRecorderStatus {
 }
 
 export namespace ConfigurationRecorderStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigurationRecorderStatus): any => ({
     ...obj,
   });
-}
-
-export enum ConformancePackComplianceType {
-  COMPLIANT = "COMPLIANT",
-  NON_COMPLIANT = "NON_COMPLIANT",
 }
 
 /**
@@ -2011,12 +2328,15 @@ export interface ConformancePackComplianceFilters {
 
   /**
    * <p>Filters the results by compliance.</p>
-   * 		       <p>The allowed values are <code>COMPLIANT</code> and <code>NON_COMPLIANT</code>.</p>
+   * 		       <p>The allowed values are <code>COMPLIANT</code> and <code>NON_COMPLIANT</code>. <code>INSUFFICIENT_DATA</code> is not supported.</p>
    */
   ComplianceType?: ConformancePackComplianceType | string;
 }
 
 export namespace ConformancePackComplianceFilters {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConformancePackComplianceFilters): any => ({
     ...obj,
   });
@@ -2032,12 +2352,15 @@ export interface ConformancePackComplianceSummary {
   ConformancePackName: string | undefined;
 
   /**
-   * <p>The status of the conformance pack. The allowed values are COMPLIANT and NON_COMPLIANT. </p>
+   * <p>The status of the conformance pack. The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code> and <code>INSUFFICIENT_DATA</code>.</p>
    */
   ConformancePackComplianceStatus: ConformancePackComplianceType | string | undefined;
 }
 
 export namespace ConformancePackComplianceSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConformancePackComplianceSummary): any => ({
     ...obj,
   });
@@ -2060,6 +2383,9 @@ export interface ConformancePackInputParameter {
 }
 
 export namespace ConformancePackInputParameter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConformancePackInputParameter): any => ({
     ...obj,
   });
@@ -2085,12 +2411,18 @@ export interface ConformancePackDetail {
   ConformancePackId: string | undefined;
 
   /**
-   * <p>Conformance pack template that is used to create a pack. The delivery bucket name should start with awsconfigconforms. For example: "Resource": "arn:aws:s3:::your_bucket_name/*".</p>
+   * <p>Amazon S3 bucket where AWS Config stores conformance pack templates. </p>
+   * 	        <note>
+   *             <p>This field is optional.</p>
+   *          </note>
    */
   DeliveryS3Bucket?: string;
 
   /**
    * <p>The prefix for the Amazon S3 bucket.</p>
+   * 		       <note>
+   *             <p>This field is optional.</p>
+   *          </note>
    */
   DeliveryS3KeyPrefix?: string;
 
@@ -2111,6 +2443,9 @@ export interface ConformancePackDetail {
 }
 
 export namespace ConformancePackDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConformancePackDetail): any => ({
     ...obj,
   });
@@ -2127,7 +2462,7 @@ export interface ConformancePackEvaluationFilters {
 
   /**
    * <p>Filters the results by compliance.</p>
-   * 		       <p>The allowed values are <code>COMPLIANT</code> and <code>NON_COMPLIANT</code>.</p>
+   * 		       <p>The allowed values are <code>COMPLIANT</code> and <code>NON_COMPLIANT</code>. <code>INSUFFICIENT_DATA</code> is not supported.</p>
    */
   ComplianceType?: ConformancePackComplianceType | string;
 
@@ -2146,6 +2481,9 @@ export interface ConformancePackEvaluationFilters {
 }
 
 export namespace ConformancePackEvaluationFilters {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConformancePackEvaluationFilters): any => ({
     ...obj,
   });
@@ -2156,7 +2494,7 @@ export namespace ConformancePackEvaluationFilters {
  */
 export interface ConformancePackEvaluationResult {
   /**
-   * <p>The compliance type. The allowed values are <code>COMPLIANT</code> and <code>NON_COMPLIANT</code>. </p>
+   * <p>The compliance type. The allowed values are <code>COMPLIANT</code> and <code>NON_COMPLIANT</code>. <code>INSUFFICIENT_DATA</code> is not supported.</p>
    */
   ComplianceType: ConformancePackComplianceType | string | undefined;
 
@@ -2182,6 +2520,9 @@ export interface ConformancePackEvaluationResult {
 }
 
 export namespace ConformancePackEvaluationResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConformancePackEvaluationResult): any => ({
     ...obj,
   });
@@ -2197,13 +2538,22 @@ export interface ConformancePackRuleCompliance {
   ConfigRuleName?: string;
 
   /**
-   * <p>Compliance of the AWS Config rule</p>
-   * 		       <p>The allowed values are <code>COMPLIANT</code> and <code>NON_COMPLIANT</code>.</p>
+   * <p>Compliance of the AWS Config rule.</p>
+   * 		       <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code>.</p>
    */
   ComplianceType?: ConformancePackComplianceType | string;
+
+  /**
+   * <p>Controls for the conformance pack. A control is a process to prevent or detect problems while meeting objectives.
+   * 			A control can align with a specific compliance regime or map to internal controls defined by an organization.</p>
+   */
+  Controls?: string[];
 }
 
 export namespace ConformancePackRuleCompliance {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConformancePackRuleCompliance): any => ({
     ...obj,
   });
@@ -2281,6 +2631,9 @@ export interface ConformancePackStatusDetail {
 }
 
 export namespace ConformancePackStatusDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConformancePackStatusDetail): any => ({
     ...obj,
   });
@@ -2299,6 +2652,9 @@ export interface ConformancePackTemplateValidationException extends __SmithyExce
 }
 
 export namespace ConformancePackTemplateValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConformancePackTemplateValidationException): any => ({
     ...obj,
   });
@@ -2318,6 +2674,9 @@ export interface DeleteAggregationAuthorizationRequest {
 }
 
 export namespace DeleteAggregationAuthorizationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAggregationAuthorizationRequest): any => ({
     ...obj,
   });
@@ -2337,6 +2696,9 @@ export interface InvalidParameterValueException extends __SmithyException, $Meta
 }
 
 export namespace InvalidParameterValueException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidParameterValueException): any => ({
     ...obj,
   });
@@ -2354,6 +2716,9 @@ export interface DeleteConfigRuleRequest {
 }
 
 export namespace DeleteConfigRuleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteConfigRuleRequest): any => ({
     ...obj,
   });
@@ -2373,6 +2738,9 @@ export interface NoSuchConfigRuleException extends __SmithyException, $MetadataB
 }
 
 export namespace NoSuchConfigRuleException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchConfigRuleException): any => ({
     ...obj,
   });
@@ -2414,6 +2782,9 @@ export interface ResourceInUseException extends __SmithyException, $MetadataBear
 }
 
 export namespace ResourceInUseException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceInUseException): any => ({
     ...obj,
   });
@@ -2427,6 +2798,9 @@ export interface DeleteConfigurationAggregatorRequest {
 }
 
 export namespace DeleteConfigurationAggregatorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteConfigurationAggregatorRequest): any => ({
     ...obj,
   });
@@ -2446,6 +2820,9 @@ export interface DeleteConfigurationRecorderRequest {
 }
 
 export namespace DeleteConfigurationRecorderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteConfigurationRecorderRequest): any => ({
     ...obj,
   });
@@ -2465,6 +2842,9 @@ export interface NoSuchConfigurationRecorderException extends __SmithyException,
 }
 
 export namespace NoSuchConfigurationRecorderException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchConfigurationRecorderException): any => ({
     ...obj,
   });
@@ -2478,6 +2858,9 @@ export interface DeleteConformancePackRequest {
 }
 
 export namespace DeleteConformancePackRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteConformancePackRequest): any => ({
     ...obj,
   });
@@ -2496,6 +2879,9 @@ export interface NoSuchConformancePackException extends __SmithyException, $Meta
 }
 
 export namespace NoSuchConformancePackException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchConformancePackException): any => ({
     ...obj,
   });
@@ -2514,6 +2900,9 @@ export interface DeleteDeliveryChannelRequest {
 }
 
 export namespace DeleteDeliveryChannelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDeliveryChannelRequest): any => ({
     ...obj,
   });
@@ -2533,6 +2922,9 @@ export interface LastDeliveryChannelDeleteFailedException extends __SmithyExcept
 }
 
 export namespace LastDeliveryChannelDeleteFailedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LastDeliveryChannelDeleteFailedException): any => ({
     ...obj,
   });
@@ -2552,6 +2944,9 @@ export interface NoSuchDeliveryChannelException extends __SmithyException, $Meta
 }
 
 export namespace NoSuchDeliveryChannelException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchDeliveryChannelException): any => ({
     ...obj,
   });
@@ -2569,6 +2964,9 @@ export interface DeleteEvaluationResultsRequest {
 }
 
 export namespace DeleteEvaluationResultsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteEvaluationResultsRequest): any => ({
     ...obj,
   });
@@ -2581,6 +2979,9 @@ export namespace DeleteEvaluationResultsRequest {
 export interface DeleteEvaluationResultsResponse {}
 
 export namespace DeleteEvaluationResultsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteEvaluationResultsResponse): any => ({
     ...obj,
   });
@@ -2594,6 +2995,9 @@ export interface DeleteOrganizationConfigRuleRequest {
 }
 
 export namespace DeleteOrganizationConfigRuleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteOrganizationConfigRuleRequest): any => ({
     ...obj,
   });
@@ -2612,14 +3016,34 @@ export interface NoSuchOrganizationConfigRuleException extends __SmithyException
 }
 
 export namespace NoSuchOrganizationConfigRuleException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchOrganizationConfigRuleException): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>For PutConfigAggregator API, no permission to call EnableAWSServiceAccess API.</p>
- * 		       <p>For all OrganizationConfigRule and OrganizationConformancePack APIs, AWS Config throws an exception if APIs are called from member accounts. All APIs must be called from organization master account.</p>
+ * <p>For <code>PutConfigurationAggregator</code> API, you can see this exception for the following reasons:</p>
+ * 		       <ul>
+ *             <li>
+ *                <p>No permission to call <code>EnableAWSServiceAccess</code> API</p>
+ *             </li>
+ *             <li>
+ *                <p>The configuration aggregator cannot be updated because your AWS Organization management account or the delegated administrator role changed.
+ * 				Delete this aggregator and create a new one with the current AWS Organization.</p>
+ *             </li>
+ *             <li>
+ *                <p>The configuration aggregator is associated with a previous AWS Organization and AWS Config cannot aggregate data with current AWS Organization.
+ * 				Delete this aggregator and create a new one with the current AWS Organization.</p>
+ *             </li>
+ *             <li>
+ *                <p>You are not a registered delegated administrator for AWS Config with permissions to call <code>ListDelegatedAdministrators</code> API.
+ * 			Ensure that the management account registers delagated administrator for AWS Config service principle name before the delegated administrator creates an aggregator.</p>
+ *             </li>
+ *          </ul>
+ * 		       <p>For all <code>OrganizationConfigRule</code> and <code>OrganizationConformancePack</code> APIs, AWS Config throws an exception if APIs are called from member accounts. All APIs must be called from organization master account.</p>
  */
 export interface OrganizationAccessDeniedException extends __SmithyException, $MetadataBearer {
   name: "OrganizationAccessDeniedException";
@@ -2631,6 +3055,9 @@ export interface OrganizationAccessDeniedException extends __SmithyException, $M
 }
 
 export namespace OrganizationAccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationAccessDeniedException): any => ({
     ...obj,
   });
@@ -2644,6 +3071,9 @@ export interface DeleteOrganizationConformancePackRequest {
 }
 
 export namespace DeleteOrganizationConformancePackRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteOrganizationConformancePackRequest): any => ({
     ...obj,
   });
@@ -2663,6 +3093,9 @@ export interface NoSuchOrganizationConformancePackException extends __SmithyExce
 }
 
 export namespace NoSuchOrganizationConformancePackException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchOrganizationConformancePackException): any => ({
     ...obj,
   });
@@ -2682,6 +3115,9 @@ export interface DeletePendingAggregationRequestRequest {
 }
 
 export namespace DeletePendingAggregationRequestRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePendingAggregationRequestRequest): any => ({
     ...obj,
   });
@@ -2700,6 +3136,9 @@ export interface DeleteRemediationConfigurationRequest {
 }
 
 export namespace DeleteRemediationConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRemediationConfigurationRequest): any => ({
     ...obj,
   });
@@ -2708,6 +3147,9 @@ export namespace DeleteRemediationConfigurationRequest {
 export interface DeleteRemediationConfigurationResponse {}
 
 export namespace DeleteRemediationConfigurationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRemediationConfigurationResponse): any => ({
     ...obj,
   });
@@ -2748,6 +3190,9 @@ export interface InsufficientPermissionsException extends __SmithyException, $Me
 }
 
 export namespace InsufficientPermissionsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsufficientPermissionsException): any => ({
     ...obj,
   });
@@ -2766,6 +3211,9 @@ export interface NoSuchRemediationConfigurationException extends __SmithyExcepti
 }
 
 export namespace NoSuchRemediationConfigurationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchRemediationConfigurationException): any => ({
     ...obj,
   });
@@ -2784,6 +3232,9 @@ export interface RemediationInProgressException extends __SmithyException, $Meta
 }
 
 export namespace RemediationInProgressException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemediationInProgressException): any => ({
     ...obj,
   });
@@ -2805,6 +3256,9 @@ export interface RemediationExceptionResourceKey {
 }
 
 export namespace RemediationExceptionResourceKey {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemediationExceptionResourceKey): any => ({
     ...obj,
   });
@@ -2823,6 +3277,9 @@ export interface DeleteRemediationExceptionsRequest {
 }
 
 export namespace DeleteRemediationExceptionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRemediationExceptionsRequest): any => ({
     ...obj,
   });
@@ -2844,6 +3301,9 @@ export interface FailedDeleteRemediationExceptionsBatch {
 }
 
 export namespace FailedDeleteRemediationExceptionsBatch {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FailedDeleteRemediationExceptionsBatch): any => ({
     ...obj,
   });
@@ -2857,6 +3317,9 @@ export interface DeleteRemediationExceptionsResponse {
 }
 
 export namespace DeleteRemediationExceptionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRemediationExceptionsResponse): any => ({
     ...obj,
   });
@@ -2875,6 +3338,9 @@ export interface NoSuchRemediationExceptionException extends __SmithyException, 
 }
 
 export namespace NoSuchRemediationExceptionException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchRemediationExceptionException): any => ({
     ...obj,
   });
@@ -2893,6 +3359,9 @@ export interface DeleteResourceConfigRequest {
 }
 
 export namespace DeleteResourceConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteResourceConfigRequest): any => ({
     ...obj,
   });
@@ -2911,6 +3380,9 @@ export interface NoRunningConfigurationRecorderException extends __SmithyExcepti
 }
 
 export namespace NoRunningConfigurationRecorderException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoRunningConfigurationRecorderException): any => ({
     ...obj,
   });
@@ -2924,6 +3396,9 @@ export interface DeleteRetentionConfigurationRequest {
 }
 
 export namespace DeleteRetentionConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRetentionConfigurationRequest): any => ({
     ...obj,
   });
@@ -2942,7 +3417,58 @@ export interface NoSuchRetentionConfigurationException extends __SmithyException
 }
 
 export namespace NoSuchRetentionConfigurationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchRetentionConfigurationException): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteStoredQueryRequest {
+  /**
+   * <p>The name of the query that you want to delete.</p>
+   */
+  QueryName: string | undefined;
+}
+
+export namespace DeleteStoredQueryRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteStoredQueryRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteStoredQueryResponse {}
+
+export namespace DeleteStoredQueryResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteStoredQueryResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>You have specified a resource that does not exist.</p>
+ */
+export interface ResourceNotFoundException extends __SmithyException, $MetadataBearer {
+  name: "ResourceNotFoundException";
+  $fault: "client";
+  /**
+   * <p>Error executing the command</p>
+   */
+  message?: string;
+}
+
+export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
 }
@@ -2960,6 +3486,9 @@ export interface DeliverConfigSnapshotRequest {
 }
 
 export namespace DeliverConfigSnapshotRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeliverConfigSnapshotRequest): any => ({
     ...obj,
   });
@@ -2977,6 +3506,9 @@ export interface DeliverConfigSnapshotResponse {
 }
 
 export namespace DeliverConfigSnapshotResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeliverConfigSnapshotResponse): any => ({
     ...obj,
   });
@@ -3013,6 +3545,12 @@ export interface DeliveryChannel {
   s3KeyPrefix?: string;
 
   /**
+   * <p>The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS) customer managed key (CMK) used to encrypt objects delivered by AWS Config.
+   * 			Must belong to the same Region as the destination S3 bucket.</p>
+   */
+  s3KmsKeyArn?: string;
+
+  /**
    * <p>The Amazon Resource Name (ARN) of the Amazon SNS topic to which
    * 			AWS Config sends notifications about configuration
    * 			changes.</p>
@@ -3031,6 +3569,9 @@ export interface DeliveryChannel {
 }
 
 export namespace DeliveryChannel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeliveryChannel): any => ({
     ...obj,
   });
@@ -3068,6 +3609,9 @@ export interface DeliveryChannelStatus {
 }
 
 export namespace DeliveryChannelStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeliveryChannelStatus): any => ({
     ...obj,
   });
@@ -3101,6 +3645,9 @@ export interface DescribeAggregateComplianceByConfigRulesRequest {
 }
 
 export namespace DescribeAggregateComplianceByConfigRulesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAggregateComplianceByConfigRulesRequest): any => ({
     ...obj,
   });
@@ -3121,6 +3668,9 @@ export interface DescribeAggregateComplianceByConfigRulesResponse {
 }
 
 export namespace DescribeAggregateComplianceByConfigRulesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAggregateComplianceByConfigRulesResponse): any => ({
     ...obj,
   });
@@ -3139,6 +3689,9 @@ export interface InvalidLimitException extends __SmithyException, $MetadataBeare
 }
 
 export namespace InvalidLimitException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidLimitException): any => ({
     ...obj,
   });
@@ -3159,7 +3712,62 @@ export interface InvalidNextTokenException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidNextTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextTokenException): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeAggregateComplianceByConformancePacksRequest {
+  /**
+   * <p>The name of the configuration aggregator.</p>
+   */
+  ConfigurationAggregatorName: string | undefined;
+
+  /**
+   * <p>Filters the result by <code>AggregateConformancePackComplianceFilters</code> object.</p>
+   */
+  Filters?: AggregateConformancePackComplianceFilters;
+
+  /**
+   * <p>The maximum number of conformance packs compliance details returned on each page. The default is maximum. If you specify 0, AWS Config uses the default. </p>
+   */
+  Limit?: number;
+
+  /**
+   * <p>The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+   */
+  NextToken?: string;
+}
+
+export namespace DescribeAggregateComplianceByConformancePacksRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeAggregateComplianceByConformancePacksRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeAggregateComplianceByConformancePacksResponse {
+  /**
+   * <p>Returns the <code>AggregateComplianceByConformancePack</code> object.</p>
+   */
+  AggregateComplianceByConformancePacks?: AggregateComplianceByConformancePack[];
+
+  /**
+   * <p>The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+   */
+  NextToken?: string;
+}
+
+export namespace DescribeAggregateComplianceByConformancePacksResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeAggregateComplianceByConformancePacksResponse): any => ({
     ...obj,
   });
 }
@@ -3180,6 +3788,9 @@ export interface DescribeAggregationAuthorizationsRequest {
 }
 
 export namespace DescribeAggregationAuthorizationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAggregationAuthorizationsRequest): any => ({
     ...obj,
   });
@@ -3200,6 +3811,9 @@ export interface DescribeAggregationAuthorizationsResponse {
 }
 
 export namespace DescribeAggregationAuthorizationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAggregationAuthorizationsResponse): any => ({
     ...obj,
   });
@@ -3230,6 +3844,9 @@ export interface DescribeComplianceByConfigRuleRequest {
 }
 
 export namespace DescribeComplianceByConfigRuleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeComplianceByConfigRuleRequest): any => ({
     ...obj,
   });
@@ -3253,6 +3870,9 @@ export interface DescribeComplianceByConfigRuleResponse {
 }
 
 export namespace DescribeComplianceByConfigRuleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeComplianceByConfigRuleResponse): any => ({
     ...obj,
   });
@@ -3300,6 +3920,9 @@ export interface DescribeComplianceByResourceRequest {
 }
 
 export namespace DescribeComplianceByResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeComplianceByResourceRequest): any => ({
     ...obj,
   });
@@ -3323,6 +3946,9 @@ export interface DescribeComplianceByResourceResponse {
 }
 
 export namespace DescribeComplianceByResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeComplianceByResourceResponse): any => ({
     ...obj,
   });
@@ -3361,6 +3987,9 @@ export interface DescribeConfigRuleEvaluationStatusRequest {
 }
 
 export namespace DescribeConfigRuleEvaluationStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigRuleEvaluationStatusRequest): any => ({
     ...obj,
   });
@@ -3384,6 +4013,9 @@ export interface DescribeConfigRuleEvaluationStatusResponse {
 }
 
 export namespace DescribeConfigRuleEvaluationStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigRuleEvaluationStatusResponse): any => ({
     ...obj,
   });
@@ -3409,6 +4041,9 @@ export interface DescribeConfigRulesRequest {
 }
 
 export namespace DescribeConfigRulesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigRulesRequest): any => ({
     ...obj,
   });
@@ -3431,6 +4066,9 @@ export interface DescribeConfigRulesResponse {
 }
 
 export namespace DescribeConfigRulesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigRulesResponse): any => ({
     ...obj,
   });
@@ -3457,6 +4095,9 @@ export interface DescribeConfigurationAggregatorsRequest {
 }
 
 export namespace DescribeConfigurationAggregatorsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigurationAggregatorsRequest): any => ({
     ...obj,
   });
@@ -3476,6 +4117,9 @@ export interface DescribeConfigurationAggregatorsResponse {
 }
 
 export namespace DescribeConfigurationAggregatorsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigurationAggregatorsResponse): any => ({
     ...obj,
   });
@@ -3521,6 +4165,9 @@ export interface DescribeConfigurationAggregatorSourcesStatusRequest {
 }
 
 export namespace DescribeConfigurationAggregatorSourcesStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigurationAggregatorSourcesStatusRequest): any => ({
     ...obj,
   });
@@ -3541,6 +4188,9 @@ export interface DescribeConfigurationAggregatorSourcesStatusResponse {
 }
 
 export namespace DescribeConfigurationAggregatorSourcesStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigurationAggregatorSourcesStatusResponse): any => ({
     ...obj,
   });
@@ -3557,6 +4207,9 @@ export interface DescribeConfigurationRecordersRequest {
 }
 
 export namespace DescribeConfigurationRecordersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigurationRecordersRequest): any => ({
     ...obj,
   });
@@ -3574,6 +4227,9 @@ export interface DescribeConfigurationRecordersResponse {
 }
 
 export namespace DescribeConfigurationRecordersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigurationRecordersResponse): any => ({
     ...obj,
   });
@@ -3593,6 +4249,9 @@ export interface DescribeConfigurationRecorderStatusRequest {
 }
 
 export namespace DescribeConfigurationRecorderStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigurationRecorderStatusRequest): any => ({
     ...obj,
   });
@@ -3611,6 +4270,9 @@ export interface DescribeConfigurationRecorderStatusResponse {
 }
 
 export namespace DescribeConfigurationRecorderStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConfigurationRecorderStatusResponse): any => ({
     ...obj,
   });
@@ -3639,6 +4301,9 @@ export interface DescribeConformancePackComplianceRequest {
 }
 
 export namespace DescribeConformancePackComplianceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConformancePackComplianceRequest): any => ({
     ...obj,
   });
@@ -3662,6 +4327,9 @@ export interface DescribeConformancePackComplianceResponse {
 }
 
 export namespace DescribeConformancePackComplianceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConformancePackComplianceResponse): any => ({
     ...obj,
   });
@@ -3680,6 +4348,9 @@ export interface NoSuchConfigRuleInConformancePackException extends __SmithyExce
 }
 
 export namespace NoSuchConfigRuleInConformancePackException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchConfigRuleInConformancePackException): any => ({
     ...obj,
   });
@@ -3703,6 +4374,9 @@ export interface DescribeConformancePacksRequest {
 }
 
 export namespace DescribeConformancePacksRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConformancePacksRequest): any => ({
     ...obj,
   });
@@ -3721,6 +4395,9 @@ export interface DescribeConformancePacksResponse {
 }
 
 export namespace DescribeConformancePacksResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConformancePacksResponse): any => ({
     ...obj,
   });
@@ -3744,6 +4421,9 @@ export interface DescribeConformancePackStatusRequest {
 }
 
 export namespace DescribeConformancePackStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConformancePackStatusRequest): any => ({
     ...obj,
   });
@@ -3762,6 +4442,9 @@ export interface DescribeConformancePackStatusResponse {
 }
 
 export namespace DescribeConformancePackStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConformancePackStatusResponse): any => ({
     ...obj,
   });
@@ -3779,6 +4462,9 @@ export interface DescribeDeliveryChannelsRequest {
 }
 
 export namespace DescribeDeliveryChannelsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDeliveryChannelsRequest): any => ({
     ...obj,
   });
@@ -3797,6 +4483,9 @@ export interface DescribeDeliveryChannelsResponse {
 }
 
 export namespace DescribeDeliveryChannelsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDeliveryChannelsResponse): any => ({
     ...obj,
   });
@@ -3814,6 +4503,9 @@ export interface DescribeDeliveryChannelStatusRequest {
 }
 
 export namespace DescribeDeliveryChannelStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDeliveryChannelStatusRequest): any => ({
     ...obj,
   });
@@ -3831,6 +4523,9 @@ export interface DescribeDeliveryChannelStatusResponse {
 }
 
 export namespace DescribeDeliveryChannelStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDeliveryChannelStatusResponse): any => ({
     ...obj,
   });
@@ -3854,6 +4549,9 @@ export interface DescribeOrganizationConfigRulesRequest {
 }
 
 export namespace DescribeOrganizationConfigRulesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationConfigRulesRequest): any => ({
     ...obj,
   });
@@ -3941,6 +4639,9 @@ export interface OrganizationCustomRuleMetadata {
 }
 
 export namespace OrganizationCustomRuleMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationCustomRuleMetadata): any => ({
     ...obj,
   });
@@ -4001,6 +4702,9 @@ export interface OrganizationManagedRuleMetadata {
 }
 
 export namespace OrganizationManagedRuleMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationManagedRuleMetadata): any => ({
     ...obj,
   });
@@ -4042,6 +4746,9 @@ export interface OrganizationConfigRule {
 }
 
 export namespace OrganizationConfigRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationConfigRule): any => ({
     ...obj,
   });
@@ -4060,6 +4767,9 @@ export interface DescribeOrganizationConfigRulesResponse {
 }
 
 export namespace DescribeOrganizationConfigRulesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationConfigRulesResponse): any => ({
     ...obj,
   });
@@ -4083,6 +4793,9 @@ export interface DescribeOrganizationConfigRuleStatusesRequest {
 }
 
 export namespace DescribeOrganizationConfigRuleStatusesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationConfigRuleStatusesRequest): any => ({
     ...obj,
   });
@@ -4173,6 +4886,9 @@ export interface OrganizationConfigRuleStatus {
 }
 
 export namespace OrganizationConfigRuleStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationConfigRuleStatus): any => ({
     ...obj,
   });
@@ -4191,6 +4907,9 @@ export interface DescribeOrganizationConfigRuleStatusesResponse {
 }
 
 export namespace DescribeOrganizationConfigRuleStatusesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationConfigRuleStatusesResponse): any => ({
     ...obj,
   });
@@ -4216,6 +4935,9 @@ export interface DescribeOrganizationConformancePacksRequest {
 }
 
 export namespace DescribeOrganizationConformancePacksRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationConformancePacksRequest): any => ({
     ...obj,
   });
@@ -4236,13 +4958,18 @@ export interface OrganizationConformancePack {
   OrganizationConformancePackArn: string | undefined;
 
   /**
-   * <p>Location of an Amazon S3 bucket where AWS Config can
-   * 			deliver evaluation results and conformance pack template that is used to create a pack. </p>
+   * <p>Amazon S3 bucket where AWS Config stores conformance pack templates.  </p>
+   * 		       <note>
+   *             <p>This field is optional.</p>
+   *          </note>
    */
   DeliveryS3Bucket?: string;
 
   /**
    * <p>Any folder structure you want to add to an Amazon S3 bucket.</p>
+   * 		       <note>
+   *             <p>This field is optional.</p>
+   *          </note>
    */
   DeliveryS3KeyPrefix?: string;
 
@@ -4263,6 +4990,9 @@ export interface OrganizationConformancePack {
 }
 
 export namespace OrganizationConformancePack {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationConformancePack): any => ({
     ...obj,
   });
@@ -4282,6 +5012,9 @@ export interface DescribeOrganizationConformancePacksResponse {
 }
 
 export namespace DescribeOrganizationConformancePacksResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationConformancePacksResponse): any => ({
     ...obj,
   });
@@ -4307,6 +5040,9 @@ export interface DescribeOrganizationConformancePackStatusesRequest {
 }
 
 export namespace DescribeOrganizationConformancePackStatusesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationConformancePackStatusesRequest): any => ({
     ...obj,
   });
@@ -4403,6 +5139,9 @@ export interface OrganizationConformancePackStatus {
 }
 
 export namespace OrganizationConformancePackStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationConformancePackStatus): any => ({
     ...obj,
   });
@@ -4421,6 +5160,9 @@ export interface DescribeOrganizationConformancePackStatusesResponse {
 }
 
 export namespace DescribeOrganizationConformancePackStatusesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrganizationConformancePackStatusesResponse): any => ({
     ...obj,
   });
@@ -4442,6 +5184,9 @@ export interface DescribePendingAggregationRequestsRequest {
 }
 
 export namespace DescribePendingAggregationRequestsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePendingAggregationRequestsRequest): any => ({
     ...obj,
   });
@@ -4466,6 +5211,9 @@ export interface PendingAggregationRequest {
 }
 
 export namespace PendingAggregationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PendingAggregationRequest): any => ({
     ...obj,
   });
@@ -4485,6 +5233,9 @@ export interface DescribePendingAggregationRequestsResponse {
 }
 
 export namespace DescribePendingAggregationRequestsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePendingAggregationRequestsResponse): any => ({
     ...obj,
   });
@@ -4498,6 +5249,9 @@ export interface DescribeRemediationConfigurationsRequest {
 }
 
 export namespace DescribeRemediationConfigurationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRemediationConfigurationsRequest): any => ({
     ...obj,
   });
@@ -4521,6 +5275,9 @@ export interface SsmControls {
 }
 
 export namespace SsmControls {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SsmControls): any => ({
     ...obj,
   });
@@ -4537,6 +5294,9 @@ export interface ExecutionControls {
 }
 
 export namespace ExecutionControls {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExecutionControls): any => ({
     ...obj,
   });
@@ -4557,6 +5317,9 @@ export interface ResourceValue {
 }
 
 export namespace ResourceValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceValue): any => ({
     ...obj,
   });
@@ -4573,6 +5336,9 @@ export interface StaticValue {
 }
 
 export namespace StaticValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StaticValue): any => ({
     ...obj,
   });
@@ -4594,6 +5360,9 @@ export interface RemediationParameterValue {
 }
 
 export namespace RemediationParameterValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemediationParameterValue): any => ({
     ...obj,
   });
@@ -4653,7 +5422,7 @@ export interface RemediationConfiguration {
 
   /**
    * <p>The maximum number of failed attempts for auto-remediation. If you do not select a number, the default is 5.</p>
-   * 		       <p>For example, if you specify MaximumAutomaticAttempts as 5 with RetryAttemptsSeconds as 50 seconds,
+   * 		       <p>For example, if you specify MaximumAutomaticAttempts as 5 with RetryAttemptSeconds as 50 seconds,
    *
    * 			AWS Config will put a RemediationException on your behalf for the failing resource after the 5th failed attempt within 50 seconds.</p>
    */
@@ -4661,7 +5430,7 @@ export interface RemediationConfiguration {
 
   /**
    * <p>Maximum time in seconds that AWS Config runs auto-remediation. If you do not select a number, the default is 60 seconds. </p>
-   * 		       <p>For example, if you specify RetryAttemptsSeconds as 50 seconds and MaximumAutomaticAttempts as 5,
+   * 		       <p>For example, if you specify RetryAttemptSeconds as 50 seconds and MaximumAutomaticAttempts as 5,
    * 		AWS Config will run auto-remediations 5 times within 50 seconds before throwing an exception.</p>
    */
   RetryAttemptSeconds?: number;
@@ -4678,6 +5447,9 @@ export interface RemediationConfiguration {
 }
 
 export namespace RemediationConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemediationConfiguration): any => ({
     ...obj,
   });
@@ -4691,6 +5463,9 @@ export interface DescribeRemediationConfigurationsResponse {
 }
 
 export namespace DescribeRemediationConfigurationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRemediationConfigurationsResponse): any => ({
     ...obj,
   });
@@ -4719,6 +5494,9 @@ export interface DescribeRemediationExceptionsRequest {
 }
 
 export namespace DescribeRemediationExceptionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRemediationExceptionsRequest): any => ({
     ...obj,
   });
@@ -4755,6 +5533,9 @@ export interface RemediationException {
 }
 
 export namespace RemediationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemediationException): any => ({
     ...obj,
   });
@@ -4773,6 +5554,9 @@ export interface DescribeRemediationExceptionsResponse {
 }
 
 export namespace DescribeRemediationExceptionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRemediationExceptionsResponse): any => ({
     ...obj,
   });
@@ -4801,6 +5585,9 @@ export interface DescribeRemediationExecutionStatusRequest {
 }
 
 export namespace DescribeRemediationExecutionStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRemediationExecutionStatusRequest): any => ({
     ...obj,
   });
@@ -4850,6 +5637,9 @@ export interface RemediationExecutionStep {
 }
 
 export namespace RemediationExecutionStep {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemediationExecutionStep): any => ({
     ...obj,
   });
@@ -4887,6 +5677,9 @@ export interface RemediationExecutionStatus {
 }
 
 export namespace RemediationExecutionStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemediationExecutionStatus): any => ({
     ...obj,
   });
@@ -4905,6 +5698,9 @@ export interface DescribeRemediationExecutionStatusResponse {
 }
 
 export namespace DescribeRemediationExecutionStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRemediationExecutionStatusResponse): any => ({
     ...obj,
   });
@@ -4931,6 +5727,9 @@ export interface DescribeRetentionConfigurationsRequest {
 }
 
 export namespace DescribeRetentionConfigurationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRetentionConfigurationsRequest): any => ({
     ...obj,
   });
@@ -4955,6 +5754,9 @@ export interface RetentionConfiguration {
 }
 
 export namespace RetentionConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RetentionConfiguration): any => ({
     ...obj,
   });
@@ -4975,6 +5777,9 @@ export interface DescribeRetentionConfigurationsResponse {
 }
 
 export namespace DescribeRetentionConfigurationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRetentionConfigurationsResponse): any => ({
     ...obj,
   });
@@ -5030,6 +5835,9 @@ export interface Evaluation {
 }
 
 export namespace Evaluation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Evaluation): any => ({
     ...obj,
   });
@@ -5084,7 +5892,49 @@ export interface EvaluationResult {
 }
 
 export namespace EvaluationResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EvaluationResult): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Identifies an AWS resource and indicates whether it complies with the AWS Config rule that it was evaluated against.</p>
+ */
+export interface ExternalEvaluation {
+  /**
+   * <p>The evaluated compliance resource type. AWS Config accepts <code>AWS::::Account</code> resource type.</p>
+   */
+  ComplianceResourceType: string | undefined;
+
+  /**
+   * <p>The evaluated compliance resource ID. AWS Config accepts only AWS account ID.</p>
+   */
+  ComplianceResourceId: string | undefined;
+
+  /**
+   * <p>The compliance of the AWS resource. The valid values are <code>COMPLIANT, NON_COMPLIANT, </code> and <code>NOT_APPLICABLE</code>.</p>
+   */
+  ComplianceType: ComplianceType | string | undefined;
+
+  /**
+   * <p>Supplementary information about the reason of compliance. For example, this task was completed on a specific date.</p>
+   */
+  Annotation?: string;
+
+  /**
+   * <p>The time when the compliance was recorded. </p>
+   */
+  OrderingTimestamp: Date | undefined;
+}
+
+export namespace ExternalEvaluation {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ExternalEvaluation): any => ({
     ...obj,
   });
 }
@@ -5105,6 +5955,9 @@ export interface FailedRemediationBatch {
 }
 
 export namespace FailedRemediationBatch {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FailedRemediationBatch): any => ({
     ...obj,
   });
@@ -5126,6 +5979,9 @@ export interface FailedRemediationExceptionBatch {
 }
 
 export namespace FailedRemediationExceptionBatch {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FailedRemediationExceptionBatch): any => ({
     ...obj,
   });
@@ -5142,6 +5998,9 @@ export interface FieldInfo {
 }
 
 export namespace FieldInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FieldInfo): any => ({
     ...obj,
   });
@@ -5197,6 +6056,9 @@ export interface GetAggregateComplianceDetailsByConfigRuleRequest {
 }
 
 export namespace GetAggregateComplianceDetailsByConfigRuleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAggregateComplianceDetailsByConfigRuleRequest): any => ({
     ...obj,
   });
@@ -5216,6 +6078,9 @@ export interface GetAggregateComplianceDetailsByConfigRuleResponse {
 }
 
 export namespace GetAggregateComplianceDetailsByConfigRuleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAggregateComplianceDetailsByConfigRuleResponse): any => ({
     ...obj,
   });
@@ -5253,6 +6118,9 @@ export interface GetAggregateConfigRuleComplianceSummaryRequest {
 }
 
 export namespace GetAggregateConfigRuleComplianceSummaryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAggregateConfigRuleComplianceSummaryRequest): any => ({
     ...obj,
   });
@@ -5277,7 +6145,72 @@ export interface GetAggregateConfigRuleComplianceSummaryResponse {
 }
 
 export namespace GetAggregateConfigRuleComplianceSummaryResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAggregateConfigRuleComplianceSummaryResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAggregateConformancePackComplianceSummaryRequest {
+  /**
+   * <p>The name of the configuration aggregator.</p>
+   */
+  ConfigurationAggregatorName: string | undefined;
+
+  /**
+   * <p>Filters the results based on the <code>AggregateConformancePackComplianceSummaryFilters</code> object.</p>
+   */
+  Filters?: AggregateConformancePackComplianceSummaryFilters;
+
+  /**
+   * <p>Groups the result based on AWS Account ID or AWS Region.</p>
+   */
+  GroupByKey?: AggregateConformancePackComplianceSummaryGroupKey | string;
+
+  /**
+   * <p>The maximum number of results returned on each page. The default is maximum. If you specify 0, AWS Config uses the default.</p>
+   */
+  Limit?: number;
+
+  /**
+   * <p>The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+   */
+  NextToken?: string;
+}
+
+export namespace GetAggregateConformancePackComplianceSummaryRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAggregateConformancePackComplianceSummaryRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAggregateConformancePackComplianceSummaryResponse {
+  /**
+   * <p>Returns a list of <code>AggregateConformancePackComplianceSummary</code> object.</p>
+   */
+  AggregateConformancePackComplianceSummaries?: AggregateConformancePackComplianceSummary[];
+
+  /**
+   * <p>Groups the result based on AWS Account ID or AWS Region.</p>
+   */
+  GroupByKey?: string;
+
+  /**
+   * <p>The <code>nextToken</code> string returned on a previous page that you use to get the next page of results in a paginated response.</p>
+   */
+  NextToken?: string;
+}
+
+export namespace GetAggregateConformancePackComplianceSummaryResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAggregateConformancePackComplianceSummaryResponse): any => ({
     ...obj,
   });
 }
@@ -5303,6 +6236,9 @@ export interface ResourceCountFilters {
 }
 
 export namespace ResourceCountFilters {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceCountFilters): any => ({
     ...obj,
   });
@@ -5342,6 +6278,9 @@ export interface GetAggregateDiscoveredResourceCountsRequest {
 }
 
 export namespace GetAggregateDiscoveredResourceCountsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAggregateDiscoveredResourceCountsRequest): any => ({
     ...obj,
   });
@@ -5363,6 +6302,9 @@ export interface GroupedResourceCount {
 }
 
 export namespace GroupedResourceCount {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GroupedResourceCount): any => ({
     ...obj,
   });
@@ -5391,6 +6333,9 @@ export interface GetAggregateDiscoveredResourceCountsResponse {
 }
 
 export namespace GetAggregateDiscoveredResourceCountsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAggregateDiscoveredResourceCountsResponse): any => ({
     ...obj,
   });
@@ -5409,6 +6354,9 @@ export interface GetAggregateResourceConfigRequest {
 }
 
 export namespace GetAggregateResourceConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAggregateResourceConfigRequest): any => ({
     ...obj,
   });
@@ -5422,6 +6370,9 @@ export interface GetAggregateResourceConfigResponse {
 }
 
 export namespace GetAggregateResourceConfigResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAggregateResourceConfigResponse): any => ({
     ...obj,
   });
@@ -5440,6 +6391,9 @@ export interface OversizedConfigurationItemException extends __SmithyException, 
 }
 
 export namespace OversizedConfigurationItemException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OversizedConfigurationItemException): any => ({
     ...obj,
   });
@@ -5459,6 +6413,9 @@ export interface ResourceNotDiscoveredException extends __SmithyException, $Meta
 }
 
 export namespace ResourceNotDiscoveredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotDiscoveredException): any => ({
     ...obj,
   });
@@ -5498,6 +6455,9 @@ export interface GetComplianceDetailsByConfigRuleRequest {
 }
 
 export namespace GetComplianceDetailsByConfigRuleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetComplianceDetailsByConfigRuleRequest): any => ({
     ...obj,
   });
@@ -5521,6 +6481,9 @@ export interface GetComplianceDetailsByConfigRuleResponse {
 }
 
 export namespace GetComplianceDetailsByConfigRuleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetComplianceDetailsByConfigRuleResponse): any => ({
     ...obj,
   });
@@ -5559,6 +6522,9 @@ export interface GetComplianceDetailsByResourceRequest {
 }
 
 export namespace GetComplianceDetailsByResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetComplianceDetailsByResourceRequest): any => ({
     ...obj,
   });
@@ -5582,6 +6548,9 @@ export interface GetComplianceDetailsByResourceResponse {
 }
 
 export namespace GetComplianceDetailsByResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetComplianceDetailsByResourceResponse): any => ({
     ...obj,
   });
@@ -5600,6 +6569,9 @@ export interface GetComplianceSummaryByConfigRuleResponse {
 }
 
 export namespace GetComplianceSummaryByConfigRuleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetComplianceSummaryByConfigRuleResponse): any => ({
     ...obj,
   });
@@ -5622,6 +6594,9 @@ export interface GetComplianceSummaryByResourceTypeRequest {
 }
 
 export namespace GetComplianceSummaryByResourceTypeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetComplianceSummaryByResourceTypeRequest): any => ({
     ...obj,
   });
@@ -5641,6 +6616,9 @@ export interface GetComplianceSummaryByResourceTypeResponse {
 }
 
 export namespace GetComplianceSummaryByResourceTypeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetComplianceSummaryByResourceTypeResponse): any => ({
     ...obj,
   });
@@ -5669,6 +6647,9 @@ export interface GetConformancePackComplianceDetailsRequest {
 }
 
 export namespace GetConformancePackComplianceDetailsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetConformancePackComplianceDetailsRequest): any => ({
     ...obj,
   });
@@ -5692,6 +6673,9 @@ export interface GetConformancePackComplianceDetailsResponse {
 }
 
 export namespace GetConformancePackComplianceDetailsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetConformancePackComplianceDetailsResponse): any => ({
     ...obj,
   });
@@ -5715,6 +6699,9 @@ export interface GetConformancePackComplianceSummaryRequest {
 }
 
 export namespace GetConformancePackComplianceSummaryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetConformancePackComplianceSummaryRequest): any => ({
     ...obj,
   });
@@ -5733,6 +6720,9 @@ export interface GetConformancePackComplianceSummaryResponse {
 }
 
 export namespace GetConformancePackComplianceSummaryResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetConformancePackComplianceSummaryResponse): any => ({
     ...obj,
   });
@@ -5775,6 +6765,9 @@ export interface GetDiscoveredResourceCountsRequest {
 }
 
 export namespace GetDiscoveredResourceCountsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDiscoveredResourceCountsRequest): any => ({
     ...obj,
   });
@@ -5798,6 +6791,9 @@ export interface ResourceCount {
 }
 
 export namespace ResourceCount {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceCount): any => ({
     ...obj,
   });
@@ -5850,6 +6846,9 @@ export interface GetDiscoveredResourceCountsResponse {
 }
 
 export namespace GetDiscoveredResourceCountsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDiscoveredResourceCountsResponse): any => ({
     ...obj,
   });
@@ -5926,6 +6925,9 @@ export interface StatusDetailFilters {
 }
 
 export namespace StatusDetailFilters {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StatusDetailFilters): any => ({
     ...obj,
   });
@@ -5954,6 +6956,9 @@ export interface GetOrganizationConfigRuleDetailedStatusRequest {
 }
 
 export namespace GetOrganizationConfigRuleDetailedStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOrganizationConfigRuleDetailedStatusRequest): any => ({
     ...obj,
   });
@@ -6038,6 +7043,9 @@ export interface MemberAccountStatus {
 }
 
 export namespace MemberAccountStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MemberAccountStatus): any => ({
     ...obj,
   });
@@ -6056,6 +7064,9 @@ export interface GetOrganizationConfigRuleDetailedStatusResponse {
 }
 
 export namespace GetOrganizationConfigRuleDetailedStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOrganizationConfigRuleDetailedStatusResponse): any => ({
     ...obj,
   });
@@ -6132,6 +7143,9 @@ export interface OrganizationResourceDetailedStatusFilters {
 }
 
 export namespace OrganizationResourceDetailedStatusFilters {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationResourceDetailedStatusFilters): any => ({
     ...obj,
   });
@@ -6161,6 +7175,9 @@ export interface GetOrganizationConformancePackDetailedStatusRequest {
 }
 
 export namespace GetOrganizationConformancePackDetailedStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOrganizationConformancePackDetailedStatusRequest): any => ({
     ...obj,
   });
@@ -6249,6 +7266,9 @@ export interface OrganizationConformancePackDetailedStatus {
 }
 
 export namespace OrganizationConformancePackDetailedStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationConformancePackDetailedStatus): any => ({
     ...obj,
   });
@@ -6267,6 +7287,9 @@ export interface GetOrganizationConformancePackDetailedStatusResponse {
 }
 
 export namespace GetOrganizationConformancePackDetailedStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOrganizationConformancePackDetailedStatusResponse): any => ({
     ...obj,
   });
@@ -6325,6 +7348,9 @@ export interface GetResourceConfigHistoryRequest {
 }
 
 export namespace GetResourceConfigHistoryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetResourceConfigHistoryRequest): any => ({
     ...obj,
   });
@@ -6349,6 +7375,9 @@ export interface GetResourceConfigHistoryResponse {
 }
 
 export namespace GetResourceConfigHistoryResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetResourceConfigHistoryResponse): any => ({
     ...obj,
   });
@@ -6368,7 +7397,88 @@ export interface InvalidTimeRangeException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidTimeRangeException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidTimeRangeException): any => ({
+    ...obj,
+  });
+}
+
+export interface GetStoredQueryRequest {
+  /**
+   * <p>The name of the query.</p>
+   */
+  QueryName: string | undefined;
+}
+
+export namespace GetStoredQueryRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetStoredQueryRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Provides the details of a stored query.</p>
+ */
+export interface StoredQuery {
+  /**
+   * <p>The ID of the query.</p>
+   */
+  QueryId?: string;
+
+  /**
+   * <p>Amazon Resource Name (ARN) of the query. For example, arn:partition:service:region:account-id:resource-type/resource-name/resource-id.</p>
+   */
+  QueryArn?: string;
+
+  /**
+   * <p>The name of the query.</p>
+   */
+  QueryName: string | undefined;
+
+  /**
+   * <p>A unique description for the query.</p>
+   */
+  Description?: string;
+
+  /**
+   * <p>The expression of the query. For example, <code>SELECT
+   * 			resourceId,
+   * 			resourceType,
+   * 			supplementaryConfiguration.BucketVersioningConfiguration.status
+   * 			WHERE
+   * 			resourceType = 'AWS::S3::Bucket'
+   * 			AND supplementaryConfiguration.BucketVersioningConfiguration.status = 'Off'.</code>
+   *          </p>
+   */
+  Expression?: string;
+}
+
+export namespace StoredQuery {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: StoredQuery): any => ({
+    ...obj,
+  });
+}
+
+export interface GetStoredQueryResponse {
+  /**
+   * <p>Returns a <code>StoredQuery</code> object.</p>
+   */
+  StoredQuery?: StoredQuery;
+}
+
+export namespace GetStoredQueryResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetStoredQueryResponse): any => ({
     ...obj,
   });
 }
@@ -6387,6 +7497,9 @@ export interface InsufficientDeliveryPolicyException extends __SmithyException, 
 }
 
 export namespace InsufficientDeliveryPolicyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsufficientDeliveryPolicyException): any => ({
     ...obj,
   });
@@ -6406,6 +7519,9 @@ export interface InvalidConfigurationRecorderNameException extends __SmithyExcep
 }
 
 export namespace InvalidConfigurationRecorderNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidConfigurationRecorderNameException): any => ({
     ...obj,
   });
@@ -6424,6 +7540,9 @@ export interface InvalidDeliveryChannelNameException extends __SmithyException, 
 }
 
 export namespace InvalidDeliveryChannelNameException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidDeliveryChannelNameException): any => ({
     ...obj,
   });
@@ -6442,6 +7561,9 @@ export interface InvalidExpressionException extends __SmithyException, $Metadata
 }
 
 export namespace InvalidExpressionException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidExpressionException): any => ({
     ...obj,
   });
@@ -6460,6 +7582,9 @@ export interface InvalidRecordingGroupException extends __SmithyException, $Meta
 }
 
 export namespace InvalidRecordingGroupException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRecordingGroupException): any => ({
     ...obj,
   });
@@ -6478,6 +7603,9 @@ export interface InvalidResultTokenException extends __SmithyException, $Metadat
 }
 
 export namespace InvalidResultTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidResultTokenException): any => ({
     ...obj,
   });
@@ -6496,6 +7624,9 @@ export interface InvalidRoleException extends __SmithyException, $MetadataBearer
 }
 
 export namespace InvalidRoleException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRoleException): any => ({
     ...obj,
   });
@@ -6514,7 +7645,31 @@ export interface InvalidS3KeyPrefixException extends __SmithyException, $Metadat
 }
 
 export namespace InvalidS3KeyPrefixException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidS3KeyPrefixException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The specified Amazon KMS Key ARN is not valid.</p>
+ */
+export interface InvalidS3KmsKeyArnException extends __SmithyException, $MetadataBearer {
+  name: "InvalidS3KmsKeyArnException";
+  $fault: "client";
+  /**
+   * <p>Error executing the command</p>
+   */
+  message?: string;
+}
+
+export namespace InvalidS3KmsKeyArnException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InvalidS3KmsKeyArnException): any => ({
     ...obj,
   });
 }
@@ -6532,6 +7687,9 @@ export interface InvalidSNSTopicARNException extends __SmithyException, $Metadat
 }
 
 export namespace InvalidSNSTopicARNException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidSNSTopicARNException): any => ({
     ...obj,
   });
@@ -6555,6 +7713,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -6586,6 +7747,9 @@ export interface ResourceFilters {
 }
 
 export namespace ResourceFilters {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceFilters): any => ({
     ...obj,
   });
@@ -6608,7 +7772,7 @@ export interface ListAggregateDiscoveredResourcesRequest {
   Filters?: ResourceFilters;
 
   /**
-   * <p>The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a number greater than 100. If you specify 0, AWS Config uses the default.</p>
+   * <p>The maximum number of resource identifiers returned on each page. You cannot specify a number greater than 100. If you specify 0, AWS Config uses the default.</p>
    */
   Limit?: number;
 
@@ -6619,6 +7783,9 @@ export interface ListAggregateDiscoveredResourcesRequest {
 }
 
 export namespace ListAggregateDiscoveredResourcesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAggregateDiscoveredResourcesRequest): any => ({
     ...obj,
   });
@@ -6637,6 +7804,9 @@ export interface ListAggregateDiscoveredResourcesResponse {
 }
 
 export namespace ListAggregateDiscoveredResourcesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAggregateDiscoveredResourcesResponse): any => ({
     ...obj,
   });
@@ -6690,6 +7860,9 @@ export interface ListDiscoveredResourcesRequest {
 }
 
 export namespace ListDiscoveredResourcesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDiscoveredResourcesRequest): any => ({
     ...obj,
   });
@@ -6724,6 +7897,9 @@ export interface ResourceIdentifier {
 }
 
 export namespace ResourceIdentifier {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceIdentifier): any => ({
     ...obj,
   });
@@ -6748,7 +7924,88 @@ export interface ListDiscoveredResourcesResponse {
 }
 
 export namespace ListDiscoveredResourcesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDiscoveredResourcesResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface ListStoredQueriesRequest {
+  /**
+   * <p>The nextToken string returned in a previous request that you use to request the next page of results in a paginated response.</p>
+   */
+  NextToken?: string;
+
+  /**
+   * <p>The maximum number of results to be returned with a single call.</p>
+   */
+  MaxResults?: number;
+}
+
+export namespace ListStoredQueriesRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListStoredQueriesRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Returns details of a specific query. </p>
+ */
+export interface StoredQueryMetadata {
+  /**
+   * <p>The ID of the query. </p>
+   */
+  QueryId: string | undefined;
+
+  /**
+   * <p>Amazon Resource Name (ARN) of the query. For example, arn:partition:service:region:account-id:resource-type/resource-name/resource-id.</p>
+   */
+  QueryArn: string | undefined;
+
+  /**
+   * <p>The name of the query.</p>
+   */
+  QueryName: string | undefined;
+
+  /**
+   * <p>A unique description for the query.</p>
+   */
+  Description?: string;
+}
+
+export namespace StoredQueryMetadata {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: StoredQueryMetadata): any => ({
+    ...obj,
+  });
+}
+
+export interface ListStoredQueriesResponse {
+  /**
+   * <p>A list of <code>StoredQueryMetadata</code> objects.</p>
+   */
+  StoredQueryMetadata?: StoredQueryMetadata[];
+
+  /**
+   * <p>If the previous paginated request didn't return all of the remaining results, the response object's <code>NextToken</code> parameter value is set to a token.
+   * 			To retrieve the next set of results, call this action again and assign that token to the request object's <code>NextToken</code> parameter.
+   * 			If there are no remaining results, the previous response object's <code>NextToken</code> parameter is set to <code>null</code>. </p>
+   */
+  NextToken?: string;
+}
+
+export namespace ListStoredQueriesResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListStoredQueriesResponse): any => ({
     ...obj,
   });
 }
@@ -6771,6 +8028,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -6794,6 +8054,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -6812,25 +8075,10 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
-  export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>You have specified a resource that does not exist.</p>
- */
-export interface ResourceNotFoundException extends __SmithyException, $MetadataBearer {
-  name: "ResourceNotFoundException";
-  $fault: "client";
   /**
-   * <p>Error executing the command</p>
+   * @internal
    */
-  message?: string;
-}
-
-export namespace ResourceNotFoundException {
-  export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
+  export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
 }
@@ -6849,6 +8097,9 @@ export interface MaxActiveResourcesExceededException extends __SmithyException, 
 }
 
 export namespace MaxActiveResourcesExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MaxActiveResourcesExceededException): any => ({
     ...obj,
   });
@@ -6869,6 +8120,9 @@ export interface MaxNumberOfConfigRulesExceededException extends __SmithyExcepti
 }
 
 export namespace MaxNumberOfConfigRulesExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MaxNumberOfConfigRulesExceededException): any => ({
     ...obj,
   });
@@ -6888,6 +8142,9 @@ export interface MaxNumberOfConfigurationRecordersExceededException extends __Sm
 }
 
 export namespace MaxNumberOfConfigurationRecordersExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MaxNumberOfConfigurationRecordersExceededException): any => ({
     ...obj,
   });
@@ -6906,6 +8163,9 @@ export interface MaxNumberOfConformancePacksExceededException extends __SmithyEx
 }
 
 export namespace MaxNumberOfConformancePacksExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MaxNumberOfConformancePacksExceededException): any => ({
     ...obj,
   });
@@ -6925,6 +8185,9 @@ export interface MaxNumberOfDeliveryChannelsExceededException extends __SmithyEx
 }
 
 export namespace MaxNumberOfDeliveryChannelsExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MaxNumberOfDeliveryChannelsExceededException): any => ({
     ...obj,
   });
@@ -6943,6 +8206,9 @@ export interface MaxNumberOfOrganizationConfigRulesExceededException extends __S
 }
 
 export namespace MaxNumberOfOrganizationConfigRulesExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MaxNumberOfOrganizationConfigRulesExceededException): any => ({
     ...obj,
   });
@@ -6961,6 +8227,9 @@ export interface MaxNumberOfOrganizationConformancePacksExceededException extend
 }
 
 export namespace MaxNumberOfOrganizationConformancePacksExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MaxNumberOfOrganizationConformancePacksExceededException): any => ({
     ...obj,
   });
@@ -6979,6 +8248,9 @@ export interface MaxNumberOfRetentionConfigurationsExceededException extends __S
 }
 
 export namespace MaxNumberOfRetentionConfigurationsExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MaxNumberOfRetentionConfigurationsExceededException): any => ({
     ...obj,
   });
@@ -6998,6 +8270,9 @@ export interface NoAvailableDeliveryChannelException extends __SmithyException, 
 }
 
 export namespace NoAvailableDeliveryChannelException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoAvailableDeliveryChannelException): any => ({
     ...obj,
   });
@@ -7016,6 +8291,9 @@ export interface NoAvailableOrganizationException extends __SmithyException, $Me
 }
 
 export namespace NoAvailableOrganizationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoAvailableOrganizationException): any => ({
     ...obj,
   });
@@ -7034,6 +8312,9 @@ export interface NoSuchBucketException extends __SmithyException, $MetadataBeare
 }
 
 export namespace NoSuchBucketException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchBucketException): any => ({
     ...obj,
   });
@@ -7052,6 +8333,9 @@ export interface OrganizationAllFeaturesNotEnabledException extends __SmithyExce
 }
 
 export namespace OrganizationAllFeaturesNotEnabledException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationAllFeaturesNotEnabledException): any => ({
     ...obj,
   });
@@ -7070,6 +8354,9 @@ export interface OrganizationConformancePackTemplateValidationException extends 
 }
 
 export namespace OrganizationConformancePackTemplateValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrganizationConformancePackTemplateValidationException): any => ({
     ...obj,
   });
@@ -7093,6 +8380,9 @@ export interface PutAggregationAuthorizationRequest {
 }
 
 export namespace PutAggregationAuthorizationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutAggregationAuthorizationRequest): any => ({
     ...obj,
   });
@@ -7108,6 +8398,9 @@ export interface PutAggregationAuthorizationResponse {
 }
 
 export namespace PutAggregationAuthorizationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutAggregationAuthorizationResponse): any => ({
     ...obj,
   });
@@ -7126,6 +8419,9 @@ export interface PutConfigRuleRequest {
 }
 
 export namespace PutConfigRuleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutConfigRuleRequest): any => ({
     ...obj,
   });
@@ -7156,6 +8452,9 @@ export interface PutConfigurationAggregatorRequest {
 }
 
 export namespace PutConfigurationAggregatorRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutConfigurationAggregatorRequest): any => ({
     ...obj,
   });
@@ -7169,6 +8468,9 @@ export interface PutConfigurationAggregatorResponse {
 }
 
 export namespace PutConfigurationAggregatorResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutConfigurationAggregatorResponse): any => ({
     ...obj,
   });
@@ -7187,6 +8489,9 @@ export interface PutConfigurationRecorderRequest {
 }
 
 export namespace PutConfigurationRecorderRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutConfigurationRecorderRequest): any => ({
     ...obj,
   });
@@ -7215,12 +8520,18 @@ export interface PutConformancePackRequest {
   TemplateBody?: string;
 
   /**
-   * <p>AWS Config stores intermediate files while processing conformance pack template.</p>
+   * <p>Amazon S3 bucket where AWS Config stores conformance pack templates.</p>
+   * 		       <note>
+   *             <p>This field is optional.</p>
+   *          </note>
    */
   DeliveryS3Bucket?: string;
 
   /**
    * <p>The prefix for the Amazon S3 bucket. </p>
+   * 		       <note>
+   *             <p>This field is optional.</p>
+   *          </note>
    */
   DeliveryS3KeyPrefix?: string;
 
@@ -7231,6 +8542,9 @@ export interface PutConformancePackRequest {
 }
 
 export namespace PutConformancePackRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutConformancePackRequest): any => ({
     ...obj,
   });
@@ -7244,6 +8558,9 @@ export interface PutConformancePackResponse {
 }
 
 export namespace PutConformancePackResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutConformancePackResponse): any => ({
     ...obj,
   });
@@ -7263,6 +8580,9 @@ export interface PutDeliveryChannelRequest {
 }
 
 export namespace PutDeliveryChannelRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutDeliveryChannelRequest): any => ({
     ...obj,
   });
@@ -7305,6 +8625,9 @@ export interface PutEvaluationsRequest {
 }
 
 export namespace PutEvaluationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutEvaluationsRequest): any => ({
     ...obj,
   });
@@ -7322,7 +8645,42 @@ export interface PutEvaluationsResponse {
 }
 
 export namespace PutEvaluationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutEvaluationsResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface PutExternalEvaluationRequest {
+  /**
+   * <p>The name of the AWS Config rule.</p>
+   */
+  ConfigRuleName: string | undefined;
+
+  /**
+   * <p>An <code>ExternalEvaluation</code> object that provides details about compliance.</p>
+   */
+  ExternalEvaluation: ExternalEvaluation | undefined;
+}
+
+export namespace PutExternalEvaluationRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PutExternalEvaluationRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface PutExternalEvaluationResponse {}
+
+export namespace PutExternalEvaluationResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PutExternalEvaluationResponse): any => ({
     ...obj,
   });
 }
@@ -7350,6 +8708,9 @@ export interface PutOrganizationConfigRuleRequest {
 }
 
 export namespace PutOrganizationConfigRuleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutOrganizationConfigRuleRequest): any => ({
     ...obj,
   });
@@ -7363,6 +8724,9 @@ export interface PutOrganizationConfigRuleResponse {
 }
 
 export namespace PutOrganizationConfigRuleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutOrganizationConfigRuleResponse): any => ({
     ...obj,
   });
@@ -7390,15 +8754,18 @@ export interface PutOrganizationConformancePackRequest {
   TemplateBody?: string;
 
   /**
-   * <p>Location of an Amazon S3 bucket where AWS Config can deliver evaluation results. AWS Config
-   * 			stores intermediate files while processing conformance pack template. </p>
-   * 		       <p>The delivery bucket name should start with awsconfigconforms. For example: "Resource": "arn:aws:s3:::your_bucket_name/*".
-   * 			For more information, see <a href="https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html">Permissions for cross account bucket access</a>.</p>
+   * <p>Amazon S3 bucket where AWS Config stores conformance pack templates.</p>
+   * 		       <note>
+   *             <p>This field is optional. If used, it must be prefixed with <code>awsconfigconforms</code>.</p>
+   *          </note>
    */
   DeliveryS3Bucket?: string;
 
   /**
    * <p>The prefix for the Amazon S3 bucket.</p>
+   * 		       <note>
+   *             <p>This field is optional.</p>
+   *          </note>
    */
   DeliveryS3KeyPrefix?: string;
 
@@ -7414,6 +8781,9 @@ export interface PutOrganizationConformancePackRequest {
 }
 
 export namespace PutOrganizationConformancePackRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutOrganizationConformancePackRequest): any => ({
     ...obj,
   });
@@ -7427,6 +8797,9 @@ export interface PutOrganizationConformancePackResponse {
 }
 
 export namespace PutOrganizationConformancePackResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutOrganizationConformancePackResponse): any => ({
     ...obj,
   });
@@ -7440,6 +8813,9 @@ export interface PutRemediationConfigurationsRequest {
 }
 
 export namespace PutRemediationConfigurationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutRemediationConfigurationsRequest): any => ({
     ...obj,
   });
@@ -7453,6 +8829,9 @@ export interface PutRemediationConfigurationsResponse {
 }
 
 export namespace PutRemediationConfigurationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutRemediationConfigurationsResponse): any => ({
     ...obj,
   });
@@ -7481,6 +8860,9 @@ export interface PutRemediationExceptionsRequest {
 }
 
 export namespace PutRemediationExceptionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutRemediationExceptionsRequest): any => ({
     ...obj,
   });
@@ -7494,353 +8876,10 @@ export interface PutRemediationExceptionsResponse {
 }
 
 export namespace PutRemediationExceptionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutRemediationExceptionsResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface PutResourceConfigRequest {
-  /**
-   * <p>The type of the resource. The custom resource type must be registered with AWS CloudFormation. </p>
-   * 		       <note>
-   *             <p>You cannot use the organization names “aws”, “amzn”, “amazon”, “alexa”, “custom” with custom resource types. It is the first part of the ResourceType up to the first ::.</p>
-   *          </note>
-   */
-  ResourceType: string | undefined;
-
-  /**
-   * <p>Version of the schema registered for the ResourceType in AWS CloudFormation.</p>
-   */
-  SchemaVersionId: string | undefined;
-
-  /**
-   * <p>Unique identifier of the resource.</p>
-   */
-  ResourceId: string | undefined;
-
-  /**
-   * <p>Name of the resource.</p>
-   */
-  ResourceName?: string;
-
-  /**
-   * <p>The configuration object of the resource in valid JSON format. It must match the schema registered with AWS CloudFormation.</p>
-   * 		       <note>
-   *             <p>The configuration JSON must not exceed 64 KB.</p>
-   *          </note>
-   */
-  Configuration: string | undefined;
-
-  /**
-   * <p>Tags associated with the resource.</p>
-   */
-  Tags?: { [key: string]: string };
-}
-
-export namespace PutResourceConfigRequest {
-  export const filterSensitiveLog = (obj: PutResourceConfigRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface PutRetentionConfigurationRequest {
-  /**
-   * <p>Number of days AWS Config stores your historical
-   * 			information.</p>
-   * 		       <note>
-   * 			         <p>Currently, only applicable to the configuration item
-   * 				history.</p>
-   * 		       </note>
-   */
-  RetentionPeriodInDays: number | undefined;
-}
-
-export namespace PutRetentionConfigurationRequest {
-  export const filterSensitiveLog = (obj: PutRetentionConfigurationRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface PutRetentionConfigurationResponse {
-  /**
-   * <p>Returns a retention configuration object.</p>
-   */
-  RetentionConfiguration?: RetentionConfiguration;
-}
-
-export namespace PutRetentionConfigurationResponse {
-  export const filterSensitiveLog = (obj: PutRetentionConfigurationResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Details about the query.</p>
- */
-export interface QueryInfo {
-  /**
-   * <p>Returns a <code>FieldInfo</code> object.</p>
-   */
-  SelectFields?: FieldInfo[];
-}
-
-export namespace QueryInfo {
-  export const filterSensitiveLog = (obj: QueryInfo): any => ({
-    ...obj,
-  });
-}
-
-export interface SelectAggregateResourceConfigRequest {
-  /**
-   * <p>The SQL query SELECT command. </p>
-   */
-  Expression: string | undefined;
-
-  /**
-   * <p>The name of the configuration aggregator.</p>
-   */
-  ConfigurationAggregatorName: string | undefined;
-
-  /**
-   * <p>The maximum number of query results returned on each page. </p>
-   */
-  Limit?: number;
-
-  /**
-   * <p>The maximum number of query results returned on each page. AWS Config also allows the Limit request parameter.</p>
-   */
-  MaxResults?: number;
-
-  /**
-   * <p>The nextToken string returned in a previous request that you use to request the next page of results in a paginated response. </p>
-   */
-  NextToken?: string;
-}
-
-export namespace SelectAggregateResourceConfigRequest {
-  export const filterSensitiveLog = (obj: SelectAggregateResourceConfigRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface SelectAggregateResourceConfigResponse {
-  /**
-   * <p>Returns the results for the SQL query.</p>
-   */
-  Results?: string[];
-
-  /**
-   * <p>Details about the query.</p>
-   */
-  QueryInfo?: QueryInfo;
-
-  /**
-   * <p>The nextToken string returned in a previous request that you use to request the next page of results in a paginated response. </p>
-   */
-  NextToken?: string;
-}
-
-export namespace SelectAggregateResourceConfigResponse {
-  export const filterSensitiveLog = (obj: SelectAggregateResourceConfigResponse): any => ({
-    ...obj,
-  });
-}
-
-export interface SelectResourceConfigRequest {
-  /**
-   * <p>The SQL query <code>SELECT</code> command.</p>
-   */
-  Expression: string | undefined;
-
-  /**
-   * <p>The maximum number of query results returned on each page. </p>
-   */
-  Limit?: number;
-
-  /**
-   * <p>The <code>nextToken</code> string returned in a previous request that you use to request the next page of results in a paginated response. </p>
-   */
-  NextToken?: string;
-}
-
-export namespace SelectResourceConfigRequest {
-  export const filterSensitiveLog = (obj: SelectResourceConfigRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface SelectResourceConfigResponse {
-  /**
-   * <p>Returns the results for the SQL query.</p>
-   */
-  Results?: string[];
-
-  /**
-   * <p>Returns the <code>QueryInfo</code> object.</p>
-   */
-  QueryInfo?: QueryInfo;
-
-  /**
-   * <p>The <code>nextToken</code> string returned in a previous request that you use to request the next page of results in a paginated response. </p>
-   */
-  NextToken?: string;
-}
-
-export namespace SelectResourceConfigResponse {
-  export const filterSensitiveLog = (obj: SelectResourceConfigResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p></p>
- */
-export interface StartConfigRulesEvaluationRequest {
-  /**
-   * <p>The list of names of AWS Config rules that you want to run
-   * 			evaluations for.</p>
-   */
-  ConfigRuleNames?: string[];
-}
-
-export namespace StartConfigRulesEvaluationRequest {
-  export const filterSensitiveLog = (obj: StartConfigRulesEvaluationRequest): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The output when you start the evaluation for the specified AWS
- * 			Config rule.</p>
- */
-export interface StartConfigRulesEvaluationResponse {}
-
-export namespace StartConfigRulesEvaluationResponse {
-  export const filterSensitiveLog = (obj: StartConfigRulesEvaluationResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The input for the <a>StartConfigurationRecorder</a>
- * 			action.</p>
- */
-export interface StartConfigurationRecorderRequest {
-  /**
-   * <p>The name of the recorder object that records each configuration
-   * 			change made to the resources.</p>
-   */
-  ConfigurationRecorderName: string | undefined;
-}
-
-export namespace StartConfigurationRecorderRequest {
-  export const filterSensitiveLog = (obj: StartConfigurationRecorderRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface StartRemediationExecutionRequest {
-  /**
-   * <p>The list of names of AWS Config rules that you want to run remediation execution for.</p>
-   */
-  ConfigRuleName: string | undefined;
-
-  /**
-   * <p>A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID. </p>
-   */
-  ResourceKeys: ResourceKey[] | undefined;
-}
-
-export namespace StartRemediationExecutionRequest {
-  export const filterSensitiveLog = (obj: StartRemediationExecutionRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface StartRemediationExecutionResponse {
-  /**
-   * <p>Returns a failure message. For example, the resource is already compliant.</p>
-   */
-  FailureMessage?: string;
-
-  /**
-   * <p>For resources that have failed to start execution, the API returns a resource key object.</p>
-   */
-  FailedItems?: ResourceKey[];
-}
-
-export namespace StartRemediationExecutionResponse {
-  export const filterSensitiveLog = (obj: StartRemediationExecutionResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The input for the <a>StopConfigurationRecorder</a> action.</p>
- */
-export interface StopConfigurationRecorderRequest {
-  /**
-   * <p>The name of the recorder object that records each configuration change made to the resources.</p>
-   */
-  ConfigurationRecorderName: string | undefined;
-}
-
-export namespace StopConfigurationRecorderRequest {
-  export const filterSensitiveLog = (obj: StopConfigurationRecorderRequest): any => ({
-    ...obj,
-  });
-}
-
-export interface TagResourceRequest {
-  /**
-   * <p>The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. Currently, the supported resources are <code>ConfigRule</code>, <code>ConfigurationAggregator</code> and <code>AggregatorAuthorization</code>.</p>
-   */
-  ResourceArn: string | undefined;
-
-  /**
-   * <p>An array of tag object.</p>
-   */
-  Tags: Tag[] | undefined;
-}
-
-export namespace TagResourceRequest {
-  export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>You have reached the limit of the number of tags you can use. You have more than 50 tags.</p>
- */
-export interface TooManyTagsException extends __SmithyException, $MetadataBearer {
-  name: "TooManyTagsException";
-  $fault: "client";
-  /**
-   * <p>Error executing the command</p>
-   */
-  message?: string;
-}
-
-export namespace TooManyTagsException {
-  export const filterSensitiveLog = (obj: TooManyTagsException): any => ({
-    ...obj,
-  });
-}
-
-export interface UntagResourceRequest {
-  /**
-   * <p>The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. Currently, the supported resources are <code>ConfigRule</code>, <code>ConfigurationAggregator</code> and <code>AggregatorAuthorization</code>.</p>
-   */
-  ResourceArn: string | undefined;
-
-  /**
-   * <p>The keys of the tags to be removed.</p>
-   */
-  TagKeys: string[] | undefined;
-}
-
-export namespace UntagResourceRequest {
-  export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
 }

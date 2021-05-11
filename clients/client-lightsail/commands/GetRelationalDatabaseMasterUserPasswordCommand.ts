@@ -20,9 +20,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRelationalDatabaseMasterUserPasswordCommandInput = GetRelationalDatabaseMasterUserPasswordRequest;
-export type GetRelationalDatabaseMasterUserPasswordCommandOutput = GetRelationalDatabaseMasterUserPasswordResult &
-  __MetadataBearer;
+export interface GetRelationalDatabaseMasterUserPasswordCommandInput
+  extends GetRelationalDatabaseMasterUserPasswordRequest {}
+export interface GetRelationalDatabaseMasterUserPasswordCommandOutput
+  extends GetRelationalDatabaseMasterUserPasswordResult,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the current, previous, or pending versions of the master user password for a
@@ -30,6 +32,20 @@ export type GetRelationalDatabaseMasterUserPasswordCommandOutput = GetRelational
  *          <p>The <code>GetRelationalDatabaseMasterUserPassword</code> operation supports tag-based
  *       access control via resource tags applied to the resource identified by
  *       relationalDatabaseName.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetRelationalDatabaseMasterUserPasswordCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetRelationalDatabaseMasterUserPasswordCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetRelationalDatabaseMasterUserPasswordCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRelationalDatabaseMasterUserPasswordCommandInput} for command's `input` shape.
+ * @see {@link GetRelationalDatabaseMasterUserPasswordCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRelationalDatabaseMasterUserPasswordCommand extends $Command<
   GetRelationalDatabaseMasterUserPasswordCommandInput,

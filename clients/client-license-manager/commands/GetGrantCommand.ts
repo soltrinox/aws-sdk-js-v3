@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetGrantCommandInput = GetGrantRequest;
-export type GetGrantCommandOutput = GetGrantResponse & __MetadataBearer;
+export interface GetGrantCommandInput extends GetGrantRequest {}
+export interface GetGrantCommandOutput extends GetGrantResponse, __MetadataBearer {}
 
 /**
  * <p>Gets detailed information about the specified grant.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LicenseManagerClient, GetGrantCommand } from "@aws-sdk/client-license-manager"; // ES Modules import
+ * // const { LicenseManagerClient, GetGrantCommand } = require("@aws-sdk/client-license-manager"); // CommonJS import
+ * const client = new LicenseManagerClient(config);
+ * const command = new GetGrantCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetGrantCommandInput} for command's `input` shape.
+ * @see {@link GetGrantCommandOutput} for command's `response` shape.
+ * @see {@link LicenseManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetGrantCommand extends $Command<
   GetGrantCommandInput,

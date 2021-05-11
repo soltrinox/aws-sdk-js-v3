@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeLoadBasedAutoScalingCommandInput = DescribeLoadBasedAutoScalingRequest;
-export type DescribeLoadBasedAutoScalingCommandOutput = DescribeLoadBasedAutoScalingResult & __MetadataBearer;
+export interface DescribeLoadBasedAutoScalingCommandInput extends DescribeLoadBasedAutoScalingRequest {}
+export interface DescribeLoadBasedAutoScalingCommandOutput
+  extends DescribeLoadBasedAutoScalingResult,
+    __MetadataBearer {}
 
 /**
  * <p>Describes load-based auto scaling configurations for specified layers.</p>
@@ -30,6 +32,20 @@ export type DescribeLoadBasedAutoScalingCommandOutput = DescribeLoadBasedAutoSca
  *       Manage permissions level for the stack, or an attached policy that explicitly grants
  *       permissions. For more information about user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, DescribeLoadBasedAutoScalingCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, DescribeLoadBasedAutoScalingCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new DescribeLoadBasedAutoScalingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeLoadBasedAutoScalingCommandInput} for command's `input` shape.
+ * @see {@link DescribeLoadBasedAutoScalingCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeLoadBasedAutoScalingCommand extends $Command<
   DescribeLoadBasedAutoScalingCommandInput,

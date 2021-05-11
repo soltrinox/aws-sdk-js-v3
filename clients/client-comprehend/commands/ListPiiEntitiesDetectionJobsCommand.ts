@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPiiEntitiesDetectionJobsCommandInput = ListPiiEntitiesDetectionJobsRequest;
-export type ListPiiEntitiesDetectionJobsCommandOutput = ListPiiEntitiesDetectionJobsResponse & __MetadataBearer;
+export interface ListPiiEntitiesDetectionJobsCommandInput extends ListPiiEntitiesDetectionJobsRequest {}
+export interface ListPiiEntitiesDetectionJobsCommandOutput
+  extends ListPiiEntitiesDetectionJobsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Gets a list of the PII entity detection jobs that you have submitted.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ComprehendClient, ListPiiEntitiesDetectionJobsCommand } from "@aws-sdk/client-comprehend"; // ES Modules import
+ * // const { ComprehendClient, ListPiiEntitiesDetectionJobsCommand } = require("@aws-sdk/client-comprehend"); // CommonJS import
+ * const client = new ComprehendClient(config);
+ * const command = new ListPiiEntitiesDetectionJobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPiiEntitiesDetectionJobsCommandInput} for command's `input` shape.
+ * @see {@link ListPiiEntitiesDetectionJobsCommandOutput} for command's `response` shape.
+ * @see {@link ComprehendClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPiiEntitiesDetectionJobsCommand extends $Command<
   ListPiiEntitiesDetectionJobsCommandInput,

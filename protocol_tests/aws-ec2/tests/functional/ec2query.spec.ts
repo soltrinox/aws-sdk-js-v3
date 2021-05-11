@@ -27,8 +27,10 @@ import { Readable } from "stream";
 /**
  * Throws an expected exception that contains the serialized request.
  */
-class EXPECTED_REQUEST_SERIALIZATION_ERROR {
-  constructor(readonly request: HttpRequest) {}
+class EXPECTED_REQUEST_SERIALIZATION_ERROR extends Error {
+  constructor(readonly request: HttpRequest) {
+    super();
+  }
 }
 
 /**
@@ -176,6 +178,7 @@ it("Ec2QueryEmptyInputAndEmptyOutput:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=EmptyInputAndEmptyOutput
     &Version=2020-01-08`;
     const unequalParts: any = compareEquivalentFormUrlencodedBodies(bodyString, r.body.toString());
@@ -243,6 +246,7 @@ it("Ec2QueryEndpointTrait:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=EndpointOperation
     &Version=2020-01-08`;
     const unequalParts: any = compareEquivalentFormUrlencodedBodies(bodyString, r.body.toString());
@@ -281,6 +285,7 @@ it("Ec2QueryEndpointTraitWithHostLabel:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=EndpointWithHostLabelOperation
     &Version=2020-01-08
     &Label=bar`;
@@ -520,6 +525,7 @@ it("Ec2NestedStructures:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=NestedStructures
     &Version=2020-01-08
     &Nested.StringArg=foo
@@ -557,6 +563,7 @@ it("Ec2QueryNoInputAndOutput:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=NoInputAndOutput
     &Version=2020-01-08`;
     const unequalParts: any = compareEquivalentFormUrlencodedBodies(bodyString, r.body.toString());
@@ -626,6 +633,7 @@ it("Ec2ProtocolIdempotencyTokenAutoFill:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=QueryIdempotencyTokenAutoFill
     &Version=2020-01-08
     &Token=00000000-0000-4000-8000-000000000000`;
@@ -664,6 +672,7 @@ it("Ec2ProtocolIdempotencyTokenAutoFillIsSet:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=QueryIdempotencyTokenAutoFill
     &Version=2020-01-08
     &Token=00000000-0000-4000-8000-000000000123`;
@@ -711,6 +720,7 @@ it("Ec2Lists:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=QueryLists
     &Version=2020-01-08
     &ListArg.1=foo
@@ -752,6 +762,7 @@ it("Ec2EmptyQueryLists:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=QueryLists
     &Version=2020-01-08`;
     const unequalParts: any = compareEquivalentFormUrlencodedBodies(bodyString, r.body.toString());
@@ -788,6 +799,7 @@ it("Ec2ListArgWithXmlNameMember:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=QueryLists
     &Version=2020-01-08
     &ListArgWithXmlNameMember.1=A
@@ -826,6 +838,7 @@ it("Ec2ListMemberWithXmlName:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=QueryLists
     &Version=2020-01-08
     &Hi.1=A
@@ -869,6 +882,7 @@ it("Ec2TimestampsInput:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=QueryTimestamps
     &Version=2020-01-08
     &NormalFormat=2015-01-25T08%3A00%3A00Z
@@ -978,6 +992,7 @@ it("Ec2SimpleInputParamsStrings:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=SimpleInputParams
     &Version=2020-01-08
     &Foo=val1
@@ -1019,6 +1034,7 @@ it("Ec2SimpleInputParamsStringAndBooleanTrue:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=SimpleInputParams
     &Version=2020-01-08
     &Foo=val1
@@ -1058,6 +1074,7 @@ it("Ec2SimpleInputParamsStringsAndBooleanFalse:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=SimpleInputParams
     &Version=2020-01-08
     &Baz=false`;
@@ -1096,6 +1113,7 @@ it("Ec2SimpleInputParamsInteger:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=SimpleInputParams
     &Version=2020-01-08
     &Bam=10`;
@@ -1134,6 +1152,7 @@ it("Ec2SimpleInputParamsFloat:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=SimpleInputParams
     &Version=2020-01-08
     &Boo=10.8`;
@@ -1172,6 +1191,7 @@ it("Ec2SimpleInputParamsBlob:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=SimpleInputParams
     &Version=2020-01-08
     &Qux=dmFsdWU%3D`;
@@ -1210,6 +1230,7 @@ it("Ec2Enums:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=SimpleInputParams
     &Version=2020-01-08
     &FooEnum=Foo`;
@@ -1248,6 +1269,7 @@ it("Ec2Query:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=SimpleInputParams
     &Version=2020-01-08
     &A=Hi`;
@@ -1286,6 +1308,7 @@ it("Ec2QueryIsPreferred:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=SimpleInputParams
     &Version=2020-01-08
     &B=Hi`;
@@ -1324,6 +1347,7 @@ it("Ec2XmlNameIsUppercased:Request", async () => {
     expect(r.headers["content-type"]).toBe("application/x-www-form-urlencoded");
 
     expect(r.body).toBeDefined();
+    const utf8Encoder = client.config.utf8Encoder;
     const bodyString = `Action=SimpleInputParams
     &Version=2020-01-08
     &C=Hi`;

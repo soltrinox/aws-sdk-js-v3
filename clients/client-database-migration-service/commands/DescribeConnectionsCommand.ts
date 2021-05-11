@@ -21,12 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeConnectionsCommandInput = DescribeConnectionsMessage;
-export type DescribeConnectionsCommandOutput = DescribeConnectionsResponse & __MetadataBearer;
+export interface DescribeConnectionsCommandInput extends DescribeConnectionsMessage {}
+export interface DescribeConnectionsCommandOutput extends DescribeConnectionsResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the status of the connections that have been made between the replication
  *          instance and an endpoint. Connections are created when you test an endpoint.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, DescribeConnectionsCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, DescribeConnectionsCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new DescribeConnectionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeConnectionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeConnectionsCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeConnectionsCommand extends $Command<
   DescribeConnectionsCommandInput,

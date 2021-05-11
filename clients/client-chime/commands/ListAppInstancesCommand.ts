@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAppInstancesCommandInput = ListAppInstancesRequest;
-export type ListAppInstancesCommandOutput = ListAppInstancesResponse & __MetadataBearer;
+export interface ListAppInstancesCommandInput extends ListAppInstancesRequest {}
+export interface ListAppInstancesCommandOutput extends ListAppInstancesResponse, __MetadataBearer {}
 
 /**
- * <p>Lists all Amazon Chime app instances created under a single AWS account.</p>
+ * <p>Lists all Amazon Chime <code>AppInstance</code>s created under a single AWS account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, ListAppInstancesCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, ListAppInstancesCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new ListAppInstancesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAppInstancesCommandInput} for command's `input` shape.
+ * @see {@link ListAppInstancesCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAppInstancesCommand extends $Command<
   ListAppInstancesCommandInput,

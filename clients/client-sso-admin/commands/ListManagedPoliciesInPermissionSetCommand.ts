@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListManagedPoliciesInPermissionSetCommandInput = ListManagedPoliciesInPermissionSetRequest;
-export type ListManagedPoliciesInPermissionSetCommandOutput = ListManagedPoliciesInPermissionSetResponse &
-  __MetadataBearer;
+export interface ListManagedPoliciesInPermissionSetCommandInput extends ListManagedPoliciesInPermissionSetRequest {}
+export interface ListManagedPoliciesInPermissionSetCommandOutput
+  extends ListManagedPoliciesInPermissionSetResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Lists the IAM managed policy that is attached to a specified permission set.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSOAdminClient, ListManagedPoliciesInPermissionSetCommand } from "@aws-sdk/client-sso-admin"; // ES Modules import
+ * // const { SSOAdminClient, ListManagedPoliciesInPermissionSetCommand } = require("@aws-sdk/client-sso-admin"); // CommonJS import
+ * const client = new SSOAdminClient(config);
+ * const command = new ListManagedPoliciesInPermissionSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListManagedPoliciesInPermissionSetCommandInput} for command's `input` shape.
+ * @see {@link ListManagedPoliciesInPermissionSetCommandOutput} for command's `response` shape.
+ * @see {@link SSOAdminClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListManagedPoliciesInPermissionSetCommand extends $Command<
   ListManagedPoliciesInPermissionSetCommandInput,

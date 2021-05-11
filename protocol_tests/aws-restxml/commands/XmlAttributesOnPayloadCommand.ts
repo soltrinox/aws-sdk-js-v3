@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type XmlAttributesOnPayloadCommandInput = XmlAttributesOnPayloadInputOutput;
-export type XmlAttributesOnPayloadCommandOutput = XmlAttributesOnPayloadInputOutput & __MetadataBearer;
+export interface XmlAttributesOnPayloadCommandInput extends XmlAttributesOnPayloadInputOutput {}
+export interface XmlAttributesOnPayloadCommandOutput extends XmlAttributesOnPayloadInputOutput, __MetadataBearer {}
 
 /**
  * This example serializes an XML attributes on a document targeted by httpPayload.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestXmlProtocolClient, XmlAttributesOnPayloadCommand } from "@aws-sdk/aws-restxml"; // ES Modules import
+ * // const { RestXmlProtocolClient, XmlAttributesOnPayloadCommand } = require("@aws-sdk/aws-restxml"); // CommonJS import
+ * const client = new RestXmlProtocolClient(config);
+ * const command = new XmlAttributesOnPayloadCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link XmlAttributesOnPayloadCommandInput} for command's `input` shape.
+ * @see {@link XmlAttributesOnPayloadCommandOutput} for command's `response` shape.
+ * @see {@link RestXmlProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class XmlAttributesOnPayloadCommand extends $Command<
   XmlAttributesOnPayloadCommandInput,

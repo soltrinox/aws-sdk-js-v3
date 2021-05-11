@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartQueryCommandInput = StartQueryRequest;
-export type StartQueryCommandOutput = StartQueryResponse & __MetadataBearer;
+export interface StartQueryCommandInput extends StartQueryRequest {}
+export interface StartQueryCommandOutput extends StartQueryResponse, __MetadataBearer {}
 
 /**
  * <p>Schedules a query of a log group using CloudWatch Logs Insights. You specify the log group
@@ -27,6 +27,20 @@ export type StartQueryCommandOutput = StartQueryResponse & __MetadataBearer;
  *
  *          <p>Queries time out after 15 minutes of execution. If your queries are timing out, reduce the
  *       time range being searched or partition your query into a number of queries.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchLogsClient, StartQueryCommand } from "@aws-sdk/client-cloudwatch-logs"; // ES Modules import
+ * // const { CloudWatchLogsClient, StartQueryCommand } = require("@aws-sdk/client-cloudwatch-logs"); // CommonJS import
+ * const client = new CloudWatchLogsClient(config);
+ * const command = new StartQueryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartQueryCommandInput} for command's `input` shape.
+ * @see {@link StartQueryCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchLogsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartQueryCommand extends $Command<
   StartQueryCommandInput,

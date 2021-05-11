@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAssessmentReportUrlCommandInput = GetAssessmentReportUrlRequest;
-export type GetAssessmentReportUrlCommandOutput = GetAssessmentReportUrlResponse & __MetadataBearer;
+export interface GetAssessmentReportUrlCommandInput extends GetAssessmentReportUrlRequest {}
+export interface GetAssessmentReportUrlCommandOutput extends GetAssessmentReportUrlResponse, __MetadataBearer {}
 
 /**
  * <p>
  * Returns the URL of a specified assessment report in AWS Audit Manager.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AuditManagerClient, GetAssessmentReportUrlCommand } from "@aws-sdk/client-auditmanager"; // ES Modules import
+ * // const { AuditManagerClient, GetAssessmentReportUrlCommand } = require("@aws-sdk/client-auditmanager"); // CommonJS import
+ * const client = new AuditManagerClient(config);
+ * const command = new GetAssessmentReportUrlCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAssessmentReportUrlCommandInput} for command's `input` shape.
+ * @see {@link GetAssessmentReportUrlCommandOutput} for command's `response` shape.
+ * @see {@link AuditManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAssessmentReportUrlCommand extends $Command<
   GetAssessmentReportUrlCommandInput,

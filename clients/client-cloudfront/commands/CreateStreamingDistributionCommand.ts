@@ -17,35 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateStreamingDistributionCommandInput = CreateStreamingDistributionRequest;
-export type CreateStreamingDistributionCommandOutput = CreateStreamingDistributionResult & __MetadataBearer;
+export interface CreateStreamingDistributionCommandInput extends CreateStreamingDistributionRequest {}
+export interface CreateStreamingDistributionCommandOutput extends CreateStreamingDistributionResult, __MetadataBearer {}
 
 /**
- * <p>Creates a new RTMP distribution. An RTMP distribution is similar to a web distribution,
- * 			but an RTMP distribution streams media files using the Adobe Real-Time Messaging Protocol
- * 			(RTMP) instead of serving files using HTTP. </p>
- * 		       <p>To create a new distribution, submit a <code>POST</code> request to the
- * 				<i>CloudFront API version</i>/distribution resource. The request body must include a
- * 			document with a <i>StreamingDistributionConfig</i> element. The response echoes
- * 			the <code>StreamingDistributionConfig</code> element and returns other information about the
- * 			RTMP distribution.</p>
- * 		       <p>To get the status of your request, use the <i>GET
- * 				StreamingDistribution</i> API action. When the value of <code>Enabled</code> is
- * 				<code>true</code> and the value of <code>Status</code> is <code>Deployed</code>, your
- * 			distribution is ready. A distribution usually deploys in less than 15 minutes.</p>
- * 		       <p>For more information about web distributions, see <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-rtmp.html">Working with RTMP Distributions</a> in the
- * 				<i>Amazon CloudFront Developer Guide</i>.</p>
- * 		       <important>
- * 			         <p>Beginning with the 2012-05-05 version of the CloudFront API, we made substantial changes to
- * 				the format of the XML document that you include in the request body when you create or
- * 				update a web distribution or an RTMP distribution, and when you invalidate objects. With
- * 				previous versions of the API, we discovered that it was too easy to accidentally delete one
- * 				or more values for an element that accepts multiple values, for example, CNAMEs and trusted
- * 				signers. Our changes for the 2012-05-05 release are intended to prevent these accidental
- * 				deletions and to notify you when there's a mismatch between the number of values you say
- * 				you're specifying in the <code>Quantity</code> element and the number of values
- * 				specified.</p>
- * 		       </important>
+ * <p>This API is deprecated.
+ *             Amazon CloudFront is deprecating real-time messaging protocol (RTMP) distributions on December 31, 2020.
+ *             For more information, <a href="http://forums.aws.amazon.com/ann.jspa?annID=7356">read the announcement</a> on the Amazon CloudFront discussion forum.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, CreateStreamingDistributionCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, CreateStreamingDistributionCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new CreateStreamingDistributionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateStreamingDistributionCommandInput} for command's `input` shape.
+ * @see {@link CreateStreamingDistributionCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateStreamingDistributionCommand extends $Command<
   CreateStreamingDistributionCommandInput,

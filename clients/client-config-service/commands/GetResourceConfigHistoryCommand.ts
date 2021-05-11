@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetResourceConfigHistoryCommandInput = GetResourceConfigHistoryRequest;
-export type GetResourceConfigHistoryCommandOutput = GetResourceConfigHistoryResponse & __MetadataBearer;
+export interface GetResourceConfigHistoryCommandInput extends GetResourceConfigHistoryRequest {}
+export interface GetResourceConfigHistoryCommandOutput extends GetResourceConfigHistoryResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of configuration items for the specified
@@ -41,6 +41,20 @@ export type GetResourceConfigHistoryCommandOutput = GetResourceConfigHistoryResp
  * 				you can make another call, using the
  * 				<code>nextToken</code>.</p>
  * 		       </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, GetResourceConfigHistoryCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, GetResourceConfigHistoryCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new GetResourceConfigHistoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetResourceConfigHistoryCommandInput} for command's `input` shape.
+ * @see {@link GetResourceConfigHistoryCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetResourceConfigHistoryCommand extends $Command<
   GetResourceConfigHistoryCommandInput,

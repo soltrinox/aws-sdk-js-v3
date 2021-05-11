@@ -17,33 +17,51 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateOpenIDConnectProviderCommandInput = CreateOpenIDConnectProviderRequest;
-export type CreateOpenIDConnectProviderCommandOutput = CreateOpenIDConnectProviderResponse & __MetadataBearer;
+export interface CreateOpenIDConnectProviderCommandInput extends CreateOpenIDConnectProviderRequest {}
+export interface CreateOpenIDConnectProviderCommandOutput
+  extends CreateOpenIDConnectProviderResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Creates an IAM entity to describe an identity provider (IdP) that supports <a href="http://openid.net/connect/">OpenID Connect (OIDC)</a>.</p>
- *          <p>The OIDC provider that you create with this operation can be used as a principal in a
- *          role's trust policy. Such a policy establishes a trust relationship between AWS and the
- *          OIDC provider.</p>
- *          <p>When you create the IAM OIDC provider, you specify the following:</p>
- *          <ul>
+ *         <p>The OIDC provider that you create with this operation can be used as a principal in a
+ *             role's trust policy. Such a policy establishes a trust relationship between AWS and
+ *             the OIDC provider.</p>
+ *         <p>When you create the IAM OIDC provider, you specify the following:</p>
+ *         <ul>
  *             <li>
- *                <p>The URL of the OIDC identity provider (IdP) to trust</p>
+ *                 <p>The URL of the OIDC identity provider (IdP) to trust</p>
  *             </li>
  *             <li>
- *                <p>A list of client IDs (also known as audiences) that identify the application or
- *                applications that are allowed to authenticate using the OIDC provider</p>
+ *                 <p>A list of client IDs (also known as audiences) that identify the application
+ *                     or applications that are allowed to authenticate using the OIDC provider</p>
  *             </li>
  *             <li>
- *                <p>A list of thumbprints of one or more server certificates that the IdP uses</p>
+ *                 <p>A list of thumbprints of one or more server certificates that the IdP
+ *                     uses</p>
  *             </li>
  *          </ul>
- *          <p>You get all of this information from the OIDC IdP that you want to use to access
- *          AWS.</p>
- *          <note>
+ *         <p>You get all of this information from the OIDC IdP that you want to use to access
+ *             AWS.</p>
+ *         <note>
  *             <p>The trust for the OIDC provider is derived from the IAM provider that this
- *             operation creates. Therefore, it is best to limit access to the <a>CreateOpenIDConnectProvider</a> operation to highly privileged users.</p>
- *          </note>
+ *                 operation creates. Therefore, it is best to limit access to the <a>CreateOpenIDConnectProvider</a> operation to highly privileged
+ *                 users.</p>
+ *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, CreateOpenIDConnectProviderCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, CreateOpenIDConnectProviderCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new CreateOpenIDConnectProviderCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateOpenIDConnectProviderCommandInput} for command's `input` shape.
+ * @see {@link CreateOpenIDConnectProviderCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateOpenIDConnectProviderCommand extends $Command<
   CreateOpenIDConnectProviderCommandInput,

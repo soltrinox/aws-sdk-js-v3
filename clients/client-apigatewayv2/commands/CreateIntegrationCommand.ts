@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateIntegrationCommandInput = CreateIntegrationRequest;
-export type CreateIntegrationCommandOutput = CreateIntegrationResult & __MetadataBearer;
+export interface CreateIntegrationCommandInput extends CreateIntegrationRequest {}
+export interface CreateIntegrationCommandOutput extends CreateIntegrationResult, __MetadataBearer {}
 
 /**
  * <p>Creates an Integration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApiGatewayV2Client, CreateIntegrationCommand } from "@aws-sdk/client-apigatewayv2"; // ES Modules import
+ * // const { ApiGatewayV2Client, CreateIntegrationCommand } = require("@aws-sdk/client-apigatewayv2"); // CommonJS import
+ * const client = new ApiGatewayV2Client(config);
+ * const command = new CreateIntegrationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateIntegrationCommandInput} for command's `input` shape.
+ * @see {@link CreateIntegrationCommandOutput} for command's `response` shape.
+ * @see {@link ApiGatewayV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateIntegrationCommand extends $Command<
   CreateIntegrationCommandInput,

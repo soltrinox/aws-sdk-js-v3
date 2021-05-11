@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListFHIRDatastoresCommandInput = ListFHIRDatastoresRequest;
-export type ListFHIRDatastoresCommandOutput = ListFHIRDatastoresResponse & __MetadataBearer;
+export interface ListFHIRDatastoresCommandInput extends ListFHIRDatastoresRequest {}
+export interface ListFHIRDatastoresCommandOutput extends ListFHIRDatastoresResponse, __MetadataBearer {}
 
 /**
- * <p>Lists all FHIR datastores that are in the user’s account, regardless of datastore
+ * <p>Lists all FHIR Data Stores that are in the user’s account, regardless of Data Store
  *          status.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { HealthLakeClient, ListFHIRDatastoresCommand } from "@aws-sdk/client-healthlake"; // ES Modules import
+ * // const { HealthLakeClient, ListFHIRDatastoresCommand } = require("@aws-sdk/client-healthlake"); // CommonJS import
+ * const client = new HealthLakeClient(config);
+ * const command = new ListFHIRDatastoresCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListFHIRDatastoresCommandInput} for command's `input` shape.
+ * @see {@link ListFHIRDatastoresCommandOutput} for command's `response` shape.
+ * @see {@link HealthLakeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListFHIRDatastoresCommand extends $Command<
   ListFHIRDatastoresCommandInput,

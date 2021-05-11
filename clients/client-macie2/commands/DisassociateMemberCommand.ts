@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateMemberCommandInput = DisassociateMemberRequest;
-export type DisassociateMemberCommandOutput = DisassociateMemberResponse & __MetadataBearer;
+export interface DisassociateMemberCommandInput extends DisassociateMemberRequest {}
+export interface DisassociateMemberCommandOutput extends DisassociateMemberResponse, __MetadataBearer {}
 
 /**
- * <p>Disassociates an Amazon Macie master account from a member account.</p>
+ * <p>Disassociates an Amazon Macie administrator account from a member account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Macie2Client, DisassociateMemberCommand } from "@aws-sdk/client-macie2"; // ES Modules import
+ * // const { Macie2Client, DisassociateMemberCommand } = require("@aws-sdk/client-macie2"); // CommonJS import
+ * const client = new Macie2Client(config);
+ * const command = new DisassociateMemberCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateMemberCommandInput} for command's `input` shape.
+ * @see {@link DisassociateMemberCommandOutput} for command's `response` shape.
+ * @see {@link Macie2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateMemberCommand extends $Command<
   DisassociateMemberCommandInput,

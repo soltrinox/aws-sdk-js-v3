@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartActivityStreamCommandInput = StartActivityStreamRequest;
-export type StartActivityStreamCommandOutput = StartActivityStreamResponse & __MetadataBearer;
+export interface StartActivityStreamCommandInput extends StartActivityStreamRequest {}
+export interface StartActivityStreamCommandOutput extends StartActivityStreamResponse, __MetadataBearer {}
 
 /**
  * <p>Starts a database activity stream to monitor activity on the database.
  *             For more information, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html">Database Activity Streams</a>
  *             in the <i>Amazon Aurora User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, StartActivityStreamCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, StartActivityStreamCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new StartActivityStreamCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartActivityStreamCommandInput} for command's `input` shape.
+ * @see {@link StartActivityStreamCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartActivityStreamCommand extends $Command<
   StartActivityStreamCommandInput,

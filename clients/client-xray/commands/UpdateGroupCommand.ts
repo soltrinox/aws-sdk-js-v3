@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateGroupCommandInput = UpdateGroupRequest;
-export type UpdateGroupCommandOutput = UpdateGroupResult & __MetadataBearer;
+export interface UpdateGroupCommandInput extends UpdateGroupRequest {}
+export interface UpdateGroupCommandOutput extends UpdateGroupResult, __MetadataBearer {}
 
 /**
  * <p>Updates a group resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { XRayClient, UpdateGroupCommand } from "@aws-sdk/client-xray"; // ES Modules import
+ * // const { XRayClient, UpdateGroupCommand } = require("@aws-sdk/client-xray"); // CommonJS import
+ * const client = new XRayClient(config);
+ * const command = new UpdateGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateGroupCommandInput} for command's `input` shape.
+ * @see {@link UpdateGroupCommandOutput} for command's `response` shape.
+ * @see {@link XRayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateGroupCommand extends $Command<
   UpdateGroupCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDetectorCommandInput = DeleteDetectorRequest;
-export type DeleteDetectorCommandOutput = DeleteDetectorResponse & __MetadataBearer;
+export interface DeleteDetectorCommandInput extends DeleteDetectorRequest {}
+export interface DeleteDetectorCommandOutput extends DeleteDetectorResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an Amazon GuardDuty detector that is specified by the detector ID.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GuardDutyClient, DeleteDetectorCommand } from "@aws-sdk/client-guardduty"; // ES Modules import
+ * // const { GuardDutyClient, DeleteDetectorCommand } = require("@aws-sdk/client-guardduty"); // CommonJS import
+ * const client = new GuardDutyClient(config);
+ * const command = new DeleteDetectorCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDetectorCommandInput} for command's `input` shape.
+ * @see {@link DeleteDetectorCommandOutput} for command's `response` shape.
+ * @see {@link GuardDutyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDetectorCommand extends $Command<
   DeleteDetectorCommandInput,

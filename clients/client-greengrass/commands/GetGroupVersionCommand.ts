@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetGroupVersionCommandInput = GetGroupVersionRequest;
-export type GetGroupVersionCommandOutput = GetGroupVersionResponse & __MetadataBearer;
+export interface GetGroupVersionCommandInput extends GetGroupVersionRequest {}
+export interface GetGroupVersionCommandOutput extends GetGroupVersionResponse, __MetadataBearer {}
 
 /**
  * Retrieves information about a group version.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, GetGroupVersionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, GetGroupVersionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new GetGroupVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetGroupVersionCommandInput} for command's `input` shape.
+ * @see {@link GetGroupVersionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetGroupVersionCommand extends $Command<
   GetGroupVersionCommandInput,

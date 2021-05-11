@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateFindingsCommandInput = UpdateFindingsRequest;
-export type UpdateFindingsCommandOutput = UpdateFindingsResponse & __MetadataBearer;
+export interface UpdateFindingsCommandInput extends UpdateFindingsRequest {}
+export interface UpdateFindingsCommandOutput extends UpdateFindingsResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -27,6 +27,20 @@ export type UpdateFindingsCommandOutput = UpdateFindingsResponse & __MetadataBea
  *          <p>Updates the <code>Note</code> and <code>RecordState</code> of the Security Hub-aggregated
  *          findings that the filter attributes specify. Any member account that can view the finding
  *          also sees the update to the finding.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecurityHubClient, UpdateFindingsCommand } from "@aws-sdk/client-securityhub"; // ES Modules import
+ * // const { SecurityHubClient, UpdateFindingsCommand } = require("@aws-sdk/client-securityhub"); // CommonJS import
+ * const client = new SecurityHubClient(config);
+ * const command = new UpdateFindingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateFindingsCommandInput} for command's `input` shape.
+ * @see {@link UpdateFindingsCommandOutput} for command's `response` shape.
+ * @see {@link SecurityHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateFindingsCommand extends $Command<
   UpdateFindingsCommandInput,

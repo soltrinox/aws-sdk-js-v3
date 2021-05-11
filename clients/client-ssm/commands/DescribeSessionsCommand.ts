@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeSessionsCommandInput = DescribeSessionsRequest;
-export type DescribeSessionsCommandOutput = DescribeSessionsResponse & __MetadataBearer;
+export interface DescribeSessionsCommandInput extends DescribeSessionsRequest {}
+export interface DescribeSessionsCommandOutput extends DescribeSessionsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a list of all active sessions (both connected and disconnected) or terminated
  *    sessions from the past 30 days.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DescribeSessionsCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DescribeSessionsCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DescribeSessionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeSessionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeSessionsCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeSessionsCommand extends $Command<
   DescribeSessionsCommandInput,

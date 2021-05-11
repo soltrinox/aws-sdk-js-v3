@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAccuracyMetricsCommandInput = GetAccuracyMetricsRequest;
-export type GetAccuracyMetricsCommandOutput = GetAccuracyMetricsResponse & __MetadataBearer;
+export interface GetAccuracyMetricsCommandInput extends GetAccuracyMetricsRequest {}
+export interface GetAccuracyMetricsCommandOutput extends GetAccuracyMetricsResponse, __MetadataBearer {}
 
 /**
  * <p>Provides metrics on the accuracy of the models that were trained by the <a>CreatePredictor</a> operation. Use metrics to see how well the model performed and
@@ -41,6 +41,20 @@ export type GetAccuracyMetricsCommandOutput = GetAccuracyMetricsResponse & __Met
  *         <code>ACTIVE</code>, signifying that training has completed.
  *         To get the status, use the <a>DescribePredictor</a> operation.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ForecastClient, GetAccuracyMetricsCommand } from "@aws-sdk/client-forecast"; // ES Modules import
+ * // const { ForecastClient, GetAccuracyMetricsCommand } = require("@aws-sdk/client-forecast"); // CommonJS import
+ * const client = new ForecastClient(config);
+ * const command = new GetAccuracyMetricsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAccuracyMetricsCommandInput} for command's `input` shape.
+ * @see {@link GetAccuracyMetricsCommandOutput} for command's `response` shape.
+ * @see {@link ForecastClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAccuracyMetricsCommand extends $Command<
   GetAccuracyMetricsCommandInput,

@@ -2,7 +2,7 @@ import { IoTClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "
 import {
   DescribeAuditMitigationActionsTaskRequest,
   DescribeAuditMitigationActionsTaskResponse,
-} from "../models/models_0";
+} from "../models/models_1";
 import {
   deserializeAws_restJson1DescribeAuditMitigationActionsTaskCommand,
   serializeAws_restJson1DescribeAuditMitigationActionsTaskCommand,
@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAuditMitigationActionsTaskCommandInput = DescribeAuditMitigationActionsTaskRequest;
-export type DescribeAuditMitigationActionsTaskCommandOutput = DescribeAuditMitigationActionsTaskResponse &
-  __MetadataBearer;
+export interface DescribeAuditMitigationActionsTaskCommandInput extends DescribeAuditMitigationActionsTaskRequest {}
+export interface DescribeAuditMitigationActionsTaskCommandOutput
+  extends DescribeAuditMitigationActionsTaskResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Gets information about an audit mitigation task that is used to apply mitigation actions to a set of audit findings. Properties include the actions being applied, the audit checks to which they're being applied, the task status, and aggregated task statistics.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, DescribeAuditMitigationActionsTaskCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, DescribeAuditMitigationActionsTaskCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new DescribeAuditMitigationActionsTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAuditMitigationActionsTaskCommandInput} for command's `input` shape.
+ * @see {@link DescribeAuditMitigationActionsTaskCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAuditMitigationActionsTaskCommand extends $Command<
   DescribeAuditMitigationActionsTaskCommandInput,

@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTagsForResourceCommandInput = ListTagsForResourceInput;
-export type ListTagsForResourceCommandOutput = ListTagsForResourceOutput & __MetadataBearer;
+export interface ListTagsForResourceCommandInput extends ListTagsForResourceInput {}
+export interface ListTagsForResourceCommandOutput extends ListTagsForResourceOutput, __MetadataBearer {}
 
 /**
  * <p>List tags for a given resource.</p>
  *          <p>Tags may only contain Unicode letters, digits, white space, or these symbols: <code>_ . : / = + - @</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SFNClient, ListTagsForResourceCommand } from "@aws-sdk/client-sfn"; // ES Modules import
+ * // const { SFNClient, ListTagsForResourceCommand } = require("@aws-sdk/client-sfn"); // CommonJS import
+ * const client = new SFNClient(config);
+ * const command = new ListTagsForResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTagsForResourceCommandInput} for command's `input` shape.
+ * @see {@link ListTagsForResourceCommandOutput} for command's `response` shape.
+ * @see {@link SFNClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTagsForResourceCommand extends $Command<
   ListTagsForResourceCommandInput,

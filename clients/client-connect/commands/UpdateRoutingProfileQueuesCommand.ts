@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateRoutingProfileQueuesCommandInput = UpdateRoutingProfileQueuesRequest;
-export type UpdateRoutingProfileQueuesCommandOutput = __MetadataBearer;
+export interface UpdateRoutingProfileQueuesCommandInput extends UpdateRoutingProfileQueuesRequest {}
+export interface UpdateRoutingProfileQueuesCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Updates the properties associated with a set of queues for a routing profile.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, UpdateRoutingProfileQueuesCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, UpdateRoutingProfileQueuesCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new UpdateRoutingProfileQueuesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateRoutingProfileQueuesCommandInput} for command's `input` shape.
+ * @see {@link UpdateRoutingProfileQueuesCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateRoutingProfileQueuesCommand extends $Command<
   UpdateRoutingProfileQueuesCommandInput,

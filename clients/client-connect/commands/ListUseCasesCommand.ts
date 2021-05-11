@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListUseCasesCommandInput = ListUseCasesRequest;
-export type ListUseCasesCommandOutput = ListUseCasesResponse & __MetadataBearer;
+export interface ListUseCasesCommandInput extends ListUseCasesRequest {}
+export interface ListUseCasesCommandOutput extends ListUseCasesResponse, __MetadataBearer {}
 
 /**
  * <p>This API is in preview release for Amazon Connect and is subject to change.</p>
- *          <p>List the use cases. </p>
+ *          <p>Lists the use cases. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, ListUseCasesCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, ListUseCasesCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new ListUseCasesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListUseCasesCommandInput} for command's `input` shape.
+ * @see {@link ListUseCasesCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListUseCasesCommand extends $Command<
   ListUseCasesCommandInput,

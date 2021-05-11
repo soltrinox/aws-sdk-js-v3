@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DetectPiiEntitiesCommandInput = DetectPiiEntitiesRequest;
-export type DetectPiiEntitiesCommandOutput = DetectPiiEntitiesResponse & __MetadataBearer;
+export interface DetectPiiEntitiesCommandInput extends DetectPiiEntitiesRequest {}
+export interface DetectPiiEntitiesCommandOutput extends DetectPiiEntitiesResponse, __MetadataBearer {}
 
 /**
  * <p>Inspects the input text for entities that contain personally identifiable information
  *       (PII) and returns information about them.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ComprehendClient, DetectPiiEntitiesCommand } from "@aws-sdk/client-comprehend"; // ES Modules import
+ * // const { ComprehendClient, DetectPiiEntitiesCommand } = require("@aws-sdk/client-comprehend"); // CommonJS import
+ * const client = new ComprehendClient(config);
+ * const command = new DetectPiiEntitiesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DetectPiiEntitiesCommandInput} for command's `input` shape.
+ * @see {@link DetectPiiEntitiesCommandOutput} for command's `response` shape.
+ * @see {@link ComprehendClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DetectPiiEntitiesCommand extends $Command<
   DetectPiiEntitiesCommandInput,

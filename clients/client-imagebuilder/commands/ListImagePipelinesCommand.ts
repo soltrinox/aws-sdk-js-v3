@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListImagePipelinesCommandInput = ListImagePipelinesRequest;
-export type ListImagePipelinesCommandOutput = ListImagePipelinesResponse & __MetadataBearer;
+export interface ListImagePipelinesCommandInput extends ListImagePipelinesRequest {}
+export interface ListImagePipelinesCommandOutput extends ListImagePipelinesResponse, __MetadataBearer {}
 
 /**
- * <p>Returns a list of image pipelines. </p>
+ * <p>Returns a list of image pipelines.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ImagebuilderClient, ListImagePipelinesCommand } from "@aws-sdk/client-imagebuilder"; // ES Modules import
+ * // const { ImagebuilderClient, ListImagePipelinesCommand } = require("@aws-sdk/client-imagebuilder"); // CommonJS import
+ * const client = new ImagebuilderClient(config);
+ * const command = new ListImagePipelinesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListImagePipelinesCommandInput} for command's `input` shape.
+ * @see {@link ListImagePipelinesCommandOutput} for command's `response` shape.
+ * @see {@link ImagebuilderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListImagePipelinesCommand extends $Command<
   ListImagePipelinesCommandInput,

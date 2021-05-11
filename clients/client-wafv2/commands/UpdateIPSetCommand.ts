@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateIPSetCommandInput = UpdateIPSetRequest;
-export type UpdateIPSetCommandOutput = UpdateIPSetResponse & __MetadataBearer;
+export interface UpdateIPSetCommandInput extends UpdateIPSetRequest {}
+export interface UpdateIPSetCommandOutput extends UpdateIPSetResponse, __MetadataBearer {}
 
 /**
- * <note>
- *             <p>This is the latest version of <b>AWS WAF</b>, named AWS WAFV2, released in November, 2019. For information, including how to migrate your AWS WAF resources from the prior release, see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>.  </p>
+ * <p>Updates the specified <a>IPSet</a>. </p>
+ *          <note>
+ *             <p>This operation completely replaces any IP address specifications that you already have in the IP set with the ones that you provide to this call. If you want to add to or modify the addresses that are already in the IP set, retrieve those by calling <a>GetIPSet</a>, update them, and provide the complete updated array of IP addresses to this call.</p>
  *          </note>
- *          <p>Updates the specified <a>IPSet</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFV2Client, UpdateIPSetCommand } from "@aws-sdk/client-wafv2"; // ES Modules import
+ * // const { WAFV2Client, UpdateIPSetCommand } = require("@aws-sdk/client-wafv2"); // CommonJS import
+ * const client = new WAFV2Client(config);
+ * const command = new UpdateIPSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateIPSetCommandInput} for command's `input` shape.
+ * @see {@link UpdateIPSetCommandOutput} for command's `response` shape.
+ * @see {@link WAFV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateIPSetCommand extends $Command<
   UpdateIPSetCommandInput,

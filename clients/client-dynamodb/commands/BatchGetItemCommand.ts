@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchGetItemCommandInput = BatchGetItemInput;
-export type BatchGetItemCommandOutput = BatchGetItemOutput & __MetadataBearer;
+export interface BatchGetItemCommandInput extends BatchGetItemInput {}
+export interface BatchGetItemCommandOutput extends BatchGetItemOutput, __MetadataBearer {}
 
 /**
  * <p>The <code>BatchGetItem</code> operation returns the attributes of one or more items from one or
@@ -67,6 +67,20 @@ export type BatchGetItemCommandOutput = BatchGetItemOutput & __MetadataBearer;
  *             nonexistent items consume the minimum read capacity units according to the type of read.
  *             For more information, see <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations">Working with Tables</a> in the <i>Amazon DynamoDB Developer
  *                 Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, BatchGetItemCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, BatchGetItemCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new BatchGetItemCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchGetItemCommandInput} for command's `input` shape.
+ * @see {@link BatchGetItemCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchGetItemCommand extends $Command<
   BatchGetItemCommandInput,

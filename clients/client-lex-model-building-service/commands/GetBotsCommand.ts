@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBotsCommandInput = GetBotsRequest;
-export type GetBotsCommandOutput = GetBotsResponse & __MetadataBearer;
+export interface GetBotsCommandInput extends GetBotsRequest {}
+export interface GetBotsCommandOutput extends GetBotsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns bot information as follows: </p>
@@ -40,6 +40,20 @@ export type GetBotsCommandOutput = GetBotsResponse & __MetadataBearer;
  *          </ul>
  *          <p>This operation requires permission for the <code>lex:GetBots</code>
  *       action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, GetBotsCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, GetBotsCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new GetBotsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBotsCommandInput} for command's `input` shape.
+ * @see {@link GetBotsCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBotsCommand extends $Command<
   GetBotsCommandInput,

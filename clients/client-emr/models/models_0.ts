@@ -37,6 +37,9 @@ export interface VolumeSpecification {
 }
 
 export namespace VolumeSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VolumeSpecification): any => ({
     ...obj,
   });
@@ -61,6 +64,9 @@ export interface EbsBlockDeviceConfig {
 }
 
 export namespace EbsBlockDeviceConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EbsBlockDeviceConfig): any => ({
     ...obj,
   });
@@ -82,6 +88,9 @@ export interface EbsConfiguration {
 }
 
 export namespace EbsConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EbsConfiguration): any => ({
     ...obj,
   });
@@ -89,6 +98,56 @@ export namespace EbsConfiguration {
 
 export enum OnDemandProvisioningAllocationStrategy {
   LOWEST_PRICE = "lowest-price",
+}
+
+export enum OnDemandCapacityReservationPreference {
+  NONE = "none",
+  OPEN = "open",
+}
+
+export enum OnDemandCapacityReservationUsageStrategy {
+  USE_CAPACITY_RESERVATIONS_FIRST = "use-capacity-reservations-first",
+}
+
+/**
+ * <p>Describes the strategy for using unused Capacity Reservations for fulfilling On-Demand capacity.</p>
+ */
+export interface OnDemandCapacityReservationOptions {
+  /**
+   * <p>Indicates whether to use unused Capacity Reservations for fulfilling On-Demand capacity.</p>
+   *          <p>If you specify <code>use-capacity-reservations-first</code>, the fleet uses unused Capacity Reservations to fulfill On-Demand capacity up to the target On-Demand capacity. If multiple instance pools have unused Capacity Reservations, the On-Demand allocation strategy (<code>lowest-price</code>) is applied. If the number of unused Capacity Reservations is less than the On-Demand target capacity, the remaining On-Demand target capacity is launched according to the On-Demand allocation strategy (<code>lowest-price</code>).</p>
+   *          <p>If you do not specify a value, the fleet fulfils the On-Demand capacity according to the chosen On-Demand allocation strategy.</p>
+   */
+  UsageStrategy?: OnDemandCapacityReservationUsageStrategy | string;
+
+  /**
+   * <p>Indicates the instance's Capacity Reservation preferences. Possible preferences include:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>open</code> - The instance can run in any open Capacity Reservation that has matching attributes (instance type, platform, Availability Zone).</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>none</code> - The instance avoids running in a Capacity Reservation even if one is available. The instance runs as an On-Demand Instance.</p>
+   *             </li>
+   *          </ul>
+   */
+  CapacityReservationPreference?: OnDemandCapacityReservationPreference | string;
+
+  /**
+   * <p>The ARN of the Capacity Reservation resource group in which to run the instance.</p>
+   */
+  CapacityReservationResourceGroupArn?: string;
+}
+
+export namespace OnDemandCapacityReservationOptions {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: OnDemandCapacityReservationOptions): any => ({
+    ...obj,
+  });
 }
 
 /**
@@ -102,13 +161,20 @@ export enum OnDemandProvisioningAllocationStrategy {
  */
 export interface OnDemandProvisioningSpecification {
   /**
-   * <p> Specifies the strategy to use in launching On-Demand Instance fleets. Currently, the
-   *          only option is lowest-price (the default), which launches the lowest price first. </p>
+   * <p>Specifies the strategy to use in launching On-Demand instance fleets. Currently, the only option is <code>lowest-price</code> (the default), which launches the lowest price first.</p>
    */
   AllocationStrategy: OnDemandProvisioningAllocationStrategy | string | undefined;
+
+  /**
+   * <p>The launch specification for On-Demand instances in the instance fleet, which determines the allocation strategy.</p>
+   */
+  CapacityReservationOptions?: OnDemandCapacityReservationOptions;
 }
 
 export namespace OnDemandProvisioningSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OnDemandProvisioningSpecification): any => ({
     ...obj,
   });
@@ -151,7 +217,7 @@ export interface SpotProvisioningSpecification {
   /**
    * <p>The defined duration for Spot Instances (also known as Spot blocks) in minutes. When
    *          specified, the Spot Instance does not terminate before the defined duration expires, and
-   *          defined duration pricing for Spot instances applies. Valid values are 60, 120, 180, 240,
+   *          defined duration pricing for Spot Instances applies. Valid values are 60, 120, 180, 240,
    *          300, or 360. The duration period starts as soon as a Spot Instance receives its instance
    *          ID. At the end of the duration, Amazon EC2 marks the Spot Instance for termination and
    *          provides a Spot Instance termination notice, which gives the instance a two-minute warning
@@ -168,6 +234,9 @@ export interface SpotProvisioningSpecification {
 }
 
 export namespace SpotProvisioningSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SpotProvisioningSpecification): any => ({
     ...obj,
   });
@@ -202,6 +271,9 @@ export interface InstanceFleetProvisioningSpecifications {
 }
 
 export namespace InstanceFleetProvisioningSpecifications {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceFleetProvisioningSpecifications): any => ({
     ...obj,
   });
@@ -225,13 +297,17 @@ export interface AddInstanceFleetOutput {
 }
 
 export namespace AddInstanceFleetOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddInstanceFleetOutput): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>This exception occurs when there is an internal failure in the EMR service.</p>
+ * <p>This exception occurs when there is an internal failure in the Amazon EMR
+ *          service.</p>
  */
 export interface InternalServerException extends __SmithyException, $MetadataBearer {
   name: "InternalServerException";
@@ -243,6 +319,9 @@ export interface InternalServerException extends __SmithyException, $MetadataBea
 }
 
 export namespace InternalServerException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerException): any => ({
     ...obj,
   });
@@ -266,6 +345,9 @@ export interface InvalidRequestException extends __SmithyException, $MetadataBea
 }
 
 export namespace InvalidRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRequestException): any => ({
     ...obj,
   });
@@ -293,6 +375,9 @@ export interface ScalingConstraints {
 }
 
 export namespace ScalingConstraints {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScalingConstraints): any => ({
     ...obj,
   });
@@ -349,6 +434,9 @@ export interface SimpleScalingPolicyConfiguration {
 }
 
 export namespace SimpleScalingPolicyConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SimpleScalingPolicyConfiguration): any => ({
     ...obj,
   });
@@ -373,6 +461,9 @@ export interface ScalingAction {
 }
 
 export namespace ScalingAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScalingAction): any => ({
     ...obj,
   });
@@ -405,6 +496,9 @@ export interface MetricDimension {
 }
 
 export namespace MetricDimension {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricDimension): any => ({
     ...obj,
   });
@@ -511,6 +605,9 @@ export interface CloudWatchAlarmDefinition {
 }
 
 export namespace CloudWatchAlarmDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CloudWatchAlarmDefinition): any => ({
     ...obj,
   });
@@ -528,6 +625,9 @@ export interface ScalingTrigger {
 }
 
 export namespace ScalingTrigger {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScalingTrigger): any => ({
     ...obj,
   });
@@ -564,6 +664,9 @@ export interface ScalingRule {
 }
 
 export namespace ScalingRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScalingRule): any => ({
     ...obj,
   });
@@ -590,6 +693,9 @@ export interface AutoScalingPolicy {
 }
 
 export namespace AutoScalingPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingPolicy): any => ({
     ...obj,
   });
@@ -618,6 +724,9 @@ export interface AddInstanceGroupsOutput {
 }
 
 export namespace AddInstanceGroupsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddInstanceGroupsOutput): any => ({
     ...obj,
   });
@@ -633,6 +742,9 @@ export interface InternalServerError extends __SmithyException, $MetadataBearer 
 }
 
 export namespace InternalServerError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerError): any => ({
     ...obj,
   });
@@ -654,6 +766,9 @@ export interface KeyValue {
 }
 
 export namespace KeyValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KeyValue): any => ({
     ...obj,
   });
@@ -667,7 +782,7 @@ export namespace KeyValue {
 export interface HadoopJarStepConfig {
   /**
    * <p>A list of Java properties that are set when the step runs. You can use these properties
-   *          to pass key value pairs to your main function.</p>
+   *          to pass key-value pairs to your main function.</p>
    */
   Properties?: KeyValue[];
 
@@ -690,6 +805,9 @@ export interface HadoopJarStepConfig {
 }
 
 export namespace HadoopJarStepConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HadoopJarStepConfig): any => ({
     ...obj,
   });
@@ -718,6 +836,9 @@ export interface StepConfig {
 }
 
 export namespace StepConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StepConfig): any => ({
     ...obj,
   });
@@ -740,6 +861,9 @@ export interface AddJobFlowStepsInput {
 }
 
 export namespace AddJobFlowStepsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddJobFlowStepsInput): any => ({
     ...obj,
   });
@@ -756,6 +880,9 @@ export interface AddJobFlowStepsOutput {
 }
 
 export namespace AddJobFlowStepsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddJobFlowStepsOutput): any => ({
     ...obj,
   });
@@ -783,6 +910,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -807,6 +937,9 @@ export interface AddTagsInput {
 }
 
 export namespace AddTagsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsInput): any => ({
     ...obj,
   });
@@ -818,6 +951,9 @@ export namespace AddTagsInput {
 export interface AddTagsOutput {}
 
 export namespace AddTagsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsOutput): any => ({
     ...obj,
   });
@@ -858,6 +994,9 @@ export interface Application {
 }
 
 export namespace Application {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Application): any => ({
     ...obj,
   });
@@ -903,6 +1042,9 @@ export interface AutoScalingPolicyStateChangeReason {
 }
 
 export namespace AutoScalingPolicyStateChangeReason {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingPolicyStateChangeReason): any => ({
     ...obj,
   });
@@ -925,6 +1067,9 @@ export interface AutoScalingPolicyStatus {
 }
 
 export namespace AutoScalingPolicyStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingPolicyStatus): any => ({
     ...obj,
   });
@@ -956,6 +1101,9 @@ export interface AutoScalingPolicyDescription {
 }
 
 export namespace AutoScalingPolicyDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutoScalingPolicyDescription): any => ({
     ...obj,
   });
@@ -979,6 +1127,9 @@ export interface PortRange {
 }
 
 export namespace PortRange {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PortRange): any => ({
     ...obj,
   });
@@ -1004,6 +1155,9 @@ export interface BlockPublicAccessConfigurationMetadata {
 }
 
 export namespace BlockPublicAccessConfigurationMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BlockPublicAccessConfigurationMetadata): any => ({
     ...obj,
   });
@@ -1026,6 +1180,9 @@ export interface ScriptBootstrapActionConfig {
 }
 
 export namespace ScriptBootstrapActionConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ScriptBootstrapActionConfig): any => ({
     ...obj,
   });
@@ -1047,6 +1204,9 @@ export interface BootstrapActionConfig {
 }
 
 export namespace BootstrapActionConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BootstrapActionConfig): any => ({
     ...obj,
   });
@@ -1063,6 +1223,9 @@ export interface BootstrapActionDetail {
 }
 
 export namespace BootstrapActionDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BootstrapActionDetail): any => ({
     ...obj,
   });
@@ -1093,6 +1256,9 @@ export interface CancelStepsInput {
 }
 
 export namespace CancelStepsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelStepsInput): any => ({
     ...obj,
   });
@@ -1125,6 +1291,9 @@ export interface CancelStepsInfo {
 }
 
 export namespace CancelStepsInfo {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelStepsInfo): any => ({
     ...obj,
   });
@@ -1142,6 +1311,9 @@ export interface CancelStepsOutput {
 }
 
 export namespace CancelStepsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelStepsOutput): any => ({
     ...obj,
   });
@@ -1229,6 +1401,9 @@ export interface Ec2InstanceAttributes {
 }
 
 export namespace Ec2InstanceAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Ec2InstanceAttributes): any => ({
     ...obj,
   });
@@ -1277,6 +1452,9 @@ export interface KerberosAttributes {
 }
 
 export namespace KerberosAttributes {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KerberosAttributes): any => ({
     ...obj,
   });
@@ -1312,6 +1490,9 @@ export interface PlacementGroupConfig {
 }
 
 export namespace PlacementGroupConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PlacementGroupConfig): any => ({
     ...obj,
   });
@@ -1364,6 +1545,9 @@ export interface ClusterStateChangeReason {
 }
 
 export namespace ClusterStateChangeReason {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClusterStateChangeReason): any => ({
     ...obj,
   });
@@ -1390,6 +1574,9 @@ export interface ClusterTimeline {
 }
 
 export namespace ClusterTimeline {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClusterTimeline): any => ({
     ...obj,
   });
@@ -1417,6 +1604,9 @@ export interface ClusterStatus {
 }
 
 export namespace ClusterStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClusterStatus): any => ({
     ...obj,
   });
@@ -1462,6 +1652,9 @@ export interface ClusterSummary {
 }
 
 export namespace ClusterSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ClusterSummary): any => ({
     ...obj,
   });
@@ -1488,6 +1681,9 @@ export interface Command {
 }
 
 export namespace Command {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Command): any => ({
     ...obj,
   });
@@ -1544,6 +1740,9 @@ export interface ComputeLimits {
 }
 
 export namespace ComputeLimits {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ComputeLimits): any => ({
     ...obj,
   });
@@ -1565,6 +1764,9 @@ export interface CreateSecurityConfigurationInput {
 }
 
 export namespace CreateSecurityConfigurationInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSecurityConfigurationInput): any => ({
     ...obj,
   });
@@ -1583,6 +1785,9 @@ export interface CreateSecurityConfigurationOutput {
 }
 
 export namespace CreateSecurityConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateSecurityConfigurationOutput): any => ({
     ...obj,
   });
@@ -1595,7 +1800,7 @@ export interface CreateStudioInput {
   Name: string | undefined;
 
   /**
-   * <p>A detailed description of the Studio.</p>
+   * <p>A detailed description of the Amazon EMR Studio.</p>
    */
   Description?: string;
 
@@ -1612,7 +1817,7 @@ export interface CreateStudioInput {
   VpcId: string | undefined;
 
   /**
-   * <p>A list of subnet IDs to associate with the Studio. The subnets must belong to the VPC
+   * <p>A list of subnet IDs to associate with the Amazon EMR Studio. A Studio can have a maximum of 5 subnets. The subnets must belong to the VPC
    *          specified by <code>VpcId</code>. Studio users can create a Workspace in any of the
    *          specified subnets.</p>
    */
@@ -1625,7 +1830,7 @@ export interface CreateStudioInput {
   ServiceRole: string | undefined;
 
   /**
-   * <p>The IAM user role that will be assumed by users and groups logged in to a Studio. The
+   * <p>The IAM user role that will be assumed by users and groups logged in to an Amazon EMR Studio. The
    *          permissions attached to this IAM role can be scoped down for each user or group using
    *          session policies.</p>
    */
@@ -1646,13 +1851,12 @@ export interface CreateStudioInput {
   EngineSecurityGroupId: string | undefined;
 
   /**
-   * <p>The default Amazon S3 location to back up EMR Studio Workspaces and notebook files. A
-   *          Studio user can select an alternative Amazon S3 location when creating a Workspace.</p>
+   * <p>The Amazon S3 location to back up Amazon EMR Studio Workspaces and notebook files.</p>
    */
-  DefaultS3Location?: string;
+  DefaultS3Location: string | undefined;
 
   /**
-   * <p>A list of tags to associate with the Studio. Tags are user-defined key-value pairs that
+   * <p>A list of tags to associate with the Amazon EMR Studio. Tags are user-defined key-value pairs that
    *          consist of a required key string with a maximum of 128 characters, and an optional value
    *          string with a maximum of 256 characters.</p>
    */
@@ -1660,6 +1864,9 @@ export interface CreateStudioInput {
 }
 
 export namespace CreateStudioInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateStudioInput): any => ({
     ...obj,
   });
@@ -1678,6 +1885,9 @@ export interface CreateStudioOutput {
 }
 
 export namespace CreateStudioOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateStudioOutput): any => ({
     ...obj,
   });
@@ -1702,13 +1912,13 @@ export interface CreateStudioSessionMappingInput {
   IdentityId?: string;
 
   /**
-   * <p>The name of the user or group. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId">UserName</a> and <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName">DisplayName</a> in the <i>AWS SSO Identity Store API Reference</i>.
+   * <p>The name of the user or group. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName">UserName</a> and <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName">DisplayName</a> in the <i>AWS SSO Identity Store API Reference</i>.
    *          Either <code>IdentityName</code> or <code>IdentityId</code> must be specified.</p>
    */
   IdentityName?: string;
 
   /**
-   * <p>Specifies whether the identity to map to the Studio is a user or a group.</p>
+   * <p>Specifies whether the identity to map to the Amazon EMR Studio is a user or a group.</p>
    */
   IdentityType: IdentityType | string | undefined;
 
@@ -1721,6 +1931,9 @@ export interface CreateStudioSessionMappingInput {
 }
 
 export namespace CreateStudioSessionMappingInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateStudioSessionMappingInput): any => ({
     ...obj,
   });
@@ -1734,6 +1947,9 @@ export interface DeleteSecurityConfigurationInput {
 }
 
 export namespace DeleteSecurityConfigurationInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSecurityConfigurationInput): any => ({
     ...obj,
   });
@@ -1742,6 +1958,9 @@ export namespace DeleteSecurityConfigurationInput {
 export interface DeleteSecurityConfigurationOutput {}
 
 export namespace DeleteSecurityConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteSecurityConfigurationOutput): any => ({
     ...obj,
   });
@@ -1755,6 +1974,9 @@ export interface DeleteStudioInput {
 }
 
 export namespace DeleteStudioInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteStudioInput): any => ({
     ...obj,
   });
@@ -1774,19 +1996,22 @@ export interface DeleteStudioSessionMappingInput {
   IdentityId?: string;
 
   /**
-   * <p>The name of the user name or group to remove from the Studio. For more information, see
-   *             <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId">UserName</a> and <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName">DisplayName</a> in the <i>AWS SSO Identity Store API Reference</i>.
+   * <p>The name of the user name or group to remove from the Amazon EMR Studio. For more information, see
+   *             <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName">UserName</a> and <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName">DisplayName</a> in the <i>AWS SSO Identity Store API Reference</i>.
    *          Either <code>IdentityName</code> or <code>IdentityId</code> must be specified.</p>
    */
   IdentityName?: string;
 
   /**
-   * <p>Specifies whether the identity to delete from the Studio is a user or a group.</p>
+   * <p>Specifies whether the identity to delete from the Amazon EMR Studio is a user or a group.</p>
    */
   IdentityType: IdentityType | string | undefined;
 }
 
 export namespace DeleteStudioSessionMappingInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteStudioSessionMappingInput): any => ({
     ...obj,
   });
@@ -1803,6 +2028,9 @@ export interface DescribeClusterInput {
 }
 
 export namespace DescribeClusterInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeClusterInput): any => ({
     ...obj,
   });
@@ -1845,6 +2073,9 @@ export interface DescribeJobFlowsInput {
 }
 
 export namespace DescribeJobFlowsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeJobFlowsInput): any => ({
     ...obj,
   });
@@ -1886,6 +2117,9 @@ export interface JobFlowExecutionStatusDetail {
 }
 
 export namespace JobFlowExecutionStatusDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobFlowExecutionStatusDetail): any => ({
     ...obj,
   });
@@ -1930,10 +2164,7 @@ export interface InstanceGroupDetail {
   InstanceRole: InstanceRoleType | string | undefined;
 
   /**
-   * <p>The bid price for each EC2 Spot Instance type as defined by <code>InstanceType</code>.
-   *          Expressed in USD. If neither <code>BidPrice</code> nor
-   *             <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided,
-   *             <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%.</p>
+   * <p>If specified, indicates that the instance group uses Spot Instances. This is the maximum price you are willing to pay for Spot Instances. Specify <code>OnDemandPrice</code> to set the amount equal to the On-Demand price, or specify an amount in USD.</p>
    */
   BidPrice?: string;
 
@@ -1985,6 +2216,9 @@ export interface InstanceGroupDetail {
 }
 
 export namespace InstanceGroupDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceGroupDetail): any => ({
     ...obj,
   });
@@ -2015,6 +2249,9 @@ export interface PlacementType {
 }
 
 export namespace PlacementType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PlacementType): any => ({
     ...obj,
   });
@@ -2101,6 +2338,9 @@ export interface JobFlowInstancesDetail {
 }
 
 export namespace JobFlowInstancesDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobFlowInstancesDetail): any => ({
     ...obj,
   });
@@ -2146,6 +2386,9 @@ export interface StepExecutionStatusDetail {
 }
 
 export namespace StepExecutionStatusDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StepExecutionStatusDetail): any => ({
     ...obj,
   });
@@ -2167,6 +2410,9 @@ export interface StepDetail {
 }
 
 export namespace StepDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StepDetail): any => ({
     ...obj,
   });
@@ -2278,6 +2524,9 @@ export interface JobFlowDetail {
 }
 
 export namespace JobFlowDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobFlowDetail): any => ({
     ...obj,
   });
@@ -2294,6 +2543,9 @@ export interface DescribeJobFlowsOutput {
 }
 
 export namespace DescribeJobFlowsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeJobFlowsOutput): any => ({
     ...obj,
   });
@@ -2307,6 +2559,9 @@ export interface DescribeNotebookExecutionInput {
 }
 
 export namespace DescribeNotebookExecutionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeNotebookExecutionInput): any => ({
     ...obj,
   });
@@ -2343,6 +2598,9 @@ export interface ExecutionEngineConfig {
 }
 
 export namespace ExecutionEngineConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExecutionEngineConfig): any => ({
     ...obj,
   });
@@ -2492,6 +2750,9 @@ export interface NotebookExecution {
 }
 
 export namespace NotebookExecution {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotebookExecution): any => ({
     ...obj,
   });
@@ -2505,6 +2766,9 @@ export interface DescribeNotebookExecutionOutput {
 }
 
 export namespace DescribeNotebookExecutionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeNotebookExecutionOutput): any => ({
     ...obj,
   });
@@ -2518,6 +2782,9 @@ export interface DescribeSecurityConfigurationInput {
 }
 
 export namespace DescribeSecurityConfigurationInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSecurityConfigurationInput): any => ({
     ...obj,
   });
@@ -2541,6 +2808,9 @@ export interface DescribeSecurityConfigurationOutput {
 }
 
 export namespace DescribeSecurityConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSecurityConfigurationOutput): any => ({
     ...obj,
   });
@@ -2562,6 +2832,9 @@ export interface DescribeStepInput {
 }
 
 export namespace DescribeStepInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeStepInput): any => ({
     ...obj,
   });
@@ -2598,6 +2871,9 @@ export interface HadoopStepConfig {
 }
 
 export namespace HadoopStepConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HadoopStepConfig): any => ({
     ...obj,
   });
@@ -2629,6 +2905,9 @@ export interface FailureDetails {
 }
 
 export namespace FailureDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FailureDetails): any => ({
     ...obj,
   });
@@ -2663,6 +2942,9 @@ export interface StepStateChangeReason {
 }
 
 export namespace StepStateChangeReason {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StepStateChangeReason): any => ({
     ...obj,
   });
@@ -2689,6 +2971,9 @@ export interface StepTimeline {
 }
 
 export namespace StepTimeline {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StepTimeline): any => ({
     ...obj,
   });
@@ -2721,6 +3006,9 @@ export interface StepStatus {
 }
 
 export namespace StepStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StepStatus): any => ({
     ...obj,
   });
@@ -2759,6 +3047,9 @@ export interface Step {
 }
 
 export namespace Step {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Step): any => ({
     ...obj,
   });
@@ -2775,6 +3066,9 @@ export interface DescribeStepOutput {
 }
 
 export namespace DescribeStepOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeStepOutput): any => ({
     ...obj,
   });
@@ -2788,6 +3082,9 @@ export interface DescribeStudioInput {
 }
 
 export namespace DescribeStudioInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeStudioInput): any => ({
     ...obj,
   });
@@ -2798,33 +3095,33 @@ export namespace DescribeStudioInput {
  */
 export interface Studio {
   /**
-   * <p>The ID of the EMR Studio.</p>
+   * <p>The ID of the Amazon EMR Studio.</p>
    */
   StudioId?: string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of the EMR Studio.</p>
+   * <p>The Amazon Resource Name (ARN) of the Amazon EMR Studio.</p>
    */
   StudioArn?: string;
 
   /**
-   * <p>The name of the EMR Studio.</p>
+   * <p>The name of the Amazon EMR Studio.</p>
    */
   Name?: string;
 
   /**
-   * <p>The detailed description of the EMR Studio.</p>
+   * <p>The detailed description of the Amazon EMR Studio.</p>
    */
   Description?: string;
 
   /**
-   * <p>Specifies whether the Studio authenticates users using single sign-on (SSO) or
+   * <p>Specifies whether the Amazon EMR Studio authenticates users using single sign-on (SSO) or
    *          IAM.</p>
    */
   AuthMode?: AuthMode | string;
 
   /**
-   * <p>The ID of the VPC associated with the EMR Studio.</p>
+   * <p>The ID of the VPC associated with the Amazon EMR Studio.</p>
    */
   VpcId?: string;
 
@@ -2868,7 +3165,7 @@ export interface Studio {
   CreationTime?: Date;
 
   /**
-   * <p>The default Amazon S3 location to back up Amazon EMR Studio Workspaces and notebook
+   * <p>The Amazon S3 location to back up Amazon EMR Studio Workspaces and notebook
    *          files.</p>
    */
   DefaultS3Location?: string;
@@ -2880,6 +3177,9 @@ export interface Studio {
 }
 
 export namespace Studio {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Studio): any => ({
     ...obj,
   });
@@ -2893,6 +3193,9 @@ export interface DescribeStudioOutput {
 }
 
 export namespace DescribeStudioOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeStudioOutput): any => ({
     ...obj,
   });
@@ -2915,6 +3218,9 @@ export interface EbsBlockDevice {
 }
 
 export namespace EbsBlockDevice {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EbsBlockDevice): any => ({
     ...obj,
   });
@@ -2936,6 +3242,9 @@ export interface EbsVolume {
 }
 
 export namespace EbsVolume {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EbsVolume): any => ({
     ...obj,
   });
@@ -2944,6 +3253,9 @@ export namespace EbsVolume {
 export interface GetBlockPublicAccessConfigurationInput {}
 
 export namespace GetBlockPublicAccessConfigurationInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBlockPublicAccessConfigurationInput): any => ({
     ...obj,
   });
@@ -2958,6 +3270,9 @@ export interface GetManagedScalingPolicyInput {
 }
 
 export namespace GetManagedScalingPolicyInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetManagedScalingPolicyInput): any => ({
     ...obj,
   });
@@ -2978,6 +3293,9 @@ export interface ManagedScalingPolicy {
 }
 
 export namespace ManagedScalingPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ManagedScalingPolicy): any => ({
     ...obj,
   });
@@ -2991,6 +3309,9 @@ export interface GetManagedScalingPolicyOutput {
 }
 
 export namespace GetManagedScalingPolicyOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetManagedScalingPolicyOutput): any => ({
     ...obj,
   });
@@ -3010,7 +3331,7 @@ export interface GetStudioSessionMappingInput {
   IdentityId?: string;
 
   /**
-   * <p>The name of the user or group to fetch. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId">UserName</a> and <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName">DisplayName</a> in the <i>AWS SSO Identity Store API Reference</i>.
+   * <p>The name of the user or group to fetch. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName">UserName</a> and <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName">DisplayName</a> in the <i>AWS SSO Identity Store API Reference</i>.
    *          Either <code>IdentityName</code> or <code>IdentityId</code> must be specified.</p>
    */
   IdentityName?: string;
@@ -3022,6 +3343,9 @@ export interface GetStudioSessionMappingInput {
 }
 
 export namespace GetStudioSessionMappingInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStudioSessionMappingInput): any => ({
     ...obj,
   });
@@ -3043,13 +3367,13 @@ export interface SessionMappingDetail {
   IdentityId?: string;
 
   /**
-   * <p>The name of the user or group. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId">UserName</a> and <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName">DisplayName</a> in the <i>AWS SSO Identity Store API
+   * <p>The name of the user or group. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName">UserName</a> and <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName">DisplayName</a> in the <i>AWS SSO Identity Store API
    *          Reference</i>.</p>
    */
   IdentityName?: string;
 
   /**
-   * <p>Specifies whether the identity mapped to the Studio is a user or a group.</p>
+   * <p>Specifies whether the identity mapped to the Amazon EMR Studio is a user or a group.</p>
    */
   IdentityType?: IdentityType | string;
 
@@ -3071,6 +3395,9 @@ export interface SessionMappingDetail {
 }
 
 export namespace SessionMappingDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SessionMappingDetail): any => ({
     ...obj,
   });
@@ -3085,6 +3412,9 @@ export interface GetStudioSessionMappingOutput {
 }
 
 export namespace GetStudioSessionMappingOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStudioSessionMappingOutput): any => ({
     ...obj,
   });
@@ -3106,6 +3436,9 @@ export interface ListBootstrapActionsInput {
 }
 
 export namespace ListBootstrapActionsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBootstrapActionsInput): any => ({
     ...obj,
   });
@@ -3127,6 +3460,9 @@ export interface ListBootstrapActionsOutput {
 }
 
 export namespace ListBootstrapActionsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListBootstrapActionsOutput): any => ({
     ...obj,
   });
@@ -3159,6 +3495,9 @@ export interface ListClustersInput {
 }
 
 export namespace ListClustersInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListClustersInput): any => ({
     ...obj,
   });
@@ -3181,6 +3520,9 @@ export interface ListClustersOutput {
 }
 
 export namespace ListClustersOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListClustersOutput): any => ({
     ...obj,
   });
@@ -3199,6 +3541,9 @@ export interface ListInstanceFleetsInput {
 }
 
 export namespace ListInstanceFleetsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInstanceFleetsInput): any => ({
     ...obj,
   });
@@ -3241,6 +3586,9 @@ export interface InstanceFleetStateChangeReason {
 }
 
 export namespace InstanceFleetStateChangeReason {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceFleetStateChangeReason): any => ({
     ...obj,
   });
@@ -3272,6 +3620,9 @@ export interface InstanceFleetTimeline {
 }
 
 export namespace InstanceFleetTimeline {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceFleetTimeline): any => ({
     ...obj,
   });
@@ -3339,6 +3690,9 @@ export interface InstanceFleetStatus {
 }
 
 export namespace InstanceFleetStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceFleetStatus): any => ({
     ...obj,
   });
@@ -3360,6 +3714,9 @@ export interface ListInstanceGroupsInput {
 }
 
 export namespace ListInstanceGroupsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInstanceGroupsInput): any => ({
     ...obj,
   });
@@ -3394,6 +3751,9 @@ export interface InstanceResizePolicy {
 }
 
 export namespace InstanceResizePolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceResizePolicy): any => ({
     ...obj,
   });
@@ -3418,6 +3778,9 @@ export interface ShrinkPolicy {
 }
 
 export namespace ShrinkPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ShrinkPolicy): any => ({
     ...obj,
   });
@@ -3446,6 +3809,9 @@ export interface InstanceGroupStateChangeReason {
 }
 
 export namespace InstanceGroupStateChangeReason {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceGroupStateChangeReason): any => ({
     ...obj,
   });
@@ -3472,6 +3838,9 @@ export interface InstanceGroupTimeline {
 }
 
 export namespace InstanceGroupTimeline {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceGroupTimeline): any => ({
     ...obj,
   });
@@ -3498,6 +3867,9 @@ export interface InstanceGroupStatus {
 }
 
 export namespace InstanceGroupStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceGroupStatus): any => ({
     ...obj,
   });
@@ -3553,6 +3925,9 @@ export interface ListInstancesInput {
 }
 
 export namespace ListInstancesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInstancesInput): any => ({
     ...obj,
   });
@@ -3582,6 +3957,9 @@ export interface InstanceStateChangeReason {
 }
 
 export namespace InstanceStateChangeReason {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceStateChangeReason): any => ({
     ...obj,
   });
@@ -3608,6 +3986,9 @@ export interface InstanceTimeline {
 }
 
 export namespace InstanceTimeline {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceTimeline): any => ({
     ...obj,
   });
@@ -3634,6 +4015,9 @@ export interface InstanceStatus {
 }
 
 export namespace InstanceStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceStatus): any => ({
     ...obj,
   });
@@ -3706,6 +4090,9 @@ export interface Instance {
 }
 
 export namespace Instance {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Instance): any => ({
     ...obj,
   });
@@ -3727,6 +4114,9 @@ export interface ListInstancesOutput {
 }
 
 export namespace ListInstancesOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInstancesOutput): any => ({
     ...obj,
   });
@@ -3815,6 +4205,9 @@ export interface ListNotebookExecutionsInput {
 }
 
 export namespace ListNotebookExecutionsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListNotebookExecutionsInput): any => ({
     ...obj,
   });
@@ -3907,6 +4300,9 @@ export interface NotebookExecutionSummary {
 }
 
 export namespace NotebookExecutionSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotebookExecutionSummary): any => ({
     ...obj,
   });
@@ -3926,6 +4322,9 @@ export interface ListNotebookExecutionsOutput {
 }
 
 export namespace ListNotebookExecutionsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListNotebookExecutionsOutput): any => ({
     ...obj,
   });
@@ -3939,6 +4338,9 @@ export interface ListSecurityConfigurationsInput {
 }
 
 export namespace ListSecurityConfigurationsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSecurityConfigurationsInput): any => ({
     ...obj,
   });
@@ -3960,6 +4362,9 @@ export interface SecurityConfigurationSummary {
 }
 
 export namespace SecurityConfigurationSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SecurityConfigurationSummary): any => ({
     ...obj,
   });
@@ -3980,6 +4385,9 @@ export interface ListSecurityConfigurationsOutput {
 }
 
 export namespace ListSecurityConfigurationsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSecurityConfigurationsOutput): any => ({
     ...obj,
   });
@@ -4013,6 +4421,9 @@ export interface ListStepsInput {
 }
 
 export namespace ListStepsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListStepsInput): any => ({
     ...obj,
   });
@@ -4051,6 +4462,9 @@ export interface StepSummary {
 }
 
 export namespace StepSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StepSummary): any => ({
     ...obj,
   });
@@ -4073,6 +4487,9 @@ export interface ListStepsOutput {
 }
 
 export namespace ListStepsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListStepsOutput): any => ({
     ...obj,
   });
@@ -4086,6 +4503,9 @@ export interface ListStudiosInput {
 }
 
 export namespace ListStudiosInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListStudiosInput): any => ({
     ...obj,
   });
@@ -4114,7 +4534,7 @@ export interface StudioSummary {
   VpcId?: string;
 
   /**
-   * <p>The detailed description of the EMR Studio.</p>
+   * <p>The detailed description of the Amazon EMR Studio.</p>
    */
   Description?: string;
 
@@ -4130,6 +4550,9 @@ export interface StudioSummary {
 }
 
 export namespace StudioSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StudioSummary): any => ({
     ...obj,
   });
@@ -4148,6 +4571,9 @@ export interface ListStudiosOutput {
 }
 
 export namespace ListStudiosOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListStudiosOutput): any => ({
     ...obj,
   });
@@ -4172,6 +4598,9 @@ export interface ListStudioSessionMappingsInput {
 }
 
 export namespace ListStudioSessionMappingsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListStudioSessionMappingsInput): any => ({
     ...obj,
   });
@@ -4194,13 +4623,13 @@ export interface SessionMappingSummary {
   IdentityId?: string;
 
   /**
-   * <p>The name of the user or group. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId">UserName</a> and <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName">DisplayName</a> in the <i>AWS SSO Identity Store API
+   * <p>The name of the user or group. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName">UserName</a> and <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName">DisplayName</a> in the <i>AWS SSO Identity Store API
    *          Reference</i>.</p>
    */
   IdentityName?: string;
 
   /**
-   * <p>Specifies whether the identity mapped to the Studio is a user or a group.</p>
+   * <p>Specifies whether the identity mapped to the Amazon EMR Studio is a user or a group.</p>
    */
   IdentityType?: IdentityType | string;
 
@@ -4217,6 +4646,9 @@ export interface SessionMappingSummary {
 }
 
 export namespace SessionMappingSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SessionMappingSummary): any => ({
     ...obj,
   });
@@ -4225,7 +4657,7 @@ export namespace SessionMappingSummary {
 export interface ListStudioSessionMappingsOutput {
   /**
    * <p>A list of session mapping summary objects. Each object includes session mapping details
-   *          such as creation time, identity type (user or group), and Studio ID.</p>
+   *          such as creation time, identity type (user or group), and Amazon EMR Studio ID.</p>
    */
   SessionMappings?: SessionMappingSummary[];
 
@@ -4236,6 +4668,9 @@ export interface ListStudioSessionMappingsOutput {
 }
 
 export namespace ListStudioSessionMappingsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListStudioSessionMappingsOutput): any => ({
     ...obj,
   });
@@ -4248,13 +4683,16 @@ export interface ModifyClusterInput {
   ClusterId: string | undefined;
 
   /**
-   * <p>The number of steps that can be executed concurrently. You can specify a maximum of 256
+   * <p>The number of steps that can be executed concurrently. You can specify a minimum of 1 step and a maximum of 256
    *          steps. </p>
    */
   StepConcurrencyLevel?: number;
 }
 
 export namespace ModifyClusterInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyClusterInput): any => ({
     ...obj,
   });
@@ -4268,6 +4706,9 @@ export interface ModifyClusterOutput {
 }
 
 export namespace ModifyClusterOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyClusterOutput): any => ({
     ...obj,
   });
@@ -4300,6 +4741,9 @@ export interface InstanceFleetModifyConfig {
 }
 
 export namespace InstanceFleetModifyConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceFleetModifyConfig): any => ({
     ...obj,
   });
@@ -4318,6 +4762,9 @@ export interface ModifyInstanceFleetInput {
 }
 
 export namespace ModifyInstanceFleetInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyInstanceFleetInput): any => ({
     ...obj,
   });
@@ -4343,6 +4790,9 @@ export interface PutAutoScalingPolicyInput {
 }
 
 export namespace PutAutoScalingPolicyInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutAutoScalingPolicyInput): any => ({
     ...obj,
   });
@@ -4366,12 +4816,15 @@ export interface PutAutoScalingPolicyOutput {
   AutoScalingPolicy?: AutoScalingPolicyDescription;
 
   /**
-   * <p>The Amazon Resource Name of the cluster.</p>
+   * <p>The Amazon Resource Name (ARN) of the cluster.</p>
    */
   ClusterArn?: string;
 }
 
 export namespace PutAutoScalingPolicyOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutAutoScalingPolicyOutput): any => ({
     ...obj,
   });
@@ -4380,6 +4833,9 @@ export namespace PutAutoScalingPolicyOutput {
 export interface PutBlockPublicAccessConfigurationOutput {}
 
 export namespace PutBlockPublicAccessConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBlockPublicAccessConfigurationOutput): any => ({
     ...obj,
   });
@@ -4398,6 +4854,9 @@ export interface PutManagedScalingPolicyInput {
 }
 
 export namespace PutManagedScalingPolicyInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutManagedScalingPolicyInput): any => ({
     ...obj,
   });
@@ -4406,6 +4865,9 @@ export namespace PutManagedScalingPolicyInput {
 export interface PutManagedScalingPolicyOutput {}
 
 export namespace PutManagedScalingPolicyOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutManagedScalingPolicyOutput): any => ({
     ...obj,
   });
@@ -4425,6 +4887,9 @@ export interface RemoveAutoScalingPolicyInput {
 }
 
 export namespace RemoveAutoScalingPolicyInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveAutoScalingPolicyInput): any => ({
     ...obj,
   });
@@ -4433,6 +4898,9 @@ export namespace RemoveAutoScalingPolicyInput {
 export interface RemoveAutoScalingPolicyOutput {}
 
 export namespace RemoveAutoScalingPolicyOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveAutoScalingPolicyOutput): any => ({
     ...obj,
   });
@@ -4447,6 +4915,9 @@ export interface RemoveManagedScalingPolicyInput {
 }
 
 export namespace RemoveManagedScalingPolicyInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveManagedScalingPolicyInput): any => ({
     ...obj,
   });
@@ -4455,6 +4926,9 @@ export namespace RemoveManagedScalingPolicyInput {
 export interface RemoveManagedScalingPolicyOutput {}
 
 export namespace RemoveManagedScalingPolicyOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveManagedScalingPolicyOutput): any => ({
     ...obj,
   });
@@ -4477,6 +4951,9 @@ export interface RemoveTagsInput {
 }
 
 export namespace RemoveTagsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveTagsInput): any => ({
     ...obj,
   });
@@ -4488,13 +4965,16 @@ export namespace RemoveTagsInput {
 export interface RemoveTagsOutput {}
 
 export namespace RemoveTagsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveTagsOutput): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The list of supported product configurations which allow user-supplied arguments. EMR
+ * <p>The list of supported product configurations that allow user-supplied arguments. EMR
  *          accepts these arguments and forwards them to the corresponding installation script as
  *          bootstrap action arguments.</p>
  */
@@ -4511,6 +4991,9 @@ export interface SupportedProductConfig {
 }
 
 export namespace SupportedProductConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SupportedProductConfig): any => ({
     ...obj,
   });
@@ -4521,17 +5004,20 @@ export namespace SupportedProductConfig {
  */
 export interface RunJobFlowOutput {
   /**
-   * <p>An unique identifier for the job flow.</p>
+   * <p>A unique identifier for the job flow.</p>
    */
   JobFlowId?: string;
 
   /**
-   * <p>The Amazon Resource Name of the cluster.</p>
+   * <p>The Amazon Resource Name (ARN) of the cluster.</p>
    */
   ClusterArn?: string;
 }
 
 export namespace RunJobFlowOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RunJobFlowOutput): any => ({
     ...obj,
   });
@@ -4556,6 +5042,9 @@ export interface SetTerminationProtectionInput {
 }
 
 export namespace SetTerminationProtectionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetTerminationProtectionInput): any => ({
     ...obj,
   });
@@ -4580,6 +5069,9 @@ export interface SetVisibleToAllUsersInput {
 }
 
 export namespace SetVisibleToAllUsersInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetVisibleToAllUsersInput): any => ({
     ...obj,
   });
@@ -4640,6 +5132,9 @@ export interface StartNotebookExecutionInput {
 }
 
 export namespace StartNotebookExecutionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartNotebookExecutionInput): any => ({
     ...obj,
   });
@@ -4653,6 +5148,9 @@ export interface StartNotebookExecutionOutput {
 }
 
 export namespace StartNotebookExecutionOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartNotebookExecutionOutput): any => ({
     ...obj,
   });
@@ -4666,6 +5164,9 @@ export interface StopNotebookExecutionInput {
 }
 
 export namespace StopNotebookExecutionInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopNotebookExecutionInput): any => ({
     ...obj,
   });
@@ -4682,14 +5183,53 @@ export interface TerminateJobFlowsInput {
 }
 
 export namespace TerminateJobFlowsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TerminateJobFlowsInput): any => ({
+    ...obj,
+  });
+}
+
+export interface UpdateStudioInput {
+  /**
+   * <p>The ID of the Amazon EMR Studio to update.</p>
+   */
+  StudioId: string | undefined;
+
+  /**
+   * <p>A descriptive name for the Amazon EMR Studio.</p>
+   */
+  Name?: string;
+
+  /**
+   * <p>A detailed description to assign to the Amazon EMR Studio.</p>
+   */
+  Description?: string;
+
+  /**
+   * <p>A list of subnet IDs to associate with the Amazon EMR Studio. The list can include new subnet IDs, but must also include all of the subnet IDs previously associated with the Studio. The list order does not matter. A Studio can have a maximum of 5 subnets. The subnets must belong to the same VPC as the Studio. </p>
+   */
+  SubnetIds?: string[];
+
+  /**
+   * <p>The Amazon S3 location to back up Workspaces and notebook files for the Amazon EMR Studio.</p>
+   */
+  DefaultS3Location?: string;
+}
+
+export namespace UpdateStudioInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UpdateStudioInput): any => ({
     ...obj,
   });
 }
 
 export interface UpdateStudioSessionMappingInput {
   /**
-   * <p>The ID of the EMR Studio.</p>
+   * <p>The ID of the Amazon EMR Studio.</p>
    */
   StudioId: string | undefined;
 
@@ -4701,7 +5241,7 @@ export interface UpdateStudioSessionMappingInput {
   IdentityId?: string;
 
   /**
-   * <p>The name of the user or group to update. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserId">UserName</a> and <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName">DisplayName</a> in the <i>AWS SSO Identity Store API Reference</i>.
+   * <p>The name of the user or group to update. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName">UserName</a> and <a href="https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName">DisplayName</a> in the <i>AWS SSO Identity Store API Reference</i>.
    *          Either <code>IdentityName</code> or <code>IdentityId</code> must be specified.</p>
    */
   IdentityName?: string;
@@ -4719,6 +5259,9 @@ export interface UpdateStudioSessionMappingInput {
 }
 
 export namespace UpdateStudioSessionMappingInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateStudioSessionMappingInput): any => ({
     ...obj,
   });
@@ -4753,6 +5296,9 @@ export interface Configuration {
 }
 
 export namespace Configuration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Configuration): any => ({
     ...obj,
   });
@@ -4802,6 +5348,9 @@ export interface BlockPublicAccessConfiguration {
 }
 
 export namespace BlockPublicAccessConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BlockPublicAccessConfiguration): any => ({
     ...obj,
   });
@@ -5011,6 +5560,9 @@ export interface Cluster {
 }
 
 export namespace Cluster {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Cluster): any => ({
     ...obj,
   });
@@ -5036,10 +5588,7 @@ export interface InstanceGroupConfig {
   InstanceRole: InstanceRoleType | string | undefined;
 
   /**
-   * <p>The bid price for each EC2 Spot Instance type as defined by <code>InstanceType</code>.
-   *          Expressed in USD. If neither <code>BidPrice</code> nor
-   *             <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided,
-   *             <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%.</p>
+   * <p>If specified, indicates that the instance group uses Spot Instances. This is the maximum price you are willing to pay for Spot Instances. Specify <code>OnDemandPrice</code> to set the amount equal to the On-Demand price, or specify an amount in USD.</p>
    */
   BidPrice?: string;
 
@@ -5078,6 +5627,9 @@ export interface InstanceGroupConfig {
 }
 
 export namespace InstanceGroupConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceGroupConfig): any => ({
     ...obj,
   });
@@ -5115,6 +5667,9 @@ export interface InstanceGroupModifyConfig {
 }
 
 export namespace InstanceGroupModifyConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceGroupModifyConfig): any => ({
     ...obj,
   });
@@ -5174,6 +5729,9 @@ export interface InstanceTypeConfig {
 }
 
 export namespace InstanceTypeConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceTypeConfig): any => ({
     ...obj,
   });
@@ -5232,6 +5790,9 @@ export interface InstanceTypeSpecification {
 }
 
 export namespace InstanceTypeSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceTypeSpecification): any => ({
     ...obj,
   });
@@ -5248,6 +5809,9 @@ export interface DescribeClusterOutput {
 }
 
 export namespace DescribeClusterOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeClusterOutput): any => ({
     ...obj,
   });
@@ -5284,6 +5848,9 @@ export interface GetBlockPublicAccessConfigurationOutput {
 }
 
 export namespace GetBlockPublicAccessConfigurationOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBlockPublicAccessConfigurationOutput): any => ({
     ...obj,
   });
@@ -5311,6 +5878,9 @@ export interface PutBlockPublicAccessConfigurationInput {
 }
 
 export namespace PutBlockPublicAccessConfigurationInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBlockPublicAccessConfigurationInput): any => ({
     ...obj,
   });
@@ -5332,6 +5902,9 @@ export interface AddInstanceGroupsInput {
 }
 
 export namespace AddInstanceGroupsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddInstanceGroupsInput): any => ({
     ...obj,
   });
@@ -5394,8 +5967,8 @@ export interface InstanceFleet {
 
   /**
    * <p>The target capacity of Spot units for the instance fleet, which determines how many Spot
-   *          instances to provision. When the instance fleet launches, Amazon EMR tries to provision
-   *          Spot instances as specified by <a>InstanceTypeConfig</a>. Each instance
+   *          Instances to provision. When the instance fleet launches, Amazon EMR tries to provision
+   *          Spot Instances as specified by <a>InstanceTypeConfig</a>. Each instance
    *          configuration has a specified <code>WeightedCapacity</code>. When a Spot instance is
    *          provisioned, the <code>WeightedCapacity</code> units count toward the target capacity.
    *          Amazon EMR provisions instances until the target capacity is totally fulfilled, even if
@@ -5405,7 +5978,7 @@ export interface InstanceFleet {
    *          capacity is exceeded by 3 units. You can use <a>InstanceFleet$ProvisionedSpotCapacity</a> to determine the Spot capacity units
    *          that have been provisioned for the instance fleet.</p>
    *          <note>
-   *             <p>If not specified or set to 0, only On-Demand instances are provisioned for the
+   *             <p>If not specified or set to 0, only On-Demand Instances are provisioned for the
    *             instance fleet. At least one of <code>TargetSpotCapacity</code> and
    *                <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance
    *             fleet, only one of <code>TargetSpotCapacity</code> and
@@ -5441,6 +6014,9 @@ export interface InstanceFleet {
 }
 
 export namespace InstanceFleet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceFleet): any => ({
     ...obj,
   });
@@ -5460,7 +6036,7 @@ export interface InstanceFleetConfig {
   Name?: string;
 
   /**
-   * <p>The node type that the instance fleet hosts. Valid values are MASTER,CORE,and
+   * <p>The node type that the instance fleet hosts. Valid values are MASTER, CORE, and
    *          TASK.</p>
    */
   InstanceFleetType: InstanceFleetType | string | undefined;
@@ -5521,6 +6097,9 @@ export interface InstanceFleetConfig {
 }
 
 export namespace InstanceFleetConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceFleetConfig): any => ({
     ...obj,
   });
@@ -5542,6 +6121,9 @@ export interface ModifyInstanceGroupsInput {
 }
 
 export namespace ModifyInstanceGroupsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyInstanceGroupsInput): any => ({
     ...obj,
   });
@@ -5560,6 +6142,9 @@ export interface AddInstanceFleetInput {
 }
 
 export namespace AddInstanceFleetInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddInstanceFleetInput): any => ({
     ...obj,
   });
@@ -5592,10 +6177,7 @@ export interface InstanceGroup {
   InstanceGroupType?: InstanceGroupType | string;
 
   /**
-   * <p>The bid price for each EC2 Spot Instance type as defined by <code>InstanceType</code>.
-   *          Expressed in USD. If neither <code>BidPrice</code> nor
-   *             <code>BidPriceAsPercentageOfOnDemandPrice</code> is provided,
-   *             <code>BidPriceAsPercentageOfOnDemandPrice</code> defaults to 100%.</p>
+   * <p>If specified, indicates that the instance group uses Spot Instances. This is the maximum price you are willing to pay for Spot Instances. Specify <code>OnDemandPrice</code> to set the amount equal to the On-Demand price, or specify an amount in USD.</p>
    */
   BidPrice?: string;
 
@@ -5673,6 +6255,9 @@ export interface InstanceGroup {
 }
 
 export namespace InstanceGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InstanceGroup): any => ({
     ...obj,
   });
@@ -5691,6 +6276,9 @@ export interface ListInstanceFleetsOutput {
 }
 
 export namespace ListInstanceFleetsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInstanceFleetsOutput): any => ({
     ...obj,
   });
@@ -5712,6 +6300,9 @@ export interface ListInstanceGroupsOutput {
 }
 
 export namespace ListInstanceGroupsOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListInstanceGroupsOutput): any => ({
     ...obj,
   });
@@ -5833,6 +6424,9 @@ export interface JobFlowInstancesConfig {
 }
 
 export namespace JobFlowInstancesConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobFlowInstancesConfig): any => ({
     ...obj,
   });
@@ -5942,7 +6536,7 @@ export interface RunJobFlowInput {
    *                <p>"mapr-m7" - launch the cluster using MapR M7 Edition.</p>
    *             </li>
    *             <li>
-   *                <p>"hunk" - launch the cluster with the Hunk Big Data Analtics Platform.</p>
+   *                <p>"hunk" - launch the cluster with the Hunk Big Data Analytics Platform.</p>
    *             </li>
    *             <li>
    *                <p>"hue"- launch the cluster with Hue installed.</p>
@@ -6082,6 +6676,9 @@ export interface RunJobFlowInput {
 }
 
 export namespace RunJobFlowInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RunJobFlowInput): any => ({
     ...obj,
   });

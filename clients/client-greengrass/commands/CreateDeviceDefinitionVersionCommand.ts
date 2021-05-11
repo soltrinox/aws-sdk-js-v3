@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDeviceDefinitionVersionCommandInput = CreateDeviceDefinitionVersionRequest;
-export type CreateDeviceDefinitionVersionCommandOutput = CreateDeviceDefinitionVersionResponse & __MetadataBearer;
+export interface CreateDeviceDefinitionVersionCommandInput extends CreateDeviceDefinitionVersionRequest {}
+export interface CreateDeviceDefinitionVersionCommandOutput
+  extends CreateDeviceDefinitionVersionResponse,
+    __MetadataBearer {}
 
 /**
  * Creates a version of a device definition that has already been defined.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, CreateDeviceDefinitionVersionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, CreateDeviceDefinitionVersionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new CreateDeviceDefinitionVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDeviceDefinitionVersionCommandInput} for command's `input` shape.
+ * @see {@link CreateDeviceDefinitionVersionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDeviceDefinitionVersionCommand extends $Command<
   CreateDeviceDefinitionVersionCommandInput,

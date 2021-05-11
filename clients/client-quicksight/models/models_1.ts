@@ -13,8 +13,10 @@ import {
   DataSetImportMode,
   DataSourceCredentials,
   DataSourceParameters,
+  FieldFolder,
   Group,
   IdentityType,
+  Ingestion,
   LogicalTable,
   NamespaceInfoV2,
   PhysicalTable,
@@ -35,6 +37,37 @@ import {
 } from "./models_0";
 import { SENSITIVE_STRING } from "@aws-sdk/smithy-client";
 
+export interface ListIngestionsResponse {
+  /**
+   * <p>A list of the ingestions.</p>
+   */
+  Ingestions?: Ingestion[];
+
+  /**
+   * <p>The token for the next set of results, or null if there are no more results.</p>
+   */
+  NextToken?: string;
+
+  /**
+   * <p>The AWS request ID for this operation.</p>
+   */
+  RequestId?: string;
+
+  /**
+   * <p>The HTTP status of the request.</p>
+   */
+  Status?: number;
+}
+
+export namespace ListIngestionsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListIngestionsResponse): any => ({
+    ...obj,
+  });
+}
+
 export interface ListNamespacesRequest {
   /**
    * <p>The ID for the AWS account that contains the QuickSight namespaces that you want to list.</p>
@@ -53,6 +86,9 @@ export interface ListNamespacesRequest {
 }
 
 export namespace ListNamespacesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListNamespacesRequest): any => ({
     ...obj,
   });
@@ -83,6 +119,9 @@ export interface ListNamespacesResponse {
 }
 
 export namespace ListNamespacesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListNamespacesResponse): any => ({
     ...obj,
   });
@@ -96,6 +135,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -120,6 +162,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -148,6 +193,9 @@ export interface ListTemplateAliasesRequest {
 }
 
 export namespace ListTemplateAliasesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTemplateAliasesRequest): any => ({
     ...obj,
   });
@@ -176,6 +224,9 @@ export interface ListTemplateAliasesResponse {
 }
 
 export namespace ListTemplateAliasesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTemplateAliasesResponse): any => ({
     ...obj,
   });
@@ -199,6 +250,9 @@ export interface ListTemplatesRequest {
 }
 
 export namespace ListTemplatesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTemplatesRequest): any => ({
     ...obj,
   });
@@ -240,6 +294,9 @@ export interface TemplateSummary {
 }
 
 export namespace TemplateSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TemplateSummary): any => ({
     ...obj,
   });
@@ -268,6 +325,9 @@ export interface ListTemplatesResponse {
 }
 
 export namespace ListTemplatesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTemplatesResponse): any => ({
     ...obj,
   });
@@ -296,6 +356,9 @@ export interface ListTemplateVersionsRequest {
 }
 
 export namespace ListTemplateVersionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTemplateVersionsRequest): any => ({
     ...obj,
   });
@@ -332,6 +395,9 @@ export interface TemplateVersionSummary {
 }
 
 export namespace TemplateVersionSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TemplateVersionSummary): any => ({
     ...obj,
   });
@@ -360,6 +426,9 @@ export interface ListTemplateVersionsResponse {
 }
 
 export namespace ListTemplateVersionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTemplateVersionsResponse): any => ({
     ...obj,
   });
@@ -388,6 +457,9 @@ export interface ListThemeAliasesRequest {
 }
 
 export namespace ListThemeAliasesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListThemeAliasesRequest): any => ({
     ...obj,
   });
@@ -416,6 +488,9 @@ export interface ListThemeAliasesResponse {
 }
 
 export namespace ListThemeAliasesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListThemeAliasesResponse): any => ({
     ...obj,
   });
@@ -458,6 +533,9 @@ export interface ListThemesRequest {
 }
 
 export namespace ListThemesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListThemesRequest): any => ({
     ...obj,
   });
@@ -499,6 +577,9 @@ export interface ThemeSummary {
 }
 
 export namespace ThemeSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThemeSummary): any => ({
     ...obj,
   });
@@ -527,6 +608,9 @@ export interface ListThemesResponse {
 }
 
 export namespace ListThemesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListThemesResponse): any => ({
     ...obj,
   });
@@ -555,6 +639,9 @@ export interface ListThemeVersionsRequest {
 }
 
 export namespace ListThemeVersionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListThemeVersionsRequest): any => ({
     ...obj,
   });
@@ -591,6 +678,9 @@ export interface ThemeVersionSummary {
 }
 
 export namespace ThemeVersionSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThemeVersionSummary): any => ({
     ...obj,
   });
@@ -619,6 +709,9 @@ export interface ListThemeVersionsResponse {
 }
 
 export namespace ListThemeVersionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListThemeVersionsResponse): any => ({
     ...obj,
   });
@@ -653,6 +746,9 @@ export interface ListUserGroupsRequest {
 }
 
 export namespace ListUserGroupsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUserGroupsRequest): any => ({
     ...obj,
   });
@@ -681,6 +777,9 @@ export interface ListUserGroupsResponse {
 }
 
 export namespace ListUserGroupsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUserGroupsResponse): any => ({
     ...obj,
   });
@@ -710,6 +809,9 @@ export interface ListUsersRequest {
 }
 
 export namespace ListUsersRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUsersRequest): any => ({
     ...obj,
   });
@@ -738,6 +840,9 @@ export interface ListUsersResponse {
 }
 
 export namespace ListUsersResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListUsersResponse): any => ({
     ...obj,
   });
@@ -809,7 +914,7 @@ export interface RegisterUserRequest {
    * 			IAM role. You don't need to provide the session name for other scenarios, for example when
    * 			you are registering an IAM user or an Amazon QuickSight user. You can register multiple
    * 			users using the same IAM role if each user has a different session name. For more
-   * 			information on assuming IAM roles, see <a href="https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sts/assume-role.html">
+   * 			information on assuming IAM roles, see <a href="https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html">
    *                <code>assume-role</code>
    *             </a> in the <i>AWS CLI Reference.</i>
    *          </p>
@@ -868,6 +973,9 @@ export interface RegisterUserRequest {
 }
 
 export namespace RegisterUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegisterUserRequest): any => ({
     ...obj,
   });
@@ -897,6 +1005,9 @@ export interface RegisterUserResponse {
 }
 
 export namespace RegisterUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegisterUserResponse): any => ({
     ...obj,
   });
@@ -915,6 +1026,9 @@ export interface RestoreAnalysisRequest {
 }
 
 export namespace RestoreAnalysisRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RestoreAnalysisRequest): any => ({
     ...obj,
   });
@@ -944,6 +1058,9 @@ export interface RestoreAnalysisResponse {
 }
 
 export namespace RestoreAnalysisResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RestoreAnalysisResponse): any => ({
     ...obj,
   });
@@ -973,6 +1090,9 @@ export interface SearchAnalysesRequest {
 }
 
 export namespace SearchAnalysesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchAnalysesRequest): any => ({
     ...obj,
   });
@@ -1002,6 +1122,9 @@ export interface SearchAnalysesResponse {
 }
 
 export namespace SearchAnalysesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchAnalysesResponse): any => ({
     ...obj,
   });
@@ -1034,6 +1157,9 @@ export interface SearchDashboardsRequest {
 }
 
 export namespace SearchDashboardsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchDashboardsRequest): any => ({
     ...obj,
   });
@@ -1063,6 +1189,9 @@ export interface SearchDashboardsResponse {
 }
 
 export namespace SearchDashboardsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SearchDashboardsResponse): any => ({
     ...obj,
   });
@@ -1081,6 +1210,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -1099,6 +1231,9 @@ export interface TagResourceResponse {
 }
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -1117,6 +1252,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -1135,6 +1273,9 @@ export interface UntagResourceResponse {
 }
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
@@ -1159,6 +1300,9 @@ export interface UpdateAccountCustomizationRequest {
 }
 
 export namespace UpdateAccountCustomizationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAccountCustomizationRequest): any => ({
     ...obj,
   });
@@ -1198,6 +1342,9 @@ export interface UpdateAccountCustomizationResponse {
 }
 
 export namespace UpdateAccountCustomizationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAccountCustomizationResponse): any => ({
     ...obj,
   });
@@ -1226,6 +1373,9 @@ export interface UpdateAccountSettingsRequest {
 }
 
 export namespace UpdateAccountSettingsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAccountSettingsRequest): any => ({
     ...obj,
   });
@@ -1244,6 +1394,9 @@ export interface UpdateAccountSettingsResponse {
 }
 
 export namespace UpdateAccountSettingsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAccountSettingsResponse): any => ({
     ...obj,
   });
@@ -1288,6 +1441,9 @@ export interface UpdateAnalysisRequest {
 }
 
 export namespace UpdateAnalysisRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAnalysisRequest): any => ({
     ...obj,
   });
@@ -1321,6 +1477,9 @@ export interface UpdateAnalysisResponse {
 }
 
 export namespace UpdateAnalysisResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAnalysisResponse): any => ({
     ...obj,
   });
@@ -1353,6 +1512,9 @@ export interface UpdateAnalysisPermissionsRequest {
 }
 
 export namespace UpdateAnalysisPermissionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAnalysisPermissionsRequest): any => ({
     ...obj,
   });
@@ -1387,6 +1549,9 @@ export interface UpdateAnalysisPermissionsResponse {
 }
 
 export namespace UpdateAnalysisPermissionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAnalysisPermissionsResponse): any => ({
     ...obj,
   });
@@ -1474,6 +1639,9 @@ export interface UpdateDashboardRequest {
 }
 
 export namespace UpdateDashboardRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDashboardRequest): any => ({
     ...obj,
   });
@@ -1512,6 +1680,9 @@ export interface UpdateDashboardResponse {
 }
 
 export namespace UpdateDashboardResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDashboardResponse): any => ({
     ...obj,
   });
@@ -1541,6 +1712,9 @@ export interface UpdateDashboardPermissionsRequest {
 }
 
 export namespace UpdateDashboardPermissionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDashboardPermissionsRequest): any => ({
     ...obj,
   });
@@ -1574,6 +1748,9 @@ export interface UpdateDashboardPermissionsResponse {
 }
 
 export namespace UpdateDashboardPermissionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDashboardPermissionsResponse): any => ({
     ...obj,
   });
@@ -1598,6 +1775,9 @@ export interface UpdateDashboardPublishedVersionRequest {
 }
 
 export namespace UpdateDashboardPublishedVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDashboardPublishedVersionRequest): any => ({
     ...obj,
   });
@@ -1626,6 +1806,9 @@ export interface UpdateDashboardPublishedVersionResponse {
 }
 
 export namespace UpdateDashboardPublishedVersionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDashboardPublishedVersionResponse): any => ({
     ...obj,
   });
@@ -1669,6 +1852,11 @@ export interface UpdateDataSetRequest {
   ColumnGroups?: ColumnGroup[];
 
   /**
+   * <p>The folder that contains fields and nested subfolders for your dataset.</p>
+   */
+  FieldFolders?: { [key: string]: FieldFolder };
+
+  /**
    * <p>The row-level security configuration for the data you want to create.</p>
    */
   RowLevelPermissionDataSet?: RowLevelPermissionDataSet;
@@ -1682,6 +1870,9 @@ export interface UpdateDataSetRequest {
 }
 
 export namespace UpdateDataSetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDataSetRequest): any => ({
     ...obj,
     ...(obj.PhysicalTableMap && {
@@ -1740,6 +1931,9 @@ export interface UpdateDataSetResponse {
 }
 
 export namespace UpdateDataSetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDataSetResponse): any => ({
     ...obj,
   });
@@ -1769,6 +1963,9 @@ export interface UpdateDataSetPermissionsRequest {
 }
 
 export namespace UpdateDataSetPermissionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDataSetPermissionsRequest): any => ({
     ...obj,
   });
@@ -1798,6 +1995,9 @@ export interface UpdateDataSetPermissionsResponse {
 }
 
 export namespace UpdateDataSetPermissionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDataSetPermissionsResponse): any => ({
     ...obj,
   });
@@ -1844,6 +2044,9 @@ export interface UpdateDataSourceRequest {
 }
 
 export namespace UpdateDataSourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDataSourceRequest): any => ({
     ...obj,
     ...(obj.DataSourceParameters && {
@@ -1881,6 +2084,9 @@ export interface UpdateDataSourceResponse {
 }
 
 export namespace UpdateDataSourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDataSourceResponse): any => ({
     ...obj,
   });
@@ -1909,6 +2115,9 @@ export interface UpdateDataSourcePermissionsRequest {
 }
 
 export namespace UpdateDataSourcePermissionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDataSourcePermissionsRequest): any => ({
     ...obj,
   });
@@ -1937,6 +2146,9 @@ export interface UpdateDataSourcePermissionsResponse {
 }
 
 export namespace UpdateDataSourcePermissionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDataSourcePermissionsResponse): any => ({
     ...obj,
   });
@@ -1966,6 +2178,9 @@ export interface UpdateGroupRequest {
 }
 
 export namespace UpdateGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateGroupRequest): any => ({
     ...obj,
   });
@@ -1989,6 +2204,9 @@ export interface UpdateGroupResponse {
 }
 
 export namespace UpdateGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateGroupResponse): any => ({
     ...obj,
   });
@@ -2044,6 +2262,9 @@ export interface UpdateIAMPolicyAssignmentRequest {
 }
 
 export namespace UpdateIAMPolicyAssignmentRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateIAMPolicyAssignmentRequest): any => ({
     ...obj,
   });
@@ -2104,6 +2325,9 @@ export interface UpdateIAMPolicyAssignmentResponse {
 }
 
 export namespace UpdateIAMPolicyAssignmentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateIAMPolicyAssignmentResponse): any => ({
     ...obj,
   });
@@ -2149,6 +2373,9 @@ export interface UpdateTemplateRequest {
 }
 
 export namespace UpdateTemplateRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTemplateRequest): any => ({
     ...obj,
   });
@@ -2187,6 +2414,9 @@ export interface UpdateTemplateResponse {
 }
 
 export namespace UpdateTemplateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTemplateResponse): any => ({
     ...obj,
   });
@@ -2218,6 +2448,9 @@ export interface UpdateTemplateAliasRequest {
 }
 
 export namespace UpdateTemplateAliasRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTemplateAliasRequest): any => ({
     ...obj,
   });
@@ -2241,6 +2474,9 @@ export interface UpdateTemplateAliasResponse {
 }
 
 export namespace UpdateTemplateAliasResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTemplateAliasResponse): any => ({
     ...obj,
   });
@@ -2269,6 +2505,9 @@ export interface UpdateTemplatePermissionsRequest {
 }
 
 export namespace UpdateTemplatePermissionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTemplatePermissionsRequest): any => ({
     ...obj,
   });
@@ -2302,6 +2541,9 @@ export interface UpdateTemplatePermissionsResponse {
 }
 
 export namespace UpdateTemplatePermissionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateTemplatePermissionsResponse): any => ({
     ...obj,
   });
@@ -2343,6 +2585,9 @@ export interface UpdateThemeRequest {
 }
 
 export namespace UpdateThemeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateThemeRequest): any => ({
     ...obj,
   });
@@ -2381,6 +2626,9 @@ export interface UpdateThemeResponse {
 }
 
 export namespace UpdateThemeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateThemeResponse): any => ({
     ...obj,
   });
@@ -2409,6 +2657,9 @@ export interface UpdateThemeAliasRequest {
 }
 
 export namespace UpdateThemeAliasRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateThemeAliasRequest): any => ({
     ...obj,
   });
@@ -2432,6 +2683,9 @@ export interface UpdateThemeAliasResponse {
 }
 
 export namespace UpdateThemeAliasResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateThemeAliasResponse): any => ({
     ...obj,
   });
@@ -2460,6 +2714,9 @@ export interface UpdateThemePermissionsRequest {
 }
 
 export namespace UpdateThemePermissionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateThemePermissionsRequest): any => ({
     ...obj,
   });
@@ -2493,6 +2750,9 @@ export interface UpdateThemePermissionsResponse {
 }
 
 export namespace UpdateThemePermissionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateThemePermissionsResponse): any => ({
     ...obj,
   });
@@ -2584,6 +2844,9 @@ export interface UpdateUserRequest {
 }
 
 export namespace UpdateUserRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateUserRequest): any => ({
     ...obj,
   });
@@ -2607,6 +2870,9 @@ export interface UpdateUserResponse {
 }
 
 export namespace UpdateUserResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateUserResponse): any => ({
     ...obj,
   });

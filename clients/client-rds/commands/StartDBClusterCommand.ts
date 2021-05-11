@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartDBClusterCommandInput = StartDBClusterMessage;
-export type StartDBClusterCommandOutput = StartDBClusterResult & __MetadataBearer;
+export interface StartDBClusterCommandInput extends StartDBClusterMessage {}
+export interface StartDBClusterCommandOutput extends StartDBClusterResult, __MetadataBearer {}
 
 /**
  * <p>Starts an Amazon Aurora DB cluster that was stopped using the AWS console, the stop-db-cluster
@@ -31,6 +31,20 @@ export type StartDBClusterCommandOutput = StartDBClusterResult & __MetadataBeare
  *          <note>
  *            <p>This action only applies to Aurora DB clusters.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, StartDBClusterCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, StartDBClusterCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new StartDBClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartDBClusterCommandInput} for command's `input` shape.
+ * @see {@link StartDBClusterCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartDBClusterCommand extends $Command<
   StartDBClusterCommandInput,

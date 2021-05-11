@@ -18,22 +18,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutObjectRetentionCommandInput = PutObjectRetentionRequest;
-export type PutObjectRetentionCommandOutput = PutObjectRetentionOutput & __MetadataBearer;
+export interface PutObjectRetentionCommandInput extends PutObjectRetentionRequest {}
+export interface PutObjectRetentionCommandOutput extends PutObjectRetentionOutput, __MetadataBearer {}
 
 /**
- * <p>Places an Object Retention configuration on an object.</p>
- *          <p>This action is not supported by Amazon S3 on Outposts.</p>
- *          <p class="title">
- *             <b>Related Resources</b>
+ * <p>Places an Object Retention configuration on an object. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">Locking Objects</a>.
  *          </p>
- *          <ul>
- *             <li>
- *                <p>
- *                   <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html">Locking Objects</a>
- *                </p>
- *             </li>
- *          </ul>
+ *          <p>This action is not supported by Amazon S3 on Outposts.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, PutObjectRetentionCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, PutObjectRetentionCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new PutObjectRetentionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutObjectRetentionCommandInput} for command's `input` shape.
+ * @see {@link PutObjectRetentionCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutObjectRetentionCommand extends $Command<
   PutObjectRetentionCommandInput,

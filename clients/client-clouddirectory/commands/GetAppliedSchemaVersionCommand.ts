@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAppliedSchemaVersionCommandInput = GetAppliedSchemaVersionRequest;
-export type GetAppliedSchemaVersionCommandOutput = GetAppliedSchemaVersionResponse & __MetadataBearer;
+export interface GetAppliedSchemaVersionCommandInput extends GetAppliedSchemaVersionRequest {}
+export interface GetAppliedSchemaVersionCommandOutput extends GetAppliedSchemaVersionResponse, __MetadataBearer {}
 
 /**
  * <p>Returns current applied schema version ARN, including the minor version in use.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudDirectoryClient, GetAppliedSchemaVersionCommand } from "@aws-sdk/client-clouddirectory"; // ES Modules import
+ * // const { CloudDirectoryClient, GetAppliedSchemaVersionCommand } = require("@aws-sdk/client-clouddirectory"); // CommonJS import
+ * const client = new CloudDirectoryClient(config);
+ * const command = new GetAppliedSchemaVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAppliedSchemaVersionCommandInput} for command's `input` shape.
+ * @see {@link GetAppliedSchemaVersionCommandOutput} for command's `response` shape.
+ * @see {@link CloudDirectoryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAppliedSchemaVersionCommand extends $Command<
   GetAppliedSchemaVersionCommandInput,

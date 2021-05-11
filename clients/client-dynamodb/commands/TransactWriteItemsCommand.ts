@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TransactWriteItemsCommandInput = TransactWriteItemsInput;
-export type TransactWriteItemsCommandOutput = TransactWriteItemsOutput & __MetadataBearer;
+export interface TransactWriteItemsCommandInput extends TransactWriteItemsInput {}
+export interface TransactWriteItemsCommandOutput extends TransactWriteItemsOutput, __MetadataBearer {}
 
 /**
  * <p>
@@ -95,6 +95,20 @@ export type TransactWriteItemsCommandOutput = TransactWriteItemsOutput & __Metad
  *                <p>There  is a user error, such as an invalid data format.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, TransactWriteItemsCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, TransactWriteItemsCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new TransactWriteItemsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TransactWriteItemsCommandInput} for command's `input` shape.
+ * @see {@link TransactWriteItemsCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TransactWriteItemsCommand extends $Command<
   TransactWriteItemsCommandInput,

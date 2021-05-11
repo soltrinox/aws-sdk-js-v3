@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteMultiplexProgramCommandInput = DeleteMultiplexProgramRequest;
-export type DeleteMultiplexProgramCommandOutput = DeleteMultiplexProgramResponse & __MetadataBearer;
+export interface DeleteMultiplexProgramCommandInput extends DeleteMultiplexProgramRequest {}
+export interface DeleteMultiplexProgramCommandOutput extends DeleteMultiplexProgramResponse, __MetadataBearer {}
 
 /**
  * Delete a program from a multiplex.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, DeleteMultiplexProgramCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, DeleteMultiplexProgramCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new DeleteMultiplexProgramCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteMultiplexProgramCommandInput} for command's `input` shape.
+ * @see {@link DeleteMultiplexProgramCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteMultiplexProgramCommand extends $Command<
   DeleteMultiplexProgramCommandInput,

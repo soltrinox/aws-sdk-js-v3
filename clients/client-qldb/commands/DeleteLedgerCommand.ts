@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteLedgerCommandInput = DeleteLedgerRequest;
-export type DeleteLedgerCommandOutput = __MetadataBearer;
+export interface DeleteLedgerCommandInput extends DeleteLedgerRequest {}
+export interface DeleteLedgerCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a ledger and all of its contents. This action is irreversible.</p>
@@ -26,6 +26,20 @@ export type DeleteLedgerCommandOutput = __MetadataBearer;
  *          ledger using the QLDB API or the AWS Command Line Interface (AWS CLI). You can disable it by calling the
  *             <code>UpdateLedger</code> operation to set the flag to <code>false</code>. The QLDB
  *          console disables deletion protection for you when you use it to delete a ledger.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QLDBClient, DeleteLedgerCommand } from "@aws-sdk/client-qldb"; // ES Modules import
+ * // const { QLDBClient, DeleteLedgerCommand } = require("@aws-sdk/client-qldb"); // CommonJS import
+ * const client = new QLDBClient(config);
+ * const command = new DeleteLedgerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteLedgerCommandInput} for command's `input` shape.
+ * @see {@link DeleteLedgerCommandOutput} for command's `response` shape.
+ * @see {@link QLDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteLedgerCommand extends $Command<
   DeleteLedgerCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeProjectCommandInput = DescribeProjectRequest;
-export type DescribeProjectCommandOutput = DescribeProjectResponse & __MetadataBearer;
+export interface DescribeProjectCommandInput extends DescribeProjectRequest {}
+export interface DescribeProjectCommandOutput extends DescribeProjectResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about a project.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTSiteWiseClient, DescribeProjectCommand } from "@aws-sdk/client-iotsitewise"; // ES Modules import
+ * // const { IoTSiteWiseClient, DescribeProjectCommand } = require("@aws-sdk/client-iotsitewise"); // CommonJS import
+ * const client = new IoTSiteWiseClient(config);
+ * const command = new DescribeProjectCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeProjectCommandInput} for command's `input` shape.
+ * @see {@link DescribeProjectCommandOutput} for command's `response` shape.
+ * @see {@link IoTSiteWiseClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeProjectCommand extends $Command<
   DescribeProjectCommandInput,

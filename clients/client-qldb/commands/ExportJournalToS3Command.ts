@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ExportJournalToS3CommandInput = ExportJournalToS3Request;
-export type ExportJournalToS3CommandOutput = ExportJournalToS3Response & __MetadataBearer;
+export interface ExportJournalToS3CommandInput extends ExportJournalToS3Request {}
+export interface ExportJournalToS3CommandOutput extends ExportJournalToS3Response, __MetadataBearer {}
 
 /**
  * <p>Exports journal contents within a date and time range from a ledger into a specified
@@ -29,6 +29,20 @@ export type ExportJournalToS3CommandOutput = ExportJournalToS3Response & __Metad
  *          throws <code>ResourcePreconditionNotMetException</code>.</p>
  *          <p>You can initiate up to two concurrent journal export requests for each ledger. Beyond
  *          this limit, journal export requests throw <code>LimitExceededException</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QLDBClient, ExportJournalToS3Command } from "@aws-sdk/client-qldb"; // ES Modules import
+ * // const { QLDBClient, ExportJournalToS3Command } = require("@aws-sdk/client-qldb"); // CommonJS import
+ * const client = new QLDBClient(config);
+ * const command = new ExportJournalToS3Command(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ExportJournalToS3CommandInput} for command's `input` shape.
+ * @see {@link ExportJournalToS3CommandOutput} for command's `response` shape.
+ * @see {@link QLDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ExportJournalToS3Command extends $Command<
   ExportJournalToS3CommandInput,

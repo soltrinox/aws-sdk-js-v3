@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreTableFromClusterSnapshotCommandInput = RestoreTableFromClusterSnapshotMessage;
-export type RestoreTableFromClusterSnapshotCommandOutput = RestoreTableFromClusterSnapshotResult & __MetadataBearer;
+export interface RestoreTableFromClusterSnapshotCommandInput extends RestoreTableFromClusterSnapshotMessage {}
+export interface RestoreTableFromClusterSnapshotCommandOutput
+  extends RestoreTableFromClusterSnapshotResult,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a new table from a table in an Amazon Redshift cluster snapshot. You must
@@ -33,6 +35,20 @@ export type RestoreTableFromClusterSnapshotCommandOutput = RestoreTableFromClust
  *                 <code>NewTableName</code> parameter value in the call to
  *                 <code>RestoreTableFromClusterSnapshot</code>. This way, you can replace the original
  *             table with the table created from the snapshot.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, RestoreTableFromClusterSnapshotCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, RestoreTableFromClusterSnapshotCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new RestoreTableFromClusterSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreTableFromClusterSnapshotCommandInput} for command's `input` shape.
+ * @see {@link RestoreTableFromClusterSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreTableFromClusterSnapshotCommand extends $Command<
   RestoreTableFromClusterSnapshotCommandInput,

@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ExecuteTransactionCommandInput = ExecuteTransactionInput;
-export type ExecuteTransactionCommandOutput = ExecuteTransactionOutput & __MetadataBearer;
+export interface ExecuteTransactionCommandInput extends ExecuteTransactionInput {}
+export interface ExecuteTransactionCommandOutput extends ExecuteTransactionOutput, __MetadataBearer {}
 
 /**
  * <p>
  * This operation allows you to perform transactional reads or writes on data stored in DynamoDB, using PartiQL.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, ExecuteTransactionCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, ExecuteTransactionCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new ExecuteTransactionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ExecuteTransactionCommandInput} for command's `input` shape.
+ * @see {@link ExecuteTransactionCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ExecuteTransactionCommand extends $Command<
   ExecuteTransactionCommandInput,

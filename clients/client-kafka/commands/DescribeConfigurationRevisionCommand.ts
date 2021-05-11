@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeConfigurationRevisionCommandInput = DescribeConfigurationRevisionRequest;
-export type DescribeConfigurationRevisionCommandOutput = DescribeConfigurationRevisionResponse & __MetadataBearer;
+export interface DescribeConfigurationRevisionCommandInput extends DescribeConfigurationRevisionRequest {}
+export interface DescribeConfigurationRevisionCommandOutput
+  extends DescribeConfigurationRevisionResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns a description of this revision of the configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, DescribeConfigurationRevisionCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, DescribeConfigurationRevisionCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new DescribeConfigurationRevisionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeConfigurationRevisionCommandInput} for command's `input` shape.
+ * @see {@link DescribeConfigurationRevisionCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeConfigurationRevisionCommand extends $Command<
   DescribeConfigurationRevisionCommandInput,

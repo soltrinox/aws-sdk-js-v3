@@ -20,9 +20,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCertificateAuthorityAuditReportCommandInput = CreateCertificateAuthorityAuditReportRequest;
-export type CreateCertificateAuthorityAuditReportCommandOutput = CreateCertificateAuthorityAuditReportResponse &
-  __MetadataBearer;
+export interface CreateCertificateAuthorityAuditReportCommandInput
+  extends CreateCertificateAuthorityAuditReportRequest {}
+export interface CreateCertificateAuthorityAuditReportCommandOutput
+  extends CreateCertificateAuthorityAuditReportResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Creates an audit report that lists every time that your CA private key is used. The
@@ -41,6 +43,20 @@ export type CreateCertificateAuthorityAuditReportCommandOutput = CreateCertifica
  * 		       <p>ACM Private CAA assets that are stored in Amazon S3 can be protected with encryption.
  *   For more information, see <a href="https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuditReport.html#audit-report-encryption">Encrypting Your Audit
  * 				Reports</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ACMPCAClient, CreateCertificateAuthorityAuditReportCommand } from "@aws-sdk/client-acm-pca"; // ES Modules import
+ * // const { ACMPCAClient, CreateCertificateAuthorityAuditReportCommand } = require("@aws-sdk/client-acm-pca"); // CommonJS import
+ * const client = new ACMPCAClient(config);
+ * const command = new CreateCertificateAuthorityAuditReportCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCertificateAuthorityAuditReportCommandInput} for command's `input` shape.
+ * @see {@link CreateCertificateAuthorityAuditReportCommandOutput} for command's `response` shape.
+ * @see {@link ACMPCAClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCertificateAuthorityAuditReportCommand extends $Command<
   CreateCertificateAuthorityAuditReportCommandInput,

@@ -22,11 +22,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListIdentityProvidersCommandInput = ListIdentityProvidersRequest;
-export type ListIdentityProvidersCommandOutput = ListIdentityProvidersResponse & __MetadataBearer;
+export interface ListIdentityProvidersCommandInput extends ListIdentityProvidersRequest {}
+export interface ListIdentityProvidersCommandOutput extends ListIdentityProvidersResponse, __MetadataBearer {}
 
 /**
  * <p>Lists information about all identity providers for a user pool.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, ListIdentityProvidersCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, ListIdentityProvidersCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new ListIdentityProvidersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListIdentityProvidersCommandInput} for command's `input` shape.
+ * @see {@link ListIdentityProvidersCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListIdentityProvidersCommand extends $Command<
   ListIdentityProvidersCommandInput,

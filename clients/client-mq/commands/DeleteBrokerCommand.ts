@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBrokerCommandInput = DeleteBrokerRequest;
-export type DeleteBrokerCommandOutput = DeleteBrokerResponse & __MetadataBearer;
+export interface DeleteBrokerCommandInput extends DeleteBrokerRequest {}
+export interface DeleteBrokerCommandOutput extends DeleteBrokerResponse, __MetadataBearer {}
 
 /**
  * Deletes a broker. Note: This API is asynchronous.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MqClient, DeleteBrokerCommand } from "@aws-sdk/client-mq"; // ES Modules import
+ * // const { MqClient, DeleteBrokerCommand } = require("@aws-sdk/client-mq"); // CommonJS import
+ * const client = new MqClient(config);
+ * const command = new DeleteBrokerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBrokerCommandInput} for command's `input` shape.
+ * @see {@link DeleteBrokerCommandOutput} for command's `response` shape.
+ * @see {@link MqClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBrokerCommand extends $Command<
   DeleteBrokerCommandInput,

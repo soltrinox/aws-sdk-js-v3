@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreWorkspaceCommandInput = RestoreWorkspaceRequest;
-export type RestoreWorkspaceCommandOutput = RestoreWorkspaceResult & __MetadataBearer;
+export interface RestoreWorkspaceCommandInput extends RestoreWorkspaceRequest {}
+export interface RestoreWorkspaceCommandOutput extends RestoreWorkspaceResult, __MetadataBearer {}
 
 /**
  * <p>Restores the specified WorkSpace to its last known healthy state.</p>
@@ -29,6 +29,20 @@ export type RestoreWorkspaceCommandOutput = RestoreWorkspaceResult & __MetadataB
  *          WorkSpace</a>.</p>
  *          <p>This operation is asynchronous and returns before the WorkSpace is completely
  *          restored.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, RestoreWorkspaceCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, RestoreWorkspaceCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new RestoreWorkspaceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreWorkspaceCommandInput} for command's `input` shape.
+ * @see {@link RestoreWorkspaceCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreWorkspaceCommand extends $Command<
   RestoreWorkspaceCommandInput,

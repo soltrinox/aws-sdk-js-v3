@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateContactCommandInput = CreateContactRequest;
-export type CreateContactCommandOutput = CreateContactResponse & __MetadataBearer;
+export interface CreateContactCommandInput extends CreateContactRequest {}
+export interface CreateContactCommandOutput extends CreateContactResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a contact, which is an end-user who is receiving the email, and adds them to a
  *             contact list.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, CreateContactCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, CreateContactCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new CreateContactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateContactCommandInput} for command's `input` shape.
+ * @see {@link CreateContactCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateContactCommand extends $Command<
   CreateContactCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type FailoverDBClusterCommandInput = FailoverDBClusterMessage;
-export type FailoverDBClusterCommandOutput = FailoverDBClusterResult & __MetadataBearer;
+export interface FailoverDBClusterCommandInput extends FailoverDBClusterMessage {}
+export interface FailoverDBClusterCommandOutput extends FailoverDBClusterResult, __MetadataBearer {}
 
 /**
  * <p>Forces a failover for a DB cluster.</p>
@@ -35,6 +35,20 @@ export type FailoverDBClusterCommandOutput = FailoverDBClusterResult & __Metadat
  *          <note>
  *             <p>This action only applies to Aurora DB clusters.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RDSClient, FailoverDBClusterCommand } from "@aws-sdk/client-rds"; // ES Modules import
+ * // const { RDSClient, FailoverDBClusterCommand } = require("@aws-sdk/client-rds"); // CommonJS import
+ * const client = new RDSClient(config);
+ * const command = new FailoverDBClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link FailoverDBClusterCommandInput} for command's `input` shape.
+ * @see {@link FailoverDBClusterCommandOutput} for command's `response` shape.
+ * @see {@link RDSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class FailoverDBClusterCommand extends $Command<
   FailoverDBClusterCommandInput,

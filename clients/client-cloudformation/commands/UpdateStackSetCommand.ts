@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateStackSetCommandInput = UpdateStackSetInput;
-export type UpdateStackSetCommandOutput = UpdateStackSetOutput & __MetadataBearer;
+export interface UpdateStackSetCommandInput extends UpdateStackSetInput {}
+export interface UpdateStackSetCommandOutput extends UpdateStackSetOutput, __MetadataBearer {}
 
 /**
  * <p>Updates the stack set, and associated stack instances in the specified accounts and
@@ -27,6 +27,20 @@ export type UpdateStackSetCommandOutput = UpdateStackSetOutput & __MetadataBeare
  *          or partially, below or above a specified failure tolerance), the stack set is updated with
  *          your changes. Subsequent <a>CreateStackInstances</a> calls on the specified
  *          stack set use the updated stack set.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, UpdateStackSetCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, UpdateStackSetCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new UpdateStackSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateStackSetCommandInput} for command's `input` shape.
+ * @see {@link UpdateStackSetCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateStackSetCommand extends $Command<
   UpdateStackSetCommandInput,

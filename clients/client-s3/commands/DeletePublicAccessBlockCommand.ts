@@ -18,13 +18,13 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeletePublicAccessBlockCommandInput = DeletePublicAccessBlockRequest;
-export type DeletePublicAccessBlockCommandOutput = __MetadataBearer;
+export interface DeletePublicAccessBlockCommandInput extends DeletePublicAccessBlockRequest {}
+export interface DeletePublicAccessBlockCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Removes the <code>PublicAccessBlock</code> configuration for an Amazon S3 bucket. To use this
  *          operation, you must have the <code>s3:PutBucketPublicAccessBlock</code> permission. For
- *          more information about permissions, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources">Permissions Related to Bucket Subresource Operations</a> and <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">Managing Access Permissions to Your Amazon S3
+ *          more information about permissions, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources">Permissions Related to Bucket Subresource Operations</a> and <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html">Managing Access Permissions to Your Amazon S3
  *             Resources</a>.</p>
  *
  *          <p>The following operations are related to <code>DeletePublicAccessBlock</code>:</p>
@@ -51,6 +51,20 @@ export type DeletePublicAccessBlockCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, DeletePublicAccessBlockCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, DeletePublicAccessBlockCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new DeletePublicAccessBlockCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeletePublicAccessBlockCommandInput} for command's `input` shape.
+ * @see {@link DeletePublicAccessBlockCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeletePublicAccessBlockCommand extends $Command<
   DeletePublicAccessBlockCommandInput,

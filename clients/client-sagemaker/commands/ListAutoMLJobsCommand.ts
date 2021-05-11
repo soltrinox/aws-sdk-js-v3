@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAutoMLJobsCommandInput = ListAutoMLJobsRequest;
-export type ListAutoMLJobsCommandOutput = ListAutoMLJobsResponse & __MetadataBearer;
+export interface ListAutoMLJobsCommandInput extends ListAutoMLJobsRequest {}
+export interface ListAutoMLJobsCommandOutput extends ListAutoMLJobsResponse, __MetadataBearer {}
 
 /**
  * <p>Request a list of jobs.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, ListAutoMLJobsCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, ListAutoMLJobsCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new ListAutoMLJobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAutoMLJobsCommandInput} for command's `input` shape.
+ * @see {@link ListAutoMLJobsCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAutoMLJobsCommand extends $Command<
   ListAutoMLJobsCommandInput,

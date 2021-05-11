@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListCommandsCommandInput = ListCommandsRequest;
-export type ListCommandsCommandOutput = ListCommandsResult & __MetadataBearer;
+export interface ListCommandsCommandInput extends ListCommandsRequest {}
+export interface ListCommandsCommandOutput extends ListCommandsResult, __MetadataBearer {}
 
 /**
  * <p>Lists the commands requested by users of the AWS account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, ListCommandsCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, ListCommandsCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new ListCommandsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListCommandsCommandInput} for command's `input` shape.
+ * @see {@link ListCommandsCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListCommandsCommand extends $Command<
   ListCommandsCommandInput,

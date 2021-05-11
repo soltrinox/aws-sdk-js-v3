@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTestGridProjectsCommandInput = ListTestGridProjectsRequest;
-export type ListTestGridProjectsCommandOutput = ListTestGridProjectsResult & __MetadataBearer;
+export interface ListTestGridProjectsCommandInput extends ListTestGridProjectsRequest {}
+export interface ListTestGridProjectsCommandOutput extends ListTestGridProjectsResult, __MetadataBearer {}
 
 /**
  * <p>Gets a list of all Selenium testing projects in your account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, ListTestGridProjectsCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, ListTestGridProjectsCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new ListTestGridProjectsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTestGridProjectsCommandInput} for command's `input` shape.
+ * @see {@link ListTestGridProjectsCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTestGridProjectsCommand extends $Command<
   ListTestGridProjectsCommandInput,

@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteFpgaImageCommandInput = DeleteFpgaImageRequest;
-export type DeleteFpgaImageCommandOutput = DeleteFpgaImageResult & __MetadataBearer;
+export interface DeleteFpgaImageCommandInput extends DeleteFpgaImageRequest {}
+export interface DeleteFpgaImageCommandOutput extends DeleteFpgaImageResult, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified Amazon FPGA Image (AFI).</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DeleteFpgaImageCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DeleteFpgaImageCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DeleteFpgaImageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteFpgaImageCommandInput} for command's `input` shape.
+ * @see {@link DeleteFpgaImageCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteFpgaImageCommand extends $Command<
   DeleteFpgaImageCommandInput,

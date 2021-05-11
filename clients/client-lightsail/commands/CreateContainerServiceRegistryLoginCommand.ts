@@ -20,9 +20,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateContainerServiceRegistryLoginCommandInput = CreateContainerServiceRegistryLoginRequest;
-export type CreateContainerServiceRegistryLoginCommandOutput = CreateContainerServiceRegistryLoginResult &
-  __MetadataBearer;
+export interface CreateContainerServiceRegistryLoginCommandInput extends CreateContainerServiceRegistryLoginRequest {}
+export interface CreateContainerServiceRegistryLoginCommandOutput
+  extends CreateContainerServiceRegistryLoginResult,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a temporary set of log in credentials that you can use to log in to the Docker
@@ -34,8 +35,8 @@ export type CreateContainerServiceRegistryLoginCommandOutput = CreateContainerSe
  *
  *          <note>
  *             <p>You can only push container images to the container service registry of your Lightsail
- *         account. You cannot pull container images perform any other container image management
- *         actions on the container service registry of your Lightsail account.</p>
+ *         account. You cannot pull container images or perform any other container image management
+ *         actions on the container service registry.</p>
  *          </note>
  *
  *          <p>After you push your container images to the container image registry of your Lightsail
@@ -45,10 +46,23 @@ export type CreateContainerServiceRegistryLoginCommandOutput = CreateContainerSe
  *          <note>
  *             <p>This action is not required if you install and use the Lightsail Control
  *         (lightsailctl) plugin to push container images to your Lightsail container service. For
- *         more information, see <a href="amazon-lightsail-pushing-container-images">Pushing and
- *           managing container images on your Amazon Lightsail container services</a> in the
- *           <i>Lightsail Dev Guide</i>.</p>
+ *         more information, see <a href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-pushing-container-images">Pushing and managing container images on your Amazon Lightsail container services</a>
+ *         in the <i>Lightsail Dev Guide</i>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, CreateContainerServiceRegistryLoginCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, CreateContainerServiceRegistryLoginCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new CreateContainerServiceRegistryLoginCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateContainerServiceRegistryLoginCommandInput} for command's `input` shape.
+ * @see {@link CreateContainerServiceRegistryLoginCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateContainerServiceRegistryLoginCommand extends $Command<
   CreateContainerServiceRegistryLoginCommandInput,

@@ -1,5 +1,5 @@
 import { SecurityHubClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SecurityHubClient";
-import { DescribeStandardsControlsRequest, DescribeStandardsControlsResponse } from "../models/models_0";
+import { DescribeStandardsControlsRequest, DescribeStandardsControlsResponse } from "../models/models_1";
 import {
   deserializeAws_restJson1DescribeStandardsControlsCommand,
   serializeAws_restJson1DescribeStandardsControlsCommand,
@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeStandardsControlsCommandInput = DescribeStandardsControlsRequest;
-export type DescribeStandardsControlsCommandOutput = DescribeStandardsControlsResponse & __MetadataBearer;
+export interface DescribeStandardsControlsCommandInput extends DescribeStandardsControlsRequest {}
+export interface DescribeStandardsControlsCommandOutput extends DescribeStandardsControlsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of security standards controls.</p>
  *          <p>For each control, the results include information about whether it is currently enabled,
  *          the severity, and a link to remediation information.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecurityHubClient, DescribeStandardsControlsCommand } from "@aws-sdk/client-securityhub"; // ES Modules import
+ * // const { SecurityHubClient, DescribeStandardsControlsCommand } = require("@aws-sdk/client-securityhub"); // CommonJS import
+ * const client = new SecurityHubClient(config);
+ * const command = new DescribeStandardsControlsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeStandardsControlsCommandInput} for command's `input` shape.
+ * @see {@link DescribeStandardsControlsCommandOutput} for command's `response` shape.
+ * @see {@link SecurityHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeStandardsControlsCommand extends $Command<
   DescribeStandardsControlsCommandInput,

@@ -1,5 +1,5 @@
 import { DetectiveClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../DetectiveClient";
-import { CreateGraphResponse } from "../models/models_0";
+import { CreateGraphRequest, CreateGraphResponse } from "../models/models_0";
 import {
   deserializeAws_restJson1CreateGraphCommand,
   serializeAws_restJson1CreateGraphCommand,
@@ -17,12 +17,13 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateGraphCommandInput = {};
-export type CreateGraphCommandOutput = CreateGraphResponse & __MetadataBearer;
+export interface CreateGraphCommandInput extends CreateGraphRequest {}
+export interface CreateGraphCommandOutput extends CreateGraphResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new behavior graph for the calling account, and sets that account as the
- *          master account. This operation is called by the account that is enabling Detective.</p>
+ *          administrator account. This operation is called by the account that is enabling
+ *          Detective.</p>
  *          <p>Before you try to enable Detective, make sure that your account has been enrolled in
  *          Amazon GuardDuty for at least 48 hours. If you do not meet this requirement, you cannot enable
  *          Detective. If you do meet the GuardDuty prerequisite, then when you make the request to enable
@@ -33,9 +34,23 @@ export type CreateGraphCommandOutput = CreateGraphResponse & __MetadataBearer;
  *          <p>
  *             <code>CreateGraph</code> triggers a process to create the corresponding data tables for
  *          the new behavior graph.</p>
- *          <p>An account can only be the master account for one behavior graph within a Region. If the
- *          same account calls <code>CreateGraph</code> with the same master account, it always returns
- *          the same behavior graph ARN. It does not create a new behavior graph.</p>
+ *          <p>An account can only be the administrator account for one behavior graph within a Region.
+ *          If the same account calls <code>CreateGraph</code> with the same administrator account, it
+ *          always returns the same behavior graph ARN. It does not create a new behavior graph.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DetectiveClient, CreateGraphCommand } from "@aws-sdk/client-detective"; // ES Modules import
+ * // const { DetectiveClient, CreateGraphCommand } = require("@aws-sdk/client-detective"); // CommonJS import
+ * const client = new DetectiveClient(config);
+ * const command = new CreateGraphCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateGraphCommandInput} for command's `input` shape.
+ * @see {@link CreateGraphCommandOutput} for command's `response` shape.
+ * @see {@link DetectiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateGraphCommand extends $Command<
   CreateGraphCommandInput,
@@ -70,7 +85,7 @@ export class CreateGraphCommand extends $Command<
       logger,
       clientName,
       commandName,
-      inputFilterSensitiveLog: (input: any) => input,
+      inputFilterSensitiveLog: CreateGraphRequest.filterSensitiveLog,
       outputFilterSensitiveLog: CreateGraphResponse.filterSensitiveLog,
     };
     const { requestHandler } = configuration;

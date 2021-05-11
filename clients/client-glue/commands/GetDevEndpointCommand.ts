@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDevEndpointCommandInput = GetDevEndpointRequest;
-export type GetDevEndpointCommandOutput = GetDevEndpointResponse & __MetadataBearer;
+export interface GetDevEndpointCommandInput extends GetDevEndpointRequest {}
+export interface GetDevEndpointCommandOutput extends GetDevEndpointResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about a specified development endpoint.</p>
@@ -27,6 +27,20 @@ export type GetDevEndpointCommandOutput = GetDevEndpointResponse & __MetadataBea
  *         a private IP address, and the public IP address field is not populated. When you create a
  *         non-VPC development endpoint, AWS Glue returns only a public IP address.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetDevEndpointCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetDevEndpointCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetDevEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDevEndpointCommandInput} for command's `input` shape.
+ * @see {@link GetDevEndpointCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDevEndpointCommand extends $Command<
   GetDevEndpointCommandInput,

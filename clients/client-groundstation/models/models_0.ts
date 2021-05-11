@@ -6,6 +6,25 @@ export enum AngleUnits {
   RADIAN = "RADIAN",
 }
 
+/**
+ * <p>Details about an antenna demod decode <code>Config</code> used in a contact.</p>
+ */
+export interface AntennaDemodDecodeDetails {
+  /**
+   * <p>Name of an antenna demod decode output node used in a contact.</p>
+   */
+  outputNode?: string;
+}
+
+export namespace AntennaDemodDecodeDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AntennaDemodDecodeDetails): any => ({
+    ...obj,
+  });
+}
+
 export enum BandwidthUnits {
   GHZ = "GHz",
   KHZ = "kHz",
@@ -13,21 +32,35 @@ export enum BandwidthUnits {
 }
 
 /**
- * <p>Object that describes the frequency bandwidth.</p>
+ * <p>Object that describes the frequency bandwidth. </p>
  */
 export interface FrequencyBandwidth {
+  /**
+   * <p>Frequency bandwidth value. AWS Ground Station currently has the following bandwidth limitations:</p>
+   *             <ul>
+   *             <li>
+   *                <p>For <code>AntennaDownlinkDemodDecodeconfig</code>, valid values are between 125 kHz to 650 MHz.</p>
+   *             </li>
+   *             <li>
+   *                <p>For <code>AntennaDownlinkconfig</code>, valid values are between 10 kHz to 54 MHz.</p>
+   *             </li>
+   *             <li>
+   *                <p>For <code>AntennaUplinkConfig</code>, valid values are between 10 kHz to 54 MHz.</p>
+   *             </li>
+   *          </ul>
+   */
+  value: number | undefined;
+
   /**
    * <p>Frequency bandwidth units.</p>
    */
   units: BandwidthUnits | string | undefined;
-
-  /**
-   * <p>Frequency bandwidth value.</p>
-   */
-  value: number | undefined;
 }
 
 export namespace FrequencyBandwidth {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FrequencyBandwidth): any => ({
     ...obj,
   });
@@ -44,17 +77,20 @@ export enum FrequencyUnits {
  */
 export interface Frequency {
   /**
+   * <p>Frequency value. Valid values are between 2200 to 2300 MHz and 7750 to 8400 MHz for downlink and 2025 to 2120 MHz for uplink.</p>
+   */
+  value: number | undefined;
+
+  /**
    * <p>Frequency units.</p>
    */
   units: FrequencyUnits | string | undefined;
-
-  /**
-   * <p>Frequency value.</p>
-   */
-  value: number | undefined;
 }
 
 export namespace Frequency {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Frequency): any => ({
     ...obj,
   });
@@ -71,22 +107,36 @@ export enum Polarization {
  */
 export interface SpectrumConfig {
   /**
-   * <p>Bandwidth of a spectral <code>Config</code>.</p>
-   */
-  bandwidth: FrequencyBandwidth | undefined;
-
-  /**
-   * <p>Center frequency of a spectral <code>Config</code>.</p>
+   * <p>Center frequency of a spectral <code>Config</code>. Valid values are between 2200 to 2300 MHz and 7750 to 8400 MHz for downlink and 2025 to 2120 MHz for uplink.</p>
    */
   centerFrequency: Frequency | undefined;
 
   /**
-   * <p>Polarization of a spectral <code>Config</code>.</p>
+   * <p>Bandwidth of a spectral <code>Config</code>. AWS Ground Station currently has the following bandwidth limitations:</p>
+   *             <ul>
+   *             <li>
+   *                <p>For <code>AntennaDownlinkDemodDecodeconfig</code>, valid values are between 125 kHz to 650 MHz.</p>
+   *             </li>
+   *             <li>
+   *                <p>For <code>AntennaDownlinkconfig</code> valid values are between 10 kHz to 54 MHz.</p>
+   *             </li>
+   *             <li>
+   *                <p>For <code>AntennaUplinkConfig</code>, valid values are between 10 kHz to 54 MHz.</p>
+   *             </li>
+   *          </ul>
+   */
+  bandwidth: FrequencyBandwidth | undefined;
+
+  /**
+   * <p>Polarization of a spectral <code>Config</code>. Capturing both <code>"RIGHT_HAND"</code> and <code>"LEFT_HAND"</code> polarization requires two separate configs.</p>
    */
   polarization?: Polarization | string;
 }
 
 export namespace SpectrumConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SpectrumConfig): any => ({
     ...obj,
   });
@@ -104,6 +154,9 @@ export interface AntennaDownlinkConfig {
 }
 
 export namespace AntennaDownlinkConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AntennaDownlinkConfig): any => ({
     ...obj,
   });
@@ -120,6 +173,9 @@ export interface DecodeConfig {
 }
 
 export namespace DecodeConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DecodeConfig): any => ({
     ...obj,
   });
@@ -136,6 +192,9 @@ export interface DemodulationConfig {
 }
 
 export namespace DemodulationConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DemodulationConfig): any => ({
     ...obj,
   });
@@ -146,9 +205,9 @@ export namespace DemodulationConfig {
  */
 export interface AntennaDownlinkDemodDecodeConfig {
   /**
-   * <p>Information about the decode <code>Config</code>.</p>
+   * <p>Information about the spectral <code>Config</code>.</p>
    */
-  decodeConfig: DecodeConfig | undefined;
+  spectrumConfig: SpectrumConfig | undefined;
 
   /**
    * <p>Information about the demodulation <code>Config</code>.</p>
@@ -156,12 +215,15 @@ export interface AntennaDownlinkDemodDecodeConfig {
   demodulationConfig: DemodulationConfig | undefined;
 
   /**
-   * <p>Information about the spectral <code>Config</code>.</p>
+   * <p>Information about the decode <code>Config</code>.</p>
    */
-  spectrumConfig: SpectrumConfig | undefined;
+  decodeConfig: DecodeConfig | undefined;
 }
 
 export namespace AntennaDownlinkDemodDecodeConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AntennaDownlinkDemodDecodeConfig): any => ({
     ...obj,
   });
@@ -172,17 +234,20 @@ export namespace AntennaDownlinkDemodDecodeConfig {
  */
 export interface UplinkSpectrumConfig {
   /**
-   * <p>Center frequency of an uplink spectral <code>Config</code>.</p>
+   * <p>Center frequency of an uplink spectral <code>Config</code>. Valid values are between 2025 to 2120 MHz.</p>
    */
   centerFrequency: Frequency | undefined;
 
   /**
-   * <p>Polarization of an uplink spectral <code>Config</code>.</p>
+   * <p>Polarization of an uplink spectral <code>Config</code>. Capturing both <code>"RIGHT_HAND"</code> and <code>"LEFT_HAND"</code> polarization requires two separate configs.</p>
    */
   polarization?: Polarization | string;
 }
 
 export namespace UplinkSpectrumConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UplinkSpectrumConfig): any => ({
     ...obj,
   });
@@ -197,17 +262,20 @@ export enum EirpUnits {
  */
 export interface Eirp {
   /**
+   * <p>Value of an EIRP. Valid values are between 20.0 to 50.0 dBW.</p>
+   */
+  value: number | undefined;
+
+  /**
    * <p>Units of an EIRP.</p>
    */
   units: EirpUnits | string | undefined;
-
-  /**
-   * <p>Value of an EIRP.</p>
-   */
-  value: number | undefined;
 }
 
 export namespace Eirp {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Eirp): any => ({
     ...obj,
   });
@@ -218,6 +286,11 @@ export namespace Eirp {
  */
 export interface AntennaUplinkConfig {
   /**
+   * <p>Whether or not uplink transmit is disabled.</p>
+   */
+  transmitDisabled?: boolean;
+
+  /**
    * <p>Information about the uplink spectral <code>Config</code>.</p>
    */
   spectrumConfig: UplinkSpectrumConfig | undefined;
@@ -226,11 +299,12 @@ export interface AntennaUplinkConfig {
    * <p>EIRP of the target.</p>
    */
   targetEirp: Eirp | undefined;
-
-  transmitDisabled?: boolean;
 }
 
 export namespace AntennaUplinkConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AntennaUplinkConfig): any => ({
     ...obj,
   });
@@ -247,6 +321,9 @@ export interface CancelContactRequest {
 }
 
 export namespace CancelContactRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelContactRequest): any => ({
     ...obj,
   });
@@ -263,6 +340,9 @@ export interface ContactIdResponse {
 }
 
 export namespace ContactIdResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ContactIdResponse): any => ({
     ...obj,
   });
@@ -282,6 +362,9 @@ export interface DependencyException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace DependencyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DependencyException): any => ({
     ...obj,
   });
@@ -301,6 +384,9 @@ export interface InvalidParameterException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidParameterException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidParameterException): any => ({
     ...obj,
   });
@@ -316,6 +402,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -326,6 +415,7 @@ export enum ConfigCapabilityType {
   ANTENNA_DOWNLINK_DEMOD_DECODE = "antenna-downlink-demod-decode",
   ANTENNA_UPLINK = "antenna-uplink",
   DATAFLOW_ENDPOINT = "dataflow-endpoint",
+  S3_RECORDING = "s3-recording",
   TRACKING = "tracking",
   UPLINK_ECHO = "uplink-echo",
 }
@@ -335,11 +425,6 @@ export enum ConfigCapabilityType {
  */
 export interface ConfigIdResponse {
   /**
-   * <p>ARN of a <code>Config</code>.</p>
-   */
-  configArn?: string;
-
-  /**
    * <p>UUID of a <code>Config</code>.</p>
    */
   configId?: string;
@@ -348,9 +433,17 @@ export interface ConfigIdResponse {
    * <p>Type of a <code>Config</code>.</p>
    */
   configType?: ConfigCapabilityType | string;
+
+  /**
+   * <p>ARN of a <code>Config</code>.</p>
+   */
+  configArn?: string;
 }
 
 export namespace ConfigIdResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigIdResponse): any => ({
     ...obj,
   });
@@ -372,7 +465,39 @@ export interface DataflowEndpointConfig {
 }
 
 export namespace DataflowEndpointConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataflowEndpointConfig): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Information about an S3 recording <code>Config</code>.</p>
+ */
+export interface S3RecordingConfig {
+  /**
+   * <p>ARN of the bucket to record to.</p>
+   */
+  bucketArn: string | undefined;
+
+  /**
+   * <p>ARN of the role Ground Station assumes to write data to the bucket.</p>
+   */
+  roleArn: string | undefined;
+
+  /**
+   * <p>S3 Key prefix to prefice data files.</p>
+   */
+  prefix?: string;
+}
+
+export namespace S3RecordingConfig {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: S3RecordingConfig): any => ({
     ...obj,
   });
 }
@@ -395,6 +520,9 @@ export interface TrackingConfig {
 }
 
 export namespace TrackingConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TrackingConfig): any => ({
     ...obj,
   });
@@ -408,17 +536,20 @@ export namespace TrackingConfig {
  */
 export interface UplinkEchoConfig {
   /**
-   * <p>ARN of an uplink <code>Config</code>.</p>
-   */
-  antennaUplinkConfigArn: string | undefined;
-
-  /**
    * <p>Whether or not an uplink <code>Config</code> is enabled.</p>
    */
   enabled: boolean | undefined;
+
+  /**
+   * <p>ARN of an uplink <code>Config</code>.</p>
+   */
+  antennaUplinkConfigArn: string | undefined;
 }
 
 export namespace UplinkEchoConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UplinkEchoConfig): any => ({
     ...obj,
   });
@@ -433,6 +564,7 @@ export type ConfigTypeData =
   | ConfigTypeData.AntennaDownlinkDemodDecodeConfigMember
   | ConfigTypeData.AntennaUplinkConfigMember
   | ConfigTypeData.DataflowEndpointConfigMember
+  | ConfigTypeData.S3RecordingConfigMember
   | ConfigTypeData.TrackingConfigMember
   | ConfigTypeData.UplinkEchoConfigMember
   | ConfigTypeData.$UnknownMember;
@@ -443,50 +575,12 @@ export namespace ConfigTypeData {
    */
   export interface AntennaDownlinkConfigMember {
     antennaDownlinkConfig: AntennaDownlinkConfig;
+    trackingConfig?: never;
+    dataflowEndpointConfig?: never;
     antennaDownlinkDemodDecodeConfig?: never;
     antennaUplinkConfig?: never;
-    dataflowEndpointConfig?: never;
-    trackingConfig?: never;
     uplinkEchoConfig?: never;
-    $unknown?: never;
-  }
-
-  /**
-   * <p>Information about how AWS Ground Station should conﬁgure an antenna for downlink demod decode during a contact.</p>
-   */
-  export interface AntennaDownlinkDemodDecodeConfigMember {
-    antennaDownlinkConfig?: never;
-    antennaDownlinkDemodDecodeConfig: AntennaDownlinkDemodDecodeConfig;
-    antennaUplinkConfig?: never;
-    dataflowEndpointConfig?: never;
-    trackingConfig?: never;
-    uplinkEchoConfig?: never;
-    $unknown?: never;
-  }
-
-  /**
-   * <p>Information about how AWS Ground Station should conﬁgure an antenna for uplink during a contact.</p>
-   */
-  export interface AntennaUplinkConfigMember {
-    antennaDownlinkConfig?: never;
-    antennaDownlinkDemodDecodeConfig?: never;
-    antennaUplinkConfig: AntennaUplinkConfig;
-    dataflowEndpointConfig?: never;
-    trackingConfig?: never;
-    uplinkEchoConfig?: never;
-    $unknown?: never;
-  }
-
-  /**
-   * <p>Information about the dataflow endpoint <code>Config</code>.</p>
-   */
-  export interface DataflowEndpointConfigMember {
-    antennaDownlinkConfig?: never;
-    antennaDownlinkDemodDecodeConfig?: never;
-    antennaUplinkConfig?: never;
-    dataflowEndpointConfig: DataflowEndpointConfig;
-    trackingConfig?: never;
-    uplinkEchoConfig?: never;
+    s3RecordingConfig?: never;
     $unknown?: never;
   }
 
@@ -495,11 +589,54 @@ export namespace ConfigTypeData {
    */
   export interface TrackingConfigMember {
     antennaDownlinkConfig?: never;
+    trackingConfig: TrackingConfig;
+    dataflowEndpointConfig?: never;
     antennaDownlinkDemodDecodeConfig?: never;
     antennaUplinkConfig?: never;
-    dataflowEndpointConfig?: never;
-    trackingConfig: TrackingConfig;
     uplinkEchoConfig?: never;
+    s3RecordingConfig?: never;
+    $unknown?: never;
+  }
+
+  /**
+   * <p>Information about the dataflow endpoint <code>Config</code>.</p>
+   */
+  export interface DataflowEndpointConfigMember {
+    antennaDownlinkConfig?: never;
+    trackingConfig?: never;
+    dataflowEndpointConfig: DataflowEndpointConfig;
+    antennaDownlinkDemodDecodeConfig?: never;
+    antennaUplinkConfig?: never;
+    uplinkEchoConfig?: never;
+    s3RecordingConfig?: never;
+    $unknown?: never;
+  }
+
+  /**
+   * <p>Information about how AWS Ground Station should conﬁgure an antenna for downlink demod decode during a contact.</p>
+   */
+  export interface AntennaDownlinkDemodDecodeConfigMember {
+    antennaDownlinkConfig?: never;
+    trackingConfig?: never;
+    dataflowEndpointConfig?: never;
+    antennaDownlinkDemodDecodeConfig: AntennaDownlinkDemodDecodeConfig;
+    antennaUplinkConfig?: never;
+    uplinkEchoConfig?: never;
+    s3RecordingConfig?: never;
+    $unknown?: never;
+  }
+
+  /**
+   * <p>Information about how AWS Ground Station should conﬁgure an antenna for uplink during a contact.</p>
+   */
+  export interface AntennaUplinkConfigMember {
+    antennaDownlinkConfig?: never;
+    trackingConfig?: never;
+    dataflowEndpointConfig?: never;
+    antennaDownlinkDemodDecodeConfig?: never;
+    antennaUplinkConfig: AntennaUplinkConfig;
+    uplinkEchoConfig?: never;
+    s3RecordingConfig?: never;
     $unknown?: never;
   }
 
@@ -509,48 +646,73 @@ export namespace ConfigTypeData {
    */
   export interface UplinkEchoConfigMember {
     antennaDownlinkConfig?: never;
+    trackingConfig?: never;
+    dataflowEndpointConfig?: never;
     antennaDownlinkDemodDecodeConfig?: never;
     antennaUplinkConfig?: never;
-    dataflowEndpointConfig?: never;
-    trackingConfig?: never;
     uplinkEchoConfig: UplinkEchoConfig;
+    s3RecordingConfig?: never;
+    $unknown?: never;
+  }
+
+  /**
+   * <p>Information about an S3 recording <code>Config</code>.</p>
+   */
+  export interface S3RecordingConfigMember {
+    antennaDownlinkConfig?: never;
+    trackingConfig?: never;
+    dataflowEndpointConfig?: never;
+    antennaDownlinkDemodDecodeConfig?: never;
+    antennaUplinkConfig?: never;
+    uplinkEchoConfig?: never;
+    s3RecordingConfig: S3RecordingConfig;
     $unknown?: never;
   }
 
   export interface $UnknownMember {
     antennaDownlinkConfig?: never;
+    trackingConfig?: never;
+    dataflowEndpointConfig?: never;
     antennaDownlinkDemodDecodeConfig?: never;
     antennaUplinkConfig?: never;
-    dataflowEndpointConfig?: never;
-    trackingConfig?: never;
     uplinkEchoConfig?: never;
+    s3RecordingConfig?: never;
     $unknown: [string, any];
   }
 
   export interface Visitor<T> {
     antennaDownlinkConfig: (value: AntennaDownlinkConfig) => T;
+    trackingConfig: (value: TrackingConfig) => T;
+    dataflowEndpointConfig: (value: DataflowEndpointConfig) => T;
     antennaDownlinkDemodDecodeConfig: (value: AntennaDownlinkDemodDecodeConfig) => T;
     antennaUplinkConfig: (value: AntennaUplinkConfig) => T;
-    dataflowEndpointConfig: (value: DataflowEndpointConfig) => T;
-    trackingConfig: (value: TrackingConfig) => T;
     uplinkEchoConfig: (value: UplinkEchoConfig) => T;
+    s3RecordingConfig: (value: S3RecordingConfig) => T;
     _: (name: string, value: any) => T;
   }
 
   export const visit = <T>(value: ConfigTypeData, visitor: Visitor<T>): T => {
     if (value.antennaDownlinkConfig !== undefined) return visitor.antennaDownlinkConfig(value.antennaDownlinkConfig);
+    if (value.trackingConfig !== undefined) return visitor.trackingConfig(value.trackingConfig);
+    if (value.dataflowEndpointConfig !== undefined) return visitor.dataflowEndpointConfig(value.dataflowEndpointConfig);
     if (value.antennaDownlinkDemodDecodeConfig !== undefined)
       return visitor.antennaDownlinkDemodDecodeConfig(value.antennaDownlinkDemodDecodeConfig);
     if (value.antennaUplinkConfig !== undefined) return visitor.antennaUplinkConfig(value.antennaUplinkConfig);
-    if (value.dataflowEndpointConfig !== undefined) return visitor.dataflowEndpointConfig(value.dataflowEndpointConfig);
-    if (value.trackingConfig !== undefined) return visitor.trackingConfig(value.trackingConfig);
     if (value.uplinkEchoConfig !== undefined) return visitor.uplinkEchoConfig(value.uplinkEchoConfig);
+    if (value.s3RecordingConfig !== undefined) return visitor.s3RecordingConfig(value.s3RecordingConfig);
     return visitor._(value.$unknown[0], value.$unknown[1]);
   };
 
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigTypeData): any => {
     if (obj.antennaDownlinkConfig !== undefined)
       return { antennaDownlinkConfig: AntennaDownlinkConfig.filterSensitiveLog(obj.antennaDownlinkConfig) };
+    if (obj.trackingConfig !== undefined)
+      return { trackingConfig: TrackingConfig.filterSensitiveLog(obj.trackingConfig) };
+    if (obj.dataflowEndpointConfig !== undefined)
+      return { dataflowEndpointConfig: DataflowEndpointConfig.filterSensitiveLog(obj.dataflowEndpointConfig) };
     if (obj.antennaDownlinkDemodDecodeConfig !== undefined)
       return {
         antennaDownlinkDemodDecodeConfig: AntennaDownlinkDemodDecodeConfig.filterSensitiveLog(
@@ -559,12 +721,10 @@ export namespace ConfigTypeData {
       };
     if (obj.antennaUplinkConfig !== undefined)
       return { antennaUplinkConfig: AntennaUplinkConfig.filterSensitiveLog(obj.antennaUplinkConfig) };
-    if (obj.dataflowEndpointConfig !== undefined)
-      return { dataflowEndpointConfig: DataflowEndpointConfig.filterSensitiveLog(obj.dataflowEndpointConfig) };
-    if (obj.trackingConfig !== undefined)
-      return { trackingConfig: TrackingConfig.filterSensitiveLog(obj.trackingConfig) };
     if (obj.uplinkEchoConfig !== undefined)
       return { uplinkEchoConfig: UplinkEchoConfig.filterSensitiveLog(obj.uplinkEchoConfig) };
+    if (obj.s3RecordingConfig !== undefined)
+      return { s3RecordingConfig: S3RecordingConfig.filterSensitiveLog(obj.s3RecordingConfig) };
     if (obj.$unknown !== undefined) return { [obj.$unknown[0]]: "UNKNOWN" };
   };
 }
@@ -574,14 +734,14 @@ export namespace ConfigTypeData {
  */
 export interface CreateConfigRequest {
   /**
-   * <p>Parameters of a <code>Config</code>.</p>
-   */
-  configData: ConfigTypeData | undefined;
-
-  /**
    * <p>Name of a <code>Config</code>.</p>
    */
   name: string | undefined;
+
+  /**
+   * <p>Parameters of a <code>Config</code>.</p>
+   */
+  configData: ConfigTypeData | undefined;
 
   /**
    * <p>Tags assigned to a <code>Config</code>.</p>
@@ -590,6 +750,9 @@ export interface CreateConfigRequest {
 }
 
 export namespace CreateConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateConfigRequest): any => ({
     ...obj,
     ...(obj.configData && { configData: ConfigTypeData.filterSensitiveLog(obj.configData) }),
@@ -610,6 +773,9 @@ export interface ResourceLimitExceededException extends __SmithyException, $Meta
 }
 
 export namespace ResourceLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceLimitExceededException): any => ({
     ...obj,
   });
@@ -631,6 +797,9 @@ export interface DeleteConfigRequest {
 }
 
 export namespace DeleteConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteConfigRequest): any => ({
     ...obj,
   });
@@ -652,6 +821,9 @@ export interface GetConfigRequest {
 }
 
 export namespace GetConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetConfigRequest): any => ({
     ...obj,
   });
@@ -662,20 +834,20 @@ export namespace GetConfigRequest {
  */
 export interface GetConfigResponse {
   /**
+   * <p>UUID of a <code>Config</code>.</p>
+   */
+  configId: string | undefined;
+
+  /**
    * <p>ARN of a <code>Config</code>
    *          </p>
    */
   configArn: string | undefined;
 
   /**
-   * <p>Data elements in a <code>Config</code>.</p>
+   * <p>Name of a <code>Config</code>.</p>
    */
-  configData: ConfigTypeData | undefined;
-
-  /**
-   * <p>UUID of a <code>Config</code>.</p>
-   */
-  configId: string | undefined;
+  name: string | undefined;
 
   /**
    * <p>Type of a <code>Config</code>.</p>
@@ -683,9 +855,9 @@ export interface GetConfigResponse {
   configType?: ConfigCapabilityType | string;
 
   /**
-   * <p>Name of a <code>Config</code>.</p>
+   * <p>Data elements in a <code>Config</code>.</p>
    */
-  name: string | undefined;
+  configData: ConfigTypeData | undefined;
 
   /**
    * <p>Tags assigned to a <code>Config</code>.</p>
@@ -694,6 +866,9 @@ export interface GetConfigResponse {
 }
 
 export namespace GetConfigResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetConfigResponse): any => ({
     ...obj,
     ...(obj.configData && { configData: ConfigTypeData.filterSensitiveLog(obj.configData) }),
@@ -716,6 +891,9 @@ export interface ListConfigsRequest {
 }
 
 export namespace ListConfigsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListConfigsRequest): any => ({
     ...obj,
   });
@@ -725,11 +903,6 @@ export namespace ListConfigsRequest {
  * <p>An item in a list of <code>Config</code> objects.</p>
  */
 export interface ConfigListItem {
-  /**
-   * <p>ARN of a <code>Config</code>.</p>
-   */
-  configArn?: string;
-
   /**
    * <p>UUID of a <code>Config</code>.</p>
    */
@@ -741,12 +914,20 @@ export interface ConfigListItem {
   configType?: ConfigCapabilityType | string;
 
   /**
+   * <p>ARN of a <code>Config</code>.</p>
+   */
+  configArn?: string;
+
+  /**
    * <p>Name of a <code>Config</code>.</p>
    */
   name?: string;
 }
 
 export namespace ConfigListItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConfigListItem): any => ({
     ...obj,
   });
@@ -757,17 +938,20 @@ export namespace ConfigListItem {
  */
 export interface ListConfigsResponse {
   /**
-   * <p>List of <code>Config</code> items.</p>
-   */
-  configList?: ConfigListItem[];
-
-  /**
    * <p>Next token returned in the response of a previous <code>ListConfigs</code> call. Used to get the next page of results.</p>
    */
   nextToken?: string;
+
+  /**
+   * <p>List of <code>Config</code> items.</p>
+   */
+  configList?: ConfigListItem[];
 }
 
 export namespace ListConfigsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListConfigsResponse): any => ({
     ...obj,
   });
@@ -778,14 +962,14 @@ export namespace ListConfigsResponse {
  */
 export interface UpdateConfigRequest {
   /**
-   * <p>Parameters of a <code>Config</code>.</p>
-   */
-  configData: ConfigTypeData | undefined;
-
-  /**
    * <p>UUID of a <code>Config</code>.</p>
    */
   configId: string | undefined;
+
+  /**
+   * <p>Name of a <code>Config</code>.</p>
+   */
+  name: string | undefined;
 
   /**
    * <p>Type of a <code>Config</code>.</p>
@@ -793,332 +977,18 @@ export interface UpdateConfigRequest {
   configType: ConfigCapabilityType | string | undefined;
 
   /**
-   * <p>Name of a <code>Config</code>.</p>
+   * <p>Parameters of a <code>Config</code>.</p>
    */
-  name: string | undefined;
+  configData: ConfigTypeData | undefined;
 }
 
 export namespace UpdateConfigRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateConfigRequest): any => ({
     ...obj,
     ...(obj.configData && { configData: ConfigTypeData.filterSensitiveLog(obj.configData) }),
-  });
-}
-
-/**
- * <p/>
- */
-export interface DescribeContactRequest {
-  /**
-   * <p>UUID of a contact.</p>
-   */
-  contactId: string | undefined;
-}
-
-export namespace DescribeContactRequest {
-  export const filterSensitiveLog = (obj: DescribeContactRequest): any => ({
-    ...obj,
-  });
-}
-
-export enum ContactStatus {
-  AVAILABLE = "AVAILABLE",
-  AWS_CANCELLED = "AWS_CANCELLED",
-  CANCELLED = "CANCELLED",
-  CANCELLING = "CANCELLING",
-  COMPLETED = "COMPLETED",
-  FAILED = "FAILED",
-  FAILED_TO_SCHEDULE = "FAILED_TO_SCHEDULE",
-  PASS = "PASS",
-  POSTPASS = "POSTPASS",
-  PREPASS = "PREPASS",
-  SCHEDULED = "SCHEDULED",
-  SCHEDULING = "SCHEDULING",
-}
-
-/**
- * <p>Elevation angle of the satellite in the sky during a contact.</p>
- */
-export interface Elevation {
-  /**
-   * <p>Elevation angle units.</p>
-   */
-  unit: AngleUnits | string | undefined;
-
-  /**
-   * <p>Elevation angle value.</p>
-   */
-  value: number | undefined;
-}
-
-export namespace Elevation {
-  export const filterSensitiveLog = (obj: Elevation): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p/>
- */
-export interface DescribeContactResponse {
-  /**
-   * <p>UUID of a contact.</p>
-   */
-  contactId?: string;
-
-  /**
-   * <p>Status of a contact.</p>
-   */
-  contactStatus?: ContactStatus | string;
-
-  /**
-   * <p>End time of a contact.</p>
-   */
-  endTime?: Date;
-
-  /**
-   * <p>Error message for a contact.</p>
-   */
-  errorMessage?: string;
-
-  /**
-   * <p>Ground station for a contact.</p>
-   */
-  groundStation?: string;
-
-  /**
-   * <p>Maximum elevation angle of a contact.</p>
-   */
-  maximumElevation?: Elevation;
-
-  /**
-   * <p>ARN of a mission profile.</p>
-   */
-  missionProfileArn?: string;
-
-  /**
-   * <p>Amount of time after a contact ends that you’d like to receive a CloudWatch event indicating the pass has finished.</p>
-   */
-  postPassEndTime?: Date;
-
-  /**
-   * <p>Amount of time prior to contact start you’d like to receive a CloudWatch event indicating an upcoming pass.</p>
-   */
-  prePassStartTime?: Date;
-
-  /**
-   * <p>Region of a contact.</p>
-   */
-  region?: string;
-
-  /**
-   * <p>ARN of a satellite.</p>
-   */
-  satelliteArn?: string;
-
-  /**
-   * <p>Start time of a contact.</p>
-   */
-  startTime?: Date;
-
-  /**
-   * <p>Tags assigned to a contact.</p>
-   */
-  tags?: { [key: string]: string };
-}
-
-export namespace DescribeContactResponse {
-  export const filterSensitiveLog = (obj: DescribeContactResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p/>
- */
-export interface ListContactsRequest {
-  /**
-   * <p>End time of a contact.</p>
-   */
-  endTime: Date | undefined;
-
-  /**
-   * <p>Name of a ground station.</p>
-   */
-  groundStation?: string;
-
-  /**
-   * <p>Maximum number of contacts returned.</p>
-   */
-  maxResults?: number;
-
-  /**
-   * <p>ARN of a mission profile.</p>
-   */
-  missionProfileArn?: string;
-
-  /**
-   * <p>Next token returned in the request of a previous <code>ListContacts</code> call. Used to get the next page of results.</p>
-   */
-  nextToken?: string;
-
-  /**
-   * <p>ARN of a satellite.</p>
-   */
-  satelliteArn?: string;
-
-  /**
-   * <p>Start time of a contact.</p>
-   */
-  startTime: Date | undefined;
-
-  /**
-   * <p>Status of a contact reservation.</p>
-   */
-  statusList: (ContactStatus | string)[] | undefined;
-}
-
-export namespace ListContactsRequest {
-  export const filterSensitiveLog = (obj: ListContactsRequest): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>Data describing a contact.</p>
- */
-export interface ContactData {
-  /**
-   * <p>UUID of a contact.</p>
-   */
-  contactId?: string;
-
-  /**
-   * <p>Status of a contact.</p>
-   */
-  contactStatus?: ContactStatus | string;
-
-  /**
-   * <p>End time of a contact.</p>
-   */
-  endTime?: Date;
-
-  /**
-   * <p>Error message of a contact.</p>
-   */
-  errorMessage?: string;
-
-  /**
-   * <p>Name of a ground station.</p>
-   */
-  groundStation?: string;
-
-  /**
-   * <p>Maximum elevation angle of a contact.</p>
-   */
-  maximumElevation?: Elevation;
-
-  /**
-   * <p>ARN of a mission profile.</p>
-   */
-  missionProfileArn?: string;
-
-  /**
-   * <p>Amount of time after a contact ends that you’d like to receive a CloudWatch event indicating the pass has finished.</p>
-   */
-  postPassEndTime?: Date;
-
-  /**
-   * <p>Amount of time prior to contact start you’d like to receive a CloudWatch event indicating an upcoming pass.</p>
-   */
-  prePassStartTime?: Date;
-
-  /**
-   * <p>Region of a contact.</p>
-   */
-  region?: string;
-
-  /**
-   * <p>ARN of a satellite.</p>
-   */
-  satelliteArn?: string;
-
-  /**
-   * <p>Start time of a contact.</p>
-   */
-  startTime?: Date;
-
-  /**
-   * <p>Tags assigned to a contact.</p>
-   */
-  tags?: { [key: string]: string };
-}
-
-export namespace ContactData {
-  export const filterSensitiveLog = (obj: ContactData): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p/>
- */
-export interface ListContactsResponse {
-  /**
-   * <p>List of contacts.</p>
-   */
-  contactList?: ContactData[];
-
-  /**
-   * <p>Next token returned in the response of a previous <code>ListContacts</code> call. Used to get the next page of results.</p>
-   */
-  nextToken?: string;
-}
-
-export namespace ListContactsResponse {
-  export const filterSensitiveLog = (obj: ListContactsResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p/>
- */
-export interface ReserveContactRequest {
-  /**
-   * <p>End time of a contact.</p>
-   */
-  endTime: Date | undefined;
-
-  /**
-   * <p>Name of a ground station.</p>
-   */
-  groundStation: string | undefined;
-
-  /**
-   * <p>ARN of a mission profile.</p>
-   */
-  missionProfileArn: string | undefined;
-
-  /**
-   * <p>ARN of a satellite</p>
-   */
-  satelliteArn: string | undefined;
-
-  /**
-   * <p>Start time of a contact.</p>
-   */
-  startTime: Date | undefined;
-
-  /**
-   * <p>Tags assigned to a contact.</p>
-   */
-  tags?: { [key: string]: string };
-}
-
-export namespace ReserveContactRequest {
-  export const filterSensitiveLog = (obj: ReserveContactRequest): any => ({
-    ...obj,
   });
 }
 
@@ -1138,6 +1008,9 @@ export interface SocketAddress {
 }
 
 export namespace SocketAddress {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SocketAddress): any => ({
     ...obj,
   });
@@ -1156,23 +1029,30 @@ export enum EndpointStatus {
  */
 export interface DataflowEndpoint {
   /**
-   * <p>Socket address of a dataflow endpoint.</p>
-   */
-  address?: SocketAddress;
-
-  mtu?: number;
-  /**
    * <p>Name of a dataflow endpoint.</p>
    */
   name?: string;
 
   /**
+   * <p>Socket address of a dataflow endpoint.</p>
+   */
+  address?: SocketAddress;
+
+  /**
    * <p>Status of a dataflow endpoint.</p>
    */
   status?: EndpointStatus | string;
+
+  /**
+   * <p>Maximum transmission unit (MTU) size in bytes of a dataflow endpoint.</p>
+   */
+  mtu?: number;
 }
 
 export namespace DataflowEndpoint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataflowEndpoint): any => ({
     ...obj,
   });
@@ -1183,9 +1063,9 @@ export namespace DataflowEndpoint {
  */
 export interface SecurityDetails {
   /**
-   * <p>ARN to a role needed for connecting streams to your instances. </p>
+   * <p>A list of subnets where AWS Ground Station places elastic network interfaces to send streams to your instances.</p>
    */
-  roleArn: string | undefined;
+  subnetIds: string[] | undefined;
 
   /**
    * <p>The security groups to attach to the elastic network interfaces.</p>
@@ -1193,12 +1073,15 @@ export interface SecurityDetails {
   securityGroupIds: string[] | undefined;
 
   /**
-   * <p>A list of subnets where AWS Ground Station places elastic network interfaces to send streams to your instances.</p>
+   * <p>ARN to a role needed for connecting streams to your instances. </p>
    */
-  subnetIds: string[] | undefined;
+  roleArn: string | undefined;
 }
 
 export namespace SecurityDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SecurityDetails): any => ({
     ...obj,
   });
@@ -1209,18 +1092,567 @@ export namespace SecurityDetails {
  */
 export interface EndpointDetails {
   /**
-   * <p>A dataflow endpoint.</p>
-   */
-  endpoint?: DataflowEndpoint;
-
-  /**
    * <p>Endpoint security details.</p>
    */
   securityDetails?: SecurityDetails;
+
+  /**
+   * <p>A dataflow endpoint.</p>
+   */
+  endpoint?: DataflowEndpoint;
 }
 
 export namespace EndpointDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EndpointDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details about an S3 recording <code>Config</code> used in a contact.</p>
+ */
+export interface S3RecordingDetails {
+  /**
+   * <p>ARN of the bucket used.</p>
+   */
+  bucketArn?: string;
+
+  /**
+   * <p>Template of the S3 key used.</p>
+   */
+  keyTemplate?: string;
+}
+
+export namespace S3RecordingDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: S3RecordingDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details for certain <code>Config</code> object types in a contact.</p>
+ */
+export type ConfigDetails =
+  | ConfigDetails.AntennaDemodDecodeDetailsMember
+  | ConfigDetails.EndpointDetailsMember
+  | ConfigDetails.S3RecordingDetailsMember
+  | ConfigDetails.$UnknownMember;
+
+export namespace ConfigDetails {
+  /**
+   * <p>Information about the endpoint details.</p>
+   */
+  export interface EndpointDetailsMember {
+    endpointDetails: EndpointDetails;
+    antennaDemodDecodeDetails?: never;
+    s3RecordingDetails?: never;
+    $unknown?: never;
+  }
+
+  /**
+   * <p>Details for antenna demod decode <code>Config</code> in a contact.</p>
+   */
+  export interface AntennaDemodDecodeDetailsMember {
+    endpointDetails?: never;
+    antennaDemodDecodeDetails: AntennaDemodDecodeDetails;
+    s3RecordingDetails?: never;
+    $unknown?: never;
+  }
+
+  /**
+   * <p>Details for an S3 recording <code>Config</code> in a contact.</p>
+   */
+  export interface S3RecordingDetailsMember {
+    endpointDetails?: never;
+    antennaDemodDecodeDetails?: never;
+    s3RecordingDetails: S3RecordingDetails;
+    $unknown?: never;
+  }
+
+  export interface $UnknownMember {
+    endpointDetails?: never;
+    antennaDemodDecodeDetails?: never;
+    s3RecordingDetails?: never;
+    $unknown: [string, any];
+  }
+
+  export interface Visitor<T> {
+    endpointDetails: (value: EndpointDetails) => T;
+    antennaDemodDecodeDetails: (value: AntennaDemodDecodeDetails) => T;
+    s3RecordingDetails: (value: S3RecordingDetails) => T;
+    _: (name: string, value: any) => T;
+  }
+
+  export const visit = <T>(value: ConfigDetails, visitor: Visitor<T>): T => {
+    if (value.endpointDetails !== undefined) return visitor.endpointDetails(value.endpointDetails);
+    if (value.antennaDemodDecodeDetails !== undefined)
+      return visitor.antennaDemodDecodeDetails(value.antennaDemodDecodeDetails);
+    if (value.s3RecordingDetails !== undefined) return visitor.s3RecordingDetails(value.s3RecordingDetails);
+    return visitor._(value.$unknown[0], value.$unknown[1]);
+  };
+
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ConfigDetails): any => {
+    if (obj.endpointDetails !== undefined)
+      return { endpointDetails: EndpointDetails.filterSensitiveLog(obj.endpointDetails) };
+    if (obj.antennaDemodDecodeDetails !== undefined)
+      return { antennaDemodDecodeDetails: AntennaDemodDecodeDetails.filterSensitiveLog(obj.antennaDemodDecodeDetails) };
+    if (obj.s3RecordingDetails !== undefined)
+      return { s3RecordingDetails: S3RecordingDetails.filterSensitiveLog(obj.s3RecordingDetails) };
+    if (obj.$unknown !== undefined) return { [obj.$unknown[0]]: "UNKNOWN" };
+  };
+}
+
+/**
+ * <p/>
+ */
+export interface DescribeContactRequest {
+  /**
+   * <p>UUID of a contact.</p>
+   */
+  contactId: string | undefined;
+}
+
+export namespace DescribeContactRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeContactRequest): any => ({
+    ...obj,
+  });
+}
+
+export enum ContactStatus {
+  AVAILABLE = "AVAILABLE",
+  AWS_CANCELLED = "AWS_CANCELLED",
+  AWS_FAILED = "AWS_FAILED",
+  CANCELLED = "CANCELLED",
+  CANCELLING = "CANCELLING",
+  COMPLETED = "COMPLETED",
+  FAILED = "FAILED",
+  FAILED_TO_SCHEDULE = "FAILED_TO_SCHEDULE",
+  PASS = "PASS",
+  POSTPASS = "POSTPASS",
+  PREPASS = "PREPASS",
+  SCHEDULED = "SCHEDULED",
+  SCHEDULING = "SCHEDULING",
+}
+
+/**
+ * <p>Dataflow details for the destination side.</p>
+ */
+export interface Destination {
+  /**
+   * <p>Type of a <code>Config</code>.</p>
+   */
+  configType?: ConfigCapabilityType | string;
+
+  /**
+   * <p>UUID of a <code>Config</code>.</p>
+   */
+  configId?: string;
+
+  /**
+   * <p>Additional details for a <code>Config</code>, if type is dataflow endpoint or antenna demod decode.</p>
+   */
+  configDetails?: ConfigDetails;
+
+  /**
+   * <p>Region of a dataflow destination.</p>
+   */
+  dataflowDestinationRegion?: string;
+}
+
+export namespace Destination {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: Destination): any => ({
+    ...obj,
+    ...(obj.configDetails && { configDetails: ConfigDetails.filterSensitiveLog(obj.configDetails) }),
+  });
+}
+
+/**
+ * <p>Dataflow details for the source side.</p>
+ */
+export interface Source {
+  /**
+   * <p>Type of a <code>Config</code>.</p>
+   */
+  configType?: ConfigCapabilityType | string;
+
+  /**
+   * <p>UUID of a <code>Config</code>.</p>
+   */
+  configId?: string;
+
+  /**
+   * <p>Additional details for a <code>Config</code>, if type is dataflow endpoint or antenna demod decode.</p>
+   */
+  configDetails?: ConfigDetails;
+
+  /**
+   * <p>Region of a dataflow source.</p>
+   */
+  dataflowSourceRegion?: string;
+}
+
+export namespace Source {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: Source): any => ({
+    ...obj,
+    ...(obj.configDetails && { configDetails: ConfigDetails.filterSensitiveLog(obj.configDetails) }),
+  });
+}
+
+/**
+ * <p>Information about a dataflow edge used in a contact.</p>
+ */
+export interface DataflowDetail {
+  /**
+   * <p>Dataflow details for the source side.</p>
+   */
+  source?: Source;
+
+  /**
+   * <p>Dataflow details for the destination side.</p>
+   */
+  destination?: Destination;
+
+  /**
+   * <p>Error message for a dataflow.</p>
+   */
+  errorMessage?: string;
+}
+
+export namespace DataflowDetail {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DataflowDetail): any => ({
+    ...obj,
+    ...(obj.source && { source: Source.filterSensitiveLog(obj.source) }),
+    ...(obj.destination && { destination: Destination.filterSensitiveLog(obj.destination) }),
+  });
+}
+
+/**
+ * <p>Elevation angle of the satellite in the sky during a contact.</p>
+ */
+export interface Elevation {
+  /**
+   * <p>Elevation angle value.</p>
+   */
+  value: number | undefined;
+
+  /**
+   * <p>Elevation angle units.</p>
+   */
+  unit: AngleUnits | string | undefined;
+}
+
+export namespace Elevation {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: Elevation): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p/>
+ */
+export interface DescribeContactResponse {
+  /**
+   * <p>UUID of a contact.</p>
+   */
+  contactId?: string;
+
+  /**
+   * <p>ARN of a mission profile.</p>
+   */
+  missionProfileArn?: string;
+
+  /**
+   * <p>ARN of a satellite.</p>
+   */
+  satelliteArn?: string;
+
+  /**
+   * <p>Start time of a contact.</p>
+   */
+  startTime?: Date;
+
+  /**
+   * <p>End time of a contact.</p>
+   */
+  endTime?: Date;
+
+  /**
+   * <p>Amount of time prior to contact start you’d like to receive a CloudWatch event indicating an upcoming pass.</p>
+   */
+  prePassStartTime?: Date;
+
+  /**
+   * <p>Amount of time after a contact ends that you’d like to receive a CloudWatch event indicating the pass has finished.</p>
+   */
+  postPassEndTime?: Date;
+
+  /**
+   * <p>Ground station for a contact.</p>
+   */
+  groundStation?: string;
+
+  /**
+   * <p>Status of a contact.</p>
+   */
+  contactStatus?: ContactStatus | string;
+
+  /**
+   * <p>Error message for a contact.</p>
+   */
+  errorMessage?: string;
+
+  /**
+   * <p>Maximum elevation angle of a contact.</p>
+   */
+  maximumElevation?: Elevation;
+
+  /**
+   * <p>Tags assigned to a contact.</p>
+   */
+  tags?: { [key: string]: string };
+
+  /**
+   * <p>Region of a contact.</p>
+   */
+  region?: string;
+
+  /**
+   * <p>List describing source and destination details for each dataflow edge.</p>
+   */
+  dataflowList?: DataflowDetail[];
+}
+
+export namespace DescribeContactResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeContactResponse): any => ({
+    ...obj,
+    ...(obj.dataflowList && { dataflowList: obj.dataflowList.map((item) => DataflowDetail.filterSensitiveLog(item)) }),
+  });
+}
+
+/**
+ * <p/>
+ */
+export interface ListContactsRequest {
+  /**
+   * <p>Maximum number of contacts returned.</p>
+   */
+  maxResults?: number;
+
+  /**
+   * <p>Next token returned in the request of a previous <code>ListContacts</code> call. Used to get the next page of results.</p>
+   */
+  nextToken?: string;
+
+  /**
+   * <p>Status of a contact reservation.</p>
+   */
+  statusList: (ContactStatus | string)[] | undefined;
+
+  /**
+   * <p>Start time of a contact.</p>
+   */
+  startTime: Date | undefined;
+
+  /**
+   * <p>End time of a contact.</p>
+   */
+  endTime: Date | undefined;
+
+  /**
+   * <p>Name of a ground station.</p>
+   */
+  groundStation?: string;
+
+  /**
+   * <p>ARN of a satellite.</p>
+   */
+  satelliteArn?: string;
+
+  /**
+   * <p>ARN of a mission profile.</p>
+   */
+  missionProfileArn?: string;
+}
+
+export namespace ListContactsRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListContactsRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Data describing a contact.</p>
+ */
+export interface ContactData {
+  /**
+   * <p>UUID of a contact.</p>
+   */
+  contactId?: string;
+
+  /**
+   * <p>ARN of a mission profile.</p>
+   */
+  missionProfileArn?: string;
+
+  /**
+   * <p>ARN of a satellite.</p>
+   */
+  satelliteArn?: string;
+
+  /**
+   * <p>Start time of a contact.</p>
+   */
+  startTime?: Date;
+
+  /**
+   * <p>End time of a contact.</p>
+   */
+  endTime?: Date;
+
+  /**
+   * <p>Amount of time prior to contact start you’d like to receive a CloudWatch event indicating an upcoming pass.</p>
+   */
+  prePassStartTime?: Date;
+
+  /**
+   * <p>Amount of time after a contact ends that you’d like to receive a CloudWatch event indicating the pass has finished.</p>
+   */
+  postPassEndTime?: Date;
+
+  /**
+   * <p>Name of a ground station.</p>
+   */
+  groundStation?: string;
+
+  /**
+   * <p>Status of a contact.</p>
+   */
+  contactStatus?: ContactStatus | string;
+
+  /**
+   * <p>Error message of a contact.</p>
+   */
+  errorMessage?: string;
+
+  /**
+   * <p>Maximum elevation angle of a contact.</p>
+   */
+  maximumElevation?: Elevation;
+
+  /**
+   * <p>Region of a contact.</p>
+   */
+  region?: string;
+
+  /**
+   * <p>Tags assigned to a contact.</p>
+   */
+  tags?: { [key: string]: string };
+}
+
+export namespace ContactData {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ContactData): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p/>
+ */
+export interface ListContactsResponse {
+  /**
+   * <p>Next token returned in the response of a previous <code>ListContacts</code> call. Used to get the next page of results.</p>
+   */
+  nextToken?: string;
+
+  /**
+   * <p>List of contacts.</p>
+   */
+  contactList?: ContactData[];
+}
+
+export namespace ListContactsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListContactsResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p/>
+ */
+export interface ReserveContactRequest {
+  /**
+   * <p>ARN of a mission profile.</p>
+   */
+  missionProfileArn: string | undefined;
+
+  /**
+   * <p>ARN of a satellite</p>
+   */
+  satelliteArn: string | undefined;
+
+  /**
+   * <p>Start time of a contact.</p>
+   */
+  startTime: Date | undefined;
+
+  /**
+   * <p>End time of a contact.</p>
+   */
+  endTime: Date | undefined;
+
+  /**
+   * <p>Name of a ground station.</p>
+   */
+  groundStation: string | undefined;
+
+  /**
+   * <p>Tags assigned to a contact.</p>
+   */
+  tags?: { [key: string]: string };
+}
+
+export namespace ReserveContactRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ReserveContactRequest): any => ({
     ...obj,
   });
 }
@@ -1241,6 +1673,9 @@ export interface CreateDataflowEndpointGroupRequest {
 }
 
 export namespace CreateDataflowEndpointGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDataflowEndpointGroupRequest): any => ({
     ...obj,
   });
@@ -1257,6 +1692,9 @@ export interface DataflowEndpointGroupIdResponse {
 }
 
 export namespace DataflowEndpointGroupIdResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataflowEndpointGroupIdResponse): any => ({
     ...obj,
   });
@@ -1267,14 +1705,24 @@ export namespace DataflowEndpointGroupIdResponse {
  */
 export interface CreateMissionProfileRequest {
   /**
-   * <p>Amount of time after a contact ends that you’d like to receive a CloudWatch event indicating the pass has finished.</p>
+   * <p>Name of a mission profile.</p>
    */
-  contactPostPassDurationSeconds?: number;
+  name: string | undefined;
 
   /**
    * <p>Amount of time prior to contact start you’d like to receive a CloudWatch event indicating an upcoming pass.</p>
    */
   contactPrePassDurationSeconds?: number;
+
+  /**
+   * <p>Amount of time after a contact ends that you’d like to receive a CloudWatch event indicating the pass has finished.</p>
+   */
+  contactPostPassDurationSeconds?: number;
+
+  /**
+   * <p>Smallest amount of time in seconds that you’d like to see for an available contact. AWS Ground Station will not present you with contacts shorter than this duration.</p>
+   */
+  minimumViableContactDurationSeconds: number | undefined;
 
   /**
    * <p>A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i>
@@ -1284,27 +1732,20 @@ export interface CreateMissionProfileRequest {
   dataflowEdges: string[][] | undefined;
 
   /**
-   * <p>Smallest amount of time in seconds that you’d like to see for an available contact. AWS Ground Station will not present you with contacts shorter than this duration.</p>
+   * <p>ARN of a tracking <code>Config</code>.</p>
    */
-  minimumViableContactDurationSeconds: number | undefined;
-
-  /**
-   * <p>Name of a mission profile.</p>
-   */
-  name: string | undefined;
+  trackingConfigArn: string | undefined;
 
   /**
    * <p>Tags assigned to a mission profile.</p>
    */
   tags?: { [key: string]: string };
-
-  /**
-   * <p>ARN of a tracking <code>Config</code>.</p>
-   */
-  trackingConfigArn: string | undefined;
 }
 
 export namespace CreateMissionProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateMissionProfileRequest): any => ({
     ...obj,
   });
@@ -1321,6 +1762,9 @@ export interface MissionProfileIdResponse {
 }
 
 export namespace MissionProfileIdResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MissionProfileIdResponse): any => ({
     ...obj,
   });
@@ -1337,6 +1781,9 @@ export interface DeleteDataflowEndpointGroupRequest {
 }
 
 export namespace DeleteDataflowEndpointGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDataflowEndpointGroupRequest): any => ({
     ...obj,
   });
@@ -1353,6 +1800,9 @@ export interface GetDataflowEndpointGroupRequest {
 }
 
 export namespace GetDataflowEndpointGroupRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDataflowEndpointGroupRequest): any => ({
     ...obj,
   });
@@ -1363,14 +1813,14 @@ export namespace GetDataflowEndpointGroupRequest {
  */
 export interface GetDataflowEndpointGroupResponse {
   /**
-   * <p>ARN of a dataflow endpoint group.</p>
-   */
-  dataflowEndpointGroupArn?: string;
-
-  /**
    * <p>UUID of a dataflow endpoint group.</p>
    */
   dataflowEndpointGroupId?: string;
+
+  /**
+   * <p>ARN of a dataflow endpoint group.</p>
+   */
+  dataflowEndpointGroupArn?: string;
 
   /**
    * <p>Details of a dataflow endpoint.</p>
@@ -1384,6 +1834,9 @@ export interface GetDataflowEndpointGroupResponse {
 }
 
 export namespace GetDataflowEndpointGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDataflowEndpointGroupResponse): any => ({
     ...obj,
   });
@@ -1405,6 +1858,9 @@ export interface ListDataflowEndpointGroupsRequest {
 }
 
 export namespace ListDataflowEndpointGroupsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDataflowEndpointGroupsRequest): any => ({
     ...obj,
   });
@@ -1415,17 +1871,20 @@ export namespace ListDataflowEndpointGroupsRequest {
  */
 export interface DataflowEndpointListItem {
   /**
-   * <p>ARN of a dataflow endpoint group.</p>
-   */
-  dataflowEndpointGroupArn?: string;
-
-  /**
    * <p>UUID of a dataflow endpoint group.</p>
    */
   dataflowEndpointGroupId?: string;
+
+  /**
+   * <p>ARN of a dataflow endpoint group.</p>
+   */
+  dataflowEndpointGroupArn?: string;
 }
 
 export namespace DataflowEndpointListItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataflowEndpointListItem): any => ({
     ...obj,
   });
@@ -1436,17 +1895,20 @@ export namespace DataflowEndpointListItem {
  */
 export interface ListDataflowEndpointGroupsResponse {
   /**
-   * <p>A list of dataflow endpoint groups.</p>
-   */
-  dataflowEndpointGroupList?: DataflowEndpointListItem[];
-
-  /**
    * <p>Next token returned in the response of a previous <code>ListDataflowEndpointGroups</code> call. Used to get the next page of results.</p>
    */
   nextToken?: string;
+
+  /**
+   * <p>A list of dataflow endpoint groups.</p>
+   */
+  dataflowEndpointGroupList?: DataflowEndpointListItem[];
 }
 
 export namespace ListDataflowEndpointGroupsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDataflowEndpointGroupsResponse): any => ({
     ...obj,
   });
@@ -1463,6 +1925,9 @@ export interface DeleteMissionProfileRequest {
 }
 
 export namespace DeleteMissionProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMissionProfileRequest): any => ({
     ...obj,
   });
@@ -1484,6 +1949,9 @@ export interface GetMinuteUsageRequest {
 }
 
 export namespace GetMinuteUsageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMinuteUsageRequest): any => ({
     ...obj,
   });
@@ -1493,11 +1961,6 @@ export namespace GetMinuteUsageRequest {
  * <p/>
  */
 export interface GetMinuteUsageResponse {
-  /**
-   * <p>Estimated number of minutes remaining for an account, specific to the month being requested.</p>
-   */
-  estimatedMinutesRemaining?: number;
-
   /**
    * <p>Returns whether or not an account has signed up for the reserved minutes pricing plan, specific to the month being requested.</p>
    */
@@ -1509,17 +1972,25 @@ export interface GetMinuteUsageResponse {
   totalReservedMinuteAllocation?: number;
 
   /**
+   * <p>Upcoming minutes scheduled for an account, specific to the month being requested.</p>
+   */
+  upcomingMinutesScheduled?: number;
+
+  /**
    * <p>Total scheduled minutes for an account, specific to the month being requested.</p>
    */
   totalScheduledMinutes?: number;
 
   /**
-   * <p>Upcoming minutes scheduled for an account, specific to the month being requested.</p>
+   * <p>Estimated number of minutes remaining for an account, specific to the month being requested.</p>
    */
-  upcomingMinutesScheduled?: number;
+  estimatedMinutesRemaining?: number;
 }
 
 export namespace GetMinuteUsageResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMinuteUsageResponse): any => ({
     ...obj,
   });
@@ -1536,6 +2007,9 @@ export interface GetMissionProfileRequest {
 }
 
 export namespace GetMissionProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMissionProfileRequest): any => ({
     ...obj,
   });
@@ -1546,36 +2020,14 @@ export namespace GetMissionProfileRequest {
  */
 export interface GetMissionProfileResponse {
   /**
-   * <p>Amount of time after a contact ends that you’d like to receive a CloudWatch event indicating the pass has finished.</p>
+   * <p>UUID of a mission profile.</p>
    */
-  contactPostPassDurationSeconds?: number;
-
-  /**
-   * <p>Amount of time prior to contact start you’d like to receive a CloudWatch event indicating an upcoming pass.</p>
-   */
-  contactPrePassDurationSeconds?: number;
-
-  /**
-   * <p>A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i>
-   *             <code>Config</code> and a <i>to</i>
-   *             <code>Config</code>.</p>
-   */
-  dataflowEdges?: string[][];
-
-  /**
-   * <p>Smallest amount of time in seconds that you’d like to see for an available contact. AWS Ground Station will not present you with contacts shorter than this duration.</p>
-   */
-  minimumViableContactDurationSeconds?: number;
+  missionProfileId?: string;
 
   /**
    * <p>ARN of a mission profile.</p>
    */
   missionProfileArn?: string;
-
-  /**
-   * <p>UUID of a mission profile.</p>
-   */
-  missionProfileId?: string;
 
   /**
    * <p>Name of a mission profile.</p>
@@ -1588,17 +2040,42 @@ export interface GetMissionProfileResponse {
   region?: string;
 
   /**
-   * <p>Tags assigned to a mission profile.</p>
+   * <p>Amount of time prior to contact start you’d like to receive a CloudWatch event indicating an upcoming pass.</p>
    */
-  tags?: { [key: string]: string };
+  contactPrePassDurationSeconds?: number;
+
+  /**
+   * <p>Amount of time after a contact ends that you’d like to receive a CloudWatch event indicating the pass has finished.</p>
+   */
+  contactPostPassDurationSeconds?: number;
+
+  /**
+   * <p>Smallest amount of time in seconds that you’d like to see for an available contact. AWS Ground Station will not present you with contacts shorter than this duration.</p>
+   */
+  minimumViableContactDurationSeconds?: number;
+
+  /**
+   * <p>A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i>
+   *             <code>Config</code> and a <i>to</i>
+   *             <code>Config</code>.</p>
+   */
+  dataflowEdges?: string[][];
 
   /**
    * <p>ARN of a tracking <code>Config</code>.</p>
    */
   trackingConfigArn?: string;
+
+  /**
+   * <p>Tags assigned to a mission profile.</p>
+   */
+  tags?: { [key: string]: string };
 }
 
 export namespace GetMissionProfileResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetMissionProfileResponse): any => ({
     ...obj,
   });
@@ -1615,6 +2092,9 @@ export interface GetSatelliteRequest {
 }
 
 export namespace GetSatelliteRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSatelliteRequest): any => ({
     ...obj,
   });
@@ -1625,14 +2105,9 @@ export namespace GetSatelliteRequest {
  */
 export interface GetSatelliteResponse {
   /**
-   * <p>A list of ground stations to which the satellite is on-boarded.</p>
+   * <p>UUID of a satellite.</p>
    */
-  groundStations?: string[];
-
-  /**
-   * <p>NORAD satellite ID number.</p>
-   */
-  noradSatelliteID?: number;
+  satelliteId?: string;
 
   /**
    * <p>ARN of a satellite.</p>
@@ -1640,12 +2115,20 @@ export interface GetSatelliteResponse {
   satelliteArn?: string;
 
   /**
-   * <p>UUID of a satellite.</p>
+   * <p>NORAD satellite ID number.</p>
    */
-  satelliteId?: string;
+  noradSatelliteID?: number;
+
+  /**
+   * <p>A list of ground stations to which the satellite is on-boarded.</p>
+   */
+  groundStations?: string[];
 }
 
 export namespace GetSatelliteResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetSatelliteResponse): any => ({
     ...obj,
   });
@@ -1656,6 +2139,11 @@ export namespace GetSatelliteResponse {
  */
 export interface ListGroundStationsRequest {
   /**
+   * <p>Satellite ID to retrieve on-boarded ground stations.</p>
+   */
+  satelliteId?: string;
+
+  /**
    * <p>Maximum number of ground stations returned.</p>
    */
   maxResults?: number;
@@ -1664,14 +2152,12 @@ export interface ListGroundStationsRequest {
    * <p>Next token that can be supplied in the next call to get the next page of ground stations.</p>
    */
   nextToken?: string;
-
-  /**
-   * <p>Satellite ID to retrieve on-boarded ground stations.</p>
-   */
-  satelliteId?: string;
 }
 
 export namespace ListGroundStationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGroundStationsRequest): any => ({
     ...obj,
   });
@@ -1698,6 +2184,9 @@ export interface GroundStationData {
 }
 
 export namespace GroundStationData {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GroundStationData): any => ({
     ...obj,
   });
@@ -1708,17 +2197,20 @@ export namespace GroundStationData {
  */
 export interface ListGroundStationsResponse {
   /**
-   * <p>List of ground stations.</p>
-   */
-  groundStationList?: GroundStationData[];
-
-  /**
    * <p>Next token that can be supplied in the next call to get the next page of ground stations.</p>
    */
   nextToken?: string;
+
+  /**
+   * <p>List of ground stations.</p>
+   */
+  groundStationList?: GroundStationData[];
 }
 
 export namespace ListGroundStationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListGroundStationsResponse): any => ({
     ...obj,
   });
@@ -1735,6 +2227,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -1751,6 +2246,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -1772,6 +2270,9 @@ export interface ListMissionProfilesRequest {
 }
 
 export namespace ListMissionProfilesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMissionProfilesRequest): any => ({
     ...obj,
   });
@@ -1782,27 +2283,30 @@ export namespace ListMissionProfilesRequest {
  */
 export interface MissionProfileListItem {
   /**
-   * <p>ARN of a mission profile.</p>
-   */
-  missionProfileArn?: string;
-
-  /**
    * <p>UUID of a mission profile.</p>
    */
   missionProfileId?: string;
 
   /**
-   * <p>Name of a mission profile.</p>
+   * <p>ARN of a mission profile.</p>
    */
-  name?: string;
+  missionProfileArn?: string;
 
   /**
    * <p>Region of a mission profile.</p>
    */
   region?: string;
+
+  /**
+   * <p>Name of a mission profile.</p>
+   */
+  name?: string;
 }
 
 export namespace MissionProfileListItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MissionProfileListItem): any => ({
     ...obj,
   });
@@ -1813,17 +2317,20 @@ export namespace MissionProfileListItem {
  */
 export interface ListMissionProfilesResponse {
   /**
-   * <p>List of mission profiles.</p>
-   */
-  missionProfileList?: MissionProfileListItem[];
-
-  /**
    * <p>Next token returned in the response of a previous <code>ListMissionProfiles</code> call. Used to get the next page of results.</p>
    */
   nextToken?: string;
+
+  /**
+   * <p>List of mission profiles.</p>
+   */
+  missionProfileList?: MissionProfileListItem[];
 }
 
 export namespace ListMissionProfilesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListMissionProfilesResponse): any => ({
     ...obj,
   });
@@ -1833,28 +2340,6 @@ export namespace ListMissionProfilesResponse {
  * <p/>
  */
 export interface UpdateMissionProfileRequest {
-  /**
-   * <p>Amount of time after a contact ends that you’d like to receive a CloudWatch event indicating the pass has finished.</p>
-   */
-  contactPostPassDurationSeconds?: number;
-
-  /**
-   * <p>Amount of time after a contact ends that you’d like to receive a CloudWatch event indicating the pass has finished.</p>
-   */
-  contactPrePassDurationSeconds?: number;
-
-  /**
-   * <p>A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i>
-   *             <code>Config</code> and a <i>to</i>
-   *             <code>Config</code>.</p>
-   */
-  dataflowEdges?: string[][];
-
-  /**
-   * <p>Smallest amount of time in seconds that you’d like to see for an available contact. AWS Ground Station will not present you with contacts shorter than this duration.</p>
-   */
-  minimumViableContactDurationSeconds?: number;
-
   /**
    * <p>UUID of a mission profile.</p>
    */
@@ -1866,12 +2351,37 @@ export interface UpdateMissionProfileRequest {
   name?: string;
 
   /**
+   * <p>Amount of time after a contact ends that you’d like to receive a CloudWatch event indicating the pass has finished.</p>
+   */
+  contactPrePassDurationSeconds?: number;
+
+  /**
+   * <p>Amount of time after a contact ends that you’d like to receive a CloudWatch event indicating the pass has finished.</p>
+   */
+  contactPostPassDurationSeconds?: number;
+
+  /**
+   * <p>Smallest amount of time in seconds that you’d like to see for an available contact. AWS Ground Station will not present you with contacts shorter than this duration.</p>
+   */
+  minimumViableContactDurationSeconds?: number;
+
+  /**
+   * <p>A list of lists of ARNs. Each list of ARNs is an edge, with a <i>from</i>
+   *             <code>Config</code> and a <i>to</i>
+   *             <code>Config</code>.</p>
+   */
+  dataflowEdges?: string[][];
+
+  /**
    * <p>ARN of a tracking <code>Config</code>.</p>
    */
   trackingConfigArn?: string;
 }
 
 export namespace UpdateMissionProfileRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateMissionProfileRequest): any => ({
     ...obj,
   });
@@ -1893,6 +2403,9 @@ export interface ListSatellitesRequest {
 }
 
 export namespace ListSatellitesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSatellitesRequest): any => ({
     ...obj,
   });
@@ -1903,14 +2416,9 @@ export namespace ListSatellitesRequest {
  */
 export interface SatelliteListItem {
   /**
-   * <p>A list of ground stations to which the satellite is on-boarded.</p>
+   * <p>UUID of a satellite.</p>
    */
-  groundStations?: string[];
-
-  /**
-   * <p>NORAD satellite ID number.</p>
-   */
-  noradSatelliteID?: number;
+  satelliteId?: string;
 
   /**
    * <p>ARN of a satellite.</p>
@@ -1918,12 +2426,20 @@ export interface SatelliteListItem {
   satelliteArn?: string;
 
   /**
-   * <p>UUID of a satellite.</p>
+   * <p>NORAD satellite ID number.</p>
    */
-  satelliteId?: string;
+  noradSatelliteID?: number;
+
+  /**
+   * <p>A list of ground stations to which the satellite is on-boarded.</p>
+   */
+  groundStations?: string[];
 }
 
 export namespace SatelliteListItem {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SatelliteListItem): any => ({
     ...obj,
   });
@@ -1945,6 +2461,9 @@ export interface ListSatellitesResponse {
 }
 
 export namespace ListSatellitesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSatellitesResponse): any => ({
     ...obj,
   });
@@ -1966,6 +2485,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -1977,6 +2499,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -1998,6 +2523,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -2009,6 +2537,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });

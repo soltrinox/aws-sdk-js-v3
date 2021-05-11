@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTestCommandInput = GetTestRequest;
-export type GetTestCommandOutput = GetTestResult & __MetadataBearer;
+export interface GetTestCommandInput extends GetTestRequest {}
+export interface GetTestCommandOutput extends GetTestResult, __MetadataBearer {}
 
 /**
  * <p>Gets information about a test.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, GetTestCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, GetTestCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new GetTestCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTestCommandInput} for command's `input` shape.
+ * @see {@link GetTestCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTestCommand extends $Command<
   GetTestCommandInput,

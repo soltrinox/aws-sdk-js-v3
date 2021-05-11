@@ -18,11 +18,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateTrafficPolicyCommentCommandInput = UpdateTrafficPolicyCommentRequest;
-export type UpdateTrafficPolicyCommentCommandOutput = UpdateTrafficPolicyCommentResponse & __MetadataBearer;
+export interface UpdateTrafficPolicyCommentCommandInput extends UpdateTrafficPolicyCommentRequest {}
+export interface UpdateTrafficPolicyCommentCommandOutput extends UpdateTrafficPolicyCommentResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the comment for a specified traffic policy version.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, UpdateTrafficPolicyCommentCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, UpdateTrafficPolicyCommentCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new UpdateTrafficPolicyCommentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateTrafficPolicyCommentCommandInput} for command's `input` shape.
+ * @see {@link UpdateTrafficPolicyCommentCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateTrafficPolicyCommentCommand extends $Command<
   UpdateTrafficPolicyCommentCommandInput,

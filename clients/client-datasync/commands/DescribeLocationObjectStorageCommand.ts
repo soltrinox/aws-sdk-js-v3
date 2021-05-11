@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeLocationObjectStorageCommandInput = DescribeLocationObjectStorageRequest;
-export type DescribeLocationObjectStorageCommandOutput = DescribeLocationObjectStorageResponse & __MetadataBearer;
+export interface DescribeLocationObjectStorageCommandInput extends DescribeLocationObjectStorageRequest {}
+export interface DescribeLocationObjectStorageCommandOutput
+  extends DescribeLocationObjectStorageResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns metadata about a self-managed object storage server location. For more information
  *       about self-managed object storage locations, see <a>create-object-location</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataSyncClient, DescribeLocationObjectStorageCommand } from "@aws-sdk/client-datasync"; // ES Modules import
+ * // const { DataSyncClient, DescribeLocationObjectStorageCommand } = require("@aws-sdk/client-datasync"); // CommonJS import
+ * const client = new DataSyncClient(config);
+ * const command = new DescribeLocationObjectStorageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeLocationObjectStorageCommandInput} for command's `input` shape.
+ * @see {@link DescribeLocationObjectStorageCommandOutput} for command's `response` shape.
+ * @see {@link DataSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeLocationObjectStorageCommand extends $Command<
   DescribeLocationObjectStorageCommandInput,

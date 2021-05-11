@@ -9,6 +9,7 @@ export enum Algorithm {
 
 export enum KeyType {
   speke = "speke",
+  srt_password = "srt-password",
   static_key = "static-key",
 }
 
@@ -19,7 +20,7 @@ export interface Encryption {
   /**
    * The type of algorithm that is used for the encryption (such as aes128, aes192, or aes256).
    */
-  Algorithm: Algorithm | string | undefined;
+  Algorithm?: Algorithm | string;
 
   /**
    * A 128-bit, 16-byte hex value represented by a 32-character string, to be used with the key for encrypting content. This parameter is not valid for static key encryption.
@@ -63,6 +64,9 @@ export interface Encryption {
 }
 
 export namespace Encryption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Encryption): any => ({
     ...obj,
   });
@@ -72,6 +76,7 @@ export enum Protocol {
   rist = "rist",
   rtp = "rtp",
   rtp_fec = "rtp-fec",
+  srt_listener = "srt-listener",
   zixi_pull = "zixi-pull",
   zixi_push = "zixi-push",
 }
@@ -87,6 +92,9 @@ export interface VpcInterfaceAttachment {
 }
 
 export namespace VpcInterfaceAttachment {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VpcInterfaceAttachment): any => ({
     ...obj,
   });
@@ -120,6 +128,11 @@ export interface AddOutputRequest {
    * The maximum latency in milliseconds for Zixi-based streams.
    */
   MaxLatency?: number;
+
+  /**
+   * The minimum latency in milliseconds for SRT-based streams. In streams that use the SRT protocol, this value that you set on your MediaConnect source or output represents the minimal potential latency of that connection. The latency of the stream is set to the highest number between the sender’s minimum latency and the receiver’s minimum latency.
+   */
+  MinLatency?: number;
 
   /**
    * The name of the output. This value must be unique within the current flow.
@@ -158,6 +171,9 @@ export interface AddOutputRequest {
 }
 
 export namespace AddOutputRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddOutputRequest): any => ({
     ...obj,
   });
@@ -209,6 +225,9 @@ export interface Entitlement {
 }
 
 export namespace Entitlement {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Entitlement): any => ({
     ...obj,
   });
@@ -250,6 +269,9 @@ export interface GrantEntitlementRequest {
 }
 
 export namespace GrantEntitlementRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GrantEntitlementRequest): any => ({
     ...obj,
   });
@@ -276,6 +298,9 @@ export interface ListedEntitlement {
 }
 
 export namespace ListedEntitlement {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListedEntitlement): any => ({
     ...obj,
   });
@@ -332,6 +357,9 @@ export interface ListedFlow {
 }
 
 export namespace ListedFlow {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListedFlow): any => ({
     ...obj,
   });
@@ -365,6 +393,9 @@ export interface ResourceSpecification {
 }
 
 export namespace ResourceSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceSpecification): any => ({
     ...obj,
   });
@@ -416,6 +447,9 @@ export interface Offering {
 }
 
 export namespace Offering {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Offering): any => ({
     ...obj,
   });
@@ -441,6 +475,11 @@ export interface Transport {
   MaxLatency?: number;
 
   /**
+   * The minimum latency in milliseconds for SRT-based streams. In streams that use the SRT protocol, this value that you set on your MediaConnect source or output represents the minimal potential latency of that connection. The latency of the stream is set to the highest number between the sender’s minimum latency and the receiver’s minimum latency.
+   */
+  MinLatency?: number;
+
+  /**
    * The protocol that is used by the source or output.
    */
   Protocol: Protocol | string | undefined;
@@ -462,6 +501,9 @@ export interface Transport {
 }
 
 export namespace Transport {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Transport): any => ({
     ...obj,
   });
@@ -497,6 +539,11 @@ export interface Output {
   EntitlementArn?: string;
 
   /**
+   * The IP address that the receiver requires in order to establish a connection with the flow. For public networking, the ListenerAddress is represented by the elastic IP address of the flow. For private networking, the ListenerAddress is represented by the elastic network interface IP address of the VPC. This field applies only to outputs that use the Zixi pull or SRT listener protocol.
+   */
+  ListenerAddress?: string;
+
+  /**
    * The input ARN of the AWS Elemental MediaLive channel. This parameter is relevant only for outputs that were added by creating a MediaLive input.
    */
   MediaLiveInputArn?: string;
@@ -528,6 +575,9 @@ export interface Output {
 }
 
 export namespace Output {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Output): any => ({
     ...obj,
   });
@@ -611,6 +661,9 @@ export interface Reservation {
 }
 
 export namespace Reservation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Reservation): any => ({
     ...obj,
   });
@@ -651,6 +704,11 @@ export interface SetSourceRequest {
   MaxLatency?: number;
 
   /**
+   * The minimum latency in milliseconds for SRT-based streams. In streams that use the SRT protocol, this value that you set on your MediaConnect source or output represents the minimal potential latency of that connection. The latency of the stream is set to the highest number between the sender’s minimum latency and the receiver’s minimum latency.
+   */
+  MinLatency?: number;
+
+  /**
    * The name of the source.
    */
   Name?: string;
@@ -677,6 +735,9 @@ export interface SetSourceRequest {
 }
 
 export namespace SetSourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetSourceRequest): any => ({
     ...obj,
   });
@@ -743,6 +804,9 @@ export interface Source {
 }
 
 export namespace Source {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Source): any => ({
     ...obj,
   });
@@ -779,6 +843,9 @@ export interface VpcInterface {
 }
 
 export namespace VpcInterface {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VpcInterface): any => ({
     ...obj,
   });
@@ -810,6 +877,9 @@ export interface VpcInterfaceRequest {
 }
 
 export namespace VpcInterfaceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VpcInterfaceRequest): any => ({
     ...obj,
   });
@@ -828,6 +898,9 @@ export interface AddFlowOutputs420Exception extends __SmithyException, $Metadata
 }
 
 export namespace AddFlowOutputs420Exception {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddFlowOutputs420Exception): any => ({
     ...obj,
   });
@@ -849,6 +922,9 @@ export interface AddFlowOutputsRequest {
 }
 
 export namespace AddFlowOutputsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddFlowOutputsRequest): any => ({
     ...obj,
   });
@@ -867,6 +943,9 @@ export interface AddFlowOutputsResponse {
 }
 
 export namespace AddFlowOutputsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddFlowOutputsResponse): any => ({
     ...obj,
   });
@@ -885,6 +964,9 @@ export interface BadRequestException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace BadRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BadRequestException): any => ({
     ...obj,
   });
@@ -903,6 +985,9 @@ export interface ForbiddenException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ForbiddenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ForbiddenException): any => ({
     ...obj,
   });
@@ -921,6 +1006,9 @@ export interface InternalServerErrorException extends __SmithyException, $Metada
 }
 
 export namespace InternalServerErrorException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerErrorException): any => ({
     ...obj,
   });
@@ -939,6 +1027,9 @@ export interface NotFoundException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotFoundException): any => ({
     ...obj,
   });
@@ -957,6 +1048,9 @@ export interface ServiceUnavailableException extends __SmithyException, $Metadat
 }
 
 export namespace ServiceUnavailableException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceUnavailableException): any => ({
     ...obj,
   });
@@ -975,6 +1069,9 @@ export interface TooManyRequestsException extends __SmithyException, $MetadataBe
 }
 
 export namespace TooManyRequestsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyRequestsException): any => ({
     ...obj,
   });
@@ -996,6 +1093,9 @@ export interface AddFlowSourcesRequest {
 }
 
 export namespace AddFlowSourcesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddFlowSourcesRequest): any => ({
     ...obj,
   });
@@ -1014,6 +1114,9 @@ export interface AddFlowSourcesResponse {
 }
 
 export namespace AddFlowSourcesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddFlowSourcesResponse): any => ({
     ...obj,
   });
@@ -1035,6 +1138,9 @@ export interface AddFlowVpcInterfacesRequest {
 }
 
 export namespace AddFlowVpcInterfacesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddFlowVpcInterfacesRequest): any => ({
     ...obj,
   });
@@ -1053,6 +1159,9 @@ export interface AddFlowVpcInterfacesResponse {
 }
 
 export namespace AddFlowVpcInterfacesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddFlowVpcInterfacesResponse): any => ({
     ...obj,
   });
@@ -1071,6 +1180,9 @@ export interface CreateFlow420Exception extends __SmithyException, $MetadataBear
 }
 
 export namespace CreateFlow420Exception {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFlow420Exception): any => ({
     ...obj,
   });
@@ -1094,6 +1206,9 @@ export interface FailoverConfig {
 }
 
 export namespace FailoverConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FailoverConfig): any => ({
     ...obj,
   });
@@ -1141,6 +1256,9 @@ export interface CreateFlowRequest {
 }
 
 export namespace CreateFlowRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFlowRequest): any => ({
     ...obj,
   });
@@ -1208,6 +1326,9 @@ export interface Flow {
 }
 
 export namespace Flow {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Flow): any => ({
     ...obj,
   });
@@ -1221,6 +1342,9 @@ export interface CreateFlowResponse {
 }
 
 export namespace CreateFlowResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateFlowResponse): any => ({
     ...obj,
   });
@@ -1234,6 +1358,9 @@ export interface DeleteFlowRequest {
 }
 
 export namespace DeleteFlowRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFlowRequest): any => ({
     ...obj,
   });
@@ -1252,6 +1379,9 @@ export interface DeleteFlowResponse {
 }
 
 export namespace DeleteFlowResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteFlowResponse): any => ({
     ...obj,
   });
@@ -1265,6 +1395,9 @@ export interface DescribeFlowRequest {
 }
 
 export namespace DescribeFlowRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFlowRequest): any => ({
     ...obj,
   });
@@ -1281,6 +1414,9 @@ export interface Messages {
 }
 
 export namespace Messages {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Messages): any => ({
     ...obj,
   });
@@ -1299,6 +1435,9 @@ export interface DescribeFlowResponse {
 }
 
 export namespace DescribeFlowResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeFlowResponse): any => ({
     ...obj,
   });
@@ -1312,6 +1451,9 @@ export interface DescribeOfferingRequest {
 }
 
 export namespace DescribeOfferingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOfferingRequest): any => ({
     ...obj,
   });
@@ -1325,6 +1467,9 @@ export interface DescribeOfferingResponse {
 }
 
 export namespace DescribeOfferingResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOfferingResponse): any => ({
     ...obj,
   });
@@ -1338,6 +1483,9 @@ export interface DescribeReservationRequest {
 }
 
 export namespace DescribeReservationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReservationRequest): any => ({
     ...obj,
   });
@@ -1351,6 +1499,9 @@ export interface DescribeReservationResponse {
 }
 
 export namespace DescribeReservationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReservationResponse): any => ({
     ...obj,
   });
@@ -1369,6 +1520,9 @@ export interface GrantFlowEntitlements420Exception extends __SmithyException, $M
 }
 
 export namespace GrantFlowEntitlements420Exception {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GrantFlowEntitlements420Exception): any => ({
     ...obj,
   });
@@ -1390,6 +1544,9 @@ export interface GrantFlowEntitlementsRequest {
 }
 
 export namespace GrantFlowEntitlementsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GrantFlowEntitlementsRequest): any => ({
     ...obj,
   });
@@ -1408,6 +1565,9 @@ export interface GrantFlowEntitlementsResponse {
 }
 
 export namespace GrantFlowEntitlementsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GrantFlowEntitlementsResponse): any => ({
     ...obj,
   });
@@ -1426,6 +1586,9 @@ export interface ListEntitlementsRequest {
 }
 
 export namespace ListEntitlementsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListEntitlementsRequest): any => ({
     ...obj,
   });
@@ -1444,6 +1607,9 @@ export interface ListEntitlementsResponse {
 }
 
 export namespace ListEntitlementsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListEntitlementsResponse): any => ({
     ...obj,
   });
@@ -1462,6 +1628,9 @@ export interface ListFlowsRequest {
 }
 
 export namespace ListFlowsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListFlowsRequest): any => ({
     ...obj,
   });
@@ -1480,6 +1649,9 @@ export interface ListFlowsResponse {
 }
 
 export namespace ListFlowsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListFlowsResponse): any => ({
     ...obj,
   });
@@ -1498,6 +1670,9 @@ export interface ListOfferingsRequest {
 }
 
 export namespace ListOfferingsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListOfferingsRequest): any => ({
     ...obj,
   });
@@ -1516,6 +1691,9 @@ export interface ListOfferingsResponse {
 }
 
 export namespace ListOfferingsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListOfferingsResponse): any => ({
     ...obj,
   });
@@ -1534,6 +1712,9 @@ export interface ListReservationsRequest {
 }
 
 export namespace ListReservationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListReservationsRequest): any => ({
     ...obj,
   });
@@ -1552,6 +1733,9 @@ export interface ListReservationsResponse {
 }
 
 export namespace ListReservationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListReservationsResponse): any => ({
     ...obj,
   });
@@ -1565,6 +1749,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -1578,6 +1765,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -1604,6 +1794,9 @@ export interface PurchaseOfferingRequest {
 }
 
 export namespace PurchaseOfferingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PurchaseOfferingRequest): any => ({
     ...obj,
   });
@@ -1617,6 +1810,9 @@ export interface PurchaseOfferingResponse {
 }
 
 export namespace PurchaseOfferingResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PurchaseOfferingResponse): any => ({
     ...obj,
   });
@@ -1635,6 +1831,9 @@ export interface RemoveFlowOutputRequest {
 }
 
 export namespace RemoveFlowOutputRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveFlowOutputRequest): any => ({
     ...obj,
   });
@@ -1653,6 +1852,9 @@ export interface RemoveFlowOutputResponse {
 }
 
 export namespace RemoveFlowOutputResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveFlowOutputResponse): any => ({
     ...obj,
   });
@@ -1671,6 +1873,9 @@ export interface RemoveFlowSourceRequest {
 }
 
 export namespace RemoveFlowSourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveFlowSourceRequest): any => ({
     ...obj,
   });
@@ -1689,6 +1894,9 @@ export interface RemoveFlowSourceResponse {
 }
 
 export namespace RemoveFlowSourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveFlowSourceResponse): any => ({
     ...obj,
   });
@@ -1707,6 +1915,9 @@ export interface RemoveFlowVpcInterfaceRequest {
 }
 
 export namespace RemoveFlowVpcInterfaceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveFlowVpcInterfaceRequest): any => ({
     ...obj,
   });
@@ -1730,6 +1941,9 @@ export interface RemoveFlowVpcInterfaceResponse {
 }
 
 export namespace RemoveFlowVpcInterfaceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveFlowVpcInterfaceResponse): any => ({
     ...obj,
   });
@@ -1748,6 +1962,9 @@ export interface RevokeFlowEntitlementRequest {
 }
 
 export namespace RevokeFlowEntitlementRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RevokeFlowEntitlementRequest): any => ({
     ...obj,
   });
@@ -1766,6 +1983,9 @@ export interface RevokeFlowEntitlementResponse {
 }
 
 export namespace RevokeFlowEntitlementResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RevokeFlowEntitlementResponse): any => ({
     ...obj,
   });
@@ -1779,6 +1999,9 @@ export interface StartFlowRequest {
 }
 
 export namespace StartFlowRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartFlowRequest): any => ({
     ...obj,
   });
@@ -1797,6 +2020,9 @@ export interface StartFlowResponse {
 }
 
 export namespace StartFlowResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartFlowResponse): any => ({
     ...obj,
   });
@@ -1810,6 +2036,9 @@ export interface StopFlowRequest {
 }
 
 export namespace StopFlowRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopFlowRequest): any => ({
     ...obj,
   });
@@ -1828,6 +2057,9 @@ export interface StopFlowResponse {
 }
 
 export namespace StopFlowResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopFlowResponse): any => ({
     ...obj,
   });
@@ -1849,6 +2081,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -1867,6 +2102,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -1885,6 +2123,9 @@ export interface UpdateFailoverConfig {
 }
 
 export namespace UpdateFailoverConfig {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFailoverConfig): any => ({
     ...obj,
   });
@@ -1906,6 +2147,9 @@ export interface UpdateFlowRequest {
 }
 
 export namespace UpdateFlowRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFlowRequest): any => ({
     ...obj,
   });
@@ -1919,6 +2163,9 @@ export interface UpdateFlowResponse {
 }
 
 export namespace UpdateFlowResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFlowResponse): any => ({
     ...obj,
   });
@@ -1975,6 +2222,9 @@ export interface UpdateEncryption {
 }
 
 export namespace UpdateEncryption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateEncryption): any => ({
     ...obj,
   });
@@ -2016,6 +2266,9 @@ export interface UpdateFlowEntitlementRequest {
 }
 
 export namespace UpdateFlowEntitlementRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFlowEntitlementRequest): any => ({
     ...obj,
   });
@@ -2034,6 +2287,9 @@ export interface UpdateFlowEntitlementResponse {
 }
 
 export namespace UpdateFlowEntitlementResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFlowEntitlementResponse): any => ({
     ...obj,
   });
@@ -2074,6 +2330,11 @@ export interface UpdateFlowOutputRequest {
   MaxLatency?: number;
 
   /**
+   * The minimum latency in milliseconds for SRT-based streams. In streams that use the SRT protocol, this value that you set on your MediaConnect source or output represents the minimal potential latency of that connection. The latency of the stream is set to the highest number between the sender’s minimum latency and the receiver’s minimum latency.
+   */
+  MinLatency?: number;
+
+  /**
    * The ARN of the output that you want to update.
    */
   OutputArn: string | undefined;
@@ -2110,6 +2371,9 @@ export interface UpdateFlowOutputRequest {
 }
 
 export namespace UpdateFlowOutputRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFlowOutputRequest): any => ({
     ...obj,
   });
@@ -2128,6 +2392,9 @@ export interface UpdateFlowOutputResponse {
 }
 
 export namespace UpdateFlowOutputResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFlowOutputResponse): any => ({
     ...obj,
   });
@@ -2173,6 +2440,11 @@ export interface UpdateFlowSourceRequest {
   MaxLatency?: number;
 
   /**
+   * The minimum latency in milliseconds for SRT-based streams. In streams that use the SRT protocol, this value that you set on your MediaConnect source or output represents the minimal potential latency of that connection. The latency of the stream is set to the highest number between the sender’s minimum latency and the receiver’s minimum latency.
+   */
+  MinLatency?: number;
+
+  /**
    * The protocol that is used by the source.
    */
   Protocol?: Protocol | string;
@@ -2199,6 +2471,9 @@ export interface UpdateFlowSourceRequest {
 }
 
 export namespace UpdateFlowSourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFlowSourceRequest): any => ({
     ...obj,
   });
@@ -2217,6 +2492,9 @@ export interface UpdateFlowSourceResponse {
 }
 
 export namespace UpdateFlowSourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateFlowSourceResponse): any => ({
     ...obj,
   });

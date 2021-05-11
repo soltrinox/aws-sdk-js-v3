@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopWorkspacesCommandInput = StopWorkspacesRequest;
-export type StopWorkspacesCommandOutput = StopWorkspacesResult & __MetadataBearer;
+export interface StopWorkspacesCommandInput extends StopWorkspacesRequest {}
+export interface StopWorkspacesCommandOutput extends StopWorkspacesResult, __MetadataBearer {}
 
 /**
  * <p> Stops the specified WorkSpaces.</p>
  *          <p>You cannot stop a WorkSpace unless it has a running mode of <code>AutoStop</code> and a
  *          state of <code>AVAILABLE</code>, <code>IMPAIRED</code>, <code>UNHEALTHY</code>, or
  *             <code>ERROR</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, StopWorkspacesCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, StopWorkspacesCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new StopWorkspacesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopWorkspacesCommandInput} for command's `input` shape.
+ * @see {@link StopWorkspacesCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopWorkspacesCommand extends $Command<
   StopWorkspacesCommandInput,

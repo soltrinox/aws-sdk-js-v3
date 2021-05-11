@@ -17,11 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SyncDeploymentJobCommandInput = SyncDeploymentJobRequest;
-export type SyncDeploymentJobCommandOutput = SyncDeploymentJobResponse & __MetadataBearer;
+export interface SyncDeploymentJobCommandInput extends SyncDeploymentJobRequest {}
+export interface SyncDeploymentJobCommandOutput extends SyncDeploymentJobResponse, __MetadataBearer {}
 
 /**
- * <p>Syncrhonizes robots in a fleet to the latest deployment. This is helpful if robots were added after a deployment.</p>
+ * <p>Syncrhonizes robots in a fleet to the latest deployment. This is helpful if robots were
+ *          added after a deployment.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RoboMakerClient, SyncDeploymentJobCommand } from "@aws-sdk/client-robomaker"; // ES Modules import
+ * // const { RoboMakerClient, SyncDeploymentJobCommand } = require("@aws-sdk/client-robomaker"); // CommonJS import
+ * const client = new RoboMakerClient(config);
+ * const command = new SyncDeploymentJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SyncDeploymentJobCommandInput} for command's `input` shape.
+ * @see {@link SyncDeploymentJobCommandOutput} for command's `response` shape.
+ * @see {@link RoboMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SyncDeploymentJobCommand extends $Command<
   SyncDeploymentJobCommandInput,

@@ -20,15 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetOrganizationConfigRuleDetailedStatusCommandInput = GetOrganizationConfigRuleDetailedStatusRequest;
-export type GetOrganizationConfigRuleDetailedStatusCommandOutput = GetOrganizationConfigRuleDetailedStatusResponse &
-  __MetadataBearer;
+export interface GetOrganizationConfigRuleDetailedStatusCommandInput
+  extends GetOrganizationConfigRuleDetailedStatusRequest {}
+export interface GetOrganizationConfigRuleDetailedStatusCommandOutput
+  extends GetOrganizationConfigRuleDetailedStatusResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns detailed status for each member account within an organization for a given organization config rule.</p>
- * 		       <p>Only a master account and a delegated administrator account can call this API.
- * 			When calling this API with a delegated administrator, you must ensure AWS Organizations
- * 			<code>ListDelegatedAdministrator</code> permissions are added.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, GetOrganizationConfigRuleDetailedStatusCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, GetOrganizationConfigRuleDetailedStatusCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new GetOrganizationConfigRuleDetailedStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetOrganizationConfigRuleDetailedStatusCommandInput} for command's `input` shape.
+ * @see {@link GetOrganizationConfigRuleDetailedStatusCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetOrganizationConfigRuleDetailedStatusCommand extends $Command<
   GetOrganizationConfigRuleDetailedStatusCommandInput,

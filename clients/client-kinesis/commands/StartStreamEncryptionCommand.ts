@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartStreamEncryptionCommandInput = StartStreamEncryptionInput;
-export type StartStreamEncryptionCommandOutput = __MetadataBearer;
+export interface StartStreamEncryptionCommandInput extends StartStreamEncryptionInput {}
+export interface StartStreamEncryptionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Enables or updates server-side encryption using an AWS KMS key for a specified
@@ -37,6 +37,20 @@ export type StartStreamEncryptionCommandOutput = __MetadataBearer;
  *             status before all records written to the stream are encrypted. After you enable
  *             encryption, you can verify that encryption is applied by inspecting the API response
  *             from <code>PutRecord</code> or <code>PutRecords</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisClient, StartStreamEncryptionCommand } from "@aws-sdk/client-kinesis"; // ES Modules import
+ * // const { KinesisClient, StartStreamEncryptionCommand } = require("@aws-sdk/client-kinesis"); // CommonJS import
+ * const client = new KinesisClient(config);
+ * const command = new StartStreamEncryptionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartStreamEncryptionCommandInput} for command's `input` shape.
+ * @see {@link StartStreamEncryptionCommandOutput} for command's `response` shape.
+ * @see {@link KinesisClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartStreamEncryptionCommand extends $Command<
   StartStreamEncryptionCommandInput,

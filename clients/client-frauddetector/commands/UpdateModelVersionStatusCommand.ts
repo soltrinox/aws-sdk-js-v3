@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateModelVersionStatusCommandInput = UpdateModelVersionStatusRequest;
-export type UpdateModelVersionStatusCommandOutput = UpdateModelVersionStatusResult & __MetadataBearer;
+export interface UpdateModelVersionStatusCommandInput extends UpdateModelVersionStatusRequest {}
+export interface UpdateModelVersionStatusCommandOutput extends UpdateModelVersionStatusResult, __MetadataBearer {}
 
 /**
  * <p>Updates the status of a model version.</p>
@@ -31,6 +31,20 @@ export type UpdateModelVersionStatusCommandOutput = UpdateModelVersionStatusResu
  *                <p>Change <code>ACTIVE</code>to <code>INACTIVE</code>.</p>
  *             </li>
  *          </ol>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FraudDetectorClient, UpdateModelVersionStatusCommand } from "@aws-sdk/client-frauddetector"; // ES Modules import
+ * // const { FraudDetectorClient, UpdateModelVersionStatusCommand } = require("@aws-sdk/client-frauddetector"); // CommonJS import
+ * const client = new FraudDetectorClient(config);
+ * const command = new UpdateModelVersionStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateModelVersionStatusCommandInput} for command's `input` shape.
+ * @see {@link UpdateModelVersionStatusCommandOutput} for command's `response` shape.
+ * @see {@link FraudDetectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateModelVersionStatusCommand extends $Command<
   UpdateModelVersionStatusCommandInput,

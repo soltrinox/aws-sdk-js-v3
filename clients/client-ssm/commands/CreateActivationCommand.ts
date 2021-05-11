@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateActivationCommandInput = CreateActivationRequest;
-export type CreateActivationCommandOutput = CreateActivationResult & __MetadataBearer;
+export interface CreateActivationCommandInput extends CreateActivationRequest {}
+export interface CreateActivationCommandOutput extends CreateActivationResult, __MetadataBearer {}
 
 /**
  * <p>Generates an activation code and activation ID you can use to register your on-premises
@@ -31,6 +31,20 @@ export type CreateActivationCommandOutput = CreateActivationResult & __MetadataB
  *             <p>On-premises servers or VMs that are registered with Systems Manager and EC2 instances that you manage
  *     with Systems Manager are all called <i>managed instances</i>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, CreateActivationCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, CreateActivationCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new CreateActivationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateActivationCommandInput} for command's `input` shape.
+ * @see {@link CreateActivationCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateActivationCommand extends $Command<
   CreateActivationCommandInput,

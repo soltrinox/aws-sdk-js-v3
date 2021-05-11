@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteApiCommandInput = DeleteApiRequest;
-export type DeleteApiCommandOutput = __MetadataBearer;
+export interface DeleteApiCommandInput extends DeleteApiRequest {}
+export interface DeleteApiCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes an Api resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApiGatewayV2Client, DeleteApiCommand } from "@aws-sdk/client-apigatewayv2"; // ES Modules import
+ * // const { ApiGatewayV2Client, DeleteApiCommand } = require("@aws-sdk/client-apigatewayv2"); // CommonJS import
+ * const client = new ApiGatewayV2Client(config);
+ * const command = new DeleteApiCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteApiCommandInput} for command's `input` shape.
+ * @see {@link DeleteApiCommandOutput} for command's `response` shape.
+ * @see {@link ApiGatewayV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteApiCommand extends $Command<
   DeleteApiCommandInput,

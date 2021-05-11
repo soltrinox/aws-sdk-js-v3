@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateApplicationCommandInput = UpdateApplicationRequest;
-export type UpdateApplicationCommandOutput = UpdateApplicationResponse & __MetadataBearer;
+export interface UpdateApplicationCommandInput extends UpdateApplicationRequest {}
+export interface UpdateApplicationCommandOutput extends UpdateApplicationResponse, __MetadataBearer {}
 
 /**
  * <p>Updates an existing Kinesis Data Analytics application. Using this operation, you
@@ -34,6 +34,20 @@ export type UpdateApplicationCommandOutput = UpdateApplicationResponse & __Metad
  *     need to update an application's <code>RuntimeEnvironment</code>, you must delete the application
  *     and create it again.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisAnalyticsV2Client, UpdateApplicationCommand } from "@aws-sdk/client-kinesis-analytics-v2"; // ES Modules import
+ * // const { KinesisAnalyticsV2Client, UpdateApplicationCommand } = require("@aws-sdk/client-kinesis-analytics-v2"); // CommonJS import
+ * const client = new KinesisAnalyticsV2Client(config);
+ * const command = new UpdateApplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateApplicationCommandInput} for command's `input` shape.
+ * @see {@link UpdateApplicationCommandOutput} for command's `response` shape.
+ * @see {@link KinesisAnalyticsV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateApplicationCommand extends $Command<
   UpdateApplicationCommandInput,

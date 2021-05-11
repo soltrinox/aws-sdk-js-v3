@@ -21,12 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDeviceStateCommandInput = UpdateDeviceStateRequest;
-export type UpdateDeviceStateCommandOutput = UpdateDeviceStateResponse & __MetadataBearer;
+export interface UpdateDeviceStateCommandInput extends UpdateDeviceStateRequest {}
+export interface UpdateDeviceStateCommandOutput extends UpdateDeviceStateResponse, __MetadataBearer {}
 
 /**
  * <p>Using a Boolean value (true or false), this operation
  *  enables or disables the device given a device ID.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoT1ClickDevicesServiceClient, UpdateDeviceStateCommand } from "@aws-sdk/client-iot-1click-devices-service"; // ES Modules import
+ * // const { IoT1ClickDevicesServiceClient, UpdateDeviceStateCommand } = require("@aws-sdk/client-iot-1click-devices-service"); // CommonJS import
+ * const client = new IoT1ClickDevicesServiceClient(config);
+ * const command = new UpdateDeviceStateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDeviceStateCommandInput} for command's `input` shape.
+ * @see {@link UpdateDeviceStateCommandOutput} for command's `response` shape.
+ * @see {@link IoT1ClickDevicesServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDeviceStateCommand extends $Command<
   UpdateDeviceStateCommandInput,

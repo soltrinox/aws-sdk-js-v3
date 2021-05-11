@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSamplingTargetsCommandInput = GetSamplingTargetsRequest;
-export type GetSamplingTargetsCommandOutput = GetSamplingTargetsResult & __MetadataBearer;
+export interface GetSamplingTargetsCommandInput extends GetSamplingTargetsRequest {}
+export interface GetSamplingTargetsCommandOutput extends GetSamplingTargetsResult, __MetadataBearer {}
 
 /**
  * <p>Requests a sampling quota for rules that the service is using to sample requests.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { XRayClient, GetSamplingTargetsCommand } from "@aws-sdk/client-xray"; // ES Modules import
+ * // const { XRayClient, GetSamplingTargetsCommand } = require("@aws-sdk/client-xray"); // CommonJS import
+ * const client = new XRayClient(config);
+ * const command = new GetSamplingTargetsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSamplingTargetsCommandInput} for command's `input` shape.
+ * @see {@link GetSamplingTargetsCommandOutput} for command's `response` shape.
+ * @see {@link XRayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSamplingTargetsCommand extends $Command<
   GetSamplingTargetsCommandInput,

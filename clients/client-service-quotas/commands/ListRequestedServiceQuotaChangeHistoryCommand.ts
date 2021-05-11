@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListRequestedServiceQuotaChangeHistoryCommandInput = ListRequestedServiceQuotaChangeHistoryRequest;
-export type ListRequestedServiceQuotaChangeHistoryCommandOutput = ListRequestedServiceQuotaChangeHistoryResponse &
-  __MetadataBearer;
+export interface ListRequestedServiceQuotaChangeHistoryCommandInput
+  extends ListRequestedServiceQuotaChangeHistoryRequest {}
+export interface ListRequestedServiceQuotaChangeHistoryCommandOutput
+  extends ListRequestedServiceQuotaChangeHistoryResponse,
+    __MetadataBearer {}
 
 /**
- * <p>Requests a list of the changes to quotas for a service.</p>
+ * <p>Retrieves the quota increase requests for the specified service.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceQuotasClient, ListRequestedServiceQuotaChangeHistoryCommand } from "@aws-sdk/client-service-quotas"; // ES Modules import
+ * // const { ServiceQuotasClient, ListRequestedServiceQuotaChangeHistoryCommand } = require("@aws-sdk/client-service-quotas"); // CommonJS import
+ * const client = new ServiceQuotasClient(config);
+ * const command = new ListRequestedServiceQuotaChangeHistoryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListRequestedServiceQuotaChangeHistoryCommandInput} for command's `input` shape.
+ * @see {@link ListRequestedServiceQuotaChangeHistoryCommandOutput} for command's `response` shape.
+ * @see {@link ServiceQuotasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListRequestedServiceQuotaChangeHistoryCommand extends $Command<
   ListRequestedServiceQuotaChangeHistoryCommandInput,

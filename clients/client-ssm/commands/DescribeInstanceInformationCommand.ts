@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeInstanceInformationCommandInput = DescribeInstanceInformationRequest;
-export type DescribeInstanceInformationCommandOutput = DescribeInstanceInformationResult & __MetadataBearer;
+export interface DescribeInstanceInformationCommandInput extends DescribeInstanceInformationRequest {}
+export interface DescribeInstanceInformationCommandOutput extends DescribeInstanceInformationResult, __MetadataBearer {}
 
 /**
  * <p>Describes one or more of your instances, including information about the operating system
@@ -31,6 +31,20 @@ export type DescribeInstanceInformationCommandOutput = DescribeInstanceInformati
  *     role assigned to on-premises instances. This call does not return the IAM role for EC2
  *     instances.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DescribeInstanceInformationCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DescribeInstanceInformationCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DescribeInstanceInformationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeInstanceInformationCommandInput} for command's `input` shape.
+ * @see {@link DescribeInstanceInformationCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeInstanceInformationCommand extends $Command<
   DescribeInstanceInformationCommandInput,

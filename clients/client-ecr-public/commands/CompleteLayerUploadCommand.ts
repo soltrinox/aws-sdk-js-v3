@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CompleteLayerUploadCommandInput = CompleteLayerUploadRequest;
-export type CompleteLayerUploadCommandOutput = CompleteLayerUploadResponse & __MetadataBearer;
+export interface CompleteLayerUploadCommandInput extends CompleteLayerUploadRequest {}
+export interface CompleteLayerUploadCommandOutput extends CompleteLayerUploadResponse, __MetadataBearer {}
 
 /**
  * <p>Informs Amazon ECR that the image layer upload has completed for a specified public registry,
@@ -29,6 +29,20 @@ export type CompleteLayerUploadCommandOutput = CompleteLayerUploadResponse & __M
  *          <note>
  *             <p>This operation is used by the Amazon ECR proxy and is not generally used by customers for pulling and pushing images. In most cases, you should use the <code>docker</code> CLI to pull, tag, and push images.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECRPUBLICClient, CompleteLayerUploadCommand } from "@aws-sdk/client-ecr-public"; // ES Modules import
+ * // const { ECRPUBLICClient, CompleteLayerUploadCommand } = require("@aws-sdk/client-ecr-public"); // CommonJS import
+ * const client = new ECRPUBLICClient(config);
+ * const command = new CompleteLayerUploadCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CompleteLayerUploadCommandInput} for command's `input` shape.
+ * @see {@link CompleteLayerUploadCommandOutput} for command's `response` shape.
+ * @see {@link ECRPUBLICClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CompleteLayerUploadCommand extends $Command<
   CompleteLayerUploadCommandInput,

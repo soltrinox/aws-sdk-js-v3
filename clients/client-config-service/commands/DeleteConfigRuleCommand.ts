@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteConfigRuleCommandInput = DeleteConfigRuleRequest;
-export type DeleteConfigRuleCommandOutput = __MetadataBearer;
+export interface DeleteConfigRuleCommandInput extends DeleteConfigRuleRequest {}
+export interface DeleteConfigRuleCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes the specified AWS Config rule and all of its evaluation
@@ -30,6 +30,20 @@ export type DeleteConfigRuleCommandOutput = __MetadataBearer;
  * 			receive a <code>ResourceInUseException</code>.</p>
  * 		       <p>You can check the state of a rule by using the
  * 				<code>DescribeConfigRules</code> request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DeleteConfigRuleCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DeleteConfigRuleCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DeleteConfigRuleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteConfigRuleCommandInput} for command's `input` shape.
+ * @see {@link DeleteConfigRuleCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteConfigRuleCommand extends $Command<
   DeleteConfigRuleCommandInput,

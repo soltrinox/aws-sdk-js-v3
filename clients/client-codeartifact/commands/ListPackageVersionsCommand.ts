@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPackageVersionsCommandInput = ListPackageVersionsRequest;
-export type ListPackageVersionsCommandOutput = ListPackageVersionsResult & __MetadataBearer;
+export interface ListPackageVersionsCommandInput extends ListPackageVersionsRequest {}
+export interface ListPackageVersionsCommandOutput extends ListPackageVersionsResult, __MetadataBearer {}
 
 /**
  * <p>
@@ -28,6 +28,20 @@ export type ListPackageVersionsCommandOutput = ListPackageVersionsResult & __Met
  *             </a>
  *         objects for package versions in a repository that match the request parameters.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeartifactClient, ListPackageVersionsCommand } from "@aws-sdk/client-codeartifact"; // ES Modules import
+ * // const { CodeartifactClient, ListPackageVersionsCommand } = require("@aws-sdk/client-codeartifact"); // CommonJS import
+ * const client = new CodeartifactClient(config);
+ * const command = new ListPackageVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPackageVersionsCommandInput} for command's `input` shape.
+ * @see {@link ListPackageVersionsCommandOutput} for command's `response` shape.
+ * @see {@link CodeartifactClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPackageVersionsCommand extends $Command<
   ListPackageVersionsCommandInput,

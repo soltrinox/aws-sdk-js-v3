@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreCertificateAuthorityCommandInput = RestoreCertificateAuthorityRequest;
-export type RestoreCertificateAuthorityCommandOutput = __MetadataBearer;
+export interface RestoreCertificateAuthorityCommandInput extends RestoreCertificateAuthorityRequest {}
+export interface RestoreCertificateAuthorityCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Restores a certificate authority (CA) that is in the <code>DELETED</code> state. You
@@ -32,6 +32,20 @@ export type RestoreCertificateAuthorityCommandOutput = __MetadataBearer;
  * 				<code>PENDING_CERTIFICATE</code> state at deletion, you must use the <a href="https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html">ImportCertificateAuthorityCertificate</a> action to import a certificate
  * 			authority into the private CA before it can be activated. You cannot restore a CA after
  * 			the restoration period has ended.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ACMPCAClient, RestoreCertificateAuthorityCommand } from "@aws-sdk/client-acm-pca"; // ES Modules import
+ * // const { ACMPCAClient, RestoreCertificateAuthorityCommand } = require("@aws-sdk/client-acm-pca"); // CommonJS import
+ * const client = new ACMPCAClient(config);
+ * const command = new RestoreCertificateAuthorityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreCertificateAuthorityCommandInput} for command's `input` shape.
+ * @see {@link RestoreCertificateAuthorityCommandOutput} for command's `response` shape.
+ * @see {@link ACMPCAClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreCertificateAuthorityCommand extends $Command<
   RestoreCertificateAuthorityCommandInput,

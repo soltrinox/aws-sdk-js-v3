@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopTaskCommandInput = StopTaskRequest;
-export type StopTaskCommandOutput = StopTaskResponse & __MetadataBearer;
+export interface StopTaskCommandInput extends StopTaskRequest {}
+export interface StopTaskCommandOutput extends StopTaskResponse, __MetadataBearer {}
 
 /**
  * <p>Stops a running task. Any tags associated with the task will be deleted.</p>
@@ -31,6 +31,20 @@ export type StopTaskCommandOutput = StopTaskResponse & __MetadataBearer;
  * 					<a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html">Amazon ECS Container Agent Configuration</a> in the
  * 					<i>Amazon Elastic Container Service Developer Guide</i>.</p>
  * 		       </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, StopTaskCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, StopTaskCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new StopTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopTaskCommandInput} for command's `input` shape.
+ * @see {@link StopTaskCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopTaskCommand extends $Command<StopTaskCommandInput, StopTaskCommandOutput, ECSClientResolvedConfig> {
   // Start section: command_properties

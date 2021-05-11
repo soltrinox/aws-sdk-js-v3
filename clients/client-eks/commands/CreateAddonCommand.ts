@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAddonCommandInput = CreateAddonRequest;
-export type CreateAddonCommandOutput = CreateAddonResponse & __MetadataBearer;
+export interface CreateAddonCommandInput extends CreateAddonRequest {}
+export interface CreateAddonCommandOutput extends CreateAddonResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an Amazon EKS add-on.</p>
@@ -27,6 +27,20 @@ export type CreateAddonCommandOutput = CreateAddonResponse & __MetadataBearer;
  *             clusters running version 1.18 with platform version <code>eks.3</code> or later because
  *             add-ons rely on the Server-side Apply Kubernetes feature, which is only available in
  *             Kubernetes 1.18 and later.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EKSClient, CreateAddonCommand } from "@aws-sdk/client-eks"; // ES Modules import
+ * // const { EKSClient, CreateAddonCommand } = require("@aws-sdk/client-eks"); // CommonJS import
+ * const client = new EKSClient(config);
+ * const command = new CreateAddonCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAddonCommandInput} for command's `input` shape.
+ * @see {@link CreateAddonCommandOutput} for command's `response` shape.
+ * @see {@link EKSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAddonCommand extends $Command<
   CreateAddonCommandInput,

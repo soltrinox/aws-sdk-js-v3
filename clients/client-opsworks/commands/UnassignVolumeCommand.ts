@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UnassignVolumeCommandInput = UnassignVolumeRequest;
-export type UnassignVolumeCommandOutput = __MetadataBearer;
+export interface UnassignVolumeCommandInput extends UnassignVolumeRequest {}
+export interface UnassignVolumeCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Unassigns an assigned Amazon EBS volume. The volume remains registered with the stack. For more
@@ -29,6 +29,20 @@ export type UnassignVolumeCommandOutput = __MetadataBearer;
  *       level for the stack, or an attached policy that explicitly grants permissions. For more
  *       information on user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, UnassignVolumeCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, UnassignVolumeCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new UnassignVolumeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UnassignVolumeCommandInput} for command's `input` shape.
+ * @see {@link UnassignVolumeCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UnassignVolumeCommand extends $Command<
   UnassignVolumeCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type JsonListsCommandInput = JsonListsInputOutput;
-export type JsonListsCommandOutput = JsonListsInputOutput & __MetadataBearer;
+export interface JsonListsCommandInput extends JsonListsInputOutput {}
+export interface JsonListsCommandOutput extends JsonListsInputOutput, __MetadataBearer {}
 
 /**
  * This test case serializes JSON lists for the following cases for both
@@ -28,6 +28,20 @@ export type JsonListsCommandOutput = JsonListsInputOutput & __MetadataBearer;
  * 2. Normal JSON sets.
  * 3. JSON lists of lists.
  * 4. Lists of structures.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestJsonProtocolClient, JsonListsCommand } from "@aws-sdk/aws-restjson"; // ES Modules import
+ * // const { RestJsonProtocolClient, JsonListsCommand } = require("@aws-sdk/aws-restjson"); // CommonJS import
+ * const client = new RestJsonProtocolClient(config);
+ * const command = new JsonListsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link JsonListsCommandInput} for command's `input` shape.
+ * @see {@link JsonListsCommandOutput} for command's `response` shape.
+ * @see {@link RestJsonProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class JsonListsCommand extends $Command<
   JsonListsCommandInput,

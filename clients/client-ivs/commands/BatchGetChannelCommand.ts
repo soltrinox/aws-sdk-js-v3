@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchGetChannelCommandInput = BatchGetChannelRequest;
-export type BatchGetChannelCommandOutput = BatchGetChannelResponse & __MetadataBearer;
+export interface BatchGetChannelCommandInput extends BatchGetChannelRequest {}
+export interface BatchGetChannelCommandOutput extends BatchGetChannelResponse, __MetadataBearer {}
 
 /**
  * <p>Performs <a>GetChannel</a> on multiple ARNs simultaneously.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IvsClient, BatchGetChannelCommand } from "@aws-sdk/client-ivs"; // ES Modules import
+ * // const { IvsClient, BatchGetChannelCommand } = require("@aws-sdk/client-ivs"); // CommonJS import
+ * const client = new IvsClient(config);
+ * const command = new BatchGetChannelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchGetChannelCommandInput} for command's `input` shape.
+ * @see {@link BatchGetChannelCommandOutput} for command's `response` shape.
+ * @see {@link IvsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchGetChannelCommand extends $Command<
   BatchGetChannelCommandInput,

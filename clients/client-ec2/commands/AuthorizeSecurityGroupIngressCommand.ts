@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AuthorizeSecurityGroupIngressCommandInput = AuthorizeSecurityGroupIngressRequest;
-export type AuthorizeSecurityGroupIngressCommandOutput = __MetadataBearer;
+export interface AuthorizeSecurityGroupIngressCommandInput extends AuthorizeSecurityGroupIngressRequest {}
+export interface AuthorizeSecurityGroupIngressCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Adds the specified ingress rules to a security group.</p>
@@ -31,6 +31,20 @@ export type AuthorizeSecurityGroupIngressCommandOutput = __MetadataBearer;
  *          <p>Rule changes are propagated to instances within the security group as quickly as possible.
  *          However, a small delay might occur.</p>
  *          <p>For more information about VPC security group limits, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html">Amazon VPC Limits</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, AuthorizeSecurityGroupIngressCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, AuthorizeSecurityGroupIngressCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new AuthorizeSecurityGroupIngressCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AuthorizeSecurityGroupIngressCommandInput} for command's `input` shape.
+ * @see {@link AuthorizeSecurityGroupIngressCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AuthorizeSecurityGroupIngressCommand extends $Command<
   AuthorizeSecurityGroupIngressCommandInput,

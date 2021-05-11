@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteNamespaceCommandInput = DeleteNamespaceRequest;
-export type DeleteNamespaceCommandOutput = DeleteNamespaceResponse & __MetadataBearer;
+export interface DeleteNamespaceCommandInput extends DeleteNamespaceRequest {}
+export interface DeleteNamespaceCommandOutput extends DeleteNamespaceResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a namespace and the users and groups that are associated with the namespace.
  *         This is an asynchronous process. Assets including dashboards, analyses, datasets and data sources are not
  *         deleted. To delete these assets, you use the API operations for the relevant asset. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, DeleteNamespaceCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, DeleteNamespaceCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new DeleteNamespaceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteNamespaceCommandInput} for command's `input` shape.
+ * @see {@link DeleteNamespaceCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteNamespaceCommand extends $Command<
   DeleteNamespaceCommandInput,

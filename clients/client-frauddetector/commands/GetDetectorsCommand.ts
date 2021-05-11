@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDetectorsCommandInput = GetDetectorsRequest;
-export type GetDetectorsCommandOutput = GetDetectorsResult & __MetadataBearer;
+export interface GetDetectorsCommandInput extends GetDetectorsRequest {}
+export interface GetDetectorsCommandOutput extends GetDetectorsResult, __MetadataBearer {}
 
 /**
  * <p>Gets all detectors or a single detector if a <code>detectorId</code> is specified. This is a paginated API. If you
@@ -27,6 +27,20 @@ export type GetDetectorsCommandOutput = GetDetectorsResult & __MetadataBearer;
  *          To get the next page results, provide the pagination token from the
  *             <code>GetDetectorsResponse</code> as part of your request. A null pagination token
  *          fetches the records from the beginning. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FraudDetectorClient, GetDetectorsCommand } from "@aws-sdk/client-frauddetector"; // ES Modules import
+ * // const { FraudDetectorClient, GetDetectorsCommand } = require("@aws-sdk/client-frauddetector"); // CommonJS import
+ * const client = new FraudDetectorClient(config);
+ * const command = new GetDetectorsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDetectorsCommandInput} for command's `input` shape.
+ * @see {@link GetDetectorsCommandOutput} for command's `response` shape.
+ * @see {@link FraudDetectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDetectorsCommand extends $Command<
   GetDetectorsCommandInput,

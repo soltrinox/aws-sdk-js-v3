@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateAppCommandInput = UpdateAppRequest;
-export type UpdateAppCommandOutput = __MetadataBearer;
+export interface UpdateAppCommandInput extends UpdateAppRequest {}
+export interface UpdateAppCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Updates a specified app.</p>
@@ -24,6 +24,20 @@ export type UpdateAppCommandOutput = __MetadataBearer;
  *       permissions level for the stack, or an attached policy that explicitly grants permissions. For
  *       more information on user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, UpdateAppCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, UpdateAppCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new UpdateAppCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateAppCommandInput} for command's `input` shape.
+ * @see {@link UpdateAppCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateAppCommand extends $Command<
   UpdateAppCommandInput,

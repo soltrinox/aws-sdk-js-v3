@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDatasetImportJobCommandInput = CreateDatasetImportJobRequest;
-export type CreateDatasetImportJobCommandOutput = CreateDatasetImportJobResponse & __MetadataBearer;
+export interface CreateDatasetImportJobCommandInput extends CreateDatasetImportJobRequest {}
+export interface CreateDatasetImportJobCommandOutput extends CreateDatasetImportJobResponse, __MetadataBearer {}
 
 /**
  * <p>Imports your training data to an Amazon Forecast dataset. You provide the location of your
@@ -41,6 +41,20 @@ export type CreateDatasetImportJobCommandOutput = CreateDatasetImportJobResponse
  *
  *          <p>To get a list of all your dataset import jobs, filtered by specified criteria, use the
  *         <a>ListDatasetImportJobs</a> operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ForecastClient, CreateDatasetImportJobCommand } from "@aws-sdk/client-forecast"; // ES Modules import
+ * // const { ForecastClient, CreateDatasetImportJobCommand } = require("@aws-sdk/client-forecast"); // CommonJS import
+ * const client = new ForecastClient(config);
+ * const command = new CreateDatasetImportJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDatasetImportJobCommandInput} for command's `input` shape.
+ * @see {@link CreateDatasetImportJobCommandOutput} for command's `response` shape.
+ * @see {@link ForecastClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDatasetImportJobCommand extends $Command<
   CreateDatasetImportJobCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateTokenCommandInput = CreateTokenRequest;
-export type CreateTokenCommandOutput = CreateTokenResponse & __MetadataBearer;
+export interface CreateTokenCommandInput extends CreateTokenRequest {}
+export interface CreateTokenCommandOutput extends CreateTokenResponse, __MetadataBearer {}
 
 /**
  * <p>Generates a one-time challenge code to authenticate a user into your Amplify Admin UI.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AmplifyBackendClient, CreateTokenCommand } from "@aws-sdk/client-amplifybackend"; // ES Modules import
+ * // const { AmplifyBackendClient, CreateTokenCommand } = require("@aws-sdk/client-amplifybackend"); // CommonJS import
+ * const client = new AmplifyBackendClient(config);
+ * const command = new CreateTokenCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateTokenCommandInput} for command's `input` shape.
+ * @see {@link CreateTokenCommandOutput} for command's `response` shape.
+ * @see {@link AmplifyBackendClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateTokenCommand extends $Command<
   CreateTokenCommandInput,

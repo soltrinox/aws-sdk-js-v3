@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdatePresetCommandInput = UpdatePresetRequest;
-export type UpdatePresetCommandOutput = UpdatePresetResponse & __MetadataBearer;
+export interface UpdatePresetCommandInput extends UpdatePresetRequest {}
+export interface UpdatePresetCommandOutput extends UpdatePresetResponse, __MetadataBearer {}
 
 /**
  * Modify one of your existing presets.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaConvertClient, UpdatePresetCommand } from "@aws-sdk/client-mediaconvert"; // ES Modules import
+ * // const { MediaConvertClient, UpdatePresetCommand } = require("@aws-sdk/client-mediaconvert"); // CommonJS import
+ * const client = new MediaConvertClient(config);
+ * const command = new UpdatePresetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdatePresetCommandInput} for command's `input` shape.
+ * @see {@link UpdatePresetCommandOutput} for command's `response` shape.
+ * @see {@link MediaConvertClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdatePresetCommand extends $Command<
   UpdatePresetCommandInput,

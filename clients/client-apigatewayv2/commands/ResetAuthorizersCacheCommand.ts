@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ResetAuthorizersCacheCommandInput = ResetAuthorizersCacheRequest;
-export type ResetAuthorizersCacheCommandOutput = __MetadataBearer;
+export interface ResetAuthorizersCacheCommandInput extends ResetAuthorizersCacheRequest {}
+export interface ResetAuthorizersCacheCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Resets all authorizer cache entries on a stage. Supported only for HTTP APIs.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApiGatewayV2Client, ResetAuthorizersCacheCommand } from "@aws-sdk/client-apigatewayv2"; // ES Modules import
+ * // const { ApiGatewayV2Client, ResetAuthorizersCacheCommand } = require("@aws-sdk/client-apigatewayv2"); // CommonJS import
+ * const client = new ApiGatewayV2Client(config);
+ * const command = new ResetAuthorizersCacheCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ResetAuthorizersCacheCommandInput} for command's `input` shape.
+ * @see {@link ResetAuthorizersCacheCommandOutput} for command's `response` shape.
+ * @see {@link ApiGatewayV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ResetAuthorizersCacheCommand extends $Command<
   ResetAuthorizersCacheCommandInput,

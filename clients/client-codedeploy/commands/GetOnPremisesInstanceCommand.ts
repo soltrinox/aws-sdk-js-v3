@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetOnPremisesInstanceCommandInput = GetOnPremisesInstanceInput;
-export type GetOnPremisesInstanceCommandOutput = GetOnPremisesInstanceOutput & __MetadataBearer;
+export interface GetOnPremisesInstanceCommandInput extends GetOnPremisesInstanceInput {}
+export interface GetOnPremisesInstanceCommandOutput extends GetOnPremisesInstanceOutput, __MetadataBearer {}
 
 /**
  * <p> Gets information about an on-premises instance. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeDeployClient, GetOnPremisesInstanceCommand } from "@aws-sdk/client-codedeploy"; // ES Modules import
+ * // const { CodeDeployClient, GetOnPremisesInstanceCommand } = require("@aws-sdk/client-codedeploy"); // CommonJS import
+ * const client = new CodeDeployClient(config);
+ * const command = new GetOnPremisesInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetOnPremisesInstanceCommandInput} for command's `input` shape.
+ * @see {@link GetOnPremisesInstanceCommandOutput} for command's `response` shape.
+ * @see {@link CodeDeployClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetOnPremisesInstanceCommand extends $Command<
   GetOnPremisesInstanceCommandInput,

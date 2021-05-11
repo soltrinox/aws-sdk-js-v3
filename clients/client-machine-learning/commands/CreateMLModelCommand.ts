@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateMLModelCommandInput = CreateMLModelInput;
-export type CreateMLModelCommandOutput = CreateMLModelOutput & __MetadataBearer;
+export interface CreateMLModelCommandInput extends CreateMLModelInput {}
+export interface CreateMLModelCommandOutput extends CreateMLModelOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a new <code>MLModel</code> using the <code>DataSource</code> and the recipe as
@@ -41,6 +41,20 @@ export type CreateMLModelCommandOutput = CreateMLModelOutput & __MetadataBearer;
  *           <code>CreateDataSourceFromRDS</code>, <code>CreateDataSourceFromS3</code>, or
  *           <code>CreateDataSourceFromRedshift</code> operations.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MachineLearningClient, CreateMLModelCommand } from "@aws-sdk/client-machine-learning"; // ES Modules import
+ * // const { MachineLearningClient, CreateMLModelCommand } = require("@aws-sdk/client-machine-learning"); // CommonJS import
+ * const client = new MachineLearningClient(config);
+ * const command = new CreateMLModelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateMLModelCommandInput} for command's `input` shape.
+ * @see {@link CreateMLModelCommandOutput} for command's `response` shape.
+ * @see {@link MachineLearningClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateMLModelCommand extends $Command<
   CreateMLModelCommandInput,

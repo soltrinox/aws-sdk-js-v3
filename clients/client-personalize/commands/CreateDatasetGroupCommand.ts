@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDatasetGroupCommandInput = CreateDatasetGroupRequest;
-export type CreateDatasetGroupCommandOutput = CreateDatasetGroupResponse & __MetadataBearer;
+export interface CreateDatasetGroupCommandInput extends CreateDatasetGroupRequest {}
+export interface CreateDatasetGroupCommandOutput extends CreateDatasetGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Creates an empty dataset group. A dataset group contains related datasets that supply data
@@ -97,6 +97,20 @@ export type CreateDatasetGroupCommandOutput = CreateDatasetGroupResponse & __Met
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PersonalizeClient, CreateDatasetGroupCommand } from "@aws-sdk/client-personalize"; // ES Modules import
+ * // const { PersonalizeClient, CreateDatasetGroupCommand } = require("@aws-sdk/client-personalize"); // CommonJS import
+ * const client = new PersonalizeClient(config);
+ * const command = new CreateDatasetGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDatasetGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateDatasetGroupCommandOutput} for command's `response` shape.
+ * @see {@link PersonalizeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDatasetGroupCommand extends $Command<
   CreateDatasetGroupCommandInput,

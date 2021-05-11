@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CancelHandshakeCommandInput = CancelHandshakeRequest;
-export type CancelHandshakeCommandOutput = CancelHandshakeResponse & __MetadataBearer;
+export interface CancelHandshakeCommandInput extends CancelHandshakeRequest {}
+export interface CancelHandshakeCommandOutput extends CancelHandshakeResponse, __MetadataBearer {}
 
 /**
  * <p>Cancels a handshake. Canceling a handshake sets the handshake state to
@@ -27,6 +27,20 @@ export type CancelHandshakeCommandOutput = CancelHandshakeResponse & __MetadataB
  *             can no longer respond to that handshake.</p>
  *         <p>After you cancel a handshake, it continues to appear in the results of relevant APIs
  *             for only 30 days. After that, it's deleted.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, CancelHandshakeCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, CancelHandshakeCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new CancelHandshakeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CancelHandshakeCommandInput} for command's `input` shape.
+ * @see {@link CancelHandshakeCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CancelHandshakeCommand extends $Command<
   CancelHandshakeCommandInput,

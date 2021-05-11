@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDocumentVersionsCommandInput = DescribeDocumentVersionsRequest;
-export type DescribeDocumentVersionsCommandOutput = DescribeDocumentVersionsResponse & __MetadataBearer;
+export interface DescribeDocumentVersionsCommandInput extends DescribeDocumentVersionsRequest {}
+export interface DescribeDocumentVersionsCommandOutput extends DescribeDocumentVersionsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the document versions for the specified document.</p>
  *         <p>By default, only active versions are returned.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkDocsClient, DescribeDocumentVersionsCommand } from "@aws-sdk/client-workdocs"; // ES Modules import
+ * // const { WorkDocsClient, DescribeDocumentVersionsCommand } = require("@aws-sdk/client-workdocs"); // CommonJS import
+ * const client = new WorkDocsClient(config);
+ * const command = new DescribeDocumentVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDocumentVersionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeDocumentVersionsCommandOutput} for command's `response` shape.
+ * @see {@link WorkDocsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDocumentVersionsCommand extends $Command<
   DescribeDocumentVersionsCommandInput,

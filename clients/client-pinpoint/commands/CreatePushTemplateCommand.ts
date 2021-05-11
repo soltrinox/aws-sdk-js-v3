@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreatePushTemplateCommandInput = CreatePushTemplateRequest;
-export type CreatePushTemplateCommandOutput = CreatePushTemplateResponse & __MetadataBearer;
+export interface CreatePushTemplateCommandInput extends CreatePushTemplateRequest {}
+export interface CreatePushTemplateCommandOutput extends CreatePushTemplateResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a message template for messages that are sent through a push notification channel.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, CreatePushTemplateCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, CreatePushTemplateCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new CreatePushTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreatePushTemplateCommandInput} for command's `input` shape.
+ * @see {@link CreatePushTemplateCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreatePushTemplateCommand extends $Command<
   CreatePushTemplateCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteFirewallCommandInput = DeleteFirewallRequest;
-export type DeleteFirewallCommandOutput = DeleteFirewallResponse & __MetadataBearer;
+export interface DeleteFirewallCommandInput extends DeleteFirewallRequest {}
+export interface DeleteFirewallCommandOutput extends DeleteFirewallResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified <a>Firewall</a> and its <a>FirewallStatus</a>. This operation requires the firewall's <code>DeleteProtection</code> flag to be
@@ -31,6 +31,20 @@ export type DeleteFirewallCommandOutput = DeleteFirewallResponse & __MetadataBea
  *          you can remove the firewall safely.</p>
  *          <p>To delete a firewall, remove the delete protection if you need to using <a>UpdateFirewallDeleteProtection</a>,
  *          then delete the firewall by calling <a>DeleteFirewall</a>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkFirewallClient, DeleteFirewallCommand } from "@aws-sdk/client-network-firewall"; // ES Modules import
+ * // const { NetworkFirewallClient, DeleteFirewallCommand } = require("@aws-sdk/client-network-firewall"); // CommonJS import
+ * const client = new NetworkFirewallClient(config);
+ * const command = new DeleteFirewallCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteFirewallCommandInput} for command's `input` shape.
+ * @see {@link DeleteFirewallCommandOutput} for command's `response` shape.
+ * @see {@link NetworkFirewallClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteFirewallCommand extends $Command<
   DeleteFirewallCommandInput,

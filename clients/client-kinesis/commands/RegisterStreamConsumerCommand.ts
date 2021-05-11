@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RegisterStreamConsumerCommandInput = RegisterStreamConsumerInput;
-export type RegisterStreamConsumerCommandOutput = RegisterStreamConsumerOutput & __MetadataBearer;
+export interface RegisterStreamConsumerCommandInput extends RegisterStreamConsumerInput {}
+export interface RegisterStreamConsumerCommandOutput extends RegisterStreamConsumerOutput, __MetadataBearer {}
 
 /**
  * <p>Registers a consumer with a Kinesis data stream. When you use this operation, the
@@ -35,6 +35,20 @@ export type RegisterStreamConsumerCommandOutput = RegisterStreamConsumerOutput &
  *             more than 5 consumers in a <code>CREATING</code> status at the same time. Registering a
  *             6th consumer while there are 5 in a <code>CREATING</code> status results in a
  *                 <code>LimitExceededException</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisClient, RegisterStreamConsumerCommand } from "@aws-sdk/client-kinesis"; // ES Modules import
+ * // const { KinesisClient, RegisterStreamConsumerCommand } = require("@aws-sdk/client-kinesis"); // CommonJS import
+ * const client = new KinesisClient(config);
+ * const command = new RegisterStreamConsumerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RegisterStreamConsumerCommandInput} for command's `input` shape.
+ * @see {@link RegisterStreamConsumerCommandOutput} for command's `response` shape.
+ * @see {@link KinesisClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RegisterStreamConsumerCommand extends $Command<
   RegisterStreamConsumerCommandInput,

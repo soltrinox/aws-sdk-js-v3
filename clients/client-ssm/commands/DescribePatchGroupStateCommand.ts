@@ -1,6 +1,5 @@
 import { SSMClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../SSMClient";
-import { DescribePatchGroupStateRequest } from "../models/models_0";
-import { DescribePatchGroupStateResult } from "../models/models_1";
+import { DescribePatchGroupStateRequest, DescribePatchGroupStateResult } from "../models/models_1";
 import {
   deserializeAws_json1_1DescribePatchGroupStateCommand,
   serializeAws_json1_1DescribePatchGroupStateCommand,
@@ -18,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribePatchGroupStateCommandInput = DescribePatchGroupStateRequest;
-export type DescribePatchGroupStateCommandOutput = DescribePatchGroupStateResult & __MetadataBearer;
+export interface DescribePatchGroupStateCommandInput extends DescribePatchGroupStateRequest {}
+export interface DescribePatchGroupStateCommandOutput extends DescribePatchGroupStateResult, __MetadataBearer {}
 
 /**
  * <p>Returns high-level aggregated patch compliance state for a patch group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, DescribePatchGroupStateCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, DescribePatchGroupStateCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new DescribePatchGroupStateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribePatchGroupStateCommandInput} for command's `input` shape.
+ * @see {@link DescribePatchGroupStateCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribePatchGroupStateCommand extends $Command<
   DescribePatchGroupStateCommandInput,

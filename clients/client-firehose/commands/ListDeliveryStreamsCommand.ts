@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDeliveryStreamsCommandInput = ListDeliveryStreamsInput;
-export type ListDeliveryStreamsCommandOutput = ListDeliveryStreamsOutput & __MetadataBearer;
+export interface ListDeliveryStreamsCommandInput extends ListDeliveryStreamsInput {}
+export interface ListDeliveryStreamsCommandOutput extends ListDeliveryStreamsOutput, __MetadataBearer {}
 
 /**
  * <p>Lists your delivery streams in alphabetical order of their names.</p>
@@ -29,6 +29,20 @@ export type ListDeliveryStreamsCommandOutput = ListDeliveryStreamsOutput & __Met
  *          there are more delivery streams to list, you can request them by calling this operation
  *          again and setting the <code>ExclusiveStartDeliveryStreamName</code> parameter to the name
  *          of the last delivery stream returned in the last call.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FirehoseClient, ListDeliveryStreamsCommand } from "@aws-sdk/client-firehose"; // ES Modules import
+ * // const { FirehoseClient, ListDeliveryStreamsCommand } = require("@aws-sdk/client-firehose"); // CommonJS import
+ * const client = new FirehoseClient(config);
+ * const command = new ListDeliveryStreamsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDeliveryStreamsCommandInput} for command's `input` shape.
+ * @see {@link ListDeliveryStreamsCommandOutput} for command's `response` shape.
+ * @see {@link FirehoseClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDeliveryStreamsCommand extends $Command<
   ListDeliveryStreamsCommandInput,

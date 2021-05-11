@@ -11,6 +11,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -18,24 +21,30 @@ export namespace AccessDeniedException {
 
 export interface BatchDeleteRecipeVersionRequest {
   /**
-   * <p>The name of the recipe to be modified.</p>
+   * <p>The name of the recipe whose versions are to be deleted.</p>
    */
   Name: string | undefined;
 
   /**
-   * <p>An array of version identifiers to be deleted.</p>
+   * <p>An array of version identifiers, for the recipe versions to be deleted. You can
+   *             specify numeric versions (<code>X.Y</code>) or <code>LATEST_WORKING</code>.
+   *                 <code>LATEST_PUBLISHED</code> is not supported.</p>
    */
   RecipeVersions: string[] | undefined;
 }
 
 export namespace BatchDeleteRecipeVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDeleteRecipeVersionRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Represents any errors encountered when attempting to delete multiple recipe versions.</p>
+ * <p>Represents any errors encountered when attempting to delete multiple recipe
+ *             versions.</p>
  */
 export interface RecipeVersionErrorDetail {
   /**
@@ -55,6 +64,9 @@ export interface RecipeVersionErrorDetail {
 }
 
 export namespace RecipeVersionErrorDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecipeVersionErrorDetail): any => ({
     ...obj,
   });
@@ -67,12 +79,15 @@ export interface BatchDeleteRecipeVersionResponse {
   Name: string | undefined;
 
   /**
-   * <p>Errors, if any, that were encountered when deleting the recipe versions.</p>
+   * <p>Errors, if any, that occurred while attempting to delete the recipe versions.</p>
    */
   Errors?: RecipeVersionErrorDetail[];
 }
 
 export namespace BatchDeleteRecipeVersionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchDeleteRecipeVersionResponse): any => ({
     ...obj,
   });
@@ -88,6 +103,9 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
@@ -103,6 +121,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -118,28 +139,73 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
 }
 
+export enum InputFormat {
+  CSV = "CSV",
+  EXCEL = "EXCEL",
+  JSON = "JSON",
+  PARQUET = "PARQUET",
+}
+
 /**
- * <p>Options that define how DataBrew will interpret a Microsoft Excel file, when creating a
- *             dataset from that file.</p>
+ * <p>Represents a set of options that define how DataBrew will read a comma-separated value (CSV) file when creating a dataset from that file.</p>
+ */
+export interface CsvOptions {
+  /**
+   * <p>A single character that specifies the delimiter being used in the CSV file.</p>
+   */
+  Delimiter?: string;
+
+  /**
+   * <p>A variable that specifies whether the first row in the file is parsed as the
+   *             header. If this value is false, column names are auto-generated.</p>
+   */
+  HeaderRow?: boolean;
+}
+
+export namespace CsvOptions {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CsvOptions): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Represents a set of options that define how DataBrew will interpret a Microsoft Excel file when
+ *             creating a dataset from that file.</p>
  */
 export interface ExcelOptions {
   /**
-   * <p>Specifies one or more named sheets in the Excel file, which will be included in the dataset.</p>
+   * <p>One or more named sheets in the Excel file that will be included in the dataset.</p>
    */
   SheetNames?: string[];
 
   /**
-   * <p>Specifies one or more sheet numbers in the Excel file, which will be included in the dataset.</p>
+   * <p>One or more sheet numbers in the Excel file that will be included in the
+   *             dataset.</p>
    */
   SheetIndexes?: number[];
+
+  /**
+   * <p>A variable that specifies whether the first row in the file is parsed as the
+   *             header. If this value is false, column names are auto-generated.</p>
+   */
+  HeaderRow?: boolean;
 }
 
 export namespace ExcelOptions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExcelOptions): any => ({
     ...obj,
   });
@@ -158,13 +224,16 @@ export interface JsonOptions {
 }
 
 export namespace JsonOptions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JsonOptions): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Options that define how Microsoft Excel input is to be interpreted by DataBrew.</p>
+ * <p>Represents a set of options that define the structure of either comma-separated value (CSV), Excel, or JSON input.</p>
  */
 export interface FormatOptions {
   /**
@@ -176,16 +245,25 @@ export interface FormatOptions {
    * <p>Options that define how Excel input is to be interpreted by DataBrew.</p>
    */
   Excel?: ExcelOptions;
+
+  /**
+   * <p>Options that define how CSV input is to be interpreted by DataBrew.</p>
+   */
+  Csv?: CsvOptions;
 }
 
 export namespace FormatOptions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FormatOptions): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>An Amazon S3 location (bucket name an object key) where DataBrew can read input data, or write output from a job.</p>
+ * <p>Represents an Amazon S3 location (bucket name and object key) where DataBrew can read
+ *             input data, or write output from a job.</p>
  */
 export interface S3Location {
   /**
@@ -200,14 +278,48 @@ export interface S3Location {
 }
 
 export namespace S3Location {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Location): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Represents how metadata stored in the AWS Glue Data Catalog is defined in an AWS Glue
- *             DataBrew dataset. </p>
+ * <p>Connection information for dataset input files stored in a database.</p>
+ */
+export interface DatabaseInputDefinition {
+  /**
+   * <p>The AWS Glue Connection that stores the connection information for the target
+   *             database.</p>
+   */
+  GlueConnectionName: string | undefined;
+
+  /**
+   * <p>The table within the target database.</p>
+   */
+  DatabaseTableName: string | undefined;
+
+  /**
+   * <p>Represents an Amazon S3 location (bucket name and object key) where DataBrew can read
+   *             input data, or write output from a job.</p>
+   */
+  TempDirectory?: S3Location;
+}
+
+export namespace DatabaseInputDefinition {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DatabaseInputDefinition): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Represents how metadata stored in the AWS Glue Data Catalog is defined in a DataBrew
+ *             dataset. </p>
  */
 export interface DataCatalogInputDefinition {
   /**
@@ -234,14 +346,17 @@ export interface DataCatalogInputDefinition {
 }
 
 export namespace DataCatalogInputDefinition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataCatalogInputDefinition): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Information on how AWS Glue DataBrew can find data, in either the AWS Glue Data
- *             Catalog or Amazon S3.</p>
+ * <p>Represents information on how DataBrew can find data, in either the AWS Glue Data Catalog or
+ *             Amazon S3.</p>
  */
 export interface Input {
   /**
@@ -253,30 +368,221 @@ export interface Input {
    * <p>The AWS Glue Data Catalog parameters for the data.</p>
    */
   DataCatalogInputDefinition?: DataCatalogInputDefinition;
+
+  /**
+   * <p>Connection information for dataset input files stored in a database.</p>
+   */
+  DatabaseInputDefinition?: DatabaseInputDefinition;
 }
 
 export namespace Input {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Input): any => ({
+    ...obj,
+  });
+}
+
+export enum Order {
+  ASCENDING = "ASCENDING",
+  DESCENDING = "DESCENDING",
+}
+
+export enum OrderedBy {
+  LAST_MODIFIED_DATE = "LAST_MODIFIED_DATE",
+}
+
+/**
+ * <p>Represents a limit imposed on number of S3 files that should be selected for a dataset from a connected
+ *             S3 path.</p>
+ */
+export interface FilesLimit {
+  /**
+   * <p>The number of S3 files to select.</p>
+   */
+  MaxFiles: number | undefined;
+
+  /**
+   * <p>A criteria to use for S3 files sorting before their selection. By default uses LAST_MODIFIED_DATE as
+   *             a sorting criteria. Currently it's the only allowed value.</p>
+   */
+  OrderedBy?: OrderedBy | string;
+
+  /**
+   * <p>A criteria to use for S3 files sorting before their selection. By default uses DESCENDING order,
+   *             i.e. most recent files are selected first. Anotherpossible value is ASCENDING.</p>
+   */
+  Order?: Order | string;
+}
+
+export namespace FilesLimit {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: FilesLimit): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Represents a structure for defining parameter conditions.</p>
+ */
+export interface FilterExpression {
+  /**
+   * <p>The expression which includes condition names followed by substitution variables, possibly grouped
+   *             and combined with other conditions. For example, "(starts_with :prefix1 or starts_with :prefix2) and
+   *             (ends_with :suffix1 or ends_with :suffix2)". Substitution variables should start with ':' symbol.</p>
+   */
+  Expression: string | undefined;
+
+  /**
+   * <p>The map of substitution variable names to their values used in this filter expression.</p>
+   */
+  ValuesMap: { [key: string]: string } | undefined;
+}
+
+export namespace FilterExpression {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: FilterExpression): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Represents additional options for correct interpretation of datetime parameters used in the S3 path of a dataset.</p>
+ */
+export interface DatetimeOptions {
+  /**
+   * <p>Required option, that defines the datetime format used for a date parameter in the S3 path. Should use only supported datetime specifiers and separation characters, all
+   *             litera a-z or A-Z character should be escaped with single quotes. E.g. "MM.dd.yyyy-'at'-HH:mm".</p>
+   */
+  Format: string | undefined;
+
+  /**
+   * <p>Optional value for a timezone offset of the datetime parameter value in the S3 path. Shouldn't be used if Format for this parameter includes timezone fields.
+   *             If no offset specified, UTC is assumed.</p>
+   */
+  TimezoneOffset?: string;
+
+  /**
+   * <p>Optional value for a non-US locale code, needed for correct interpretation of some date formats.</p>
+   */
+  LocaleCode?: string;
+}
+
+export namespace DatetimeOptions {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DatetimeOptions): any => ({
+    ...obj,
+  });
+}
+
+export enum ParameterType {
+  Datetime = "Datetime",
+  Number = "Number",
+  String = "String",
+}
+
+/**
+ * <p>Represents a dataset paramater that defines type and conditions for a parameter in the S3 path of the dataset.</p>
+ */
+export interface DatasetParameter {
+  /**
+   * <p>The name of the parameter that is used in the dataset's S3 path.</p>
+   */
+  Name: string | undefined;
+
+  /**
+   * <p>The type of the dataset parameter, can be one of a 'String', 'Number' or 'Datetime'.</p>
+   */
+  Type: ParameterType | string | undefined;
+
+  /**
+   * <p>Additional parameter options such as a format and a timezone. Required for datetime parameters.</p>
+   */
+  DatetimeOptions?: DatetimeOptions;
+
+  /**
+   * <p>Optional boolean value that defines whether the captured value of this parameter should be loaded as an additional column in the dataset.</p>
+   */
+  CreateColumn?: boolean;
+
+  /**
+   * <p>The optional filter expression structure to apply additional matching criteria to the parameter.</p>
+   */
+  Filter?: FilterExpression;
+}
+
+export namespace DatasetParameter {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DatasetParameter): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Represents a set of options that define how DataBrew selects files for a given S3 path in a dataset.</p>
+ */
+export interface PathOptions {
+  /**
+   * <p>If provided, this structure defines a date range for matching S3 objects based on their LastModifiedDate attribute in S3.</p>
+   */
+  LastModifiedDateCondition?: FilterExpression;
+
+  /**
+   * <p>If provided, this structure imposes a limit on a number of files that should be selected.</p>
+   */
+  FilesLimit?: FilesLimit;
+
+  /**
+   * <p>A structure that maps names of parameters used in the S3 path of a dataset to their definitions.</p>
+   */
+  Parameters?: { [key: string]: DatasetParameter };
+}
+
+export namespace PathOptions {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PathOptions): any => ({
     ...obj,
   });
 }
 
 export interface CreateDatasetRequest {
   /**
-   * <p>The name of the dataset to be created.</p>
+   * <p>The name of the dataset to be created. Valid characters are alphanumeric (A-Z, a-z,
+   *             0-9), hyphen (-), period (.), and space.</p>
    */
   Name: string | undefined;
 
   /**
-   * <p>Options that define how Microsoft Excel input is to be interpreted by DataBrew.</p>
+   * <p>The file format of a dataset that is created from an S3 file or folder.</p>
+   */
+  Format?: InputFormat | string;
+
+  /**
+   * <p>Represents a set of options that define the structure of either comma-separated value (CSV), Excel, or JSON input.</p>
    */
   FormatOptions?: FormatOptions;
 
   /**
-   * <p>Information on how AWS Glue DataBrew can find data, in either the AWS Glue Data
-   *             Catalog or Amazon S3.</p>
+   * <p>Represents information on how DataBrew can find data, in either the AWS Glue Data Catalog or
+   *             Amazon S3.</p>
    */
   Input: Input | undefined;
+
+  /**
+   * <p>A set of options that defines how DataBrew interprets an S3 path of the dataset.</p>
+   */
+  PathOptions?: PathOptions;
 
   /**
    * <p>Metadata tags to apply to this dataset.</p>
@@ -285,6 +591,9 @@ export interface CreateDatasetRequest {
 }
 
 export namespace CreateDatasetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetRequest): any => ({
     ...obj,
   });
@@ -298,6 +607,9 @@ export interface CreateDatasetResponse {
 }
 
 export namespace CreateDatasetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDatasetResponse): any => ({
     ...obj,
   });
@@ -313,6 +625,9 @@ export interface ServiceQuotaExceededException extends __SmithyException, $Metad
 }
 
 export namespace ServiceQuotaExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceQuotaExceededException): any => ({
     ...obj,
   });
@@ -321,6 +636,51 @@ export namespace ServiceQuotaExceededException {
 export enum EncryptionMode {
   SSEKMS = "SSE-KMS",
   SSES3 = "SSE-S3",
+}
+
+export enum SampleMode {
+  CUSTOM_ROWS = "CUSTOM_ROWS",
+  FULL_DATASET = "FULL_DATASET",
+}
+
+/**
+ * <p>A sample configuration for profile jobs only, which determines the number of rows on which the
+ *             profile job is run. If a <code>JobSample</code> value isn't provided, the
+ *             default is used. The default value is CUSTOM_ROWS for the mode parameter and
+ *             20,000 for the size parameter.</p>
+ */
+export interface JobSample {
+  /**
+   * <p>A value that determines whether the profile job is run on the entire dataset or a
+   *             specified number of rows. This value must be one of the following:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>FULL_DATASET - The profile job is run on the entire dataset.</p>
+   *             </li>
+   *             <li>
+   *                 <p>CUSTOM_ROWS - The profile job is run on the number of rows specified in the
+   *                     <code>Size</code> parameter.</p>
+   *             </li>
+   *          </ul>
+   */
+  Mode?: SampleMode | string;
+
+  /**
+   * <p>The <code>Size</code> parameter is only required when the mode is CUSTOM_ROWS. The
+   *             profile job is run on the specified number of rows. The maximum value for size is
+   *             Long.MAX_VALUE.</p>
+   *         <p>Long.MAX_VALUE = 9223372036854775807</p>
+   */
+  Size?: number;
+}
+
+export namespace JobSample {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: JobSample): any => ({
+    ...obj,
+  });
 }
 
 export enum LogSubscription {
@@ -335,8 +695,8 @@ export interface CreateProfileJobRequest {
   DatasetName: string | undefined;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of an encryption key that is used to
-   *             protect the job.</p>
+   * <p>The Amazon Resource Name (ARN) of an encryption key that is used to protect the
+   *             job.</p>
    */
   EncryptionKeyArn?: string;
 
@@ -345,7 +705,8 @@ export interface CreateProfileJobRequest {
    *         <ul>
    *             <li>
    *                 <p>
-   *                   <code>SSE-KMS</code> - para><code>SSE-KMS</code> - server-side encryption with AWS KMS-managed keys.</p>
+   *                   <code>SSE-KMS</code> - <code>SSE-KMS</code> - Server-side encryption with AWS
+   *                     KMS-managed keys.</p>
    *             </li>
    *             <li>
    *                 <p>
@@ -357,14 +718,14 @@ export interface CreateProfileJobRequest {
   EncryptionMode?: EncryptionMode | string;
 
   /**
-   * <p>The name of the job to be created.</p>
+   * <p>The name of the job to be created. Valid characters are alphanumeric (A-Z, a-z, 0-9),
+   *             hyphen (-), period (.), and space.</p>
    */
   Name: string | undefined;
 
   /**
-   * <p>A value that enables or disables Amazon CloudWatch logging for the current AWS
-   *             account. If logging is enabled, CloudWatch writes one log stream for each job
-   *             run.</p>
+   * <p>Enables or disables Amazon CloudWatch logging for the job. If logging is enabled,
+   *             CloudWatch writes one log stream for each job run.</p>
    */
   LogSubscription?: LogSubscription | string;
 
@@ -379,13 +740,14 @@ export interface CreateProfileJobRequest {
   MaxRetries?: number;
 
   /**
-   * <p>An Amazon S3 location (bucket name an object key) where DataBrew can read input data, or write output from a job.</p>
+   * <p>Represents an Amazon S3 location (bucket name and object key) where DataBrew can read
+   *             input data, or write output from a job.</p>
    */
   OutputLocation: S3Location | undefined;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role to
-   *             be assumed for this request.</p>
+   *             be assumed when DataBrew runs the job.</p>
    */
   RoleArn: string | undefined;
 
@@ -399,9 +761,20 @@ export interface CreateProfileJobRequest {
    *             period ends with a status of <code>TIMEOUT</code>.</p>
    */
   Timeout?: number;
+
+  /**
+   * <p>Sample configuration for profile jobs only. Determines the number of rows on which the
+   *             profile job will be executed. If a JobSample value is not provided, the default value
+   *             will be used. The default value is CUSTOM_ROWS for the mode parameter and 20000 for the
+   *             size parameter.</p>
+   */
+  JobSample?: JobSample;
 }
 
 export namespace CreateProfileJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateProfileJobRequest): any => ({
     ...obj,
   });
@@ -415,6 +788,9 @@ export interface CreateProfileJobResponse {
 }
 
 export namespace CreateProfileJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateProfileJobResponse): any => ({
     ...obj,
   });
@@ -427,8 +803,8 @@ export enum SampleType {
 }
 
 /**
- * <p>Represents the sample size and sampling type for AWS Glue DataBrew to use for
- *             interactive data analysis.</p>
+ * <p>Represents the sample size and sampling type for DataBrew to use for interactive data
+ *             analysis.</p>
  */
 export interface Sample {
   /**
@@ -443,6 +819,9 @@ export interface Sample {
 }
 
 export namespace Sample {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Sample): any => ({
     ...obj,
   });
@@ -450,12 +829,13 @@ export namespace Sample {
 
 export interface CreateProjectRequest {
   /**
-   * <p>The name of the dataset to associate this project with.</p>
+   * <p>The name of an existing dataset to associate this project with.</p>
    */
   DatasetName: string | undefined;
 
   /**
-   * <p>A unique name for the new project.</p>
+   * <p>A unique name for the new project. Valid characters are alphanumeric (A-Z, a-z, 0-9),
+   *             hyphen (-), period (.), and space.</p>
    */
   Name: string | undefined;
 
@@ -465,8 +845,8 @@ export interface CreateProjectRequest {
   RecipeName: string | undefined;
 
   /**
-   * <p>Represents the sample size and sampling type for AWS Glue DataBrew to use for
-   *             interactive data analysis.</p>
+   * <p>Represents the sample size and sampling type for DataBrew to use for interactive data
+   *             analysis.</p>
    */
   Sample?: Sample;
 
@@ -483,6 +863,9 @@ export interface CreateProjectRequest {
 }
 
 export namespace CreateProjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateProjectRequest): any => ({
     ...obj,
   });
@@ -496,6 +879,9 @@ export interface CreateProjectResponse {
 }
 
 export namespace CreateProjectResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateProjectResponse): any => ({
     ...obj,
   });
@@ -511,6 +897,9 @@ export interface InternalServerException extends __SmithyException, $MetadataBea
 }
 
 export namespace InternalServerException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerException): any => ({
     ...obj,
   });
@@ -518,8 +907,8 @@ export namespace InternalServerException {
 
 /**
  * <p>Represents a transformation and associated parameters that are used to apply a change
- *             to an AWS Glue DataBrew dataset. For more information, see <a href="https://docs.aws.amazon.com/databrew/latest/dg/recipe-structure.html">Recipe structure</a> and <a href="https://docs.aws.amazon.com/databrew/latest/dg/recipe-actions-reference.html">ecipe
- *                 actions reference</a> .</p>
+ *             to a DataBrew dataset. For more information, see <a href="https://docs.aws.amazon.com/databrew/latest/dg/recipe-structure.html">Recipe structure</a> and <a href="https://docs.aws.amazon.com/databrew/latest/dg/recipe-actions-reference.html">Recipe
+ *                 actions reference</a>.</p>
  */
 export interface RecipeAction {
   /**
@@ -534,6 +923,9 @@ export interface RecipeAction {
 }
 
 export namespace RecipeAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecipeAction): any => ({
     ...obj,
   });
@@ -541,15 +933,12 @@ export namespace RecipeAction {
 
 /**
  * <p>Represents an individual condition that evaluates to true or false.</p>
- *         <p>Conditions are used with recipe actions: The action is only performed for column
- *             values where the condition evaluates to true.</p>
- *         <p>If a recipe requires more than one condition, then the recipe must specify multiple
- *                 <code>ConditionExpression</code> elements. Each condition is applied to the rows in
- *             a dataset first, before the recipe action is performed.</p>
+ *         <p>Conditions are used with recipe actions. The action is only performed for column values where the condition evaluates to true.</p>
+ *         <p>If a recipe requires more than one condition, then the recipe must specify multiple <code>ConditionExpression</code> elements. Each condition is applied to the rows in a dataset first, before the recipe action is performed.</p>
  */
 export interface ConditionExpression {
   /**
-   * <p>A specific condition to apply to a recipe action. For more information, see <a href="https://docs.aws.amazon.com/databrew/latest/dg/recipe-structure.html">Recipe
+   * <p>A specific condition to apply to a recipe action. For more information, see <a href="https://docs.aws.amazon.com/databrew/latest/dg/recipes.html#recipes.structure">Recipe
    *                 structure</a> in the <i>AWS Glue DataBrew Developer
    *             Guide</i>.</p>
    */
@@ -561,19 +950,22 @@ export interface ConditionExpression {
   Value?: string;
 
   /**
-   * <p>A column to apply this condition to, within an AWS Glue DataBrew dataset.</p>
+   * <p>A column to apply this condition to.</p>
    */
   TargetColumn: string | undefined;
 }
 
 export namespace ConditionExpression {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConditionExpression): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Represents a single step to be performed in an AWS Glue DataBrew recipe.</p>
+ * <p>Represents a single step from a DataBrew recipe to be performed.</p>
  */
 export interface RecipeStep {
   /**
@@ -582,7 +974,7 @@ export interface RecipeStep {
   Action: RecipeAction | undefined;
 
   /**
-   * <p>One or more conditions that must be met, in order for the recipe step to succeed.</p>
+   * <p>One or more conditions that must be met for the recipe step to succeed.</p>
    *         <note>
    *             <p>All of the conditions in the array must be met. In other words, all of the
    *                 conditions must be combined using a logical AND operation.</p>
@@ -592,6 +984,9 @@ export interface RecipeStep {
 }
 
 export namespace RecipeStep {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecipeStep): any => ({
     ...obj,
   });
@@ -604,13 +999,14 @@ export interface CreateRecipeRequest {
   Description?: string;
 
   /**
-   * <p>A unique name for the recipe.</p>
+   * <p>A unique name for the recipe. Valid characters are alphanumeric (A-Z, a-z, 0-9),
+   *             hyphen (-), period (.), and space.</p>
    */
   Name: string | undefined;
 
   /**
-   * <p>An array containing the steps to be performed by the recipe.  Each recipe step consists of one
-   *             recipe action and (optionally) an array of condition expressions.</p>
+   * <p>An array containing the steps to be performed by the recipe. Each recipe step consists
+   *             of one recipe action and (optionally) an array of condition expressions.</p>
    */
   Steps: RecipeStep[] | undefined;
 
@@ -621,6 +1017,9 @@ export interface CreateRecipeRequest {
 }
 
 export namespace CreateRecipeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateRecipeRequest): any => ({
     ...obj,
   });
@@ -634,6 +1033,9 @@ export interface CreateRecipeResponse {
 }
 
 export namespace CreateRecipeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateRecipeResponse): any => ({
     ...obj,
   });
@@ -662,7 +1064,47 @@ export enum OutputFormat {
 }
 
 /**
- * <p>Represents individual output from a particular job run.</p>
+ * <p>Represents a set of options that define how DataBrew will write a comma-separated value (CSV) file.</p>
+ */
+export interface CsvOutputOptions {
+  /**
+   * <p>A single character that specifies the delimiter used to create CSV job output.</p>
+   */
+  Delimiter?: string;
+}
+
+export namespace CsvOutputOptions {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CsvOutputOptions): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Represents a set of options that define the structure of comma-separated (CSV) job output.</p>
+ */
+export interface OutputFormatOptions {
+  /**
+   * <p>Represents a set of options that define the structure of comma-separated value (CSV)
+   *             job output.</p>
+   */
+  Csv?: CsvOutputOptions;
+}
+
+export namespace OutputFormatOptions {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: OutputFormatOptions): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Represents options that specify how and where DataBrew writes the output generated by
+ *             recipe jobs or profile jobs.</p>
  */
 export interface Output {
   /**
@@ -690,16 +1132,24 @@ export interface Output {
    *             overwritten with new output.</p>
    */
   Overwrite?: boolean;
+
+  /**
+   * <p>Represents options that define how DataBrew formats job output files.</p>
+   */
+  FormatOptions?: OutputFormatOptions;
 }
 
 export namespace Output {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Output): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Represents all of the attributes of an AWS Glue DataBrew recipe.</p>
+ * <p>Represents the name and version of a DataBrew recipe.</p>
  */
 export interface RecipeReference {
   /**
@@ -714,6 +1164,9 @@ export interface RecipeReference {
 }
 
 export namespace RecipeReference {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecipeReference): any => ({
     ...obj,
   });
@@ -726,7 +1179,8 @@ export interface CreateRecipeJobRequest {
   DatasetName?: string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of an encryption key that is used to protect the job.</p>
+   * <p>The Amazon Resource Name (ARN) of an encryption key that is used to protect the
+   *             job.</p>
    */
   EncryptionKeyArn?: string;
 
@@ -735,25 +1189,27 @@ export interface CreateRecipeJobRequest {
    *         <ul>
    *             <li>
    *                 <p>
-   *                   <code>SSE-KMS</code> - Server-side encryption with AWS KMS-managed keys.</p>
+   *                   <code>SSE-KMS</code> - Server-side encryption with keys managed by AWS
+   *                     KMS.</p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>SSE-S3</code> - Server-side encryption with keys managed by Amazon S3.</p>
+   *                   <code>SSE-S3</code> - Server-side encryption with keys managed by Amazon
+   *                     S3.</p>
    *             </li>
    *          </ul>
    */
   EncryptionMode?: EncryptionMode | string;
 
   /**
-   * <p>A unique name for the job.</p>
+   * <p>A unique name for the job. Valid characters are alphanumeric (A-Z, a-z, 0-9), hyphen
+   *             (-), period (.), and space.</p>
    */
   Name: string | undefined;
 
   /**
-   * <p>A value that enables or disables Amazon CloudWatch logging for the current AWS
-   *             account. If logging is enabled, CloudWatch writes one log stream for each job
-   *             run.</p>
+   * <p>Enables or disables Amazon CloudWatch logging for the job. If logging is enabled,
+   *             CloudWatch writes one log stream for each job run.</p>
    */
   LogSubscription?: LogSubscription | string;
 
@@ -780,18 +1236,18 @@ export interface CreateRecipeJobRequest {
   ProjectName?: string;
 
   /**
-   * <p>Represents all of the attributes of an AWS Glue DataBrew recipe.</p>
+   * <p>Represents the name and version of a DataBrew recipe.</p>
    */
   RecipeReference?: RecipeReference;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role to
-   *             be assumed for this request.</p>
+   *             be assumed when DataBrew runs the job.</p>
    */
   RoleArn: string | undefined;
 
   /**
-   * <p>Metadata tags to apply to this job dataset.</p>
+   * <p>Metadata tags to apply to this job.</p>
    */
   Tags?: { [key: string]: string };
 
@@ -803,6 +1259,9 @@ export interface CreateRecipeJobRequest {
 }
 
 export namespace CreateRecipeJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateRecipeJobRequest): any => ({
     ...obj,
   });
@@ -816,6 +1275,9 @@ export interface CreateRecipeJobResponse {
 }
 
 export namespace CreateRecipeJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateRecipeJobResponse): any => ({
     ...obj,
   });
@@ -828,8 +1290,10 @@ export interface CreateScheduleRequest {
   JobNames?: string[];
 
   /**
-   * <p>The date or dates and time or times, in <code>cron</code> format, when the jobs are to
-   *             be run.</p>
+   * <p>The date or dates and time or times when the jobs are to be run. For more information,
+   *             see <a href="https://docs.aws.amazon.com/databrew/latest/dg/jobs.cron.html">Cron
+   *                 expressions</a> in the <i>AWS Glue DataBrew Developer
+   *             Guide</i>.</p>
    */
   CronExpression: string | undefined;
 
@@ -839,12 +1303,16 @@ export interface CreateScheduleRequest {
   Tags?: { [key: string]: string };
 
   /**
-   * <p>A unique name for the schedule.</p>
+   * <p>A unique name for the schedule. Valid characters are alphanumeric (A-Z, a-z, 0-9),
+   *             hyphen (-), period (.), and space.</p>
    */
   Name: string | undefined;
 }
 
 export namespace CreateScheduleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateScheduleRequest): any => ({
     ...obj,
   });
@@ -858,6 +1326,9 @@ export interface CreateScheduleResponse {
 }
 
 export namespace CreateScheduleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateScheduleResponse): any => ({
     ...obj,
   });
@@ -871,6 +1342,9 @@ export interface DeleteDatasetRequest {
 }
 
 export namespace DeleteDatasetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDatasetRequest): any => ({
     ...obj,
   });
@@ -884,6 +1358,9 @@ export interface DeleteDatasetResponse {
 }
 
 export namespace DeleteDatasetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDatasetResponse): any => ({
     ...obj,
   });
@@ -897,6 +1374,9 @@ export interface DeleteJobRequest {
 }
 
 export namespace DeleteJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteJobRequest): any => ({
     ...obj,
   });
@@ -910,6 +1390,9 @@ export interface DeleteJobResponse {
 }
 
 export namespace DeleteJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteJobResponse): any => ({
     ...obj,
   });
@@ -923,6 +1406,9 @@ export interface DeleteProjectRequest {
 }
 
 export namespace DeleteProjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProjectRequest): any => ({
     ...obj,
   });
@@ -936,6 +1422,9 @@ export interface DeleteProjectResponse {
 }
 
 export namespace DeleteProjectResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteProjectResponse): any => ({
     ...obj,
   });
@@ -943,17 +1432,22 @@ export namespace DeleteProjectResponse {
 
 export interface DeleteRecipeVersionRequest {
   /**
-   * <p>The name of the recipe to be deleted.</p>
+   * <p>The name of the recipe.</p>
    */
   Name: string | undefined;
 
   /**
-   * <p>The version of the recipe to be deleted.</p>
+   * <p>The version of the recipe to be deleted. You can specify a numeric versions
+   *                 (<code>X.Y</code>) or <code>LATEST_WORKING</code>. <code>LATEST_PUBLISHED</code> is
+   *             not supported.</p>
    */
   RecipeVersion: string | undefined;
 }
 
 export namespace DeleteRecipeVersionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRecipeVersionRequest): any => ({
     ...obj,
   });
@@ -972,6 +1466,9 @@ export interface DeleteRecipeVersionResponse {
 }
 
 export namespace DeleteRecipeVersionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRecipeVersionResponse): any => ({
     ...obj,
   });
@@ -985,6 +1482,9 @@ export interface DeleteScheduleRequest {
 }
 
 export namespace DeleteScheduleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteScheduleRequest): any => ({
     ...obj,
   });
@@ -998,6 +1498,9 @@ export interface DeleteScheduleResponse {
 }
 
 export namespace DeleteScheduleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteScheduleResponse): any => ({
     ...obj,
   });
@@ -1011,12 +1514,16 @@ export interface DescribeDatasetRequest {
 }
 
 export namespace DescribeDatasetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetRequest): any => ({
     ...obj,
   });
 }
 
 export enum Source {
+  DATABASE = "DATABASE",
   DATACATALOG = "DATA-CATALOG",
   S3 = "S3",
 }
@@ -1038,13 +1545,18 @@ export interface DescribeDatasetResponse {
   Name: string | undefined;
 
   /**
-   * <p>Options that define how Microsoft Excel input is to be interpreted by DataBrew.</p>
+   * <p>The file format of a dataset that is created from an S3 file or folder.</p>
+   */
+  Format?: InputFormat | string;
+
+  /**
+   * <p>Represents a set of options that define the structure of either comma-separated value (CSV), Excel, or JSON input.</p>
    */
   FormatOptions?: FormatOptions;
 
   /**
-   * <p>Information on how AWS Glue DataBrew can find data, in either the AWS Glue Data
-   *             Catalog or Amazon S3.</p>
+   * <p>Represents information on how DataBrew can find data, in either the AWS Glue Data Catalog or
+   *             Amazon S3.</p>
    */
   Input: Input | undefined;
 
@@ -1065,6 +1577,11 @@ export interface DescribeDatasetResponse {
   Source?: Source | string;
 
   /**
+   * <p>A set of options that defines how DataBrew interprets an S3 path of the dataset.</p>
+   */
+  PathOptions?: PathOptions;
+
+  /**
    * <p>Metadata tags associated with this dataset.</p>
    */
   Tags?: { [key: string]: string };
@@ -1076,6 +1593,9 @@ export interface DescribeDatasetResponse {
 }
 
 export namespace DescribeDatasetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeDatasetResponse): any => ({
     ...obj,
   });
@@ -1089,6 +1609,9 @@ export interface DescribeJobRequest {
 }
 
 export namespace DescribeJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeJobRequest): any => ({
     ...obj,
   });
@@ -1116,7 +1639,8 @@ export interface DescribeJobResponse {
   DatasetName?: string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of an encryption key that is used to protect the job.</p>
+   * <p>The Amazon Resource Name (ARN) of an encryption key that is used to protect the
+   *             job.</p>
    */
   EncryptionKeyArn?: string;
 
@@ -1125,11 +1649,13 @@ export interface DescribeJobResponse {
    *         <ul>
    *             <li>
    *                 <p>
-   *                   <code>SSE-KMS</code> - Server-side encryption with AWS KMS-managed keys.</p>
+   *                   <code>SSE-KMS</code> - Server-side encryption with keys managed by AWS
+   *                     KMS.</p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>SSE-S3</code> - Server-side encryption with keys managed by Amazon S3.</p>
+   *                   <code>SSE-S3</code> - Server-side encryption with keys managed by Amazon
+   *                     S3.</p>
    *             </li>
    *          </ul>
    */
@@ -1168,12 +1694,12 @@ export interface DescribeJobResponse {
   LastModifiedDate?: Date;
 
   /**
-   * <p>A value that indicates whether Amazon CloudWatch logging is enabled for this job.</p>
+   * <p>Indicates whether Amazon CloudWatch logging is enabled for this job.</p>
    */
   LogSubscription?: LogSubscription | string;
 
   /**
-   * <p>The maximum number of nodes that AWS Glue DataBrew can consume when the job processes
+   * <p>The maximum number of compute nodes that DataBrew can consume when the job processes
    *             data.</p>
    */
   MaxCapacity?: number;
@@ -1194,7 +1720,7 @@ export interface DescribeJobResponse {
   ProjectName?: string;
 
   /**
-   * <p>Represents all of the attributes of an AWS Glue DataBrew recipe.</p>
+   * <p>Represents the name and version of a DataBrew recipe.</p>
    */
   RecipeReference?: RecipeReference;
 
@@ -1204,8 +1730,8 @@ export interface DescribeJobResponse {
   ResourceArn?: string;
 
   /**
-   * <p>The ARN of the AWS Identity and Access Management (IAM) role that was assumed for this
-   *             request.</p>
+   * <p>The ARN of the AWS Identity and Access Management (IAM) role to be assumed when
+   *             DataBrew runs the job.</p>
    */
   RoleArn?: string;
 
@@ -1219,10 +1745,140 @@ export interface DescribeJobResponse {
    *             period ends with a status of <code>TIMEOUT</code>.</p>
    */
   Timeout?: number;
+
+  /**
+   * <p>Sample configuration for profile jobs only. Determines the number of rows on which the
+   *             profile job will be executed.</p>
+   */
+  JobSample?: JobSample;
 }
 
 export namespace DescribeJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeJobResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeJobRunRequest {
+  /**
+   * <p>The name of the job being processed during this run.</p>
+   */
+  Name: string | undefined;
+
+  /**
+   * <p>The unique identifier of the job run.</p>
+   */
+  RunId: string | undefined;
+}
+
+export namespace DescribeJobRunRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeJobRunRequest): any => ({
+    ...obj,
+  });
+}
+
+export enum JobRunState {
+  FAILED = "FAILED",
+  RUNNING = "RUNNING",
+  STARTING = "STARTING",
+  STOPPED = "STOPPED",
+  STOPPING = "STOPPING",
+  SUCCEEDED = "SUCCEEDED",
+  TIMEOUT = "TIMEOUT",
+}
+
+export interface DescribeJobRunResponse {
+  /**
+   * <p>The number of times that DataBrew has attempted to run the job.</p>
+   */
+  Attempt?: number;
+
+  /**
+   * <p>The date and time when the job completed processing.</p>
+   */
+  CompletedOn?: Date;
+
+  /**
+   * <p>The name of the dataset for the job to process.</p>
+   */
+  DatasetName?: string;
+
+  /**
+   * <p>A message indicating an error (if any) that was encountered when the job ran.</p>
+   */
+  ErrorMessage?: string;
+
+  /**
+   * <p>The amount of time, in seconds, during which the job run consumed resources.</p>
+   */
+  ExecutionTime?: number;
+
+  /**
+   * <p>The name of the job being processed during this run.</p>
+   */
+  JobName: string | undefined;
+
+  /**
+   * <p>The unique identifier of the job run.</p>
+   */
+  RunId?: string;
+
+  /**
+   * <p>The current state of the job run entity itself.</p>
+   */
+  State?: JobRunState | string;
+
+  /**
+   * <p>The current status of Amazon CloudWatch logging for the job run.</p>
+   */
+  LogSubscription?: LogSubscription | string;
+
+  /**
+   * <p>The name of an Amazon CloudWatch log group, where the job writes diagnostic messages
+   *             when it runs.</p>
+   */
+  LogGroupName?: string;
+
+  /**
+   * <p>One or more output artifacts from a job run.</p>
+   */
+  Outputs?: Output[];
+
+  /**
+   * <p>Represents the name and version of a DataBrew recipe.</p>
+   */
+  RecipeReference?: RecipeReference;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the user who started the job run.</p>
+   */
+  StartedBy?: string;
+
+  /**
+   * <p>The date and time when the job run began.</p>
+   */
+  StartedOn?: Date;
+
+  /**
+   * <p>Sample configuration for profile jobs only. Determines the number of rows on which the
+   *             profile job will be executed. If a JobSample value is not provided, the default value
+   *             will be used. The default value is CUSTOM_ROWS for the mode parameter and 20000 for the
+   *             size parameter.</p>
+   */
+  JobSample?: JobSample;
+}
+
+export namespace DescribeJobRunResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeJobRunResponse): any => ({
     ...obj,
   });
 }
@@ -1235,6 +1891,9 @@ export interface DescribeProjectRequest {
 }
 
 export namespace DescribeProjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeProjectRequest): any => ({
     ...obj,
   });
@@ -1295,14 +1954,14 @@ export interface DescribeProjectResponse {
   ResourceArn?: string;
 
   /**
-   * <p>Represents the sample size and sampling type for AWS Glue DataBrew to use for
-   *             interactive data analysis.</p>
+   * <p>Represents the sample size and sampling type for DataBrew to use for interactive data
+   *             analysis.</p>
    */
   Sample?: Sample;
 
   /**
-   * <p>The ARN of the AWS Identity and Access Management (IAM) role that was assumed for this
-   *             request.</p>
+   * <p>The ARN of the AWS Identity and Access Management (IAM) role to be assumed when
+   *             DataBrew runs the job.</p>
    */
   RoleArn?: string;
 
@@ -1315,15 +1974,15 @@ export interface DescribeProjectResponse {
    * <p>Describes the current state of the session:</p>
    *         <ul>
    *             <li>
-   *                <p>
+   *                 <p>
    *                   <code>PROVISIONING</code> - allocating resources for the session.</p>
    *             </li>
    *             <li>
-   *                <p>
+   *                 <p>
    *                   <code>INITIALIZING</code> - getting the session ready for first use.</p>
    *             </li>
    *             <li>
-   *                <p>
+   *                 <p>
    *                   <code>ASSIGNED</code> - the session is ready for use.</p>
    *             </li>
    *          </ul>
@@ -1342,6 +2001,9 @@ export interface DescribeProjectResponse {
 }
 
 export namespace DescribeProjectResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeProjectResponse): any => ({
     ...obj,
   });
@@ -1361,6 +2023,9 @@ export interface DescribeRecipeRequest {
 }
 
 export namespace DescribeRecipeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRecipeRequest): any => ({
     ...obj,
   });
@@ -1435,6 +2100,9 @@ export interface DescribeRecipeResponse {
 }
 
 export namespace DescribeRecipeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRecipeResponse): any => ({
     ...obj,
   });
@@ -1448,6 +2116,9 @@ export interface DescribeScheduleRequest {
 }
 
 export namespace DescribeScheduleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeScheduleRequest): any => ({
     ...obj,
   });
@@ -1485,8 +2156,9 @@ export interface DescribeScheduleResponse {
   ResourceArn?: string;
 
   /**
-   * <p>The date or dates and time or times, in <code>cron</code> format, when the jobs are to
-   *             be run for the schedule.</p>
+   * <p>The date or dates and time or times when the jobs are to be run for the schedule. For
+   *             more information, see <a href="https://docs.aws.amazon.com/databrew/latest/dg/jobs.cron.html">Cron expressions</a> in the
+   *                 <i>AWS Glue DataBrew Developer Guide</i>.</p>
    */
   CronExpression?: string;
 
@@ -1502,6 +2174,9 @@ export interface DescribeScheduleResponse {
 }
 
 export namespace DescribeScheduleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeScheduleResponse): any => ({
     ...obj,
   });
@@ -1514,21 +2189,22 @@ export interface ListDatasetsRequest {
   MaxResults?: number;
 
   /**
-   * <p>A token generated by DataBrew that specifies where to continue pagination if a
-   *             previous request was truncated. To get the next set of pages, pass in the NextToken
-   *             value from the response object of the previous page call. </p>
+   * <p>The token returned by a previous call to retrieve the next set of results.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListDatasetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetsRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Represents a dataset that can be processed by AWS Glue DataBrew.</p>
+ * <p>Represents a dataset that can be processed by DataBrew.</p>
  */
 export interface Dataset {
   /**
@@ -1537,7 +2213,7 @@ export interface Dataset {
   AccountId?: string;
 
   /**
-   * <p>The identifier (the user name) of the user who created the dataset.</p>
+   * <p>The Amazon Resource Name (ARN) of the user who created the dataset.</p>
    */
   CreatedBy?: string;
 
@@ -1552,7 +2228,12 @@ export interface Dataset {
   Name: string | undefined;
 
   /**
-   * <p>Options that define how DataBrew interprets the data in the dataset.</p>
+   * <p>The file format of a dataset that is created from an S3 file or folder.</p>
+   */
+  Format?: InputFormat | string;
+
+  /**
+   * <p>A set of options that define how DataBrew interprets the data in the dataset.</p>
    */
   FormatOptions?: FormatOptions;
 
@@ -1568,7 +2249,7 @@ export interface Dataset {
   LastModifiedDate?: Date;
 
   /**
-   * <p>The identifier (the user name) of the user who last modified the dataset.</p>
+   * <p>The Amazon Resource Name (ARN) of the user who last modified the dataset.</p>
    */
   LastModifiedBy?: string;
 
@@ -1577,6 +2258,11 @@ export interface Dataset {
    *             Catalog.</p>
    */
   Source?: Source | string;
+
+  /**
+   * <p>A set of options that defines how DataBrew interprets an S3 path of the dataset.</p>
+   */
+  PathOptions?: PathOptions;
 
   /**
    * <p>Metadata tags that have been applied to the dataset.</p>
@@ -1590,6 +2276,9 @@ export interface Dataset {
 }
 
 export namespace Dataset {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Dataset): any => ({
     ...obj,
   });
@@ -1597,19 +2286,21 @@ export namespace Dataset {
 
 export interface ListDatasetsResponse {
   /**
-   * <p>A list of datasets that are defined in the current AWS account.</p>
+   * <p>A list of datasets that are defined.</p>
    */
   Datasets: Dataset[] | undefined;
 
   /**
-   * <p>A token generated by DataBrew that specifies where to continue pagination if a previous
-   *             request was truncated. To obtain the next set of pages, pass in the NextToken from the
-   *             response object of the previous page call. </p>
+   * <p>A token that you can use in a subsequent call to retrieve the next set of
+   *             results.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListDatasetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDatasetsResponse): any => ({
     ...obj,
   });
@@ -1627,31 +2318,22 @@ export interface ListJobRunsRequest {
   MaxResults?: number;
 
   /**
-   * <p>A token generated by AWS Glue DataBrew that specifies where to continue pagination if
-   *             a previous request was truncated. To get the next set of pages, pass in the NextToken
-   *             value from the response object of the previous page call. </p>
+   * <p>The token returned by a previous call to retrieve the next set of results.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListJobRunsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobRunsRequest): any => ({
     ...obj,
   });
 }
 
-export enum JobRunState {
-  FAILED = "FAILED",
-  RUNNING = "RUNNING",
-  STARTING = "STARTING",
-  STOPPED = "STOPPED",
-  STOPPING = "STOPPING",
-  SUCCEEDED = "SUCCEEDED",
-  TIMEOUT = "TIMEOUT",
-}
-
 /**
- * <p>Represents one run of an AWS Glue DataBrew job.</p>
+ * <p>Represents one run of a DataBrew job.</p>
  */
 export interface JobRun {
   /**
@@ -1716,7 +2398,7 @@ export interface JobRun {
   RecipeReference?: RecipeReference;
 
   /**
-   * <p>The identifier (the user name) of the user who initiated the job run. </p>
+   * <p>The Amazon Resource Name (ARN) of the user who initiated the job run. </p>
    */
   StartedBy?: string;
 
@@ -1724,9 +2406,20 @@ export interface JobRun {
    * <p>The date and time when the job run began. </p>
    */
   StartedOn?: Date;
+
+  /**
+   * <p>A sample configuration for profile jobs only, which determines the number of rows on which the
+   *             profile job is run. If a <code>JobSample</code> value isn't provided, the default
+   *             is used. The default value is CUSTOM_ROWS for the mode parameter and 20,000 for the
+   *             size parameter.</p>
+   */
+  JobSample?: JobSample;
 }
 
 export namespace JobRun {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobRun): any => ({
     ...obj,
   });
@@ -1739,14 +2432,16 @@ export interface ListJobRunsResponse {
   JobRuns: JobRun[] | undefined;
 
   /**
-   * <p>A token generated by DataBrew that specifies where to continue pagination if a previous
-   *             request was truncated. To obtain the next set of pages, pass in the NextToken from the
-   *             response object of the previous page call. </p>
+   * <p>A token that you can use in a subsequent call to retrieve the next set of
+   *             results.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListJobRunsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobRunsResponse): any => ({
     ...obj,
   });
@@ -1772,20 +2467,23 @@ export interface ListJobsRequest {
   NextToken?: string;
 
   /**
-   * <p>The name of a project. Using this parameter indicates to return
-   *             only those jobs that are associated with the specified project.</p>
+   * <p>The name of a project. Using this parameter indicates to return only those jobs that
+   *             are associated with the specified project.</p>
    */
   ProjectName?: string;
 }
 
 export namespace ListJobsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobsRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Represents all of the attributes of an AWS Glue DataBrew job.</p>
+ * <p>Represents all of the attributes of a DataBrew job.</p>
  */
 export interface Job {
   /**
@@ -1794,7 +2492,7 @@ export interface Job {
   AccountId?: string;
 
   /**
-   * <p>The identifier (the user name) of the user who created the job.</p>
+   * <p>The Amazon Resource Name (ARN) of the user who created the job.</p>
    */
   CreatedBy?: string;
 
@@ -1809,7 +2507,10 @@ export interface Job {
   DatasetName?: string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of an encryption key that is used to protect a job.</p>
+   * <p>The Amazon Resource Name (ARN) of an encryption key that is used to protect the job
+   *             output. For more information, see <a href="https://docs.aws.amazon.com/databrew/latest/dg/encryption-security-configuration.html">Encrypting data
+   *                 written by DataBrew jobs</a>
+   *          </p>
    */
   EncryptionKeyArn?: string;
 
@@ -1818,7 +2519,7 @@ export interface Job {
    *         <ul>
    *             <li>
    *                 <p>
-   *                   <code>SSE-KMS</code> - Server-side encryption with AWS KMS-managed keys.</p>
+   *                   <code>SSE-KMS</code> - Server-side encryption with keys managed by AWS KMS.</p>
    *             </li>
    *             <li>
    *                 <p>
@@ -1852,7 +2553,7 @@ export interface Job {
   Type?: JobType | string;
 
   /**
-   * <p>The identifier (the user name) of the user who last modified the job.</p>
+   * <p>The Amazon Resource Name (ARN) of the user who last modified the job.</p>
    */
   LastModifiedBy?: string;
 
@@ -1897,7 +2598,7 @@ export interface Job {
   ResourceArn?: string;
 
   /**
-   * <p>The Amazon Resource Name (ARN) of the role that will be assumed for this job.</p>
+   * <p>The Amazon Resource Name (ARN) of the role to be assumed for this job.</p>
    */
   RoleArn?: string;
 
@@ -1911,9 +2612,20 @@ export interface Job {
    * <p>Metadata tags that have been applied to the job.</p>
    */
   Tags?: { [key: string]: string };
+
+  /**
+   * <p>A sample configuration for profile jobs only, which determines the number of rows on which the
+   *             profile job is run. If a <code>JobSample</code> value isn't provided, the default value
+   *             is used. The default value is CUSTOM_ROWS for the mode parameter and 20,000 for the
+   *             size parameter.</p>
+   */
+  JobSample?: JobSample;
 }
 
 export namespace Job {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Job): any => ({
     ...obj,
   });
@@ -1921,19 +2633,21 @@ export namespace Job {
 
 export interface ListJobsResponse {
   /**
-   * <p>A list of jobs that are defined in the current AWS account.</p>
+   * <p>A list of jobs that are defined.</p>
    */
   Jobs: Job[] | undefined;
 
   /**
-   * <p>A token generated by DataBrew that specifies where to continue pagination if a previous
-   *             request was truncated. To obtain the next set of pages, pass in the NextToken from the
-   *             response object of the previous page call. </p>
+   * <p>A token that you can use in a subsequent call to retrieve the next set of
+   *             results.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListJobsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobsResponse): any => ({
     ...obj,
   });
@@ -1941,7 +2655,7 @@ export namespace ListJobsResponse {
 
 export interface ListProjectsRequest {
   /**
-   * <p>A pagination token that can be used in a subsequent request.</p>
+   * <p>The token returned by a previous call to retrieve the next set of results.</p>
    */
   NextToken?: string;
 
@@ -1952,13 +2666,16 @@ export interface ListProjectsRequest {
 }
 
 export namespace ListProjectsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProjectsRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Represents all of the attributes of an AWS Glue DataBrew project.</p>
+ * <p>Represents all of the attributes of a DataBrew project.</p>
  */
 export interface Project {
   /**
@@ -1972,8 +2689,7 @@ export interface Project {
   CreateDate?: Date;
 
   /**
-   * <p>The identifier (the user name) of the user who crated the
-   *             project.</p>
+   * <p>The Amazon Resource Name (ARN) of the user who crated the project.</p>
    */
   CreatedBy?: string;
 
@@ -1988,7 +2704,7 @@ export interface Project {
   LastModifiedDate?: Date;
 
   /**
-   * <p>The identifier (user name) of the user who last modified the project.</p>
+   * <p>The Amazon Resource Name (ARN) of the user who last modified the project.</p>
    */
   LastModifiedBy?: string;
 
@@ -2008,7 +2724,8 @@ export interface Project {
   ResourceArn?: string;
 
   /**
-   * <p>The sample size and sampling type to apply to the data.  If this parameter isn't specified, then the sample will consiste of the first 500 rows from the dataset.</p>
+   * <p>The sample size and sampling type to apply to the data. If this parameter isn't
+   *             specified, then the sample consists of the first 500 rows from the dataset.</p>
    */
   Sample?: Sample;
 
@@ -2018,12 +2735,13 @@ export interface Project {
   Tags?: { [key: string]: string };
 
   /**
-   * <p>The Amazon Resource Name (ARN) of the role that will be assumed for this project.</p>
+   * <p>The Amazon Resource Name (ARN) of the role that will be assumed for this
+   *             project.</p>
    */
   RoleArn?: string;
 
   /**
-   * <p>The identifier (the user name) of the user that opened the project for use.</p>
+   * <p>The Amazon Resource Name (ARN) of the user that opened the project for use.</p>
    */
   OpenedBy?: string;
 
@@ -2034,6 +2752,9 @@ export interface Project {
 }
 
 export namespace Project {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Project): any => ({
     ...obj,
   });
@@ -2041,19 +2762,21 @@ export namespace Project {
 
 export interface ListProjectsResponse {
   /**
-   * <p>A list of projects that are defined in the current AWS account.</p>
+   * <p>A list of projects that are defined .</p>
    */
   Projects: Project[] | undefined;
 
   /**
-   * <p>A token generated by DataBrew that specifies where to continue pagination if a
-   *             previous request was truncated. To get the next set of pages, pass in the NextToken
-   *             value from the response object of the previous page call. </p>
+   * <p>A token that you can use in a subsequent call to retrieve the next set of
+   *             results.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListProjectsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListProjectsResponse): any => ({
     ...obj,
   });
@@ -2066,29 +2789,36 @@ export interface ListRecipesRequest {
   MaxResults?: number;
 
   /**
-   * <p>A pagination token that can be used in a subsequent request.</p>
+   * <p>The token returned by a previous call to retrieve the next set of results.</p>
    */
   NextToken?: string;
 
   /**
-   * <p>A version identifier. Using this parameter indicates to return only those
-   *             recipes that have this version identifier.</p>
+   * <p>Return only those recipes with a version identifier of <code>LATEST_WORKING</code> or
+   *                 <code>LATEST_PUBLISHED</code>. If <code>RecipeVersion</code> is omitted,
+   *                 <code>ListRecipes</code> returns all of the <code>LATEST_PUBLISHED</code> recipe
+   *             versions.</p>
+   *         <p>Valid values: <code>LATEST_WORKING</code> | <code>LATEST_PUBLISHED</code>
+   *          </p>
    */
   RecipeVersion?: string;
 }
 
 export namespace ListRecipesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecipesRequest): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Represents one or more actions to be performed on an AWS Glue DataBrew dataset.</p>
+ * <p>Represents one or more actions to be performed on a DataBrew dataset.</p>
  */
 export interface Recipe {
   /**
-   * <p>The identifier (the user name) of the user who created the recipe.</p>
+   * <p>The Amazon Resource Name (ARN) of the user who created the recipe.</p>
    */
   CreatedBy?: string;
 
@@ -2098,7 +2828,7 @@ export interface Recipe {
   CreateDate?: Date;
 
   /**
-   * <p>The identifier (user name) of the user who last modified the recipe.</p>
+   * <p>The Amazon Resource Name (ARN) of the user who last modified the recipe.</p>
    */
   LastModifiedBy?: string;
 
@@ -2113,7 +2843,7 @@ export interface Recipe {
   ProjectName?: string;
 
   /**
-   * <p>The identifier (the user name) of the user who published the recipe.</p>
+   * <p>The Amazon Resource Name (ARN) of the user who published the recipe.</p>
    */
   PublishedBy?: string;
 
@@ -2148,12 +2878,32 @@ export interface Recipe {
   Tags?: { [key: string]: string };
 
   /**
-   * <p>The identifier for the version for the recipe. </p>
+   * <p>The identifier for the version for the recipe. Must be one of the following:</p>
+   *         <ul>
+   *             <li>
+   *                 <p>Numeric version (<code>X.Y</code>) - <code>X</code> and <code>Y</code> stand
+   *                     for major and minor version numbers. The maximum length of each is 6 digits, and
+   *                     neither can be negative values. Both <code>X</code> and <code>Y</code> are
+   *                     required, and "0.0" isn't a valid version.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>LATEST_WORKING</code> - the most recent valid version being developed in
+   *                     a DataBrew project.</p>
+   *             </li>
+   *             <li>
+   *                 <p>
+   *                   <code>LATEST_PUBLISHED</code> - the most recent published version.</p>
+   *             </li>
+   *          </ul>
    */
   RecipeVersion?: string;
 }
 
 export namespace Recipe {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Recipe): any => ({
     ...obj,
   });
@@ -2161,19 +2911,21 @@ export namespace Recipe {
 
 export interface ListRecipesResponse {
   /**
-   * <p>A list of recipes that are defined in the current AWS account.</p>
+   * <p>A list of recipes that are defined.</p>
    */
   Recipes: Recipe[] | undefined;
 
   /**
-   * <p>A token generated by DataBrew that specifies where to continue pagination if a
-   *             previous request was truncated. To get the next set of pages, pass in the NextToken
-   *             value from the response object of the previous page call. </p>
+   * <p>A token that you can use in a subsequent call to retrieve the next set of
+   *             results.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListRecipesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecipesResponse): any => ({
     ...obj,
   });
@@ -2186,7 +2938,7 @@ export interface ListRecipeVersionsRequest {
   MaxResults?: number;
 
   /**
-   * <p>A pagination token that can be used in a subsequent request.</p>
+   * <p>The token returned by a previous call to retrieve the next set of results.</p>
    */
   NextToken?: string;
 
@@ -2197,6 +2949,9 @@ export interface ListRecipeVersionsRequest {
 }
 
 export namespace ListRecipeVersionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecipeVersionsRequest): any => ({
     ...obj,
   });
@@ -2204,9 +2959,8 @@ export namespace ListRecipeVersionsRequest {
 
 export interface ListRecipeVersionsResponse {
   /**
-   * <p>A token generated by DataBrew that specifies where to continue pagination if a
-   *             previous request was truncated. To get the next set of pages, pass in the NextToken
-   *             value from the response object of the previous page call. </p>
+   * <p>A token that you can use in a subsequent call to retrieve the next set of
+   *             results.</p>
    */
   NextToken?: string;
 
@@ -2217,6 +2971,9 @@ export interface ListRecipeVersionsResponse {
 }
 
 export namespace ListRecipeVersionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecipeVersionsResponse): any => ({
     ...obj,
   });
@@ -2234,12 +2991,15 @@ export interface ListSchedulesRequest {
   MaxResults?: number;
 
   /**
-   * <p>A pagination token that can be used in a subsequent request.</p>
+   * <p>The token returned by a previous call to retrieve the next set of results.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListSchedulesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSchedulesRequest): any => ({
     ...obj,
   });
@@ -2255,7 +3015,7 @@ export interface Schedule {
   AccountId?: string;
 
   /**
-   * <p>The identifier (the user name) of the user who created the schedule.</p>
+   * <p>The Amazon Resource Name (ARN) of the user who created the schedule.</p>
    */
   CreatedBy?: string;
 
@@ -2270,7 +3030,7 @@ export interface Schedule {
   JobNames?: string[];
 
   /**
-   * <p>The identifier (the user name) of the user who last modified the schedule.</p>
+   * <p>The Amazon Resource Name (ARN) of the user who last modified the schedule.</p>
    */
   LastModifiedBy?: string;
 
@@ -2285,7 +3045,9 @@ export interface Schedule {
   ResourceArn?: string;
 
   /**
-   * <p>The date(s) and time(s), in <code>cron</code> format, when the job will run.</p>
+   * <p>The dates and times when the job is to run. For more information, see <a href="https://docs.aws.amazon.com/databrew/latest/dg/jobs.cron.html">Cron
+   *                 expressions</a> in the <i>AWS Glue DataBrew Developer
+   *             Guide</i>.</p>
    */
   CronExpression?: string;
 
@@ -2301,6 +3063,9 @@ export interface Schedule {
 }
 
 export namespace Schedule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Schedule): any => ({
     ...obj,
   });
@@ -2308,19 +3073,21 @@ export namespace Schedule {
 
 export interface ListSchedulesResponse {
   /**
-   * <p>A list of schedules in the current AWS account.</p>
+   * <p>A list of schedules that are defined.</p>
    */
   Schedules: Schedule[] | undefined;
 
   /**
-   * <p>A token generated by DataBrew that specifies where to continue pagination if a
-   *             previous request was truncated. To get the next set of pages, pass in the NextToken
-   *             value from the response object of the previous page call. </p>
+   * <p>A token that you can use in a subsequent call to retrieve the next set of
+   *             results.</p>
    */
   NextToken?: string;
 }
 
 export namespace ListSchedulesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListSchedulesResponse): any => ({
     ...obj,
   });
@@ -2328,12 +3095,16 @@ export namespace ListSchedulesResponse {
 
 export interface ListTagsForResourceRequest {
   /**
-   * <p>The Amazon Resource Name (ARN) string that uniquely identifies the DataBrew resource. </p>
+   * <p>The Amazon Resource Name (ARN) string that uniquely identifies the DataBrew resource.
+   *         </p>
    */
   ResourceArn: string | undefined;
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -2347,6 +3118,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -2365,6 +3139,9 @@ export interface PublishRecipeRequest {
 }
 
 export namespace PublishRecipeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PublishRecipeRequest): any => ({
     ...obj,
   });
@@ -2378,25 +3155,27 @@ export interface PublishRecipeResponse {
 }
 
 export namespace PublishRecipeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PublishRecipeResponse): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Represents the data being being transformed during an AWS Glue DataBrew project session.</p>
+ * <p>Represents the data being transformed during an action.</p>
  */
 export interface ViewFrame {
   /**
-   * <p>The starting index for the range of columns to return in the view
-   *             frame.</p>
+   * <p>The starting index for the range of columns to return in the view frame.</p>
    */
   StartColumnIndex: number | undefined;
 
   /**
    * <p>The number of columns to include in the view frame, beginning with the
-   *             <code>StartColumnIndex</code> value and ignoring any columns in the
-   *             <code>HiddenColumns</code> list.</p>
+   *                 <code>StartColumnIndex</code> value and ignoring any columns in the
+   *                 <code>HiddenColumns</code> list.</p>
    */
   ColumnRange?: number;
 
@@ -2407,6 +3186,9 @@ export interface ViewFrame {
 }
 
 export namespace ViewFrame {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ViewFrame): any => ({
     ...obj,
   });
@@ -2414,8 +3196,7 @@ export namespace ViewFrame {
 
 export interface SendProjectSessionActionRequest {
   /**
-   * <p>Returns the result of the recipe step, without applying it. The result isn't
-   *             added to the view frame stack.</p>
+   * <p>If true, the result of the recipe step will be returned, but not applied.</p>
    */
   Preview?: boolean;
 
@@ -2425,7 +3206,7 @@ export interface SendProjectSessionActionRequest {
   Name: string | undefined;
 
   /**
-   * <p>Represents a single step to be performed in an AWS Glue DataBrew recipe.</p>
+   * <p>Represents a single step from a DataBrew recipe to be performed.</p>
    */
   RecipeStep?: RecipeStep;
 
@@ -2443,12 +3224,15 @@ export interface SendProjectSessionActionRequest {
   ClientSessionId?: string;
 
   /**
-   * <p>Represents the data being being transformed during an AWS Glue DataBrew project session.</p>
+   * <p>Represents the data being transformed during an action.</p>
    */
   ViewFrame?: ViewFrame;
 }
 
 export namespace SendProjectSessionActionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendProjectSessionActionRequest): any => ({
     ...obj,
   });
@@ -2472,6 +3256,9 @@ export interface SendProjectSessionActionResponse {
 }
 
 export namespace SendProjectSessionActionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendProjectSessionActionResponse): any => ({
     ...obj,
   });
@@ -2485,6 +3272,9 @@ export interface StartJobRunRequest {
 }
 
 export namespace StartJobRunRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartJobRunRequest): any => ({
     ...obj,
   });
@@ -2498,6 +3288,9 @@ export interface StartJobRunResponse {
 }
 
 export namespace StartJobRunResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartJobRunResponse): any => ({
     ...obj,
   });
@@ -2510,13 +3303,16 @@ export interface StartProjectSessionRequest {
   Name: string | undefined;
 
   /**
-   * <p>A value that, if true, enables you to take control of a session, even if a different client is
-   *             currently accessing the project.</p>
+   * <p>A value that, if true, enables you to take control of a session, even if a different
+   *             client is currently accessing the project.</p>
    */
   AssumeControl?: boolean;
 }
 
 export namespace StartProjectSessionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartProjectSessionRequest): any => ({
     ...obj,
   });
@@ -2535,6 +3331,9 @@ export interface StartProjectSessionResponse {
 }
 
 export namespace StartProjectSessionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartProjectSessionResponse): any => ({
     ...obj,
   });
@@ -2553,6 +3352,9 @@ export interface StopJobRunRequest {
 }
 
 export namespace StopJobRunRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopJobRunRequest): any => ({
     ...obj,
   });
@@ -2566,6 +3368,9 @@ export interface StopJobRunResponse {
 }
 
 export namespace StopJobRunResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopJobRunResponse): any => ({
     ...obj,
   });
@@ -2574,8 +3379,8 @@ export namespace StopJobRunResponse {
 export interface TagResourceRequest {
   /**
    * <p>The DataBrew resource to which tags should be added. The value for this parameter is
-   *             an Amazon Resource Name (ARN). For DataBrew, you can tag a dataset, a job, a project, or a
-   *             recipe.</p>
+   *             an Amazon Resource Name (ARN). For DataBrew, you can tag a dataset, a job, a project, or
+   *             a recipe.</p>
    */
   ResourceArn: string | undefined;
 
@@ -2586,6 +3391,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -2594,6 +3402,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -2601,7 +3412,7 @@ export namespace TagResourceResponse {
 
 export interface UntagResourceRequest {
   /**
-   * <p>An DataBrew resource from which you want to remove a tag or tags. The value for this
+   * <p>A DataBrew resource from which you want to remove a tag or tags. The value for this
    *             parameter is an Amazon Resource Name (ARN). </p>
    */
   ResourceArn: string | undefined;
@@ -2613,6 +3424,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -2621,6 +3435,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });
@@ -2633,18 +3450,31 @@ export interface UpdateDatasetRequest {
   Name: string | undefined;
 
   /**
-   * <p>Options that define how Microsoft Excel input is to be interpreted by DataBrew.</p>
+   * <p>The file format of a dataset that is created from an S3 file or folder.</p>
+   */
+  Format?: InputFormat | string;
+
+  /**
+   * <p>Represents a set of options that define the structure of either comma-separated value (CSV), Excel, or JSON input.</p>
    */
   FormatOptions?: FormatOptions;
 
   /**
-   * <p>Information on how AWS Glue DataBrew can find data, in either the AWS Glue Data
-   *             Catalog or Amazon S3.</p>
+   * <p>Represents information on how DataBrew can find data, in either the AWS Glue Data Catalog or
+   *             Amazon S3.</p>
    */
   Input: Input | undefined;
+
+  /**
+   * <p>A set of options that defines how DataBrew interprets an S3 path of the dataset.</p>
+   */
+  PathOptions?: PathOptions;
 }
 
 export namespace UpdateDatasetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDatasetRequest): any => ({
     ...obj,
   });
@@ -2658,6 +3488,9 @@ export interface UpdateDatasetResponse {
 }
 
 export namespace UpdateDatasetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDatasetResponse): any => ({
     ...obj,
   });
@@ -2665,7 +3498,8 @@ export namespace UpdateDatasetResponse {
 
 export interface UpdateProfileJobRequest {
   /**
-   * <p>The Amazon Resource Name (ARN) of an encryption key that is used to protect the job.</p>
+   * <p>The Amazon Resource Name (ARN) of an encryption key that is used to protect the
+   *             job.</p>
    */
   EncryptionKeyArn?: string;
 
@@ -2674,11 +3508,13 @@ export interface UpdateProfileJobRequest {
    *         <ul>
    *             <li>
    *                 <p>
-   *                   <code>SSE-KMS</code> - Server-side encryption with AWS KMS-managed keys.</p>
+   *                   <code>SSE-KMS</code> - Server-side encryption with keys managed by AWS
+   *                     KMS.</p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>SSE-S3</code> - Server-side encryption with keys managed by Amazon S3.</p>
+   *                   <code>SSE-S3</code> - Server-side encryption with keys managed by Amazon
+   *                     S3.</p>
    *             </li>
    *          </ul>
    */
@@ -2690,14 +3526,14 @@ export interface UpdateProfileJobRequest {
   Name: string | undefined;
 
   /**
-   * <p>A value that enables or disables Amazon CloudWatch logging for the current AWS
-   *             account. If logging is enabled, CloudWatch writes one log stream for each job
-   *             run.</p>
+   * <p>Enables or disables Amazon CloudWatch logging for the job. If logging is enabled,
+   *             CloudWatch writes one log stream for each job run.</p>
    */
   LogSubscription?: LogSubscription | string;
 
   /**
-   * <p>The maximum number of nodes that DataBrew can use when the job processes data.</p>
+   * <p>The maximum number of compute nodes that DataBrew can use when the job processes
+   *             data.</p>
    */
   MaxCapacity?: number;
 
@@ -2707,13 +3543,14 @@ export interface UpdateProfileJobRequest {
   MaxRetries?: number;
 
   /**
-   * <p>An Amazon S3 location (bucket name an object key) where DataBrew can read input data, or write output from a job.</p>
+   * <p>Represents an Amazon S3 location (bucket name and object key) where DataBrew can read
+   *             input data, or write output from a job.</p>
    */
   OutputLocation: S3Location | undefined;
 
   /**
    * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role to
-   *             be assumed for this request.</p>
+   *             be assumed when DataBrew runs the job.</p>
    */
   RoleArn: string | undefined;
 
@@ -2722,9 +3559,20 @@ export interface UpdateProfileJobRequest {
    *             period ends with a status of <code>TIMEOUT</code>.</p>
    */
   Timeout?: number;
+
+  /**
+   * <p>Sample configuration for Profile Jobs only. Determines the number of rows on which the
+   *             Profile job will be executed. If a JobSample value is not provided for profile jobs, the
+   *             default value will be used. The default value is CUSTOM_ROWS for the mode parameter and
+   *             20000 for the size parameter.</p>
+   */
+  JobSample?: JobSample;
 }
 
 export namespace UpdateProfileJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateProfileJobRequest): any => ({
     ...obj,
   });
@@ -2738,6 +3586,9 @@ export interface UpdateProfileJobResponse {
 }
 
 export namespace UpdateProfileJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateProfileJobResponse): any => ({
     ...obj,
   });
@@ -2745,8 +3596,8 @@ export namespace UpdateProfileJobResponse {
 
 export interface UpdateProjectRequest {
   /**
-   * <p>Represents the sample size and sampling type for AWS Glue DataBrew to use for
-   *             interactive data analysis.</p>
+   * <p>Represents the sample size and sampling type for DataBrew to use for interactive data
+   *             analysis.</p>
    */
   Sample?: Sample;
 
@@ -2762,6 +3613,9 @@ export interface UpdateProjectRequest {
 }
 
 export namespace UpdateProjectRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateProjectRequest): any => ({
     ...obj,
   });
@@ -2780,6 +3634,9 @@ export interface UpdateProjectResponse {
 }
 
 export namespace UpdateProjectResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateProjectResponse): any => ({
     ...obj,
   });
@@ -2804,6 +3661,9 @@ export interface UpdateRecipeRequest {
 }
 
 export namespace UpdateRecipeRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRecipeRequest): any => ({
     ...obj,
   });
@@ -2817,6 +3677,9 @@ export interface UpdateRecipeResponse {
 }
 
 export namespace UpdateRecipeResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRecipeResponse): any => ({
     ...obj,
   });
@@ -2824,7 +3687,8 @@ export namespace UpdateRecipeResponse {
 
 export interface UpdateRecipeJobRequest {
   /**
-   * <p>The Amazon Resource Name (ARN) of an encryption key that is used to protect the job.</p>
+   * <p>The Amazon Resource Name (ARN) of an encryption key that is used to protect the
+   *             job.</p>
    */
   EncryptionKeyArn?: string;
 
@@ -2833,11 +3697,13 @@ export interface UpdateRecipeJobRequest {
    *         <ul>
    *             <li>
    *                 <p>
-   *                   <code>SSE-KMS</code> - Server-side encryption with AWS KMS-managed keys.</p>
+   *                   <code>SSE-KMS</code> - Server-side encryption with keys managed by AWS
+   *                     KMS.</p>
    *             </li>
    *             <li>
    *                 <p>
-   *                   <code>SSE-S3</code> - Server-side encryption with keys managed by Amazon S3.</p>
+   *                   <code>SSE-S3</code> - Server-side encryption with keys managed by Amazon
+   *                     S3.</p>
    *             </li>
    *          </ul>
    */
@@ -2849,15 +3715,14 @@ export interface UpdateRecipeJobRequest {
   Name: string | undefined;
 
   /**
-   * <p>A value that enables or disables Amazon CloudWatch logging for the current AWS
-   *             account. If logging is enabled, CloudWatch writes one log stream for each job
-   *             run.</p>
+   * <p>Enables or disables Amazon CloudWatch logging for the job. If logging is enabled,
+   *             CloudWatch writes one log stream for each job run.</p>
    */
   LogSubscription?: LogSubscription | string;
 
   /**
-   * <p>The maximum number of nodes that DataBrew
-   *             can consume when the job processes data.</p>
+   * <p>The maximum number of nodes that DataBrew can consume when the job processes
+   *             data.</p>
    */
   MaxCapacity?: number;
 
@@ -2873,7 +3738,7 @@ export interface UpdateRecipeJobRequest {
 
   /**
    * <p>The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role to
-   *             be assumed for this request.</p>
+   *             be assumed when DataBrew runs the job.</p>
    */
   RoleArn: string | undefined;
 
@@ -2885,6 +3750,9 @@ export interface UpdateRecipeJobRequest {
 }
 
 export namespace UpdateRecipeJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRecipeJobRequest): any => ({
     ...obj,
   });
@@ -2898,6 +3766,9 @@ export interface UpdateRecipeJobResponse {
 }
 
 export namespace UpdateRecipeJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRecipeJobResponse): any => ({
     ...obj,
   });
@@ -2910,8 +3781,10 @@ export interface UpdateScheduleRequest {
   JobNames?: string[];
 
   /**
-   * <p>The date or dates and time or times, in <code>cron</code> format, when the jobs are to
-   *             be run.</p>
+   * <p>The date or dates and time or times when the jobs are to be run. For more information,
+   *             see <a href="https://docs.aws.amazon.com/databrew/latest/dg/jobs.cron.html">Cron
+   *                 expressions</a> in the <i>AWS Glue DataBrew Developer
+   *             Guide</i>.</p>
    */
   CronExpression: string | undefined;
 
@@ -2922,6 +3795,9 @@ export interface UpdateScheduleRequest {
 }
 
 export namespace UpdateScheduleRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateScheduleRequest): any => ({
     ...obj,
   });
@@ -2935,6 +3811,9 @@ export interface UpdateScheduleResponse {
 }
 
 export namespace UpdateScheduleResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateScheduleResponse): any => ({
     ...obj,
   });

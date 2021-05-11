@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBucketOwnershipControlsCommandInput = GetBucketOwnershipControlsRequest;
-export type GetBucketOwnershipControlsCommandOutput = GetBucketOwnershipControlsOutput & __MetadataBearer;
+export interface GetBucketOwnershipControlsCommandInput extends GetBucketOwnershipControlsRequest {}
+export interface GetBucketOwnershipControlsCommandOutput extends GetBucketOwnershipControlsOutput, __MetadataBearer {}
 
 /**
  * <p>Retrieves <code>OwnershipControls</code> for an Amazon S3 bucket. To use this operation, you
@@ -40,6 +40,20 @@ export type GetBucketOwnershipControlsCommandOutput = GetBucketOwnershipControls
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetBucketOwnershipControlsCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetBucketOwnershipControlsCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetBucketOwnershipControlsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBucketOwnershipControlsCommandInput} for command's `input` shape.
+ * @see {@link GetBucketOwnershipControlsCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBucketOwnershipControlsCommand extends $Command<
   GetBucketOwnershipControlsCommandInput,

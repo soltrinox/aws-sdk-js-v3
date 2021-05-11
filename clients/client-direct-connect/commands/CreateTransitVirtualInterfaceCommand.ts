@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateTransitVirtualInterfaceCommandInput = CreateTransitVirtualInterfaceRequest;
-export type CreateTransitVirtualInterfaceCommandOutput = CreateTransitVirtualInterfaceResult & __MetadataBearer;
+export interface CreateTransitVirtualInterfaceCommandInput extends CreateTransitVirtualInterfaceRequest {}
+export interface CreateTransitVirtualInterfaceCommandOutput
+  extends CreateTransitVirtualInterfaceResult,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a transit virtual interface. A transit virtual interface should be used to access one or more transit gateways associated with Direct Connect gateways. A transit virtual interface enables the connection of multiple VPCs attached to a transit gateway to a Direct Connect gateway.</p>
@@ -31,6 +33,20 @@ export type CreateTransitVirtualInterfaceCommandOutput = CreateTransitVirtualInt
  *       the connection for up to 30 seconds. To check whether your connection supports jumbo
  *       frames, call <a>DescribeConnections</a>. To check whether your virtual
  *       interface supports jumbo frames, call <a>DescribeVirtualInterfaces</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectConnectClient, CreateTransitVirtualInterfaceCommand } from "@aws-sdk/client-direct-connect"; // ES Modules import
+ * // const { DirectConnectClient, CreateTransitVirtualInterfaceCommand } = require("@aws-sdk/client-direct-connect"); // CommonJS import
+ * const client = new DirectConnectClient(config);
+ * const command = new CreateTransitVirtualInterfaceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateTransitVirtualInterfaceCommandInput} for command's `input` shape.
+ * @see {@link CreateTransitVirtualInterfaceCommandOutput} for command's `response` shape.
+ * @see {@link DirectConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateTransitVirtualInterfaceCommand extends $Command<
   CreateTransitVirtualInterfaceCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCampaignCommandInput = CreateCampaignRequest;
-export type CreateCampaignCommandOutput = CreateCampaignResponse & __MetadataBearer;
+export interface CreateCampaignCommandInput extends CreateCampaignRequest {}
+export interface CreateCampaignCommandOutput extends CreateCampaignResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a campaign by deploying a solution version. When a client calls the
@@ -30,15 +30,22 @@ export type CreateCampaignCommandOutput = CreateCampaignResponse & __MetadataBea
  *          <p>
  *             <b>Minimum Provisioned TPS and Auto-Scaling</b>
  *          </p>
+ *
  *          <p>A transaction is a single <code>GetRecommendations</code> or
  *        <code>GetPersonalizedRanking</code> call. Transactions per second (TPS) is the throughput
  *        and unit of billing for Amazon Personalize. The minimum provisioned TPS
  *        (<code>minProvisionedTPS</code>) specifies the baseline throughput provisioned by
- *        Amazon Personalize, and thus, the minimum billing charge. If your TPS increases beyond
+ *        Amazon Personalize, and thus, the minimum billing charge.
+ *     </p>
+ *          <p>
+ *        If your TPS increases beyond
  *        <code>minProvisionedTPS</code>, Amazon Personalize auto-scales the provisioned capacity up and down,
- *        but never below <code>minProvisionedTPS</code>, to maintain a 70% utilization.
+ *        but never below <code>minProvisionedTPS</code>.
  *        There's a short time delay while the capacity is increased that might cause loss of
- *        transactions. It's recommended to start with a low <code>minProvisionedTPS</code>, track
+ *        transactions.</p>
+ *          <p>The actual TPS used is calculated as the average requests/second within a 5-minute window.
+ *       You pay for maximum of either the minimum provisioned TPS or the actual TPS.
+ *       We recommend starting with a low <code>minProvisionedTPS</code>, track
  *        your usage using Amazon CloudWatch metrics, and then increase the <code>minProvisionedTPS</code>
  *        as necessary.</p>
  *
@@ -85,6 +92,20 @@ export type CreateCampaignCommandOutput = CreateCampaignResponse & __MetadataBea
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PersonalizeClient, CreateCampaignCommand } from "@aws-sdk/client-personalize"; // ES Modules import
+ * // const { PersonalizeClient, CreateCampaignCommand } = require("@aws-sdk/client-personalize"); // CommonJS import
+ * const client = new PersonalizeClient(config);
+ * const command = new CreateCampaignCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCampaignCommandInput} for command's `input` shape.
+ * @see {@link CreateCampaignCommandOutput} for command's `response` shape.
+ * @see {@link PersonalizeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCampaignCommand extends $Command<
   CreateCampaignCommandInput,

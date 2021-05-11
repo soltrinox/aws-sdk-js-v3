@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateAppCommandInput = UpdateAppRequest;
-export type UpdateAppCommandOutput = UpdateAppResponse & __MetadataBearer;
+export interface UpdateAppCommandInput extends UpdateAppRequest {}
+export interface UpdateAppCommandOutput extends UpdateAppResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the specified application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SMSClient, UpdateAppCommand } from "@aws-sdk/client-sms"; // ES Modules import
+ * // const { SMSClient, UpdateAppCommand } = require("@aws-sdk/client-sms"); // CommonJS import
+ * const client = new SMSClient(config);
+ * const command = new UpdateAppCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateAppCommandInput} for command's `input` shape.
+ * @see {@link UpdateAppCommandOutput} for command's `response` shape.
+ * @see {@link SMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateAppCommand extends $Command<UpdateAppCommandInput, UpdateAppCommandOutput, SMSClientResolvedConfig> {
   // Start section: command_properties

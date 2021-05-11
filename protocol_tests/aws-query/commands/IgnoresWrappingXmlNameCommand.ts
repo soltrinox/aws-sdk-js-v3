@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type IgnoresWrappingXmlNameCommandInput = {};
-export type IgnoresWrappingXmlNameCommandOutput = IgnoresWrappingXmlNameOutput & __MetadataBearer;
+export interface IgnoresWrappingXmlNameCommandInput {}
+export interface IgnoresWrappingXmlNameCommandOutput extends IgnoresWrappingXmlNameOutput, __MetadataBearer {}
 
 /**
  * The xmlName trait on the output structure is ignored in AWS Query.
  *
  * The wrapping element is always operation name + "Response", and
  * inside of that wrapper is another wrapper named operation name + "Result".
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QueryProtocolClient, IgnoresWrappingXmlNameCommand } from "@aws-sdk/aws-query"; // ES Modules import
+ * // const { QueryProtocolClient, IgnoresWrappingXmlNameCommand } = require("@aws-sdk/aws-query"); // CommonJS import
+ * const client = new QueryProtocolClient(config);
+ * const command = new IgnoresWrappingXmlNameCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link IgnoresWrappingXmlNameCommandInput} for command's `input` shape.
+ * @see {@link IgnoresWrappingXmlNameCommandOutput} for command's `response` shape.
+ * @see {@link QueryProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class IgnoresWrappingXmlNameCommand extends $Command<
   IgnoresWrappingXmlNameCommandInput,

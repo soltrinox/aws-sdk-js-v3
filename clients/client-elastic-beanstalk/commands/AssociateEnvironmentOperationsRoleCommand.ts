@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateEnvironmentOperationsRoleCommandInput = AssociateEnvironmentOperationsRoleMessage;
-export type AssociateEnvironmentOperationsRoleCommandOutput = __MetadataBearer;
+export interface AssociateEnvironmentOperationsRoleCommandInput extends AssociateEnvironmentOperationsRoleMessage {}
+export interface AssociateEnvironmentOperationsRoleCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Add or change the operations role used by an environment. After this call is made, Elastic Beanstalk
  *       uses the associated operations role for permissions to downstream services during subsequent
  *       calls acting on this environment. For more information, see <a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html">Operations roles</a> in the
  *         <i>AWS Elastic Beanstalk Developer Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticBeanstalkClient, AssociateEnvironmentOperationsRoleCommand } from "@aws-sdk/client-elastic-beanstalk"; // ES Modules import
+ * // const { ElasticBeanstalkClient, AssociateEnvironmentOperationsRoleCommand } = require("@aws-sdk/client-elastic-beanstalk"); // CommonJS import
+ * const client = new ElasticBeanstalkClient(config);
+ * const command = new AssociateEnvironmentOperationsRoleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateEnvironmentOperationsRoleCommandInput} for command's `input` shape.
+ * @see {@link AssociateEnvironmentOperationsRoleCommandOutput} for command's `response` shape.
+ * @see {@link ElasticBeanstalkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateEnvironmentOperationsRoleCommand extends $Command<
   AssociateEnvironmentOperationsRoleCommandInput,

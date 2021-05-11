@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDevEndpointsCommandInput = ListDevEndpointsRequest;
-export type ListDevEndpointsCommandOutput = ListDevEndpointsResponse & __MetadataBearer;
+export interface ListDevEndpointsCommandInput extends ListDevEndpointsRequest {}
+export interface ListDevEndpointsCommandOutput extends ListDevEndpointsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves the names of all <code>DevEndpoint</code> resources in this AWS account, or the
@@ -28,6 +28,20 @@ export type ListDevEndpointsCommandOutput = ListDevEndpointsResponse & __Metadat
  *          <p>This operation takes the optional <code>Tags</code> field, which you can use as a filter on
  *       the response so that tagged resources can be retrieved as a group. If you choose to use tags
  *       filtering, only resources with the tag are retrieved.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, ListDevEndpointsCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, ListDevEndpointsCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new ListDevEndpointsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDevEndpointsCommandInput} for command's `input` shape.
+ * @see {@link ListDevEndpointsCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDevEndpointsCommand extends $Command<
   ListDevEndpointsCommandInput,

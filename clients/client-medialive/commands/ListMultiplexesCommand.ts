@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListMultiplexesCommandInput = ListMultiplexesRequest;
-export type ListMultiplexesCommandOutput = ListMultiplexesResponse & __MetadataBearer;
+export interface ListMultiplexesCommandInput extends ListMultiplexesRequest {}
+export interface ListMultiplexesCommandOutput extends ListMultiplexesResponse, __MetadataBearer {}
 
 /**
  * Retrieve a list of the existing multiplexes.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, ListMultiplexesCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, ListMultiplexesCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new ListMultiplexesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListMultiplexesCommandInput} for command's `input` shape.
+ * @see {@link ListMultiplexesCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListMultiplexesCommand extends $Command<
   ListMultiplexesCommandInput,

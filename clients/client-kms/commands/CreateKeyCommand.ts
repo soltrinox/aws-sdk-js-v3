@@ -14,13 +14,12 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateKeyCommandInput = CreateKeyRequest;
-export type CreateKeyCommandOutput = CreateKeyResponse & __MetadataBearer;
+export interface CreateKeyCommandInput extends CreateKeyRequest {}
+export interface CreateKeyCommandOutput extends CreateKeyResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a unique customer managed <a href="https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master-keys">customer master key</a> (CMK) in your AWS
- *       account and Region. You cannot use this operation to create a CMK in a different AWS
- *       account.</p>
+ *       account and Region.</p>
  *
  *          <p>You can use the <code>CreateKey</code> operation to create symmetric or asymmetric
  *       CMKs.</p>
@@ -94,6 +93,49 @@ export type CreateKeyCommandOutput = CreateKeyResponse & __MetadataBearer;
  *                   </i>.</p>
  *             </dd>
  *          </dl>
+ *          <p>
+ *             <b>Cross-account use</b>:  No. You cannot use this operation to
+ *       create a CMK in a different AWS account.</p>
+ *
+ *          <p>
+ *             <b>Required permissions</b>: <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:CreateKey</a> (IAM policy). To use the
+ *         <code>Tags</code> parameter, <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:TagResource</a> (IAM policy). For examples and information about related
+ *       permissions, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/iam-policies.html#iam-policy-example-create-key">Allow a user to create
+ *         CMKs</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+ *          <p>
+ *             <b>Related operations:</b>
+ *          </p>
+ *          <ul>
+ *             <li>
+ *                <p>
+ *                   <a>DescribeKey</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>ListKeys</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>ScheduleKeyDeletion</a>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, CreateKeyCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, CreateKeyCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new CreateKeyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateKeyCommandInput} for command's `input` shape.
+ * @see {@link CreateKeyCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateKeyCommand extends $Command<CreateKeyCommandInput, CreateKeyCommandOutput, KMSClientResolvedConfig> {
   // Start section: command_properties

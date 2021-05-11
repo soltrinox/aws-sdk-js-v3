@@ -22,12 +22,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AdminInitiateAuthCommandInput = AdminInitiateAuthRequest;
-export type AdminInitiateAuthCommandOutput = AdminInitiateAuthResponse & __MetadataBearer;
+export interface AdminInitiateAuthCommandInput extends AdminInitiateAuthRequest {}
+export interface AdminInitiateAuthCommandOutput extends AdminInitiateAuthResponse, __MetadataBearer {}
 
 /**
  * <p>Initiates the authentication flow, as an administrator.</p>
  *         <p>Calling this action requires developer credentials.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, AdminInitiateAuthCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, AdminInitiateAuthCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new AdminInitiateAuthCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AdminInitiateAuthCommandInput} for command's `input` shape.
+ * @see {@link AdminInitiateAuthCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AdminInitiateAuthCommand extends $Command<
   AdminInitiateAuthCommandInput,

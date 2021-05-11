@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteChannelCommandInput = DeleteChannelRequest;
-export type DeleteChannelCommandOutput = DeleteChannelResponse & __MetadataBearer;
+export interface DeleteChannelCommandInput extends DeleteChannelRequest {}
+export interface DeleteChannelCommandOutput extends DeleteChannelResponse, __MetadataBearer {}
 
 /**
  * Starts deletion of channel. The associated outputs are also deleted.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, DeleteChannelCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, DeleteChannelCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new DeleteChannelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteChannelCommandInput} for command's `input` shape.
+ * @see {@link DeleteChannelCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteChannelCommand extends $Command<
   DeleteChannelCommandInput,

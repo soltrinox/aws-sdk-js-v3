@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteEventTypeCommandInput = DeleteEventTypeRequest;
-export type DeleteEventTypeCommandOutput = DeleteEventTypeResult & __MetadataBearer;
+export interface DeleteEventTypeCommandInput extends DeleteEventTypeRequest {}
+export interface DeleteEventTypeCommandOutput extends DeleteEventTypeResult, __MetadataBearer {}
 
 /**
  * <p>Deletes an event type.</p>
  * 	        <p>You cannot delete an event type that is used in a detector or a model.</p>
- * 	        <p>When you delete an entity type, Amazon Fraud Detector permanently deletes that entity type from the evaluation history, and the data is no longer stored in Amazon Fraud Detector.</p>
+ * 	        <p>When you delete an entity type, Amazon Fraud Detector permanently deletes that entity type and the data is no longer stored in Amazon Fraud Detector.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FraudDetectorClient, DeleteEventTypeCommand } from "@aws-sdk/client-frauddetector"; // ES Modules import
+ * // const { FraudDetectorClient, DeleteEventTypeCommand } = require("@aws-sdk/client-frauddetector"); // CommonJS import
+ * const client = new FraudDetectorClient(config);
+ * const command = new DeleteEventTypeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteEventTypeCommandInput} for command's `input` shape.
+ * @see {@link DeleteEventTypeCommandOutput} for command's `response` shape.
+ * @see {@link FraudDetectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteEventTypeCommand extends $Command<
   DeleteEventTypeCommandInput,

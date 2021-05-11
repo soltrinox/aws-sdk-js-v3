@@ -7,8 +7,8 @@
 
 AWS SDK for JavaScript MachineLearning Client for Node.js, Browser and React Native.
 
-<p>Definition of the public APIs
-exposed by Amazon Machine Learning</p>
+Definition of the public APIs
+exposed by Amazon Machine Learning
 
 ## Installing
 
@@ -47,7 +47,7 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new MachineLearningClient({ region: "REGION" });
 
 const params = {
@@ -132,7 +132,7 @@ const client = new AWS.MachineLearning({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.addTags(params);
+  const data = await client.addTags(params);
   // process data.
 } catch (error) {
   // error handling.

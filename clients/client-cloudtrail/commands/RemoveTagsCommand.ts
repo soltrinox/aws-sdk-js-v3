@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RemoveTagsCommandInput = RemoveTagsRequest;
-export type RemoveTagsCommandOutput = RemoveTagsResponse & __MetadataBearer;
+export interface RemoveTagsCommandInput extends RemoveTagsRequest {}
+export interface RemoveTagsCommandOutput extends RemoveTagsResponse, __MetadataBearer {}
 
 /**
  * <p>Removes the specified tags from a trail.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudTrailClient, RemoveTagsCommand } from "@aws-sdk/client-cloudtrail"; // ES Modules import
+ * // const { CloudTrailClient, RemoveTagsCommand } = require("@aws-sdk/client-cloudtrail"); // CommonJS import
+ * const client = new CloudTrailClient(config);
+ * const command = new RemoveTagsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RemoveTagsCommandInput} for command's `input` shape.
+ * @see {@link RemoveTagsCommandOutput} for command's `response` shape.
+ * @see {@link CloudTrailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RemoveTagsCommand extends $Command<
   RemoveTagsCommandInput,

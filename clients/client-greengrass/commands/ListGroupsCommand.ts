@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListGroupsCommandInput = ListGroupsRequest;
-export type ListGroupsCommandOutput = ListGroupsResponse & __MetadataBearer;
+export interface ListGroupsCommandInput extends ListGroupsRequest {}
+export interface ListGroupsCommandOutput extends ListGroupsResponse, __MetadataBearer {}
 
 /**
  * Retrieves a list of groups.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, ListGroupsCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, ListGroupsCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new ListGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListGroupsCommandInput} for command's `input` shape.
+ * @see {@link ListGroupsCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListGroupsCommand extends $Command<
   ListGroupsCommandInput,

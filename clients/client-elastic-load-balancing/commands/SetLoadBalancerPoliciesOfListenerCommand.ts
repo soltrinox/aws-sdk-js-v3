@@ -21,8 +21,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SetLoadBalancerPoliciesOfListenerCommandInput = SetLoadBalancerPoliciesOfListenerInput;
-export type SetLoadBalancerPoliciesOfListenerCommandOutput = SetLoadBalancerPoliciesOfListenerOutput & __MetadataBearer;
+export interface SetLoadBalancerPoliciesOfListenerCommandInput extends SetLoadBalancerPoliciesOfListenerInput {}
+export interface SetLoadBalancerPoliciesOfListenerCommandOutput
+  extends SetLoadBalancerPoliciesOfListenerOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Replaces the current set of policies for the specified load balancer port with the specified set of policies.</p>
@@ -32,6 +34,20 @@ export type SetLoadBalancerPoliciesOfListenerCommandOutput = SetLoadBalancerPoli
  *             <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-duration">Duration-Based Session Stickiness</a>, and
  *             <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-sticky-sessions.html#enable-sticky-sessions-application">Application-Controlled Session Stickiness</a>
  *             in the <i>Classic Load Balancers Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingClient, SetLoadBalancerPoliciesOfListenerCommand } from "@aws-sdk/client-elastic-load-balancing"; // ES Modules import
+ * // const { ElasticLoadBalancingClient, SetLoadBalancerPoliciesOfListenerCommand } = require("@aws-sdk/client-elastic-load-balancing"); // CommonJS import
+ * const client = new ElasticLoadBalancingClient(config);
+ * const command = new SetLoadBalancerPoliciesOfListenerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SetLoadBalancerPoliciesOfListenerCommandInput} for command's `input` shape.
+ * @see {@link SetLoadBalancerPoliciesOfListenerCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SetLoadBalancerPoliciesOfListenerCommand extends $Command<
   SetLoadBalancerPoliciesOfListenerCommandInput,

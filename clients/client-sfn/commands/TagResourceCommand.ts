@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceInput;
-export type TagResourceCommandOutput = TagResourceOutput & __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceInput {}
+export interface TagResourceCommandOutput extends TagResourceOutput, __MetadataBearer {}
 
 /**
  * <p>Add a tag to a Step Functions resource.</p>
@@ -27,6 +27,20 @@ export type TagResourceCommandOutput = TagResourceOutput & __MetadataBearer;
  *         Guide</i>, and <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html">Controlling Access Using IAM
  *           Tags</a>.</p>
  *          <p>Tags may only contain Unicode letters, digits, white space, or these symbols: <code>_ . : / = + - @</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SFNClient, TagResourceCommand } from "@aws-sdk/client-sfn"; // ES Modules import
+ * // const { SFNClient, TagResourceCommand } = require("@aws-sdk/client-sfn"); // CommonJS import
+ * const client = new SFNClient(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link SFNClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

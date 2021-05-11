@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteStackInstancesCommandInput = DeleteStackInstancesInput;
-export type DeleteStackInstancesCommandOutput = DeleteStackInstancesOutput & __MetadataBearer;
+export interface DeleteStackInstancesCommandInput extends DeleteStackInstancesInput {}
+export interface DeleteStackInstancesCommandOutput extends DeleteStackInstancesOutput, __MetadataBearer {}
 
 /**
  * <p>Deletes stack instances for the specified accounts, in the specified Regions. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, DeleteStackInstancesCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, DeleteStackInstancesCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new DeleteStackInstancesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteStackInstancesCommandInput} for command's `input` shape.
+ * @see {@link DeleteStackInstancesCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteStackInstancesCommand extends $Command<
   DeleteStackInstancesCommandInput,

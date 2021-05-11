@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListPhoneNumberOrdersCommandInput = ListPhoneNumberOrdersRequest;
-export type ListPhoneNumberOrdersCommandOutput = ListPhoneNumberOrdersResponse & __MetadataBearer;
+export interface ListPhoneNumberOrdersCommandInput extends ListPhoneNumberOrdersRequest {}
+export interface ListPhoneNumberOrdersCommandOutput extends ListPhoneNumberOrdersResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the phone number orders for the administrator's Amazon Chime account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, ListPhoneNumberOrdersCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, ListPhoneNumberOrdersCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new ListPhoneNumberOrdersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListPhoneNumberOrdersCommandInput} for command's `input` shape.
+ * @see {@link ListPhoneNumberOrdersCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListPhoneNumberOrdersCommand extends $Command<
   ListPhoneNumberOrdersCommandInput,

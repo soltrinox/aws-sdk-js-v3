@@ -17,11 +17,15 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAutoScalingGroupCommandInput = CreateAutoScalingGroupType;
-export type CreateAutoScalingGroupCommandOutput = __MetadataBearer;
+export interface CreateAutoScalingGroupCommandInput extends CreateAutoScalingGroupType {}
+export interface CreateAutoScalingGroupCommandOutput extends __MetadataBearer {}
 
 /**
- * <p>Creates an Auto Scaling group with the specified name and attributes. </p>
+ * <p>
+ *             <b>We strongly recommend using a launch template when calling this operation to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.</b>
+ *          </p>
+ *          <p>Creates an Auto Scaling group with
+ *             the specified name and attributes. </p>
  *         <p>If you exceed your maximum limit of Auto Scaling groups, the call fails. To query this limit,
  *             call the <a>DescribeAccountLimits</a> API. For information about updating
  *             this limit, see <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html">Amazon EC2 Auto Scaling service
@@ -36,6 +40,20 @@ export type CreateAutoScalingGroupCommandOutput = __MetadataBearer;
  *             on a specific number of instances. However, if you configure a mixed instances policy
  *             that defines weights for the instance types, you must specify these sizes with the same
  *             units that you use for weighting instances.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AutoScalingClient, CreateAutoScalingGroupCommand } from "@aws-sdk/client-auto-scaling"; // ES Modules import
+ * // const { AutoScalingClient, CreateAutoScalingGroupCommand } = require("@aws-sdk/client-auto-scaling"); // CommonJS import
+ * const client = new AutoScalingClient(config);
+ * const command = new CreateAutoScalingGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAutoScalingGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateAutoScalingGroupCommandOutput} for command's `response` shape.
+ * @see {@link AutoScalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAutoScalingGroupCommand extends $Command<
   CreateAutoScalingGroupCommandInput,

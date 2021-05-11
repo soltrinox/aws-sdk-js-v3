@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartDeliveryStreamEncryptionCommandInput = StartDeliveryStreamEncryptionInput;
-export type StartDeliveryStreamEncryptionCommandOutput = StartDeliveryStreamEncryptionOutput & __MetadataBearer;
+export interface StartDeliveryStreamEncryptionCommandInput extends StartDeliveryStreamEncryptionInput {}
+export interface StartDeliveryStreamEncryptionCommandOutput
+  extends StartDeliveryStreamEncryptionOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Enables server-side encryption (SSE) for the delivery stream. </p>
@@ -57,6 +59,20 @@ export type StartDeliveryStreamEncryptionCommandOutput = StartDeliveryStreamEncr
  *             <code>StartDeliveryStreamEncryption</code> 13 times and
  *             <code>StopDeliveryStreamEncryption</code> 12 times for the same delivery stream in a
  *          24-hour period.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FirehoseClient, StartDeliveryStreamEncryptionCommand } from "@aws-sdk/client-firehose"; // ES Modules import
+ * // const { FirehoseClient, StartDeliveryStreamEncryptionCommand } = require("@aws-sdk/client-firehose"); // CommonJS import
+ * const client = new FirehoseClient(config);
+ * const command = new StartDeliveryStreamEncryptionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartDeliveryStreamEncryptionCommandInput} for command's `input` shape.
+ * @see {@link StartDeliveryStreamEncryptionCommandOutput} for command's `response` shape.
+ * @see {@link FirehoseClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartDeliveryStreamEncryptionCommand extends $Command<
   StartDeliveryStreamEncryptionCommandInput,

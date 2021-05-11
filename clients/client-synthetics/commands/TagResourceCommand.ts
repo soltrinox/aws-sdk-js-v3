@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type TagResourceCommandInput = TagResourceRequest;
-export type TagResourceCommandOutput = TagResourceResponse & __MetadataBearer;
+export interface TagResourceCommandInput extends TagResourceRequest {}
+export interface TagResourceCommandOutput extends TagResourceResponse, __MetadataBearer {}
 
 /**
  * <p>Assigns one or more tags (key-value pairs) to the specified canary. </p>
@@ -31,6 +31,20 @@ export type TagResourceCommandOutput = TagResourceResponse & __MetadataBearer;
  *          with the alarm. If you specify a tag key that is already associated with the alarm, the new tag value that you specify replaces
  *          the previous value for that tag.</p>
  *          <p>You can associate as many as 50 tags with a canary.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SyntheticsClient, TagResourceCommand } from "@aws-sdk/client-synthetics"; // ES Modules import
+ * // const { SyntheticsClient, TagResourceCommand } = require("@aws-sdk/client-synthetics"); // CommonJS import
+ * const client = new SyntheticsClient(config);
+ * const command = new TagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link TagResourceCommandInput} for command's `input` shape.
+ * @see {@link TagResourceCommandOutput} for command's `response` shape.
+ * @see {@link SyntheticsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class TagResourceCommand extends $Command<
   TagResourceCommandInput,

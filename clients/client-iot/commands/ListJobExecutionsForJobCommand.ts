@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListJobExecutionsForJobCommandInput = ListJobExecutionsForJobRequest;
-export type ListJobExecutionsForJobCommandOutput = ListJobExecutionsForJobResponse & __MetadataBearer;
+export interface ListJobExecutionsForJobCommandInput extends ListJobExecutionsForJobRequest {}
+export interface ListJobExecutionsForJobCommandOutput extends ListJobExecutionsForJobResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the job executions for a job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, ListJobExecutionsForJobCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, ListJobExecutionsForJobCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new ListJobExecutionsForJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListJobExecutionsForJobCommandInput} for command's `input` shape.
+ * @see {@link ListJobExecutionsForJobCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListJobExecutionsForJobCommand extends $Command<
   ListJobExecutionsForJobCommandInput,

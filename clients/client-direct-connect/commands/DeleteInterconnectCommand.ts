@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteInterconnectCommandInput = DeleteInterconnectRequest;
-export type DeleteInterconnectCommandOutput = DeleteInterconnectResponse & __MetadataBearer;
+export interface DeleteInterconnectCommandInput extends DeleteInterconnectRequest {}
+export interface DeleteInterconnectCommandOutput extends DeleteInterconnectResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified interconnect.</p>
@@ -26,6 +26,20 @@ export type DeleteInterconnectCommandOutput = DeleteInterconnectResponse & __Met
  *             <p>Intended for use
  *         by AWS Direct Connect Partners only.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectConnectClient, DeleteInterconnectCommand } from "@aws-sdk/client-direct-connect"; // ES Modules import
+ * // const { DirectConnectClient, DeleteInterconnectCommand } = require("@aws-sdk/client-direct-connect"); // CommonJS import
+ * const client = new DirectConnectClient(config);
+ * const command = new DeleteInterconnectCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteInterconnectCommandInput} for command's `input` shape.
+ * @see {@link DeleteInterconnectCommandOutput} for command's `response` shape.
+ * @see {@link DirectConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteInterconnectCommand extends $Command<
   DeleteInterconnectCommandInput,

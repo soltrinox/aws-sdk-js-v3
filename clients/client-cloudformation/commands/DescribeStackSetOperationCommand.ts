@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeStackSetOperationCommandInput = DescribeStackSetOperationInput;
-export type DescribeStackSetOperationCommandOutput = DescribeStackSetOperationOutput & __MetadataBearer;
+export interface DescribeStackSetOperationCommandInput extends DescribeStackSetOperationInput {}
+export interface DescribeStackSetOperationCommandOutput extends DescribeStackSetOperationOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the description of the specified stack set operation. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, DescribeStackSetOperationCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, DescribeStackSetOperationCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new DescribeStackSetOperationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeStackSetOperationCommandInput} for command's `input` shape.
+ * @see {@link DescribeStackSetOperationCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeStackSetOperationCommand extends $Command<
   DescribeStackSetOperationCommandInput,

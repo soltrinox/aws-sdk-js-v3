@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListServiceActionsForProvisioningArtifactCommandInput = ListServiceActionsForProvisioningArtifactInput;
-export type ListServiceActionsForProvisioningArtifactCommandOutput = ListServiceActionsForProvisioningArtifactOutput &
-  __MetadataBearer;
+export interface ListServiceActionsForProvisioningArtifactCommandInput
+  extends ListServiceActionsForProvisioningArtifactInput {}
+export interface ListServiceActionsForProvisioningArtifactCommandOutput
+  extends ListServiceActionsForProvisioningArtifactOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, ListServiceActionsForProvisioningArtifactCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, ListServiceActionsForProvisioningArtifactCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new ListServiceActionsForProvisioningArtifactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListServiceActionsForProvisioningArtifactCommandInput} for command's `input` shape.
+ * @see {@link ListServiceActionsForProvisioningArtifactCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListServiceActionsForProvisioningArtifactCommand extends $Command<
   ListServiceActionsForProvisioningArtifactCommandInput,

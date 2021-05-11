@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetFindingCommandInput = GetFindingRequest;
-export type GetFindingCommandOutput = GetFindingResponse & __MetadataBearer;
+export interface GetFindingCommandInput extends GetFindingRequest {}
+export interface GetFindingCommandOutput extends GetFindingResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about the specified finding.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AccessAnalyzerClient, GetFindingCommand } from "@aws-sdk/client-accessanalyzer"; // ES Modules import
+ * // const { AccessAnalyzerClient, GetFindingCommand } = require("@aws-sdk/client-accessanalyzer"); // CommonJS import
+ * const client = new AccessAnalyzerClient(config);
+ * const command = new GetFindingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetFindingCommandInput} for command's `input` shape.
+ * @see {@link GetFindingCommandOutput} for command's `response` shape.
+ * @see {@link AccessAnalyzerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetFindingCommand extends $Command<
   GetFindingCommandInput,

@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartWorkspacesCommandInput = StartWorkspacesRequest;
-export type StartWorkspacesCommandOutput = StartWorkspacesResult & __MetadataBearer;
+export interface StartWorkspacesCommandInput extends StartWorkspacesRequest {}
+export interface StartWorkspacesCommandOutput extends StartWorkspacesResult, __MetadataBearer {}
 
 /**
  * <p>Starts the specified WorkSpaces.</p>
  *          <p>You cannot start a WorkSpace unless it has a running mode of <code>AutoStop</code> and a
  *          state of <code>STOPPED</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, StartWorkspacesCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, StartWorkspacesCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new StartWorkspacesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartWorkspacesCommandInput} for command's `input` shape.
+ * @see {@link StartWorkspacesCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartWorkspacesCommand extends $Command<
   StartWorkspacesCommandInput,

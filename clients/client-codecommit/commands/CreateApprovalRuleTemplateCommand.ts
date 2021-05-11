@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateApprovalRuleTemplateCommandInput = CreateApprovalRuleTemplateInput;
-export type CreateApprovalRuleTemplateCommandOutput = CreateApprovalRuleTemplateOutput & __MetadataBearer;
+export interface CreateApprovalRuleTemplateCommandInput extends CreateApprovalRuleTemplateInput {}
+export interface CreateApprovalRuleTemplateCommandOutput extends CreateApprovalRuleTemplateOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a template for approval rules that can then be associated with one or more
@@ -26,6 +26,20 @@ export type CreateApprovalRuleTemplateCommandOutput = CreateApprovalRuleTemplate
  *             CodeCommit creates an approval rule that matches the conditions of the template for all
  *             pull requests that meet the conditions of the template. For more information, see
  *             <a>AssociateApprovalRuleTemplateWithRepository</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeCommitClient, CreateApprovalRuleTemplateCommand } from "@aws-sdk/client-codecommit"; // ES Modules import
+ * // const { CodeCommitClient, CreateApprovalRuleTemplateCommand } = require("@aws-sdk/client-codecommit"); // CommonJS import
+ * const client = new CodeCommitClient(config);
+ * const command = new CreateApprovalRuleTemplateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateApprovalRuleTemplateCommandInput} for command's `input` shape.
+ * @see {@link CreateApprovalRuleTemplateCommandOutput} for command's `response` shape.
+ * @see {@link CodeCommitClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateApprovalRuleTemplateCommand extends $Command<
   CreateApprovalRuleTemplateCommandInput,

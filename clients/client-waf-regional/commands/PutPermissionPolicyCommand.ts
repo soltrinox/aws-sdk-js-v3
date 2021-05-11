@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutPermissionPolicyCommandInput = PutPermissionPolicyRequest;
-export type PutPermissionPolicyCommandOutput = PutPermissionPolicyResponse & __MetadataBearer;
+export interface PutPermissionPolicyCommandInput extends PutPermissionPolicyRequest {}
+export interface PutPermissionPolicyCommandOutput extends PutPermissionPolicyResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -62,6 +62,20 @@ export type PutPermissionPolicyCommandOutput = PutPermissionPolicyResponse & __M
  *          <p>For more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html">IAM Policies</a>.  </p>
  *
  *          <p>An example of a valid policy parameter is shown in the Examples section below.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFRegionalClient, PutPermissionPolicyCommand } from "@aws-sdk/client-waf-regional"; // ES Modules import
+ * // const { WAFRegionalClient, PutPermissionPolicyCommand } = require("@aws-sdk/client-waf-regional"); // CommonJS import
+ * const client = new WAFRegionalClient(config);
+ * const command = new PutPermissionPolicyCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutPermissionPolicyCommandInput} for command's `input` shape.
+ * @see {@link PutPermissionPolicyCommandOutput} for command's `response` shape.
+ * @see {@link WAFRegionalClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutPermissionPolicyCommand extends $Command<
   PutPermissionPolicyCommandInput,

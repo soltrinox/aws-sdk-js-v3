@@ -17,15 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteWebACLCommandInput = DeleteWebACLRequest;
-export type DeleteWebACLCommandOutput = DeleteWebACLResponse & __MetadataBearer;
+export interface DeleteWebACLCommandInput extends DeleteWebACLRequest {}
+export interface DeleteWebACLCommandOutput extends DeleteWebACLResponse, __MetadataBearer {}
 
 /**
- * <note>
- *             <p>This is the latest version of <b>AWS WAF</b>, named AWS WAFV2, released in November, 2019. For information, including how to migrate your AWS WAF resources from the prior release, see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>.  </p>
- *          </note>
- *          <p>Deletes the specified <a>WebACL</a>.</p>
+ * <p>Deletes the specified <a>WebACL</a>.</p>
  *          <p>You can only use this if <code>ManagedByFirewallManager</code> is false in the specified <a>WebACL</a>.  </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFV2Client, DeleteWebACLCommand } from "@aws-sdk/client-wafv2"; // ES Modules import
+ * // const { WAFV2Client, DeleteWebACLCommand } = require("@aws-sdk/client-wafv2"); // CommonJS import
+ * const client = new WAFV2Client(config);
+ * const command = new DeleteWebACLCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteWebACLCommandInput} for command's `input` shape.
+ * @see {@link DeleteWebACLCommandOutput} for command's `response` shape.
+ * @see {@link WAFV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteWebACLCommand extends $Command<
   DeleteWebACLCommandInput,

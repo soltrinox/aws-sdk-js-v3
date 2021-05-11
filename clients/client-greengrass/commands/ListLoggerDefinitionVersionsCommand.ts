@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListLoggerDefinitionVersionsCommandInput = ListLoggerDefinitionVersionsRequest;
-export type ListLoggerDefinitionVersionsCommandOutput = ListLoggerDefinitionVersionsResponse & __MetadataBearer;
+export interface ListLoggerDefinitionVersionsCommandInput extends ListLoggerDefinitionVersionsRequest {}
+export interface ListLoggerDefinitionVersionsCommandOutput
+  extends ListLoggerDefinitionVersionsResponse,
+    __MetadataBearer {}
 
 /**
  * Lists the versions of a logger definition.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, ListLoggerDefinitionVersionsCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, ListLoggerDefinitionVersionsCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new ListLoggerDefinitionVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListLoggerDefinitionVersionsCommandInput} for command's `input` shape.
+ * @see {@link ListLoggerDefinitionVersionsCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListLoggerDefinitionVersionsCommand extends $Command<
   ListLoggerDefinitionVersionsCommandInput,

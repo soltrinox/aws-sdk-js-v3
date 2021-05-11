@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyMountTargetSecurityGroupsCommandInput = ModifyMountTargetSecurityGroupsRequest;
-export type ModifyMountTargetSecurityGroupsCommandOutput = __MetadataBearer;
+export interface ModifyMountTargetSecurityGroupsCommandInput extends ModifyMountTargetSecurityGroupsRequest {}
+export interface ModifyMountTargetSecurityGroupsCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Modifies the set of security groups in effect for a mount target.</p>
@@ -41,6 +41,20 @@ export type ModifyMountTargetSecurityGroupsCommandOutput = __MetadataBearer;
  *           interface. </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EFSClient, ModifyMountTargetSecurityGroupsCommand } from "@aws-sdk/client-efs"; // ES Modules import
+ * // const { EFSClient, ModifyMountTargetSecurityGroupsCommand } = require("@aws-sdk/client-efs"); // CommonJS import
+ * const client = new EFSClient(config);
+ * const command = new ModifyMountTargetSecurityGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyMountTargetSecurityGroupsCommandInput} for command's `input` shape.
+ * @see {@link ModifyMountTargetSecurityGroupsCommandOutput} for command's `response` shape.
+ * @see {@link EFSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyMountTargetSecurityGroupsCommand extends $Command<
   ModifyMountTargetSecurityGroupsCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListThingGroupsCommandInput = ListThingGroupsRequest;
-export type ListThingGroupsCommandOutput = ListThingGroupsResponse & __MetadataBearer;
+export interface ListThingGroupsCommandInput extends ListThingGroupsRequest {}
+export interface ListThingGroupsCommandOutput extends ListThingGroupsResponse, __MetadataBearer {}
 
 /**
  * <p>List the thing groups in your account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, ListThingGroupsCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, ListThingGroupsCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new ListThingGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListThingGroupsCommandInput} for command's `input` shape.
+ * @see {@link ListThingGroupsCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListThingGroupsCommand extends $Command<
   ListThingGroupsCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RefreshTrustedAdvisorCheckCommandInput = RefreshTrustedAdvisorCheckRequest;
-export type RefreshTrustedAdvisorCheckCommandOutput = RefreshTrustedAdvisorCheckResponse & __MetadataBearer;
+export interface RefreshTrustedAdvisorCheckCommandInput extends RefreshTrustedAdvisorCheckRequest {}
+export interface RefreshTrustedAdvisorCheckCommandOutput extends RefreshTrustedAdvisorCheckResponse, __MetadataBearer {}
 
 /**
  * <p>Refreshes the AWS Trusted Advisor check that you specify using the check ID. You can get the
@@ -45,6 +45,20 @@ export type RefreshTrustedAdvisorCheckCommandOutput = RefreshTrustedAdvisorCheck
  *                 </li>
  *             </ul>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SupportClient, RefreshTrustedAdvisorCheckCommand } from "@aws-sdk/client-support"; // ES Modules import
+ * // const { SupportClient, RefreshTrustedAdvisorCheckCommand } = require("@aws-sdk/client-support"); // CommonJS import
+ * const client = new SupportClient(config);
+ * const command = new RefreshTrustedAdvisorCheckCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RefreshTrustedAdvisorCheckCommandInput} for command's `input` shape.
+ * @see {@link RefreshTrustedAdvisorCheckCommandOutput} for command's `response` shape.
+ * @see {@link SupportClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RefreshTrustedAdvisorCheckCommand extends $Command<
   RefreshTrustedAdvisorCheckCommandInput,

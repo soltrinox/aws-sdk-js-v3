@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateCustomKeyStoreCommandInput = CreateCustomKeyStoreRequest;
-export type CreateCustomKeyStoreCommandOutput = CreateCustomKeyStoreResponse & __MetadataBearer;
+export interface CreateCustomKeyStoreCommandInput extends CreateCustomKeyStoreRequest {}
+export interface CreateCustomKeyStoreCommandOutput extends CreateCustomKeyStoreResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a <a href="https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html">custom key store</a> that is associated with an <a href="https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html">AWS CloudHSM cluster</a> that you own and
@@ -37,6 +37,54 @@ export type CreateCustomKeyStoreCommandOutput = CreateCustomKeyStoreResponse & _
  *       to use it.</p>
  *          <p>For help with failures, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html">Troubleshooting a Custom Key Store</a> in the
  *       <i>AWS Key Management Service Developer Guide</i>.</p>
+ *          <p>
+ *             <b>Cross-account use</b>: No. You cannot perform this operation on a custom key store in a different AWS account.</p>
+ *          <p>
+ *             <b>Required permissions</b>: <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:CreateCustomKeyStore</a> (IAM policy).</p>
+ *          <p>
+ *             <b>Related operations:</b>
+ *          </p>
+ *          <ul>
+ *             <li>
+ *                <p>
+ *                   <a>ConnectCustomKeyStore</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>DeleteCustomKeyStore</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>DescribeCustomKeyStores</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>DisconnectCustomKeyStore</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>UpdateCustomKeyStore</a>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, CreateCustomKeyStoreCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, CreateCustomKeyStoreCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new CreateCustomKeyStoreCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateCustomKeyStoreCommandInput} for command's `input` shape.
+ * @see {@link CreateCustomKeyStoreCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateCustomKeyStoreCommand extends $Command<
   CreateCustomKeyStoreCommandInput,

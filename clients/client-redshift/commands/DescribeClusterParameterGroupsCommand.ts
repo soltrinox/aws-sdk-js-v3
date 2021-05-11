@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeClusterParameterGroupsCommandInput = DescribeClusterParameterGroupsMessage;
-export type DescribeClusterParameterGroupsCommandOutput = ClusterParameterGroupsMessage & __MetadataBearer;
+export interface DescribeClusterParameterGroupsCommandInput extends DescribeClusterParameterGroupsMessage {}
+export interface DescribeClusterParameterGroupsCommandOutput extends ClusterParameterGroupsMessage, __MetadataBearer {}
 
 /**
  * <p>Returns a list of Amazon Redshift parameter groups, including parameter groups you
@@ -38,6 +38,20 @@ export type DescribeClusterParameterGroupsCommandOutput = ClusterParameterGroups
  *         <p>If both tag keys and values are omitted from the request, parameter groups are
  *             returned regardless of whether they have tag keys or values associated with
  *             them.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, DescribeClusterParameterGroupsCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, DescribeClusterParameterGroupsCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new DescribeClusterParameterGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeClusterParameterGroupsCommandInput} for command's `input` shape.
+ * @see {@link DescribeClusterParameterGroupsCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeClusterParameterGroupsCommand extends $Command<
   DescribeClusterParameterGroupsCommandInput,

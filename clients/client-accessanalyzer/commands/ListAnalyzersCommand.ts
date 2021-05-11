@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAnalyzersCommandInput = ListAnalyzersRequest;
-export type ListAnalyzersCommandOutput = ListAnalyzersResponse & __MetadataBearer;
+export interface ListAnalyzersCommandInput extends ListAnalyzersRequest {}
+export interface ListAnalyzersCommandOutput extends ListAnalyzersResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a list of analyzers.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AccessAnalyzerClient, ListAnalyzersCommand } from "@aws-sdk/client-accessanalyzer"; // ES Modules import
+ * // const { AccessAnalyzerClient, ListAnalyzersCommand } = require("@aws-sdk/client-accessanalyzer"); // CommonJS import
+ * const client = new AccessAnalyzerClient(config);
+ * const command = new ListAnalyzersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAnalyzersCommandInput} for command's `input` shape.
+ * @see {@link ListAnalyzersCommandOutput} for command's `response` shape.
+ * @see {@link AccessAnalyzerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAnalyzersCommand extends $Command<
   ListAnalyzersCommandInput,

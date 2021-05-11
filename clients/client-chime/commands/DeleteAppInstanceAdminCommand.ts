@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAppInstanceAdminCommandInput = DeleteAppInstanceAdminRequest;
-export type DeleteAppInstanceAdminCommandOutput = __MetadataBearer;
+export interface DeleteAppInstanceAdminCommandInput extends DeleteAppInstanceAdminRequest {}
+export interface DeleteAppInstanceAdminCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Demotes an <code>AppInstanceAdmin</code> to an <code>AppInstanceUser</code>. This action does not delete the user.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, DeleteAppInstanceAdminCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, DeleteAppInstanceAdminCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new DeleteAppInstanceAdminCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAppInstanceAdminCommandInput} for command's `input` shape.
+ * @see {@link DeleteAppInstanceAdminCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAppInstanceAdminCommand extends $Command<
   DeleteAppInstanceAdminCommandInput,

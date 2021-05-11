@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateRuleGroupCommandInput = CreateRuleGroupRequest;
-export type CreateRuleGroupCommandOutput = CreateRuleGroupResponse & __MetadataBearer;
+export interface CreateRuleGroupCommandInput extends CreateRuleGroupRequest {}
+export interface CreateRuleGroupCommandOutput extends CreateRuleGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Creates the specified stateless or stateful rule group, which includes the rules for
  *          network traffic inspection, a capacity setting, and tags. </p>
  *          <p>You provide your rule group specification in your request using either
  *             <code>RuleGroup</code> or <code>Rules</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkFirewallClient, CreateRuleGroupCommand } from "@aws-sdk/client-network-firewall"; // ES Modules import
+ * // const { NetworkFirewallClient, CreateRuleGroupCommand } = require("@aws-sdk/client-network-firewall"); // CommonJS import
+ * const client = new NetworkFirewallClient(config);
+ * const command = new CreateRuleGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateRuleGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateRuleGroupCommandOutput} for command's `response` shape.
+ * @see {@link NetworkFirewallClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateRuleGroupCommand extends $Command<
   CreateRuleGroupCommandInput,

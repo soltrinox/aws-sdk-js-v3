@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateQualificationTypeCommandInput = UpdateQualificationTypeRequest;
-export type UpdateQualificationTypeCommandOutput = UpdateQualificationTypeResponse & __MetadataBearer;
+export interface UpdateQualificationTypeCommandInput extends UpdateQualificationTypeRequest {}
+export interface UpdateQualificationTypeCommandOutput extends UpdateQualificationTypeResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -54,6 +54,20 @@ export type UpdateQualificationTypeCommandOutput = UpdateQualificationTypeRespon
  *             granted manually. </p>
  *         <p> You can also update the AutoGranted and AutoGrantedValue
  *             attributes of the Qualification type.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, UpdateQualificationTypeCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, UpdateQualificationTypeCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new UpdateQualificationTypeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateQualificationTypeCommandInput} for command's `input` shape.
+ * @see {@link UpdateQualificationTypeCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateQualificationTypeCommand extends $Command<
   UpdateQualificationTypeCommandInput,

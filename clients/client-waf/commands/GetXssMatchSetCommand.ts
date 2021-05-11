@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetXssMatchSetCommandInput = GetXssMatchSetRequest;
-export type GetXssMatchSetCommandOutput = GetXssMatchSetResponse & __MetadataBearer;
+export interface GetXssMatchSetCommandInput extends GetXssMatchSetRequest {}
+export interface GetXssMatchSetCommandOutput extends GetXssMatchSetResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -30,6 +30,20 @@ export type GetXssMatchSetCommandOutput = GetXssMatchSetResponse & __MetadataBea
  *       WAF</b>, use the AWS WAFV2 API and see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>. With the latest version, AWS WAF has a single set of endpoints for regional and global use. </p>
  *          </note>
  * 		       <p>Returns the <a>XssMatchSet</a> that is specified by <code>XssMatchSetId</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFClient, GetXssMatchSetCommand } from "@aws-sdk/client-waf"; // ES Modules import
+ * // const { WAFClient, GetXssMatchSetCommand } = require("@aws-sdk/client-waf"); // CommonJS import
+ * const client = new WAFClient(config);
+ * const command = new GetXssMatchSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetXssMatchSetCommandInput} for command's `input` shape.
+ * @see {@link GetXssMatchSetCommandOutput} for command's `response` shape.
+ * @see {@link WAFClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetXssMatchSetCommand extends $Command<
   GetXssMatchSetCommandInput,

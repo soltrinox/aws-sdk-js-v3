@@ -17,14 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListRuleGroupsCommandInput = ListRuleGroupsRequest;
-export type ListRuleGroupsCommandOutput = ListRuleGroupsResponse & __MetadataBearer;
+export interface ListRuleGroupsCommandInput extends ListRuleGroupsRequest {}
+export interface ListRuleGroupsCommandOutput extends ListRuleGroupsResponse, __MetadataBearer {}
 
 /**
- * <note>
- *             <p>This is the latest version of <b>AWS WAF</b>, named AWS WAFV2, released in November, 2019. For information, including how to migrate your AWS WAF resources from the prior release, see the <a href="https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html">AWS WAF Developer Guide</a>.  </p>
- *          </note>
- *          <p>Retrieves an array of <a>RuleGroupSummary</a> objects for the rule groups that you manage. </p>
+ * <p>Retrieves an array of <a>RuleGroupSummary</a> objects for the rule groups that you manage. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFV2Client, ListRuleGroupsCommand } from "@aws-sdk/client-wafv2"; // ES Modules import
+ * // const { WAFV2Client, ListRuleGroupsCommand } = require("@aws-sdk/client-wafv2"); // CommonJS import
+ * const client = new WAFV2Client(config);
+ * const command = new ListRuleGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListRuleGroupsCommandInput} for command's `input` shape.
+ * @see {@link ListRuleGroupsCommandOutput} for command's `response` shape.
+ * @see {@link WAFV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListRuleGroupsCommand extends $Command<
   ListRuleGroupsCommandInput,

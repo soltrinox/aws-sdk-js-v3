@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListContactFlowsCommandInput = ListContactFlowsRequest;
-export type ListContactFlowsCommandOutput = ListContactFlowsResponse & __MetadataBearer;
+export interface ListContactFlowsCommandInput extends ListContactFlowsRequest {}
+export interface ListContactFlowsCommandOutput extends ListContactFlowsResponse, __MetadataBearer {}
 
 /**
  * <p>Provides information about the contact flows for the specified Amazon Connect instance.</p>
@@ -26,6 +26,20 @@ export type ListContactFlowsCommandOutput = ListContactFlowsResponse & __Metadat
  *    Flow language</a>.</p>
  *          <p>For more information about contact flows, see <a href="https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html">Contact Flows</a> in the
  *     <i>Amazon Connect Administrator Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, ListContactFlowsCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, ListContactFlowsCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new ListContactFlowsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListContactFlowsCommandInput} for command's `input` shape.
+ * @see {@link ListContactFlowsCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListContactFlowsCommand extends $Command<
   ListContactFlowsCommandInput,

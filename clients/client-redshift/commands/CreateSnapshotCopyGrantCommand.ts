@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateSnapshotCopyGrantCommandInput = CreateSnapshotCopyGrantMessage;
-export type CreateSnapshotCopyGrantCommandOutput = CreateSnapshotCopyGrantResult & __MetadataBearer;
+export interface CreateSnapshotCopyGrantCommandInput extends CreateSnapshotCopyGrantMessage {}
+export interface CreateSnapshotCopyGrantCommandOutput extends CreateSnapshotCopyGrantResult, __MetadataBearer {}
 
 /**
  * <p>Creates a snapshot copy grant that permits Amazon Redshift to use a customer master key
@@ -29,6 +29,20 @@ export type CreateSnapshotCopyGrantCommandOutput = CreateSnapshotCopyGrantResult
  * <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html">Amazon Redshift Database Encryption</a>
  * in the <i>Amazon Redshift Cluster Management Guide</i>.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, CreateSnapshotCopyGrantCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, CreateSnapshotCopyGrantCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new CreateSnapshotCopyGrantCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateSnapshotCopyGrantCommandInput} for command's `input` shape.
+ * @see {@link CreateSnapshotCopyGrantCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateSnapshotCopyGrantCommand extends $Command<
   CreateSnapshotCopyGrantCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteLayerCommandInput = DeleteLayerRequest;
-export type DeleteLayerCommandOutput = __MetadataBearer;
+export interface DeleteLayerCommandInput extends DeleteLayerRequest {}
+export interface DeleteLayerCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Deletes a specified layer. You must first stop and then delete all associated instances or
@@ -29,6 +29,20 @@ export type DeleteLayerCommandOutput = __MetadataBearer;
  *       level for the stack, or an attached policy that explicitly grants permissions. For more
  *       information on user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, DeleteLayerCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, DeleteLayerCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new DeleteLayerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteLayerCommandInput} for command's `input` shape.
+ * @see {@link DeleteLayerCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteLayerCommand extends $Command<
   DeleteLayerCommandInput,

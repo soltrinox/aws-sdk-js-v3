@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCacheClustersCommandInput = DescribeCacheClustersMessage;
-export type DescribeCacheClustersCommandOutput = CacheClusterMessage & __MetadataBearer;
+export interface DescribeCacheClustersCommandInput extends DescribeCacheClustersMessage {}
+export interface DescribeCacheClustersCommandOutput extends CacheClusterMessage, __MetadataBearer {}
 
 /**
  * <p>Returns information about all provisioned
@@ -37,6 +37,20 @@ export type DescribeCacheClustersCommandOutput = CacheClusterMessage & __Metadat
  *             ready for use.</p>
  *         <p>If cache nodes are currently being removed from the cluster, no endpoint information
  *             for the removed nodes is displayed.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, DescribeCacheClustersCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, DescribeCacheClustersCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new DescribeCacheClustersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCacheClustersCommandInput} for command's `input` shape.
+ * @see {@link DescribeCacheClustersCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCacheClustersCommand extends $Command<
   DescribeCacheClustersCommandInput,

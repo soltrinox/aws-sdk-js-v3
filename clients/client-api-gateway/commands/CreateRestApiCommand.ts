@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateRestApiCommandInput = CreateRestApiRequest;
-export type CreateRestApiCommandOutput = RestApi & __MetadataBearer;
+export interface CreateRestApiCommandInput extends CreateRestApiRequest {}
+export interface CreateRestApiCommandOutput extends RestApi, __MetadataBearer {}
 
 /**
  * <p>Creates a new <a>RestApi</a> resource.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, CreateRestApiCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, CreateRestApiCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new CreateRestApiCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateRestApiCommandInput} for command's `input` shape.
+ * @see {@link CreateRestApiCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateRestApiCommand extends $Command<
   CreateRestApiCommandInput,

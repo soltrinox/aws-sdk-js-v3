@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTeamMembersCommandInput = ListTeamMembersRequest;
-export type ListTeamMembersCommandOutput = ListTeamMembersResult & __MetadataBearer;
+export interface ListTeamMembersCommandInput extends ListTeamMembersRequest {}
+export interface ListTeamMembersCommandOutput extends ListTeamMembersResult, __MetadataBearer {}
 
 /**
  * <p>Lists all team members associated with a project.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeStarClient, ListTeamMembersCommand } from "@aws-sdk/client-codestar"; // ES Modules import
+ * // const { CodeStarClient, ListTeamMembersCommand } = require("@aws-sdk/client-codestar"); // CommonJS import
+ * const client = new CodeStarClient(config);
+ * const command = new ListTeamMembersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTeamMembersCommandInput} for command's `input` shape.
+ * @see {@link ListTeamMembersCommandOutput} for command's `response` shape.
+ * @see {@link CodeStarClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTeamMembersCommand extends $Command<
   ListTeamMembersCommandInput,

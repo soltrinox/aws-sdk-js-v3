@@ -17,11 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAppInstanceUsersCommandInput = ListAppInstanceUsersRequest;
-export type ListAppInstanceUsersCommandOutput = ListAppInstanceUsersResponse & __MetadataBearer;
+export interface ListAppInstanceUsersCommandInput extends ListAppInstanceUsersRequest {}
+export interface ListAppInstanceUsersCommandOutput extends ListAppInstanceUsersResponse, __MetadataBearer {}
 
 /**
- * <p>List all <code>AppInstanceUsers</code> created under a single app instance.</p>
+ * <p>
+ * List all
+ * <code>AppInstanceUsers</code>
+ * created under a single <code>AppInstance</code>.
+ * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, ListAppInstanceUsersCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, ListAppInstanceUsersCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new ListAppInstanceUsersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAppInstanceUsersCommandInput} for command's `input` shape.
+ * @see {@link ListAppInstanceUsersCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAppInstanceUsersCommand extends $Command<
   ListAppInstanceUsersCommandInput,

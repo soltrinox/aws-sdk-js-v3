@@ -18,6 +18,7 @@ import {
 import { DeleteScheduleCommandInput, DeleteScheduleCommandOutput } from "./commands/DeleteScheduleCommand";
 import { DescribeDatasetCommandInput, DescribeDatasetCommandOutput } from "./commands/DescribeDatasetCommand";
 import { DescribeJobCommandInput, DescribeJobCommandOutput } from "./commands/DescribeJobCommand";
+import { DescribeJobRunCommandInput, DescribeJobRunCommandOutput } from "./commands/DescribeJobRunCommand";
 import { DescribeProjectCommandInput, DescribeProjectCommandOutput } from "./commands/DescribeProjectCommand";
 import { DescribeRecipeCommandInput, DescribeRecipeCommandOutput } from "./commands/DescribeRecipeCommand";
 import { DescribeScheduleCommandInput, DescribeScheduleCommandOutput } from "./commands/DescribeScheduleCommand";
@@ -117,6 +118,7 @@ export type ServiceInputTypes =
   | DeleteScheduleCommandInput
   | DescribeDatasetCommandInput
   | DescribeJobCommandInput
+  | DescribeJobRunCommandInput
   | DescribeProjectCommandInput
   | DescribeRecipeCommandInput
   | DescribeScheduleCommandInput
@@ -157,6 +159,7 @@ export type ServiceOutputTypes =
   | DeleteScheduleCommandOutput
   | DescribeDatasetCommandOutput
   | DescribeJobCommandOutput
+  | DescribeJobRunCommandOutput
   | DescribeProjectCommandOutput
   | DescribeRecipeCommandOutput
   | DescribeScheduleCommandOutput
@@ -247,7 +250,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -278,7 +281,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type DataBrewClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type DataBrewClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -286,8 +289,12 @@ export type DataBrewClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOp
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of DataBrewClient class constructor that set the region, credentials and other options.
+ */
+export interface DataBrewClientConfig extends DataBrewClientConfigType {}
 
-export type DataBrewClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type DataBrewClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -295,6 +302,10 @@ export type DataBrewClientResolvedConfig = __SmithyResolvedConfiguration<__HttpH
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of DataBrewClient class. This is resolved and normalized from the {@link DataBrewClientConfig | constructor configuration interface}.
+ */
+export interface DataBrewClientResolvedConfig extends DataBrewClientResolvedConfigType {}
 
 /**
  * <p>AWS Glue DataBrew is a visual, cloud-scale data-preparation service. DataBrew
@@ -308,6 +319,9 @@ export class DataBrewClient extends __Client<
   ServiceOutputTypes,
   DataBrewClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of DataBrewClient class. This is resolved and normalized from the {@link DataBrewClientConfig | constructor configuration interface}.
+   */
   readonly config: DataBrewClientResolvedConfig;
 
   constructor(configuration: DataBrewClientConfig) {

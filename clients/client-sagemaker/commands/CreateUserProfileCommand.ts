@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateUserProfileCommandInput = CreateUserProfileRequest;
-export type CreateUserProfileCommandOutput = CreateUserProfileResponse & __MetadataBearer;
+export interface CreateUserProfileCommandInput extends CreateUserProfileRequest {}
+export interface CreateUserProfileCommandOutput extends CreateUserProfileResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a user profile. A user profile represents a single user within a domain, and is
@@ -28,6 +28,20 @@ export type CreateUserProfileCommandOutput = CreateUserProfileResponse & __Metad
  *      automatically created. A user profile is the primary holder of settings for an individual
  *      user and has a reference to the user's private Amazon Elastic File System (EFS) home directory.
  *    </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, CreateUserProfileCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, CreateUserProfileCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new CreateUserProfileCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateUserProfileCommandInput} for command's `input` shape.
+ * @see {@link CreateUserProfileCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateUserProfileCommand extends $Command<
   CreateUserProfileCommandInput,

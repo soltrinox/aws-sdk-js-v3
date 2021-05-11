@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListTemplatesCommandInput = ListTemplatesRequest;
-export type ListTemplatesCommandOutput = ListTemplatesResponse & __MetadataBearer;
+export interface ListTemplatesCommandInput extends ListTemplatesRequest {}
+export interface ListTemplatesCommandOutput extends ListTemplatesResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about all the message templates that are associated with your Amazon Pinpoint account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, ListTemplatesCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, ListTemplatesCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new ListTemplatesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListTemplatesCommandInput} for command's `input` shape.
+ * @see {@link ListTemplatesCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListTemplatesCommand extends $Command<
   ListTemplatesCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCampaignVersionsCommandInput = GetCampaignVersionsRequest;
-export type GetCampaignVersionsCommandOutput = GetCampaignVersionsResponse & __MetadataBearer;
+export interface GetCampaignVersionsCommandInput extends GetCampaignVersionsRequest {}
+export interface GetCampaignVersionsCommandOutput extends GetCampaignVersionsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves information about the status, configuration, and other settings for all versions of a campaign.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PinpointClient, GetCampaignVersionsCommand } from "@aws-sdk/client-pinpoint"; // ES Modules import
+ * // const { PinpointClient, GetCampaignVersionsCommand } = require("@aws-sdk/client-pinpoint"); // CommonJS import
+ * const client = new PinpointClient(config);
+ * const command = new GetCampaignVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCampaignVersionsCommandInput} for command's `input` shape.
+ * @see {@link GetCampaignVersionsCommandOutput} for command's `response` shape.
+ * @see {@link PinpointClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCampaignVersionsCommand extends $Command<
   GetCampaignVersionsCommandInput,

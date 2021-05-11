@@ -22,12 +22,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateUserPoolCommandInput = CreateUserPoolRequest;
-export type CreateUserPoolCommandOutput = CreateUserPoolResponse & __MetadataBearer;
+export interface CreateUserPoolCommandInput extends CreateUserPoolRequest {}
+export interface CreateUserPoolCommandOutput extends CreateUserPoolResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new Amazon Cognito user pool and sets the password policy for the
  *             pool.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, CreateUserPoolCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, CreateUserPoolCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new CreateUserPoolCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateUserPoolCommandInput} for command's `input` shape.
+ * @see {@link CreateUserPoolCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateUserPoolCommand extends $Command<
   CreateUserPoolCommandInput,

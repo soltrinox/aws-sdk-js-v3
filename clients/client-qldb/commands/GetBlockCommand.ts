@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBlockCommandInput = GetBlockRequest;
-export type GetBlockCommandOutput = GetBlockResponse & __MetadataBearer;
+export interface GetBlockCommandInput extends GetBlockRequest {}
+export interface GetBlockCommandOutput extends GetBlockResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a block object at a specified address in a journal. Also returns a proof of the
@@ -31,6 +31,20 @@ export type GetBlockCommandOutput = GetBlockResponse & __MetadataBearer;
  *             <code>ResourcePreconditionNotMetException</code>.</p>
  *          <p>If no block exists with the specified address, then throws
  *             <code>InvalidParameterException</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QLDBClient, GetBlockCommand } from "@aws-sdk/client-qldb"; // ES Modules import
+ * // const { QLDBClient, GetBlockCommand } = require("@aws-sdk/client-qldb"); // CommonJS import
+ * const client = new QLDBClient(config);
+ * const command = new GetBlockCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBlockCommandInput} for command's `input` shape.
+ * @see {@link GetBlockCommandOutput} for command's `response` shape.
+ * @see {@link QLDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBlockCommand extends $Command<GetBlockCommandInput, GetBlockCommandOutput, QLDBClientResolvedConfig> {
   // Start section: command_properties

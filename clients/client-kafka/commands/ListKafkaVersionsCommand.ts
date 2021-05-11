@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListKafkaVersionsCommandInput = ListKafkaVersionsRequest;
-export type ListKafkaVersionsCommandOutput = ListKafkaVersionsResponse & __MetadataBearer;
+export interface ListKafkaVersionsCommandInput extends ListKafkaVersionsRequest {}
+export interface ListKafkaVersionsCommandOutput extends ListKafkaVersionsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a list of Kafka versions.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, ListKafkaVersionsCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, ListKafkaVersionsCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new ListKafkaVersionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListKafkaVersionsCommandInput} for command's `input` shape.
+ * @see {@link ListKafkaVersionsCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListKafkaVersionsCommand extends $Command<
   ListKafkaVersionsCommandInput,

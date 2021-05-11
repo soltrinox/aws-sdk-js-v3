@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetFindingsStatisticsCommandInput = GetFindingsStatisticsRequest;
-export type GetFindingsStatisticsCommandOutput = GetFindingsStatisticsResponse & __MetadataBearer;
+export interface GetFindingsStatisticsCommandInput extends GetFindingsStatisticsRequest {}
+export interface GetFindingsStatisticsCommandOutput extends GetFindingsStatisticsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists Amazon GuardDuty findings statistics for the specified detector ID.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GuardDutyClient, GetFindingsStatisticsCommand } from "@aws-sdk/client-guardduty"; // ES Modules import
+ * // const { GuardDutyClient, GetFindingsStatisticsCommand } = require("@aws-sdk/client-guardduty"); // CommonJS import
+ * const client = new GuardDutyClient(config);
+ * const command = new GetFindingsStatisticsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetFindingsStatisticsCommandInput} for command's `input` shape.
+ * @see {@link GetFindingsStatisticsCommandOutput} for command's `response` shape.
+ * @see {@link GuardDutyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetFindingsStatisticsCommand extends $Command<
   GetFindingsStatisticsCommandInput,

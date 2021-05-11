@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateNodeCommandInput = DisassociateNodeRequest;
-export type DisassociateNodeCommandOutput = DisassociateNodeResponse & __MetadataBearer;
+export interface DisassociateNodeCommandInput extends DisassociateNodeRequest {}
+export interface DisassociateNodeCommandOutput extends DisassociateNodeResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -29,6 +29,20 @@ export type DisassociateNodeCommandOutput = DisassociateNodeResponse & __Metadat
  *       A <code>ResourceNotFoundException</code> is thrown when the server does not exist.
  *       A <code>ValidationException</code> is raised when parameters of the request are not valid.
  *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksCMClient, DisassociateNodeCommand } from "@aws-sdk/client-opsworkscm"; // ES Modules import
+ * // const { OpsWorksCMClient, DisassociateNodeCommand } = require("@aws-sdk/client-opsworkscm"); // CommonJS import
+ * const client = new OpsWorksCMClient(config);
+ * const command = new DisassociateNodeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateNodeCommandInput} for command's `input` shape.
+ * @see {@link DisassociateNodeCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksCMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateNodeCommand extends $Command<
   DisassociateNodeCommandInput,

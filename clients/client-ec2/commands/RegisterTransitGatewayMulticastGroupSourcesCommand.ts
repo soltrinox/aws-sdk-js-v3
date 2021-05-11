@@ -20,9 +20,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RegisterTransitGatewayMulticastGroupSourcesCommandInput = RegisterTransitGatewayMulticastGroupSourcesRequest;
-export type RegisterTransitGatewayMulticastGroupSourcesCommandOutput = RegisterTransitGatewayMulticastGroupSourcesResult &
-  __MetadataBearer;
+export interface RegisterTransitGatewayMulticastGroupSourcesCommandInput
+  extends RegisterTransitGatewayMulticastGroupSourcesRequest {}
+export interface RegisterTransitGatewayMulticastGroupSourcesCommandOutput
+  extends RegisterTransitGatewayMulticastGroupSourcesResult,
+    __MetadataBearer {}
 
 /**
  * <p>Registers sources (network interfaces) with the specified  transit gateway multicast group.</p>
@@ -31,6 +33,20 @@ export type RegisterTransitGatewayMulticastGroupSourcesCommandOutput = RegisterT
  *                 Considerations</a> in <i>Amazon VPC Transit Gateways</i>.</p>
  *         <p>After you add the source, use <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html">SearchTransitGatewayMulticastGroups</a> to verify that the source was added to the multicast
  *             group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, RegisterTransitGatewayMulticastGroupSourcesCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, RegisterTransitGatewayMulticastGroupSourcesCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new RegisterTransitGatewayMulticastGroupSourcesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RegisterTransitGatewayMulticastGroupSourcesCommandInput} for command's `input` shape.
+ * @see {@link RegisterTransitGatewayMulticastGroupSourcesCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RegisterTransitGatewayMulticastGroupSourcesCommand extends $Command<
   RegisterTransitGatewayMulticastGroupSourcesCommandInput,

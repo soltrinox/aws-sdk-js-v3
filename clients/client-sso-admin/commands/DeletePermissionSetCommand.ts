@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeletePermissionSetCommandInput = DeletePermissionSetRequest;
-export type DeletePermissionSetCommandOutput = DeletePermissionSetResponse & __MetadataBearer;
+export interface DeletePermissionSetCommandInput extends DeletePermissionSetRequest {}
+export interface DeletePermissionSetCommandOutput extends DeletePermissionSetResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes the specified permission set.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSOAdminClient, DeletePermissionSetCommand } from "@aws-sdk/client-sso-admin"; // ES Modules import
+ * // const { SSOAdminClient, DeletePermissionSetCommand } = require("@aws-sdk/client-sso-admin"); // CommonJS import
+ * const client = new SSOAdminClient(config);
+ * const command = new DeletePermissionSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeletePermissionSetCommandInput} for command's `input` shape.
+ * @see {@link DeletePermissionSetCommandOutput} for command's `response` shape.
+ * @see {@link SSOAdminClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeletePermissionSetCommand extends $Command<
   DeletePermissionSetCommandInput,

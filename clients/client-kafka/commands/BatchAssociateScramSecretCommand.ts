@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchAssociateScramSecretCommandInput = BatchAssociateScramSecretRequest;
-export type BatchAssociateScramSecretCommandOutput = BatchAssociateScramSecretResponse & __MetadataBearer;
+export interface BatchAssociateScramSecretCommandInput extends BatchAssociateScramSecretRequest {}
+export interface BatchAssociateScramSecretCommandOutput extends BatchAssociateScramSecretResponse, __MetadataBearer {}
 
 /**
  * <p>Associates one or more Scram Secrets with an Amazon MSK cluster.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KafkaClient, BatchAssociateScramSecretCommand } from "@aws-sdk/client-kafka"; // ES Modules import
+ * // const { KafkaClient, BatchAssociateScramSecretCommand } = require("@aws-sdk/client-kafka"); // CommonJS import
+ * const client = new KafkaClient(config);
+ * const command = new BatchAssociateScramSecretCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchAssociateScramSecretCommandInput} for command's `input` shape.
+ * @see {@link BatchAssociateScramSecretCommandOutput} for command's `response` shape.
+ * @see {@link KafkaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchAssociateScramSecretCommand extends $Command<
   BatchAssociateScramSecretCommandInput,

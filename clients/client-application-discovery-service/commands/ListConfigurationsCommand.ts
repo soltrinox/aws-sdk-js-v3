@@ -21,13 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListConfigurationsCommandInput = ListConfigurationsRequest;
-export type ListConfigurationsCommandOutput = ListConfigurationsResponse & __MetadataBearer;
+export interface ListConfigurationsCommandInput extends ListConfigurationsRequest {}
+export interface ListConfigurationsCommandOutput extends ListConfigurationsResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a list of configuration items as specified by the value passed to the
  *       required parameter <code>configurationType</code>. Optional filtering may be applied to refine
  *       search results.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationDiscoveryServiceClient, ListConfigurationsCommand } from "@aws-sdk/client-application-discovery-service"; // ES Modules import
+ * // const { ApplicationDiscoveryServiceClient, ListConfigurationsCommand } = require("@aws-sdk/client-application-discovery-service"); // CommonJS import
+ * const client = new ApplicationDiscoveryServiceClient(config);
+ * const command = new ListConfigurationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListConfigurationsCommandInput} for command's `input` shape.
+ * @see {@link ListConfigurationsCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationDiscoveryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListConfigurationsCommand extends $Command<
   ListConfigurationsCommandInput,

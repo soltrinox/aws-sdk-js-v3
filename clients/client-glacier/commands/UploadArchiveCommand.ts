@@ -17,10 +17,17 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UploadArchiveCommandInput = Omit<UploadArchiveInput, "body"> & {
+type UploadArchiveCommandInputType = Omit<UploadArchiveInput, "body"> & {
+  /**
+   * For *`UploadArchiveInput["body"]`*, see {@link UploadArchiveInput.body}.
+   */
   body?: UploadArchiveInput["body"] | string | Uint8Array | Buffer;
 };
-export type UploadArchiveCommandOutput = ArchiveCreationOutput & __MetadataBearer;
+/**
+ * This interface extends from `UploadArchiveInput` interface. There are more parameters than `body` defined in {@link UploadArchiveInput}
+ */
+export interface UploadArchiveCommandInput extends UploadArchiveCommandInputType {}
+export interface UploadArchiveCommandOutput extends ArchiveCreationOutput, __MetadataBearer {}
 
 /**
  * <p>This operation adds an archive to a vault. This is a synchronous operation, and for a
@@ -55,6 +62,20 @@ export type UploadArchiveCommandOutput = ArchiveCreationOutput & __MetadataBeare
  *          <p> For conceptual information and underlying REST API, see <a href="https://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-an-archive.html">Uploading an Archive in Amazon
  *             Glacier</a> and <a href="https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html">Upload Archive</a> in the
  *             <i>Amazon Glacier Developer Guide</i>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlacierClient, UploadArchiveCommand } from "@aws-sdk/client-glacier"; // ES Modules import
+ * // const { GlacierClient, UploadArchiveCommand } = require("@aws-sdk/client-glacier"); // CommonJS import
+ * const client = new GlacierClient(config);
+ * const command = new UploadArchiveCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UploadArchiveCommandInput} for command's `input` shape.
+ * @see {@link UploadArchiveCommandOutput} for command's `response` shape.
+ * @see {@link GlacierClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UploadArchiveCommand extends $Command<
   UploadArchiveCommandInput,

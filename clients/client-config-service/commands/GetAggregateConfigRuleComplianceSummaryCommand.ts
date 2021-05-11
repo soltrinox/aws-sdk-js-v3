@@ -20,9 +20,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAggregateConfigRuleComplianceSummaryCommandInput = GetAggregateConfigRuleComplianceSummaryRequest;
-export type GetAggregateConfigRuleComplianceSummaryCommandOutput = GetAggregateConfigRuleComplianceSummaryResponse &
-  __MetadataBearer;
+export interface GetAggregateConfigRuleComplianceSummaryCommandInput
+  extends GetAggregateConfigRuleComplianceSummaryRequest {}
+export interface GetAggregateConfigRuleComplianceSummaryCommandOutput
+  extends GetAggregateConfigRuleComplianceSummaryResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the number of compliant and noncompliant rules for one
@@ -32,6 +34,20 @@ export type GetAggregateConfigRuleComplianceSummaryCommandOutput = GetAggregateC
  * 				have a nextToken, the results are displayed on the next
  * 				page.</p>
  * 		       </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, GetAggregateConfigRuleComplianceSummaryCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, GetAggregateConfigRuleComplianceSummaryCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new GetAggregateConfigRuleComplianceSummaryCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAggregateConfigRuleComplianceSummaryCommandInput} for command's `input` shape.
+ * @see {@link GetAggregateConfigRuleComplianceSummaryCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAggregateConfigRuleComplianceSummaryCommand extends $Command<
   GetAggregateConfigRuleComplianceSummaryCommandInput,

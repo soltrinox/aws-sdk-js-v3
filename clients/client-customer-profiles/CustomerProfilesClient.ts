@@ -235,7 +235,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -266,7 +266,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type CustomerProfilesClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type CustomerProfilesClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -274,8 +274,12 @@ export type CustomerProfilesClientConfig = Partial<__SmithyConfiguration<__HttpH
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of CustomerProfilesClient class constructor that set the region, credentials and other options.
+ */
+export interface CustomerProfilesClientConfig extends CustomerProfilesClientConfigType {}
 
-export type CustomerProfilesClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type CustomerProfilesClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -283,18 +287,22 @@ export type CustomerProfilesClientResolvedConfig = __SmithyResolvedConfiguration
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of CustomerProfilesClient class. This is resolved and normalized from the {@link CustomerProfilesClientConfig | constructor configuration interface}.
+ */
+export interface CustomerProfilesClientResolvedConfig extends CustomerProfilesClientResolvedConfigType {}
 
 /**
  * <fullname>Amazon Connect Customer Profiles</fullname>
- *          <p>Welcome to the Amazon Connect Customer Profiles API Reference. This guide provides
- *          information about the Amazon Connect Customer Profiles API, including supported operations,
- *          data types, parameters, and schemas.</p>
- *          <p>Amazon Connect Customer Profiles is a unified customer profile for your contact center
- *          that has pre-built connectors powered by AppFlow that make it easy to combine customer
- *          information from third party applications, such as Salesforce (CRM), ServiceNow (ITSM), and
- *          your enterprise resource planning (ERP), with contact history from your Amazon Connect
- *          contact center.</p>
- *          <p>If you're new to Amazon Connect, you might find it helpful to also review the <a href="https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html">Amazon Connect Administrator Guide</a>.</p>
+ *          <p>Welcome to the Amazon Connect Customer Profiles API Reference. This guide provides information
+ *          about the Amazon Connect Customer Profiles API, including supported operations, data types,
+ *          parameters, and schemas.</p>
+ *          <p>Amazon Connect Customer Profiles is a unified customer profile for your contact center that has
+ *          pre-built connectors powered by AppFlow that make it easy to combine customer information
+ *          from third party applications, such as Salesforce (CRM), ServiceNow (ITSM), and your
+ *          enterprise resource planning (ERP), with contact history from your Amazon Connect contact
+ *          center.</p>
+ *          <p>If you're new to Amazon Connect , you might find it helpful to also review the <a href="https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html">Amazon Connect Administrator Guide</a>.</p>
  */
 export class CustomerProfilesClient extends __Client<
   __HttpHandlerOptions,
@@ -302,6 +310,9 @@ export class CustomerProfilesClient extends __Client<
   ServiceOutputTypes,
   CustomerProfilesClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of CustomerProfilesClient class. This is resolved and normalized from the {@link CustomerProfilesClientConfig | constructor configuration interface}.
+   */
   readonly config: CustomerProfilesClientResolvedConfig;
 
   constructor(configuration: CustomerProfilesClientConfig) {

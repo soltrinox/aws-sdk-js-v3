@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateChannelCommandInput = CreateChannelRequest;
-export type CreateChannelCommandOutput = CreateChannelResponse & __MetadataBearer;
+export interface CreateChannelCommandInput extends CreateChannelRequest {}
+export interface CreateChannelCommandOutput extends CreateChannelResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new channel and an associated stream key to start streaming.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IvsClient, CreateChannelCommand } from "@aws-sdk/client-ivs"; // ES Modules import
+ * // const { IvsClient, CreateChannelCommand } = require("@aws-sdk/client-ivs"); // CommonJS import
+ * const client = new IvsClient(config);
+ * const command = new CreateChannelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateChannelCommandInput} for command's `input` shape.
+ * @see {@link CreateChannelCommandOutput} for command's `response` shape.
+ * @see {@link IvsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateChannelCommand extends $Command<
   CreateChannelCommandInput,

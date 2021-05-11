@@ -21,11 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopDataCollectionByAgentIdsCommandInput = StopDataCollectionByAgentIdsRequest;
-export type StopDataCollectionByAgentIdsCommandOutput = StopDataCollectionByAgentIdsResponse & __MetadataBearer;
+export interface StopDataCollectionByAgentIdsCommandInput extends StopDataCollectionByAgentIdsRequest {}
+export interface StopDataCollectionByAgentIdsCommandOutput
+  extends StopDataCollectionByAgentIdsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Instructs the specified agents or connectors to stop collecting data.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationDiscoveryServiceClient, StopDataCollectionByAgentIdsCommand } from "@aws-sdk/client-application-discovery-service"; // ES Modules import
+ * // const { ApplicationDiscoveryServiceClient, StopDataCollectionByAgentIdsCommand } = require("@aws-sdk/client-application-discovery-service"); // CommonJS import
+ * const client = new ApplicationDiscoveryServiceClient(config);
+ * const command = new StopDataCollectionByAgentIdsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopDataCollectionByAgentIdsCommandInput} for command's `input` shape.
+ * @see {@link StopDataCollectionByAgentIdsCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationDiscoveryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopDataCollectionByAgentIdsCommand extends $Command<
   StopDataCollectionByAgentIdsCommandInput,

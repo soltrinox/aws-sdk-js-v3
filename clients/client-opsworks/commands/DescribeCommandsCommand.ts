@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeCommandsCommandInput = DescribeCommandsRequest;
-export type DescribeCommandsCommandOutput = DescribeCommandsResult & __MetadataBearer;
+export interface DescribeCommandsCommandInput extends DescribeCommandsRequest {}
+export interface DescribeCommandsCommandOutput extends DescribeCommandsResult, __MetadataBearer {}
 
 /**
  * <p>Describes the results of specified commands.</p>
@@ -30,6 +30,20 @@ export type DescribeCommandsCommandOutput = DescribeCommandsResult & __MetadataB
  *       Manage permissions level for the stack, or an attached policy that explicitly grants
  *       permissions. For more information about user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, DescribeCommandsCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, DescribeCommandsCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new DescribeCommandsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeCommandsCommandInput} for command's `input` shape.
+ * @see {@link DescribeCommandsCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeCommandsCommand extends $Command<
   DescribeCommandsCommandInput,

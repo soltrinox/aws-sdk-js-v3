@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type EnableAWSServiceAccessCommandInput = EnableAWSServiceAccessRequest;
-export type EnableAWSServiceAccessCommandOutput = __MetadataBearer;
+export interface EnableAWSServiceAccessCommandInput extends EnableAWSServiceAccessRequest {}
+export interface EnableAWSServiceAccessCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Enables the integration of an AWS service (the service that is specified by
@@ -40,6 +40,20 @@ export type EnableAWSServiceAccessCommandOutput = __MetadataBearer;
  *         <p>This operation can be called only from the organization's management account and only
  *             if the organization has <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html">enabled all
  *                 features</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, EnableAWSServiceAccessCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, EnableAWSServiceAccessCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new EnableAWSServiceAccessCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link EnableAWSServiceAccessCommandInput} for command's `input` shape.
+ * @see {@link EnableAWSServiceAccessCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class EnableAWSServiceAccessCommand extends $Command<
   EnableAWSServiceAccessCommandInput,

@@ -14,6 +14,9 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
     ...obj,
   });
@@ -40,6 +43,9 @@ export interface AssetDestinationEntry {
 }
 
 export namespace AssetDestinationEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetDestinationEntry): any => ({
     ...obj,
   });
@@ -56,6 +62,9 @@ export interface S3SnapshotAsset {
 }
 
 export namespace S3SnapshotAsset {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3SnapshotAsset): any => ({
     ...obj,
   });
@@ -69,6 +78,9 @@ export interface AssetDetails {
 }
 
 export namespace AssetDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetDetails): any => ({
     ...obj,
   });
@@ -134,6 +146,9 @@ export interface AssetEntry {
 }
 
 export namespace AssetEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetEntry): any => ({
     ...obj,
   });
@@ -155,6 +170,9 @@ export interface AssetSourceEntry {
 }
 
 export namespace AssetSourceEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssetSourceEntry): any => ({
     ...obj,
   });
@@ -168,6 +186,9 @@ export interface CancelJobRequest {
 }
 
 export namespace CancelJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelJobRequest): any => ({
     ...obj,
   });
@@ -203,6 +224,9 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
@@ -221,6 +245,9 @@ export interface InternalServerException extends __SmithyException, $MetadataBea
 }
 
 export namespace InternalServerException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerException): any => ({
     ...obj,
   });
@@ -249,6 +276,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -267,6 +297,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -285,6 +318,9 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
@@ -326,6 +362,9 @@ export interface CreateDataSetRequest {
 }
 
 export namespace CreateDataSetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDataSetRequest): any => ({
     ...obj,
   });
@@ -341,6 +380,9 @@ export interface OriginDetails {
 }
 
 export namespace OriginDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OriginDetails): any => ({
     ...obj,
   });
@@ -404,6 +446,9 @@ export interface CreateDataSetResponse {
 }
 
 export namespace CreateDataSetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateDataSetResponse): any => ({
     ...obj,
   });
@@ -447,6 +492,9 @@ export interface ServiceLimitExceededException extends __SmithyException, $Metad
 }
 
 export namespace ServiceLimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ServiceLimitExceededException): any => ({
     ...obj,
   });
@@ -473,6 +521,9 @@ export interface ExportServerSideEncryption {
 }
 
 export namespace ExportServerSideEncryption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportServerSideEncryption): any => ({
     ...obj,
   });
@@ -504,6 +555,9 @@ export interface ExportAssetsToS3RequestDetails {
 }
 
 export namespace ExportAssetsToS3RequestDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportAssetsToS3RequestDetails): any => ({
     ...obj,
   });
@@ -530,7 +584,68 @@ export interface ExportAssetToSignedUrlRequestDetails {
 }
 
 export namespace ExportAssetToSignedUrlRequestDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportAssetToSignedUrlRequestDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The destination where the assets in the revision will be exported.</p>
+ */
+export interface RevisionDestinationEntry {
+  /**
+   * <p>The S3 bucket that is the destination for the assets in the revision.</p>
+   */
+  Bucket: string | undefined;
+
+  /**
+   * <p>A string representing the pattern for generated names of the individual assets in the revision. For more information about key patterns, see <a href="https://docs.aws.amazon.com/data-exchange/latest/userguide/jobs.html#revision-export-keypatterns">Key patterns when exporting revisions</a>.</p>
+   */
+  KeyPattern?: string;
+
+  /**
+   * <p>The unique identifier for the revision.</p>
+   */
+  RevisionId: string | undefined;
+}
+
+export namespace RevisionDestinationEntry {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: RevisionDestinationEntry): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details of the operation to be performed by the job.</p>
+ */
+export interface ExportRevisionsToS3RequestDetails {
+  /**
+   * <p>The unique identifier for the data set associated with this export job.</p>
+   */
+  DataSetId: string | undefined;
+
+  /**
+   * <p>Encryption configuration for the export job.</p>
+   */
+  Encryption?: ExportServerSideEncryption;
+
+  /**
+   * <p>The destination for the revision.</p>
+   */
+  RevisionDestinations: RevisionDestinationEntry[] | undefined;
+}
+
+export namespace ExportRevisionsToS3RequestDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ExportRevisionsToS3RequestDetails): any => ({
     ...obj,
   });
 }
@@ -561,6 +676,9 @@ export interface ImportAssetFromSignedUrlRequestDetails {
 }
 
 export namespace ImportAssetFromSignedUrlRequestDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportAssetFromSignedUrlRequestDetails): any => ({
     ...obj,
   });
@@ -587,6 +705,9 @@ export interface ImportAssetsFromS3RequestDetails {
 }
 
 export namespace ImportAssetsFromS3RequestDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportAssetsFromS3RequestDetails): any => ({
     ...obj,
   });
@@ -607,6 +728,11 @@ export interface RequestDetails {
   ExportAssetsToS3?: ExportAssetsToS3RequestDetails;
 
   /**
+   * <p>Details about the export to Amazon S3 request.</p>
+   */
+  ExportRevisionsToS3?: ExportRevisionsToS3RequestDetails;
+
+  /**
    * <p>Details about the import from signed URL request.</p>
    */
   ImportAssetFromSignedUrl?: ImportAssetFromSignedUrlRequestDetails;
@@ -618,6 +744,9 @@ export interface RequestDetails {
 }
 
 export namespace RequestDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RequestDetails): any => ({
     ...obj,
   });
@@ -626,6 +755,7 @@ export namespace RequestDetails {
 export enum Type {
   EXPORT_ASSETS_TO_S3 = "EXPORT_ASSETS_TO_S3",
   EXPORT_ASSET_TO_SIGNED_URL = "EXPORT_ASSET_TO_SIGNED_URL",
+  EXPORT_REVISIONS_TO_S3 = "EXPORT_REVISIONS_TO_S3",
   IMPORT_ASSETS_FROM_S3 = "IMPORT_ASSETS_FROM_S3",
   IMPORT_ASSET_FROM_SIGNED_URL = "IMPORT_ASSET_FROM_SIGNED_URL",
 }
@@ -646,6 +776,9 @@ export interface CreateJobRequest {
 }
 
 export namespace CreateJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateJobRequest): any => ({
     ...obj,
   });
@@ -677,6 +810,9 @@ export interface ExportAssetsToS3ResponseDetails {
 }
 
 export namespace ExportAssetsToS3ResponseDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportAssetsToS3ResponseDetails): any => ({
     ...obj,
   });
@@ -713,7 +849,39 @@ export interface ExportAssetToSignedUrlResponseDetails {
 }
 
 export namespace ExportAssetToSignedUrlResponseDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExportAssetToSignedUrlResponseDetails): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Details about the export revisions to Amazon S3 response.</p>
+ */
+export interface ExportRevisionsToS3ResponseDetails {
+  /**
+   * <p>The unique identifier for the data set associated with this export job.</p>
+   */
+  DataSetId: string | undefined;
+
+  /**
+   * <p>Encryption configuration of the export job.</p>
+   */
+  Encryption?: ExportServerSideEncryption;
+
+  /**
+   * <p>The destination in Amazon S3 where the revision is exported.</p>
+   */
+  RevisionDestinations: RevisionDestinationEntry[] | undefined;
+}
+
+export namespace ExportRevisionsToS3ResponseDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ExportRevisionsToS3ResponseDetails): any => ({
     ...obj,
   });
 }
@@ -754,6 +922,9 @@ export interface ImportAssetFromSignedUrlResponseDetails {
 }
 
 export namespace ImportAssetFromSignedUrlResponseDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportAssetFromSignedUrlResponseDetails): any => ({
     ...obj,
   });
@@ -780,6 +951,9 @@ export interface ImportAssetsFromS3ResponseDetails {
 }
 
 export namespace ImportAssetsFromS3ResponseDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportAssetsFromS3ResponseDetails): any => ({
     ...obj,
   });
@@ -800,6 +974,11 @@ export interface ResponseDetails {
   ExportAssetsToS3?: ExportAssetsToS3ResponseDetails;
 
   /**
+   * <p>Details for the export revisions to Amazon S3 response.</p>
+   */
+  ExportRevisionsToS3?: ExportRevisionsToS3ResponseDetails;
+
+  /**
    * <p>Details for the import from signed URL response.</p>
    */
   ImportAssetFromSignedUrl?: ImportAssetFromSignedUrlResponseDetails;
@@ -811,6 +990,9 @@ export interface ResponseDetails {
 }
 
 export namespace ResponseDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResponseDetails): any => ({
     ...obj,
   });
@@ -824,6 +1006,9 @@ export interface ImportAssetFromSignedUrlJobErrorDetails {
 }
 
 export namespace ImportAssetFromSignedUrlJobErrorDetails {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportAssetFromSignedUrlJobErrorDetails): any => ({
     ...obj,
   });
@@ -838,6 +1023,9 @@ export interface Details {
 }
 
 export namespace Details {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Details): any => ({
     ...obj,
   });
@@ -890,6 +1078,9 @@ export interface JobError {
 }
 
 export namespace JobError {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobError): any => ({
     ...obj,
   });
@@ -947,6 +1138,9 @@ export interface CreateJobResponse {
 }
 
 export namespace CreateJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateJobResponse): any => ({
     ...obj,
   });
@@ -973,6 +1167,9 @@ export interface CreateRevisionRequest {
 }
 
 export namespace CreateRevisionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateRevisionRequest): any => ({
     ...obj,
   });
@@ -1026,6 +1223,9 @@ export interface CreateRevisionResponse {
 }
 
 export namespace CreateRevisionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateRevisionResponse): any => ({
     ...obj,
   });
@@ -1049,6 +1249,9 @@ export interface DeleteAssetRequest {
 }
 
 export namespace DeleteAssetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAssetRequest): any => ({
     ...obj,
   });
@@ -1062,6 +1265,9 @@ export interface DeleteDataSetRequest {
 }
 
 export namespace DeleteDataSetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteDataSetRequest): any => ({
     ...obj,
   });
@@ -1080,6 +1286,9 @@ export interface DeleteRevisionRequest {
 }
 
 export namespace DeleteRevisionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteRevisionRequest): any => ({
     ...obj,
   });
@@ -1103,6 +1312,9 @@ export interface GetAssetRequest {
 }
 
 export namespace GetAssetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAssetRequest): any => ({
     ...obj,
   });
@@ -1161,6 +1373,9 @@ export interface GetAssetResponse {
 }
 
 export namespace GetAssetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAssetResponse): any => ({
     ...obj,
   });
@@ -1174,6 +1389,9 @@ export interface GetDataSetRequest {
 }
 
 export namespace GetDataSetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDataSetRequest): any => ({
     ...obj,
   });
@@ -1237,6 +1455,9 @@ export interface GetDataSetResponse {
 }
 
 export namespace GetDataSetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetDataSetResponse): any => ({
     ...obj,
   });
@@ -1250,6 +1471,9 @@ export interface GetJobRequest {
 }
 
 export namespace GetJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetJobRequest): any => ({
     ...obj,
   });
@@ -1298,6 +1522,9 @@ export interface GetJobResponse {
 }
 
 export namespace GetJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetJobResponse): any => ({
     ...obj,
   });
@@ -1316,6 +1543,9 @@ export interface GetRevisionRequest {
 }
 
 export namespace GetRevisionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRevisionRequest): any => ({
     ...obj,
   });
@@ -1369,6 +1599,9 @@ export interface GetRevisionResponse {
 }
 
 export namespace GetRevisionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetRevisionResponse): any => ({
     ...obj,
   });
@@ -1392,6 +1625,9 @@ export interface ListDataSetRevisionsRequest {
 }
 
 export namespace ListDataSetRevisionsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDataSetRevisionsRequest): any => ({
     ...obj,
   });
@@ -1443,6 +1679,9 @@ export interface RevisionEntry {
 }
 
 export namespace RevisionEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RevisionEntry): any => ({
     ...obj,
   });
@@ -1461,6 +1700,9 @@ export interface ListDataSetRevisionsResponse {
 }
 
 export namespace ListDataSetRevisionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDataSetRevisionsResponse): any => ({
     ...obj,
   });
@@ -1484,6 +1726,9 @@ export interface ListDataSetsRequest {
 }
 
 export namespace ListDataSetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDataSetsRequest): any => ({
     ...obj,
   });
@@ -1545,6 +1790,9 @@ export interface DataSetEntry {
 }
 
 export namespace DataSetEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DataSetEntry): any => ({
     ...obj,
   });
@@ -1563,6 +1811,9 @@ export interface ListDataSetsResponse {
 }
 
 export namespace ListDataSetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDataSetsResponse): any => ({
     ...obj,
   });
@@ -1591,6 +1842,9 @@ export interface ListJobsRequest {
 }
 
 export namespace ListJobsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobsRequest): any => ({
     ...obj,
   });
@@ -1642,6 +1896,9 @@ export interface JobEntry {
 }
 
 export namespace JobEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobEntry): any => ({
     ...obj,
   });
@@ -1660,6 +1917,9 @@ export interface ListJobsResponse {
 }
 
 export namespace ListJobsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobsResponse): any => ({
     ...obj,
   });
@@ -1688,6 +1948,9 @@ export interface ListRevisionAssetsRequest {
 }
 
 export namespace ListRevisionAssetsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRevisionAssetsRequest): any => ({
     ...obj,
   });
@@ -1706,6 +1969,9 @@ export interface ListRevisionAssetsResponse {
 }
 
 export namespace ListRevisionAssetsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRevisionAssetsResponse): any => ({
     ...obj,
   });
@@ -1719,6 +1985,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -1732,6 +2001,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -1745,6 +2017,9 @@ export interface StartJobRequest {
 }
 
 export namespace StartJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartJobRequest): any => ({
     ...obj,
   });
@@ -1753,6 +2028,9 @@ export namespace StartJobRequest {
 export interface StartJobResponse {}
 
 export namespace StartJobResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartJobResponse): any => ({
     ...obj,
   });
@@ -1774,6 +2052,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -1792,6 +2073,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -1823,6 +2107,9 @@ export interface UpdateAssetRequest {
 }
 
 export namespace UpdateAssetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAssetRequest): any => ({
     ...obj,
   });
@@ -1881,6 +2168,9 @@ export interface UpdateAssetResponse {
 }
 
 export namespace UpdateAssetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateAssetResponse): any => ({
     ...obj,
   });
@@ -1907,6 +2197,9 @@ export interface UpdateDataSetRequest {
 }
 
 export namespace UpdateDataSetRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDataSetRequest): any => ({
     ...obj,
   });
@@ -1965,6 +2258,9 @@ export interface UpdateDataSetResponse {
 }
 
 export namespace UpdateDataSetResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateDataSetResponse): any => ({
     ...obj,
   });
@@ -1996,6 +2292,9 @@ export interface UpdateRevisionRequest {
 }
 
 export namespace UpdateRevisionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRevisionRequest): any => ({
     ...obj,
   });
@@ -2044,6 +2343,9 @@ export interface UpdateRevisionResponse {
 }
 
 export namespace UpdateRevisionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateRevisionResponse): any => ({
     ...obj,
   });

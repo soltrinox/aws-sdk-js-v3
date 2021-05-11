@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateNFSFileShareCommandInput = UpdateNFSFileShareInput;
-export type UpdateNFSFileShareCommandOutput = UpdateNFSFileShareOutput & __MetadataBearer;
+export interface UpdateNFSFileShareCommandInput extends UpdateNFSFileShareInput {}
+export interface UpdateNFSFileShareCommandOutput extends UpdateNFSFileShareOutput, __MetadataBearer {}
 
 /**
  * <p>Updates a Network File System (NFS) file share. This operation is only supported in the
@@ -48,6 +48,20 @@ export type UpdateNFSFileShareCommandOutput = UpdateNFSFileShareOutput & __Metad
  *                <p>Write status of your file share</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, UpdateNFSFileShareCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, UpdateNFSFileShareCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new UpdateNFSFileShareCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateNFSFileShareCommandInput} for command's `input` shape.
+ * @see {@link UpdateNFSFileShareCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateNFSFileShareCommand extends $Command<
   UpdateNFSFileShareCommandInput,

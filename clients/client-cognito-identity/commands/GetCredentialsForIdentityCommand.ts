@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCredentialsForIdentityCommandInput = GetCredentialsForIdentityInput;
-export type GetCredentialsForIdentityCommandOutput = GetCredentialsForIdentityResponse & __MetadataBearer;
+export interface GetCredentialsForIdentityCommandInput extends GetCredentialsForIdentityInput {}
+export interface GetCredentialsForIdentityCommandOutput extends GetCredentialsForIdentityResponse, __MetadataBearer {}
 
 /**
  * <p>Returns credentials for the provided identity ID. Any provided logins will be
@@ -26,6 +26,20 @@ export type GetCredentialsForIdentityCommandOutput = GetCredentialsForIdentityRe
  *          cognito-identity.amazonaws.com, it will be passed through to AWS Security Token Service
  *          with the appropriate role for the token.</p>
  *          <p>This is a public API. You do not need any credentials to call this API.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityClient, GetCredentialsForIdentityCommand } from "@aws-sdk/client-cognito-identity"; // ES Modules import
+ * // const { CognitoIdentityClient, GetCredentialsForIdentityCommand } = require("@aws-sdk/client-cognito-identity"); // CommonJS import
+ * const client = new CognitoIdentityClient(config);
+ * const command = new GetCredentialsForIdentityCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCredentialsForIdentityCommandInput} for command's `input` shape.
+ * @see {@link GetCredentialsForIdentityCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCredentialsForIdentityCommand extends $Command<
   GetCredentialsForIdentityCommandInput,

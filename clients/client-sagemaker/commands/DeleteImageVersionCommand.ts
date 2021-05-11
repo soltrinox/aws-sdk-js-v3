@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteImageVersionCommandInput = DeleteImageVersionRequest;
-export type DeleteImageVersionCommandOutput = DeleteImageVersionResponse & __MetadataBearer;
+export interface DeleteImageVersionCommandInput extends DeleteImageVersionRequest {}
+export interface DeleteImageVersionCommandOutput extends DeleteImageVersionResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a version of a SageMaker image. The container image the version represents isn't
  *         deleted.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DeleteImageVersionCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DeleteImageVersionCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DeleteImageVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteImageVersionCommandInput} for command's `input` shape.
+ * @see {@link DeleteImageVersionCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteImageVersionCommand extends $Command<
   DeleteImageVersionCommandInput,

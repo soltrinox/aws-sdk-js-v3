@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DecreaseNodeGroupsInGlobalReplicationGroupCommandInput = DecreaseNodeGroupsInGlobalReplicationGroupMessage;
-export type DecreaseNodeGroupsInGlobalReplicationGroupCommandOutput = DecreaseNodeGroupsInGlobalReplicationGroupResult &
-  __MetadataBearer;
+export interface DecreaseNodeGroupsInGlobalReplicationGroupCommandInput
+  extends DecreaseNodeGroupsInGlobalReplicationGroupMessage {}
+export interface DecreaseNodeGroupsInGlobalReplicationGroupCommandOutput
+  extends DecreaseNodeGroupsInGlobalReplicationGroupResult,
+    __MetadataBearer {}
 
 /**
- * <p>Decreases the number of node groups in a Global Datastore</p>
+ * <p>Decreases the number of node groups in a Global datastore</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, DecreaseNodeGroupsInGlobalReplicationGroupCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, DecreaseNodeGroupsInGlobalReplicationGroupCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new DecreaseNodeGroupsInGlobalReplicationGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DecreaseNodeGroupsInGlobalReplicationGroupCommandInput} for command's `input` shape.
+ * @see {@link DecreaseNodeGroupsInGlobalReplicationGroupCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DecreaseNodeGroupsInGlobalReplicationGroupCommand extends $Command<
   DecreaseNodeGroupsInGlobalReplicationGroupCommandInput,

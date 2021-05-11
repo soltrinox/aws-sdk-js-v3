@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSchemaCommandInput = GetSchemaInput;
-export type GetSchemaCommandOutput = GetSchemaResponse & __MetadataBearer;
+export interface GetSchemaCommandInput extends GetSchemaInput {}
+export interface GetSchemaCommandOutput extends GetSchemaResponse, __MetadataBearer {}
 
 /**
  * <p>Describes the specified schema in detail.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetSchemaCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetSchemaCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetSchemaCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSchemaCommandInput} for command's `input` shape.
+ * @see {@link GetSchemaCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSchemaCommand extends $Command<
   GetSchemaCommandInput,

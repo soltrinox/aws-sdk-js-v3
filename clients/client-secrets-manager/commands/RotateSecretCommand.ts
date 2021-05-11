@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RotateSecretCommandInput = RotateSecretRequest;
-export type RotateSecretCommandOutput = RotateSecretResponse & __MetadataBearer;
+export interface RotateSecretCommandInput extends RotateSecretRequest {}
+export interface RotateSecretCommandOutput extends RotateSecretResponse, __MetadataBearer {}
 
 /**
  * <p>Configures and starts the asynchronous process of rotating this secret. If you include the
@@ -83,6 +83,20 @@ export type RotateSecretCommandOutput = RotateSecretResponse & __MetadataBearer;
  *             <a>UpdateSecretVersionStage</a>.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecretsManagerClient, RotateSecretCommand } from "@aws-sdk/client-secrets-manager"; // ES Modules import
+ * // const { SecretsManagerClient, RotateSecretCommand } = require("@aws-sdk/client-secrets-manager"); // CommonJS import
+ * const client = new SecretsManagerClient(config);
+ * const command = new RotateSecretCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RotateSecretCommandInput} for command's `input` shape.
+ * @see {@link RotateSecretCommandOutput} for command's `response` shape.
+ * @see {@link SecretsManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RotateSecretCommand extends $Command<
   RotateSecretCommandInput,

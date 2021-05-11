@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListResourcesForTagOptionCommandInput = ListResourcesForTagOptionInput;
-export type ListResourcesForTagOptionCommandOutput = ListResourcesForTagOptionOutput & __MetadataBearer;
+export interface ListResourcesForTagOptionCommandInput extends ListResourcesForTagOptionInput {}
+export interface ListResourcesForTagOptionCommandOutput extends ListResourcesForTagOptionOutput, __MetadataBearer {}
 
 /**
  * <p>Lists the resources associated with the specified TagOption.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, ListResourcesForTagOptionCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, ListResourcesForTagOptionCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new ListResourcesForTagOptionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListResourcesForTagOptionCommandInput} for command's `input` shape.
+ * @see {@link ListResourcesForTagOptionCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListResourcesForTagOptionCommand extends $Command<
   ListResourcesForTagOptionCommandInput,

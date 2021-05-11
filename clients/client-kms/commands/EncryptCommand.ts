@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type EncryptCommandInput = EncryptRequest;
-export type EncryptCommandOutput = EncryptResponse & __MetadataBearer;
+export interface EncryptCommandInput extends EncryptRequest {}
+export interface EncryptCommandOutput extends EncryptResponse, __MetadataBearer {}
 
 /**
  * <p>Encrypts plaintext into ciphertext by using a customer master key (CMK). The
@@ -117,8 +117,46 @@ export type EncryptCommandOutput = EncryptResponse & __MetadataBearer;
  *          <p>The CMK that you use for this operation must be in a compatible key state. For
  * details, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html">How Key State Affects Use
  * of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
- *          <p>To perform this operation on a CMK in a different AWS account, specify
- *   the key ARN or alias ARN in the value of the KeyId parameter.</p>
+ *          <p>
+ *             <b>Cross-account use</b>: Yes. To perform this operation with a CMK in a different AWS account, specify
+ *   the key ARN or alias ARN in the value of the <code>KeyId</code> parameter.</p>
+ *
+ *          <p>
+ *             <b>Required permissions</b>: <a href="https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html">kms:Encrypt</a> (key policy)</p>
+ *          <p>
+ *             <b>Related operations:</b>
+ *          </p>
+ *          <ul>
+ *             <li>
+ *                <p>
+ *                   <a>Decrypt</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>GenerateDataKey</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>GenerateDataKeyPair</a>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, EncryptCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, EncryptCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new EncryptCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link EncryptCommandInput} for command's `input` shape.
+ * @see {@link EncryptCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class EncryptCommand extends $Command<EncryptCommandInput, EncryptCommandOutput, KMSClientResolvedConfig> {
   // Start section: command_properties

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDomainAssociationCommandInput = DeleteDomainAssociationRequest;
-export type DeleteDomainAssociationCommandOutput = DeleteDomainAssociationResult & __MetadataBearer;
+export interface DeleteDomainAssociationCommandInput extends DeleteDomainAssociationRequest {}
+export interface DeleteDomainAssociationCommandOutput extends DeleteDomainAssociationResult, __MetadataBearer {}
 
 /**
  * <p> Deletes a domain association for an Amplify app. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AmplifyClient, DeleteDomainAssociationCommand } from "@aws-sdk/client-amplify"; // ES Modules import
+ * // const { AmplifyClient, DeleteDomainAssociationCommand } = require("@aws-sdk/client-amplify"); // CommonJS import
+ * const client = new AmplifyClient(config);
+ * const command = new DeleteDomainAssociationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDomainAssociationCommandInput} for command's `input` shape.
+ * @see {@link DeleteDomainAssociationCommandOutput} for command's `response` shape.
+ * @see {@link AmplifyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDomainAssociationCommand extends $Command<
   DeleteDomainAssociationCommandInput,

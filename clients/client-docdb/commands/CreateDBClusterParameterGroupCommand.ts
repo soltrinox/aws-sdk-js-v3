@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDBClusterParameterGroupCommandInput = CreateDBClusterParameterGroupMessage;
-export type CreateDBClusterParameterGroupCommandOutput = CreateDBClusterParameterGroupResult & __MetadataBearer;
+export interface CreateDBClusterParameterGroupCommandInput extends CreateDBClusterParameterGroupMessage {}
+export interface CreateDBClusterParameterGroupCommandOutput
+  extends CreateDBClusterParameterGroupResult,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a new cluster parameter group.</p>
@@ -40,6 +42,20 @@ export type CreateDBClusterParameterGroupCommandOutput = CreateDBClusterParamete
  *             see <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/cluster_parameter_group-modify.html">
  *                 Modifying Amazon DocumentDB Cluster Parameter Groups</a>.
  *             </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DocDBClient, CreateDBClusterParameterGroupCommand } from "@aws-sdk/client-docdb"; // ES Modules import
+ * // const { DocDBClient, CreateDBClusterParameterGroupCommand } = require("@aws-sdk/client-docdb"); // CommonJS import
+ * const client = new DocDBClient(config);
+ * const command = new CreateDBClusterParameterGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDBClusterParameterGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateDBClusterParameterGroupCommandOutput} for command's `response` shape.
+ * @see {@link DocDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDBClusterParameterGroupCommand extends $Command<
   CreateDBClusterParameterGroupCommandInput,

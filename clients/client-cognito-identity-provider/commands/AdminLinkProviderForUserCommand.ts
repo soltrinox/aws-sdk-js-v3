@@ -22,8 +22,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AdminLinkProviderForUserCommandInput = AdminLinkProviderForUserRequest;
-export type AdminLinkProviderForUserCommandOutput = AdminLinkProviderForUserResponse & __MetadataBearer;
+export interface AdminLinkProviderForUserCommandInput extends AdminLinkProviderForUserRequest {}
+export interface AdminLinkProviderForUserCommandOutput extends AdminLinkProviderForUserResponse, __MetadataBearer {}
 
 /**
  * <p>Links an existing user account in a user pool (<code>DestinationUser</code>) to an
@@ -37,7 +37,7 @@ export type AdminLinkProviderForUserCommandOutput = AdminLinkProviderForUserResp
  *             is used, the user signs in as the existing user account. </p>
  *         <note>
  *             <p>The maximum number of federated identities linked to a user is 5.</p>
- *          </note>
+ *         </note>
  *         <important>
  *             <p>Because this API allows a user with an external federated identity to sign in as
  *                 an existing user in the user pool, it is critical that it only be used with external
@@ -47,6 +47,20 @@ export type AdminLinkProviderForUserCommandOutput = AdminLinkProviderForUserResp
  *
  *         <p>This action is enabled only for admin access and requires developer
  *             credentials.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, AdminLinkProviderForUserCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, AdminLinkProviderForUserCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new AdminLinkProviderForUserCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AdminLinkProviderForUserCommandInput} for command's `input` shape.
+ * @see {@link AdminLinkProviderForUserCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AdminLinkProviderForUserCommand extends $Command<
   AdminLinkProviderForUserCommandInput,

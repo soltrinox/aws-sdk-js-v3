@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeScalingPlanResourcesCommandInput = DescribeScalingPlanResourcesRequest;
-export type DescribeScalingPlanResourcesCommandOutput = DescribeScalingPlanResourcesResponse & __MetadataBearer;
+export interface DescribeScalingPlanResourcesCommandInput extends DescribeScalingPlanResourcesRequest {}
+export interface DescribeScalingPlanResourcesCommandOutput
+  extends DescribeScalingPlanResourcesResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Describes the scalable resources in the specified scaling plan.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AutoScalingPlansClient, DescribeScalingPlanResourcesCommand } from "@aws-sdk/client-auto-scaling-plans"; // ES Modules import
+ * // const { AutoScalingPlansClient, DescribeScalingPlanResourcesCommand } = require("@aws-sdk/client-auto-scaling-plans"); // CommonJS import
+ * const client = new AutoScalingPlansClient(config);
+ * const command = new DescribeScalingPlanResourcesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeScalingPlanResourcesCommandInput} for command's `input` shape.
+ * @see {@link DescribeScalingPlanResourcesCommandOutput} for command's `response` shape.
+ * @see {@link AutoScalingPlansClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeScalingPlanResourcesCommand extends $Command<
   DescribeScalingPlanResourcesCommandInput,

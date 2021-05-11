@@ -17,15 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateS3ResourcesCommandInput = AssociateS3ResourcesRequest;
-export type AssociateS3ResourcesCommandOutput = AssociateS3ResourcesResult & __MetadataBearer;
+export interface AssociateS3ResourcesCommandInput extends AssociateS3ResourcesRequest {}
+export interface AssociateS3ResourcesCommandOutput extends AssociateS3ResourcesResult, __MetadataBearer {}
 
 /**
  * <p>Associates specified S3 resources with Amazon Macie Classic for monitoring and data
  *       classification. If memberAccountId isn't specified, the action associates specified S3
- *       resources with Macie Classic for the current master account. If memberAccountId is specified,
+ *       resources with Macie Classic for the current Macie Classic administrator account. If memberAccountId is specified,
  *       the action associates specified S3 resources with Macie Classic for the specified member
  *       account. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MacieClient, AssociateS3ResourcesCommand } from "@aws-sdk/client-macie"; // ES Modules import
+ * // const { MacieClient, AssociateS3ResourcesCommand } = require("@aws-sdk/client-macie"); // CommonJS import
+ * const client = new MacieClient(config);
+ * const command = new AssociateS3ResourcesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateS3ResourcesCommandInput} for command's `input` shape.
+ * @see {@link AssociateS3ResourcesCommandOutput} for command's `response` shape.
+ * @see {@link MacieClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateS3ResourcesCommand extends $Command<
   AssociateS3ResourcesCommandInput,

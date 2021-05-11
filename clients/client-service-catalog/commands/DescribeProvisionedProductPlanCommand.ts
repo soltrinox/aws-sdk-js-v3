@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeProvisionedProductPlanCommandInput = DescribeProvisionedProductPlanInput;
-export type DescribeProvisionedProductPlanCommandOutput = DescribeProvisionedProductPlanOutput & __MetadataBearer;
+export interface DescribeProvisionedProductPlanCommandInput extends DescribeProvisionedProductPlanInput {}
+export interface DescribeProvisionedProductPlanCommandOutput
+  extends DescribeProvisionedProductPlanOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Gets information about the resource changes for the specified plan.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, DescribeProvisionedProductPlanCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, DescribeProvisionedProductPlanCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new DescribeProvisionedProductPlanCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeProvisionedProductPlanCommandInput} for command's `input` shape.
+ * @see {@link DescribeProvisionedProductPlanCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeProvisionedProductPlanCommand extends $Command<
   DescribeProvisionedProductPlanCommandInput,

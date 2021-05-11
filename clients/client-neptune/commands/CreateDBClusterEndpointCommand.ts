@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDBClusterEndpointCommandInput = CreateDBClusterEndpointMessage;
-export type CreateDBClusterEndpointCommandOutput = CreateDBClusterEndpointOutput & __MetadataBearer;
+export interface CreateDBClusterEndpointCommandInput extends CreateDBClusterEndpointMessage {}
+export interface CreateDBClusterEndpointCommandOutput extends CreateDBClusterEndpointOutput, __MetadataBearer {}
 
 /**
  * <p>Creates a new custom endpoint and associates it with an Amazon Neptune DB cluster.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, CreateDBClusterEndpointCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, CreateDBClusterEndpointCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new CreateDBClusterEndpointCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDBClusterEndpointCommandInput} for command's `input` shape.
+ * @see {@link CreateDBClusterEndpointCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDBClusterEndpointCommand extends $Command<
   CreateDBClusterEndpointCommandInput,

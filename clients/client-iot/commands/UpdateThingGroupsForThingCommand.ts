@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateThingGroupsForThingCommandInput = UpdateThingGroupsForThingRequest;
-export type UpdateThingGroupsForThingCommandOutput = UpdateThingGroupsForThingResponse & __MetadataBearer;
+export interface UpdateThingGroupsForThingCommandInput extends UpdateThingGroupsForThingRequest {}
+export interface UpdateThingGroupsForThingCommandOutput extends UpdateThingGroupsForThingResponse, __MetadataBearer {}
 
 /**
  * <p>Updates the groups to which the thing belongs.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, UpdateThingGroupsForThingCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, UpdateThingGroupsForThingCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new UpdateThingGroupsForThingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateThingGroupsForThingCommandInput} for command's `input` shape.
+ * @see {@link UpdateThingGroupsForThingCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateThingGroupsForThingCommand extends $Command<
   UpdateThingGroupsForThingCommandInput,

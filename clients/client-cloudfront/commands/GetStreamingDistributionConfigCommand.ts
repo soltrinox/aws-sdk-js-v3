@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetStreamingDistributionConfigCommandInput = GetStreamingDistributionConfigRequest;
-export type GetStreamingDistributionConfigCommandOutput = GetStreamingDistributionConfigResult & __MetadataBearer;
+export interface GetStreamingDistributionConfigCommandInput extends GetStreamingDistributionConfigRequest {}
+export interface GetStreamingDistributionConfigCommandOutput
+  extends GetStreamingDistributionConfigResult,
+    __MetadataBearer {}
 
 /**
  * <p>Get the configuration information about a streaming distribution. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, GetStreamingDistributionConfigCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, GetStreamingDistributionConfigCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new GetStreamingDistributionConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetStreamingDistributionConfigCommandInput} for command's `input` shape.
+ * @see {@link GetStreamingDistributionConfigCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetStreamingDistributionConfigCommand extends $Command<
   GetStreamingDistributionConfigCommandInput,

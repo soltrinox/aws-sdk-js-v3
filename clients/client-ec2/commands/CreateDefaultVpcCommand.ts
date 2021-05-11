@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDefaultVpcCommandInput = CreateDefaultVpcRequest;
-export type CreateDefaultVpcCommandOutput = CreateDefaultVpcResult & __MetadataBearer;
+export interface CreateDefaultVpcCommandInput extends CreateDefaultVpcRequest {}
+export interface CreateDefaultVpcCommandOutput extends CreateDefaultVpcResult, __MetadataBearer {}
 
 /**
  * <p>Creates a default VPC with a size <code>/16</code> IPv4 CIDR block and a default subnet
@@ -33,6 +33,20 @@ export type CreateDefaultVpcCommandOutput = CreateDefaultVpcResult & __MetadataB
  * 			supports EC2-Classic, see "I really want a default VPC for my existing EC2 account. Is
  * 			that possible?" in the <a href="http://aws.amazon.com/vpc/faqs/#Default_VPCs">Default VPCs
  * 			FAQ</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, CreateDefaultVpcCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, CreateDefaultVpcCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new CreateDefaultVpcCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDefaultVpcCommandInput} for command's `input` shape.
+ * @see {@link CreateDefaultVpcCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDefaultVpcCommand extends $Command<
   CreateDefaultVpcCommandInput,

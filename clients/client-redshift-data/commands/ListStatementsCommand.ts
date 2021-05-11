@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListStatementsCommandInput = ListStatementsRequest;
-export type ListStatementsCommandOutput = ListStatementsResponse & __MetadataBearer;
+export interface ListStatementsCommandInput extends ListStatementsRequest {}
+export interface ListStatementsCommandOutput extends ListStatementsResponse, __MetadataBearer {}
 
 /**
  * <p>List of SQL statements. By default, only finished statements are shown.
  *         A token is returned to page through the statement list. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftDataClient, ListStatementsCommand } from "@aws-sdk/client-redshift-data"; // ES Modules import
+ * // const { RedshiftDataClient, ListStatementsCommand } = require("@aws-sdk/client-redshift-data"); // CommonJS import
+ * const client = new RedshiftDataClient(config);
+ * const command = new ListStatementsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListStatementsCommandInput} for command's `input` shape.
+ * @see {@link ListStatementsCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftDataClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListStatementsCommand extends $Command<
   ListStatementsCommandInput,

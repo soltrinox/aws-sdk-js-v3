@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDetectorCommandInput = CreateDetectorRequest;
-export type CreateDetectorCommandOutput = CreateDetectorResponse & __MetadataBearer;
+export interface CreateDetectorCommandInput extends CreateDetectorRequest {}
+export interface CreateDetectorCommandOutput extends CreateDetectorResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a single Amazon GuardDuty detector. A detector is a resource that represents the
  *       GuardDuty service. To start using GuardDuty, you must create a detector in each Region where
  *       you enable the service. You can have only one detector per account per Region. All data
  *       sources are enabled in a new detector by default.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GuardDutyClient, CreateDetectorCommand } from "@aws-sdk/client-guardduty"; // ES Modules import
+ * // const { GuardDutyClient, CreateDetectorCommand } = require("@aws-sdk/client-guardduty"); // CommonJS import
+ * const client = new GuardDutyClient(config);
+ * const command = new CreateDetectorCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDetectorCommandInput} for command's `input` shape.
+ * @see {@link CreateDetectorCommandOutput} for command's `response` shape.
+ * @see {@link GuardDutyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDetectorCommand extends $Command<
   CreateDetectorCommandInput,

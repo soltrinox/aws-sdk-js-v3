@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateFleetCommandInput = AssociateFleetRequest;
-export type AssociateFleetCommandOutput = AssociateFleetResult & __MetadataBearer;
+export interface AssociateFleetCommandInput extends AssociateFleetRequest {}
+export interface AssociateFleetCommandOutput extends AssociateFleetResult, __MetadataBearer {}
 
 /**
  * <p>Associates the specified fleet with the specified stack.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AppStreamClient, AssociateFleetCommand } from "@aws-sdk/client-appstream"; // ES Modules import
+ * // const { AppStreamClient, AssociateFleetCommand } = require("@aws-sdk/client-appstream"); // CommonJS import
+ * const client = new AppStreamClient(config);
+ * const command = new AssociateFleetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateFleetCommandInput} for command's `input` shape.
+ * @see {@link AssociateFleetCommandOutput} for command's `response` shape.
+ * @see {@link AppStreamClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateFleetCommand extends $Command<
   AssociateFleetCommandInput,

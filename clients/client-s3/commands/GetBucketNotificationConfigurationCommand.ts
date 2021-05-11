@@ -18,12 +18,12 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBucketNotificationConfigurationCommandInput = GetBucketNotificationConfigurationRequest;
-export type GetBucketNotificationConfigurationCommandOutput = NotificationConfiguration & __MetadataBearer;
+export interface GetBucketNotificationConfigurationCommandInput extends GetBucketNotificationConfigurationRequest {}
+export interface GetBucketNotificationConfigurationCommandOutput extends NotificationConfiguration, __MetadataBearer {}
 
 /**
  * <p>Returns the notification configuration of a bucket.</p>
- *          <p>If notifications are not enabled on the bucket, the operation returns an empty
+ *          <p>If notifications are not enabled on the bucket, the action returns an empty
  *             <code>NotificationConfiguration</code> element.</p>
  *
  *          <p>By default, you must be the bucket owner to read the notification configuration of a
@@ -35,7 +35,7 @@ export type GetBucketNotificationConfigurationCommandOutput = NotificationConfig
  *          bucket, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">Setting Up Notification of
  *             Bucket Events</a>. For more information about bucket policies, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html">Using Bucket Policies</a>.</p>
  *
- *          <p>The following operation is related to <code>GetBucketNotification</code>:</p>
+ *          <p>The following action is related to <code>GetBucketNotification</code>:</p>
  *          <ul>
  *             <li>
  *                <p>
@@ -43,6 +43,20 @@ export type GetBucketNotificationConfigurationCommandOutput = NotificationConfig
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetBucketNotificationConfigurationCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetBucketNotificationConfigurationCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetBucketNotificationConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBucketNotificationConfigurationCommandInput} for command's `input` shape.
+ * @see {@link GetBucketNotificationConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBucketNotificationConfigurationCommand extends $Command<
   GetBucketNotificationConfigurationCommandInput,

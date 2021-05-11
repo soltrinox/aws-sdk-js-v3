@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopContactCommandInput = StopContactRequest;
-export type StopContactCommandOutput = StopContactResponse & __MetadataBearer;
+export interface StopContactCommandInput extends StopContactRequest {}
+export interface StopContactCommandOutput extends StopContactResponse, __MetadataBearer {}
 
 /**
  * <p>Ends the specified contact.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, StopContactCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, StopContactCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new StopContactCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopContactCommandInput} for command's `input` shape.
+ * @see {@link StopContactCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopContactCommand extends $Command<
   StopContactCommandInput,

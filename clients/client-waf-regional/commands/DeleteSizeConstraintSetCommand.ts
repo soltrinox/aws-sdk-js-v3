@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteSizeConstraintSetCommandInput = DeleteSizeConstraintSetRequest;
-export type DeleteSizeConstraintSetCommandOutput = DeleteSizeConstraintSetResponse & __MetadataBearer;
+export interface DeleteSizeConstraintSetCommandInput extends DeleteSizeConstraintSetRequest {}
+export interface DeleteSizeConstraintSetCommandOutput extends DeleteSizeConstraintSetResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -45,6 +45,20 @@ export type DeleteSizeConstraintSetCommandOutput = DeleteSizeConstraintSetRespon
  *                <p>Submit a <code>DeleteSizeConstraintSet</code> request.</p>
  *             </li>
  *          </ol>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFRegionalClient, DeleteSizeConstraintSetCommand } from "@aws-sdk/client-waf-regional"; // ES Modules import
+ * // const { WAFRegionalClient, DeleteSizeConstraintSetCommand } = require("@aws-sdk/client-waf-regional"); // CommonJS import
+ * const client = new WAFRegionalClient(config);
+ * const command = new DeleteSizeConstraintSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteSizeConstraintSetCommandInput} for command's `input` shape.
+ * @see {@link DeleteSizeConstraintSetCommandOutput} for command's `response` shape.
+ * @see {@link WAFRegionalClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteSizeConstraintSetCommand extends $Command<
   DeleteSizeConstraintSetCommandInput,

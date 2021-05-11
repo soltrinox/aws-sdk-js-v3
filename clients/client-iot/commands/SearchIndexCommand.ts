@@ -1,5 +1,5 @@
 import { IoTClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../IoTClient";
-import { SearchIndexRequest, SearchIndexResponse } from "../models/models_1";
+import { SearchIndexRequest, SearchIndexResponse } from "../models/models_2";
 import {
   deserializeAws_restJson1SearchIndexCommand,
   serializeAws_restJson1SearchIndexCommand,
@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SearchIndexCommandInput = SearchIndexRequest;
-export type SearchIndexCommandOutput = SearchIndexResponse & __MetadataBearer;
+export interface SearchIndexCommandInput extends SearchIndexRequest {}
+export interface SearchIndexCommandOutput extends SearchIndexResponse, __MetadataBearer {}
 
 /**
  * <p>The query search index.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, SearchIndexCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, SearchIndexCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new SearchIndexCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SearchIndexCommandInput} for command's `input` shape.
+ * @see {@link SearchIndexCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SearchIndexCommand extends $Command<
   SearchIndexCommandInput,

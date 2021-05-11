@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeImageScanFindingsCommandInput = DescribeImageScanFindingsRequest;
-export type DescribeImageScanFindingsCommandOutput = DescribeImageScanFindingsResponse & __MetadataBearer;
+export interface DescribeImageScanFindingsCommandInput extends DescribeImageScanFindingsRequest {}
+export interface DescribeImageScanFindingsCommandOutput extends DescribeImageScanFindingsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns the scan findings for the specified image.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECRClient, DescribeImageScanFindingsCommand } from "@aws-sdk/client-ecr"; // ES Modules import
+ * // const { ECRClient, DescribeImageScanFindingsCommand } = require("@aws-sdk/client-ecr"); // CommonJS import
+ * const client = new ECRClient(config);
+ * const command = new DescribeImageScanFindingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeImageScanFindingsCommandInput} for command's `input` shape.
+ * @see {@link DescribeImageScanFindingsCommandOutput} for command's `response` shape.
+ * @see {@link ECRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeImageScanFindingsCommand extends $Command<
   DescribeImageScanFindingsCommandInput,

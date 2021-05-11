@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteProtectionGroupCommandInput = DeleteProtectionGroupRequest;
-export type DeleteProtectionGroupCommandOutput = DeleteProtectionGroupResponse & __MetadataBearer;
+export interface DeleteProtectionGroupCommandInput extends DeleteProtectionGroupRequest {}
+export interface DeleteProtectionGroupCommandOutput extends DeleteProtectionGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Removes the specified protection group.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ShieldClient, DeleteProtectionGroupCommand } from "@aws-sdk/client-shield"; // ES Modules import
+ * // const { ShieldClient, DeleteProtectionGroupCommand } = require("@aws-sdk/client-shield"); // CommonJS import
+ * const client = new ShieldClient(config);
+ * const command = new DeleteProtectionGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteProtectionGroupCommandInput} for command's `input` shape.
+ * @see {@link DeleteProtectionGroupCommandOutput} for command's `response` shape.
+ * @see {@link ShieldClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteProtectionGroupCommand extends $Command<
   DeleteProtectionGroupCommandInput,

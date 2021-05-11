@@ -10,6 +10,10 @@ import { GetTagsCommandInput, GetTagsCommandOutput } from "./commands/GetTagsCom
 import { GroupResourcesCommandInput, GroupResourcesCommandOutput } from "./commands/GroupResourcesCommand";
 import { ListGroupResourcesCommandInput, ListGroupResourcesCommandOutput } from "./commands/ListGroupResourcesCommand";
 import { ListGroupsCommandInput, ListGroupsCommandOutput } from "./commands/ListGroupsCommand";
+import {
+  PutGroupConfigurationCommandInput,
+  PutGroupConfigurationCommandOutput,
+} from "./commands/PutGroupConfigurationCommand";
 import { SearchResourcesCommandInput, SearchResourcesCommandOutput } from "./commands/SearchResourcesCommand";
 import { TagCommandInput, TagCommandOutput } from "./commands/TagCommand";
 import { UngroupResourcesCommandInput, UngroupResourcesCommandOutput } from "./commands/UngroupResourcesCommand";
@@ -77,6 +81,7 @@ export type ServiceInputTypes =
   | GroupResourcesCommandInput
   | ListGroupResourcesCommandInput
   | ListGroupsCommandInput
+  | PutGroupConfigurationCommandInput
   | SearchResourcesCommandInput
   | TagCommandInput
   | UngroupResourcesCommandInput
@@ -94,6 +99,7 @@ export type ServiceOutputTypes =
   | GroupResourcesCommandOutput
   | ListGroupResourcesCommandOutput
   | ListGroupsCommandOutput
+  | PutGroupConfigurationCommandOutput
   | SearchResourcesCommandOutput
   | TagCommandOutput
   | UngroupResourcesCommandOutput
@@ -166,7 +172,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -197,7 +203,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type ResourceGroupsClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type ResourceGroupsClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -205,8 +211,12 @@ export type ResourceGroupsClientConfig = Partial<__SmithyConfiguration<__HttpHan
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of ResourceGroupsClient class constructor that set the region, credentials and other options.
+ */
+export interface ResourceGroupsClientConfig extends ResourceGroupsClientConfigType {}
 
-export type ResourceGroupsClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type ResourceGroupsClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -214,6 +224,10 @@ export type ResourceGroupsClientResolvedConfig = __SmithyResolvedConfiguration<_
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of ResourceGroupsClient class. This is resolved and normalized from the {@link ResourceGroupsClientConfig | constructor configuration interface}.
+ */
+export interface ResourceGroupsClientResolvedConfig extends ResourceGroupsClientResolvedConfigType {}
 
 /**
  * <fullname>AWS Resource Groups</fullname>
@@ -259,6 +273,9 @@ export class ResourceGroupsClient extends __Client<
   ServiceOutputTypes,
   ResourceGroupsClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of ResourceGroupsClient class. This is resolved and normalized from the {@link ResourceGroupsClientConfig | constructor configuration interface}.
+   */
   readonly config: ResourceGroupsClientResolvedConfig;
 
   constructor(configuration: ResourceGroupsClientConfig) {

@@ -17,17 +17,17 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchUpdateFindingsCommandInput = BatchUpdateFindingsRequest;
-export type BatchUpdateFindingsCommandOutput = BatchUpdateFindingsResponse & __MetadataBearer;
+export interface BatchUpdateFindingsCommandInput extends BatchUpdateFindingsRequest {}
+export interface BatchUpdateFindingsCommandOutput extends BatchUpdateFindingsResponse, __MetadataBearer {}
 
 /**
  * <p>Used by Security Hub customers to update information about their investigation into a finding.
- *          Requested by master accounts or member accounts. Master accounts can update findings for
+ *          Requested by administrator accounts or member accounts. Administrator accounts can update findings for
  *          their account and their member accounts. Member accounts can update findings for their
  *          account.</p>
  *          <p>Updates from <code>BatchUpdateFindings</code> do not affect the value of
  *             <code>UpdatedAt</code> for a finding.</p>
- *          <p>Master and member accounts can use <code>BatchUpdateFindings</code> to update the
+ *          <p>Administrator and member accounts can use <code>BatchUpdateFindings</code> to update the
  *          following finding fields and objects.</p>
  *          <ul>
  *             <li>
@@ -80,6 +80,20 @@ export type BatchUpdateFindingsCommandOutput = BatchUpdateFindingsResponse & __M
  *          example, you might not want member accounts to be able to suppress findings or change the
  *          finding severity. See <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/finding-update-batchupdatefindings.html#batchupdatefindings-configure-access">Configuring access to BatchUpdateFindings</a> in the
  *             <i>AWS Security Hub User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecurityHubClient, BatchUpdateFindingsCommand } from "@aws-sdk/client-securityhub"; // ES Modules import
+ * // const { SecurityHubClient, BatchUpdateFindingsCommand } = require("@aws-sdk/client-securityhub"); // CommonJS import
+ * const client = new SecurityHubClient(config);
+ * const command = new BatchUpdateFindingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchUpdateFindingsCommandInput} for command's `input` shape.
+ * @see {@link BatchUpdateFindingsCommandOutput} for command's `response` shape.
+ * @see {@link SecurityHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchUpdateFindingsCommand extends $Command<
   BatchUpdateFindingsCommandInput,

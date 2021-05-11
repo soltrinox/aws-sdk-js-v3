@@ -21,11 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSessionCommandInput = GetSessionRequest;
-export type GetSessionCommandOutput = GetSessionResponse & __MetadataBearer;
+export interface GetSessionCommandInput extends GetSessionRequest {}
+export interface GetSessionCommandOutput extends GetSessionResponse, __MetadataBearer {}
 
 /**
- * <p>Returns session information for a specified bot, alias, and user ID.</p>
+ * <p>Returns session information for a specified bot, alias, and user
+ *       ID.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexRuntimeServiceClient, GetSessionCommand } from "@aws-sdk/client-lex-runtime-service"; // ES Modules import
+ * // const { LexRuntimeServiceClient, GetSessionCommand } = require("@aws-sdk/client-lex-runtime-service"); // CommonJS import
+ * const client = new LexRuntimeServiceClient(config);
+ * const command = new GetSessionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSessionCommandInput} for command's `input` shape.
+ * @see {@link GetSessionCommandOutput} for command's `response` shape.
+ * @see {@link LexRuntimeServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSessionCommand extends $Command<
   GetSessionCommandInput,

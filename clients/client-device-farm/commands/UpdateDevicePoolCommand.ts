@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateDevicePoolCommandInput = UpdateDevicePoolRequest;
-export type UpdateDevicePoolCommandOutput = UpdateDevicePoolResult & __MetadataBearer;
+export interface UpdateDevicePoolCommandInput extends UpdateDevicePoolRequest {}
+export interface UpdateDevicePoolCommandOutput extends UpdateDevicePoolResult, __MetadataBearer {}
 
 /**
  * <p>Modifies the name, description, and rules in a device pool given the attributes and
  *             the pool ARN. Rule updates are all-or-nothing, meaning they can only be updated as a
  *             whole (or not at all).</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, UpdateDevicePoolCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, UpdateDevicePoolCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new UpdateDevicePoolCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateDevicePoolCommandInput} for command's `input` shape.
+ * @see {@link UpdateDevicePoolCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateDevicePoolCommand extends $Command<
   UpdateDevicePoolCommandInput,

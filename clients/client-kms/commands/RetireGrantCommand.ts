@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RetireGrantCommandInput = RetireGrantRequest;
-export type RetireGrantCommandOutput = __MetadataBearer;
+export interface RetireGrantCommandInput extends RetireGrantRequest {}
+export interface RetireGrantCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Retires a grant. To clean up, you can retire a grant when you're done using it. You should
@@ -40,6 +40,54 @@ export type RetireGrantCommandOutput = __MetadataBearer;
  *       ID and the Amazon Resource Name (ARN) of the customer master key (CMK). A grant token is a
  *       unique variable-length base64-encoded string. A grant ID is a 64 character unique identifier
  *       of a grant. The <a>CreateGrant</a> operation returns both.</p>
+ *
+ *          <p>
+ *             <b>Cross-account use</b>: Yes. You can retire a grant on a CMK
+ *       in a different AWS account.</p>
+ *          <p>
+ *             <b>Required permissions:</b>: Permission to retire a grant is
+ *       specified in the grant. You cannot control access to this operation in a policy. For more
+ *       information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/grants.html">Using
+ *         grants</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>
+ *          <p>
+ *             <b>Related operations:</b>
+ *          </p>
+ *          <ul>
+ *             <li>
+ *                <p>
+ *                   <a>CreateGrant</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>ListGrants</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>ListRetirableGrants</a>
+ *                </p>
+ *             </li>
+ *             <li>
+ *                <p>
+ *                   <a>RevokeGrant</a>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KMSClient, RetireGrantCommand } from "@aws-sdk/client-kms"; // ES Modules import
+ * // const { KMSClient, RetireGrantCommand } = require("@aws-sdk/client-kms"); // CommonJS import
+ * const client = new KMSClient(config);
+ * const command = new RetireGrantCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RetireGrantCommandInput} for command's `input` shape.
+ * @see {@link RetireGrantCommandOutput} for command's `response` shape.
+ * @see {@link KMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RetireGrantCommand extends $Command<
   RetireGrantCommandInput,

@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteTransitGatewayMulticastDomainCommandInput = DeleteTransitGatewayMulticastDomainRequest;
-export type DeleteTransitGatewayMulticastDomainCommandOutput = DeleteTransitGatewayMulticastDomainResult &
-  __MetadataBearer;
+export interface DeleteTransitGatewayMulticastDomainCommandInput extends DeleteTransitGatewayMulticastDomainRequest {}
+export interface DeleteTransitGatewayMulticastDomainCommandOutput
+  extends DeleteTransitGatewayMulticastDomainResult,
+    __MetadataBearer {}
 
 /**
  * <p>Deletes the specified transit gateway multicast domain.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DeleteTransitGatewayMulticastDomainCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DeleteTransitGatewayMulticastDomainCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DeleteTransitGatewayMulticastDomainCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteTransitGatewayMulticastDomainCommandInput} for command's `input` shape.
+ * @see {@link DeleteTransitGatewayMulticastDomainCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteTransitGatewayMulticastDomainCommand extends $Command<
   DeleteTransitGatewayMulticastDomainCommandInput,

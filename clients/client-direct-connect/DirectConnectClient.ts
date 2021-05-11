@@ -30,6 +30,7 @@ import {
   AssociateHostedConnectionCommandInput,
   AssociateHostedConnectionCommandOutput,
 } from "./commands/AssociateHostedConnectionCommand";
+import { AssociateMacSecKeyCommandInput, AssociateMacSecKeyCommandOutput } from "./commands/AssociateMacSecKeyCommand";
 import {
   AssociateVirtualInterfaceCommandInput,
   AssociateVirtualInterfaceCommandOutput,
@@ -152,6 +153,10 @@ import {
   DisassociateConnectionFromLagCommandOutput,
 } from "./commands/DisassociateConnectionFromLagCommand";
 import {
+  DisassociateMacSecKeyCommandInput,
+  DisassociateMacSecKeyCommandOutput,
+} from "./commands/DisassociateMacSecKeyCommand";
+import {
   ListVirtualInterfaceTestHistoryCommandInput,
   ListVirtualInterfaceTestHistoryCommandOutput,
 } from "./commands/ListVirtualInterfaceTestHistoryCommand";
@@ -165,6 +170,7 @@ import {
 } from "./commands/StopBgpFailoverTestCommand";
 import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
 import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
+import { UpdateConnectionCommandInput, UpdateConnectionCommandOutput } from "./commands/UpdateConnectionCommand";
 import {
   UpdateDirectConnectGatewayAssociationCommandInput,
   UpdateDirectConnectGatewayAssociationCommandOutput,
@@ -234,6 +240,7 @@ export type ServiceInputTypes =
   | AllocateTransitVirtualInterfaceCommandInput
   | AssociateConnectionWithLagCommandInput
   | AssociateHostedConnectionCommandInput
+  | AssociateMacSecKeyCommandInput
   | AssociateVirtualInterfaceCommandInput
   | ConfirmConnectionCommandInput
   | ConfirmPrivateVirtualInterfaceCommandInput
@@ -274,11 +281,13 @@ export type ServiceInputTypes =
   | DescribeVirtualGatewaysCommandInput
   | DescribeVirtualInterfacesCommandInput
   | DisassociateConnectionFromLagCommandInput
+  | DisassociateMacSecKeyCommandInput
   | ListVirtualInterfaceTestHistoryCommandInput
   | StartBgpFailoverTestCommandInput
   | StopBgpFailoverTestCommandInput
   | TagResourceCommandInput
   | UntagResourceCommandInput
+  | UpdateConnectionCommandInput
   | UpdateDirectConnectGatewayAssociationCommandInput
   | UpdateLagCommandInput
   | UpdateVirtualInterfaceAttributesCommandInput;
@@ -292,6 +301,7 @@ export type ServiceOutputTypes =
   | AllocateTransitVirtualInterfaceCommandOutput
   | AssociateConnectionWithLagCommandOutput
   | AssociateHostedConnectionCommandOutput
+  | AssociateMacSecKeyCommandOutput
   | AssociateVirtualInterfaceCommandOutput
   | ConfirmConnectionCommandOutput
   | ConfirmPrivateVirtualInterfaceCommandOutput
@@ -332,11 +342,13 @@ export type ServiceOutputTypes =
   | DescribeVirtualGatewaysCommandOutput
   | DescribeVirtualInterfacesCommandOutput
   | DisassociateConnectionFromLagCommandOutput
+  | DisassociateMacSecKeyCommandOutput
   | ListVirtualInterfaceTestHistoryCommandOutput
   | StartBgpFailoverTestCommandOutput
   | StopBgpFailoverTestCommandOutput
   | TagResourceCommandOutput
   | UntagResourceCommandOutput
+  | UpdateConnectionCommandOutput
   | UpdateDirectConnectGatewayAssociationCommandOutput
   | UpdateLagCommandOutput
   | UpdateVirtualInterfaceAttributesCommandOutput;
@@ -406,7 +418,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -437,7 +449,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type DirectConnectClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type DirectConnectClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -445,8 +457,12 @@ export type DirectConnectClientConfig = Partial<__SmithyConfiguration<__HttpHand
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of DirectConnectClient class constructor that set the region, credentials and other options.
+ */
+export interface DirectConnectClientConfig extends DirectConnectClientConfigType {}
 
-export type DirectConnectClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type DirectConnectClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -454,6 +470,10 @@ export type DirectConnectClientResolvedConfig = __SmithyResolvedConfiguration<__
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of DirectConnectClient class. This is resolved and normalized from the {@link DirectConnectClientConfig | constructor configuration interface}.
+ */
+export interface DirectConnectClientResolvedConfig extends DirectConnectClientResolvedConfigType {}
 
 /**
  * <p>AWS Direct Connect links your internal network to an AWS Direct Connect location over a standard Ethernet fiber-optic cable.
@@ -469,6 +489,9 @@ export class DirectConnectClient extends __Client<
   ServiceOutputTypes,
   DirectConnectClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of DirectConnectClient class. This is resolved and normalized from the {@link DirectConnectClientConfig | constructor configuration interface}.
+   */
   readonly config: DirectConnectClientResolvedConfig;
 
   constructor(configuration: DirectConnectClientConfig) {

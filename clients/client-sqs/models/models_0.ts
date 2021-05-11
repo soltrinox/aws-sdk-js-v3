@@ -33,6 +33,9 @@ export interface AddPermissionRequest {
 }
 
 export namespace AddPermissionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddPermissionRequest): any => ({
     ...obj,
   });
@@ -50,6 +53,9 @@ export interface OverLimit extends __SmithyException, $MetadataBearer {
 }
 
 export namespace OverLimit {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OverLimit): any => ({
     ...obj,
   });
@@ -76,6 +82,9 @@ export interface ChangeMessageVisibilityRequest {
 }
 
 export namespace ChangeMessageVisibilityRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChangeMessageVisibilityRequest): any => ({
     ...obj,
   });
@@ -90,6 +99,9 @@ export interface MessageNotInflight extends __SmithyException, $MetadataBearer {
 }
 
 export namespace MessageNotInflight {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MessageNotInflight): any => ({
     ...obj,
   });
@@ -104,6 +116,9 @@ export interface ReceiptHandleIsInvalid extends __SmithyException, $MetadataBear
 }
 
 export namespace ReceiptHandleIsInvalid {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReceiptHandleIsInvalid): any => ({
     ...obj,
   });
@@ -118,6 +133,9 @@ export interface BatchEntryIdsNotDistinct extends __SmithyException, $MetadataBe
 }
 
 export namespace BatchEntryIdsNotDistinct {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchEntryIdsNotDistinct): any => ({
     ...obj,
   });
@@ -162,6 +180,9 @@ export interface ChangeMessageVisibilityBatchRequestEntry {
 }
 
 export namespace ChangeMessageVisibilityBatchRequestEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChangeMessageVisibilityBatchRequestEntry): any => ({
     ...obj,
   });
@@ -184,6 +205,9 @@ export interface ChangeMessageVisibilityBatchRequest {
 }
 
 export namespace ChangeMessageVisibilityBatchRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChangeMessageVisibilityBatchRequest): any => ({
     ...obj,
   });
@@ -216,6 +240,9 @@ export interface BatchResultErrorEntry {
 }
 
 export namespace BatchResultErrorEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchResultErrorEntry): any => ({
     ...obj,
   });
@@ -234,6 +261,9 @@ export interface ChangeMessageVisibilityBatchResultEntry {
 }
 
 export namespace ChangeMessageVisibilityBatchResultEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChangeMessageVisibilityBatchResultEntry): any => ({
     ...obj,
   });
@@ -263,6 +293,9 @@ export interface ChangeMessageVisibilityBatchResult {
 }
 
 export namespace ChangeMessageVisibilityBatchResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChangeMessageVisibilityBatchResult): any => ({
     ...obj,
   });
@@ -277,6 +310,9 @@ export interface EmptyBatchRequest extends __SmithyException, $MetadataBearer {
 }
 
 export namespace EmptyBatchRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EmptyBatchRequest): any => ({
     ...obj,
   });
@@ -291,6 +327,9 @@ export interface InvalidBatchEntryId extends __SmithyException, $MetadataBearer 
 }
 
 export namespace InvalidBatchEntryId {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidBatchEntryId): any => ({
     ...obj,
   });
@@ -305,6 +344,9 @@ export interface TooManyEntriesInBatchRequest extends __SmithyException, $Metada
 }
 
 export namespace TooManyEntriesInBatchRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyEntriesInBatchRequest): any => ({
     ...obj,
   });
@@ -317,8 +359,10 @@ export type QueueAttributeName =
   | "ApproximateNumberOfMessagesNotVisible"
   | "ContentBasedDeduplication"
   | "CreatedTimestamp"
+  | "DeduplicationScope"
   | "DelaySeconds"
   | "FifoQueue"
+  | "FifoThroughputLimit"
   | "KmsDataKeyReusePeriodSeconds"
   | "KmsMasterKeyId"
   | "LastModifiedTimestamp"
@@ -373,7 +417,7 @@ export interface CreateQueueRequest {
    *          <note>
    *             <p>To be able to tag a queue on creation, you must have the
    *                     <code>sqs:CreateQueue</code> and <code>sqs:TagQueue</code> permissions.</p>
-   *             <p>Cross-account permissions don't apply to this action. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name">Grant Cross-Account Permissions to a Role and a User Name</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+   *             <p>Cross-account permissions don't apply to this action. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name">Grant cross-account permissions to a role and a user name</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
    *          </note>
    */
   tags?: { [key: string]: string };
@@ -461,7 +505,7 @@ export interface CreateQueueRequest {
    *          <ul>
    *             <li>
    *               <p>
-   *                   <code>FifoQueue</code> – Designates a queue as FIFO. Valid values: <code>true</code>, <code>false</code>. If you don't specify the <code>FifoQueue</code> attribute, Amazon SQS creates a standard queue.
+   *                   <code>FifoQueue</code> – Designates a queue as FIFO. Valid values are <code>true</code> and <code>false</code>. If you don't specify the <code>FifoQueue</code> attribute, Amazon SQS creates a standard queue.
    *                   You can provide this attribute only during queue creation. You can't change it for an existing queue.
    *                   When you set this attribute, you must also provide the <code>MessageGroupId</code> for your messages explicitly.</p>
    *                <p>For more information, see
@@ -470,12 +514,12 @@ export interface CreateQueueRequest {
    *             </li>
    *             <li>
    *               <p>
-   *                   <code>ContentBasedDeduplication</code> – Enables content-based deduplication. Valid values: <code>true</code>, <code>false</code>. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing">Exactly-Once Processing</a> in the
-   *                       <i>Amazon Simple Queue Service Developer Guide</i>.
+   *                   <code>ContentBasedDeduplication</code> – Enables content-based deduplication. Valid values are <code>true</code> and <code>false</code>. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing">Exactly-Once Processing</a> in the
+   *                       <i>Amazon Simple Queue Service Developer Guide</i>. Note the following:
    *               </p>
    *               <ul>
    *                   <li>
-   *                       <p>Every message must have a unique <code>MessageDeduplicationId</code>,</p>
+   *                       <p>Every message must have a unique <code>MessageDeduplicationId</code>.</p>
    *                       <ul>
    *                         <li>
    *                               <p>You may provide a <code>MessageDeduplicationId</code> explicitly.</p>
@@ -506,11 +550,67 @@ export interface CreateQueueRequest {
    *                </ul>
    *             </li>
    *          </ul>
+   *
+   *
+   *          <p>
+   *             <b>Preview: High throughput for FIFO queues</b>
+   *          </p>
+   *          <p>
+   *             <b>High throughput for Amazon SQS FIFO queues is in preview release and is subject to change.</b>
+   *   This feature provides a high number of transactions per second (TPS) for messages in FIFO queues. For information on throughput quotas,
+   *   see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html">Quotas related to messages</a>
+   *   in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+   *          <p>This preview includes two new attributes:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>DeduplicationScope</code> – Specifies whether message deduplication occurs at the
+   *       message group or queue level. Valid values are <code>messageGroup</code> and <code>queue</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>FifoThroughputLimit</code> – Specifies whether the FIFO queue throughput
+   *       quota applies to the entire queue or per message group. Valid values are <code>perQueue</code> and <code>perMessageGroupId</code>.
+   *       The <code>perMessageGroupId</code> value is allowed only when the value for <code>DeduplicationScope</code> is <code>messageGroup</code>.</p>
+   *             </li>
+   *          </ul>
+   *          <p>To enable high throughput for FIFO queues, do the following:</p>
+   *          <ul>
+   *             <li>
+   *                <p>Set <code>DeduplicationScope</code> to <code>messageGroup</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>Set <code>FifoThroughputLimit</code> to <code>perMessageGroupId</code>.</p>
+   *             </li>
+   *          </ul>
+   *          <p>If you set these attributes to anything other than the values shown for enabling high
+   *   throughput, standard throughput is in effect and deduplication occurs as specified.</p>
+   *          <p>This preview is available in the following AWS Regions:</p>
+   *             <ul>
+   *             <li>
+   *                  <p>US East (Ohio); us-east-2</p>
+   *                </li>
+   *             <li>
+   *                  <p>US East (N. Virginia); us-east-1</p>
+   *                </li>
+   *             <li>
+   *                  <p>US West (Oregon); us-west-2</p>
+   *                </li>
+   *             <li>
+   *                  <p>Europe (Ireland); eu-west-1</p>
+   *                </li>
+   *          </ul>
+   *          <p>For more information about high throughput for FIFO queues,
+   *   see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html">Preview:
+   *   High throughput for FIFO queues</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
    */
   Attributes?: { [key: string]: string };
 }
 
 export namespace CreateQueueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateQueueRequest): any => ({
     ...obj,
   });
@@ -527,6 +627,9 @@ export interface CreateQueueResult {
 }
 
 export namespace CreateQueueResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateQueueResult): any => ({
     ...obj,
   });
@@ -542,6 +645,9 @@ export interface QueueDeletedRecently extends __SmithyException, $MetadataBearer
 }
 
 export namespace QueueDeletedRecently {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QueueDeletedRecently): any => ({
     ...obj,
   });
@@ -557,6 +663,9 @@ export interface QueueNameExists extends __SmithyException, $MetadataBearer {
 }
 
 export namespace QueueNameExists {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QueueNameExists): any => ({
     ...obj,
   });
@@ -579,6 +688,9 @@ export interface DeleteMessageRequest {
 }
 
 export namespace DeleteMessageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMessageRequest): any => ({
     ...obj,
   });
@@ -593,6 +705,9 @@ export interface InvalidIdFormat extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidIdFormat {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidIdFormat): any => ({
     ...obj,
   });
@@ -618,6 +733,9 @@ export interface DeleteMessageBatchRequestEntry {
 }
 
 export namespace DeleteMessageBatchRequestEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMessageBatchRequestEntry): any => ({
     ...obj,
   });
@@ -640,6 +758,9 @@ export interface DeleteMessageBatchRequest {
 }
 
 export namespace DeleteMessageBatchRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMessageBatchRequest): any => ({
     ...obj,
   });
@@ -658,6 +779,9 @@ export interface DeleteMessageBatchResultEntry {
 }
 
 export namespace DeleteMessageBatchResultEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMessageBatchResultEntry): any => ({
     ...obj,
   });
@@ -687,6 +811,9 @@ export interface DeleteMessageBatchResult {
 }
 
 export namespace DeleteMessageBatchResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteMessageBatchResult): any => ({
     ...obj,
   });
@@ -704,6 +831,9 @@ export interface DeleteQueueRequest {
 }
 
 export namespace DeleteQueueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteQueueRequest): any => ({
     ...obj,
   });
@@ -841,7 +971,7 @@ export interface GetQueueAttributesRequest {
    *          <ul>
    *             <li>
    *               <p>
-   *                   <code>FifoQueue</code> – Returns whether the queue is FIFO. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic">FIFO Queue Logic</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+   *                   <code>FifoQueue</code> – Returns information about whether the queue is FIFO. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic">FIFO Queue Logic</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
    *               <note>
    *                   <p>To determine whether a queue is <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html">FIFO</a>, you can check whether <code>QueueName</code> ends with the <code>.fifo</code> suffix.</p>
    *                </note>
@@ -852,11 +982,67 @@ export interface GetQueueAttributesRequest {
    *               </p>
    *             </li>
    *          </ul>
+   *
+   *
+   *          <p>
+   *             <b>Preview: High throughput for FIFO queues</b>
+   *          </p>
+   *          <p>
+   *             <b>High throughput for Amazon SQS FIFO queues is in preview release and is subject to change.</b>
+   *   This feature provides a high number of transactions per second (TPS) for messages in FIFO queues. For information on throughput quotas,
+   *   see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html">Quotas related to messages</a>
+   *   in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+   *          <p>This preview includes two new attributes:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>DeduplicationScope</code> – Specifies whether message deduplication occurs at the
+   *       message group or queue level. Valid values are <code>messageGroup</code> and <code>queue</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>FifoThroughputLimit</code> – Specifies whether the FIFO queue throughput
+   *       quota applies to the entire queue or per message group. Valid values are <code>perQueue</code> and <code>perMessageGroupId</code>.
+   *       The <code>perMessageGroupId</code> value is allowed only when the value for <code>DeduplicationScope</code> is <code>messageGroup</code>.</p>
+   *             </li>
+   *          </ul>
+   *          <p>To enable high throughput for FIFO queues, do the following:</p>
+   *          <ul>
+   *             <li>
+   *                <p>Set <code>DeduplicationScope</code> to <code>messageGroup</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>Set <code>FifoThroughputLimit</code> to <code>perMessageGroupId</code>.</p>
+   *             </li>
+   *          </ul>
+   *          <p>If you set these attributes to anything other than the values shown for enabling high
+   *   throughput, standard throughput is in effect and deduplication occurs as specified.</p>
+   *          <p>This preview is available in the following AWS Regions:</p>
+   *             <ul>
+   *             <li>
+   *                  <p>US East (Ohio); us-east-2</p>
+   *                </li>
+   *             <li>
+   *                  <p>US East (N. Virginia); us-east-1</p>
+   *                </li>
+   *             <li>
+   *                  <p>US West (Oregon); us-west-2</p>
+   *                </li>
+   *             <li>
+   *                  <p>Europe (Ireland); eu-west-1</p>
+   *                </li>
+   *          </ul>
+   *          <p>For more information about high throughput for FIFO queues,
+   *   see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html">Preview:
+   *   High throughput for FIFO queues</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
    */
   AttributeNames?: (QueueAttributeName | string)[];
 }
 
 export namespace GetQueueAttributesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetQueueAttributesRequest): any => ({
     ...obj,
   });
@@ -873,6 +1059,9 @@ export interface GetQueueAttributesResult {
 }
 
 export namespace GetQueueAttributesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetQueueAttributesResult): any => ({
     ...obj,
   });
@@ -887,6 +1076,9 @@ export interface InvalidAttributeName extends __SmithyException, $MetadataBearer
 }
 
 export namespace InvalidAttributeName {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidAttributeName): any => ({
     ...obj,
   });
@@ -909,6 +1101,9 @@ export interface GetQueueUrlRequest {
 }
 
 export namespace GetQueueUrlRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetQueueUrlRequest): any => ({
     ...obj,
   });
@@ -925,6 +1120,9 @@ export interface GetQueueUrlResult {
 }
 
 export namespace GetQueueUrlResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetQueueUrlResult): any => ({
     ...obj,
   });
@@ -939,6 +1137,9 @@ export interface QueueDoesNotExist extends __SmithyException, $MetadataBearer {
 }
 
 export namespace QueueDoesNotExist {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: QueueDoesNotExist): any => ({
     ...obj,
   });
@@ -967,6 +1168,9 @@ export interface ListDeadLetterSourceQueuesRequest {
 }
 
 export namespace ListDeadLetterSourceQueuesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDeadLetterSourceQueuesRequest): any => ({
     ...obj,
   });
@@ -989,6 +1193,9 @@ export interface ListDeadLetterSourceQueuesResult {
 }
 
 export namespace ListDeadLetterSourceQueuesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListDeadLetterSourceQueuesResult): any => ({
     ...obj,
   });
@@ -1017,6 +1224,9 @@ export interface ListQueuesRequest {
 }
 
 export namespace ListQueuesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListQueuesRequest): any => ({
     ...obj,
   });
@@ -1039,6 +1249,9 @@ export interface ListQueuesResult {
 }
 
 export namespace ListQueuesResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListQueuesResult): any => ({
     ...obj,
   });
@@ -1052,6 +1265,9 @@ export interface ListQueueTagsRequest {
 }
 
 export namespace ListQueueTagsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListQueueTagsRequest): any => ({
     ...obj,
   });
@@ -1065,6 +1281,9 @@ export interface ListQueueTagsResult {
 }
 
 export namespace ListQueueTagsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListQueueTagsResult): any => ({
     ...obj,
   });
@@ -1079,6 +1298,9 @@ export interface PurgeQueueInProgress extends __SmithyException, $MetadataBearer
 }
 
 export namespace PurgeQueueInProgress {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PurgeQueueInProgress): any => ({
     ...obj,
   });
@@ -1096,6 +1318,9 @@ export interface PurgeQueueRequest {
 }
 
 export namespace PurgeQueueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PurgeQueueRequest): any => ({
     ...obj,
   });
@@ -1270,6 +1495,9 @@ export interface ReceiveMessageRequest {
 }
 
 export namespace ReceiveMessageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReceiveMessageRequest): any => ({
     ...obj,
   });
@@ -1321,6 +1549,9 @@ export interface MessageAttributeValue {
 }
 
 export namespace MessageAttributeValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MessageAttributeValue): any => ({
     ...obj,
   });
@@ -1410,6 +1641,9 @@ export interface Message {
 }
 
 export namespace Message {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Message): any => ({
     ...obj,
   });
@@ -1426,6 +1660,9 @@ export interface ReceiveMessageResult {
 }
 
 export namespace ReceiveMessageResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReceiveMessageResult): any => ({
     ...obj,
   });
@@ -1450,6 +1687,9 @@ export interface RemovePermissionRequest {
 }
 
 export namespace RemovePermissionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemovePermissionRequest): any => ({
     ...obj,
   });
@@ -1464,6 +1704,9 @@ export interface InvalidMessageContents extends __SmithyException, $MetadataBear
 }
 
 export namespace InvalidMessageContents {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidMessageContents): any => ({
     ...obj,
   });
@@ -1507,6 +1750,9 @@ export interface MessageSystemAttributeValue {
 }
 
 export namespace MessageSystemAttributeValue {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MessageSystemAttributeValue): any => ({
     ...obj,
   });
@@ -1650,6 +1896,9 @@ export interface SendMessageRequest {
 }
 
 export namespace SendMessageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendMessageRequest): any => ({
     ...obj,
   });
@@ -1660,7 +1909,7 @@ export namespace SendMessageRequest {
  */
 export interface SendMessageResult {
   /**
-   * <p>An MD5 digest of the non-URL-encoded message attribute string. You can use this attribute to verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the MD5 digest. For information about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
+   * <p>An MD5 digest of the non-URL-encoded message body string. You can use this attribute to verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the MD5 digest. For information about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
    */
   MD5OfMessageBody?: string;
 
@@ -1690,6 +1939,9 @@ export interface SendMessageResult {
 }
 
 export namespace SendMessageResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendMessageResult): any => ({
     ...obj,
   });
@@ -1704,6 +1956,9 @@ export interface UnsupportedOperation extends __SmithyException, $MetadataBearer
 }
 
 export namespace UnsupportedOperation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnsupportedOperation): any => ({
     ...obj,
   });
@@ -1718,6 +1973,9 @@ export interface BatchRequestTooLong extends __SmithyException, $MetadataBearer 
 }
 
 export namespace BatchRequestTooLong {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchRequestTooLong): any => ({
     ...obj,
   });
@@ -1857,6 +2115,9 @@ export interface SendMessageBatchRequestEntry {
 }
 
 export namespace SendMessageBatchRequestEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendMessageBatchRequestEntry): any => ({
     ...obj,
   });
@@ -1881,6 +2142,9 @@ export interface SendMessageBatchRequest {
 }
 
 export namespace SendMessageBatchRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendMessageBatchRequest): any => ({
     ...obj,
   });
@@ -1903,7 +2167,7 @@ export interface SendMessageBatchResultEntry {
   MessageId: string | undefined;
 
   /**
-   * <p>An MD5 digest of the non-URL-encoded message attribute string. You can use this attribute to verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the MD5 digest. For information about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
+   * <p>An MD5 digest of the non-URL-encoded message body string. You can use this attribute to verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the MD5 digest. For information about MD5, see <a href="https://www.ietf.org/rfc/rfc1321.txt">RFC1321</a>.</p>
    */
   MD5OfMessageBody: string | undefined;
 
@@ -1926,6 +2190,9 @@ export interface SendMessageBatchResultEntry {
 }
 
 export namespace SendMessageBatchResultEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendMessageBatchResultEntry): any => ({
     ...obj,
   });
@@ -1955,6 +2222,9 @@ export interface SendMessageBatchResult {
 }
 
 export namespace SendMessageBatchResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendMessageBatchResult): any => ({
     ...obj,
   });
@@ -2055,11 +2325,11 @@ export interface SetQueueAttributesRequest {
    *             <li>
    *               <p>
    *                   <code>ContentBasedDeduplication</code> – Enables content-based deduplication. For more information, see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing">Exactly-Once Processing</a> in the
-   *                   <i>Amazon Simple Queue Service Developer Guide</i>.
+   *                   <i>Amazon Simple Queue Service Developer Guide</i>. Note the following:
    *               </p>
    *               <ul>
    *                   <li>
-   *                       <p>Every message must have a unique <code>MessageDeduplicationId</code>,</p>
+   *                       <p>Every message must have a unique <code>MessageDeduplicationId</code>.</p>
    *                       <ul>
    *                         <li>
    *                               <p>You may provide a <code>MessageDeduplicationId</code> explicitly.</p>
@@ -2090,11 +2360,67 @@ export interface SetQueueAttributesRequest {
    *                </ul>
    *             </li>
    *          </ul>
+   *
+   *
+   *          <p>
+   *             <b>Preview: High throughput for FIFO queues</b>
+   *          </p>
+   *          <p>
+   *             <b>High throughput for Amazon SQS FIFO queues is in preview release and is subject to change.</b>
+   *   This feature provides a high number of transactions per second (TPS) for messages in FIFO queues. For information on throughput quotas,
+   *   see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html">Quotas related to messages</a>
+   *   in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
+   *          <p>This preview includes two new attributes:</p>
+   *          <ul>
+   *             <li>
+   *                <p>
+   *                   <code>DeduplicationScope</code> – Specifies whether message deduplication occurs at the
+   *       message group or queue level. Valid values are <code>messageGroup</code> and <code>queue</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>
+   *                   <code>FifoThroughputLimit</code> – Specifies whether the FIFO queue throughput
+   *       quota applies to the entire queue or per message group. Valid values are <code>perQueue</code> and <code>perMessageGroupId</code>.
+   *       The <code>perMessageGroupId</code> value is allowed only when the value for <code>DeduplicationScope</code> is <code>messageGroup</code>.</p>
+   *             </li>
+   *          </ul>
+   *          <p>To enable high throughput for FIFO queues, do the following:</p>
+   *          <ul>
+   *             <li>
+   *                <p>Set <code>DeduplicationScope</code> to <code>messageGroup</code>.</p>
+   *             </li>
+   *             <li>
+   *                <p>Set <code>FifoThroughputLimit</code> to <code>perMessageGroupId</code>.</p>
+   *             </li>
+   *          </ul>
+   *          <p>If you set these attributes to anything other than the values shown for enabling high
+   *   throughput, standard throughput is in effect and deduplication occurs as specified.</p>
+   *          <p>This preview is available in the following AWS Regions:</p>
+   *             <ul>
+   *             <li>
+   *                  <p>US East (Ohio); us-east-2</p>
+   *                </li>
+   *             <li>
+   *                  <p>US East (N. Virginia); us-east-1</p>
+   *                </li>
+   *             <li>
+   *                  <p>US West (Oregon); us-west-2</p>
+   *                </li>
+   *             <li>
+   *                  <p>Europe (Ireland); eu-west-1</p>
+   *                </li>
+   *          </ul>
+   *          <p>For more information about high throughput for FIFO queues,
+   *   see <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html">Preview:
+   *   High throughput for FIFO queues</a> in the <i>Amazon Simple Queue Service Developer Guide</i>.</p>
    */
   Attributes: { [key: string]: string } | undefined;
 }
 
 export namespace SetQueueAttributesRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetQueueAttributesRequest): any => ({
     ...obj,
   });
@@ -2113,6 +2439,9 @@ export interface TagQueueRequest {
 }
 
 export namespace TagQueueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagQueueRequest): any => ({
     ...obj,
   });
@@ -2131,6 +2460,9 @@ export interface UntagQueueRequest {
 }
 
 export namespace UntagQueueRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagQueueRequest): any => ({
     ...obj,
   });

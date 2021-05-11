@@ -22,12 +22,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateGroupCommandInput = CreateGroupRequest;
-export type CreateGroupCommandOutput = CreateGroupResponse & __MetadataBearer;
+export interface CreateGroupCommandInput extends CreateGroupRequest {}
+export interface CreateGroupCommandOutput extends CreateGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a new group in the specified user pool.</p>
  *         <p>Calling this action requires developer credentials.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, CreateGroupCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, CreateGroupCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new CreateGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateGroupCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateGroupCommand extends $Command<
   CreateGroupCommandInput,

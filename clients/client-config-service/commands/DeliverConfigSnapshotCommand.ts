@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeliverConfigSnapshotCommandInput = DeliverConfigSnapshotRequest;
-export type DeliverConfigSnapshotCommandOutput = DeliverConfigSnapshotResponse & __MetadataBearer;
+export interface DeliverConfigSnapshotCommandInput extends DeliverConfigSnapshotRequest {}
+export interface DeliverConfigSnapshotCommandOutput extends DeliverConfigSnapshotResponse, __MetadataBearer {}
 
 /**
  * <p>Schedules delivery of a configuration snapshot to the Amazon S3
@@ -38,6 +38,20 @@ export type DeliverConfigSnapshotCommandOutput = DeliverConfigSnapshotResponse &
  * 					failed.</p>
  * 			         </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConfigServiceClient, DeliverConfigSnapshotCommand } from "@aws-sdk/client-config-service"; // ES Modules import
+ * // const { ConfigServiceClient, DeliverConfigSnapshotCommand } = require("@aws-sdk/client-config-service"); // CommonJS import
+ * const client = new ConfigServiceClient(config);
+ * const command = new DeliverConfigSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeliverConfigSnapshotCommandInput} for command's `input` shape.
+ * @see {@link DeliverConfigSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link ConfigServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeliverConfigSnapshotCommand extends $Command<
   DeliverConfigSnapshotCommandInput,

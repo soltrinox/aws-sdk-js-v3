@@ -21,12 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetImportCommandInput = GetImportRequest;
-export type GetImportCommandOutput = GetImportResponse & __MetadataBearer;
+export interface GetImportCommandInput extends GetImportRequest {}
+export interface GetImportCommandOutput extends GetImportResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about an import job started with the
  *         <code>StartImport</code> operation.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, GetImportCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, GetImportCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new GetImportCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetImportCommandInput} for command's `input` shape.
+ * @see {@link GetImportCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetImportCommand extends $Command<
   GetImportCommandInput,

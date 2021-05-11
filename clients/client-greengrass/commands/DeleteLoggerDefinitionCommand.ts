@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteLoggerDefinitionCommandInput = DeleteLoggerDefinitionRequest;
-export type DeleteLoggerDefinitionCommandOutput = DeleteLoggerDefinitionResponse & __MetadataBearer;
+export interface DeleteLoggerDefinitionCommandInput extends DeleteLoggerDefinitionRequest {}
+export interface DeleteLoggerDefinitionCommandOutput extends DeleteLoggerDefinitionResponse, __MetadataBearer {}
 
 /**
  * Deletes a logger definition.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, DeleteLoggerDefinitionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, DeleteLoggerDefinitionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new DeleteLoggerDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteLoggerDefinitionCommandInput} for command's `input` shape.
+ * @see {@link DeleteLoggerDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteLoggerDefinitionCommand extends $Command<
   DeleteLoggerDefinitionCommandInput,

@@ -17,13 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateRoutingProfileNameCommandInput = UpdateRoutingProfileNameRequest;
-export type UpdateRoutingProfileNameCommandOutput = __MetadataBearer;
+export interface UpdateRoutingProfileNameCommandInput extends UpdateRoutingProfileNameRequest {}
+export interface UpdateRoutingProfileNameCommandOutput extends __MetadataBearer {}
 
 /**
- * <p>Updates the name and description of a routing profile. The request accepts the following
- *    data in JSON format. At least <code>Name</code> or <code>Description</code> must be
- *    provided.</p>
+ * <p>Updates the name and description of a routing profile. The request accepts the following data in JSON format. At least <code>Name</code> or <code>Description</code> must be provided.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ConnectClient, UpdateRoutingProfileNameCommand } from "@aws-sdk/client-connect"; // ES Modules import
+ * // const { ConnectClient, UpdateRoutingProfileNameCommand } = require("@aws-sdk/client-connect"); // CommonJS import
+ * const client = new ConnectClient(config);
+ * const command = new UpdateRoutingProfileNameCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateRoutingProfileNameCommandInput} for command's `input` shape.
+ * @see {@link UpdateRoutingProfileNameCommandOutput} for command's `response` shape.
+ * @see {@link ConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateRoutingProfileNameCommand extends $Command<
   UpdateRoutingProfileNameCommandInput,

@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopAppReplicationCommandInput = StopAppReplicationRequest;
-export type StopAppReplicationCommandOutput = StopAppReplicationResponse & __MetadataBearer;
+export interface StopAppReplicationCommandInput extends StopAppReplicationRequest {}
+export interface StopAppReplicationCommandOutput extends StopAppReplicationResponse, __MetadataBearer {}
 
 /**
  * <p>Stops replicating the specified application by deleting the replication job for each server in
  *             the application.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SMSClient, StopAppReplicationCommand } from "@aws-sdk/client-sms"; // ES Modules import
+ * // const { SMSClient, StopAppReplicationCommand } = require("@aws-sdk/client-sms"); // CommonJS import
+ * const client = new SMSClient(config);
+ * const command = new StopAppReplicationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopAppReplicationCommandInput} for command's `input` shape.
+ * @see {@link StopAppReplicationCommandOutput} for command's `response` shape.
+ * @see {@link SMSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopAppReplicationCommand extends $Command<
   StopAppReplicationCommandInput,

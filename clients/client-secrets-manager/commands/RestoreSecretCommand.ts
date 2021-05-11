@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RestoreSecretCommandInput = RestoreSecretRequest;
-export type RestoreSecretCommandOutput = RestoreSecretResponse & __MetadataBearer;
+export interface RestoreSecretCommandInput extends RestoreSecretRequest {}
+export interface RestoreSecretCommandOutput extends RestoreSecretResponse, __MetadataBearer {}
 
 /**
  * <p>Cancels the scheduled deletion of a secret by removing the <code>DeletedDate</code> time
@@ -40,6 +40,20 @@ export type RestoreSecretCommandOutput = RestoreSecretResponse & __MetadataBeare
  *                <p>To delete a secret, use <a>DeleteSecret</a>.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecretsManagerClient, RestoreSecretCommand } from "@aws-sdk/client-secrets-manager"; // ES Modules import
+ * // const { SecretsManagerClient, RestoreSecretCommand } = require("@aws-sdk/client-secrets-manager"); // CommonJS import
+ * const client = new SecretsManagerClient(config);
+ * const command = new RestoreSecretCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RestoreSecretCommandInput} for command's `input` shape.
+ * @see {@link RestoreSecretCommandOutput} for command's `response` shape.
+ * @see {@link SecretsManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RestoreSecretCommand extends $Command<
   RestoreSecretCommandInput,

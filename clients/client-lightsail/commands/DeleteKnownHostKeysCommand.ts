@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteKnownHostKeysCommandInput = DeleteKnownHostKeysRequest;
-export type DeleteKnownHostKeysCommandOutput = DeleteKnownHostKeysResult & __MetadataBearer;
+export interface DeleteKnownHostKeysCommandInput extends DeleteKnownHostKeysRequest {}
+export interface DeleteKnownHostKeysCommandOutput extends DeleteKnownHostKeysResult, __MetadataBearer {}
 
 /**
  * <p>Deletes the known host key or certificate used by the Amazon Lightsail browser-based SSH or
@@ -30,6 +30,20 @@ export type DeleteKnownHostKeysCommandOutput = DeleteKnownHostKeysResult & __Met
  *         information, see <a href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection">Troubleshooting connection issues when using the Amazon Lightsail browser-based SSH or RDP
  *           client</a>.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, DeleteKnownHostKeysCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, DeleteKnownHostKeysCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new DeleteKnownHostKeysCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteKnownHostKeysCommandInput} for command's `input` shape.
+ * @see {@link DeleteKnownHostKeysCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteKnownHostKeysCommand extends $Command<
   DeleteKnownHostKeysCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateCertificateCommandInput = AssociateCertificateRequest;
-export type AssociateCertificateCommandOutput = AssociateCertificateResponse & __MetadataBearer;
+export interface AssociateCertificateCommandInput extends AssociateCertificateRequest {}
+export interface AssociateCertificateCommandOutput extends AssociateCertificateResponse, __MetadataBearer {}
 
 /**
  * Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaConvertClient, AssociateCertificateCommand } from "@aws-sdk/client-mediaconvert"; // ES Modules import
+ * // const { MediaConvertClient, AssociateCertificateCommand } = require("@aws-sdk/client-mediaconvert"); // CommonJS import
+ * const client = new MediaConvertClient(config);
+ * const command = new AssociateCertificateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateCertificateCommandInput} for command's `input` shape.
+ * @see {@link AssociateCertificateCommandOutput} for command's `response` shape.
+ * @see {@link MediaConvertClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateCertificateCommand extends $Command<
   AssociateCertificateCommandInput,

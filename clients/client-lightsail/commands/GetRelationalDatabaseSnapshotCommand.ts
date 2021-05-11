@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRelationalDatabaseSnapshotCommandInput = GetRelationalDatabaseSnapshotRequest;
-export type GetRelationalDatabaseSnapshotCommandOutput = GetRelationalDatabaseSnapshotResult & __MetadataBearer;
+export interface GetRelationalDatabaseSnapshotCommandInput extends GetRelationalDatabaseSnapshotRequest {}
+export interface GetRelationalDatabaseSnapshotCommandOutput
+  extends GetRelationalDatabaseSnapshotResult,
+    __MetadataBearer {}
 
 /**
  * <p>Returns information about a specific database snapshot in Amazon Lightsail.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetRelationalDatabaseSnapshotCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetRelationalDatabaseSnapshotCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetRelationalDatabaseSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRelationalDatabaseSnapshotCommandInput} for command's `input` shape.
+ * @see {@link GetRelationalDatabaseSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRelationalDatabaseSnapshotCommand extends $Command<
   GetRelationalDatabaseSnapshotCommandInput,

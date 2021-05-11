@@ -46,6 +46,10 @@ import {
 } from "./commands/DescribeRegionSettingsCommand";
 import { DescribeRestoreJobCommandInput, DescribeRestoreJobCommandOutput } from "./commands/DescribeRestoreJobCommand";
 import {
+  DisassociateRecoveryPointCommandInput,
+  DisassociateRecoveryPointCommandOutput,
+} from "./commands/DisassociateRecoveryPointCommand";
+import {
   ExportBackupPlanTemplateCommandInput,
   ExportBackupPlanTemplateCommandOutput,
 } from "./commands/ExportBackupPlanTemplateCommand";
@@ -201,6 +205,7 @@ export type ServiceInputTypes =
   | DescribeRecoveryPointCommandInput
   | DescribeRegionSettingsCommandInput
   | DescribeRestoreJobCommandInput
+  | DisassociateRecoveryPointCommandInput
   | ExportBackupPlanTemplateCommandInput
   | GetBackupPlanCommandInput
   | GetBackupPlanFromJSONCommandInput
@@ -253,6 +258,7 @@ export type ServiceOutputTypes =
   | DescribeRecoveryPointCommandOutput
   | DescribeRegionSettingsCommandOutput
   | DescribeRestoreJobCommandOutput
+  | DisassociateRecoveryPointCommandOutput
   | ExportBackupPlanTemplateCommandOutput
   | GetBackupPlanCommandOutput
   | GetBackupPlanFromJSONCommandOutput
@@ -352,7 +358,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -383,7 +389,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type BackupClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type BackupClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -391,8 +397,12 @@ export type BackupClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOpti
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of BackupClient class constructor that set the region, credentials and other options.
+ */
+export interface BackupClientConfig extends BackupClientConfigType {}
 
-export type BackupClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type BackupClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -400,6 +410,10 @@ export type BackupClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHan
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of BackupClient class. This is resolved and normalized from the {@link BackupClientConfig | constructor configuration interface}.
+ */
+export interface BackupClientResolvedConfig extends BackupClientResolvedConfigType {}
 
 /**
  * <fullname>AWS Backup</fullname>
@@ -413,6 +427,9 @@ export class BackupClient extends __Client<
   ServiceOutputTypes,
   BackupClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of BackupClient class. This is resolved and normalized from the {@link BackupClientConfig | constructor configuration interface}.
+   */
   readonly config: BackupClientResolvedConfig;
 
   constructor(configuration: BackupClientConfig) {

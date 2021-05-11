@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListStreamProcessorsCommandInput = ListStreamProcessorsRequest;
-export type ListStreamProcessorsCommandOutput = ListStreamProcessorsResponse & __MetadataBearer;
+export interface ListStreamProcessorsCommandInput extends ListStreamProcessorsRequest {}
+export interface ListStreamProcessorsCommandOutput extends ListStreamProcessorsResponse, __MetadataBearer {}
 
 /**
  * <p>Gets a list of stream processors that you have created with <a>CreateStreamProcessor</a>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, ListStreamProcessorsCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, ListStreamProcessorsCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new ListStreamProcessorsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListStreamProcessorsCommandInput} for command's `input` shape.
+ * @see {@link ListStreamProcessorsCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListStreamProcessorsCommand extends $Command<
   ListStreamProcessorsCommandInput,

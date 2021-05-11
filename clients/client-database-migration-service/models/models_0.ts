@@ -15,6 +15,9 @@ export interface AccessDeniedFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace AccessDeniedFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedFault): any => ({
     ...obj,
   });
@@ -42,6 +45,9 @@ export interface AccountQuota {
 }
 
 export namespace AccountQuota {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccountQuota): any => ({
     ...obj,
   });
@@ -87,6 +93,9 @@ export interface Tag {
 }
 
 export namespace Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tag): any => ({
     ...obj,
   });
@@ -109,6 +118,9 @@ export interface AddTagsToResourceMessage {
 }
 
 export namespace AddTagsToResourceMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsToResourceMessage): any => ({
     ...obj,
   });
@@ -120,6 +132,9 @@ export namespace AddTagsToResourceMessage {
 export interface AddTagsToResourceResponse {}
 
 export namespace AddTagsToResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AddTagsToResourceResponse): any => ({
     ...obj,
   });
@@ -138,6 +153,9 @@ export interface ResourceNotFoundFault extends __SmithyException, $MetadataBeare
 }
 
 export namespace ResourceNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundFault): any => ({
     ...obj,
   });
@@ -183,6 +201,9 @@ export interface ApplyPendingMaintenanceActionMessage {
 }
 
 export namespace ApplyPendingMaintenanceActionMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ApplyPendingMaintenanceActionMessage): any => ({
     ...obj,
   });
@@ -237,6 +258,9 @@ export interface PendingMaintenanceAction {
 }
 
 export namespace PendingMaintenanceAction {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PendingMaintenanceAction): any => ({
     ...obj,
   });
@@ -260,6 +284,9 @@ export interface ResourcePendingMaintenanceActions {
 }
 
 export namespace ResourcePendingMaintenanceActions {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourcePendingMaintenanceActions): any => ({
     ...obj,
   });
@@ -276,6 +303,9 @@ export interface ApplyPendingMaintenanceActionResponse {
 }
 
 export namespace ApplyPendingMaintenanceActionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ApplyPendingMaintenanceActionResponse): any => ({
     ...obj,
   });
@@ -292,6 +322,9 @@ export interface CancelReplicationTaskAssessmentRunMessage {
 }
 
 export namespace CancelReplicationTaskAssessmentRunMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelReplicationTaskAssessmentRunMessage): any => ({
     ...obj,
   });
@@ -314,6 +347,9 @@ export interface ReplicationTaskAssessmentRunProgress {
 }
 
 export namespace ReplicationTaskAssessmentRunProgress {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationTaskAssessmentRunProgress): any => ({
     ...obj,
   });
@@ -444,6 +480,9 @@ export interface ReplicationTaskAssessmentRun {
 }
 
 export namespace ReplicationTaskAssessmentRun {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationTaskAssessmentRun): any => ({
     ...obj,
   });
@@ -461,6 +500,9 @@ export interface CancelReplicationTaskAssessmentRunResponse {
 }
 
 export namespace CancelReplicationTaskAssessmentRunResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CancelReplicationTaskAssessmentRunResponse): any => ({
     ...obj,
   });
@@ -479,6 +521,9 @@ export interface InvalidResourceStateFault extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidResourceStateFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidResourceStateFault): any => ({
     ...obj,
   });
@@ -500,6 +545,9 @@ export interface DmsTransferSettings {
 }
 
 export namespace DmsTransferSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DmsTransferSettings): any => ({
     ...obj,
   });
@@ -570,9 +618,37 @@ export interface DocDbSettings {
    *          Region.</p>
    */
   KmsKeyId?: string;
+
+  /**
+   * <p>The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the
+   *          trusted entity and grants the required permissions to access the value in
+   *          <code>SecretsManagerSecret</code>. <code>SecretsManagerSecret</code> has the value of the AWS Secrets
+   *          Manager secret that allows access to the DocumentDB endpoint.</p>
+   *          <note>
+   *             <p>You can specify one of two sets of values for these permissions. You can specify the
+   *             values for this setting and <code>SecretsManagerSecretId</code>. Or you can specify
+   *             clear-text values for <code>UserName</code>, <code>Password</code>,
+   *             <code>ServerName</code>, and <code>Port</code>. You can't specify both. For more
+   *             information on creating this <code>SecretsManagerSecret</code> and the
+   *             <code>SecretsManagerAccessRoleArn</code> and <code>SecretsManagerSecretId</code>
+   *             required to access it, see <a href="https://docs.aws.amazon.com/https:/docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#security-iam-secretsmanager">Using secrets to access AWS Database Migration Service
+   *                resources</a> in the <i>AWS Database Migration Service User
+   *                   Guide</i>.</p>
+   *          </note>
+   */
+  SecretsManagerAccessRoleArn?: string;
+
+  /**
+   * <p>The full ARN, partial ARN, or friendly name of the <code>SecretsManagerSecret</code>
+   *          that contains the DocumentDB endpoint connection details.</p>
+   */
+  SecretsManagerSecretId?: string;
 }
 
 export namespace DocDbSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DocDbSettings): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -591,6 +667,9 @@ export interface DynamoDbSettings {
 }
 
 export namespace DynamoDbSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DynamoDbSettings): any => ({
     ...obj,
   });
@@ -629,6 +708,9 @@ export interface ElasticsearchSettings {
 }
 
 export namespace ElasticsearchSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ElasticsearchSettings): any => ({
     ...obj,
   });
@@ -686,9 +768,36 @@ export interface IBMDb2Settings {
    * <p>Endpoint connection user name.</p>
    */
   Username?: string;
+
+  /**
+   * <p>The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the
+   *          trusted entity and grants the required permissions to access the value in
+   *             <code>SecretsManagerSecret</code>. <code>SecretsManagerSecret</code> has the value of
+   *          the AWS Secrets Manager secret that allows access to the Db2 LUW endpoint. </p>
+   *          <note>
+   *             <p>You can specify one of two sets of values for these permissions. You can specify the
+   *             values for this setting and <code>SecretsManagerSecretId</code>. Or you can specify
+   *             clear-text values for <code>UserName</code>, <code>Password</code>,
+   *                <code>ServerName</code>, and <code>Port</code>. You can't specify both. For more
+   *             information on creating this <code>SecretsManagerSecret</code> and the
+   *                <code>SecretsManagerAccessRoleArn</code> and <code>SecretsManagerSecretId</code>
+   *             required to access it, see <a href="https://docs.aws.amazon.com/https:/docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#security-iam-secretsmanager">Using secrets to access AWS Database Migration Service
+   *                resources</a> in the <i>AWS Database Migration Service User
+   *                Guide</i>.</p>
+   *          </note>
+   */
+  SecretsManagerAccessRoleArn?: string;
+
+  /**
+   * <p>The full ARN, partial ARN, or friendly name of the <code>SecretsManagerSecret</code> that contains the Db2 LUW endpoint connection details.</p>
+   */
+  SecretsManagerSecretId?: string;
 }
 
 export namespace IBMDb2Settings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IBMDb2Settings): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -700,6 +809,13 @@ export enum MessageFormatValue {
   JSON_UNFORMATTED = "json-unformatted",
 }
 
+export enum KafkaSecurityProtocol {
+  PLAINTEXT = "plaintext",
+  SASL_SSL = "sasl-ssl",
+  SSL_AUTHENTICATION = "ssl-authentication",
+  SSL_ENCRYPTION = "ssl-encryption",
+}
+
 /**
  * <p>Provides information that describes an Apache Kafka endpoint. This
  *          information includes the output format of records applied to the endpoint and details of
@@ -707,10 +823,14 @@ export enum MessageFormatValue {
  */
 export interface KafkaSettings {
   /**
-   * <p>The broker location and port of the Kafka broker that hosts your Kafka instance. Specify the broker
+   * <p>A comma-separated list of one or more broker locations in your Kafka cluster that host your Kafka instance. Specify each broker location
    *          in the form <code>
    *                <i>broker-hostname-or-ip</i>:<i>port</i>
-   *             </code>. For example, <code>"ec2-12-345-678-901.compute-1.amazonaws.com:2345"</code>.</p>
+   *             </code>. For example, <code>"ec2-12-345-678-901.compute-1.amazonaws.com:2345"</code>.
+   *          For more information and examples of specifying a list of broker locations,
+   *          see <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kafka.html">Using Apache Kafka as a target for AWS Database Migration Service</a>
+   *          in the <i>AWS Data Migration Service User Guide</i>.
+   *       </p>
    */
   Broker?: string;
 
@@ -774,11 +894,56 @@ export interface KafkaSettings {
    * <p>Include NULL and empty columns for records migrated to the endpoint. The default is <code>false</code>.</p>
    */
   IncludeNullAndEmpty?: boolean;
+
+  /**
+   * <p>Set secure connection to a Kafka target endpoint using Transport Layer Security (TLS). Options include
+   *          <code>ssl-encryption</code>, <code>ssl-authentication</code>, and <code>sasl-ssl</code>.
+   *          <code>sasl-ssl</code> requires <code>SaslUsername</code> and <code>SaslPassword</code>.</p>
+   */
+  SecurityProtocol?: KafkaSecurityProtocol | string;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) of the client certificate used to securely connect to a Kafka target endpoint.</p>
+   */
+  SslClientCertificateArn?: string;
+
+  /**
+   * <p>The Amazon Resource Name (ARN) for the client private key used to securely connect to a Kafka target endpoint.</p>
+   */
+  SslClientKeyArn?: string;
+
+  /**
+   * <p> The password for the client private key used to securely connect to a Kafka target endpoint.</p>
+   */
+  SslClientKeyPassword?: string;
+
+  /**
+   * <p> The Amazon Resource Name (ARN) for the private Certification Authority (CA) cert that AWS DMS uses
+   *          to securely connect to your Kafka target endpoint.</p>
+   */
+  SslCaCertificateArn?: string;
+
+  /**
+   * <p> The secure username you created when you first set up your MSK cluster to validate a client identity and
+   *          make an encrypted connection between server and client using SASL-SSL authentication.</p>
+   */
+  SaslUsername?: string;
+
+  /**
+   * <p>The secure password you created when you first set up your MSK cluster to validate a client identity and
+   *          make an encrypted connection between server and client using SASL-SSL authentication.</p>
+   */
+  SaslPassword?: string;
 }
 
 export namespace KafkaSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KafkaSettings): any => ({
     ...obj,
+    ...(obj.SslClientKeyPassword && { SslClientKeyPassword: SENSITIVE_STRING }),
+    ...(obj.SaslPassword && { SaslPassword: SENSITIVE_STRING }),
   });
 }
 
@@ -849,6 +1014,9 @@ export interface KinesisSettings {
 }
 
 export namespace KinesisSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KinesisSettings): any => ({
     ...obj,
   });
@@ -881,10 +1049,9 @@ export interface MicrosoftSQLServerSettings {
   DatabaseName?: string;
 
   /**
-   * <p>Specify a filegroup for the AWS DMS internal tables.
-   *          When the replication task starts, all the internal AWS DMS
-   *          control tables (awsdms_ apply_exception, awsdms_apply,
-   *          awsdms_changes) are created on the specified filegroup.</p>
+   * <p>Specifies a file group for the AWS DMS internal tables. When the replication task
+   *          starts, all the internal AWS DMS control tables (awsdms_ apply_exception, awsdms_apply,
+   *          awsdms_changes) are created for the specified file group.</p>
    */
   ControlTablesFileGroup?: string;
 
@@ -892,6 +1059,14 @@ export interface MicrosoftSQLServerSettings {
    * <p>Endpoint connection password.</p>
    */
   Password?: string;
+
+  /**
+   * <p>Cleans and recreates table metadata information on the replication instance when
+   *          a mismatch occurs. An example is a situation where running an alter DDL statement on
+   *          a table might result in different information about the table cached in the replication
+   *          instance.</p>
+   */
+  QuerySingleAlwaysOnNode?: boolean;
 
   /**
    * <p>When this attribute is set to <code>Y</code>, AWS DMS only reads changes
@@ -946,9 +1121,42 @@ export interface MicrosoftSQLServerSettings {
    *          disable the use BCP for loading table option.</p>
    */
   UseBcpFullLoad?: boolean;
+
+  /**
+   * <p>When this attribute is set to <code>Y</code>, DMS processes third-party
+   *          transaction log backups if they are created in native format.</p>
+   */
+  UseThirdPartyBackupDevice?: boolean;
+
+  /**
+   * <p>The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the
+   *          trusted entity and grants the required permissions to access the value in
+   *             <code>SecretsManagerSecret</code>. <code>SecretsManagerSecret</code> has the value of the AWS Secrets
+   *          Manager secret that allows access to the SQL Server endpoint.</p>
+   *          <note>
+   *             <p>You can specify one of two sets of values for these permissions. You can specify the
+   *             values for this setting and <code>SecretsManagerSecretId</code>. Or you can specify
+   *             clear-text values for <code>UserName</code>, <code>Password</code>,
+   *                <code>ServerName</code>, and <code>Port</code>. You can't specify both. For more
+   *             information on creating this <code>SecretsManagerSecret</code> and the
+   *                <code>SecretsManagerAccessRoleArn</code> and <code>SecretsManagerSecretId</code>
+   *             required to access it, see <a href="https://docs.aws.amazon.com/https:/docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#security-iam-secretsmanager">Using secrets to access AWS Database Migration Service
+   *                resources</a> in the <i>AWS Database Migration Service User
+   *                Guide</i>.</p>
+   *          </note>
+   */
+  SecretsManagerAccessRoleArn?: string;
+
+  /**
+   * <p>The full ARN, partial ARN, or friendly name of the <code>SecretsManagerSecret</code> that contains the SQL Server endpoint connection details.</p>
+   */
+  SecretsManagerSecretId?: string;
 }
 
 export namespace MicrosoftSQLServerSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MicrosoftSQLServerSettings): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -1049,9 +1257,36 @@ export interface MongoDbSettings {
    *          Region.</p>
    */
   KmsKeyId?: string;
+
+  /**
+   * <p>The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the
+   *          trusted entity and grants the required permissions to access the value in
+   *             <code>SecretsManagerSecret</code>. <code>SecretsManagerSecret</code> has the value of the AWS Secrets
+   *          Manager secret that allows access to the MongoDB endpoint.</p>
+   *          <note>
+   *             <p>You can specify one of two sets of values for these permissions. You can specify the
+   *             values for this setting and <code>SecretsManagerSecretId</code>. Or you can specify
+   *             clear-text values for <code>UserName</code>, <code>Password</code>,
+   *                <code>ServerName</code>, and <code>Port</code>. You can't specify both. For more
+   *             information on creating this <code>SecretsManagerSecret</code> and the
+   *                <code>SecretsManagerAccessRoleArn</code> and <code>SecretsManagerSecretId</code>
+   *             required to access it, see <a href="https://docs.aws.amazon.com/https:/docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#security-iam-secretsmanager">Using secrets to access AWS Database Migration Service
+   *                resources</a> in the <i>AWS Database Migration Service User
+   *                Guide</i>.</p>
+   *          </note>
+   */
+  SecretsManagerAccessRoleArn?: string;
+
+  /**
+   * <p>The full ARN, partial ARN, or friendly name of the <code>SecretsManagerSecret</code> that contains the MongoDB endpoint connection details.</p>
+   */
+  SecretsManagerSecretId?: string;
 }
 
 export namespace MongoDbSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MongoDbSettings): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -1073,6 +1308,14 @@ export interface MySQLSettings {
    *          running regardless if the SQL statement succeeds or fails.</p>
    */
   AfterConnectScript?: string;
+
+  /**
+   * <p>Adjusts the behavior of DMS when migrating from an SQL Server source database
+   *          that is hosted as part of an Always On availability group cluster.  If you need DMS to poll
+   *          all the nodes in the Always On cluster for transaction backups, set this attribute to
+   *          <code>false</code>.</p>
+   */
+  CleanSourceMetadataOnMismatch?: boolean;
 
   /**
    * <p>Database name for the endpoint.</p>
@@ -1106,12 +1349,10 @@ export interface MySQLSettings {
   MaxFileSize?: number;
 
   /**
-   * <p>Improves performance when loading data into the MySQLcompatible
-   *          target database. Specifies how many threads
-   *          to use to load the data into the MySQL-compatible target
-   *          database. Setting a large number of threads can have an
-   *          adverse effect on database performance, because a separate
-   *          connection is required for each thread.</p>
+   * <p>Improves performance when loading data into the MySQL-compatible target database.
+   *          Specifies how many threads to use to load the data into the MySQL-compatible target
+   *          database. Setting a large number of threads can have an adverse effect on database
+   *          performance, because a separate connection is required for each thread.</p>
    *          <p>Example: <code>parallelLoadThreads=1</code>
    *          </p>
    */
@@ -1144,9 +1385,36 @@ export interface MySQLSettings {
    * <p>Endpoint connection user name.</p>
    */
   Username?: string;
+
+  /**
+   * <p>The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the
+   *          trusted entity and grants the required permissions to access the value in
+   *             <code>SecretsManagerSecret</code>. <code>SecretsManagerSecret</code> has the value of the AWS Secrets
+   *          Manager secret that allows access to the MySQL endpoint.</p>
+   *          <note>
+   *             <p>You can specify one of two sets of values for these permissions. You can specify the
+   *             values for this setting and <code>SecretsManagerSecretId</code>. Or you can specify
+   *             clear-text values for <code>UserName</code>, <code>Password</code>,
+   *                <code>ServerName</code>, and <code>Port</code>. You can't specify both. For more
+   *             information on creating this <code>SecretsManagerSecret</code> and the
+   *                <code>SecretsManagerAccessRoleArn</code> and <code>SecretsManagerSecretId</code>
+   *             required to access it, see <a href="https://docs.aws.amazon.com/https:/docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#security-iam-secretsmanager">Using secrets to access AWS Database Migration Service
+   *                resources</a> in the <i>AWS Database Migration Service User
+   *                Guide</i>.</p>
+   *          </note>
+   */
+  SecretsManagerAccessRoleArn?: string;
+
+  /**
+   * <p>The full ARN, partial ARN, or friendly name of the <code>SecretsManagerSecret</code> that contains the MySQL endpoint connection details.</p>
+   */
+  SecretsManagerSecretId?: string;
 }
 
 export namespace MySQLSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MySQLSettings): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -1210,6 +1478,9 @@ export interface NeptuneSettings {
 }
 
 export namespace NeptuneSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NeptuneSettings): any => ({
     ...obj,
   });
@@ -1473,12 +1744,75 @@ export interface OracleSettings {
   ServerName?: string;
 
   /**
+   * <p>Use this attribute to convert <code>SDO_GEOMETRY</code> to
+   *          <code>GEOJSON</code> format. By default, DMS calls the
+   *          <code>SDO2GEOJSON</code> custom function if present and accessible.
+   *          Or you can create your own custom function that mimics the operation of
+   *          <code>SDOGEOJSON</code> and set
+   *          <code>SpatialDataOptionToGeoJsonFunctionName</code> to call it instead. </p>
+   */
+  SpatialDataOptionToGeoJsonFunctionName?: string;
+
+  /**
    * <p>Endpoint connection user name.</p>
    */
   Username?: string;
+
+  /**
+   * <p>The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the
+   *          trusted entity and grants the required permissions to access the value in
+   *             <code>SecretsManagerSecret</code>. <code>SecretsManagerSecret</code> has the value of the AWS Secrets
+   *          Manager secret that allows access to the Oracle endpoint.</p>
+   *          <note>
+   *             <p>You can specify one of two sets of values for these permissions. You can specify the
+   *             values for this setting and <code>SecretsManagerSecretId</code>. Or you can specify
+   *             clear-text values for <code>UserName</code>, <code>Password</code>,
+   *                <code>ServerName</code>, and <code>Port</code>. You can't specify both. For more
+   *             information on creating this <code>SecretsManagerSecret</code> and the
+   *                <code>SecretsManagerAccessRoleArn</code> and <code>SecretsManagerSecretId</code>
+   *             required to access it, see <a href="https://docs.aws.amazon.com/https:/docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#security-iam-secretsmanager">Using secrets to access AWS Database Migration Service
+   *                resources</a> in the <i>AWS Database Migration Service User
+   *                Guide</i>.</p>
+   *          </note>
+   */
+  SecretsManagerAccessRoleArn?: string;
+
+  /**
+   * <p>The full ARN, partial ARN, or friendly name of the <code>SecretsManagerSecret</code> that contains the Oracle endpoint connection details.</p>
+   */
+  SecretsManagerSecretId?: string;
+
+  /**
+   * <p>Required only if your Oracle endpoint uses Advanced Storage Manager (ASM). The full ARN
+   *          of the IAM role that specifies AWS DMS as the trusted entity and grants the required
+   *          permissions to access the <code>SecretsManagerOracleAsmSecret</code>. This
+   *             <code>SecretsManagerOracleAsmSecret</code> has the secret value that allows access to
+   *          the Oracle ASM of the endpoint.</p>
+   *          <note>
+   *             <p>You can specify one of two sets of values for these permissions. You can specify the
+   *             values for this setting and <code>SecretsManagerOracleAsmSecretId</code>. Or you can
+   *             specify clear-text values for <code>AsmUserName</code>, <code>AsmPassword</code>, and
+   *                <code>AsmServerName</code>. You can't specify both. For more information on
+   *             creating this <code>SecretsManagerOracleAsmSecret</code> and the
+   *                <code>SecretsManagerOracleAsmAccessRoleArn</code> and
+   *                <code>SecretsManagerOracleAsmSecretId</code> required to access it, see <a href="https://docs.aws.amazon.com/https:/docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#security-iam-secretsmanager">Using secrets to access AWS Database Migration Service
+   *                resources</a> in the <i>AWS Database Migration Service User
+   *                Guide</i>.</p>
+   *          </note>
+   */
+  SecretsManagerOracleAsmAccessRoleArn?: string;
+
+  /**
+   * <p>Required only if your Oracle endpoint uses Advanced Storage Manager (ASM). The full ARN, partial ARN, or friendly name of the <code>SecretsManagerOracleAsmSecret</code>
+   *          that contains the Oracle ASM connection details for the Oracle endpoint.</p>
+   */
+  SecretsManagerOracleAsmSecretId?: string;
 }
 
 export namespace OracleSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OracleSettings): any => ({
     ...obj,
     ...(obj.AsmPassword && { AsmPassword: SENSITIVE_STRING }),
@@ -1576,9 +1910,36 @@ export interface PostgreSQLSettings {
    *          CDC start points.</p>
    */
   SlotName?: string;
+
+  /**
+   * <p>The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the
+   *          trusted entity and grants the required permissions to access the value in
+   *             <code>SecretsManagerSecret</code>. <code>SecretsManagerSecret</code> has the value of the AWS Secrets
+   *          Manager secret that allows access to the PostgreSQL endpoint.</p>
+   *          <note>
+   *             <p>You can specify one of two sets of values for these permissions. You can specify the
+   *             values for this setting and <code>SecretsManagerSecretId</code>. Or you can specify
+   *             clear-text values for <code>UserName</code>, <code>Password</code>,
+   *                <code>ServerName</code>, and <code>Port</code>. You can't specify both. For more
+   *             information on creating this <code>SecretsManagerSecret</code> and the
+   *                <code>SecretsManagerAccessRoleArn</code> and <code>SecretsManagerSecretId</code>
+   *             required to access it, see <a href="https://docs.aws.amazon.com/https:/docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#security-iam-secretsmanager">Using secrets to access AWS Database Migration Service
+   *                resources</a> in the <i>AWS Database Migration Service User
+   *                Guide</i>.</p>
+   *          </note>
+   */
+  SecretsManagerAccessRoleArn?: string;
+
+  /**
+   * <p>The full ARN, partial ARN, or friendly name of the <code>SecretsManagerSecret</code> that contains the PostgreSQL endpoint connection details.</p>
+   */
+  SecretsManagerSecretId?: string;
 }
 
 export namespace PostgreSQLSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PostgreSQLSettings): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -1614,11 +1975,10 @@ export interface RedshiftSettings {
    * <p>An S3 folder where the comma-separated-value (.csv) files are stored before being
    *          uploaded to the target Redshift cluster. </p>
    *          <p>For full load mode, AWS DMS converts source records into .csv files and loads them to
-   *             the <i>BucketFolder/TableID</i> path. AWS DMS uses the Redshift
+   *          the <i>BucketFolder/TableID</i> path. AWS DMS uses the Redshift
    *             <code>COPY</code> command to upload the .csv files to the target table. The files are
-   *             deleted once the <code>COPY</code> operation has finished. For more information, see <a href="https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html">Amazon Redshift Database
-   *             Developer Guide</a>
-   *          </p>
+   *          deleted once the <code>COPY</code> operation has finished. For more information, see <a href="https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html">COPY</a> in the
+   *             <i>Amazon Redshift Database Developer Guide</i>.</p>
    *          <p>For change-data-capture (CDC) mode, AWS DMS creates a <i>NetChanges</i> table,
    *          and loads the .csv files to this <i>BucketFolder/NetChangesTableID</i> path.</p>
    */
@@ -1809,9 +2169,36 @@ export interface RedshiftSettings {
    *          (buffer size is 1000KB).</p>
    */
   WriteBufferSize?: number;
+
+  /**
+   * <p>The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the
+   *          trusted entity and grants the required permissions to access the value in
+   *             <code>SecretsManagerSecret</code>. <code>SecretsManagerSecret</code> has the value of the AWS Secrets
+   *          Manager secret that allows access to the Amazon Redshift endpoint.</p>
+   *          <note>
+   *             <p>You can specify one of two sets of values for these permissions. You can specify the
+   *             values for this setting and <code>SecretsManagerSecretId</code>. Or you can specify
+   *             clear-text values for <code>UserName</code>, <code>Password</code>,
+   *                <code>ServerName</code>, and <code>Port</code>. You can't specify both. For more
+   *             information on creating this <code>SecretsManagerSecret</code> and the
+   *                <code>SecretsManagerAccessRoleArn</code> and <code>SecretsManagerSecretId</code>
+   *             required to access it, see <a href="https://docs.aws.amazon.com/https:/docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#security-iam-secretsmanager">Using secrets to access AWS Database Migration Service
+   *                resources</a> in the <i>AWS Database Migration Service User
+   *                Guide</i>.</p>
+   *          </note>
+   */
+  SecretsManagerAccessRoleArn?: string;
+
+  /**
+   * <p>The full ARN, partial ARN, or friendly name of the <code>SecretsManagerSecret</code> that contains the Amazon Redshift endpoint connection details.</p>
+   */
+  SecretsManagerSecretId?: string;
 }
 
 export namespace RedshiftSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RedshiftSettings): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -1860,7 +2247,7 @@ export enum ParquetVersionValue {
 export interface S3Settings {
   /**
    * <p> The Amazon Resource Name (ARN) used by the service access IAM role. It is a required
-   *          parameter that enables DMS to write and read objects from an 3S bucket.</p>
+   *          parameter that enables DMS to write and read objects from an S3 bucket.</p>
    */
   ServiceAccessRoleArn?: string;
 
@@ -2231,10 +2618,10 @@ export interface S3Settings {
   /**
    * <p>This setting applies if the S3 output files during a change data capture (CDC) load are
    *          written in .csv format. If set to <code>true</code> for columns not included in the
-   *          supplemental log, AWS DMS uses the value specified by <a href="dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-CsvNoSupValue">
+   *          supplemental log, AWS DMS uses the value specified by <a href="https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-CsvNoSupValue">
    *                <code>CsvNoSupValue</code>
-   *             </a>. If not set or set to <code>false</code>, AWS DMS
-   *          uses the null value for these columns.</p>
+   *             </a>. If not set or set to
+   *             <code>false</code>, AWS DMS uses the null value for these columns.</p>
    *          <note>
    *             <p>This setting is supported in AWS DMS versions 3.4.1 and later.</p>
    *          </note>
@@ -2243,12 +2630,12 @@ export interface S3Settings {
 
   /**
    * <p>This setting only applies if your Amazon S3 output files during a change data capture
-   *          (CDC) load are written in .csv format. If <a href="dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-UseCsvNoSupValue">
+   *          (CDC) load are written in .csv format. If <a href="https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-UseCsvNoSupValue">
    *                <code>UseCsvNoSupValue</code>
-   *             </a> is set to true, specify a string value that
-   *          you want AWS DMS to use for all columns not included in the supplemental log. If you do not
-   *          specify a string value, AWS DMS uses the null value for these columns regardless of the
-   *             <code>UseCsvNoSupValue</code> setting.</p>
+   *             </a> is set to true, specify a
+   *          string value that you want AWS DMS to use for all columns not included in the supplemental
+   *          log. If you do not specify a string value, AWS DMS uses the null value for these columns
+   *          regardless of the <code>UseCsvNoSupValue</code> setting.</p>
    *          <note>
    *             <p>This setting is supported in AWS DMS versions 3.4.1 and later.</p>
    *          </note>
@@ -2257,9 +2644,10 @@ export interface S3Settings {
 
   /**
    * <p>If set to <code>true</code>, AWS DMS saves the transaction order for a change data
-   *          capture (CDC) load on the Amazon S3 target specified by <a href="dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-CdcPath">
+   *          capture (CDC) load on the Amazon S3 target specified by <a href="https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-CdcPath">
    *                <code>CdcPath</code>
-   *             </a>.</p>
+   *             </a>. For more information, see <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.EndpointSettings.CdcPath">Capturing data changes (CDC) including transaction order on the S3
+   *             target</a>.</p>
    *          <note>
    *             <p>This setting is supported in AWS DMS versions 3.4.2 and later.</p>
    *          </note>
@@ -2270,15 +2658,14 @@ export interface S3Settings {
    * <p>Specifies the folder path of CDC files. For an S3 source, this setting is required if a
    *          task captures change data; otherwise, it's optional. If <code>CdcPath</code> is set, AWS
    *          DMS reads CDC files from this path and replicates the data changes to the target endpoint.
-   *          For an S3 target, if <code>CdcPath</code>is set, it is the folder path where data changes
-   *          are replicated. If you set <a href="dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-PreserveTransactions">
+   *          For an S3 target if you set <a href="https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-PreserveTransactions">
    *                <code>PreserveTransactions</code>
-   *             </a> to <code>true</code>, AWS DMS verifies
-   *          that you have set this parameter to a folder path on your S3 target where AWS DMS can save
-   *          the transaction order for the CDC load. AWS DMS creates this CDC folder path in either your
-   *          S3 target working directory or the S3 target location specified by <a href="dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-BucketFolder">
+   *             </a> to <code>true</code>, AWS
+   *          DMS verifies that you have set this parameter to a folder path on your S3 target where AWS
+   *          DMS can save the transaction order for the CDC load. AWS DMS creates this CDC folder path
+   *          in either your S3 target working directory or the S3 target location specified by <a href="https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-BucketFolder">
    *                <code>BucketFolder</code>
-   *             </a> and <a href="dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-BucketName">
+   *             </a> and <a href="https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-BucketName">
    *                <code>BucketName</code>
    *             </a>.</p>
    *          <p>For example, if you specify <code>CdcPath</code> as <code>MyChangedData</code>, and you
@@ -2289,6 +2676,8 @@ export interface S3Settings {
    *             <code>MyTargetBucket</code> and <code>BucketFolder</code> as <code>MyTargetData</code>,
    *          AWS DMS creates the CDC folder path following:
    *             <code>MyTargetBucket/MyTargetData/MyChangedData</code>.</p>
+   *          <p>For more information on CDC including transaction order on an S3 target, see <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.EndpointSettings.CdcPath">Capturing data changes (CDC) including transaction order on the S3
+   *             target</a>.</p>
    *          <note>
    *             <p>This setting is supported in AWS DMS versions 3.4.2 and later.</p>
    *          </note>
@@ -2297,6 +2686,9 @@ export interface S3Settings {
 }
 
 export namespace S3Settings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Settings): any => ({
     ...obj,
   });
@@ -2337,9 +2729,36 @@ export interface SybaseSettings {
    * <p>Endpoint connection user name.</p>
    */
   Username?: string;
+
+  /**
+   * <p>The full Amazon Resource Name (ARN) of the IAM role that specifies AWS DMS as the
+   *          trusted entity and grants the required permissions to access the value in
+   *             <code>SecretsManagerSecret</code>. <code>SecretsManagerSecret</code> has the value of the AWS Secrets
+   *          Manager secret that allows access to the SAP ASE endpoint.</p>
+   *          <note>
+   *             <p>You can specify one of two sets of values for these permissions. You can specify the
+   *             values for this setting and <code>SecretsManagerSecretId</code>. Or you can specify
+   *             clear-text values for <code>UserName</code>, <code>Password</code>,
+   *                <code>ServerName</code>, and <code>Port</code>. You can't specify both. For more
+   *             information on creating this <code>SecretsManagerSecret</code> and the
+   *                <code>SecretsManagerAccessRoleArn</code> and <code>SecretsManagerSecretId</code>
+   *             required to access it, see <a href="https://docs.aws.amazon.com/https:/docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#security-iam-secretsmanager">Using secrets to access AWS Database Migration Service
+   *                resources</a> in the <i>AWS Database Migration Service User
+   *                Guide</i>.</p>
+   *          </note>
+   */
+  SecretsManagerAccessRoleArn?: string;
+
+  /**
+   * <p>The full ARN, partial ARN, or friendly name of the <code>SecretsManagerSecret</code> that contains the SAP SAE endpoint connection details.</p>
+   */
+  SecretsManagerSecretId?: string;
 }
 
 export namespace SybaseSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SybaseSettings): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
@@ -2618,10 +3037,14 @@ export interface CreateEndpointMessage {
 }
 
 export namespace CreateEndpointMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateEndpointMessage): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
     ...(obj.MongoDbSettings && { MongoDbSettings: MongoDbSettings.filterSensitiveLog(obj.MongoDbSettings) }),
+    ...(obj.KafkaSettings && { KafkaSettings: KafkaSettings.filterSensitiveLog(obj.KafkaSettings) }),
     ...(obj.RedshiftSettings && { RedshiftSettings: RedshiftSettings.filterSensitiveLog(obj.RedshiftSettings) }),
     ...(obj.PostgreSQLSettings && {
       PostgreSQLSettings: PostgreSQLSettings.filterSensitiveLog(obj.PostgreSQLSettings),
@@ -2884,9 +3307,13 @@ export interface Endpoint {
 }
 
 export namespace Endpoint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Endpoint): any => ({
     ...obj,
     ...(obj.MongoDbSettings && { MongoDbSettings: MongoDbSettings.filterSensitiveLog(obj.MongoDbSettings) }),
+    ...(obj.KafkaSettings && { KafkaSettings: KafkaSettings.filterSensitiveLog(obj.KafkaSettings) }),
     ...(obj.RedshiftSettings && { RedshiftSettings: RedshiftSettings.filterSensitiveLog(obj.RedshiftSettings) }),
     ...(obj.PostgreSQLSettings && {
       PostgreSQLSettings: PostgreSQLSettings.filterSensitiveLog(obj.PostgreSQLSettings),
@@ -2913,6 +3340,9 @@ export interface CreateEndpointResponse {
 }
 
 export namespace CreateEndpointResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateEndpointResponse): any => ({
     ...obj,
     ...(obj.Endpoint && { Endpoint: Endpoint.filterSensitiveLog(obj.Endpoint) }),
@@ -2932,6 +3362,9 @@ export interface KMSKeyNotAccessibleFault extends __SmithyException, $MetadataBe
 }
 
 export namespace KMSKeyNotAccessibleFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KMSKeyNotAccessibleFault): any => ({
     ...obj,
   });
@@ -2952,6 +3385,9 @@ export interface ResourceAlreadyExistsFault extends __SmithyException, $Metadata
 }
 
 export namespace ResourceAlreadyExistsFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceAlreadyExistsFault): any => ({
     ...obj,
   });
@@ -2970,6 +3406,9 @@ export interface ResourceQuotaExceededFault extends __SmithyException, $Metadata
 }
 
 export namespace ResourceQuotaExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceQuotaExceededFault): any => ({
     ...obj,
   });
@@ -2985,6 +3424,9 @@ export interface S3AccessDeniedFault extends __SmithyException, $MetadataBearer 
 }
 
 export namespace S3AccessDeniedFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3AccessDeniedFault): any => ({
     ...obj,
   });
@@ -3046,6 +3488,9 @@ export interface CreateEventSubscriptionMessage {
 }
 
 export namespace CreateEventSubscriptionMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateEventSubscriptionMessage): any => ({
     ...obj,
   });
@@ -3112,6 +3557,9 @@ export interface EventSubscription {
 }
 
 export namespace EventSubscription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EventSubscription): any => ({
     ...obj,
   });
@@ -3128,6 +3576,9 @@ export interface CreateEventSubscriptionResponse {
 }
 
 export namespace CreateEventSubscriptionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateEventSubscriptionResponse): any => ({
     ...obj,
   });
@@ -3143,6 +3594,9 @@ export interface KMSAccessDeniedFault extends __SmithyException, $MetadataBearer
 }
 
 export namespace KMSAccessDeniedFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KMSAccessDeniedFault): any => ({
     ...obj,
   });
@@ -3158,6 +3612,9 @@ export interface KMSDisabledFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace KMSDisabledFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KMSDisabledFault): any => ({
     ...obj,
   });
@@ -3173,6 +3630,9 @@ export interface KMSInvalidStateFault extends __SmithyException, $MetadataBearer
 }
 
 export namespace KMSInvalidStateFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KMSInvalidStateFault): any => ({
     ...obj,
   });
@@ -3188,6 +3648,9 @@ export interface KMSNotFoundFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace KMSNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KMSNotFoundFault): any => ({
     ...obj,
   });
@@ -3203,6 +3666,9 @@ export interface KMSThrottlingFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace KMSThrottlingFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KMSThrottlingFault): any => ({
     ...obj,
   });
@@ -3221,6 +3687,9 @@ export interface SNSInvalidTopicFault extends __SmithyException, $MetadataBearer
 }
 
 export namespace SNSInvalidTopicFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SNSInvalidTopicFault): any => ({
     ...obj,
   });
@@ -3239,6 +3708,9 @@ export interface SNSNoAuthorizationFault extends __SmithyException, $MetadataBea
 }
 
 export namespace SNSNoAuthorizationFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SNSNoAuthorizationFault): any => ({
     ...obj,
   });
@@ -3386,6 +3858,9 @@ export interface CreateReplicationInstanceMessage {
 }
 
 export namespace CreateReplicationInstanceMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateReplicationInstanceMessage): any => ({
     ...obj,
   });
@@ -3430,6 +3905,9 @@ export interface ReplicationPendingModifiedValues {
 }
 
 export namespace ReplicationPendingModifiedValues {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationPendingModifiedValues): any => ({
     ...obj,
   });
@@ -3451,6 +3929,9 @@ export interface AvailabilityZone {
 }
 
 export namespace AvailabilityZone {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AvailabilityZone): any => ({
     ...obj,
   });
@@ -3479,6 +3960,9 @@ export interface Subnet {
 }
 
 export namespace Subnet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Subnet): any => ({
     ...obj,
   });
@@ -3516,6 +4000,9 @@ export interface ReplicationSubnetGroup {
 }
 
 export namespace ReplicationSubnetGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationSubnetGroup): any => ({
     ...obj,
   });
@@ -3538,6 +4025,9 @@ export interface VpcSecurityGroupMembership {
 }
 
 export namespace VpcSecurityGroupMembership {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VpcSecurityGroupMembership): any => ({
     ...obj,
   });
@@ -3776,6 +4266,9 @@ export interface ReplicationInstance {
 }
 
 export namespace ReplicationInstance {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationInstance): any => ({
     ...obj,
   });
@@ -3792,6 +4285,9 @@ export interface CreateReplicationInstanceResponse {
 }
 
 export namespace CreateReplicationInstanceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateReplicationInstanceResponse): any => ({
     ...obj,
   });
@@ -3810,6 +4306,9 @@ export interface InsufficientResourceCapacityFault extends __SmithyException, $M
 }
 
 export namespace InsufficientResourceCapacityFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InsufficientResourceCapacityFault): any => ({
     ...obj,
   });
@@ -3828,6 +4327,9 @@ export interface InvalidSubnet extends __SmithyException, $MetadataBearer {
 }
 
 export namespace InvalidSubnet {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidSubnet): any => ({
     ...obj,
   });
@@ -3846,6 +4348,9 @@ export interface ReplicationSubnetGroupDoesNotCoverEnoughAZs extends __SmithyExc
 }
 
 export namespace ReplicationSubnetGroupDoesNotCoverEnoughAZs {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationSubnetGroupDoesNotCoverEnoughAZs): any => ({
     ...obj,
   });
@@ -3864,6 +4369,9 @@ export interface StorageQuotaExceededFault extends __SmithyException, $MetadataB
 }
 
 export namespace StorageQuotaExceededFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StorageQuotaExceededFault): any => ({
     ...obj,
   });
@@ -3900,6 +4408,9 @@ export interface CreateReplicationSubnetGroupMessage {
 }
 
 export namespace CreateReplicationSubnetGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateReplicationSubnetGroupMessage): any => ({
     ...obj,
   });
@@ -3916,6 +4427,9 @@ export interface CreateReplicationSubnetGroupResponse {
 }
 
 export namespace CreateReplicationSubnetGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateReplicationSubnetGroupResponse): any => ({
     ...obj,
   });
@@ -4048,6 +4562,9 @@ export interface CreateReplicationTaskMessage {
 }
 
 export namespace CreateReplicationTaskMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateReplicationTaskMessage): any => ({
     ...obj,
   });
@@ -4116,6 +4633,9 @@ export interface ReplicationTaskStats {
 }
 
 export namespace ReplicationTaskStats {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationTaskStats): any => ({
     ...obj,
   });
@@ -4388,6 +4908,9 @@ export interface ReplicationTask {
 }
 
 export namespace ReplicationTask {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationTask): any => ({
     ...obj,
   });
@@ -4404,6 +4927,9 @@ export interface CreateReplicationTaskResponse {
 }
 
 export namespace CreateReplicationTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateReplicationTaskResponse): any => ({
     ...obj,
   });
@@ -4417,6 +4943,9 @@ export interface DeleteCertificateMessage {
 }
 
 export namespace DeleteCertificateMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCertificateMessage): any => ({
     ...obj,
   });
@@ -4481,6 +5010,9 @@ export interface Certificate {
 }
 
 export namespace Certificate {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Certificate): any => ({
     ...obj,
   });
@@ -4494,6 +5026,9 @@ export interface DeleteCertificateResponse {
 }
 
 export namespace DeleteCertificateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteCertificateResponse): any => ({
     ...obj,
   });
@@ -4515,6 +5050,9 @@ export interface DeleteConnectionMessage {
 }
 
 export namespace DeleteConnectionMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteConnectionMessage): any => ({
     ...obj,
   });
@@ -4582,6 +5120,9 @@ export interface Connection {
 }
 
 export namespace Connection {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Connection): any => ({
     ...obj,
   });
@@ -4598,6 +5139,9 @@ export interface DeleteConnectionResponse {
 }
 
 export namespace DeleteConnectionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteConnectionResponse): any => ({
     ...obj,
   });
@@ -4614,6 +5158,9 @@ export interface DeleteEndpointMessage {
 }
 
 export namespace DeleteEndpointMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteEndpointMessage): any => ({
     ...obj,
   });
@@ -4630,6 +5177,9 @@ export interface DeleteEndpointResponse {
 }
 
 export namespace DeleteEndpointResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteEndpointResponse): any => ({
     ...obj,
     ...(obj.Endpoint && { Endpoint: Endpoint.filterSensitiveLog(obj.Endpoint) }),
@@ -4647,6 +5197,9 @@ export interface DeleteEventSubscriptionMessage {
 }
 
 export namespace DeleteEventSubscriptionMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteEventSubscriptionMessage): any => ({
     ...obj,
   });
@@ -4663,6 +5216,9 @@ export interface DeleteEventSubscriptionResponse {
 }
 
 export namespace DeleteEventSubscriptionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteEventSubscriptionResponse): any => ({
     ...obj,
   });
@@ -4679,6 +5235,9 @@ export interface DeleteReplicationInstanceMessage {
 }
 
 export namespace DeleteReplicationInstanceMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReplicationInstanceMessage): any => ({
     ...obj,
   });
@@ -4695,6 +5254,9 @@ export interface DeleteReplicationInstanceResponse {
 }
 
 export namespace DeleteReplicationInstanceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReplicationInstanceResponse): any => ({
     ...obj,
   });
@@ -4711,6 +5273,9 @@ export interface DeleteReplicationSubnetGroupMessage {
 }
 
 export namespace DeleteReplicationSubnetGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReplicationSubnetGroupMessage): any => ({
     ...obj,
   });
@@ -4722,6 +5287,9 @@ export namespace DeleteReplicationSubnetGroupMessage {
 export interface DeleteReplicationSubnetGroupResponse {}
 
 export namespace DeleteReplicationSubnetGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReplicationSubnetGroupResponse): any => ({
     ...obj,
   });
@@ -4738,6 +5306,9 @@ export interface DeleteReplicationTaskMessage {
 }
 
 export namespace DeleteReplicationTaskMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReplicationTaskMessage): any => ({
     ...obj,
   });
@@ -4754,6 +5325,9 @@ export interface DeleteReplicationTaskResponse {
 }
 
 export namespace DeleteReplicationTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReplicationTaskResponse): any => ({
     ...obj,
   });
@@ -4770,6 +5344,9 @@ export interface DeleteReplicationTaskAssessmentRunMessage {
 }
 
 export namespace DeleteReplicationTaskAssessmentRunMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReplicationTaskAssessmentRunMessage): any => ({
     ...obj,
   });
@@ -4787,6 +5364,9 @@ export interface DeleteReplicationTaskAssessmentRunResponse {
 }
 
 export namespace DeleteReplicationTaskAssessmentRunResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteReplicationTaskAssessmentRunResponse): any => ({
     ...obj,
   });
@@ -4798,6 +5378,9 @@ export namespace DeleteReplicationTaskAssessmentRunResponse {
 export interface DescribeAccountAttributesMessage {}
 
 export namespace DescribeAccountAttributesMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAccountAttributesMessage): any => ({
     ...obj,
   });
@@ -4830,6 +5413,9 @@ export interface DescribeAccountAttributesResponse {
 }
 
 export namespace DescribeAccountAttributesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeAccountAttributesResponse): any => ({
     ...obj,
   });
@@ -4882,6 +5468,9 @@ export interface DescribeApplicableIndividualAssessmentsMessage {
 }
 
 export namespace DescribeApplicableIndividualAssessmentsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeApplicableIndividualAssessmentsMessage): any => ({
     ...obj,
   });
@@ -4911,6 +5500,9 @@ export interface DescribeApplicableIndividualAssessmentsResponse {
 }
 
 export namespace DescribeApplicableIndividualAssessmentsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeApplicableIndividualAssessmentsResponse): any => ({
     ...obj,
   });
@@ -4919,8 +5511,8 @@ export namespace DescribeApplicableIndividualAssessmentsResponse {
 /**
  * <p>Identifies the name and value of a filter object. This filter is used to limit the
  *          number and type of AWS DMS objects that are returned for a particular
- *          <code>Describe*</code> call or similar operation. Filters are used as an
- *          optional parameter to the following APIs. </p>
+ *             <code>Describe*</code> call or similar operation. Filters are used as an optional
+ *          parameter for certain API operations. </p>
  */
 export interface Filter {
   /**
@@ -4936,6 +5528,9 @@ export interface Filter {
 }
 
 export namespace Filter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Filter): any => ({
     ...obj,
   });
@@ -4964,6 +5559,9 @@ export interface DescribeCertificatesMessage {
 }
 
 export namespace DescribeCertificatesMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCertificatesMessage): any => ({
     ...obj,
   });
@@ -4983,6 +5581,9 @@ export interface DescribeCertificatesResponse {
 }
 
 export namespace DescribeCertificatesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCertificatesResponse): any => ({
     ...obj,
   });
@@ -5016,6 +5617,9 @@ export interface DescribeConnectionsMessage {
 }
 
 export namespace DescribeConnectionsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConnectionsMessage): any => ({
     ...obj,
   });
@@ -5039,6 +5643,9 @@ export interface DescribeConnectionsResponse {
 }
 
 export namespace DescribeConnectionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeConnectionsResponse): any => ({
     ...obj,
   });
@@ -5072,6 +5679,9 @@ export interface DescribeEndpointsMessage {
 }
 
 export namespace DescribeEndpointsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEndpointsMessage): any => ({
     ...obj,
   });
@@ -5095,9 +5705,124 @@ export interface DescribeEndpointsResponse {
 }
 
 export namespace DescribeEndpointsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEndpointsResponse): any => ({
     ...obj,
     ...(obj.Endpoints && { Endpoints: obj.Endpoints.map((item) => Endpoint.filterSensitiveLog(item)) }),
+  });
+}
+
+export interface DescribeEndpointSettingsMessage {
+  /**
+   * <p>The databse engine used for your source or target endpoint.</p>
+   */
+  EngineName: string | undefined;
+
+  /**
+   * <p>The maximum number of records to include in the response. If more records exist than
+   *          the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response
+   *          so that the remaining results can be retrieved.</p>
+   */
+  MaxRecords?: number;
+
+  /**
+   * <p>An optional pagination token provided by a previous request. If this parameter is specified,
+   *          the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
+   */
+  Marker?: string;
+}
+
+export namespace DescribeEndpointSettingsMessage {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeEndpointSettingsMessage): any => ({
+    ...obj,
+  });
+}
+
+export enum EndpointSettingTypeValue {
+  BOOLEAN = "boolean",
+  ENUM = "enum",
+  INTEGER = "integer",
+  STRING = "string",
+}
+
+/**
+ * <p>Endpoint settings.</p>
+ */
+export interface EndpointSetting {
+  /**
+   * <p>The name that you want to give the endpoint settings.</p>
+   */
+  Name?: string;
+
+  /**
+   * <p>The type of endpoint.  Valid values are <code>source</code> and <code>target</code>.</p>
+   */
+  Type?: EndpointSettingTypeValue | string;
+
+  /**
+   * <p>Enumerated values to use for this endpoint.</p>
+   */
+  EnumValues?: string[];
+
+  /**
+   * <p>A value that marks this endpoint setting as sensitive.</p>
+   */
+  Sensitive?: boolean;
+
+  /**
+   * <p>The unit of measure for this endpoint setting.</p>
+   */
+  Units?: string;
+
+  /**
+   * <p>The relevance or validity of an endpoint setting for an engine name and its endpoint type.</p>
+   */
+  Applicability?: string;
+
+  /**
+   * <p>The minimum value of an endpoint setting that is of type <code>int</code>.</p>
+   */
+  IntValueMin?: number;
+
+  /**
+   * <p>The maximum value of an endpoint setting that is of type <code>int</code>.</p>
+   */
+  IntValueMax?: number;
+}
+
+export namespace EndpointSetting {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: EndpointSetting): any => ({
+    ...obj,
+  });
+}
+
+export interface DescribeEndpointSettingsResponse {
+  /**
+   * <p>An optional pagination token provided by a previous request. If this parameter is specified,
+   *          the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
+   */
+  Marker?: string;
+
+  /**
+   * <p>Descriptions of the endpoint settings available for your source or target database engine.</p>
+   */
+  EndpointSettings?: EndpointSetting[];
+}
+
+export namespace DescribeEndpointSettingsResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DescribeEndpointSettingsResponse): any => ({
+    ...obj,
   });
 }
 
@@ -5129,6 +5854,9 @@ export interface DescribeEndpointTypesMessage {
 }
 
 export namespace DescribeEndpointTypesMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEndpointTypesMessage): any => ({
     ...obj,
   });
@@ -5175,6 +5903,9 @@ export interface SupportedEndpointType {
 }
 
 export namespace SupportedEndpointType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SupportedEndpointType): any => ({
     ...obj,
   });
@@ -5198,6 +5929,9 @@ export interface DescribeEndpointTypesResponse {
 }
 
 export namespace DescribeEndpointTypesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEndpointTypesResponse): any => ({
     ...obj,
   });
@@ -5220,6 +5954,9 @@ export interface DescribeEventCategoriesMessage {
 }
 
 export namespace DescribeEventCategoriesMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEventCategoriesMessage): any => ({
     ...obj,
   });
@@ -5248,6 +5985,9 @@ export interface EventCategoryGroup {
 }
 
 export namespace EventCategoryGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EventCategoryGroup): any => ({
     ...obj,
   });
@@ -5264,6 +6004,9 @@ export interface DescribeEventCategoriesResponse {
 }
 
 export namespace DescribeEventCategoriesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEventCategoriesResponse): any => ({
     ...obj,
   });
@@ -5329,6 +6072,9 @@ export interface DescribeEventsMessage {
 }
 
 export namespace DescribeEventsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEventsMessage): any => ({
     ...obj,
   });
@@ -5368,6 +6114,9 @@ export interface Event {
 }
 
 export namespace Event {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Event): any => ({
     ...obj,
   });
@@ -5391,6 +6140,9 @@ export interface DescribeEventsResponse {
 }
 
 export namespace DescribeEventsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEventsResponse): any => ({
     ...obj,
   });
@@ -5428,6 +6180,9 @@ export interface DescribeEventSubscriptionsMessage {
 }
 
 export namespace DescribeEventSubscriptionsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEventSubscriptionsMessage): any => ({
     ...obj,
   });
@@ -5451,6 +6206,9 @@ export interface DescribeEventSubscriptionsResponse {
 }
 
 export namespace DescribeEventSubscriptionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeEventSubscriptionsResponse): any => ({
     ...obj,
   });
@@ -5478,6 +6236,9 @@ export interface DescribeOrderableReplicationInstancesMessage {
 }
 
 export namespace DescribeOrderableReplicationInstancesMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrderableReplicationInstancesMessage): any => ({
     ...obj,
   });
@@ -5553,6 +6314,9 @@ export interface OrderableReplicationInstance {
 }
 
 export namespace OrderableReplicationInstance {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OrderableReplicationInstance): any => ({
     ...obj,
   });
@@ -5576,6 +6340,9 @@ export interface DescribeOrderableReplicationInstancesResponse {
 }
 
 export namespace DescribeOrderableReplicationInstancesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeOrderableReplicationInstancesResponse): any => ({
     ...obj,
   });
@@ -5613,6 +6380,9 @@ export interface DescribePendingMaintenanceActionsMessage {
 }
 
 export namespace DescribePendingMaintenanceActionsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePendingMaintenanceActionsMessage): any => ({
     ...obj,
   });
@@ -5636,6 +6406,9 @@ export interface DescribePendingMaintenanceActionsResponse {
 }
 
 export namespace DescribePendingMaintenanceActionsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribePendingMaintenanceActionsResponse): any => ({
     ...obj,
   });
@@ -5652,6 +6425,9 @@ export interface DescribeRefreshSchemasStatusMessage {
 }
 
 export namespace DescribeRefreshSchemasStatusMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRefreshSchemasStatusMessage): any => ({
     ...obj,
   });
@@ -5695,6 +6471,9 @@ export interface RefreshSchemasStatus {
 }
 
 export namespace RefreshSchemasStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RefreshSchemasStatus): any => ({
     ...obj,
   });
@@ -5711,6 +6490,9 @@ export interface DescribeRefreshSchemasStatusResponse {
 }
 
 export namespace DescribeRefreshSchemasStatusResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRefreshSchemasStatusResponse): any => ({
     ...obj,
   });
@@ -5745,6 +6527,9 @@ export interface DescribeReplicationInstancesMessage {
 }
 
 export namespace DescribeReplicationInstancesMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationInstancesMessage): any => ({
     ...obj,
   });
@@ -5768,6 +6553,9 @@ export interface DescribeReplicationInstancesResponse {
 }
 
 export namespace DescribeReplicationInstancesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationInstancesResponse): any => ({
     ...obj,
   });
@@ -5797,6 +6585,9 @@ export interface DescribeReplicationInstanceTaskLogsMessage {
 }
 
 export namespace DescribeReplicationInstanceTaskLogsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationInstanceTaskLogsMessage): any => ({
     ...obj,
   });
@@ -5823,6 +6614,9 @@ export interface ReplicationInstanceTaskLog {
 }
 
 export namespace ReplicationInstanceTaskLog {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationInstanceTaskLog): any => ({
     ...obj,
   });
@@ -5849,6 +6643,9 @@ export interface DescribeReplicationInstanceTaskLogsResponse {
 }
 
 export namespace DescribeReplicationInstanceTaskLogsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationInstanceTaskLogsResponse): any => ({
     ...obj,
   });
@@ -5882,6 +6679,9 @@ export interface DescribeReplicationSubnetGroupsMessage {
 }
 
 export namespace DescribeReplicationSubnetGroupsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationSubnetGroupsMessage): any => ({
     ...obj,
   });
@@ -5905,6 +6705,9 @@ export interface DescribeReplicationSubnetGroupsResponse {
 }
 
 export namespace DescribeReplicationSubnetGroupsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationSubnetGroupsResponse): any => ({
     ...obj,
   });
@@ -5939,6 +6742,9 @@ export interface DescribeReplicationTaskAssessmentResultsMessage {
 }
 
 export namespace DescribeReplicationTaskAssessmentResultsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationTaskAssessmentResultsMessage): any => ({
     ...obj,
   });
@@ -5986,6 +6792,9 @@ export interface ReplicationTaskAssessmentResult {
 }
 
 export namespace ReplicationTaskAssessmentResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationTaskAssessmentResult): any => ({
     ...obj,
   });
@@ -6014,6 +6823,9 @@ export interface DescribeReplicationTaskAssessmentResultsResponse {
 }
 
 export namespace DescribeReplicationTaskAssessmentResultsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationTaskAssessmentResultsResponse): any => ({
     ...obj,
   });
@@ -6047,6 +6859,9 @@ export interface DescribeReplicationTaskAssessmentRunsMessage {
 }
 
 export namespace DescribeReplicationTaskAssessmentRunsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationTaskAssessmentRunsMessage): any => ({
     ...obj,
   });
@@ -6071,6 +6886,9 @@ export interface DescribeReplicationTaskAssessmentRunsResponse {
 }
 
 export namespace DescribeReplicationTaskAssessmentRunsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationTaskAssessmentRunsResponse): any => ({
     ...obj,
   });
@@ -6105,6 +6923,9 @@ export interface DescribeReplicationTaskIndividualAssessmentsMessage {
 }
 
 export namespace DescribeReplicationTaskIndividualAssessmentsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationTaskIndividualAssessmentsMessage): any => ({
     ...obj,
   });
@@ -6177,6 +6998,9 @@ export interface ReplicationTaskIndividualAssessment {
 }
 
 export namespace ReplicationTaskIndividualAssessment {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReplicationTaskIndividualAssessment): any => ({
     ...obj,
   });
@@ -6201,6 +7025,9 @@ export interface DescribeReplicationTaskIndividualAssessmentsResponse {
 }
 
 export namespace DescribeReplicationTaskIndividualAssessmentsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationTaskIndividualAssessmentsResponse): any => ({
     ...obj,
   });
@@ -6242,6 +7069,9 @@ export interface DescribeReplicationTasksMessage {
 }
 
 export namespace DescribeReplicationTasksMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationTasksMessage): any => ({
     ...obj,
   });
@@ -6265,6 +7095,9 @@ export interface DescribeReplicationTasksResponse {
 }
 
 export namespace DescribeReplicationTasksResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeReplicationTasksResponse): any => ({
     ...obj,
   });
@@ -6297,6 +7130,9 @@ export interface DescribeSchemasMessage {
 }
 
 export namespace DescribeSchemasMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSchemasMessage): any => ({
     ...obj,
   });
@@ -6320,6 +7156,9 @@ export interface DescribeSchemasResponse {
 }
 
 export namespace DescribeSchemasResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeSchemasResponse): any => ({
     ...obj,
   });
@@ -6360,6 +7199,9 @@ export interface DescribeTableStatisticsMessage {
 }
 
 export namespace DescribeTableStatisticsMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeTableStatisticsMessage): any => ({
     ...obj,
   });
@@ -6514,6 +7356,9 @@ export interface TableStatistics {
 }
 
 export namespace TableStatistics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TableStatistics): any => ({
     ...obj,
   });
@@ -6542,6 +7387,9 @@ export interface DescribeTableStatisticsResponse {
 }
 
 export namespace DescribeTableStatisticsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeTableStatisticsResponse): any => ({
     ...obj,
   });
@@ -6572,8 +7420,12 @@ export interface ImportCertificateMessage {
 }
 
 export namespace ImportCertificateMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportCertificateMessage): any => ({
     ...obj,
+    ...(obj.CertificatePem && { CertificatePem: SENSITIVE_STRING }),
   });
 }
 
@@ -6585,6 +7437,9 @@ export interface ImportCertificateResponse {
 }
 
 export namespace ImportCertificateResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ImportCertificateResponse): any => ({
     ...obj,
   });
@@ -6600,6 +7455,9 @@ export interface InvalidCertificateFault extends __SmithyException, $MetadataBea
 }
 
 export namespace InvalidCertificateFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidCertificateFault): any => ({
     ...obj,
   });
@@ -6617,6 +7475,9 @@ export interface ListTagsForResourceMessage {
 }
 
 export namespace ListTagsForResourceMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceMessage): any => ({
     ...obj,
   });
@@ -6633,6 +7494,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -6886,10 +7750,14 @@ export interface ModifyEndpointMessage {
 }
 
 export namespace ModifyEndpointMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyEndpointMessage): any => ({
     ...obj,
     ...(obj.Password && { Password: SENSITIVE_STRING }),
     ...(obj.MongoDbSettings && { MongoDbSettings: MongoDbSettings.filterSensitiveLog(obj.MongoDbSettings) }),
+    ...(obj.KafkaSettings && { KafkaSettings: KafkaSettings.filterSensitiveLog(obj.KafkaSettings) }),
     ...(obj.RedshiftSettings && { RedshiftSettings: RedshiftSettings.filterSensitiveLog(obj.RedshiftSettings) }),
     ...(obj.PostgreSQLSettings && {
       PostgreSQLSettings: PostgreSQLSettings.filterSensitiveLog(obj.PostgreSQLSettings),
@@ -6916,6 +7784,9 @@ export interface ModifyEndpointResponse {
 }
 
 export namespace ModifyEndpointResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyEndpointResponse): any => ({
     ...obj,
     ...(obj.Endpoint && { Endpoint: Endpoint.filterSensitiveLog(obj.Endpoint) }),
@@ -6957,6 +7828,9 @@ export interface ModifyEventSubscriptionMessage {
 }
 
 export namespace ModifyEventSubscriptionMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyEventSubscriptionMessage): any => ({
     ...obj,
   });
@@ -6973,6 +7847,9 @@ export interface ModifyEventSubscriptionResponse {
 }
 
 export namespace ModifyEventSubscriptionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyEventSubscriptionResponse): any => ({
     ...obj,
   });
@@ -7054,7 +7931,7 @@ export interface ModifyReplicationInstanceMessage {
   /**
    * <p>A value that indicates that minor version upgrades are applied automatically to the
    *          replication instance during the maintenance window. Changing this parameter doesn't result
-   *          in an outage, except in the case dsecribed following. The change is asynchronously applied
+   *          in an outage, except in the case described following. The change is asynchronously applied
    *          as soon as possible. </p>
    *          <p>An outage does result if these factors apply: </p>
    *          <ul>
@@ -7079,6 +7956,9 @@ export interface ModifyReplicationInstanceMessage {
 }
 
 export namespace ModifyReplicationInstanceMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyReplicationInstanceMessage): any => ({
     ...obj,
   });
@@ -7095,6 +7975,9 @@ export interface ModifyReplicationInstanceResponse {
 }
 
 export namespace ModifyReplicationInstanceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyReplicationInstanceResponse): any => ({
     ...obj,
   });
@@ -7113,6 +7996,9 @@ export interface UpgradeDependencyFailureFault extends __SmithyException, $Metad
 }
 
 export namespace UpgradeDependencyFailureFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpgradeDependencyFailureFault): any => ({
     ...obj,
   });
@@ -7139,6 +8025,9 @@ export interface ModifyReplicationSubnetGroupMessage {
 }
 
 export namespace ModifyReplicationSubnetGroupMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyReplicationSubnetGroupMessage): any => ({
     ...obj,
   });
@@ -7155,6 +8044,9 @@ export interface ModifyReplicationSubnetGroupResponse {
 }
 
 export namespace ModifyReplicationSubnetGroupResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyReplicationSubnetGroupResponse): any => ({
     ...obj,
   });
@@ -7173,6 +8065,9 @@ export interface SubnetAlreadyInUse extends __SmithyException, $MetadataBearer {
 }
 
 export namespace SubnetAlreadyInUse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SubnetAlreadyInUse): any => ({
     ...obj,
   });
@@ -7212,10 +8107,10 @@ export interface ModifyReplicationTaskMessage {
 
   /**
    * <p>When using the AWS CLI or boto3, provide the path of the JSON file that contains the
-   *          table mappings. Precede the path with <code>file://</code>. When working with the DMS API,
-   *          provide the JSON as the parameter value, for example: <code>--table-mappings
-   *             file://mappingfile.json</code>
-   *          </p>
+   *          table mappings. Precede the path with <code>file://</code>.  For example,
+   *          <code>--table-mappings file://mappingfile.json</code>. When working with the DMS API,
+   *          provide the JSON as the parameter value.
+   *     </p>
    */
   TableMappings?: string;
 
@@ -7269,6 +8164,9 @@ export interface ModifyReplicationTaskMessage {
 }
 
 export namespace ModifyReplicationTaskMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyReplicationTaskMessage): any => ({
     ...obj,
   });
@@ -7285,6 +8183,9 @@ export interface ModifyReplicationTaskResponse {
 }
 
 export namespace ModifyReplicationTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ModifyReplicationTaskResponse): any => ({
     ...obj,
   });
@@ -7306,6 +8207,9 @@ export interface MoveReplicationTaskMessage {
 }
 
 export namespace MoveReplicationTaskMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MoveReplicationTaskMessage): any => ({
     ...obj,
   });
@@ -7322,6 +8226,9 @@ export interface MoveReplicationTaskResponse {
 }
 
 export namespace MoveReplicationTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MoveReplicationTaskResponse): any => ({
     ...obj,
   });
@@ -7342,6 +8249,9 @@ export interface RebootReplicationInstanceMessage {
 }
 
 export namespace RebootReplicationInstanceMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RebootReplicationInstanceMessage): any => ({
     ...obj,
   });
@@ -7355,6 +8265,9 @@ export interface RebootReplicationInstanceResponse {
 }
 
 export namespace RebootReplicationInstanceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RebootReplicationInstanceResponse): any => ({
     ...obj,
   });
@@ -7376,6 +8289,9 @@ export interface RefreshSchemasMessage {
 }
 
 export namespace RefreshSchemasMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RefreshSchemasMessage): any => ({
     ...obj,
   });
@@ -7392,6 +8308,9 @@ export interface RefreshSchemasResponse {
 }
 
 export namespace RefreshSchemasResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RefreshSchemasResponse): any => ({
     ...obj,
   });
@@ -7418,6 +8337,9 @@ export interface TableToReload {
 }
 
 export namespace TableToReload {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TableToReload): any => ({
     ...obj,
   });
@@ -7445,6 +8367,9 @@ export interface ReloadTablesMessage {
 }
 
 export namespace ReloadTablesMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReloadTablesMessage): any => ({
     ...obj,
   });
@@ -7458,6 +8383,9 @@ export interface ReloadTablesResponse {
 }
 
 export namespace ReloadTablesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReloadTablesResponse): any => ({
     ...obj,
   });
@@ -7479,6 +8407,9 @@ export interface RemoveTagsFromResourceMessage {
 }
 
 export namespace RemoveTagsFromResourceMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveTagsFromResourceMessage): any => ({
     ...obj,
   });
@@ -7490,6 +8421,9 @@ export namespace RemoveTagsFromResourceMessage {
 export interface RemoveTagsFromResourceResponse {}
 
 export namespace RemoveTagsFromResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemoveTagsFromResourceResponse): any => ({
     ...obj,
   });
@@ -7552,6 +8486,9 @@ export interface StartReplicationTaskMessage {
 }
 
 export namespace StartReplicationTaskMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartReplicationTaskMessage): any => ({
     ...obj,
   });
@@ -7568,6 +8505,9 @@ export interface StartReplicationTaskResponse {
 }
 
 export namespace StartReplicationTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartReplicationTaskResponse): any => ({
     ...obj,
   });
@@ -7584,6 +8524,9 @@ export interface StartReplicationTaskAssessmentMessage {
 }
 
 export namespace StartReplicationTaskAssessmentMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartReplicationTaskAssessmentMessage): any => ({
     ...obj,
   });
@@ -7600,6 +8543,9 @@ export interface StartReplicationTaskAssessmentResponse {
 }
 
 export namespace StartReplicationTaskAssessmentResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartReplicationTaskAssessmentResponse): any => ({
     ...obj,
   });
@@ -7615,6 +8561,9 @@ export interface KMSFault extends __SmithyException, $MetadataBearer {
 }
 
 export namespace KMSFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KMSFault): any => ({
     ...obj,
   });
@@ -7631,6 +8580,9 @@ export interface S3ResourceNotFoundFault extends __SmithyException, $MetadataBea
 }
 
 export namespace S3ResourceNotFoundFault {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3ResourceNotFoundFault): any => ({
     ...obj,
   });
@@ -7728,6 +8680,9 @@ export interface StartReplicationTaskAssessmentRunMessage {
 }
 
 export namespace StartReplicationTaskAssessmentRunMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartReplicationTaskAssessmentRunMessage): any => ({
     ...obj,
   });
@@ -7744,6 +8699,9 @@ export interface StartReplicationTaskAssessmentRunResponse {
 }
 
 export namespace StartReplicationTaskAssessmentRunResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartReplicationTaskAssessmentRunResponse): any => ({
     ...obj,
   });
@@ -7760,6 +8718,9 @@ export interface StopReplicationTaskMessage {
 }
 
 export namespace StopReplicationTaskMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopReplicationTaskMessage): any => ({
     ...obj,
   });
@@ -7776,6 +8737,9 @@ export interface StopReplicationTaskResponse {
 }
 
 export namespace StopReplicationTaskResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StopReplicationTaskResponse): any => ({
     ...obj,
   });
@@ -7797,6 +8761,9 @@ export interface TestConnectionMessage {
 }
 
 export namespace TestConnectionMessage {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestConnectionMessage): any => ({
     ...obj,
   });
@@ -7813,6 +8780,9 @@ export interface TestConnectionResponse {
 }
 
 export namespace TestConnectionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TestConnectionResponse): any => ({
     ...obj,
   });

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAssociatedRoleCommandInput = GetAssociatedRoleRequest;
-export type GetAssociatedRoleCommandOutput = GetAssociatedRoleResponse & __MetadataBearer;
+export interface GetAssociatedRoleCommandInput extends GetAssociatedRoleRequest {}
+export interface GetAssociatedRoleCommandOutput extends GetAssociatedRoleResponse, __MetadataBearer {}
 
 /**
  * Retrieves the role associated with a particular group.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, GetAssociatedRoleCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, GetAssociatedRoleCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new GetAssociatedRoleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAssociatedRoleCommandInput} for command's `input` shape.
+ * @see {@link GetAssociatedRoleCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAssociatedRoleCommand extends $Command<
   GetAssociatedRoleCommandInput,

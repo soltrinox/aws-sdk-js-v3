@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeLabelingJobCommandInput = DescribeLabelingJobRequest;
-export type DescribeLabelingJobCommandOutput = DescribeLabelingJobResponse & __MetadataBearer;
+export interface DescribeLabelingJobCommandInput extends DescribeLabelingJobRequest {}
+export interface DescribeLabelingJobCommandOutput extends DescribeLabelingJobResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about a labeling job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DescribeLabelingJobCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DescribeLabelingJobCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DescribeLabelingJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeLabelingJobCommandInput} for command's `input` shape.
+ * @see {@link DescribeLabelingJobCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeLabelingJobCommand extends $Command<
   DescribeLabelingJobCommandInput,

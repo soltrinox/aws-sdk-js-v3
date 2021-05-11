@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetOutpostInstanceTypesCommandInput = GetOutpostInstanceTypesInput;
-export type GetOutpostInstanceTypesCommandOutput = GetOutpostInstanceTypesOutput & __MetadataBearer;
+export interface GetOutpostInstanceTypesCommandInput extends GetOutpostInstanceTypesInput {}
+export interface GetOutpostInstanceTypesCommandOutput extends GetOutpostInstanceTypesOutput, __MetadataBearer {}
 
 /**
  * <p>Lists the instance types for the specified Outpost.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OutpostsClient, GetOutpostInstanceTypesCommand } from "@aws-sdk/client-outposts"; // ES Modules import
+ * // const { OutpostsClient, GetOutpostInstanceTypesCommand } = require("@aws-sdk/client-outposts"); // CommonJS import
+ * const client = new OutpostsClient(config);
+ * const command = new GetOutpostInstanceTypesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetOutpostInstanceTypesCommandInput} for command's `input` shape.
+ * @see {@link GetOutpostInstanceTypesCommandOutput} for command's `response` shape.
+ * @see {@link OutpostsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetOutpostInstanceTypesCommand extends $Command<
   GetOutpostInstanceTypesCommandInput,

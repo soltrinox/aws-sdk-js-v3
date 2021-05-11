@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetJobCommandInput = GetJobRequest;
-export type GetJobCommandOutput = GetJobResult & __MetadataBearer;
+export interface GetJobCommandInput extends GetJobRequest {}
+export interface GetJobCommandOutput extends GetJobResult, __MetadataBearer {}
 
 /**
  * <p>Gets information about a job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, GetJobCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, GetJobCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new GetJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetJobCommandInput} for command's `input` shape.
+ * @see {@link GetJobCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetJobCommand extends $Command<GetJobCommandInput, GetJobCommandOutput, DeviceFarmClientResolvedConfig> {
   // Start section: command_properties

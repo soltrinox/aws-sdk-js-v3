@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetLinkAssociationsCommandInput = GetLinkAssociationsRequest;
-export type GetLinkAssociationsCommandOutput = GetLinkAssociationsResponse & __MetadataBearer;
+export interface GetLinkAssociationsCommandInput extends GetLinkAssociationsRequest {}
+export interface GetLinkAssociationsCommandOutput extends GetLinkAssociationsResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the link associations for a device or a link. Either the device ID or the link ID
  *             must be specified.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkManagerClient, GetLinkAssociationsCommand } from "@aws-sdk/client-networkmanager"; // ES Modules import
+ * // const { NetworkManagerClient, GetLinkAssociationsCommand } = require("@aws-sdk/client-networkmanager"); // CommonJS import
+ * const client = new NetworkManagerClient(config);
+ * const command = new GetLinkAssociationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetLinkAssociationsCommandInput} for command's `input` shape.
+ * @see {@link GetLinkAssociationsCommandOutput} for command's `response` shape.
+ * @see {@link NetworkManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetLinkAssociationsCommand extends $Command<
   GetLinkAssociationsCommandInput,

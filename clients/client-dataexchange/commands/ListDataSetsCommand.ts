@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDataSetsCommandInput = ListDataSetsRequest;
-export type ListDataSetsCommandOutput = ListDataSetsResponse & __MetadataBearer;
+export interface ListDataSetsCommandInput extends ListDataSetsRequest {}
+export interface ListDataSetsCommandOutput extends ListDataSetsResponse, __MetadataBearer {}
 
 /**
  * <p>This operation lists your data sets. When listing by origin OWNED, results are sorted by CreatedAt in descending order. When listing by origin ENTITLED, there is no order and the maxResults parameter is ignored.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataExchangeClient, ListDataSetsCommand } from "@aws-sdk/client-dataexchange"; // ES Modules import
+ * // const { DataExchangeClient, ListDataSetsCommand } = require("@aws-sdk/client-dataexchange"); // CommonJS import
+ * const client = new DataExchangeClient(config);
+ * const command = new ListDataSetsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDataSetsCommandInput} for command's `input` shape.
+ * @see {@link ListDataSetsCommandOutput} for command's `response` shape.
+ * @see {@link DataExchangeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDataSetsCommand extends $Command<
   ListDataSetsCommandInput,

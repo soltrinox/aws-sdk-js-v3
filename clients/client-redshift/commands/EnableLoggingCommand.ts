@@ -1,5 +1,6 @@
 import { RedshiftClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../RedshiftClient";
-import { EnableLoggingMessage, LoggingStatus } from "../models/models_0";
+import { LoggingStatus } from "../models/models_0";
+import { EnableLoggingMessage } from "../models/models_1";
 import {
   deserializeAws_queryEnableLoggingCommand,
   serializeAws_queryEnableLoggingCommand,
@@ -17,12 +18,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type EnableLoggingCommandInput = EnableLoggingMessage;
-export type EnableLoggingCommandOutput = LoggingStatus & __MetadataBearer;
+export interface EnableLoggingCommandInput extends EnableLoggingMessage {}
+export interface EnableLoggingCommandOutput extends LoggingStatus, __MetadataBearer {}
 
 /**
  * <p>Starts logging information, such as queries and connection attempts, for the
  *             specified Amazon Redshift cluster.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, EnableLoggingCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, EnableLoggingCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new EnableLoggingCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link EnableLoggingCommandInput} for command's `input` shape.
+ * @see {@link EnableLoggingCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class EnableLoggingCommand extends $Command<
   EnableLoggingCommandInput,

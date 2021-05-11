@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListSecretsCommandInput = ListSecretsRequest;
-export type ListSecretsCommandOutput = ListSecretsResponse & __MetadataBearer;
+export interface ListSecretsCommandInput extends ListSecretsRequest {}
+export interface ListSecretsCommandOutput extends ListSecretsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists all of the secrets that are stored by Secrets Manager in the AWS account. To list the
@@ -51,6 +51,20 @@ export type ListSecretsCommandOutput = ListSecretsResponse & __MetadataBearer;
  *                <p>To list the versions attached to a secret, use <a>ListSecretVersionIds</a>.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecretsManagerClient, ListSecretsCommand } from "@aws-sdk/client-secrets-manager"; // ES Modules import
+ * // const { SecretsManagerClient, ListSecretsCommand } = require("@aws-sdk/client-secrets-manager"); // CommonJS import
+ * const client = new SecretsManagerClient(config);
+ * const command = new ListSecretsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListSecretsCommandInput} for command's `input` shape.
+ * @see {@link ListSecretsCommandOutput} for command's `response` shape.
+ * @see {@link SecretsManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListSecretsCommand extends $Command<
   ListSecretsCommandInput,

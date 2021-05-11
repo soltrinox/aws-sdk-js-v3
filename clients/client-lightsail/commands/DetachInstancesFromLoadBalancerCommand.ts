@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DetachInstancesFromLoadBalancerCommandInput = DetachInstancesFromLoadBalancerRequest;
-export type DetachInstancesFromLoadBalancerCommandOutput = DetachInstancesFromLoadBalancerResult & __MetadataBearer;
+export interface DetachInstancesFromLoadBalancerCommandInput extends DetachInstancesFromLoadBalancerRequest {}
+export interface DetachInstancesFromLoadBalancerCommandOutput
+  extends DetachInstancesFromLoadBalancerResult,
+    __MetadataBearer {}
 
 /**
  * <p>Detaches the specified instances from a Lightsail load balancer.</p>
@@ -27,6 +29,20 @@ export type DetachInstancesFromLoadBalancerCommandOutput = DetachInstancesFromLo
  *          <p>The <code>detach instances from load balancer</code> operation supports tag-based access
  *       control via resource tags applied to the resource identified by <code>load balancer
  *         name</code>. For more information, see the <a href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags">Lightsail Dev Guide</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, DetachInstancesFromLoadBalancerCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, DetachInstancesFromLoadBalancerCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new DetachInstancesFromLoadBalancerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DetachInstancesFromLoadBalancerCommandInput} for command's `input` shape.
+ * @see {@link DetachInstancesFromLoadBalancerCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DetachInstancesFromLoadBalancerCommand extends $Command<
   DetachInstancesFromLoadBalancerCommandInput,

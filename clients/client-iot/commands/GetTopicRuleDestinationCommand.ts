@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetTopicRuleDestinationCommandInput = GetTopicRuleDestinationRequest;
-export type GetTopicRuleDestinationCommandOutput = GetTopicRuleDestinationResponse & __MetadataBearer;
+export interface GetTopicRuleDestinationCommandInput extends GetTopicRuleDestinationRequest {}
+export interface GetTopicRuleDestinationCommandOutput extends GetTopicRuleDestinationResponse, __MetadataBearer {}
 
 /**
  * <p>Gets information about a topic rule destination.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, GetTopicRuleDestinationCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, GetTopicRuleDestinationCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new GetTopicRuleDestinationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetTopicRuleDestinationCommandInput} for command's `input` shape.
+ * @see {@link GetTopicRuleDestinationCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetTopicRuleDestinationCommand extends $Command<
   GetTopicRuleDestinationCommandInput,

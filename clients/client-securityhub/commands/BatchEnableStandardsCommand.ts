@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchEnableStandardsCommandInput = BatchEnableStandardsRequest;
-export type BatchEnableStandardsCommandOutput = BatchEnableStandardsResponse & __MetadataBearer;
+export interface BatchEnableStandardsCommandInput extends BatchEnableStandardsRequest {}
+export interface BatchEnableStandardsCommandOutput extends BatchEnableStandardsResponse, __MetadataBearer {}
 
 /**
  * <p>Enables the standards specified by the provided <code>StandardsArn</code>. To obtain the
@@ -28,6 +28,20 @@ export type BatchEnableStandardsCommandOutput = BatchEnableStandardsResponse & _
  *          operation.</p>
  *          <p>For more information, see the <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html">Security Standards</a>
  *          section of the <i>AWS Security Hub User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SecurityHubClient, BatchEnableStandardsCommand } from "@aws-sdk/client-securityhub"; // ES Modules import
+ * // const { SecurityHubClient, BatchEnableStandardsCommand } = require("@aws-sdk/client-securityhub"); // CommonJS import
+ * const client = new SecurityHubClient(config);
+ * const command = new BatchEnableStandardsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchEnableStandardsCommandInput} for command's `input` shape.
+ * @see {@link BatchEnableStandardsCommandOutput} for command's `response` shape.
+ * @see {@link SecurityHubClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchEnableStandardsCommand extends $Command<
   BatchEnableStandardsCommandInput,

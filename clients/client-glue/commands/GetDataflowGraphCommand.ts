@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDataflowGraphCommandInput = GetDataflowGraphRequest;
-export type GetDataflowGraphCommandOutput = GetDataflowGraphResponse & __MetadataBearer;
+export interface GetDataflowGraphCommandInput extends GetDataflowGraphRequest {}
+export interface GetDataflowGraphCommandOutput extends GetDataflowGraphResponse, __MetadataBearer {}
 
 /**
  * <p>Transforms a Python script into a directed acyclic graph (DAG). </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetDataflowGraphCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetDataflowGraphCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetDataflowGraphCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDataflowGraphCommandInput} for command's `input` shape.
+ * @see {@link GetDataflowGraphCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDataflowGraphCommand extends $Command<
   GetDataflowGraphCommandInput,

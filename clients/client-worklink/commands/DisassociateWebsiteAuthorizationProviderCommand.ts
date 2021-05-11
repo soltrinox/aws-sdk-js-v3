@@ -20,14 +20,30 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateWebsiteAuthorizationProviderCommandInput = DisassociateWebsiteAuthorizationProviderRequest;
-export type DisassociateWebsiteAuthorizationProviderCommandOutput = DisassociateWebsiteAuthorizationProviderResponse &
-  __MetadataBearer;
+export interface DisassociateWebsiteAuthorizationProviderCommandInput
+  extends DisassociateWebsiteAuthorizationProviderRequest {}
+export interface DisassociateWebsiteAuthorizationProviderCommandOutput
+  extends DisassociateWebsiteAuthorizationProviderResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Disassociates a website authorization provider from a specified fleet. After the
  *             disassociation, users can't load any associated websites that require this authorization
  *             provider.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkLinkClient, DisassociateWebsiteAuthorizationProviderCommand } from "@aws-sdk/client-worklink"; // ES Modules import
+ * // const { WorkLinkClient, DisassociateWebsiteAuthorizationProviderCommand } = require("@aws-sdk/client-worklink"); // CommonJS import
+ * const client = new WorkLinkClient(config);
+ * const command = new DisassociateWebsiteAuthorizationProviderCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateWebsiteAuthorizationProviderCommandInput} for command's `input` shape.
+ * @see {@link DisassociateWebsiteAuthorizationProviderCommandOutput} for command's `response` shape.
+ * @see {@link WorkLinkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateWebsiteAuthorizationProviderCommand extends $Command<
   DisassociateWebsiteAuthorizationProviderCommandInput,

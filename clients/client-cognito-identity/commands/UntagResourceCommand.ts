@@ -18,12 +18,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UntagResourceCommandInput = UntagResourceInput;
-export type UntagResourceCommandOutput = UntagResourceResponse & __MetadataBearer;
+export interface UntagResourceCommandInput extends UntagResourceInput {}
+export interface UntagResourceCommandOutput extends UntagResourceResponse, __MetadataBearer {}
 
 /**
- * <p>Removes the specified tags from an Amazon Cognito identity pool. You can use this action
- *          up to 5 times per second, per account</p>
+ * <p>Removes the specified tags from the specified Amazon Cognito identity pool. You can use
+ *          this action up to 5 times per second, per account</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityClient, UntagResourceCommand } from "@aws-sdk/client-cognito-identity"; // ES Modules import
+ * // const { CognitoIdentityClient, UntagResourceCommand } = require("@aws-sdk/client-cognito-identity"); // CommonJS import
+ * const client = new CognitoIdentityClient(config);
+ * const command = new UntagResourceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UntagResourceCommandInput} for command's `input` shape.
+ * @see {@link UntagResourceCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UntagResourceCommand extends $Command<
   UntagResourceCommandInput,

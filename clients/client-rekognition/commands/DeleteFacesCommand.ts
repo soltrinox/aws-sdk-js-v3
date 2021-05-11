@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteFacesCommandInput = DeleteFacesRequest;
-export type DeleteFacesCommandOutput = DeleteFacesResponse & __MetadataBearer;
+export interface DeleteFacesCommandInput extends DeleteFacesRequest {}
+export interface DeleteFacesCommandOutput extends DeleteFacesResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes faces from a collection. You specify a collection ID and an array of face IDs
  *       to remove from the collection.</p>
  *          <p>This operation requires permissions to perform the <code>rekognition:DeleteFaces</code>
  *       action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, DeleteFacesCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, DeleteFacesCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new DeleteFacesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteFacesCommandInput} for command's `input` shape.
+ * @see {@link DeleteFacesCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteFacesCommand extends $Command<
   DeleteFacesCommandInput,

@@ -21,14 +21,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBotAliasCommandInput = GetBotAliasRequest;
-export type GetBotAliasCommandOutput = GetBotAliasResponse & __MetadataBearer;
+export interface GetBotAliasCommandInput extends GetBotAliasRequest {}
+export interface GetBotAliasCommandOutput extends GetBotAliasResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information about an Amazon Lex bot alias. For more information
  *       about aliases, see <a>versioning-aliases</a>.</p>
  *          <p>This operation requires permissions for the
  *         <code>lex:GetBotAlias</code> action.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexModelBuildingServiceClient, GetBotAliasCommand } from "@aws-sdk/client-lex-model-building-service"; // ES Modules import
+ * // const { LexModelBuildingServiceClient, GetBotAliasCommand } = require("@aws-sdk/client-lex-model-building-service"); // CommonJS import
+ * const client = new LexModelBuildingServiceClient(config);
+ * const command = new GetBotAliasCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBotAliasCommandInput} for command's `input` shape.
+ * @see {@link GetBotAliasCommandOutput} for command's `response` shape.
+ * @see {@link LexModelBuildingServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBotAliasCommand extends $Command<
   GetBotAliasCommandInput,

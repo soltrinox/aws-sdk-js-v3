@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ModifyReportDefinitionCommandInput = ModifyReportDefinitionRequest;
-export type ModifyReportDefinitionCommandOutput = ModifyReportDefinitionResponse & __MetadataBearer;
+export interface ModifyReportDefinitionCommandInput extends ModifyReportDefinitionRequest {}
+export interface ModifyReportDefinitionCommandOutput extends ModifyReportDefinitionResponse, __MetadataBearer {}
 
 /**
  * <p>Allows you to programatically update your report preferences.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CostAndUsageReportServiceClient, ModifyReportDefinitionCommand } from "@aws-sdk/client-cost-and-usage-report-service"; // ES Modules import
+ * // const { CostAndUsageReportServiceClient, ModifyReportDefinitionCommand } = require("@aws-sdk/client-cost-and-usage-report-service"); // CommonJS import
+ * const client = new CostAndUsageReportServiceClient(config);
+ * const command = new ModifyReportDefinitionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ModifyReportDefinitionCommandInput} for command's `input` shape.
+ * @see {@link ModifyReportDefinitionCommandOutput} for command's `response` shape.
+ * @see {@link CostAndUsageReportServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ModifyReportDefinitionCommand extends $Command<
   ModifyReportDefinitionCommandInput,

@@ -21,11 +21,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteSessionCommandInput = DeleteSessionRequest;
-export type DeleteSessionCommandOutput = DeleteSessionResponse & __MetadataBearer;
+export interface DeleteSessionCommandInput extends DeleteSessionRequest {}
+export interface DeleteSessionCommandOutput extends DeleteSessionResponse, __MetadataBearer {}
 
 /**
- * <p>Removes session information for a specified bot, alias, and user ID. </p>
+ * <p>Removes session information for a specified bot, alias, and user ID.
+ *     </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LexRuntimeServiceClient, DeleteSessionCommand } from "@aws-sdk/client-lex-runtime-service"; // ES Modules import
+ * // const { LexRuntimeServiceClient, DeleteSessionCommand } = require("@aws-sdk/client-lex-runtime-service"); // CommonJS import
+ * const client = new LexRuntimeServiceClient(config);
+ * const command = new DeleteSessionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteSessionCommandInput} for command's `input` shape.
+ * @see {@link DeleteSessionCommandOutput} for command's `response` shape.
+ * @see {@link LexRuntimeServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteSessionCommand extends $Command<
   DeleteSessionCommandInput,

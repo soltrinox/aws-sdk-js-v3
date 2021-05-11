@@ -151,7 +151,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -182,7 +182,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type MacieClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type MacieClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -190,8 +190,12 @@ export type MacieClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptio
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of MacieClient class constructor that set the region, credentials and other options.
+ */
+export interface MacieClientConfig extends MacieClientConfigType {}
 
-export type MacieClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type MacieClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -199,6 +203,10 @@ export type MacieClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHand
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of MacieClient class. This is resolved and normalized from the {@link MacieClientConfig | constructor configuration interface}.
+ */
+export interface MacieClientResolvedConfig extends MacieClientResolvedConfigType {}
 
 /**
  * <fullname>Amazon Macie Classic</fullname>
@@ -208,10 +216,6 @@ export type MacieClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHand
  *       with dashboards and alerts that give visibility into how this data is being accessed or moved.
  *       For more information, see the <a href="https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html">Amazon Macie
  *         Classic User Guide</a>. </p>
- *          <p>A new Amazon Macie is now available with significant design improvements and additional
- *       features, at a lower price and in most AWS Regions. We encourage you to explore and use
- *       the new and improved features, and benefit from the reduced cost. To learn about features and
- *       pricing for the new Amazon Macie, see <a href="https://aws.amazon.com/macie/">Amazon Macie</a>.</p>
  */
 export class MacieClient extends __Client<
   __HttpHandlerOptions,
@@ -219,6 +223,9 @@ export class MacieClient extends __Client<
   ServiceOutputTypes,
   MacieClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of MacieClient class. This is resolved and normalized from the {@link MacieClientConfig | constructor configuration interface}.
+   */
   readonly config: MacieClientResolvedConfig;
 
   constructor(configuration: MacieClientConfig) {

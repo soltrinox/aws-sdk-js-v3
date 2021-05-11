@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetJobCommandInput = GetJobRequest;
-export type GetJobCommandOutput = GetJobResult & __MetadataBearer;
+export interface GetJobCommandInput extends GetJobRequest {}
+export interface GetJobCommandOutput extends GetJobResult, __MetadataBearer {}
 
 /**
  * <p> Returns a job for a branch of an Amplify app. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AmplifyClient, GetJobCommand } from "@aws-sdk/client-amplify"; // ES Modules import
+ * // const { AmplifyClient, GetJobCommand } = require("@aws-sdk/client-amplify"); // CommonJS import
+ * const client = new AmplifyClient(config);
+ * const command = new GetJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetJobCommandInput} for command's `input` shape.
+ * @see {@link GetJobCommandOutput} for command's `response` shape.
+ * @see {@link AmplifyClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetJobCommand extends $Command<GetJobCommandInput, GetJobCommandOutput, AmplifyClientResolvedConfig> {
   // Start section: command_properties

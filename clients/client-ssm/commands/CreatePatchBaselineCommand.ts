@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreatePatchBaselineCommandInput = CreatePatchBaselineRequest;
-export type CreatePatchBaselineCommandOutput = CreatePatchBaselineResult & __MetadataBearer;
+export interface CreatePatchBaselineCommandInput extends CreatePatchBaselineRequest {}
+export interface CreatePatchBaselineCommandOutput extends CreatePatchBaselineResult, __MetadataBearer {}
 
 /**
  * <p>Creates a patch baseline.</p>
@@ -26,6 +26,20 @@ export type CreatePatchBaselineCommandOutput = CreatePatchBaselineResult & __Met
  *             <p>For information about valid key and value pairs in <code>PatchFilters</code> for each
  *     supported operating system type, see <a href="http://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html">PatchFilter</a>.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, CreatePatchBaselineCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, CreatePatchBaselineCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new CreatePatchBaselineCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreatePatchBaselineCommandInput} for command's `input` shape.
+ * @see {@link CreatePatchBaselineCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreatePatchBaselineCommand extends $Command<
   CreatePatchBaselineCommandInput,

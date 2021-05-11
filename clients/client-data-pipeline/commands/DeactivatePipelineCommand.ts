@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeactivatePipelineCommandInput = DeactivatePipelineInput;
-export type DeactivatePipelineCommandOutput = DeactivatePipelineOutput & __MetadataBearer;
+export interface DeactivatePipelineCommandInput extends DeactivatePipelineInput {}
+export interface DeactivatePipelineCommandOutput extends DeactivatePipelineOutput, __MetadataBearer {}
 
 /**
  * <p>Deactivates the specified running pipeline. The pipeline is set to the <code>DEACTIVATING</code>
  *           state until the deactivation process completes.</p>
  *         <p>To resume a deactivated pipeline, use <a>ActivatePipeline</a>. By default, the pipeline resumes from the last completed execution.
  *           Optionally, you can specify the date and time to resume the pipeline.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataPipelineClient, DeactivatePipelineCommand } from "@aws-sdk/client-data-pipeline"; // ES Modules import
+ * // const { DataPipelineClient, DeactivatePipelineCommand } = require("@aws-sdk/client-data-pipeline"); // CommonJS import
+ * const client = new DataPipelineClient(config);
+ * const command = new DeactivatePipelineCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeactivatePipelineCommandInput} for command's `input` shape.
+ * @see {@link DeactivatePipelineCommandOutput} for command's `response` shape.
+ * @see {@link DataPipelineClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeactivatePipelineCommand extends $Command<
   DeactivatePipelineCommandInput,

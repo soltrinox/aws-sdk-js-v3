@@ -54,6 +54,7 @@ import {
   DeleteScheduledActionCommandOutput,
 } from "./commands/DeleteScheduledActionCommand";
 import { DeleteTagsCommandInput, DeleteTagsCommandOutput } from "./commands/DeleteTagsCommand";
+import { DeleteWarmPoolCommandInput, DeleteWarmPoolCommandOutput } from "./commands/DeleteWarmPoolCommand";
 import {
   DescribeAccountLimitsCommandInput,
   DescribeAccountLimitsCommandOutput,
@@ -124,6 +125,7 @@ import {
   DescribeTerminationPolicyTypesCommandInput,
   DescribeTerminationPolicyTypesCommandOutput,
 } from "./commands/DescribeTerminationPolicyTypesCommand";
+import { DescribeWarmPoolCommandInput, DescribeWarmPoolCommandOutput } from "./commands/DescribeWarmPoolCommand";
 import { DetachInstancesCommandInput, DetachInstancesCommandOutput } from "./commands/DetachInstancesCommand";
 import {
   DetachLoadBalancerTargetGroupsCommandInput,
@@ -154,6 +156,7 @@ import {
   PutScheduledUpdateGroupActionCommandInput,
   PutScheduledUpdateGroupActionCommandOutput,
 } from "./commands/PutScheduledUpdateGroupActionCommand";
+import { PutWarmPoolCommandInput, PutWarmPoolCommandOutput } from "./commands/PutWarmPoolCommand";
 import {
   RecordLifecycleActionHeartbeatCommandInput,
   RecordLifecycleActionHeartbeatCommandOutput,
@@ -247,6 +250,7 @@ export type ServiceInputTypes =
   | DeletePolicyCommandInput
   | DeleteScheduledActionCommandInput
   | DeleteTagsCommandInput
+  | DeleteWarmPoolCommandInput
   | DescribeAccountLimitsCommandInput
   | DescribeAdjustmentTypesCommandInput
   | DescribeAutoScalingGroupsCommandInput
@@ -266,6 +270,7 @@ export type ServiceInputTypes =
   | DescribeScheduledActionsCommandInput
   | DescribeTagsCommandInput
   | DescribeTerminationPolicyTypesCommandInput
+  | DescribeWarmPoolCommandInput
   | DetachInstancesCommandInput
   | DetachLoadBalancerTargetGroupsCommandInput
   | DetachLoadBalancersCommandInput
@@ -278,6 +283,7 @@ export type ServiceInputTypes =
   | PutNotificationConfigurationCommandInput
   | PutScalingPolicyCommandInput
   | PutScheduledUpdateGroupActionCommandInput
+  | PutWarmPoolCommandInput
   | RecordLifecycleActionHeartbeatCommandInput
   | ResumeProcessesCommandInput
   | SetDesiredCapacityCommandInput
@@ -306,6 +312,7 @@ export type ServiceOutputTypes =
   | DeletePolicyCommandOutput
   | DeleteScheduledActionCommandOutput
   | DeleteTagsCommandOutput
+  | DeleteWarmPoolCommandOutput
   | DescribeAccountLimitsCommandOutput
   | DescribeAdjustmentTypesCommandOutput
   | DescribeAutoScalingGroupsCommandOutput
@@ -325,6 +332,7 @@ export type ServiceOutputTypes =
   | DescribeScheduledActionsCommandOutput
   | DescribeTagsCommandOutput
   | DescribeTerminationPolicyTypesCommandOutput
+  | DescribeWarmPoolCommandOutput
   | DetachInstancesCommandOutput
   | DetachLoadBalancerTargetGroupsCommandOutput
   | DetachLoadBalancersCommandOutput
@@ -337,6 +345,7 @@ export type ServiceOutputTypes =
   | PutNotificationConfigurationCommandOutput
   | PutScalingPolicyCommandOutput
   | PutScheduledUpdateGroupActionCommandOutput
+  | PutWarmPoolCommandOutput
   | RecordLifecycleActionHeartbeatCommandOutput
   | ResumeProcessesCommandOutput
   | SetDesiredCapacityCommandOutput
@@ -412,7 +421,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -443,7 +452,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type AutoScalingClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type AutoScalingClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -451,8 +460,12 @@ export type AutoScalingClientConfig = Partial<__SmithyConfiguration<__HttpHandle
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of AutoScalingClient class constructor that set the region, credentials and other options.
+ */
+export interface AutoScalingClientConfig extends AutoScalingClientConfigType {}
 
-export type AutoScalingClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type AutoScalingClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -460,6 +473,10 @@ export type AutoScalingClientResolvedConfig = __SmithyResolvedConfiguration<__Ht
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of AutoScalingClient class. This is resolved and normalized from the {@link AutoScalingClientConfig | constructor configuration interface}.
+ */
+export interface AutoScalingClientResolvedConfig extends AutoScalingClientResolvedConfigType {}
 
 /**
  * <fullname>Amazon EC2 Auto Scaling</fullname>
@@ -476,6 +493,9 @@ export class AutoScalingClient extends __Client<
   ServiceOutputTypes,
   AutoScalingClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of AutoScalingClient class. This is resolved and normalized from the {@link AutoScalingClientConfig | constructor configuration interface}.
+   */
   readonly config: AutoScalingClientResolvedConfig;
 
   constructor(configuration: AutoScalingClientConfig) {

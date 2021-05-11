@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UnpeerVpcCommandInput = UnpeerVpcRequest;
-export type UnpeerVpcCommandOutput = UnpeerVpcResult & __MetadataBearer;
+export interface UnpeerVpcCommandInput extends UnpeerVpcRequest {}
+export interface UnpeerVpcCommandOutput extends UnpeerVpcResult, __MetadataBearer {}
 
 /**
  * <p>Attempts to unpeer the Lightsail VPC from the user's default VPC.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, UnpeerVpcCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, UnpeerVpcCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new UnpeerVpcCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UnpeerVpcCommandInput} for command's `input` shape.
+ * @see {@link UnpeerVpcCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UnpeerVpcCommand extends $Command<
   UnpeerVpcCommandInput,

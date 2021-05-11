@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeClustersCommandInput = DescribeClustersRequest;
-export type DescribeClustersCommandOutput = DescribeClustersResponse & __MetadataBearer;
+export interface DescribeClustersCommandInput extends DescribeClustersRequest {}
+export interface DescribeClustersCommandOutput extends DescribeClustersResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information about all provisioned DAX clusters if no cluster identifier
@@ -34,6 +34,20 @@ export type DescribeClustersCommandOutput = DescribeClustersResponse & __Metadat
  *             the cluster is ready for use.</p>
  *         <p>If nodes are currently being removed from the DAX cluster, no endpoint
  *             information for the removed nodes is displayed.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DAXClient, DescribeClustersCommand } from "@aws-sdk/client-dax"; // ES Modules import
+ * // const { DAXClient, DescribeClustersCommand } = require("@aws-sdk/client-dax"); // CommonJS import
+ * const client = new DAXClient(config);
+ * const command = new DescribeClustersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeClustersCommandInput} for command's `input` shape.
+ * @see {@link DescribeClustersCommandOutput} for command's `response` shape.
+ * @see {@link DAXClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeClustersCommand extends $Command<
   DescribeClustersCommandInput,

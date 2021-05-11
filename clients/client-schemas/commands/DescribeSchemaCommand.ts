@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeSchemaCommandInput = DescribeSchemaRequest;
-export type DescribeSchemaCommandOutput = DescribeSchemaResponse & __MetadataBearer;
+export interface DescribeSchemaCommandInput extends DescribeSchemaRequest {}
+export interface DescribeSchemaCommandOutput extends DescribeSchemaResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieve the schema definition.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SchemasClient, DescribeSchemaCommand } from "@aws-sdk/client-schemas"; // ES Modules import
+ * // const { SchemasClient, DescribeSchemaCommand } = require("@aws-sdk/client-schemas"); // CommonJS import
+ * const client = new SchemasClient(config);
+ * const command = new DescribeSchemaCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeSchemaCommandInput} for command's `input` shape.
+ * @see {@link DescribeSchemaCommandOutput} for command's `response` shape.
+ * @see {@link SchemasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeSchemaCommand extends $Command<
   DescribeSchemaCommandInput,

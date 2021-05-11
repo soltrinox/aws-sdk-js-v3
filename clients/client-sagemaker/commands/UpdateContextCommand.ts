@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateContextCommandInput = UpdateContextRequest;
-export type UpdateContextCommandOutput = UpdateContextResponse & __MetadataBearer;
+export interface UpdateContextCommandInput extends UpdateContextRequest {}
+export interface UpdateContextCommandOutput extends UpdateContextResponse, __MetadataBearer {}
 
 /**
  * <p>Updates a context.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, UpdateContextCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, UpdateContextCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new UpdateContextCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateContextCommandInput} for command's `input` shape.
+ * @see {@link UpdateContextCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateContextCommand extends $Command<
   UpdateContextCommandInput,

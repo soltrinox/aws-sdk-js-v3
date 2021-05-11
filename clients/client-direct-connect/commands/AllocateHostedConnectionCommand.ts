@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AllocateHostedConnectionCommandInput = AllocateHostedConnectionRequest;
-export type AllocateHostedConnectionCommandOutput = Connection & __MetadataBearer;
+export interface AllocateHostedConnectionCommandInput extends AllocateHostedConnectionRequest {}
+export interface AllocateHostedConnectionCommandOutput extends Connection, __MetadataBearer {}
 
 /**
  * <p>Creates a hosted connection on the specified interconnect or a link aggregation group (LAG) of interconnects.</p>
@@ -26,6 +26,20 @@ export type AllocateHostedConnectionCommandOutput = Connection & __MetadataBeare
  *          <note>
  *             <p>Intended for use by AWS Direct Connect Partners only.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DirectConnectClient, AllocateHostedConnectionCommand } from "@aws-sdk/client-direct-connect"; // ES Modules import
+ * // const { DirectConnectClient, AllocateHostedConnectionCommand } = require("@aws-sdk/client-direct-connect"); // CommonJS import
+ * const client = new DirectConnectClient(config);
+ * const command = new AllocateHostedConnectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AllocateHostedConnectionCommandInput} for command's `input` shape.
+ * @see {@link AllocateHostedConnectionCommandOutput} for command's `response` shape.
+ * @see {@link DirectConnectClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AllocateHostedConnectionCommand extends $Command<
   AllocateHostedConnectionCommandInput,

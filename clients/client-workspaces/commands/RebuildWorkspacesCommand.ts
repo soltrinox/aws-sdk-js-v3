@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RebuildWorkspacesCommandInput = RebuildWorkspacesRequest;
-export type RebuildWorkspacesCommandOutput = RebuildWorkspacesResult & __MetadataBearer;
+export interface RebuildWorkspacesCommandInput extends RebuildWorkspacesRequest {}
+export interface RebuildWorkspacesCommandOutput extends RebuildWorkspacesResult, __MetadataBearer {}
 
 /**
  * <p>Rebuilds the specified WorkSpace.</p>
@@ -29,6 +29,20 @@ export type RebuildWorkspacesCommandOutput = RebuildWorkspacesResult & __Metadat
  *          WorkSpace</a>.</p>
  *          <p>This operation is asynchronous and returns before the WorkSpaces have been completely
  *          rebuilt.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, RebuildWorkspacesCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, RebuildWorkspacesCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new RebuildWorkspacesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RebuildWorkspacesCommandInput} for command's `input` shape.
+ * @see {@link RebuildWorkspacesCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RebuildWorkspacesCommand extends $Command<
   RebuildWorkspacesCommandInput,

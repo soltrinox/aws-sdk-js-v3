@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBucketRequestPaymentCommandInput = GetBucketRequestPaymentRequest;
-export type GetBucketRequestPaymentCommandOutput = GetBucketRequestPaymentOutput & __MetadataBearer;
+export interface GetBucketRequestPaymentCommandInput extends GetBucketRequestPaymentRequest {}
+export interface GetBucketRequestPaymentCommandOutput extends GetBucketRequestPaymentOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the request payment configuration of a bucket. To use this version of the
@@ -33,6 +33,20 @@ export type GetBucketRequestPaymentCommandOutput = GetBucketRequestPaymentOutput
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetBucketRequestPaymentCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetBucketRequestPaymentCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetBucketRequestPaymentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBucketRequestPaymentCommandInput} for command's `input` shape.
+ * @see {@link GetBucketRequestPaymentCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBucketRequestPaymentCommand extends $Command<
   GetBucketRequestPaymentCommandInput,

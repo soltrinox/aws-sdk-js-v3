@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetIceServerConfigCommandInput = GetIceServerConfigRequest;
-export type GetIceServerConfigCommandOutput = GetIceServerConfigResponse & __MetadataBearer;
+export interface GetIceServerConfigCommandInput extends GetIceServerConfigRequest {}
+export interface GetIceServerConfigCommandOutput extends GetIceServerConfigResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the Interactive Connectivity Establishment (ICE) server configuration
@@ -39,6 +39,20 @@ export type GetIceServerConfigCommandOutput = GetIceServerConfigResponse & __Met
  *             is unable to establish a direct peer-to-peer connection over a signaling channel. You
  *             must specify either a signaling channel ARN or the client ID in order to invoke this
  *             API.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisVideoSignalingClient, GetIceServerConfigCommand } from "@aws-sdk/client-kinesis-video-signaling"; // ES Modules import
+ * // const { KinesisVideoSignalingClient, GetIceServerConfigCommand } = require("@aws-sdk/client-kinesis-video-signaling"); // CommonJS import
+ * const client = new KinesisVideoSignalingClient(config);
+ * const command = new GetIceServerConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetIceServerConfigCommandInput} for command's `input` shape.
+ * @see {@link GetIceServerConfigCommandOutput} for command's `response` shape.
+ * @see {@link KinesisVideoSignalingClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetIceServerConfigCommand extends $Command<
   GetIceServerConfigCommandInput,

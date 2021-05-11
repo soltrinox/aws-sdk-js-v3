@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateInvalidationCommandInput = CreateInvalidationRequest;
-export type CreateInvalidationCommandOutput = CreateInvalidationResult & __MetadataBearer;
+export interface CreateInvalidationCommandInput extends CreateInvalidationRequest {}
+export interface CreateInvalidationCommandOutput extends CreateInvalidationResult, __MetadataBearer {}
 
 /**
  * <p>Create a new invalidation. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFrontClient, CreateInvalidationCommand } from "@aws-sdk/client-cloudfront"; // ES Modules import
+ * // const { CloudFrontClient, CreateInvalidationCommand } = require("@aws-sdk/client-cloudfront"); // CommonJS import
+ * const client = new CloudFrontClient(config);
+ * const command = new CreateInvalidationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateInvalidationCommandInput} for command's `input` shape.
+ * @see {@link CreateInvalidationCommandOutput} for command's `response` shape.
+ * @see {@link CloudFrontClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateInvalidationCommand extends $Command<
   CreateInvalidationCommandInput,

@@ -17,12 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListMemberAccountsCommandInput = ListMemberAccountsRequest;
-export type ListMemberAccountsCommandOutput = ListMemberAccountsResult & __MetadataBearer;
+export interface ListMemberAccountsCommandInput extends ListMemberAccountsRequest {}
+export interface ListMemberAccountsCommandOutput extends ListMemberAccountsResult, __MetadataBearer {}
 
 /**
- * <p>Lists all Amazon Macie Classic member accounts for the current Amazon Macie Classic
- *       master account.</p>
+ * <p>Lists all Amazon Macie Classic member accounts for the current Macie Classic administrator account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MacieClient, ListMemberAccountsCommand } from "@aws-sdk/client-macie"; // ES Modules import
+ * // const { MacieClient, ListMemberAccountsCommand } = require("@aws-sdk/client-macie"); // CommonJS import
+ * const client = new MacieClient(config);
+ * const command = new ListMemberAccountsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListMemberAccountsCommandInput} for command's `input` shape.
+ * @see {@link ListMemberAccountsCommandOutput} for command's `response` shape.
+ * @see {@link MacieClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListMemberAccountsCommand extends $Command<
   ListMemberAccountsCommandInput,

@@ -7,9 +7,9 @@
 
 AWS SDK for JavaScript EC2InstanceConnect Client for Node.js, Browser and React Native.
 
-<p>AWS EC2 Connect Service is a service that enables system administrators to publish
-temporary SSH keys to their EC2 instances in order to establish connections to their
-instances without leaving a permanent authentication option.</p>
+<p>Amazon EC2 Instance Connect enables system administrators to publish one-time use SSH
+public keys to EC2, providing users a simple and secure way to connect to their
+instances.</p>
 
 ## Installing
 
@@ -26,16 +26,19 @@ using your favorite package manager:
 
 The AWS SDK is modulized by clients and commands.
 To send a request, you only need to import the `EC2InstanceConnectClient` and
-the commands you need, for example `SendSSHPublicKeyCommand`:
+the commands you need, for example `SendSerialConsoleSSHPublicKeyCommand`:
 
 ```js
 // ES5 example
-const { EC2InstanceConnectClient, SendSSHPublicKeyCommand } = require("@aws-sdk/client-ec2-instance-connect");
+const {
+  EC2InstanceConnectClient,
+  SendSerialConsoleSSHPublicKeyCommand,
+} = require("@aws-sdk/client-ec2-instance-connect");
 ```
 
 ```ts
 // ES6+ example
-import { EC2InstanceConnectClient, SendSSHPublicKeyCommand } from "@aws-sdk/client-ec2-instance-connect";
+import { EC2InstanceConnectClient, SendSerialConsoleSSHPublicKeyCommand } from "@aws-sdk/client-ec2-instance-connect";
 ```
 
 ### Usage
@@ -48,13 +51,13 @@ To send a request, you:
 - If you are using a custom http handler, you may call `destroy()` to close open connections.
 
 ```js
-// a client can be shared by difference commands.
+// a client can be shared by different commands.
 const client = new EC2InstanceConnectClient({ region: "REGION" });
 
 const params = {
   /** input parameters */
 };
-const command = new SendSSHPublicKeyCommand(params);
+const command = new SendSerialConsoleSSHPublicKeyCommand(params);
 ```
 
 #### Async/await
@@ -133,7 +136,7 @@ const client = new AWS.EC2InstanceConnect({ region: "REGION" });
 
 // async/await.
 try {
-  const data = client.sendSSHPublicKey(params);
+  const data = await client.sendSerialConsoleSSHPublicKey(params);
   // process data.
 } catch (error) {
   // error handling.
@@ -141,7 +144,7 @@ try {
 
 // Promises.
 client
-  .sendSSHPublicKey(params)
+  .sendSerialConsoleSSHPublicKey(params)
   .then((data) => {
     // process data.
   })
@@ -150,7 +153,7 @@ client
   });
 
 // callbacks.
-client.sendSSHPublicKey(params, (err, data) => {
+client.sendSerialConsoleSSHPublicKey(params, (err, data) => {
   // proccess err and data.
 });
 ```

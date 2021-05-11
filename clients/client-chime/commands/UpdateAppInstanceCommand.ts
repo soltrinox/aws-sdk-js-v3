@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateAppInstanceCommandInput = UpdateAppInstanceRequest;
-export type UpdateAppInstanceCommandOutput = UpdateAppInstanceResponse & __MetadataBearer;
+export interface UpdateAppInstanceCommandInput extends UpdateAppInstanceRequest {}
+export interface UpdateAppInstanceCommandOutput extends UpdateAppInstanceResponse, __MetadataBearer {}
 
 /**
  * <p>Updates <code>AppInstance</code> metadata.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, UpdateAppInstanceCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, UpdateAppInstanceCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new UpdateAppInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateAppInstanceCommandInput} for command's `input` shape.
+ * @see {@link UpdateAppInstanceCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateAppInstanceCommand extends $Command<
   UpdateAppInstanceCommandInput,

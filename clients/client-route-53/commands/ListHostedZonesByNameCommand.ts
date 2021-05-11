@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListHostedZonesByNameCommandInput = ListHostedZonesByNameRequest;
-export type ListHostedZonesByNameCommandOutput = ListHostedZonesByNameResponse & __MetadataBearer;
+export interface ListHostedZonesByNameCommandInput extends ListHostedZonesByNameRequest {}
+export interface ListHostedZonesByNameCommandOutput extends ListHostedZonesByNameResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a list of your hosted zones in lexicographic order. The response includes a <code>HostedZones</code> child element
@@ -67,6 +67,20 @@ export type ListHostedZonesByNameCommandOutput = ListHostedZonesByNameResponse &
  * 					<code>NextHostedZoneId</code> in the <code>dnsname</code> and <code>hostedzoneid</code> parameters, respectively.</p>
  * 			         </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53Client, ListHostedZonesByNameCommand } from "@aws-sdk/client-route-53"; // ES Modules import
+ * // const { Route53Client, ListHostedZonesByNameCommand } = require("@aws-sdk/client-route-53"); // CommonJS import
+ * const client = new Route53Client(config);
+ * const command = new ListHostedZonesByNameCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListHostedZonesByNameCommandInput} for command's `input` shape.
+ * @see {@link ListHostedZonesByNameCommandOutput} for command's `response` shape.
+ * @see {@link Route53ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListHostedZonesByNameCommand extends $Command<
   ListHostedZonesByNameCommandInput,

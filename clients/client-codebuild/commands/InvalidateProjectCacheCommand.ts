@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type InvalidateProjectCacheCommandInput = InvalidateProjectCacheInput;
-export type InvalidateProjectCacheCommandOutput = InvalidateProjectCacheOutput & __MetadataBearer;
+export interface InvalidateProjectCacheCommandInput extends InvalidateProjectCacheInput {}
+export interface InvalidateProjectCacheCommandOutput extends InvalidateProjectCacheOutput, __MetadataBearer {}
 
 /**
  * <p>Resets the cache for a project.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeBuildClient, InvalidateProjectCacheCommand } from "@aws-sdk/client-codebuild"; // ES Modules import
+ * // const { CodeBuildClient, InvalidateProjectCacheCommand } = require("@aws-sdk/client-codebuild"); // CommonJS import
+ * const client = new CodeBuildClient(config);
+ * const command = new InvalidateProjectCacheCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link InvalidateProjectCacheCommandInput} for command's `input` shape.
+ * @see {@link InvalidateProjectCacheCommandOutput} for command's `response` shape.
+ * @see {@link CodeBuildClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class InvalidateProjectCacheCommand extends $Command<
   InvalidateProjectCacheCommandInput,

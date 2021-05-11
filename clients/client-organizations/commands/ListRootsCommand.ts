@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListRootsCommandInput = ListRootsRequest;
-export type ListRootsCommandOutput = ListRootsResponse & __MetadataBearer;
+export interface ListRootsCommandInput extends ListRootsRequest {}
+export interface ListRootsCommandOutput extends ListRootsResponse, __MetadataBearer {}
 
 /**
  * <p>Lists the roots that are defined in the current organization.</p>
@@ -27,7 +27,7 @@ export type ListRootsCommandOutput = ListRootsResponse & __MetadataBearer;
  *                <i>only</i>
  * when there are no more results to display.</p>
  *          </note>
- *          <p>This operation can be called only from the organization's
+ *         <p>This operation can be called only from the organization's
  * management account or by a member account that is a delegated administrator for an AWS service.</p>
  *         <note>
  *             <p>Policy types can be enabled and disabled in roots. This is distinct from whether
@@ -36,6 +36,20 @@ export type ListRootsCommandOutput = ListRootsResponse & __MetadataBearer;
  *                 enabled and disabled in a root. To see the availability of a policy type in an
  *                 organization, use <a>DescribeOrganization</a>.</p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OrganizationsClient, ListRootsCommand } from "@aws-sdk/client-organizations"; // ES Modules import
+ * // const { OrganizationsClient, ListRootsCommand } = require("@aws-sdk/client-organizations"); // CommonJS import
+ * const client = new OrganizationsClient(config);
+ * const command = new ListRootsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListRootsCommandInput} for command's `input` shape.
+ * @see {@link ListRootsCommandOutput} for command's `response` shape.
+ * @see {@link OrganizationsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListRootsCommand extends $Command<
   ListRootsCommandInput,

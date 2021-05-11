@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteSiteCommandInput = DeleteSiteRequest;
-export type DeleteSiteCommandOutput = DeleteSiteResponse & __MetadataBearer;
+export interface DeleteSiteCommandInput extends DeleteSiteRequest {}
+export interface DeleteSiteCommandOutput extends DeleteSiteResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an existing site. The site cannot be associated with any device or link.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkManagerClient, DeleteSiteCommand } from "@aws-sdk/client-networkmanager"; // ES Modules import
+ * // const { NetworkManagerClient, DeleteSiteCommand } = require("@aws-sdk/client-networkmanager"); // CommonJS import
+ * const client = new NetworkManagerClient(config);
+ * const command = new DeleteSiteCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteSiteCommandInput} for command's `input` shape.
+ * @see {@link DeleteSiteCommandOutput} for command's `response` shape.
+ * @see {@link NetworkManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteSiteCommand extends $Command<
   DeleteSiteCommandInput,

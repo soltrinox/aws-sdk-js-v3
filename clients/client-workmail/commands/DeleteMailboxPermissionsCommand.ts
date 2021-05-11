@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteMailboxPermissionsCommandInput = DeleteMailboxPermissionsRequest;
-export type DeleteMailboxPermissionsCommandOutput = DeleteMailboxPermissionsResponse & __MetadataBearer;
+export interface DeleteMailboxPermissionsCommandInput extends DeleteMailboxPermissionsRequest {}
+export interface DeleteMailboxPermissionsCommandOutput extends DeleteMailboxPermissionsResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes permissions granted to a member (user or group).</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkMailClient, DeleteMailboxPermissionsCommand } from "@aws-sdk/client-workmail"; // ES Modules import
+ * // const { WorkMailClient, DeleteMailboxPermissionsCommand } = require("@aws-sdk/client-workmail"); // CommonJS import
+ * const client = new WorkMailClient(config);
+ * const command = new DeleteMailboxPermissionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteMailboxPermissionsCommandInput} for command's `input` shape.
+ * @see {@link DeleteMailboxPermissionsCommandOutput} for command's `response` shape.
+ * @see {@link WorkMailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteMailboxPermissionsCommand extends $Command<
   DeleteMailboxPermissionsCommandInput,

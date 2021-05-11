@@ -20,9 +20,11 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateResolverEndpointIpAddressCommandInput = DisassociateResolverEndpointIpAddressRequest;
-export type DisassociateResolverEndpointIpAddressCommandOutput = DisassociateResolverEndpointIpAddressResponse &
-  __MetadataBearer;
+export interface DisassociateResolverEndpointIpAddressCommandInput
+  extends DisassociateResolverEndpointIpAddressRequest {}
+export interface DisassociateResolverEndpointIpAddressCommandOutput
+  extends DisassociateResolverEndpointIpAddressResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Removes IP addresses from an inbound or an outbound Resolver endpoint. If you want to remove more than one IP address,
@@ -30,6 +32,20 @@ export type DisassociateResolverEndpointIpAddressCommandOutput = DisassociateRes
  * 		       <p>To add an IP address to an endpoint, see
  * 			<a href="https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverEndpointIpAddress.html">AssociateResolverEndpointIpAddress</a>.
  * 		</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53ResolverClient, DisassociateResolverEndpointIpAddressCommand } from "@aws-sdk/client-route53resolver"; // ES Modules import
+ * // const { Route53ResolverClient, DisassociateResolverEndpointIpAddressCommand } = require("@aws-sdk/client-route53resolver"); // CommonJS import
+ * const client = new Route53ResolverClient(config);
+ * const command = new DisassociateResolverEndpointIpAddressCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateResolverEndpointIpAddressCommandInput} for command's `input` shape.
+ * @see {@link DisassociateResolverEndpointIpAddressCommandOutput} for command's `response` shape.
+ * @see {@link Route53ResolverClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateResolverEndpointIpAddressCommand extends $Command<
   DisassociateResolverEndpointIpAddressCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteDistributionCommandInput = DeleteDistributionRequest;
-export type DeleteDistributionCommandOutput = DeleteDistributionResult & __MetadataBearer;
+export interface DeleteDistributionCommandInput extends DeleteDistributionRequest {}
+export interface DeleteDistributionCommandOutput extends DeleteDistributionResult, __MetadataBearer {}
 
 /**
  * <p>Deletes your Amazon Lightsail content delivery network (CDN) distribution.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, DeleteDistributionCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, DeleteDistributionCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new DeleteDistributionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteDistributionCommandInput} for command's `input` shape.
+ * @see {@link DeleteDistributionCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteDistributionCommand extends $Command<
   DeleteDistributionCommandInput,

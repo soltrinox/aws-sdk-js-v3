@@ -2,8 +2,14 @@ import { CancelQuantumTaskCommandInput, CancelQuantumTaskCommandOutput } from ".
 import { CreateQuantumTaskCommandInput, CreateQuantumTaskCommandOutput } from "./commands/CreateQuantumTaskCommand";
 import { GetDeviceCommandInput, GetDeviceCommandOutput } from "./commands/GetDeviceCommand";
 import { GetQuantumTaskCommandInput, GetQuantumTaskCommandOutput } from "./commands/GetQuantumTaskCommand";
+import {
+  ListTagsForResourceCommandInput,
+  ListTagsForResourceCommandOutput,
+} from "./commands/ListTagsForResourceCommand";
 import { SearchDevicesCommandInput, SearchDevicesCommandOutput } from "./commands/SearchDevicesCommand";
 import { SearchQuantumTasksCommandInput, SearchQuantumTasksCommandOutput } from "./commands/SearchQuantumTasksCommand";
+import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
+import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
 import { ClientDefaultValues as __ClientDefaultValues } from "./runtimeConfig";
 import {
   EndpointsInputConfig,
@@ -60,16 +66,22 @@ export type ServiceInputTypes =
   | CreateQuantumTaskCommandInput
   | GetDeviceCommandInput
   | GetQuantumTaskCommandInput
+  | ListTagsForResourceCommandInput
   | SearchDevicesCommandInput
-  | SearchQuantumTasksCommandInput;
+  | SearchQuantumTasksCommandInput
+  | TagResourceCommandInput
+  | UntagResourceCommandInput;
 
 export type ServiceOutputTypes =
   | CancelQuantumTaskCommandOutput
   | CreateQuantumTaskCommandOutput
   | GetDeviceCommandOutput
   | GetQuantumTaskCommandOutput
+  | ListTagsForResourceCommandOutput
   | SearchDevicesCommandOutput
-  | SearchQuantumTasksCommandOutput;
+  | SearchQuantumTasksCommandOutput
+  | TagResourceCommandOutput
+  | UntagResourceCommandOutput;
 
 export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__HttpHandlerOptions>> {
   /**
@@ -136,7 +148,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -167,7 +179,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type BraketClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type BraketClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -175,8 +187,12 @@ export type BraketClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOpti
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of BraketClient class constructor that set the region, credentials and other options.
+ */
+export interface BraketClientConfig extends BraketClientConfigType {}
 
-export type BraketClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type BraketClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -184,6 +200,10 @@ export type BraketClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHan
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of BraketClient class. This is resolved and normalized from the {@link BraketClientConfig | constructor configuration interface}.
+ */
+export interface BraketClientResolvedConfig extends BraketClientResolvedConfigType {}
 
 /**
  * <p>The Amazon Braket API Reference provides information about the operations and structures supported in Amazon Braket.</p>
@@ -194,6 +214,9 @@ export class BraketClient extends __Client<
   ServiceOutputTypes,
   BraketClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of BraketClient class. This is resolved and normalized from the {@link BraketClientConfig | constructor configuration interface}.
+   */
   readonly config: BraketClientResolvedConfig;
 
   constructor(configuration: BraketClientConfig) {

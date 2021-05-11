@@ -34,6 +34,7 @@ import software.amazon.smithy.typescript.codegen.integration.DocumentMemberDeser
 import software.amazon.smithy.typescript.codegen.integration.DocumentMemberSerVisitor;
 import software.amazon.smithy.typescript.codegen.integration.HttpBindingProtocolGenerator;
 import software.amazon.smithy.utils.IoUtils;
+import software.amazon.smithy.utils.SmithyInternalApi;
 
 /**
  * Handles general components across the AWS JSON protocols that have HTTP bindings.
@@ -50,6 +51,7 @@ import software.amazon.smithy.utils.IoUtils;
  * @see AwsProtocolUtils
  * @see <a href="https://awslabs.github.io/smithy/spec/http.html">Smithy HTTP protocol bindings.</a>
  */
+@SmithyInternalApi
 abstract class RestJsonProtocolGenerator extends HttpBindingProtocolGenerator {
     /**
      * Creates a AWS JSON RPC protocol generator.
@@ -88,6 +90,12 @@ abstract class RestJsonProtocolGenerator extends HttpBindingProtocolGenerator {
     protected void writeDefaultHeaders(GenerationContext context, OperationShape operation) {
         super.writeDefaultHeaders(context, operation);
         AwsProtocolUtils.generateUnsignedPayloadSigV4Header(context, operation);
+    }
+
+    @Override
+    protected void writeDefaultErrorHeaders(GenerationContext context, StructureShape error) {
+        super.writeDefaultErrorHeaders(context, error);
+        context.getWriter().write("'x-amzn-errortype': $S,", error.getId().getName());
     }
 
     @Override

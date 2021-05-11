@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeAccountLimitsCommandInput = DescribeAccountLimitsInput;
-export type DescribeAccountLimitsCommandOutput = DescribeAccountLimitsOutput & __MetadataBearer;
+export interface DescribeAccountLimitsCommandInput extends DescribeAccountLimitsInput {}
+export interface DescribeAccountLimitsCommandOutput extends DescribeAccountLimitsOutput, __MetadataBearer {}
 
 /**
  * <p>Describes the current Elastic Load Balancing resource limits for your AWS account.</p>
@@ -30,20 +30,37 @@ export type DescribeAccountLimitsCommandOutput = DescribeAccountLimitsOutput & _
  *          <ul>
  *             <li>
  *                <p>
- *                   <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html">Quotas for your Application Load Balancers</a>
+ *                   <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html">Quotas for your
+ *             Application Load Balancers</a>
  *                </p>
  *             </li>
  *             <li>
  *                <p>
- *                   <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html">Quotas for your Network Load Balancers</a>
+ *                   <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html">Quotas for your
+ *             Network Load Balancers</a>
  *                </p>
  *             </li>
  *             <li>
  *                <p>
- *                   <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/quotas-limits.html">Quotas for your Gateway Load Balancers</a>
+ *                   <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/quotas-limits.html">Quotas for your Gateway
+ *             Load Balancers</a>
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElasticLoadBalancingV2Client, DescribeAccountLimitsCommand } from "@aws-sdk/client-elastic-load-balancing-v2"; // ES Modules import
+ * // const { ElasticLoadBalancingV2Client, DescribeAccountLimitsCommand } = require("@aws-sdk/client-elastic-load-balancing-v2"); // CommonJS import
+ * const client = new ElasticLoadBalancingV2Client(config);
+ * const command = new DescribeAccountLimitsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeAccountLimitsCommandInput} for command's `input` shape.
+ * @see {@link DescribeAccountLimitsCommandOutput} for command's `response` shape.
+ * @see {@link ElasticLoadBalancingV2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeAccountLimitsCommand extends $Command<
   DescribeAccountLimitsCommandInput,

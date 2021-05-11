@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type AssociateIpGroupsCommandInput = AssociateIpGroupsRequest;
-export type AssociateIpGroupsCommandOutput = AssociateIpGroupsResult & __MetadataBearer;
+export interface AssociateIpGroupsCommandInput extends AssociateIpGroupsRequest {}
+export interface AssociateIpGroupsCommandOutput extends AssociateIpGroupsResult, __MetadataBearer {}
 
 /**
  * <p>Associates the specified IP access control group with the specified directory.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WorkSpacesClient, AssociateIpGroupsCommand } from "@aws-sdk/client-workspaces"; // ES Modules import
+ * // const { WorkSpacesClient, AssociateIpGroupsCommand } = require("@aws-sdk/client-workspaces"); // CommonJS import
+ * const client = new WorkSpacesClient(config);
+ * const command = new AssociateIpGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link AssociateIpGroupsCommandInput} for command's `input` shape.
+ * @see {@link AssociateIpGroupsCommandOutput} for command's `response` shape.
+ * @see {@link WorkSpacesClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class AssociateIpGroupsCommand extends $Command<
   AssociateIpGroupsCommandInput,

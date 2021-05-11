@@ -36,6 +36,10 @@ import {
   CancelCertificateTransferCommandInput,
   CancelCertificateTransferCommandOutput,
 } from "./commands/CancelCertificateTransferCommand";
+import {
+  CancelDetectMitigationActionsTaskCommandInput,
+  CancelDetectMitigationActionsTaskCommandOutput,
+} from "./commands/CancelDetectMitigationActionsTaskCommand";
 import { CancelJobCommandInput, CancelJobCommandOutput } from "./commands/CancelJobCommand";
 import { CancelJobExecutionCommandInput, CancelJobExecutionCommandOutput } from "./commands/CancelJobExecutionCommand";
 import {
@@ -56,6 +60,7 @@ import {
   CreateCertificateFromCsrCommandInput,
   CreateCertificateFromCsrCommandOutput,
 } from "./commands/CreateCertificateFromCsrCommand";
+import { CreateCustomMetricCommandInput, CreateCustomMetricCommandOutput } from "./commands/CreateCustomMetricCommand";
 import { CreateDimensionCommandInput, CreateDimensionCommandOutput } from "./commands/CreateDimensionCommand";
 import {
   CreateDomainConfigurationCommandInput,
@@ -125,6 +130,7 @@ import {
   DeleteCACertificateCommandOutput,
 } from "./commands/DeleteCACertificateCommand";
 import { DeleteCertificateCommandInput, DeleteCertificateCommandOutput } from "./commands/DeleteCertificateCommand";
+import { DeleteCustomMetricCommandInput, DeleteCustomMetricCommandOutput } from "./commands/DeleteCustomMetricCommand";
 import { DeleteDimensionCommandInput, DeleteDimensionCommandOutput } from "./commands/DeleteDimensionCommand";
 import {
   DeleteDomainConfigurationCommandInput,
@@ -212,9 +218,17 @@ import {
   DescribeCertificateCommandOutput,
 } from "./commands/DescribeCertificateCommand";
 import {
+  DescribeCustomMetricCommandInput,
+  DescribeCustomMetricCommandOutput,
+} from "./commands/DescribeCustomMetricCommand";
+import {
   DescribeDefaultAuthorizerCommandInput,
   DescribeDefaultAuthorizerCommandOutput,
 } from "./commands/DescribeDefaultAuthorizerCommand";
+import {
+  DescribeDetectMitigationActionsTaskCommandInput,
+  DescribeDetectMitigationActionsTaskCommandOutput,
+} from "./commands/DescribeDetectMitigationActionsTaskCommand";
 import { DescribeDimensionCommandInput, DescribeDimensionCommandOutput } from "./commands/DescribeDimensionCommand";
 import {
   DescribeDomainConfigurationCommandInput,
@@ -275,6 +289,10 @@ import {
 } from "./commands/DetachThingPrincipalCommand";
 import { DisableTopicRuleCommandInput, DisableTopicRuleCommandOutput } from "./commands/DisableTopicRuleCommand";
 import { EnableTopicRuleCommandInput, EnableTopicRuleCommandOutput } from "./commands/EnableTopicRuleCommand";
+import {
+  GetBehaviorModelTrainingSummariesCommandInput,
+  GetBehaviorModelTrainingSummariesCommandOutput,
+} from "./commands/GetBehaviorModelTrainingSummariesCommand";
 import { GetCardinalityCommandInput, GetCardinalityCommandOutput } from "./commands/GetCardinalityCommand";
 import {
   GetEffectivePoliciesCommandInput,
@@ -334,6 +352,15 @@ import {
   ListCertificatesByCACommandOutput,
 } from "./commands/ListCertificatesByCACommand";
 import { ListCertificatesCommandInput, ListCertificatesCommandOutput } from "./commands/ListCertificatesCommand";
+import { ListCustomMetricsCommandInput, ListCustomMetricsCommandOutput } from "./commands/ListCustomMetricsCommand";
+import {
+  ListDetectMitigationActionsExecutionsCommandInput,
+  ListDetectMitigationActionsExecutionsCommandOutput,
+} from "./commands/ListDetectMitigationActionsExecutionsCommand";
+import {
+  ListDetectMitigationActionsTasksCommandInput,
+  ListDetectMitigationActionsTasksCommandOutput,
+} from "./commands/ListDetectMitigationActionsTasksCommand";
 import { ListDimensionsCommandInput, ListDimensionsCommandOutput } from "./commands/ListDimensionsCommand";
 import {
   ListDomainConfigurationsCommandInput,
@@ -492,6 +519,10 @@ import {
   StartAuditMitigationActionsTaskCommandOutput,
 } from "./commands/StartAuditMitigationActionsTaskCommand";
 import {
+  StartDetectMitigationActionsTaskCommandInput,
+  StartDetectMitigationActionsTaskCommandOutput,
+} from "./commands/StartDetectMitigationActionsTaskCommand";
+import {
   StartOnDemandAuditTaskCommandInput,
   StartOnDemandAuditTaskCommandOutput,
 } from "./commands/StartOnDemandAuditTaskCommand";
@@ -529,6 +560,7 @@ import {
   UpdateCACertificateCommandOutput,
 } from "./commands/UpdateCACertificateCommand";
 import { UpdateCertificateCommandInput, UpdateCertificateCommandOutput } from "./commands/UpdateCertificateCommand";
+import { UpdateCustomMetricCommandInput, UpdateCustomMetricCommandOutput } from "./commands/UpdateCustomMetricCommand";
 import { UpdateDimensionCommandInput, UpdateDimensionCommandOutput } from "./commands/UpdateDimensionCommand";
 import {
   UpdateDomainConfigurationCommandInput,
@@ -648,6 +680,7 @@ export type ServiceInputTypes =
   | CancelAuditMitigationActionsTaskCommandInput
   | CancelAuditTaskCommandInput
   | CancelCertificateTransferCommandInput
+  | CancelDetectMitigationActionsTaskCommandInput
   | CancelJobCommandInput
   | CancelJobExecutionCommandInput
   | ClearDefaultAuthorizerCommandInput
@@ -656,6 +689,7 @@ export type ServiceInputTypes =
   | CreateAuthorizerCommandInput
   | CreateBillingGroupCommandInput
   | CreateCertificateFromCsrCommandInput
+  | CreateCustomMetricCommandInput
   | CreateDimensionCommandInput
   | CreateDomainConfigurationCommandInput
   | CreateDynamicThingGroupCommandInput
@@ -683,6 +717,7 @@ export type ServiceInputTypes =
   | DeleteBillingGroupCommandInput
   | DeleteCACertificateCommandInput
   | DeleteCertificateCommandInput
+  | DeleteCustomMetricCommandInput
   | DeleteDimensionCommandInput
   | DeleteDomainConfigurationCommandInput
   | DeleteDynamicThingGroupCommandInput
@@ -715,7 +750,9 @@ export type ServiceInputTypes =
   | DescribeBillingGroupCommandInput
   | DescribeCACertificateCommandInput
   | DescribeCertificateCommandInput
+  | DescribeCustomMetricCommandInput
   | DescribeDefaultAuthorizerCommandInput
+  | DescribeDetectMitigationActionsTaskCommandInput
   | DescribeDimensionCommandInput
   | DescribeDomainConfigurationCommandInput
   | DescribeEndpointCommandInput
@@ -740,6 +777,7 @@ export type ServiceInputTypes =
   | DetachThingPrincipalCommandInput
   | DisableTopicRuleCommandInput
   | EnableTopicRuleCommandInput
+  | GetBehaviorModelTrainingSummariesCommandInput
   | GetCardinalityCommandInput
   | GetEffectivePoliciesCommandInput
   | GetIndexingConfigurationCommandInput
@@ -766,6 +804,9 @@ export type ServiceInputTypes =
   | ListCACertificatesCommandInput
   | ListCertificatesByCACommandInput
   | ListCertificatesCommandInput
+  | ListCustomMetricsCommandInput
+  | ListDetectMitigationActionsExecutionsCommandInput
+  | ListDetectMitigationActionsTasksCommandInput
   | ListDimensionsCommandInput
   | ListDomainConfigurationsCommandInput
   | ListIndicesCommandInput
@@ -818,6 +859,7 @@ export type ServiceInputTypes =
   | SetV2LoggingLevelCommandInput
   | SetV2LoggingOptionsCommandInput
   | StartAuditMitigationActionsTaskCommandInput
+  | StartDetectMitigationActionsTaskCommandInput
   | StartOnDemandAuditTaskCommandInput
   | StartThingRegistrationTaskCommandInput
   | StopThingRegistrationTaskCommandInput
@@ -832,6 +874,7 @@ export type ServiceInputTypes =
   | UpdateBillingGroupCommandInput
   | UpdateCACertificateCommandInput
   | UpdateCertificateCommandInput
+  | UpdateCustomMetricCommandInput
   | UpdateDimensionCommandInput
   | UpdateDomainConfigurationCommandInput
   | UpdateDynamicThingGroupCommandInput
@@ -862,6 +905,7 @@ export type ServiceOutputTypes =
   | CancelAuditMitigationActionsTaskCommandOutput
   | CancelAuditTaskCommandOutput
   | CancelCertificateTransferCommandOutput
+  | CancelDetectMitigationActionsTaskCommandOutput
   | CancelJobCommandOutput
   | CancelJobExecutionCommandOutput
   | ClearDefaultAuthorizerCommandOutput
@@ -870,6 +914,7 @@ export type ServiceOutputTypes =
   | CreateAuthorizerCommandOutput
   | CreateBillingGroupCommandOutput
   | CreateCertificateFromCsrCommandOutput
+  | CreateCustomMetricCommandOutput
   | CreateDimensionCommandOutput
   | CreateDomainConfigurationCommandOutput
   | CreateDynamicThingGroupCommandOutput
@@ -897,6 +942,7 @@ export type ServiceOutputTypes =
   | DeleteBillingGroupCommandOutput
   | DeleteCACertificateCommandOutput
   | DeleteCertificateCommandOutput
+  | DeleteCustomMetricCommandOutput
   | DeleteDimensionCommandOutput
   | DeleteDomainConfigurationCommandOutput
   | DeleteDynamicThingGroupCommandOutput
@@ -929,7 +975,9 @@ export type ServiceOutputTypes =
   | DescribeBillingGroupCommandOutput
   | DescribeCACertificateCommandOutput
   | DescribeCertificateCommandOutput
+  | DescribeCustomMetricCommandOutput
   | DescribeDefaultAuthorizerCommandOutput
+  | DescribeDetectMitigationActionsTaskCommandOutput
   | DescribeDimensionCommandOutput
   | DescribeDomainConfigurationCommandOutput
   | DescribeEndpointCommandOutput
@@ -954,6 +1002,7 @@ export type ServiceOutputTypes =
   | DetachThingPrincipalCommandOutput
   | DisableTopicRuleCommandOutput
   | EnableTopicRuleCommandOutput
+  | GetBehaviorModelTrainingSummariesCommandOutput
   | GetCardinalityCommandOutput
   | GetEffectivePoliciesCommandOutput
   | GetIndexingConfigurationCommandOutput
@@ -980,6 +1029,9 @@ export type ServiceOutputTypes =
   | ListCACertificatesCommandOutput
   | ListCertificatesByCACommandOutput
   | ListCertificatesCommandOutput
+  | ListCustomMetricsCommandOutput
+  | ListDetectMitigationActionsExecutionsCommandOutput
+  | ListDetectMitigationActionsTasksCommandOutput
   | ListDimensionsCommandOutput
   | ListDomainConfigurationsCommandOutput
   | ListIndicesCommandOutput
@@ -1032,6 +1084,7 @@ export type ServiceOutputTypes =
   | SetV2LoggingLevelCommandOutput
   | SetV2LoggingOptionsCommandOutput
   | StartAuditMitigationActionsTaskCommandOutput
+  | StartDetectMitigationActionsTaskCommandOutput
   | StartOnDemandAuditTaskCommandOutput
   | StartThingRegistrationTaskCommandOutput
   | StopThingRegistrationTaskCommandOutput
@@ -1046,6 +1099,7 @@ export type ServiceOutputTypes =
   | UpdateBillingGroupCommandOutput
   | UpdateCACertificateCommandOutput
   | UpdateCertificateCommandOutput
+  | UpdateCustomMetricCommandOutput
   | UpdateDimensionCommandOutput
   | UpdateDomainConfigurationCommandOutput
   | UpdateDynamicThingGroupCommandOutput
@@ -1129,7 +1183,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -1160,7 +1214,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type IoTClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type IoTClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -1168,8 +1222,12 @@ export type IoTClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of IoTClient class constructor that set the region, credentials and other options.
+ */
+export interface IoTClientConfig extends IoTClientConfigType {}
 
-export type IoTClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type IoTClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -1177,6 +1235,10 @@ export type IoTClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandle
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of IoTClient class. This is resolved and normalized from the {@link IoTClientConfig | constructor configuration interface}.
+ */
+export interface IoTClientResolvedConfig extends IoTClientResolvedConfigType {}
 
 /**
  * <fullname>AWS IoT</fullname>
@@ -1202,6 +1264,9 @@ export class IoTClient extends __Client<
   ServiceOutputTypes,
   IoTClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of IoTClient class. This is resolved and normalized from the {@link IoTClientConfig | constructor configuration interface}.
+   */
   readonly config: IoTClientResolvedConfig;
 
   constructor(configuration: IoTClientConfig) {

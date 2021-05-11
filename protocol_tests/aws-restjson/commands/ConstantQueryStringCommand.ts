@@ -17,14 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ConstantQueryStringCommandInput = ConstantQueryStringInput;
-export type ConstantQueryStringCommandOutput = __MetadataBearer;
+export interface ConstantQueryStringCommandInput extends ConstantQueryStringInput {}
+export interface ConstantQueryStringCommandOutput extends __MetadataBearer {}
 
 /**
  * This example uses a constant query string parameters and a label.
  * This simply tests that labels and query string parameters are
  * compatible. The fixed query string parameter named "hello" should
  * in no way conflict with the label, `{hello}`.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestJsonProtocolClient, ConstantQueryStringCommand } from "@aws-sdk/aws-restjson"; // ES Modules import
+ * // const { RestJsonProtocolClient, ConstantQueryStringCommand } = require("@aws-sdk/aws-restjson"); // CommonJS import
+ * const client = new RestJsonProtocolClient(config);
+ * const command = new ConstantQueryStringCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ConstantQueryStringCommandInput} for command's `input` shape.
+ * @see {@link ConstantQueryStringCommandOutput} for command's `response` shape.
+ * @see {@link RestJsonProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ConstantQueryStringCommand extends $Command<
   ConstantQueryStringCommandInput,

@@ -15,8 +15,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SendMessageCommandInput = SendMessageRequest;
-export type SendMessageCommandOutput = SendMessageResult & __MetadataBearer;
+export interface SendMessageCommandInput extends SendMessageRequest {}
+export interface SendMessageCommandOutput extends SendMessageResult, __MetadataBearer {}
 
 /**
  * <p>Delivers a message to the specified queue.</p>
@@ -27,6 +27,20 @@ export type SendMessageCommandOutput = SendMessageResult & __MetadataBearer;
  *             </p>
  * 	           <p>Any characters not included in this list will be rejected. For more information, see the <a href="http://www.w3.org/TR/REC-xml/#charsets">W3C specification for characters</a>.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs"; // ES Modules import
+ * // const { SQSClient, SendMessageCommand } = require("@aws-sdk/client-sqs"); // CommonJS import
+ * const client = new SQSClient(config);
+ * const command = new SendMessageCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SendMessageCommandInput} for command's `input` shape.
+ * @see {@link SendMessageCommandOutput} for command's `response` shape.
+ * @see {@link SQSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SendMessageCommand extends $Command<
   SendMessageCommandInput,

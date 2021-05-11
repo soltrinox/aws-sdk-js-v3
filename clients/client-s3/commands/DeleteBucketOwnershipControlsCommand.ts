@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteBucketOwnershipControlsCommandInput = DeleteBucketOwnershipControlsRequest;
-export type DeleteBucketOwnershipControlsCommandOutput = __MetadataBearer;
+export interface DeleteBucketOwnershipControlsCommandInput extends DeleteBucketOwnershipControlsRequest {}
+export interface DeleteBucketOwnershipControlsCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Removes <code>OwnershipControls</code> for an Amazon S3 bucket. To use this operation, you
@@ -41,6 +41,20 @@ export type DeleteBucketOwnershipControlsCommandOutput = __MetadataBearer;
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, DeleteBucketOwnershipControlsCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, DeleteBucketOwnershipControlsCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new DeleteBucketOwnershipControlsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteBucketOwnershipControlsCommandInput} for command's `input` shape.
+ * @see {@link DeleteBucketOwnershipControlsCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteBucketOwnershipControlsCommand extends $Command<
   DeleteBucketOwnershipControlsCommandInput,

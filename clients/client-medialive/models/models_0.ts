@@ -14,6 +14,9 @@ export interface InputChannelLevel {
 }
 
 export namespace InputChannelLevel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputChannelLevel): any => ({
     ...obj,
   });
@@ -35,6 +38,9 @@ export interface AudioChannelMapping {
 }
 
 export namespace AudioChannelMapping {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AudioChannelMapping): any => ({
     ...obj,
   });
@@ -70,6 +76,9 @@ export interface AudioNormalizationSettings {
 }
 
 export namespace AudioNormalizationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AudioNormalizationSettings): any => ({
     ...obj,
   });
@@ -181,6 +190,9 @@ export interface AacSettings {
 }
 
 export namespace AacSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AacSettings): any => ({
     ...obj,
   });
@@ -260,6 +272,9 @@ export interface Ac3Settings {
 }
 
 export namespace Ac3Settings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Ac3Settings): any => ({
     ...obj,
   });
@@ -457,6 +472,9 @@ export interface Eac3Settings {
 }
 
 export namespace Eac3Settings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Eac3Settings): any => ({
     ...obj,
   });
@@ -488,6 +506,9 @@ export interface Mp2Settings {
 }
 
 export namespace Mp2Settings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Mp2Settings): any => ({
     ...obj,
   });
@@ -499,6 +520,9 @@ export namespace Mp2Settings {
 export interface PassThroughSettings {}
 
 export namespace PassThroughSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PassThroughSettings): any => ({
     ...obj,
   });
@@ -532,6 +556,9 @@ export interface WavSettings {
 }
 
 export namespace WavSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WavSettings): any => ({
     ...obj,
   });
@@ -573,6 +600,9 @@ export interface AudioCodecSettings {
 }
 
 export namespace AudioCodecSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AudioCodecSettings): any => ({
     ...obj,
   });
@@ -605,6 +635,9 @@ export interface RemixSettings {
 }
 
 export namespace RemixSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RemixSettings): any => ({
     ...obj,
   });
@@ -669,6 +702,9 @@ export interface AudioDescription {
 }
 
 export namespace AudioDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AudioDescription): any => ({
     ...obj,
   });
@@ -695,6 +731,9 @@ export interface AudioLanguageSelection {
 }
 
 export namespace AudioLanguageSelection {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AudioLanguageSelection): any => ({
     ...obj,
   });
@@ -711,6 +750,9 @@ export interface AudioPidSelection {
 }
 
 export namespace AudioPidSelection {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AudioPidSelection): any => ({
     ...obj,
   });
@@ -727,6 +769,9 @@ export interface AudioTrack {
 }
 
 export namespace AudioTrack {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AudioTrack): any => ({
     ...obj,
   });
@@ -743,6 +788,9 @@ export interface AudioTrackSelection {
 }
 
 export namespace AudioTrackSelection {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AudioTrackSelection): any => ({
     ...obj,
   });
@@ -769,6 +817,9 @@ export interface AudioSelectorSettings {
 }
 
 export namespace AudioSelectorSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AudioSelectorSettings): any => ({
     ...obj,
   });
@@ -790,6 +841,9 @@ export interface AudioSelector {
 }
 
 export namespace AudioSelector {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AudioSelector): any => ({
     ...obj,
   });
@@ -821,6 +875,9 @@ export interface BatchFailedResultModel {
 }
 
 export namespace BatchFailedResultModel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchFailedResultModel): any => ({
     ...obj,
   });
@@ -847,6 +904,9 @@ export interface BatchSuccessfulResultModel {
 }
 
 export namespace BatchSuccessfulResultModel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BatchSuccessfulResultModel): any => ({
     ...obj,
   });
@@ -858,6 +918,9 @@ export namespace BatchSuccessfulResultModel {
 export interface AribDestinationSettings {}
 
 export namespace AribDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AribDestinationSettings): any => ({
     ...obj,
   });
@@ -896,6 +959,9 @@ export interface InputLocation {
 }
 
 export namespace InputLocation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputLocation): any => ({
     ...obj,
   });
@@ -1021,6 +1087,9 @@ export interface BurnInDestinationSettings {
 }
 
 export namespace BurnInDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BurnInDestinationSettings): any => ({
     ...obj,
   });
@@ -1158,6 +1227,9 @@ export interface DvbSubDestinationSettings {
 }
 
 export namespace DvbSubDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DvbSubDestinationSettings): any => ({
     ...obj,
   });
@@ -1177,6 +1249,11 @@ export enum EbuTtDDestinationStyleControl {
  * Ebu Tt DDestination Settings
  */
 export interface EbuTtDDestinationSettings {
+  /**
+   * Applies only if you plan to convert these source captions to EBU-TT-D or TTML in an output. Complete this field if you want to include the name of the copyright holder in the copyright metadata tag in the TTML
+   */
+  CopyrightHolder?: string;
+
   /**
    * Specifies how to handle the gap between the lines (in multi-line captions).
    *
@@ -1205,6 +1282,9 @@ export interface EbuTtDDestinationSettings {
 }
 
 export namespace EbuTtDDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EbuTtDDestinationSettings): any => ({
     ...obj,
   });
@@ -1216,6 +1296,9 @@ export namespace EbuTtDDestinationSettings {
 export interface EmbeddedDestinationSettings {}
 
 export namespace EmbeddedDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EmbeddedDestinationSettings): any => ({
     ...obj,
   });
@@ -1227,6 +1310,9 @@ export namespace EmbeddedDestinationSettings {
 export interface EmbeddedPlusScte20DestinationSettings {}
 
 export namespace EmbeddedPlusScte20DestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EmbeddedPlusScte20DestinationSettings): any => ({
     ...obj,
   });
@@ -1238,6 +1324,9 @@ export namespace EmbeddedPlusScte20DestinationSettings {
 export interface RtmpCaptionInfoDestinationSettings {}
 
 export namespace RtmpCaptionInfoDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RtmpCaptionInfoDestinationSettings): any => ({
     ...obj,
   });
@@ -1249,6 +1338,9 @@ export namespace RtmpCaptionInfoDestinationSettings {
 export interface Scte20PlusEmbeddedDestinationSettings {}
 
 export namespace Scte20PlusEmbeddedDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Scte20PlusEmbeddedDestinationSettings): any => ({
     ...obj,
   });
@@ -1260,6 +1352,9 @@ export namespace Scte20PlusEmbeddedDestinationSettings {
 export interface Scte27DestinationSettings {}
 
 export namespace Scte27DestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Scte27DestinationSettings): any => ({
     ...obj,
   });
@@ -1271,6 +1366,9 @@ export namespace Scte27DestinationSettings {
 export interface SmpteTtDestinationSettings {}
 
 export namespace SmpteTtDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SmpteTtDestinationSettings): any => ({
     ...obj,
   });
@@ -1282,6 +1380,9 @@ export namespace SmpteTtDestinationSettings {
 export interface TeletextDestinationSettings {}
 
 export namespace TeletextDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TeletextDestinationSettings): any => ({
     ...obj,
   });
@@ -1303,6 +1404,9 @@ export interface TtmlDestinationSettings {
 }
 
 export namespace TtmlDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TtmlDestinationSettings): any => ({
     ...obj,
   });
@@ -1314,6 +1418,9 @@ export namespace TtmlDestinationSettings {
 export interface WebvttDestinationSettings {}
 
 export namespace WebvttDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: WebvttDestinationSettings): any => ({
     ...obj,
   });
@@ -1390,6 +1497,9 @@ export interface CaptionDestinationSettings {
 }
 
 export namespace CaptionDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CaptionDestinationSettings): any => ({
     ...obj,
   });
@@ -1426,6 +1536,9 @@ export interface CaptionDescription {
 }
 
 export namespace CaptionDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CaptionDescription): any => ({
     ...obj,
   });
@@ -1452,6 +1565,9 @@ export interface CaptionLanguageMapping {
 }
 
 export namespace CaptionLanguageMapping {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CaptionLanguageMapping): any => ({
     ...obj,
   });
@@ -1468,6 +1584,9 @@ export interface AncillarySourceSettings {
 }
 
 export namespace AncillarySourceSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AncillarySourceSettings): any => ({
     ...obj,
   });
@@ -1479,6 +1598,9 @@ export namespace AncillarySourceSettings {
 export interface AribSourceSettings {}
 
 export namespace AribSourceSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AribSourceSettings): any => ({
     ...obj,
   });
@@ -1495,6 +1617,9 @@ export interface DvbSubSourceSettings {
 }
 
 export namespace DvbSubSourceSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DvbSubSourceSettings): any => ({
     ...obj,
   });
@@ -1536,6 +1661,9 @@ export interface EmbeddedSourceSettings {
 }
 
 export namespace EmbeddedSourceSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: EmbeddedSourceSettings): any => ({
     ...obj,
   });
@@ -1562,6 +1690,9 @@ export interface Scte20SourceSettings {
 }
 
 export namespace Scte20SourceSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Scte20SourceSettings): any => ({
     ...obj,
   });
@@ -1582,7 +1713,53 @@ export interface Scte27SourceSettings {
 }
 
 export namespace Scte27SourceSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Scte27SourceSettings): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * Caption Rectangle
+ */
+export interface CaptionRectangle {
+  /**
+   * See the description in leftOffset.
+   * For height, specify the entire height of the rectangle as a percentage of the underlying frame height. For example, \"80\" means the rectangle height is 80% of the underlying frame height. The topOffset and rectangleHeight must add up to 100% or less.
+   * This field corresponds to tts:extent - Y in the TTML standard.
+   */
+  Height: number | undefined;
+
+  /**
+   * Applies only if you plan to convert these source captions to EBU-TT-D or TTML in an output. (Make sure to leave the default if you don't have either of these formats in the output.) You can define a display rectangle for the captions that is smaller than the underlying video frame. You define the rectangle by specifying the position of the left edge, top edge, bottom edge, and right edge of the rectangle, all within the underlying video frame. The units for the measurements are percentages.
+   * If you specify a value for one of these fields, you must specify a value for all of them.
+   * For leftOffset, specify the position of the left edge of the rectangle, as a percentage of the underlying frame width, and relative to the left edge of the frame. For example, \"10\" means the measurement is 10% of the underlying frame width. The rectangle left edge starts at that position from the left edge of the frame.
+   * This field corresponds to tts:origin - X in the TTML standard.
+   */
+  LeftOffset: number | undefined;
+
+  /**
+   * See the description in leftOffset.
+   * For topOffset, specify the position of the top edge of the rectangle, as a percentage of the underlying frame height, and relative to the top edge of the frame. For example, \"10\" means the measurement is 10% of the underlying frame height. The rectangle top edge starts at that position from the top edge of the frame.
+   * This field corresponds to tts:origin - Y in the TTML standard.
+   */
+  TopOffset: number | undefined;
+
+  /**
+   * See the description in leftOffset.
+   * For width, specify the entire width of the rectangle as a percentage of the underlying frame width. For example, \"80\" means the rectangle width is 80% of the underlying frame width. The leftOffset and rectangleWidth must add up to 100% or less.
+   * This field corresponds to tts:extent - X in the TTML standard.
+   */
+  Width: number | undefined;
+}
+
+export namespace CaptionRectangle {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CaptionRectangle): any => ({
     ...obj,
   });
 }
@@ -1592,12 +1769,20 @@ export namespace Scte27SourceSettings {
  */
 export interface TeletextSourceSettings {
   /**
+   * Optionally defines a region where TTML style captions will be displayed
+   */
+  OutputRectangle?: CaptionRectangle;
+
+  /**
    * Specifies the teletext page number within the data stream from which to extract captions. Range of 0x100 (256) to 0x8FF (2303). Unused for passthrough. Should be specified as a hexadecimal string with no "0x" prefix.
    */
   PageNumber?: string;
 }
 
 export namespace TeletextSourceSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TeletextSourceSettings): any => ({
     ...obj,
   });
@@ -1644,6 +1829,9 @@ export interface CaptionSelectorSettings {
 }
 
 export namespace CaptionSelectorSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CaptionSelectorSettings): any => ({
     ...obj,
   });
@@ -1670,6 +1858,9 @@ export interface CaptionSelector {
 }
 
 export namespace CaptionSelector {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CaptionSelector): any => ({
     ...obj,
   });
@@ -1686,6 +1877,9 @@ export interface ChannelEgressEndpoint {
 }
 
 export namespace ChannelEgressEndpoint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelEgressEndpoint): any => ({
     ...obj,
   });
@@ -1709,6 +1903,9 @@ export interface CdiInputSpecification {
 }
 
 export namespace CdiInputSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CdiInputSpecification): any => ({
     ...obj,
   });
@@ -1730,6 +1927,9 @@ export interface MediaPackageOutputDestinationSettings {
 }
 
 export namespace MediaPackageOutputDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MediaPackageOutputDestinationSettings): any => ({
     ...obj,
   });
@@ -1752,6 +1952,9 @@ export interface MultiplexProgramChannelDestinationSettings {
 }
 
 export namespace MultiplexProgramChannelDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MultiplexProgramChannelDestinationSettings): any => ({
     ...obj,
   });
@@ -1783,6 +1986,9 @@ export interface OutputDestinationSettings {
 }
 
 export namespace OutputDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OutputDestinationSettings): any => ({
     ...obj,
   });
@@ -1814,6 +2020,9 @@ export interface OutputDestination {
 }
 
 export namespace OutputDestination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OutputDestination): any => ({
     ...obj,
   });
@@ -1835,6 +2044,9 @@ export interface AudioSilenceFailoverSettings {
 }
 
 export namespace AudioSilenceFailoverSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AudioSilenceFailoverSettings): any => ({
     ...obj,
   });
@@ -1851,6 +2063,9 @@ export interface InputLossFailoverSettings {
 }
 
 export namespace InputLossFailoverSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputLossFailoverSettings): any => ({
     ...obj,
   });
@@ -1872,6 +2087,9 @@ export interface VideoBlackFailoverSettings {
 }
 
 export namespace VideoBlackFailoverSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VideoBlackFailoverSettings): any => ({
     ...obj,
   });
@@ -1898,6 +2116,9 @@ export interface FailoverConditionSettings {
 }
 
 export namespace FailoverConditionSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FailoverConditionSettings): any => ({
     ...obj,
   });
@@ -1914,6 +2135,9 @@ export interface FailoverCondition {
 }
 
 export namespace FailoverCondition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FailoverCondition): any => ({
     ...obj,
   });
@@ -1950,6 +2174,9 @@ export interface AutomaticInputFailoverSettings {
 }
 
 export namespace AutomaticInputFailoverSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AutomaticInputFailoverSettings): any => ({
     ...obj,
   });
@@ -1997,6 +2224,9 @@ export interface HlsInputSettings {
 }
 
 export namespace HlsInputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HlsInputSettings): any => ({
     ...obj,
   });
@@ -2023,6 +2253,9 @@ export interface NetworkInputSettings {
 }
 
 export namespace NetworkInputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NetworkInputSettings): any => ({
     ...obj,
   });
@@ -2040,8 +2273,57 @@ export enum InputSourceEndBehavior {
 
 export enum VideoSelectorColorSpace {
   FOLLOW = "FOLLOW",
+  HDR10 = "HDR10",
+  HLG_2020 = "HLG_2020",
   REC_601 = "REC_601",
   REC_709 = "REC_709",
+}
+
+/**
+ * Hdr10 Settings
+ */
+export interface Hdr10Settings {
+  /**
+   * Maximum Content Light Level
+   * An integer metadata value defining the maximum light level, in nits,
+   * of any single pixel within an encoded HDR video stream or file.
+   */
+  MaxCll?: number;
+
+  /**
+   * Maximum Frame Average Light Level
+   * An integer metadata value defining the maximum average light level, in nits,
+   * for any single frame within an encoded HDR video stream or file.
+   */
+  MaxFall?: number;
+}
+
+export namespace Hdr10Settings {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: Hdr10Settings): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * Video Selector Color Space Settings
+ */
+export interface VideoSelectorColorSpaceSettings {
+  /**
+   * Hdr10 Settings
+   */
+  Hdr10Settings?: Hdr10Settings;
+}
+
+export namespace VideoSelectorColorSpaceSettings {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: VideoSelectorColorSpaceSettings): any => ({
+    ...obj,
+  });
 }
 
 export enum VideoSelectorColorSpaceUsage {
@@ -2060,6 +2342,9 @@ export interface VideoSelectorPid {
 }
 
 export namespace VideoSelectorPid {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VideoSelectorPid): any => ({
     ...obj,
   });
@@ -2076,6 +2361,9 @@ export interface VideoSelectorProgramId {
 }
 
 export namespace VideoSelectorProgramId {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VideoSelectorProgramId): any => ({
     ...obj,
   });
@@ -2097,6 +2385,9 @@ export interface VideoSelectorSettings {
 }
 
 export namespace VideoSelectorSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VideoSelectorSettings): any => ({
     ...obj,
   });
@@ -2112,6 +2403,11 @@ export interface VideoSelector {
   ColorSpace?: VideoSelectorColorSpace | string;
 
   /**
+   * Color space settings
+   */
+  ColorSpaceSettings?: VideoSelectorColorSpaceSettings;
+
+  /**
    * Applies only if colorSpace is a value other than follow. This field controls how the value in the colorSpace field will be used. fallback means that when the input does include color space data, that data will be used, but when the input has no color space data, the value in colorSpace will be used. Choose fallback if your input is sometimes missing color space data, but when it does have color space data, that data is correct. force means to always use the value in colorSpace. Choose force if your input usually has no color space data or might have unreliable color space data.
    */
   ColorSpaceUsage?: VideoSelectorColorSpaceUsage | string;
@@ -2123,6 +2419,9 @@ export interface VideoSelector {
 }
 
 export namespace VideoSelector {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VideoSelector): any => ({
     ...obj,
   });
@@ -2189,6 +2488,9 @@ export interface InputSettings {
 }
 
 export namespace InputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputSettings): any => ({
     ...obj,
   });
@@ -2220,6 +2522,9 @@ export interface InputAttachment {
 }
 
 export namespace InputAttachment {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputAttachment): any => ({
     ...obj,
   });
@@ -2264,6 +2569,9 @@ export interface InputSpecification {
 }
 
 export namespace InputSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputSpecification): any => ({
     ...obj,
   });
@@ -2289,6 +2597,43 @@ export enum ChannelState {
   STOPPING = "STOPPING",
   UPDATE_FAILED = "UPDATE_FAILED",
   UPDATING = "UPDATING",
+}
+
+/**
+ * The properties for a private VPC Output
+ */
+export interface VpcOutputSettingsDescription {
+  /**
+   * The Availability Zones where the vpc subnets are located.
+   * The first Availability Zone applies to the first subnet in the list of subnets.
+   * The second Availability Zone applies to the second subnet.
+   */
+  AvailabilityZones?: string[];
+
+  /**
+   * A list of Elastic Network Interfaces created by MediaLive in the customer's VPC
+   */
+  NetworkInterfaceIds?: string[];
+
+  /**
+   * A list of up EC2 VPC security group IDs attached to the Output VPC network interfaces.
+   */
+  SecurityGroupIds?: string[];
+
+  /**
+   * A list of VPC subnet IDs from the same VPC.
+   * If STANDARD channel, subnet IDs must be mapped to two unique availability zones (AZ).
+   */
+  SubnetIds?: string[];
+}
+
+export namespace VpcOutputSettingsDescription {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: VpcOutputSettingsDescription): any => ({
+    ...obj,
+  });
 }
 
 /**
@@ -2366,9 +2711,17 @@ export interface ChannelSummary {
    * A collection of key-value pairs.
    */
   Tags?: { [key: string]: string };
+
+  /**
+   * Settings for VPC output
+   */
+  Vpc?: VpcOutputSettingsDescription;
 }
 
 export namespace ChannelSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ChannelSummary): any => ({
     ...obj,
   });
@@ -2396,6 +2749,9 @@ export interface InputDestinationVpc {
 }
 
 export namespace InputDestinationVpc {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputDestinationVpc): any => ({
     ...obj,
   });
@@ -2429,6 +2785,9 @@ export interface InputDestination {
 }
 
 export namespace InputDestination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputDestination): any => ({
     ...obj,
   });
@@ -2450,6 +2809,9 @@ export interface InputDeviceSettings {
 }
 
 export namespace InputDeviceSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputDeviceSettings): any => ({
     ...obj,
   });
@@ -2471,6 +2833,9 @@ export interface MediaConnectFlow {
 }
 
 export namespace MediaConnectFlow {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MediaConnectFlow): any => ({
     ...obj,
   });
@@ -2498,6 +2863,9 @@ export interface InputSource {
 }
 
 export namespace InputSource {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputSource): any => ({
     ...obj,
   });
@@ -2559,6 +2927,11 @@ export interface Input {
   InputDevices?: InputDeviceSettings[];
 
   /**
+   * A list of IDs for all Inputs which are partners of this one.
+   */
+  InputPartnerIds?: string[];
+
+  /**
    * Certain pull input sources can be dynamic, meaning that they can have their URL's dynamically changes
    * during input switch actions. Presently, this functionality only works with MP4_FILE inputs.
    */
@@ -2606,6 +2979,9 @@ export interface Input {
 }
 
 export namespace Input {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Input): any => ({
     ...obj,
   });
@@ -2623,6 +2999,9 @@ export interface InputDestinationRequest {
 }
 
 export namespace InputDestinationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputDestinationRequest): any => ({
     ...obj,
   });
@@ -2639,6 +3018,9 @@ export interface InputDeviceRequest {
 }
 
 export namespace InputDeviceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputDeviceRequest): any => ({
     ...obj,
   });
@@ -2726,6 +3108,9 @@ export interface InputDeviceHdSettings {
 }
 
 export namespace InputDeviceHdSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputDeviceHdSettings): any => ({
     ...obj,
   });
@@ -2767,6 +3152,9 @@ export interface InputDeviceNetworkSettings {
 }
 
 export namespace InputDeviceNetworkSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputDeviceNetworkSettings): any => ({
     ...obj,
   });
@@ -2822,6 +3210,9 @@ export interface InputDeviceUhdSettings {
 }
 
 export namespace InputDeviceUhdSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputDeviceUhdSettings): any => ({
     ...obj,
   });
@@ -2893,6 +3284,9 @@ export interface InputDeviceSummary {
 }
 
 export namespace InputDeviceSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputDeviceSummary): any => ({
     ...obj,
   });
@@ -2916,6 +3310,9 @@ export interface InputWhitelistRule {
 }
 
 export namespace InputWhitelistRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputWhitelistRule): any => ({
     ...obj,
   });
@@ -2957,6 +3354,9 @@ export interface InputSecurityGroup {
 }
 
 export namespace InputSecurityGroup {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputSecurityGroup): any => ({
     ...obj,
   });
@@ -2984,6 +3384,9 @@ export interface InputSourceRequest {
 }
 
 export namespace InputSourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputSourceRequest): any => ({
     ...obj,
   });
@@ -3000,6 +3403,9 @@ export interface InputWhitelistRuleCidr {
 }
 
 export namespace InputWhitelistRuleCidr {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InputWhitelistRuleCidr): any => ({
     ...obj,
   });
@@ -3016,6 +3422,9 @@ export interface MediaConnectFlowRequest {
 }
 
 export namespace MediaConnectFlowRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MediaConnectFlowRequest): any => ({
     ...obj,
   });
@@ -3032,6 +3441,9 @@ export interface MultiplexMediaConnectOutputDestinationSettings {
 }
 
 export namespace MultiplexMediaConnectOutputDestinationSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MultiplexMediaConnectOutputDestinationSettings): any => ({
     ...obj,
   });
@@ -3048,6 +3460,9 @@ export interface MultiplexOutputDestination {
 }
 
 export namespace MultiplexOutputDestination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MultiplexOutputDestination): any => ({
     ...obj,
   });
@@ -3069,6 +3484,9 @@ export interface MultiplexProgramPipelineDetail {
 }
 
 export namespace MultiplexProgramPipelineDetail {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MultiplexProgramPipelineDetail): any => ({
     ...obj,
   });
@@ -3090,6 +3508,9 @@ export interface MultiplexProgramSummary {
 }
 
 export namespace MultiplexProgramSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MultiplexProgramSummary): any => ({
     ...obj,
   });
@@ -3106,6 +3527,9 @@ export interface MultiplexSettingsSummary {
 }
 
 export namespace MultiplexSettingsSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MultiplexSettingsSummary): any => ({
     ...obj,
   });
@@ -3174,6 +3598,9 @@ export interface MultiplexSummary {
 }
 
 export namespace MultiplexSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MultiplexSummary): any => ({
     ...obj,
   });
@@ -3277,6 +3704,9 @@ export interface ReservationResourceSpecification {
 }
 
 export namespace ReservationResourceSpecification {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ReservationResourceSpecification): any => ({
     ...obj,
   });
@@ -3343,6 +3773,9 @@ export interface Offering {
 }
 
 export namespace Offering {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Offering): any => ({
     ...obj,
   });
@@ -3404,6 +3837,9 @@ export interface DvbNitSettings {
 }
 
 export namespace DvbNitSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DvbNitSettings): any => ({
     ...obj,
   });
@@ -3442,6 +3878,9 @@ export interface DvbSdtSettings {
 }
 
 export namespace DvbSdtSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DvbSdtSettings): any => ({
     ...obj,
   });
@@ -3458,6 +3897,9 @@ export interface DvbTdtSettings {
 }
 
 export namespace DvbTdtSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DvbTdtSettings): any => ({
     ...obj,
   });
@@ -3772,6 +4214,9 @@ export interface M2tsSettings {
 }
 
 export namespace M2tsSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: M2tsSettings): any => ({
     ...obj,
   });
@@ -3783,6 +4228,9 @@ export namespace M2tsSettings {
 export interface RawSettings {}
 
 export namespace RawSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RawSettings): any => ({
     ...obj,
   });
@@ -3804,6 +4252,9 @@ export interface ArchiveContainerSettings {
 }
 
 export namespace ArchiveContainerSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ArchiveContainerSettings): any => ({
     ...obj,
   });
@@ -3830,6 +4281,9 @@ export interface ArchiveOutputSettings {
 }
 
 export namespace ArchiveOutputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ArchiveOutputSettings): any => ({
     ...obj,
   });
@@ -3846,6 +4300,9 @@ export interface FrameCaptureOutputSettings {
 }
 
 export namespace FrameCaptureOutputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FrameCaptureOutputSettings): any => ({
     ...obj,
   });
@@ -3908,6 +4365,9 @@ export interface AudioOnlyHlsSettings {
 }
 
 export namespace AudioOnlyHlsSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AudioOnlyHlsSettings): any => ({
     ...obj,
   });
@@ -3944,7 +4404,24 @@ export interface Fmp4HlsSettings {
 }
 
 export namespace Fmp4HlsSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Fmp4HlsSettings): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * Frame Capture Hls Settings
+ */
+export interface FrameCaptureHlsSettings {}
+
+export namespace FrameCaptureHlsSettings {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: FrameCaptureHlsSettings): any => ({
     ...obj,
   });
 }
@@ -4060,6 +4537,9 @@ export interface M3u8Settings {
 }
 
 export namespace M3u8Settings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: M3u8Settings): any => ({
     ...obj,
   });
@@ -4081,6 +4561,9 @@ export interface StandardHlsSettings {
 }
 
 export namespace StandardHlsSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StandardHlsSettings): any => ({
     ...obj,
   });
@@ -4101,12 +4584,20 @@ export interface HlsSettings {
   Fmp4HlsSettings?: Fmp4HlsSettings;
 
   /**
+   * Frame Capture Hls Settings
+   */
+  FrameCaptureHlsSettings?: FrameCaptureHlsSettings;
+
+  /**
    * Standard Hls Settings
    */
   StandardHlsSettings?: StandardHlsSettings;
 }
 
 export namespace HlsSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HlsSettings): any => ({
     ...obj,
   });
@@ -4139,6 +4630,9 @@ export interface HlsOutputSettings {
 }
 
 export namespace HlsOutputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HlsOutputSettings): any => ({
     ...obj,
   });
@@ -4150,6 +4644,9 @@ export namespace HlsOutputSettings {
 export interface MediaPackageOutputSettings {}
 
 export namespace MediaPackageOutputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MediaPackageOutputSettings): any => ({
     ...obj,
   });
@@ -4177,6 +4674,9 @@ export interface MsSmoothOutputSettings {
 }
 
 export namespace MsSmoothOutputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MsSmoothOutputSettings): any => ({
     ...obj,
   });
@@ -4193,6 +4693,9 @@ export interface OutputLocationRef {
 }
 
 export namespace OutputLocationRef {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OutputLocationRef): any => ({
     ...obj,
   });
@@ -4209,6 +4712,9 @@ export interface MultiplexOutputSettings {
 }
 
 export namespace MultiplexOutputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MultiplexOutputSettings): any => ({
     ...obj,
   });
@@ -4245,6 +4751,9 @@ export interface RtmpOutputSettings {
 }
 
 export namespace RtmpOutputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RtmpOutputSettings): any => ({
     ...obj,
   });
@@ -4261,6 +4770,9 @@ export interface UdpContainerSettings {
 }
 
 export namespace UdpContainerSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UdpContainerSettings): any => ({
     ...obj,
   });
@@ -4292,6 +4804,9 @@ export interface FecOutputSettings {
 }
 
 export namespace FecOutputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FecOutputSettings): any => ({
     ...obj,
   });
@@ -4323,6 +4838,9 @@ export interface UdpOutputSettings {
 }
 
 export namespace UdpOutputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UdpOutputSettings): any => ({
     ...obj,
   });
@@ -4374,6 +4892,9 @@ export interface OutputSettings {
 }
 
 export namespace OutputSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: OutputSettings): any => ({
     ...obj,
   });
@@ -4410,7 +4931,55 @@ export interface Output {
 }
 
 export namespace Output {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Output): any => ({
+    ...obj,
+  });
+}
+
+export enum S3CannedAcl {
+  AUTHENTICATED_READ = "AUTHENTICATED_READ",
+  BUCKET_OWNER_FULL_CONTROL = "BUCKET_OWNER_FULL_CONTROL",
+  BUCKET_OWNER_READ = "BUCKET_OWNER_READ",
+  PUBLIC_READ = "PUBLIC_READ",
+}
+
+/**
+ * Archive S3 Settings
+ */
+export interface ArchiveS3Settings {
+  /**
+   * Specify the canned ACL to apply to each S3 request. Defaults to none.
+   */
+  CannedAcl?: S3CannedAcl | string;
+}
+
+export namespace ArchiveS3Settings {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ArchiveS3Settings): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * Archive Cdn Settings
+ */
+export interface ArchiveCdnSettings {
+  /**
+   * Archive S3 Settings
+   */
+  ArchiveS3Settings?: ArchiveS3Settings;
+}
+
+export namespace ArchiveCdnSettings {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ArchiveCdnSettings): any => ({
     ...obj,
   });
 }
@@ -4419,6 +4988,11 @@ export namespace Output {
  * Archive Group Settings
  */
 export interface ArchiveGroupSettings {
+  /**
+   * Parameters that control interactions with the CDN.
+   */
+  ArchiveCdnSettings?: ArchiveCdnSettings;
+
   /**
    * A directory and base filename where archive files should be written.
    */
@@ -4431,7 +5005,48 @@ export interface ArchiveGroupSettings {
 }
 
 export namespace ArchiveGroupSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ArchiveGroupSettings): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * Frame Capture S3 Settings
+ */
+export interface FrameCaptureS3Settings {
+  /**
+   * Specify the canned ACL to apply to each S3 request. Defaults to none.
+   */
+  CannedAcl?: S3CannedAcl | string;
+}
+
+export namespace FrameCaptureS3Settings {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: FrameCaptureS3Settings): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * Frame Capture Cdn Settings
+ */
+export interface FrameCaptureCdnSettings {
+  /**
+   * Frame Capture S3 Settings
+   */
+  FrameCaptureS3Settings?: FrameCaptureS3Settings;
+}
+
+export namespace FrameCaptureCdnSettings {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: FrameCaptureCdnSettings): any => ({
     ...obj,
   });
 }
@@ -4444,9 +5059,17 @@ export interface FrameCaptureGroupSettings {
    * The destination for the frame capture files. Either the URI for an Amazon S3 bucket and object, plus a file name prefix (for example, s3ssl://sportsDelivery/highlights/20180820/curling-) or the URI for a MediaStore container, plus a file name prefix (for example, mediastoressl://sportsDelivery/20180820/curling-). The final file names consist of the prefix from the destination field (for example, "curling-") + name modifier + the counter (5 digits, starting from 00001) + extension (which is always .jpg).  For example, curling-low.00001.jpg
    */
   Destination: OutputLocationRef | undefined;
+
+  /**
+   * Parameters that control interactions with the CDN.
+   */
+  FrameCaptureCdnSettings?: FrameCaptureCdnSettings;
 }
 
 export namespace FrameCaptureGroupSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: FrameCaptureGroupSettings): any => ({
     ...obj,
   });
@@ -4529,6 +5152,9 @@ export interface HlsAkamaiSettings {
 }
 
 export namespace HlsAkamaiSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HlsAkamaiSettings): any => ({
     ...obj,
   });
@@ -4560,6 +5186,9 @@ export interface HlsBasicPutSettings {
 }
 
 export namespace HlsBasicPutSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HlsBasicPutSettings): any => ({
     ...obj,
   });
@@ -4600,7 +5229,29 @@ export interface HlsMediaStoreSettings {
 }
 
 export namespace HlsMediaStoreSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HlsMediaStoreSettings): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * Hls S3 Settings
+ */
+export interface HlsS3Settings {
+  /**
+   * Specify the canned ACL to apply to each S3 request. Defaults to none.
+   */
+  CannedAcl?: S3CannedAcl | string;
+}
+
+export namespace HlsS3Settings {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: HlsS3Settings): any => ({
     ...obj,
   });
 }
@@ -4641,6 +5292,9 @@ export interface HlsWebdavSettings {
 }
 
 export namespace HlsWebdavSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HlsWebdavSettings): any => ({
     ...obj,
   });
@@ -4666,12 +5320,20 @@ export interface HlsCdnSettings {
   HlsMediaStoreSettings?: HlsMediaStoreSettings;
 
   /**
+   * Hls S3 Settings
+   */
+  HlsS3Settings?: HlsS3Settings;
+
+  /**
    * Hls Webdav Settings
    */
   HlsWebdavSettings?: HlsWebdavSettings;
 }
 
 export namespace HlsCdnSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HlsCdnSettings): any => ({
     ...obj,
   });
@@ -4723,6 +5385,9 @@ export interface StaticKeySettings {
 }
 
 export namespace StaticKeySettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StaticKeySettings): any => ({
     ...obj,
   });
@@ -4739,6 +5404,9 @@ export interface KeyProviderSettings {
 }
 
 export namespace KeyProviderSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: KeyProviderSettings): any => ({
     ...obj,
   });
@@ -5043,6 +5711,9 @@ export interface HlsGroupSettings {
 }
 
 export namespace HlsGroupSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: HlsGroupSettings): any => ({
     ...obj,
   });
@@ -5059,6 +5730,9 @@ export interface MediaPackageGroupSettings {
 }
 
 export namespace MediaPackageGroupSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MediaPackageGroupSettings): any => ({
     ...obj,
   });
@@ -5224,6 +5898,9 @@ export interface MsSmoothGroupSettings {
 }
 
 export namespace MsSmoothGroupSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MsSmoothGroupSettings): any => ({
     ...obj,
   });
@@ -5235,196 +5912,10 @@ export namespace MsSmoothGroupSettings {
 export interface MultiplexGroupSettings {}
 
 export namespace MultiplexGroupSettings {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MultiplexGroupSettings): any => ({
-    ...obj,
-  });
-}
-
-export enum RtmpAdMarkers {
-  ON_CUE_POINT_SCTE35 = "ON_CUE_POINT_SCTE35",
-}
-
-export enum AuthenticationScheme {
-  AKAMAI = "AKAMAI",
-  COMMON = "COMMON",
-}
-
-export enum RtmpCacheFullBehavior {
-  DISCONNECT_IMMEDIATELY = "DISCONNECT_IMMEDIATELY",
-  WAIT_FOR_SERVER = "WAIT_FOR_SERVER",
-}
-
-export enum RtmpCaptionData {
-  ALL = "ALL",
-  FIELD1_608 = "FIELD1_608",
-  FIELD1_AND_FIELD2_608 = "FIELD1_AND_FIELD2_608",
-}
-
-export enum InputLossActionForRtmpOut {
-  EMIT_OUTPUT = "EMIT_OUTPUT",
-  PAUSE_OUTPUT = "PAUSE_OUTPUT",
-}
-
-/**
- * Rtmp Group Settings
- */
-export interface RtmpGroupSettings {
-  /**
-   * Choose the ad marker type for this output group. MediaLive will create a message based on the content of each SCTE-35 message, format it for that marker type, and insert it in the datastream.
-   */
-  AdMarkers?: (RtmpAdMarkers | string)[];
-
-  /**
-   * Authentication scheme to use when connecting with CDN
-   */
-  AuthenticationScheme?: AuthenticationScheme | string;
-
-  /**
-   * Controls behavior when content cache fills up. If remote origin server stalls the RTMP connection and does not accept content fast enough the 'Media Cache' will fill up. When the cache reaches the duration specified by cacheLength the cache will stop accepting new content. If set to disconnectImmediately, the RTMP output will force a disconnect. Clear the media cache, and reconnect after restartDelay seconds. If set to waitForServer, the RTMP output will wait up to 5 minutes to allow the origin server to begin accepting data again.
-   */
-  CacheFullBehavior?: RtmpCacheFullBehavior | string;
-
-  /**
-   * Cache length, in seconds, is used to calculate buffer size.
-   */
-  CacheLength?: number;
-
-  /**
-   * Controls the types of data that passes to onCaptionInfo outputs.  If set to 'all' then 608 and 708 carried DTVCC data will be passed.  If set to 'field1AndField2608' then DTVCC data will be stripped out, but 608 data from both fields will be passed. If set to 'field1608' then only the data carried in 608 from field 1 video will be passed.
-   */
-  CaptionData?: RtmpCaptionData | string;
-
-  /**
-   * Controls the behavior of this RTMP group if input becomes unavailable.
-   *
-   * - emitOutput: Emit a slate until input returns.
-   * - pauseOutput: Stop transmitting data until input returns. This does not close the underlying RTMP connection.
-   */
-  InputLossAction?: InputLossActionForRtmpOut | string;
-
-  /**
-   * If a streaming output fails, number of seconds to wait until a restart is initiated. A value of 0 means never restart.
-   */
-  RestartDelay?: number;
-}
-
-export namespace RtmpGroupSettings {
-  export const filterSensitiveLog = (obj: RtmpGroupSettings): any => ({
-    ...obj,
-  });
-}
-
-export enum InputLossActionForUdpOut {
-  DROP_PROGRAM = "DROP_PROGRAM",
-  DROP_TS = "DROP_TS",
-  EMIT_PROGRAM = "EMIT_PROGRAM",
-}
-
-export enum UdpTimedMetadataId3Frame {
-  NONE = "NONE",
-  PRIV = "PRIV",
-  TDRL = "TDRL",
-}
-
-/**
- * Udp Group Settings
- */
-export interface UdpGroupSettings {
-  /**
-   * Specifies behavior of last resort when input video is lost, and no more backup inputs are available. When dropTs is selected the entire transport stream will stop being emitted.  When dropProgram is selected the program can be dropped from the transport stream (and replaced with null packets to meet the TS bitrate requirement).  Or, when emitProgram is chosen the transport stream will continue to be produced normally with repeat frames, black frames, or slate frames substituted for the absent input video.
-   */
-  InputLossAction?: InputLossActionForUdpOut | string;
-
-  /**
-   * Indicates ID3 frame that has the timecode.
-   */
-  TimedMetadataId3Frame?: UdpTimedMetadataId3Frame | string;
-
-  /**
-   * Timed Metadata interval in seconds.
-   */
-  TimedMetadataId3Period?: number;
-}
-
-export namespace UdpGroupSettings {
-  export const filterSensitiveLog = (obj: UdpGroupSettings): any => ({
-    ...obj,
-  });
-}
-
-/**
- * Output Group Settings
- */
-export interface OutputGroupSettings {
-  /**
-   * Archive Group Settings
-   */
-  ArchiveGroupSettings?: ArchiveGroupSettings;
-
-  /**
-   * Frame Capture Group Settings
-   */
-  FrameCaptureGroupSettings?: FrameCaptureGroupSettings;
-
-  /**
-   * Hls Group Settings
-   */
-  HlsGroupSettings?: HlsGroupSettings;
-
-  /**
-   * Media Package Group Settings
-   */
-  MediaPackageGroupSettings?: MediaPackageGroupSettings;
-
-  /**
-   * Ms Smooth Group Settings
-   */
-  MsSmoothGroupSettings?: MsSmoothGroupSettings;
-
-  /**
-   * Multiplex Group Settings
-   */
-  MultiplexGroupSettings?: MultiplexGroupSettings;
-
-  /**
-   * Rtmp Group Settings
-   */
-  RtmpGroupSettings?: RtmpGroupSettings;
-
-  /**
-   * Udp Group Settings
-   */
-  UdpGroupSettings?: UdpGroupSettings;
-}
-
-export namespace OutputGroupSettings {
-  export const filterSensitiveLog = (obj: OutputGroupSettings): any => ({
-    ...obj,
-  });
-}
-
-/**
- * Output groups for this Live Event. Output groups contain information about where streams should be distributed.
- */
-export interface OutputGroup {
-  /**
-   * Custom output group name optionally defined by the user.  Only letters, numbers, and the underscore character allowed; only 32 characters allowed.
-   */
-  Name?: string;
-
-  /**
-   * Settings associated with the output group.
-   */
-  OutputGroupSettings: OutputGroupSettings | undefined;
-
-  /**
-   * Placeholder documentation for __listOfOutput
-   */
-  Outputs: Output[] | undefined;
-}
-
-export namespace OutputGroup {
-  export const filterSensitiveLog = (obj: OutputGroup): any => ({
     ...obj,
   });
 }

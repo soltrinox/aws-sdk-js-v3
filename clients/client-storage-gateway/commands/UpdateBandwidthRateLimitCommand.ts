@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateBandwidthRateLimitCommandInput = UpdateBandwidthRateLimitInput;
-export type UpdateBandwidthRateLimitCommandOutput = UpdateBandwidthRateLimitOutput & __MetadataBearer;
+export interface UpdateBandwidthRateLimitCommandInput extends UpdateBandwidthRateLimitInput {}
+export interface UpdateBandwidthRateLimitCommandOutput extends UpdateBandwidthRateLimitOutput, __MetadataBearer {}
 
 /**
  * <p>Updates the bandwidth rate limits of a gateway. You can update both the upload and
@@ -32,6 +32,20 @@ export type UpdateBandwidthRateLimitCommandOutput = UpdateBandwidthRateLimitOutp
  *
  *          <p>To specify which gateway to update, use the Amazon Resource Name (ARN) of the gateway in
  *          your request.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, UpdateBandwidthRateLimitCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, UpdateBandwidthRateLimitCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new UpdateBandwidthRateLimitCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateBandwidthRateLimitCommandInput} for command's `input` shape.
+ * @see {@link UpdateBandwidthRateLimitCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateBandwidthRateLimitCommand extends $Command<
   UpdateBandwidthRateLimitCommandInput,

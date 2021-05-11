@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetMemberCommandInput = GetMemberRequest;
-export type GetMemberCommandOutput = GetMemberResponse & __MetadataBearer;
+export interface GetMemberCommandInput extends GetMemberRequest {}
+export interface GetMemberCommandOutput extends GetMemberResponse, __MetadataBearer {}
 
 /**
- * <p>Retrieves information about a member account that's associated with an Amazon Macie master account.</p>
+ * <p>Retrieves information about an account that's associated with an Amazon Macie administrator account.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Macie2Client, GetMemberCommand } from "@aws-sdk/client-macie2"; // ES Modules import
+ * // const { Macie2Client, GetMemberCommand } = require("@aws-sdk/client-macie2"); // CommonJS import
+ * const client = new Macie2Client(config);
+ * const command = new GetMemberCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetMemberCommandInput} for command's `input` shape.
+ * @see {@link GetMemberCommandOutput} for command's `response` shape.
+ * @see {@link Macie2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetMemberCommand extends $Command<
   GetMemberCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEdgePackagingJobCommandInput = DescribeEdgePackagingJobRequest;
-export type DescribeEdgePackagingJobCommandOutput = DescribeEdgePackagingJobResponse & __MetadataBearer;
+export interface DescribeEdgePackagingJobCommandInput extends DescribeEdgePackagingJobRequest {}
+export interface DescribeEdgePackagingJobCommandOutput extends DescribeEdgePackagingJobResponse, __MetadataBearer {}
 
 /**
  * <p>A description of edge packaging jobs.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DescribeEdgePackagingJobCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DescribeEdgePackagingJobCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DescribeEdgePackagingJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEdgePackagingJobCommandInput} for command's `input` shape.
+ * @see {@link DescribeEdgePackagingJobCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEdgePackagingJobCommand extends $Command<
   DescribeEdgePackagingJobCommandInput,

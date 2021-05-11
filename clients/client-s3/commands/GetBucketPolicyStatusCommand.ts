@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetBucketPolicyStatusCommandInput = GetBucketPolicyStatusRequest;
-export type GetBucketPolicyStatusCommandOutput = GetBucketPolicyStatusOutput & __MetadataBearer;
+export interface GetBucketPolicyStatusCommandInput extends GetBucketPolicyStatusRequest {}
+export interface GetBucketPolicyStatusCommandOutput extends GetBucketPolicyStatusOutput, __MetadataBearer {}
 
 /**
  * <p>Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public.
@@ -53,6 +53,20 @@ export type GetBucketPolicyStatusCommandOutput = GetBucketPolicyStatusOutput & _
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { S3Client, GetBucketPolicyStatusCommand } from "@aws-sdk/client-s3"; // ES Modules import
+ * // const { S3Client, GetBucketPolicyStatusCommand } = require("@aws-sdk/client-s3"); // CommonJS import
+ * const client = new S3Client(config);
+ * const command = new GetBucketPolicyStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetBucketPolicyStatusCommandInput} for command's `input` shape.
+ * @see {@link GetBucketPolicyStatusCommandOutput} for command's `response` shape.
+ * @see {@link S3ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetBucketPolicyStatusCommand extends $Command<
   GetBucketPolicyStatusCommandInput,

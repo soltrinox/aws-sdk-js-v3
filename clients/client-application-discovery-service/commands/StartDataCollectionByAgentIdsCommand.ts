@@ -21,11 +21,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartDataCollectionByAgentIdsCommandInput = StartDataCollectionByAgentIdsRequest;
-export type StartDataCollectionByAgentIdsCommandOutput = StartDataCollectionByAgentIdsResponse & __MetadataBearer;
+export interface StartDataCollectionByAgentIdsCommandInput extends StartDataCollectionByAgentIdsRequest {}
+export interface StartDataCollectionByAgentIdsCommandOutput
+  extends StartDataCollectionByAgentIdsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Instructs the specified agents or connectors to start collecting data.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ApplicationDiscoveryServiceClient, StartDataCollectionByAgentIdsCommand } from "@aws-sdk/client-application-discovery-service"; // ES Modules import
+ * // const { ApplicationDiscoveryServiceClient, StartDataCollectionByAgentIdsCommand } = require("@aws-sdk/client-application-discovery-service"); // CommonJS import
+ * const client = new ApplicationDiscoveryServiceClient(config);
+ * const command = new StartDataCollectionByAgentIdsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartDataCollectionByAgentIdsCommandInput} for command's `input` shape.
+ * @see {@link StartDataCollectionByAgentIdsCommandOutput} for command's `response` shape.
+ * @see {@link ApplicationDiscoveryServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartDataCollectionByAgentIdsCommand extends $Command<
   StartDataCollectionByAgentIdsCommandInput,

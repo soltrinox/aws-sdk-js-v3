@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListOpsMetadataCommandInput = ListOpsMetadataRequest;
-export type ListOpsMetadataCommandOutput = ListOpsMetadataResult & __MetadataBearer;
+export interface ListOpsMetadataCommandInput extends ListOpsMetadataRequest {}
+export interface ListOpsMetadataCommandOutput extends ListOpsMetadataResult, __MetadataBearer {}
 
 /**
- * <p>Systems Manager calls this API action when displaying all AppManager OpsMetadata objects or
+ * <p>Systems Manager calls this API action when displaying all Application Manager OpsMetadata objects or
  *    blobs.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, ListOpsMetadataCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, ListOpsMetadataCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new ListOpsMetadataCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListOpsMetadataCommandInput} for command's `input` shape.
+ * @see {@link ListOpsMetadataCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListOpsMetadataCommand extends $Command<
   ListOpsMetadataCommandInput,

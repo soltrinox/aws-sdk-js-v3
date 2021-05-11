@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetChangeTokenStatusCommandInput = GetChangeTokenStatusRequest;
-export type GetChangeTokenStatusCommandOutput = GetChangeTokenStatusResponse & __MetadataBearer;
+export interface GetChangeTokenStatusCommandInput extends GetChangeTokenStatusRequest {}
+export interface GetChangeTokenStatusCommandOutput extends GetChangeTokenStatusResponse, __MetadataBearer {}
 
 /**
  * <note>
@@ -46,6 +46,20 @@ export type GetChangeTokenStatusCommandOutput = GetChangeTokenStatusResponse & _
  *                   <code>INSYNC</code>: Propagation is complete.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { WAFClient, GetChangeTokenStatusCommand } from "@aws-sdk/client-waf"; // ES Modules import
+ * // const { WAFClient, GetChangeTokenStatusCommand } = require("@aws-sdk/client-waf"); // CommonJS import
+ * const client = new WAFClient(config);
+ * const command = new GetChangeTokenStatusCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetChangeTokenStatusCommandInput} for command's `input` shape.
+ * @see {@link GetChangeTokenStatusCommandOutput} for command's `response` shape.
+ * @see {@link WAFClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetChangeTokenStatusCommand extends $Command<
   GetChangeTokenStatusCommandInput,

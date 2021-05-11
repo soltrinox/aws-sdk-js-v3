@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEcsClustersCommandInput = DescribeEcsClustersRequest;
-export type DescribeEcsClustersCommandOutput = DescribeEcsClustersResult & __MetadataBearer;
+export interface DescribeEcsClustersCommandInput extends DescribeEcsClustersRequest {}
+export interface DescribeEcsClustersCommandOutput extends DescribeEcsClustersResult, __MetadataBearer {}
 
 /**
  * <p>Describes Amazon ECS clusters that are registered with a stack. If you specify only a stack ID,
@@ -31,6 +31,20 @@ export type DescribeEcsClustersCommandOutput = DescribeEcsClustersResult & __Met
  *       permission. For more information about user permissions, see <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html">Managing User
  *         Permissions</a>.</p>
  *          <p>This call accepts only one resource-identifying parameter.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { OpsWorksClient, DescribeEcsClustersCommand } from "@aws-sdk/client-opsworks"; // ES Modules import
+ * // const { OpsWorksClient, DescribeEcsClustersCommand } = require("@aws-sdk/client-opsworks"); // CommonJS import
+ * const client = new OpsWorksClient(config);
+ * const command = new DescribeEcsClustersCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEcsClustersCommandInput} for command's `input` shape.
+ * @see {@link DescribeEcsClustersCommandOutput} for command's `response` shape.
+ * @see {@link OpsWorksClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEcsClustersCommand extends $Command<
   DescribeEcsClustersCommandInput,

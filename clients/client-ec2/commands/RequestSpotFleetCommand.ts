@@ -1,5 +1,5 @@
 import { EC2ClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../EC2Client";
-import { RequestSpotFleetRequest, RequestSpotFleetResponse } from "../models/models_4";
+import { RequestSpotFleetRequest, RequestSpotFleetResponse } from "../models/models_5";
 import {
   deserializeAws_ec2RequestSpotFleetCommand,
   serializeAws_ec2RequestSpotFleetCommand,
@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RequestSpotFleetCommandInput = RequestSpotFleetRequest;
-export type RequestSpotFleetCommandOutput = RequestSpotFleetResponse & __MetadataBearer;
+export interface RequestSpotFleetCommandInput extends RequestSpotFleetRequest {}
+export interface RequestSpotFleetCommandOutput extends RequestSpotFleetResponse, __MetadataBearer {}
 
 /**
  * <p>Creates a Spot Fleet request.</p>
@@ -37,6 +37,20 @@ export type RequestSpotFleetCommandOutput = RequestSpotFleetResponse & __Metadat
  *             supported.</p>
  *          <p>For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html">Spot Fleet requests</a>
  *        in the <i>Amazon EC2 User Guide for Linux Instances</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, RequestSpotFleetCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, RequestSpotFleetCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new RequestSpotFleetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RequestSpotFleetCommandInput} for command's `input` shape.
+ * @see {@link RequestSpotFleetCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RequestSpotFleetCommand extends $Command<
   RequestSpotFleetCommandInput,

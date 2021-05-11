@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteAssetModelCommandInput = DeleteAssetModelRequest;
-export type DeleteAssetModelCommandOutput = DeleteAssetModelResponse & __MetadataBearer;
+export interface DeleteAssetModelCommandInput extends DeleteAssetModelRequest {}
+export interface DeleteAssetModelCommandOutput extends DeleteAssetModelResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes an asset model. This action can't be undone. You must delete all assets created
@@ -26,6 +26,20 @@ export type DeleteAssetModelCommandOutput = DeleteAssetModelResponse & __Metadat
  *       a parent asset model exists that contains a property formula expression that depends on the
  *       asset model that you want to delete. For more information, see <a href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html">Deleting assets and models</a> in the
  *         <i>AWS IoT SiteWise User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTSiteWiseClient, DeleteAssetModelCommand } from "@aws-sdk/client-iotsitewise"; // ES Modules import
+ * // const { IoTSiteWiseClient, DeleteAssetModelCommand } = require("@aws-sdk/client-iotsitewise"); // CommonJS import
+ * const client = new IoTSiteWiseClient(config);
+ * const command = new DeleteAssetModelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteAssetModelCommandInput} for command's `input` shape.
+ * @see {@link DeleteAssetModelCommandOutput} for command's `response` shape.
+ * @see {@link IoTSiteWiseClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteAssetModelCommand extends $Command<
   DeleteAssetModelCommandInput,

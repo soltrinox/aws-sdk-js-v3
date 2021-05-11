@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeletePlacementCommandInput = DeletePlacementRequest;
-export type DeletePlacementCommandOutput = DeletePlacementResponse & __MetadataBearer;
+export interface DeletePlacementCommandInput extends DeletePlacementRequest {}
+export interface DeletePlacementCommandOutput extends DeletePlacementResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a placement. To delete a placement, it must not have any devices associated with
@@ -30,6 +30,20 @@ export type DeletePlacementCommandOutput = DeletePlacementResponse & __MetadataB
  *          <note>
  *             <p>When you delete a placement, all associated data becomes irretrievable.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoT1ClickProjectsClient, DeletePlacementCommand } from "@aws-sdk/client-iot-1click-projects"; // ES Modules import
+ * // const { IoT1ClickProjectsClient, DeletePlacementCommand } = require("@aws-sdk/client-iot-1click-projects"); // CommonJS import
+ * const client = new IoT1ClickProjectsClient(config);
+ * const command = new DeletePlacementCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeletePlacementCommandInput} for command's `input` shape.
+ * @see {@link DeletePlacementCommandOutput} for command's `response` shape.
+ * @see {@link IoT1ClickProjectsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeletePlacementCommand extends $Command<
   DeletePlacementCommandInput,

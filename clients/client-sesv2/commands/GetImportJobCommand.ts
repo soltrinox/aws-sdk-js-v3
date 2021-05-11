@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetImportJobCommandInput = GetImportJobRequest;
-export type GetImportJobCommandOutput = GetImportJobResponse & __MetadataBearer;
+export interface GetImportJobCommandInput extends GetImportJobRequest {}
+export interface GetImportJobCommandOutput extends GetImportJobResponse, __MetadataBearer {}
 
 /**
  * <p>Provides information about an import job.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, GetImportJobCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, GetImportJobCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new GetImportJobCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetImportJobCommandInput} for command's `input` shape.
+ * @see {@link GetImportJobCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetImportJobCommand extends $Command<
   GetImportJobCommandInput,

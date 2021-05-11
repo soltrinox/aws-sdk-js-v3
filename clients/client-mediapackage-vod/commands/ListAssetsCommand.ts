@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAssetsCommandInput = ListAssetsRequest;
-export type ListAssetsCommandOutput = ListAssetsResponse & __MetadataBearer;
+export interface ListAssetsCommandInput extends ListAssetsRequest {}
+export interface ListAssetsCommandOutput extends ListAssetsResponse, __MetadataBearer {}
 
 /**
  * Returns a collection of MediaPackage VOD Asset resources.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaPackageVodClient, ListAssetsCommand } from "@aws-sdk/client-mediapackage-vod"; // ES Modules import
+ * // const { MediaPackageVodClient, ListAssetsCommand } = require("@aws-sdk/client-mediapackage-vod"); // CommonJS import
+ * const client = new MediaPackageVodClient(config);
+ * const command = new ListAssetsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAssetsCommandInput} for command's `input` shape.
+ * @see {@link ListAssetsCommandOutput} for command's `response` shape.
+ * @see {@link MediaPackageVodClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAssetsCommand extends $Command<
   ListAssetsCommandInput,

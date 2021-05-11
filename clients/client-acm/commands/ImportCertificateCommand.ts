@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ImportCertificateCommandInput = ImportCertificateRequest;
-export type ImportCertificateCommandOutput = ImportCertificateResponse & __MetadataBearer;
+export interface ImportCertificateCommandInput extends ImportCertificateRequest {}
+export interface ImportCertificateCommandOutput extends ImportCertificateResponse, __MetadataBearer {}
 
 /**
  * <p>Imports a certificate into AWS Certificate Manager (ACM) to use with services that are integrated with
@@ -45,6 +45,9 @@ export type ImportCertificateCommandOutput = ImportCertificateResponse & __Metad
  *           by a password or a passphrase.</p>
  *             </li>
  *             <li>
+ *                <p>The private key must be no larger than 5 KB (5,120 bytes).</p>
+ *             </li>
+ *             <li>
  *                <p>If the certificate you are importing is not self-signed, you must enter its
  *           certificate chain.</p>
  *             </li>
@@ -67,14 +70,15 @@ export type ImportCertificateCommandOutput = ImportCertificateResponse & __Metad
  *             </li>
  *             <li>
  *                <p>To import a new certificate, omit the <code>CertificateArn</code> argument. Include
- *           this argument only when you want to replace a previously imported certifica</p>
+ *           this argument only when you want to replace a previously imported certificate.</p>
  *             </li>
  *             <li>
  *                <p>When you import a certificate by using the CLI, you must specify the certificate, the
  *           certificate chain, and the private key by their file names preceded by
- *             <code>file://</code>. For example, you can specify a certificate saved in the
- *             <code>C:\temp</code> folder as <code>file://C:\temp\certificate_to_import.pem</code>. If
- *           you are making an HTTP or HTTPS Query request, include these arguments as BLOBs. </p>
+ *             <code>fileb://</code>. For example, you can specify a certificate saved in the
+ *             <code>C:\temp</code> folder as <code>fileb://C:\temp\certificate_to_import.pem</code>.
+ *           If you are making an HTTP or HTTPS Query request, include these arguments as BLOBs.
+ *         </p>
  *             </li>
  *             <li>
  *                <p>When you import a certificate by using an SDK, you must specify the certificate, the
@@ -90,6 +94,20 @@ export type ImportCertificateCommandOutput = ImportCertificateResponse & __Metad
  *
  *          <p>This operation returns the <a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon
  *         Resource Name (ARN)</a> of the imported certificate.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ACMClient, ImportCertificateCommand } from "@aws-sdk/client-acm"; // ES Modules import
+ * // const { ACMClient, ImportCertificateCommand } = require("@aws-sdk/client-acm"); // CommonJS import
+ * const client = new ACMClient(config);
+ * const command = new ImportCertificateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ImportCertificateCommandInput} for command's `input` shape.
+ * @see {@link ImportCertificateCommandOutput} for command's `response` shape.
+ * @see {@link ACMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ImportCertificateCommand extends $Command<
   ImportCertificateCommandInput,

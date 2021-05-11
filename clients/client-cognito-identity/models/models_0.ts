@@ -35,6 +35,9 @@ export interface CognitoIdentityProvider {
 }
 
 export namespace CognitoIdentityProvider {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CognitoIdentityProvider): any => ({
     ...obj,
   });
@@ -77,7 +80,7 @@ export interface CreateIdentityPoolInput {
   DeveloperProviderName?: string;
 
   /**
-   * <p>A list of OpendID Connect provider ARNs.</p>
+   * <p>The Amazon Resource Names (ARN) of the OpenID Connect providers.</p>
    */
   OpenIdConnectProviderARNs?: string[];
 
@@ -101,6 +104,9 @@ export interface CreateIdentityPoolInput {
 }
 
 export namespace CreateIdentityPoolInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateIdentityPoolInput): any => ({
     ...obj,
   });
@@ -142,7 +148,7 @@ export interface IdentityPool {
   DeveloperProviderName?: string;
 
   /**
-   * <p>A list of OpendID Connect provider ARNs.</p>
+   * <p>The ARNs of the OpenID Connect providers.</p>
    */
   OpenIdConnectProviderARNs?: string[];
 
@@ -166,6 +172,9 @@ export interface IdentityPool {
 }
 
 export namespace IdentityPool {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IdentityPool): any => ({
     ...obj,
   });
@@ -184,6 +193,9 @@ export interface InternalErrorException extends __SmithyException, $MetadataBear
 }
 
 export namespace InternalErrorException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalErrorException): any => ({
     ...obj,
   });
@@ -202,6 +214,9 @@ export interface InvalidParameterException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidParameterException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidParameterException): any => ({
     ...obj,
   });
@@ -220,6 +235,9 @@ export interface LimitExceededException extends __SmithyException, $MetadataBear
 }
 
 export namespace LimitExceededException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LimitExceededException): any => ({
     ...obj,
   });
@@ -238,6 +256,9 @@ export interface NotAuthorizedException extends __SmithyException, $MetadataBear
 }
 
 export namespace NotAuthorizedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotAuthorizedException): any => ({
     ...obj,
   });
@@ -257,6 +278,9 @@ export interface ResourceConflictException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceConflictException): any => ({
     ...obj,
   });
@@ -275,6 +299,9 @@ export interface TooManyRequestsException extends __SmithyException, $MetadataBe
 }
 
 export namespace TooManyRequestsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyRequestsException): any => ({
     ...obj,
   });
@@ -291,6 +318,9 @@ export interface DeleteIdentitiesInput {
 }
 
 export namespace DeleteIdentitiesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteIdentitiesInput): any => ({
     ...obj,
   });
@@ -318,6 +348,9 @@ export interface UnprocessedIdentityId {
 }
 
 export namespace UnprocessedIdentityId {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnprocessedIdentityId): any => ({
     ...obj,
   });
@@ -336,6 +369,9 @@ export interface DeleteIdentitiesResponse {
 }
 
 export namespace DeleteIdentitiesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteIdentitiesResponse): any => ({
     ...obj,
   });
@@ -352,6 +388,9 @@ export interface DeleteIdentityPoolInput {
 }
 
 export namespace DeleteIdentityPoolInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteIdentityPoolInput): any => ({
     ...obj,
   });
@@ -371,6 +410,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -387,6 +429,9 @@ export interface DescribeIdentityInput {
 }
 
 export namespace DescribeIdentityInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeIdentityInput): any => ({
     ...obj,
   });
@@ -418,6 +463,9 @@ export interface IdentityDescription {
 }
 
 export namespace IdentityDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IdentityDescription): any => ({
     ...obj,
   });
@@ -434,6 +482,9 @@ export interface DescribeIdentityPoolInput {
 }
 
 export namespace DescribeIdentityPoolInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeIdentityPoolInput): any => ({
     ...obj,
   });
@@ -453,6 +504,9 @@ export interface ExternalServiceException extends __SmithyException, $MetadataBe
 }
 
 export namespace ExternalServiceException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ExternalServiceException): any => ({
     ...obj,
   });
@@ -474,8 +528,8 @@ export interface GetCredentialsForIdentityInput {
    *          <p>Logins should not be specified when trying to get credentials for an unauthenticated
    *          identity.</p>
    *          <p>The Logins parameter is required when using identities associated with external
-   *          identity providers such as FaceBook. For examples of <code>Logins</code> maps, see the code
-   *          examples in the <a href="http://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html">External Identity Providers</a> section of the Amazon Cognito Developer
+   *          identity providers such as Facebook. For examples of <code>Logins</code> maps, see the code
+   *          examples in the <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html">External Identity Providers</a> section of the Amazon Cognito Developer
    *          Guide.</p>
    */
   Logins?: { [key: string]: string };
@@ -490,6 +544,9 @@ export interface GetCredentialsForIdentityInput {
 }
 
 export namespace GetCredentialsForIdentityInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCredentialsForIdentityInput): any => ({
     ...obj,
   });
@@ -521,6 +578,9 @@ export interface Credentials {
 }
 
 export namespace Credentials {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Credentials): any => ({
     ...obj,
   });
@@ -543,6 +603,9 @@ export interface GetCredentialsForIdentityResponse {
 }
 
 export namespace GetCredentialsForIdentityResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetCredentialsForIdentityResponse): any => ({
     ...obj,
   });
@@ -563,6 +626,9 @@ export interface InvalidIdentityPoolConfigurationException extends __SmithyExcep
 }
 
 export namespace InvalidIdentityPoolConfigurationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidIdentityPoolConfigurationException): any => ({
     ...obj,
   });
@@ -618,6 +684,9 @@ export interface GetIdInput {
 }
 
 export namespace GetIdInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetIdInput): any => ({
     ...obj,
   });
@@ -634,6 +703,9 @@ export interface GetIdResponse {
 }
 
 export namespace GetIdResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetIdResponse): any => ({
     ...obj,
   });
@@ -650,6 +722,9 @@ export interface GetIdentityPoolRolesInput {
 }
 
 export namespace GetIdentityPoolRolesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetIdentityPoolRolesInput): any => ({
     ...obj,
   });
@@ -691,6 +766,9 @@ export interface MappingRule {
 }
 
 export namespace MappingRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MappingRule): any => ({
     ...obj,
   });
@@ -708,6 +786,9 @@ export interface RulesConfigurationType {
 }
 
 export namespace RulesConfigurationType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RulesConfigurationType): any => ({
     ...obj,
   });
@@ -749,6 +830,9 @@ export interface RoleMapping {
 }
 
 export namespace RoleMapping {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RoleMapping): any => ({
     ...obj,
   });
@@ -780,6 +864,9 @@ export interface GetIdentityPoolRolesResponse {
 }
 
 export namespace GetIdentityPoolRolesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetIdentityPoolRolesResponse): any => ({
     ...obj,
   });
@@ -798,12 +885,15 @@ export interface GetOpenIdTokenInput {
    * <p>A set of optional name-value pairs that map provider names to provider tokens. When
    *          using graph.facebook.com and www.amazon.com, supply the access_token returned from the
    *          provider's authflow. For accounts.google.com, an Amazon Cognito user pool provider, or any
-   *          other OpenId Connect provider, always include the <code>id_token</code>.</p>
+   *          other OpenID Connect provider, always include the <code>id_token</code>.</p>
    */
   Logins?: { [key: string]: string };
 }
 
 export namespace GetOpenIdTokenInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOpenIdTokenInput): any => ({
     ...obj,
   });
@@ -826,6 +916,9 @@ export interface GetOpenIdTokenResponse {
 }
 
 export namespace GetOpenIdTokenResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOpenIdTokenResponse): any => ({
     ...obj,
   });
@@ -845,6 +938,9 @@ export interface DeveloperUserAlreadyRegisteredException extends __SmithyExcepti
 }
 
 export namespace DeveloperUserAlreadyRegisteredException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeveloperUserAlreadyRegisteredException): any => ({
     ...obj,
   });
@@ -877,6 +973,11 @@ export interface GetOpenIdTokenForDeveloperIdentityInput {
   Logins: { [key: string]: string } | undefined;
 
   /**
+   * <p>Use this operation to configure attribute mappings for custom providers. </p>
+   */
+  PrincipalTags?: { [key: string]: string };
+
+  /**
    * <p>The expiration time of the token, in seconds. You can specify a custom expiration
    *          time for the token so that you can cache it. If you don't provide an expiration time, the
    *          token is valid for 15 minutes. You can exchange the token with Amazon STS for temporary AWS
@@ -892,6 +993,9 @@ export interface GetOpenIdTokenForDeveloperIdentityInput {
 }
 
 export namespace GetOpenIdTokenForDeveloperIdentityInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOpenIdTokenForDeveloperIdentityInput): any => ({
     ...obj,
   });
@@ -914,7 +1018,62 @@ export interface GetOpenIdTokenForDeveloperIdentityResponse {
 }
 
 export namespace GetOpenIdTokenForDeveloperIdentityResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetOpenIdTokenForDeveloperIdentityResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface GetPrincipalTagAttributeMapInput {
+  /**
+   * <p>You can use this operation to get the ID of the Identity Pool you setup attribute mappings for.</p>
+   */
+  IdentityPoolId: string | undefined;
+
+  /**
+   * <p>You can use this operation to get the provider name.</p>
+   */
+  IdentityProviderName: string | undefined;
+}
+
+export namespace GetPrincipalTagAttributeMapInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetPrincipalTagAttributeMapInput): any => ({
+    ...obj,
+  });
+}
+
+export interface GetPrincipalTagAttributeMapResponse {
+  /**
+   * <p>You can use this operation to get the ID of the Identity Pool you setup attribute mappings for.</p>
+   */
+  IdentityPoolId?: string;
+
+  /**
+   * <p>You can use this operation to get the provider name.</p>
+   */
+  IdentityProviderName?: string;
+
+  /**
+   * <p>You can use this operation to list </p>
+   */
+  UseDefaults?: boolean;
+
+  /**
+   * <p>You can use this operation to add principal tags. The <code>PrincipalTags</code>operation enables you to reference user attributes in your IAM permissions policy.</p>
+   */
+  PrincipalTags?: { [key: string]: string };
+}
+
+export namespace GetPrincipalTagAttributeMapResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetPrincipalTagAttributeMapResponse): any => ({
     ...obj,
   });
 }
@@ -946,6 +1105,9 @@ export interface ListIdentitiesInput {
 }
 
 export namespace ListIdentitiesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListIdentitiesInput): any => ({
     ...obj,
   });
@@ -972,6 +1134,9 @@ export interface ListIdentitiesResponse {
 }
 
 export namespace ListIdentitiesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListIdentitiesResponse): any => ({
     ...obj,
   });
@@ -993,6 +1158,9 @@ export interface ListIdentityPoolsInput {
 }
 
 export namespace ListIdentityPoolsInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListIdentityPoolsInput): any => ({
     ...obj,
   });
@@ -1014,6 +1182,9 @@ export interface IdentityPoolShortDescription {
 }
 
 export namespace IdentityPoolShortDescription {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IdentityPoolShortDescription): any => ({
     ...obj,
   });
@@ -1035,6 +1206,9 @@ export interface ListIdentityPoolsResponse {
 }
 
 export namespace ListIdentityPoolsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListIdentityPoolsResponse): any => ({
     ...obj,
   });
@@ -1049,6 +1223,9 @@ export interface ListTagsForResourceInput {
 }
 
 export namespace ListTagsForResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceInput): any => ({
     ...obj,
   });
@@ -1062,6 +1239,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -1105,6 +1285,9 @@ export interface LookupDeveloperIdentityInput {
 }
 
 export namespace LookupDeveloperIdentityInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LookupDeveloperIdentityInput): any => ({
     ...obj,
   });
@@ -1139,6 +1322,9 @@ export interface LookupDeveloperIdentityResponse {
 }
 
 export namespace LookupDeveloperIdentityResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LookupDeveloperIdentityResponse): any => ({
     ...obj,
   });
@@ -1176,6 +1362,9 @@ export interface MergeDeveloperIdentitiesInput {
 }
 
 export namespace MergeDeveloperIdentitiesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MergeDeveloperIdentitiesInput): any => ({
     ...obj,
   });
@@ -1193,6 +1382,9 @@ export interface MergeDeveloperIdentitiesResponse {
 }
 
 export namespace MergeDeveloperIdentitiesResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MergeDeveloperIdentitiesResponse): any => ({
     ...obj,
   });
@@ -1211,6 +1403,9 @@ export interface ConcurrentModificationException extends __SmithyException, $Met
 }
 
 export namespace ConcurrentModificationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConcurrentModificationException): any => ({
     ...obj,
   });
@@ -1235,21 +1430,86 @@ export interface SetIdentityPoolRolesInput {
    * <p>How users for a specific identity provider are to mapped to roles. This is a string
    *          to <a>RoleMapping</a> object map. The string identifies the identity provider,
    *          for example, "graph.facebook.com" or
-   *          "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p>
+   *          "cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p>
    *          <p>Up to 25 rules can be specified per identity provider.</p>
    */
   RoleMappings?: { [key: string]: RoleMapping };
 }
 
 export namespace SetIdentityPoolRolesInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SetIdentityPoolRolesInput): any => ({
+    ...obj,
+  });
+}
+
+export interface SetPrincipalTagAttributeMapInput {
+  /**
+   * <p>The ID of the Identity Pool you want to set attribute mappings for.</p>
+   */
+  IdentityPoolId: string | undefined;
+
+  /**
+   * <p>The provider name you want to use for attribute mappings.</p>
+   */
+  IdentityProviderName: string | undefined;
+
+  /**
+   * <p>You can use this operation to use default (username and clientID) attribute mappings.</p>
+   */
+  UseDefaults?: boolean;
+
+  /**
+   * <p>You can use this operation to add principal tags.</p>
+   */
+  PrincipalTags?: { [key: string]: string };
+}
+
+export namespace SetPrincipalTagAttributeMapInput {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SetPrincipalTagAttributeMapInput): any => ({
+    ...obj,
+  });
+}
+
+export interface SetPrincipalTagAttributeMapResponse {
+  /**
+   * <p>The ID of the Identity Pool you want to set attribute mappings for.</p>
+   */
+  IdentityPoolId?: string;
+
+  /**
+   * <p>The provider name you want to use for attribute mappings.</p>
+   */
+  IdentityProviderName?: string;
+
+  /**
+   * <p>You can use this operation to select default (username and clientID) attribute mappings.</p>
+   */
+  UseDefaults?: boolean;
+
+  /**
+   * <p>You can use this operation to add principal tags. The <code>PrincipalTags</code>operation enables you to reference user attributes in your IAM permissions policy.</p>
+   */
+  PrincipalTags?: { [key: string]: string };
+}
+
+export namespace SetPrincipalTagAttributeMapResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: SetPrincipalTagAttributeMapResponse): any => ({
     ...obj,
   });
 }
 
 export interface TagResourceInput {
   /**
-   * <p>The Amazon Resource Name (ARN) of the identity pool to assign the tags to.</p>
+   * <p>The Amazon Resource Name (ARN) of the identity pool.</p>
    */
   ResourceArn: string | undefined;
 
@@ -1260,6 +1520,9 @@ export interface TagResourceInput {
 }
 
 export namespace TagResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceInput): any => ({
     ...obj,
   });
@@ -1268,6 +1531,9 @@ export namespace TagResourceInput {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -1299,6 +1565,9 @@ export interface UnlinkDeveloperIdentityInput {
 }
 
 export namespace UnlinkDeveloperIdentityInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnlinkDeveloperIdentityInput): any => ({
     ...obj,
   });
@@ -1326,6 +1595,9 @@ export interface UnlinkIdentityInput {
 }
 
 export namespace UnlinkIdentityInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UnlinkIdentityInput): any => ({
     ...obj,
   });
@@ -1333,8 +1605,7 @@ export namespace UnlinkIdentityInput {
 
 export interface UntagResourceInput {
   /**
-   * <p>The Amazon Resource Name (ARN) of the identity pool that the tags are assigned
-   *          to.</p>
+   * <p>The Amazon Resource Name (ARN) of the identity pool.</p>
    */
   ResourceArn: string | undefined;
 
@@ -1345,6 +1616,9 @@ export interface UntagResourceInput {
 }
 
 export namespace UntagResourceInput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceInput): any => ({
     ...obj,
   });
@@ -1353,6 +1627,9 @@ export namespace UntagResourceInput {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });

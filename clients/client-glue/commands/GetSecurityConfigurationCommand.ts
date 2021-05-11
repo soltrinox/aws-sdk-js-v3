@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSecurityConfigurationCommandInput = GetSecurityConfigurationRequest;
-export type GetSecurityConfigurationCommandOutput = GetSecurityConfigurationResponse & __MetadataBearer;
+export interface GetSecurityConfigurationCommandInput extends GetSecurityConfigurationRequest {}
+export interface GetSecurityConfigurationCommandOutput extends GetSecurityConfigurationResponse, __MetadataBearer {}
 
 /**
  * <p>Retrieves a specified security configuration.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetSecurityConfigurationCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetSecurityConfigurationCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetSecurityConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSecurityConfigurationCommandInput} for command's `input` shape.
+ * @see {@link GetSecurityConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSecurityConfigurationCommand extends $Command<
   GetSecurityConfigurationCommandInput,

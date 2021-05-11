@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeNotebookInstanceCommandInput = DescribeNotebookInstanceInput;
-export type DescribeNotebookInstanceCommandOutput = DescribeNotebookInstanceOutput & __MetadataBearer;
+export interface DescribeNotebookInstanceCommandInput extends DescribeNotebookInstanceInput {}
+export interface DescribeNotebookInstanceCommandOutput extends DescribeNotebookInstanceOutput, __MetadataBearer {}
 
 /**
  * <p>Returns information about a notebook instance.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DescribeNotebookInstanceCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DescribeNotebookInstanceCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DescribeNotebookInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeNotebookInstanceCommandInput} for command's `input` shape.
+ * @see {@link DescribeNotebookInstanceCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeNotebookInstanceCommand extends $Command<
   DescribeNotebookInstanceCommandInput,

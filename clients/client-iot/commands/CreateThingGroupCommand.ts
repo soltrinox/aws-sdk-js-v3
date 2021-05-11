@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateThingGroupCommandInput = CreateThingGroupRequest;
-export type CreateThingGroupCommandOutput = CreateThingGroupResponse & __MetadataBearer;
+export interface CreateThingGroupCommandInput extends CreateThingGroupRequest {}
+export interface CreateThingGroupCommandOutput extends CreateThingGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Create a thing group.</p>
@@ -26,6 +26,20 @@ export type CreateThingGroupCommandOutput = CreateThingGroupResponse & __Metadat
  * 			         <p>This is a control plane operation. See <a href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html">Authorization</a> for
  * 				information about authorizing control plane actions.</p>
  * 		       </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, CreateThingGroupCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, CreateThingGroupCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new CreateThingGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateThingGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateThingGroupCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateThingGroupCommand extends $Command<
   CreateThingGroupCommandInput,

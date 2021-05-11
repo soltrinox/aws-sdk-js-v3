@@ -199,7 +199,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -230,7 +230,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type BatchClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type BatchClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -238,8 +238,12 @@ export type BatchClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptio
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of BatchClient class constructor that set the region, credentials and other options.
+ */
+export interface BatchClientConfig extends BatchClientConfigType {}
 
-export type BatchClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type BatchClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -247,18 +251,22 @@ export type BatchClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHand
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of BatchClient class. This is resolved and normalized from the {@link BatchClientConfig | constructor configuration interface}.
+ */
+export interface BatchClientResolvedConfig extends BatchClientResolvedConfigType {}
 
 /**
  * <p>Using AWS Batch, you can run batch computing workloads on the AWS Cloud. Batch computing is a common means for
- *    developers, scientists, and engineers to access large amounts of compute resources. AWS Batch utilizes the advantages
- *    of this computing workload to remove the undifferentiated heavy lifting of configuring and managing required
- *    infrastructure, while also adopting a familiar batch computing software approach. Given these advantages, AWS Batch can
- *    help you to efficiently provision resources in response to jobs submitted, thus effectively helping to eliminate
- *    capacity constraints, reduce compute costs, and deliver your results more quickly.</p>
+ *    developers, scientists, and engineers to access large amounts of compute resources. AWS Batch uses the advantages of
+ *    this computing workload to remove the undifferentiated heavy lifting of configuring and managing required
+ *    infrastructure. At the same time, it also adopts a familiar batch computing software approach. Given these
+ *    advantages, AWS Batch can help you to efficiently provision resources in response to jobs submitted, thus effectively
+ *    helping you to eliminate capacity constraints, reduce compute costs, and deliver your results more quickly.</p>
  *          <p>As a fully managed service, AWS Batch can run batch computing workloads of any scale. AWS Batch automatically
  *    provisions compute resources and optimizes workload distribution based on the quantity and scale of your specific
  *    workloads. With AWS Batch, there's no need to install or manage batch computing software. This means that you can focus
- *    your time and energy on analyzing results and solving your specific problems. </p>
+ *    your time and energy on analyzing results and solving your specific problems.</p>
  */
 export class BatchClient extends __Client<
   __HttpHandlerOptions,
@@ -266,6 +274,9 @@ export class BatchClient extends __Client<
   ServiceOutputTypes,
   BatchClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of BatchClient class. This is resolved and normalized from the {@link BatchClientConfig | constructor configuration interface}.
+   */
   readonly config: BatchClientResolvedConfig;
 
   constructor(configuration: BatchClientConfig) {

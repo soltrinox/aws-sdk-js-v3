@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateReservationCommandInput = UpdateReservationRequest;
-export type UpdateReservationCommandOutput = UpdateReservationResponse & __MetadataBearer;
+export interface UpdateReservationCommandInput extends UpdateReservationRequest {}
+export interface UpdateReservationCommandOutput extends UpdateReservationResponse, __MetadataBearer {}
 
 /**
  * Update reservation.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, UpdateReservationCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, UpdateReservationCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new UpdateReservationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateReservationCommandInput} for command's `input` shape.
+ * @see {@link UpdateReservationCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateReservationCommand extends $Command<
   UpdateReservationCommandInput,

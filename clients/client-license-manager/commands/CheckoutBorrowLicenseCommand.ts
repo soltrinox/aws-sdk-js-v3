@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CheckoutBorrowLicenseCommandInput = CheckoutBorrowLicenseRequest;
-export type CheckoutBorrowLicenseCommandOutput = CheckoutBorrowLicenseResponse & __MetadataBearer;
+export interface CheckoutBorrowLicenseCommandInput extends CheckoutBorrowLicenseRequest {}
+export interface CheckoutBorrowLicenseCommandOutput extends CheckoutBorrowLicenseResponse, __MetadataBearer {}
 
 /**
  * <p>Checks out the specified license for offline use.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LicenseManagerClient, CheckoutBorrowLicenseCommand } from "@aws-sdk/client-license-manager"; // ES Modules import
+ * // const { LicenseManagerClient, CheckoutBorrowLicenseCommand } = require("@aws-sdk/client-license-manager"); // CommonJS import
+ * const client = new LicenseManagerClient(config);
+ * const command = new CheckoutBorrowLicenseCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CheckoutBorrowLicenseCommandInput} for command's `input` shape.
+ * @see {@link CheckoutBorrowLicenseCommandOutput} for command's `response` shape.
+ * @see {@link LicenseManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CheckoutBorrowLicenseCommand extends $Command<
   CheckoutBorrowLicenseCommandInput,

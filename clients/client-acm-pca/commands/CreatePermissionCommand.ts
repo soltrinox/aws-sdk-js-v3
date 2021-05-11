@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreatePermissionCommandInput = CreatePermissionRequest;
-export type CreatePermissionCommandOutput = __MetadataBearer;
+export interface CreatePermissionCommandInput extends CreatePermissionRequest {}
+export interface CreatePermissionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Grants one or more permissions on a private CA to the AWS Certificate Manager (ACM) service
@@ -44,10 +44,24 @@ export type CreatePermissionCommandOutput = __MetadataBearer;
  * 			then permissions cannot be used to enable automatic renewals. Instead,
  * 			the ACM certificate owner must set up a resource-based policy to enable
  * 			cross-account issuance and renewals. For more information, see
- * 			<a href="acm-pca/latest/userguide/pca-rbp.html">Using a Resource
+ * 			<a href="https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html">Using a Resource
  * 			Based Policy with ACM Private CA</a>.</p>
  * 		          </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ACMPCAClient, CreatePermissionCommand } from "@aws-sdk/client-acm-pca"; // ES Modules import
+ * // const { ACMPCAClient, CreatePermissionCommand } = require("@aws-sdk/client-acm-pca"); // CommonJS import
+ * const client = new ACMPCAClient(config);
+ * const command = new CreatePermissionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreatePermissionCommandInput} for command's `input` shape.
+ * @see {@link CreatePermissionCommandOutput} for command's `response` shape.
+ * @see {@link ACMPCAClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreatePermissionCommand extends $Command<
   CreatePermissionCommandInput,

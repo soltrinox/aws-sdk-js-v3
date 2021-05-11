@@ -17,11 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchGetApplicationRevisionsCommandInput = BatchGetApplicationRevisionsInput;
-export type BatchGetApplicationRevisionsCommandOutput = BatchGetApplicationRevisionsOutput & __MetadataBearer;
+export interface BatchGetApplicationRevisionsCommandInput extends BatchGetApplicationRevisionsInput {}
+export interface BatchGetApplicationRevisionsCommandOutput
+  extends BatchGetApplicationRevisionsOutput,
+    __MetadataBearer {}
 
 /**
- * <p>Gets information about one or more application revisions. The maximum number of application revisions that can be returned is 25.</p>
+ * <p>Gets information about one or more application revisions. The maximum number of
+ *             application revisions that can be returned is 25.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CodeDeployClient, BatchGetApplicationRevisionsCommand } from "@aws-sdk/client-codedeploy"; // ES Modules import
+ * // const { CodeDeployClient, BatchGetApplicationRevisionsCommand } = require("@aws-sdk/client-codedeploy"); // CommonJS import
+ * const client = new CodeDeployClient(config);
+ * const command = new BatchGetApplicationRevisionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchGetApplicationRevisionsCommandInput} for command's `input` shape.
+ * @see {@link BatchGetApplicationRevisionsCommandOutput} for command's `response` shape.
+ * @see {@link CodeDeployClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchGetApplicationRevisionsCommand extends $Command<
   BatchGetApplicationRevisionsCommandInput,

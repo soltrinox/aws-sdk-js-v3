@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeReplicationGroupsCommandInput = DescribeReplicationGroupsMessage;
-export type DescribeReplicationGroupsCommandOutput = ReplicationGroupMessage & __MetadataBearer;
+export interface DescribeReplicationGroupsCommandInput extends DescribeReplicationGroupsMessage {}
+export interface DescribeReplicationGroupsCommandOutput extends ReplicationGroupMessage, __MetadataBearer {}
 
 /**
  * <p>Returns information about a particular
@@ -27,6 +27,20 @@ export type DescribeReplicationGroupsCommandOutput = ReplicationGroupMessage & _
  *         <note>
  *             <p>This operation is valid for Redis only.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, DescribeReplicationGroupsCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, DescribeReplicationGroupsCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new DescribeReplicationGroupsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeReplicationGroupsCommandInput} for command's `input` shape.
+ * @see {@link DescribeReplicationGroupsCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeReplicationGroupsCommand extends $Command<
   DescribeReplicationGroupsCommandInput,

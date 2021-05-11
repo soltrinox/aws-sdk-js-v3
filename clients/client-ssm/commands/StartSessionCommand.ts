@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartSessionCommandInput = StartSessionRequest;
-export type StartSessionCommandOutput = StartSessionResponse & __MetadataBearer;
+export interface StartSessionCommandInput extends StartSessionRequest {}
+export interface StartSessionCommandOutput extends StartSessionResponse, __MetadataBearer {}
 
 /**
  * <p>Initiates a connection to a target (for example, an instance) for a Session Manager session. Returns a
@@ -31,6 +31,20 @@ export type StartSessionCommandOutput = StartSessionResponse & __MetadataBearer;
  *             <p>AWS Tools for PowerShell usage: Start-SSMSession is not currently supported by AWS Tools
  *     for PowerShell on Windows local machines.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, StartSessionCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, StartSessionCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new StartSessionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartSessionCommandInput} for command's `input` shape.
+ * @see {@link StartSessionCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartSessionCommand extends $Command<
   StartSessionCommandInput,

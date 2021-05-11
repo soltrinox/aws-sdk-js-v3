@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type VerifyUserAttributeCommandInput = VerifyUserAttributeRequest;
-export type VerifyUserAttributeCommandOutput = VerifyUserAttributeResponse & __MetadataBearer;
+export interface VerifyUserAttributeCommandInput extends VerifyUserAttributeRequest {}
+export interface VerifyUserAttributeCommandOutput extends VerifyUserAttributeResponse, __MetadataBearer {}
 
 /**
  * <p>Verifies the specified user attributes in the user pool.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CognitoIdentityProviderClient, VerifyUserAttributeCommand } from "@aws-sdk/client-cognito-identity-provider"; // ES Modules import
+ * // const { CognitoIdentityProviderClient, VerifyUserAttributeCommand } = require("@aws-sdk/client-cognito-identity-provider"); // CommonJS import
+ * const client = new CognitoIdentityProviderClient(config);
+ * const command = new VerifyUserAttributeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link VerifyUserAttributeCommandInput} for command's `input` shape.
+ * @see {@link VerifyUserAttributeCommandOutput} for command's `response` shape.
+ * @see {@link CognitoIdentityProviderClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class VerifyUserAttributeCommand extends $Command<
   VerifyUserAttributeCommandInput,

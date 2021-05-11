@@ -1,4 +1,8 @@
 import {
+  AssociateFirewallRuleGroupCommandInput,
+  AssociateFirewallRuleGroupCommandOutput,
+} from "./commands/AssociateFirewallRuleGroupCommand";
+import {
   AssociateResolverEndpointIpAddressCommandInput,
   AssociateResolverEndpointIpAddressCommandOutput,
 } from "./commands/AssociateResolverEndpointIpAddressCommand";
@@ -11,6 +15,15 @@ import {
   AssociateResolverRuleCommandOutput,
 } from "./commands/AssociateResolverRuleCommand";
 import {
+  CreateFirewallDomainListCommandInput,
+  CreateFirewallDomainListCommandOutput,
+} from "./commands/CreateFirewallDomainListCommand";
+import { CreateFirewallRuleCommandInput, CreateFirewallRuleCommandOutput } from "./commands/CreateFirewallRuleCommand";
+import {
+  CreateFirewallRuleGroupCommandInput,
+  CreateFirewallRuleGroupCommandOutput,
+} from "./commands/CreateFirewallRuleGroupCommand";
+import {
   CreateResolverEndpointCommandInput,
   CreateResolverEndpointCommandOutput,
 } from "./commands/CreateResolverEndpointCommand";
@@ -20,6 +33,15 @@ import {
 } from "./commands/CreateResolverQueryLogConfigCommand";
 import { CreateResolverRuleCommandInput, CreateResolverRuleCommandOutput } from "./commands/CreateResolverRuleCommand";
 import {
+  DeleteFirewallDomainListCommandInput,
+  DeleteFirewallDomainListCommandOutput,
+} from "./commands/DeleteFirewallDomainListCommand";
+import { DeleteFirewallRuleCommandInput, DeleteFirewallRuleCommandOutput } from "./commands/DeleteFirewallRuleCommand";
+import {
+  DeleteFirewallRuleGroupCommandInput,
+  DeleteFirewallRuleGroupCommandOutput,
+} from "./commands/DeleteFirewallRuleGroupCommand";
+import {
   DeleteResolverEndpointCommandInput,
   DeleteResolverEndpointCommandOutput,
 } from "./commands/DeleteResolverEndpointCommand";
@@ -28,6 +50,10 @@ import {
   DeleteResolverQueryLogConfigCommandOutput,
 } from "./commands/DeleteResolverQueryLogConfigCommand";
 import { DeleteResolverRuleCommandInput, DeleteResolverRuleCommandOutput } from "./commands/DeleteResolverRuleCommand";
+import {
+  DisassociateFirewallRuleGroupCommandInput,
+  DisassociateFirewallRuleGroupCommandOutput,
+} from "./commands/DisassociateFirewallRuleGroupCommand";
 import {
   DisassociateResolverEndpointIpAddressCommandInput,
   DisassociateResolverEndpointIpAddressCommandOutput,
@@ -40,6 +66,27 @@ import {
   DisassociateResolverRuleCommandInput,
   DisassociateResolverRuleCommandOutput,
 } from "./commands/DisassociateResolverRuleCommand";
+import { GetFirewallConfigCommandInput, GetFirewallConfigCommandOutput } from "./commands/GetFirewallConfigCommand";
+import {
+  GetFirewallDomainListCommandInput,
+  GetFirewallDomainListCommandOutput,
+} from "./commands/GetFirewallDomainListCommand";
+import {
+  GetFirewallRuleGroupAssociationCommandInput,
+  GetFirewallRuleGroupAssociationCommandOutput,
+} from "./commands/GetFirewallRuleGroupAssociationCommand";
+import {
+  GetFirewallRuleGroupCommandInput,
+  GetFirewallRuleGroupCommandOutput,
+} from "./commands/GetFirewallRuleGroupCommand";
+import {
+  GetFirewallRuleGroupPolicyCommandInput,
+  GetFirewallRuleGroupPolicyCommandOutput,
+} from "./commands/GetFirewallRuleGroupPolicyCommand";
+import {
+  GetResolverDnssecConfigCommandInput,
+  GetResolverDnssecConfigCommandOutput,
+} from "./commands/GetResolverDnssecConfigCommand";
 import {
   GetResolverEndpointCommandInput,
   GetResolverEndpointCommandOutput,
@@ -66,6 +113,35 @@ import {
   GetResolverRulePolicyCommandOutput,
 } from "./commands/GetResolverRulePolicyCommand";
 import {
+  ImportFirewallDomainsCommandInput,
+  ImportFirewallDomainsCommandOutput,
+} from "./commands/ImportFirewallDomainsCommand";
+import {
+  ListFirewallConfigsCommandInput,
+  ListFirewallConfigsCommandOutput,
+} from "./commands/ListFirewallConfigsCommand";
+import {
+  ListFirewallDomainListsCommandInput,
+  ListFirewallDomainListsCommandOutput,
+} from "./commands/ListFirewallDomainListsCommand";
+import {
+  ListFirewallDomainsCommandInput,
+  ListFirewallDomainsCommandOutput,
+} from "./commands/ListFirewallDomainsCommand";
+import {
+  ListFirewallRuleGroupAssociationsCommandInput,
+  ListFirewallRuleGroupAssociationsCommandOutput,
+} from "./commands/ListFirewallRuleGroupAssociationsCommand";
+import {
+  ListFirewallRuleGroupsCommandInput,
+  ListFirewallRuleGroupsCommandOutput,
+} from "./commands/ListFirewallRuleGroupsCommand";
+import { ListFirewallRulesCommandInput, ListFirewallRulesCommandOutput } from "./commands/ListFirewallRulesCommand";
+import {
+  ListResolverDnssecConfigsCommandInput,
+  ListResolverDnssecConfigsCommandOutput,
+} from "./commands/ListResolverDnssecConfigsCommand";
+import {
   ListResolverEndpointIpAddressesCommandInput,
   ListResolverEndpointIpAddressesCommandOutput,
 } from "./commands/ListResolverEndpointIpAddressesCommand";
@@ -91,6 +167,10 @@ import {
   ListTagsForResourceCommandOutput,
 } from "./commands/ListTagsForResourceCommand";
 import {
+  PutFirewallRuleGroupPolicyCommandInput,
+  PutFirewallRuleGroupPolicyCommandOutput,
+} from "./commands/PutFirewallRuleGroupPolicyCommand";
+import {
   PutResolverQueryLogConfigPolicyCommandInput,
   PutResolverQueryLogConfigPolicyCommandOutput,
 } from "./commands/PutResolverQueryLogConfigPolicyCommand";
@@ -100,6 +180,23 @@ import {
 } from "./commands/PutResolverRulePolicyCommand";
 import { TagResourceCommandInput, TagResourceCommandOutput } from "./commands/TagResourceCommand";
 import { UntagResourceCommandInput, UntagResourceCommandOutput } from "./commands/UntagResourceCommand";
+import {
+  UpdateFirewallConfigCommandInput,
+  UpdateFirewallConfigCommandOutput,
+} from "./commands/UpdateFirewallConfigCommand";
+import {
+  UpdateFirewallDomainsCommandInput,
+  UpdateFirewallDomainsCommandOutput,
+} from "./commands/UpdateFirewallDomainsCommand";
+import { UpdateFirewallRuleCommandInput, UpdateFirewallRuleCommandOutput } from "./commands/UpdateFirewallRuleCommand";
+import {
+  UpdateFirewallRuleGroupAssociationCommandInput,
+  UpdateFirewallRuleGroupAssociationCommandOutput,
+} from "./commands/UpdateFirewallRuleGroupAssociationCommand";
+import {
+  UpdateResolverDnssecConfigCommandInput,
+  UpdateResolverDnssecConfigCommandOutput,
+} from "./commands/UpdateResolverDnssecConfigCommand";
 import {
   UpdateResolverEndpointCommandInput,
   UpdateResolverEndpointCommandOutput,
@@ -157,18 +254,32 @@ import {
 } from "@aws-sdk/types";
 
 export type ServiceInputTypes =
+  | AssociateFirewallRuleGroupCommandInput
   | AssociateResolverEndpointIpAddressCommandInput
   | AssociateResolverQueryLogConfigCommandInput
   | AssociateResolverRuleCommandInput
+  | CreateFirewallDomainListCommandInput
+  | CreateFirewallRuleCommandInput
+  | CreateFirewallRuleGroupCommandInput
   | CreateResolverEndpointCommandInput
   | CreateResolverQueryLogConfigCommandInput
   | CreateResolverRuleCommandInput
+  | DeleteFirewallDomainListCommandInput
+  | DeleteFirewallRuleCommandInput
+  | DeleteFirewallRuleGroupCommandInput
   | DeleteResolverEndpointCommandInput
   | DeleteResolverQueryLogConfigCommandInput
   | DeleteResolverRuleCommandInput
+  | DisassociateFirewallRuleGroupCommandInput
   | DisassociateResolverEndpointIpAddressCommandInput
   | DisassociateResolverQueryLogConfigCommandInput
   | DisassociateResolverRuleCommandInput
+  | GetFirewallConfigCommandInput
+  | GetFirewallDomainListCommandInput
+  | GetFirewallRuleGroupAssociationCommandInput
+  | GetFirewallRuleGroupCommandInput
+  | GetFirewallRuleGroupPolicyCommandInput
+  | GetResolverDnssecConfigCommandInput
   | GetResolverEndpointCommandInput
   | GetResolverQueryLogConfigAssociationCommandInput
   | GetResolverQueryLogConfigCommandInput
@@ -176,6 +287,14 @@ export type ServiceInputTypes =
   | GetResolverRuleAssociationCommandInput
   | GetResolverRuleCommandInput
   | GetResolverRulePolicyCommandInput
+  | ImportFirewallDomainsCommandInput
+  | ListFirewallConfigsCommandInput
+  | ListFirewallDomainListsCommandInput
+  | ListFirewallDomainsCommandInput
+  | ListFirewallRuleGroupAssociationsCommandInput
+  | ListFirewallRuleGroupsCommandInput
+  | ListFirewallRulesCommandInput
+  | ListResolverDnssecConfigsCommandInput
   | ListResolverEndpointIpAddressesCommandInput
   | ListResolverEndpointsCommandInput
   | ListResolverQueryLogConfigAssociationsCommandInput
@@ -183,26 +302,46 @@ export type ServiceInputTypes =
   | ListResolverRuleAssociationsCommandInput
   | ListResolverRulesCommandInput
   | ListTagsForResourceCommandInput
+  | PutFirewallRuleGroupPolicyCommandInput
   | PutResolverQueryLogConfigPolicyCommandInput
   | PutResolverRulePolicyCommandInput
   | TagResourceCommandInput
   | UntagResourceCommandInput
+  | UpdateFirewallConfigCommandInput
+  | UpdateFirewallDomainsCommandInput
+  | UpdateFirewallRuleCommandInput
+  | UpdateFirewallRuleGroupAssociationCommandInput
+  | UpdateResolverDnssecConfigCommandInput
   | UpdateResolverEndpointCommandInput
   | UpdateResolverRuleCommandInput;
 
 export type ServiceOutputTypes =
+  | AssociateFirewallRuleGroupCommandOutput
   | AssociateResolverEndpointIpAddressCommandOutput
   | AssociateResolverQueryLogConfigCommandOutput
   | AssociateResolverRuleCommandOutput
+  | CreateFirewallDomainListCommandOutput
+  | CreateFirewallRuleCommandOutput
+  | CreateFirewallRuleGroupCommandOutput
   | CreateResolverEndpointCommandOutput
   | CreateResolverQueryLogConfigCommandOutput
   | CreateResolverRuleCommandOutput
+  | DeleteFirewallDomainListCommandOutput
+  | DeleteFirewallRuleCommandOutput
+  | DeleteFirewallRuleGroupCommandOutput
   | DeleteResolverEndpointCommandOutput
   | DeleteResolverQueryLogConfigCommandOutput
   | DeleteResolverRuleCommandOutput
+  | DisassociateFirewallRuleGroupCommandOutput
   | DisassociateResolverEndpointIpAddressCommandOutput
   | DisassociateResolverQueryLogConfigCommandOutput
   | DisassociateResolverRuleCommandOutput
+  | GetFirewallConfigCommandOutput
+  | GetFirewallDomainListCommandOutput
+  | GetFirewallRuleGroupAssociationCommandOutput
+  | GetFirewallRuleGroupCommandOutput
+  | GetFirewallRuleGroupPolicyCommandOutput
+  | GetResolverDnssecConfigCommandOutput
   | GetResolverEndpointCommandOutput
   | GetResolverQueryLogConfigAssociationCommandOutput
   | GetResolverQueryLogConfigCommandOutput
@@ -210,6 +349,14 @@ export type ServiceOutputTypes =
   | GetResolverRuleAssociationCommandOutput
   | GetResolverRuleCommandOutput
   | GetResolverRulePolicyCommandOutput
+  | ImportFirewallDomainsCommandOutput
+  | ListFirewallConfigsCommandOutput
+  | ListFirewallDomainListsCommandOutput
+  | ListFirewallDomainsCommandOutput
+  | ListFirewallRuleGroupAssociationsCommandOutput
+  | ListFirewallRuleGroupsCommandOutput
+  | ListFirewallRulesCommandOutput
+  | ListResolverDnssecConfigsCommandOutput
   | ListResolverEndpointIpAddressesCommandOutput
   | ListResolverEndpointsCommandOutput
   | ListResolverQueryLogConfigAssociationsCommandOutput
@@ -217,10 +364,16 @@ export type ServiceOutputTypes =
   | ListResolverRuleAssociationsCommandOutput
   | ListResolverRulesCommandOutput
   | ListTagsForResourceCommandOutput
+  | PutFirewallRuleGroupPolicyCommandOutput
   | PutResolverQueryLogConfigPolicyCommandOutput
   | PutResolverRulePolicyCommandOutput
   | TagResourceCommandOutput
   | UntagResourceCommandOutput
+  | UpdateFirewallConfigCommandOutput
+  | UpdateFirewallDomainsCommandOutput
+  | UpdateFirewallRuleCommandOutput
+  | UpdateFirewallRuleGroupAssociationCommandOutput
+  | UpdateResolverDnssecConfigCommandOutput
   | UpdateResolverEndpointCommandOutput
   | UpdateResolverRuleCommandOutput;
 
@@ -289,7 +442,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -320,7 +473,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type Route53ResolverClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type Route53ResolverClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -328,8 +481,12 @@ export type Route53ResolverClientConfig = Partial<__SmithyConfiguration<__HttpHa
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of Route53ResolverClient class constructor that set the region, credentials and other options.
+ */
+export interface Route53ResolverClientConfig extends Route53ResolverClientConfigType {}
 
-export type Route53ResolverClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type Route53ResolverClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -337,6 +494,10 @@ export type Route53ResolverClientResolvedConfig = __SmithyResolvedConfiguration<
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of Route53ResolverClient class. This is resolved and normalized from the {@link Route53ResolverClientConfig | constructor configuration interface}.
+ */
+export interface Route53ResolverClientResolvedConfig extends Route53ResolverClientResolvedConfigType {}
 
 /**
  * <p>When you create a VPC using Amazon VPC, you automatically get DNS resolution within the VPC from Route 53 Resolver.
@@ -376,6 +537,9 @@ export class Route53ResolverClient extends __Client<
   ServiceOutputTypes,
   Route53ResolverClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of Route53ResolverClient class. This is resolved and normalized from the {@link Route53ResolverClientConfig | constructor configuration interface}.
+   */
   readonly config: Route53ResolverClientResolvedConfig;
 
   constructor(configuration: Route53ResolverClientConfig) {

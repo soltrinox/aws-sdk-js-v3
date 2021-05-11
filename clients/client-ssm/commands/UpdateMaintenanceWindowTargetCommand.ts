@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateMaintenanceWindowTargetCommandInput = UpdateMaintenanceWindowTargetRequest;
-export type UpdateMaintenanceWindowTargetCommandOutput = UpdateMaintenanceWindowTargetResult & __MetadataBearer;
+export interface UpdateMaintenanceWindowTargetCommandInput extends UpdateMaintenanceWindowTargetRequest {}
+export interface UpdateMaintenanceWindowTargetCommandOutput
+  extends UpdateMaintenanceWindowTargetResult,
+    __MetadataBearer {}
 
 /**
  * <p>Modifies the target of an existing maintenance window. You
@@ -48,6 +50,20 @@ export type UpdateMaintenanceWindowTargetCommandOutput = UpdateMaintenanceWindow
  *          <note>
  *             <p>If a parameter is null, then the corresponding field is not modified.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, UpdateMaintenanceWindowTargetCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, UpdateMaintenanceWindowTargetCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new UpdateMaintenanceWindowTargetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateMaintenanceWindowTargetCommandInput} for command's `input` shape.
+ * @see {@link UpdateMaintenanceWindowTargetCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateMaintenanceWindowTargetCommand extends $Command<
   UpdateMaintenanceWindowTargetCommandInput,

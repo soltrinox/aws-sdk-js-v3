@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StopStreamEncryptionCommandInput = StopStreamEncryptionInput;
-export type StopStreamEncryptionCommandOutput = __MetadataBearer;
+export interface StopStreamEncryptionCommandInput extends StopStreamEncryptionInput {}
+export interface StopStreamEncryptionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Disables server-side encryption for a specified stream. </p>
@@ -37,6 +37,20 @@ export type StopStreamEncryptionCommandOutput = __MetadataBearer;
  *             After you disabled encryption, you can verify that encryption is not applied by
  *             inspecting the API response from <code>PutRecord</code> or
  *             <code>PutRecords</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { KinesisClient, StopStreamEncryptionCommand } from "@aws-sdk/client-kinesis"; // ES Modules import
+ * // const { KinesisClient, StopStreamEncryptionCommand } = require("@aws-sdk/client-kinesis"); // CommonJS import
+ * const client = new KinesisClient(config);
+ * const command = new StopStreamEncryptionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StopStreamEncryptionCommandInput} for command's `input` shape.
+ * @see {@link StopStreamEncryptionCommandOutput} for command's `response` shape.
+ * @see {@link KinesisClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StopStreamEncryptionCommand extends $Command<
   StopStreamEncryptionCommandInput,

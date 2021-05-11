@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDatasetGroupCommandInput = DescribeDatasetGroupRequest;
-export type DescribeDatasetGroupCommandOutput = DescribeDatasetGroupResponse & __MetadataBearer;
+export interface DescribeDatasetGroupCommandInput extends DescribeDatasetGroupRequest {}
+export interface DescribeDatasetGroupCommandOutput extends DescribeDatasetGroupResponse, __MetadataBearer {}
 
 /**
  * <p>Describes a dataset group created using the <a>CreateDatasetGroup</a>
@@ -46,6 +46,20 @@ export type DescribeDatasetGroupCommandOutput = DescribeDatasetGroupResponse & _
  *                </p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ForecastClient, DescribeDatasetGroupCommand } from "@aws-sdk/client-forecast"; // ES Modules import
+ * // const { ForecastClient, DescribeDatasetGroupCommand } = require("@aws-sdk/client-forecast"); // CommonJS import
+ * const client = new ForecastClient(config);
+ * const command = new DescribeDatasetGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDatasetGroupCommandInput} for command's `input` shape.
+ * @see {@link DescribeDatasetGroupCommandOutput} for command's `response` shape.
+ * @see {@link ForecastClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDatasetGroupCommand extends $Command<
   DescribeDatasetGroupCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateServiceCommandInput = CreateServiceRequest;
-export type CreateServiceCommandOutput = CreateServiceResponse & __MetadataBearer;
+export interface CreateServiceCommandInput extends CreateServiceRequest {}
+export interface CreateServiceCommandOutput extends CreateServiceResponse, __MetadataBearer {}
 
 /**
  * <p>Runs and maintains a desired number of tasks from a specified task definition. If the
@@ -127,6 +127,20 @@ export type CreateServiceCommandOutput = CreateServiceResponse & __MetadataBeare
  *                </ul>
  * 			         </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ECSClient, CreateServiceCommand } from "@aws-sdk/client-ecs"; // ES Modules import
+ * // const { ECSClient, CreateServiceCommand } = require("@aws-sdk/client-ecs"); // CommonJS import
+ * const client = new ECSClient(config);
+ * const command = new CreateServiceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateServiceCommandInput} for command's `input` shape.
+ * @see {@link CreateServiceCommandOutput} for command's `response` shape.
+ * @see {@link ECSClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateServiceCommand extends $Command<
   CreateServiceCommandInput,

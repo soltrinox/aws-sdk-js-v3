@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DetectStackDriftCommandInput = DetectStackDriftInput;
-export type DetectStackDriftCommandOutput = DetectStackDriftOutput & __MetadataBearer;
+export interface DetectStackDriftCommandInput extends DetectStackDriftInput {}
+export interface DetectStackDriftCommandOutput extends DetectStackDriftOutput, __MetadataBearer {}
 
 /**
  * <p>Detects whether a stack's actual configuration differs, or has
@@ -42,6 +42,20 @@ export type DetectStackDriftCommandOutput = DetectStackDriftOutput & __MetadataB
  *          <p>When detecting drift on a stack, AWS CloudFormation does not detect drift on any nested stacks
  *          belonging to that stack. Perform <code>DetectStackDrift</code> directly on the nested stack
  *          itself.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, DetectStackDriftCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, DetectStackDriftCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new DetectStackDriftCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DetectStackDriftCommandInput} for command's `input` shape.
+ * @see {@link DetectStackDriftCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DetectStackDriftCommand extends $Command<
   DetectStackDriftCommandInput,

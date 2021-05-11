@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetAutomationExecutionCommandInput = GetAutomationExecutionRequest;
-export type GetAutomationExecutionCommandOutput = GetAutomationExecutionResult & __MetadataBearer;
+export interface GetAutomationExecutionCommandInput extends GetAutomationExecutionRequest {}
+export interface GetAutomationExecutionCommandOutput extends GetAutomationExecutionResult, __MetadataBearer {}
 
 /**
  * <p>Get detailed information about a particular Automation execution.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, GetAutomationExecutionCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, GetAutomationExecutionCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new GetAutomationExecutionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetAutomationExecutionCommandInput} for command's `input` shape.
+ * @see {@link GetAutomationExecutionCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetAutomationExecutionCommand extends $Command<
   GetAutomationExecutionCommandInput,

@@ -17,11 +17,31 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRetentionSettingsCommandInput = GetRetentionSettingsRequest;
-export type GetRetentionSettingsCommandOutput = GetRetentionSettingsResponse & __MetadataBearer;
+export interface GetRetentionSettingsCommandInput extends GetRetentionSettingsRequest {}
+export interface GetRetentionSettingsCommandOutput extends GetRetentionSettingsResponse, __MetadataBearer {}
 
 /**
- * <p>Gets the retention settings for the specified Amazon Chime Enterprise account. For more information about retention settings, see <a href="https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html">Managing Chat Retention Policies</a> in the <i>Amazon Chime Administration Guide</i>.</p>
+ * <p>
+ * Gets the retention settings for the specified Amazon Chime Enterprise account. For more information about retention settings, see
+ * <a href="https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html">Managing Chat Retention Policies</a>
+ * in the
+ * <i>Amazon Chime Administration Guide</i>
+ * .
+ * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, GetRetentionSettingsCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, GetRetentionSettingsCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new GetRetentionSettingsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRetentionSettingsCommandInput} for command's `input` shape.
+ * @see {@link GetRetentionSettingsCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRetentionSettingsCommand extends $Command<
   GetRetentionSettingsCommandInput,

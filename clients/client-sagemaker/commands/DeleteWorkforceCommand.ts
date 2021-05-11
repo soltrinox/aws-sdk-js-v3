@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteWorkforceCommandInput = DeleteWorkforceRequest;
-export type DeleteWorkforceCommandOutput = DeleteWorkforceResponse & __MetadataBearer;
+export interface DeleteWorkforceCommandInput extends DeleteWorkforceRequest {}
+export interface DeleteWorkforceCommandOutput extends DeleteWorkforceResponse, __MetadataBearer {}
 
 /**
  * <p>Use this operation to delete a workforce.</p>
@@ -34,6 +34,20 @@ export type DeleteWorkforceCommandOutput = DeleteWorkforceResponse & __MetadataB
  *             If you try to delete a workforce that contains one or more work teams,
  *             you will recieve a <code>ResourceInUse</code> error.</p>
  *         </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, DeleteWorkforceCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, DeleteWorkforceCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new DeleteWorkforceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteWorkforceCommandInput} for command's `input` shape.
+ * @see {@link DeleteWorkforceCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteWorkforceCommand extends $Command<
   DeleteWorkforceCommandInput,

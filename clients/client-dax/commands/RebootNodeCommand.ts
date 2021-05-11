@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RebootNodeCommandInput = RebootNodeRequest;
-export type RebootNodeCommandOutput = RebootNodeResponse & __MetadataBearer;
+export interface RebootNodeCommandInput extends RebootNodeRequest {}
+export interface RebootNodeCommandOutput extends RebootNodeResponse, __MetadataBearer {}
 
 /**
  * <p>Reboots a single node of a DAX cluster. The reboot action takes place
@@ -28,6 +28,20 @@ export type RebootNodeCommandOutput = RebootNodeResponse & __MetadataBearer;
  *             <p>
  *                <code>RebootNode</code> restarts the DAX engine process and does not remove the contents of the cache.  </p>
  *         </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DAXClient, RebootNodeCommand } from "@aws-sdk/client-dax"; // ES Modules import
+ * // const { DAXClient, RebootNodeCommand } = require("@aws-sdk/client-dax"); // CommonJS import
+ * const client = new DAXClient(config);
+ * const command = new RebootNodeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RebootNodeCommandInput} for command's `input` shape.
+ * @see {@link RebootNodeCommandOutput} for command's `response` shape.
+ * @see {@link DAXClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RebootNodeCommand extends $Command<
   RebootNodeCommandInput,

@@ -21,8 +21,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartChangeSetCommandInput = StartChangeSetRequest;
-export type StartChangeSetCommandOutput = StartChangeSetResponse & __MetadataBearer;
+export interface StartChangeSetCommandInput extends StartChangeSetRequest {}
+export interface StartChangeSetCommandOutput extends StartChangeSetResponse, __MetadataBearer {}
 
 /**
  * <p>This operation allows you to request changes for your entities. Within a single
@@ -36,6 +36,20 @@ export type StartChangeSetCommandOutput = StartChangeSetResponse & __MetadataBea
  *         <p>For example, you cannot start the ChangeSet described in the <a href="https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/API_StartChangeSet.html#API_StartChangeSet_Examples">example</a> below because it contains two changes to execute the same change
  *             type (<code>AddRevisions</code>) against the same entity
  *             (<code>entity-id@1)</code>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MarketplaceCatalogClient, StartChangeSetCommand } from "@aws-sdk/client-marketplace-catalog"; // ES Modules import
+ * // const { MarketplaceCatalogClient, StartChangeSetCommand } = require("@aws-sdk/client-marketplace-catalog"); // CommonJS import
+ * const client = new MarketplaceCatalogClient(config);
+ * const command = new StartChangeSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartChangeSetCommandInput} for command's `input` shape.
+ * @see {@link StartChangeSetCommandOutput} for command's `response` shape.
+ * @see {@link MarketplaceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartChangeSetCommand extends $Command<
   StartChangeSetCommandInput,

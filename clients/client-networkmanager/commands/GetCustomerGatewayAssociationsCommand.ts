@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetCustomerGatewayAssociationsCommandInput = GetCustomerGatewayAssociationsRequest;
-export type GetCustomerGatewayAssociationsCommandOutput = GetCustomerGatewayAssociationsResponse & __MetadataBearer;
+export interface GetCustomerGatewayAssociationsCommandInput extends GetCustomerGatewayAssociationsRequest {}
+export interface GetCustomerGatewayAssociationsCommandOutput
+  extends GetCustomerGatewayAssociationsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Gets the association information for customer gateways that are associated with
  *             devices and links in your global network.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NetworkManagerClient, GetCustomerGatewayAssociationsCommand } from "@aws-sdk/client-networkmanager"; // ES Modules import
+ * // const { NetworkManagerClient, GetCustomerGatewayAssociationsCommand } = require("@aws-sdk/client-networkmanager"); // CommonJS import
+ * const client = new NetworkManagerClient(config);
+ * const command = new GetCustomerGatewayAssociationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetCustomerGatewayAssociationsCommandInput} for command's `input` shape.
+ * @see {@link GetCustomerGatewayAssociationsCommandOutput} for command's `response` shape.
+ * @see {@link NetworkManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetCustomerGatewayAssociationsCommand extends $Command<
   GetCustomerGatewayAssociationsCommandInput,

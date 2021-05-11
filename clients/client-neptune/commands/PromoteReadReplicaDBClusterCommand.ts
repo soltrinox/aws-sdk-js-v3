@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PromoteReadReplicaDBClusterCommandInput = PromoteReadReplicaDBClusterMessage;
-export type PromoteReadReplicaDBClusterCommandOutput = PromoteReadReplicaDBClusterResult & __MetadataBearer;
+export interface PromoteReadReplicaDBClusterCommandInput extends PromoteReadReplicaDBClusterMessage {}
+export interface PromoteReadReplicaDBClusterCommandOutput extends PromoteReadReplicaDBClusterResult, __MetadataBearer {}
 
 /**
  * <p>Not supported.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, PromoteReadReplicaDBClusterCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, PromoteReadReplicaDBClusterCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new PromoteReadReplicaDBClusterCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PromoteReadReplicaDBClusterCommandInput} for command's `input` shape.
+ * @see {@link PromoteReadReplicaDBClusterCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PromoteReadReplicaDBClusterCommand extends $Command<
   PromoteReadReplicaDBClusterCommandInput,

@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeDataSourcePermissionsCommandInput = DescribeDataSourcePermissionsRequest;
-export type DescribeDataSourcePermissionsCommandOutput = DescribeDataSourcePermissionsResponse & __MetadataBearer;
+export interface DescribeDataSourcePermissionsCommandInput extends DescribeDataSourcePermissionsRequest {}
+export interface DescribeDataSourcePermissionsCommandOutput
+  extends DescribeDataSourcePermissionsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Describes the resource permissions for a data source.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { QuickSightClient, DescribeDataSourcePermissionsCommand } from "@aws-sdk/client-quicksight"; // ES Modules import
+ * // const { QuickSightClient, DescribeDataSourcePermissionsCommand } = require("@aws-sdk/client-quicksight"); // CommonJS import
+ * const client = new QuickSightClient(config);
+ * const command = new DescribeDataSourcePermissionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeDataSourcePermissionsCommandInput} for command's `input` shape.
+ * @see {@link DescribeDataSourcePermissionsCommandOutput} for command's `response` shape.
+ * @see {@link QuickSightClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeDataSourcePermissionsCommand extends $Command<
   DescribeDataSourcePermissionsCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateServiceCommandInput = UpdateServiceRequest;
-export type UpdateServiceCommandOutput = UpdateServiceResponse & __MetadataBearer;
+export interface UpdateServiceCommandInput extends UpdateServiceRequest {}
+export interface UpdateServiceCommandOutput extends UpdateServiceResponse, __MetadataBearer {}
 
 /**
  * <p>Submits a request to perform the following operations:</p>
@@ -46,6 +46,20 @@ export type UpdateServiceCommandOutput = UpdateServiceResponse & __MetadataBeare
  *          </ul>
  *          <p>When you update settings for a service, AWS Cloud Map also updates the corresponding settings in all the records
  *    and health checks that were created by using the specified service.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceDiscoveryClient, UpdateServiceCommand } from "@aws-sdk/client-servicediscovery"; // ES Modules import
+ * // const { ServiceDiscoveryClient, UpdateServiceCommand } = require("@aws-sdk/client-servicediscovery"); // CommonJS import
+ * const client = new ServiceDiscoveryClient(config);
+ * const command = new UpdateServiceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateServiceCommandInput} for command's `input` shape.
+ * @see {@link UpdateServiceCommandOutput} for command's `response` shape.
+ * @see {@link ServiceDiscoveryClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateServiceCommand extends $Command<
   UpdateServiceCommandInput,

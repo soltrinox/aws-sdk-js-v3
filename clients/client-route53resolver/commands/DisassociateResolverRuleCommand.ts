@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DisassociateResolverRuleCommandInput = DisassociateResolverRuleRequest;
-export type DisassociateResolverRuleCommandOutput = DisassociateResolverRuleResponse & __MetadataBearer;
+export interface DisassociateResolverRuleCommandInput extends DisassociateResolverRuleRequest {}
+export interface DisassociateResolverRuleCommandOutput extends DisassociateResolverRuleResponse, __MetadataBearer {}
 
 /**
  * <p>Removes the association between a specified Resolver rule and a specified VPC.</p>
@@ -26,6 +26,20 @@ export type DisassociateResolverRuleCommandOutput = DisassociateResolverRuleResp
  * 			         <p>If you disassociate a Resolver rule from a VPC, Resolver stops forwarding DNS queries for the
  * 				domain name that you specified in the Resolver rule. </p>
  * 		       </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { Route53ResolverClient, DisassociateResolverRuleCommand } from "@aws-sdk/client-route53resolver"; // ES Modules import
+ * // const { Route53ResolverClient, DisassociateResolverRuleCommand } = require("@aws-sdk/client-route53resolver"); // CommonJS import
+ * const client = new Route53ResolverClient(config);
+ * const command = new DisassociateResolverRuleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DisassociateResolverRuleCommandInput} for command's `input` shape.
+ * @see {@link DisassociateResolverRuleCommandOutput} for command's `response` shape.
+ * @see {@link Route53ResolverClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DisassociateResolverRuleCommand extends $Command<
   DisassociateResolverRuleCommandInput,

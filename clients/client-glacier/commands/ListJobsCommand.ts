@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListJobsCommandInput = ListJobsInput;
-export type ListJobsCommandOutput = ListJobsOutput & __MetadataBearer;
+export interface ListJobsCommandInput extends ListJobsInput {}
+export interface ListJobsCommandOutput extends ListJobsOutput, __MetadataBearer {}
 
 /**
  * <p>This operation lists jobs for a vault, including jobs that are in-progress and jobs
@@ -57,6 +57,20 @@ export type ListJobsCommandOutput = ListJobsOutput & __MetadataBearer;
  *
  *          <p>For more information about using this operation,
  *          see the documentation for the underlying REST API <a href="https://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html">List Jobs</a>. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlacierClient, ListJobsCommand } from "@aws-sdk/client-glacier"; // ES Modules import
+ * // const { GlacierClient, ListJobsCommand } = require("@aws-sdk/client-glacier"); // CommonJS import
+ * const client = new GlacierClient(config);
+ * const command = new ListJobsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListJobsCommandInput} for command's `input` shape.
+ * @see {@link ListJobsCommandOutput} for command's `response` shape.
+ * @see {@link GlacierClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListJobsCommand extends $Command<
   ListJobsCommandInput,

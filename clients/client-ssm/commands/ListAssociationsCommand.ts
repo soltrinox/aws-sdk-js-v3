@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAssociationsCommandInput = ListAssociationsRequest;
-export type ListAssociationsCommandOutput = ListAssociationsResult & __MetadataBearer;
+export interface ListAssociationsCommandInput extends ListAssociationsRequest {}
+export interface ListAssociationsCommandOutput extends ListAssociationsResult, __MetadataBearer {}
 
 /**
  * <p>Returns all State Manager associations in the current AWS account and Region. You can limit
  *    the results to a specific State Manager association document or instance by specifying a
  *    filter.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, ListAssociationsCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, ListAssociationsCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new ListAssociationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAssociationsCommandInput} for command's `input` shape.
+ * @see {@link ListAssociationsCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAssociationsCommand extends $Command<
   ListAssociationsCommandInput,

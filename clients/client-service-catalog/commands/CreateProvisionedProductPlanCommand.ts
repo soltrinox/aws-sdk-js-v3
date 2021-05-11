@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateProvisionedProductPlanCommandInput = CreateProvisionedProductPlanInput;
-export type CreateProvisionedProductPlanCommandOutput = CreateProvisionedProductPlanOutput & __MetadataBearer;
+export interface CreateProvisionedProductPlanCommandInput extends CreateProvisionedProductPlanInput {}
+export interface CreateProvisionedProductPlanCommandOutput
+  extends CreateProvisionedProductPlanOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Creates a plan. A plan includes the list of resources to be
@@ -28,6 +30,20 @@ export type CreateProvisionedProductPlanCommandOutput = CreateProvisionedProduct
  *          provisioned product, the product status must be AVAILBLE or TAINTED.</p>
  *          <p>To view the resource changes in the change set, use <a>DescribeProvisionedProductPlan</a>.
  *          To create or modify the provisioned product, use <a>ExecuteProvisionedProductPlan</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceCatalogClient, CreateProvisionedProductPlanCommand } from "@aws-sdk/client-service-catalog"; // ES Modules import
+ * // const { ServiceCatalogClient, CreateProvisionedProductPlanCommand } = require("@aws-sdk/client-service-catalog"); // CommonJS import
+ * const client = new ServiceCatalogClient(config);
+ * const command = new CreateProvisionedProductPlanCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateProvisionedProductPlanCommandInput} for command's `input` shape.
+ * @see {@link CreateProvisionedProductPlanCommandOutput} for command's `response` shape.
+ * @see {@link ServiceCatalogClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateProvisionedProductPlanCommand extends $Command<
   CreateProvisionedProductPlanCommandInput,

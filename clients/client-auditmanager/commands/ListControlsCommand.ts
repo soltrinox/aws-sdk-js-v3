@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListControlsCommandInput = ListControlsRequest;
-export type ListControlsCommandOutput = ListControlsResponse & __MetadataBearer;
+export interface ListControlsCommandInput extends ListControlsRequest {}
+export interface ListControlsCommandOutput extends ListControlsResponse, __MetadataBearer {}
 
 /**
  * <p>
  * Returns a list of controls from AWS Audit Manager.
  * </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { AuditManagerClient, ListControlsCommand } from "@aws-sdk/client-auditmanager"; // ES Modules import
+ * // const { AuditManagerClient, ListControlsCommand } = require("@aws-sdk/client-auditmanager"); // CommonJS import
+ * const client = new AuditManagerClient(config);
+ * const command = new ListControlsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListControlsCommandInput} for command's `input` shape.
+ * @see {@link ListControlsCommandOutput} for command's `response` shape.
+ * @see {@link AuditManagerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListControlsCommand extends $Command<
   ListControlsCommandInput,

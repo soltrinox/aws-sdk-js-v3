@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDeviceDefinitionVersionCommandInput = GetDeviceDefinitionVersionRequest;
-export type GetDeviceDefinitionVersionCommandOutput = GetDeviceDefinitionVersionResponse & __MetadataBearer;
+export interface GetDeviceDefinitionVersionCommandInput extends GetDeviceDefinitionVersionRequest {}
+export interface GetDeviceDefinitionVersionCommandOutput extends GetDeviceDefinitionVersionResponse, __MetadataBearer {}
 
 /**
  * Retrieves information about a device definition version.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GreengrassClient, GetDeviceDefinitionVersionCommand } from "@aws-sdk/client-greengrass"; // ES Modules import
+ * // const { GreengrassClient, GetDeviceDefinitionVersionCommand } = require("@aws-sdk/client-greengrass"); // CommonJS import
+ * const client = new GreengrassClient(config);
+ * const command = new GetDeviceDefinitionVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDeviceDefinitionVersionCommandInput} for command's `input` shape.
+ * @see {@link GetDeviceDefinitionVersionCommandOutput} for command's `response` shape.
+ * @see {@link GreengrassClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDeviceDefinitionVersionCommand extends $Command<
   GetDeviceDefinitionVersionCommandInput,

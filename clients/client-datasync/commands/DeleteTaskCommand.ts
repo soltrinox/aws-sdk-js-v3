@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteTaskCommandInput = DeleteTaskRequest;
-export type DeleteTaskCommandOutput = DeleteTaskResponse & __MetadataBearer;
+export interface DeleteTaskCommandInput extends DeleteTaskRequest {}
+export interface DeleteTaskCommandOutput extends DeleteTaskResponse, __MetadataBearer {}
 
 /**
  * <p>Deletes a task.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataSyncClient, DeleteTaskCommand } from "@aws-sdk/client-datasync"; // ES Modules import
+ * // const { DataSyncClient, DeleteTaskCommand } = require("@aws-sdk/client-datasync"); // CommonJS import
+ * const client = new DataSyncClient(config);
+ * const command = new DeleteTaskCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteTaskCommandInput} for command's `input` shape.
+ * @see {@link DeleteTaskCommandOutput} for command's `response` shape.
+ * @see {@link DataSyncClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteTaskCommand extends $Command<
   DeleteTaskCommandInput,

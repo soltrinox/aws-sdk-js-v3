@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeSecurityConfigurationCommandInput = DescribeSecurityConfigurationInput;
-export type DescribeSecurityConfigurationCommandOutput = DescribeSecurityConfigurationOutput & __MetadataBearer;
+export interface DescribeSecurityConfigurationCommandInput extends DescribeSecurityConfigurationInput {}
+export interface DescribeSecurityConfigurationCommandOutput
+  extends DescribeSecurityConfigurationOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Provides the details of a security configuration by returning the configuration
  *          JSON.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EMRClient, DescribeSecurityConfigurationCommand } from "@aws-sdk/client-emr"; // ES Modules import
+ * // const { EMRClient, DescribeSecurityConfigurationCommand } = require("@aws-sdk/client-emr"); // CommonJS import
+ * const client = new EMRClient(config);
+ * const command = new DescribeSecurityConfigurationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeSecurityConfigurationCommandInput} for command's `input` shape.
+ * @see {@link DescribeSecurityConfigurationCommandOutput} for command's `response` shape.
+ * @see {@link EMRClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeSecurityConfigurationCommand extends $Command<
   DescribeSecurityConfigurationCommandInput,

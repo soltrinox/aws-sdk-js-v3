@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartMigrationCommandInput = StartMigrationMessage;
-export type StartMigrationCommandOutput = StartMigrationResponse & __MetadataBearer;
+export interface StartMigrationCommandInput extends StartMigrationMessage {}
+export interface StartMigrationCommandOutput extends StartMigrationResponse, __MetadataBearer {}
 
 /**
  * <p>Start the migration of data.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ElastiCacheClient, StartMigrationCommand } from "@aws-sdk/client-elasticache"; // ES Modules import
+ * // const { ElastiCacheClient, StartMigrationCommand } = require("@aws-sdk/client-elasticache"); // CommonJS import
+ * const client = new ElastiCacheClient(config);
+ * const command = new StartMigrationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartMigrationCommandInput} for command's `input` shape.
+ * @see {@link StartMigrationCommandOutput} for command's `response` shape.
+ * @see {@link ElastiCacheClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartMigrationCommand extends $Command<
   StartMigrationCommandInput,

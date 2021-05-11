@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RevokeSnapshotAccessCommandInput = RevokeSnapshotAccessMessage;
-export type RevokeSnapshotAccessCommandOutput = RevokeSnapshotAccessResult & __MetadataBearer;
+export interface RevokeSnapshotAccessCommandInput extends RevokeSnapshotAccessMessage {}
+export interface RevokeSnapshotAccessCommandOutput extends RevokeSnapshotAccessResult, __MetadataBearer {}
 
 /**
  * <p>Removes the ability of the specified AWS customer account to restore the specified
@@ -28,6 +28,20 @@ export type RevokeSnapshotAccessCommandOutput = RevokeSnapshotAccessResult & __M
  * For more information about working with snapshots, go to
  * <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html">Amazon Redshift Snapshots</a>
  * in the <i>Amazon Redshift Cluster Management Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, RevokeSnapshotAccessCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, RevokeSnapshotAccessCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new RevokeSnapshotAccessCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RevokeSnapshotAccessCommandInput} for command's `input` shape.
+ * @see {@link RevokeSnapshotAccessCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RevokeSnapshotAccessCommand extends $Command<
   RevokeSnapshotAccessCommandInput,

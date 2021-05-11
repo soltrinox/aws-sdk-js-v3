@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateSnapshotScheduleCommandInput = UpdateSnapshotScheduleInput;
-export type UpdateSnapshotScheduleCommandOutput = UpdateSnapshotScheduleOutput & __MetadataBearer;
+export interface UpdateSnapshotScheduleCommandInput extends UpdateSnapshotScheduleInput {}
+export interface UpdateSnapshotScheduleCommandOutput extends UpdateSnapshotScheduleOutput, __MetadataBearer {}
 
 /**
  * <p>Updates a snapshot schedule configured for a gateway volume. This operation is only
@@ -31,6 +31,20 @@ export type UpdateSnapshotScheduleCommandOutput = UpdateSnapshotScheduleOutput &
  *          <p>In the request you must identify the gateway volume whose snapshot schedule you want to
  *          update, and the schedule information, including when you want the snapshot to begin on a
  *          day and the frequency (in hours) of snapshots.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { StorageGatewayClient, UpdateSnapshotScheduleCommand } from "@aws-sdk/client-storage-gateway"; // ES Modules import
+ * // const { StorageGatewayClient, UpdateSnapshotScheduleCommand } = require("@aws-sdk/client-storage-gateway"); // CommonJS import
+ * const client = new StorageGatewayClient(config);
+ * const command = new UpdateSnapshotScheduleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateSnapshotScheduleCommandInput} for command's `input` shape.
+ * @see {@link UpdateSnapshotScheduleCommandOutput} for command's `response` shape.
+ * @see {@link StorageGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateSnapshotScheduleCommand extends $Command<
   UpdateSnapshotScheduleCommandInput,

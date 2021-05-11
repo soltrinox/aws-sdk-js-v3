@@ -1,5 +1,5 @@
 import { RedshiftClientResolvedConfig, ServiceInputTypes, ServiceOutputTypes } from "../RedshiftClient";
-import { DescribeTagsMessage, TaggedResourceListMessage } from "../models/models_0";
+import { DescribeTagsMessage, TaggedResourceListMessage } from "../models/models_1";
 import { deserializeAws_queryDescribeTagsCommand, serializeAws_queryDescribeTagsCommand } from "../protocols/Aws_query";
 import { getSerdePlugin } from "@aws-sdk/middleware-serde";
 import { HttpRequest as __HttpRequest, HttpResponse as __HttpResponse } from "@aws-sdk/protocol-http";
@@ -14,8 +14,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeTagsCommandInput = DescribeTagsMessage;
-export type DescribeTagsCommandOutput = TaggedResourceListMessage & __MetadataBearer;
+export interface DescribeTagsCommandInput extends DescribeTagsMessage {}
+export interface DescribeTagsCommandOutput extends TaggedResourceListMessage, __MetadataBearer {}
 
 /**
  * <p>Returns a list of tags. You can return tags from a specific resource by specifying
@@ -43,6 +43,20 @@ export type DescribeTagsCommandOutput = TaggedResourceListMessage & __MetadataBe
  *             combination of those values are returned.</p>
  *         <p>If both tag keys and values are omitted from the request, resources are returned
  *             regardless of whether they have tag keys or values associated with them.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RedshiftClient, DescribeTagsCommand } from "@aws-sdk/client-redshift"; // ES Modules import
+ * // const { RedshiftClient, DescribeTagsCommand } = require("@aws-sdk/client-redshift"); // CommonJS import
+ * const client = new RedshiftClient(config);
+ * const command = new DescribeTagsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeTagsCommandInput} for command's `input` shape.
+ * @see {@link DescribeTagsCommandOutput} for command's `response` shape.
+ * @see {@link RedshiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeTagsCommand extends $Command<
   DescribeTagsCommandInput,

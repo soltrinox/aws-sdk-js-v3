@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetMetricDataCommandInput = GetMetricDataInput;
-export type GetMetricDataCommandOutput = GetMetricDataOutput & __MetadataBearer;
+export interface GetMetricDataCommandInput extends GetMetricDataInput {}
+export interface GetMetricDataCommandOutput extends GetMetricDataOutput, __MetadataBearer {}
 
 /**
  * <p>You can use the <code>GetMetricData</code> API to retrieve as many as 500 different
@@ -57,6 +57,20 @@ export type GetMetricDataCommandOutput = GetMetricDataOutput & __MetadataBearer;
  * 		       <p>If you omit <code>Unit</code> in your request, all data that was collected with any unit is returned, along with the corresponding units that were specified
  * 			when the data was reported to CloudWatch. If you specify a unit, the operation returns only data that was collected with that unit specified.
  * 			If you specify a unit that does not match the data collected, the results of the operation are null. CloudWatch does not perform unit conversions.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudWatchClient, GetMetricDataCommand } from "@aws-sdk/client-cloudwatch"; // ES Modules import
+ * // const { CloudWatchClient, GetMetricDataCommand } = require("@aws-sdk/client-cloudwatch"); // CommonJS import
+ * const client = new CloudWatchClient(config);
+ * const command = new GetMetricDataCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetMetricDataCommandInput} for command's `input` shape.
+ * @see {@link GetMetricDataCommandOutput} for command's `response` shape.
+ * @see {@link CloudWatchClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetMetricDataCommand extends $Command<
   GetMetricDataCommandInput,

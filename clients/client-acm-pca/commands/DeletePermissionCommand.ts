@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeletePermissionCommandInput = DeletePermissionRequest;
-export type DeletePermissionCommandOutput = __MetadataBearer;
+export interface DeletePermissionCommandInput extends DeletePermissionRequest {}
+export interface DeletePermissionCommandOutput extends __MetadataBearer {}
 
 /**
  * <p>Revokes permissions on a private CA granted to the AWS Certificate Manager (ACM) service principal
@@ -46,10 +46,24 @@ export type DeletePermissionCommandOutput = __MetadataBearer;
  * 			then permissions cannot be used to enable automatic renewals. Instead,
  * 			the ACM certificate owner must set up a resource-based policy to enable
  * 			cross-account issuance and renewals. For more information, see
- * 			<a href="acm-pca/latest/userguide/pca-rbp.html">Using a Resource
+ * 			<a href="https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html">Using a Resource
  * 			Based Policy with ACM Private CA</a>.</p>
  * 		          </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ACMPCAClient, DeletePermissionCommand } from "@aws-sdk/client-acm-pca"; // ES Modules import
+ * // const { ACMPCAClient, DeletePermissionCommand } = require("@aws-sdk/client-acm-pca"); // CommonJS import
+ * const client = new ACMPCAClient(config);
+ * const command = new DeletePermissionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeletePermissionCommandInput} for command's `input` shape.
+ * @see {@link DeletePermissionCommandOutput} for command's `response` shape.
+ * @see {@link ACMPCAClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeletePermissionCommand extends $Command<
   DeletePermissionCommandInput,

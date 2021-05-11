@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type RegisterCACertificateCommandInput = RegisterCACertificateRequest;
-export type RegisterCACertificateCommandOutput = RegisterCACertificateResponse & __MetadataBearer;
+export interface RegisterCACertificateCommandInput extends RegisterCACertificateRequest {}
+export interface RegisterCACertificateCommandOutput extends RegisterCACertificateResponse, __MetadataBearer {}
 
 /**
  * <p>Registers a CA certificate with AWS IoT. This CA certificate can then be used to sign
@@ -27,6 +27,20 @@ export type RegisterCACertificateCommandOutput = RegisterCACertificateResponse &
  *          up to 10 certificate authorities sign your device certificates. If you have more than one
  *          CA certificate registered, make sure you pass the CA certificate when you register your
  *          device certificates with the RegisterCertificate API.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IoTClient, RegisterCACertificateCommand } from "@aws-sdk/client-iot"; // ES Modules import
+ * // const { IoTClient, RegisterCACertificateCommand } = require("@aws-sdk/client-iot"); // CommonJS import
+ * const client = new IoTClient(config);
+ * const command = new RegisterCACertificateCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link RegisterCACertificateCommandInput} for command's `input` shape.
+ * @see {@link RegisterCACertificateCommandOutput} for command's `response` shape.
+ * @see {@link IoTClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class RegisterCACertificateCommand extends $Command<
   RegisterCACertificateCommandInput,

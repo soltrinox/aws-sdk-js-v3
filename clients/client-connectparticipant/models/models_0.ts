@@ -11,7 +11,138 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
+    ...obj,
+  });
+}
+
+export interface CompleteAttachmentUploadRequest {
+  /**
+   * <p>A list of unique identifiers for the attachments.</p>
+   */
+  AttachmentIds: string[] | undefined;
+
+  /**
+   * <p>A unique, case-sensitive identifier that you provide to ensure the idempotency of the
+   *             request.</p>
+   */
+  ClientToken?: string;
+
+  /**
+   * <p>The authentication token associated with the participant's connection.</p>
+   */
+  ConnectionToken: string | undefined;
+}
+
+export namespace CompleteAttachmentUploadRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CompleteAttachmentUploadRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface CompleteAttachmentUploadResponse {}
+
+export namespace CompleteAttachmentUploadResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CompleteAttachmentUploadResponse): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>An attachment with that identifier is already being uploaded.</p>
+ */
+export interface ConflictException extends __SmithyException, $MetadataBearer {
+  name: "ConflictException";
+  $fault: "client";
+  Message: string | undefined;
+}
+
+export namespace ConflictException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ConflictException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>This exception occurs when there is an internal failure in the Amazon Connect service.</p>
+ */
+export interface InternalServerException extends __SmithyException, $MetadataBearer {
+  name: "InternalServerException";
+  $fault: "server";
+  Message: string | undefined;
+}
+
+export namespace InternalServerException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: InternalServerException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The number of attachments per contact exceeds the quota.</p>
+ */
+export interface ServiceQuotaExceededException extends __SmithyException, $MetadataBearer {
+  name: "ServiceQuotaExceededException";
+  $fault: "client";
+  Message: string | undefined;
+}
+
+export namespace ServiceQuotaExceededException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ServiceQuotaExceededException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The request was denied due to request throttling.</p>
+ */
+export interface ThrottlingException extends __SmithyException, $MetadataBearer {
+  name: "ThrottlingException";
+  $fault: "client";
+  Message: string | undefined;
+}
+
+export namespace ThrottlingException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ThrottlingException): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>The input fails to satisfy the constraints specified by Amazon Connect.</p>
+ */
+export interface ValidationException extends __SmithyException, $MetadataBearer {
+  name: "ValidationException";
+  $fault: "client";
+  Message: string | undefined;
+}
+
+export namespace ValidationException {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
 }
@@ -28,12 +159,17 @@ export interface CreateParticipantConnectionRequest {
   Type: (ConnectionType | string)[] | undefined;
 
   /**
-   * <p>Participant Token as obtained from <a href="https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContactResponse.html">StartChatContact</a> API response.</p>
+   * <p>This is a header parameter.</p>
+   *         <p>The Participant Token as obtained from <a href="https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContact.html">StartChatContact</a>
+   *             API response.</p>
    */
   ParticipantToken: string | undefined;
 }
 
 export namespace CreateParticipantConnectionRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateParticipantConnectionRequest): any => ({
     ...obj,
   });
@@ -57,6 +193,9 @@ export interface ConnectionCredentials {
 }
 
 export namespace ConnectionCredentials {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConnectionCredentials): any => ({
     ...obj,
   });
@@ -80,6 +219,9 @@ export interface Websocket {
 }
 
 export namespace Websocket {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Websocket): any => ({
     ...obj,
   });
@@ -99,52 +241,10 @@ export interface CreateParticipantConnectionResponse {
 }
 
 export namespace CreateParticipantConnectionResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateParticipantConnectionResponse): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>This exception occurs when there is an internal failure in the Amazon Connect service.</p>
- */
-export interface InternalServerException extends __SmithyException, $MetadataBearer {
-  name: "InternalServerException";
-  $fault: "server";
-  Message: string | undefined;
-}
-
-export namespace InternalServerException {
-  export const filterSensitiveLog = (obj: InternalServerException): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The request was denied due to request throttling.</p>
- */
-export interface ThrottlingException extends __SmithyException, $MetadataBearer {
-  name: "ThrottlingException";
-  $fault: "client";
-  Message: string | undefined;
-}
-
-export namespace ThrottlingException {
-  export const filterSensitiveLog = (obj: ThrottlingException): any => ({
-    ...obj,
-  });
-}
-
-/**
- * <p>The input fails to satisfy the constraints specified by Amazon Connect.</p>
- */
-export interface ValidationException extends __SmithyException, $MetadataBearer {
-  name: "ValidationException";
-  $fault: "client";
-  Message: string | undefined;
-}
-
-export namespace ValidationException {
-  export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
 }
@@ -163,6 +263,9 @@ export interface DisconnectParticipantRequest {
 }
 
 export namespace DisconnectParticipantRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisconnectParticipantRequest): any => ({
     ...obj,
   });
@@ -171,7 +274,52 @@ export namespace DisconnectParticipantRequest {
 export interface DisconnectParticipantResponse {}
 
 export namespace DisconnectParticipantResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisconnectParticipantResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAttachmentRequest {
+  /**
+   * <p>A unique identifier for the attachment.</p>
+   */
+  AttachmentId: string | undefined;
+
+  /**
+   * <p>The authentication token associated with the participant's connection.</p>
+   */
+  ConnectionToken: string | undefined;
+}
+
+export namespace GetAttachmentRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAttachmentRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAttachmentResponse {
+  /**
+   * <p>The pre-signed URL using which file would be downloaded from Amazon S3 by the API caller.</p>
+   */
+  Url?: string;
+
+  /**
+   * <p>The expiration time of the URL in ISO timestamp. It's specified in ISO 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For example, 2019-11-08T02:41:28.172Z.</p>
+   */
+  UrlExpiry?: string;
+}
+
+export namespace GetAttachmentResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAttachmentResponse): any => ({
     ...obj,
   });
 }
@@ -210,6 +358,9 @@ export interface StartPosition {
 }
 
 export namespace StartPosition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StartPosition): any => ({
     ...obj,
   });
@@ -222,8 +373,7 @@ export interface GetTranscriptRequest {
   ContactId?: string;
 
   /**
-   * <p>The maximum number of results to return in the page. Default: 10.
-   *            </p>
+   * <p>The maximum number of results to return in the page. Default: 10. </p>
    */
   MaxResults?: number;
 
@@ -234,7 +384,8 @@ export interface GetTranscriptRequest {
   NextToken?: string;
 
   /**
-   * <p>The direction from StartPosition from which to retrieve message. Default: BACKWARD when no StartPosition is provided, FORWARD with StartPosition. </p>
+   * <p>The direction from StartPosition from which to retrieve message. Default: BACKWARD
+   *             when no StartPosition is provided, FORWARD with StartPosition. </p>
    */
   ScanDirection?: ScanDirection | string;
 
@@ -255,7 +406,51 @@ export interface GetTranscriptRequest {
 }
 
 export namespace GetTranscriptRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetTranscriptRequest): any => ({
+    ...obj,
+  });
+}
+
+export enum ArtifactStatus {
+  APPROVED = "APPROVED",
+  IN_PROGRESS = "IN_PROGRESS",
+  REJECTED = "REJECTED",
+}
+
+/**
+ * <p>The case-insensitive input to indicate standard MIME type that describes the format of the file
+ *             that will be uploaded.</p>
+ */
+export interface AttachmentItem {
+  /**
+   * <p>Describes the MIME file type of the attachment. For a list of supported file types, see <a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits">Feature specifications</a> in the <i>Amazon Connect Administrator Guide</i>.</p>
+   */
+  ContentType?: string;
+
+  /**
+   * <p>A unique identifier for the attachment.</p>
+   */
+  AttachmentId?: string;
+
+  /**
+   * <p>A case-sensitive name of the attachment being uploaded.</p>
+   */
+  AttachmentName?: string;
+
+  /**
+   * <p>Status of the attachment.</p>
+   */
+  Status?: ArtifactStatus | string;
+}
+
+export namespace AttachmentItem {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AttachmentItem): any => ({
     ...obj,
   });
 }
@@ -267,9 +462,16 @@ export enum ParticipantRole {
 }
 
 export enum ChatItemType {
+  ATTACHMENT = "ATTACHMENT",
+  CHAT_ENDED = "CHAT_ENDED",
   CONNECTION_ACK = "CONNECTION_ACK",
   EVENT = "EVENT",
   MESSAGE = "MESSAGE",
+  PARTICIPANT_JOINED = "PARTICIPANT_JOINED",
+  PARTICIPANT_LEFT = "PARTICIPANT_LEFT",
+  TRANSFER_FAILED = "TRANSFER_FAILED",
+  TRANSFER_SUCCEEDED = "TRANSFER_SUCCEEDED",
+  TYPING = "TYPING",
 }
 
 /**
@@ -317,9 +519,17 @@ export interface Item {
    * <p>The role of the sender. For example, is it a customer, agent, or system.</p>
    */
   ParticipantRole?: ParticipantRole | string;
+
+  /**
+   * <p>Provides information about the attachments.</p>
+   */
+  Attachments?: AttachmentItem[];
 }
 
 export namespace Item {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Item): any => ({
     ...obj,
   });
@@ -344,6 +554,9 @@ export interface GetTranscriptResponse {
 }
 
 export namespace GetTranscriptResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetTranscriptResponse): any => ({
     ...obj,
   });
@@ -383,6 +596,9 @@ export interface SendEventRequest {
 }
 
 export namespace SendEventRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendEventRequest): any => ({
     ...obj,
   });
@@ -403,6 +619,9 @@ export interface SendEventResponse {
 }
 
 export namespace SendEventResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendEventResponse): any => ({
     ...obj,
   });
@@ -432,6 +651,9 @@ export interface SendMessageRequest {
 }
 
 export namespace SendMessageRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendMessageRequest): any => ({
     ...obj,
   });
@@ -452,7 +674,96 @@ export interface SendMessageResponse {
 }
 
 export namespace SendMessageResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SendMessageResponse): any => ({
+    ...obj,
+  });
+}
+
+export interface StartAttachmentUploadRequest {
+  /**
+   * <p>Describes the MIME file type of the attachment. For a list of supported file types, see <a href="https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits">Feature specifications</a> in the <i>Amazon Connect Administrator Guide</i>.</p>
+   */
+  ContentType: string | undefined;
+
+  /**
+   * <p>The size of the attachment in bytes.</p>
+   */
+  AttachmentSizeInBytes: number | undefined;
+
+  /**
+   * <p>A case-sensitive name of the attachment being uploaded.</p>
+   */
+  AttachmentName: string | undefined;
+
+  /**
+   * <p>A unique case sensitive identifier to support idempotency of request.</p>
+   */
+  ClientToken?: string;
+
+  /**
+   * <p>The authentication token associated with the participant's connection.</p>
+   */
+  ConnectionToken: string | undefined;
+}
+
+export namespace StartAttachmentUploadRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: StartAttachmentUploadRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Fields to be used while uploading the attachment.</p>
+ */
+export interface UploadMetadata {
+  /**
+   * <p>The pre-signed URL using which file would be downloaded from Amazon S3 by the API caller.</p>
+   */
+  Url?: string;
+
+  /**
+   * <p>The expiration time of the URL in ISO timestamp. It's specified in ISO 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For example, 2019-11-08T02:41:28.172Z.</p>
+   */
+  UrlExpiry?: string;
+
+  /**
+   * <p>The headers to be provided while uploading the file to the URL.</p>
+   */
+  HeadersToInclude?: { [key: string]: string };
+}
+
+export namespace UploadMetadata {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: UploadMetadata): any => ({
+    ...obj,
+  });
+}
+
+export interface StartAttachmentUploadResponse {
+  /**
+   * <p>A unique identifier for the attachment.</p>
+   */
+  AttachmentId?: string;
+
+  /**
+   * <p>Fields to be used while uploading the attachment.</p>
+   */
+  UploadMetadata?: UploadMetadata;
+}
+
+export namespace StartAttachmentUploadResponse {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: StartAttachmentUploadResponse): any => ({
     ...obj,
   });
 }

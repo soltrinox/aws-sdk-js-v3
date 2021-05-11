@@ -17,13 +17,38 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type SearchResourcesCommandInput = SearchResourcesInput;
-export type SearchResourcesCommandOutput = SearchResourcesOutput & __MetadataBearer;
+export interface SearchResourcesCommandInput extends SearchResourcesInput {}
+export interface SearchResourcesCommandOutput extends SearchResourcesOutput, __MetadataBearer {}
 
 /**
  * <p>Returns a list of AWS resource identifiers that matches the specified query. The
  *             query uses the same format as a resource query in a CreateGroup or UpdateGroupQuery
  *             operation.</p>
+ *          <p>
+ *             <b>Minimum permissions</b>
+ *          </p>
+ *          <p>To run this command, you must have the following permissions:</p>
+ *          <ul>
+ *             <li>
+ *                 <p>
+ *                   <code>resource-groups:SearchResources</code>
+ *                </p>
+ *             </li>
+ *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ResourceGroupsClient, SearchResourcesCommand } from "@aws-sdk/client-resource-groups"; // ES Modules import
+ * // const { ResourceGroupsClient, SearchResourcesCommand } = require("@aws-sdk/client-resource-groups"); // CommonJS import
+ * const client = new ResourceGroupsClient(config);
+ * const command = new SearchResourcesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link SearchResourcesCommandInput} for command's `input` shape.
+ * @see {@link SearchResourcesCommandOutput} for command's `response` shape.
+ * @see {@link ResourceGroupsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class SearchResourcesCommand extends $Command<
   SearchResourcesCommandInput,

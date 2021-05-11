@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDataSetCommandInput = GetDataSetRequest;
-export type GetDataSetCommandOutput = GetDataSetResponse & __MetadataBearer;
+export interface GetDataSetCommandInput extends GetDataSetRequest {}
+export interface GetDataSetCommandOutput extends GetDataSetResponse, __MetadataBearer {}
 
 /**
  * <p>This operation returns information about a data set.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataExchangeClient, GetDataSetCommand } from "@aws-sdk/client-dataexchange"; // ES Modules import
+ * // const { DataExchangeClient, GetDataSetCommand } = require("@aws-sdk/client-dataexchange"); // CommonJS import
+ * const client = new DataExchangeClient(config);
+ * const command = new GetDataSetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDataSetCommandInput} for command's `input` shape.
+ * @see {@link GetDataSetCommandOutput} for command's `response` shape.
+ * @see {@link DataExchangeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDataSetCommand extends $Command<
   GetDataSetCommandInput,

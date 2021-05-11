@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartLabelDetectionCommandInput = StartLabelDetectionRequest;
-export type StartLabelDetectionCommandOutput = StartLabelDetectionResponse & __MetadataBearer;
+export interface StartLabelDetectionCommandInput extends StartLabelDetectionRequest {}
+export interface StartLabelDetectionCommandOutput extends StartLabelDetectionResponse, __MetadataBearer {}
 
 /**
  * <p>Starts asynchronous detection of labels in a stored video.</p>
@@ -36,6 +36,20 @@ export type StartLabelDetectionCommandOutput = StartLabelDetectionResponse & __M
  *         topic is <code>SUCCEEDED</code>. If so, call  <a>GetLabelDetection</a> and pass the job identifier
  *        (<code>JobId</code>) from the initial call to <code>StartLabelDetection</code>.</p>
  *         <p></p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, StartLabelDetectionCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, StartLabelDetectionCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new StartLabelDetectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartLabelDetectionCommandInput} for command's `input` shape.
+ * @see {@link StartLabelDetectionCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartLabelDetectionCommand extends $Command<
   StartLabelDetectionCommandInput,

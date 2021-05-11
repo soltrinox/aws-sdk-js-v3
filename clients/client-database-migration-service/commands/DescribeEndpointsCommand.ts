@@ -21,11 +21,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeEndpointsCommandInput = DescribeEndpointsMessage;
-export type DescribeEndpointsCommandOutput = DescribeEndpointsResponse & __MetadataBearer;
+export interface DescribeEndpointsCommandInput extends DescribeEndpointsMessage {}
+export interface DescribeEndpointsCommandOutput extends DescribeEndpointsResponse, __MetadataBearer {}
 
 /**
  * <p>Returns information about the endpoints for your account in the current region.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DatabaseMigrationServiceClient, DescribeEndpointsCommand } from "@aws-sdk/client-database-migration-service"; // ES Modules import
+ * // const { DatabaseMigrationServiceClient, DescribeEndpointsCommand } = require("@aws-sdk/client-database-migration-service"); // CommonJS import
+ * const client = new DatabaseMigrationServiceClient(config);
+ * const command = new DescribeEndpointsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeEndpointsCommandInput} for command's `input` shape.
+ * @see {@link DescribeEndpointsCommandOutput} for command's `response` shape.
+ * @see {@link DatabaseMigrationServiceClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeEndpointsCommand extends $Command<
   DescribeEndpointsCommandInput,

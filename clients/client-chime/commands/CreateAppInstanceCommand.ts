@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateAppInstanceCommandInput = CreateAppInstanceRequest;
-export type CreateAppInstanceCommandOutput = CreateAppInstanceResponse & __MetadataBearer;
+export interface CreateAppInstanceCommandInput extends CreateAppInstanceRequest {}
+export interface CreateAppInstanceCommandOutput extends CreateAppInstanceResponse, __MetadataBearer {}
 
 /**
- * <p>Creates an Amazon Chime Messaging SDK <code>AppInstance</code> under an AWS Account. Only Messaging SDK customers use this API.
- *            <code>CreateAppInstance</code> supports <code>idempotency</code> behavior as described in the AWS API Standard.</p>
+ * <p>Creates an Amazon Chime SDK messaging <code>AppInstance</code> under an AWS account. Only SDK messaging customers use this API.
+ * <code>CreateAppInstance</code> supports idempotency behavior as described in the AWS API Standard.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, CreateAppInstanceCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, CreateAppInstanceCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new CreateAppInstanceCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateAppInstanceCommandInput} for command's `input` shape.
+ * @see {@link CreateAppInstanceCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateAppInstanceCommand extends $Command<
   CreateAppInstanceCommandInput,

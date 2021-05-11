@@ -17,13 +17,29 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeBudgetActionsForAccountCommandInput = DescribeBudgetActionsForAccountRequest;
-export type DescribeBudgetActionsForAccountCommandOutput = DescribeBudgetActionsForAccountResponse & __MetadataBearer;
+export interface DescribeBudgetActionsForAccountCommandInput extends DescribeBudgetActionsForAccountRequest {}
+export interface DescribeBudgetActionsForAccountCommandOutput
+  extends DescribeBudgetActionsForAccountResponse,
+    __MetadataBearer {}
 
 /**
  * <p>
  *          Describes all of the budget actions for an account.
  *       </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { BudgetsClient, DescribeBudgetActionsForAccountCommand } from "@aws-sdk/client-budgets"; // ES Modules import
+ * // const { BudgetsClient, DescribeBudgetActionsForAccountCommand } = require("@aws-sdk/client-budgets"); // CommonJS import
+ * const client = new BudgetsClient(config);
+ * const command = new DescribeBudgetActionsForAccountCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeBudgetActionsForAccountCommandInput} for command's `input` shape.
+ * @see {@link DescribeBudgetActionsForAccountCommandOutput} for command's `response` shape.
+ * @see {@link BudgetsClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeBudgetActionsForAccountCommand extends $Command<
   DescribeBudgetActionsForAccountCommandInput,

@@ -265,7 +265,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   serviceId?: string;
 
   /**
-   * The AWS region to which this client will send requests
+   * The AWS region to which this client will send requests or use as signingRegion
    */
   region?: string | __Provider<string>;
 
@@ -296,7 +296,7 @@ export interface ClientDefaults extends Partial<__SmithyResolvedConfiguration<__
   defaultUserAgentProvider?: Provider<__UserAgent>;
 }
 
-export type SNSClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
+type SNSClientConfigType = Partial<__SmithyConfiguration<__HttpHandlerOptions>> &
   ClientDefaults &
   RegionInputConfig &
   EndpointsInputConfig &
@@ -304,8 +304,12 @@ export type SNSClientConfig = Partial<__SmithyConfiguration<__HttpHandlerOptions
   HostHeaderInputConfig &
   AwsAuthInputConfig &
   UserAgentInputConfig;
+/**
+ * The configuration interface of SNSClient class constructor that set the region, credentials and other options.
+ */
+export interface SNSClientConfig extends SNSClientConfigType {}
 
-export type SNSClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
+type SNSClientResolvedConfigType = __SmithyResolvedConfiguration<__HttpHandlerOptions> &
   Required<ClientDefaults> &
   RegionResolvedConfig &
   EndpointsResolvedConfig &
@@ -313,13 +317,17 @@ export type SNSClientResolvedConfig = __SmithyResolvedConfiguration<__HttpHandle
   HostHeaderResolvedConfig &
   AwsAuthResolvedConfig &
   UserAgentResolvedConfig;
+/**
+ * The resolved configuration interface of SNSClient class. This is resolved and normalized from the {@link SNSClientConfig | constructor configuration interface}.
+ */
+export interface SNSClientResolvedConfig extends SNSClientResolvedConfigType {}
 
 /**
  * <fullname>Amazon Simple Notification Service</fullname>
  *         <p>Amazon Simple Notification Service (Amazon SNS) is a web service that enables you to build
  *             distributed web-enabled applications. Applications can use Amazon SNS to easily push
  *             real-time notification messages to interested subscribers over multiple delivery
- *             protocols. For more information about this product see <a href="http://aws.amazon.com/sns/">https://aws.amazon.com/sns</a>. For detailed information about Amazon SNS
+ *             protocols. For more information about this product see the <a href="http://aws.amazon.com/sns/">Amazon SNS product page</a>. For detailed information about Amazon SNS
  *             features and their associated API calls, see the <a href="https://docs.aws.amazon.com/sns/latest/dg/">Amazon SNS Developer Guide</a>. </p>
  *         <p>For information on the permissions you need to use this API, see
  *             <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-authentication-and-access-control.html">Identity and
@@ -336,6 +344,9 @@ export class SNSClient extends __Client<
   ServiceOutputTypes,
   SNSClientResolvedConfig
 > {
+  /**
+   * The resolved configuration of SNSClient class. This is resolved and normalized from the {@link SNSClientConfig | constructor configuration interface}.
+   */
   readonly config: SNSClientResolvedConfig;
 
   constructor(configuration: SNSClientConfig) {

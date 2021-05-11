@@ -11,7 +11,50 @@ export interface AccessDeniedException extends __SmithyException, $MetadataBeare
 }
 
 export namespace AccessDeniedException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessDeniedException): any => ({
+    ...obj,
+  });
+}
+
+export enum EncryptionOption {
+  AoCmk = "AWS_OWNED_CMK",
+  CmCmk = "CUSTOMER_MANAGED_CMK",
+}
+
+/**
+ * <p>An object that contains:</p>
+ *          <ul>
+ *             <li>
+ *                <p>The encryption option for a repository association. It is either owned by AWS
+ *             Key Management Service (KMS) (<code>AWS_OWNED_CMK</code>) or customer managed (<code>CUSTOMER_MANAGED_CMK</code>).</p>
+ *             </li>
+ *             <li>
+ *                <p>The ID of the AWS KMS key that
+ *             is associated with a respository association.</p>
+ *             </li>
+ *          </ul>
+ */
+export interface KMSKeyDetails {
+  /**
+   * <p>The ID of the AWS KMS key that is associated with a respository association.</p>
+   */
+  KMSKeyId?: string;
+
+  /**
+   * <p>The encryption option for a repository association. It is either owned by AWS
+   *             Key Management Service (KMS) (<code>AWS_OWNED_CMK</code>) or customer managed (<code>CUSTOMER_MANAGED_CMK</code>).</p>
+   */
+  EncryptionOption?: EncryptionOption | string;
+}
+
+export namespace KMSKeyDetails {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: KMSKeyDetails): any => ({
     ...obj,
   });
 }
@@ -51,6 +94,9 @@ export interface ThirdPartySourceRepository {
 }
 
 export namespace ThirdPartySourceRepository {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThirdPartySourceRepository): any => ({
     ...obj,
   });
@@ -70,6 +116,9 @@ export interface CodeCommitRepository {
 }
 
 export namespace CodeCommitRepository {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CodeCommitRepository): any => ({
     ...obj,
   });
@@ -104,6 +153,9 @@ export interface Repository {
 }
 
 export namespace Repository {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Repository): any => ({
     ...obj,
   });
@@ -140,9 +192,27 @@ export interface AssociateRepositoryRequest {
    *          </ul>
    */
   Tags?: { [key: string]: string };
+
+  /**
+   * <p>A <code>KMSKeyDetails</code> object that contains:</p>
+   *          <ul>
+   *             <li>
+   *                <p>The encryption option for this repository association. It is either owned by AWS
+   *             Key Management Service (KMS) (<code>AWS_OWNED_CMK</code>) or customer managed (<code>CUSTOMER_MANAGED_CMK</code>).</p>
+   *             </li>
+   *             <li>
+   *                <p>The ID of the AWS KMS key that
+   *             is associated with this respository association.</p>
+   *             </li>
+   *          </ul>
+   */
+  KMSKeyDetails?: KMSKeyDetails;
 }
 
 export namespace AssociateRepositoryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateRepositoryRequest): any => ({
     ...obj,
   });
@@ -282,9 +352,27 @@ export interface RepositoryAssociation {
    * <p>The time, in milliseconds since the epoch, when the repository association was created.</p>
    */
   CreatedTimeStamp?: Date;
+
+  /**
+   * <p>A <code>KMSKeyDetails</code> object that contains:</p>
+   *          <ul>
+   *             <li>
+   *                <p>The encryption option for this repository association. It is either owned by AWS
+   *             Key Management Service (KMS) (<code>AWS_OWNED_CMK</code>) or customer managed (<code>CUSTOMER_MANAGED_CMK</code>).</p>
+   *             </li>
+   *             <li>
+   *                <p>The ID of the AWS KMS key that
+   *             is associated with this respository association.</p>
+   *             </li>
+   *          </ul>
+   */
+  KMSKeyDetails?: KMSKeyDetails;
 }
 
 export namespace RepositoryAssociation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RepositoryAssociation): any => ({
     ...obj,
   });
@@ -318,6 +406,9 @@ export interface AssociateRepositoryResponse {
 }
 
 export namespace AssociateRepositoryResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AssociateRepositoryResponse): any => ({
     ...obj,
   });
@@ -334,6 +425,9 @@ export interface ConflictException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace ConflictException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ConflictException): any => ({
     ...obj,
   });
@@ -349,6 +443,9 @@ export interface InternalServerException extends __SmithyException, $MetadataBea
 }
 
 export namespace InternalServerException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServerException): any => ({
     ...obj,
   });
@@ -364,6 +461,9 @@ export interface ThrottlingException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ThrottlingException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ThrottlingException): any => ({
     ...obj,
   });
@@ -379,6 +479,9 @@ export interface ValidationException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace ValidationException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ValidationException): any => ({
     ...obj,
   });
@@ -403,18 +506,19 @@ export interface RepositoryHeadSourceCodeType {
 }
 
 export namespace RepositoryHeadSourceCodeType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RepositoryHeadSourceCodeType): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>
- *          A code review type that analyzes all code under a specified branch in an associated respository.
- *          The assocated repository is specified using its ARN when you call <a href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">
+ * <p> A code review type that analyzes all code under a specified branch in an associated
+ * 			repository. The associated repository is specified using its ARN when you call <a href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">
  *                <code>CreateCodeReview</code>
- *             </a>.
- *       </p>
+ *             </a>. </p>
  */
 export interface RepositoryAnalysis {
   /**
@@ -429,6 +533,9 @@ export interface RepositoryAnalysis {
 }
 
 export namespace RepositoryAnalysis {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RepositoryAnalysis): any => ({
     ...obj,
   });
@@ -441,7 +548,7 @@ export namespace RepositoryAnalysis {
  *          <ul>
  *             <li>
  *                <p>
- *                   <code>PullRequest</code> - A code review that is automatically triggered by a pull request on an assocaited repository. Because this
+ *                   <code>PullRequest</code> - A code review that is automatically triggered by a pull request on an associated repository. Because this
  *                type of code review is automatically generated, you cannot specify this code review type using <a href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">
  *                      <code>CreateCodeReview</code>
  *                   </a>.
@@ -449,27 +556,28 @@ export namespace RepositoryAnalysis {
  *             </li>
  *             <li>
  *                <p>
- *                   <code>RepositoryAnalysis</code> - A code review that analyzes all code under a specified branch in an associated respository.
- *                The assocated repository is specified using its ARN in <a href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">
+ * 					             <code>RepositoryAnalysis</code> - A code review that analyzes all code under a specified
+ * 					branch in an associated repository. The associated repository is specified using its ARN
+ * 					in <a href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">
  *                      <code>CreateCodeReview</code>
- *                   </a>.
- *             </p>
+ *                   </a>. </p>
  *             </li>
  *          </ul>
  */
 export interface CodeReviewType {
   /**
-   * <p>
-   *          A code review that analyzes all code under a specified branch in an associated respository.
-   *          The assocated repository is specified using its ARN in <a href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">
+   * <p> A code review that analyzes all code under a specified branch in an associated
+   * 			repository. The associated repository is specified using its ARN in <a href="https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CreateCodeReview">
    *                <code>CreateCodeReview</code>
-   *             </a>.
-   *       </p>
+   *             </a>. </p>
    */
   RepositoryAnalysis: RepositoryAnalysis | undefined;
 }
 
 export namespace CodeReviewType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CodeReviewType): any => ({
     ...obj,
   });
@@ -522,6 +630,9 @@ export interface CreateCodeReviewRequest {
 }
 
 export namespace CreateCodeReviewRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCodeReviewRequest): any => ({
     ...obj,
   });
@@ -555,6 +666,9 @@ export interface Metrics {
 }
 
 export namespace Metrics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Metrics): any => ({
     ...obj,
   });
@@ -585,6 +699,9 @@ export interface CommitDiffSourceCodeType {
 }
 
 export namespace CommitDiffSourceCodeType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CommitDiffSourceCodeType): any => ({
     ...obj,
   });
@@ -619,6 +736,9 @@ export interface SourceCodeType {
 }
 
 export namespace SourceCodeType {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SourceCodeType): any => ({
     ...obj,
   });
@@ -769,6 +889,9 @@ export interface CodeReview {
 }
 
 export namespace CodeReview {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CodeReview): any => ({
     ...obj,
   });
@@ -784,6 +907,9 @@ export interface CreateCodeReviewResponse {
 }
 
 export namespace CreateCodeReviewResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateCodeReviewResponse): any => ({
     ...obj,
   });
@@ -801,6 +927,9 @@ export interface ResourceNotFoundException extends __SmithyException, $MetadataB
 }
 
 export namespace ResourceNotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ResourceNotFoundException): any => ({
     ...obj,
   });
@@ -817,6 +946,9 @@ export interface DescribeCodeReviewRequest {
 }
 
 export namespace DescribeCodeReviewRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCodeReviewRequest): any => ({
     ...obj,
   });
@@ -832,6 +964,9 @@ export interface DescribeCodeReviewResponse {
 }
 
 export namespace DescribeCodeReviewResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeCodeReviewResponse): any => ({
     ...obj,
   });
@@ -867,6 +1002,9 @@ export interface DescribeRecommendationFeedbackRequest {
 }
 
 export namespace DescribeRecommendationFeedbackRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRecommendationFeedbackRequest): any => ({
     ...obj,
   });
@@ -933,6 +1071,9 @@ export interface RecommendationFeedback {
 }
 
 export namespace RecommendationFeedback {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecommendationFeedback): any => ({
     ...obj,
   });
@@ -948,6 +1089,9 @@ export interface DescribeRecommendationFeedbackResponse {
 }
 
 export namespace DescribeRecommendationFeedbackResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRecommendationFeedbackResponse): any => ({
     ...obj,
   });
@@ -970,6 +1114,9 @@ export interface DescribeRepositoryAssociationRequest {
 }
 
 export namespace DescribeRepositoryAssociationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRepositoryAssociationRequest): any => ({
     ...obj,
   });
@@ -1003,6 +1150,9 @@ export interface DescribeRepositoryAssociationResponse {
 }
 
 export namespace DescribeRepositoryAssociationResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeRepositoryAssociationResponse): any => ({
     ...obj,
   });
@@ -1018,6 +1168,9 @@ export interface NotFoundException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotFoundException): any => ({
     ...obj,
   });
@@ -1040,6 +1193,9 @@ export interface DisassociateRepositoryRequest {
 }
 
 export namespace DisassociateRepositoryRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateRepositoryRequest): any => ({
     ...obj,
   });
@@ -1073,6 +1229,9 @@ export interface DisassociateRepositoryResponse {
 }
 
 export namespace DisassociateRepositoryResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DisassociateRepositoryResponse): any => ({
     ...obj,
   });
@@ -1147,6 +1306,9 @@ export interface ListCodeReviewsRequest {
 }
 
 export namespace ListCodeReviewsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListCodeReviewsRequest): any => ({
     ...obj,
   });
@@ -1180,6 +1342,9 @@ export interface MetricsSummary {
 }
 
 export namespace MetricsSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: MetricsSummary): any => ({
     ...obj,
   });
@@ -1293,6 +1458,9 @@ export interface CodeReviewSummary {
 }
 
 export namespace CodeReviewSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CodeReviewSummary): any => ({
     ...obj,
   });
@@ -1315,6 +1483,9 @@ export interface ListCodeReviewsResponse {
 }
 
 export namespace ListCodeReviewsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListCodeReviewsResponse): any => ({
     ...obj,
   });
@@ -1365,6 +1536,9 @@ export interface ListRecommendationFeedbackRequest {
 }
 
 export namespace ListRecommendationFeedbackRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecommendationFeedbackRequest): any => ({
     ...obj,
   });
@@ -1404,6 +1578,9 @@ export interface RecommendationFeedbackSummary {
 }
 
 export namespace RecommendationFeedbackSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecommendationFeedbackSummary): any => ({
     ...obj,
   });
@@ -1425,6 +1602,9 @@ export interface ListRecommendationFeedbackResponse {
 }
 
 export namespace ListRecommendationFeedbackResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecommendationFeedbackResponse): any => ({
     ...obj,
   });
@@ -1455,6 +1635,9 @@ export interface ListRecommendationsRequest {
 }
 
 export namespace ListRecommendationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecommendationsRequest): any => ({
     ...obj,
   });
@@ -1501,6 +1684,9 @@ export interface RecommendationSummary {
 }
 
 export namespace RecommendationSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RecommendationSummary): any => ({
     ...obj,
   });
@@ -1523,6 +1709,9 @@ export interface ListRecommendationsResponse {
 }
 
 export namespace ListRecommendationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRecommendationsResponse): any => ({
     ...obj,
   });
@@ -1633,6 +1822,9 @@ export interface ListRepositoryAssociationsRequest {
 }
 
 export namespace ListRepositoryAssociationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRepositoryAssociationsRequest): any => ({
     ...obj,
   });
@@ -1763,6 +1955,9 @@ export interface RepositoryAssociationSummary {
 }
 
 export namespace RepositoryAssociationSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RepositoryAssociationSummary): any => ({
     ...obj,
   });
@@ -1784,6 +1979,9 @@ export interface ListRepositoryAssociationsResponse {
 }
 
 export namespace ListRepositoryAssociationsResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRepositoryAssociationsResponse): any => ({
     ...obj,
   });
@@ -1806,6 +2004,9 @@ export interface ListTagsForResourceRequest {
 }
 
 export namespace ListTagsForResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceRequest): any => ({
     ...obj,
   });
@@ -1834,6 +2035,9 @@ export interface ListTagsForResourceResponse {
 }
 
 export namespace ListTagsForResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListTagsForResourceResponse): any => ({
     ...obj,
   });
@@ -1864,6 +2068,9 @@ export interface PutRecommendationFeedbackRequest {
 }
 
 export namespace PutRecommendationFeedbackRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutRecommendationFeedbackRequest): any => ({
     ...obj,
   });
@@ -1872,6 +2079,9 @@ export namespace PutRecommendationFeedbackRequest {
 export interface PutRecommendationFeedbackResponse {}
 
 export namespace PutRecommendationFeedbackResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutRecommendationFeedbackResponse): any => ({
     ...obj,
   });
@@ -1914,6 +2124,9 @@ export interface TagResourceRequest {
 }
 
 export namespace TagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceRequest): any => ({
     ...obj,
   });
@@ -1922,6 +2135,9 @@ export namespace TagResourceRequest {
 export interface TagResourceResponse {}
 
 export namespace TagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TagResourceResponse): any => ({
     ...obj,
   });
@@ -1949,6 +2165,9 @@ export interface UntagResourceRequest {
 }
 
 export namespace UntagResourceRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceRequest): any => ({
     ...obj,
   });
@@ -1957,6 +2176,9 @@ export namespace UntagResourceRequest {
 export interface UntagResourceResponse {}
 
 export namespace UntagResourceResponse {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UntagResourceResponse): any => ({
     ...obj,
   });

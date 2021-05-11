@@ -20,13 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type PutConfigurationSetTrackingOptionsCommandInput = PutConfigurationSetTrackingOptionsRequest;
-export type PutConfigurationSetTrackingOptionsCommandOutput = PutConfigurationSetTrackingOptionsResponse &
-  __MetadataBearer;
+export interface PutConfigurationSetTrackingOptionsCommandInput extends PutConfigurationSetTrackingOptionsRequest {}
+export interface PutConfigurationSetTrackingOptionsCommandOutput
+  extends PutConfigurationSetTrackingOptionsResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Specify a custom domain to use for open and click tracking elements in email that you
  *             send.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SESv2Client, PutConfigurationSetTrackingOptionsCommand } from "@aws-sdk/client-sesv2"; // ES Modules import
+ * // const { SESv2Client, PutConfigurationSetTrackingOptionsCommand } = require("@aws-sdk/client-sesv2"); // CommonJS import
+ * const client = new SESv2Client(config);
+ * const command = new PutConfigurationSetTrackingOptionsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link PutConfigurationSetTrackingOptionsCommandInput} for command's `input` shape.
+ * @see {@link PutConfigurationSetTrackingOptionsCommandOutput} for command's `response` shape.
+ * @see {@link SESv2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class PutConfigurationSetTrackingOptionsCommand extends $Command<
   PutConfigurationSetTrackingOptionsCommandInput,

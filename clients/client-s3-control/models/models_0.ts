@@ -13,6 +13,9 @@ export interface AbortIncompleteMultipartUpload {
 }
 
 export namespace AbortIncompleteMultipartUpload {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AbortIncompleteMultipartUpload): any => ({
     ...obj,
   });
@@ -34,6 +37,9 @@ export interface VpcConfiguration {
 }
 
 export namespace VpcConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: VpcConfiguration): any => ({
     ...obj,
   });
@@ -75,6 +81,9 @@ export interface AccessPoint {
 }
 
 export namespace AccessPoint {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccessPoint): any => ({
     ...obj,
   });
@@ -91,6 +100,9 @@ export interface ActivityMetrics {
 }
 
 export namespace ActivityMetrics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ActivityMetrics): any => ({
     ...obj,
   });
@@ -120,6 +132,9 @@ export interface SelectionCriteria {
 }
 
 export namespace SelectionCriteria {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SelectionCriteria): any => ({
     ...obj,
   });
@@ -141,6 +156,9 @@ export interface PrefixLevelStorageMetrics {
 }
 
 export namespace PrefixLevelStorageMetrics {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PrefixLevelStorageMetrics): any => ({
     ...obj,
   });
@@ -157,6 +175,9 @@ export interface PrefixLevel {
 }
 
 export namespace PrefixLevel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PrefixLevel): any => ({
     ...obj,
   });
@@ -178,6 +199,9 @@ export interface BucketLevel {
 }
 
 export namespace BucketLevel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketLevel): any => ({
     ...obj,
   });
@@ -199,7 +223,34 @@ export interface AccountLevel {
 }
 
 export namespace AccountLevel {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: AccountLevel): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>AWS Lambda function used to transform objects through an Object Lambda Access Point.</p>
+ */
+export interface AwsLambdaTransformation {
+  /**
+   * <p>The Amazon Resource Name (ARN) of the AWS Lambda function.</p>
+   */
+  FunctionArn: string | undefined;
+
+  /**
+   * <p>Additional JSON that provides supplemental data to the Lambda function used to transform objects.</p>
+   */
+  FunctionPayload?: string;
+}
+
+export namespace AwsLambdaTransformation {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: AwsLambdaTransformation): any => ({
     ...obj,
   });
 }
@@ -263,6 +314,9 @@ export interface PublicAccessBlockConfiguration {
 }
 
 export namespace PublicAccessBlockConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PublicAccessBlockConfiguration): any => ({
     ...obj,
   });
@@ -296,16 +350,17 @@ export interface CreateAccessPointRequest {
   VpcConfiguration?: VpcConfiguration;
 
   /**
-   * <p>The <code>PublicAccessBlock</code> configuration that you want to apply to this Amazon S3 account.
-   *          You can enable the configuration options in any combination. For more information about
-   *          when Amazon S3 considers a bucket or object public, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status">The Meaning of "Public"</a> in the <i>Amazon Simple Storage Service Developer
-   *          Guide</i>.</p>
-   *          <p>This is not supported for Amazon S3 on Outposts.</p>
+   * <p>
+   *         The <code>PublicAccessBlock</code> configuration that you want to apply to the access point.
+   *       </p>
    */
   PublicAccessBlockConfiguration?: PublicAccessBlockConfiguration;
 }
 
 export namespace CreateAccessPointRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccessPointRequest): any => ({
     ...obj,
   });
@@ -322,7 +377,169 @@ export interface CreateAccessPointResult {
 }
 
 export namespace CreateAccessPointResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateAccessPointResult): any => ({
+    ...obj,
+  });
+}
+
+export enum ObjectLambdaAllowedFeature {
+  GetObjectPartNumber = "GetObject-PartNumber",
+  GetObjectRange = "GetObject-Range",
+}
+
+export enum ObjectLambdaTransformationConfigurationAction {
+  GetObject = "GetObject",
+}
+
+/**
+ * <p>A container for AwsLambdaTransformation.</p>
+ */
+export type ObjectLambdaContentTransformation =
+  | ObjectLambdaContentTransformation.AwsLambdaMember
+  | ObjectLambdaContentTransformation.$UnknownMember;
+
+export namespace ObjectLambdaContentTransformation {
+  /**
+   * <p>A container for an AWS Lambda function.</p>
+   */
+  export interface AwsLambdaMember {
+    AwsLambda: AwsLambdaTransformation;
+    $unknown?: never;
+  }
+
+  export interface $UnknownMember {
+    AwsLambda?: never;
+    $unknown: [string, any];
+  }
+
+  export interface Visitor<T> {
+    AwsLambda: (value: AwsLambdaTransformation) => T;
+    _: (name: string, value: any) => T;
+  }
+
+  export const visit = <T>(value: ObjectLambdaContentTransformation, visitor: Visitor<T>): T => {
+    if (value.AwsLambda !== undefined) return visitor.AwsLambda(value.AwsLambda);
+    return visitor._(value.$unknown[0], value.$unknown[1]);
+  };
+
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ObjectLambdaContentTransformation): any => {
+    if (obj.AwsLambda !== undefined) return { AwsLambda: AwsLambdaTransformation.filterSensitiveLog(obj.AwsLambda) };
+    if (obj.$unknown !== undefined) return { [obj.$unknown[0]]: "UNKNOWN" };
+  };
+}
+
+/**
+ * <p>A configuration used when creating an Object Lambda Access Point transformation.</p>
+ */
+export interface ObjectLambdaTransformationConfiguration {
+  /**
+   * <p>A container for the action of an Object Lambda Access Point configuration. Valid input is <code>GetObject</code>.</p>
+   */
+  Actions: (ObjectLambdaTransformationConfigurationAction | string)[] | undefined;
+
+  /**
+   * <p>A container for the content transformation of an Object Lambda Access Point configuration.</p>
+   */
+  ContentTransformation: ObjectLambdaContentTransformation | undefined;
+}
+
+export namespace ObjectLambdaTransformationConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ObjectLambdaTransformationConfiguration): any => ({
+    ...obj,
+    ...(obj.ContentTransformation && {
+      ContentTransformation: ObjectLambdaContentTransformation.filterSensitiveLog(obj.ContentTransformation),
+    }),
+  });
+}
+
+/**
+ * <p>A configuration used when creating an Object Lambda Access Point.</p>
+ */
+export interface ObjectLambdaConfiguration {
+  /**
+   * <p>Standard access point associated with the Object Lambda Access Point.</p>
+   */
+  SupportingAccessPoint: string | undefined;
+
+  /**
+   * <p>A container for whether the CloudWatch metrics configuration is enabled.</p>
+   */
+  CloudWatchMetricsEnabled?: boolean;
+
+  /**
+   * <p>A container for allowed features. Valid inputs are <code>GetObject-Range</code>
+   *            and <code>GetObject-PartNumber</code>.</p>
+   */
+  AllowedFeatures?: (ObjectLambdaAllowedFeature | string)[];
+
+  /**
+   * <p>A container for transformation configurations for an Object Lambda Access Point.</p>
+   */
+  TransformationConfigurations: ObjectLambdaTransformationConfiguration[] | undefined;
+}
+
+export namespace ObjectLambdaConfiguration {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ObjectLambdaConfiguration): any => ({
+    ...obj,
+    ...(obj.TransformationConfigurations && {
+      TransformationConfigurations: obj.TransformationConfigurations.map((item) =>
+        ObjectLambdaTransformationConfiguration.filterSensitiveLog(item)
+      ),
+    }),
+  });
+}
+
+export interface CreateAccessPointForObjectLambdaRequest {
+  /**
+   * <p>The AWS account ID for owner of the specified Object Lambda Access Point.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The name you want to assign to this Object Lambda Access Point.</p>
+   */
+  Name: string | undefined;
+
+  /**
+   * <p>Object Lambda Access Point configuration as a JSON document.</p>
+   */
+  Configuration: ObjectLambdaConfiguration | undefined;
+}
+
+export namespace CreateAccessPointForObjectLambdaRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateAccessPointForObjectLambdaRequest): any => ({
+    ...obj,
+    ...(obj.Configuration && { Configuration: ObjectLambdaConfiguration.filterSensitiveLog(obj.Configuration) }),
+  });
+}
+
+export interface CreateAccessPointForObjectLambdaResult {
+  /**
+   * <p>Specifies the ARN for the Object Lambda Access Point.</p>
+   */
+  ObjectLambdaAccessPointArn?: string;
+}
+
+export namespace CreateAccessPointForObjectLambdaResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: CreateAccessPointForObjectLambdaResult): any => ({
     ...obj,
   });
 }
@@ -338,6 +555,9 @@ export interface BucketAlreadyExists extends __SmithyException, $MetadataBearer 
 }
 
 export namespace BucketAlreadyExists {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketAlreadyExists): any => ({
     ...obj,
   });
@@ -352,6 +572,9 @@ export interface BucketAlreadyOwnedByYou extends __SmithyException, $MetadataBea
 }
 
 export namespace BucketAlreadyOwnedByYou {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BucketAlreadyOwnedByYou): any => ({
     ...obj,
   });
@@ -392,6 +615,9 @@ export interface CreateBucketConfiguration {
 }
 
 export namespace CreateBucketConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBucketConfiguration): any => ({
     ...obj,
   });
@@ -410,14 +636,6 @@ export interface CreateBucketRequest {
    * <p>The name of the bucket.</p>
    */
   Bucket: string | undefined;
-
-  /**
-   * <p>The configuration information for the bucket.</p>
-   *          <note>
-   *             <p>This is not supported by Amazon S3 on Outposts buckets.</p>
-   *          </note>
-   */
-  CreateBucketConfiguration?: CreateBucketConfiguration;
 
   /**
    * <p>Allows grantee the read, write, read ACP, and write ACP permissions on the bucket.</p>
@@ -474,9 +692,20 @@ export interface CreateBucketRequest {
    *          </note>
    */
   OutpostId?: string;
+
+  /**
+   * <p>The configuration information for the bucket.</p>
+   *          <note>
+   *             <p>This is not supported by Amazon S3 on Outposts buckets.</p>
+   *          </note>
+   */
+  CreateBucketConfiguration?: CreateBucketConfiguration;
 }
 
 export namespace CreateBucketRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBucketRequest): any => ({
     ...obj,
   });
@@ -497,6 +726,9 @@ export interface CreateBucketResult {
 }
 
 export namespace CreateBucketResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateBucketResult): any => ({
     ...obj,
   });
@@ -512,6 +744,9 @@ export interface BadRequestException extends __SmithyException, $MetadataBearer 
 }
 
 export namespace BadRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: BadRequestException): any => ({
     ...obj,
   });
@@ -523,6 +758,11 @@ export namespace BadRequestException {
 export interface JobManifestLocation {
   /**
    * <p>The Amazon Resource Name (ARN) for a manifest object.</p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   ObjectArn: string | undefined;
 
@@ -538,6 +778,9 @@ export interface JobManifestLocation {
 }
 
 export namespace JobManifestLocation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobManifestLocation): any => ({
     ...obj,
   });
@@ -571,6 +814,9 @@ export interface JobManifestSpec {
 }
 
 export namespace JobManifestSpec {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobManifestSpec): any => ({
     ...obj,
   });
@@ -592,6 +838,9 @@ export interface JobManifest {
 }
 
 export namespace JobManifest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobManifest): any => ({
     ...obj,
   });
@@ -602,13 +851,30 @@ export namespace JobManifest {
  */
 export interface LambdaInvokeOperation {
   /**
-   * <p>The Amazon Resource Name (ARN) for the AWS Lambda function that the specified job will invoke for each object in the manifest.</p>
+   * <p>The Amazon Resource Name (ARN) for the AWS Lambda function that the specified job will invoke on every object in the manifest.</p>
    */
   FunctionArn?: string;
 }
 
 export namespace LambdaInvokeOperation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LambdaInvokeOperation): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>Contains no configuration parameters because the DELETE Object tagging API only accepts the bucket name and key name as parameters, which are defined in the job's manifest.</p>
+ */
+export interface S3DeleteObjectTaggingOperation {}
+
+export namespace S3DeleteObjectTaggingOperation {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: S3DeleteObjectTaggingOperation): any => ({
     ...obj,
   });
 }
@@ -619,23 +885,39 @@ export enum S3GlacierJobTier {
 }
 
 /**
- * <p>Contains the configuration parameters for an Initiate Glacier Restore job.
- *          S3 Batch Operations passes each value through to the underlying POST Object restore API. For
+ * <p>Contains the configuration parameters for an S3 Initiate Restore Object job.
+ *          S3 Batch Operations passes every object to the underlying POST Object restore API. For
  *          more information about the parameters for this operation, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPOSTrestore.html#RESTObjectPOSTrestore-restore-request">RestoreObject</a>.</p>
  */
 export interface S3InitiateRestoreObjectOperation {
   /**
-   * <p></p>
+   * <p>This argument specifies how long the S3 Glacier or S3 Glacier Deep Archive object remains available in Amazon S3.
+   *          S3 Initiate Restore Object jobs that
+   *          target S3 Glacier and S3 Glacier Deep Archive objects require <code>ExpirationInDays</code> set to 1
+   *          or greater.</p>
+   *          <p>Conversely, do <i>not</i> set <code>ExpirationInDays</code> when
+   *          creating S3 Initiate Restore Object jobs that target
+   *          S3 Intelligent-Tiering Archive Access and Deep Archive Access tier objects. Objects in
+   *          S3 Intelligent-Tiering archive access tiers are not subject to restore expiry, so
+   *          specifying <code>ExpirationInDays</code> results in restore request failure.</p>
+   *          <p>S3 Batch Operations jobs can operate either on S3 Glacier and S3 Glacier Deep Archive storage class
+   *          objects or on S3 Intelligent-Tiering Archive Access and Deep Archive Access storage tier
+   *          objects, but not both types in the same job. If you need to restore objects of both types
+   *          you <i>must</i> create separate Batch Operations jobs. </p>
    */
   ExpirationInDays?: number;
 
   /**
-   * <p></p>
+   * <p>S3 Batch Operations supports <code>STANDARD</code> and <code>BULK</code> retrieval tiers,
+   *          but not the <code>EXPEDITED</code> retrieval tier.</p>
    */
   GlacierJobTier?: S3GlacierJobTier | string;
 }
 
 export namespace S3InitiateRestoreObjectOperation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3InitiateRestoreObjectOperation): any => ({
     ...obj,
   });
@@ -668,6 +950,9 @@ export interface S3Grantee {
 }
 
 export namespace S3Grantee {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Grantee): any => ({
     ...obj,
   });
@@ -697,6 +982,9 @@ export interface S3Grant {
 }
 
 export namespace S3Grant {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Grant): any => ({
     ...obj,
   });
@@ -718,6 +1006,9 @@ export interface S3ObjectOwner {
 }
 
 export namespace S3ObjectOwner {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3ObjectOwner): any => ({
     ...obj,
   });
@@ -739,6 +1030,9 @@ export interface S3AccessControlList {
 }
 
 export namespace S3AccessControlList {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3AccessControlList): any => ({
     ...obj,
   });
@@ -770,13 +1064,16 @@ export interface S3AccessControlPolicy {
 }
 
 export namespace S3AccessControlPolicy {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3AccessControlPolicy): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Contains the configuration parameters for a Set Object ACL operation. S3 Batch Operations passes each value through to the underlying PUT Object acl API.
+ * <p>Contains the configuration parameters for a Set Object ACL operation. S3 Batch Operations passes every object to the underlying PUT Object acl API.
  *          For more information about the parameters for this operation, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUTacl.html">PUT Object acl</a>.</p>
  */
 export interface S3SetObjectAclOperation {
@@ -787,6 +1084,9 @@ export interface S3SetObjectAclOperation {
 }
 
 export namespace S3SetObjectAclOperation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3SetObjectAclOperation): any => ({
     ...obj,
   });
@@ -863,6 +1163,9 @@ export interface S3ObjectMetadata {
 }
 
 export namespace S3ObjectMetadata {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3ObjectMetadata): any => ({
     ...obj,
   });
@@ -884,6 +1187,9 @@ export interface S3Tag {
 }
 
 export namespace S3Tag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Tag): any => ({
     ...obj,
   });
@@ -909,7 +1215,7 @@ export enum S3StorageClass {
 }
 
 /**
- * <p>Contains the configuration parameters for a PUT Copy object operation. S3 Batch Operations passes each value through to the underlying PUT Copy object
+ * <p>Contains the configuration parameters for a PUT Copy object operation. S3 Batch Operations passes every object to the underlying PUT Copy object
  *          API. For more information about the parameters for this operation, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectCOPY.html">PUT Object - Copy</a>.</p>
  */
 export interface S3CopyObjectOperation {
@@ -1002,6 +1308,9 @@ export interface S3CopyObjectOperation {
 }
 
 export namespace S3CopyObjectOperation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3CopyObjectOperation): any => ({
     ...obj,
   });
@@ -1019,6 +1328,9 @@ export interface S3ObjectLockLegalHold {
 }
 
 export namespace S3ObjectLockLegalHold {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3ObjectLockLegalHold): any => ({
     ...obj,
   });
@@ -1026,10 +1338,10 @@ export namespace S3ObjectLockLegalHold {
 
 /**
  * <p>Contains the configuration for an S3 Object Lock legal hold operation that an
- *          S3 Batch Operations job passes each object through to the underlying
+ *          S3 Batch Operations job passes every object to the underlying
  *             <code>PutObjectLegalHold</code> API. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-legal-hold.html">Using
  *             S3 Object Lock legal hold with S3 Batch Operations</a> in the
- *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *             <i>Amazon Simple Storage Service User Guide</i>.</p>
  */
 export interface S3SetObjectLegalHoldOperation {
   /**
@@ -1039,6 +1351,9 @@ export interface S3SetObjectLegalHoldOperation {
 }
 
 export namespace S3SetObjectLegalHoldOperation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3SetObjectLegalHoldOperation): any => ({
     ...obj,
   });
@@ -1054,7 +1369,7 @@ export enum S3ObjectLockRetentionMode {
  *          S3 Batch Operations job. If you don't provide <code>Mode</code> and <code>RetainUntilDate</code>
  *          data types in your operation, you will remove the retention from your objects. For more
  *          information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-retention-date.html">Using S3 Object Lock retention
- *             with S3 Batch Operations</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *             with S3 Batch Operations</a> in the <i>Amazon Simple Storage Service User Guide</i>.</p>
  */
 export interface S3Retention {
   /**
@@ -1069,6 +1384,9 @@ export interface S3Retention {
 }
 
 export namespace S3Retention {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3Retention): any => ({
     ...obj,
   });
@@ -1076,10 +1394,10 @@ export namespace S3Retention {
 
 /**
  * <p>Contains the configuration parameters for the Object Lock retention action for an
- *          S3 Batch Operations job. Batch Operations passes each value through to the underlying
+ *          S3 Batch Operations job. Batch Operations passes every object to the underlying
  *             <code>PutObjectRetention</code> API. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-retention-date.html">Using
  *             S3 Object Lock retention with S3 Batch Operations</a> in the
- *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *             <i>Amazon Simple Storage Service User Guide</i>.</p>
  */
 export interface S3SetObjectRetentionOperation {
   /**
@@ -1091,19 +1409,22 @@ export interface S3SetObjectRetentionOperation {
   /**
    * <p>Contains the Object Lock retention mode to be applied to all objects in the Batch Operations
    *          job. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-retention-date.html">Using S3 Object Lock retention
-   *             with S3 Batch Operations</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *             with S3 Batch Operations</a> in the <i>Amazon Simple Storage Service User Guide</i>.</p>
    */
   Retention: S3Retention | undefined;
 }
 
 export namespace S3SetObjectRetentionOperation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3SetObjectRetentionOperation): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>Contains the configuration parameters for a Set Object Tagging operation. S3 Batch Operations passes each value through to the underlying PUT Object tagging API.
+ * <p>Contains the configuration parameters for a Set Object Tagging operation. S3 Batch Operations passes every object to the underlying PUT Object tagging API.
  *          For more information about the parameters for this operation, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUTtagging.html">PUT Object tagging</a>.</p>
  */
 export interface S3SetObjectTaggingOperation {
@@ -1114,62 +1435,73 @@ export interface S3SetObjectTaggingOperation {
 }
 
 export namespace S3SetObjectTaggingOperation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3SetObjectTaggingOperation): any => ({
     ...obj,
   });
 }
 
 /**
- * <p>The operation that you want this job to perform on each object listed in the manifest.
+ * <p>The operation that you want this job to perform on every object listed in the manifest.
  *          For more information about the available operations, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-operations.html">Operations</a> in the
- *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *             <i>Amazon Simple Storage Service User Guide</i>.</p>
  */
 export interface JobOperation {
   /**
-   * <p>Directs the specified job to invoke an AWS Lambda function on each object in the manifest.</p>
+   * <p>Directs the specified job to invoke an AWS Lambda function on every object in the manifest.</p>
    */
   LambdaInvoke?: LambdaInvokeOperation;
 
   /**
-   * <p>Directs the specified job to run a PUT Copy object call on each object in the manifest.</p>
+   * <p>Directs the specified job to run a PUT Copy object call on every object in the manifest.</p>
    */
   S3PutObjectCopy?: S3CopyObjectOperation;
 
   /**
-   * <p>Directs the specified job to run a PUT Object acl call on each object in the manifest.</p>
+   * <p>Directs the specified job to run a PUT Object acl call on every object in the manifest.</p>
    */
   S3PutObjectAcl?: S3SetObjectAclOperation;
 
   /**
-   * <p>Directs the specified job to run a PUT Object tagging call on each object in the manifest.</p>
+   * <p>Directs the specified job to run a PUT Object tagging call on every object in the manifest.</p>
    */
   S3PutObjectTagging?: S3SetObjectTaggingOperation;
 
   /**
-   * <p>Directs the specified job to run an Initiate Glacier Restore call on each object in the manifest.</p>
+   * <p>Directs the specified job to execute a DELETE Object tagging call on every object in the manifest.</p>
+   */
+  S3DeleteObjectTagging?: S3DeleteObjectTaggingOperation;
+
+  /**
+   * <p>Directs the specified job to initiate restore requests for every archived object in the manifest.</p>
    */
   S3InitiateRestoreObject?: S3InitiateRestoreObjectOperation;
 
   /**
    * <p>Contains the configuration for an S3 Object Lock legal hold operation that an
-   *          S3 Batch Operations job passes each object through to the underlying
+   *          S3 Batch Operations job passes every object to the underlying
    *             <code>PutObjectLegalHold</code> API. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-legal-hold.html">Using
    *             S3 Object Lock legal hold with S3 Batch Operations</a> in the
-   *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *             <i>Amazon Simple Storage Service User Guide</i>.</p>
    */
   S3PutObjectLegalHold?: S3SetObjectLegalHoldOperation;
 
   /**
    * <p>Contains the configuration parameters for the Object Lock retention action for an
-   *          S3 Batch Operations job. Batch Operations passes each value through to the underlying
+   *          S3 Batch Operations job. Batch Operations passes every object to the underlying
    *             <code>PutObjectRetention</code> API. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-retention-date.html">Using
    *             S3 Object Lock retention with S3 Batch Operations</a> in the
-   *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   *             <i>Amazon Simple Storage Service User Guide</i>.</p>
    */
   S3PutObjectRetention?: S3SetObjectRetentionOperation;
 }
 
 export namespace JobOperation {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobOperation): any => ({
     ...obj,
   });
@@ -1217,6 +1549,9 @@ export interface JobReport {
 }
 
 export namespace JobReport {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobReport): any => ({
     ...obj,
   });
@@ -1234,9 +1569,9 @@ export interface CreateJobRequest {
   ConfirmationRequired?: boolean;
 
   /**
-   * <p>The operation that you want this job to perform on each object listed in the manifest.
-   *          For more information about the available operations, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-operations.html">Operations</a> in the
-   *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   * <p>The action that you want this job to perform on every object listed in the manifest.
+   *          For more information about the available actions, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-actions.html">Operations</a> in the
+   *             <i>Amazon Simple Storage Service User Guide</i>.</p>
    */
   Operation: JobOperation | undefined;
 
@@ -1267,7 +1602,7 @@ export interface CreateJobRequest {
 
   /**
    * <p>The Amazon Resource Name (ARN) for the AWS Identity and Access Management (IAM) role
-   *          that Batch Operations will use to run this job's operation on each object in the
+   *          that Batch Operations will use to run this job's action on every object in the
    *          manifest.</p>
    */
   RoleArn: string | undefined;
@@ -1279,6 +1614,9 @@ export interface CreateJobRequest {
 }
 
 export namespace CreateJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateJobRequest): any => ({
     ...obj,
   });
@@ -1293,6 +1631,9 @@ export interface CreateJobResult {
 }
 
 export namespace CreateJobResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: CreateJobResult): any => ({
     ...obj,
   });
@@ -1308,6 +1649,9 @@ export interface IdempotencyException extends __SmithyException, $MetadataBearer
 }
 
 export namespace IdempotencyException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: IdempotencyException): any => ({
     ...obj,
   });
@@ -1323,6 +1667,9 @@ export interface InternalServiceException extends __SmithyException, $MetadataBe
 }
 
 export namespace InternalServiceException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InternalServiceException): any => ({
     ...obj,
   });
@@ -1338,6 +1685,9 @@ export interface TooManyRequestsException extends __SmithyException, $MetadataBe
 }
 
 export namespace TooManyRequestsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyRequestsException): any => ({
     ...obj,
   });
@@ -1358,7 +1708,31 @@ export interface DeleteAccessPointRequest {
 }
 
 export namespace DeleteAccessPointRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAccessPointRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteAccessPointForObjectLambdaRequest {
+  /**
+   * <p>The account ID for the account that owns the specified Object Lambda Access Point.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The name of the access point you want to delete.</p>
+   */
+  Name: string | undefined;
+}
+
+export namespace DeleteAccessPointForObjectLambdaRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteAccessPointForObjectLambdaRequest): any => ({
     ...obj,
   });
 }
@@ -1378,7 +1752,31 @@ export interface DeleteAccessPointPolicyRequest {
 }
 
 export namespace DeleteAccessPointPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteAccessPointPolicyRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface DeleteAccessPointPolicyForObjectLambdaRequest {
+  /**
+   * <p>The account ID for the account that owns the specified Object Lambda Access Point.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The name of the Object Lambda Access Point you want to delete the policy for.</p>
+   */
+  Name: string | undefined;
+}
+
+export namespace DeleteAccessPointPolicyForObjectLambdaRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: DeleteAccessPointPolicyForObjectLambdaRequest): any => ({
     ...obj,
   });
 }
@@ -1398,6 +1796,9 @@ export interface DeleteBucketRequest {
 }
 
 export namespace DeleteBucketRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketRequest): any => ({
     ...obj,
   });
@@ -1418,6 +1819,9 @@ export interface DeleteBucketLifecycleConfigurationRequest {
 }
 
 export namespace DeleteBucketLifecycleConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketLifecycleConfigurationRequest): any => ({
     ...obj,
   });
@@ -1438,6 +1842,9 @@ export interface DeleteBucketPolicyRequest {
 }
 
 export namespace DeleteBucketPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketPolicyRequest): any => ({
     ...obj,
   });
@@ -1458,6 +1865,9 @@ export interface DeleteBucketTaggingRequest {
 }
 
 export namespace DeleteBucketTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteBucketTaggingRequest): any => ({
     ...obj,
   });
@@ -1476,6 +1886,9 @@ export interface DeleteJobTaggingRequest {
 }
 
 export namespace DeleteJobTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteJobTaggingRequest): any => ({
     ...obj,
   });
@@ -1484,6 +1897,9 @@ export namespace DeleteJobTaggingRequest {
 export interface DeleteJobTaggingResult {}
 
 export namespace DeleteJobTaggingResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteJobTaggingResult): any => ({
     ...obj,
   });
@@ -1499,6 +1915,9 @@ export interface NotFoundException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace NotFoundException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NotFoundException): any => ({
     ...obj,
   });
@@ -1513,6 +1932,9 @@ export interface DeletePublicAccessBlockRequest {
 }
 
 export namespace DeletePublicAccessBlockRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeletePublicAccessBlockRequest): any => ({
     ...obj,
   });
@@ -1531,6 +1953,9 @@ export interface DeleteStorageLensConfigurationRequest {
 }
 
 export namespace DeleteStorageLensConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteStorageLensConfigurationRequest): any => ({
     ...obj,
   });
@@ -1549,6 +1974,9 @@ export interface DeleteStorageLensConfigurationTaggingRequest {
 }
 
 export namespace DeleteStorageLensConfigurationTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteStorageLensConfigurationTaggingRequest): any => ({
     ...obj,
   });
@@ -1557,6 +1985,9 @@ export namespace DeleteStorageLensConfigurationTaggingRequest {
 export interface DeleteStorageLensConfigurationTaggingResult {}
 
 export namespace DeleteStorageLensConfigurationTaggingResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DeleteStorageLensConfigurationTaggingResult): any => ({
     ...obj,
   });
@@ -1564,7 +1995,7 @@ export namespace DeleteStorageLensConfigurationTaggingResult {
 
 export interface DescribeJobRequest {
   /**
-   * <p></p>
+   * <p>The AWS account ID associated with the S3 Batch Operations job.</p>
    */
   AccountId?: string;
 
@@ -1575,6 +2006,9 @@ export interface DescribeJobRequest {
 }
 
 export namespace DescribeJobRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeJobRequest): any => ({
     ...obj,
   });
@@ -1596,6 +2030,9 @@ export interface JobFailure {
 }
 
 export namespace JobFailure {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobFailure): any => ({
     ...obj,
   });
@@ -1622,6 +2059,9 @@ export interface JobProgressSummary {
 }
 
 export namespace JobProgressSummary {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobProgressSummary): any => ({
     ...obj,
   });
@@ -1737,6 +2177,9 @@ export interface JobDescriptor {
 }
 
 export namespace JobDescriptor {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobDescriptor): any => ({
     ...obj,
   });
@@ -1750,6 +2193,9 @@ export interface DescribeJobResult {
 }
 
 export namespace DescribeJobResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: DescribeJobResult): any => ({
     ...obj,
   });
@@ -1770,6 +2216,9 @@ export interface GetAccessPointRequest {
 }
 
 export namespace GetAccessPointRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccessPointRequest): any => ({
     ...obj,
   });
@@ -1818,7 +2267,95 @@ export interface GetAccessPointResult {
 }
 
 export namespace GetAccessPointResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccessPointResult): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAccessPointConfigurationForObjectLambdaRequest {
+  /**
+   * <p>The account ID for the account that owns the specified Object Lambda Access Point.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The name of the Object Lambda Access Point you want to return the configuration for.</p>
+   */
+  Name: string | undefined;
+}
+
+export namespace GetAccessPointConfigurationForObjectLambdaRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAccessPointConfigurationForObjectLambdaRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAccessPointConfigurationForObjectLambdaResult {
+  /**
+   * <p>Object Lambda Access Point configuration document.</p>
+   */
+  Configuration?: ObjectLambdaConfiguration;
+}
+
+export namespace GetAccessPointConfigurationForObjectLambdaResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAccessPointConfigurationForObjectLambdaResult): any => ({
+    ...obj,
+    ...(obj.Configuration && { Configuration: ObjectLambdaConfiguration.filterSensitiveLog(obj.Configuration) }),
+  });
+}
+
+export interface GetAccessPointForObjectLambdaRequest {
+  /**
+   * <p>The account ID for the account that owns the specified Object Lambda Access Point.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The name of the Object Lambda Access Point.</p>
+   */
+  Name: string | undefined;
+}
+
+export namespace GetAccessPointForObjectLambdaRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAccessPointForObjectLambdaRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAccessPointForObjectLambdaResult {
+  /**
+   * <p>The name of the Object Lambda Access Point.</p>
+   */
+  Name?: string;
+
+  /**
+   * <p>Configuration to block all public access. This setting is turned on and can not be edited. </p>
+   */
+  PublicAccessBlockConfiguration?: PublicAccessBlockConfiguration;
+
+  /**
+   * <p>The date and time when the specified Object Lambda Access Point was created.</p>
+   */
+  CreationDate?: Date;
+}
+
+export namespace GetAccessPointForObjectLambdaResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAccessPointForObjectLambdaResult): any => ({
     ...obj,
   });
 }
@@ -1838,6 +2375,9 @@ export interface GetAccessPointPolicyRequest {
 }
 
 export namespace GetAccessPointPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccessPointPolicyRequest): any => ({
     ...obj,
   });
@@ -1851,7 +2391,47 @@ export interface GetAccessPointPolicyResult {
 }
 
 export namespace GetAccessPointPolicyResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccessPointPolicyResult): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAccessPointPolicyForObjectLambdaRequest {
+  /**
+   * <p>The account ID for the account that owns the specified Object Lambda Access Point.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The name of the Object Lambda Access Point.</p>
+   */
+  Name: string | undefined;
+}
+
+export namespace GetAccessPointPolicyForObjectLambdaRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAccessPointPolicyForObjectLambdaRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAccessPointPolicyForObjectLambdaResult {
+  /**
+   * <p>Object Lambda Access Point resource policy document.</p>
+   */
+  Policy?: string;
+}
+
+export namespace GetAccessPointPolicyForObjectLambdaResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAccessPointPolicyForObjectLambdaResult): any => ({
     ...obj,
   });
 }
@@ -1869,6 +2449,9 @@ export interface GetAccessPointPolicyStatusRequest {
 }
 
 export namespace GetAccessPointPolicyStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccessPointPolicyStatusRequest): any => ({
     ...obj,
   });
@@ -1877,7 +2460,7 @@ export namespace GetAccessPointPolicyStatusRequest {
 /**
  * <p>Indicates whether this access point policy is public. For more information about how Amazon S3 evaluates policies to determine whether they are public, see
  *          <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status">The Meaning of "Public"</a> in the
- * 	 <i>Amazon Simple Storage Service Developer Guide</i>.
+ * 	 <i>Amazon Simple Storage Service User Guide</i>.
  *       </p>
  */
 export interface PolicyStatus {
@@ -1888,6 +2471,9 @@ export interface PolicyStatus {
 }
 
 export namespace PolicyStatus {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PolicyStatus): any => ({
     ...obj,
   });
@@ -1901,7 +2487,50 @@ export interface GetAccessPointPolicyStatusResult {
 }
 
 export namespace GetAccessPointPolicyStatusResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetAccessPointPolicyStatusResult): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAccessPointPolicyStatusForObjectLambdaRequest {
+  /**
+   * <p>The account ID for the account that owns the specified Object Lambda Access Point.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The name of the Object Lambda Access Point.</p>
+   */
+  Name: string | undefined;
+}
+
+export namespace GetAccessPointPolicyStatusForObjectLambdaRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAccessPointPolicyStatusForObjectLambdaRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface GetAccessPointPolicyStatusForObjectLambdaResult {
+  /**
+   * <p>Indicates whether this access point policy is public. For more information about how Amazon S3 evaluates policies to determine whether they are public, see
+   *          <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status">The Meaning of "Public"</a> in the
+   * 	 <i>Amazon Simple Storage Service User Guide</i>.
+   *       </p>
+   */
+  PolicyStatus?: PolicyStatus;
+}
+
+export namespace GetAccessPointPolicyStatusForObjectLambdaResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: GetAccessPointPolicyStatusForObjectLambdaResult): any => ({
     ...obj,
   });
 }
@@ -1921,6 +2550,9 @@ export interface GetBucketRequest {
 }
 
 export namespace GetBucketRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketRequest): any => ({
     ...obj,
   });
@@ -1944,6 +2576,9 @@ export interface GetBucketResult {
 }
 
 export namespace GetBucketResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketResult): any => ({
     ...obj,
   });
@@ -1964,6 +2599,9 @@ export interface GetBucketLifecycleConfigurationRequest {
 }
 
 export namespace GetBucketLifecycleConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketLifecycleConfigurationRequest): any => ({
     ...obj,
   });
@@ -1993,6 +2631,9 @@ export interface LifecycleExpiration {
 }
 
 export namespace LifecycleExpiration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleExpiration): any => ({
     ...obj,
   });
@@ -2014,6 +2655,9 @@ export interface LifecycleRuleAndOperator {
 }
 
 export namespace LifecycleRuleAndOperator {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleRuleAndOperator): any => ({
     ...obj,
   });
@@ -2025,6 +2669,11 @@ export namespace LifecycleRuleAndOperator {
 export interface LifecycleRuleFilter {
   /**
    * <p>Prefix identifying one or more objects to which the rule applies.</p>
+   *          <important>
+   *             <p>Replacement must be made for object keys containing special characters (such as carriage returns) when using
+   *          XML requests. For more information, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints">
+   *             XML related object key constraints</a>.</p>
+   *          </important>
    */
   Prefix?: string;
 
@@ -2040,6 +2689,9 @@ export interface LifecycleRuleFilter {
 }
 
 export namespace LifecycleRuleFilter {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleRuleFilter): any => ({
     ...obj,
   });
@@ -2059,6 +2711,9 @@ export interface NoncurrentVersionExpiration {
 }
 
 export namespace NoncurrentVersionExpiration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoncurrentVersionExpiration): any => ({
     ...obj,
   });
@@ -2085,6 +2740,9 @@ export interface NoncurrentVersionTransition {
 }
 
 export namespace NoncurrentVersionTransition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoncurrentVersionTransition): any => ({
     ...obj,
   });
@@ -2096,7 +2754,7 @@ export type ExpirationStatus = "Disabled" | "Enabled";
  * <p>Specifies when an object transitions to a specified storage class. For more information
  *          about Amazon S3 Lifecycle configuration rules, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html">
  *             Transitioning objects using Amazon S3 Lifecycle</a> in the
- *             <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+ *             <i>Amazon Simple Storage Service User Guide</i>.</p>
  */
 export interface Transition {
   /**
@@ -2118,6 +2776,9 @@ export interface Transition {
 }
 
 export namespace Transition {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Transition): any => ({
     ...obj,
   });
@@ -2186,6 +2847,9 @@ export interface LifecycleRule {
 }
 
 export namespace LifecycleRule {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleRule): any => ({
     ...obj,
   });
@@ -2199,6 +2863,9 @@ export interface GetBucketLifecycleConfigurationResult {
 }
 
 export namespace GetBucketLifecycleConfigurationResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketLifecycleConfigurationResult): any => ({
     ...obj,
   });
@@ -2219,6 +2886,9 @@ export interface GetBucketPolicyRequest {
 }
 
 export namespace GetBucketPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketPolicyRequest): any => ({
     ...obj,
   });
@@ -2232,6 +2902,9 @@ export interface GetBucketPolicyResult {
 }
 
 export namespace GetBucketPolicyResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketPolicyResult): any => ({
     ...obj,
   });
@@ -2252,6 +2925,9 @@ export interface GetBucketTaggingRequest {
 }
 
 export namespace GetBucketTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketTaggingRequest): any => ({
     ...obj,
   });
@@ -2265,6 +2941,9 @@ export interface GetBucketTaggingResult {
 }
 
 export namespace GetBucketTaggingResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetBucketTaggingResult): any => ({
     ...obj,
   });
@@ -2283,6 +2962,9 @@ export interface GetJobTaggingRequest {
 }
 
 export namespace GetJobTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetJobTaggingRequest): any => ({
     ...obj,
   });
@@ -2296,6 +2978,9 @@ export interface GetJobTaggingResult {
 }
 
 export namespace GetJobTaggingResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetJobTaggingResult): any => ({
     ...obj,
   });
@@ -2310,6 +2995,9 @@ export interface GetPublicAccessBlockOutput {
 }
 
 export namespace GetPublicAccessBlockOutput {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPublicAccessBlockOutput): any => ({
     ...obj,
   });
@@ -2324,6 +3012,9 @@ export interface GetPublicAccessBlockRequest {
 }
 
 export namespace GetPublicAccessBlockRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetPublicAccessBlockRequest): any => ({
     ...obj,
   });
@@ -2340,6 +3031,9 @@ export interface NoSuchPublicAccessBlockConfiguration extends __SmithyException,
 }
 
 export namespace NoSuchPublicAccessBlockConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: NoSuchPublicAccessBlockConfiguration): any => ({
     ...obj,
   });
@@ -2358,6 +3052,9 @@ export interface GetStorageLensConfigurationRequest {
 }
 
 export namespace GetStorageLensConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStorageLensConfigurationRequest): any => ({
     ...obj,
   });
@@ -2378,6 +3075,9 @@ export interface StorageLensAwsOrg {
 }
 
 export namespace StorageLensAwsOrg {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StorageLensAwsOrg): any => ({
     ...obj,
   });
@@ -2398,6 +3098,9 @@ export interface SSEKMS {
 }
 
 export namespace SSEKMS {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SSEKMS): any => ({
     ...obj,
   });
@@ -2409,6 +3112,9 @@ export namespace SSEKMS {
 export interface SSES3 {}
 
 export namespace SSES3 {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: SSES3): any => ({
     ...obj,
   });
@@ -2430,6 +3136,9 @@ export interface StorageLensDataExportEncryption {
 }
 
 export namespace StorageLensDataExportEncryption {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StorageLensDataExportEncryption): any => ({
     ...obj,
   });
@@ -2479,6 +3188,9 @@ export interface S3BucketDestination {
 }
 
 export namespace S3BucketDestination {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: S3BucketDestination): any => ({
     ...obj,
   });
@@ -2491,11 +3203,17 @@ export namespace S3BucketDestination {
 export interface StorageLensDataExport {
   /**
    * <p>A container for the bucket where the S3 Storage Lens metrics export will be located.</p>
+   *          <note>
+   *             <p>This bucket must be located in the same Region as the storage lens configuration. </p>
+   *          </note>
    */
   S3BucketDestination: S3BucketDestination | undefined;
 }
 
 export namespace StorageLensDataExport {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StorageLensDataExport): any => ({
     ...obj,
   });
@@ -2517,6 +3235,9 @@ export interface _Exclude {
 }
 
 export namespace _Exclude {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: _Exclude): any => ({
     ...obj,
   });
@@ -2538,6 +3259,9 @@ export interface Include {
 }
 
 export namespace Include {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Include): any => ({
     ...obj,
   });
@@ -2597,6 +3321,9 @@ export interface StorageLensConfiguration {
 }
 
 export namespace StorageLensConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StorageLensConfiguration): any => ({
     ...obj,
   });
@@ -2610,6 +3337,9 @@ export interface GetStorageLensConfigurationResult {
 }
 
 export namespace GetStorageLensConfigurationResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStorageLensConfigurationResult): any => ({
     ...obj,
   });
@@ -2628,6 +3358,9 @@ export interface GetStorageLensConfigurationTaggingRequest {
 }
 
 export namespace GetStorageLensConfigurationTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStorageLensConfigurationTaggingRequest): any => ({
     ...obj,
   });
@@ -2649,6 +3382,9 @@ export interface StorageLensTag {
 }
 
 export namespace StorageLensTag {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: StorageLensTag): any => ({
     ...obj,
   });
@@ -2662,6 +3398,9 @@ export interface GetStorageLensConfigurationTaggingResult {
 }
 
 export namespace GetStorageLensConfigurationTaggingResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: GetStorageLensConfigurationTaggingResult): any => ({
     ...obj,
   });
@@ -2695,6 +3434,9 @@ export interface ListAccessPointsRequest {
 }
 
 export namespace ListAccessPointsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccessPointsRequest): any => ({
     ...obj,
   });
@@ -2716,7 +3458,85 @@ export interface ListAccessPointsResult {
 }
 
 export namespace ListAccessPointsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListAccessPointsResult): any => ({
+    ...obj,
+  });
+}
+
+export interface ListAccessPointsForObjectLambdaRequest {
+  /**
+   * <p>The account ID for the account that owns the specified Object Lambda Access Point.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>If the list has more access points than can be returned in one call to this
+   *          API, this field contains a continuation token that you can provide in subsequent calls to
+   *          this API to retrieve additional access points.</p>
+   */
+  NextToken?: string;
+
+  /**
+   * <p>The maximum number of access points that you want to include in the list. If there are more than this number of access points, then the response will include a continuation token in the <code>NextToken</code> field that you can use to retrieve the next page of access points.</p>
+   */
+  MaxResults?: number;
+}
+
+export namespace ListAccessPointsForObjectLambdaRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListAccessPointsForObjectLambdaRequest): any => ({
+    ...obj,
+  });
+}
+
+/**
+ * <p>An access point with an attached AWS Lambda function used to access transformed data from an Amazon S3 bucket.</p>
+ */
+export interface ObjectLambdaAccessPoint {
+  /**
+   * <p>The name of the Object Lambda Access Point.</p>
+   */
+  Name: string | undefined;
+
+  /**
+   * <p>Specifies the ARN for the Object Lambda Access Point.</p>
+   */
+  ObjectLambdaAccessPointArn?: string;
+}
+
+export namespace ObjectLambdaAccessPoint {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ObjectLambdaAccessPoint): any => ({
+    ...obj,
+  });
+}
+
+export interface ListAccessPointsForObjectLambdaResult {
+  /**
+   * <p>Returns list of Object Lambda Access Points.</p>
+   */
+  ObjectLambdaAccessPointList?: ObjectLambdaAccessPoint[];
+
+  /**
+   * <p>If the list has more access points than can be returned in one call to this
+   *          API, this field contains a continuation token that you can provide in subsequent calls to
+   *          this API to retrieve additional access points.</p>
+   */
+  NextToken?: string;
+}
+
+export namespace ListAccessPointsForObjectLambdaResult {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: ListAccessPointsForObjectLambdaResult): any => ({
     ...obj,
   });
 }
@@ -2731,6 +3551,9 @@ export interface InvalidNextTokenException extends __SmithyException, $MetadataB
 }
 
 export namespace InvalidNextTokenException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidNextTokenException): any => ({
     ...obj,
   });
@@ -2746,6 +3569,9 @@ export interface InvalidRequestException extends __SmithyException, $MetadataBea
 }
 
 export namespace InvalidRequestException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: InvalidRequestException): any => ({
     ...obj,
   });
@@ -2753,7 +3579,7 @@ export namespace InvalidRequestException {
 
 export interface ListJobsRequest {
   /**
-   * <p></p>
+   * <p>The AWS account ID associated with the S3 Batch Operations job.</p>
    */
   AccountId?: string;
 
@@ -2774,6 +3600,9 @@ export interface ListJobsRequest {
 }
 
 export namespace ListJobsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobsRequest): any => ({
     ...obj,
   });
@@ -2781,6 +3610,7 @@ export namespace ListJobsRequest {
 
 export enum OperationName {
   LambdaInvoke = "LambdaInvoke",
+  S3DeleteObjectTagging = "S3DeleteObjectTagging",
   S3InitiateRestoreObject = "S3InitiateRestoreObject",
   S3PutObjectAcl = "S3PutObjectAcl",
   S3PutObjectCopy = "S3PutObjectCopy",
@@ -2804,7 +3634,7 @@ export interface JobListDescriptor {
   Description?: string;
 
   /**
-   * <p>The operation that the specified job is configured to run on each object listed in the manifest.</p>
+   * <p>The operation that the specified job is configured to run on every object listed in the manifest.</p>
    */
   Operation?: OperationName | string;
 
@@ -2836,6 +3666,9 @@ export interface JobListDescriptor {
 }
 
 export namespace JobListDescriptor {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobListDescriptor): any => ({
     ...obj,
   });
@@ -2855,6 +3688,9 @@ export interface ListJobsResult {
 }
 
 export namespace ListJobsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListJobsResult): any => ({
     ...obj,
   });
@@ -2886,6 +3722,9 @@ export interface ListRegionalBucketsRequest {
 }
 
 export namespace ListRegionalBucketsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRegionalBucketsRequest): any => ({
     ...obj,
   });
@@ -2922,6 +3761,9 @@ export interface RegionalBucket {
 }
 
 export namespace RegionalBucket {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: RegionalBucket): any => ({
     ...obj,
   });
@@ -2944,6 +3786,9 @@ export interface ListRegionalBucketsResult {
 }
 
 export namespace ListRegionalBucketsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListRegionalBucketsResult): any => ({
     ...obj,
   });
@@ -2962,6 +3807,9 @@ export interface ListStorageLensConfigurationsRequest {
 }
 
 export namespace ListStorageLensConfigurationsRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListStorageLensConfigurationsRequest): any => ({
     ...obj,
   });
@@ -2996,6 +3844,9 @@ export interface ListStorageLensConfigurationEntry {
 }
 
 export namespace ListStorageLensConfigurationEntry {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListStorageLensConfigurationEntry): any => ({
     ...obj,
   });
@@ -3016,8 +3867,38 @@ export interface ListStorageLensConfigurationsResult {
 }
 
 export namespace ListStorageLensConfigurationsResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: ListStorageLensConfigurationsResult): any => ({
     ...obj,
+  });
+}
+
+export interface PutAccessPointConfigurationForObjectLambdaRequest {
+  /**
+   * <p>The account ID for the account that owns the specified Object Lambda Access Point.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The name of the Object Lambda Access Point.</p>
+   */
+  Name: string | undefined;
+
+  /**
+   * <p>Object Lambda Access Point configuration document.</p>
+   */
+  Configuration: ObjectLambdaConfiguration | undefined;
+}
+
+export namespace PutAccessPointConfigurationForObjectLambdaRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PutAccessPointConfigurationForObjectLambdaRequest): any => ({
+    ...obj,
+    ...(obj.Configuration && { Configuration: ObjectLambdaConfiguration.filterSensitiveLog(obj.Configuration) }),
   });
 }
 
@@ -3035,13 +3916,42 @@ export interface PutAccessPointPolicyRequest {
   Name: string | undefined;
 
   /**
-   * <p>The policy that you want to apply to the specified access point. For more information about access point policies, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html">Managing data access with Amazon S3 Access Points</a> in the <i>Amazon Simple Storage Service Developer Guide</i>.</p>
+   * <p>The policy that you want to apply to the specified access point. For more information about access point policies, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html">Managing data access with Amazon S3 Access Points</a> in the <i>Amazon Simple Storage Service User Guide</i>.</p>
    */
   Policy: string | undefined;
 }
 
 export namespace PutAccessPointPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutAccessPointPolicyRequest): any => ({
+    ...obj,
+  });
+}
+
+export interface PutAccessPointPolicyForObjectLambdaRequest {
+  /**
+   * <p>The account ID for the account that owns the specified Object Lambda Access Point.</p>
+   */
+  AccountId?: string;
+
+  /**
+   * <p>The name of the Object Lambda Access Point.</p>
+   */
+  Name: string | undefined;
+
+  /**
+   * <p>Object Lambda Access Point resource policy document.</p>
+   */
+  Policy: string | undefined;
+}
+
+export namespace PutAccessPointPolicyForObjectLambdaRequest {
+  /**
+   * @internal
+   */
+  export const filterSensitiveLog = (obj: PutAccessPointPolicyForObjectLambdaRequest): any => ({
     ...obj,
   });
 }
@@ -3057,6 +3967,9 @@ export interface LifecycleConfiguration {
 }
 
 export namespace LifecycleConfiguration {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: LifecycleConfiguration): any => ({
     ...obj,
   });
@@ -3080,6 +3993,9 @@ export interface PutBucketLifecycleConfigurationRequest {
 }
 
 export namespace PutBucketLifecycleConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketLifecycleConfigurationRequest): any => ({
     ...obj,
   });
@@ -3113,6 +4029,9 @@ export interface PutBucketPolicyRequest {
 }
 
 export namespace PutBucketPolicyRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketPolicyRequest): any => ({
     ...obj,
   });
@@ -3129,6 +4048,9 @@ export interface Tagging {
 }
 
 export namespace Tagging {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: Tagging): any => ({
     ...obj,
   });
@@ -3154,6 +4076,9 @@ export interface PutBucketTaggingRequest {
 }
 
 export namespace PutBucketTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutBucketTaggingRequest): any => ({
     ...obj,
   });
@@ -3177,6 +4102,9 @@ export interface PutJobTaggingRequest {
 }
 
 export namespace PutJobTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutJobTaggingRequest): any => ({
     ...obj,
   });
@@ -3185,6 +4113,9 @@ export namespace PutJobTaggingRequest {
 export interface PutJobTaggingResult {}
 
 export namespace PutJobTaggingResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutJobTaggingResult): any => ({
     ...obj,
   });
@@ -3200,6 +4131,9 @@ export interface TooManyTagsException extends __SmithyException, $MetadataBearer
 }
 
 export namespace TooManyTagsException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: TooManyTagsException): any => ({
     ...obj,
   });
@@ -3207,19 +4141,22 @@ export namespace TooManyTagsException {
 
 export interface PutPublicAccessBlockRequest {
   /**
-   * <p>The <code>PublicAccessBlock</code> configuration that you want to apply to the specified AWS
-   *          account.</p>
-   */
-  PublicAccessBlockConfiguration: PublicAccessBlockConfiguration | undefined;
-
-  /**
    * <p>The account ID for the AWS account whose <code>PublicAccessBlock</code> configuration you want
    *          to set.</p>
    */
   AccountId?: string;
+
+  /**
+   * <p>The <code>PublicAccessBlock</code> configuration that you want to apply to the specified AWS
+   *          account.</p>
+   */
+  PublicAccessBlockConfiguration: PublicAccessBlockConfiguration | undefined;
 }
 
 export namespace PutPublicAccessBlockRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutPublicAccessBlockRequest): any => ({
     ...obj,
   });
@@ -3251,6 +4188,9 @@ export interface PutStorageLensConfigurationRequest {
 }
 
 export namespace PutStorageLensConfigurationRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutStorageLensConfigurationRequest): any => ({
     ...obj,
   });
@@ -3277,6 +4217,9 @@ export interface PutStorageLensConfigurationTaggingRequest {
 }
 
 export namespace PutStorageLensConfigurationTaggingRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutStorageLensConfigurationTaggingRequest): any => ({
     ...obj,
   });
@@ -3285,6 +4228,9 @@ export namespace PutStorageLensConfigurationTaggingRequest {
 export interface PutStorageLensConfigurationTaggingResult {}
 
 export namespace PutStorageLensConfigurationTaggingResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: PutStorageLensConfigurationTaggingResult): any => ({
     ...obj,
   });
@@ -3292,7 +4238,7 @@ export namespace PutStorageLensConfigurationTaggingResult {
 
 export interface UpdateJobPriorityRequest {
   /**
-   * <p></p>
+   * <p>The AWS account ID associated with the S3 Batch Operations job.</p>
    */
   AccountId?: string;
 
@@ -3308,6 +4254,9 @@ export interface UpdateJobPriorityRequest {
 }
 
 export namespace UpdateJobPriorityRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateJobPriorityRequest): any => ({
     ...obj,
   });
@@ -3326,6 +4275,9 @@ export interface UpdateJobPriorityResult {
 }
 
 export namespace UpdateJobPriorityResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateJobPriorityResult): any => ({
     ...obj,
   });
@@ -3341,6 +4293,9 @@ export interface JobStatusException extends __SmithyException, $MetadataBearer {
 }
 
 export namespace JobStatusException {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: JobStatusException): any => ({
     ...obj,
   });
@@ -3353,7 +4308,7 @@ export enum RequestedJobStatus {
 
 export interface UpdateJobStatusRequest {
   /**
-   * <p></p>
+   * <p>The AWS account ID associated with the S3 Batch Operations job.</p>
    */
   AccountId?: string;
 
@@ -3374,6 +4329,9 @@ export interface UpdateJobStatusRequest {
 }
 
 export namespace UpdateJobStatusRequest {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateJobStatusRequest): any => ({
     ...obj,
   });
@@ -3397,6 +4355,9 @@ export interface UpdateJobStatusResult {
 }
 
 export namespace UpdateJobStatusResult {
+  /**
+   * @internal
+   */
   export const filterSensitiveLog = (obj: UpdateJobStatusResult): any => ({
     ...obj,
   });

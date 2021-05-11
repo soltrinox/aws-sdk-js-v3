@@ -20,12 +20,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListNotebookInstanceLifecycleConfigsCommandInput = ListNotebookInstanceLifecycleConfigsInput;
-export type ListNotebookInstanceLifecycleConfigsCommandOutput = ListNotebookInstanceLifecycleConfigsOutput &
-  __MetadataBearer;
+export interface ListNotebookInstanceLifecycleConfigsCommandInput extends ListNotebookInstanceLifecycleConfigsInput {}
+export interface ListNotebookInstanceLifecycleConfigsCommandOutput
+  extends ListNotebookInstanceLifecycleConfigsOutput,
+    __MetadataBearer {}
 
 /**
  * <p>Lists notebook instance lifestyle configurations created with the <a>CreateNotebookInstanceLifecycleConfig</a> API.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SageMakerClient, ListNotebookInstanceLifecycleConfigsCommand } from "@aws-sdk/client-sagemaker"; // ES Modules import
+ * // const { SageMakerClient, ListNotebookInstanceLifecycleConfigsCommand } = require("@aws-sdk/client-sagemaker"); // CommonJS import
+ * const client = new SageMakerClient(config);
+ * const command = new ListNotebookInstanceLifecycleConfigsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListNotebookInstanceLifecycleConfigsCommandInput} for command's `input` shape.
+ * @see {@link ListNotebookInstanceLifecycleConfigsCommandOutput} for command's `response` shape.
+ * @see {@link SageMakerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListNotebookInstanceLifecycleConfigsCommand extends $Command<
   ListNotebookInstanceLifecycleConfigsCommandInput,

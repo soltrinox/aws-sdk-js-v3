@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetFunctionEventInvokeConfigCommandInput = GetFunctionEventInvokeConfigRequest;
-export type GetFunctionEventInvokeConfigCommandOutput = FunctionEventInvokeConfig & __MetadataBearer;
+export interface GetFunctionEventInvokeConfigCommandInput extends GetFunctionEventInvokeConfigRequest {}
+export interface GetFunctionEventInvokeConfigCommandOutput extends FunctionEventInvokeConfig, __MetadataBearer {}
 
 /**
  * <p>Retrieves the configuration for asynchronous invocation for a function, version, or alias.</p>
  *          <p>To configure options for asynchronous invocation, use <a>PutFunctionEventInvokeConfig</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LambdaClient, GetFunctionEventInvokeConfigCommand } from "@aws-sdk/client-lambda"; // ES Modules import
+ * // const { LambdaClient, GetFunctionEventInvokeConfigCommand } = require("@aws-sdk/client-lambda"); // CommonJS import
+ * const client = new LambdaClient(config);
+ * const command = new GetFunctionEventInvokeConfigCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetFunctionEventInvokeConfigCommandInput} for command's `input` shape.
+ * @see {@link GetFunctionEventInvokeConfigCommandOutput} for command's `response` shape.
+ * @see {@link LambdaClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetFunctionEventInvokeConfigCommand extends $Command<
   GetFunctionEventInvokeConfigCommandInput,

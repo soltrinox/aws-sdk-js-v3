@@ -17,12 +17,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetDistributionLatestCacheResetCommandInput = GetDistributionLatestCacheResetRequest;
-export type GetDistributionLatestCacheResetCommandOutput = GetDistributionLatestCacheResetResult & __MetadataBearer;
+export interface GetDistributionLatestCacheResetCommandInput extends GetDistributionLatestCacheResetRequest {}
+export interface GetDistributionLatestCacheResetCommandOutput
+  extends GetDistributionLatestCacheResetResult,
+    __MetadataBearer {}
 
 /**
  * <p>Returns the timestamp and status of the last cache reset of a specific Amazon Lightsail
  *       content delivery network (CDN) distribution.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { LightsailClient, GetDistributionLatestCacheResetCommand } from "@aws-sdk/client-lightsail"; // ES Modules import
+ * // const { LightsailClient, GetDistributionLatestCacheResetCommand } = require("@aws-sdk/client-lightsail"); // CommonJS import
+ * const client = new LightsailClient(config);
+ * const command = new GetDistributionLatestCacheResetCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetDistributionLatestCacheResetCommandInput} for command's `input` shape.
+ * @see {@link GetDistributionLatestCacheResetCommandOutput} for command's `response` shape.
+ * @see {@link LightsailClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetDistributionLatestCacheResetCommand extends $Command<
   GetDistributionLatestCacheResetCommandInput,

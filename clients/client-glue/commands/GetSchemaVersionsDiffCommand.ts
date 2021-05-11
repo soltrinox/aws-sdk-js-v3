@@ -17,12 +17,26 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSchemaVersionsDiffCommandInput = GetSchemaVersionsDiffInput;
-export type GetSchemaVersionsDiffCommandOutput = GetSchemaVersionsDiffResponse & __MetadataBearer;
+export interface GetSchemaVersionsDiffCommandInput extends GetSchemaVersionsDiffInput {}
+export interface GetSchemaVersionsDiffCommandOutput extends GetSchemaVersionsDiffResponse, __MetadataBearer {}
 
 /**
  * <p>Fetches the schema version difference in the specified difference type between two stored schema versions in the Schema Registry.</p>
  *          <p>This API allows you to compare two schema versions between two schema definitions under the same schema.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GlueClient, GetSchemaVersionsDiffCommand } from "@aws-sdk/client-glue"; // ES Modules import
+ * // const { GlueClient, GetSchemaVersionsDiffCommand } = require("@aws-sdk/client-glue"); // CommonJS import
+ * const client = new GlueClient(config);
+ * const command = new GetSchemaVersionsDiffCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSchemaVersionsDiffCommandInput} for command's `input` shape.
+ * @see {@link GetSchemaVersionsDiffCommandOutput} for command's `response` shape.
+ * @see {@link GlueClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSchemaVersionsDiffCommand extends $Command<
   GetSchemaVersionsDiffCommandInput,

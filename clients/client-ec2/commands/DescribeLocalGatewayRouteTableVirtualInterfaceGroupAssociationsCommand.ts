@@ -20,12 +20,28 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCommandInput = DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest;
-export type DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCommandOutput = DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult &
-  __MetadataBearer;
+export interface DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCommandInput
+  extends DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest {}
+export interface DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCommandOutput
+  extends DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult,
+    __MetadataBearer {}
 
 /**
  * <p>Describes the associations between virtual interface groups and local gateway route tables.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCommandInput} for command's `input` shape.
+ * @see {@link DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCommand extends $Command<
   DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsCommandInput,

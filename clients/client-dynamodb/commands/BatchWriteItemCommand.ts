@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type BatchWriteItemCommandInput = BatchWriteItemInput;
-export type BatchWriteItemCommandOutput = BatchWriteItemOutput & __MetadataBearer;
+export interface BatchWriteItemCommandInput extends BatchWriteItemInput {}
+export interface BatchWriteItemCommandOutput extends BatchWriteItemOutput, __MetadataBearer {}
 
 /**
  * <p>The <code>BatchWriteItem</code> operation puts or deletes multiple items in one or more
@@ -96,6 +96,20 @@ export type BatchWriteItemCommandOutput = BatchWriteItemOutput & __MetadataBeare
  *                <p>The total request size exceeds 16 MB.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DynamoDBClient, BatchWriteItemCommand } from "@aws-sdk/client-dynamodb"; // ES Modules import
+ * // const { DynamoDBClient, BatchWriteItemCommand } = require("@aws-sdk/client-dynamodb"); // CommonJS import
+ * const client = new DynamoDBClient(config);
+ * const command = new BatchWriteItemCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link BatchWriteItemCommandInput} for command's `input` shape.
+ * @see {@link BatchWriteItemCommandOutput} for command's `response` shape.
+ * @see {@link DynamoDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class BatchWriteItemCommand extends $Command<
   BatchWriteItemCommandInput,

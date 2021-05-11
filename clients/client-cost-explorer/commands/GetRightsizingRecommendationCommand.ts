@@ -17,8 +17,10 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetRightsizingRecommendationCommandInput = GetRightsizingRecommendationRequest;
-export type GetRightsizingRecommendationCommandOutput = GetRightsizingRecommendationResponse & __MetadataBearer;
+export interface GetRightsizingRecommendationCommandInput extends GetRightsizingRecommendationRequest {}
+export interface GetRightsizingRecommendationCommandOutput
+  extends GetRightsizingRecommendationResponse,
+    __MetadataBearer {}
 
 /**
  * <p>Creates recommendations that
@@ -31,6 +33,20 @@ export type GetRightsizingRecommendationCommandOutput = GetRightsizingRecommenda
  *       Recommendations</a>
  *       in the <i>AWS Billing and Cost Management User
  *       Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CostExplorerClient, GetRightsizingRecommendationCommand } from "@aws-sdk/client-cost-explorer"; // ES Modules import
+ * // const { CostExplorerClient, GetRightsizingRecommendationCommand } = require("@aws-sdk/client-cost-explorer"); // CommonJS import
+ * const client = new CostExplorerClient(config);
+ * const command = new GetRightsizingRecommendationCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetRightsizingRecommendationCommandInput} for command's `input` shape.
+ * @see {@link GetRightsizingRecommendationCommandOutput} for command's `response` shape.
+ * @see {@link CostExplorerClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetRightsizingRecommendationCommand extends $Command<
   GetRightsizingRecommendationCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ApproveAssignmentCommandInput = ApproveAssignmentRequest;
-export type ApproveAssignmentCommandOutput = ApproveAssignmentResponse & __MetadataBearer;
+export interface ApproveAssignmentCommandInput extends ApproveAssignmentRequest {}
+export interface ApproveAssignmentCommandOutput extends ApproveAssignmentResponse, __MetadataBearer {}
 
 /**
  * <p>
@@ -51,6 +51,20 @@ export type ApproveAssignmentCommandOutput = ApproveAssignmentResponse & __Metad
  *             This only works on rejected assignments that were submitted within the previous 30 days
  *             and only if the assignment's related HIT has not been deleted.
  *         </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MTurkClient, ApproveAssignmentCommand } from "@aws-sdk/client-mturk"; // ES Modules import
+ * // const { MTurkClient, ApproveAssignmentCommand } = require("@aws-sdk/client-mturk"); // CommonJS import
+ * const client = new MTurkClient(config);
+ * const command = new ApproveAssignmentCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ApproveAssignmentCommandInput} for command's `input` shape.
+ * @see {@link ApproveAssignmentCommandOutput} for command's `response` shape.
+ * @see {@link MTurkClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ApproveAssignmentCommand extends $Command<
   ApproveAssignmentCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartFaceDetectionCommandInput = StartFaceDetectionRequest;
-export type StartFaceDetectionCommandOutput = StartFaceDetectionResponse & __MetadataBearer;
+export interface StartFaceDetectionCommandInput extends StartFaceDetectionRequest {}
+export interface StartFaceDetectionCommandOutput extends StartFaceDetectionResponse, __MetadataBearer {}
 
 /**
  * <p>Starts asynchronous detection of faces in a stored video.</p>
@@ -34,6 +34,20 @@ export type StartFaceDetectionCommandOutput = StartFaceDetectionResponse & __Met
  *
  *          <p>For more information, see Detecting Faces in a Stored Video in the
  *      Amazon Rekognition Developer Guide.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RekognitionClient, StartFaceDetectionCommand } from "@aws-sdk/client-rekognition"; // ES Modules import
+ * // const { RekognitionClient, StartFaceDetectionCommand } = require("@aws-sdk/client-rekognition"); // CommonJS import
+ * const client = new RekognitionClient(config);
+ * const command = new StartFaceDetectionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartFaceDetectionCommandInput} for command's `input` shape.
+ * @see {@link StartFaceDetectionCommandOutput} for command's `response` shape.
+ * @see {@link RekognitionClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartFaceDetectionCommand extends $Command<
   StartFaceDetectionCommandInput,

@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeStacksCommandInput = DescribeStacksInput;
-export type DescribeStacksCommandOutput = DescribeStacksOutput & __MetadataBearer;
+export interface DescribeStacksCommandInput extends DescribeStacksInput {}
+export interface DescribeStacksCommandOutput extends DescribeStacksOutput, __MetadataBearer {}
 
 /**
  * <p>Returns the description for the specified stack; if no stack name was specified, then
@@ -27,6 +27,20 @@ export type DescribeStacksCommandOutput = DescribeStacksOutput & __MetadataBeare
  *             <p>If the stack does not exist, an <code>AmazonCloudFormationException</code> is
  *             returned.</p>
  *          </note>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudFormationClient, DescribeStacksCommand } from "@aws-sdk/client-cloudformation"; // ES Modules import
+ * // const { CloudFormationClient, DescribeStacksCommand } = require("@aws-sdk/client-cloudformation"); // CommonJS import
+ * const client = new CloudFormationClient(config);
+ * const command = new DescribeStacksCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeStacksCommandInput} for command's `input` shape.
+ * @see {@link DescribeStacksCommandOutput} for command's `response` shape.
+ * @see {@link CloudFormationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeStacksCommand extends $Command<
   DescribeStacksCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type NullAndEmptyHeadersServerCommandInput = NullAndEmptyHeadersIO;
-export type NullAndEmptyHeadersServerCommandOutput = NullAndEmptyHeadersIO & __MetadataBearer;
+export interface NullAndEmptyHeadersServerCommandInput extends NullAndEmptyHeadersIO {}
+export interface NullAndEmptyHeadersServerCommandOutput extends NullAndEmptyHeadersIO, __MetadataBearer {}
 
 /**
  * Null and empty headers are not sent over the wire.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { RestXmlProtocolClient, NullAndEmptyHeadersServerCommand } from "@aws-sdk/aws-restxml"; // ES Modules import
+ * // const { RestXmlProtocolClient, NullAndEmptyHeadersServerCommand } = require("@aws-sdk/aws-restxml"); // CommonJS import
+ * const client = new RestXmlProtocolClient(config);
+ * const command = new NullAndEmptyHeadersServerCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link NullAndEmptyHeadersServerCommandInput} for command's `input` shape.
+ * @see {@link NullAndEmptyHeadersServerCommandOutput} for command's `response` shape.
+ * @see {@link RestXmlProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class NullAndEmptyHeadersServerCommand extends $Command<
   NullAndEmptyHeadersServerCommandInput,

@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListDevicesCommandInput = ListDevicesRequest;
-export type ListDevicesCommandOutput = ListDevicesResult & __MetadataBearer;
+export interface ListDevicesCommandInput extends ListDevicesRequest {}
+export interface ListDevicesCommandOutput extends ListDevicesResult, __MetadataBearer {}
 
 /**
  * <p>Gets information about unique device types.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DeviceFarmClient, ListDevicesCommand } from "@aws-sdk/client-device-farm"; // ES Modules import
+ * // const { DeviceFarmClient, ListDevicesCommand } = require("@aws-sdk/client-device-farm"); // CommonJS import
+ * const client = new DeviceFarmClient(config);
+ * const command = new ListDevicesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListDevicesCommandInput} for command's `input` shape.
+ * @see {@link ListDevicesCommandOutput} for command's `response` shape.
+ * @see {@link DeviceFarmClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListDevicesCommand extends $Command<
   ListDevicesCommandInput,

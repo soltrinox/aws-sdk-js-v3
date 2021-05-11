@@ -17,11 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeFastSnapshotRestoresCommandInput = DescribeFastSnapshotRestoresRequest;
-export type DescribeFastSnapshotRestoresCommandOutput = DescribeFastSnapshotRestoresResult & __MetadataBearer;
+export interface DescribeFastSnapshotRestoresCommandInput extends DescribeFastSnapshotRestoresRequest {}
+export interface DescribeFastSnapshotRestoresCommandOutput
+  extends DescribeFastSnapshotRestoresResult,
+    __MetadataBearer {}
 
 /**
  * <p>Describes the state of fast snapshot restores for your snapshots.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2Client, DescribeFastSnapshotRestoresCommand } from "@aws-sdk/client-ec2"; // ES Modules import
+ * // const { EC2Client, DescribeFastSnapshotRestoresCommand } = require("@aws-sdk/client-ec2"); // CommonJS import
+ * const client = new EC2Client(config);
+ * const command = new DescribeFastSnapshotRestoresCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeFastSnapshotRestoresCommandInput} for command's `input` shape.
+ * @see {@link DescribeFastSnapshotRestoresCommandOutput} for command's `response` shape.
+ * @see {@link EC2ClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeFastSnapshotRestoresCommand extends $Command<
   DescribeFastSnapshotRestoresCommandInput,

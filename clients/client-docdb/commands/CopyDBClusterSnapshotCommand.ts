@@ -18,8 +18,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CopyDBClusterSnapshotCommandInput = CopyDBClusterSnapshotMessage;
-export type CopyDBClusterSnapshotCommandOutput = CopyDBClusterSnapshotResult & __MetadataBearer;
+export interface CopyDBClusterSnapshotCommandInput extends CopyDBClusterSnapshotMessage {}
+export interface CopyDBClusterSnapshotCommandOutput extends CopyDBClusterSnapshotResult, __MetadataBearer {}
 
 /**
  * <p>Copies a snapshot of a cluster.</p>
@@ -34,6 +34,20 @@ export type CopyDBClusterSnapshotCommandOutput = CopyDBClusterSnapshotResult & _
  *             target cluster snapshot identified by
  *             <code>TargetDBClusterSnapshotIdentifier</code> while that cluster
  *             snapshot is in the <i>copying</i> status.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DocDBClient, CopyDBClusterSnapshotCommand } from "@aws-sdk/client-docdb"; // ES Modules import
+ * // const { DocDBClient, CopyDBClusterSnapshotCommand } = require("@aws-sdk/client-docdb"); // CommonJS import
+ * const client = new DocDBClient(config);
+ * const command = new CopyDBClusterSnapshotCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CopyDBClusterSnapshotCommandInput} for command's `input` shape.
+ * @see {@link CopyDBClusterSnapshotCommandOutput} for command's `response` shape.
+ * @see {@link DocDBClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CopyDBClusterSnapshotCommand extends $Command<
   CopyDBClusterSnapshotCommandInput,

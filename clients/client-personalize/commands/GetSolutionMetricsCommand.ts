@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSolutionMetricsCommandInput = GetSolutionMetricsRequest;
-export type GetSolutionMetricsCommandOutput = GetSolutionMetricsResponse & __MetadataBearer;
+export interface GetSolutionMetricsCommandInput extends GetSolutionMetricsRequest {}
+export interface GetSolutionMetricsCommandOutput extends GetSolutionMetricsResponse, __MetadataBearer {}
 
 /**
  * <p>Gets the metrics for the specified solution version.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { PersonalizeClient, GetSolutionMetricsCommand } from "@aws-sdk/client-personalize"; // ES Modules import
+ * // const { PersonalizeClient, GetSolutionMetricsCommand } = require("@aws-sdk/client-personalize"); // CommonJS import
+ * const client = new PersonalizeClient(config);
+ * const command = new GetSolutionMetricsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSolutionMetricsCommandInput} for command's `input` shape.
+ * @see {@link GetSolutionMetricsCommandOutput} for command's `response` shape.
+ * @see {@link PersonalizeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSolutionMetricsCommand extends $Command<
   GetSolutionMetricsCommandInput,

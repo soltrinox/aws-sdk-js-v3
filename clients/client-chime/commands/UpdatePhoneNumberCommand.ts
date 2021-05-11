@@ -17,14 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdatePhoneNumberCommandInput = UpdatePhoneNumberRequest;
-export type UpdatePhoneNumberCommandOutput = UpdatePhoneNumberResponse & __MetadataBearer;
+export interface UpdatePhoneNumberCommandInput extends UpdatePhoneNumberRequest {}
+export interface UpdatePhoneNumberCommandOutput extends UpdatePhoneNumberResponse, __MetadataBearer {}
 
 /**
  * <p>Updates phone number details, such as product type or calling name, for the specified phone number ID. You can update one phone number detail at a time. For example, you can update either the product type or the calling name in one action.</p>
- *          <p>For toll-free numbers, you must use the Amazon Chime Voice Connector product
- *       type.</p>
+ *          <p>For toll-free numbers, you must use the Amazon Chime Voice Connector product type.</p>
  *          <p>Updates to outbound calling names can take up to 72 hours to complete. Pending updates to outbound calling names must be complete before you can request another update.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ChimeClient, UpdatePhoneNumberCommand } from "@aws-sdk/client-chime"; // ES Modules import
+ * // const { ChimeClient, UpdatePhoneNumberCommand } = require("@aws-sdk/client-chime"); // CommonJS import
+ * const client = new ChimeClient(config);
+ * const command = new UpdatePhoneNumberCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdatePhoneNumberCommandInput} for command's `input` shape.
+ * @see {@link UpdatePhoneNumberCommandOutput} for command's `response` shape.
+ * @see {@link ChimeClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdatePhoneNumberCommand extends $Command<
   UpdatePhoneNumberCommandInput,

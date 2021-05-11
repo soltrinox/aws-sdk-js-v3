@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateHapgCommandInput = CreateHapgRequest;
-export type CreateHapgCommandOutput = CreateHapgResponse & __MetadataBearer;
+export interface CreateHapgCommandInput extends CreateHapgRequest {}
+export interface CreateHapgCommandOutput extends CreateHapgResponse, __MetadataBearer {}
 
 /**
  * <p>This is documentation for <b>AWS CloudHSM Classic</b>. For
@@ -33,6 +33,20 @@ export type CreateHapgCommandOutput = CreateHapgResponse & __MetadataBearer;
  *       Reference</a>.</p>
  *          <p>Creates a high-availability partition group. A high-availability partition group is a
  *       group of partitions that spans multiple physical HSMs.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { CloudHSMClient, CreateHapgCommand } from "@aws-sdk/client-cloudhsm"; // ES Modules import
+ * // const { CloudHSMClient, CreateHapgCommand } = require("@aws-sdk/client-cloudhsm"); // CommonJS import
+ * const client = new CloudHSMClient(config);
+ * const command = new CreateHapgCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateHapgCommandInput} for command's `input` shape.
+ * @see {@link CreateHapgCommandOutput} for command's `response` shape.
+ * @see {@link CloudHSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateHapgCommand extends $Command<
   CreateHapgCommandInput,

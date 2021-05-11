@@ -17,64 +17,44 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DescribeGameSessionPlacementCommandInput = DescribeGameSessionPlacementInput;
-export type DescribeGameSessionPlacementCommandOutput = DescribeGameSessionPlacementOutput & __MetadataBearer;
+export interface DescribeGameSessionPlacementCommandInput extends DescribeGameSessionPlacementInput {}
+export interface DescribeGameSessionPlacementCommandOutput
+  extends DescribeGameSessionPlacementOutput,
+    __MetadataBearer {}
 
 /**
- * <p>Retrieves properties and current status of a game session placement request. To get
- *         game session placement details, specify the placement ID. If successful, a <a>GameSessionPlacement</a> object is returned.</p>
- *          <ul>
- *             <li>
- *                <p>
- *                   <a>CreateGameSession</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeGameSessions</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>DescribeGameSessionDetails</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>SearchGameSessions</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>UpdateGameSession</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>
- *                   <a>GetGameSessionLogUrl</a>
- *                </p>
- *             </li>
- *             <li>
- *                <p>Game session placements</p>
- *                         <ul>
- *                   <li>
- *                      <p>
- *                         <a>StartGameSessionPlacement</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>DescribeGameSessionPlacement</a>
- *                      </p>
- *                   </li>
- *                   <li>
- *                      <p>
- *                         <a>StopGameSessionPlacement</a>
- *                      </p>
- *                   </li>
- *                </ul>
- *             </li>
- *          </ul>
+ * <p>Retrieves information, including current status, about a game session placement request. </p>
+ *         <p>To get game session placement details, specify the placement ID.</p>
+ *         <p>If successful, a <a>GameSessionPlacement</a> object is returned.</p>
+ *          <p>
+ *             <b>Related actions</b>
+ *          </p>
+ *                     <p>
+ *             <a>CreateGameSession</a> |
+ *                     <a>DescribeGameSessions</a> |
+ *                     <a>DescribeGameSessionDetails</a> |
+ *                     <a>SearchGameSessions</a> |
+ *                     <a>UpdateGameSession</a> |
+ *                     <a>GetGameSessionLogUrl</a> |
+ *                     <a>StartGameSessionPlacement</a> |
+ *                     <a>DescribeGameSessionPlacement</a> |
+ *                     <a>StopGameSessionPlacement</a> |
+ *                     <a href="https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets">All APIs by task</a>
+ *          </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GameLiftClient, DescribeGameSessionPlacementCommand } from "@aws-sdk/client-gamelift"; // ES Modules import
+ * // const { GameLiftClient, DescribeGameSessionPlacementCommand } = require("@aws-sdk/client-gamelift"); // CommonJS import
+ * const client = new GameLiftClient(config);
+ * const command = new DescribeGameSessionPlacementCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DescribeGameSessionPlacementCommandInput} for command's `input` shape.
+ * @see {@link DescribeGameSessionPlacementCommandOutput} for command's `response` shape.
+ * @see {@link GameLiftClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DescribeGameSessionPlacementCommand extends $Command<
   DescribeGameSessionPlacementCommandInput,

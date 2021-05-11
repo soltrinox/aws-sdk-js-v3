@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type DeleteScheduleCommandInput = DeleteScheduleRequest;
-export type DeleteScheduleCommandOutput = DeleteScheduleResponse & __MetadataBearer;
+export interface DeleteScheduleCommandInput extends DeleteScheduleRequest {}
+export interface DeleteScheduleCommandOutput extends DeleteScheduleResponse, __MetadataBearer {}
 
 /**
  * Delete all schedule actions on a channel.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { MediaLiveClient, DeleteScheduleCommand } from "@aws-sdk/client-medialive"; // ES Modules import
+ * // const { MediaLiveClient, DeleteScheduleCommand } = require("@aws-sdk/client-medialive"); // CommonJS import
+ * const client = new MediaLiveClient(config);
+ * const command = new DeleteScheduleCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link DeleteScheduleCommandInput} for command's `input` shape.
+ * @see {@link DeleteScheduleCommandOutput} for command's `response` shape.
+ * @see {@link MediaLiveClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class DeleteScheduleCommand extends $Command<
   DeleteScheduleCommandInput,

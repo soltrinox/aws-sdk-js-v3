@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type UpdateModelCommandInput = UpdateModelRequest;
-export type UpdateModelCommandOutput = Model & __MetadataBearer;
+export interface UpdateModelCommandInput extends UpdateModelRequest {}
+export interface UpdateModelCommandOutput extends Model, __MetadataBearer {}
 
 /**
  * <p>Changes information about a model.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { APIGatewayClient, UpdateModelCommand } from "@aws-sdk/client-api-gateway"; // ES Modules import
+ * // const { APIGatewayClient, UpdateModelCommand } = require("@aws-sdk/client-api-gateway"); // CommonJS import
+ * const client = new APIGatewayClient(config);
+ * const command = new UpdateModelCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link UpdateModelCommandInput} for command's `input` shape.
+ * @see {@link UpdateModelCommandOutput} for command's `response` shape.
+ * @see {@link APIGatewayClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class UpdateModelCommand extends $Command<
   UpdateModelCommandInput,

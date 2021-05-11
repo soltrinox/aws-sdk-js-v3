@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateRecipeCommandInput = CreateRecipeRequest;
-export type CreateRecipeCommandOutput = CreateRecipeResponse & __MetadataBearer;
+export interface CreateRecipeCommandInput extends CreateRecipeRequest {}
+export interface CreateRecipeCommandOutput extends CreateRecipeResponse, __MetadataBearer {}
 
 /**
- * <p>Creates a new AWS Glue DataBrew recipe for the current AWS account.</p>
+ * <p>Creates a new DataBrew recipe.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { DataBrewClient, CreateRecipeCommand } from "@aws-sdk/client-databrew"; // ES Modules import
+ * // const { DataBrewClient, CreateRecipeCommand } = require("@aws-sdk/client-databrew"); // CommonJS import
+ * const client = new DataBrewClient(config);
+ * const command = new CreateRecipeCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateRecipeCommandInput} for command's `input` shape.
+ * @see {@link CreateRecipeCommandOutput} for command's `response` shape.
+ * @see {@link DataBrewClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateRecipeCommand extends $Command<
   CreateRecipeCommandInput,

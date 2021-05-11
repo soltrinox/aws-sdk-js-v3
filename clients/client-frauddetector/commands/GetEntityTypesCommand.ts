@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetEntityTypesCommandInput = GetEntityTypesRequest;
-export type GetEntityTypesCommandOutput = GetEntityTypesResult & __MetadataBearer;
+export interface GetEntityTypesCommandInput extends GetEntityTypesRequest {}
+export interface GetEntityTypesCommandOutput extends GetEntityTypesResult, __MetadataBearer {}
 
 /**
  * <p>Gets all entity types or a specific entity type if a name is specified. This is a paginated API. If you
@@ -27,6 +27,20 @@ export type GetEntityTypesCommandOutput = GetEntityTypesResult & __MetadataBeare
  *          To get the next page results, provide the pagination token from the
  *          <code>GetEntityTypesResponse</code> as part of your request. A null pagination token
  *          fetches the records from the beginning. </p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { FraudDetectorClient, GetEntityTypesCommand } from "@aws-sdk/client-frauddetector"; // ES Modules import
+ * // const { FraudDetectorClient, GetEntityTypesCommand } = require("@aws-sdk/client-frauddetector"); // CommonJS import
+ * const client = new FraudDetectorClient(config);
+ * const command = new GetEntityTypesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetEntityTypesCommandInput} for command's `input` shape.
+ * @see {@link GetEntityTypesCommandOutput} for command's `response` shape.
+ * @see {@link FraudDetectorClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetEntityTypesCommand extends $Command<
   GetEntityTypesCommandInput,

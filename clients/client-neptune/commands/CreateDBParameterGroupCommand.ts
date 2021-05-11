@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type CreateDBParameterGroupCommandInput = CreateDBParameterGroupMessage;
-export type CreateDBParameterGroupCommandOutput = CreateDBParameterGroupResult & __MetadataBearer;
+export interface CreateDBParameterGroupCommandInput extends CreateDBParameterGroupMessage {}
+export interface CreateDBParameterGroupCommandOutput extends CreateDBParameterGroupResult, __MetadataBearer {}
 
 /**
  * <p>Creates a new DB parameter group.</p>
@@ -43,6 +43,20 @@ export type CreateDBParameterGroupCommandOutput = CreateDBParameterGroupResult &
  *         <i>DescribeDBParameters</i> command to verify that your DB parameter group has
  *         been created or modified.</p>
  *          </important>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { NeptuneClient, CreateDBParameterGroupCommand } from "@aws-sdk/client-neptune"; // ES Modules import
+ * // const { NeptuneClient, CreateDBParameterGroupCommand } = require("@aws-sdk/client-neptune"); // CommonJS import
+ * const client = new NeptuneClient(config);
+ * const command = new CreateDBParameterGroupCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link CreateDBParameterGroupCommandInput} for command's `input` shape.
+ * @see {@link CreateDBParameterGroupCommandOutput} for command's `response` shape.
+ * @see {@link NeptuneClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class CreateDBParameterGroupCommand extends $Command<
   CreateDBParameterGroupCommandInput,

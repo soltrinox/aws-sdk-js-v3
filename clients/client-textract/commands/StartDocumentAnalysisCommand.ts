@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type StartDocumentAnalysisCommandInput = StartDocumentAnalysisRequest;
-export type StartDocumentAnalysisCommandOutput = StartDocumentAnalysisResponse & __MetadataBearer;
+export interface StartDocumentAnalysisCommandInput extends StartDocumentAnalysisRequest {}
+export interface StartDocumentAnalysisCommandOutput extends StartDocumentAnalysisResponse, __MetadataBearer {}
 
 /**
  * <p>Starts the asynchronous analysis of an input document for relationships between detected
@@ -39,6 +39,20 @@ export type StartDocumentAnalysisCommandOutput = StartDocumentAnalysisResponse &
  *          the job identifier (<code>JobId</code>) from the initial call to
  *             <code>StartDocumentAnalysis</code>.</p>
  *          <p>For more information, see <a href="https://docs.aws.amazon.com/textract/latest/dg/how-it-works-analyzing.html">Document Text Analysis</a>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { TextractClient, StartDocumentAnalysisCommand } from "@aws-sdk/client-textract"; // ES Modules import
+ * // const { TextractClient, StartDocumentAnalysisCommand } = require("@aws-sdk/client-textract"); // CommonJS import
+ * const client = new TextractClient(config);
+ * const command = new StartDocumentAnalysisCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link StartDocumentAnalysisCommandInput} for command's `input` shape.
+ * @see {@link StartDocumentAnalysisCommandOutput} for command's `response` shape.
+ * @see {@link TextractClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class StartDocumentAnalysisCommand extends $Command<
   StartDocumentAnalysisCommandInput,

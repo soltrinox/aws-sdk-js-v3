@@ -17,11 +17,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type GetSatelliteCommandInput = GetSatelliteRequest;
-export type GetSatelliteCommandOutput = GetSatelliteResponse & __MetadataBearer;
+export interface GetSatelliteCommandInput extends GetSatelliteRequest {}
+export interface GetSatelliteCommandOutput extends GetSatelliteResponse, __MetadataBearer {}
 
 /**
  * <p>Returns a satellite.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { GroundStationClient, GetSatelliteCommand } from "@aws-sdk/client-groundstation"; // ES Modules import
+ * // const { GroundStationClient, GetSatelliteCommand } = require("@aws-sdk/client-groundstation"); // CommonJS import
+ * const client = new GroundStationClient(config);
+ * const command = new GetSatelliteCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link GetSatelliteCommandInput} for command's `input` shape.
+ * @see {@link GetSatelliteCommandOutput} for command's `response` shape.
+ * @see {@link GroundStationClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class GetSatelliteCommand extends $Command<
   GetSatelliteCommandInput,

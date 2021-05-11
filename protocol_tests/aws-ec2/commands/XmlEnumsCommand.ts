@@ -14,11 +14,25 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type XmlEnumsCommandInput = {};
-export type XmlEnumsCommandOutput = XmlEnumsOutput & __MetadataBearer;
+export interface XmlEnumsCommandInput {}
+export interface XmlEnumsCommandOutput extends XmlEnumsOutput, __MetadataBearer {}
 
 /**
  * This example serializes enums as top level properties, in lists, sets, and maps.
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { EC2ProtocolClient, XmlEnumsCommand } from "@aws-sdk/aws-ec2"; // ES Modules import
+ * // const { EC2ProtocolClient, XmlEnumsCommand } = require("@aws-sdk/aws-ec2"); // CommonJS import
+ * const client = new EC2ProtocolClient(config);
+ * const command = new XmlEnumsCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link XmlEnumsCommandInput} for command's `input` shape.
+ * @see {@link XmlEnumsCommandOutput} for command's `response` shape.
+ * @see {@link EC2ProtocolClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class XmlEnumsCommand extends $Command<
   XmlEnumsCommandInput,

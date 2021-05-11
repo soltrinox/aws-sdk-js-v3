@@ -17,13 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListAccountAliasesCommandInput = ListAccountAliasesRequest;
-export type ListAccountAliasesCommandOutput = ListAccountAliasesResponse & __MetadataBearer;
+export interface ListAccountAliasesCommandInput extends ListAccountAliasesRequest {}
+export interface ListAccountAliasesCommandOutput extends ListAccountAliasesResponse, __MetadataBearer {}
 
 /**
- * <p>Lists the account alias associated with the AWS account (Note: you can have only one).
- *          For information about using an AWS account alias, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html">Using an Alias for Your AWS Account ID</a>
- *          in the <i>IAM User Guide</i>.</p>
+ * <p>Lists the account alias associated with the AWS account (Note: you can have only
+ *             one). For information about using an AWS account alias, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html">Using an alias for your
+ *                 AWS account ID</a> in the <i>IAM User Guide</i>.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { IAMClient, ListAccountAliasesCommand } from "@aws-sdk/client-iam"; // ES Modules import
+ * // const { IAMClient, ListAccountAliasesCommand } = require("@aws-sdk/client-iam"); // CommonJS import
+ * const client = new IAMClient(config);
+ * const command = new ListAccountAliasesCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListAccountAliasesCommandInput} for command's `input` shape.
+ * @see {@link ListAccountAliasesCommandOutput} for command's `response` shape.
+ * @see {@link IAMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListAccountAliasesCommand extends $Command<
   ListAccountAliasesCommandInput,

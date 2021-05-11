@@ -17,20 +17,27 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type ListServiceQuotasCommandInput = ListServiceQuotasRequest;
-export type ListServiceQuotasCommandOutput = ListServiceQuotasResponse & __MetadataBearer;
+export interface ListServiceQuotasCommandInput extends ListServiceQuotasRequest {}
+export interface ListServiceQuotasCommandOutput extends ListServiceQuotasResponse, __MetadataBearer {}
 
 /**
- * <p>Lists all service quotas for the specified AWS service. This request returns a list of the
- *       service quotas for the specified service. you'll see the default values are the values that
- *       AWS provides for the quotas. </p>
- *          <note>
- *             <p>Always check the <code>NextToken</code> response parameter when calling any of the
- *           <code>List*</code> operations. These operations can return an unexpected list of results,
- *         even when there are more results available. When this happens, the <code>NextToken</code>
- *         response parameter contains a value to pass the next call to the same API to request the
- *         next part of the list.</p>
- *          </note>
+ * <p>Lists the applied quota values for the specified AWS service. For some quotas, only the
+ *       default values are available. If the applied quota value is not available for a quota, the
+ *       quota is not retrieved.</p>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { ServiceQuotasClient, ListServiceQuotasCommand } from "@aws-sdk/client-service-quotas"; // ES Modules import
+ * // const { ServiceQuotasClient, ListServiceQuotasCommand } = require("@aws-sdk/client-service-quotas"); // CommonJS import
+ * const client = new ServiceQuotasClient(config);
+ * const command = new ListServiceQuotasCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link ListServiceQuotasCommandInput} for command's `input` shape.
+ * @see {@link ListServiceQuotasCommandOutput} for command's `response` shape.
+ * @see {@link ServiceQuotasClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class ListServiceQuotasCommand extends $Command<
   ListServiceQuotasCommandInput,

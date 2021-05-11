@@ -17,8 +17,8 @@ import {
   SerdeContext as __SerdeContext,
 } from "@aws-sdk/types";
 
-export type LabelParameterVersionCommandInput = LabelParameterVersionRequest;
-export type LabelParameterVersionCommandOutput = LabelParameterVersionResult & __MetadataBearer;
+export interface LabelParameterVersionCommandInput extends LabelParameterVersionRequest {}
+export interface LabelParameterVersionCommandOutput extends LabelParameterVersionResult, __MetadataBearer {}
 
 /**
  * <p>A parameter label is a user-defined alias to help you manage different versions of a
@@ -42,8 +42,8 @@ export type LabelParameterVersionCommandOutput = LabelParameterVersionResult & _
  *      specific version of a parameter.</p>
  *             </li>
  *             <li>
- *                <p>You can't delete a parameter label. If you no longer want to use a parameter label, then
- *      you must move it to a different version of a parameter.</p>
+ *                <p>If you no longer want to use a parameter label, then you can either delete it or move it
+ *      to a different version of a parameter.</p>
  *             </li>
  *             <li>
  *                <p>A label can have a maximum of 100 characters.</p>
@@ -58,6 +58,20 @@ export type LabelParameterVersionCommandOutput = LabelParameterVersionResult & _
  *      displays it in the list of InvalidLabels.</p>
  *             </li>
  *          </ul>
+ * @example
+ * Use a bare-bones client and the command you need to make an API call.
+ * ```javascript
+ * import { SSMClient, LabelParameterVersionCommand } from "@aws-sdk/client-ssm"; // ES Modules import
+ * // const { SSMClient, LabelParameterVersionCommand } = require("@aws-sdk/client-ssm"); // CommonJS import
+ * const client = new SSMClient(config);
+ * const command = new LabelParameterVersionCommand(input);
+ * const response = await client.send(command);
+ * ```
+ *
+ * @see {@link LabelParameterVersionCommandInput} for command's `input` shape.
+ * @see {@link LabelParameterVersionCommandOutput} for command's `response` shape.
+ * @see {@link SSMClientResolvedConfig | config} for command's `input` shape.
+ *
  */
 export class LabelParameterVersionCommand extends $Command<
   LabelParameterVersionCommandInput,
